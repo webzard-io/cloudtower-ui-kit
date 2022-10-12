@@ -1,5 +1,6 @@
 const { mergeConfig } = require("vite");
 const { checker } = require("vite-plugin-checker");
+const VitePluginLinaria = require("vite-plugin-linaria");
 
 module.exports = {
   stories: [
@@ -22,7 +23,7 @@ module.exports = {
   },
   async viteFinal(config) {
     return mergeConfig(config, {
-      plugins: [checker({ typescript: true })],
+      plugins: [VitePluginLinaria(), checker({ typescript: true })],
       resolve: {
         alias: {
           "@cloudtower/ui-business": "@cloudtower/ui-business/index.ts",

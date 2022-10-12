@@ -4,11 +4,17 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
+  "scripts": {
+    "build": "vite build"
+  },
   "dependencies": {
     "@cloudtower/ui-kit": "^0.1.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.50",
-    "react": "^17.0.2"
+    "react": "^17.0.2",
+    "vite": "^3.1.7",
+    "vite-plugin-dts": "^1.6.5",
+    "vite-plugin-linaria": "^1.0.0"
   }
 }
