@@ -7,7 +7,7 @@ const story: Meta<IBusinessBaseProps> = {
   title: "Example/BusinessBase",
   component: BusinessBase,
   argTypes: {
-    backgroundColor: { control: "color" },
+    color: { control: "color" },
   },
 };
 
@@ -19,12 +19,10 @@ export default story;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  primary: true,
-  label: "Button",
+  color: "test",
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  size: "small",
-  label: "Button",
+  color: "test",
 };

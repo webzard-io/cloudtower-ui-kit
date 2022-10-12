@@ -1,8 +1,10 @@
 import { TestBase } from "@cloudtower/ui-kit";
 
-interface IProps {}
+interface IProps {
+  color?: string;
+}
 
-const BusinessBase = () => {
+const BusinessBase = (props: IProps) => {
   return (
     <div>
       <TestBase />
