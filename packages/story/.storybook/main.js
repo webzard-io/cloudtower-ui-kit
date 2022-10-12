@@ -23,13 +23,18 @@ module.exports = {
   },
   async viteFinal(config) {
     return mergeConfig(config, {
-      plugins: [VitePluginLinaria(), checker({ typescript: true })],
+      plugins: [
+        VitePluginLinaria(),
+        checker({ typescript: true, exclude: "node_modules" }),
+      ],
       resolve: {
         alias: {
           "@cloudtower/ui-business": "@cloudtower/ui-business/index.ts",
+          "@cloudtower/ui-i18n": "@cloudtower/ui-i18n/index.ts",
           "@cloudtower/ui-kit": "@cloudtower/ui-kit/index.ts",
         },
       },
+      addons: ["storybook-react-i18next"],
     });
   },
 };
