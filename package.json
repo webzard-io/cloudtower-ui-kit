@@ -1,0 +1,15 @@
+{
+  "name": "cloud-tower-ui-kit",
+  "version": "0.1.0",
+  "private": "true",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "eslint": "^8.25.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "lerna": "^5.6.2"
+  }
+}
