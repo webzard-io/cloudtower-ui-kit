@@ -7,7 +7,7 @@ const test = css`
 
 const TestBase = () => {
   const { t } = useTranslation();
-  return <div className={test}>{t("hello_world")}</div>;
+  return <div className={`${test}`}>{t("hello_world")}</div>;
 };
 
 export default TestBase;
