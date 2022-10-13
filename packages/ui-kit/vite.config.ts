@@ -12,7 +12,7 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
-      external: ["react", "react-i18next", "i18next"],
+      external: ["react", "react-i18next", "i18next", "antd"],
       output: {
         globals: {
           react: "react",

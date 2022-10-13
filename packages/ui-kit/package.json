@@ -26,5 +26,8 @@
     "vite-plugin-dts": "^1.6.5",
     "vite-plugin-linaria": "^1.0.0",
     "vitest": "^0.24.1"
+  },
+  "dependencies": {
+    "antd": "^4.23.5"
   }
 }
