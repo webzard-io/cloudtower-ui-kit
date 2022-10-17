@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@cloudtower/parrot": "^0.1.0",
-    "@cloudtower/ui-business": "^0.1.0",
+    "@cloudtower/eagle": "^0.1.0",
     "@cloudtower/sparrow": "^0.1.0",
     "i18next": "^21.10.0",
     "react": "17.0.2",

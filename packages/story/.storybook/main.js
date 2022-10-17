@@ -29,7 +29,7 @@ module.exports = {
       ],
       resolve: {
         alias: {
-          "@cloudtower/ui-business": "@cloudtower/ui-business/index.ts",
+          "@cloudtower/eagle": "@cloudtower/eagle/index.ts",
           "@cloudtower/parrot": "@cloudtower/parrot/index.ts",
           "@cloudtower/sparrow": "@cloudtower/sparrow/index.ts",
         },
