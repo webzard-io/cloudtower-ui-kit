@@ -1,18 +1,17 @@
 import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
-import { basic, business } from "@cloudtower/ui-i18n";
+import { zhCN, enUS } from "@cloudtower/parrot";
 
 const resources = {
   en: {
     translation: {
-      ...basic["en"].translation,
-      ...business["en"].translation,
+      ...enUS.basic,
     },
   },
   "zh-CN": {
     translation: {
-      ...basic["zh-CN"].translation,
-      ...business["zh-CN"].translation,
+      // hello_world: "你好 世界",
+      ...zhCN.basic,
     },
   },
 };

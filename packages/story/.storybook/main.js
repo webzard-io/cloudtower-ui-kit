@@ -30,7 +30,7 @@ module.exports = {
       resolve: {
         alias: {
           "@cloudtower/ui-business": "@cloudtower/ui-business/index.ts",
-          "@cloudtower/ui-i18n": "@cloudtower/ui-i18n/index.ts",
+          "@cloudtower/parrot": "@cloudtower/parrot/index.ts",
           "@cloudtower/ui-kit": "@cloudtower/ui-kit/index.ts",
         },
       },
