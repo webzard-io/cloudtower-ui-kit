@@ -31,7 +31,7 @@ module.exports = {
         alias: {
           "@cloudtower/ui-business": "@cloudtower/ui-business/index.ts",
           "@cloudtower/parrot": "@cloudtower/parrot/index.ts",
-          "@cloudtower/ui-kit": "@cloudtower/ui-kit/index.ts",
+          "@cloudtower/sparrow": "@cloudtower/sparrow/index.ts",
         },
       },
       addons: ["storybook-react-i18next"],

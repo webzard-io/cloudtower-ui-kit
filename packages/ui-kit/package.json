@@ -1,5 +1,5 @@
 {
-  "name": "@cloudtower/ui-kit",
+  "name": "@cloudtower/sparrow",
   "version": "0.1.0",
   "main": "dist/index.umd.js",
   "module": "./dist/index.mjs",

@@ -1,4 +1,4 @@
-import { TestBase } from "@cloudtower/ui-kit";
+import { TestBase } from "@cloudtower/sparrow";
 
 interface IProps {
   color?: string;

@@ -16,7 +16,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@cloudtower/ui-kit": "@cloudtower/ui-kit/index.ts",
+      "@cloudtower/sparrow": "@cloudtower/sparrow/index.ts",
     },
   },
 });

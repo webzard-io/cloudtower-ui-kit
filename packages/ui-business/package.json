@@ -10,7 +10,7 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@cloudtower/ui-kit": "^0.1.0"
+    "@cloudtower/sparrow": "^0.1.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
