@@ -3,20 +3,13 @@ import esbuild from "rollup-plugin-esbuild";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import { visualizer } from "rollup-plugin-visualizer";
-import linaria from "@linaria/rollup";
-import css from "rollup-plugin-css-only";
+import dts from "rollup-plugin-dts";
 
 const config = defineConfig({
   input: ["index.ts"],
   plugins: [
     resolve(),
     commonjs(),
-    linaria({
-      sourceMap: process.env.NODE_ENV !== "production",
-    }),
-    css({
-      output: "styles.css",
-    }) as Plugin,
     esbuild({
       include: /\.[jt]sx?$/,
       exclude: /node_modules/,
@@ -33,6 +26,7 @@ const config = defineConfig({
         ".js": "jsx",
       },
     }),
+    dts() as any,
     visualizer({
       emitFile: true,
       filename: "stats.html",
