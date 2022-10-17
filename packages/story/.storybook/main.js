@@ -6,8 +6,8 @@ module.exports = {
   stories: [
     "../stories/**/*.stories.mdx",
     "../stories/**/*.stories.@(js|jsx|ts|tsx)",
-    "../../ui-business/src/**/*.stories.@(js|jsx|ts|tsx)",
-    "../../ui-kit/src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../../eagle/src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../../sparrow/src/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",

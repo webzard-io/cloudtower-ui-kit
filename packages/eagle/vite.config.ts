@@ -8,7 +8,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "index.ts"),
-      name: "UI-BUSINESS",
+      name: "eagle",
       fileName: "index",
     },
     rollupOptions: {
