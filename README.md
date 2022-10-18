@@ -33,6 +33,14 @@ The Source Code is Maintained on [github](https://github.com/webzard-io/cloud-to
 }
 ```
 
+## About Husky
+
+husky is enabled for foramt code and check eslint error.
+
+It will run `lint-staged` at pre-commit.
+
+However, it is still strongly recommended to use vscode configuration, engineers should guarantee code quality.
+
 ## Use Lerna Update Version
 
 ```
