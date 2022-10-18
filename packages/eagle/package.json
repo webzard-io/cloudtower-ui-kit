@@ -10,7 +10,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "pregenerate": "echo test",
-    "generate": "graphql-codegen-esm --config codegen.ts"
+    "generate": "graphql-codegen-esm --config src/codegen/config/codegen-main.ts"
   },
   "dependencies": {
     "@cloudtower/sparrow": "^0.1.0"
