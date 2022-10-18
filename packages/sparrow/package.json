@@ -8,7 +8,8 @@
   "scripts": {
     "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "generate": "graphql-codegen-esm --config src/codegen/config/codegen-main.ts"
   },
   "devDependencies": {
     "@linaria/rollup": "^4.1.5",
