@@ -32,3 +32,9 @@ The Source Code is Maintained on [github](https://github.com/webzard-io/cloud-to
   "editor.formatOnSave": true
 }
 ```
+
+## Use Lerna Update Version
+
+```
+yarn lerna version patch
+```
