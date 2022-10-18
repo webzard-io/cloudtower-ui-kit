@@ -11,5 +11,6 @@
         "enableDangerousAutofixThisMayCauseInfiniteLoops": true
       }
     ]
-  }
+  },
+  "ignorePatterns": ["node_modules"]
 }

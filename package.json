@@ -15,7 +15,8 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx,md}": [
-      "prettier --write"
+      "prettier --write",
+      "eslint"
     ]
   },
   "devDependencies": {
