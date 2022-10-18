@@ -41,6 +41,8 @@ It will run `lint-staged` at pre-commit.
 
 However, it is still strongly recommended to use vscode configuration, engineers should guarantee code quality.
 
+If you are using Yarn + Windows. You can check this document https://typicode.github.io/husky/#/?id=yarn-on-windows
+
 ## Use Lerna Update Version
 
 ```
