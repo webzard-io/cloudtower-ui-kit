@@ -3,6 +3,8 @@ import resolve from "@rollup/plugin-node-resolve";
 import { defineConfig } from "rollup";
 import dts from "rollup-plugin-dts";
 import esbuild from "rollup-plugin-esbuild";
+import nodePolyfills from "rollup-plugin-polyfill-node";
+import postcss from "rollup-plugin-postcss";
 import { visualizer } from "rollup-plugin-visualizer";
 
 const config = defineConfig([
@@ -11,6 +13,7 @@ const config = defineConfig([
     plugins: [
       resolve(),
       commonjs(),
+      nodePolyfills(),
       esbuild({
         include: /\.[jt]sx?$/,
         exclude: /node_modules/,
@@ -26,6 +29,10 @@ const config = defineConfig([
           ".json": "json",
           ".js": "jsx",
         },
+      }),
+      postcss({
+        extract: true,
+        modules: true,
       }),
       visualizer({
         emitFile: true,
