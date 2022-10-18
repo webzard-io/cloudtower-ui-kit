@@ -1,9 +1,9 @@
-import { defineConfig, Plugin } from "rollup";
-import esbuild from "rollup-plugin-esbuild";
-import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import { visualizer } from "rollup-plugin-visualizer";
+import resolve from "@rollup/plugin-node-resolve";
+import { defineConfig } from "rollup";
 import dts from "rollup-plugin-dts";
+import esbuild from "rollup-plugin-esbuild";
+import { visualizer } from "rollup-plugin-visualizer";
 
 const config = defineConfig({
   input: ["index.ts"],
