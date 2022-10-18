@@ -1,6 +1,6 @@
 const { mergeConfig } = require("vite");
 const { checker } = require("vite-plugin-checker");
-const VitePluginLinaria = require("vite-plugin-linaria");
+const linaria = require("@linaria/rollup");
 
 module.exports = {
   stories: [
@@ -24,7 +24,7 @@ module.exports = {
   async viteFinal(config) {
     return mergeConfig(config, {
       plugins: [
-        VitePluginLinaria(),
+        linaria.default(),
         checker({ typescript: true, exclude: "node_modules" }),
       ],
       resolve: {
