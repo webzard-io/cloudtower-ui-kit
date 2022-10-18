@@ -25,7 +25,7 @@ const config = {
       },
     },
     "src/generated/tables.tsx": {
-      plugins: ["@tower/codegen/lib/react-component/table.js"],
+      plugins: ["../claw/dist/plugins/table.js"],
     },
     // "src/generated/selects.tsx": {
     //   plugins: ["../codegen/lib/react-component/select.js"],

@@ -1,0 +1,678 @@
+import {
+  <%= queryImport %>
+} from "./react-hooks";
+
+type <%= entity %> = <%- entityType %>;
+type Required<%= entity %> = ExcludeMaybe<<%= entity %>>
+export type <%= renderer %> = {
+  <% visibleFields.forEach((field) => { -%>
+  ["<%= field.alias || field.name %>"]?: TableRenderer<Required<%- entity %><%- field.multidimensionalDataIndex %><%= field.nullable ? ' | null' : '' %>, <%= entity %>>
+  <% }) -%>
+};
+export type <%= columnKeys %> = <%- visibleFields.map(f => `'${f.alias || f.name}'`).join(' | ') %> | '_action_';
+export type <%= inputColumnKeys %> = <%= columnKeys %> | '*'
+export type <%= props %> = {
+  onRowClick?: TableProps<<%- entity %>>["onRowClick"];
+  defaultWhere?: <%= variable %>["where"];
+  basicWhere?: <%= variable %>["where"];
+  defaultOrderBy?: <%= variable %>["orderBy"];
+  transformColumns?: (
+    columns: RequiredColumnProps<<%- entity %>>[]
+  ) => RequiredColumnProps<<%- entity %>>[];
+  columnsConfig?: Partial<
+    Record<
+      <%- visibleFields.map(f => `'${f.alias || f.name}'`).join('|') %> | '_action_',
+      Partial<RequiredColumnProps<<%- entity %>>>
+    >
+  >;
+  extraColumns?: RequiredColumnProps<<%- entity %>>[];
+  rowClassName?: TableProps<<%- entity %>>["rowClassName"];
+  renderer?: <%= renderer %>;
+  scroll?: { x?: boolean | number | string; y?: boolean | number | string } | 'auto' | 'autoHeight';
+  components?: TableProps<<%- entity %>>["components"];
+  resizable?: boolean;
+  sortable?: boolean;
+  RowMenu?: TableProps<<%- entity %>>["RowMenu"];
+  syncUrl?: boolean;
+  basicColumnKeys?: <%= inputColumnKeys %>[];
+  allColumnKeys?: <%= columnKeys %>[] | ((allKeys: <%= columnKeys %>[]) => <%= columnKeys %>[] | undefined);
+  tableKey?: string;
+  defaultSize?: number;
+  rowSelection?: TableProps<<%= entity %>>['rowSelection'];
+  empty?: string | React.ReactNode;
+  customble?: boolean;
+  sidebar?: boolean;
+  tableLayout?: TableProps<<%= entity %>>['tableLayout'];
+  menuItems?: (params: {
+    record: <%- entity %>;
+    index: number;
+  }) => JSX.Element[];
+  stickyHeader?: boolean;
+  rowKey?: TableProps<<%= entity %>>['rowKey'];
+  fetchPolicy?: WatchQueryFetchPolicy;
+}
+
+type <%= requiredWhere %> = Exclude<<%= variable %>['where'], null | undefined>
+export type <%= filterProps %> = {
+  where?: <%= requiredWhere %>;
+  setWhere: (
+    updates: Array<{
+      key: string;
+      value: <%= requiredWhere %>[keyof <%= requiredWhere %>];
+    }>
+  ) => void;
+};
+
+type <%= base %>Filter<T> = {
+  props?: T;
+  titleKey?: string;
+  dataIndex?: string;
+  Component?: (props: <%= filterProps %>) => JSX.Element;
+};
+
+export const <%= filtersName %> = (renderer?: Partial<{
+    <% filterableFields.forEach((field, fieldIndex) => { -%>
+        ["<%= field.alias || field.name %>"]: <%= base %>Filter<<%= { DateTime: 'DateTimeRangeProps', Enum: 'EnumProps', String: 'StringProps', Int: 'IntProps', Float: 'FloatProps', Boolean: 'EnumProps', Object: field.filterSelectName + 'Props'  }[field.type] || 'unknown' %>>
+    <% }) -%>
+  }>)=>({
+  <% filterableFields.forEach((field, fieldIndex) => { -%>
+    ["<%= field.alias || field.name %>"]: {
+      key: '<%= field.alias || field.name %>',
+      titleKey: '<%= type %>.<%= field.alias || field.name %>',
+      dataIndex: '<%= field.objectWhereInput ? field.objectWhereInput.key : field.name %>',
+      <% switch (field.type) {
+          case "DateTime": -%>
+      Component: (props: <%= filterProps %>) => {
+        const kit = useContext(kitContext);
+        const { where, setWhere } = props;
+          return (
+            <kit.fields.DateTimeRange
+              input={{
+                value: [
+                  where?.<%= field.whereIndex %>_gte,
+                  where?.<%= field.whereIndex %>_lte
+                ],
+                onChange: value => {
+                  setWhere([
+                    { key: '<%= field.name %>_gte', value: value?.[0].toDate().toISOString() },
+                    { key: '<%= field.name %>_lte', value: value?.[1].toDate().toISOString() },
+                  ]);
+                },
+                name: "<%= field.name %>_range",
+                onFocus: EMPTY_FUNCTION,
+                onBlur: EMPTY_FUNCTION
+              }}
+              meta={{}}
+              {...renderer?.["<%= field.name %>"]?.props}
+            />)
+          },
+          <% break; -%>
+          <% case "Enum": -%>
+          Component: (props: <%= filterProps %>) =>
+            <EnumField<<%= requiredWhere %>>
+              {...props}
+              name="<%= field.name %>"
+              enumValues={[
+                <% field.values.forEach(v => { -%>
+                  { text: i18next.t('enum.<%= field.enumName %>_<%= v %>'), value: "<%= v %>" },
+                <% }) -%>
+              ]}
+              placeholder={i18next.t('common.all') + (i18next.language === SupportLanguage.en ? ' ' : '') + i18next.t('<%= type %>.<%= field.name %>')}
+              {...renderer?.["<%= field.name %>"]?.props}
+            />,
+          <% break -%>
+          <% case "String": -%>
+          Component: (props: <%= filterProps %>) => <StringField<<%= requiredWhere %>> {...props} name="<%= field.name %>" {...renderer?.["<%= field.name %>"]?.props} />,
+          <% break -%>
+          <% case "Int": -%>
+          Component: (props: <%= filterProps %>) => <IntField<<%= requiredWhere %>> {...props} name="<%= field.name %>" {...renderer?.["<%= field.name %>"]?.props} />,
+          <% break -%>
+          <% case "Float": -%>
+          Component: (props: <%= filterProps %>) => <IntField<<%= requiredWhere %>> {...props} name="<%= field.name %>" {...renderer?.["<%= field.name %>"]?.props} />,
+          <% break -%>
+          <% case "Boolean": -%>
+          Component: (props: <%= filterProps %>) => <BooleanField<<%= requiredWhere %>> {...props} name="<%= field.name %>" {...renderer?.["<%= field.name %>"]?.props} />,
+          <% break -%>
+          <% case "Object": -%>
+          Component: (props: <%= filterProps %>) => {
+            const { where, setWhere } = props;
+            return (
+              <<%= field.filterSelectName %>
+                value={where?.<%= field.whereIndex %>?.<%- field.isObject ? 'id_in || []' : 'id || ""' %>}
+                allowAll
+                lazy={!where?.<%= field.whereIndex %>?.<%- field.isObject ? 'id_in' : 'id' %>}
+                onChange={<%= field.isObject ? 'ids' : 'id' %> =>
+                  setWhere([{
+                    key: '<%= field.objectWhereInput.key %>',
+                    value: <%= field.objectWhereInput.value %>
+                  }])
+                }
+                mode="multiple"
+                placeholder={i18next.t('common.all') + (i18next.language === SupportLanguage.en ? ' ' : '') + i18next.t('<%= type %>.<%= field.name %>')}
+                {...renderer?.["<%= field.alias || field.name %>"]?.props}
+            />)
+          },
+          <% break -%>
+          <% default: -%>
+            Component: () => undefined,
+          <% break; -%>
+          },
+     <% } -%>
+        ...renderer?.["<%= field.alias || field.name %>"]
+      },
+  <% }) -%>
+} as const);
+
+const Base<%= tableName %>: React.FC<<%= props %> & {
+  data?: <%= query %>;
+  error?: ApolloError;
+  loading?: boolean;
+  refetch: () => Promise<unknown>;
+  networkStatus?: number;
+  query: <%= variable %>;
+  setQuery: (
+    val: <%= variable %> | ((val: <%= variable %>) => <%= variable %>)
+  ) => void;
+  wrapper: React.MutableRefObject<HTMLDivElement | null>;
+}> = memo(props => {
+  const {
+    onRowClick,
+    transformColumns,
+    columnsConfig,
+    extraColumns,
+    rowClassName,
+    renderer,
+    scroll,
+    components,
+    resizable = true,
+    sortable = true,
+    RowMenu = EmptyRowMenu,
+    basicColumnKeys,
+    allColumnKeys,
+    tableKey,
+    defaultSize = 50,
+    rowSelection,
+    empty,
+    customble = true,
+    loading,
+    error,
+    data,
+    refetch,
+    networkStatus,
+    query,
+    setQuery,
+    sidebar,
+    tableLayout,
+    wrapper,
+    menuItems,
+    stickyHeader = true,
+    rowKey,
+  } = props;
+  const kit = useContext(kitContext);
+  const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
+
+  const refetching = networkStatus === NetworkStatus.refetch;
+  const polling = networkStatus === NetworkStatus.poll;
+  const initLoading = networkStatus === NetworkStatus.loading;
+  const uniqueKey= tableKey ? `<%= base %>${tableKey}` : '<%= base %>'
+
+  useEffect(() => {
+    if (data) {
+      dispatch({
+        type: TableActions.SET_RESOURCE_DATA,
+        payload: {
+          resource: uniqueKey,
+          rows: data?.<%= pluralized %>,
+        },
+      });
+    }
+  }, [data, dispatch, uniqueKey]);
+
+  type Column = RequiredColumnProps<<%- entity %>>;
+
+  const allKeys: <%= columnKeys %>[] = [<%- visibleFields.map(f => `'${f.alias || f.name}'`).join(',') %>, ...(extraColumns?.map(column => column.key) as <%= columnKeys %>[] || []), '_action_']
+
+  let currentAllColumnKeys: <%= columnKeys %>[] | undefined = undefined;
+  if (typeof allColumnKeys === 'function') {
+    currentAllColumnKeys = allColumnKeys(allKeys);
+  } else if (Array.isArray(allColumnKeys)){
+    currentAllColumnKeys = allColumnKeys;
+  }
+  const _allColumnKeys = useEqualAllColumnKeys(currentAllColumnKeys);
+
+  const allColumns: Column[] = [
+    <% visibleFields.forEach((field, fieldIndex) => { -%>
+    {
+      title: t("<%= type %>.<%= field.alias || field.name %>"),
+      key: "<%= field.alias || field.name %>",
+      dataIndex: [<%- field.dataIndex %>],
+      <% if (['Int', 'Float'].includes(field.type)) { -%>
+      align: 'right',
+      <% } -%>
+      <% if (field.sortable) { -%>
+        <% if (['Int', 'Float'].includes(field.type)) { -%>
+        sortDirections: ['descend', 'ascend'],
+        <% } -%>
+      sorter: Boolean(data?.<%= pluralized %>.length),
+      sortOrder:
+        query.orderBy === <%= orderByInput %>.<%= field.asc %>
+          ? "ascend"
+          : query.orderBy === <%= orderByInput %>.<%= field.desc %>
+          ? "descend"
+          : undefined,
+      <% } -%>
+      render: (renderer?.["<%= field.alias || field.name %>"])<% if (field.type === "DateTime") { -%>
+      || ((cell: <%- entity %>["<%= field.name %>"]) => cell ? new Date(cell).toLocaleString() : '-')
+      <% } -%>,
+      sortable: <%= fieldIndex === 0 || disabledColumnKeys.includes(field.name) || disabledColumnKeys.includes(field.alias) ? 'false' : 'true' %>,
+      width: <%= field.width %>,
+      ellipsis: true,
+      shouldCellUpdate: (r, p) => r !== p,
+      customizable: true,
+      ...columnsConfig?.['<%= field.alias || field.name %>']
+    },
+    <% }); -%>
+    ...(extraColumns || []),
+    {
+      title: () =>
+        customble ? (
+          <CustomizeColumn
+            defaultCustomizeColumn={defaultCustomizeColumn}
+            allColumnKeys={_allColumnKeys as string[]}
+            disabledColumnKeys={<%- JSON.stringify(disabledColumnKeys.length ? disabledColumnKeys : [visibleFields[0].name, "_action_"]) %>}
+            columnTitleMap={columnTitleMap}
+            data-test-id={"<%= tableName %>-customize-column"}
+            customizableColumnKeys={customizableColumnKeys}
+          />
+        ) : (
+          <></>
+        ),
+      key: '_action_',
+      dataIndex: '',
+      align: 'right',
+      sorter: false,
+      render: (cell, record, index) => {
+        if (RowMenu !== EmptyRowMenu) {
+          return (
+            <div onClick={eventStopPropagation}>
+              <RowMenu record={record} index={index} />
+            </div>
+          );
+        }
+        const items = menuItems?.({ record, index })
+        if (!items?.length) {
+          return null;
+        }
+        return (
+          <div onClick={eventStopPropagation}>
+            <kit.dropdown
+              placement="bottomLeft"
+              trigger={['click']}
+              overlay={<Menu>{items}</Menu>}>
+              <Icon
+                className="menu-button"
+                type="1-more-ellipsis-3-16-bold-blue"
+              />
+            </kit.dropdown>
+          </div>
+        );
+      },
+      fixed: 'right',
+      sortable: false,
+      width: 40,
+      ellipsis: true,
+      shouldCellUpdate: (r, p) => r !== p,
+      customizable: true,
+      ...columnsConfig?.['_action_']
+    },
+  ]
+
+  const _columns = transformColumns ? transformColumns(allColumns) : allColumns;
+  const columnTitleMap = _columns?.reduce<
+    Record<string, string | undefined | null>
+  >((prev, cur) => {
+    prev[cur.key as string] = cur.title as string;
+    return prev;
+  }, {});
+
+  const customizableColumnKeys = _columns?.reduce<string[]>((prev, cur) => {
+    if(cur.customizable){
+      prev.push(cur.key)
+    }
+    return prev;
+  }, []);
+
+  const defaultCustomizeColumn: [
+    string,
+    () => CustomizeColumnType[]
+  ] = useMemo(() => {
+    return [
+      uniqueKey,
+      () => {
+        let defaultKeys: <%= inputColumnKeys %>[] = ['*'];
+        if (basicColumnKeys) {
+          defaultKeys = [...basicColumnKeys, '_action_'];
+        }
+        const columnKeys = handleColumnsByKeys<<%= columnKeys %>>(_allColumnKeys || allKeys, defaultKeys);
+        return _columns.map(column => ({
+          key: column.key as string,
+          width: column.width,
+          display: columnKeys.includes(column.key as <%= columnKeys %>),
+        }));
+      },
+    ];
+    // Only on first execution, no need to add allKeys dependencie
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [uniqueKey, _allColumnKeys]);
+
+  const [customizeColumn] = useCustomizeColumn(
+    ...defaultCustomizeColumn
+  );
+
+  let columns: Column[] = [];
+  if (customble) {
+    customizeColumn.forEach((column, index) => {
+      if (!column.display) return;
+      if (
+        column.key !== '_action_' &&
+        _allColumnKeys &&
+        !_allColumnKeys.includes(column.key as <%= columnKeys %>)
+      )
+        return;
+
+      const cur = _columns.find(col => col.key === column.key);
+      if (!cur) {
+        if (process.env.NODE_ENV === 'development') {
+          console.error(
+            'When using codegen table, if the incoming extraColumns are dynamic, it is recommended to give the table a unique key. Otherwise, the newly added column cannot be dragged to sort'
+          );
+        }
+        return;
+      }
+      columns.push(
+        resizable || sortable
+          ? {
+              ellipsis: true,
+              ...cur,
+              width: column.width,
+              onHeaderCell: () => ({
+                index,
+                sortable: !!cur.sortable,
+              }),
+              onCell: () => ({ unique: column.key }),
+            }
+          : {
+              ellipsis: true,
+              ...cur
+            }
+      );
+    });
+    const lastColumn = columns[columns.length - 1];
+    extraColumns?.forEach(column => {
+      if (!customizeColumn.find(col => col.key === column.key)) {
+        const newColumn =
+          resizable || sortable
+            ? {
+                ellipsis: true,
+                ...column,
+                width: column.width,
+                onHeaderCell: () => ({
+                  index: _columns.length,
+                  sortable: false,
+                }),
+                onCell: () => ({ unique: column.key }),
+              }
+            : {
+                ellipsis: true,
+                ...column
+              };
+        if (lastColumn.key === '_action_') {
+          columns.splice(columns.length - 1, 0, newColumn);
+        } else {
+          columns.push(newColumn);
+        }
+      }
+    });
+  } else {
+    columns = _columns.filter(column => {
+      return (
+        (column.key === '_action_')||
+        !_allColumnKeys || _allColumnKeys.includes(column.key as <%= columnKeys %>)
+      );
+    });
+  }
+
+  const auxiliaryLine = useRef<HTMLDivElement>(null);
+  const _components = useMemo<TableProps<<%- entity %>>["components"]>(() => {
+    const result: TableProps<<%- entity %>>["components"] = {
+      header: {},
+      body: {}
+    };
+    if (resizable || sortable) {
+      result.header!.cell = (props: {
+        index: number;
+        sortable: boolean;
+        className: string;
+        children: React.ReactNode;
+      }) => (
+        <HeaderCell
+          {...props}
+          resizable={resizable}
+          draggable={props.sortable}
+          components={components}
+          auxiliaryLine={auxiliaryLine}
+          wrapper={wrapper}
+          defaultCustomizeColumn={defaultCustomizeColumn}
+        />
+      );
+    }
+    result.body!.cell = props => (
+      <td {...props} className={`${props.className} cell_${props.unique}`} />
+    );
+    return { ...components, ...result };
+  }, [components, resizable, sortable, defaultCustomizeColumn, wrapper]);
+
+  const [_scroll, finalColumns] = useTransformScrollAndColumns<Column>({
+    wrapper,
+    loading,
+    rowSelection,
+    data,
+    tableKey,
+    uniqueKey,
+    stickyHeader,
+    columns,
+    scroll,
+  });
+
+  if (!_scroll?.x) {
+    finalColumns.forEach(column => {
+      column.fixed = undefined;
+    });
+  }
+
+  const WrapperComponent = useMemo(
+    () =>
+      sidebar
+        ? ({ children }: { children: React.ReactNode }) => (
+            <SidebarTable<<%= query %> | undefined>
+              isRender={!initLoading}
+              children={children}
+              wrapper={wrapper}
+            />
+          )
+        : React.Fragment,
+    [initLoading, sidebar, wrapper]
+  );
+
+  const _empty = empty || (
+    <TableEmpty query={query} setQuery={setQuery} base={'<%= base %>'} />
+  );
+  // TODO: should show the error correctly  TOWER-614
+  const _error = error && <FailedLoad error={t('cluster.retry_when_access_data_failed')} title={error.message} refetch={refetch} />;
+
+
+  return (
+    <WrapperComponent>
+      <div
+        className={cs('table-wrapper', tableKey && `${tableKey}-table-wrapper`, stickyHeader && 'table-sticky-header')}
+        ref={wrapper}>
+        <div className="relative table-content">
+          <kit.table<<%- entity %>>
+            wrapper={wrapper}
+            loading={loading && !polling}
+            initLoading={initLoading}
+            error={_error}
+            key={`<%= tableName %>-${i18n.language}`}
+            dataSource={data?.<%= pluralized %>}
+            columns={finalColumns}
+            onSorterChange={(order, key) => {
+              if (!key || !order) {
+                setQuery({
+                  ...query,
+                  orderBy: undefined
+                });
+                return;
+              }
+              switch (key) {
+              <% fields.forEach((field) => { -%>
+                <% if (field.sortable) { -%>
+                case "<%= field.name %>":
+                  setQuery({
+                    ...query,
+                    orderBy:
+                      order === "descend"
+                        ? <%= orderByInput %>.<%= field.desc %>
+                        : <%= orderByInput %>.<%= field.asc %>
+                  });
+                  break;
+                <% } -%>
+              <% }); -%>
+                default:
+                  break;
+              }
+            }}
+            onRowClick={onRowClick}
+            rowClassName={rowClassName}
+            scroll={_scroll}
+            components={_components}
+            rowSelection={rowSelection}
+            tableLayout={tableLayout}
+            empty={_empty}
+            rowKey={rowKey}
+          />
+          <AuxiliaryLine ref={auxiliaryLine} />
+        </div>
+        {data && (
+          <TablePagination<<%= variable %>>
+            count={data.<%= connection %>.aggregate.count}
+            skip={query.skip || 0}
+            size={query.first || defaultSize}
+            setQuery={setQuery}
+            onChange={() => tableScrollToTop(wrapper)}
+          />
+        )}
+      </div>
+    </WrapperComponent>
+  );
+});
+
+export const <%= tableName %>: React.FC<<%- props %>> = props => {
+  const {
+    rowSelection,
+    tableKey,
+    defaultSize = 50,
+    defaultOrderBy,
+    defaultWhere,
+    basicWhere,
+    fetchPolicy,
+    ...restProps
+  } = props;
+  const selection = useTableSelection(rowSelection, tableKey ? `<%= base %>${tableKey}` : '<%= base %>');
+
+  const defaultQuery: <%= variable %> = useMemo(
+    () => ({
+      skip: 0,
+      first: defaultSize,
+      where: defaultWhere,
+      orderBy: defaultOrderBy,
+    }),
+    [defaultSize, defaultWhere, defaultOrderBy]
+  );
+  const [query, setQuery] = props.syncUrl
+    ? useSearch<<%= variable %>>('query', defaultQuery)
+    : useState<<%= variable %>>(defaultQuery);
+  const [position] = useSearch<string | undefined>(
+    'position',
+    undefined
+  );
+  const wrapper = useRef<HTMLDivElement | null>(null);
+
+  const where = {
+    AND: [query.where || {}, basicWhere || {}].filter(
+      v => Object.keys(v).length
+    ),
+  };
+
+  const dispatch = useDispatch();
+  dispatch({ type: TableActions.SET_RESOURCE_QUERY, payload: {
+    resource: "<%= typename %>",
+    query: {
+      ...query,
+      where
+    }
+  }});
+
+  const { loading, error, data, refetch, networkStatus } = <%= hook %>({
+    variables: {
+      ...query,
+      first: query.first || defaultSize,
+      orderBy: query.orderBy || defaultOrderBy,
+      where,
+    },
+    notifyOnNetworkStatusChange: true,
+    pollInterval: 30_000,
+    skip: Boolean(position),
+    fetchPolicy: fetchPolicy
+  });
+
+  const { positionOnCompleted } = usePosition<
+    <%= variable %>
+  >({ wrapper, setQuery, defaultSize, data });
+
+  const {
+    data: positonData,
+    loading: positionLoading,
+    error: positionError,
+    refetch: positionRefetch,
+  } = <%= positionQueryHook %>({
+    variables: {
+      ...defaultQuery,
+      before: position,
+      where: basicWhere,
+    },
+    skip: !position,
+    onCompleted: data =>
+      positionOnCompleted(data.<%= connection %>.aggregate.count),
+  });
+
+
+  return (
+    <PendingTable>
+      <Base<%= tableName %>
+        {...restProps}
+        wrapper={wrapper}
+        defaultSize={defaultSize}
+        tableKey={tableKey}
+        rowSelection={selection}
+        query={query}
+        setQuery={setQuery}
+        loading={loading || positionLoading}
+        error={error || positionError}
+        data={data}
+        refetch={positonData ? refetch : positionRefetch}
+        networkStatus={networkStatus}
+      />
+    </PendingTable>
+  );
+};
