@@ -100,45 +100,78 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
     "import/first,",
     "no-useless-computed-key",
     "*/",
-    "import React, { useState, useEffect, useRef, useMemo, useContext, memo } from 'react';",
-    "import { NetworkStatus, ApolloError, ApolloQueryResult, WatchQueryFetchPolicy } from 'apollo-boost';",
-    "import { useTranslation } from 'react-i18next'",
-    "import _ from 'lodash'",
-    "import { useDispatch } from 'react-redux';",
-    "import cs from 'classnames';",
-    "import { Menu } from 'antd';",
-    "import { i18next, SupportLanguage } from '@tower/i18n';",
     `import {
-      kitContext,
-      Kit,
-      RequiredColumnProps,
-      TableProps,
+      DateTimeRangeProps,
+      EMPTY_FUNCTION,
+      EnumProps,
+      FailedLoad,
+      FloatProps,
+      Icon,
       InputSize,
+      IntProps,
+      Kit,
+      kitContext,
+      RequiredColumnProps,
       SelectProps as KitSelectProps,
       StringProps,
-      EnumProps,
-      IntProps,
-      FloatProps,
-      DateTimeRangeProps,
-      Icon,
-      FailedLoad,
-      EMPTY_FUNCTION,
+      TableProps,
       useElementsSize,
-    } from "@cloudtower/sparrow";`,
-    "import { handleColumnsByKeys, eventStopPropagation, TableRenderer, BLANK_COLUMN, tableScrollToTop, useTransformScrollAndColumns } from '../ui-kit/table/common'",
-    "import HeaderCell from '../ui-kit/table/HeaderCell'",
-    "import { AuxiliaryLine, TablePagination, TableEmpty, usePosition, EmptyRowMenu } from '../ui-kit/table/TableWidget';",
-    "import CustomizeColumn from '../ui-kit/table/CustomizeColumn';",
-    "import { useCustomizeColumn, CustomizeColumnType, useEqualAllColumnKeys } from '../ui-kit/table/customize-column'",
-    "import PendingTable from '../ui-kit/table/PendingTable';",
-    "import SidebarTable from '../ui-kit/table/SidebarTable';",
-    "import { useTableSelection } from '../ui-kit/table/TableSelection';",
-    "import { ExcludeMaybe } from '../common/types'",
-    "import { useSearch } from '../common/hooks'",
-    "import { StringField, BooleanField, IntField, EnumField } from '../ui-kit/table/SearchWidget';",
-    "import { TableActions } from '../store';",
-    "import { SingleSelectProps, MultipleSelectProps, SelectProps } from '../common/types';",
-    "import getScrollBarSize from 'rc-util/lib/getScrollBarSize';",
+    } from "@cloudtower/sparrow";
+    import { i18next, SupportLanguage } from "@tower/i18n";
+    import { Menu } from "antd";
+    import {
+      ApolloError,
+      ApolloQueryResult,
+      NetworkStatus,
+      WatchQueryFetchPolicy,
+    } from "apollo-boost";
+    import cs from "classnames";
+    import _ from "lodash";
+    import getScrollBarSize from "rc-util/lib/getScrollBarSize";
+    import React, {
+      memo,
+      useContext,
+      useEffect,
+      useMemo,
+      useRef,
+      useState,
+    } from "react";
+    import { useTranslation } from "react-i18next";
+    import { useDispatch } from "react-redux";
+    
+    import {
+      ExcludeMaybe,
+      MultipleSelectProps,
+      SelectProps,
+      SingleSelectProps,
+      useSearch,
+    } from "../common";
+    import { TableActions } from "../store";
+    import {
+      AuxiliaryLine,
+      BLANK_COLUMN,
+      BooleanField,
+      CustomizeColumn,
+      CustomizeColumnType,
+      EmptyRowMenu,
+      EnumField,
+      eventStopPropagation,
+      handleColumnsByKeys,
+      HeaderCell,
+      IntField,
+      PendingTable,
+      SidebarTable,
+      StringField,
+      TableEmpty,
+      TablePagination,
+      TableRenderer,
+      tableScrollToTop,
+      useCustomizeColumn,
+      useEqualAllColumnKeys,
+      usePosition,
+      useTableSelection,
+      useTransformScrollAndColumns,
+    } from "../ui-kit";`,
   ].join("\r\n");
   output += ADD_NEW_LINE;
 
