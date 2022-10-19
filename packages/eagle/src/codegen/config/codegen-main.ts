@@ -46,9 +46,9 @@ const config = {
     // "src/generated/type-dependencies-map.ts": {
     //   plugins: ["../codegen/lib/graphql/type-dependencies-map.js"],
     // },
-    // "src/generated/global-search.ts": {
-    //   plugins: ["../codegen/lib/typescript/global-search.js"],
-    // },
+    "src/generated/global-search.ts": {
+      plugins: ["../claw/dist/typescript/global-search.js"],
+    },
     // "src/generated/images-type.ts": {
     //   plugins: ["../codegen/lib/typescript/images-type.js"],
     // },

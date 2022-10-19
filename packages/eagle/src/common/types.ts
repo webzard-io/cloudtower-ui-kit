@@ -1,3 +1,6 @@
+import { ConnectState, MaintenanceModeEnum } from "../generated/react-hooks";
+import { Resources } from "../generated/global-search";
+
 export type ExcludeMaybe<T> = Exclude<
   T extends string | number | boolean
     ? T
@@ -95,3 +98,33 @@ export type PropsFrom<TComponent> = TComponent extends React.FC<infer Props>
   : TComponent extends React.Component<infer Props>
   ? Props
   : never;
+
+export type PastTime = {
+  unit: "h" | "m" | "d";
+  value: number;
+  disabled?: boolean;
+};
+
+export type Data = {
+  id: string;
+  cluster: { id: string; name: string; connect_state?: ConnectState };
+  // FIXME: update Data type from codegen
+  vm?: { id: string };
+  entityFilter?: { id: string; name: string };
+  connect_state?: ConnectState;
+  clusters?: { id: string; name: string; connect_state?: ConnectState }[];
+  host_state?: { state: MaintenanceModeEnum };
+};
+
+type HistoryRecord =
+  | {
+      data: Data;
+      type: Resources;
+    }
+  | { type: "search-keyword"; data: string };
+
+export type GlobalSearchHistory = Partial<
+  Record<Resources, HistoryRecord[]>
+> & {
+  _head?: HistoryRecord[];
+};
