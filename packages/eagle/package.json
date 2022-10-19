@@ -17,7 +17,8 @@
     "@linaria/core": "^4.1.4",
     "@tower/i18n": "^1.9.2",
     "history": "^4",
-    "react-redux": "^8.0.4"
+    "react-redux": "^8.0.4",
+    "redux": "^4"
   },
   "devDependencies": {
     "@apollo/client": "^3.7.0",
@@ -32,6 +33,7 @@
     "@rollup/plugin-typescript": "^9.0.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.5",
+    "@types/history": "^5.0.0",
     "@types/react": "^17.0.50",
     "@vitejs/plugin-react": "^2.1.0",
     "@vitest/coverage-c8": "^0.24.1",

@@ -43,6 +43,7 @@ const config = defineConfig([
       "react-i18next",
       "i18next",
       "antd",
+      "redux",
       "react-redux",
       "apollo-boost",
       "@tower/i18n",
