@@ -46,6 +46,7 @@ const config = defineConfig([
       "i18next",
       "antd",
       "apollo-boost",
+      "@smartx/react-final-form-arrays",
     ],
     output: [
       {

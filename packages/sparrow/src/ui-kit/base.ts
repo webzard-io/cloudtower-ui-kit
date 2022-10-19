@@ -28,7 +28,8 @@ import { SelectProps as AntdSelectProps } from "antd/lib/select";
 import { SkeletonProps as AntdSkeletonProps } from "antd/lib/skeleton";
 import { StepProps, StepsProps } from "antd/lib/steps";
 import { SwitchProps as AntdSwitchProps } from "antd/lib/switch";
-// import { FieldArrayRenderProps } from '@smartx/react-final-form-arrays';
+import { FieldArrayRenderProps } from "@smartx/react-final-form-arrays";
+
 import {
   ColumnsType,
   ColumnType,
@@ -242,11 +243,13 @@ export interface FloatProps {
 export type TooltipProps = AntdTooltipProps & {
   followMouse?: boolean;
 };
-export type FieldBaseProps<V, T extends HTMLElement = HTMLElement> =
-  FieldRenderProps<V, T> & {
-    disabled?: boolean;
-    className?: string;
-  };
+export type FieldBaseProps<
+  V,
+  T extends HTMLElement = HTMLElement
+> = FieldRenderProps<V, T> & {
+  disabled?: boolean;
+  className?: string;
+};
 export type WizardSteps = {
   title: string;
   render: React.ReactNode;
@@ -382,38 +385,38 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     CheckboxProps & { description?: ReactNode; compact?: boolean }
   >;
   // input fields
-  // fields: {
-  //   // scalars
-  //   Int: React.FunctionComponent<IntFieldProps<V, T>>;
-  //   Float: React.FunctionComponent<
-  //     FieldBaseProps<V, T> &
-  //       FloatProps & {
-  //         onChange?: FieldBaseProps<V, T>['input']['onChange'];
-  //         autoComplete?: 'on' | 'off';
-  //       }
-  //   >;
-  //   DateTime: React.FunctionComponent<FieldBaseProps<V, T>>;
-  //   Enum: React.FunctionComponent<
-  //     {
-  //       input: Partial<FieldRenderProps<V, T>['input']>;
-  //       meta: FieldRenderProps<V, T>['meta'];
-  //       disabled?: boolean;
-  //       className?: string;
-  //     } & EnumProps
-  //   >;
-  //   String: React.FunctionComponent<FieldBaseProps<V, T> & StringProps>;
-  //   Boolean: React.FunctionComponent<FieldBaseProps<V, T>>;
-  //   TextArea: React.FC<FieldBaseProps<V, T> & TextAreaProps>;
-  //   // list
-  //   Array: React.FunctionComponent<
-  //     FieldArrayRenderProps<V, T> & { child: Child }
-  //   >;
-  //   // compose
-  //   DateTimeRange: React.FunctionComponent<
-  //     FieldBaseProps<V, T> & DatePickerProps
-  //   >;
-  //   TimePicker: React.FunctionComponent<FieldBaseProps<V, T> & TimePickerProps>;
-  // };
+  fields: {
+    // scalars
+    Int: React.FunctionComponent<IntFieldProps<V, T>>;
+    Float: React.FunctionComponent<
+      FieldBaseProps<V, T> &
+        FloatProps & {
+          onChange?: FieldBaseProps<V, T>["input"]["onChange"];
+          autoComplete?: "on" | "off";
+        }
+    >;
+    DateTime: React.FunctionComponent<FieldBaseProps<V, T>>;
+    Enum: React.FunctionComponent<
+      {
+        input: Partial<FieldRenderProps<V, T>["input"]>;
+        meta: FieldRenderProps<V, T>["meta"];
+        disabled?: boolean;
+        className?: string;
+      } & EnumProps
+    >;
+    String: React.FunctionComponent<FieldBaseProps<V, T> & StringProps>;
+    Boolean: React.FunctionComponent<FieldBaseProps<V, T>>;
+    TextArea: React.FC<FieldBaseProps<V, T> & TextAreaProps>;
+    // list
+    Array: React.FunctionComponent<
+      FieldArrayRenderProps<V, T> & { child: Child }
+    >;
+    // compose
+    DateTimeRange: React.FunctionComponent<
+      FieldBaseProps<V, T> & DatePickerProps
+    >;
+    TimePicker: React.FunctionComponent<FieldBaseProps<V, T> & TimePickerProps>;
+  };
   // specific unit data UI
   // units: {
   //   Byte: UnitFn;
