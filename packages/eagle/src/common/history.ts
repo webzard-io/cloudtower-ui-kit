@@ -1,3 +1,3 @@
-import { createHashHistory, LocationState } from "history";
+import { createHashHistory } from "history";
 
-export const hashHistory = createHashHistory<LocationState>();
+export const hashHistory = createHashHistory();

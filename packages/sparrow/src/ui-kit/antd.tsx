@@ -47,15 +47,16 @@ import React, { Fragment, ReactNode, useEffect, useMemo, useRef } from "react";
 import { findDOMNode } from "react-dom";
 import { isElement } from "react-is";
 
+import { getAlertIcon } from "../common";
 import Icon from "../components/Icon";
 // import KitTable from "./table";
 // import Modal from "./modal";
 // import Modal2 from "./modal2";
 import Loading from "../components/Loading";
+import i18n from "../i18n";
 import { FullView } from "../styles/common/styled";
 import { Typo } from "../styles/component/typo";
 import { Kit, TextAreaProps } from "./base";
-// import i18n from "../i18n";
 import Button from "./button";
 import ButtonGroup from "./buttonGroup";
 // import Overflow from "../components/Overflow";
@@ -63,7 +64,6 @@ import Pagination from "./pagination";
 import Radio, { RadioButton, RadioGroup } from "./radio";
 import Switch from "./switch";
 import Tooltip from "./tooltip";
-// import { getAlertIcon } from "../common/icon";
 // import Steps from "../components/Steps";
 // import { message } from "./message/message-group";
 
@@ -858,389 +858,389 @@ export function getAntdKit(): Kit {
     input: Input,
     textArea: TextArea,
     checkbox: Checkbox,
-    // fields: {
-    //   Int: ({
-    //     input,
-    //     meta,
-    //     onBlur,
-    //     autoComplete = "off",
-    //     maximum,
-    //     minimum,
-    //     supportNegativeValue = false,
-    //     ...props
-    //   }) => (
-    //     <>
-    //       <Input
-    //         {...input}
-    //         onChange={(e) => {
-    //           const value = e.currentTarget.value;
-    //           if (supportNegativeValue) {
-    //             if (value === "" || value === "-") {
-    //               input.onChange(value);
-    //             } else if (/^(-)?\d+$/.test(value)) {
-    //               const v = parseInt(value);
-    //               input.onChange(!Number.isNaN(v) ? v : undefined);
-    //             }
-    //           } else if (value === "" || /^\d+$/.test(value)) {
-    //             const v = parseInt(value);
-    //             input.onChange(!Number.isNaN(v) ? v : undefined);
-    //           }
-    //         }}
-    //         onBlur={(e) => {
-    //           const maximumIsValid = typeof maximum === "number";
-    //           const minimumIsValid = typeof minimum === "number";
-    //           if (maximumIsValid || minimumIsValid) {
-    //             const value = parseInt(e.target.value) || 0;
-    //             if (_.isNil(value)) {
-    //               input.onChange(undefined);
-    //             }
-    //             if (
-    //               !_.isNil(value) &&
-    //               maximumIsValid &&
-    //               (maximum || 0) < value
-    //             ) {
-    //               input.onChange(maximum);
-    //             }
-    //             if (
-    //               !_.isNil(value) &&
-    //               minimumIsValid &&
-    //               (minimum || 0) > value
-    //             ) {
-    //               input.onChange(minimum);
-    //             }
-    //           }
-    //           onBlur ? onBlur(input, e) : input.onBlur(e);
-    //         }}
-    //         autoComplete={autoComplete}
-    //         error={
-    //           meta.touched &&
-    //           (meta.error || (!meta.dirtySinceLastSubmit && meta.submitError))
-    //         }
-    //         {...props}
-    //       />
-    //     </>
-    //   ),
-    //   Float: ({ input, meta, onBlur, autoComplete = "off", ...props }) => (
-    //     <>
-    //       <InputNumber
-    //         {...input}
-    //         onBlur={(e) => (onBlur ? onBlur(input, e) : input.onBlur(e))}
-    //         autoComplete={autoComplete}
-    //         error={
-    //           meta.touched &&
-    //           (meta.error || (!meta.dirtySinceLastSubmit && meta.submitError))
-    //         }
-    //         {...props}
-    //       />
-    //     </>
-    //   ),
-    //   DateTime: ({ input }) => (
-    //     <>
-    //       <DatePicker
-    //         onFocus={() => input.onFocus?.()}
-    //         onBlur={() => input.onBlur?.()}
-    //         showTime
-    //         defaultValue={input.value}
-    //         onOk={input.onChange}
-    //       />
-    //     </>
-    //   ),
-    //   TimePicker: ({ input, meta, ...props }) => (
-    //     <>
-    //       <TimePicker
-    //         {...input}
-    //         error={
-    //           meta.touched &&
-    //           (meta.error || (!meta.dirtySinceLastSubmit && meta.submitError))
-    //         }
-    //         {...props}
-    //       />
-    //     </>
-    //   ),
-    //   Enum: ({ meta: __, enumValues, emptyLabel, ...restProps }) => (
-    //     <>
-    //       <kit.select {...restProps}>
-    //         {emptyLabel && <kit.option value="">{emptyLabel}</kit.option>}
-    //         {enumValues.map((v) => {
-    //           const item = typeof v === "string" ? { value: v, text: v } : v;
-    //           return (
-    //             <kit.option
-    //               key={item.value}
-    //               value={item.value}
-    //               label={item.text}
-    //             >
-    //               {item.text}
-    //             </kit.option>
-    //           );
-    //         })}
-    //       </kit.select>
-    //     </>
-    //   ),
-    //   // String: ({
-    //   //   input,
-    //   //   meta,
-    //   //   autoComplete = "off",
-    //   //   size,
-    //   //   tags,
-    //   //   className,
-    //   //   allowClear,
-    //   //   tagsOverflow,
-    //   //   onTagsAllowClearClick,
-    //   //   onClick,
-    //   //   maxLength,
-    //   //   focusIndicator,
-    //   //   ...props
-    //   // }) => {
-    //   //   if (tags?.length) {
-    //   //     return (
-    //   //       <div
-    //   //         className={cs(
-    //   //           className,
-    //   //           KitInputStyle,
-    //   //           "input-tags",
-    //   //           allowClear && "kit-input-suffix-wrapper"
-    //   //         )}
-    //   //         onClick={onClick}
-    //   //       >
-    //   //         <div className="input-tags-inner">
-    //   //           <Overflow overflow={tagsOverflow}>
-    //   //             <span className="tags-overflow-auto">
-    //   //               {tags.map((tag) => (
-    //   //                 <InputTagItem key={tag}>{tag}</InputTagItem>
-    //   //               ))}
-    //   //             </span>
-    //   //           </Overflow>
-    //   //         </div>
-    //   //         <span className="input-tag-suffix">
-    //   //           {allowClear && (
-    //   //             <CloseCircleFilled onClick={onTagsAllowClearClick} />
-    //   //           )}
-    //   //         </span>
-    //   //       </div>
-    //   //     );
-    //   //   }
-    //   //   return (
-    //   //     <>
-    //   //       <Input
-    //   //         className={cs(
-    //   //           className,
-    //   //           KitInputStyle,
-    //   //           focusIndicator && "has-focus-indicator"
-    //   //         )}
-    //   //         {...input}
-    //   //         autoComplete={
-    //   //           props.type === "password" ? "new-password" : autoComplete
-    //   //         }
-    //   //         size={size}
-    //   //         allowClear={allowClear}
-    //   //         onClick={onClick}
-    //   //         prefix={
-    //   //           focusIndicator ? (
-    //   //             <Icon type="1-focus-indicator-16-blue " />
-    //   //           ) : undefined
-    //   //         }
-    //   //         error={
-    //   //           meta.touched &&
-    //   //           (meta.error || (!meta.dirtySinceLastSubmit && meta.submitError))
-    //   //         }
-    //   //         {...props}
-    //   //         onChange={(e) => {
-    //   //           if (maxLength) {
-    //   //             e.target.value = e.target.value.substr(0, maxLength);
-    //   //           }
-    //   //           input.onChange?.(e);
-    //   //         }}
-    //   //       />
-    //   //     </>
-    //   //   );
-    //   // },
-    //   Boolean: ({ input, children, ...props }) => {
-    //     return (
-    //       <>
-    //         <Checkbox
-    //           checked={Boolean(input.value)}
-    //           onChange={(e) => input.onChange(e.target.checked)}
-    //           {...props}
-    //         >
-    //           {children}
-    //         </Checkbox>
-    //       </>
-    //     );
-    //   },
-    //   TextArea: ({ input, meta, onFocusChangeHeight, ...props }) => {
-    //     return (
-    //       <>
-    //         <TextArea
-    //           {...input}
-    //           {...props}
-    //           error={
-    //             meta.touched &&
-    //             (meta.error || (!meta.dirtySinceLastSubmit && meta.submitError))
-    //           }
-    //           onFocus={(e) => {
-    //             input.onFocus(e);
-    //             onFocusChangeHeight &&
-    //               (e.currentTarget.style.minHeight = `${onFocusChangeHeight.onFocus}px`);
-    //           }}
-    //           onBlur={(e) => {
-    //             input.onBlur(e);
-    //             onFocusChangeHeight &&
-    //               (e.currentTarget.style.minHeight = `${onFocusChangeHeight.onBlur}px`);
-    //           }}
-    //         />
-    //       </>
-    //     );
-    //   },
-    //   // Array: ({ fields, child }) => (
-    //   //   <>
-    //   //     {fields.map((name: string, index: number) => (
-    //   //       <div>
-    //   //         <Field name={name}>
-    //   //           {(fieldProps) => {
-    //   //             if (child.type === "Enum") {
-    //   //               return kit.fields[child.type]({
-    //   //                 ...fieldProps,
-    //   //                 enumValues: child.enumValues,
-    //   //               });
-    //   //             }
-    //   //             return kit.fields[child.type](fieldProps);
-    //   //           }}
-    //   //         </Field>
-    //   //         <Button type="ordinary" onClick={() => fields.remove(index)}>
-    //   //           X
-    //   //         </Button>
-    //   //       </div>
-    //   //     ))}
-    //   //     <Button type="primary" onClick={() => fields.push("")}>
-    //   //       add
-    //   //     </Button>
-    //   //   </>
-    //   // ),
-    //   DateTimeRange: ({ input, ...props }) => (
-    //     <div className="datatime-range">
-    //       <DatePicker.RangePicker
-    //         onFocus={() => input.onFocus?.()}
-    //         onBlur={() => input.onBlur?.()}
-    //         showTime
-    //         // https://github.com/ant-design/ant-design/issues/22185
-    //         defaultValue={input.value?.map((v?: string) => v && moment(v))}
-    //         onChange={input.onChange}
-    //         value={input.value?.map((v?: string) => v && moment(v))}
-    //         format={props.format}
-    //       />
-    //     </div>
-    //   ),
-    // },
-    // units: {
-    //   Byte({ rawValue, noUnitOnZero, decimals }) {
-    //     if (isEmpty(rawValue)) {
-    //       return Empty;
-    //     }
-    //     if (rawValue === -1) {
-    //       return <span>{i18n.t("iscsiTarget.calculation")}</span>;
-    //     }
-    //     const { value, unit } = formatBytes(rawValue, decimals);
-    //     if (noUnitOnZero && value === 0) {
-    //       return <span className="value">{value}</span>;
-    //     }
-    //     return (
-    //       <span>
-    //         <span className="value">{value}</span>
-    //         <span className="unit">{` ${unit}`}</span>
-    //       </span>
-    //     );
-    //   },
-    //   Frequency({ rawValue, decimals }) {
-    //     if (isEmpty(rawValue)) {
-    //       return Empty;
-    //     }
-    //     const { value, unit } = formatFrequency(rawValue, decimals);
-    //     return (
-    //       <span>
-    //         <span className="value">{value}</span>
-    //         <span className="unit">{` ${unit}`}</span>
-    //       </span>
-    //     );
-    //   },
-    //   Percent({ rawValue, decimals }) {
-    //     if (isEmpty(rawValue)) {
-    //       return Empty;
-    //     }
-    //     const { value, unit } = formatPercent(rawValue, decimals);
-    //     return (
-    //       <span>
-    //         <span className="value">{value}</span>
-    //         <span className="unit">{unit}</span>
-    //       </span>
-    //     );
-    //   },
-    //   Speed({ rawValue, decimals }) {
-    //     if (isEmpty(rawValue)) {
-    //       return Empty;
-    //     }
-    //     const { value, unit } = formatSpeed(rawValue, decimals);
-    //     return (
-    //       <span>
-    //         <span className="value">{value}</span>
-    //         <span className="unit">{` ${unit}`}</span>
-    //       </span>
-    //     );
-    //   },
-    //   Bps({ rawValue, decimals }) {
-    //     if (isEmpty(rawValue)) {
-    //       return Empty;
-    //     }
-    //     const { value, unit } = formatBps(rawValue, decimals);
-    //     return (
-    //       <span>
-    //         <span className="value">{value}</span>
-    //         <span className="unit">{` ${unit}`}</span>
-    //       </span>
-    //     );
-    //   },
-    //   // Second({ rawValue, decimals, abbreviate }) {
-    //   //   if (isEmpty(rawValue)) {
-    //   //     return Empty;
-    //   //   }
-    //   //   const { value, unit } = formatSeconds(rawValue, decimals);
-    //   //   return (
-    //   //     <span>
-    //   //       <span className="value">{value} </span>
-    //   //       <span className="unit">
-    //   //         {i18n.td(`common.${abbreviate ? `${unit}_abbreviation` : unit}`)}
-    //   //       </span>
-    //   //     </span>
-    //   //   );
-    //   // },
-    // },
+    fields: {
+      Int: ({
+        input,
+        meta,
+        onBlur,
+        autoComplete = "off",
+        maximum,
+        minimum,
+        supportNegativeValue = false,
+        ...props
+      }) => (
+        <>
+          <Input
+            {...input}
+            onChange={(e) => {
+              const value = e.currentTarget.value;
+              if (supportNegativeValue) {
+                if (value === "" || value === "-") {
+                  input.onChange(value);
+                } else if (/^(-)?\d+$/.test(value)) {
+                  const v = parseInt(value);
+                  input.onChange(!Number.isNaN(v) ? v : undefined);
+                }
+              } else if (value === "" || /^\d+$/.test(value)) {
+                const v = parseInt(value);
+                input.onChange(!Number.isNaN(v) ? v : undefined);
+              }
+            }}
+            onBlur={(e) => {
+              const maximumIsValid = typeof maximum === "number";
+              const minimumIsValid = typeof minimum === "number";
+              if (maximumIsValid || minimumIsValid) {
+                const value = parseInt(e.target.value) || 0;
+                if (_.isNil(value)) {
+                  input.onChange(undefined);
+                }
+                if (
+                  !_.isNil(value) &&
+                  maximumIsValid &&
+                  (maximum || 0) < value
+                ) {
+                  input.onChange(maximum);
+                }
+                if (
+                  !_.isNil(value) &&
+                  minimumIsValid &&
+                  (minimum || 0) > value
+                ) {
+                  input.onChange(minimum);
+                }
+              }
+              onBlur ? onBlur(input, e) : input.onBlur(e);
+            }}
+            autoComplete={autoComplete}
+            error={
+              meta.touched &&
+              (meta.error || (!meta.dirtySinceLastSubmit && meta.submitError))
+            }
+            {...props}
+          />
+        </>
+      ),
+      Float: ({ input, meta, onBlur, autoComplete = "off", ...props }) => (
+        <>
+          <InputNumber
+            {...input}
+            onBlur={(e) => (onBlur ? onBlur(input, e) : input.onBlur(e))}
+            autoComplete={autoComplete}
+            error={
+              meta.touched &&
+              (meta.error || (!meta.dirtySinceLastSubmit && meta.submitError))
+            }
+            {...props}
+          />
+        </>
+      ),
+      DateTime: ({ input }) => (
+        <>
+          {/* <DatePicker
+            onFocus={() => input.onFocus?.()}
+            onBlur={() => input.onBlur?.()}
+            showTime
+            defaultValue={input.value}
+            onOk={input.onChange}
+          /> */}
+        </>
+      ),
+      TimePicker: ({ input, meta, ...props }) => (
+        <>
+          <TimePicker
+            {...input}
+            error={
+              meta.touched &&
+              (meta.error || (!meta.dirtySinceLastSubmit && meta.submitError))
+            }
+            {...props}
+          />
+        </>
+      ),
+      Enum: ({ meta: __, enumValues, emptyLabel, ...restProps }) => (
+        <>
+          <kit.select {...restProps}>
+            {emptyLabel && <kit.option value="">{emptyLabel}</kit.option>}
+            {enumValues.map((v) => {
+              const item = typeof v === "string" ? { value: v, text: v } : v;
+              return (
+                <kit.option
+                  key={item.value}
+                  value={item.value}
+                  label={item.text}
+                >
+                  {item.text}
+                </kit.option>
+              );
+            })}
+          </kit.select>
+        </>
+      ),
+      String: ({
+        input,
+        meta,
+        autoComplete = "off",
+        size,
+        tags,
+        className,
+        allowClear,
+        tagsOverflow,
+        onTagsAllowClearClick,
+        onClick,
+        maxLength,
+        focusIndicator,
+        ...props
+      }) => {
+        if (tags?.length) {
+          return (
+            <div
+              className={cs(
+                className,
+                KitInputStyle,
+                "input-tags",
+                allowClear && "kit-input-suffix-wrapper"
+              )}
+              onClick={onClick}
+            >
+              <div className="input-tags-inner">
+                {/* <Overflow overflow={tagsOverflow}>
+                  <span className="tags-overflow-auto">
+                    {tags.map((tag) => (
+                      <InputTagItem key={tag}>{tag}</InputTagItem>
+                    ))}
+                  </span>
+                </Overflow> */}
+              </div>
+              <span className="input-tag-suffix">
+                {allowClear && (
+                  <CloseCircleFilled onClick={onTagsAllowClearClick} />
+                )}
+              </span>
+            </div>
+          );
+        }
+        return (
+          <>
+            <Input
+              className={cs(
+                className,
+                KitInputStyle,
+                focusIndicator && "has-focus-indicator"
+              )}
+              {...input}
+              autoComplete={
+                props.type === "password" ? "new-password" : autoComplete
+              }
+              size={size}
+              allowClear={allowClear}
+              onClick={onClick}
+              prefix={
+                focusIndicator ? (
+                  <Icon type="1-focus-indicator-16-blue " />
+                ) : undefined
+              }
+              error={
+                meta.touched &&
+                (meta.error || (!meta.dirtySinceLastSubmit && meta.submitError))
+              }
+              {...props}
+              onChange={(e) => {
+                if (maxLength) {
+                  e.target.value = e.target.value.substr(0, maxLength);
+                }
+                input.onChange?.(e);
+              }}
+            />
+          </>
+        );
+      },
+      Boolean: ({ input, children, ...props }) => {
+        return (
+          <>
+            <Checkbox
+              checked={Boolean(input.value)}
+              onChange={(e) => input.onChange(e.target.checked)}
+              {...props}
+            >
+              {children}
+            </Checkbox>
+          </>
+        );
+      },
+      TextArea: ({ input, meta, onFocusChangeHeight, ...props }) => {
+        return (
+          <>
+            <TextArea
+              {...input}
+              {...props}
+              error={
+                meta.touched &&
+                (meta.error || (!meta.dirtySinceLastSubmit && meta.submitError))
+              }
+              onFocus={(e) => {
+                input.onFocus(e);
+                onFocusChangeHeight &&
+                  (e.currentTarget.style.minHeight = `${onFocusChangeHeight.onFocus}px`);
+              }}
+              onBlur={(e) => {
+                input.onBlur(e);
+                onFocusChangeHeight &&
+                  (e.currentTarget.style.minHeight = `${onFocusChangeHeight.onBlur}px`);
+              }}
+            />
+          </>
+        );
+      },
+      Array: ({ fields, child }) => (
+        <>
+          {fields.map((name: string, index: number) => (
+            <div>
+              <Field name={name}>
+                {(fieldProps) => {
+                  if (child.type === "Enum") {
+                    return kit.fields[child.type]({
+                      ...fieldProps,
+                      enumValues: child.enumValues,
+                    });
+                  }
+                  return kit.fields[child.type](fieldProps);
+                }}
+              </Field>
+              <Button type="ordinary" onClick={() => fields.remove(index)}>
+                X
+              </Button>
+            </div>
+          ))}
+          <Button type="primary" onClick={() => fields.push("")}>
+            add
+          </Button>
+        </>
+      ),
+      DateTimeRange: ({ input, ...props }) => (
+        <div className="datatime-range">
+          {/* <DatePicker.RangePicker
+            onFocus={() => input.onFocus?.()}
+            onBlur={() => input.onBlur?.()}
+            showTime
+            // https://github.com/ant-design/ant-design/issues/22185
+            defaultValue={input.value?.map((v?: string) => v && moment(v))}
+            onChange={input.onChange}
+            value={input.value?.map((v?: string) => v && moment(v))}
+            format={props.format}
+          /> */}
+        </div>
+      ),
+    },
+    units: {
+      Byte({ rawValue, noUnitOnZero, decimals }) {
+        if (isEmpty(rawValue)) {
+          return Empty;
+        }
+        if (rawValue === -1) {
+          return <span>{i18n.t("iscsiTarget.calculation")}</span>;
+        }
+        const { value, unit } = formatBytes(rawValue, decimals);
+        if (noUnitOnZero && value === 0) {
+          return <span className="value">{value}</span>;
+        }
+        return (
+          <span>
+            <span className="value">{value}</span>
+            <span className="unit">{` ${unit}`}</span>
+          </span>
+        );
+      },
+      Frequency({ rawValue, decimals }) {
+        if (isEmpty(rawValue)) {
+          return Empty;
+        }
+        const { value, unit } = formatFrequency(rawValue, decimals);
+        return (
+          <span>
+            <span className="value">{value}</span>
+            <span className="unit">{` ${unit}`}</span>
+          </span>
+        );
+      },
+      Percent({ rawValue, decimals }) {
+        if (isEmpty(rawValue)) {
+          return Empty;
+        }
+        const { value, unit } = formatPercent(rawValue, decimals);
+        return (
+          <span>
+            <span className="value">{value}</span>
+            <span className="unit">{unit}</span>
+          </span>
+        );
+      },
+      Speed({ rawValue, decimals }) {
+        if (isEmpty(rawValue)) {
+          return Empty;
+        }
+        const { value, unit } = formatSpeed(rawValue, decimals);
+        return (
+          <span>
+            <span className="value">{value}</span>
+            <span className="unit">{` ${unit}`}</span>
+          </span>
+        );
+      },
+      Bps({ rawValue, decimals }) {
+        if (isEmpty(rawValue)) {
+          return Empty;
+        }
+        const { value, unit } = formatBps(rawValue, decimals);
+        return (
+          <span>
+            <span className="value">{value}</span>
+            <span className="unit">{` ${unit}`}</span>
+          </span>
+        );
+      },
+      Second({ rawValue, decimals, abbreviate }) {
+        if (isEmpty(rawValue)) {
+          return Empty;
+        }
+        const { value, unit } = formatSeconds(rawValue, decimals);
+        return (
+          <span>
+            <span className="value">{value} </span>
+            <span className="unit">
+              {i18n.td(`common.${abbreviate ? `${unit}_abbreviation` : unit}`)}
+            </span>
+          </span>
+        );
+      },
+    },
     inputGroup: ({ compact, children }) => (
       <InputGroup compact={compact}>{children}</InputGroup>
     ),
     Empty,
-    // alert: ({
-    //   type,
-    //   icon,
-    //   showIcon = true,
-    //   className,
-    //   onClose,
-    //   closeText,
-    //   ...props
-    // }) => {
-    //   const _icon = <Icon type={getAlertIcon(type)} />;
-    //   const _type = type === "normal" ? "info" : type;
-    //   return (
-    //     <Alert
-    //       {...props}
-    //       className={cs(type ? `alert-${type}` : "", className)}
-    //       type={_type}
-    //       icon={icon || _icon}
-    //       showIcon={showIcon}
-    //       onClose={onClose}
-    //       closeText={closeText}
-    //       closable={!!onClose}
-    //     />
-    //   );
-    // },
+    alert: ({
+      type,
+      icon,
+      showIcon = true,
+      className,
+      onClose,
+      closeText,
+      ...props
+    }) => {
+      const _icon = <Icon type={getAlertIcon(type)} />;
+      const _type = type === "normal" ? "info" : type;
+      return (
+        <Alert
+          {...props}
+          className={cs(type ? `alert-${type}` : "", className)}
+          type={_type}
+          icon={icon || _icon}
+          showIcon={showIcon}
+          onClose={onClose}
+          closeText={closeText}
+          closable={!!onClose}
+        />
+      );
+    },
     searchInput: (props) => {
       const { onChange, debounceWait = 300, ...restProps } = props;
       const onSearch = _.debounce(onChange, debounceWait);

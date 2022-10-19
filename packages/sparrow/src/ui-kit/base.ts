@@ -371,7 +371,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   pagination: React.FC<PaginationProps>;
   select: React.FunctionComponent<LooseFieldRenderProps<V, T> & SelectProps>;
   option: React.FunctionComponent<OptionProps>;
-  table: TableComponent;
+  // table: TableComponent;
   button: React.FC<ButtonProps>;
   // modal: React.FC<ModalProps>;
   // modal2: React.FC<Modal2Props> & Modal2Type;
