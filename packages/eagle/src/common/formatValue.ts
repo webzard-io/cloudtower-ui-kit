@@ -1,5 +1,6 @@
-import { FormatUnit } from "./types";
 import { GiB, KiB } from "@tower/utils";
+
+import { FormatUnit } from "./types";
 
 export const getFormatValue = (formatUnit: FormatUnit) => {
   if (formatUnit === "GiB") {

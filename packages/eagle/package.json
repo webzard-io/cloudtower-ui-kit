@@ -16,7 +16,8 @@
     "@cloudtower/sparrow": "^0.1.0",
     "@linaria/core": "^4.1.4",
     "@tower/i18n": "^1.9.2",
-    "history": "^4"
+    "history": "^4",
+    "react-redux": "^8.0.4"
   },
   "devDependencies": {
     "@apollo/client": "^3.7.0",
