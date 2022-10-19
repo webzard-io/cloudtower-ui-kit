@@ -9,7 +9,7 @@
     "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "pregenerate": "cd ../claw && yarn build",
+    "pregenerate": "rm -rf src/generated && cd ../claw && yarn build",
     "generate": "graphql-codegen-esm --config src/codegen/config/codegen-main.ts"
   },
   "dependencies": {

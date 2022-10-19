@@ -6,10 +6,11 @@
   "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "prebuild": "rm -rf dist",
+    "prebuild": "rm -rf dist && yarn generate",
     "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "test": "vitest",
     "coverage": "vitest run --coverage",
+    "pregenerate": "rm -rf src/generated && cd ../claw && yarn build",
     "generate": "graphql-codegen-esm --config src/codegen/config/codegen-main.ts"
   },
   "devDependencies": {
