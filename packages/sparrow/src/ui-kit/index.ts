@@ -5,3 +5,5 @@ import { Kit } from "./base";
 
 export const antdKit = getAntdKit();
 export const kitContext = React.createContext<Kit>(antdKit);
+
+export * from "./base";

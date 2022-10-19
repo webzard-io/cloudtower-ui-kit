@@ -39,7 +39,14 @@ const config = defineConfig([
         filename: "stats.html",
       }),
     ],
-    external: ["react", "@linaria/core", "react-i18next", "i18next", "antd"],
+    external: [
+      "react",
+      "@linaria/core",
+      "react-i18next",
+      "i18next",
+      "antd",
+      "apollo-boost",
+    ],
     output: [
       {
         file: "dist/index.umd.js",
