@@ -63,7 +63,13 @@ const config = defineConfig([
   },
   {
     input: ["index.ts"],
-    plugins: [dts() as any],
+    plugins: [
+      postcss({
+        extract: true,
+        modules: true,
+      }),
+      dts() as any,
+    ],
     output: [
       {
         file: "dist/index.d.ts",
