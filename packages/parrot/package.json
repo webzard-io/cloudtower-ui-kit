@@ -10,6 +10,7 @@
   ],
   "main": "dist/index.js",
   "scripts": {
+    "prebuild": "rm -rf dist",
     "build": "tsc",
     "lint": "eslint src --ext .ts --quiet"
   },

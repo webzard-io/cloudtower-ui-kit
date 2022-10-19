@@ -5,6 +5,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "prebuild": "rm -rf dist",
     "build": "tsc",
     "postbuild": "cp -r src/templates dist/templates"
   },
