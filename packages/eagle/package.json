@@ -13,7 +13,8 @@
     "generate": "graphql-codegen-esm --config src/codegen/config/codegen-main.ts"
   },
   "dependencies": {
-    "@cloudtower/sparrow": "^0.1.0"
+    "@cloudtower/sparrow": "^0.1.0",
+    "history": "^4"
   },
   "devDependencies": {
     "@apollo/client": "^3.7.0",

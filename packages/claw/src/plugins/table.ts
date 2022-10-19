@@ -134,7 +134,7 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
     "import SidebarTable from '../ui-kit/table/SidebarTable';",
     "import { useTableSelection } from '../ui-kit/table/TableSelection';",
     "import { ExcludeMaybe } from '../common/types'",
-    "import useSearch from '../common/hooks/useSearch'",
+    "import { useSearch } from '../common/hooks'",
     "import { StringField, BooleanField, IntField, EnumField } from '../ui-kit/table/SearchWidget';",
     "import { TableActions } from '../store';",
     "import { SingleSelectProps, MultipleSelectProps, SelectProps } from '../common/types';",
