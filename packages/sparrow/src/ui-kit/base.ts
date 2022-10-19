@@ -1,4 +1,5 @@
 import { FieldRenderProps } from "@smartx/react-final-form";
+import { FieldArrayRenderProps } from "@smartx/react-final-form-arrays";
 import { SerializableObject } from "@tower/utils";
 import { AlertProps } from "antd/lib/alert";
 import AutoComplete from "antd/lib/auto-complete";
@@ -28,8 +29,6 @@ import { SelectProps as AntdSelectProps } from "antd/lib/select";
 import { SkeletonProps as AntdSkeletonProps } from "antd/lib/skeleton";
 import { StepProps, StepsProps } from "antd/lib/steps";
 import { SwitchProps as AntdSwitchProps } from "antd/lib/switch";
-import { FieldArrayRenderProps } from "@smartx/react-final-form-arrays";
-
 import {
   ColumnsType,
   ColumnType,
@@ -372,7 +371,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   pagination: React.FC<PaginationProps>;
   select: React.FunctionComponent<LooseFieldRenderProps<V, T> & SelectProps>;
   option: React.FunctionComponent<OptionProps>;
-  // table: TableComponent;
+  table: TableComponent;
   button: React.FC<ButtonProps>;
   // modal: React.FC<ModalProps>;
   // modal2: React.FC<Modal2Props> & Modal2Type;
@@ -418,19 +417,19 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     TimePicker: React.FunctionComponent<FieldBaseProps<V, T> & TimePickerProps>;
   };
   // specific unit data UI
-  // units: {
-  //   Byte: UnitFn;
-  //   Frequency: UnitFn;
-  //   Percent: UnitFn;
-  //   Speed: UnitFn;
-  //   Second: UnitFn;
-  //   Bps: UnitFn;
-  // };
+  units: {
+    Byte: UnitFn;
+    Frequency: UnitFn;
+    Percent: UnitFn;
+    Speed: UnitFn;
+    Second: UnitFn;
+    Bps: UnitFn;
+  };
   inputGroup: React.FunctionComponent<{ compact: boolean }>;
   Empty: React.ReactElement;
-  // alert: React.FunctionComponent<
-  //   Omit<AlertProps, 'type'> & { type?: AlertProps['type'] | 'normal' }
-  // >;
+  alert: React.FunctionComponent<
+    Omit<AlertProps, "type"> & { type?: AlertProps["type"] | "normal" }
+  >;
   searchInput: React.FC<SearchInputProps>;
   exportButton: React.FC<{ href?: string }>;
   badge: React.FC<BadgeProps & { type?: BadgeTypeProps }>;
