@@ -1,10 +1,10 @@
 import { SupportLanguage } from "@tower/i18n";
 import { Serializable, SerializableObject } from "@tower/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { UserSource } from "../../generated/react-hooks";
 
+import { UserSource } from "../../generated/react-hooks";
+import { GlobalSearchHistory, PastTime } from "../types";
 import { getValue } from "./utils";
-import { PastTime } from "../types";
 
 type SetValue<T> = (obj: T | ((val: T) => T)) => void;
 
