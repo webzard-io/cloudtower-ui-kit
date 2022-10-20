@@ -7,48 +7,48 @@ const config = {
     "../../../tower/packages/ui/src/graphql/*.graphql",
   ],
   generates: {
-    // "src/generated/react-hooks.ts": {
-    //   plugins: [
-    //     "typescript",
-    //     "typescript-operations",
-    //     "typescript-react-apollo",
-    //   ],
-    //   config: {
-    //     scalars: {
-    //       DateTime: "string",
-    //       JSON: "{ [key: string]: any }",
-    //     },
-    //     withComponent: false,
-    //     withHOC: false,
-    //     withHooks: true,
-    //     maybeValue: "T | null | undefined",
-    //   },
-    // },
+    "src/generated/react-hooks.ts": {
+      plugins: [
+        "typescript",
+        "typescript-operations",
+        "typescript-react-apollo",
+      ],
+      config: {
+        scalars: {
+          DateTime: "string",
+          JSON: "{ [key: string]: any }",
+        },
+        withComponent: false,
+        withHOC: false,
+        withHooks: true,
+        maybeValue: "T | null | undefined",
+      },
+    },
     // "src/generated/tables.tsx": {
     //   plugins: ["../claw/dist/plugins/table.js"],
     // },
     // "src/generated/selects.tsx": {
-    //   plugins: ["../codegen/dist/react-component/select.js"],
+    //   plugins: ["../claw/dist/react-component/select.js"],
     // },
     // "src/generated/forms-types.tsx": {
-    //   plugins: ["../codegen/dist/react-component/form.js"],
+    //   plugins: ["../claw/dist/react-component/form.js"],
     //   config: {
     //     generateTypes: true,
     //   },
     // },
     // "src/generated/forms.tsx": {
-    //   plugins: ["../codegen/dist/react-component/form.js"],
+    //   plugins: ["../claw/dist/react-component/form.js"],
     // },
     // "src/generated/forms2.tsx": {
     //   schema: "config/form-schema.graphql",
-    //   plugins: ["../codegen/dist/react-component/form2.js"],
+    //   plugins: ["../claw/dist/react-component/form2.js"],
     // },
     // "src/generated/type-dependencies-map.ts": {
-    //   plugins: ["../codegen/dist/graphql/type-dependencies-map.js"],
+    //   plugins: ["../claw/dist/graphql/type-dependencies-map.js"],
     // },
-    // "src/generated/global-search.ts": {
-    //   plugins: ["../codegen/dist/typescript/global-search.js"],
-    // },
+    "src/generated/global-search.ts": {
+      plugins: ["../claw/dist/typescript/global-search.js"],
+    },
     "src/generated/images-type.ts": {
       plugins: ["../claw/dist/typescript/images-type.js"],
     },
