@@ -47,6 +47,7 @@ const config = defineConfig([
       "antd",
       "apollo-boost",
       "@smartx/react-final-form-arrays",
+      "@smartx/final-form",
     ],
     output: [
       {
