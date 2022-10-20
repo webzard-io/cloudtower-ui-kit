@@ -39,14 +39,16 @@ const config = defineConfig([
     external: [
       "react",
       "react-dom",
+      "react-redux",
+      "redux",
       "@linaria/core",
       "react-i18next",
       "i18next",
+      "xstate",
       "antd",
-      "redux",
-      "react-redux",
       "apollo-boost",
       "@tower/i18n",
+      "@cloudtower/sparrow",
     ],
     output: [
       {
