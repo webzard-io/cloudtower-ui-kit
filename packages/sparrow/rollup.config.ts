@@ -65,10 +65,10 @@ const config = defineConfig([
     input: ["index.ts"],
     plugins: [
       postcss({
-        extract: true,
+        extract: false,
         modules: true,
       }),
-      dts() as any,
+      dts(),
     ],
     output: [
       {
