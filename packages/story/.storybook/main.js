@@ -1,0 +1,40 @@
+const { mergeConfig } = require("vite");
+const { checker } = require("vite-plugin-checker");
+const linaria = require("@linaria/rollup");
+
+module.exports = {
+  stories: [
+    "../stories/**/*.stories.mdx",
+    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
+    "../../eagle/src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../../sparrow/src/**/*.stories.@(js|jsx|ts|tsx)",
+  ],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+  ],
+  framework: "@storybook/react",
+  core: {
+    builder: "@storybook/builder-vite",
+  },
+  features: {
+    storyStoreV7: true,
+  },
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      plugins: [
+        linaria.default(),
+        checker({ typescript: true, exclude: "node_modules" }),
+      ],
+      resolve: {
+        alias: {
+          "@cloudtower/eagle": "@cloudtower/eagle/index.ts",
+          "@cloudtower/parrot": "@cloudtower/parrot/index.ts",
+          "@cloudtower/sparrow": "@cloudtower/sparrow/index.ts",
+        },
+      },
+      addons: ["storybook-react-i18next"],
+    });
+  },
+};

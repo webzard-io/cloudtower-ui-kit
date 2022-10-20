@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "./dist",
+    "resolveJsonModule": true
+  },
+  "include": ["src", "index.ts"],
+  "exclude": ["node_modules"]
+}
