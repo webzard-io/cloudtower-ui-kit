@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import { css } from "@linaria/core";
 import { ApolloError } from "apollo-boost";
 import cs from "classnames";
+import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
+
 import { kitContext } from "../ui-kit";
-import { css } from "@linaria/core";
 
 const FailedLoadStyle = css`
   width: 100%;

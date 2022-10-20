@@ -1,11 +1,13 @@
-import React, { useContext, DragEvent } from "react";
-import { Checkbox } from "antd";
-import { useTranslation } from "react-i18next";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
-import { useCustomizeColumn, CustomizeColumnType } from "./customize-column";
+import { Checkbox } from "antd";
+import React, { DragEvent, useContext } from "react";
+import { useTranslation } from "react-i18next";
+
+import { Icon } from "../../components";
+import { kitContext } from "..";
 import { arrayMove } from "./common";
-import { Icon, kitContext } from "@cloudtower/sparrow";
+import { CustomizeColumnType, useCustomizeColumn } from "./customize-column";
 
 const DropdownWrapper = css`
   &.ant-dropdown {

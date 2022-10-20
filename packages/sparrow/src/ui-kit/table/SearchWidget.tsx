@@ -1,16 +1,11 @@
+import { css } from "@linaria/core";
+import _ from "lodash";
 import React, { useContext, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  StringProps,
-  EnumProps,
-  IntProps,
-  EMPTY_FUNCTION,
-  kitContext,
-} from "@cloudtower/sparrow";
-import _ from "lodash";
-import { getFormatValue } from "../../common";
-import { FormatUnit } from "../../common/types";
-import { css } from "@linaria/core";
+
+import { EMPTY_FUNCTION, FormatUnit, getFormatValue } from "../../common";
+import { kitContext } from "..";
+import { EnumProps, IntProps, StringProps } from "../base";
 
 const AffixWrapper = css`
   height: 32px;

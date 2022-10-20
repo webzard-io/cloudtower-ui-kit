@@ -1,7 +1,7 @@
-import useLocalStorage from "../../common/hooks/useLocalStorage";
-import { useMemo, useCallback, useRef } from "react";
 import _ from "lodash";
-import { getValue } from "../../common/hooks/utils";
+import { useCallback, useMemo, useRef } from "react";
+
+import { getValue, useLocalStorage } from "../../common";
 
 export type CustomizeColumnType = {
   key: string;

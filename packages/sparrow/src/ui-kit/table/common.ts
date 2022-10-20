@@ -1,14 +1,16 @@
+import { isEqual, isNil } from "lodash";
+import getScrollBarSize from "rc-util/lib/getScrollBarSize";
 import React, {
   BaseSyntheticEvent,
-  useEffect,
-  useState,
-  useRef,
-  useMemo,
   useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
 } from "react";
-import getScrollBarSize from "rc-util/lib/getScrollBarSize";
-import { useElementsSize, kitContext } from "@cloudtower/sparrow";
-import { isEqual, isNil } from "lodash";
+
+import { useElementsSize } from "../../common";
+import { kitContext } from "..";
 
 export type TableRenderer<T, C> = (
   cell: T,
@@ -141,19 +143,19 @@ export const useTransformScrollAndColumns = <T>(tableProps: {
     stickyHeader,
     scroll,
   } = tableProps;
-  const defaultScroll =
-    useRef<
-      | "autoHeight"
-      | "auto"
-      | { x?: boolean | number | string; y?: boolean | number | string }
-      | undefined
-    >(scroll);
+  const defaultScroll = useRef<
+    | "autoHeight"
+    | "auto"
+    | { x?: boolean | number | string; y?: boolean | number | string }
+    | undefined
+  >(scroll);
   const [scrollConfig, setScrollConfig] = useState<TableScrollConfig>({});
   const [headerAndPaginationHeight, setHeaderAndPaginationHeight] =
     useState<number>(0);
   const kit = useContext(kitContext);
   const scrollBarSize = useMemo(
     () => (defaultScroll.current ? getScrollBarSize() : 0),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [defaultScroll.current]
   );
 
@@ -255,6 +257,7 @@ export const useTransformScrollAndColumns = <T>(tableProps: {
         y,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     headerAndPaginationHeight,
     height,

@@ -89,7 +89,7 @@ export interface PaginationProps {
   className?: string;
 }
 export type InputSize = "large" | "middle" | "small";
-export type SelectProps = {
+export type KitSelectProps = {
   defaultValue?: string;
   error?: unknown | React.ReactNode;
   danger?: boolean;
@@ -369,9 +369,9 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   loading: React.FunctionComponent<{ fullView?: boolean }>;
   error: React.FunctionComponent<{ error: unknown }>;
   pagination: React.FC<PaginationProps>;
-  select: React.FunctionComponent<LooseFieldRenderProps<V, T> & SelectProps>;
+  select: React.FunctionComponent<LooseFieldRenderProps<V, T> & KitSelectProps>;
   option: React.FunctionComponent<OptionProps>;
-  // table: TableComponent;
+  table: TableComponent;
   button: React.FC<ButtonProps>;
   // modal: React.FC<ModalProps>;
   // modal2: React.FC<Modal2Props> & Modal2Type;

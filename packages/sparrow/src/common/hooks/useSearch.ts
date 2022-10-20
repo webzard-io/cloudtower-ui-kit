@@ -1,10 +1,11 @@
 import { Serializable } from "@tower/utils";
 import _ from "lodash";
+import qs from "querystring";
 import { useCallback, useEffect, useRef, useState } from "react";
+
+import { hashHistory as history } from "../history";
 import { getAllSearch } from "../router";
 import { getSearch, getValue } from "./utils";
-import qs from "querystring";
-import { hashHistory as history } from "../history";
 
 export type SearchOperation = {
   pick?: string | string[];
@@ -66,6 +67,7 @@ const useSearch = <T extends Serializable>(
       prevSearch.current = allSearch;
     });
     return () => unsubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
 
   useEffect(() => {

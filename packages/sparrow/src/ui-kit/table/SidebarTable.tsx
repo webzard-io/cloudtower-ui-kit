@@ -1,6 +1,6 @@
-import React, { useRef, useCallback, useLayoutEffect } from "react";
-import useSearch from "../../common/hooks/useSearch";
-import { Sidebar } from "../../common/types";
+import React, { useCallback, useLayoutEffect, useRef } from "react";
+
+import { Sidebar, useSearch } from "../../common";
 
 // FIXME
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

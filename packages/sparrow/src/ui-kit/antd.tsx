@@ -45,15 +45,15 @@ import _ from "lodash";
 import moment from "moment";
 import React, { Fragment, ReactNode, useEffect, useMemo, useRef } from "react";
 import { findDOMNode } from "react-dom";
+import { useTranslation } from "react-i18next";
 import { isElement } from "react-is";
 
 import { getAlertIcon } from "../common";
 import Icon from "../components/Icon";
-// import KitTable from "./table";
 // import Modal from "./modal";
 // import Modal2 from "./modal2";
 import Loading from "../components/Loading";
-import i18n from "../i18n";
+// import i18n from "../i18n";
 import { FullView } from "../styles/common/styled";
 import { Typo } from "../styles/component/typo";
 import { Kit, TextAreaProps } from "./base";
@@ -63,6 +63,7 @@ import ButtonGroup from "./buttonGroup";
 import Pagination from "./pagination";
 import Radio, { RadioButton, RadioGroup } from "./radio";
 import Switch from "./switch";
+import KitTable from "./table";
 import Tooltip from "./tooltip";
 // import Steps from "../components/Steps";
 // import { message } from "./message/message-group";
@@ -846,7 +847,7 @@ export function getAntdKit(): Kit {
     option: ({ children, ...props }) => {
       return <AntdSelect.Option {...props}>{children}</AntdSelect.Option>;
     },
-    // table: KitTable,
+    table: KitTable,
     button: Button,
     // modal: Modal,
     // modal2: Modal2,
@@ -1133,6 +1134,7 @@ export function getAntdKit(): Kit {
     },
     units: {
       Byte({ rawValue, noUnitOnZero, decimals }) {
+        const { i18n } = useTranslation();
         if (isEmpty(rawValue)) {
           return Empty;
         }
@@ -1199,6 +1201,8 @@ export function getAntdKit(): Kit {
         );
       },
       Second({ rawValue, decimals, abbreviate }) {
+        const { i18n } = useTranslation();
+
         if (isEmpty(rawValue)) {
           return Empty;
         }

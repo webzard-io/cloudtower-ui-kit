@@ -1,5 +1,5 @@
-import { ConnectState, MaintenanceModeEnum } from "../generated/react-hooks";
 import { Resources } from "../generated/global-search";
+import { ConnectState, MaintenanceModeEnum } from "../generated/react-hooks";
 
 export type ExcludeMaybe<T> = Exclude<
   T extends string | number | boolean

@@ -1,8 +1,9 @@
-import React from "react";
 import { css, cx } from "@linaria/core";
+import React from "react";
+
+import { TableProps } from "../base";
 import { arrayMove } from "./common";
-import { TableProps } from "@cloudtower/sparrow";
-import { useCustomizeColumn, CustomizeColumnType } from "./customize-column";
+import { CustomizeColumnType, useCustomizeColumn } from "./customize-column";
 
 const thCss = css`
   background: white;

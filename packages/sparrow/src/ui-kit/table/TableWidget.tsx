@@ -1,5 +1,3 @@
-import { Icon, kitContext } from "@cloudtower/sparrow";
-import { useElementsSize } from "@cloudtower/sparrow";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { SerializableObject } from "@tower/utils";
@@ -10,14 +8,17 @@ import React, { useContext, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
+import { Maybe, Scalars } from "../../../../eagle/src/generated/react-hooks";
 import {
   SearchOperation,
   SetSearch,
   tableCanClearQuery,
+  useElementsSize,
   useSearch,
 } from "../../common";
-import { Maybe, Scalars } from "../../generated/react-hooks";
+import { Icon } from "../../components";
 import { RootState } from "../../store";
+import { kitContext } from "..";
 
 const TablePaginationStyle = css``;
 
@@ -287,8 +288,4 @@ export const ColumnTitle: React.FC<{
       }
     </>
   );
-};
-
-export const EmptyRowMenu: React.FC = () => {
-  return <></>;
 };

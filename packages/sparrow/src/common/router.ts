@@ -1,6 +1,7 @@
+import { SerializableObject } from "@tower/utils";
 import { History, Location as HistoryLocation } from "history";
 import qs from "querystring";
-import { SerializableObject } from "@tower/utils";
+
 import { hashHistory } from "./history";
 
 export type Resources =
