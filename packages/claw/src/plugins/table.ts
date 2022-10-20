@@ -112,10 +112,41 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
       Kit,
       kitContext,
       RequiredColumnProps,
-      SelectProps as KitSelectProps,
+      KitSelectProps,
       StringProps,
       TableProps,
       useElementsSize,
+    } from "@cloudtower/sparrow";
+    import {
+      AuxiliaryLine,
+      BLANK_COLUMN,
+      BooleanField,
+      CustomizeColumn,
+      CustomizeColumnType,
+      EmptyRowMenu,
+      EnumField,
+      eventStopPropagation,
+      ExcludeMaybe,
+      handleColumnsByKeys,
+      HeaderCell,
+      IntField,
+      MultipleSelectProps,
+      PendingTable,
+      SelectProps,
+      SidebarTable,
+      SingleSelectProps,
+      StringField,
+      TableActions,
+      TableEmpty,
+      TablePagination,
+      TableRenderer,
+      tableScrollToTop,
+      useCustomizeColumn,
+      useEqualAllColumnKeys,
+      usePosition,
+      useSearch,
+      useTableSelection,
+      useTransformScrollAndColumns,
     } from "@cloudtower/sparrow";
     import { i18next, SupportLanguage } from "@tower/i18n";
     import { Menu } from "antd";
@@ -138,40 +169,7 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
     } from "react";
     import { useTranslation } from "react-i18next";
     import { useDispatch } from "react-redux";
-    
-    import {
-      ExcludeMaybe,
-      MultipleSelectProps,
-      SelectProps,
-      SingleSelectProps,
-      useSearch,
-    } from "../common";
-    import { TableActions } from "../store";
-    import {
-      AuxiliaryLine,
-      BLANK_COLUMN,
-      BooleanField,
-      CustomizeColumn,
-      CustomizeColumnType,
-      EmptyRowMenu,
-      EnumField,
-      eventStopPropagation,
-      handleColumnsByKeys,
-      HeaderCell,
-      IntField,
-      PendingTable,
-      SidebarTable,
-      StringField,
-      TableEmpty,
-      TablePagination,
-      TableRenderer,
-      tableScrollToTop,
-      useCustomizeColumn,
-      useEqualAllColumnKeys,
-      usePosition,
-      useTableSelection,
-      useTransformScrollAndColumns,
-    } from "../ui-kit";`,
+    `,
   ].join("\r\n");
   output += ADD_NEW_LINE;
 

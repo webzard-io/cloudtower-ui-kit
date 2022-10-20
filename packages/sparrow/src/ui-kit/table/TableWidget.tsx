@@ -8,7 +8,6 @@ import React, { useContext, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
-import { Maybe, Scalars } from "../../../../eagle/src/generated/react-hooks";
 import {
   SearchOperation,
   SetSearch,
@@ -17,6 +16,7 @@ import {
   useSearch,
 } from "../../common";
 import { Icon } from "../../components";
+import { Maybe, Scalars } from "../../generated/react-hooks";
 import { RootState } from "../../store";
 import { kitContext } from "..";
 
@@ -288,4 +288,8 @@ export const ColumnTitle: React.FC<{
       }
     </>
   );
+};
+
+export const EmptyRowMenu: React.FC = () => {
+  return <></>;
 };

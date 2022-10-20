@@ -7,16 +7,16 @@
   "scripts": {
     "prebuild": "rm -rf dist && yarn generate",
     "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "postbuild": "yarn typings",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "pregenerate": "rm -rf src/generated && cd ../claw && yarn build",
     "generate": "graphql-codegen-esm --config src/codegen/config/codegen-main.ts",
-    "build:test": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript"
+    "typings": "tsc --emitDeclarationOnly --listFiles --generateCpuProfile .tsc/profile.json --skipLibCheck -p tsconfig.build.json"
   },
   "dependencies": {
     "@cloudtower/sparrow": "^0.1.0",
     "@linaria/core": "^4.1.4",
-    "@rollup/plugin-sucrase": "^5.0.0",
     "@tower/i18n": "^1.9.2",
     "history": "^4",
     "react-redux": "^8.0.4",
@@ -49,13 +49,10 @@
     "react-dom": "^17.0.2",
     "react-i18next": "^11.18.6",
     "rollup": "^3.2.2",
-    "rollup-plugin-dts": "^5.0.0",
     "rollup-plugin-esbuild": "^4.10.1",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-ts": "^3.0.2",
     "rollup-plugin-visualizer": "^5.8.2",
     "sass": "^1.55.0",
-    "sucrase": "^3.28.0",
     "ts-node": "^10.9.1",
     "vite": "^3.1.7",
     "vitest": "^0.24.1"

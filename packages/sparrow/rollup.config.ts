@@ -1,7 +1,6 @@
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import { defineConfig } from "rollup";
-import dts from "rollup-plugin-dts";
 import esbuild from "rollup-plugin-esbuild";
 import nodePolyfills from "rollup-plugin-polyfill-node";
 import postcss from "rollup-plugin-postcss";
@@ -41,13 +40,18 @@ const config = defineConfig([
     ],
     external: [
       "react",
+      "react-dom",
+      "react-redux",
+      "redux",
+      "@tower/*",
+      "@smartx/*",
       "@linaria/core",
       "react-i18next",
       "i18next",
+      "xstate",
       "antd",
+      "@ant-design",
       "apollo-boost",
-      "@smartx/react-final-form-arrays",
-      "@smartx/final-form",
     ],
     output: [
       {
@@ -57,23 +61,6 @@ const config = defineConfig([
       },
       {
         file: "dist/index.mjs",
-        name: "index",
-        format: "esm",
-      },
-    ],
-  },
-  {
-    input: ["index.ts"],
-    plugins: [
-      postcss({
-        extract: false,
-        modules: true,
-      }),
-      dts(),
-    ],
-    output: [
-      {
-        file: "dist/index.d.ts",
         name: "index",
         format: "esm",
       },

@@ -11,7 +11,7 @@ export type TableState = {
   };
 };
 
-export const enum TableActions {
+export enum TableActions {
   SET_ROWS_SELECTION = "SET_ROWS_SELECTION",
   REMOVE_ROW_SELECTION = "REMOVE_ROW_SELECTION",
   SET_RESOURCE_DATA = "SET_RESOURCE_DATA",
