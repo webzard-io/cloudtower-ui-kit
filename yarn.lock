@@ -2685,15 +2685,6 @@
     source-map "^0.7.3"
     stylis "^3.5.4"
 
-"@linaria/core@^4.1.3", "@linaria/core@^4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@linaria/core/-/core-4.2.1.tgz#961a258ad6ca22bafb1c2df73b5b6ec78f806360"
-  integrity sha512-OH7FMhzn+PfwBvMqy0yxq8LO44Z34X1jBluxi61WzHxByOfhRb8X+fCdEbW4X3kN8ksX9oG82N37wcdbCEW5kw==
-  dependencies:
-    "@linaria/logger" "^4.0.0"
-    "@linaria/tags" "^4.1.5"
-    "@linaria/utils" "^4.2.3"
-
 "@linaria/core@^4.1.4", "@linaria/core@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@linaria/core/-/core-4.2.0.tgz#4acb43ec35473a16fe04e0e1bb4e297c7a4e046d"
@@ -2703,6 +2694,15 @@
     "@linaria/tags" "^4.1.4"
     "@linaria/utils" "^4.2.2"
 
+"@linaria/core@^4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@linaria/core/-/core-4.2.1.tgz#961a258ad6ca22bafb1c2df73b5b6ec78f806360"
+  integrity sha512-OH7FMhzn+PfwBvMqy0yxq8LO44Z34X1jBluxi61WzHxByOfhRb8X+fCdEbW4X3kN8ksX9oG82N37wcdbCEW5kw==
+  dependencies:
+    "@linaria/logger" "^4.0.0"
+    "@linaria/tags" "^4.1.5"
+    "@linaria/utils" "^4.2.3"
+
 "@linaria/logger@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@linaria/logger/-/logger-4.0.0.tgz#6f73eb3cc11d548967a7caf2e7997439e46fca0d"
@@ -2711,7 +2711,7 @@
     debug "^4.1.1"
     picocolors "^1.0.0"
 
-"@linaria/react@^4.1.5":
+"@linaria/react@^4.2.1":
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@linaria/react/-/react-4.2.1.tgz#387ddc1a328c8d1ec57a33971656d8f346c59135"
   integrity sha512-YMLwQfveM/vQyemVIcWbAsEqmVg+btDXPAiGZrQ1j7nVCu3z2StbGoVRVmICbptQM/o2ATdGWr3MymY+7hYyOg==
@@ -10256,6 +10256,13 @@ i18next@^21.10.0:
   dependencies:
     "@babel/runtime" "^7.17.2"
 
+i18next@^22.0.2:
+  version "22.0.2"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-22.0.2.tgz#04634aa751388625735cdb41f625a6b0dd1dcb2f"
+  integrity sha512-rGXWILemhx0dpNE5PfudVU1g4SdW0hkh4WYHaP8Cl6gm1KkMdBckmNqj9WvYqp8fOSocqX5FFJeadwiOZHLSXQ==
+  dependencies:
+    "@babel/runtime" "^7.17.2"
+
 iconv-lite@0.4.24, iconv-lite@^0.4.24:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
@@ -14510,6 +14517,14 @@ react-i18next@^11.18.6:
     "@babel/runtime" "^7.14.5"
     html-parse-stringify "^3.0.1"
 
+react-i18next@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-12.0.0.tgz#634015a2c035779c5736ae4c2e5c34c1659753b1"
+  integrity sha512-/O7N6aIEAl1FaWZBNvhdIo9itvF/MO/nRKr9pYqRc9LhuC1u21SlfwpiYQqvaeNSEW3g3qUXLREOWMt+gxrWbg==
+  dependencies:
+    "@babel/runtime" "^7.14.5"
+    html-parse-stringify "^3.0.1"
+
 react-inspector@^5.1.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/react-inspector/-/react-inspector-5.1.1.tgz#58476c78fde05d5055646ed8ec02030af42953c8"
@@ -14755,7 +14770,7 @@ redent@^3.0.0:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
 
-redux@^4:
+redux@^4, redux@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/redux/-/redux-4.2.0.tgz#46f10d6e29b6666df758780437651eeb2b969f13"
   integrity sha512-oSBmcKKIuIR4ME29/AeNUnl5L+hvBq7OaJWzaptTQJAntaPvxIJqfnjbaEiCzzaIz+XmVILfqAM3Ob0aXLPfjA==
@@ -16790,10 +16805,15 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typescript@^4.8.4, typescript@~4.4.0:
+typescript@^4.8.4:
   version "4.8.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.4.tgz#c464abca159669597be5f96b8943500b238e60e6"
   integrity sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==
+
+typescript@~4.4.0:
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.4.tgz#2cd01a1a1f160704d3101fd5a58ff0f9fcb8030c"
+  integrity sha512-DqGhF5IKoBl8WNf8C1gu8q0xZSInh9j1kJJMqT3a94w1JzVaBU4EXOSMrz9yDqMT0xt3selp83fuFMQ0uzv6qA==
 
 ua-parser-js@^0.7.30:
   version "0.7.32"
