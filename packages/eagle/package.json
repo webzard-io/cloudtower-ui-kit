@@ -8,7 +8,6 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
-    "postbuild": "yarn typings",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "pregenerate": "rm -rf src/generated",
