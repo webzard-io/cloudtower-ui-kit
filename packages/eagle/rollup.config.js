@@ -43,12 +43,12 @@ const config = defineConfig([
     ],
     output: [
       {
-        file: "dist/index.umd.js",
+        dir: "dist/umd",
         name: "index",
         format: "umd",
       },
       {
-        file: "dist/index.mjs",
+        dir: "dist/esm",
         name: "index",
         format: "esm",
       },

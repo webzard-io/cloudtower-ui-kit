@@ -1,13 +1,14 @@
 {
   "name": "@cloudtower/sparrow",
   "version": "0.1.0",
-  "main": "dist/index.umd.js",
-  "module": "./dist/index.mjs",
+  "main": "dist/umd/index.js",
+  "module": "./dist/esm/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
+    "postbuild": "cp -r src/images dist/images",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "pregenerate": "rm -rf src/generated",
