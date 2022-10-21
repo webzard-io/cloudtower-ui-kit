@@ -9,6 +9,10 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "typings": {
+      "dependsOn": ["build"],
+      "outputs": ["dist/**"]
+    },
     "lint": {
       "outputs": []
     },
