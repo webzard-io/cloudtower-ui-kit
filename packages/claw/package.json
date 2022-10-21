@@ -5,9 +5,9 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "prebuild": "rm -rf dist",
-    "build": "tsc",
-    "postbuild": "cp -r src/templates dist/templates"
+    "pregenerate": "rm -rf dist",
+    "generate": "tsc",
+    "postgenerate": "cp -r src/templates dist/templates"
   },
   "devDependencies": {
     "@graphql-codegen/plugin-helpers": "^2.7.1",

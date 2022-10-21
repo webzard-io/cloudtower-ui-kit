@@ -1,19 +1,16 @@
-import commonjs from "@rollup/plugin-commonjs";
-import resolve from "@rollup/plugin-node-resolve";
+import linaria from "@linaria/rollup";
 import { defineConfig } from "rollup";
 import esbuild from "rollup-plugin-esbuild";
 import nodePolyfills from "rollup-plugin-polyfill-node";
-import postcss from "rollup-plugin-postcss";
+import scss from "rollup-plugin-scss";
 import { visualizer } from "rollup-plugin-visualizer";
 
 const config = defineConfig([
   {
     input: ["index.ts"],
     plugins: [
-      resolve(),
-      commonjs(),
       nodePolyfills(),
-      esbuild({
+      esbuild.default({
         include: /\.[jt]sx?$/,
         exclude: /node_modules/,
         sourceMap: true,
@@ -29,28 +26,20 @@ const config = defineConfig([
           ".js": "jsx",
         },
       }),
-      postcss({
-        extract: true,
-        modules: true,
+      linaria.default({
+        sourceMap: false,
+        preprocessor: "none",
+      }),
+      scss({
+        include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
+        output: "dist/style.css",
+        failOnError: true,
+        prefix: "@import '../common/variables.scss';",
       }),
       visualizer({
         emitFile: true,
-        filename: "stats.html",
+        filename: "stats1.html",
       }),
-    ],
-    external: [
-      "react",
-      "react-dom",
-      "react-redux",
-      "redux",
-      "@tower/utils",
-      "@linaria/core",
-      "react-i18next",
-      "i18next",
-      "xstate",
-      "antd",
-      "@ant-design",
-      "apollo-boost",
     ],
     output: [
       {
