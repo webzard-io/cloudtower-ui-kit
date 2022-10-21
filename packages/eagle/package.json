@@ -15,7 +15,6 @@
     "typings": "tsc --emitDeclarationOnly --skipLibCheck -p tsconfig.build.json"
   },
   "dependencies": {
-    "@cloudtower/claw": "^0.1.1",
     "@cloudtower/sparrow": "^0.1.1",
     "@linaria/core": "^4.1.4",
     "@tower/i18n": "^1.9.2",
@@ -25,7 +24,7 @@
   },
   "devDependencies": {
     "@apollo/client": "^3.7.0",
-    "@cloudtower/claw": "^0.1.0",
+    "@cloudtower/claw": "^0.1.1",
     "@graphql-codegen/cli": "^2.13.6",
     "@graphql-codegen/client-preset": "^1.0.6",
     "@graphql-codegen/typescript": "^2.7.4",
