@@ -15,6 +15,7 @@
     "@storybook/testing-library": "^0.0.13",
     "@vitejs/plugin-react": "^2.1.0",
     "babel-loader": "^8.2.5",
+    "rollup-plugin-css-only": "^4.1.1",
     "storybook-react-i18next": "^1.1.2",
     "vite": "^3.1.7",
     "vite-plugin-checker": "^0.5.1"

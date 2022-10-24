@@ -1,3 +1,7 @@
+import "@cloudtower/sparrow/src/styles/reset.css";
+import "@cloudtower/sparrow/src/styles/fonts/font.css";
+
+import "antd/dist/antd.css";
 import i18n from "./i18next";
 
 export const parameters = {

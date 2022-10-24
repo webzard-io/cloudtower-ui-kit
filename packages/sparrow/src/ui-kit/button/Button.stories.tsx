@@ -264,7 +264,7 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
   );
 };
 
-export default {
+const story = {
   title: "Button",
   decorators: [withDesign],
 };
@@ -304,3 +304,5 @@ Basic.story = {
     },
   },
 };
+
+export default story;

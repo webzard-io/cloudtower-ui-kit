@@ -25,6 +25,7 @@
     "@smartx/react-final-form": "^6.4.0-rc4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.5",
+    "@testing-library/react-hooks": "^8.0.1",
     "@tower/utils": "^1.9.3",
     "@types/history": "^4",
     "@types/react": "^17.0.50",

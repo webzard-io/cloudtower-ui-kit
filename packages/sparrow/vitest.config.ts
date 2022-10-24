@@ -3,6 +3,7 @@
 
 import linaria from "@linaria/rollup";
 import react from "@vitejs/plugin-react";
+import { resolve } from "path";
 import { Plugin } from "vite";
 import { defineConfig } from "vitest/config";
 
@@ -14,5 +15,6 @@ export default defineConfig({
     coverage: {
       reporter: ["text", "json", "html"],
     },
+    setupFiles: [resolve(__dirname, "src/__test__/setup.ts")],
   },
 });

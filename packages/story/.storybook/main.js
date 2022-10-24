@@ -1,6 +1,8 @@
 const { mergeConfig } = require("vite");
 const { checker } = require("vite-plugin-checker");
 const linaria = require("@linaria/rollup");
+const scss = require("rollup-plugin-scss");
+const css = require("rollup-plugin-css-only");
 
 module.exports = {
   stories: [
@@ -24,11 +26,19 @@ module.exports = {
   async viteFinal(config) {
     return mergeConfig(config, {
       plugins: [
-        linaria.default(),
+        linaria.default({
+          sourceMap: true,
+          preprocessor: "none",
+        }),
+        scss(),
         checker({ typescript: true, exclude: "node_modules" }),
       ],
       resolve: {
         alias: {
+          "@cloudtower/sparrow/src/styles/reset.css":
+            "@cloudtower/sparrow/src/styles/reset.css",
+          "@cloudtower/sparrow/src/styles/fonts/font.css":
+            "@cloudtower/sparrow/src/styles/fonts/font.css",
           "@cloudtower/eagle": "@cloudtower/eagle/index.ts",
           "@cloudtower/parrot": "@cloudtower/parrot/index.ts",
           "@cloudtower/sparrow": "@cloudtower/sparrow/index.ts",
