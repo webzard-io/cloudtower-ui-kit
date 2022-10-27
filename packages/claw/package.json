@@ -14,12 +14,12 @@
     "@types/ejs": "^3.1.1",
     "@types/pluralize": "^0.0.29",
     "ejs": "^3.1.8",
-    "graphql": "^16.6.0",
+    "graphql": "^15.7.2",
     "lodash": "^4.17.21",
     "pluralize": "^8.0.0"
   },
   "peerDependencies": {
     "@graphql-codegen/plugin-helpers": "^2.7.1",
-    "graphql": "^16.6.0"
+    "graphql": "^15.7.2"
   }
 }
