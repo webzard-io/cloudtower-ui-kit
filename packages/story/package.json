@@ -1,6 +1,6 @@
 {
   "name": "story",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": true,
   "license": "MIT",
   "devDependencies": {
@@ -21,7 +21,7 @@
     "vite-plugin-checker": "^0.5.1"
   },
   "dependencies": {
-    "@cloudtower/eagle": "^0.1.6",
+    "@cloudtower/eagle": "^0.1.7",
     "@cloudtower/parrot": "^0.1.1",
     "@cloudtower/sparrow": "^0.1.6",
     "i18next": "^21.10.0",
