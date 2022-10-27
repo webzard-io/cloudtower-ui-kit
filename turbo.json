@@ -6,11 +6,11 @@
       "outputs": ["dist/**"]
     },
     "build": {
-      "dependsOn": ["^generate"],
+      "dependsOn": ["^build", "generate"],
       "outputs": ["dist/**"]
     },
     "typings": {
-      "dependsOn": [],
+      "dependsOn": ["generate"],
       "outputs": ["dist/**"]
     },
     "lint": {
