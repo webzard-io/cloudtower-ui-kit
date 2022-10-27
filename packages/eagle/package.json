@@ -27,7 +27,7 @@
     "@graphql-codegen/client-preset": "^1.0.6",
     "@graphql-codegen/typescript": "^2.7.4",
     "@graphql-codegen/typescript-operations": "^2.5.4",
-    "@graphql-codegen/typescript-react-apollo": "^3.3.4",
+    "@graphql-codegen/typescript-react-apollo": "^1.9",
     "@linaria/rollup": "^4.1.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.5",
