@@ -12,7 +12,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "pregenerate": "rm -rf src/generated",
-    "generate": "graphql-codegen-esm --config src/codegen/config/codegen-main.ts",
+    "generate": "graphql-codegen --config src/codegen/config/codegen-main.yaml",
     "typings": "tsc -v && tsc --emitDeclarationOnly --skipLibCheck -p tsconfig.build.json"
   },
   "devDependencies": {
