@@ -12,7 +12,7 @@
     "coverage": "vitest run --coverage",
     "pregenerate": "rm -rf src/generated",
     "generate": "graphql-codegen-esm --config src/codegen/config/codegen-main.ts",
-    "typings": "tsc --emitDeclarationOnly --skipLibCheck -p tsconfig.build.json"
+    "typings": "tsc -v && tsc --emitDeclarationOnly --skipLibCheck -p tsconfig.build.json"
   },
   "dependencies": {
     "@cloudtower/sparrow": "^0.1.4",
