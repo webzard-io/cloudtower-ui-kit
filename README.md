@@ -48,3 +48,15 @@ If you are using Yarn + Windows. You can check this document https://typicode.gi
 ```
 yarn lerna version patch
 ```
+
+## Key Points of Migration
+
+- Images
+- Graphql Schema
+- Codegen Plugin
+
+Images is copied from @tower/ui
+
+Graphql Schema not been maintenance in ui-kit, Note the relationship between UI-kit and the Graphql schema.
+
+Codegen Plugin is copying from @tower/codegen
