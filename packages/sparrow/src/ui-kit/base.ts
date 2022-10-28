@@ -1,8 +1,9 @@
 import { FieldRenderProps } from "@smartx/react-final-form";
 import { FieldArrayRenderProps } from "@smartx/react-final-form-arrays";
 import { SerializableObject } from "@tower/utils";
+import { SizeType } from "antd/es/config-provider/SizeContext";
 import { AlertProps } from "antd/lib/alert";
-import AutoComplete, { AutoCompleteProps } from "antd/lib/auto-complete";
+import { AutoCompleteProps } from "antd/lib/auto-complete";
 import { BadgeProps } from "antd/lib/badge";
 import { ButtonProps as AntdButtonProps, ButtonType } from "antd/lib/button";
 import { CheckboxProps } from "antd/lib/checkbox";
@@ -11,26 +12,22 @@ import { DividerProps as AntdDividerProps } from "antd/lib/divider";
 import { DropDownProps } from "antd/lib/dropdown";
 import { InputProps } from "antd/lib/input";
 import { TextAreaProps as AntdTextAreaProps } from "antd/lib/input/TextArea";
-import Layout, { SiderProps } from "antd/lib/layout";
+import { SiderProps } from "antd/lib/layout";
 import { BasicProps } from "antd/lib/layout/layout";
-import type List from "antd/lib/list";
 import { ListProps } from "antd/lib/list";
 import { ListItemMetaProps, ListItemProps } from "antd/lib/list/Item";
-import Menu, { MenuItemGroupProps, MenuProps } from "antd/lib/menu";
-import MenuItem, { MenuItemProps } from "antd/lib/menu/MenuItem";
-import message from "antd/lib/message";
+import { MenuItemGroupProps, MenuProps } from "antd/lib/menu";
+import { MenuItemProps } from "antd/lib/menu/MenuItem";
+import { MessageInstance } from "antd/lib/message";
 import { ModalProps as AntdModalProps } from "antd/lib/modal";
-import Popover, { PopoverProps } from "antd/lib/popover";
+import { PopoverProps } from "antd/lib/popover";
 import { ProgressProps } from "antd/lib/progress";
 import {
   RadioGroupProps as AntdRadioGroupProps,
   RadioProps as AntdRadioProps,
 } from "antd/lib/radio";
 import { RadioButtonProps as AntdRadioButtonProps } from "antd/lib/radio/radioButton";
-import Select, {
-  SelectProps as AntdSelectProps,
-  SelectValue,
-} from "antd/lib/select";
+import { SelectProps as AntdSelectProps } from "antd/lib/select";
 import { SkeletonProps as AntdSkeletonProps } from "antd/lib/skeleton";
 import { StepProps, StepsProps } from "antd/lib/steps";
 import { SwitchProps as AntdSwitchProps } from "antd/lib/switch";
@@ -40,16 +37,16 @@ import {
   TableProps as AntdTableProps,
 } from "antd/lib/table";
 import { TableRowSelection } from "antd/lib/table/interface";
-import Tag, { TagType } from "antd/lib/tag";
+import { TagType } from "antd/lib/tag";
 import { TimePickerProps } from "antd/lib/time-picker";
 import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
+import { ApolloError } from "apollo-boost";
 import React, { ReactNode } from "react";
 
 // import { Modal2Type } from './modal2';
 import { ImagesType } from "../generated/images-type";
-// import { Architecture } from '../generated/react-hooks';
-import ButtonGroup, { ButtonGroupType } from "./buttonGroup";
+import { Architecture } from "../generated/react-hooks";
 
 type BadgeTypeProps = "warning" | "error" | "info";
 type Primitive = "Int" | "Float" | "DateTime" | "Enum" | "String" | "Boolean";
@@ -322,6 +319,19 @@ export type IntFieldProps<
     supportNegativeValue?: boolean;
   };
 
+export type ButtonGroupType = {
+  className?: string;
+  size?: SizeType;
+  options: Array<
+    Omit<ButtonProps, "shape" | "size" | "icon"> & {
+      key: string;
+      title?: string;
+      hideTitle?: boolean;
+      icon?: ImagesType;
+    }
+  >;
+};
+
 export type ButtonProps = {
   prefixIcon?: ImagesType;
   hoverPrefixIcon?: ImagesType;
@@ -361,6 +371,34 @@ export type IStepsPorps = StepsProps & {
   showStepCount?: boolean;
 };
 
+type ErrorType = string | React.ReactNode | Error | ApolloError;
+type InitializedModalType = Modal2Props & {
+  initLoading: boolean;
+  initError: ErrorType;
+};
+
+type WizardModalType = Modal2Props & {
+  step: number;
+  onStepChange?: (step: number) => void;
+  steps: {
+    title: string;
+    render: React.ReactNode;
+    prevText?: string | React.ReactNode;
+    okText?: string | React.ReactNode;
+    onOk?: (e: React.MouseEvent<HTMLElement>) => void;
+    disabled?: boolean;
+  }[];
+  right?: React.ReactNode;
+  destroyOtherStep?: boolean;
+  disablePrevStep?: boolean;
+  stepsPosition?: "top" | "side";
+};
+
+export interface Modal2Type extends React.FC<Modal2Props> {
+  Initialized: React.FC<InitializedModalType>;
+  Wizard: React.FC<WizardModalType>;
+}
+
 export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   // constants
   PAGINATION_SELECTOR: string;
@@ -376,8 +414,8 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   option: React.FunctionComponent<OptionProps>;
   table: TableComponent;
   button: React.FC<ButtonProps>;
-  // modal: React.FC<ModalProps>;
-  // modal2: React.FC<Modal2Props> & Modal2Type;
+  modal: React.FC<ModalProps>;
+  modal2: React.FC<Modal2Props> & Modal2Type;
   dropdown: React.FC<DropDownProps>;
   switch: React.FC<SwitchProps>;
   tooltip: React.FC<TooltipProps>;
@@ -455,17 +493,15 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     Content: React.ComponentClass<BasicProps>;
     Sider: React.ComponentClass<SiderProps>;
   };
-  autoComplete: React.ForwardRefExoticComponent<
-    AutoCompleteProps & React.RefAttributes<Select<SelectValue>>
-  >;
-  // message: typeof message;
+  autoComplete: React.ForwardRefExoticComponent<AutoCompleteProps>;
+  message: MessageInstance;
   tag: TagType;
   popover: React.ForwardRefExoticComponent<
     PopoverProps & React.RefAttributes<unknown>
   >;
-  // arch: React.FC<{ architecture?: Architecture }>;
+  arch: React.FC<{ architecture?: Architecture }>;
   buttonGroup: React.ForwardRefExoticComponent<
     ButtonGroupType & React.RefAttributes<HTMLDivElement>
   >;
-  // steps: React.FC<IStepsPorps>;
+  steps: React.FC<IStepsPorps>;
 }
