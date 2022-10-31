@@ -937,13 +937,13 @@ export function getAntdKit(): Kit {
       ),
       DateTime: ({ input }) => (
         <>
-          {/* <DatePicker
+          <DatePicker
             onFocus={() => input.onFocus?.()}
             onBlur={() => input.onBlur?.()}
             showTime
             defaultValue={input.value}
             onOk={input.onChange}
-          /> */}
+          />
         </>
       ),
       TimePicker: ({ input, meta, ...props }) => (
@@ -1119,7 +1119,7 @@ export function getAntdKit(): Kit {
       ),
       DateTimeRange: ({ input, ...props }) => (
         <div className="datatime-range">
-          {/* <DatePicker.RangePicker
+          <DatePicker.RangePicker
             onFocus={() => input.onFocus?.()}
             onBlur={() => input.onBlur?.()}
             showTime
@@ -1128,7 +1128,7 @@ export function getAntdKit(): Kit {
             onChange={input.onChange}
             value={input.value?.map((v?: string) => v && moment(v))}
             format={props.format}
-          /> */}
+          />
         </div>
       ),
     },
