@@ -4,6 +4,38 @@
   "main": "dist/umd/index.js",
   "module": "./dist/esm/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/umd/index.js",
+      "types": "./dist/src/index.d.ts"
+    },
+    "generated/forms": {
+      "import": "./dist/esm/generated/forms.js",
+      "require": "./dist/umd/generated/forms.js",
+      "types": "./dist/src/generated/forms.d.ts"
+    },
+    "generated/forms2": {
+      "import": "./dist/esm/generated/forms2.js",
+      "require": "./dist/umd/generated/forms2.js",
+      "types": "./dist/src/generated/forms2.d.ts"
+    },
+    "generated/global-search": {
+      "import": "./dist/esm/generated/global-search.js",
+      "require": "./dist/umd/generated/global-search.js",
+      "types": "./dist/src/generated/global-search.d.ts"
+    },
+    "generated/react-hooks": {
+      "import": "./dist/esm/generated/react-hooks.js",
+      "require": "./dist/umd/generated/react-hooks.js",
+      "types": "./dist/src/generated/react-hooks.d.ts"
+    },
+    "generated/tables": {
+      "import": "./dist/esm/generated/tables.js",
+      "require": "./dist/umd/generated/tables.js",
+      "types": "./dist/src/generated/tables.d.ts"
+    }
+  },
   "license": "MIT",
   "scripts": {
     "prebuild": "rm -rf dist",
@@ -12,7 +44,7 @@
     "coverage": "vitest run --coverage",
     "pregenerate": "rm -rf src/generated",
     "generate": "graphql-codegen --config src/codegen/config/codegen-main.yaml",
-    "typings": "tsc -v && tsc --emitDeclarationOnly --skipLibCheck -p tsconfig.build.json"
+    "typings": "tsc -v && tsc -p tsconfig.build.json"
   },
   "dependencies": {
     "@cloudtower/sparrow": "^0.4.1",
@@ -28,10 +60,12 @@
     "@graphql-codegen/typescript-operations": "^1.9",
     "@graphql-codegen/typescript-react-apollo": "^1.9",
     "@linaria/rollup": "^4.1.5",
+    "@smartx/final-form-arrays": "^3.0.2-rc4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.5",
     "@tower/provider-interface": "^1.9.1",
     "@types/react": "^17.0.50",
+    "@types/react-transition-group": "^4.4.5",
     "@vitejs/plugin-react": "^2.1.0",
     "@vitest/coverage-c8": "^0.24.1",
     "antd": "4.5",
@@ -43,6 +77,7 @@
     "react-dom": "^17.0.2",
     "react-i18next": "^11.18.6",
     "react-redux": "^7.1.3",
+    "react-transition-group": "^4.4.5",
     "redux": "^4.2.0",
     "rollup": "^3.2.2",
     "rollup-plugin-esbuild": "^4.10.1",

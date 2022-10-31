@@ -1,0 +1,513 @@
+import _ from 'lodash';
+import React, {
+  ReactElement,
+  useContext,
+  useEffect,
+  useRef,
+  useMemo,
+} from "react";
+import {
+  Form,
+  FormRenderProps,
+  Field,
+  FieldRenderProps,
+  FormSpy as RffFormSpy,
+  useForm as useRffForm,
+  useField,
+  useFormState as useRffFormState,
+  UseFieldConfig,
+  UseFormStateParams,
+  AnyObject
+} from "@smartx/react-final-form";
+import {
+  useFieldArray,
+  UseFieldArrayConfig,
+  FieldArrayRenderProps,
+  FieldArray
+} from "@smartx/react-final-form-arrays";
+import {
+  FormState,
+  MutableState,
+  FieldState
+} from "@smartx/final-form";
+import arrayMutators from "@smartx/final-form-arrays"
+import cs from "classnames"
+import { Col, Row } from "antd"
+import { kitContext } from "@cloudtower/sparrow"
+import FieldError from '../components/FormError'
+import * as FT from './forms-types'
+export * from './forms-types'
+import * as FormKit from '../components/form';
+import { CSSTransition } from 'react-transition-group';
+
+/* Core */
+export const FormLayoutContext = React.createContext<FT.LayoutProps>({});
+export const BaseField = <
+  T,
+  RP extends AnyObject,
+  FormValue extends AnyObject,
+  Err = string
+>(
+  props: FT.BaseFieldPropsWithName<T, RP, FormValue, Err>
+) => {
+  const { baseProps, fieldProps, renderProps } = classifyProps<
+    T,
+    RP,
+    FormValue,
+    Err
+  >(props);
+  const {
+    name,
+    label,
+    error,
+    extra,
+    render,
+    children,
+    showError = true,
+    if: _if = true,
+    spyValues = false,
+    onChange,
+    validate: _validate,
+    recoverOnBlur = false,
+
+    layoutProps = {},
+    className = '',
+    autoFocus = false,
+  } = baseProps;
+  const { labelCol, wrapperCol, labelAlign } = layoutProps;
+  const {
+    layout = 'general',
+    labelCol: contextLabelCol = { span: 8 },
+    wrapperCol: contextWrapperCol = { span: 16 },
+    labelAlign: contextLabelAlign = 'left',
+  } = useContext(FormLayoutContext);
+  const formApi = useRffForm<FormValue>();
+  const lastValidValue = useRef<T>();
+  const lastValidatedValue = useRef<T>();
+
+  if (_if === false) {
+    return null;
+  }
+
+  type Props = FT.BaseFieldBaseFnProps<T, RP, FormValue>;
+  const Label: React.FC<Props> = props =>
+    label ? (
+      <Col
+        {...(labelCol || contextLabelCol)}
+        className={cs(
+          'form-item-label',
+          `label-${labelAlign || contextLabelAlign}`
+        )}>
+        <label>
+          {typeof label === 'function' ? label({ ...props }) : label}
+        </label>
+      </Col>
+    ) : null;
+
+  type CProps = FT.BaseFieldRenderFnProps<T, RP, FormValue>;
+  const Children = (props: CProps) => (
+    <div className="form-item-children">
+      {render
+        ? children === undefined
+          ? render({ ...props })
+          : render({ ...props, children })
+        : JSON.stringify(props.input.value)}
+    </div>
+  );
+
+  const Extra: React.FC<Props> = props =>
+    extra ? (
+      typeof extra === 'function' ? (
+        extra({ ...props })
+      ) : (
+        <div className="form-item-extra">{extra}</div>
+      )
+    ) : null;
+
+  const OnChange = onChange ? (
+    <RffOnChange<T, FormValue> name={name}>
+      {(value, previousValue) => {
+        const form = formApi as FT.UseFormApi<FormValue>;
+        const state = form.getState();
+        const allValues = state.values;
+        const initialValues = state.initialValues;
+        const setValues = form.mutators.setValues as FT.SetValues<FormValue>;
+        form.setValues = setValues;
+        onChange({ value, previousValue, allValues, initialValues, setValues, formApi: form, name });
+      }}
+    </RffOnChange>
+  ) : null;
+
+  const validate = _validate
+    ? (value: T, allValues: object, meta?: FieldState<T>) => {
+        const canRecover = recoverOnBlur && Boolean(lastValidValue.current);
+        const { invalid, active } = meta!;
+        if (!value && canRecover) {
+          return undefined;
+        }
+        if (invalid || !active) {
+          const previousValue = lastValidatedValue.current;
+          lastValidatedValue.current = value;
+          return _validate({
+            value,
+            previousValue,
+            allValues: allValues as FormValue,
+            meta: meta!,
+          });
+        }
+        return undefined;
+      }
+    : undefined;
+
+  const _spyValues = typeof _if === 'function' || spyValues;
+
+  return (
+    <>
+      <Field<T, FieldRenderProps<T>>
+        {...fieldProps}
+        name={name}
+        validate={validate}>
+        {({ input, meta }) => {
+          const classes = {
+            'form-item': cs(
+              'form-item',
+              'form-base-field',
+              `form-item-${layout}`,
+              className
+            ),
+            'form-item-control': cs(
+              'form-item-control',
+              meta.touched && (meta.error || (!meta.dirtySinceLastSubmit && meta.submitError))
+                ? 'field-error'
+                : ''
+            ),
+          };
+
+          const _input = {
+            ...input,
+            onFocus: (e?: React.FocusEvent<HTMLElement>) => {
+              input.onFocus(e);
+              if (recoverOnBlur) {
+                const fieldState = formApi.getFieldState(name);
+                const focusBeforeInit = fieldState === undefined; // happen when set autoFocus
+                const value = focusBeforeInit ? meta.initial : (fieldState as FieldState<T>).value
+                if (meta.valid && value && value !== lastValidValue.current) {
+                  lastValidValue.current = value;
+                }
+              }
+            },
+            onBlur: (e?: React.FocusEvent<HTMLElement>) => {
+              input.onBlur(e);
+              if (recoverOnBlur && !input.value && lastValidValue.current) {
+                formApi.change(name, lastValidValue.current);
+              }
+            },
+          };
+          const _base = { meta, ...renderProps };
+          const _props = { value: input.value, ..._base };
+          const _renderProps = { input: _input, ..._base };
+          if (typeof children === 'function') {
+            return _spyValues ? (
+              <RffFormSpy<FormValue> subscription={{ values: true }}>
+                {({ values }) =>
+                  _if === true || _if(values) ? (
+                    <FormKit.FormItem
+                    data-form-field={name}
+                      autoFocus={autoFocus}
+                      className={classes['form-item']}>
+                      {children({ ..._renderProps, values })}
+                    </FormKit.FormItem>
+                  ) : null
+                }
+              </RffFormSpy>
+            ) : (
+              <FormKit.FormItem data-form-field={name} autoFocus={autoFocus} className={classes['form-item']}>
+                {children({ ..._renderProps })}
+              </FormKit.FormItem>
+            );
+          }
+
+          const errorVisible = Boolean(
+            showError && meta.touched && (meta.error || meta.submitError)
+          );
+
+          return _spyValues ? (
+            <RffFormSpy<FormValue> subscription={{ values: true }}>
+              {({ values }) =>
+                _if === true || _if(values) ? (
+                  <FormKit.FormItem
+                    data-form-field={name}
+                    autoFocus={autoFocus}
+                    className={classes['form-item']}>
+                    <Row className="form-item-main">
+                      <Label {..._props} values={values} />
+                      <Col
+                        {...(wrapperCol
+                          ? wrapperCol
+                          : label
+                          ? contextWrapperCol
+                          : { span: 24 })}
+                        className={classes['form-item-control']}>
+                        {Children({ ..._renderProps, values })}
+                        <CSSTransition
+                          in={errorVisible}
+                          timeout={200}
+                          classNames="form-item-error">
+                          <div className="form-item-error">
+                            {typeof error === 'function'
+                              ? error({ ..._props, values })
+                              : error || <FieldError name={name} />}
+                          </div>
+                        </CSSTransition>
+                      </Col>
+                    </Row>
+                    <Extra {..._props} values={values} />
+                  </FormKit.FormItem>
+                ) : null
+              }
+            </RffFormSpy>
+          ) : (
+            <FormKit.FormItem data-form-field={name} autoFocus={autoFocus} className={classes['form-item']}>
+              <Row className="form-item-main">
+                <Label {..._props} />
+                <Col
+                  {...(wrapperCol
+                    ? wrapperCol
+                    : label
+                    ? contextWrapperCol
+                    : { span: 24 })}
+                  className={classes['form-item-control']}>
+                  {Children(_renderProps)}
+                  <CSSTransition
+                    in={errorVisible}
+                    timeout={200}
+                    classNames="form-item-error">
+                    <div className="form-item-error">
+                      {typeof error === 'function'
+                        ? error({ ..._props })
+                        : error || <FieldError name={name} />}
+                    </div>
+                  </CSSTransition>
+                </Col>
+              </Row>
+              <Extra {..._props} />
+            </FormKit.FormItem>
+          );
+        }}
+      </Field>
+
+      {OnChange}
+    </>
+  );
+};
+
+export const BaseFieldArray = <
+  T,
+  RP extends AnyObject,
+  FormValue extends AnyObject,
+  Err = string
+>(
+  props: FT.BaseFieldArrayPropsWithName<T, RP, FormValue, Err>
+) => {
+  const { baseProps, fieldProps, renderProps } = classifyFieldArrayProps<
+    T,
+    RP,
+    FormValue,
+    Err
+  >(props);
+  const {
+    name,
+    label,
+    error,
+    extra,
+    children,
+    showError = false,
+
+    if: _if = true,
+    spyValues = false,
+    onChange,
+    validate: _validate,
+
+    layoutProps = {},
+    className = '',
+    autoFocus = false,
+  } = baseProps;
+  const { labelCol, wrapperCol, labelAlign } = layoutProps;
+  const {
+    layout = 'general',
+    labelCol: contextLabelCol = { span: 8 },
+    wrapperCol: contextWrapperCol = { span: 16 },
+    labelAlign: contextLabelAlign = 'left',
+  } = useContext(FormLayoutContext);
+  const formApi = useRffForm<FormValue>();
+  const lastValidatedValue = useRef<T[]>();
+
+  if (_if === false) {
+    return null;
+  }
+
+  type Props = FT.BaseFieldArrayFnProps<T, RP, FormValue>;
+  const Label: React.FC<Props> = props =>
+    label ? (
+      <Col
+        {...(labelCol || contextLabelCol)}
+        className={cs(
+          'form-item-label',
+          `label-${labelAlign || contextLabelAlign}`
+        )}>
+        <label>
+          {typeof label === 'function' ? label({ ...props }) : label}
+        </label>
+      </Col>
+    ) : null;
+
+  const Children = (props: Props) => (
+    <div className="form-item-children">
+      {typeof children === 'function' ? children({ ...props }) : children}
+    </div>
+  );
+
+  const Extra: React.FC<Props> = props =>
+    extra ? (
+      typeof extra === 'function' ? (
+        extra({ ...props })
+      ) : (
+        <div className="form-item-extra">{extra}</div>
+      )
+    ) : null;
+
+  const OnChange = onChange ? (
+    <RffOnChange<T[], FormValue> name={name}>
+      {(value, previousValue) => {
+        const form = formApi as FT.UseFormApi<FormValue>;
+        const state = form.getState()
+        const allValues = state.values;
+        const initialValues = state.initialValues;
+        const setValues = form.mutators.setValues as FT.SetValues<FormValue>;
+        form.setValues = setValues
+        onChange({ value, previousValue, initialValues, allValues, setValues, formApi: form, name });
+      }}
+    </RffOnChange>
+  ) : null;
+
+  const validate = _validate
+    ? (value: T[], allValues: object, meta?: FieldState<T[]>) => {
+        const { invalid, active } = meta!;
+        if (invalid || !active) {
+          const previousValue = lastValidatedValue.current;
+          lastValidatedValue.current = value;
+          return _validate({
+            value,
+            previousValue,
+            allValues: allValues as FormValue,
+            meta: meta!,
+          });
+        }
+        return undefined;
+      }
+    : undefined;
+
+  const _spyValues = typeof _if === 'function' || spyValues;
+
+  return (
+    <>
+      <FieldArray<T> {...fieldProps} name={name} validate={validate}>
+        {({ fields, meta }) => {
+          const classes = {
+            'form-item': cs(
+              'form-item',
+              'form-base-field',
+              'form-base-field-array',
+              `form-item-${layout}`,
+              className
+            ),
+            'form-item-control': cs(
+              'form-item-control',
+              meta.touched && (meta.error || (!meta.dirtySinceLastSubmit && meta.submitError))
+                ? 'field-error'
+                : ''
+            ),
+          };
+          const _props = { fields, meta, ...renderProps };
+          const errorVisible = Boolean(showError && meta.invalid && meta.touched);
+
+          if (!_spyValues) {
+            return (
+              <FormKit.FormItem data-form-field={name} autoFocus={autoFocus} className={classes['form-item']}>
+                <Row className="form-item-main">
+                  <Label {..._props} />
+                  <Col
+                    {...(wrapperCol
+                      ? wrapperCol
+                      : label
+                      ? contextWrapperCol
+                      : { span: 24 })}
+                    className={classes['form-item-control']}>
+                    {Children(_props)}
+                    <CSSTransition
+                      in={errorVisible}
+                      timeout={200}
+                      classNames="form-item-error">
+                      <div className="form-item-error">
+                        {typeof error === 'function'
+                          ? error({ ..._props })
+                          : error || <FieldError name={name} />}
+                      </div>
+                    </CSSTransition>
+                  </Col>
+                </Row>
+                <Extra {..._props} />
+              </FormKit.FormItem>
+            );
+          }
+          return (
+            <RffFormSpy<FormValue> subscription={{ values: true }}>
+              {({ values }) =>
+                _if === true || _if(values) ? (
+                  <FormKit.FormItem
+                    data-form-field={name}
+                    autoFocus={autoFocus}
+                    className={classes['form-item']}>
+                    <Row className="form-item-main">
+                      <Label {..._props} values={values} />
+                      <Col
+                        {...(wrapperCol
+                          ? wrapperCol
+                          : label
+                          ? contextWrapperCol
+                          : { span: 24 })}
+                        className={classes['form-item-control']}>
+                        {Children({ ..._props, values })}
+                        <CSSTransition
+                          in={errorVisible}
+                          timeout={200}
+                          classNames="form-item-error">
+                          <div className="form-item-error">
+                            {typeof error === 'function'
+                              ? error({ ..._props, values })
+                              : error || <FieldError name={name} />}
+                          </div>
+                        </CSSTransition>
+                      </Col>
+                    </Row>
+                    <Extra {..._props} values={values} />
+                  </FormKit.FormItem>
+                ) : null
+              }
+            </RffFormSpy>
+          );
+        }}
+      </FieldArray>
+      {OnChange}
+    </>
+  );
+};
+
+const DEFAULT_LAYOUT: FT.LayoutProps = {
+  layout: 'general',
+  labelCol: { span: 8 },
+  wrapperCol: { span: 16 },
+  labelAlign: 'left',
+};
+
+type UseFormStateFn<FV> = (params?: UseFormStateParams<FV>) => FormState<FV>

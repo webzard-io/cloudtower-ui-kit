@@ -1,0 +1,1723 @@
+input FormExporter {
+  editAlertRule: EditAlertRuleForm
+  createVds: CreateVdsForm
+  editVlan: EditVlanForm
+  editVcenterAccount: EditVcenterAccountForm
+  editEsxiAccount: EditEsxiAccountForm
+  createIscsiLunSnapshot: CreateIscsiLunSnapshotForm
+  updateSnapshotGroup: UpdateSnapshotGroupForm
+
+  # Hardware Topo
+  # ---
+  rackTopo: RackTopoForm
+  addBrickTopo: AddBrickTopoForm
+  moveBrickTopo: MoveBrickTopoForm
+  updateBrickTopo: UpdateBrickTopoForm
+  addNodeTopo: AddNodeTopoForm
+  moveNodeTopo: MoveNodeTopoForm
+  # ---
+
+  # Label
+  addLabel: AddLabelForm
+  addLabels: AddLabelsForm
+  updateLabel: UpdateLabelsForm
+  #---
+
+  # Upgrade Cluster
+  # ---
+  uploadUpgradeFile: UploadUpgradeFileForm
+  # ---
+
+  # VmPlacementGroup
+  # ---
+  createVmPlacementGroup: createVmPlacementGroupForm
+  updateVmPlacementGroup: updateVmPlacementGroupForm
+  # ---
+
+  # Advance Application
+  # ---
+  deployApplication: deployApplicationForm
+  updateApplication: updateApplicationForm
+
+  # Add Hosts
+  # ---
+  addHosts: AddHostsForm
+  # ---
+
+  # Zone
+  # ---
+  updateZoneDataCenter: updateZoneDataCenterForm
+  # ---
+
+  # Disk--
+  mountDisk: mountDiskForm
+  # ---
+
+  # ManagementIp
+  # ---
+  ManagementIp: ManagementIpForm
+  # ---
+
+  # ClusterManagementIp
+  # ---
+  ClusterManagementIp: ClusterManagementIpForm
+  # ---
+
+  # User
+  # ---
+  createUser: CreateUserForm
+  updateUser: UpdateUserForm
+  setPasswordQa: SetPasswordQaForm
+  # ---
+
+  # Installer
+  # ---
+  installer: InstallerForm
+  # ---
+
+  # ConsistencyGroup
+  # ---
+  CreateConsistencyGroup: CreateConsistencyGroupForm
+  UpdateConsistencyGroup: UpdateConsistencyGroupForm
+  # ---
+
+  # SRIOV
+  # ---
+  EditSRIOV: EditSRIOVForm
+  # ---
+  # Nvmf
+  # ---
+  createNvmfSubsystem: createNvmfSubsystemForm
+  updateNvmfSubsystem: updateNvmfSubsystemForm
+
+  createNvmfNamespace: createNvmfNamespaceForm
+  updateNvmfNamespace: updateNvmfNamespaceForm
+  deleteNvmfNamespace: deleteNvmfNamespaceForm
+
+  createNamespaceGroup: createNamespaceGroupForm
+  updateNamespaceGroup: updateNamespaceGroupForm
+
+  createNamespaceSnapshot: createNamespaceSnapshotForm
+  cloneNamespaceFromSnapshot: cloneNamespaceFromSnapshotForm
+  copyNvmfNamespace: copyNvmfNamespaceForm
+  # ---
+
+  # Nvmf
+  # ---
+  copyIscsiLun: copyIscsiLunForm
+  # ---
+
+  # ConsistencyGroupSnapshot
+  # ---
+  CreateConsistencyGroupSnapshot: CreateConsistencyGroupSnapshotForm
+  # ---
+
+  # CopyGraphToView
+  # ---
+  CopyGraphToView: CopyGraphToViewForm
+  # ---
+
+  UpdateClusterHaSettings: UpdateClusterHaSettingsForm
+
+  UpdateClusterIscsiSettings: UpdateClusterIscsiSettingsForm
+
+  UpdateClusterStoragePolicySettings: UpdateClusterStoragePolicySettingsForm
+
+  BatchOperateVmHa: BatchOperateVmHaForm
+
+  # Everoute
+  # ---
+  SecurityPolicy: SecurityPolicyForm
+  EverouteLicenseImport: EverouteLicenseImportForm
+  EverouteImageUpload: EverouteImageUploadForm
+  EverouteLicenseUpdate: EverouteLicenseUpdateForm
+  EverouteClusterGlobalAction: EverouteClusterGlobalActionForm
+  AgentClustersAssociation: AgentClustersAssociationForm
+  AgentVdsesAssociation: AgentVdsesAssociationForm
+  EverouteClusterDeploy: EverouteClusterDeployForm
+  SecurityPolicyMode: EditSecurityPolicyModeForm
+  # ---
+
+  # PolicyObject
+  # ---
+  PolicyObject: PolicyObjectForm
+  # ---
+
+  # IsolationPolicy
+  # ---
+  IsolationPolicy: IsolationPolicyForm
+  # ---
+
+  # NetworkPolicyWhitelist
+  # ---
+  NetworkPolicyWhitelist: NetworkPolicyWhitelistForm
+  # ---
+
+  # ContentLibraryImage
+  # ---
+  updateContentLibraryImage: updateContentLibraryImageForm
+  createContentLibraryImage: createContentLibraryImageForm
+  updateContentLibraryImageClusters: updateContentLibraryImageClustersForm
+  # ---
+
+  # ContentLibraryVmTemplate
+  # ---
+  updateContentLibraryVmTemplate: updateContentLibraryVmTemplateForm
+  updateContentLibraryVmTemplateClusters: updateContentLibraryVmTemplateClustersForm
+  createContentLibraryVmTemplate: createContentLibraryVmTemplateForm
+  convertVmFromTemplate: convertVmFromTemplateForm
+  # ---
+
+  # backup
+  # ---
+  BackupImageUpload: BackupImageUploadForm
+  # backup plan
+  manualExecuteBackupPlan: manualExecuteBackupPlanForm
+  createBackupPlan: createBackupPlanForm
+  editBackupPlanObject: editBackupPlanObjectForm
+  editBackupPlanPeriod: editBackupPlanPeriodForm
+  editBackupPlanPolicy: editBackupPlanPolicyForm
+
+  # backup store repository
+  editBackupStoreRepository: editBackupStoreRepositoryForm
+  createBackupStoreRepository: createBackupStoreRepositoryForm
+
+  # backup restore point
+  restoreVm: restoreVmForm
+
+  # backup service
+  backupClustersAssociation: backupClustersAssociationForm
+  backupServiceDeploy: backupServiceDeployForm
+  updateBackupService: updateBackupServiceForm
+  updateBackupServiceInfo: updateBackupServiceInfoForm
+
+  # UpdateGlobalSettings
+  # ---
+  UpdateGlobalSettings: UpdateGlobalSettingsForm
+  # ---
+
+  # ResetPassword
+  # ---
+  ResetPassword: ResetPasswordForm
+  # ---
+
+  # SessionExpiration
+  # ---
+  SessionExpiration: SessionExpirationForm
+  # ---
+
+  # MigrateVm
+  #---
+  migrateVm: MigrateVmForm
+  #---
+
+  # vm user
+  editVmOwner: EditVmOwnerForm
+
+  # cutover source vm form
+  # ---
+  CutoverSourceVm: CutoverSourceVmForm
+  # ---
+
+  # backup license
+  BackupLicenseUpdate: BackupLicenseUpdateForm
+
+  # set sync_vm_time_on_resume
+  SyncVmTimeOnResume: SyncVmTimeOnResumeForm
+
+  # export vm form
+  # ---
+  ExportVm: ExportVmForm
+  # ---
+  # Import OVF
+  ImportOvfToVmTemplate: ImportOvfToVmTemplateForm
+  ImportOvfToVm: ImportOvfToVmForm
+  ImportVmVolume: ImportVmVolumeForm
+  ExportVmVolume: ExportVmVolumeForm
+
+  # security group form
+  # ---
+  SecurityGroup: SecurityGroupForm
+  # ---
+
+  # security policy apply to form
+  # ---
+  ApplyTo: ApplyToForm
+  # --
+
+  # security policy rule whitelist form
+  # ---
+  RuleWhitelist: RuleWhitelistForm
+  # --
+
+  # batch create isolation vms form
+  # ---
+  BatchIsolationVms: BatchIsolationVmsForm
+  # ---
+
+  # import security policies form
+  # ---
+  ImportSecurityPolicies: ImportSecurityPoliciesForm
+  # ---
+}
+
+input SyncVmTimeOnResumeForm {
+  sync_vm_time_on_resume: Boolean!
+}
+
+input ImportOvfToVmTemplateFormVCpu {
+  total: Int!
+  cores: Int!
+  sockets: Int!
+}
+
+input ImportOvfVmVolumeInput {
+  id: ID
+  name: String!
+  size: Float!
+  path: String!
+  sharing: Boolean
+  elf_storage_policy: VmVolumeElfStoragePolicyType!
+}
+
+input ImportOvfImageInput {
+  id: ID
+  name: String!
+  clusters: [SimpleCluster!]
+}
+
+input ImportOvfToVmTemplateDiskInput {
+  type: VmDiskType!
+  bus: Bus!
+  boot: Int!
+  vm_volume: ImportOvfVmVolumeInput
+  disabled: Boolean
+  is_vmdk_import: Boolean
+  vmdk_file_name: String
+}
+
+input ImportOvfToVmTemplateNicInput {
+  id: ID
+  enabled: Boolean
+  model: VmNicModel
+  mirror: Boolean
+}
+
+input ImportOvfFileInput {
+  uid: String!
+  size: Float!
+  name: String!
+  type: String!
+  fileName: String
+  fileStatus: String!
+  data: Json
+  error: String
+}
+
+input TargetHost {
+  id: ID!
+  name: String!
+}
+
+input TargetFolder {
+  id: ID!
+  name: String
+}
+
+input ImportOvfToVmTemplateCluster {
+  id: ID!
+  name: String
+  version: String
+  type: ClusterType
+  stretch: Boolean
+}
+
+input ImportOvfToVmTemplateForm {
+  step: Int!
+  ovf: [ImportOvfFileInput!]
+  vmdks: [ImportOvfFileInput!]
+  name: String!
+  description: String!
+  architecture: Architecture!
+  clusters: [ImportOvfToVmTemplateCluster!]
+  vcpu: ImportOvfToVmTemplateFormVCpu!
+  memory: Float!
+  vm_disks: [ImportOvfToVmTemplateDiskInput!]
+  vm_nics: [ImportOvfToVmTemplateNicInput!]
+  ha: Boolean!
+  firmware: VmFirmware!
+}
+
+input ImportOvfToVmDiskInput {
+  type: VmDiskType!
+  bus: Bus!
+  boot: Int!
+  vm_volume: ImportOvfVmVolumeInput
+  content_library_image: ImportOvfImageInput
+  disabled: Boolean
+  is_vmdk_import: Boolean
+  vmdk_file_name: String
+  is_mount_volume: Boolean
+}
+
+input ImportOvfToVmNicVlanInput {
+  id: ID
+  name: String!
+}
+
+input ImportOvfToVmNicInput {
+  id: ID
+  enabled: Boolean
+  vlan: ImportOvfToVmNicVlanInput
+  model: VmNicModel
+  mac_address: String
+  mirror: Boolean
+}
+
+input ImportOvfToVmClusterSettings {
+  default_ha: Boolean
+}
+
+input ImportOvfToVmCluster {
+  id: ID!
+  local_id: String
+  name: String
+  version: String
+  type: ClusterType
+  stretch: Boolean
+  vhost_enabled: Boolean
+  architecture: Architecture!
+  hosts: [ImportOvfToVmClusterHost!]
+  settings: ImportOvfToVmClusterSettings
+}
+
+input ImportOvfToVmClusterHost {
+  id: ID!
+  name: String!
+  allocatable_memory_bytes: Float!
+}
+
+input ImportOvfToVmForm {
+  step: Int!
+  ovf: [ImportOvfFileInput!]
+  vmdks: [ImportOvfFileInput!]
+  cluster: ImportOvfToVmCluster
+  host: TargetHost
+  name: String!
+  description: String
+  folder: TargetFolder
+  owner_id: ID
+  vcpu: ImportOvfToVmTemplateFormVCpu!
+  memory: Float!
+  vm_disks: [ImportOvfToVmDiskInput!]
+  vm_nics: [ImportOvfToVmNicInput!]
+  ha: Boolean!
+  firmware: VmFirmware!
+  auto_start: Boolean!
+}
+
+input ImportVmVolumeInput {
+  name: String!
+  elf_storage_policy: VmVolumeElfStoragePolicyType!
+  file: ImportOvfFileInput!
+}
+
+input ImportVmVolumeForm {
+  step: Int!
+  cluster: ImportOvfToVmCluster
+  files: [ImportOvfFileInput!]
+  vm_volumes: [ImportVmVolumeInput!]
+}
+
+input ExportVmVolumeForm {
+  type: VmExportFileType!
+}
+
+input UpdateSnapshotGroupForm {
+  clone: [UpdateSnapshotGroupFormClone]
+}
+
+input UpdateSnapshotGroupFormClone {
+  to_cloned_vm_name: String
+  source_vm_id: String
+}
+
+input CreateIscsiLunSnapshotForm {
+  name: String
+}
+
+input EditVcenterAccountForm {
+  address: EditVcenterAccountFormAddress!
+  username: String!
+  password: String!
+}
+
+input EditEsxiAccountForm {
+  batchEditing: Boolean!
+  ip: String!
+  username: String!
+  password: String!
+  accounts: [EditEsxiAccountFormAccount!]!
+}
+
+input EditEsxiAccountFormAccount {
+  id: ID!
+  ip: String!
+  username: String!
+  password: String!
+  is_valid: Boolean!
+  editing: Boolean!
+  host_name: String!
+  host_id: String!
+}
+
+input EditVcenterAccountFormAddress {
+  ip: String!
+  port: Int!
+}
+
+input EditVlanForm {
+  name: String!
+  vlan_id: Int!
+  gateway_ip: String
+  gateway_subnetmask: String
+  subnetmask: String
+  initialIp: String
+  hosts: [EditVlanFormHost!]!
+}
+
+input EditVlanFormHost {
+  id: ID!
+  name: String!
+  ip: String!
+}
+
+input CreateVdsForm {
+  type: NetworkType!
+  name: String!
+  accessVlan: CreateVdsFormVlan
+  migrationVlan: CreateVdsFormVlan
+  initialIp: String
+  hosts: [CreateVdsFormHost!]!
+  bond_mode: String!
+}
+
+input CreateVdsFormHost {
+  id: ID!
+  accessIp: String
+  migrationIp: String
+  nics: [ID!]!
+}
+
+input CreateVdsFormVlan {
+  name: String!
+  vlan_id: Int
+  subnetmask: String
+  gateway_ip: String
+  gateway_subnetmask: String
+}
+
+input Rule {
+  disabled: Boolean!
+  thresholds: [Threshold!]!
+  clusterIds: [String!]!
+}
+
+input Threshold {
+  disabled: Boolean!
+  severity: SeverityEnum!
+  value: Float
+}
+
+input EditAlertRuleForm {
+  name: String!
+  global: Rule!
+  custom: [Rule!]!
+}
+
+# Hardware Topo
+# ---
+input Capacity {
+  row: Int!
+  column: Int!
+}
+
+input RackTopoForm {
+  zoneId: String!
+  name: String!
+  height: Int!
+}
+
+input AddBrickTopoForm {
+  isCreating: Boolean!
+  position: Int!
+  name: String
+  height: Int
+  capacity: Capacity
+  brickId: String
+}
+
+input MoveBrickTopoForm {
+  toRack: Boolean!
+  parentId: String!
+  position: Int
+}
+
+input UpdateBrickTopoForm {
+  name: String!
+  position: Int!
+  height: Int
+  capacity: Capacity
+}
+
+input AddNodeTopoForm {
+  hostId: String!
+}
+
+input MoveNodeTopoForm {
+  toBrick: Boolean!
+  rackId: String
+  brickId: String
+  position: Capacity!
+  hostId: String!
+}
+# ---
+
+# Label
+# ---
+input FormLabel {
+  key: String!
+  value: String
+}
+
+input AddLabelForm {
+  label: FormLabel
+}
+
+input AddLabelsForm {
+  labels: [FormLabel]!
+}
+
+input UpdateLabelsForm {
+  label: FormLabel
+}
+# ---
+
+# Upgrade Cluster
+# ---
+input UploadUpgradeFileForm {
+  clusterIds: [String!]!
+  name: String!
+  meta_name: String!
+  size: Int!
+  version: String!
+  architecture: String
+  type: String
+  upgrade_from: [String!]
+  zbs_version: String
+}
+# ---
+
+# VmplacementGroup
+# ---
+input createVmPlacementGroupForm {
+  description: String
+  enabled: Boolean!
+  name: String!
+  vm_host_must_enabled: Boolean
+  vm_host_must_host_uuids: [String!]
+  vm_host_must_policy: String
+  vm_host_prefer_enabled: Boolean
+  vm_host_prefer_host_uuids: [String!]
+  vm_host_prefer_policy: String
+  vm_vm_policy_enabled: Boolean
+  vm_vm_policy_must: String
+  vm_vm_policy_same: String
+  associated_vms: [String!]
+}
+
+input updateVmPlacementGroupForm {
+  description: String
+  enabled: Boolean!
+  name: String!
+  vm_host_must_enabled: Boolean
+  vm_host_must_host_uuids: [String!]
+  vm_host_must_policy: String
+  vm_host_prefer_enabled: Boolean
+  vm_host_prefer_host_uuids: [String!]
+  vm_host_prefer_policy: String
+  vm_vm_policy_enabled: Boolean
+  vm_vm_policy_must: String
+  vm_vm_policy_same: String
+  associated_vms: [String!]
+}
+# ---
+
+# Advance Application
+# ---
+input ClusterSetting {
+  cluster_id: String!
+  vcpu: Int!
+  memory: Int!
+  storage_ip: String!
+  volume_size: Int!
+}
+
+input deployApplicationForm {
+  clusterSettings: [ClusterSetting!]!
+}
+input updateApplicationForm {
+  cluster_id: String!
+  vcpu: Int!
+  memory: Int!
+  storage_ip: String!
+  volume_size: Int!
+}
+# ---
+
+# Advance Application
+# ---
+input updateZoneDataCenterForm {
+  data_center_id: String!
+}
+#---
+
+# Add Host
+# ---
+input HostToBeAddedDisks {
+  drive: String!
+  function: DiskFunction
+  recommendFunction: DiskFunction
+  type: DiskType
+  size: Float
+}
+
+input HostToBeAdded {
+  uuid: String
+  ip: String
+  name: String
+
+  managementPorts: [String]
+  managementIp: String
+  storagePorts: [String]
+  storageIp: String
+  accessPorts: [String]
+  accessIp: String
+  vmwareAccessPorts: [String]
+  vmwareAccessIp: String
+
+  platformIp: String
+  platformName: String
+  platformPassword: String
+  ipmiIp: String
+  ipmiName: String
+  ipmiPassword: String
+  disks: [HostToBeAddedDisks]
+  sockets: Int
+  isPreferred: Boolean
+}
+
+input AddHostsForm {
+  hosts: [HostToBeAdded]
+}
+# ---
+
+# Disk
+#---
+input mountDiskForm {
+  function: DiskFunction
+}
+#---
+
+# ManagementIp
+#---
+input ManagementIpForm {
+  vlan_id: Int!
+  gateway_ip: String
+  subnetmask: String
+  initialIp: String
+  hosts: [ManagementIpFormHost!]!
+}
+
+input ManagementIpFormHost {
+  id: ID!
+  name: String!
+  ip: String!
+}
+#---
+
+# ClusterManagementIp
+#---
+input ClusterManagementIpForm {
+  gateway_ip: String
+  subnetmask: String
+  initialIp: String
+  hosts: [ClusterManagementIpFormHost!]!
+}
+
+input ClusterManagementIpFormHost {
+  id: ID!
+  name: String!
+  ip: String!
+}
+#---
+
+# User
+# ---
+input CreateUserForm {
+  username: String!
+  password: String!
+  confirm_password: String!
+  name: String!
+  roleId: String!
+  email_address: String
+  country_code: String
+  mobile_phone: String
+}
+input UpdateUserForm {
+  username: String!
+  password: String
+  new_password: String
+  confirm_password: String
+  name: String!
+  roleId: String!
+  email_address: String
+  country_code: String
+  mobile_phone: String
+}
+# ---
+
+# Installer
+# ---
+input InstallerForm {
+  spec: String!
+  vm_ip: String!
+  vm_netmask: String!
+  vm_default_gateway: String!
+  cloudtower_org_name: String!
+  cloudtower_root_password: String!
+}
+# ---
+
+# ConsistencyGroup
+# ---
+input CreateConsistencyGroupForm {
+  name: String!
+  description: String
+  iscsi_luns: [ConsistencyGroupIscsiLun]
+}
+input UpdateConsistencyGroupForm {
+  name: String!
+  description: String
+  iscsi_luns: [ConsistencyGroupIscsiLun]
+}
+input ConsistencyGroupIscsiLun {
+  id: ID!
+  name: String
+}
+# ---
+
+# SR-IOV
+# ---
+input EditSRIOVForm {
+  total_vf_num: Int!
+}
+#  Nvmf
+# ---
+input createNvmfSubsystemForm {
+  name: String!
+  nqn_name: String
+  description: String
+  policy: NvmfSubsystemPolicyType!
+  ip_whitelist_radio: String!
+  nqn_whitelist_radio: String!
+  ip_whitelist: [String]
+  nqn_whitelist: [String]
+  replica_num: Int!
+  thin_provision: Boolean!
+  stripe_num: Int
+  stripe_size: Int
+  iops: Int
+  bps: Int
+  iops_wr: Int
+  iops_rd: Int
+  bps_wr: Int
+  bps_rd: Int
+  iopsLimitType: String
+  bpsLimitType: String
+  iopsField: String
+  bpsField: String
+  iops_max_enabled: Boolean
+  iops_max: Int
+  iops_max_length: Int
+  iops_rd_max_enabled: Boolean
+  iops_rd_max: Int
+  iops_rd_max_length: Int
+  iops_wr_max_enabled: Boolean
+  iops_wr_max: Int
+  iops_wr_max_length: Int
+  bps_max_enabled: Boolean
+  bps_max: Int
+  bps_max_length: Int
+  bps_rd_max_enabled: Boolean
+  bps_rd_max: Int
+  bps_rd_max_length: Int
+  bps_wr_max_enabled: Boolean
+  bps_wr_max: Int
+  bps_wr_max_length: Int
+}
+
+input updateNvmfSubsystemForm {
+  name: String!
+  nqn_name: String
+  description: String
+  ip_whitelist_radio: String!
+  nqn_whitelist_radio: String!
+  ip_whitelist: [String]
+  nqn_whitelist: [String]
+  replica_num: Int
+  iops: Int
+  bps: Int
+  iops_wr: Int
+  iops_rd: Int
+  bps_wr: Int
+  bps_rd: Int
+  iopsLimitType: String
+  bpsLimitType: String
+  iopsField: String
+  bpsField: String
+  iops_max_enabled: Boolean
+  iops_max: Int
+  iops_max_length: Int
+  iops_rd_max_enabled: Boolean
+  iops_rd_max: Int
+  iops_rd_max_length: Int
+  iops_wr_max_enabled: Boolean
+  iops_wr_max: Int
+  iops_wr_max_length: Int
+  bps_max_enabled: Boolean
+  bps_max: Int
+  bps_max_length: Int
+  bps_rd_max_enabled: Boolean
+  bps_rd_max: Int
+  bps_rd_max_length: Int
+  bps_wr_max_enabled: Boolean
+  bps_wr_max: Int
+  bps_wr_max_length: Int
+}
+
+input createNvmfNamespaceForm {
+  name: String!
+  assigned_size: Float!
+  namespace_id: Int
+  namespace_group: String
+  is_shared: Boolean!
+  nqn_whitelist_radio: String!
+  nqn_whitelist: [String]
+  subsystemNqn: String
+  subsystemIp: String
+  replica_num: Int!
+  iops: Int
+  bps: Int
+  iops_wr: Int
+  iops_rd: Int
+  bps_wr: Int
+  bps_rd: Int
+  iopsLimitType: String
+  bpsLimitType: String
+  iopsField: String
+  bpsField: String
+  iops_max_enabled: Boolean
+  iops_max: Int
+  iops_max_length: Int
+  iops_rd_max_enabled: Boolean
+  iops_rd_max: Int
+  iops_rd_max_length: Int
+  iops_wr_max_enabled: Boolean
+  iops_wr_max: Int
+  iops_wr_max_length: Int
+  bps_max_enabled: Boolean
+  bps_max: Int
+  bps_max_length: Int
+  bps_rd_max_enabled: Boolean
+  bps_rd_max: Int
+  bps_rd_max_length: Int
+  bps_wr_max_enabled: Boolean
+  bps_wr_max: Int
+  bps_wr_max_length: Int
+}
+
+input updateNvmfNamespaceForm {
+  name: String!
+  assigned_size: Float!
+  namespace_id: Int
+  namespace_group: String
+  nqn_whitelist_radio: String!
+  nqn_whitelist: [String]
+  subsystemNqn: String
+  subsystemIp: String
+  iops: Int
+  bps: Int
+  iops_wr: Int
+  iops_rd: Int
+  bps_wr: Int
+  bps_rd: Int
+  iopsLimitType: String
+  bpsLimitType: String
+  iopsField: String
+  bpsField: String
+  iops_max_enabled: Boolean
+  iops_max: Int
+  iops_max_length: Int
+  iops_rd_max_enabled: Boolean
+  iops_rd_max: Int
+  iops_rd_max_length: Int
+  iops_wr_max_enabled: Boolean
+  iops_wr_max: Int
+  iops_wr_max_length: Int
+  bps_max_enabled: Boolean
+  bps_max: Int
+  bps_max_length: Int
+  bps_rd_max_enabled: Boolean
+  bps_rd_max: Int
+  bps_rd_max_length: Int
+  bps_wr_max_enabled: Boolean
+  bps_wr_max: Int
+  bps_wr_max_length: Int
+}
+
+input deleteNvmfNamespaceForm {
+  name: String!
+}
+
+input createNamespaceGroupForm {
+  name: String!
+}
+
+input updateNamespaceGroupForm {
+  name: String!
+}
+
+input createNamespaceSnapshotForm {
+  name: String!
+}
+
+input cloneNamespaceFromSnapshotForm {
+  name: String!
+  snapshotName: String!
+  nvmfSubsystem: nvmfSubsystem
+  namespaceGroup: namespaceGroup
+  isShared: Boolean
+}
+
+input copyNvmfNamespaceForm {
+  name: String!
+  sourceNamespaceName: String!
+  nvmfSubsystem: nvmfSubsystem
+  namespaceGroup: namespaceGroup
+  isShared: Boolean
+}
+
+input copyIscsiLunForm {
+  name: String!
+  sourceLunName: String!
+  iscsiTarget: iscsiTarget
+}
+
+input iscsiTarget {
+  id: String
+  iscsiLuns: [iscsiLun]
+}
+
+input iscsiLun {
+  id: String
+}
+
+input nvmfSubsystem {
+  id: String
+  policy: NvmfSubsystemPolicyType
+  namespaces: [Namesapce]
+}
+input namespaceGroup {
+  id: String
+  namespaces: [Namesapce]
+}
+input Namesapce {
+  id: String
+}
+
+# ---
+
+# ConsistencyGroupSnapshot
+# ---
+input CreateConsistencyGroupSnapshotForm {
+  name: String!
+}
+# ---
+
+# CopyGraphToView
+# ---
+input CopyGraphToViewForm {
+  viewId: String!
+}
+# ---
+
+# UpdateClusterHaSettings
+# ---
+input UpdateClusterHaSettingsForm {
+  default_ha: Boolean
+  apply_to_vms: Boolean
+}
+
+# UpdateClusterIscsiSettings
+# ---
+input UpdateClusterIscsiSettingsForm {
+  enabled_iscsi: Boolean
+}
+
+# UpdateClusterStoragePolicySettings
+# ---
+input UpdateClusterStoragePolicySettingsForm {
+  default_storage_policy: VmVolumeElfStoragePolicyType
+}
+
+# BatchOperateVmHa
+# ---
+input BatchOperateVmHaForm {
+  ha: Boolean
+}
+
+input SecurityPolicyFormEverouteCluster {
+  id: ID
+  version: String
+}
+
+# Everoute
+# ---
+input SecurityPolicyForm {
+  name: String
+  description: String
+  everouteCluster: SecurityPolicyFormEverouteCluster
+  apply: [SecurityPolicyApplyFormInput!]
+  ingress: [NetworkPolicyRuleFormInput!]
+  egress: [NetworkPolicyRuleFormInput!]
+  policy_mode: PolicyMode
+}
+
+input SelectorInput {
+  id: String
+  key: String
+  value: String
+}
+
+input SecurityPolicyApplyFormInput {
+  communicable: Boolean!
+  selector_ids: [String!]!
+  selector: [SelectorInput!]!
+  type: SecurityPolicyType
+  security_group_id: String
+  security_group: SecurityGroup2
+}
+
+input SecurityGroup2 {
+  id: String!
+  name: String!
+}
+
+input NetworkPolicyRuleFormInput {
+  ip_block: String
+  ports: [NetworkPolicyRulePortInput!]
+  selector_ids: [String!]
+  selector: [SelectorInput!]
+  type: NetworkPolicyRuleType!
+  security_group_id: String
+  security_group: SecurityGroup2
+  except_ip_block: [String!]
+}
+
+input EverouteLicenseImportForm {
+  code: String
+}
+
+input EverouteImageUploadForm {
+  file: String
+}
+
+input EverouteLicenseUpdateForm {
+  code: String
+}
+
+input EverouteClusterGlobalActionForm {
+  non_communicable: Boolean
+  global_whitelist: EverouteClusterGlobalWhitelist
+}
+
+input AgentVds {
+  id: ID
+  phase: EverouteClusterPhase
+}
+input AgentCluster {
+  id: ID
+  name: String
+  total_cpu_sockets: Int
+  connect_state: ConnectState
+  disconnected_date: DateTime
+  removed: Boolean
+  vdses: [AgentVds]
+}
+input AgentClustersAssociationForm {
+  everouteClusterId: ID
+  everouteClusterVersion: String
+  agentClusters: [AgentCluster]
+  everouteClusterPhase: EverouteClusterPhase
+  everouteClusterStatus: EverouteClusterStatusInput
+}
+input AgentVdsesAssociationForm {
+  agentVdses: [AgentVds]
+}
+
+input EverouteVersion {
+  id: ID
+  version: String
+  arch: String
+}
+input ElfCluster {
+  id: ID
+  name: String
+  node_num: Int
+}
+input ControllerInstanceVlan {
+  id: ID
+  name: String
+}
+input ControllerInstance {
+  vlan: ControllerInstanceVlan
+  ip: String
+}
+
+input EverouteClusterGlobalWhitelistRule {
+  ip_block: String
+  except_ip_block: [String!]
+  ports: [NetworkPolicyRulePortInput!]
+}
+
+input EverouteClusterGlobalWhitelist {
+  enable: Boolean
+  ingress: [EverouteClusterGlobalWhitelistRule!]
+  egress: [EverouteClusterGlobalWhitelistRule!]
+}
+
+input EverouteClusterDeployForm {
+  name: String
+  version: String
+  architecture: String
+  non_communicable: Boolean
+  controller_num: Int
+  elf_cluster: ElfCluster
+  initial_ip: String
+  subnetmask: String
+  gateway_ip: String
+  controller_instances: [ControllerInstance]
+  global_whitelist: EverouteClusterGlobalWhitelist
+}
+# ---
+
+# PolicyObject
+# ---
+input PolicyObjectForm {
+  selector_ids: [String]
+  communicable: Boolean
+}
+
+# IsolationPolicy
+# ---
+input IsolationPolicyForm {
+  mode: IsolationMode!
+  ingress: [NetworkPolicyRuleFormInput!]
+  egress: [NetworkPolicyRuleFormInput!]
+}
+
+# NetworkPolicyWhitelist
+# ---
+input NetworkPolicyWhitelistForm {
+  labelIds: [String!]
+  ip_block: String
+  selectAnyPort: String
+  selectProtocolType: [String!]
+  tcpPort: String
+  udpPort: String
+}
+
+input updateContentLibraryImageForm {
+  name: String!
+  description: String
+}
+
+input createContentLibraryImageForm {
+  name: String!
+  description: String
+  clusters: [SimpleCluster!]!
+  size: Int!
+}
+
+input EditVmOwnerForm {
+  owner: UserWhereUniqueInput
+}
+
+input SimpleCluster {
+  id: ID!
+  name: String
+}
+
+input updateContentLibraryImageClustersForm {
+  clusters: [SimpleCluster]
+}
+
+input updateContentLibraryVmTemplateForm {
+  name: String!
+  description: String
+  cloud_init_supported: Boolean
+}
+
+input updateContentLibraryVmTemplateClustersForm {
+  clusters: [SimpleCluster]
+}
+
+input createContentLibraryVmTemplateForm {
+  name: String!
+  description: String
+  cloud_init_supported: Boolean
+  clusters: [SimpleCluster]
+}
+
+input convertVmFromTemplateForm {
+  cluster: SimpleCluster
+  vmName: String
+  delete_src_template: Boolean
+}
+
+input manualExecuteBackupPlanForm {
+  type: BackupExecutionType!
+}
+
+input SimpleBackupService {
+  id: ID!
+  name: String
+  backup_clusters: [SimpleCluster]
+}
+
+input SimpleBackupStoreRepository {
+  id: ID!
+  name: String
+}
+
+input BackupPlanVm {
+  id: ID!
+  name: String
+}
+
+input createBackupPlanForm {
+  name: String
+  description: String
+  backup_service: SimpleBackupService
+  backup_store_repository: SimpleBackupStoreRepository
+  compression: Boolean!
+  vms: [BackupPlanVm]
+  incremental_period: BackupPlanPeriod!
+
+  # incremental day
+  incremental_time_day_points: [String]
+  day_full_interval: Int!
+  day_full_period: BackupPlanPeriod!
+  # day_full_period day/week
+  day_full_time_point: String
+  # day_full_period week
+  day_full_week_point: WeekdayTypeEnum
+  # day_full_period month
+  day_full_month_type: Boolean
+  day_full_month_month_point: Int
+  day_full_month_month_time: String
+  day_full_month_week_one: String
+  day_full_month_week_week: WeekdayTypeEnum
+  day_full_month_week_time: String
+
+  # incremental week
+  incremental_weekdays: [WeekdayTypeEnum]
+  incremental_time_week_point: String
+  week_full_interval: Int!
+  week_full_period: BackupPlanPeriod!
+  # week_full_period week
+  week_full_week_point: WeekdayTypeEnum
+  # week_full_period month
+  week_full_month_one: String
+  week_full_month_week_point: WeekdayTypeEnum
+
+  enable_window: Boolean!
+  window_start: String
+  window_end: String
+  backup_delay_option: BackupPlanDelayOption
+  keep_policy: BackupPlanKeepPolicy
+  keep_policy_time_value: Int
+  keep_policy_count_value: Int
+  step: Int!
+}
+
+input editBackupPlanObjectForm {
+  name: String!
+  description: String
+  backup_service: SimpleBackupService
+  backup_store_repository: SimpleBackupStoreRepository
+  compression: Boolean!
+  vms: [BackupPlanVm]
+}
+
+input editBackupPlanPeriodForm {
+  incremental_period: BackupPlanPeriod!
+
+  # incremental day
+  incremental_time_day_points: [String]
+  day_full_interval: Int!
+  day_full_period: BackupPlanPeriod!
+  # day_full_period day/week
+  day_full_time_point: String
+  # day_full_period week
+  day_full_week_point: WeekdayTypeEnum
+  # day_full_period month
+  day_full_month_type: Boolean
+  day_full_month_month_point: Int
+  day_full_month_month_time: String
+  day_full_month_week_one: String
+  day_full_month_week_week: WeekdayTypeEnum
+  day_full_month_week_time: String
+
+  # incremental week
+  incremental_weekdays: [WeekdayTypeEnum]
+  incremental_time_week_point: String
+  week_full_interval: Int!
+  week_full_period: BackupPlanPeriod!
+  # week_full_period week
+  week_full_week_point: WeekdayTypeEnum
+  # week_full_period month
+  week_full_month_one: String
+  week_full_month_week_point: WeekdayTypeEnum
+
+  enable_window: Boolean!
+  window_start: String
+  window_end: String
+  backup_delay_option: BackupPlanDelayOption
+}
+
+input editBackupPlanPolicyForm {
+  keep_policy: BackupPlanKeepPolicy
+  keep_policy_time_value: Int
+  keep_policy_count_value: Int
+}
+
+input editBackupStoreRepositoryForm {
+  name: String
+  description: String
+  backup_service: String
+  type: BackupStoreType
+  nfs_server: String
+  nfs_path: String
+  iscsi_ip: String
+  iscsi_port: Int
+  iscsi_target_iqn: String
+  iscsi_lun_id: String
+  iscsi_chap_name: String
+  iscsi_chap_secret: String
+}
+
+input createBackupStoreRepositoryForm {
+  name: String
+  description: String
+  backup_service: SimpleBackupService
+  type: BackupStoreType
+  nfs_server: String
+  nfs_path: String
+  iscsi_ip: String
+  iscsi_port: Int
+  iscsi_target_iqn: String
+  iscsi_lun_id: Int
+  login_check: Boolean
+  iscsi_chap_name: String
+  iscsi_chap_secret: String
+}
+
+input RestorePoint {
+  id: ID!
+  local_created_at: DateTime
+}
+
+input vmNetWork {
+  id: ID!
+  name: String
+}
+
+input SimpleHost {
+  id: ID!
+  name: String
+}
+
+input TargetCluster {
+  id: ID!
+  name: String
+  version: String
+  type: ClusterType
+  stretch: Boolean
+  vhost_enabled: Boolean
+  architecture: Architecture
+}
+input restoreVmForm {
+  vmName: String
+  cluster: String
+  restore_point: RestorePoint
+  mode: BackupRestoreExecutionMode
+  startup_after_restore: Boolean
+  rebuild_name: String
+  rebuild_target_cluster: TargetCluster
+  rebuild_target_host: SimpleHost
+  rebuild_network_mapping: [vmNetWork]
+}
+
+input BackupImageUploadForm {
+  file: String
+}
+
+input BackupCluster {
+  id: ID!
+  name: String
+  architecture: Architecture
+}
+
+input BackupHost {
+  id: ID!
+  name: String
+}
+
+input backupClustersAssociationForm {
+  backup_service: SimpleBackupService
+  clusters: [BackupCluster]!
+}
+
+input BackupVmVlan {
+  id: ID!
+  name: String
+  local_id: String!
+}
+
+input backupServiceDeployForm {
+  name: String!
+  description: String
+  version: String!
+  backup_service_cluster: BackupCluster
+  backup_service_host: BackupHost
+
+  management_network_type: BackupServiceNetworkType
+  management_network_vlan: BackupVmVlan
+  management_network_ip: String
+  management_network_gateway: String
+  management_network_subnet_mask: String
+
+  storage_network_type: BackupServiceNetworkType
+  storage_network_vlan: BackupVmVlan
+  storage_network_ip: String
+  storage_network_gateway: String
+  storage_network_subnet_mask: String
+
+  backup_network_type: BackupServiceNetworkType
+  backup_network_vlan: BackupVmVlan
+  backup_network_ip: String
+  backup_network_gateway: String
+  backup_network_subnet_mask: String
+}
+
+input updateBackupServiceForm {
+  max_parallel_backup_jobs: Int
+  max_parallel_restore_jobs: Int
+  max_job_retry_times: Int
+
+  read_write_limit: Boolean
+  backup_wr_iops_max: Float
+  backup_rd_iops_max: Float
+  restore_wr_iops_max: Float
+  restore_rd_iops_max: Float
+}
+
+input updateBackupServiceInfoForm {
+  name: String!
+  description: String
+}
+
+# UpdateGlobalSettings
+# ---
+input UpdateGlobalSettingsForm {
+  data: AuthSettingsInput
+  password_expire_custom_days: Int
+  enable_login_miss: Boolean
+}
+# ---
+
+input SetPasswordQaForm {
+  password_recover_qa_enabled: Boolean!
+  password_recover_qa_items: [PasswordReoverQaItemInput!]!
+}
+
+input ResetPasswordForm {
+  data: ResetPasswordInput
+  confirm_password: String
+  username: String
+}
+
+input SessionExpirationForm {
+  enable: Boolean
+  hour: Int
+  minute: Int
+}
+
+# MigrateVm
+# --
+input MigrateVmDestHost {
+  id: String
+  name: String
+  data_ip: String
+  status: HostStatus
+  allocatable_memory_bytes: Float
+  cpu_model: String
+  cpu_vendor: String
+  compatible_cpu_models: [String]
+}
+input MigrateVmDestCluster {
+  id: String!
+  name: String!
+  version: String!
+  type: ClusterType!
+  architecture: Architecture!
+  stretch: Boolean
+  total_data_capacity: Float
+  used_data_space: Float
+  failure_data_space: Float
+  connect_state: ConnectState!
+  vhost_enabled: Boolean
+  license_type: LicenseType
+  license_expire_date: DateTime
+  hosts: [MigrateVmDestHost]
+}
+
+input VmNeedToBeRenamed {
+  id: String!
+  old_name: String!
+  new_name: String!
+}
+input VlanConfig {
+  src_id: String!
+  src_local_id: String!
+  src_name: String!
+  src_everoute_cluster_id: String
+  dest_id: String!
+  dest_local_id: String!
+  dest_name: String!
+  dest_everoute_cluster_id: String
+}
+input MigrateVmForm {
+  remote: Boolean!
+  cluster: MigrateVmDestCluster
+  host: MigrateVmDestHost!
+  storage_policy: VmVolumeElfStoragePolicyType
+  duplicate_vm_names: [VmNeedToBeRenamed]
+  invalid_vm_names: [VmNeedToBeRenamed]
+  vlan_configs: [VlanConfig]
+  running_vm_migrate_type: MigrateType
+  delete_src_vm: Boolean
+}
+
+# cutover source vm form
+input CutoverSourceVmForm {
+  force_stop: Boolean
+}
+
+input BackupLicenseUpdateForm {
+  code: String
+}
+
+# Export Vm Form
+input ExportVmForm {
+  export_type: String!
+  save_mac_address: Boolean
+  export_volumes_type: String
+}
+
+# Security Group
+input LabelGroupItem {
+  label_ids: [String!]!
+}
+
+input SecurityGroupForm {
+  name: String!
+  description: String
+  everoute_cluster: String!
+  label_groups: [LabelGroupItem!]
+  vm_ids: [String]
+}
+
+# Security Policy Apply To Form
+input ApplyToForm {
+  security_group: String
+  labels: [String!]
+  communicable: Boolean!
+}
+
+# Security Policy Rule whitelist Form
+input RuleWhitelistForm {
+  labels: [String]
+  security_group: String
+  ip_block: String
+  selectProtocolType: String!
+  specifyProtocolType: [String!]
+  tcpPort: String
+  udpPort: String
+  except_ip_block: String
+}
+
+# Batch isolation vms
+input BatchIsolationVmsForm {
+  everoute_cluster_id: String!
+  everoute_cluster_version: String
+  vm_ids: [String!]!
+  mode: IsolationMode!
+  ingress: [NetworkPolicyRuleFormInput!]
+  egress: [NetworkPolicyRuleFormInput!]
+}
+
+input EditSecurityPolicyModeForm {
+  policy_mode: PolicyMode
+}
+
+# Import security policies
+input ImportSecurityPoliciesFileInput {
+  fileStatus: String!
+  uid: String!
+  lastModified: Int!
+  name: String!
+  size: Int!
+  type: String!
+}
+input SecurityPolicyInputOfImportSecurityPoliciesForm {
+  id: String!
+  checked: Boolean!
+  initialName: String!
+  name: String!
+  description: String!
+  version: String!
+  apply_to: [ImportSecurityPolicyApplyInput!]!
+  ingress: [ImportSecurityPolicyRuleInput!]!
+  egress: [ImportSecurityPolicyRuleInput!]!
+  policy_mode: PolicyMode
+}
+input ImportSecurityPoliciesForm {
+  everoute_cluster_id: String
+  policy_mode: PolicyMode!
+  upload_file: ImportSecurityPoliciesFileInput
+  security_policies: [SecurityPolicyInputOfImportSecurityPoliciesForm!]
+  policy_name_suffix: String
+}

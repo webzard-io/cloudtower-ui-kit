@@ -2,7 +2,7 @@ import { TableProps } from "@cloudtower/sparrow";
 import { css, cx } from "@linaria/core";
 import React from "react";
 
-import { arrayMove } from "./common";
+import { arrayMove } from "../../components/table/common";
 import { CustomizeColumnType, useCustomizeColumn } from "./customize-column";
 
 const thCss = css`
