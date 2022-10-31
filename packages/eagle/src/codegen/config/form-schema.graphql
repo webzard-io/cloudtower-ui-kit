@@ -53,6 +53,11 @@ input FormExporter {
   mountDisk: mountDiskForm
   # ---
 
+  # ManagementIp
+  # ---
+  ManagementIp: ManagementIpForm
+  # ---
+
   # ClusterManagementIp
   # ---
   ClusterManagementIp: ClusterManagementIpForm
@@ -253,30 +258,6 @@ input FormExporter {
   # import security policies form
   # ---
   ImportSecurityPolicies: ImportSecurityPoliciesForm
-  # Network
-  # ---
-  CreateMigrationNetwork: CreateMigrationNetworkForm
-  CreateAccessNetwork: CreateAccessNetworkForm
-  CreateVmNetwork: CreateVmNetworkForm
-  EditManagementNetwork: EditManagementNetworkForm
-  EditStorageNetwork: EditStorageNetworkForm
-  EditMigrationNetwork: EditMigrationNetworkForm
-  EditAccessNetwork: EditAccessNetworkForm
-  EditVmNetwork: EditVmNetworkForm
-  EditBandwidth: EditBandwidthForm
-  # ---
-
-  # GPU
-  # ---
-  EditGpuDescription: EditGpuDescriptionForm
-  EditGpuMountedVms: EditGpuMountedVmsForm
-  # ---
-
-  # USB
-  # ---
-  EditUsbDescription: EditUsbDescriptionForm
-  EditUsbMountedVms: EditUsbMountedVmsForm
-  EditVmMountedUsb: EditVmMountedUsbForm
   # ---
 }
 
@@ -349,7 +330,6 @@ input ImportOvfToVmTemplateCluster {
   version: String
   type: ClusterType
   stretch: Boolean
-  architecture: Architecture
 }
 
 input ImportOvfToVmTemplateForm {
@@ -358,6 +338,7 @@ input ImportOvfToVmTemplateForm {
   vmdks: [ImportOvfFileInput!]
   name: String!
   description: String!
+  architecture: Architecture!
   clusters: [ImportOvfToVmTemplateCluster!]
   vcpu: ImportOvfToVmTemplateFormVCpu!
   memory: Float!
@@ -395,7 +376,6 @@ input ImportOvfToVmNicInput {
 
 input ImportOvfToVmClusterSettings {
   default_ha: Boolean
-  default_storage_policy: VmVolumeElfStoragePolicyType
 }
 
 input ImportOvfToVmCluster {
@@ -520,20 +500,13 @@ input CreateVdsForm {
   initialIp: String
   hosts: [CreateVdsFormHost!]!
   bond_mode: String!
-  rb_interval_enable: Boolean
-  rb_interval: Int
-}
-
-input CreateVdsNic {
-  id: String!
-  name: String!
 }
 
 input CreateVdsFormHost {
   id: ID!
   accessIp: String
   migrationIp: String
-  nics: [CreateVdsNic]!
+  nics: [ID!]!
 }
 
 input CreateVdsFormVlan {
@@ -718,14 +691,6 @@ input HostToBeAddedDisks {
   type: DiskType
   size: Float
 }
-input HostToBeAddedVdsesVlan {
-  type: NetworkType
-}
-input HostToBeAddedVdses {
-  name: String
-  nics: [String]
-  vlans: [HostToBeAddedVdsesVlan]
-}
 
 input HostToBeAdded {
   uuid: String
@@ -740,7 +705,6 @@ input HostToBeAdded {
   accessIp: String
   vmwareAccessPorts: [String]
   vmwareAccessIp: String
-  migrationIp: String
 
   platformIp: String
   platformName: String
@@ -751,8 +715,6 @@ input HostToBeAdded {
   disks: [HostToBeAddedDisks]
   sockets: Int
   isPreferred: Boolean
-
-  vdses: [HostToBeAddedVdses]
 }
 
 input AddHostsForm {
@@ -764,6 +726,23 @@ input AddHostsForm {
 #---
 input mountDiskForm {
   function: DiskFunction
+}
+#---
+
+# ManagementIp
+#---
+input ManagementIpForm {
+  vlan_id: Int!
+  gateway_ip: String
+  subnetmask: String
+  initialIp: String
+  hosts: [ManagementIpFormHost!]!
+}
+
+input ManagementIpFormHost {
+  id: ID!
+  name: String!
+  ip: String!
 }
 #---
 
@@ -1184,9 +1163,6 @@ input AgentCluster {
   connect_state: ConnectState
   disconnected_date: DateTime
   removed: Boolean
-  version: String
-  type: ClusterType
-  rdma_enabled: Boolean
   vdses: [AgentVds]
 }
 input AgentClustersAssociationForm {
@@ -1744,207 +1720,4 @@ input ImportSecurityPoliciesForm {
   upload_file: ImportSecurityPoliciesFileInput
   security_policies: [SecurityPolicyInputOfImportSecurityPoliciesForm!]
   policy_name_suffix: String
-}
-
-# Create Network
-# ---
-input NetworkHostIp {
-  host_id: String
-  name: String
-  ip: String
-  placeholder: String
-}
-input NetworkRoute {
-  gateway_ip: String
-  target_ip: String
-  subnet: String
-}
-input NetworkVdsNics {
-  name: String!
-  mtu: Int!
-  mac_address: String!
-}
-input NetworkVds {
-  id: String
-  remain: Float
-  nics: [NetworkVdsNics]
-}
-input CreateMigrationNetworkForm {
-  name: String
-  vds: NetworkVds
-  subnetmask: String
-  vlan_id: Int
-  mtu: Int
-  qos_enable: Boolean
-  qos_priority: String
-  qos_customized_priority: Float
-  qos_min_bandwidth: Float
-  qos_limit_enable: Boolean
-  qos_max_bandwidth: Float
-  qos_burst: Float
-  initial_ip: String
-  host_ips: [NetworkHostIp]
-  force_update_mtu: Boolean
-}
-input CreateAccessNetworkForm {
-  name: String
-  vds: NetworkVds
-  subnetmask: String
-  vlan_id: Int
-  mtu: Int
-  qos_enable: Boolean
-  qos_priority: String
-  qos_customized_priority: Float
-  qos_min_bandwidth: Float
-  qos_limit_enable: Boolean
-  qos_max_bandwidth: Float
-  qos_burst: Float
-  initial_ip: String
-  host_ips: [NetworkHostIp]
-  route_enable: Boolean
-  route: [NetworkRoute]
-  force_update_mtu: Boolean
-}
-input CreateVmNetworkForm {
-  name: String
-  vds: NetworkVds
-  vlan_id: Int
-  qos_enable: Boolean
-  qos_priority: String
-  qos_customized_priority: Float
-  qos_min_bandwidth: Float
-  qos_limit_enable: Boolean
-  qos_max_bandwidth: Float
-  qos_burst: Float
-}
-input EditManagementNetworkForm {
-  subnetmask: String
-  gateway_ip: String
-  vlan_id: Int
-  mtu: Int
-  vds_remain: Float
-  qos_enable: Boolean
-  qos_priority: String
-  qos_customized_priority: Float
-  qos_min_bandwidth: Float
-  qos_limit_enable: Boolean
-  qos_max_bandwidth: Float
-  qos_burst: Float
-  initial_ip: String
-  host_ips: [NetworkHostIp]
-  force_update_mtu: Boolean
-}
-input EditStorageNetworkForm {
-  mtu: Int
-  vds_remain: Float
-  qos_enable: Boolean
-  qos_priority: String
-  qos_customized_priority: Float
-  qos_min_bandwidth: Float
-  qos_limit_enable: Boolean
-  qos_max_bandwidth: Float
-  qos_burst: Float
-  force_update_mtu: Boolean
-}
-input EditMigrationNetworkForm {
-  subnetmask: String
-  vlan_id: Int
-  mtu: Int
-  vds_remain: Float
-  qos_enable: Boolean
-  qos_priority: String
-  qos_customized_priority: Float
-  qos_min_bandwidth: Float
-  qos_limit_enable: Boolean
-  qos_max_bandwidth: Float
-  qos_burst: Float
-  initial_ip: String
-  host_ips: [NetworkHostIp]
-  force_update_mtu: Boolean
-}
-
-input EditAccessNetworkForm {
-  subnetmask: String
-  vlan_id: Int
-  mtu: Int
-  vds_remain: Float
-  qos_enable: Boolean
-  qos_priority: String
-  qos_customized_priority: Float
-  qos_min_bandwidth: Float
-  qos_limit_enable: Boolean
-  qos_max_bandwidth: Float
-  qos_burst: Float
-  initial_ip: String
-  host_ips: [NetworkHostIp]
-  force_update_mtu: Boolean
-  route_enable: Boolean
-  route: [NetworkRoute]
-}
-
-input EditVmNetworkForm {
-  name: String
-  vlan_id: Int
-  vds_remain: Float
-  qos_enable: Boolean
-  qos_priority: String
-  qos_customized_priority: Float
-  qos_min_bandwidth: Float
-  qos_limit_enable: Boolean
-  qos_max_bandwidth: Float
-  qos_burst: Float
-}
-
-input BandwidthVlan {
-  id: ID!
-  vlan_id: Int
-  name: String
-  qos_min_bandwidth: Float
-  qos_priority: Int
-  qos_max_bandwidth: Float
-  qos_burst: Float
-  type: NetworkType
-}
-input EditBandwidthForm {
-  vlans: [BandwidthVlan]
-}
-
-input EditGpuDescriptionForm {
-  description: String!
-}
-
-input GpuMountedVm {
-  id: ID!
-  name: String
-}
-
-input EditGpuMountedVmsForm {
-  hostname: String
-  vms: [GpuMountedVm!]
-}
-
-input EditUsbDescriptionForm {
-  description: String!
-}
-
-input UsbMountedVm {
-  id: ID!
-  name: String
-  status: VmStatus
-  unmount: Boolean
-}
-
-input EditUsbMountedVmsForm {
-  vms: [UsbMountedVm!]
-}
-
-input VmMountedUsb {
-  id: ID!
-  name: String
-  hasNotStoppedVm: Boolean
-  unmount: Boolean
-}
-
-input EditVmMountedUsbForm {
-  usbs: [VmMountedUsb!]
 }
