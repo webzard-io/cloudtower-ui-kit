@@ -1,10 +1,8 @@
+import { ButtonGroupType } from "@cloudtower/sparrow";
 import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
-import { SizeType } from "antd/es/config-provider/SizeContext";
 import React from "react";
 
-import { ImagesType } from "../../generated/images-type";
-import { ButtonProps } from "../base";
 import BaseButton from "../button";
 import Tooltip from "../tooltip";
 
@@ -47,19 +45,6 @@ const ButtonGroupContainer = styled.div`
     }
   }
 `;
-
-export type ButtonGroupType = {
-  className?: string;
-  size?: SizeType;
-  options: Array<
-    Omit<ButtonProps, "shape" | "size" | "icon"> & {
-      key: string;
-      title?: string;
-      hideTitle?: boolean;
-      icon?: ImagesType;
-    }
-  >;
-};
 
 const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupType>(
   (props, ref) => {

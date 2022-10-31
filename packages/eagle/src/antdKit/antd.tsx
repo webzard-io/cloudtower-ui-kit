@@ -48,15 +48,15 @@ import { findDOMNode } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { isElement } from "react-is";
 
-import { getAlertIcon } from "../common";
-import Icon from "../components/Icon";
+import { getAlertIcon } from "@cloudtower/sparrow";
+import { Icon } from "@cloudtower/sparrow";
 // import Modal from "./modal";
 // import Modal2 from "./modal2";
-import Loading from "../components/Loading";
+import { Loading } from "@cloudtower/sparrow";
 // import i18n from "../i18n";
-import { FullView } from "../styles/common/styled";
-import { Typo } from "../styles/component/typo";
-import { Kit, TextAreaProps } from "./base";
+import { FullView } from "@cloudtower/sparrow";
+import { Typo } from "@cloudtower/sparrow";
+import { Kit, TextAreaProps } from "@cloudtower/sparrow";
 import Button from "./button";
 import ButtonGroup from "./buttonGroup";
 // import Overflow from "../components/Overflow";
@@ -67,6 +67,7 @@ import KitTable from "./table";
 import Tooltip from "./tooltip";
 // import Steps from "../components/Steps";
 // import { message } from "./message/message-group";
+import { SizeType } from "antd/es/config-provider/SizeContext";
 
 type AntdOption = Kit["option"] & {
   isSelectOption: boolean;
