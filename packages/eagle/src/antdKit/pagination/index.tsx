@@ -1,12 +1,9 @@
+import { Icon, kitContext, PaginationProps } from "@cloudtower/sparrow";
 import { css } from "@linaria/core";
 import { Menu } from "antd";
 import cs from "classnames";
 import React, { useContext, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
-
-import Icon from "../../components/Icon";
-import { kitContext } from "..";
-import { PaginationProps } from "../base";
 
 const PaginationStyle = css`
   display: flex;
