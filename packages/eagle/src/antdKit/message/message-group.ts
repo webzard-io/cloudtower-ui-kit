@@ -33,6 +33,12 @@ export class Batcher {
     const batchKey = this.getBatchKey(content);
     const action = this.getAction(batchKey);
 
+    if (process.env.NODE_ENV !== "production") {
+      if (window.i18n == null) {
+        throw new Error("i18n not exist on window");
+      }
+    }
+
     if (!window.i18n.exists(action)) {
       // can not be batched when i18n not ready
       this.originalMethod(content);
@@ -140,6 +146,11 @@ export class Batcher {
   }
 
   private getBatchContent(batchKey: string, count: number): string {
+    if (process.env.NODE_ENV !== "production") {
+      if (window.i18n == null) {
+        throw new Error("i18n not exist on window");
+      }
+    }
     return window.i18n.td(this.getAction(batchKey), { count });
   }
 
@@ -161,6 +172,11 @@ export function patchMessageMethods(m: typeof _message): typeof _message {
 
   for (const method of methods) {
     const originalMethod = m[method];
+    if (process.env.NODE_ENV !== "production") {
+      if (window.i18nBatchHelper == null) {
+        throw new Error("i18nBatchHelper not exist on window");
+      }
+    }
     const batcher = new Batcher(originalMethod, window.i18nBatchHelper);
     m[method] = function (...args: Parameters<typeof _message["success"]>) {
       const key = makeUUID();
