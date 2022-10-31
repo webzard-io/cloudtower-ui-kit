@@ -680,6 +680,16 @@ export const RightEndSelectStyle = css`
   }
 `;
 
+const Arch: Kit["arch"] = (props) => {
+  const { architecture } = props;
+  const { i18n } = useTranslation();
+  let text = "";
+  if (architecture) {
+    text = i18n.td(`enum.Architecture_${architecture}`);
+  }
+  return <span>{text}</span>;
+};
+
 const Select: Kit["select"] = ({
   input,
   multiple,
@@ -1292,14 +1302,7 @@ export function getAntdKit(): Kit {
     // message: message,
     tag: Tag,
     popover: Popover,
-    // arch: (props) => {
-    //   const { architecture } = props;
-    //   let text = "";
-    //   if (architecture) {
-    //     text = i18n.td(`enum.Architecture_${architecture}`);
-    //   }
-    //   return <span>{text}</span>;
-    // },
+    arch: Arch,
     buttonGroup: ButtonGroup,
     steps: Steps,
   };
