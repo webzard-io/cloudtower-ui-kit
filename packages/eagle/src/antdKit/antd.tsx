@@ -1311,3 +1311,5 @@ export function getAntdKit(): Kit {
 
   return kit;
 }
+
+export const antdKit = getAntdKit();

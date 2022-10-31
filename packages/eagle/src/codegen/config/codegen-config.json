@@ -2059,6 +2059,7 @@
                     "id",
                     "name",
                     "vm_usage",
+                    "in_recycle_bin",
                     {
                       "key": "cluster",
                       "fields": [
@@ -2120,6 +2121,7 @@
                     "id",
                     "name",
                     "vm_usage",
+                    "in_recycle_bin",
                     {
                       "key": "cluster",
                       "fields": [
@@ -2177,6 +2179,7 @@
                             "id",
                             "name",
                             "vm_usage",
+                            "in_recycle_bin",
                             {
                               "key": "cluster",
                               "fields": [
@@ -2277,7 +2280,12 @@
                             "name",
                             {
                               "key": "cluster",
-                              "fields": ["id"]
+                              "fields": [
+                                "id",
+                                "name",
+                                "connect_state",
+                                "disconnected_date"
+                              ]
                             }
                           ]
                         }
@@ -2633,7 +2641,12 @@
                             "name",
                             {
                               "key": "cluster",
-                              "fields": ["id"]
+                              "fields": [
+                                "id",
+                                "name",
+                                "connect_state",
+                                "disconnected_date"
+                              ]
                             }
                           ]
                         }
@@ -2751,6 +2764,10 @@
       ],
       "invisibleFields": [
         {
+          "key": "vms",
+          "fields": ["in_recycle_bin"]
+        },
+        {
           "key": "label_groups",
           "fields": [
             "label_ids",
@@ -2766,6 +2783,7 @@
                     "id",
                     "name",
                     "vm_usage",
+                    "in_recycle_bin",
                     {
                       "key": "cluster",
                       "fields": [
@@ -2800,6 +2818,10 @@
                           ]
                         }
                       ]
+                    },
+                    {
+                      "key": "labels",
+                      "fields": ["id", "key", "value"]
                     }
                   ]
                 }
@@ -2833,6 +2855,7 @@
       ],
       "invisibleFields": [
         "vm_usage",
+        "in_recycle_bin",
         {
           "key": "vm_nics",
           "fields": [
@@ -2915,7 +2938,12 @@
                         "name",
                         {
                           "key": "cluster",
-                          "fields": ["id"]
+                          "fields": [
+                            "id",
+                            "name",
+                            "connect_state",
+                            "disconnected_date"
+                          ]
                         }
                       ]
                     }
@@ -3529,7 +3557,12 @@
                         "name",
                         {
                           "key": "cluster",
-                          "fields": ["id"]
+                          "fields": [
+                            "id",
+                            "name",
+                            "connect_state",
+                            "disconnected_date"
+                          ]
                         }
                       ]
                     }
@@ -3666,6 +3699,7 @@
                     "id",
                     "name",
                     "vm_usage",
+                    "in_recycle_bin",
                     {
                       "key": "cluster",
                       "fields": [
@@ -3717,6 +3751,7 @@
             "id",
             "name",
             "vm_usage",
+            "in_recycle_bin",
             {
               "key": "cluster",
               "fields": [
@@ -3773,6 +3808,7 @@
             "id",
             "name",
             "vm_usage",
+            "in_recycle_bin",
             {
               "key": "cluster",
               "fields": [
@@ -3823,6 +3859,7 @@
         "id",
         "name",
         "vm_usage",
+        "in_recycle_bin",
         {
           "key": "cluster",
           "fields": [
@@ -6996,6 +7033,16 @@
         "type",
         {
           "key": "backup_service",
+          "fields": ["name"]
+        }
+      ]
+    },
+    {
+      "type": "securityGroup",
+      "fields": [
+        "name",
+        {
+          "key": "everoute_cluster",
           "fields": ["name"]
         }
       ]

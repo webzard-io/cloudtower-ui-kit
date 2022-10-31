@@ -1,7 +1,6 @@
 import {
   Icon,
   kitContext,
-  RootState,
   SearchOperation,
   SetSearch,
   tableCanClearQuery,
@@ -19,6 +18,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 import { Maybe, Scalars } from "../../generated/react-hooks";
+import { RootState } from "../../store";
 
 const TablePaginationStyle = css``;
 

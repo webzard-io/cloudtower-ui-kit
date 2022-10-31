@@ -3,14 +3,7 @@
 @typescript-eslint/no-explicit-any,
 */
 
-import {
-  kitContext,
-  Resources,
-  RootState,
-  store,
-  TableActions,
-  TableProps,
-} from "@cloudtower/sparrow";
+import { kitContext, Resources, TableProps } from "@cloudtower/sparrow";
 import { css } from "@linaria/core";
 import { CheckboxChangeEvent } from "antd/es/checkbox";
 import _ from "lodash";
@@ -24,7 +17,8 @@ import React, {
 } from "react";
 import { useSelector } from "react-redux";
 
-import { eventStopPropagation } from "./common";
+import { RootState, store, TableActions } from "../../store";
+import { eventStopPropagation } from "../../components/table/common";
 
 const CheckboxStyle = css`
   .ant-checkbox {

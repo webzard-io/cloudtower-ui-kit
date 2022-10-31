@@ -30,19 +30,19 @@ const config = {
     // "src/generated/selects.tsx": {
     //   plugins: ["../codegen/lib/react-component/select.js"],
     // },
-    // "src/generated/forms-types.tsx": {
-    //   plugins: ["../codegen/lib/react-component/form.js"],
-    //   config: {
-    //     generateTypes: true,
-    //   },
-    // },
-    // "src/generated/forms.tsx": {
-    //   plugins: ["../codegen/lib/react-component/form.js"],
-    // },
-    // "src/generated/forms2.tsx": {
-    //   schema: "config/form-schema.graphql",
-    //   plugins: ["../codegen/lib/react-component/form2.js"],
-    // },
+    "src/generated/forms-types.tsx": {
+      plugins: ["../claw/dist/react-component/form.js"],
+      config: {
+        generateTypes: true,
+      },
+    },
+    "src/generated/forms.tsx": {
+      plugins: ["../claw/dist/react-component/form.js"],
+    },
+    "src/generated/forms2.tsx": {
+      schema: "src/codegen/config/form-schema.graphql",
+      plugins: ["../claw/dist/react-component/form2.js"],
+    },
     // "src/generated/type-dependencies-map.ts": {
     //   plugins: ["../codegen/lib/graphql/type-dependencies-map.js"],
     // },

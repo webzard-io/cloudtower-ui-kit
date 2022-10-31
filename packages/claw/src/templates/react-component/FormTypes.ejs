@@ -1,0 +1,93 @@
+/* <%= name %> */
+/* Definition */
+export type <%= type.formValue %> = {
+  <% for (field of formValueFields) { -%>
+    <% if (field.isRequired) { -%>
+      <%= field.key %>: <%- field.value %>
+    <% } else { -%>
+      <%= field.key %>?: Maybe<<%- field.value %>>
+    <% } -%>
+  <% } -%>
+};
+
+/* Validation */
+export type <%= type.formError %> = {
+  <% for (field of formValueFields) { -%>
+    <%= field.key %>?: <%- field.error %>;
+  <% } -%>
+  'FINAL_FORM/form-error'?: string;
+};
+export type <%= type.validation %> = (values: <%= type.formValue %>) => <%= type.formError %> | undefined;
+export type <%= type.validators %> = {
+  [K in keyof <%= type.formValue %>]: (value?: <%= type.formValue %>[K]) => <%= type.formError %>[K];
+}
+
+/* Base Fields Types */
+export interface <%= type.baseFieldKeys %> {
+  <% for (field of baseFields) { -%>
+    '<%= field.key %>': <%- field.value %>;
+  <% } -%>
+};
+
+export type <%= type.baseFields %> = {
+  [K in keyof <%= type.baseFieldKeys %>]: <RP>(
+    props: BaseFieldProps<<%= type.baseFieldKeys %>[K], RP, <%= type.formValue %>>
+  ) => ReactElement;
+};
+
+/* Base Field Arrays Type */
+export interface <%= type.baseFieldArrayKeys %> {
+  <% for (field of baseFieldArrays) { -%>
+    '<%= field.key %>': <%- field.value.replace(/\[\]$/, '') %>;
+  <% } -%>
+};
+
+export interface <%= type.baseFieldArrayChildFields %> {
+  <% for (field of baseFieldArrays) { -%>
+    '<%= field.key -%>': {
+      <% for (baseField of baseFields) { -%>
+        <% if (baseField.key.startsWith(field.key + '.')) { %>
+          '<%= baseField.key.substring(field.key.length + 1) %>': <%= type.baseFields %>['<%= baseField.key %>'];
+        <% } -%>
+      <% } -%>
+      <% for (baseFieldArray of baseFieldArrays) { -%>
+        <% if (baseFieldArray.key.startsWith(field.key + '.')) { %>
+          '<%= baseFieldArray.key.substring(field.key.length + 1) %>': <%= type.baseFieldArrays %>['<%= baseFieldArray.key %>'];
+        <% } -%>
+      <% } -%>
+    };
+  <% } -%>
+}
+
+export type <%= type.baseFieldArrays %> = {
+  [K in keyof <%= type.baseFieldArrayKeys %>]: <RP>(
+    props: Omit<BaseFieldArrayProps<
+      <%= type.baseFieldArrayKeys %>[K],
+      RP,
+      <%= type.formValue %>
+    >, "children"> & {
+      children: (
+        props: BaseFieldArrayFnProps<
+          <%= type.baseFieldArrayKeys %>[K],
+          RP,
+          <%= type.formValue %>
+        > & {
+          childFields: <%= type.baseFieldArrayChildFields %>[K];
+        }
+      ) => ReactNode;
+    }
+  ) => ReactElement;
+}
+
+/* Base Form */
+export type <%= type.baseFormOnChange %> = Partial<{
+  [K in keyof <%= type.baseFieldKeys %>]: OnChangeFn<<%= type.baseFieldKeys %>[K], <%= type.formValue %>>
+} & {
+  [K in keyof <%= type.baseFieldArrayKeys %>]: OnChangeFn<<%= type.baseFieldArrayKeys %>[K][], <%= type.formValue %>>
+}>
+export type <%= type.baseFormProps %> = BaseFormProps<
+  <%= type.formValue %>,
+  <%= type.formError %>,
+  <%= type.baseFields %> & <%= type.baseFieldArrays %>,
+  <%= type.baseFormOnChange %>
+>

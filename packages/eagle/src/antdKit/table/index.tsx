@@ -4,7 +4,7 @@ import { Table as BaseTable } from "antd";
 import cs from "classnames";
 import React, { useContext, useRef } from "react";
 
-import { useTableBodyHasScrollBar } from "./common";
+import { useTableBodyHasScrollBar } from "../../components/table/common";
 import { ColumnTitle, TableLoading } from "./TableWidget";
 
 const TableContainerStyle = css`
@@ -510,7 +510,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
 
 export default Table;
 
-export * from "./common";
+export * from "../../components/table/common";
 export * from "./customize-column";
 export * from "./CustomizeColumn";
 export { default as CustomizeColumn } from "./CustomizeColumn";
