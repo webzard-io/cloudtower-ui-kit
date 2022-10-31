@@ -3,6 +3,15 @@ import {
   ExportOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
+import { getAlertIcon } from "@cloudtower/sparrow";
+import { Icon } from "@cloudtower/sparrow";
+// import Modal from "./modal";
+// import Modal2 from "./modal2";
+import { Loading } from "@cloudtower/sparrow";
+// import i18n from "../i18n";
+import { FullView } from "@cloudtower/sparrow";
+import { Typo } from "@cloudtower/sparrow";
+import { Kit, TextAreaProps } from "@cloudtower/sparrow";
 import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { Field } from "@smartx/react-final-form";
@@ -48,26 +57,16 @@ import { findDOMNode } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { isElement } from "react-is";
 
-import { getAlertIcon } from "@cloudtower/sparrow";
-import { Icon } from "@cloudtower/sparrow";
-// import Modal from "./modal";
-// import Modal2 from "./modal2";
-import { Loading } from "@cloudtower/sparrow";
-// import i18n from "../i18n";
-import { FullView } from "@cloudtower/sparrow";
-import { Typo } from "@cloudtower/sparrow";
-import { Kit, TextAreaProps } from "@cloudtower/sparrow";
 import Button from "./button";
 import ButtonGroup from "./buttonGroup";
-// import Overflow from "../components/Overflow";
+// import Steps from "../components/Steps";
+// import { message } from "./message/message-group";
+import Overflow from "./Overflow";
 import Pagination from "./pagination";
 import Radio, { RadioButton, RadioGroup } from "./radio";
 import Switch from "./switch";
 import KitTable from "./table";
 import Tooltip from "./tooltip";
-// import Steps from "../components/Steps";
-// import { message } from "./message/message-group";
-import { SizeType } from "antd/es/config-provider/SizeContext";
 
 type AntdOption = Kit["option"] & {
   isSelectOption: boolean;
@@ -1005,13 +1004,13 @@ export function getAntdKit(): Kit {
               onClick={onClick}
             >
               <div className="input-tags-inner">
-                {/* <Overflow overflow={tagsOverflow}>
+                <Overflow overflow={tagsOverflow}>
                   <span className="tags-overflow-auto">
                     {tags.map((tag) => (
                       <InputTagItem key={tag}>{tag}</InputTagItem>
                     ))}
                   </span>
-                </Overflow> */}
+                </Overflow>
               </div>
               <span className="input-tag-suffix">
                 {allowClear && (
