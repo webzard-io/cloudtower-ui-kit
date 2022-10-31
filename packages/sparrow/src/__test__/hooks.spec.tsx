@@ -8,7 +8,7 @@ import {
   useMatchMediaQueries,
   useSearch,
 } from "../common";
-import { useCustomizeColumn } from "../ui-kit";
+// import { useCustomizeColumn } from "../ui-kit";
 
 export async function resizeTo(width: number, height: number): Promise<void> {
   window.innerWidth = width;
@@ -180,50 +180,50 @@ describe("ui unit test - useSearch", () => {
   });
 });
 
-describe("ui unit test - useCustomizeColumn", () => {
-  const defaultStorage = {
-    vm: [
-      {
-        key: "name",
-        display: true,
-      },
-      {
-        key: "host",
-        display: true,
-      },
-    ],
-  };
-  const defaultCustomizeColumns = [
-    {
-      key: "name",
-      display: true,
-    },
-    {
-      key: "host",
-      display: true,
-    },
-    {
-      key: "label",
-      display: false,
-    },
-  ];
-  it("should use merge new column to cached data", () => {
-    const { result } = renderHook(() =>
-      useLocalStorage("table-customize-column", {})
-    );
-    const [storage, setStorage, removeStorage] = result.current;
-    act(() => {
-      setStorage(defaultStorage);
-    });
+// describe("ui unit test - useCustomizeColumn", () => {
+//   const defaultStorage = {
+//     vm: [
+//       {
+//         key: "name",
+//         display: true,
+//       },
+//       {
+//         key: "host",
+//         display: true,
+//       },
+//     ],
+//   };
+//   const defaultCustomizeColumns = [
+//     {
+//       key: "name",
+//       display: true,
+//     },
+//     {
+//       key: "host",
+//       display: true,
+//     },
+//     {
+//       key: "label",
+//       display: false,
+//     },
+//   ];
+//   it("should use merge new column to cached data", () => {
+//     const { result } = renderHook(() =>
+//       useLocalStorage("table-customize-column", {})
+//     );
+//     const [storage, setStorage, removeStorage] = result.current;
+//     act(() => {
+//       setStorage(defaultStorage);
+//     });
 
-    const { result: useCustomizeColumnRes } = renderHook(() => {
-      return useCustomizeColumn("vm", () => defaultCustomizeColumns);
-    });
-    const [customizeColumns] = useCustomizeColumnRes.current;
+//     const { result: useCustomizeColumnRes } = renderHook(() => {
+//       return useCustomizeColumn("vm", () => defaultCustomizeColumns);
+//     });
+//     const [customizeColumns] = useCustomizeColumnRes.current;
 
-    expect(customizeColumns).toEqual(defaultCustomizeColumns);
-  });
-});
+//     expect(customizeColumns).toEqual(defaultCustomizeColumns);
+//   });
+// });
 
 describe("ui unit test - useMatchMediaQueries", () => {
   it("the result is correct", () => {
