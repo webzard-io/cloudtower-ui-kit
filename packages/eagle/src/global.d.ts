@@ -43,3 +43,9 @@ declare module "antd/lib/modal" {
     focusTriggerAfterClose?: boolean;
   }
 }
+
+declare module "antd/lib/modal" {
+  export interface ModalProps {
+    focusTriggerAfterClose?: boolean;
+  }
+}
