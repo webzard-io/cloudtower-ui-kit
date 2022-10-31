@@ -1,6 +1,5 @@
+import { Sidebar, useSearch } from "@cloudtower/sparrow";
 import React, { useCallback, useLayoutEffect, useRef } from "react";
-
-import { Sidebar, useSearch } from "../../common";
 
 // FIXME
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

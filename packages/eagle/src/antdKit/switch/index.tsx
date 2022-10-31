@@ -1,10 +1,9 @@
+import { SwitchProps } from "@cloudtower/sparrow";
 import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { Switch as AntdSwitch } from "antd";
 import { SwitchProps as AntdSwitchProps } from "antd/lib/switch";
 import React from "react";
-
-import { SwitchProps } from "../base";
 
 /**
  *  transition-delay: 120ms; 这个 delay 的时长在第一次渲染并单击时，可能会出现拖影的状况

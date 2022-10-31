@@ -1,11 +1,16 @@
+import {
+  EMPTY_FUNCTION,
+  EnumProps,
+  FormatUnit,
+  getFormatValue,
+  IntProps,
+  kitContext,
+  StringProps,
+} from "@cloudtower/sparrow";
 import { css } from "@linaria/core";
 import _ from "lodash";
 import React, { useContext, useRef } from "react";
 import { useTranslation } from "react-i18next";
-
-import { EMPTY_FUNCTION, FormatUnit, getFormatValue } from "../../common";
-import { kitContext } from "..";
-import { EnumProps, IntProps, StringProps } from "../base";
 
 const AffixWrapper = css`
   height: 32px;

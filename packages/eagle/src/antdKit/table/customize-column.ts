@@ -1,7 +1,6 @@
+import { getValue, useLocalStorage } from "@cloudtower/sparrow";
 import _ from "lodash";
 import { useCallback, useMemo, useRef } from "react";
-
-import { getValue, useLocalStorage } from "../../common";
 
 export type CustomizeColumnType = {
   key: string;

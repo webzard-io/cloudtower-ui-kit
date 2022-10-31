@@ -1,8 +1,7 @@
+import { TooltipProps } from "@cloudtower/sparrow";
 import { Tooltip as AntdTooltip } from "antd";
 import cs from "classnames";
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
-
-import { TooltipProps } from "../base";
 
 let componentId = 0;
 const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {

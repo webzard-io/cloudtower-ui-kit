@@ -1,3 +1,4 @@
+import { kitContext, useElementsSize } from "@cloudtower/sparrow";
 import { isEqual, isNil } from "lodash";
 import getScrollBarSize from "rc-util/lib/getScrollBarSize";
 import React, {
@@ -8,9 +9,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-
-import { useElementsSize } from "../../common";
-import { kitContext } from "..";
 
 export type TableRenderer<T, C> = (
   cell: T,

@@ -1,10 +1,9 @@
+import { kitContext, TableProps } from "@cloudtower/sparrow";
 import { css, cx } from "@linaria/core";
 import { Table as BaseTable } from "antd";
 import cs from "classnames";
 import React, { useContext, useRef } from "react";
 
-import { kitContext } from "..";
-import { TableProps } from "../base";
 import { useTableBodyHasScrollBar } from "./common";
 import { ColumnTitle, TableLoading } from "./TableWidget";
 

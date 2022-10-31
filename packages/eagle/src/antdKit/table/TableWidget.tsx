@@ -1,3 +1,13 @@
+import {
+  Icon,
+  kitContext,
+  RootState,
+  SearchOperation,
+  SetSearch,
+  tableCanClearQuery,
+  useElementsSize,
+  useSearch,
+} from "@cloudtower/sparrow";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { SerializableObject } from "@tower/utils";
@@ -8,17 +18,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
-import {
-  SearchOperation,
-  SetSearch,
-  tableCanClearQuery,
-  useElementsSize,
-  useSearch,
-} from "../../common";
-import { Icon } from "../../components";
 import { Maybe, Scalars } from "../../generated/react-hooks";
-import { RootState } from "../../store";
-import { kitContext } from "..";
 
 const TablePaginationStyle = css``;
 
