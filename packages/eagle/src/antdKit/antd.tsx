@@ -59,7 +59,7 @@ import { isElement } from "react-is";
 
 import Button from "./button";
 import ButtonGroup from "./buttonGroup";
-// import { message } from "./message/message-group";
+import { message } from "./message";
 import Overflow from "./Overflow";
 import Pagination from "./pagination";
 import Radio, { RadioButton, RadioGroup } from "./radio";
@@ -1299,7 +1299,7 @@ export function getAntdKit(): Kit {
     menuItemGroup: Menu.ItemGroup,
     layout: Layout,
     autoComplete: AutoComplete,
-    // message: message,
+    message: message,
     tag: Tag,
     popover: Popover,
     arch: Arch,
