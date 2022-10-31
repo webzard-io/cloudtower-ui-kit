@@ -1,6 +1,16 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "noEmit": false
-  }
+    "target": "es6",
+    "outDir": "./dist",
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "disableSizeLimit": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "jsx": "react-jsx"
+  },
+  "include": ["src", "index.ts"],
+  "exclude": ["node_modules"]
 }
