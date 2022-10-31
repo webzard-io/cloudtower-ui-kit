@@ -6,3 +6,10 @@ declare module "i18next" {
     td: TFunction;
   }
 }
+
+declare global {
+  interface Window {
+    i18nBatchHelper: any;
+    i18n: any;
+  }
+}

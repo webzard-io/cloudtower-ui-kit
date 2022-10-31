@@ -467,7 +467,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     Bps: UnitFn;
   };
   inputGroup: React.FunctionComponent<{ compact: boolean }>;
-  Empty: React.ReactElement;
+  Empty: React.ReactNode;
   alert: React.FunctionComponent<
     Omit<AlertProps, "type"> & { type?: AlertProps["type"] | "normal" }
   >;
@@ -487,11 +487,11 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   list: <T>(props: ListProps<T>) => JSX.Element;
   listItem: React.FC<ListItemProps>;
   listItemMeta: React.FC<ListItemMetaProps>;
-  layout: React.ComponentClass<BasicProps> & {
-    Header: React.ComponentClass<BasicProps>;
-    Footer: React.ComponentClass<BasicProps>;
-    Content: React.ComponentClass<BasicProps>;
-    Sider: React.ComponentClass<SiderProps>;
+  layout: React.ComponentType<BasicProps> & {
+    Header: React.ComponentType<BasicProps>;
+    Footer: React.ComponentType<BasicProps>;
+    Content: React.ComponentType<BasicProps>;
+    Sider: React.ComponentType<SiderProps>;
   };
   autoComplete: React.ForwardRefExoticComponent<AutoCompleteProps>;
   message: MessageInstance;

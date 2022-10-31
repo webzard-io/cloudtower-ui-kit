@@ -1,10 +1,8 @@
 import React from "react";
 
-import { getAntdKit } from "./antd";
 import { Kit } from "./base";
+import mockImpl from "./mockImpl";
 
-export const antdKit = getAntdKit();
-export const kitContext = React.createContext<Kit>(antdKit);
+export const kitContext = React.createContext<Kit>(mockImpl);
 
 export * from "./base";
-export * from "./table";
