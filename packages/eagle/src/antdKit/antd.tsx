@@ -5,10 +5,7 @@ import {
 } from "@ant-design/icons";
 import { getAlertIcon } from "@cloudtower/sparrow";
 import { Icon } from "@cloudtower/sparrow";
-// import Modal from "./modal";
-// import Modal2 from "./modal2";
 import { Loading } from "@cloudtower/sparrow";
-// import i18n from "../i18n";
 import { FullView } from "@cloudtower/sparrow";
 import { Typo } from "@cloudtower/sparrow";
 import { Kit, TextAreaProps } from "@cloudtower/sparrow";
@@ -60,6 +57,8 @@ import { isElement } from "react-is";
 import Button from "./button";
 import ButtonGroup from "./buttonGroup";
 import { message } from "./message";
+import Modal from "./modal";
+import Modal2 from "./modal2";
 import Overflow from "./Overflow";
 import Pagination from "./pagination";
 import Radio, { RadioButton, RadioGroup } from "./radio";
@@ -859,8 +858,8 @@ export function getAntdKit(): Kit {
     },
     table: KitTable,
     button: Button,
-    // modal: Modal,
-    // modal2: Modal2,
+    modal: Modal,
+    modal2: Modal2,
     dropdown: (props) => {
       return <Dropdown {...props} />;
     },

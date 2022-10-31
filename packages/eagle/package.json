@@ -30,6 +30,7 @@
     "@linaria/rollup": "^4.1.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.5",
+    "@tower/provider-interface": "^1.9.1",
     "@types/react": "^17.0.50",
     "@vitejs/plugin-react": "^2.1.0",
     "@vitest/coverage-c8": "^0.24.1",
