@@ -59,11 +59,11 @@ import { isElement } from "react-is";
 
 import Button from "./button";
 import ButtonGroup from "./buttonGroup";
-// import Steps from "../components/Steps";
 // import { message } from "./message/message-group";
 import Overflow from "./Overflow";
 import Pagination from "./pagination";
 import Radio, { RadioButton, RadioGroup } from "./radio";
+import Steps from "./Steps";
 import Switch from "./switch";
 import KitTable from "./table";
 import Tooltip from "./tooltip";
@@ -1301,7 +1301,7 @@ export function getAntdKit(): Kit {
     //   return <span>{text}</span>;
     // },
     buttonGroup: ButtonGroup,
-    // steps: Steps,
+    steps: Steps,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
