@@ -1,16 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "outDir": "./dist",
-    "noEmit": false,
+    "outDir": "dist",
     "emitDeclarationOnly": true,
     "declaration": true,
-    "skipLibCheck": true,
-    "disableSizeLimit": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "noEmit": false
   },
-  "include": ["src", "index.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src", "index.ts"]
 }
