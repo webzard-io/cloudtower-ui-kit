@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/eagle",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "main": "dist/umd/index.js",
   "module": "./dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -47,13 +47,13 @@
     "typings": "tsc -v && tsc index.ts --emitDeclarationOnly --declaration --jsx react-jsx --outDir dist || exit 0"
   },
   "dependencies": {
-    "@cloudtower/sparrow": "^0.4.1",
+    "@cloudtower/sparrow": "^0.5.0",
     "@linaria/core": "^4.1.4",
     "@tower/i18n": "^1.9.2",
     "history": "^4"
   },
   "devDependencies": {
-    "@cloudtower/claw": "^0.4.0",
+    "@cloudtower/claw": "^0.5.0",
     "@graphql-codegen/cli": "^1.12",
     "@graphql-codegen/client-preset": "^1.0.6",
     "@graphql-codegen/typescript": "^1.22",
