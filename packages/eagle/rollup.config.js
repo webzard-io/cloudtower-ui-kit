@@ -93,7 +93,7 @@ const config = defineConfig([
         }),
         visualizer({
           emitFile: true,
-          filename: "stats1.html",
+          filename: `${name}-stats1.html`,
         }),
       ],
       output: [
