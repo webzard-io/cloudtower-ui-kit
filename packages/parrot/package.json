@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/parrot",
-  "version": "0.1.0",
+  "version": "0.4.0",
   "description": "i18n modules for cloudtower sparrow and eagle",
   "keywords": [
     "i18n",
@@ -10,11 +10,11 @@
   ],
   "main": "dist/index.js",
   "scripts": {
+    "prebuild": "rm -rf dist",
     "build": "tsc",
     "lint": "eslint src --ext .ts --quiet"
   },
   "devDependencies": {
     "typescript": "^4.8.4"
-  },
-  "dependencies": {}
+  }
 }

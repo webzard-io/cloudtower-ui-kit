@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="10px" viewBox="0 0 12 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>migrate</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#BAC4CE" offset="0%"></stop>
+            <stop stop-color="#909FB2" offset="100%"></stop>
+        </linearGradient>
+        <path d="M8,5.5 L8,7 L9,7 L9,9.3364016 C9,9.7028969 8.6643829,10 8.2511233,10 L0.74887675,10 C0.33528354,10 0,9.6962237 0,9.3364016 L0,0.66359838 C0,0.29710311 0.33561707,0 0.74887675,0 L8.2511233,0 C8.6647165,0 9,0.30377626 9,0.66359838 L9,3 L8,3 L8,4.5 L10.2071068,4.5 L9.4142136,3.70710678 L10.1213203,3 L11.5387883,4.41746797 C11.9275152,4.8061949 11.9262179,5.43774315 11.5365929,5.82736811 L10.1213203,7.2426407 L9.4143366,6.53565688 C9.9093368,6.04055186 10.2363286,5.7134999 10.4497939,5.5 L8,5.5 Z M8,4.5 L8,1 C8.00027,1.00279215 1,1.00276019 1,1.00276019 L1,9 C0.99972998,8.999968 8,9 8,9 L8,5.5 L6,5.5 L6,4.5 L8,4.5 Z" id="path-2"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="migrate" transform="translate(-2.000000, -3.000000)">
+            <rect id="Rectangle-path" fill="url(#linearGradient-1)" opacity="0" x="0" y="0" width="16" height="16"></rect>
+            <g id="migrate-b-link" transform="translate(2.000000, 3.000000)" fill="#8E9AA9" fill-rule="nonzero">
+                <path d="M8,5.5 L8,7 L9,7 L9,9.3364016 C9,9.7028969 8.6643829,10 8.2511233,10 L0.74887675,10 C0.33528354,10 0,9.6962237 0,9.3364016 L0,0.66359838 C0,0.29710311 0.33561707,0 0.74887675,0 L8.2511233,0 C8.6647165,0 9,0.30377626 9,0.66359838 L9,3 L8,3 L8,4.5 L10.2071068,4.5 L9.4142136,3.70710678 L10.1213203,3 L11.5387883,4.41746797 C11.9275152,4.8061949 11.9262179,5.43774315 11.5365929,5.82736811 L10.1213203,7.2426407 L9.4143366,6.53565688 C9.9093368,6.04055186 10.2363286,5.7134999 10.4497939,5.5 L8,5.5 Z M8,4.5 L8,1 C8.00027,1.00279215 1,1.00276019 1,1.00276019 L1,9 C0.99972998,8.999968 8,9 8,9 L8,5.5 L6,5.5 L6,4.5 L8,4.5 Z" id="migrate-b"></path>
+            </g>
+            <g id="Clipped" transform="translate(2.000000, 3.000000)">
+                <g id="Group-Clipped">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <g id="path-2"></g>
+                    <g id="Group" mask="url(#mask-3)">
+                        <g transform="translate(-2.000000, -3.000000)" id="migrate-d-link">
+                            <g>
+                                <g id="Group" fill="url(#linearGradient-1)">
+                                    <rect id="migrate-d" x="0" y="0" width="16" height="16"></rect>
+                                </g>
+                                <g id="Group" fill="#8E9AA9">
+                                    <rect id="migrate-d" x="0" y="0" width="16" height="16"></rect>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

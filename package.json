@@ -8,9 +8,11 @@
   ],
   "scripts": {
     "prepare": "husky install",
+    "prebuild": "turbo run generate",
+    "postbuild": "turbo run typings",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
+    "lint": "eslint **/*.{tsx,ts} --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "lint-staged": {
@@ -26,6 +28,10 @@
     "husky": "^8.0.1",
     "lerna": "^4.0.0",
     "lint-staged": "^13.0.3",
-    "turbo": "^1.5.6"
+    "turbo": "^1.5.6",
+    "typescript": "^4.8.4"
+  },
+  "resolutions": {
+    "typescript": "^4.8.4"
   }
 }

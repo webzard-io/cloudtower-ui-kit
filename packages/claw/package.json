@@ -1,0 +1,25 @@
+{
+  "name": "@cloudtower/claw",
+  "version": "0.4.0",
+  "description": "claw of eagle",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "pregenerate": "rm -rf dist",
+    "generate": "tsc",
+    "postgenerate": "cp -r src/templates dist/templates"
+  },
+  "devDependencies": {
+    "@graphql-codegen/plugin-helpers": "^2.7.1",
+    "@types/ejs": "^3.1.1",
+    "@types/pluralize": "^0.0.29",
+    "ejs": "^3.1.8",
+    "graphql": "^15.7.2",
+    "lodash": "^4.17.21",
+    "pluralize": "^8.0.0"
+  },
+  "peerDependencies": {
+    "@graphql-codegen/plugin-helpers": "^2.7.1",
+    "graphql": "^15.7.2"
+  }
+}

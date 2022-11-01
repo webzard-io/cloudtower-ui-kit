@@ -12,5 +12,5 @@
       }
     ]
   },
-  "ignorePatterns": ["node_modules", "**/*.md"]
+  "ignorePatterns": ["node_modules", "**/*.md", "generated"]
 }
