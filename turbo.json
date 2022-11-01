@@ -3,7 +3,7 @@
   "pipeline": {
     "generate": {
       "dependsOn": ["^generate"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**", "src/generated/**"]
     },
     "build": {
       "dependsOn": ["^build", "generate"],
@@ -11,7 +11,7 @@
     },
     "typings": {
       "dependsOn": ["generate"],
-      "outputs": ["dist/**", "src/generated/**"]
+      "outputs": ["dist/**"]
     },
     "lint": {
       "outputs": []
