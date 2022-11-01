@@ -13,7 +13,7 @@
     "coverage": "vitest run --coverage",
     "pregenerate": "rm -rf src/generated",
     "generate": "graphql-codegen --config src/codegen/config/codegen-main.yaml",
-    "typings": "tsc -v && tsc -p tsconfig.build.json"
+    "typings": "tsc -v && tsc index.ts --emitDeclarationOnly --declaration --jsx react-jsx --outDir dist || exit 0"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
