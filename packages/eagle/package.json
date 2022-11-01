@@ -10,6 +10,9 @@
       "require": "./dist/umd/index.js",
       "types": "./dist/src/index.d.ts"
     },
+    "./dist/style.css": {
+      "import": "./dist/style.css"
+    },
     "./generated/forms": {
       "import": "./dist/esm/generated/forms.js",
       "require": "./dist/umd/generated/forms.js",
