@@ -1,4 +1,4 @@
-import { Tuna } from "@tower/provider-interface";
+import { Tuna } from "../../tuna";
 
 export type MaintenanceModeTaskArgs =
   Tuna["responses"]["getMaintenanceJobInfo"]["data"];
