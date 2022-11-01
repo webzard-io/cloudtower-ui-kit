@@ -58,7 +58,7 @@
     "coverage": "vitest run --coverage",
     "pregenerate": "rm -rf src/generated",
     "generate": "graphql-codegen --config src/codegen/config/codegen-main.yaml",
-    "typings": "tsc -v && tsc -p tsconfig.build.json || exit 0"
+    "typings": "tsc -v && tsc --emitDeclarationOnly --skipLibCheck -p tsconfig.build.json || exit 0"
   },
   "dependencies": {
     "@cloudtower/sparrow": "^0.5.1",
