@@ -5,35 +5,49 @@
   "module": "./dist/esm/index.js",
   "types": "dist/index.d.ts",
   "exports": {
-    ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/umd/index.js",
-      "types": "./dist/src/index.d.ts"
-    },
-    "generated/forms": {
+    "./generated/forms": {
       "import": "./dist/esm/generated/forms.js",
       "require": "./dist/umd/generated/forms.js",
       "types": "./dist/src/generated/forms.d.ts"
     },
-    "generated/forms2": {
+    "./generated/forms2": {
       "import": "./dist/esm/generated/forms2.js",
       "require": "./dist/umd/generated/forms2.js",
       "types": "./dist/src/generated/forms2.d.ts"
     },
-    "generated/global-search": {
+    "./generated/global-search": {
       "import": "./dist/esm/generated/global-search.js",
       "require": "./dist/umd/generated/global-search.js",
       "types": "./dist/src/generated/global-search.d.ts"
     },
-    "generated/react-hooks": {
+    "./generated/react-hooks": {
       "import": "./dist/esm/generated/react-hooks.js",
       "require": "./dist/umd/generated/react-hooks.js",
       "types": "./dist/src/generated/react-hooks.d.ts"
     },
-    "generated/tables": {
+    "./generated/tables": {
       "import": "./dist/esm/generated/tables.js",
       "require": "./dist/umd/generated/tables.js",
       "types": "./dist/src/generated/tables.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "generated/forms": [
+        "./dist/src/generated/forms.d.ts"
+      ],
+      "generated/forms2": [
+        "./dist/src/generated/forms2.d.ts"
+      ],
+      "generated/global-search": [
+        "./dist/src/generated/global-search.d.ts"
+      ],
+      "generated/react-hooks": [
+        "./dist/src/generated/react-hooks.d.ts"
+      ],
+      "generated/tables": [
+        "./dist/src/generated/tables.d.ts"
+      ]
     }
   },
   "license": "MIT",
