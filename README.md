@@ -79,3 +79,23 @@ Images is copied from @tower/ui
 Graphql Schema not been maintenance in ui-kit, Note the relationship between UI-kit and the Graphql schema.
 
 Codegen Plugin is copying from @tower/codegen
+
+## Packages Introduction
+
+### @cloudtower/sparrow
+
+- UI-Kit Interface And MockImpl
+- Base Component
+
+### @cloudtower/eagle
+
+- Antd-Kit Impl
+- Codegen Component
+
+### @cloudtower/claw
+
+- Codegen Plugin
+
+### @cloudtower/parrot
+
+- I18n for @cloudtower/sparrow's UI-Kit
