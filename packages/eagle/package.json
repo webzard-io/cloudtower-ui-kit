@@ -52,10 +52,10 @@
       "import": "./dist/kit/smartx/style.css"
     },
     "./styles/reset.css": {
-      "import": "./src/style/reset.css"
+      "import": "./src/styles/reset.css"
     },
     "./styles/fonts/font.css": {
-      "import": "./src/style/fonts/font.css"
+      "import": "./src/styles/fonts/font.css"
     }
   },
   "typesVersions": {
