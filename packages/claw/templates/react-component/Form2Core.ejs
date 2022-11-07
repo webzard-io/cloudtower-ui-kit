@@ -8,9 +8,8 @@ import {
   Form as ReactFinalForm,
   FormSpy as ReactFinalFormSpy,
 } from '@smartx/react-final-form';
-import * as FormKit from '../components/form';
-import { kitContext } from '@cloudtower/sparrow';
+import * as FormKit from '../ui-kit/form';
+import { antdKit, kitContext } from '../ui-kit';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { Scalars, Maybe, <%- enums.join(', ') -%> } from './react-hooks';
-import { antdKit } from '../antdKit';

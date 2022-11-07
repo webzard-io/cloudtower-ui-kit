@@ -1,5 +1,5 @@
+/* istanbul ignore file */
 import { PluginFunction as RawPluginFUnction } from "@graphql-codegen/plugin-helpers";
-
 import { Relation } from "./graphql/type-dependencies-map";
 
 type ColumnKey = string;

@@ -1,20 +1,19 @@
-import { PluginFunction } from "@graphql-codegen/plugin-helpers";
-import ejs from "ejs";
-import { DocumentNode, InputValueDefinitionNode, visit } from "graphql";
-import _ from "lodash";
-import { pascalCase } from "pascal-case";
 import * as path from "path";
-
+import ejs from "ejs";
+import { PluginFunction } from "@graphql-codegen/plugin-helpers";
 import {
-  ADD_NEW_LINE,
-  camelcase,
   getDocumentNode,
+  TypeMap,
+  TypeField,
+  camelcase,
+  ADD_NEW_LINE,
   getTypename,
   isListField,
   SCALARS,
-  TypeField,
-  TypeMap,
 } from "../common";
+import _ from "lodash";
+import { DocumentNode, InputValueDefinitionNode, visit } from "graphql";
+import { pascalCase } from "pascal-case";
 
 type Field = {
   key: string;
@@ -217,7 +216,7 @@ const extractFields = (args: ExtractFieldsArgs): Field[] => {
     const _type = { ...type, isList: false };
     return [
       {
-        key: "$i",
+        key: `$i`,
         path: `${pathPrefix}$i`,
         value: formatFieldValue(_type, typeMap, ancestor),
         isObject: !_type.isScalar,
@@ -333,8 +332,11 @@ export const plugin: PluginFunction = async (schema) => {
   }
   forms.sort((a, b) => a.key.localeCompare(b.key));
   const TEMPLATES = {
-    CORE: path.resolve(__dirname, "../templates/react-component/Form2Core.ejs"),
-    FORM: path.resolve(__dirname, "../templates/react-component/Form2.ejs"),
+    CORE: path.resolve(
+      __dirname,
+      "../../templates/react-component/Form2Core.ejs"
+    ),
+    FORM: path.resolve(__dirname, "../../templates/react-component/Form2.ejs"),
   };
   let output = await ejs.renderFile(TEMPLATES.CORE, {
     enums: Array.from(

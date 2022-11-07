@@ -4,13 +4,15 @@
   "description": "claw of eagle",
   "private": true,
   "license": "MIT",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "scripts": {
     "pregenerate": "rm -rf dist",
     "generate": "tsc",
-    "postgenerate": "cp -r src/templates dist/templates"
+    "postgenerate": "cp -r templates dist/templates"
   },
   "devDependencies": {
-    "@graphql-codegen/plugin-helpers": "^2.7.1",
+    "@graphql-codegen/plugin-helpers": "^1.9",
     "@types/ejs": "^3.1.1",
     "@types/pluralize": "^0.0.29",
     "ejs": "^3.1.8",
@@ -19,7 +21,7 @@
     "pluralize": "^8.0.0"
   },
   "peerDependencies": {
-    "@graphql-codegen/plugin-helpers": "^2.7.1",
+    "@graphql-codegen/plugin-helpers": "^1.9",
     "graphql": "^15.7.2"
   }
 }
