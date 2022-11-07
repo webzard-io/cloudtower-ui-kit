@@ -3,7 +3,7 @@ import cs from "classnames";
 import _ from "lodash";
 import React, { useMemo, useState } from "react";
 
-import { ImagesType } from "../generated/images-type";
+import { ImagesType } from "../../../../generated/images-type";
 
 type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
   type: ImagesType;

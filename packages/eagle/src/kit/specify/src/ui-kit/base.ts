@@ -44,9 +44,8 @@ import { TreeProps as AntdTreeProps } from "antd/lib/tree";
 import { ApolloError } from "apollo-boost";
 import React, { ReactNode } from "react";
 
-// import { Modal2Type } from './modal2';
-import { ImagesType } from "../generated/images-type";
-import { Architecture } from "../generated/react-hooks";
+import { ImagesType } from "../../../../generated/images-type";
+import { Architecture } from "../../../../generated/react-hooks";
 
 type BadgeTypeProps = "warning" | "error" | "info";
 type Primitive = "Int" | "Float" | "DateTime" | "Enum" | "String" | "Boolean";
