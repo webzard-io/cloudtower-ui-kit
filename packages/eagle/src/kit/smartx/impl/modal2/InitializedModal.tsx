@@ -1,8 +1,8 @@
-import { kitContext, Modal2Props } from "../../../specify";
 import { ApolloError } from "apollo-boost";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { kitContext, Modal2Props } from "../../../specify";
 import { ModalContentError } from "./Error";
 import BaseModal from "./Modal";
 
