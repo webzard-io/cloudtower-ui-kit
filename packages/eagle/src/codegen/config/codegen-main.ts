@@ -6,6 +6,7 @@ const config = {
     "./src/generated/fetch-by-ids.graphql",
     "./src/codegen/graphql/*.graphql",
   ],
+  hooks: { afterAllFileWrite: ["prettier --write"] },
   generates: {
     "src/generated/react-hooks.ts": {
       plugins: [
@@ -40,7 +41,7 @@ const config = {
       plugins: ["../claw/dist/src/react-component/form.js"],
     },
     "src/generated/forms2.tsx": {
-      schema: "../../../tower/packages/ui/config/form-schema.graphql",
+      schema: "./src/codegen/config/form-schema.graphql",
       plugins: ["../claw/dist/src/react-component/form2.js"],
     },
     // "src/generated/type-dependencies-map.ts": {
@@ -64,7 +65,7 @@ const config = {
   },
   config: {
     path: "src/codegen/config/codegen-config.json",
-    imagesPath: "src/images",
+    imagesPath: "src/kit/specify/src/images",
   },
 };
 

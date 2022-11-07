@@ -5,6 +5,9 @@ documents:
   - "./src/generated/global-search.graphql"
   - "./src/generated/fetch-by-ids.graphql"
   - "./src/codegen/graphql/*.graphql"
+hooks:
+  afterAllFileWrite:
+    - prettier --write
 generates:
   src/generated/react-hooks.ts:
     plugins:
