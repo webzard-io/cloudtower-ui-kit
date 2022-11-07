@@ -1,4 +1,7 @@
-import { UploadResourceType, UploadTaskStatus } from "../generated/react-hooks";
+import {
+  UploadResourceType,
+  UploadTaskStatus,
+} from "../../../generated/react-hooks";
 
 type UploadTask = {
   id: string;

@@ -1,4 +1,4 @@
-import { TooltipProps } from "@cloudtower/sparrow";
+import { TooltipProps } from "../../../specify";
 import { Tooltip as AntdTooltip } from "antd";
 import cs from "classnames";
 import React, { useCallback, useEffect, useMemo, useRef } from "react";

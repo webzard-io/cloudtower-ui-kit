@@ -3,15 +3,16 @@ import {
   EllipsisOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
-import { Typo } from "@cloudtower/sparrow";
-import { ButtonProps } from "@cloudtower/sparrow";
 import { Space } from "antd";
 import cs from "classnames";
 import _ from "lodash";
 import React from "react";
 import { withDesign } from "storybook-addon-designs";
 
+import { Typo } from "../../../../styles";
+import { ButtonProps } from "../../../specify";
 import { getAntdKit } from "../antd";
+
 const kit = getAntdKit();
 
 const Title: React.FC = ({ children }) => (

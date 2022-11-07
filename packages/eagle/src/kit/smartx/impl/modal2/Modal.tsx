@@ -1,5 +1,5 @@
 import { CloseCircleFilled } from "@ant-design/icons";
-import { kitContext, Modal2Props } from "@cloudtower/sparrow";
+import { kitContext, Modal2Props } from "../../../specify";
 import { Modal as AntdModal } from "antd";
 import cs from "classnames";
 import { isNil } from "lodash";

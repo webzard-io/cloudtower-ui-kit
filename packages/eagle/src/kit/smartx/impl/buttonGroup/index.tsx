@@ -1,4 +1,4 @@
-import { ButtonGroupType } from "@cloudtower/sparrow";
+import { ButtonGroupType } from "../../../specify";
 import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
 import React from "react";
