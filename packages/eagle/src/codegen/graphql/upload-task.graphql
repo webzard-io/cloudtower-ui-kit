@@ -1,0 +1,35 @@
+query getUploadTaskArgs($where: UploadTaskWhereUniqueInput!) {
+  uploadTask(where: $where) {
+    id
+    args
+  }
+}
+
+query getUploadTaskStatus($where: UploadTaskWhereUniqueInput!) {
+  uploadTask(where: $where) {
+    id
+    status
+  }
+}
+
+query getUploadTasks($where: UploadTaskWhereInput!) {
+  uploadTasks(where: $where) {
+    id
+    status
+  }
+}
+
+mutation deleteUploadTask($where: UploadTaskWhereUniqueInput!) {
+  deleteUploadTask(where: $where) {
+    id
+  }
+}
+
+mutation updateUploadTask(
+  $where: UploadTaskWhereUniqueInput!
+  $data: UploadTaskUpdateInput!
+) {
+  updateUploadTask(where: $where, data: $data) {
+    id
+  }
+}

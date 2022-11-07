@@ -1,0 +1,329 @@
+query iscsiLunInfo($where: IscsiLunWhereUniqueInput!) {
+  iscsiLun(where: $where) {
+    id
+    name
+    lun_id
+    replica_num
+    assigned_size
+    unique_size
+    shared_size
+    allowed_initiators
+    thin_provision
+    stripe_num
+    stripe_size
+    iops
+    iops_rd
+    iops_wr
+    bps
+    bps_rd
+    bps_wr
+    iops_max
+    iops_max_length
+    iops_rd_max
+    iops_rd_max_length
+    iops_wr_max
+    iops_wr_max_length
+    bps_max
+    bps_max_length
+    bps_rd_max
+    bps_rd_max_length
+    bps_wr_max
+    bps_wr_max_length
+    zbs_volume_id
+    iscsi_target {
+      id
+      internal
+      iqn_whitelist
+      cluster {
+        id
+        name
+        type
+        connect_state
+        disconnected_reason
+        disconnected_date
+        version
+        license_type
+        license_expire_date
+        nvmf_enabled
+        software_edition
+        datacenters {
+          id
+          name
+        }
+        hosts {
+          id
+          name
+          data_ip
+        }
+        settings {
+          id
+          enabled_iscsi
+        }
+      }
+    }
+    consistency_group {
+      id
+      name
+    }
+  }
+}
+
+query iscsiLunEditInfo($where: IscsiLunWhereUniqueInput!) {
+  iscsiLun(where: $where) {
+    id
+    name
+    lun_id
+    replica_num
+    assigned_size
+    unique_size
+    shared_size
+    allowed_initiators
+    thin_provision
+    iops
+    iops_rd
+    iops_wr
+    bps
+    bps_rd
+    bps_wr
+    iops_max
+    iops_max_length
+    iops_rd_max
+    iops_rd_max_length
+    iops_wr_max
+    iops_wr_max_length
+    bps_max
+    bps_max_length
+    bps_rd_max
+    bps_rd_max_length
+    bps_wr_max
+    bps_wr_max_length
+    iscsi_target {
+      id
+      internal
+      adaptive_iqn_whitelist
+      iqn_whitelist
+      ip_whitelist
+      cluster {
+        id
+        type
+        version
+        connect_state
+        disconnected_reason
+        disconnected_date
+      }
+    }
+  }
+}
+
+query getIscsiTargetInfo($where: IscsiTargetWhereUniqueInput!) {
+  iscsiTarget(where: $where) {
+    id
+    internal
+    cluster {
+      id
+      connect_state
+      disconnected_reason
+      disconnected_date
+    }
+  }
+}
+
+query getIscsiLunAndSnapshots($where: IscsiLunWhereUniqueInput!) {
+  iscsiLun(where: $where) {
+    id
+    name
+    snapshot_num
+  }
+}
+
+query checkIscsiLun($where: IscsiLunWhereInput!, $first: Int = 1) {
+  iscsiLuns(where: $where, first: $first) {
+    id
+    name
+    lun_id
+  }
+}
+
+query checkIscsiLunByLunId($lunId: Int!, $clusterId: ID!, $first: Int = 1) {
+  iscsiLuns(
+    where: { lun_id: $lunId, iscsi_target: { cluster: { id: $clusterId } } }
+    first: $first
+  ) {
+    id
+  }
+}
+
+query iscsiLunsConnection($id: ID!) {
+  iscsiLunsConnection(where: { iscsi_target: { id: $id } }) {
+    aggregate {
+      count
+    }
+  }
+  iscsiLunSnapshotsConnection(where: { iscsi_target: { id: $id } }) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query getIscsiLunsName($where: IscsiLunWhereInput!) {
+  iscsiLuns(where: $where) {
+    id
+    name
+    zbs_volume_id
+  }
+}
+
+query getIscsiTargetCluster($where: IscsiTargetWhereUniqueInput!) {
+  iscsiTarget(where: $where) {
+    id
+    cluster {
+      id
+    }
+  }
+}
+
+mutation createIscsiLun(
+  $data: IscsiLunCreateInput!
+  $effect: CreateIscsiLunEffect!
+) {
+  createIscsiLun(data: $data, effect: $effect) {
+    id
+  }
+}
+
+mutation updateIscsiLun(
+  $data: IscsiLunUpdateInput!
+  $where: IscsiLunWhereUniqueInput!
+  $effect: UpdateIscsiLunEffect!
+) {
+  updateIscsiLun(data: $data, where: $where, effect: $effect) {
+    id
+    name
+    assigned_size
+    allowed_initiators
+  }
+}
+
+mutation deleteIscsiLun(
+  $where: IscsiLunWhereUniqueInput!
+  $effect: DeleteIscsiLunEffect!
+) {
+  deleteIscsiLun(where: $where, effect: $effect) {
+    id
+  }
+}
+
+mutation createIscsiLunSnapshot($data: IscsiLunSnapshotCreateInput!) {
+  createIscsiLunSnapshot(data: $data) {
+    id
+  }
+}
+
+mutation createIscsiLunFromSnapshot(
+  $data: IscsiLunCreateInput!
+  $effect: CreateIscsiLunEffect!
+) {
+  createIscsiLun(data: $data, effect: $effect) {
+    id
+  }
+}
+
+mutation rollbackLunSnapshot(
+  $where: IscsiLunWhereUniqueInput!
+  $effect: UpdateIscsiLunEffect!
+) {
+  updateIscsiLun(data: {}, where: $where, effect: $effect) {
+    id
+  }
+}
+
+mutation deleteIscsiLunSnapshot($where: IscsiLunSnapshotWhereUniqueInput!) {
+  deleteIscsiLunSnapshot(where: $where) {
+    id
+  }
+}
+
+query querySelectLunInfo($where: IscsiLunWhereInput!) {
+  iscsiLuns(where: $where) {
+    id
+    name
+    iscsi_target {
+      id
+      name
+    }
+  }
+}
+## add this query to namespace
+query querySelectNamespaceInfo($where: NvmfNamespaceWhereInput!) {
+  nvmfNamespaces(where: $where) {
+    id
+    name
+    nvmf_subsystem {
+      id
+      name
+    }
+  }
+}
+
+query getLunSnapshotsForDeleteLun($where: IscsiLunSnapshotWhereInput!) {
+  iscsiLunSnapshots(where: $where) {
+    id
+    unique_size
+  }
+}
+
+query getLunForAscensionReplica($where: IscsiLunWhereUniqueInput!) {
+  iscsiLun(where: $where) {
+    id
+    name
+    replica_num
+    thin_provision
+    assigned_size
+    unique_size
+    shared_size
+    iscsi_target {
+      id
+      cluster {
+        id
+        total_data_capacity
+        used_data_space
+        failure_data_space
+      }
+    }
+  }
+}
+
+mutation copyIscsiLun(
+  $data: IscsiLunCreateInput!
+  $effect: CreateIscsiLunEffect!
+) {
+  createIscsiLun(data: $data, effect: $effect) {
+    id
+  }
+}
+
+query getCopyLunInfo($where: IscsiLunWhereUniqueInput!) {
+  iscsiLun(where: $where) {
+    id
+    lun_id
+    name
+    iscsi_target {
+      id
+      local_id
+      cluster {
+        id
+      }
+      luns {
+        id
+        name
+      }
+    }
+  }
+}
+
+mutation batchUpdateIscsiLun($data: BatchUpdateIscsiLunInput!) {
+  batchUpdateIscsiLun(data: $data) {
+    taskId
+  }
+}

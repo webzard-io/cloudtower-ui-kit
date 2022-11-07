@@ -1,0 +1,79 @@
+query datacentersSelect {
+  datacenters {
+    id
+    name
+    cluster_num
+  }
+}
+
+query datacenterBasic($where: DatacenterWhereUniqueInput!) {
+  datacenter(where: $where) {
+    id
+    name
+    organization {
+      id
+    }
+    clusters {
+      id
+      name
+    }
+    zones {
+      id
+    }
+  }
+}
+
+query datacenterDetail($where: DatacenterWhereUniqueInput!) {
+  datacenter(where: $where) {
+    id
+    name
+    cluster_num
+    host_num
+    vm_num
+    total_data_capacity
+    used_data_space
+    total_cpu_hz
+    used_cpu_hz
+    total_memory_bytes
+    used_memory_bytes
+  }
+}
+
+mutation createDatacenter($data: DatacenterCreateInput!) {
+  createDatacenter(data: $data) {
+    id
+    name
+  }
+}
+
+mutation updateDatacenter(
+  $data: DatacenterUpdateInput!
+  $where: DatacenterWhereUniqueInput!
+) {
+  updateDatacenter(data: $data, where: $where) {
+    id
+    name
+    cluster_num
+    host_num
+    vm_num
+    total_data_capacity
+    used_data_space
+    total_cpu_hz
+    used_cpu_hz
+    total_memory_bytes
+    used_memory_bytes
+    clusters {
+      id
+      datacenters {
+        id
+        name
+      }
+    }
+  }
+}
+
+mutation deleteDatacenter($where: DatacenterWhereUniqueInput!) {
+  deleteDatacenter(where: $where) {
+    id
+  }
+}

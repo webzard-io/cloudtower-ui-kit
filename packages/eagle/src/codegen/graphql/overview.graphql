@@ -1,0 +1,260 @@
+query allClustersCpu($where: ClusterWhereInput) {
+  clusters(where: $where) {
+    id
+    total_cpu_hz
+    total_cpu_cores
+    used_cpu_hz
+    hypervisor
+    provisioned_cpu_cores
+    provisioned_ratio
+    provisioned_cpu_cores_for_active_vm
+    provisioned_for_active_vm_ratio
+    reserved_cpu_cores_for_system_service
+    vcpu_count_of_active_vms_nonexclusive
+    vcpu_count_of_all_vms_nonexclusive
+    cpu_over_allocation_ratio_for_all_vms
+    cpu_over_allocation_ratio_for_active_vms
+    available_cpus_count_for_vms
+    version
+    type
+    zones {
+      id
+      total_cpu_hz
+      total_cpu_cores
+    }
+  }
+}
+
+query allMemory($hostWhere: HostWhereInput, $clusterWhere: ClusterWhereInput) {
+  hosts(where: $hostWhere) {
+    id
+    total_memory_bytes
+    running_pause_vm_memory_bytes
+    allocatable_memory_bytes
+    os_memory_bytes
+  }
+  clusters(where: $clusterWhere) {
+    id
+    total_memory_bytes
+    used_memory_bytes
+  }
+}
+
+query allClustersSpace(
+  $where: ClusterWhereInput
+  $zoneWhere: ZoneWhereInput
+  $includeZone: Boolean!
+) {
+  clusters(where: $where) {
+    id
+    total_data_capacity
+    used_data_space
+    failure_data_space
+    stretch
+    zones {
+      id
+      total_data_capacity
+      used_data_space
+      failure_data_space
+    }
+  }
+  zones(where: $zoneWhere) @include(if: $includeZone) {
+    id
+    total_data_capacity
+    used_data_space
+    failure_data_space
+  }
+}
+
+query allClustersType($where: ClusterWhereInput) {
+  clusters(where: $where) {
+    id
+    type
+    hypervisor
+    connect_state
+    disconnected_reason
+    disconnected_date
+  }
+}
+
+query allHostsStatus($where: HostWhereInput) {
+  hosts(where: $where) {
+    id
+    state
+    status
+    host_state {
+      state
+    }
+  }
+}
+
+query allDisksType($where: DiskWhereInput!) {
+  disks(where: $where, orderBy: path_ASC) {
+    id
+    path
+    size
+    type
+    healthy
+    mounted
+    usage_status
+    health_status
+    host {
+      id
+      name
+    }
+  }
+}
+
+query allClustersVmsStatus(
+  $where: ClusterWhereInput
+  $zoneWhere: ZoneWhereInput
+  $includeZone: Boolean!
+) {
+  clusters(where: $where) {
+    id
+    vm_num
+    running_vm_num
+    suspended_vm_num
+    stopped_vm_num
+    zones {
+      id
+      vm_num
+      running_vm_num
+      suspended_vm_num
+      stopped_vm_num
+    }
+  }
+  zones(where: $zoneWhere) @include(if: $includeZone) {
+    id
+    vm_num
+    running_vm_num
+    suspended_vm_num
+    stopped_vm_num
+  }
+}
+
+query allClustersRecover($where: ClusterWhereInput) {
+  clusters(where: $where) {
+    id
+    name
+    recover_data_size
+    recover_speed
+  }
+}
+
+query allIscsiConnections($where: ClusterWhereInput!) {
+  iscsiConnections(where: { cluster: $where }) {
+    id
+    initiator_ip
+    client_port
+  }
+}
+
+query getIscsiVip($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    iscsi_vip
+  }
+}
+
+query allIscsiEntities($where: ClusterWhereInput!) {
+  iscsiTargetsConnection(where: { cluster: $where, internal: false }) {
+    aggregate {
+      count
+    }
+  }
+  iscsiLunsConnection(
+    where: { iscsi_target: { cluster: $where, internal: false } }
+  ) {
+    aggregate {
+      count
+    }
+  }
+  iscsiLunSnapshotsConnection(
+    where: { iscsi_target: { cluster: $where, internal: false } }
+  ) {
+    aggregate {
+      count
+    }
+  }
+  nvmfSubsystemsConnection(where: { cluster: $where }) {
+    aggregate {
+      count
+    }
+  }
+  nvmfNamespacesConnection(where: { nvmf_subsystem: { cluster: $where } }) {
+    aggregate {
+      count
+    }
+  }
+  nvmfNamespaceSnapshotsConnection(
+    where: { nvmf_subsystem: { cluster: $where } }
+  ) {
+    aggregate {
+      count
+    }
+  }
+
+  clusters(where: $where) {
+    id
+    nvmf_enabled
+    software_edition
+  }
+}
+
+query clusterMetroInfo($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    name
+    stretch
+    hypervisor
+    zones {
+      id
+      is_preferred
+      host_num
+      vm_num
+    }
+    witness {
+      id
+      name
+    }
+    metro_availability_checklist {
+      primaryZone {
+        status
+        critical
+        notice
+        info
+      }
+      secondaryZone {
+        status
+        critical
+        notice
+        info
+      }
+      witness {
+        status
+        critical
+        notice
+        info
+      }
+      zoneAndZone {
+        status
+        critical
+        notice
+        info
+      }
+      primaryZoneAndWitness {
+        status
+        critical
+        notice
+        info
+      }
+      secondaryZoneAndWitness {
+        status
+        critical
+        notice
+        info
+      }
+    }
+  }
+}

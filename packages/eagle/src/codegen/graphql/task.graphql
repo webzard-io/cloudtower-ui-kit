@@ -1,0 +1,307 @@
+query taskStatusCount {
+  pending: tasksConnection(where: { status: PENDING, internal: false }) {
+    aggregate {
+      count
+    }
+  }
+  executing: tasksConnection(where: { status: EXECUTING, internal: false }) {
+    aggregate {
+      count
+    }
+  }
+  failed: tasksConnection(where: { status: FAILED, internal: false }) {
+    aggregate {
+      count
+    }
+  }
+  successed: tasksConnection(where: { status: SUCCESSED, internal: false }) {
+    aggregate {
+      count
+    }
+  }
+  progress_collect: tasks(where: { status: EXECUTING, internal: false }) {
+    progress
+  }
+}
+
+query taskDetail($where: TaskWhereUniqueInput!) {
+  task(where: $where) {
+    local_created_at
+    status
+    finished_at
+    started_at
+    description
+    steps {
+      key
+      finished
+    }
+    id
+    snapshot
+    progress
+    error_code
+    error_message
+    cluster {
+      id
+      name
+    }
+  }
+}
+
+query taskDistributeDetail($where: TaskWhereUniqueInput!) {
+  task(where: $where) {
+    local_created_at
+    status
+    finished_at
+    started_at
+    description
+    args
+    steps {
+      key
+      finished
+    }
+    id
+    snapshot
+    progress
+    error_code
+    error_message
+    cluster {
+      id
+      name
+    }
+  }
+}
+
+query taskHostMaintenanceDetail($where: TaskWhereUniqueInput!) {
+  task(where: $where) {
+    local_created_at
+    status
+    finished_at
+    started_at
+    description
+    args
+    steps {
+      key
+      finished
+    }
+    id
+    snapshot
+    progress
+    error_code
+    error_message
+    cluster {
+      id
+      name
+    }
+  }
+}
+
+query getTasks($where: TaskWhereInput) {
+  tasks(where: $where) {
+    id
+    steps {
+      key
+      finished
+    }
+    progress
+    started_at
+    finished_at
+    status
+    snapshot
+    description
+    error_message
+    cluster {
+      id
+      name
+      version
+      type
+      architecture
+    }
+    user {
+      id
+    }
+    args
+    resource_mutation
+    internal
+  }
+}
+
+subscription task {
+  task {
+    mutation
+    node {
+      id
+      steps {
+        key
+        finished
+        current
+        total
+        per_second
+      }
+      progress
+      started_at
+      finished_at
+      status
+      snapshot
+      description
+      error_code
+      error_message
+      cluster {
+        id
+        name
+        version
+        type
+        architecture
+      }
+      user {
+        id
+      }
+      args
+      resource_mutation
+      resource_id
+      internal
+    }
+    previousValues {
+      id
+      status
+    }
+  }
+}
+
+query getTaskPosition($before: String, $order: TaskOrderByInput) {
+  tasksConnection(
+    before: $before
+    orderBy: $order
+    where: { internal: false }
+  ) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query taskTable(
+  $where: TaskWhereInput
+  $orderBy: TaskOrderByInput
+  $skip: Int
+  $first: Int
+) {
+  tasks(where: $where, orderBy: $orderBy, skip: $skip, first: $first) {
+    id
+    description
+    status
+    snapshot
+    steps {
+      key
+      finished
+      current
+      total
+      per_second
+    }
+    progress
+    local_created_at
+    started_at
+    finished_at
+    error_code
+    error_message
+    cluster {
+      id
+      name
+      version
+      type
+      architecture
+    }
+    user {
+      id
+      name
+    }
+    args
+    internal
+    resource_mutation
+  }
+  tasksConnection(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query previewTasks(
+  $where: TaskWhereInput
+  $orderBy: TaskOrderByInput
+  $skip: Int
+  $first: Int
+) {
+  tasks(where: $where, orderBy: $orderBy, skip: $skip, first: $first) {
+    id
+    description
+    status
+    steps {
+      key
+      finished
+      current
+      total
+      per_second
+    }
+    progress
+    local_created_at
+    started_at
+    finished_at
+    error_code
+    error_message
+    args
+    cluster {
+      id
+      version
+      type
+      architecture
+      name
+    }
+    resource_mutation
+    snapshot
+  }
+  tasksConnection(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query getTaskDescription($where: TaskWhereUniqueInput!) {
+  task(where: $where) {
+    id
+    description
+  }
+}
+
+query getClusterUpgradeTask($where: TaskWhereUniqueInput!) {
+  task(where: $where) {
+    id
+    args
+    status
+    steps {
+      key
+      finished
+    }
+    error_code
+    error_message
+    snapshot
+  }
+}
+
+mutation updateTask(
+  $where: TaskWhereUniqueInput!
+  $data: TaskUpdateInput!
+  $effect: UpdateTaskEffect
+) {
+  updateTask(where: $where, data: $data, effect: $effect) {
+    id
+    status
+  }
+}
+
+query getTaskForAscensionReplica($where: TaskWhereUniqueInput!) {
+  task(where: $where) {
+    args
+    id
+  }
+}

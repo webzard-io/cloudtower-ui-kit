@@ -1,0 +1,382 @@
+query nvmfNamespaceBasic($where: NvmfNamespaceWhereUniqueInput!) {
+  nvmfNamespace(where: $where) {
+    id
+    name
+    namespace_id
+    is_shared
+    zbs_volume_id
+    nvmf_subsystem {
+      id
+      name
+      cluster {
+        id
+        name
+        connect_state
+        disconnected_reason
+        disconnected_date
+        type
+        version
+        license_type
+        license_expire_date
+        nvmf_enabled
+        software_edition
+        hosts {
+          id
+          name
+          data_ip
+        }
+        settings {
+          id
+          enabled_iscsi
+        }
+      }
+    }
+    consistency_group {
+      id
+      name
+    }
+  }
+}
+
+query nvmfNamespaceInfo($where: NvmfNamespaceWhereUniqueInput!) {
+  nvmfNamespace(where: $where) {
+    id
+    name
+    namespace_id
+    replica_num
+    assigned_size
+    unique_size
+    shared_size
+    thin_provision
+    stripe_num
+    stripe_size
+    is_shared
+    iops
+    iops_rd
+    iops_wr
+    bps
+    bps_rd
+    bps_wr
+    iops_max
+    iops_max_length
+    iops_rd_max
+    iops_rd_max_length
+    iops_wr_max
+    iops_wr_max_length
+    bps_max
+    bps_max_length
+    bps_rd_max
+    bps_rd_max_length
+    bps_wr_max
+    bps_wr_max_length
+    nqn_whitelist
+    nvmf_subsystem {
+      id
+      name
+      nqn_whitelist
+      policy
+      cluster {
+        id
+        name
+        connect_state
+        disconnected_reason
+        disconnected_date
+        version
+        type
+        datacenters {
+          id
+          name
+        }
+      }
+    }
+    namespace_group {
+      id
+      name
+    }
+  }
+}
+
+query editNvmfNamespaceInfo($where: NvmfNamespaceWhereUniqueInput!) {
+  nvmfNamespace(where: $where) {
+    id
+    name
+    namespace_id
+    assigned_size
+    iops
+    iops_rd
+    iops_wr
+    bps
+    bps_rd
+    bps_wr
+    nqn_whitelist
+    iops_max
+    iops_max_length
+    iops_rd_max
+    iops_rd_max_length
+    iops_wr_max
+    iops_wr_max_length
+    bps_max
+    bps_max_length
+    bps_rd_max
+    bps_rd_max_length
+    bps_wr_max
+    bps_wr_max_length
+    nvmf_subsystem {
+      id
+      name
+      nqn_whitelist
+      ip_whitelist
+      policy
+    }
+    namespace_group {
+      id
+      name
+    }
+  }
+}
+
+query getSubsystemCluster($where: NvmfSubsystemWhereUniqueInput!) {
+  nvmfSubsystem(where: $where) {
+    id
+    name
+    cluster {
+      id
+      connect_state
+      disconnected_reason
+      disconnected_date
+    }
+  }
+}
+
+mutation createNvmfNamespaceSnapshot($data: NvmfNamespaceSnapshotCreateInput!) {
+  createNvmfNamespaceSnapshot(data: $data) {
+    id
+  }
+}
+
+mutation createNvmfNamespace($data: NvmfNamespaceCreateInput!) {
+  createNvmfNamespace(data: $data) {
+    id
+  }
+}
+
+mutation updateNvmfNamespace(
+  $data: NvmfNamespaceUpdateInput!
+  $where: NvmfNamespaceWhereUniqueInput!
+) {
+  updateNvmfNamespace(data: $data, where: $where) {
+    id
+  }
+}
+
+mutation deleteNvmfNamespace(
+  $where: NvmfNamespaceWhereUniqueInput!
+  $effect: DeleteNvmfNamespaceEffect!
+) {
+  deleteNvmfNamespace(where: $where, effect: $effect) {
+    id
+  }
+}
+
+query nvmfSubsystemForCreateNamespace($where: NvmfSubsystemWhereInput!) {
+  nvmfSubsystems(where: $where) {
+    id
+    cluster {
+      id
+      version
+      type
+      hosts {
+        id
+      }
+      stretch
+      license_type
+      license_expire_date
+      nvmf_enabled
+      software_edition
+    }
+    nqn_whitelist
+    ip_whitelist
+    replica_num
+    policy
+    iops
+    iops_rd
+    iops_wr
+    bps
+    bps_rd
+    bps_wr
+    iops_max
+    iops_max_length
+    iops_rd_max
+    iops_rd_max_length
+    iops_wr_max
+    iops_wr_max_length
+    bps_max
+    bps_max_length
+    bps_rd_max
+    bps_rd_max_length
+    bps_wr_max
+    bps_wr_max_length
+    namespaces {
+      id
+    }
+  }
+}
+
+query checkNvmfNamespaceName(
+  $where: NvmfNamespaceWhereInput!
+  $first: Int = 1
+) {
+  nvmfNamespaces(where: $where, first: $first) {
+    id
+  }
+}
+
+query getCopyNamespaceInfo($where: NvmfNamespaceWhereUniqueInput!) {
+  nvmfNamespace(where: $where) {
+    id
+    is_shared
+    namespace_group {
+      id
+      namespaces {
+        id
+        name
+      }
+    }
+    nvmf_subsystem {
+      id
+      local_id
+      policy
+      cluster {
+        id
+      }
+      namespaces {
+        id
+        name
+      }
+    }
+  }
+}
+
+query getNamespaceSnapshotInfo($where: NvmfNamespaceSnapshotWhereUniqueInput!) {
+  nvmfNamespaceSnapshot(where: $where) {
+    id
+    nvmf_subsystem {
+      id
+      policy
+      cluster {
+        id
+      }
+      namespaces {
+        id
+        name
+      }
+    }
+    nvmf_namespace {
+      id
+      is_shared
+      namespace_group {
+        id
+        namespaces {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+mutation createNvmfNamespaceFromSnapshot(
+  $data: NvmfNamespaceCreateInput!
+  $effect: CreateNvmfNamespaceEffect
+) {
+  createNvmfNamespace(data: $data, effect: $effect) {
+    id
+  }
+}
+
+mutation rollbackNamespaceSnapshot(
+  $effect: UpdateNvmfNamespaceEffect
+  $where: NvmfNamespaceWhereUniqueInput!
+) {
+  updateNvmfNamespace(data: {}, effect: $effect, where: $where) {
+    id
+  }
+}
+
+query nvmfNamespaceforRollback($where: NvmfNamespaceSnapshotWhereUniqueInput!) {
+  nvmfNamespaceSnapshot(where: $where) {
+    id
+    nvmf_namespace {
+      id
+      name
+    }
+  }
+}
+
+mutation deleteNvmfNamespaceSnapshot(
+  $where: NvmfNamespaceSnapshotWhereUniqueInput!
+) {
+  deleteNvmfNamespaceSnapshot(where: $where) {
+    id
+  }
+}
+
+query getNamespaceSnapshotsForDeleteNamespace(
+  $where: NvmfNamespaceSnapshotWhereInput!
+) {
+  nvmfNamespaceSnapshots(where: $where) {
+    id
+    unique_size
+  }
+}
+
+query getNvmfNamespacesName($where: NvmfNamespaceWhereInput!) {
+  nvmfNamespaces(where: $where) {
+    id
+    name
+    zbs_volume_id
+  }
+}
+
+query subsystemForNamespaceTable($id: ID!) {
+  nvmfSubsystem(where: { id: $id }) {
+    id
+    policy
+  }
+}
+
+query getNamespaceForAscensionReplica($where: NvmfNamespaceWhereUniqueInput!) {
+  nvmfNamespace(where: $where) {
+    id
+    name
+    replica_num
+    thin_provision
+    assigned_size
+    unique_size
+    shared_size
+    nvmf_subsystem {
+      id
+      cluster {
+        id
+        total_data_capacity
+        used_data_space
+        failure_data_space
+      }
+    }
+  }
+}
+
+mutation batchUpdateNvmfNamespace($data: BatchUpdateNvmfNamespaceInput!) {
+  batchUpdateNvmfNamespace(data: $data) {
+    taskId
+  }
+}
+
+mutation copyNvmfNamespace(
+  $data: NvmfNamespaceCreateInput!
+  $effect: CreateNvmfNamespaceEffect
+) {
+  createNvmfNamespace(data: $data, effect: $effect) {
+    id
+  }
+}

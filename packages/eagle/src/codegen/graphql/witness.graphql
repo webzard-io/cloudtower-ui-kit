@@ -1,0 +1,9 @@
+query witnessServices($where: WitnessWhereUniqueInput!) {
+  witnessServices(where: $where) {
+    id
+    name
+    state
+    state_duration
+    role
+  }
+}

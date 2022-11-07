@@ -1,0 +1,6 @@
+query cloudTowerVersion {
+  deploys(first: 1) {
+    id
+    version
+  }
+}

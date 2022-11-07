@@ -1,0 +1,14 @@
+schema: "../../../tower/packages/server/src/generated/schema.graphql"
+generates:
+  src/generated/query.graphql:
+    plugins:
+      - ../claw/dist/src/graphql/document.js
+  src/generated/global-search.graphql:
+    plugins:
+      - ../claw/dist/src/graphql/global-search.js
+  src/generated/fetch-by-ids.graphql:
+    plugins:
+      - ../claw/dist/src/graphql/fetch-by-ids.js
+
+config:
+  path: src/codegen/config/codegen-config.json

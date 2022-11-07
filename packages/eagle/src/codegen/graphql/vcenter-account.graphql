@@ -1,0 +1,30 @@
+mutation createVcenterAccount($data: VcenterAccountCreateInput!) {
+  createVcenterAccount(data: $data) {
+    id
+    local_id
+    cluster {
+      id
+    }
+    ip
+    port
+    username
+    is_valid
+  }
+}
+
+mutation updateVcenterAccount(
+  $data: VcenterAccountUpdateInput!
+  $where: VcenterAccountWhereUniqueInput!
+) {
+  updateVcenterAccount(data: $data, where: $where) {
+    id
+    local_id
+    cluster {
+      id
+    }
+    ip
+    port
+    username
+    is_valid
+  }
+}

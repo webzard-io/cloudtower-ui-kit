@@ -1,0 +1,145 @@
+query vmVolumeName($where: VmVolumeWhereUniqueInput!) {
+  vmVolume(where: $where) {
+    id
+    name
+    sharing
+    vm_disks {
+      id
+      vm {
+        id
+        name
+      }
+    }
+    cluster {
+      id
+      version
+      connect_state
+      disconnected_reason
+      disconnected_date
+      type
+    }
+    entityAsyncStatus
+  }
+}
+
+query vmVolumeInfo($where: VmVolumeWhereUniqueInput!) {
+  vmVolume(where: $where) {
+    id
+    local_id
+    size
+    sharing
+    mounting
+    vm_disks {
+      id
+      vm {
+        id
+        name
+        vm_tools_status
+        in_recycle_bin
+      }
+      device
+    }
+    lun {
+      id
+      iscsi_target {
+        id
+      }
+    }
+    local_created_at
+    path
+    unique_size
+    guest_used_size
+    guest_size_usage
+    elf_storage_policy
+    cluster {
+      id
+      name
+      stretch
+      type
+      version
+      datacenters {
+        id
+        name
+      }
+      version
+      type
+    }
+  }
+}
+
+query vmVolumeMetricTab($where: VmVolumeWhereUniqueInput!) {
+  vmVolume(where: $where) {
+    id
+    local_id
+    name
+    cluster {
+      id
+    }
+  }
+}
+
+mutation deleteVmVolume($where: VmVolumeWhereUniqueInput!) {
+  deleteVmVolume(where: $where) {
+    id
+  }
+}
+
+query vmVolumeForExport($where: VmVolumeWhereUniqueInput!) {
+  vmVolume(where: $where) {
+    id
+    name
+    sharing
+    vm_disks {
+      id
+      vm {
+        id
+        name
+        status
+      }
+    }
+    cluster {
+      id
+      version
+      type
+    }
+  }
+}
+
+query vmVolumesForExport($where: VmVolumeWhereInput!) {
+  vmVolumes(where: $where) {
+    id
+    name
+    sharing
+    vm_disks {
+      id
+      vm {
+        id
+        name
+        status
+      }
+    }
+    cluster {
+      id
+      version
+      type
+    }
+  }
+}
+
+mutation exportVmVolume(
+  $data: ExportVmVolumeInput!
+  $where: VmVolumeWhereUniqueInput!
+) {
+  exportVmVolume(where: $where, data: $data) {
+    id
+  }
+}
+
+mutation importVmVolume(
+  $data: ImportVmVolumeArgsData!
+  $effect: ImportVmVolumeEffect!
+) {
+  importVmVolume(data: $data, effect: $effect) {
+    id
+  }
+}

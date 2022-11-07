@@ -71,12 +71,13 @@
       "fields": [
         "id",
         "name",
+        "description",
         "status",
         "manufacturer",
         "usb_type",
         "size",
         {
-          "key": "vm",
+          "key": "vms",
           "fields": ["name", "id", "status"]
         },
         {
@@ -87,7 +88,9 @@
             "connect_state",
             "disconnected_reason",
             "disconnected_date",
-            "stretch"
+            "stretch",
+            "type",
+            "version"
           ]
         },
         {
@@ -111,9 +114,10 @@
         },
         {
           "key": "host",
-          "fields": ["name", "id"]
+          "fields": ["name", "id", "status"]
         }
-      ]
+      ],
+      "invisibleFields": ["entityAsyncStatus"]
     },
     {
       "type": "datacenter",
@@ -187,6 +191,18 @@
         {
           "key": "labels",
           "fields": ["id", "key", "value"]
+        },
+        {
+          "key": "hosts",
+          "alias": "usb_devices_num",
+          "fields": [
+            "id",
+            "name",
+            {
+              "key": "usb_devices",
+              "fields": ["name", "id"]
+            }
+          ]
         }
       ],
       "invisibleFields": [
@@ -330,6 +346,10 @@
               "fields": ["id", "total_vf_num", "used_vf_num", "is_sriov"]
             }
           ]
+        },
+        {
+          "key": "gpu_devices",
+          "fields": ["id"]
         },
         "vm_usage",
         {
@@ -527,9 +547,14 @@
         "cpu_over_allocation_ratio_for_all_vms",
         "vcpu_count_of_active_vms_nonexclusive",
         "cpu_over_allocation_ratio_for_active_vms",
+        "iommu",
         {
           "key": "labels",
           "fields": ["id", "key", "value"]
+        },
+        {
+          "key": "usb_devices",
+          "fields": ["id", "name"]
         }
       ],
       "invisibleFields": [
@@ -553,7 +578,8 @@
         {
           "key": "host_state",
           "fields": ["state"]
-        }
+        },
+        "entityAsyncStatus"
       ]
     },
     {
@@ -567,6 +593,7 @@
           "fields": [
             "id",
             "name",
+            "physical_link_up",
             {
               "key": "vds",
               "fields": ["id", "ovsbr_name", "bond_mode"]
@@ -664,7 +691,8 @@
       "fields": [
         "id",
         "name",
-        "running",
+        "up",
+        "physical_link_up",
         "mac_address",
         "speed",
         "mtu",
@@ -725,7 +753,7 @@
         "used_vf_num"
       ],
       "invisibleFields": [
-        "up",
+        "running",
         "is_sriov",
         "type",
         "max_vf_num",
@@ -926,6 +954,12 @@
         "name",
         "type",
         "vlan_id",
+        "subnetmask",
+        "gateway_ip",
+        "mtu",
+        "qos_priority",
+        "qos_min_bandwidth",
+        "qos_max_bandwidth",
         {
           "key": "vds",
           "fields": [
@@ -938,6 +972,8 @@
                 "connect_state",
                 "disconnected_reason",
                 "disconnected_date",
+                "type",
+                "version",
                 {
                   "key": "hosts",
                   "fields": [
@@ -987,6 +1023,9 @@
           "fields": [
             "id",
             "name",
+            "speed",
+            "up",
+            "running",
             {
               "key": "host",
               "fields": ["id"]
@@ -1016,7 +1055,8 @@
             "connect_state",
             "disconnected_reason",
             "disconnected_date",
-            "type"
+            "type",
+            "version"
           ]
         },
         "entityAsyncStatus"
@@ -1247,6 +1287,8 @@
         "assigned_size",
         "unique_size",
         "shared_size",
+        "replica_num",
+        "thin_provision",
         "local_updated_at",
         {
           "key": "labels",
@@ -1753,7 +1795,8 @@
         {
           "key": "cluster",
           "fields": ["version", "type"]
-        }
+        },
+        "entityAsyncStatus"
       ]
     },
     {
@@ -1900,7 +1943,8 @@
             "name",
             "connect_state",
             "disconnected_reason",
-            "disconnected_date"
+            "disconnected_date",
+            "stretch"
           ]
         },
         "object_num",
@@ -2588,6 +2632,85 @@
       ]
     },
     {
+      "type": "gpuDevice",
+      "fields": [
+        "id",
+        "name",
+        {
+          "key": "host",
+          "alias": "iommu",
+          "fields": ["iommu", "id"]
+        },
+        "brand",
+        "model",
+        "bus_location",
+        "description",
+        {
+          "key": "vms",
+          "fields": ["name", "in_recycle_bin", "id"]
+        },
+        {
+          "key": "host",
+          "fields": ["name", "id"]
+        },
+        {
+          "key": "host.cluster",
+          "fields": [
+            "name",
+            "id",
+            "connect_state",
+            "disconnected_reason",
+            "disconnected_date",
+            "stretch"
+          ]
+        },
+        {
+          "key": "host.cluster.datacenters",
+          "fields": ["name", "id"]
+        },
+        {
+          "key": "labels",
+          "fields": ["id", "key", "value"]
+        }
+      ],
+      "invisibleFields": [
+        "entityAsyncStatus",
+        {
+          "key": "host.zone",
+          "fields": [
+            "id",
+            {
+              "key": "datacenter",
+              "fields": ["id", "name"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "vm",
+      "name": "gpuDeviceVms",
+      "fields": ["id", "name", "status"],
+      "invisibleFields": [
+        "in_recycle_bin",
+        {
+          "key": "cluster",
+          "fields": ["id"]
+        }
+      ]
+    },
+    {
+      "type": "vm",
+      "name": "usbDeviceVms",
+      "fields": ["id", "name", "status"],
+      "invisibleFields": [
+        {
+          "key": "cluster",
+          "fields": ["id"]
+        }
+      ]
+    },
+    {
       "type": "securityGroup",
       "fields": [
         "id",
@@ -3035,9 +3158,18 @@
         "cpu_model",
         "compatible_cpu_models",
         "allocable_cpu_cores_for_vm_exclusive",
+        "iommu",
         {
           "key": "nics",
           "fields": ["id", "is_sriov", "driver_state"]
+        },
+        {
+          "key": "host_state",
+          "fields": ["state"]
+        },
+        {
+          "key": "gpu_devices",
+          "fields": ["id", "status"]
         }
       ]
     },
@@ -3082,9 +3214,30 @@
         "id",
         "name",
         "type",
+        "bond_mode",
         {
           "key": "vlans",
-          "fields": ["id", "name"]
+          "fields": ["id", "name", "type", "qos_min_bandwidth"]
+        },
+        {
+          "key": "cluster",
+          "fields": ["id", "type", "version"]
+        },
+        {
+          "key": "nics",
+          "fields": [
+            "id",
+            "up",
+            "running",
+            "speed",
+            "mtu",
+            "name",
+            "mac_address",
+            {
+              "key": "host",
+              "fields": ["id", "name"]
+            }
+          ]
         }
       ]
     },
@@ -3119,6 +3272,8 @@
         "total_cpu_sockets",
         "license_expire_date",
         "license_type",
+        "hypervisor",
+        "rdma_enabled",
         {
           "key": "hosts",
           "fields": [
@@ -3128,7 +3283,11 @@
             "allocatable_memory_bytes",
             "cpu_model",
             "compatible_cpu_models",
-            "cpu_vendor"
+            "cpu_vendor",
+            {
+              "key": "host_state",
+              "fields": ["state"]
+            }
           ]
         },
         {
@@ -3152,6 +3311,10 @@
         {
           "key": "everoute_cluster",
           "fields": ["id"]
+        },
+        {
+          "key": "settings",
+          "fields": ["id", "default_ha", "default_storage_policy"]
         }
       ]
     },
@@ -3304,7 +3467,15 @@
             },
             {
               "key": "vm_nics",
-              "fields": ["index"]
+              "fields": [
+                "index",
+                "ingress_rate_limit_burst_in_bit",
+                "ingress_rate_limit_enabled",
+                "ingress_rate_limit_max_rate_in_bitps",
+                "egress_rate_limit_burst_in_bit",
+                "egress_rate_limit_enabled",
+                "egress_rate_limit_max_rate_in_bitps"
+              ]
             },
             {
               "key": "cluster",
@@ -3900,6 +4071,38 @@
           "fields": ["id", "key", "value"]
         }
       ]
+    },
+    {
+      "type": "vm",
+      "name": "vmForGpu",
+      "fields": ["id", "name", "status"]
+    },
+    {
+      "type": "gpuDevice",
+      "fields": ["id", "name", "bus_location", "description"]
+    },
+    {
+      "type": "vm",
+      "name": "vmForUsb",
+      "fields": ["id", "name", "status"]
+    },
+    {
+      "type": "usbDevice",
+      "name": "usbDeviceForCreateVm",
+      "fields": [
+        "id",
+        "name",
+        "size",
+        "description",
+        {
+          "key": "host",
+          "fields": ["name", "id"]
+        },
+        {
+          "key": "vms",
+          "fields": ["id", "status"]
+        }
+      ]
     }
   ],
   "forms": [
@@ -3909,7 +4112,7 @@
       "fields": {
         "data": [
           {
-            "key": "vm",
+            "key": "vms",
             "fields": [
               {
                 "key": "connect",
@@ -4012,6 +4215,14 @@
                   {
                     "key": "architecture",
                     "type": "String"
+                  },
+                  {
+                    "key": "hypervisor",
+                    "type": "String"
+                  },
+                  {
+                    "key": "default_storage_policy",
+                    "type": "String"
                   }
                 ]
               }
@@ -4039,6 +4250,10 @@
                   {
                     "key": "allocable_cpu_cores_for_vm_exclusive",
                     "type": "Int"
+                  },
+                  {
+                    "key": "iommu",
+                    "type": "String"
                   }
                 ]
               }
@@ -4180,6 +4395,12 @@
                   "enabled",
                   "model",
                   "mirror",
+                  "ingress_rate_limit_burst_in_bit",
+                  "ingress_rate_limit_enabled",
+                  "ingress_rate_limit_max_rate_in_bitps",
+                  "egress_rate_limit_burst_in_bit",
+                  "egress_rate_limit_enabled",
+                  "egress_rate_limit_max_rate_in_bitps",
                   {
                     "key": "vlan",
                     "fields": [
@@ -4232,6 +4453,40 @@
                   {
                     "key": "name",
                     "type": "String"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "key": "gpu_devices",
+            "fields": [
+              {
+                "key": "connect",
+                "fields": ["id"],
+                "extraFields": [
+                  {
+                    "key": "name",
+                    "type": "String"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "key": "usb_devices",
+            "fields": [
+              {
+                "key": "connect",
+                "fields": ["id"],
+                "extraFields": [
+                  {
+                    "key": "name",
+                    "type": "String"
+                  },
+                  {
+                    "key": "hasNotStoppedVm",
+                    "type": "Boolean"
                   }
                 ]
               }
@@ -4330,6 +4585,10 @@
             },
             {
               "key": "stretch",
+              "type": "Boolean"
+            },
+            {
+              "key": "allClusterDisConnect",
               "type": "Boolean"
             },
             {
@@ -4683,6 +4942,10 @@
                   {
                     "key": "architecture",
                     "type": "String"
+                  },
+                  {
+                    "key": "hypervisor",
+                    "type": "String"
                   }
                 ]
               }
@@ -4706,6 +4969,25 @@
                   {
                     "key": "allocable_cpu_cores_for_vm_exclusive",
                     "type": "Int"
+                  },
+                  {
+                    "key": "iommu",
+                    "type": "String"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "key": "gpu_devices",
+            "fields": [
+              {
+                "key": "connect",
+                "fields": ["id"],
+                "extraFields": [
+                  {
+                    "key": "name",
+                    "type": "String"
                   }
                 ]
               }
@@ -4926,13 +5208,31 @@
                   },
                   "ip_address",
                   "gateway",
-                  "subnet_mask"
+                  "subnet_mask",
+                  "ingress_rate_limit_burst_in_bit",
+                  "ingress_rate_limit_enabled",
+                  "ingress_rate_limit_max_rate_in_bitps",
+                  "egress_rate_limit_burst_in_bit",
+                  "egress_rate_limit_enabled",
+                  "egress_rate_limit_max_rate_in_bitps"
                 ]
               }
             ]
           }
         ]
-      }
+      },
+      "extraFields": [
+        {
+          "key": "gatewayPosition",
+          "type": "Object",
+          "fields": [
+            {
+              "key": "index",
+              "type": "Int"
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "deleteVm",
@@ -6010,7 +6310,7 @@
     {
       "type": "updateNfsExport",
       "fields": {
-        "data": ["name", "ip_whitelist"]
+        "data": ["name", "replica_num", "ip_whitelist"]
       }
     },
     {
@@ -6820,6 +7120,38 @@
         {
           "key": "host.cluster",
           "fields": ["name", "version", "type", "connect_state"]
+        }
+      ]
+    },
+    {
+      "type": "gpuDevice",
+      "fields": [
+        "id",
+        "name",
+        "status",
+        "brand",
+        "bus_location",
+        "description",
+        {
+          "key": "host.cluster",
+          "fields": ["name", "connect_state", "id"]
+        }
+      ]
+    },
+    {
+      "type": "usbDevice",
+      "fields": [
+        "id",
+        "name",
+        "size",
+        "description",
+        {
+          "key": "host.cluster",
+          "fields": ["name", "connect_state", "id"]
+        },
+        {
+          "key": "vms",
+          "fields": ["name", "id"]
         }
       ]
     },

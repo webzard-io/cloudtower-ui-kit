@@ -1,0 +1,652 @@
+query getHostsAndVdses($where: HostWhereInput!, $nicsWhere: NicWhereInput) {
+  hosts(where: $where, orderBy: name_ASC) {
+    id
+    name
+    nics(where: $nicsWhere, orderBy: name_ASC) {
+      id
+      local_id
+      name
+      up
+      running
+      speed
+      mtu
+      mac_address
+      physical
+      vds {
+        id
+        name
+        ovsbr_name
+        everoute_cluster {
+          id
+          name
+        }
+      }
+      host {
+        id
+        cluster {
+          id
+          version
+          type
+        }
+      }
+    }
+  }
+}
+
+query getHostsAndVdsesForCreateVds($clusterId: ID!, $nicsWhere: NicWhereInput) {
+  hosts(where: { cluster: { id: $clusterId } }, orderBy: name_ASC) {
+    id
+    name
+    management_ip
+    nics(where: $nicsWhere, orderBy: name_ASC) {
+      id
+      local_id
+      name
+      up
+      running
+      physical_link_up
+      speed
+      mtu
+      mac_address
+      physical
+      vds {
+        id
+        name
+        ovsbr_name
+      }
+      host {
+        id
+        cluster {
+          id
+          version
+          type
+        }
+      }
+    }
+  }
+  migrationVds: vdses(where: { cluster: { id: $clusterId }, type: MIGRATION }) {
+    id
+    name
+    type
+  }
+  accessVds: vdses(where: { cluster: { id: $clusterId }, type: ACCESS }) {
+    id
+    name
+    type
+  }
+  cluster(where: { id: $clusterId }) {
+    id
+    version
+    type
+    settings {
+      id
+      enabled_iscsi
+    }
+  }
+}
+
+query getHostsAndVdsesForEditVds(
+  $id: ID!
+  $clusterId: ID!
+  $nicsWhere: NicWhereInput
+) {
+  hosts(where: { cluster: { id: $clusterId } }, orderBy: name_ASC) {
+    id
+    name
+    management_ip
+    nics(where: $nicsWhere, orderBy: name_ASC) {
+      id
+      local_id
+      name
+      up
+      running
+      speed
+      mtu
+      mac_address
+      physical
+      vds {
+        id
+        name
+        ovsbr_name
+      }
+      host {
+        id
+        cluster {
+          id
+          version
+          type
+        }
+      }
+    }
+  }
+  vds(where: { id: $id }) {
+    id
+    name
+    type
+    rb_interval
+    bond_type
+    bond_mode
+    vlans {
+      id
+      name
+      type
+    }
+  }
+  cluster(where: { id: $clusterId }) {
+    id
+    version
+    type
+    rdma_enabled
+  }
+}
+
+query hostBasic($where: HostWhereUniqueInput!) {
+  host(where: $where) {
+    id
+    local_id
+    chunk_id
+    name
+    scvm_name
+    status
+    entityAsyncStatus
+    hypervisor_ip
+    iommu
+    host_state {
+      state
+      enter_maintenance_time
+      maintenance_job_id
+    }
+    cluster {
+      id
+      name
+      hypervisor
+      architecture
+      version
+      connect_state
+      disconnected_reason
+      disconnected_date
+      type
+      datacenters {
+        id
+        name
+      }
+    }
+    zone {
+      id
+      is_preferred
+    }
+  }
+}
+
+query hostDetail($id: ID!) {
+  host(where: { id: $id }) {
+    id
+    local_id
+    name
+    serial
+    status
+    cpu_brand
+    cpu_model
+    model
+    cpu_hz_per_core
+    cpu_vendor
+    management_ip
+    data_ip
+    access_ip
+    hypervisor_ip
+    ipmi {
+      id
+      ip
+      valid
+    }
+    hdd_disk_count
+    hdd_data_capacity
+    ssd_disk_count
+    ssd_data_capacity
+    total_data_capacity
+    used_data_space
+    failure_data_space
+    total_cache_capacity
+    total_cpu_hz
+    total_cpu_cores
+    reserved_cpu_cores_for_system_service
+    reserved_cpu_cores_for_vm_shared
+    allocable_cpu_cores_for_vm_exclusive
+    provisioned_cpu_cores_for_vm_exclusive
+    total_cpu_sockets
+    used_cpu_hz
+    provisioned_cpu_cores
+    total_memory_bytes
+    used_memory_bytes
+    provisioned_memory_bytes
+    disks(where: { usage_not: BOOT }, orderBy: path_ASC) {
+      id
+      path
+      size
+      type
+      healthy
+      mounted
+      usage_status
+      health_status
+    }
+    nics(where: { physical: true }, orderBy: name_ASC) {
+      id
+      name
+      up
+      running
+      speed
+    }
+    cluster {
+      id
+      version
+      hypervisor
+      architecture
+      vhost_enabled
+      name
+      type
+    }
+    zone {
+      id
+      is_preferred
+    }
+    usb_devices {
+      id
+      name
+      vms {
+        id
+        name
+      }
+    }
+    scvm_name
+    scvm_cpu
+    scvm_memory
+    cpu_temperature_celsius
+    cpu_fan_speed
+    cpu_fan_speed_unit
+    vm_num
+    iommu
+  }
+  brickTopoes(where: { node_topoes_some: { host: { id: $id } } }) {
+    id
+    name
+    disk_layout {
+      row
+      column
+    }
+  }
+}
+
+query hostCompatibleCpuModels($where: HostWhereInput!) {
+  hosts(where: $where) {
+    id
+    name
+    compatible_cpu_models
+  }
+}
+
+query getHostClusterInfo($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    connect_state
+    disconnected_reason
+    disconnected_date
+    vhost_enabled
+    hypervisor
+  }
+}
+
+query getHostsName($where: HostWhereInput!) {
+  hosts(where: $where) {
+    id
+    local_id
+    chunk_id
+    name
+    scvm_name
+    hypervisor_ip
+  }
+}
+
+mutation updateNic($data: NicUpdateInput!, $where: NicWhereUniqueInput!) {
+  updateNic(data: $data, where: $where) {
+    id
+    mtu
+  }
+}
+
+mutation updateHost(
+  $data: HostUpdateInput!
+  $where: HostWhereUniqueInput!
+  $effect: UpdateHostEffect!
+) {
+  updateHost(data: $data, where: $where, effect: $effect) {
+    id
+    name
+    ipmi {
+      id
+      ip
+      valid
+      username
+    }
+  }
+}
+
+query getInfoForCreatingHosts($clusterId: ID!) {
+  cluster(where: { id: $clusterId }) {
+    id
+    max_chunk_num
+    version
+    type
+    hypervisor
+    rdma_enabled
+    pmem_enabled
+    nvmf_enabled
+    nvme_over_rdma_enabled
+    nvme_over_tcp_enabled
+    software_edition
+    max_physical_data_capacity
+    max_physical_data_capacity_per_node
+    ip
+    management_vip
+    iscsi_vip
+    hosts {
+      id
+      name
+      management_ip
+      data_ip
+      access_ip
+      vmotion_ip
+      ipmi {
+        id
+        ip
+      }
+      nics {
+        id
+        type
+        gateway_ip
+        subnet_mask
+      }
+      disks {
+        id
+        size
+      }
+      with_faster_ssd_as_cache
+      is_os_in_raid1
+      host_state {
+        state
+      }
+    }
+    zones {
+      id
+      is_preferred
+      from_witness_gateway
+      to_witness_gateway
+    }
+    stretch
+    vhost_enabled
+    vdses(where: { internal: false }) {
+      id
+      name
+      vlans(where: { type_not: VM }) {
+        id
+        name
+        type
+      }
+    }
+    cpu_vendor
+  }
+  licenses(first: 1) {
+    id
+    max_chunk_num
+  }
+  everouteClusters {
+    id
+    agent_elf_clusters {
+      id
+      total_cpu_sockets
+    }
+  }
+  everouteLicenses(first: 1) {
+    id
+    max_socket_num
+  }
+  hostsConnection {
+    aggregate {
+      count
+    }
+  }
+  clusterTopoes(where: { cluster: { id: $clusterId } }, first: 1) {
+    id
+    zone_topoes {
+      id
+      rack_topoes {
+        id
+        brick_topoes {
+          id
+          node_topoes {
+            id
+          }
+        }
+      }
+    }
+    node_topoes {
+      id
+      name
+    }
+  }
+}
+
+query discoverHosts($clusterId: ID!, $hostAddresses: [String!]) {
+  discoverHosts(cluster: { id: $clusterId }, host_address: $hostAddresses) {
+    host_uuid
+    hostname
+    host_ip
+    serial
+    version
+    all_flash
+    ipmi_ip
+    is_os_in_raid1
+    deployed
+    disks {
+      drive
+      type
+      size
+      model
+      serial
+      function
+      numa_node
+      persistent_memory_type
+      dimm_ids
+    }
+    ifaces {
+      name
+      up
+      running
+      rdma_enabled
+      mac_address
+      speed
+      ipv4
+      ipv6
+      pci_slot_name
+      physical_link_up
+    }
+    dimms {
+      fw_version
+      socket_id
+      dimm_id
+      health_status
+    }
+    product
+    sockets
+    cpu_vendor
+  }
+}
+
+mutation createHosts($data: HostsBatchCreateInput!) {
+  createHostsBatchDefinition(data: $data) {
+    task {
+      id
+      args
+      steps {
+        key
+        finished
+      }
+      progress
+      status
+    }
+  }
+}
+
+query getCreatingHostsTask($taskId: ID!) {
+  task(where: { id: $taskId }) {
+    id
+    args
+    steps {
+      key
+      finished
+    }
+    progress
+    status
+  }
+}
+query getCreateHostLog($clusterId: ID!, $hostIp: String!) {
+  createHostLog(cluster: { id: $clusterId }, host_ip: $hostIp) {
+    log
+  }
+}
+
+query getHostsVersionByClusterId($clusterId: ID!) {
+  hosts(where: { cluster: { id: $clusterId } }) {
+    id
+    os_version
+  }
+}
+
+query hostsDataIp($where: HostWhereInput) {
+  hosts(where: $where) {
+    id
+    name
+    data_ip
+  }
+}
+
+query getHostCpuAllocation($id: ID!) {
+  host(where: { id: $id }) {
+    id
+    available_cpus_count_for_vms
+    vcpu_count_of_active_vms_nonexclusive
+    vcpu_count_of_all_vms_nonexclusive
+    cpu_over_allocation_ratio_for_all_vms
+    cpu_over_allocation_ratio_for_active_vms
+    cluster {
+      id
+      name
+      version
+      type
+    }
+  }
+}
+
+query enterMaintenanceModeCheck($where: HostWhereUniqueInput!) {
+  enterMaintenanceModeCheck(where: $where) {
+    task_id
+  }
+}
+
+mutation enterMaintenanceMode(
+  $where: HostWhereUniqueInput!
+  $data: EnterMaintenanceModeInput!
+) {
+  enterMaintenanceMode(where: $where, data: $data) {
+    id
+    host_state {
+      state
+      maintenance_job_id
+      enter_maintenance_time
+    }
+    status
+    entityAsyncStatus
+  }
+}
+
+query exitMaintenanceModeCheck($where: HostWhereUniqueInput!) {
+  exitMaintenanceModeCheck(where: $where) {
+    is_storage_network_normal
+    services {
+      name
+      running
+    }
+    check_result
+    vm_info {
+      stages {
+        name
+        details {
+          vm_uuid
+          vm_name
+          verify {
+            changed
+            reason
+          }
+        }
+      }
+    }
+  }
+}
+
+mutation exitMaintenanceMode(
+  $where: HostWhereUniqueInput!
+  $data: ExitMaintenanceModeInput!
+) {
+  exitMaintenanceMode(where: $where, data: $data) {
+    id
+    host_state {
+      state
+      maintenance_job_id
+      enter_maintenance_time
+    }
+    status
+    entityAsyncStatus
+  }
+}
+
+mutation cancelMaintenanceModeJob(
+  $where: HostWhereUniqueInput!
+  $data: CancelMaintenanceModeJobInput!
+) {
+  cancelMaintenanceModeJob(where: $where, data: $data) {
+    cancel_result
+  }
+}
+
+query getTaskForHostMaintenance($where: TaskWhereUniqueInput!) {
+  task(where: $where) {
+    id
+    error_code
+    error_message
+    args
+    status
+    resource_mutation
+    cluster {
+      id
+      version
+      type
+      architecture
+      name
+    }
+    steps {
+      key
+      finished
+    }
+  }
+}
+
+query getCancelHost($where: HostWhereUniqueInput!) {
+  host(where: $where) {
+    id
+    name
+    scvm_name
+    cluster {
+      id
+      hypervisor
+    }
+  }
+}

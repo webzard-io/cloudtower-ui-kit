@@ -1,10 +1,10 @@
 const config = {
   schema: "../../../tower/packages/server/src/generated/schema.graphql",
   documents: [
-    "../../../tower/packages/ui/src/generated/query.graphql",
-    "../../../tower/packages/ui/src/generated/global-search.graphql",
-    "../../../tower/packages/ui/src/generated/fetch-by-ids.graphql",
-    "../../../tower/packages/ui/src/graphql/*.graphql",
+    "./src/generated/query.graphql",
+    "./src/generated/global-search.graphql",
+    "./src/generated/fetch-by-ids.graphql",
+    "./src/codegen/graphql/*.graphql",
   ],
   generates: {
     "src/generated/react-hooks.ts": {
@@ -25,41 +25,41 @@ const config = {
       },
     },
     "src/generated/tables.tsx": {
-      plugins: ["../claw/dist/plugins/table.js"],
+      plugins: ["../claw/dist/src/react-component/table.js"],
     },
     // "src/generated/selects.tsx": {
-    //   plugins: ["../codegen/lib/react-component/select.js"],
+    //   plugins: ["../claw/dist/src/react-component/select.js"],
     // },
     "src/generated/forms-types.tsx": {
-      plugins: ["../claw/dist/react-component/form.js"],
+      plugins: ["../claw/dist/src/react-component/form.js"],
       config: {
         generateTypes: true,
       },
     },
     "src/generated/forms.tsx": {
-      plugins: ["../claw/dist/react-component/form.js"],
+      plugins: ["../claw/dist/src/react-component/form.js"],
     },
     "src/generated/forms2.tsx": {
-      schema: "src/codegen/config/form-schema.graphql",
-      plugins: ["../claw/dist/react-component/form2.js"],
+      schema: "../../../tower/packages/ui/config/form-schema.graphql",
+      plugins: ["../claw/dist/src/react-component/form2.js"],
     },
     // "src/generated/type-dependencies-map.ts": {
-    //   plugins: ["../codegen/lib/graphql/type-dependencies-map.js"],
+    //   plugins: ["../claw/dist/src/graphql/type-dependencies-map.js"],
     // },
     "src/generated/global-search.ts": {
-      plugins: ["../claw/dist/typescript/global-search.js"],
+      plugins: ["../claw/dist/src/typescript/global-search.js"],
     },
-    // "src/generated/images-type.ts": {
-    //   plugins: ["../codegen/lib/typescript/images-type.js"],
-    // },
+    "src/generated/images-type.ts": {
+      plugins: ["../claw/dist/src/typescript/images-type.js"],
+    },
     // "src/generated/audit-log-action-options.ts": {
-    //   plugins: ["../codegen/lib/typescript/audit-log-action-options.js"],
+    //   plugins: ["../claw/dist/src/typescript/audit-log-action-options.js"],
     // },
     // "src/generated/system-audit-log-action-options.ts": {
-    //   plugins: ["../codegen/lib/typescript/system-audit-log-action-options.js"],
+    //   plugins: ["../claw/dist/src/typescript/system-audit-log-action-options.js"],
     // },
     // "src/generated/fetch-by-ids.ts": {
-    //   plugins: ["../codegen/lib/typescript/fetch-by-ids.js"],
+    //   plugins: ["../claw/dist/src/typescript/fetch-by-ids.js"],
     // },
   },
   config: {

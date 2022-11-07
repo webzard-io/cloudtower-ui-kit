@@ -1,0 +1,115 @@
+query topo {
+  organizations {
+    id
+    name
+    datacenters(orderBy: name_ASC) {
+      id
+      name
+      vm_num
+      zones {
+        id
+        is_preferred
+        vm_num
+        cluster {
+          id
+          name
+          hypervisor
+        }
+        hosts {
+          id
+          name
+          vm_num
+          host_state {
+            state
+          }
+        }
+      }
+      clusters(orderBy: name_ASC) {
+        id
+        name
+        vm_num
+        connect_state
+        disconnected_reason
+        disconnected_date
+        stretch
+        hosts(orderBy: name_ASC) {
+          id
+          name
+          vm_num
+          host_state {
+            state
+          }
+        }
+        vm_folders {
+          id
+          name
+          vm_num
+        }
+        hypervisor
+        type
+        zones {
+          id
+          is_preferred
+        }
+      }
+    }
+  }
+  metroClusters: clusters(where: { stretch: true }) {
+    id
+    name
+    vm_num
+    connect_state
+    disconnected_reason
+    disconnected_date
+    hosts(orderBy: name_ASC) {
+      id
+      name
+      vm_num
+      host_state {
+        state
+      }
+    }
+    vm_folders {
+      id
+      name
+      vm_num
+    }
+    hypervisor
+    type
+    zones {
+      id
+      is_preferred
+    }
+  }
+  clusters(where: { datacenters_every: { id: null }, stretch: false }) {
+    id
+    name
+    vm_num
+    connect_state
+    disconnected_reason
+    disconnected_date
+    hosts(orderBy: name_ASC) {
+      id
+      name
+      vm_num
+      host_state {
+        state
+      }
+    }
+    vm_folders {
+      id
+      name
+      vm_num
+    }
+    hypervisor
+    type
+  }
+}
+
+query topoVmNums($where: VmWhereInput) {
+  vmsConnection(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}

@@ -1,0 +1,105 @@
+query nfsExportBasic($where: NfsExportWhereUniqueInput!) {
+  nfsExport(where: $where) {
+    id
+    export_inode_id
+    name
+    ip_whitelist
+    internal
+    replica_num
+    cluster {
+      id
+      name
+      connect_state
+      disconnected_reason
+      disconnected_date
+      datacenters {
+        id
+        name
+      }
+    }
+  }
+}
+
+query nfsExportInfo($where: NfsExportWhereUniqueInput!) {
+  nfsExport(where: $where) {
+    id
+    replica_num
+    thin_provision
+    ip_whitelist
+    internal
+    inodes(where: { file: true }) {
+      id
+      replica_num
+    }
+    cluster {
+      id
+      type
+      version
+    }
+  }
+}
+
+query nfsExportConnetedResources(
+  $where: NfsExportWhereUniqueInput!
+  $inodesFirst: Int
+) {
+  nfsExport(where: $where) {
+    id
+    inodes(first: $inodesFirst) {
+      id
+    }
+  }
+}
+
+mutation createNfsExport($data: NfsExportCreateInput!) {
+  createNfsExport(data: $data) {
+    id
+  }
+}
+mutation updateNfsExport(
+  $data: NfsExportUpdateInput!
+  $where: NfsExportWhereUniqueInput!
+) {
+  updateNfsExport(data: $data, where: $where) {
+    id
+    name
+    replica_num
+    ip_whitelist
+  }
+}
+
+mutation deleteNfsExport($where: NfsExportWhereUniqueInput!) {
+  deleteNfsExport(where: $where) {
+    id
+  }
+}
+
+query checkNfsExportByName($clusterId: ID!, $name: String!, $export_id: ID) {
+  nvmfSubsystems(
+    where: { name: $name, cluster: { id: $clusterId } }
+    first: 1
+  ) {
+    id
+  }
+  iscsiTargets(where: { name: $name, cluster: { id: $clusterId } }, first: 1) {
+    id
+  }
+  nfsExports(
+    where: { name: $name, cluster: { id: $clusterId }, id_not: $export_id }
+    first: 1
+  ) {
+    id
+  }
+}
+
+query nfsExportEditValue($where: NfsExportWhereUniqueInput!) {
+  nfsExport(where: $where) {
+    id
+    cluster {
+      id
+      version
+      type
+      stretch
+    }
+  }
+}
