@@ -6,7 +6,9 @@ import {
   ObjectTypeDefinitionNode,
   visit,
 } from "graphql";
+import _ from "lodash";
 import * as path from "path";
+
 import {
   ADD_NEW_LINE,
   getConfig,
@@ -26,7 +28,6 @@ import {
   upperFirst,
 } from "../common";
 import { Column, PluginFunction } from "../types";
-import _ from "lodash";
 
 const TEMPLATES = {
   TABLE: path.resolve(__dirname, "../../templates/react-component/Table.ejs"),
@@ -90,43 +91,89 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
   const typeMap = getTypeMap(astNode);
 
   let output = [
-    `/* eslint-disable`,
-    `@typescript-eslint/no-unused-vars,`,
-    `@typescript-eslint/no-explicit-any,`,
-    `@typescript-eslint/no-non-null-assertion,`,
-    `@typescript-eslint/no-unnecessary-type-assertion,`,
-    `react-hooks/rules-of-hooks,`,
-    `import/first,`,
-    `no-useless-computed-key`,
-    `*/`,
-    `import React, { useState, useEffect, useRef, useMemo, useContext, memo } from "react";`,
-    `import { NetworkStatus, ApolloError, ApolloQueryResult, WatchQueryFetchPolicy } from 'apollo-boost';`,
-    `import { useTranslation } from 'react-i18next'`,
-    `import _ from 'lodash'`,
-    `import { useDispatch } from 'react-redux';`,
-    `import cs from 'classnames';`,
-    `import { Menu } from 'antd';`,
-    `import { i18next, SupportLanguage } from '@tower/i18n';`,
-    `import { kitContext } from '../ui-kit';`,
-    `import { Kit, RequiredColumnProps, TableProps, InputSize, SelectProps as KitSelectProps, StringProps, EnumProps, IntProps, FloatProps, DateTimeRangeProps } from "../ui-kit/base";`,
-    `import { handleColumnsByKeys, eventStopPropagation, TableRenderer, BLANK_COLUMN, tableScrollToTop, useTransformScrollAndColumns } from "../ui-kit/table/common"`,
-    `import HeaderCell from "../ui-kit/table/HeaderCell"`,
-    `import { AuxiliaryLine, TablePagination, TableEmpty, usePosition, EmptyRowMenu } from '../ui-kit/table/TableWidget';`,
-    `import CustomizeColumn from '../ui-kit/table/CustomizeColumn';`,
-    `import { useCustomizeColumn, CustomizeColumnType, useEqualAllColumnKeys } from "../ui-kit/table/customize-column"`,
-    `import PendingTable from '../ui-kit/table/PendingTable';`,
-    `import SidebarTable from '../ui-kit/table/SidebarTable';`,
-    `import { useTableSelection } from '../ui-kit/table/TableSelection';`,
-    `import { ExcludeMaybe } from '../common/types'`,
-    `import { EMPTY_FUNCTION } from '../common/constants'`,
-    `import useSearch from '../common/hooks/useSearch'`,
-    `import useElementsSize from '../common/hooks/useElementsSize'`,
-    `import { StringField, BooleanField, IntField, EnumField } from '../ui-kit/table/SearchWidget';`,
-    `import { TableActions } from '../store';`,
-    `import { SingleSelectProps, MultipleSelectProps, SelectProps } from '../common/types';`,
-    `import FailedLoad from '../components/FailedLoad';`,
-    `import Icon from '../components/Icon';`,
-    `import getScrollBarSize from 'rc-util/lib/getScrollBarSize';`,
+    "/* eslint-disable",
+    "@typescript-eslint/no-unused-vars,",
+    "@typescript-eslint/no-explicit-any,",
+    "@typescript-eslint/no-non-null-assertion,",
+    "@typescript-eslint/no-unnecessary-type-assertion,",
+    "react-hooks/rules-of-hooks,",
+    "import/first,",
+    "no-useless-computed-key",
+    "*/",
+    `import { i18next, SupportLanguage } from "@tower/i18n";
+    import { Menu } from "antd";
+    import {
+      ApolloError,
+      ApolloQueryResult,
+      NetworkStatus,
+      WatchQueryFetchPolicy,
+    } from "apollo-boost";
+    import cs from "classnames";
+    import _ from "lodash";
+    import getScrollBarSize from "rc-util/lib/getScrollBarSize";
+    import React, {
+      memo,
+      useContext,
+      useEffect,
+      useMemo,
+      useRef,
+      useState,
+    } from "react";
+    import { useTranslation } from "react-i18next";
+    import { useDispatch } from "react-redux";
+    
+    import {
+      BLANK_COLUMN,
+      eventStopPropagation,
+      handleColumnsByKeys,
+      TableRenderer,
+      tableScrollToTop,
+      useTransformScrollAndColumns,
+    } from "../kit/smartx";
+    import {
+      CustomizeColumnType,
+      useCustomizeColumn,
+      useEqualAllColumnKeys,
+    } from "../kit/smartx";
+    import { CustomizeColumn } from "../kit/smartx";
+    import { HeaderCell } from "../kit/smartx";
+    import { PendingTable } from "../kit/smartx";
+    import { BooleanField, EnumField, IntField, StringField } from "../kit/smartx";
+    import { SidebarTable } from "../kit/smartx";
+    import { useTableSelection } from "../kit/smartx";
+    import {
+      AuxiliaryLine,
+      EmptyRowMenu,
+      TableEmpty,
+      TablePagination,
+      usePosition,
+    } from "../kit/smartx";
+    import { TableActions } from "../kit/smartx";
+    import { EMPTY_FUNCTION } from "../kit/specify";
+    import { useElementsSize } from "../kit/specify";
+    import { useSearch } from "../kit/specify";
+    import { ExcludeMaybe } from "../kit/specify";
+    import {
+      MultipleSelectProps,
+      SelectProps,
+      SingleSelectProps,
+    } from "../kit/specify";
+    import { FailedLoad } from "../kit/specify";
+    import { Icon } from "../kit/specify";
+    import { kitContext } from "../kit/specify";
+    import {
+      DateTimeRangeProps,
+      EnumProps,
+      FloatProps,
+      InputSize,
+      IntProps,
+      Kit,
+      RequiredColumnProps,
+      KitSelectProps,
+      StringProps,
+      TableProps,
+    } from "../kit/specify";
+    `,
   ].join("\r\n");
   output += ADD_NEW_LINE;
 
