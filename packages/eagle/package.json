@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/eagle",
-  "version": "0.5.5",
+  "version": "0.6.0",
   "main": "dist/umd/index.js",
   "module": "./dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -98,7 +98,7 @@
     "history": "^4.9"
   },
   "devDependencies": {
-    "@cloudtower/claw": "^0.5.0",
+    "@cloudtower/claw": "^0.6.0",
     "@graphql-codegen/cli": "^1.12",
     "@graphql-codegen/client-preset": "^1.0.6",
     "@graphql-codegen/typescript": "^1.22",
