@@ -1,16 +1,17 @@
-import * as path from "path";
 import ejs from "ejs";
-import { PluginFunction } from "../types";
-import {
-  getConfig,
-  camelcase,
-  upperFirst,
-  ADD_NEW_LINE,
-  setPluralize,
-  getDocumentNode,
-} from "../common";
-import _ from "lodash";
 import { DocumentNode, visit } from "graphql";
+import _ from "lodash";
+import * as path from "path";
+
+import {
+  ADD_NEW_LINE,
+  camelcase,
+  getConfig,
+  getDocumentNode,
+  setPluralize,
+  upperFirst,
+} from "../common";
+import { PluginFunction } from "../types";
 
 const TEMPLATES = {
   SELECT: path.resolve(__dirname, "../../templates/react-component/Select.ejs"),
@@ -41,26 +42,26 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
   );
   let output = _.compact([
     // FIXME: share header
-    `/* eslint-disable`,
-    `@typescript-eslint/no-unused-vars,`,
-    `@typescript-eslint/no-explicit-any,`,
-    `@typescript-eslint/no-non-null-assertion,`,
-    `@typescript-eslint/no-unnecessary-type-assertion,`,
-    `react-hooks/rules-of-hooks,`,
-    `import/first`,
-    `*/`,
-    `import React, { useEffect, useContext, useRef, useState, useMemo } from "react";`,
-    `import { useTranslation } from 'react-i18next';`,
-    `import _ from 'lodash';`,
-    `import { kitContext } from '../ui-kit';`,
-    `import { SelectProps as KitSelectProps } from '../ui-kit/base';`,
-    `import { SingleSelectProps, MultipleSelectProps, SelectProps } from '../common/types';`,
-    `import FailedLoad from '../components/FailedLoad';`,
+    "/* eslint-disable",
+    "@typescript-eslint/no-unused-vars,",
+    "@typescript-eslint/no-explicit-any,",
+    "@typescript-eslint/no-non-null-assertion,",
+    "@typescript-eslint/no-unnecessary-type-assertion,",
+    "react-hooks/rules-of-hooks,",
+    "import/first",
+    "*/",
+    'import React, { useEffect, useContext, useRef, useState, useMemo } from "react";',
+    "import { useTranslation } from 'react-i18next';",
+    "import _ from 'lodash';",
+    "import { kitContext } from '../ui-kit';",
+    "import { KitSelectProps } from '../ui-kit/base';",
+    "import { SingleSelectProps, MultipleSelectProps, SelectProps } from '../common/types';",
+    "import FailedLoad from '../components/FailedLoad';",
     hasEnableCreate &&
-      `import { CreatingSelectDropdownStyle, CreateResourceDropdownRender } from '../components/DropdownRender';`,
-    hasEnableCreate && `import cs from 'classnames';`,
-    hasAsyncField && `import { client } from '../graphql'`,
-    `import { WatchQueryFetchPolicy } from 'apollo-boost';`,
+      "import { CreatingSelectDropdownStyle, CreateResourceDropdownRender } from '../components/DropdownRender';",
+    hasEnableCreate && "import cs from 'classnames';",
+    hasAsyncField && "import { client } from '../graphql'",
+    "import { WatchQueryFetchPolicy } from 'apollo-boost';",
   ]).join("\r\n");
   output += ADD_NEW_LINE;
 

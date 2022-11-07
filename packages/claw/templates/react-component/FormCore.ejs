@@ -1,44 +1,40 @@
-import _ from 'lodash';
+import { FieldState, FormState, MutableState } from "@smartx/final-form";
+import arrayMutators from "@smartx/final-form-arrays";
+import {
+  AnyObject,
+  Field,
+  FieldRenderProps,
+  Form,
+  FormRenderProps,
+  FormSpy as RffFormSpy,
+  useField,
+  UseFieldConfig,
+  useForm as useRffForm,
+  useFormState as useRffFormState,
+  UseFormStateParams,
+} from "@smartx/react-final-form";
+import {
+  FieldArray,
+  FieldArrayRenderProps,
+  useFieldArray,
+  UseFieldArrayConfig,
+} from "@smartx/react-final-form-arrays";
+import { Col, Row } from "antd";
+import cs from "classnames";
+import _ from "lodash";
 import React, {
   ReactElement,
   useContext,
   useEffect,
-  useRef,
   useMemo,
+  useRef,
 } from "react";
-import {
-  Form,
-  FormRenderProps,
-  Field,
-  FieldRenderProps,
-  FormSpy as RffFormSpy,
-  useForm as useRffForm,
-  useField,
-  useFormState as useRffFormState,
-  UseFieldConfig,
-  UseFormStateParams,
-  AnyObject
-} from "@smartx/react-final-form";
-import {
-  useFieldArray,
-  UseFieldArrayConfig,
-  FieldArrayRenderProps,
-  FieldArray
-} from "@smartx/react-final-form-arrays";
-import {
-  FormState,
-  MutableState,
-  FieldState
-} from "@smartx/final-form";
-import arrayMutators from "@smartx/final-form-arrays"
-import cs from "classnames"
-import { Col, Row } from "antd"
-import { kitContext } from "../ui-kit"
-import FieldError from '../components/FormError'
-import * as FT from './forms-types'
-export * from './forms-types'
-import * as FormKit from '../ui-kit/form';
-import { CSSTransition } from 'react-transition-group';
+import { CSSTransition } from "react-transition-group";
+
+import { FieldError } from "../kit/smartx";
+import { kitContext } from "../kit/specify";
+import * as FormKit from "../kit/smartx";
+import * as FT from "./forms-types";
 
 /* Core */
 export const FormLayoutContext = React.createContext<FT.LayoutProps>({});

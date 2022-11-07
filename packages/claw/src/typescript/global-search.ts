@@ -1,4 +1,5 @@
 import { PluginFunction } from "@graphql-codegen/plugin-helpers";
+
 import { getConfig, setPluralize } from "../common";
 
 export const plugin: PluginFunction = (schema, documents, config) => {
@@ -12,7 +13,7 @@ export const plugin: PluginFunction = (schema, documents, config) => {
   globalSearch.forEach((r, idx) => {
     output += "{";
     output += `type: '${r.type}';`;
-    output += `data: SearchAllQuery["${pluralize(r.type)}"][0]`;
+    output += `data: NonNullable<SearchAllQuery["${pluralize(r.type)}"]>[0]`;
     output += "}";
     if (idx !== globalSearch.length - 1) {
       output += "|";
