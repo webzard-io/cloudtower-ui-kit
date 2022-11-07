@@ -1,0 +1,22 @@
+query getOrganization($first: Int) {
+  organizations(first: $first) {
+    id
+    name
+  }
+}
+
+mutation createOrganization($data: OrganizationCreateInput!) {
+  createOrganization(data: $data) {
+    id
+  }
+}
+
+mutation updateOrganization(
+  $data: OrganizationUpdateInput!
+  $where: OrganizationWhereUniqueInput!
+) {
+  updateOrganization(data: $data, where: $where) {
+    id
+    name
+  }
+}

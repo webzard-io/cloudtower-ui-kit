@@ -1,0 +1,78 @@
+query gpuDeviceDetail($where: GpuDeviceWhereUniqueInput!) {
+  gpuDevice(where: $where) {
+    id
+    name
+    entityAsyncStatus
+    description
+    host {
+      id
+      iommu
+      cluster {
+        id
+        connect_state
+      }
+    }
+  }
+}
+
+query gpuDeviceInfo($where: GpuDeviceWhereUniqueInput!) {
+  gpuDevice(where: $where) {
+    id
+    name
+    entityAsyncStatus
+    status
+    brand
+    model
+    bus_location
+    description
+    host {
+      id
+      name
+      iommu
+      cluster {
+        id
+        name
+        stretch
+        datacenters {
+          id
+          name
+        }
+      }
+      zone {
+        id
+        datacenter {
+          name
+          id
+        }
+      }
+    }
+    vms(where: { in_recycle_bin: false }) {
+      id
+    }
+  }
+}
+
+query gpuDeviceForEditVms($where: GpuDeviceWhereUniqueInput!) {
+  gpuDevice(where: $where) {
+    id
+    name
+    host {
+      id
+      name
+    }
+    vms(where: { in_recycle_bin: false }) {
+      id
+      name
+      status
+    }
+  }
+}
+
+mutation updateGpuDevice(
+  $where: GpuDeviceWhereUniqueInput!
+  $data: GpuDeviceUpdateInput!
+) {
+  updateGpuDevice(where: $where, data: $data) {
+    id
+  }
+}

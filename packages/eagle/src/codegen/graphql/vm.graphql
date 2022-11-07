@@ -1,0 +1,2741 @@
+mutation createVm($data: VmCreateInput!, $effect: CreateVmEffect!) {
+  createVm(data: $data, effect: $effect) {
+    id
+    name
+  }
+}
+
+mutation updateVm(
+  $data: VmUpdateInput!
+  $effect: UpdateVmEffect
+  $where: VmWhereUniqueInput!
+) {
+  updateVm(data: $data, effect: $effect, where: $where) {
+    id
+    name
+    status
+    entityAsyncStatus
+    hostname
+    dns_servers
+    ips
+    io_policy
+    max_iops
+    max_iops_policy
+    max_bandwidth
+    max_bandwidth_policy
+    vm_disks {
+      id
+      max_iops
+      max_iops_policy
+      max_bandwidth
+      max_bandwidth_policy
+    }
+    vm_nics {
+      id
+      vlan {
+        id
+        name
+      }
+      ip_address
+      mac_address
+      enabled
+      model
+    }
+    folder {
+      id
+      name
+    }
+    sync_vm_time_on_resume
+  }
+}
+
+query getVmForEdit($where: VmWhereUniqueInput!) {
+  vm(where: $where) {
+    id
+    name
+    description
+    vcpu
+    cpu {
+      cores
+      sockets
+    }
+    cpu_exclusive_expected_enabled
+    cpu_exclusive_status
+    memory
+    ha
+    status
+    nested_virtualization
+    host {
+      id
+      allocatable_memory_bytes
+      nested_virtualization
+      allocable_cpu_cores_for_vm_exclusive
+      iommu
+    }
+    cluster {
+      id
+      type
+      architecture
+      version
+      hypervisor
+      hosts {
+        id
+        allocatable_memory_bytes
+        allocable_cpu_cores_for_vm_exclusive
+      }
+    }
+    sriov_vm_nics: vm_nics(where: { model: SRIOV }) {
+      id
+      model
+    }
+    guest_os_type
+    os
+    clock_offset
+    win_opt
+    gpu_devices {
+      id
+      name
+    }
+  }
+}
+
+query getVmsForSetHa($where: VmWhereInput) {
+  vms(where: $where) {
+    id
+    name
+    ha
+    sriov_vm_nics: vm_nics(where: { model: SRIOV }) {
+      id
+      model
+    }
+    cluster {
+      id
+      connect_state
+    }
+    gpu_devices {
+      id
+    }
+  }
+}
+
+query getVmBasic($where: VmWhereUniqueInput!) {
+  vm(where: $where) {
+    id
+    name
+    original_name
+    entityAsyncStatus
+    status
+    nested_virtualization
+    protected
+    memory
+    internal
+    vm_tools_status
+    vm_tools_expired
+    vm_tools_version
+    svt_iso
+    cluster {
+      id
+      type
+      version
+      name
+      connect_state
+      disconnected_reason
+      disconnected_date
+      settings {
+        id
+        vm_recycle_bin {
+          enabled
+          retain
+        }
+      }
+      architecture
+    }
+    host {
+      id
+    }
+    folder {
+      id
+      name
+    }
+    vm_disks {
+      id
+      svt_image {
+        id
+      }
+      elf_image {
+        id
+      }
+      vm_volume {
+        id
+        sharing
+        size
+      }
+    }
+    vm_nics {
+      id
+      vlan {
+        id
+        local_id
+        name
+        vds {
+          id
+          everoute_cluster {
+            id
+          }
+        }
+      }
+      model
+    }
+    gpu_devices {
+      id
+    }
+    vm_usage
+    backup_plans {
+      id
+      name
+    }
+    cpu_model
+  }
+  globalSettingses(first: 1) {
+    id
+    vm_recycle_bin {
+      enabled
+      retain
+    }
+  }
+}
+# not used
+query getVmsBasic($where: VmWhereInput!) {
+  vms(where: $where) {
+    id
+    name
+    entityAsyncStatus
+    status
+    nested_virtualization
+    memory
+    cluster {
+      id
+      type
+      version
+      name
+    }
+    folder {
+      id
+      name
+    }
+    vm_disks {
+      id
+      svt_image {
+        id
+      }
+      elf_image {
+        id
+      }
+      vm_volume {
+        id
+        sharing
+        size
+      }
+    }
+    vm_nics {
+      id
+      vlan {
+        id
+        name
+      }
+    }
+  }
+}
+
+query getVmSnapshotPlanName($where: VmWhereInput) {
+  vms(where: $where) {
+    id
+    snapshot_plan {
+      id
+      name
+    }
+  }
+}
+
+query getVmsForMigration($where: VmWhereInput!) {
+  vms(where: $where) {
+    id
+    name
+    status
+    memory
+    node_ip
+    nested_virtualization
+    protected
+    host {
+      id
+      name
+      management_ip
+    }
+    cluster {
+      id
+      type
+      version
+      name
+      current_cpu_model
+      connect_state
+      disconnected_reason
+      disconnected_date
+    }
+    cpu_model
+    vm_disks {
+      id
+      svt_image {
+        id
+      }
+      elf_image {
+        id
+      }
+      vm_volume {
+        id
+        sharing
+        size
+      }
+    }
+    vm_nics {
+      id
+      vlan {
+        id
+        name
+      }
+      model
+      nic {
+        id
+        is_sriov
+        total_vf_num
+        used_vf_num
+      }
+    }
+    usb_devices {
+      id
+    }
+  }
+}
+
+query getVmInfo($where: VmWhereUniqueInput!) {
+  vm(where: $where) {
+    id
+    local_id
+    name
+    entityAsyncStatus
+    status
+    description
+    internal
+    local_created_at
+    in_recycle_bin
+    io_policy
+    max_iops
+    max_iops_policy
+    max_bandwidth
+    max_bandwidth_policy
+    host {
+      id
+      name
+      management_ip
+      nested_virtualization
+      zone {
+        id
+        is_preferred
+        datacenter {
+          id
+          name
+        }
+      }
+    }
+    cluster {
+      id
+      local_id
+      name
+      version
+      architecture
+      connect_state
+      disconnected_reason
+      disconnected_date
+      datacenters {
+        name
+        id
+      }
+      type
+      hypervisor
+      current_cpu_model
+      vhost_enabled
+      stretch
+      settings {
+        id
+        default_storage_policy
+      }
+    }
+    vcpu
+    cpu {
+      cores
+      sockets
+    }
+    cpu_exclusive_status
+    cpu_usage
+    memory
+    memory_usage
+    ha
+    firmware
+    nested_virtualization
+    cpu_model
+    guest_cpu_model
+    clock_offset
+    win_opt
+    video_type
+    vm_disks {
+      id
+      key
+      boot
+      type
+      bus
+      device
+      disabled
+      max_iops
+      max_iops_policy
+      max_bandwidth
+      max_bandwidth_policy
+      elf_image {
+        id
+        name
+        path
+        size
+        content_library_image {
+          id
+          name
+        }
+      }
+      svt_image {
+        id
+        name
+        path
+        size
+      }
+      vm_volume {
+        id
+        local_id
+        name
+        path
+        size
+        sharing
+        unique_size
+        guest_used_size
+        guest_size_usage
+        elf_storage_policy
+        type
+      }
+      unsafe_image_path
+      unsafe_image_uuid
+      unsafe_provision
+      cloud_init_image_path
+      cloud_init_image_name
+    }
+    vm_nics(orderBy: order_ASC) {
+      id
+      local_id
+      vlan {
+        id
+        name
+      }
+      nic {
+        id
+        name
+        is_sriov
+      }
+      ip_address
+      mac_address
+      enabled
+      model
+      order
+      ingress_rate_limit_burst_in_bit
+      ingress_rate_limit_enabled
+      ingress_rate_limit_max_rate_in_bitps
+      egress_rate_limit_burst_in_bit
+      egress_rate_limit_enabled
+      egress_rate_limit_max_rate_in_bitps
+    }
+    vm_placement_group {
+      id
+      name
+    }
+    os
+    hostname
+    dns_servers
+    vm_tools_version
+    vm_tools_status
+    sync_vm_time_on_resume
+    vm_tools_expired
+    svt_iso
+    ips
+    kernel_info
+    folder {
+      id
+      name
+    }
+    provisioned_size
+    unique_size
+    guest_os_type
+    labels {
+      id
+      key
+      value
+    }
+    protected
+    isolation_policy {
+      id
+      mode
+      everoute_cluster {
+        id
+        name
+      }
+    }
+    vm_usage
+    backup_plans {
+      id
+      name
+    }
+    gpu_devices(orderBy: name_ASC) {
+      id
+      name
+    }
+    snapshot_plan {
+      id
+    }
+  }
+}
+
+query getVmInfoForCreateTemplate($where: VmWhereUniqueInput!) {
+  vm(where: $where) {
+    id
+    name
+    description
+    cluster {
+      id
+      version
+      type
+      name
+      architecture
+      stretch
+    }
+    vcpu
+    cpu {
+      cores
+      sockets
+    }
+    memory
+    ha
+    firmware
+    clock_offset
+    cpu_model
+    win_opt
+    nested_virtualization
+    vm_disks {
+      id
+      type
+      vm_volume {
+        id
+        name
+        sharing
+        elf_storage_policy
+      }
+      elf_image {
+        id
+      }
+    }
+    usb_devices {
+      id
+    }
+    vm_nics {
+      model
+    }
+    gpu_devices {
+      id
+    }
+    backup_plans {
+      id
+      name
+    }
+  }
+  licenses(first: 1) {
+    id
+    software_edition
+  }
+}
+
+query getVmUsbDevices($vmId: ID!, $usbWhere: UsbDeviceWhereInput) {
+  mountableUsbDevices: usbDevices(where: $usbWhere, first: 1) {
+    id
+  }
+  vm(where: { id: $vmId }) {
+    id
+    usb_devices {
+      id
+      local_id
+      name
+      status
+      size
+      usb_type
+      manufacturer
+      description
+      host {
+        id
+        name
+      }
+    }
+    out_uninstall_usb
+    all_connect_devices {
+      uuid
+      host_id
+      type
+    }
+  }
+}
+
+query getVmInfoForEditVnic($vmId: ID!) {
+  vm(where: { id: $vmId }) {
+    id
+    name
+    status
+    ha
+    vm_nics(orderBy: order_ASC) {
+      id
+      local_id
+      mac_address
+      enabled
+      model
+      mirror
+      vlan {
+        id
+        name
+      }
+      nic {
+        id
+        name
+      }
+      ip_address
+      gateway
+      subnet_mask
+      order
+      ingress_rate_limit_burst_in_bit
+      ingress_rate_limit_enabled
+      ingress_rate_limit_max_rate_in_bitps
+      egress_rate_limit_burst_in_bit
+      egress_rate_limit_enabled
+      egress_rate_limit_max_rate_in_bitps
+    }
+    cluster {
+      id
+      version
+      type
+      architecture
+    }
+    host {
+      id
+      nics(where: { is_sriov: true, driver_state: READY }, orderBy: name_ASC) {
+        id
+        local_id
+        name
+        mac_address
+        is_sriov
+        total_vf_num
+        used_vf_num
+      }
+    }
+    vm_tools_status
+    vm_disks {
+      bus
+      type
+    }
+  }
+
+  isolationPolicies(where: { vm: { id: $vmId } }) {
+    id
+  }
+}
+
+query getVmsOwner($where: VmWhereInput!) {
+  vms(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query vmDisksBasic($where: VmDiskWhereInput) {
+  vmDisks(where: $where) {
+    id
+    type
+    vm_volume {
+      id
+      name
+      local_id
+    }
+  }
+}
+
+query getVmMetricMeta($where: VmWhereUniqueInput!) {
+  vm(where: $where) {
+    id
+    name
+    local_id
+    host {
+      id
+      name
+    }
+    cluster {
+      id
+      name
+      version
+      type
+    }
+    vm_nics {
+      id
+      local_id
+      mac_address
+    }
+  }
+}
+
+query getVmForClone($where: VmWhereUniqueInput!) {
+  vm(where: $where) {
+    id
+    local_id
+    name
+    host {
+      id
+      name
+    }
+    cluster {
+      id
+      name
+    }
+    ha
+    vcpu
+    cpu {
+      cores
+      sockets
+    }
+    memory
+    firmware
+    vm_nics {
+      id
+      vlan {
+        id
+      }
+    }
+    vm_disks(orderBy: boot_ASC) {
+      id
+      boot
+      type
+      bus
+      svt_image {
+        id
+      }
+      elf_image {
+        id
+      }
+      vm_volume {
+        id
+        name
+        size
+        path
+      }
+    }
+    folder {
+      id
+    }
+  }
+}
+
+query getVmAndSnapshots($where: VmWhereUniqueInput!) {
+  vm(where: $where) {
+    id
+    name
+    status
+    host {
+      id
+    }
+    cluster {
+      id
+      name
+      version
+      type
+      architecture
+    }
+    vcpu
+    cpu {
+      cores
+      sockets
+    }
+    memory
+    ha
+    clock_offset
+    cpu_model
+    win_opt
+    firmware
+    snapshots {
+      id
+      name
+    }
+    vm_disks(orderBy: boot_ASC) {
+      id
+      boot
+      type
+      vm_volume {
+        id
+        name
+        sharing
+      }
+    }
+    usb_devices {
+      id
+    }
+    vm_tools_status
+    vm_nics {
+      model
+    }
+    gpu_devices {
+      id
+    }
+    svt_iso
+  }
+}
+
+query vnc($input: VncInput!) {
+  vnc(input: $input) {
+    vm_uuid
+    host_ip
+    cluster_ip
+    token
+    raw_token
+    name
+    k8s
+  }
+}
+
+mutation deleteVm($where: VmWhereUniqueInput!) {
+  deleteVm(where: $where) {
+    id
+  }
+}
+
+query vmVolumesBasic($where: VmVolumeWhereInput!) {
+  vmVolumes(where: $where) {
+    id
+    size
+  }
+}
+
+query getCreateVmSource(
+  $id: ID
+  $clone_vm: Boolean!
+  $rebuild_from_snapshot: Boolean!
+  $created_from_template: Boolean!
+) {
+  vm(where: { id: $id }) @include(if: $clone_vm) {
+    id
+    name
+    ha
+    vcpu
+    description
+    io_policy
+    max_iops
+    max_iops_policy
+    max_bandwidth
+    max_bandwidth_policy
+    cpu {
+      cores
+      sockets
+    }
+    cpu_exclusive_expected_enabled
+    memory
+    firmware
+    vm_disks {
+      id
+      key
+      boot
+      type
+      bus
+      disabled
+      max_iops
+      max_iops_policy
+      max_bandwidth
+      max_bandwidth_policy
+      svt_image {
+        id
+        name
+        path
+        size
+      }
+      elf_image {
+        id
+        name
+        path
+        size
+        content_library_image {
+          id
+          name
+        }
+      }
+      vm_volume {
+        id
+        name
+        path
+        size
+        sharing
+        elf_storage_policy
+        type
+      }
+    }
+    vm_nics(orderBy: order_ASC) {
+      id
+      vlan {
+        id
+        name
+      }
+      mac_address
+      enabled
+      nic {
+        id
+        local_id
+        is_sriov
+        total_vf_num
+        used_vf_num
+      }
+      model
+      mirror
+      ingress_rate_limit_burst_in_bit
+      ingress_rate_limit_enabled
+      ingress_rate_limit_max_rate_in_bitps
+      egress_rate_limit_burst_in_bit
+      egress_rate_limit_enabled
+      egress_rate_limit_max_rate_in_bitps
+    }
+    host {
+      id
+      name
+    }
+    cluster {
+      id
+      name
+      vhost_enabled
+      version
+      type
+      stretch
+    }
+    folder {
+      id
+      name
+    }
+    usb_devices {
+      id
+    }
+  }
+  vmSnapshot(where: { id: $id }) @include(if: $rebuild_from_snapshot) {
+    id
+    name
+    ha
+    vcpu
+    description
+    io_policy
+    max_iops
+    max_iops_policy
+    max_bandwidth
+    max_bandwidth_policy
+    cpu {
+      cores
+      sockets
+    }
+    memory
+    firmware
+    cluster {
+      id
+      name
+      vhost_enabled
+      version
+      type
+      local_id
+      stretch
+    }
+    vm_disks {
+      key
+      boot
+      type
+      bus
+      path
+      size
+      disk_name
+      disabled
+      elf_image_local_id
+      vm_volume_local_id
+      svt_image_local_id
+      index
+      max_iops
+      max_iops_policy
+      max_bandwidth
+      max_bandwidth_policy
+      storage_policy_uuid
+    }
+    vm_nics {
+      index
+      mac_address
+      enabled
+      model
+      mirror
+      vlan {
+        vlan_local_id
+        vlan_id
+      }
+      ingress_rate_limit_burst_in_bit
+      ingress_rate_limit_enabled
+      ingress_rate_limit_max_rate_in_bitps
+      egress_rate_limit_burst_in_bit
+      egress_rate_limit_enabled
+      egress_rate_limit_max_rate_in_bitps
+    }
+  }
+  vmTemplate(where: { id: $id }) @include(if: $created_from_template) {
+    id
+    name
+    ha
+    vcpu
+    description
+    io_policy
+    max_iops
+    max_iops_policy
+    max_bandwidth
+    max_bandwidth_policy
+    cpu {
+      cores
+      sockets
+    }
+    memory
+    firmware
+    cluster {
+      id
+      name
+      vhost_enabled
+    }
+    vm_disks {
+      key
+      boot
+      type
+      bus
+      path
+      size
+      disk_name
+      disabled
+      elf_image_local_id
+      vm_volume_local_id
+      svt_image_local_id
+      index
+      max_iops
+      max_iops_policy
+      max_bandwidth
+      max_bandwidth_policy
+      storage_policy_uuid
+    }
+    vm_nics {
+      index
+      mac_address
+      enabled
+      model
+      mirror
+      vlan {
+        vlan_local_id
+        vlan_id
+      }
+      ingress_rate_limit_burst_in_bit
+      ingress_rate_limit_enabled
+      ingress_rate_limit_max_rate_in_bitps
+      egress_rate_limit_burst_in_bit
+      egress_rate_limit_enabled
+      egress_rate_limit_max_rate_in_bitps
+    }
+    cloud_init_supported
+  }
+  contentLibraryVmTemplate(where: { id: $id })
+    @include(if: $created_from_template) {
+    id
+    name
+    template_config {
+      cpu_exclusive_expected_enabled
+    }
+    clusters {
+      id
+      name
+      architecture
+      version
+      type
+      stretch
+      connect_state
+    }
+    vm_templates {
+      id
+      name
+      ha
+      vcpu
+      description
+      io_policy
+      max_iops
+      max_iops_policy
+      max_bandwidth
+      max_bandwidth_policy
+      cpu {
+        cores
+        sockets
+      }
+      memory
+      firmware
+      cluster {
+        id
+        local_id
+        name
+        vhost_enabled
+        stretch
+        type
+        version
+      }
+      vm_disks {
+        key
+        boot
+        type
+        bus
+        path
+        size
+        disk_name
+        disabled
+        elf_image_local_id
+        vm_volume_local_id
+        svt_image_local_id
+        index
+        max_iops
+        max_iops_policy
+        max_bandwidth
+        max_bandwidth_policy
+        storage_policy_uuid
+      }
+      vm_nics {
+        index
+        mac_address
+        enabled
+        model
+        mirror
+        vlan {
+          vlan_local_id
+          vlan_id
+        }
+        ingress_rate_limit_burst_in_bit
+        ingress_rate_limit_enabled
+        ingress_rate_limit_max_rate_in_bitps
+        egress_rate_limit_burst_in_bit
+        egress_rate_limit_enabled
+        egress_rate_limit_max_rate_in_bitps
+      }
+      cloud_init_supported
+    }
+  }
+}
+
+query vmsBasic($where: VmWhereInput!, $skip: Int, $first: Int) {
+  vms(where: $where, skip: $skip, first: $first) {
+    id
+    local_id
+    name
+  }
+}
+
+query checkVmByName($names: [String!]!, $clusterId: ID!, $first: Int!) {
+  vms(where: { name_in: $names, cluster: { id: $clusterId } }, first: $first) {
+    id
+    name
+  }
+}
+
+query getVmsName($where: VmWhereInput!) {
+  vms(where: $where) {
+    id
+    local_id
+    name
+  }
+}
+
+query getVmVolumesName($where: VmVolumeWhereInput!) {
+  vmVolumes(where: $where) {
+    id
+    local_id
+    name
+  }
+}
+
+query getVmsInfoForEntityFilter($where: VmWhereInput!) {
+  vms(where: $where) {
+    id
+    vcpu
+    memory
+    logical_size_bytes
+  }
+}
+
+query getVmsInfo($where: VmWhereInput!) {
+  vms(where: $where) {
+    id
+    name
+    status
+    vcpu
+    memory
+    logical_size_bytes
+    host {
+      id
+      name
+      management_ip
+    }
+    cluster {
+      id
+      name
+    }
+  }
+}
+
+query getVmDisk($where: VmWhereUniqueInput!) {
+  vm(where: $where) {
+    id
+    vm_tools_status
+    vm_disks {
+      id
+      type
+      boot
+      bus
+      disabled
+      elf_image {
+        id
+      }
+      vm_volume {
+        id
+      }
+      svt_image {
+        id
+        name
+        path
+        size
+      }
+      cloud_init_image_path
+    }
+  }
+}
+
+query getVmDiskDetailForUninstallISO($where: VmWhereUniqueInput!) {
+  vm(where: $where) {
+    id
+    vm_disks {
+      id
+      key
+      boot
+      type
+      bus
+      device
+      disabled
+      cloud_init_image_path
+      cloud_init_image_name
+      elf_image {
+        id
+        name
+        path
+        size
+        content_library_image {
+          id
+          name
+        }
+      }
+      svt_image {
+        id
+        name
+        path
+        size
+      }
+      vm_volume {
+        id
+        local_id
+        name
+        path
+        size
+        sharing
+        unique_size
+        guest_used_size
+        guest_size_usage
+        elf_storage_policy
+        type
+      }
+      unsafe_image_path
+      unsafe_image_uuid
+      unsafe_provision
+    }
+  }
+}
+
+query deleteVmQuery($where: VmWhereInput!) {
+  vms(where: $where) {
+    id
+    name
+    status
+    entityAsyncStatus
+    nested_virtualization
+    protected
+  }
+}
+
+mutation moveVmsToRecycleBin($where: VmWhereUniqueInput!) {
+  updateVm(where: $where, data: { in_recycle_bin: true }) {
+    id
+  }
+}
+
+query getVmsAndRecycleBinGlobalSetting($where: VmWhereInput!) {
+  vms(where: $where) {
+    id
+    name
+    status
+    nested_virtualization
+    entityAsyncStatus
+    protected
+    snapshot_plan {
+      id
+      name
+    }
+    cluster {
+      id
+      type
+      version
+      name
+      connect_state
+      disconnected_reason
+      disconnected_date
+      settings {
+        id
+        vm_recycle_bin {
+          enabled
+          retain
+        }
+      }
+    }
+    usb_devices {
+      id
+    }
+    backup_plans {
+      id
+      name
+    }
+  }
+  globalSettingses(first: 1) {
+    id
+    vm_recycle_bin {
+      enabled
+      retain
+    }
+  }
+  vmExportFiles(where: { vm: $where }) {
+    id
+    type
+    vm {
+      id
+      name
+    }
+  }
+}
+
+query getVmAndClusters(
+  $vm_id: String!
+  $src_cluster_id: ID!
+  $dest_cluster_id: ID!
+) {
+  vm(where: { local_id: $vm_id }) {
+    id
+    name
+  }
+  srcCluster: cluster(where: { id: $src_cluster_id }) {
+    id
+    name
+  }
+  destCluster: cluster(where: { id: $dest_cluster_id }) {
+    id
+    name
+  }
+}
+
+query getVmStatus($where: VmWhereUniqueInput!) {
+  vm(where: $where) {
+    id
+    name
+    status
+    entityAsyncStatus
+  }
+}
+
+query getVmsInfoForStart($where: VmWhereInput!) {
+  vms(where: $where) {
+    id
+    name
+    status
+    entityAsyncStatus
+    nested_virtualization
+    protected
+    usb_devices {
+      id
+      name
+      vms {
+        id
+        name
+        status
+      }
+    }
+    cluster {
+      id
+      version
+      connect_state
+      disconnected_reason
+      disconnected_date
+      version
+      type
+    }
+    vm_nics {
+      model
+      nic {
+        id
+        is_sriov
+        total_vf_num
+        used_vf_num
+      }
+    }
+    gpu_devices {
+      id
+      vms {
+        id
+        name
+        status
+      }
+    }
+  }
+}
+
+query getVmInfoForStart($where: VmWhereUniqueInput!) {
+  vm(where: $where) {
+    id
+    local_id
+    name
+    host {
+      id
+      name
+      data_ip
+    }
+    cluster {
+      id
+      name
+      hosts {
+        id
+        allocatable_memory_bytes
+        allocable_cpu_cores_for_vm_exclusive
+        data_ip
+      }
+      version
+      type
+    }
+    memory
+    vcpu
+    cpu_exclusive_expected_enabled
+    node_ip
+    usb_devices {
+      id
+      name
+      vms {
+        id
+        name
+        status
+      }
+    }
+    vm_nics {
+      model
+      nic {
+        id
+        is_sriov
+        total_vf_num
+        used_vf_num
+      }
+    }
+    gpu_devices {
+      id
+      name
+      vms {
+        id
+        name
+        status
+      }
+    }
+  }
+}
+
+query getVmAndTask($vm_id: ID!, $task_id: ID!) {
+  vm(where: { id: $vm_id }) {
+    id
+    name
+  }
+  task(where: { id: $task_id }) {
+    id
+    steps {
+      key
+      finished
+    }
+    status
+    progress
+    args
+  }
+}
+
+mutation startVmsBatch($where: VmWhereInput!) {
+  startVmsBatch(where: $where, data: { node_ip: "AUTO_SCHEDULE" }) {
+    id
+  }
+}
+
+query getVmNetworkSecurityInfo($id: ID!, $everouteClusterId: ID) {
+  isolationPolicies(where: { vm: { id: $id } }) {
+    id
+    mode
+    ingress {
+      type
+      ip_block
+      except_ip_block
+      selector_ids
+      selector {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+      ports {
+        protocol
+        port
+      }
+      security_group {
+        id
+        name
+        everoute_cluster {
+          id
+          name
+        }
+        label_groups {
+          label_ids
+          labels {
+            id
+            key
+            value
+            vms {
+              id
+              name
+              in_recycle_bin
+              cluster {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                  vds {
+                    id
+                    name
+                    everoute_cluster {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+              labels {
+                id
+                key
+                value
+              }
+            }
+          }
+        }
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    egress {
+      type
+      ip_block
+      except_ip_block
+      selector_ids
+      selector {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+      ports {
+        protocol
+        port
+      }
+      security_group {
+        id
+        name
+        everoute_cluster {
+          id
+          name
+        }
+        label_groups {
+          label_ids
+          labels {
+            id
+            key
+            value
+            vms {
+              id
+              name
+              in_recycle_bin
+              cluster {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                  vds {
+                    id
+                    name
+                    everoute_cluster {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+              labels {
+                id
+                key
+                value
+              }
+            }
+          }
+        }
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+  }
+
+  vm(where: { id: $id }) {
+    id
+    name
+    in_recycle_bin
+    labels {
+      id
+      security_policies {
+        id
+        name
+        everoute_cluster {
+          id
+        }
+        apply_to {
+          selector_ids
+        }
+      }
+    }
+    vm_nics(where: { vlan: { vds: { everoute_cluster: null } } }) {
+      id
+      vlan {
+        id
+        name
+        vds {
+          id
+        }
+      }
+    }
+    vm_usage
+  }
+
+  everouteCluster(where: { id: $everouteClusterId }) {
+    id
+    global_default_action
+    global_whitelist {
+      enable
+    }
+  }
+}
+
+mutation stopIsolationVm($where: IsolationPolicyWhereUniqueInput!) {
+  deleteIsolationPolicy(where: $where) {
+    id
+  }
+}
+
+query getIsolationVms($where: IsolationPolicyWhereInput) {
+  isolationPolicies(where: $where) {
+    id
+    vm {
+      id
+      name
+      cluster {
+        id
+        name
+      }
+    }
+  }
+}
+query getEverouteCluster($clusterId: ID!, $vdsesId: [ID!]) {
+  everouteClusters(
+    where: {
+      agent_elf_clusters_some: { id: $clusterId }
+      agent_elf_vdses_some: { id_in: $vdsesId }
+    }
+  ) {
+    id
+    version
+    phase
+    name
+    status {
+      conditions {
+        type
+        lastProbeTime
+      }
+      controllers {
+        instances {
+          isHealth
+          metrics {
+            cpuUsage
+            memoryUsage
+            dataVolumeUsage
+          }
+          vm {
+            id
+            name
+            host {
+              id
+              name
+            }
+            cluster {
+              id
+              name
+              architecture
+            }
+            vm_nics {
+              id
+              vlan {
+                id
+                name
+              }
+            }
+          }
+        }
+      }
+      agents {
+        instances {
+          hostID
+          isHealth
+          phase
+          host {
+            id
+            name
+            cluster {
+              id
+              name
+            }
+          }
+        }
+        manageVDSes {
+          vds {
+            id
+            name
+            cluster {
+              id
+              name
+              connect_state
+              disconnected_date
+            }
+          }
+          phase
+        }
+      }
+    }
+  }
+}
+
+query getVmVlanInfo($where: VlanWhereInput) {
+  vlans(where: $where) {
+    id
+    name
+    vds {
+      id
+      name
+    }
+  }
+}
+mutation createIsolationPolicy($data: IsolationPolicyCreateInput!) {
+  createIsolationPolicy(data: $data) {
+    id
+    mode
+    ingress {
+      type
+      ip_block
+      selector {
+        id
+        key
+        value
+        security_policy_num
+      }
+      ports {
+        port
+        protocol
+      }
+    }
+    egress {
+      type
+      ip_block
+      selector {
+        id
+        key
+        value
+        security_policy_num
+      }
+      ports {
+        port
+        protocol
+      }
+    }
+  }
+}
+
+mutation updateIsolationPolicy(
+  $data: IsolationPolicyUpdateInput!
+  $where: IsolationPolicyWhereUniqueInput!
+) {
+  updateIsolationPolicy(data: $data, where: $where) {
+    id
+    mode
+    ingress {
+      type
+      ip_block
+      selector {
+        id
+        key
+        value
+        security_policy_num
+      }
+      ports {
+        port
+        protocol
+      }
+    }
+    egress {
+      type
+      ip_block
+      selector {
+        id
+        key
+        value
+        security_policy_num
+      }
+      ports {
+        port
+        protocol
+      }
+    }
+  }
+}
+
+query getIsolationForEdit($where: IsolationPolicyWhereUniqueInput!) {
+  isolationPolicy(where: $where) {
+    id
+    mode
+    everoute_cluster {
+      id
+      version
+    }
+    ingress {
+      type
+      ip_block
+      except_ip_block
+      selector_ids
+      selector {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+      ports {
+        protocol
+        port
+      }
+      security_group {
+        id
+        name
+        everoute_cluster {
+          id
+          name
+        }
+        label_groups {
+          label_ids
+          labels {
+            id
+            key
+            value
+            vms {
+              id
+              name
+              in_recycle_bin
+              cluster {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                  vds {
+                    id
+                    name
+                    everoute_cluster {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+              labels {
+                id
+                key
+                value
+              }
+            }
+          }
+        }
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    egress {
+      type
+      ip_block
+      except_ip_block
+      selector_ids
+      selector {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+      ports {
+        protocol
+        port
+      }
+      security_group {
+        id
+        name
+        everoute_cluster {
+          id
+          name
+        }
+        label_groups {
+          label_ids
+          labels {
+            id
+            key
+            value
+            vms {
+              id
+              name
+              in_recycle_bin
+              cluster {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                  vds {
+                    id
+                    name
+                    everoute_cluster {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+              labels {
+                id
+                key
+                value
+              }
+            }
+          }
+        }
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+  }
+}
+
+query searchLabelVmsForEveroute(
+  $labelIds: [ID!]
+  $where: VmWhereInput!
+  $skip: Int
+) {
+  vms(where: $where, first: 50, skip: $skip) {
+    id
+    name
+    cluster {
+      id
+      name
+    }
+  }
+  labels(where: { id_in: $labelIds }) {
+    id
+    key
+    value
+  }
+  vmsConnection(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query getVmOperationInfo($clusterId: ID!, $vdsesId: [ID!], $vmId: ID!) {
+  everouteClusters(
+    where: {
+      agent_elf_clusters_some: { id: $clusterId }
+      agent_elf_vdses_some: { id_in: $vdsesId }
+    }
+  ) {
+    id
+    phase
+    name
+    version
+    status {
+      conditions {
+        type
+        lastProbeTime
+      }
+      controllers {
+        instances {
+          isHealth
+          metrics {
+            cpuUsage
+            memoryUsage
+            dataVolumeUsage
+          }
+          vm {
+            id
+            name
+            host {
+              id
+              name
+            }
+            cluster {
+              id
+              name
+              architecture
+            }
+            vm_nics {
+              id
+              vlan {
+                id
+                name
+              }
+            }
+          }
+        }
+      }
+      agents {
+        instances {
+          hostID
+          isHealth
+          host {
+            id
+            name
+            cluster {
+              id
+              name
+            }
+          }
+        }
+        manageVDSes {
+          vds {
+            id
+            name
+            cluster {
+              id
+              name
+              connect_state
+              disconnected_date
+            }
+          }
+          phase
+        }
+      }
+    }
+  }
+
+  isolationPolicies(where: { vm: { id: $vmId } }) {
+    id
+    everoute_cluster {
+      id
+    }
+  }
+}
+
+query getVmsAndCluster($where: VmWhereInput!) {
+  vms(where: $where) {
+    id
+    name
+    cluster {
+      id
+      name
+    }
+  }
+}
+
+query checkVmSnapshotByName($where: VmSnapshotWhereInput) {
+  vmSnapshots(where: $where, first: 1) {
+    id
+  }
+}
+
+query contentLibraryVmTemplatesForCreateVm {
+  contentLibraryVmTemplates {
+    id
+    name
+  }
+}
+
+query getClustersForFilterTemplate($where: ClusterWhereInput) {
+  clusters(where: $where) {
+    id
+    version
+  }
+}
+
+query contentLibraryImageForCreateVm($where: ContentLibraryImageWhereInput) {
+  contentLibraryImages(where: $where) {
+    id
+    clusters {
+      id
+    }
+  }
+}
+
+query getMigrateVmsInfo($where: VmWhereInput) {
+  vms(where: $where) {
+    id
+    name
+    status
+    memory
+    internal
+    protected
+    vm_usage
+    cpu_model
+    nested_virtualization
+    provisioned_size
+    description
+    cpu {
+      cores
+      sockets
+    }
+    vcpu
+    cpu_exclusive_expected_enabled
+    clock_offset
+    firmware
+    ha
+    win_opt
+    vm_tools_status
+    cluster {
+      id
+      name
+      version
+      type
+      architecture
+      stretch
+      total_data_capacity
+      used_data_space
+      failure_data_space
+      connect_state
+      vhost_enabled
+      license_expire_date
+      license_type
+      hosts {
+        id
+        name
+        status
+        allocatable_memory_bytes
+        cpu_model
+        compatible_cpu_models
+        cpu_vendor
+      }
+    }
+    host {
+      id
+    }
+    folder {
+      id
+    }
+    vm_nics {
+      id
+      model
+      vlan {
+        id
+        local_id
+        name
+        vds {
+          id
+          everoute_cluster {
+            id
+          }
+        }
+      }
+      nic {
+        id
+        is_sriov
+      }
+      enabled
+      mirror
+    }
+    vm_disks {
+      id
+      elf_image {
+        id
+      }
+      svt_image {
+        id
+      }
+      vm_volume {
+        id
+        local_id
+        size
+        sharing
+        elf_storage_policy
+        name
+        mounting
+      }
+      type
+      bus
+      boot
+      disabled
+      cloud_init_image_path
+    }
+    usb_devices {
+      id
+      name
+    }
+    labels {
+      id
+      key
+      value
+    }
+    cloud_init_supported
+    guest_os_type
+    gpu_devices {
+      id
+    }
+  }
+  licenses(first: 1) {
+    id
+    software_edition
+  }
+}
+
+mutation stopVmInCutoverMigration($task_id: String!, $force_stop: Boolean) {
+  stopVmInCutoverMigration(task_id: $task_id, force_stop: $force_stop) {
+    id
+  }
+}
+
+mutation abortMigrateVmAcrossCluster($task_id: String!) {
+  abortMigrateVmAcrossCluster(task_id: $task_id) {
+    id
+  }
+}
+
+mutation migrateVmAcrossCluster(
+  $where: VmWhereUniqueInput!
+  $dest_cluster_id: String!
+  $dest_host_id: String
+  $vm_config: VmMigrateConfig!
+) {
+  migrateVmAcrossCluster(
+    where: $where
+    dest_cluster_id: $dest_cluster_id
+    dest_host_id: $dest_host_id
+    vm_config: $vm_config
+  ) {
+    id
+    name
+  }
+}
+
+query getMigrationConnectivity(
+  $src_cluster: ClusterWhereUniqueInput!
+  $dest_cluster: ClusterWhereUniqueInput!
+) {
+  migrationConnectivity(
+    src_cluster: $src_cluster
+    dest_cluster: $dest_cluster
+  ) {
+    hot_migration
+  }
+}
+
+query getVmToolsStatus($id: ID) {
+  vm(where: { id: $id }) {
+    id
+    vm_tools_status
+    svt_iso
+  }
+}
+
+query getExportVmInfo($id: ID!) {
+  vm(where: { id: $id }) {
+    id
+    name
+    vm_disks {
+      id
+      vm_volume {
+        id
+        name
+      }
+      type
+    }
+    status
+  }
+}
+
+query getBatchExportVmsInfo($ids: [ID!]!) {
+  vms(where: { id_in: $ids }) {
+    id
+    name
+    vm_disks {
+      id
+      vm_volume {
+        id
+        name
+      }
+      type
+    }
+    status
+    cluster {
+      id
+      version
+      type
+    }
+  }
+}
+
+mutation exportVm($where: VmWhereUniqueInput!, $data: ExportVmInput!) {
+  exportVm(where: $where, data: $data) {
+    id
+  }
+}
+
+query vmExportFile($where: VmExportFileWhereUniqueInput!) {
+  vmExportFile(where: $where) {
+    id
+    files
+    type
+    damaged
+    createdAt
+    storage_cluster_id
+    vm {
+      id
+      name
+      cluster {
+        id
+      }
+    }
+    vm_volume {
+      id
+      name
+      cluster {
+        id
+      }
+    }
+    content_library_vm_template {
+      id
+      name
+      vm_templates {
+        cluster {
+          id
+        }
+      }
+    }
+  }
+}
+
+query vmExportFiles($where: VmExportFileWhereInput) {
+  vmExportFiles(where: $where) {
+    id
+    files
+    type
+    damaged
+    createdAt
+    storage_cluster_id
+    vm {
+      id
+      name
+      cluster {
+        id
+      }
+    }
+    vm_volume {
+      id
+      name
+      cluster {
+        id
+      }
+    }
+    content_library_vm_template {
+      id
+      name
+      vm_templates {
+        cluster {
+          id
+        }
+      }
+    }
+  }
+}
+
+mutation deleteVmExportFile(
+  $where: VmExportFileWhereUniqueInput!
+  $effect: DeleteVmExportFileEffect!
+) {
+  deleteVmExportFile(where: $where, effect: $effect) {
+    id
+  }
+}
+
+mutation exportVmTemplate(
+  $where: ContentLibraryVmTemplateWhereUniqueInput!
+  $data: ExportVmTemplateInput!
+) {
+  exportVmTemplate(where: $where, data: $data) {
+    id
+  }
+}
+
+mutation importVm($data: VmCreateInput!, $effect: ImportVmEffect!) {
+  importVm(data: $data, effect: $effect) {
+    id
+  }
+}
+
+query gpuForCreateVm($where: GpuDeviceWhereInput) {
+  gpuDevices(where: $where) {
+    id
+    not_stopped_vms: vms(where: { status_not: STOPPED }) {
+      id
+      status
+    }
+  }
+}
+
+query getVmSnapshotPlanOtherVolumes($id: ID!) {
+  vm(where: { id: $id }) {
+    id
+    snapshot_plan {
+      id
+      name
+      otherVms: vms(where: { id_not: $id }) {
+        id
+        vm_disks {
+          id
+          vm_volume {
+            id
+          }
+        }
+      }
+    }
+  }
+}

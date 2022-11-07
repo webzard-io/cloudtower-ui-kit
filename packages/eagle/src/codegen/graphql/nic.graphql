@@ -1,0 +1,222 @@
+query getNicInfo($where: NicWhereUniqueInput!) {
+  nic(where: $where) {
+    id
+    name
+    up
+    running
+    physical_link_up
+    mac_address
+    speed
+    mtu
+    rdma_enabled
+    nic_uuid
+    host {
+      id
+      name
+      cluster {
+        id
+        name
+        version
+        type
+        connect_state
+        disconnected_reason
+        disconnected_date
+        stretch
+        rdma_enabled
+        datacenters {
+          id
+          name
+        }
+        type
+        hypervisor
+      }
+      zone {
+        id
+        is_preferred
+        cluster {
+          id
+          name
+        }
+        datacenter {
+          id
+          name
+        }
+      }
+    }
+    vds {
+      id
+      name
+      type
+    }
+    labels {
+      id
+      key
+      value
+    }
+    type
+    model
+    driver
+    driver_state
+    is_sriov
+    total_vf_num
+    used_vf_num
+    max_vf_num
+  }
+}
+
+query getNicsName($where: NicWhereInput!) {
+  nics(where: $where) {
+    id
+    local_id
+    name
+    host {
+      id
+      local_id
+      name
+    }
+  }
+}
+
+query getHostNetworkName($where: NicWhereInput!) {
+  nics(where: $where) {
+    id
+    local_id
+    name
+  }
+}
+
+query getVmNicsName($where: VmNicWhereInput!) {
+  vmNics(where: $where) {
+    id
+    local_id
+    mac_address
+    vm {
+      id
+      local_id
+      name
+      vm_nics {
+        id
+        local_id
+        mac_address
+      }
+    }
+  }
+}
+
+query getSriovNics($hostId: ID) {
+  nics(
+    where: { host: { id: $hostId }, is_sriov: true, driver_state: READY }
+    orderBy: name_ASC
+  ) {
+    id
+    local_id
+    name
+    mac_address
+    is_sriov
+    total_vf_num
+    used_vf_num
+    max_vf_num
+  }
+}
+query getRunningVmsToSriov($id: ID!) {
+  vms(
+    where: {
+      vm_nics_some: { nic: { id: $id } }
+      AND: [{ status: RUNNING }]
+      in_recycle_bin: false
+    }
+  ) {
+    id
+  }
+}
+
+mutation updateNicVfNum($data: NicUpdateInput!, $where: NicWhereUniqueInput!) {
+  updateNic(data: $data, where: $where) {
+    id
+    total_vf_num
+  }
+}
+
+query getNicsScvmName($where: NicWhereInput!) {
+  nics(where: $where) {
+    id
+    local_id
+    name
+    host {
+      id
+      local_id
+      scvm_name
+    }
+  }
+}
+
+query getClusterNicsByNic($id: ID!) {
+  clusters(where: { hosts_some: { nics_some: { id: $id } } }) {
+    id
+    hosts {
+      id
+      nics {
+        id
+        entityAsyncStatus
+      }
+    }
+  }
+}
+
+query getNicMtuInfo($where: NicWhereUniqueInput!) {
+  nic(where: $where) {
+    id
+    name
+    mtu
+    vds {
+      id
+      name
+      vlans {
+        id
+        type
+        mtu
+      }
+    }
+  }
+}
+
+query getNicLldp($where: NicWhereUniqueInput!) {
+  getNicLldpCurrent(where: $where) {
+    interface
+    last_update_time
+    lldp_info {
+      age
+      port {
+        id {
+          type
+          value
+        }
+        ttl
+        mfs
+        aggregation
+      }
+      vlan {
+        vlan_id
+        pvid
+        value
+      }
+      ppvid {
+        supported
+        enabled
+      }
+      chassis {
+        sysName
+        id {
+          type
+          value
+        }
+        descr
+        mgmt_ip
+        capability {
+          type
+          enabled
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,140 @@
+query elfImagesForCdRom($where: ElfImageWhereInput!) {
+  elfImages(where: $where, orderBy: name_ASC) {
+    id
+    name
+    path
+    size
+  }
+}
+
+query getElfImageName($where: ElfImageWhereUniqueInput!) {
+  elfImage(where: $where) {
+    id
+    name
+    description
+    entityAsyncStatus
+    cluster {
+      id
+      connect_state
+      disconnected_reason
+      disconnected_date
+    }
+    content_library_image {
+      id
+      name
+    }
+  }
+}
+
+query getElfImage($where: ElfImageWhereUniqueInput!) {
+  elfImage(where: $where) {
+    id
+    name
+    vm_disks(where: { vm: { in_recycle_bin: false } }) {
+      id
+      vm {
+        id
+      }
+    }
+    vm_snapshots(where: { vm: { in_recycle_bin: false } }) {
+      id
+    }
+    vm_templates {
+      id
+    }
+  }
+}
+
+query getElfImageInfo($where: ElfImageWhereUniqueInput!) {
+  elfImage(where: $where) {
+    id
+    name
+    size
+    local_created_at
+    cluster {
+      id
+      name
+      stretch
+      datacenters {
+        id
+        name
+      }
+    }
+    description
+    vm_disks(where: { vm: { in_recycle_bin: false } }) {
+      id
+      vm {
+        id
+        name
+      }
+    }
+    vm_snapshots(where: { vm: { in_recycle_bin: false } }) {
+      id
+      name
+    }
+    vm_templates {
+      id
+      name
+    }
+  }
+}
+
+mutation createElfImage($data: ElfImageCreateInput!) {
+  createElfImage(data: $data) {
+    id
+    name
+    path
+    size
+    upload_task {
+      id
+      chunk_size
+      current_chunk
+    }
+  }
+}
+
+mutation uploadElfImage(
+  $data: UploadImageInput!
+  $effect: UploadImageEffectInput
+) {
+  uploadElfImage(data: $data, effect: $effect) {
+    id
+    current_chunk
+    status
+  }
+}
+
+mutation updateElfImage(
+  $data: ElfImageUpdateInput!
+  $where: ElfImageWhereUniqueInput!
+) {
+  updateElfImage(data: $data, where: $where) {
+    id
+    name
+    description
+  }
+}
+
+mutation deleteElfImage($where: ElfImageWhereUniqueInput!) {
+  deleteElfImage(where: $where) {
+    id
+  }
+}
+
+query queryElfImageUploadToken($input: ElfImageUploadInput!) {
+  elfImageUploadToken(input: $input) {
+    token
+    cluster_ip
+  }
+}
+
+query checkElfImageByName($where: ElfImageWhereInput) {
+  elfImages(where: $where) {
+    id
+    name
+    cluster {
+      id
+      name
+    }
+  }
+}

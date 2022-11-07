@@ -1,0 +1,93 @@
+query getGlobalAlertRule($where: GlobalAlertRuleWhereUniqueInput!) {
+  globalAlertRule(where: $where) {
+    id
+    name
+    message
+    disabled
+    thresholds {
+      value
+      severity
+    }
+    boolean
+    unit
+    default_thresholds {
+      value
+      severity
+    }
+    alert_rules {
+      id
+      disabled
+      customized
+      thresholds {
+        value
+        severity
+      }
+      cluster {
+        id
+        name
+      }
+    }
+  }
+}
+
+query getGlobalAlertRulesPosition($before: String!) {
+  globalAlertRulesConnection(before: $before, orderBy: id_ASC) {
+    aggregate {
+      count
+    }
+  }
+}
+query globalAlertRuleInfo($where: GlobalAlertRuleWhereUniqueInput!) {
+  globalAlertRule(where: $where) {
+    id
+    name
+    message
+    disabled
+    thresholds {
+      value
+      severity
+    }
+    boolean
+    unit
+    alert_rules {
+      id
+      disabled
+      customized
+      thresholds {
+        value
+        severity
+      }
+      cluster {
+        id
+        name
+      }
+    }
+  }
+}
+
+mutation updateGlobalAlertRule(
+  $data: GlobalAlertRuleUpdateInput!
+  $where: GlobalAlertRuleWhereUniqueInput!
+) {
+  updateGlobalAlertRule(data: $data, where: $where) {
+    id
+    disabled
+    thresholds {
+      value
+      severity
+    }
+    alert_rules {
+      id
+      disabled
+      customized
+      thresholds {
+        value
+        severity
+      }
+      cluster {
+        id
+        name
+      }
+    }
+  }
+}

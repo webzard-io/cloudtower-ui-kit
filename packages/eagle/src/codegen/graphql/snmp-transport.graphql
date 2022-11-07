@@ -1,0 +1,63 @@
+query snmpTransportCount {
+  snmpTransportsConnection {
+    aggregate {
+      count
+    }
+  }
+}
+
+mutation createSnmpTransport($data: SnmpTransportCreateInput!) {
+  createSnmpTransport(data: $data) {
+    id
+    disabled
+    name
+    port
+    version
+    username
+    cluster {
+      id
+      name
+    }
+  }
+}
+
+mutation updateSnmpTransport(
+  $data: SnmpTransportUpdateInput!
+  $where: SnmpTransportWhereUniqueInput!
+) {
+  updateSnmpTransport(data: $data, where: $where) {
+    id
+    disabled
+    name
+    port
+    version
+    username
+  }
+}
+
+mutation deleteSnmpTransport($where: SnmpTransportWhereUniqueInput!) {
+  deleteSnmpTransport(where: $where) {
+    id
+  }
+}
+
+query snmpTransport($id: ID!) {
+  snmpTransport(where: { id: $id }) {
+    id
+    name
+    protocol
+    port
+    version
+    disabled
+    community
+    username
+    auth_protocol
+    auth_pass_phrase
+    privacy_protocol
+    privacy_pass_phrase
+    cluster {
+      id
+      name
+    }
+  }
+}

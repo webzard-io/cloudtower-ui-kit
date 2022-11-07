@@ -1,0 +1,195 @@
+query contentLibraryImageBasic($where: ContentLibraryImageWhereUniqueInput!) {
+  contentLibraryImage(where: $where) {
+    id
+    name
+    description
+    entityAsyncStatus
+    clusters {
+      id
+      connect_state
+    }
+  }
+}
+
+query contentLibraryImageInfo($where: ContentLibraryImageWhereUniqueInput!) {
+  contentLibraryImage(where: $where) {
+    id
+    name
+    size
+    description
+    createdAt
+    elf_images {
+      id
+      vm_disks {
+        id
+        vm {
+          id
+          name
+          cluster {
+            id
+            name
+          }
+        }
+      }
+      vm_snapshots {
+        id
+        name
+        cluster {
+          id
+          name
+        }
+        vm {
+          id
+          in_recycle_bin
+        }
+      }
+    }
+  }
+}
+
+query contentLibraryImageClusters(
+  $where: ContentLibraryImageWhereUniqueInput!
+) {
+  contentLibraryImage(where: $where) {
+    id
+    name
+    entityAsyncStatus
+    clusters {
+      id
+      name
+      connect_state
+    }
+    elf_images {
+      id
+      vm_disks {
+        id
+      }
+      cluster {
+        id
+      }
+    }
+  }
+}
+
+mutation updateContentLibraryImage(
+  $data: ContentLibraryImageUpdateInput!
+  $where: ContentLibraryImageWhereUniqueInput!
+) {
+  updateContentLibraryImage(data: $data, where: $where) {
+    id
+  }
+}
+
+query checkContentLibraryImagebyName($where: ContentLibraryImageWhereInput) {
+  contentLibraryImages(where: $where, first: 1) {
+    id
+  }
+}
+
+mutation createContentLibraryImage($data: ContentLibraryImageCreateInput!) {
+  createContentLibraryImage(data: $data) {
+    upload_tasks {
+      id
+      chunk_size
+      current_chunk
+      args
+    }
+  }
+}
+
+query contentLibraryImagesForCdRom($where: ContentLibraryImageWhereInput) {
+  contentLibraryImages(where: $where, orderBy: name_ASC) {
+    id
+    name
+    path
+    size
+    clusters {
+      id
+      connect_state
+    }
+  }
+}
+
+mutation uploadContentLibraryImage($data: UploadContentLibraryImageInput!) {
+  uploadContentLibraryImage(data: $data) {
+    id
+    current_chunk
+    status
+  }
+}
+
+mutation deleteContentLibraryImage(
+  $where: ContentLibraryImageWhereUniqueInput!
+) {
+  deleteContentLibraryImage(where: $where) {
+    id
+  }
+}
+
+query contentLibraryImageForDelete(
+  $where: ContentLibraryImageWhereUniqueInput!
+) {
+  contentLibraryImage(where: $where) {
+    id
+    name
+    elf_images {
+      id
+      vm_disks(where: { vm: { in_recycle_bin: false } }) {
+        id
+      }
+    }
+    clusters {
+      id
+      connect_state
+    }
+  }
+}
+
+query contentLibraryImageForDistribute($where: ContentLibraryImageWhereInput) {
+  contentLibraryImages(where: $where) {
+    id
+    name
+    clusters {
+      id
+      name
+      connect_state
+    }
+  }
+}
+
+query contentLibraryImageForBatchDelete($where: ContentLibraryImageWhereInput) {
+  contentLibraryImages(where: $where) {
+    id
+    name
+    elf_images {
+      id
+      vm_disks(where: { vm: { in_recycle_bin: false } }) {
+        id
+      }
+    }
+    clusters {
+      id
+      connect_state
+    }
+  }
+}
+
+query getContentLibraryImageName($where: ContentLibraryImageWhereUniqueInput!) {
+  contentLibraryImage(where: $where) {
+    id
+    name
+  }
+}
+
+mutation abortDistributeContentLibraryImage($task_id: String!) {
+  abortDistributeContentLibraryImage(task_id: $task_id) {
+    id
+  }
+}
+
+query licenses {
+  licenses(first: 1) {
+    id
+    software_edition
+  }
+}

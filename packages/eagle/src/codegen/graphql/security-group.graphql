@@ -1,0 +1,496 @@
+query securityGroupInfo($id: ID!) {
+  securityGroup(where: { id: $id }) {
+    id
+    name
+    description
+    everoute_cluster {
+      id
+      name
+      phase
+      status {
+        conditions {
+          type
+          lastProbeTime
+        }
+        controllers {
+          instances {
+            isHealth
+            metrics {
+              cpuUsage
+              memoryUsage
+              dataVolumeUsage
+            }
+            vm {
+              id
+              name
+              host {
+                id
+                name
+              }
+              cluster {
+                id
+                name
+                architecture
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                }
+              }
+            }
+          }
+        }
+        agents {
+          instances {
+            hostID
+            isHealth
+            phase
+            host {
+              id
+              name
+              cluster {
+                id
+                name
+              }
+            }
+          }
+          manageVDSes {
+            vds {
+              id
+              name
+              cluster {
+                id
+                name
+                connect_state
+                disconnected_date
+              }
+            }
+            phase
+          }
+        }
+      }
+    }
+    label_groups {
+      label_ids
+      labels {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          vm_usage
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    vms(where: { in_recycle_bin: false }) {
+      id
+      name
+      vm_usage
+      in_recycle_bin
+      cluster {
+        id
+        name
+        everoute_cluster {
+          id
+          name
+        }
+      }
+      vm_nics {
+        id
+        vlan {
+          id
+          name
+          vds {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+        }
+      }
+      labels {
+        id
+        key
+        value
+      }
+    }
+    security_policies {
+      id
+      name
+      apply_to {
+        security_group_id
+      }
+      ingress {
+        security_group_id
+      }
+      egress {
+        security_group_id
+      }
+    }
+    isolation_policies {
+      id
+      vm {
+        id
+        name
+        cluster {
+          id
+        }
+      }
+      ingress {
+        security_group_id
+      }
+      egress {
+        security_group_id
+      }
+    }
+  }
+}
+
+query manySecurityGroupsInfo($ids: [ID!]!) {
+  securityGroups(where: { id_in: $ids }) {
+    id
+    name
+    security_policies {
+      id
+      name
+      apply_to {
+        security_group_id
+      }
+      ingress {
+        security_group_id
+      }
+      egress {
+        security_group_id
+      }
+    }
+    isolation_policies {
+      id
+      vm {
+        id
+        name
+        cluster {
+          id
+        }
+      }
+      ingress {
+        security_group_id
+      }
+      egress {
+        security_group_id
+      }
+    }
+    everoute_cluster {
+      id
+      name
+      phase
+      version
+      installed
+      status {
+        conditions {
+          type
+          lastProbeTime
+        }
+        controllers {
+          instances {
+            isHealth
+            metrics {
+              cpuUsage
+              memoryUsage
+              dataVolumeUsage
+            }
+            vm {
+              id
+              name
+              host {
+                id
+                name
+              }
+              cluster {
+                id
+                name
+                architecture
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                }
+              }
+            }
+          }
+        }
+        agents {
+          instances {
+            hostID
+            isHealth
+            phase
+            host {
+              id
+              name
+              cluster {
+                id
+                name
+              }
+            }
+          }
+          manageVDSes {
+            vds {
+              id
+              name
+              cluster {
+                id
+                name
+                connect_state
+                disconnected_date
+              }
+            }
+            phase
+          }
+        }
+      }
+    }
+  }
+}
+
+mutation createSecurityGroup($data: SecurityGroupCreateInput!) {
+  createSecurityGroup(data: $data) {
+    id
+    name
+    description
+    everoute_cluster {
+      id
+      name
+    }
+    label_groups {
+      label_ids
+      labels {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          vm_usage
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    vms(where: { in_recycle_bin: false }) {
+      id
+      name
+      vm_usage
+      in_recycle_bin
+      cluster {
+        id
+        name
+        everoute_cluster {
+          id
+          name
+        }
+      }
+      vm_nics {
+        id
+        vlan {
+          id
+          name
+          vds {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+        }
+      }
+      labels {
+        id
+        key
+        value
+      }
+    }
+  }
+}
+
+mutation updateSecurityGroup(
+  $data: SecurityGroupUpdateInput!
+  $where: SecurityGroupWhereUniqueInput!
+) {
+  updateSecurityGroup(data: $data, where: $where) {
+    id
+  }
+}
+
+mutation deleteSecurityGroup($where: SecurityGroupWhereUniqueInput!) {
+  deleteSecurityGroup(where: $where) {
+    id
+  }
+}
+
+mutation deleteManySecurityGroups($where: SecurityGroupWhereInput) {
+  deleteManySecurityGroups(where: $where) {
+    count
+  }
+}
+
+query checkNameOfSecurityGroupExists($name: String, $id: ID) {
+  securityGroups(where: { name: $name, id_not: $id }) {
+    id
+  }
+}
+
+query getAllNamesOfSecurityGroups($where: SecurityGroupWhereInput) {
+  securityGroups(where: $where) {
+    id
+    name
+  }
+}
+
+query getManySecurityGroups($where: SecurityGroupWhereInput) {
+  securityGroups(where: $where) {
+    id
+    name
+    description
+    everoute_cluster {
+      id
+    }
+    label_groups {
+      label_ids
+      labels {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          vm_usage
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              vds {
+                id
+                everoute_cluster {
+                  id
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    vms(where: { in_recycle_bin: false }) {
+      id
+      name
+      vm_usage
+      in_recycle_bin
+      cluster {
+        id
+        name
+        everoute_cluster {
+          id
+        }
+      }
+      vm_nics {
+        id
+        vlan {
+          id
+          vds {
+            id
+            everoute_cluster {
+              id
+            }
+          }
+        }
+      }
+      labels {
+        id
+        key
+        value
+      }
+    }
+    security_policies {
+      id
+      name
+      apply_to {
+        security_group_id
+      }
+    }
+  }
+}

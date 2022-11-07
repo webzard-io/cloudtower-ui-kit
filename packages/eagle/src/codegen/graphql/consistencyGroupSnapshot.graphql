@@ -1,0 +1,49 @@
+query consistencyGroupSnapshotInfo(
+  $where: ConsistencyGroupSnapshotWhereUniqueInput!
+) {
+  consistencyGroupSnapshot(where: $where) {
+    id
+    name
+    local_id
+    unique_size
+    entityAsyncStatus
+  }
+}
+
+query checkConsistencyGroupSnapshotByName(
+  $where: ConsistencyGroupSnapshotWhereInput!
+) {
+  consistencyGroupSnapshots(where: $where, first: 1) {
+    id
+  }
+}
+
+mutation createConsistencyGroupSnapshot(
+  $data: ConsistencyGroupSnapshotCreateInput!
+) {
+  createConsistencyGroupSnapshot(data: $data) {
+    id
+    name
+  }
+}
+
+mutation updateConsistencyGroupSnapshot(
+  $where: ConsistencyGroupSnapshotWhereUniqueInput!
+  $data: ConsistencyGroupSnapshotUpdateInput!
+  $effect: UpdateConsistencyGroupSnapshotEffect
+) {
+  updateConsistencyGroupSnapshot(data: $data, where: $where, effect: $effect) {
+    id
+    name
+    entityAsyncStatus
+  }
+}
+
+mutation deleteConsistencyGroupSnapshot(
+  $where: ConsistencyGroupSnapshotWhereUniqueInput!
+  $effect: DeleteConsistencyGroupSnapshotEffect
+) {
+  deleteConsistencyGroupSnapshot(where: $where, effect: $effect) {
+    id
+  }
+}

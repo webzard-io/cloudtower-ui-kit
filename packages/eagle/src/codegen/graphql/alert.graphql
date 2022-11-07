@@ -1,0 +1,102 @@
+query alerts(
+  $where: AlertWhereInput!
+  $first: Int
+  $skip: Int
+  $orderBy: AlertOrderByInput
+) {
+  alerts(where: $where, first: $first, skip: $skip, orderBy: $orderBy) {
+    local_end_time
+    local_create_time
+    severity
+    message
+    id
+    ended
+    cluster {
+      id
+      name
+      connect_state
+      disconnected_reason
+      disconnected_date
+    }
+  }
+  alertsConnection(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query getAlertPosition($before: String!, $where: AlertWhereInput) {
+  alertsConnection(
+    before: $before
+    orderBy: local_create_time_DESC
+    where: $where
+  ) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query alertInfo($where: AlertWhereUniqueInput!) {
+  alert(where: $where) {
+    id
+    ended
+    solution
+    impact
+    cause
+    message
+    severity
+    local_end_time
+    local_create_time
+    alert_rule {
+      id
+      global_alert_rule {
+        id
+        name
+        message
+      }
+    }
+    cluster {
+      id
+      name
+    }
+  }
+}
+
+query alertCount($ended: Boolean!, $where: AlertWhereInput!) {
+  critical: alerts(
+    where: { AND: [{ severity: "CRITICAL", ended: $ended }, $where] }
+  ) {
+    id
+  }
+  info: alerts(where: { AND: [{ severity: "INFO", ended: $ended }, $where] }) {
+    id
+  }
+  notice: alerts(
+    where: { AND: [{ severity: "NOTICE", ended: $ended }, $where] }
+  ) {
+    id
+  }
+}
+
+query totalAlertCount($ended: Boolean!) {
+  alertsConnection(where: { ended: $ended }) {
+    aggregate {
+      count
+    }
+  }
+}
+
+mutation updateAlert($data: AlertUpdateInput!, $where: AlertWhereUniqueInput!) {
+  updateAlert(data: $data, where: $where) {
+    id
+    value
+    ended
+    labels
+    severity
+    message
+    cause
+    impact
+  }
+}

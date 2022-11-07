@@ -1,0 +1,38 @@
+query getReportTemplateInfo($where: ReportTemplateWhereUniqueInput!) {
+  reportTemplate(where: $where) {
+    id
+    name
+    description
+    preset
+    resource_meta {
+      type
+      filter
+    }
+    execute_plan {
+      id
+      period
+      start_at
+      enabled
+      retain
+    }
+  }
+}
+
+mutation updateReportTemplate(
+  $where: ReportTemplateWhereUniqueInput!
+  $data: ReportTemplateUpdateInput!
+) {
+  updateReportTemplate(where: $where, data: $data) {
+    id
+    name
+    description
+    execute_plan {
+      id
+      period
+      start_at
+      enabled
+      retain
+    }
+    preset
+  }
+}

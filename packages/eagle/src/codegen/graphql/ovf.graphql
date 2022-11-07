@@ -1,0 +1,41 @@
+mutation createElfFile($data: CreateElfFileInput!) {
+  createElfFile(data: $data) {
+    file_name
+    file_size
+    file_uuid
+    file_secret
+    upload_task {
+      id
+      chunk_size
+      current_chunk
+    }
+  }
+}
+
+mutation uploadElfFile($data: UploadElfFileInput!) {
+  uploadElfFile(data: $data) {
+    id
+    status
+    size
+    chunk_size
+    current_chunk
+    resource_type
+    args
+    started_at
+    updatedAt
+    finished_at
+  }
+}
+
+mutation abortImportTask($where: TaskWhereUniqueInput!) {
+  abortImportTask(where: $where) {
+    id
+  }
+}
+
+query exportFileDownloadLinks($where: VmExportFileWhereUniqueInput!) {
+  exportFileDownloadLinks(where: $where) {
+    filename
+    link
+  }
+}

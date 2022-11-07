@@ -1,0 +1,69 @@
+query snmpTrapReceiverCount {
+  snmpTrapReceiversConnection {
+    aggregate {
+      count
+    }
+  }
+}
+
+mutation createSnmpTrapReceiver($data: SnmpTrapReceiverCreateInput!) {
+  createSnmpTrapReceiver(data: $data) {
+    id
+    disabled
+    name
+    host
+    port
+    version
+    username
+    cluster {
+      id
+      name
+    }
+  }
+}
+
+mutation updateSnmpTrapReceiver(
+  $data: SnmpTrapReceiverUpdateInput!
+  $where: SnmpTrapReceiverWhereUniqueInput!
+) {
+  updateSnmpTrapReceiver(data: $data, where: $where) {
+    id
+    disabled
+    name
+    host
+    port
+    version
+    username
+  }
+}
+
+mutation deleteSnmpTrapReceiver($where: SnmpTrapReceiverWhereUniqueInput!) {
+  deleteSnmpTrapReceiver(where: $where) {
+    id
+  }
+}
+
+query snmpTrapReceiver($id: ID!) {
+  snmpTrapReceiver(where: { id: $id }) {
+    id
+    name
+    protocol
+    host
+    port
+    language_code
+    version
+    disabled
+    community
+    username
+    auth_protocol
+    auth_pass_phrase
+    privacy_protocol
+    privacy_pass_phrase
+    inform
+    engine_id
+    cluster {
+      id
+      name
+    }
+  }
+}

@@ -1,0 +1,172 @@
+query createMenu(
+  $includeDeploys: Boolean!
+  $includeClusterNums: Boolean!
+  $includeCluster: Boolean!
+  $includeZone: Boolean!
+  $includeSubsystem: Boolean!
+  $clusterWhere: ClusterWhereUniqueInput!
+  $zoneWhere: ZoneWhereUniqueInput!
+  $includeHasElfCluster: Boolean!
+  $hasElfClusterWhere: ClusterWhereInput
+  $includeHostBelongElfCluster: Boolean!
+  $hostBelongElfClusterWhere: ClusterWhereInput
+  $includeHost: Boolean!
+  $hostWhere: HostWhereUniqueInput!
+  $nvmfSubsystemWhere: NvmfSubsystemWhereUniqueInput!
+  $includeClusters: Boolean!
+  $clustersWhere: ClusterWhereInput!
+) {
+  deploys(first: 1) @include(if: $includeDeploys) {
+    id
+    license {
+      id
+      license_serial
+      maintenance_end_date
+      maintenance_start_date
+      max_chunk_num
+      max_cluster_num
+      sign_date
+      expire_date
+      software_edition
+      type
+    }
+  }
+  hasElfCluster: clustersConnection(where: $hasElfClusterWhere, first: 1)
+    @include(if: $includeHasElfCluster) {
+    aggregate {
+      count
+    }
+  }
+  hostBelongElfCluster: clustersConnection(
+    where: $hostBelongElfClusterWhere
+    first: 1
+  ) @include(if: $includeHostBelongElfCluster) {
+    aggregate {
+      count
+    }
+  }
+  clusterNums: clustersConnection @include(if: $includeClusterNums) {
+    aggregate {
+      count
+    }
+  }
+  hostNums: hostsConnection {
+    aggregate {
+      count
+    }
+  }
+  cluster(where: $clusterWhere) @include(if: $includeCluster) {
+    id
+    hypervisor
+    type
+    version
+    nvmf_enabled
+    software_edition
+    max_chunk_num
+    hosts {
+      id
+      name
+    }
+    settings {
+      id
+      enabled_iscsi
+    }
+    vdses {
+      id
+      vlans {
+        id
+        name
+        type
+      }
+    }
+  }
+  zone(where: $zoneWhere) @include(if: $includeZone) {
+    id
+    cluster {
+      id
+      hypervisor
+      type
+      version
+      hosts {
+        id
+        name
+      }
+      settings {
+        id
+        enabled_iscsi
+      }
+      max_chunk_num
+      vdses {
+        id
+        vlans {
+          id
+          name
+          type
+        }
+      }
+    }
+  }
+  host(where: $hostWhere) @include(if: $includeHost) {
+    id
+    cluster {
+      id
+      hypervisor
+      type
+      version
+      vdses {
+        id
+        vlans {
+          id
+          name
+          type
+        }
+      }
+      hosts {
+        id
+        name
+      }
+      settings {
+        id
+        enabled_iscsi
+      }
+    }
+  }
+  nvmfSubsystem(where: $nvmfSubsystemWhere) @include(if: $includeSubsystem) {
+    id
+    policy
+  }
+  clusters(where: $clustersWhere) @include(if: $includeClusters) {
+    id
+    hypervisor
+    type
+    version
+  }
+}
+
+query connectEmpty {
+  deploys(first: 1) {
+    id
+    license {
+      id
+      license_serial
+      maintenance_end_date
+      maintenance_start_date
+      max_chunk_num
+      max_cluster_num
+      sign_date
+      expire_date
+      software_edition
+      type
+    }
+  }
+  clusterNums: clustersConnection {
+    aggregate {
+      count
+    }
+  }
+  hostNums: hostsConnection {
+    aggregate {
+      count
+    }
+  }
+}

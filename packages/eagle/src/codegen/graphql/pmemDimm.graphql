@@ -1,0 +1,22 @@
+query unJoinPmem($where: PmemDimmWhereInput!) {
+  pmemDimms(where: $where) {
+    id
+    name
+    local_id
+    version
+    numa_node
+    host {
+      id
+      name
+      cluster {
+        id
+        name
+      }
+    }
+    disk {
+      id
+      name
+      path
+    }
+  }
+}

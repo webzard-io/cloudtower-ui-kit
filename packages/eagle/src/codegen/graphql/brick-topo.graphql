@@ -1,0 +1,56 @@
+query getBrickTopo($id: ID!) {
+  brickTopo(where: { id: $id }) {
+    id
+    local_id
+    name
+    position
+    height
+    capacity {
+      row
+      column
+    }
+    model
+    power_layout
+    power_position
+    powers {
+      id
+      index
+      status
+      msg
+    }
+    disk_layout {
+      phase
+      row
+      column
+      direction
+    }
+    tag_position_in_brick {
+      row
+      column
+      tag
+    }
+    node_topoes {
+      id
+      local_id
+      name
+      position {
+        row
+        column
+      }
+      host {
+        id
+        local_id
+        name
+        status
+        management_ip
+        disks(where: { usage_not: BOOT }) {
+          id
+          path
+          type
+          healthy
+          physical_slot_on_brick
+        }
+      }
+    }
+  }
+}
