@@ -65,7 +65,7 @@ const config = {
   },
   config: {
     path: "src/codegen/config/codegen-config.json",
-    imagesPath: "src/kit/specify/src/images",
+    imagesPath: "src/kit/images",
   },
 };
 

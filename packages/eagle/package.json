@@ -45,11 +45,11 @@
       "require": "./dist/umd/kit/smartx/index.js",
       "types": "./dist/src/kit/smartx/index.d.ts"
     },
-    "./dist/specify/style.css": {
-      "import": "./dist/specify/style.css"
+    "./dist/kit/specify/style.css": {
+      "import": "./dist/kit/specify/style.css"
     },
-    "./dist/smartx/style.css": {
-      "import": "./dist/smartx/style.css"
+    "./dist/kit/smartx/style.css": {
+      "import": "./dist/kit/smartx/style.css"
     }
   },
   "typesVersions": {
@@ -81,6 +81,7 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
+    "postbuild": "cp -r src/kit/images dist/images",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "pregenerate": "rm -rf src/generated",
