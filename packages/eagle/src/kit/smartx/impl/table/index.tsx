@@ -1,10 +1,10 @@
-import { kitContext, TableProps } from "@cloudtower/sparrow";
+import { kitContext, TableProps } from "../../../specify";
 import { css, cx } from "@linaria/core";
 import { Table as BaseTable } from "antd";
 import cs from "classnames";
 import React, { useContext, useRef } from "react";
 
-import { useTableBodyHasScrollBar } from "../../components/table/common";
+import { useTableBodyHasScrollBar } from "./common";
 import { ColumnTitle, TableLoading } from "./TableWidget";
 
 const TableContainerStyle = css`
@@ -510,7 +510,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
 
 export default Table;
 
-export * from "../../components/table/common";
+export * from "./common";
 export * from "./customize-column";
 export * from "./CustomizeColumn";
 export { default as CustomizeColumn } from "./CustomizeColumn";

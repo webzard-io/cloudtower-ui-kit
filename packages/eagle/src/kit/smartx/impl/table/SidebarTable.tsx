@@ -1,4 +1,4 @@
-import { Sidebar, useSearch } from "@cloudtower/sparrow";
+import { Sidebar, useSearch } from "../../../specify";
 import React, { useCallback, useLayoutEffect, useRef } from "react";
 
 // FIXME

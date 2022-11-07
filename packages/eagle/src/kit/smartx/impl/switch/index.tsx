@@ -1,4 +1,4 @@
-import { SwitchProps } from "@cloudtower/sparrow";
+import { SwitchProps } from "../../../specify";
 import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { Switch as AntdSwitch } from "antd";

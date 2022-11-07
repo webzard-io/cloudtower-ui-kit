@@ -1,4 +1,4 @@
-import { TaskSubscription } from "../generated/react-hooks";
+import { TaskSubscription } from "../../../generated/react-hooks";
 
 export type Node = Omit<
   Exclude<TaskSubscription["task"]["node"], null | undefined>,

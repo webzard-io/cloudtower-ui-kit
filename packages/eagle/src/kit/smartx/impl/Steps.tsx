@@ -1,8 +1,9 @@
-import { IStepsPorps } from "@cloudtower/sparrow";
 import { styled } from "@linaria/react";
 import { Steps as AntdSteps } from "antd";
 import { StepProps } from "antd/lib/steps";
 import React from "react";
+
+import { IStepsPorps } from "../../specify";
 
 const StepsContainer = styled.div`
   $item: ant-steps-item;

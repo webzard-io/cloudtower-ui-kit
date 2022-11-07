@@ -2,7 +2,7 @@ import {
   NetworkPolicyRuleType,
   SecurityPoliciesQuery,
   SecurityPolicyDetailQuery,
-} from "../../generated/react-hooks";
+} from "../../../../generated/react-hooks";
 
 type BaseSecurityPolicyType = SecurityPoliciesQuery["securityPolicies"][0];
 

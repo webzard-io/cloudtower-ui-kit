@@ -1,11 +1,12 @@
 import { CheckOutlined, CloseCircleFilled } from "@ant-design/icons";
-import { kitContext, ModalProps, WizardBody } from "@cloudtower/sparrow";
 import { Modal as AntdModal, Steps } from "antd";
 import cs from "classnames";
 import React, { useContext, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
+import { WizardBody } from "../../../../styles";
+import { kitContext, ModalProps } from "../../../specify";
 import { ModalActions, RootState } from "../../store";
 
 const Modal: React.FC<ModalProps> = (props) => {

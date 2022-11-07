@@ -1,4 +1,4 @@
-import { Tuna } from "../../tuna";
+import { Tuna } from "../../../../tuna";
 
 export type MaintenanceModeTaskArgs =
   Tuna["responses"]["getMaintenanceJobInfo"]["data"];
