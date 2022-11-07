@@ -10,9 +10,6 @@
       "require": "./dist/umd/index.js",
       "types": "./dist/src/index.d.ts"
     },
-    "./dist/style.css": {
-      "import": "./dist/style.css"
-    },
     "./generated/forms": {
       "import": "./dist/esm/generated/forms.js",
       "require": "./dist/umd/generated/forms.js",
@@ -37,6 +34,22 @@
       "import": "./dist/esm/generated/tables.js",
       "require": "./dist/umd/generated/tables.js",
       "types": "./dist/src/generated/tables.d.ts"
+    },
+    "./kit/specify": {
+      "import": "./dist/esm/kit/specify/index.js",
+      "require": "./dist/umd/kit/specify/index.js",
+      "types": "./dist/src/kit/specify/index.d.ts"
+    },
+    "./kit/smartx": {
+      "import": "./dist/esm/kit/smartx/index.js",
+      "require": "./dist/umd/kit/smartx/index.js",
+      "types": "./dist/src/kit/smartx/index.d.ts"
+    },
+    "./dist/specify/style.css": {
+      "import": "./dist/specify/style.css"
+    },
+    "./dist/smartx/style.css": {
+      "import": "./dist/smartx/style.css"
     }
   },
   "typesVersions": {
@@ -55,6 +68,12 @@
       ],
       "generated/tables": [
         "./dist/src/generated/tables.d.ts"
+      ],
+      "kit/specify": [
+        "./dist/src/kit/specify/index.d.ts"
+      ],
+      "kit/smartx": [
+        "./dist/src/kit/smartx/index.d.ts"
       ]
     }
   },
@@ -65,14 +84,16 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "pregenerate": "rm -rf src/generated",
-    "generate": "graphql-codegen --config src/codegen/config/codegen-main.yaml",
+    "generate:query": "graphql-codegen --config src/codegen/config/codegen-query.yaml",
+    "generate:main": "graphql-codegen --config src/codegen/config/codegen-main.yaml",
+    "generate": "yarn generate:query && yarn generate:main",
     "typings": "tsc -v && tsc --emitDeclarationOnly --skipLibCheck -p tsconfig.build.json || exit 0"
   },
   "dependencies": {
-    "@cloudtower/sparrow": "^0.5.3",
-    "@linaria/core": "^4.1.4",
+    "@linaria/core": "^4.2.2",
+    "@linaria/react": "^4.3.0",
     "@tower/i18n": "^1.9.2",
-    "history": "^4"
+    "history": "^4.9"
   },
   "devDependencies": {
     "@cloudtower/claw": "^0.5.0",
@@ -81,23 +102,35 @@
     "@graphql-codegen/typescript": "^1.22",
     "@graphql-codegen/typescript-operations": "^1.9",
     "@graphql-codegen/typescript-react-apollo": "^1.9",
+    "@linaria/core": "^4.2.2",
+    "@linaria/react": "^4.3.0",
     "@linaria/rollup": "^4.1.5",
+    "@smartx/final-form": "^4.19.1-rc2",
     "@smartx/final-form-arrays": "^3.0.2-rc4",
+    "@smartx/react-final-form": "^6.4.0-rc4",
+    "@smartx/react-final-form-arrays": "^3.1.1-rc5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.5",
+    "@testing-library/react-hooks": "^8.0.1",
     "@tower/provider-interface": "^1.9.1",
+    "@types/history": "^4.7.11",
     "@types/react": "^17.0.50",
+    "@types/react-is": "^17.0.3",
     "@types/react-transition-group": "^4.4.5",
     "@vitejs/plugin-react": "^2.1.0",
     "@vitest/coverage-c8": "^0.24.1",
     "antd": "4.5",
+    "apollo-boost": "^0.4.7",
     "graphql": "^15.7.2",
+    "history": "^4.9",
     "i18next": "^21.10.0",
     "is-unicode-supported": "^1.3.0",
     "jsdom": "^20.0.1",
     "react": "^17.0.2",
+    "react-apollo": "^3.1",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.18.6",
+    "react-is": "^18.2.0",
     "react-redux": "^7.1.3",
     "react-transition-group": "^4.4.5",
     "redux": "^4.2.0",
