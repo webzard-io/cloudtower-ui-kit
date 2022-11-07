@@ -87,7 +87,9 @@
     "generate:query": "graphql-codegen --config src/codegen/config/codegen-query.yaml",
     "generate:main": "graphql-codegen --config src/codegen/config/codegen-main.yaml",
     "generate": "yarn generate:query && yarn generate:main",
-    "typings": "tsc -v && tsc --emitDeclarationOnly --skipLibCheck -p tsconfig.build.json || exit 0"
+    "typings": "yarn typings:main && yarn typings:forms2 && mv dist/forms2/generated/forms2.d.ts dist/generated/forms2.d.ts && rm -rf dist/forms2",
+    "typings:main": "tsc -v && tsc --emitDeclarationOnly --skipLibCheck -p tsconfig.build.json && yarn typings:forms2 || exit 0",
+    "typings:forms2": "tsc src/generated/forms2.tsx --outDir dist/forms2 --jsx react-jsx --emitDeclarationOnly --declaration || exit 0"
   },
   "dependencies": {
     "@linaria/core": "^4.2.2",
