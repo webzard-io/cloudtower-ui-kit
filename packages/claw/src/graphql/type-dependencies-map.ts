@@ -2,7 +2,6 @@ import { PluginFunction } from "@graphql-codegen/plugin-helpers";
 import ejs from "ejs";
 import { visit } from "graphql";
 import * as path from "path";
-
 import { getConfig, getDocumentNode, getSchemaTypes } from "../common";
 
 export interface Relation {

@@ -1,31 +1,30 @@
-import { PluginFunction as RawPluginFunction } from "@graphql-codegen/plugin-helpers";
-import ejs from "ejs";
 import * as path from "path";
-
+import ejs from "ejs";
+import { PluginFunction as RawPluginFunction } from "@graphql-codegen/plugin-helpers";
 import {
-  ADD_NEW_LINE,
-  camelcase,
-  getConfig,
-  getDocumentNode,
-  getField,
-  getTypeMap,
-  TypeField,
-  TypeMap,
-} from "../common";
-import {
-  BasicExtraField,
   Field as FieldConfig,
   RootExtraField as ExtraFieldConfig,
+  BasicExtraField,
 } from "../types";
+import {
+  getConfig,
+  camelcase,
+  ADD_NEW_LINE,
+  getDocumentNode,
+  getTypeMap,
+  TypeField,
+  getField,
+  TypeMap,
+} from "../common";
 
 function checkField(field: string) {
   if (!field) {
     /* istanbul ignore next */
-    throw new Error("Field invalid: empty string");
+    throw new Error(`Field invalid: empty string`);
   }
   if (/\.|\[/.test(field)) {
     /* istanbul ignore next */
-    throw new Error("Field invalid: include '.' or '['");
+    throw new Error(`Field invalid: include '.' or '['`);
   }
 }
 
@@ -155,7 +154,7 @@ const extractField = ({
       }
     }
     if (typeField.isList) {
-      output.push("} | null)[] & { 'FINAL_FORM/array-error'?: string }");
+      output.push(`} | null)[] & { 'FINAL_FORM/array-error'?: string }`);
     } else {
       output.push("})");
     }
@@ -282,7 +281,7 @@ const extractExtraField = ({
       output.push(`${childField.key}?: string;`);
     }
     if (field.isList) {
-      output.push("} | null)[] & { 'FINAL_FORM/array-error': string }");
+      output.push(`} | null)[] & { 'FINAL_FORM/array-error': string }`);
     } else {
       output.push("})");
     }
@@ -353,19 +352,22 @@ export const generateTypes = async (
   const TEMPLATES = {
     CORE: path.resolve(
       __dirname,
-      "../templates/react-component/FormTypesCore.ejs"
+      "../../templates/react-component/FormTypesCore.ejs"
     ),
-    FORM: path.resolve(__dirname, "../templates/react-component/FormTypes.ejs"),
+    FORM: path.resolve(
+      __dirname,
+      "../../templates/react-component/FormTypes.ejs"
+    ),
   };
   let output = [
-    "/* eslint-disable",
-    "@typescript-eslint/no-empty-interface,",
-    "@typescript-eslint/no-unused-vars,",
-    "@typescript-eslint/no-explicit-any,",
-    "@typescript-eslint/no-non-null-assertion,",
-    "@typescript-eslint/no-unnecessary-type-assertion,",
-    "import/first",
-    "*/",
+    `/* eslint-disable`,
+    `@typescript-eslint/no-empty-interface,`,
+    `@typescript-eslint/no-unused-vars,`,
+    `@typescript-eslint/no-explicit-any,`,
+    `@typescript-eslint/no-non-null-assertion,`,
+    `@typescript-eslint/no-unnecessary-type-assertion,`,
+    `import/first`,
+    `*/`,
   ].join("\r\n");
   output += ADD_NEW_LINE;
   output += `import { Scalars, Maybe, ${enums.values.join(", ")} } from './${
@@ -385,25 +387,28 @@ export const generateTypes = async (
 
 export const generate = async (forms: FormConfigs) => {
   const TEMPLATES = {
-    CORE: path.resolve(__dirname, "../templates/react-component/FormCore.ejs"),
-    FORM: path.resolve(__dirname, "../templates/react-component/Form.ejs"),
+    CORE: path.resolve(
+      __dirname,
+      "../../templates/react-component/FormCore.ejs"
+    ),
+    FORM: path.resolve(__dirname, "../../templates/react-component/Form.ejs"),
     UTILS: path.resolve(
       __dirname,
-      "../templates/react-component/FormUtils.ejs"
+      "../../templates/react-component/FormUtils.ejs"
     ),
   };
 
   let output = [
-    "/* eslint-disable",
-    "@typescript-eslint/no-empty-interface,",
-    "@typescript-eslint/no-unused-vars,",
-    "@typescript-eslint/no-explicit-any,",
-    "@typescript-eslint/no-non-null-assertion,",
-    "@typescript-eslint/no-unnecessary-type-assertion,",
-    "@typescript-eslint/no-namespace,",
-    "react-hooks/rules-of-hooks,",
-    "import/first",
-    "*/",
+    `/* eslint-disable`,
+    `@typescript-eslint/no-empty-interface,`,
+    `@typescript-eslint/no-unused-vars,`,
+    `@typescript-eslint/no-explicit-any,`,
+    `@typescript-eslint/no-non-null-assertion,`,
+    `@typescript-eslint/no-unnecessary-type-assertion,`,
+    `@typescript-eslint/no-namespace,`,
+    `react-hooks/rules-of-hooks,`,
+    `import/first`,
+    `*/`,
   ].join("\r\n");
   output += ADD_NEW_LINE;
   output += await ejs.renderFile(TEMPLATES.CORE);
