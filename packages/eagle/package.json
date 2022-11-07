@@ -45,11 +45,17 @@
       "require": "./dist/umd/kit/smartx/index.js",
       "types": "./dist/src/kit/smartx/index.d.ts"
     },
-    "./dist/kit/specify/style.css": {
+    "./kit/specify/style.css": {
       "import": "./dist/kit/specify/style.css"
     },
-    "./dist/kit/smartx/style.css": {
+    "./kit/smartx/style.css": {
       "import": "./dist/kit/smartx/style.css"
+    },
+    "./styles/reset.css": {
+      "import": "./src/style/reset.css"
+    },
+    "./styles/fonts/font.css": {
+      "import": "./src/style/fonts/font.css"
     }
   },
   "typesVersions": {
