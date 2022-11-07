@@ -4,7 +4,8 @@
     "noEmit": true,
     "outDir": "./dist",
     "jsx": "react-jsx",
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "disableSizeLimit": true
   },
   "include": ["src", "index.ts"],
   "exclude": ["node_modules"]
