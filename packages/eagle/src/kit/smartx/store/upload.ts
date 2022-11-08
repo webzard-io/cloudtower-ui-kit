@@ -22,7 +22,7 @@ export type UploadState = {
   uploadTasks: UploadTask[];
 };
 
-export const enum UploadActions {
+export enum UploadActions {
   START_TASK = "START_TASK",
   UPDATE_TASK = "UPDATE_TASK",
   REMOVE_TASK = "REMOVE_TASK",

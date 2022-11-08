@@ -11,7 +11,7 @@ export type ChartState = {
   averageData: Partial<Record<string, number>>;
 };
 
-export const enum ChartActions {
+export enum ChartActions {
   SET_POINTER = "SET_POINTER",
   SET_RESOURCE_DATA = "SET_RESOURCE_DATA",
   SET_AVERAGE_DATA = "SET_AVERAGE_DATA",

@@ -5,7 +5,7 @@ export type NavState = {
   view?: string;
 };
 
-export const enum NavActions {
+export enum NavActions {
   SET_RESOURCE_AND_VIEW = "SET_RESOURCE_AND_VIEW",
   REMOVE_RESOURCE_AND_VIEW = "REMOVE_RESOURCE_AND_VIEW",
 }
