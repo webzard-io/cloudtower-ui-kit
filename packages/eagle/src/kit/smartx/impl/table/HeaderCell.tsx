@@ -1,4 +1,4 @@
-import { TableProps } from "../../../specify";
+import { TableProps } from "@cloudtower/eagle/kit/specify";
 import { css, cx } from "@linaria/core";
 import React from "react";
 
