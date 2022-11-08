@@ -36,13 +36,13 @@
       "types": "./typings/src/generated/tables.d.ts"
     },
     "./kit/specify": {
-      "import": "./dist/esm/kit/specify/index.js",
-      "require": "./dist/umd/kit/specify/index.js",
+      "import": "./dist/esm/specify/index.js",
+      "require": "./dist/umd/specify/index.js",
       "types": "./typings/src/kit/specify/index.d.ts"
     },
     "./kit/smartx": {
-      "import": "./dist/esm/kit/smartx/index.js",
-      "require": "./dist/umd/kit/smartx/index.js",
+      "import": "./dist/esm/smartx/index.js",
+      "require": "./dist/umd/smartx/index.js",
       "types": "./typings/src/kit/smartx/index.d.ts"
     },
     "./kit/specify/style.css": {
