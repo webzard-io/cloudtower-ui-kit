@@ -1,13 +1,13 @@
+import {
+  PreviewTasksQuery,
+  TaskStatus,
+  TaskTableQuery,
+} from "@cloudtower/eagle/generated/react-hooks";
 import { IPV4_REGEXP, IPV6_REGEXP, URL_REGEXP } from "@tower/utils";
 import { TOptions } from "i18next";
 import { UseTranslationResponse } from "react-i18next";
 import { useSelector } from "react-redux";
 
-import {
-  PreviewTasksQuery,
-  TaskStatus,
-  TaskTableQuery,
-} from "../../../../generated/react-hooks";
 import { RootState } from "../../store";
 import { Node } from "../../store/task";
 
