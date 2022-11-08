@@ -94,6 +94,7 @@
     "generate:query": "graphql-codegen --config src/codegen/config/codegen-query.yaml",
     "generate:main": "graphql-codegen --config src/codegen/config/codegen-main.yaml",
     "generate": "yarn generate:query && yarn generate:main",
+    "pretypings": "rm -rf typings",
     "typings": " (yarn typings:forms2) && (yarn typings:main) && mv typings/forms2/generated/forms2.d.ts typings/src/generated/forms2.d.ts && rm -rf typings/forms2",
     "typings:main": "tsc -v && tsc --outDir typings --emitDeclarationOnly --skipLibCheck -p tsconfig.build.json || exit 0",
     "typings:forms2": "tsc -v && tsc src/generated/forms2.tsx --outDir typings/forms2 --jsx react-jsx --emitDeclarationOnly --declaration || exit 0"
