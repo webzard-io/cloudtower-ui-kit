@@ -1,11 +1,11 @@
 import { CloseCircleFilled } from "@ant-design/icons";
+import { useKitDispatch, useKitSelector } from "@cloudtower/eagle/kit/smartx";
 import { kitContext, Modal2Props } from "@cloudtower/eagle/kit/specify";
 import { Modal as AntdModal } from "antd";
 import cs from "classnames";
 import { isNil } from "lodash";
 import React, { useContext, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
 
 import { ModalActions, RootState } from "../../store";
 import { ModalFooterError } from "./Error";
@@ -42,14 +42,14 @@ const Modal: React.FC<Modal2Props> = (props) => {
    * Control Visible
    */
   /* Get modal stack */
-  const stack = useSelector<RootState, RootState["modal"]["stack"]>(
+  const stack = useKitSelector<RootState["modal"]["stack"]>(
     (state) => state.modal.stack
   );
   /* Get modal close id */
-  const id = useSelector<RootState, RootState["modal"]["closeId"]>(
+  const id = useKitSelector<RootState["modal"]["closeId"]>(
     (state) => state.modal.closeId
   );
-  const dispatch = useDispatch();
+  const dispatch = useKitDispatch();
   /* Get id for top item in modal stack */
   const idRef = useRef(stack[stack.length - 1].id);
 

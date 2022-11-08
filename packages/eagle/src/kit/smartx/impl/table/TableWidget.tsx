@@ -1,4 +1,5 @@
 import { Maybe, Scalars } from "@cloudtower/eagle/generated/react-hooks";
+import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
 import {
   Icon,
   kitContext,
@@ -16,7 +17,6 @@ import cs from "classnames";
 import _ from "lodash";
 import React, { useContext, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 
 import { RootState } from "../../store";
 
@@ -160,7 +160,7 @@ export const TableEmpty: React.FC<{
   const { query, setQuery, base, clearGlobalSearch = true } = props;
   const { t, i18n } = useTranslation();
   const kit = useContext(kitContext);
-  const clearGlobalSearchFn = useSelector<
+  const clearGlobalSearchFn = useKitSelector<
     RootState,
     RootState["globalSearch"]["clearInput"]
   >((state) => state.globalSearch.clearInput);
