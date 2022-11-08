@@ -149,18 +149,18 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
       usePosition,
     } from "../kit/smartx";
     import { TableActions } from "../kit/smartx";
-    import { EMPTY_FUNCTION } from "../kit/specify";
-    import { useElementsSize } from "../kit/specify";
-    import { useSearch } from "../kit/specify";
-    import { ExcludeMaybe } from "../kit/specify";
+    import { EMPTY_FUNCTION } from "@cloudtower/eagle/kit/specify";
+    import { useElementsSize } from "@cloudtower/eagle/kit/specify";
+    import { useSearch } from "@cloudtower/eagle/kit/specify";
+    import { ExcludeMaybe } from "@cloudtower/eagle/kit/specify";
     import {
       MultipleSelectProps,
       SelectProps,
       SingleSelectProps,
-    } from "../kit/specify";
-    import { FailedLoad } from "../kit/specify";
-    import { Icon } from "../kit/specify";
-    import { kitContext } from "../kit/specify";
+    } from "@cloudtower/eagle/kit/specify";
+    import { FailedLoad } from "@cloudtower/eagle/kit/specify";
+    import { Icon } from "@cloudtower/eagle/kit/specify";
+    import { kitContext } from "@cloudtower/eagle/kit/specify";
     import {
       DateTimeRangeProps,
       EnumProps,
@@ -172,7 +172,7 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
       KitSelectProps,
       StringProps,
       TableProps,
-    } from "../kit/specify";
+    } from "@cloudtower/eagle/kit/specify";
     `,
   ].join("\r\n");
   output += ADD_NEW_LINE;
