@@ -151,7 +151,9 @@ const formatFieldClass = (
       ]);
       output += `static ${_.upperFirst(
         field.key
-      )} = class extends FormKit.BaseFieldArray<${generics.join(",")}> {
+      )} : typeof FormKit.BaseFieldArray<${generics.join(
+        ","
+      )}> = class extends FormKit.BaseFieldArray<${generics.join(",")}> {
           form = '${form}'
           path = '${field.path}'
           static contextType = FormContext
