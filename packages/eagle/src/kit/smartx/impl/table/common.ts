@@ -1,4 +1,4 @@
-import { kitContext, useElementsSize } from "../../../specify";
+import { kitContext, useElementsSize } from "@cloudtower/eagle/kit/specify";
 import { isEqual, isNil } from "lodash";
 import getScrollBarSize from "rc-util/lib/getScrollBarSize";
 import React, {

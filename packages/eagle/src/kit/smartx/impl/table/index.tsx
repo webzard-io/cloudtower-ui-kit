@@ -1,4 +1,4 @@
-import { kitContext, TableProps } from "../../../specify";
+import { kitContext, TableProps } from "@cloudtower/eagle/kit/specify";
 import { css, cx } from "@linaria/core";
 import { Table as BaseTable } from "antd";
 import cs from "classnames";
