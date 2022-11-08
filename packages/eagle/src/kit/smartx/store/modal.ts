@@ -109,7 +109,7 @@ export type Actions =
   | REMOVE_MODAL
   | CLOSE_MODAL;
 
-export const initialState: ModalState = {
+export const initialModalState: ModalState = {
   stack: [],
   closeId: 0,
 };
@@ -117,7 +117,7 @@ export const initialState: ModalState = {
 let MODAL_ID = 1;
 
 export const modalReducer = (
-  state: ModalState = initialState,
+  state: ModalState = initialModalState,
   action: Actions
 ) => {
   switch (action.type) {

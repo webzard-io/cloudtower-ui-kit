@@ -4,30 +4,30 @@ import {
   Actions as BackupSearchActionType,
   backupSearchReducer,
   BackupSearchState,
-  initialState as initialBackupSearchState,
+  initialBackupSearchState,
 } from "./backup";
 import {
   Actions as ChartActionType,
   chartReducer,
   ChartState,
-  initialState as initialChartState,
+  initialChartState,
 } from "./chart";
 import {
   Actions as EverouteActionType,
   everouteReducer,
   EverouteState,
-  initialState as initialEverouteState,
+  initialEverouteState,
 } from "./everoute";
 import {
   Actions as GlobalSearchActionType,
   globalSearchReducer,
   GlobalSearchState,
-  initialState as initialGlobalSearchState,
+  initialGlobalSearchState,
 } from "./globalSearch";
 import {
   Actions as ModalActionType,
   CloseCb,
-  initialState as initialModalState,
+  initialModalState,
   Modal,
   ModalActions,
   ModalProps,
@@ -36,25 +36,25 @@ import {
 } from "./modal";
 import {
   Actions as NavActionType,
-  initialState as initialNavState,
+  initialNavState,
   navReducer,
   NavState,
 } from "./nav";
 import {
   Actions as TableActionType,
-  initialState as initialTableState,
+  initialTableState,
   tableReducer,
   TableState,
 } from "./table";
 import {
   Actions as TaskActionType,
-  initialState as initialTaskState,
+  initialTaskState,
   taskReducer,
   TaskState,
 } from "./task";
 import {
   Actions as UploadActionType,
-  initialState as initialUploadState,
+  initialUploadState,
   uploadReducer,
   UploadState,
 } from "./upload";
@@ -149,3 +149,13 @@ export function closeModal(id: number) {
 }
 
 export type GetModalProps<K extends keyof ModalProps> = ModalProps[K] & CloseCb;
+
+export * from "./backup";
+export * from "./chart";
+export * from "./everoute";
+export * from "./globalSearch";
+export * from "./modal";
+export * from "./nav";
+export * from "./table";
+export * from "./task";
+export * from "./upload";

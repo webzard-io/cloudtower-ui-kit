@@ -13,10 +13,10 @@ export type Actions = {
   };
 };
 
-export const initialState: BackupSearchState = {};
+export const initialBackupSearchState: BackupSearchState = {};
 
 export const backupSearchReducer = (
-  state: BackupSearchState = initialState,
+  state: BackupSearchState = initialBackupSearchState,
   action: Actions
 ): BackupSearchState => {
   switch (action.type) {

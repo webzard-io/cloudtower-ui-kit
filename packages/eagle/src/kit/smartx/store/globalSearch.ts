@@ -33,7 +33,7 @@ export type Actions =
     }
   | { type: GloablSearchActions.SET_IN_PAGE; payload: { boolean: boolean } };
 
-export const initialState: GlobalSearchState = {
+export const initialGlobalSearchState: GlobalSearchState = {
   resource: "",
   base: "",
   clearInput: () => {},
@@ -41,7 +41,7 @@ export const initialState: GlobalSearchState = {
 };
 
 export const globalSearchReducer = (
-  state: GlobalSearchState = initialState,
+  state: GlobalSearchState = initialGlobalSearchState,
   action: Actions
 ) => {
   switch (action.type) {

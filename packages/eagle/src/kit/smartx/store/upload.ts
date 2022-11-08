@@ -44,12 +44,12 @@ type UPLOAD_START_TASK =
 
 export type Actions = UPLOAD_START_TASK;
 
-export const initialState: UploadState = {
+export const initialUploadState: UploadState = {
   uploadTasks: [],
 };
 
 export const uploadReducer = (
-  state: UploadState = initialState,
+  state: UploadState = initialUploadState,
   action: Actions
 ) => {
   switch (action.type) {
