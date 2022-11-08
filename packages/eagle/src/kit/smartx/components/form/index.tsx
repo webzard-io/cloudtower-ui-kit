@@ -1,4 +1,3 @@
-import { FormLayoutContext as Form1LayoutContext } from "@cloudtower/eagle/generated/forms";
 import { Kit } from "@cloudtower/eagle/kit/specify";
 import {
   FieldState,
