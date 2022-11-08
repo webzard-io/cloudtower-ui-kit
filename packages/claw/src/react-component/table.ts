@@ -129,26 +129,26 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
       TableRenderer,
       tableScrollToTop,
       useTransformScrollAndColumns,
-    } from "../kit/smartx";
+    } from "@cloudtower/eagle/kit/smartx";
     import {
       CustomizeColumnType,
       useCustomizeColumn,
       useEqualAllColumnKeys,
-    } from "../kit/smartx";
-    import { CustomizeColumn } from "../kit/smartx";
-    import { HeaderCell } from "../kit/smartx";
-    import { PendingTable } from "../kit/smartx";
-    import { BooleanField, EnumField, IntField, StringField } from "../kit/smartx";
-    import { SidebarTable } from "../kit/smartx";
-    import { useTableSelection } from "../kit/smartx";
+    } from "@cloudtower/eagle/kit/smartx";
+    import { CustomizeColumn } from "@cloudtower/eagle/kit/smartx";
+    import { HeaderCell } from "@cloudtower/eagle/kit/smartx";
+    import { PendingTable } from "@cloudtower/eagle/kit/smartx";
+    import { BooleanField, EnumField, IntField, StringField } from "@cloudtower/eagle/kit/smartx";
+    import { SidebarTable } from "@cloudtower/eagle/kit/smartx";
+    import { useTableSelection } from "@cloudtower/eagle/kit/smartx";
     import {
       AuxiliaryLine,
       EmptyRowMenu,
       TableEmpty,
       TablePagination,
       usePosition,
-    } from "../kit/smartx";
-    import { TableActions } from "../kit/smartx";
+    } from "@cloudtower/eagle/kit/smartx";
+    import { TableActions } from "@cloudtower/eagle/kit/smartx";
     import { EMPTY_FUNCTION } from "@cloudtower/eagle/kit/specify";
     import { useElementsSize } from "@cloudtower/eagle/kit/specify";
     import { useSearch } from "@cloudtower/eagle/kit/specify";

@@ -5,7 +5,12 @@
     "outDir": "./dist",
     "jsx": "react-jsx",
     "downlevelIteration": true,
-    "disableSizeLimit": true
+    "disableSizeLimit": true,
+    "baseUrl": "./",
+    "paths": {
+      "@cloudtower/eagle/generated/*": ["./src/generated/*"],
+      "@cloudtower/eagle/kit/*": ["./src/kit/*"]
+    }
   },
   "include": ["src", "index.ts"],
   "exclude": ["node_modules"]
