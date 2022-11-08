@@ -10,6 +10,11 @@
       "require": "./dist/umd/index.js",
       "types": "./typings/src/index.d.ts"
     },
+    "./generated/forms-types": {
+      "import": "./dist/esm/generated/forms-types.js",
+      "require": "./dist/umd/generated/forms-types.js",
+      "types": "./typings/src/generated/forms-types.d.ts"
+    },
     "./generated/forms": {
       "import": "./dist/esm/generated/forms.js",
       "require": "./dist/umd/generated/forms.js",
@@ -60,6 +65,9 @@
   },
   "typesVersions": {
     "*": {
+      "generated/forms-types": [
+        "./typings/src/generated/forms-types.d.ts"
+      ],
       "generated/forms": [
         "./typings/src/generated/forms.d.ts"
       ],
@@ -95,7 +103,7 @@
     "generate:main": "graphql-codegen --config src/codegen/config/codegen-main.yaml",
     "generate": "yarn generate:query && yarn generate:main",
     "pretypings": "rm -rf typings",
-    "typings": " (yarn typings:forms2) && (yarn typings:main) && mv typings/forms2/generated/forms2.d.ts typings/src/generated/forms2.d.ts && rm -rf typings/forms2",
+    "typings": "(yarn typings:main) && (yarn typings:forms2)  && mv typings/forms2/generated/forms2.d.ts typings/src/generated/forms2.d.ts && rm -rf typings/forms2",
     "typings:main": "tsc -v && tsc --outDir typings --emitDeclarationOnly --skipLibCheck -p tsconfig.build.json || exit 0",
     "typings:forms2": "tsc -v && tsc src/generated/forms2.tsx --outDir typings/forms2 --jsx react-jsx --emitDeclarationOnly --declaration || exit 0"
   },
