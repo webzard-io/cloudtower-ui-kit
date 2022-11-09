@@ -72,7 +72,7 @@
         "./typings/src/generated/forms.d.ts"
       ],
       "generated/forms2": [
-        "./typings/src/generated/forms2.d.ts"
+        "./src/generated/forms2.tsx"
       ],
       "generated/global-search": [
         "./typings/src/generated/global-search.d.ts"
