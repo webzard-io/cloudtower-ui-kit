@@ -464,9 +464,11 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     Speed: UnitFn;
     Second: UnitFn;
     Bps: UnitFn;
+    BitPerSecond: UnitFn;
+    Bit: UnitFn;
   };
   inputGroup: React.FunctionComponent<{ compact: boolean }>;
-  Empty: React.ReactNode;
+  Empty: React.ReactElement;
   alert: React.FunctionComponent<
     Omit<AlertProps, "type"> & { type?: AlertProps["type"] | "normal" }
   >;
