@@ -8,7 +8,7 @@ const ThrowError = () => {
   throw new Error("");
 };
 
-const mockImpl: Kit = {
+const emptyImpl: Kit = {
   // constants
   get PAGINATION_SELECTOR() {
     if (process.env.NODE_ENV !== "production") {
@@ -129,4 +129,4 @@ const mockImpl: Kit = {
   steps: ThrowError,
 };
 
-export default mockImpl;
+export default emptyImpl;
