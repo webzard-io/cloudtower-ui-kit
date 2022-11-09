@@ -3,6 +3,15 @@ import {
   ExportOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
+import { getAlertIcon } from "@cloudtower/sparrow";
+import { Icon } from "@cloudtower/sparrow";
+// import Modal from "./modal";
+// import Modal2 from "./modal2";
+import { Loading } from "@cloudtower/sparrow";
+// import i18n from "../i18n";
+import { FullView } from "@cloudtower/sparrow";
+import { Typo } from "@cloudtower/sparrow";
+import { Kit, TextAreaProps } from "@cloudtower/sparrow";
 import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { Field } from "@smartx/react-final-form";
@@ -48,25 +57,16 @@ import { findDOMNode } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { isElement } from "react-is";
 
-import { getAlertIcon } from "../common";
-import Icon from "../components/Icon";
-// import Modal from "./modal";
-// import Modal2 from "./modal2";
-import Loading from "../components/Loading";
-// import i18n from "../i18n";
-import { FullView } from "../styles/common/styled";
-import { Typo } from "../styles/component/typo";
-import { Kit, TextAreaProps } from "./base";
 import Button from "./button";
 import ButtonGroup from "./buttonGroup";
-// import Overflow from "../components/Overflow";
+import { message } from "./message";
+import Overflow from "./Overflow";
 import Pagination from "./pagination";
 import Radio, { RadioButton, RadioGroup } from "./radio";
+import Steps from "./Steps";
 import Switch from "./switch";
 import KitTable from "./table";
 import Tooltip from "./tooltip";
-// import Steps from "../components/Steps";
-// import { message } from "./message/message-group";
 
 type AntdOption = Kit["option"] & {
   isSelectOption: boolean;
@@ -680,6 +680,16 @@ export const RightEndSelectStyle = css`
   }
 `;
 
+const Arch: Kit["arch"] = (props) => {
+  const { architecture } = props;
+  const { i18n } = useTranslation();
+  let text = "";
+  if (architecture) {
+    text = i18n.td(`enum.Architecture_${architecture}`);
+  }
+  return <span>{text}</span>;
+};
+
 const Select: Kit["select"] = ({
   input,
   multiple,
@@ -937,13 +947,13 @@ export function getAntdKit(): Kit {
       ),
       DateTime: ({ input }) => (
         <>
-          {/* <DatePicker
+          <DatePicker
             onFocus={() => input.onFocus?.()}
             onBlur={() => input.onBlur?.()}
             showTime
             defaultValue={input.value}
             onOk={input.onChange}
-          /> */}
+          />
         </>
       ),
       TimePicker: ({ input, meta, ...props }) => (
@@ -1004,13 +1014,13 @@ export function getAntdKit(): Kit {
               onClick={onClick}
             >
               <div className="input-tags-inner">
-                {/* <Overflow overflow={tagsOverflow}>
+                <Overflow overflow={tagsOverflow}>
                   <span className="tags-overflow-auto">
                     {tags.map((tag) => (
                       <InputTagItem key={tag}>{tag}</InputTagItem>
                     ))}
                   </span>
-                </Overflow> */}
+                </Overflow>
               </div>
               <span className="input-tag-suffix">
                 {allowClear && (
@@ -1119,7 +1129,7 @@ export function getAntdKit(): Kit {
       ),
       DateTimeRange: ({ input, ...props }) => (
         <div className="datatime-range">
-          {/* <DatePicker.RangePicker
+          <DatePicker.RangePicker
             onFocus={() => input.onFocus?.()}
             onBlur={() => input.onBlur?.()}
             showTime
@@ -1128,7 +1138,7 @@ export function getAntdKit(): Kit {
             onChange={input.onChange}
             value={input.value?.map((v?: string) => v && moment(v))}
             format={props.format}
-          /> */}
+          />
         </div>
       ),
     },
@@ -1289,19 +1299,12 @@ export function getAntdKit(): Kit {
     menuItemGroup: Menu.ItemGroup,
     layout: Layout,
     autoComplete: AutoComplete,
-    // message: message,
+    message: message,
     tag: Tag,
     popover: Popover,
-    // arch: (props) => {
-    //   const { architecture } = props;
-    //   let text = "";
-    //   if (architecture) {
-    //     text = i18n.td(`enum.Architecture_${architecture}`);
-    //   }
-    //   return <span>{text}</span>;
-    // },
+    arch: Arch,
     buttonGroup: ButtonGroup,
-    // steps: Steps,
+    steps: Steps,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19

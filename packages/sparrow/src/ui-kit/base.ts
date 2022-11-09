@@ -1,8 +1,9 @@
 import { FieldRenderProps } from "@smartx/react-final-form";
 import { FieldArrayRenderProps } from "@smartx/react-final-form-arrays";
 import { SerializableObject } from "@tower/utils";
+import { SizeType } from "antd/es/config-provider/SizeContext";
 import { AlertProps } from "antd/lib/alert";
-import AutoComplete from "antd/lib/auto-complete";
+import { AutoCompleteProps } from "antd/lib/auto-complete";
 import { BadgeProps } from "antd/lib/badge";
 import { ButtonProps as AntdButtonProps, ButtonType } from "antd/lib/button";
 import { CheckboxProps } from "antd/lib/checkbox";
@@ -11,14 +12,15 @@ import { DividerProps as AntdDividerProps } from "antd/lib/divider";
 import { DropDownProps } from "antd/lib/dropdown";
 import { InputProps } from "antd/lib/input";
 import { TextAreaProps as AntdTextAreaProps } from "antd/lib/input/TextArea";
-import Layout from "antd/lib/layout";
-import List from "antd/lib/list";
+import { SiderProps } from "antd/lib/layout";
+import { BasicProps } from "antd/lib/layout/layout";
+import { ListProps } from "antd/lib/list";
 import { ListItemMetaProps, ListItemProps } from "antd/lib/list/Item";
-import Menu from "antd/lib/menu";
-import MenuItem from "antd/lib/menu/MenuItem";
-import message from "antd/lib/message";
+import { MenuItemGroupProps, MenuProps } from "antd/lib/menu";
+import { MenuItemProps } from "antd/lib/menu/MenuItem";
+import { MessageInstance } from "antd/lib/message";
 import { ModalProps as AntdModalProps } from "antd/lib/modal";
-import Popover from "antd/lib/popover";
+import { PopoverProps } from "antd/lib/popover";
 import { ProgressProps } from "antd/lib/progress";
 import {
   RadioGroupProps as AntdRadioGroupProps,
@@ -35,16 +37,16 @@ import {
   TableProps as AntdTableProps,
 } from "antd/lib/table";
 import { TableRowSelection } from "antd/lib/table/interface";
-import Tag from "antd/lib/tag";
+import { TagType } from "antd/lib/tag";
 import { TimePickerProps } from "antd/lib/time-picker";
 import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
+import { ApolloError } from "apollo-boost";
 import React, { ReactNode } from "react";
 
 // import { Modal2Type } from './modal2';
 import { ImagesType } from "../generated/images-type";
-// import { Architecture } from '../generated/react-hooks';
-import ButtonGroup from "./buttonGroup";
+import { Architecture } from "../generated/react-hooks";
 
 type BadgeTypeProps = "warning" | "error" | "info";
 type Primitive = "Int" | "Float" | "DateTime" | "Enum" | "String" | "Boolean";
@@ -317,6 +319,19 @@ export type IntFieldProps<
     supportNegativeValue?: boolean;
   };
 
+export type ButtonGroupType = {
+  className?: string;
+  size?: SizeType;
+  options: Array<
+    Omit<ButtonProps, "shape" | "size" | "icon"> & {
+      key: string;
+      title?: string;
+      hideTitle?: boolean;
+      icon?: ImagesType;
+    }
+  >;
+};
+
 export type ButtonProps = {
   prefixIcon?: ImagesType;
   hoverPrefixIcon?: ImagesType;
@@ -356,8 +371,34 @@ export type IStepsPorps = StepsProps & {
   showStepCount?: boolean;
 };
 
-// FieldValue type should be defined case by case
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type ErrorType = string | React.ReactNode | Error | ApolloError;
+type InitializedModalType = Modal2Props & {
+  initLoading: boolean;
+  initError: ErrorType;
+};
+
+type WizardModalType = Modal2Props & {
+  step: number;
+  onStepChange?: (step: number) => void;
+  steps: {
+    title: string;
+    render: React.ReactNode;
+    prevText?: string | React.ReactNode;
+    okText?: string | React.ReactNode;
+    onOk?: (e: React.MouseEvent<HTMLElement>) => void;
+    disabled?: boolean;
+  }[];
+  right?: React.ReactNode;
+  destroyOtherStep?: boolean;
+  disablePrevStep?: boolean;
+  stepsPosition?: "top" | "side";
+};
+
+export interface Modal2Type extends React.FC<Modal2Props> {
+  Initialized: React.FC<InitializedModalType>;
+  Wizard: React.FC<WizardModalType>;
+}
+
 export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   // constants
   PAGINATION_SELECTOR: string;
@@ -373,8 +414,8 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   option: React.FunctionComponent<OptionProps>;
   table: TableComponent;
   button: React.FC<ButtonProps>;
-  // modal: React.FC<ModalProps>;
-  // modal2: React.FC<Modal2Props> & Modal2Type;
+  modal: React.FC<ModalProps>;
+  modal2: React.FC<Modal2Props> & Modal2Type;
   dropdown: React.FC<DropDownProps>;
   switch: React.FC<SwitchProps>;
   tooltip: React.FC<TooltipProps>;
@@ -426,7 +467,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     Bps: UnitFn;
   };
   inputGroup: React.FunctionComponent<{ compact: boolean }>;
-  Empty: React.ReactElement;
+  Empty: React.ReactNode;
   alert: React.FunctionComponent<
     Omit<AlertProps, "type"> & { type?: AlertProps["type"] | "normal" }
   >;
@@ -440,18 +481,27 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   progress: React.FC<ProgressProps>;
   divider: React.FC<AntdDividerProps>;
   skeleton: React.FC<AntdSkeletonProps>;
-  menu: typeof Menu;
-  menuItem: typeof MenuItem;
-  menuItemGroup: typeof Menu.ItemGroup;
-  list: typeof List;
+  menu: React.ComponentType<MenuProps>;
+  menuItem: React.ComponentType<MenuItemProps>;
+  menuItemGroup: React.ComponentType<MenuItemGroupProps>;
+  list: <T>(props: ListProps<T>) => JSX.Element;
   listItem: React.FC<ListItemProps>;
   listItemMeta: React.FC<ListItemMetaProps>;
-  layout: typeof Layout;
-  autoComplete: typeof AutoComplete;
-  // message: typeof message;
-  tag: typeof Tag;
-  popover: typeof Popover;
-  // arch: React.FC<{ architecture?: Architecture }>;
-  buttonGroup: typeof ButtonGroup;
-  // steps: React.FC<IStepsPorps>;
+  layout: React.ComponentType<BasicProps> & {
+    Header: React.ComponentType<BasicProps>;
+    Footer: React.ComponentType<BasicProps>;
+    Content: React.ComponentType<BasicProps>;
+    Sider: React.ComponentType<SiderProps>;
+  };
+  autoComplete: React.ForwardRefExoticComponent<AutoCompleteProps>;
+  message: MessageInstance;
+  tag: TagType;
+  popover: React.ForwardRefExoticComponent<
+    PopoverProps & React.RefAttributes<unknown>
+  >;
+  arch: React.FC<{ architecture?: Architecture }>;
+  buttonGroup: React.ForwardRefExoticComponent<
+    ButtonGroupType & React.RefAttributes<HTMLDivElement>
+  >;
+  steps: React.FC<IStepsPorps>;
 }

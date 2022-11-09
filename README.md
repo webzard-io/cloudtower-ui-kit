@@ -43,10 +43,29 @@ However, it is still strongly recommended to use vscode configuration, engineers
 
 If you are using Yarn + Windows. You can check this document https://typicode.github.io/husky/#/?id=yarn-on-windows
 
-## Use Lerna Update Version
+## Version Update
+
+use lerna cli for quick version update
 
 ```
 yarn lerna version patch
+```
+
+```mermaid
+flowchart TB
+    Incompatible{Incompatible Change}
+    Features{New Features}
+    Bug[Bug Fix]
+
+    Patch[Version Patch]
+    Minor[Version Minor]
+    Major[Version Major]
+
+    Incompatible -->|true| Major
+    Incompatible -->|false| Features
+    Features -->|true| Minor
+    Features -->|false| Bug
+    Bug --> Patch
 ```
 
 ## Key Points of Migration

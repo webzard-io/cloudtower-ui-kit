@@ -1,7 +1,7 @@
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 
-export const Content = styled.div`
+export const CommonContent = styled.div`
   display: flex;
   flex-direction: column;
 `;

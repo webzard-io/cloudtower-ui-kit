@@ -4,9 +4,9 @@ import { ButtonType as AntdButtonType } from "antd/lib/button";
 import cs from "classnames";
 import React, { useState } from "react";
 
-import Icon from "../../components/Icon";
-import { Typo } from "../../styles/component/typo";
-import { ButtonProps } from "../base";
+import { Icon } from "@cloudtower/sparrow";
+import { Typo } from "@cloudtower/sparrow";
+import { ButtonProps } from "@cloudtower/sparrow";
 
 const ButtonStyle = css`
   &.ant-btn {
