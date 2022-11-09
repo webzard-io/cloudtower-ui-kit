@@ -18,8 +18,9 @@ import { SiderProps } from "antd/lib/layout";
 import { BasicProps } from "antd/lib/layout/layout";
 import { ListProps } from "antd/lib/list";
 import { ListItemMetaProps, ListItemProps } from "antd/lib/list/Item";
-import Menu, { MenuItemGroupProps } from "antd/lib/menu";
+import Menu, { MenuItemGroupProps, MenuProps } from "antd/lib/menu";
 import { MenuItemProps } from "antd/lib/menu/MenuItem";
+import { SubMenuProps } from "antd/lib/menu/SubMenu";
 import { MessageInstance } from "antd/lib/message";
 import { ModalProps as AntdModalProps } from "antd/lib/modal";
 import { PopoverProps } from "antd/lib/popover";
@@ -467,7 +468,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     Bit: UnitFn;
   };
   inputGroup: React.FunctionComponent<{ compact: boolean }>;
-  Empty: React.ReactElement;
+  Empty: React.ReactElement | null;
   alert: React.FunctionComponent<
     Omit<AlertProps, "type"> & { type?: AlertProps["type"] | "normal" }
   >;
@@ -481,7 +482,12 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   progress: React.FC<ProgressProps>;
   divider: React.FC<AntdDividerProps>;
   skeleton: React.FC<AntdSkeletonProps>;
-  menu: typeof Menu;
+  menu: React.ComponentType<MenuProps> & {
+    Divider: React.FC<import("rc-menu/lib/Divider").DividerProps>;
+    Item: React.ComponentType<MenuItemProps>;
+    SubMenu: React.ComponentType<SubMenuProps>;
+    ItemGroup: React.ComponentType<MenuItemGroupProps>;
+  };
   menuItem: React.ComponentType<MenuItemProps>;
   menuItemGroup: React.ComponentType<MenuItemGroupProps>;
   list: <T>(props: ListProps<T>) => JSX.Element;

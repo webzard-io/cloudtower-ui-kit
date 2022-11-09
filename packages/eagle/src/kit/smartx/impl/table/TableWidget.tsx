@@ -161,7 +161,6 @@ export const TableEmpty: React.FC<{
   const { t, i18n } = useTranslation();
   const kit = useContext(kitContext);
   const clearGlobalSearchFn = useKitSelector<
-    RootState,
     RootState["globalSearch"]["clearInput"]
   >((state) => state.globalSearch.clearInput);
 
