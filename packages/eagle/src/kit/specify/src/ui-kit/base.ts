@@ -18,7 +18,7 @@ import { SiderProps } from "antd/lib/layout";
 import { BasicProps } from "antd/lib/layout/layout";
 import { ListProps } from "antd/lib/list";
 import { ListItemMetaProps, ListItemProps } from "antd/lib/list/Item";
-import { MenuItemGroupProps, MenuProps } from "antd/lib/menu";
+import Menu, { MenuItemGroupProps } from "antd/lib/menu";
 import { MenuItemProps } from "antd/lib/menu/MenuItem";
 import { MessageInstance } from "antd/lib/message";
 import { ModalProps as AntdModalProps } from "antd/lib/modal";
@@ -481,7 +481,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   progress: React.FC<ProgressProps>;
   divider: React.FC<AntdDividerProps>;
   skeleton: React.FC<AntdSkeletonProps>;
-  menu: React.ComponentType<MenuProps>;
+  menu: typeof Menu;
   menuItem: React.ComponentType<MenuItemProps>;
   menuItemGroup: React.ComponentType<MenuItemGroupProps>;
   list: <T>(props: ListProps<T>) => JSX.Element;
