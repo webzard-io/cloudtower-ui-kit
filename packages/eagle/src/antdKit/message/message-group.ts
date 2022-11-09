@@ -33,7 +33,7 @@ export class Batcher {
     const batchKey = this.getBatchKey(content);
     const action = this.getAction(batchKey);
 
-    if (!window.i18n.exists(action)) {
+    if (!window.__cloudtower_i18n__.i18next.exists(action)) {
       // can not be batched when i18n not ready
       this.originalMethod(content);
       return;
@@ -140,7 +140,9 @@ export class Batcher {
   }
 
   private getBatchContent(batchKey: string, count: number): string {
-    return window.i18n.td(this.getAction(batchKey), { count });
+    return window.__cloudtower_i18n__.i18next.td(this.getAction(batchKey), {
+      count,
+    });
   }
 
   private getAction(batchKey: string) {
