@@ -1,17 +1,18 @@
+import camelcase from "camelcase";
 import * as fs from "fs";
+import {
+  DocumentNode,
+  FieldDefinitionNode,
+  GraphQLSchema,
+  InputValueDefinitionNode,
+  parse,
+  printSchema,
+  TypeNode,
+  visit,
+} from "graphql";
 import * as path from "path";
 import pluralize from "pluralize";
-import camelcase from "camelcase";
-import {
-  InputValueDefinitionNode,
-  FieldDefinitionNode,
-  DocumentNode,
-  visit,
-  GraphQLSchema,
-  printSchema,
-  parse,
-  TypeNode,
-} from "graphql";
+
 import { Column, Config, RawConfig } from "./types";
 
 export { constantCase } from "constant-case";

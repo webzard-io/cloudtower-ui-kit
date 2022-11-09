@@ -1,4 +1,5 @@
 import { PluginFunction } from "@graphql-codegen/plugin-helpers";
+
 import { getConfig, setPluralize, upperFirst } from "../common";
 
 export const plugin: PluginFunction = (schema, documents, config) => {
