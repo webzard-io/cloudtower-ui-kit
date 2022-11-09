@@ -66,7 +66,7 @@ export type ModalState = {
   closeId: number;
 };
 
-export const enum ModalActions {
+export enum ModalActions {
   PUSH_MODAL = "PUSH_MODAL",
   POP_MODAL = "POP_MODAL",
   REMOVE_MODAL = "REMOVE_MODAL",
