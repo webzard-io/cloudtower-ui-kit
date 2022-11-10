@@ -100,29 +100,7 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
     "import/first,",
     "no-useless-computed-key",
     "*/",
-    `import {
-      DateTimeRangeProps,
-      EMPTY_FUNCTION,
-      EnumProps,
-      ExcludeMaybe,
-      FailedLoad,
-      FloatProps,
-      Icon,
-      InputSize,
-      IntProps,
-      Kit,
-      kitContext,
-      KitSelectProps,
-      MultipleSelectProps,
-      RequiredColumnProps,
-      SelectProps,
-      SingleSelectProps,
-      StringProps,
-      TableProps,
-      useElementsSize,
-      useSearch,
-    } from "@cloudtower/sparrow";
-    import { i18next, SupportLanguage } from "@tower/i18n";
+    `import { i18next, SupportLanguage } from "@tower/i18n";
     import { Menu } from "antd";
     import {
       ApolloError,
@@ -145,32 +123,56 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
     import { useDispatch } from "react-redux";
     
     import {
-      AuxiliaryLine,
       BLANK_COLUMN,
-      BooleanField,
-      CustomizeColumn,
-      CustomizeColumnType,
-      EmptyRowMenu,
-      EnumField,
       eventStopPropagation,
       handleColumnsByKeys,
-      HeaderCell,
-      IntField,
-      PendingTable,
-      SidebarTable,
-      StringField,
-      TableEmpty,
-      TablePagination,
       TableRenderer,
       tableScrollToTop,
+      useTransformScrollAndColumns,
+    } from "@cloudtower/eagle/kit/smartx";
+    import {
+      CustomizeColumnType,
       useCustomizeColumn,
       useEqualAllColumnKeys,
+    } from "@cloudtower/eagle/kit/smartx";
+    import { CustomizeColumn } from "@cloudtower/eagle/kit/smartx";
+    import { HeaderCell } from "@cloudtower/eagle/kit/smartx";
+    import { PendingTable } from "@cloudtower/eagle/kit/smartx";
+    import { BooleanField, EnumField, IntField, StringField } from "@cloudtower/eagle/kit/smartx";
+    import { SidebarTable } from "@cloudtower/eagle/kit/smartx";
+    import { useTableSelection } from "@cloudtower/eagle/kit/smartx";
+    import {
+      AuxiliaryLine,
+      EmptyRowMenu,
+      TableEmpty,
+      TablePagination,
       usePosition,
-      useTableSelection,
-    } from "../antdKit/table";
-    import { useTransformScrollAndColumns } from "../components";
-    import { TableActions } from "../store";
-    
+    } from "@cloudtower/eagle/kit/smartx";
+    import { TableActions } from "@cloudtower/eagle/kit/smartx";
+    import { EMPTY_FUNCTION } from "@cloudtower/eagle/kit/specify";
+    import { useElementsSize } from "@cloudtower/eagle/kit/specify";
+    import { useSearch } from "@cloudtower/eagle/kit/specify";
+    import { ExcludeMaybe } from "@cloudtower/eagle/kit/specify";
+    import {
+      MultipleSelectProps,
+      SelectProps,
+      SingleSelectProps,
+    } from "@cloudtower/eagle/kit/specify";
+    import { FailedLoad } from "@cloudtower/eagle/kit/specify";
+    import { Icon } from "@cloudtower/eagle/kit/specify";
+    import { kitContext } from "@cloudtower/eagle/kit/specify";
+    import {
+      DateTimeRangeProps,
+      EnumProps,
+      FloatProps,
+      InputSize,
+      IntProps,
+      Kit,
+      RequiredColumnProps,
+      KitSelectProps,
+      StringProps,
+      TableProps,
+    } from "@cloudtower/eagle/kit/specify";
     `,
   ].join("\r\n");
   output += ADD_NEW_LINE;

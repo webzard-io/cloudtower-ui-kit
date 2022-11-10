@@ -45,7 +45,7 @@ import { kitContext } from "@cloudtower/eagle/kit/specify";
 
 - @cloudtower/eagle/kit/specify
 
-  kit 接口定义，包含 kitContext 与 mockImpl
+  kit 接口定义，包含 kitContext 与 emptyImpl
 
 - @cloudtower/eagle/kit/smartx
 

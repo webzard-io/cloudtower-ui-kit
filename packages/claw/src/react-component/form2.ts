@@ -333,8 +333,11 @@ export const plugin: PluginFunction = async (schema) => {
   }
   forms.sort((a, b) => a.key.localeCompare(b.key));
   const TEMPLATES = {
-    CORE: path.resolve(__dirname, "../templates/react-component/Form2Core.ejs"),
-    FORM: path.resolve(__dirname, "../templates/react-component/Form2.ejs"),
+    CORE: path.resolve(
+      __dirname,
+      "../../templates/react-component/Form2Core.ejs"
+    ),
+    FORM: path.resolve(__dirname, "../../templates/react-component/Form2.ejs"),
   };
   let output = await ejs.renderFile(TEMPLATES.CORE, {
     enums: Array.from(

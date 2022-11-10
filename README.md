@@ -82,15 +82,12 @@ Codegen Plugin is copying from @tower/codegen
 
 ## Packages Introduction
 
-### @cloudtower/sparrow
-
-- UI-Kit Interface And MockImpl
-- Base Component
-
 ### @cloudtower/eagle
 
 - Antd-Kit Impl
 - Codegen Component
+- UI-Kit Interface And EmptyImpl
+- Base Component
 
 ### @cloudtower/claw
 
