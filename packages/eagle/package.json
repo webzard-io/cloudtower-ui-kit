@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/eagle",
-  "version": "0.5.0",
+  "version": "0.5.5",
   "main": "dist/umd/index.js",
   "module": "./dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -10,30 +10,52 @@
       "require": "./dist/umd/index.js",
       "types": "./dist/src/index.d.ts"
     },
-    "generated/forms": {
+    "./dist/style.css": {
+      "import": "./dist/style.css"
+    },
+    "./generated/forms": {
       "import": "./dist/esm/generated/forms.js",
       "require": "./dist/umd/generated/forms.js",
       "types": "./dist/src/generated/forms.d.ts"
     },
-    "generated/forms2": {
+    "./generated/forms2": {
       "import": "./dist/esm/generated/forms2.js",
       "require": "./dist/umd/generated/forms2.js",
       "types": "./dist/src/generated/forms2.d.ts"
     },
-    "generated/global-search": {
+    "./generated/global-search": {
       "import": "./dist/esm/generated/global-search.js",
       "require": "./dist/umd/generated/global-search.js",
       "types": "./dist/src/generated/global-search.d.ts"
     },
-    "generated/react-hooks": {
+    "./generated/react-hooks": {
       "import": "./dist/esm/generated/react-hooks.js",
       "require": "./dist/umd/generated/react-hooks.js",
       "types": "./dist/src/generated/react-hooks.d.ts"
     },
-    "generated/tables": {
+    "./generated/tables": {
       "import": "./dist/esm/generated/tables.js",
       "require": "./dist/umd/generated/tables.js",
       "types": "./dist/src/generated/tables.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "generated/forms": [
+        "./dist/src/generated/forms.d.ts"
+      ],
+      "generated/forms2": [
+        "./dist/src/generated/forms2.d.ts"
+      ],
+      "generated/global-search": [
+        "./dist/src/generated/global-search.d.ts"
+      ],
+      "generated/react-hooks": [
+        "./dist/src/generated/react-hooks.d.ts"
+      ],
+      "generated/tables": [
+        "./dist/src/generated/tables.d.ts"
+      ]
     }
   },
   "license": "MIT",
@@ -44,10 +66,10 @@
     "coverage": "vitest run --coverage",
     "pregenerate": "rm -rf src/generated",
     "generate": "graphql-codegen --config src/codegen/config/codegen-main.yaml",
-    "typings": "tsc -v && tsc index.ts --emitDeclarationOnly --declaration --jsx react-jsx --outDir dist || exit 0"
+    "typings": "tsc -v && tsc --emitDeclarationOnly --skipLibCheck -p tsconfig.build.json || exit 0"
   },
   "dependencies": {
-    "@cloudtower/sparrow": "^0.5.0",
+    "@cloudtower/sparrow": "^0.5.3",
     "@linaria/core": "^4.1.4",
     "@tower/i18n": "^1.9.2",
     "history": "^4"
