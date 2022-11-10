@@ -1,7 +1,6 @@
-import "i18next";
 import "antd";
 
-import * as resources from "@tower/i18n/lib/locales";
+import { resources } from "i18next";
 
 declare module "i18next" {
   interface i18n {
