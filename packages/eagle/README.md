@@ -51,3 +51,7 @@ import { kitContext } from "@cloudtower/eagle/kit/specify";
 - @cloudtower/eagle
 
   根导出直接导出 `src/components` 组件，便于使用。
+
+## 待修复
+
+`generated/form2.tsx` 类型过大，生成产生问题

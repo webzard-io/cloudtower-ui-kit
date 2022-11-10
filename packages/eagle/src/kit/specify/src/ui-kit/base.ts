@@ -1,3 +1,5 @@
+import { ImagesType } from "@cloudtower/eagle/generated/images-type";
+import { Architecture } from "@cloudtower/eagle/generated/react-hooks";
 import { FieldRenderProps } from "@smartx/react-final-form";
 import { FieldArrayRenderProps } from "@smartx/react-final-form-arrays";
 import { SerializableObject } from "@tower/utils";
@@ -43,9 +45,6 @@ import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
 import { ApolloError } from "apollo-boost";
 import React, { ReactNode } from "react";
-
-import { ImagesType } from "../../../../generated/images-type";
-import { Architecture } from "../../../../generated/react-hooks";
 
 type BadgeTypeProps = "warning" | "error" | "info";
 type Primitive = "Int" | "Float" | "DateTime" | "Enum" | "String" | "Boolean";
@@ -464,9 +463,11 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     Speed: UnitFn;
     Second: UnitFn;
     Bps: UnitFn;
+    BitPerSecond: UnitFn;
+    Bit: UnitFn;
   };
   inputGroup: React.FunctionComponent<{ compact: boolean }>;
-  Empty: React.ReactNode;
+  Empty: React.ReactElement;
   alert: React.FunctionComponent<
     Omit<AlertProps, "type"> & { type?: AlertProps["type"] | "normal" }
   >;

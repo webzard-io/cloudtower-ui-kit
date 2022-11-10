@@ -3,6 +3,7 @@
 @typescript-eslint/no-explicit-any,
 */
 
+import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
 import {
   kitContext,
   Resources,
@@ -19,7 +20,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { useSelector } from "react-redux";
 
 import { RootState, store, TableActions } from "../../store";
 import { eventStopPropagation } from "./common";
@@ -45,9 +45,10 @@ const TitleCheckbox = <T extends { id: string }>(props: {
 }) => {
   const kit = useContext(kitContext);
   const { resource, onChange } = props;
-  const state = useSelector<RootState, Resource>(
-    (state) => state.table[resource]
-  ) || { selectRows: [], rows: [] };
+  const state = useKitSelector<Resource>((state) => state.table[resource]) || {
+    selectRows: [],
+    rows: [],
+  };
   const { selectRows = [], rows = [] } = state;
 
   const isChecked = selectRows?.length === rows.length;
@@ -77,7 +78,7 @@ const TableCheckbox = <T extends { id: string }>(props: {
   const kit = useContext(kitContext);
   const { resource, record, onChange, ...restProps } = props;
   const selectRows =
-    useSelector<RootState, Resource["selectRows"]>(
+    useKitSelector<Resource["selectRows"]>(
       (state) => state.table[resource]?.selectRows
     ) || [];
 
@@ -182,7 +183,7 @@ export const useTableSelection = <T extends { id: string }>(
   resource: Resources | string
 ) => {
   const isSelection = Boolean(rowSelection);
-  const { selectRows, rows } = useSelector<RootState, Resource>(
+  const { selectRows, rows } = useKitSelector<Resource>(
     (state) => state.table[resource]
   ) || {
     selectRows: [],

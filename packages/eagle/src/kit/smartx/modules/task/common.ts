@@ -3,10 +3,10 @@ import {
   TaskStatus,
   TaskTableQuery,
 } from "@cloudtower/eagle/generated/react-hooks";
+import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
 import { IPV4_REGEXP, IPV6_REGEXP, URL_REGEXP } from "@tower/utils";
 import { TOptions } from "i18next";
 import { UseTranslationResponse } from "react-i18next";
-import { useSelector } from "react-redux";
 
 import { RootState } from "../../store";
 import { Node } from "../../store/task";
@@ -276,7 +276,7 @@ export const isMigrationCompleted = (
 export function useFilterExecutingTask(
   filter?: (task: Node, index: number, array: Node[]) => unknown
 ): Node[] {
-  const allExecutingTasks = useSelector<
+  const allExecutingTasks = useKitSelector<
     RootState,
     RootState["task"]["executing"]
   >((state) => state.task.executing).filter(

@@ -14,6 +14,7 @@ import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { Field } from "@smartx/react-final-form";
 import {
+  formatBitPerSecond,
   formatBps,
   formatBytes,
   formatFrequency,
@@ -681,6 +682,28 @@ export const RightEndSelectStyle = css`
   }
 `;
 
+interface FormattedResult {
+  value: number;
+  unit: string;
+}
+
+export function formatBits(bits: number, decimals = 2): FormattedResult {
+  if (bits <= 0 || bits === MAGIC_METRIC_NULL) {
+    return {
+      value: 0,
+      unit: "b",
+    };
+  }
+  const k = 1000;
+  const units = ["b", "Kb", "Mb", "Gb", "Tb", "Pb"];
+  let i = Math.floor(Math.log(bits) / Math.log(k));
+  i = i < 0 ? 0 : i > units.length - 1 ? units.length - 1 : i;
+  return {
+    value: parseFloat((bits / Math.pow(k, i)).toFixed(decimals)),
+    unit: units[i],
+  };
+}
+
 const Arch: Kit["arch"] = (props) => {
   const { architecture } = props;
   const { i18n } = useTranslation();
@@ -1145,12 +1168,12 @@ export function getAntdKit(): Kit {
     },
     units: {
       Byte({ rawValue, noUnitOnZero, decimals }) {
-        const { i18n } = useTranslation();
+        const { t } = useTranslation();
         if (isEmpty(rawValue)) {
           return Empty;
         }
         if (rawValue === -1) {
-          return <span>{i18n.t("iscsiTarget.calculation")}</span>;
+          return <span>{t("iscsiTarget.calculation")}</span>;
         }
         const { value, unit } = formatBytes(rawValue, decimals);
         if (noUnitOnZero && value === 0) {
@@ -1211,9 +1234,32 @@ export function getAntdKit(): Kit {
           </span>
         );
       },
+      BitPerSecond({ rawValue, decimals }) {
+        if (isEmpty(rawValue)) {
+          return Empty;
+        }
+        const { value, unit } = formatBitPerSecond(rawValue, decimals);
+        return (
+          <span>
+            <span className="value">{value}</span>
+            <span className="unit">{` ${unit}`}</span>
+          </span>
+        );
+      },
+      Bit({ rawValue, decimals }) {
+        if (isEmpty(rawValue)) {
+          return Empty;
+        }
+        const { value, unit } = formatBits(rawValue, decimals);
+        return (
+          <span>
+            <span className="value">{value}</span>
+            <span className="unit">{` ${unit}`}</span>
+          </span>
+        );
+      },
       Second({ rawValue, decimals, abbreviate }) {
         const { i18n } = useTranslation();
-
         if (isEmpty(rawValue)) {
           return Empty;
         }
