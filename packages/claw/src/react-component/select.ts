@@ -56,7 +56,7 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
     "import { kitContext } from '@cloudtower/eagle/kit/specify';",
     "import { KitSelectProps } from '@cloudtower/eagle/kit/specify';",
     "import { SingleSelectProps, MultipleSelectProps, SelectProps } from '@cloudtower/eagle/kit/specify';",
-    "import { FailedLoad } from '@cloudtower/eagle/kit/specify';",
+    "import { FailedLoad } from '@cloudtower/eagle/kit/smartx';",
     hasEnableCreate &&
       "import { CreatingSelectDropdownStyle, CreateResourceDropdownRender } from '@cloudtower/eagle/kit/smartx';",
     hasEnableCreate && "import cs from 'classnames';",

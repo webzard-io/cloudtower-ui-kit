@@ -1,10 +1,9 @@
+import { kitContext } from "@cloudtower/eagle/kit/specify/ui-kit";
 import { css } from "@linaria/core";
 import { ApolloError } from "apollo-boost";
 import cs from "classnames";
 import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
-
-import { kitContext } from "../ui-kit";
 
 const FailedLoadStyle = css`
   width: 100%;
