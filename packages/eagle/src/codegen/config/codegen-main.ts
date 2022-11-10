@@ -44,9 +44,6 @@ const config = {
       schema: "./src/codegen/config/form-schema.graphql",
       plugins: ["../claw/dist/src/react-component/form2.js"],
     },
-    "src/generated/type-dependencies-map.ts": {
-      plugins: ["../claw/dist/src/graphql/type-dependencies-map.js"],
-    },
     "src/generated/global-search.ts": {
       plugins: ["../claw/dist/src/typescript/global-search.js"],
     },
