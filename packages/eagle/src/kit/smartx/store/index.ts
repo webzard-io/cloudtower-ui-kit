@@ -28,11 +28,11 @@ import {
   Actions as ModalActionType,
   CloseCb,
   initialModalState,
-  Modal,
   ModalActions,
   ModalProps,
   modalReducer,
   ModalState,
+  ModalType,
 } from "./modal";
 import {
   Actions as NavActionType,
@@ -126,7 +126,7 @@ export const rootReducer = (state: RootState | undefined, action: Actions) => {
 export const store = createStore(rootReducer);
 
 export function pushModal<K extends keyof ModalProps>(
-  modal: Modal<ModalProps[K]>
+  modal: ModalType<ModalProps[K]>
 ) {
   store.dispatch({
     type: ModalActions.PUSH_MODAL,

@@ -55,12 +55,11 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
     "import _ from 'lodash';",
     "import { kitContext } from '@cloudtower/eagle/kit/specify';",
     "import { KitSelectProps } from '@cloudtower/eagle/kit/specify';",
-    "import { SingleSelectProps, MultipleSelectProps, SelectProps } from '../common/types';",
-    "import FailedLoad from '../components/FailedLoad';",
+    "import { SingleSelectProps, MultipleSelectProps, SelectProps } from '@cloudtower/eagle/kit/specify';",
+    "import { FailedLoad } from '@cloudtower/eagle/kit/specify';",
     hasEnableCreate &&
-      "import { CreatingSelectDropdownStyle, CreateResourceDropdownRender } from '../components/DropdownRender';",
+      "import { CreatingSelectDropdownStyle, CreateResourceDropdownRender } from '@cloudtower/eagle/kit/smartx';",
     hasEnableCreate && "import cs from 'classnames';",
-    hasAsyncField && "import { client } from '../graphql'",
     "import { WatchQueryFetchPolicy } from 'apollo-boost';",
   ]).join("\r\n");
   output += ADD_NEW_LINE;

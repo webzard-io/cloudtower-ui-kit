@@ -1,6 +1,6 @@
+import { PluginFunction } from "@graphql-codegen/plugin-helpers";
 import fs from "fs";
 import path from "path";
-import { PluginFunction } from "@graphql-codegen/plugin-helpers";
 
 const generateType = (folderPath: string, pre?: string) => {
   let res = "";

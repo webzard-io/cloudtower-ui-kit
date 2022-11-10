@@ -276,12 +276,9 @@ export const isMigrationCompleted = (
 export function useFilterExecutingTask(
   filter?: (task: Node, index: number, array: Node[]) => unknown
 ): Node[] {
-  const allExecutingTasks = useKitSelector<
-    RootState,
-    RootState["task"]["executing"]
-  >((state) => state.task.executing).filter(
-    (task) => !task.internal && task.status !== TaskStatus.Paused
-  );
+  const allExecutingTasks = useKitSelector<RootState["task"]["executing"]>(
+    (state) => state.task.executing
+  ).filter((task) => !task.internal && task.status !== TaskStatus.Paused);
 
   if (!filter) {
     return allExecutingTasks;

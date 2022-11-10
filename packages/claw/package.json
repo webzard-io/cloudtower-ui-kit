@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/claw",
-  "version": "0.6.11",
+  "version": "0.6.12",
   "description": "claw of eagle",
   "private": true,
   "license": "MIT",
@@ -16,12 +16,12 @@
     "@types/ejs": "^3.1.1",
     "@types/pluralize": "^0.0.29",
     "ejs": "^3.1.8",
-    "graphql": "^15.7.2",
+    "graphql": "^14.7.0",
     "lodash": "^4.17.21",
     "pluralize": "^8.0.0"
   },
   "peerDependencies": {
     "@graphql-codegen/plugin-helpers": "^1.9",
-    "graphql": "^15.7.2"
+    "graphql": "^14.7.0"
   }
 }
