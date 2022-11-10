@@ -1,4 +1,4 @@
-import { Icon, kitContext, PaginationProps } from "@cloudtower/sparrow";
+import { Icon, kitContext, PaginationProps } from "../../../specify";
 import { css } from "@linaria/core";
 import { Menu } from "antd";
 import cs from "classnames";

@@ -1,4 +1,4 @@
-import { kitContext, Modal2Props } from "@cloudtower/sparrow";
+import { kitContext, Modal2Props } from "../../../specify";
 import { ApolloError } from "apollo-boost";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";

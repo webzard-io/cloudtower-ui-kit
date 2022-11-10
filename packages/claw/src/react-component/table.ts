@@ -100,7 +100,29 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
     "import/first,",
     "no-useless-computed-key",
     "*/",
-    `import { i18next, SupportLanguage } from "@tower/i18n";
+    `import {
+      DateTimeRangeProps,
+      EMPTY_FUNCTION,
+      EnumProps,
+      ExcludeMaybe,
+      FailedLoad,
+      FloatProps,
+      Icon,
+      InputSize,
+      IntProps,
+      Kit,
+      kitContext,
+      KitSelectProps,
+      MultipleSelectProps,
+      RequiredColumnProps,
+      SelectProps,
+      SingleSelectProps,
+      StringProps,
+      TableProps,
+      useElementsSize,
+      useSearch,
+    } from "@cloudtower/sparrow";
+    import { i18next, SupportLanguage } from "@tower/i18n";
     import { Menu } from "antd";
     import {
       ApolloError,
@@ -123,56 +145,32 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
     import { useDispatch } from "react-redux";
     
     import {
+      AuxiliaryLine,
       BLANK_COLUMN,
+      BooleanField,
+      CustomizeColumn,
+      CustomizeColumnType,
+      EmptyRowMenu,
+      EnumField,
       eventStopPropagation,
       handleColumnsByKeys,
-      TableRenderer,
-      tableScrollToTop,
-      useTransformScrollAndColumns,
-    } from "../kit/smartx";
-    import {
-      CustomizeColumnType,
-      useCustomizeColumn,
-      useEqualAllColumnKeys,
-    } from "../kit/smartx";
-    import { CustomizeColumn } from "../kit/smartx";
-    import { HeaderCell } from "../kit/smartx";
-    import { PendingTable } from "../kit/smartx";
-    import { BooleanField, EnumField, IntField, StringField } from "../kit/smartx";
-    import { SidebarTable } from "../kit/smartx";
-    import { useTableSelection } from "../kit/smartx";
-    import {
-      AuxiliaryLine,
-      EmptyRowMenu,
+      HeaderCell,
+      IntField,
+      PendingTable,
+      SidebarTable,
+      StringField,
       TableEmpty,
       TablePagination,
+      TableRenderer,
+      tableScrollToTop,
+      useCustomizeColumn,
+      useEqualAllColumnKeys,
       usePosition,
-    } from "../kit/smartx";
-    import { TableActions } from "../kit/smartx";
-    import { EMPTY_FUNCTION } from "../kit/specify";
-    import { useElementsSize } from "../kit/specify";
-    import { useSearch } from "../kit/specify";
-    import { ExcludeMaybe } from "../kit/specify";
-    import {
-      MultipleSelectProps,
-      SelectProps,
-      SingleSelectProps,
-    } from "../kit/specify";
-    import { FailedLoad } from "../kit/specify";
-    import { Icon } from "../kit/specify";
-    import { kitContext } from "../kit/specify";
-    import {
-      DateTimeRangeProps,
-      EnumProps,
-      FloatProps,
-      InputSize,
-      IntProps,
-      Kit,
-      RequiredColumnProps,
-      KitSelectProps,
-      StringProps,
-      TableProps,
-    } from "../kit/specify";
+      useTableSelection,
+    } from "../antdKit/table";
+    import { useTransformScrollAndColumns } from "../components";
+    import { TableActions } from "../store";
+    
     `,
   ].join("\r\n");
   output += ADD_NEW_LINE;

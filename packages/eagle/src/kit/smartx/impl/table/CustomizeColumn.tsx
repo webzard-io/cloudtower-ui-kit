@@ -1,11 +1,11 @@
-import { Icon, kitContext } from "@cloudtower/sparrow";
+import { Icon, kitContext } from "../../../specify";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { Checkbox } from "antd";
 import React, { DragEvent, useContext } from "react";
 import { useTranslation } from "react-i18next";
 
-import { arrayMove } from "../../components/table/common";
+import { arrayMove } from "./common";
 import { CustomizeColumnType, useCustomizeColumn } from "./customize-column";
 
 const DropdownWrapper = css`

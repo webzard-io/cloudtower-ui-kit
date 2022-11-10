@@ -24,19 +24,19 @@ generates:
       maybeValue: T | null | undefined
   src/generated/tables.tsx:
     plugins:
-      - "../claw/dist/src/react-component/table.js"
+    - "../claw/dist/plugins/table.js"
   src/generated/forms-types.tsx:
     plugins:
-      - "../claw/dist/src/react-component/form.js"
+    - "../claw/dist/react-component/form.js"
     config:
       generateTypes: true
   src/generated/forms.tsx:
     plugins:
-      - "../claw/dist/src/react-component/form.js"
+    - "../claw/dist/react-component/form.js"
   src/generated/forms2.tsx:
-    schema: ./src/codegen/config/form-schema.graphql
+    schema: src/codegen/config/form-schema.graphql
     plugins:
-      - "../claw/dist/src/react-component/form2.js"
+    - "../claw/dist/react-component/form2.js"
   src/generated/global-search.ts:
     plugins:
       - "../claw/dist/src/typescript/global-search.js"

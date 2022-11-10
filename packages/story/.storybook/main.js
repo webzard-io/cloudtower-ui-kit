@@ -35,13 +35,8 @@ module.exports = {
       ],
       resolve: {
         alias: {
-          "@cloudtower/sparrow/src/styles/reset.css":
-            "@cloudtower/sparrow/src/styles/reset.css",
-          "@cloudtower/sparrow/src/styles/fonts/font.css":
-            "@cloudtower/sparrow/src/styles/fonts/font.css",
           "@cloudtower/eagle": "@cloudtower/eagle/index.ts",
           "@cloudtower/parrot": "@cloudtower/parrot/index.ts",
-          "@cloudtower/sparrow": "@cloudtower/sparrow/index.ts",
         },
       },
       addons: ["storybook-react-i18next"],

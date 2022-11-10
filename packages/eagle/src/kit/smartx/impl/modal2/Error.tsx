@@ -1,8 +1,8 @@
-import { FullView, Typo } from "@cloudtower/sparrow";
 import { css, cx } from "@linaria/core";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import { FullView, Typo } from "../../../../styles";
 import { analyzeFallbackError } from "../../components/FormError";
 
 const FullViewErrorStyle = css`

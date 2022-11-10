@@ -87,13 +87,13 @@ const config = defineConfig([
         }),
         scss({
           include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
-          output: false,
+          output: "dist/style.css",
           failOnError: true,
           prefix: "@import 'src/styles/common/variables.scss';",
         }),
         visualizer({
           emitFile: true,
-          filename: `${name}-stats1.html`,
+          filename: "stats1.html",
         }),
       ],
       output: [
@@ -104,6 +104,56 @@ const config = defineConfig([
         },
         {
           dir: "dist/esm/generated",
+          name: "index",
+          format: "esm",
+        },
+      ],
+    };
+  }),
+  ...["specify", "smartx"].map((name) => {
+    return {
+      input: [`src/kit/${name}/index.ts`],
+      plugins: [
+        nodePolyfills(),
+        esbuild.default({
+          include: /\.[jt]sx?$/,
+          exclude: /node_modules/,
+          sourceMap: true,
+          minify: process.env.NODE_ENV === "production",
+          target: "es2017",
+          jsx: "transform",
+          jsxFactory: "React.createElement",
+          jsxFragment: "React.Fragment",
+          define: {},
+          tsconfig: "tsconfig.json",
+          loaders: {
+            ".json": "json",
+            ".js": "jsx",
+          },
+        }),
+        linaria.default({
+          sourceMap: false,
+          preprocessor: "none",
+        }),
+        scss({
+          include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
+          output: `dist/kit/${name}/style.css`,
+          failOnError: true,
+          prefix: "@import 'src/styles/common/variables.scss';",
+        }),
+        visualizer({
+          emitFile: true,
+          filename: `${name}-stats1.html`,
+        }),
+      ],
+      output: [
+        {
+          dir: `dist/umd/kit/${name}`,
+          name: "index",
+          format: "umd",
+        },
+        {
+          dir: `dist/esm/kit/${name}`,
           name: "index",
           format: "esm",
         },
