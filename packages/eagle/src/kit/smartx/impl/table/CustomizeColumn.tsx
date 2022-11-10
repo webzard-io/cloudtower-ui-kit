@@ -5,7 +5,7 @@ import { Checkbox } from "antd";
 import React, { DragEvent, useContext } from "react";
 import { useTranslation } from "react-i18next";
 
-import { arrayMove } from "../../components/table/common";
+import { arrayMove } from "./common";
 import { CustomizeColumnType, useCustomizeColumn } from "./customize-column";
 
 const DropdownWrapper = css`
