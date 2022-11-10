@@ -7,7 +7,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 const config = defineConfig([
   {
-    input: ["index.ts"],
+    input: ["src/index.ts"],
     plugins: [
       nodePolyfills(),
       esbuild.default({

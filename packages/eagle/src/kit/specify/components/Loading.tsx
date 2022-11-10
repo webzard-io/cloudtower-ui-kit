@@ -1,4 +1,4 @@
-import "../../../../styles/component/loading.scss";
+import "../../../styles/component/loading.scss";
 
 import React from "react";
 

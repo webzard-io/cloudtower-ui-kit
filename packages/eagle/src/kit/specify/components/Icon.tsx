@@ -1,9 +1,8 @@
+import { ImagesType } from "@cloudtower/eagle/generated/images-type";
 import { css } from "@linaria/core";
 import cs from "classnames";
 import _ from "lodash";
 import React, { useMemo, useState } from "react";
-
-import { ImagesType } from "@cloudtower/eagle/generated/images-type";
 
 type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
   type: ImagesType;
@@ -74,16 +73,16 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
   const src = useMemo(() => {
     try {
       if (active && activeType) {
-        return require(`../../images/${activeType}.${fileFormat}`);
+        return require(`../images/${activeType}.${fileFormat}`);
       }
       if (hover && hoverType) {
-        return require(`../../images/${hoverType}.${fileFormat}`);
+        return require(`../images/${hoverType}.${fileFormat}`);
       }
 
-      return require(`../../images/${type}.${fileFormat}`);
+      return require(`../images/${type}.${fileFormat}`);
     } catch (error) {
       console.error(error);
-      return require("../../images/1-status-unknown-questionmark-16-red.svg")
+      return require("../images/1-status-unknown-questionmark-16-red.svg")
         .default;
     }
   }, [active, activeType, hoverType, type, hover, fileFormat]);
@@ -96,15 +95,15 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
 
       const { activeType, hoverType, type } = suffixType;
       if (active && activeType) {
-        return require(`../../images/${activeType}.${fileFormat}`);
+        return require(`../images/${activeType}.${fileFormat}`);
       }
       if (hover && hoverType) {
-        return require(`../../images/${hoverType}.${fileFormat}`);
+        return require(`../images/${hoverType}.${fileFormat}`);
       }
-      return require(`../../images/${type}.${fileFormat}`);
+      return require(`../images/${type}.${fileFormat}`);
     } catch (error) {
       console.error(error);
-      return require("../../images/1-status-unknown-questionmark-16-red.svg")
+      return require("../images/1-status-unknown-questionmark-16-red.svg")
         .default;
     }
   }, [active, fileFormat, hover, suffixType]);
