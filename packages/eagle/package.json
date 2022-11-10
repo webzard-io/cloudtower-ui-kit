@@ -95,7 +95,7 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
-    "postbuild": "cp -r src/kit/specify/images dist/images",
+    "postbuild": "cp -r src/kit/smartx/images dist/images",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "pregenerate": "rm -rf src/generated",

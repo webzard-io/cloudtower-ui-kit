@@ -1,4 +1,5 @@
-import { ButtonProps, Icon } from "@cloudtower/eagle/kit/specify";
+import { Icon } from "@cloudtower/eagle/kit/smartx";
+import { ButtonProps } from "@cloudtower/eagle/kit/specify";
 import { css } from "@linaria/core";
 import { Button as AntdButton } from "antd";
 import { ButtonType as AntdButtonType } from "antd/lib/button";

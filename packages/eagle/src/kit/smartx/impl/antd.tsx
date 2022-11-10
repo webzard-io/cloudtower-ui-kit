@@ -3,10 +3,9 @@ import {
   ExportOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { Loading } from "@cloudtower/eagle/kit/smartx";
+import { Icon, Loading } from "@cloudtower/eagle/kit/smartx";
 import {
   getAlertIcon,
-  Icon,
   Kit,
   TextAreaProps,
 } from "@cloudtower/eagle/kit/specify";

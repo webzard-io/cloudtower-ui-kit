@@ -1,8 +1,8 @@
 import { Maybe, Scalars } from "@cloudtower/eagle/generated/react-hooks";
 import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
 import { RootState } from "@cloudtower/eagle/kit/smartx";
+import { Icon } from "@cloudtower/eagle/kit/smartx";
 import {
-  Icon,
   kitContext,
   SearchOperation,
   SetSearch,

@@ -1,4 +1,5 @@
-import { Icon, kitContext } from "@cloudtower/eagle/kit/specify";
+import { Icon } from "@cloudtower/eagle/kit/smartx";
+import { kitContext } from "@cloudtower/eagle/kit/specify";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { Checkbox } from "antd";

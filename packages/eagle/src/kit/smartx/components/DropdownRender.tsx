@@ -4,7 +4,8 @@ import {
   TaskStatus,
   useTaskSubscription,
 } from "@cloudtower/eagle/generated/react-hooks";
-import { Icon, kitContext } from "@cloudtower/eagle/kit/specify";
+import { Icon } from "@cloudtower/eagle/kit/smartx";
+import { kitContext } from "@cloudtower/eagle/kit/specify";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import React, { useContext, useEffect, useState } from "react";

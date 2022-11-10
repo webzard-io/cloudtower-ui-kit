@@ -1,8 +1,5 @@
-import {
-  Icon,
-  kitContext,
-  PaginationProps,
-} from "@cloudtower/eagle/kit/specify";
+import { Icon } from "@cloudtower/eagle/kit/smartx";
+import { kitContext, PaginationProps } from "@cloudtower/eagle/kit/specify";
 import { css } from "@linaria/core";
 import { Menu } from "antd";
 import cs from "classnames";
