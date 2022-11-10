@@ -87,13 +87,13 @@ const config = defineConfig([
         }),
         scss({
           include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
-          output: "dist/style.css",
+          output: false,
           failOnError: true,
           prefix: "@import 'src/styles/common/variables.scss';",
         }),
         visualizer({
           emitFile: true,
-          filename: "stats1.html",
+          filename: `${name}-stats1.html`,
         }),
       ],
       output: [
