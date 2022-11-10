@@ -148,12 +148,12 @@ const config = defineConfig([
       ],
       output: [
         {
-          dir: `dist/umd/kit/${name}`,
+          dir: `dist/umd/${name}`,
           name: "index",
           format: "umd",
         },
         {
-          dir: `dist/esm/kit/${name}`,
+          dir: `dist/esm/${name}`,
           name: "index",
           format: "esm",
         },

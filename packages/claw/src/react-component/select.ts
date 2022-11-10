@@ -53,8 +53,8 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
     'import React, { useEffect, useContext, useRef, useState, useMemo } from "react";',
     "import { useTranslation } from 'react-i18next';",
     "import _ from 'lodash';",
-    "import { kitContext } from '../ui-kit';",
-    "import { KitSelectProps } from '../ui-kit/base';",
+    "import { kitContext } from '@cloudtower/eagle/kit/specify';",
+    "import { KitSelectProps } from '@cloudtower/eagle/kit/specify';",
     "import { SingleSelectProps, MultipleSelectProps, SelectProps } from '../common/types';",
     "import FailedLoad from '../components/FailedLoad';",
     hasEnableCreate &&

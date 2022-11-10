@@ -1,6 +1,5 @@
 export * from "./antd";
 export * from "./button";
-export * from "./button";
 export * from "./buttonGroup";
 export * from "./message";
 export * from "./modal";

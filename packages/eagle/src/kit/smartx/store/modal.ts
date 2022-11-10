@@ -1,7 +1,9 @@
+import { ModalProps as CommonModalProps } from "@cloudtower/sparrow";
+import { CreateVmAction } from "@cloudtower/sparrow";
 import { ReplicaProgressInfo } from "@tower/utils";
 import React from "react";
 
-import { ImportSecurityPolicies } from "../../../generated/forms2";
+import { ImportSecurityPolicies } from "../generated/forms2";
 import {
   Architecture,
   Cluster,
@@ -30,9 +32,7 @@ import {
   VmEntityFilterResultsQuery,
   VmStatus,
   VmVideoType,
-} from "../../../generated/react-hooks";
-import { ModalProps as CommonModalProps } from "../../specify";
-import { CreateVmAction } from "../../specify";
+} from "../generated/react-hooks";
 import { BackupServiceOperationItem } from "../modules/backupService/types";
 import { EverouteClusterOperationItem } from "../modules/everoute/types";
 import {
