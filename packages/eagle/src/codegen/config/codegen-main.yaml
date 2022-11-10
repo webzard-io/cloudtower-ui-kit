@@ -37,7 +37,7 @@ generates:
     plugins:
       - "../claw/dist/src/react-component/form.js"
   src/generated/forms2.tsx:
-    schema: src/codegen/config/form-schema.graphql
+    schema: ./src/codegen/config/form-schema.graphql
     plugins:
       - "../claw/dist/src/react-component/form2.js"
   src/generated/type-dependencies-map.ts:

@@ -4,7 +4,7 @@ const config = {
     "./src/generated/query.graphql",
     "./src/generated/global-search.graphql",
     "./src/generated/fetch-by-ids.graphql",
-    "./src/codegen/graphql/*.graphql",
+    "./src/codegen/graphql/task.graphql",
   ],
   hooks: { afterAllFileWrite: ["prettier --write"] },
   generates: {
@@ -41,7 +41,7 @@ const config = {
       plugins: ["../claw/dist/src/react-component/form.js"],
     },
     "src/generated/forms2.tsx": {
-      schema: "src/codegen/config/form-schema.graphql",
+      schema: "./src/codegen/config/form-schema.graphql",
       plugins: ["../claw/dist/src/react-component/form2.js"],
     },
     "src/generated/type-dependencies-map.ts": {
