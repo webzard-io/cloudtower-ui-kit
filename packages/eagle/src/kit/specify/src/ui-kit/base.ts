@@ -441,6 +441,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
         meta: FieldRenderProps<V, T>["meta"];
         disabled?: boolean;
         className?: string;
+        dropdownClassName?: string;
       } & EnumProps
     >;
     String: React.FunctionComponent<FieldBaseProps<V, T> & StringProps>;

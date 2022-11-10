@@ -22,14 +22,13 @@ import {
   NvmfSubsystemPolicyType,
   SnapshotPlanStatus,
   TimeUnit,
-  UsbDevicesQuery,
+  UsbDeviceStatus,
   Vm,
-  VmEntityFilterResultsQuery,
   VmStatus,
   VmVideoType,
 } from "@cloudtower/eagle/generated/react-hooks";
-import { ModalProps as CommonModalProps } from "@cloudtower/eagle/kit/specify";
 import { CreateVmAction } from "@cloudtower/eagle/kit/specify";
+import { ModalProps as CommonModalProps } from "@cloudtower/eagle/kit/specify";
 import { ReplicaProgressInfo } from "@tower/utils";
 import React from "react";
 
@@ -187,11 +186,6 @@ export type ModalProps = {
   ShutdownVmModal: { vm: { id: string; name: string }; force?: boolean };
   CutoverSourceVmModal: { vm_id: string; task_id: string };
   BatchShutdownVmModal: {
-    vms:
-      | OperationVmsRecord[]
-      | Array<VmEntityFilterResultsQuery["vmEntityFilterResults"][0]["vm"]>;
-  };
-  BatchShutdownVmModal2: {
     vms: {
       id: string;
       name: string;
@@ -228,11 +222,19 @@ export type ModalProps = {
   MigrateVmDisabledModal: {
     vms: GetVmsForMigrationQuery["vms"];
   };
-  SuspendVmModal: { vm: { id: string; name: string } };
+  SuspendVmModal: {
+    vm: { id: string; name: string };
+    haveMountSriov?: boolean;
+    haveMountGpu?: boolean;
+  };
   BatchSuspendVmModal: {
     vms: OperationVmsRecord[];
   };
-  ResumeVmModal: { vm: { id: string; name: string } };
+  ResumeVmModal: {
+    vm: { id: string; name: string };
+    haveMountSriov?: boolean;
+    haveMountGpu?: boolean;
+  };
   BatchResumeVmModal: {
     vms: OperationVmsRecord[];
   };
@@ -488,6 +490,7 @@ export type ModalProps = {
     nfsExport: {
       id: string;
       name: string;
+      replica_num: number;
       ip_whitelist: string;
     };
   };
@@ -742,10 +745,25 @@ export type ModalProps = {
     username: string;
   };
   UnmountUsbModal: {
-    usbDevice: UsbDevicesQuery["usbDevices"][0];
+    usbDevice: {
+      id: string;
+      name: string;
+      status?: UsbDeviceStatus;
+      vms?: {
+        id: string;
+        name: string;
+      }[];
+    };
   };
   MountUsbModal: {
-    usbDevice: UsbDevicesQuery["usbDevices"][0];
+    usbDevice: {
+      id: string;
+      name: string;
+      host?: {
+        id: string;
+        name: string;
+      };
+    };
   };
   CreateHostModal: {
     clusterId: string;
@@ -760,6 +778,16 @@ export type ModalProps = {
   EditVmUsbDeviceModal: {
     vm: NonNullable<GetVmInfoQuery["vm"]>;
     mountedUsbDevices: { id: string; name: string }[];
+  };
+  NewEditVmUsbDeviceModal: {
+    vm: NonNullable<GetVmInfoQuery["vm"]>;
+    mountedUsbDevices: {
+      id: string;
+      name: string;
+      description: string;
+      size: number;
+      hostname: string;
+    }[];
   };
   EditVmTemplateModal: {
     id: string;
@@ -1084,16 +1112,6 @@ export type ModalProps = {
     everouteClusterStatus?: GetEverouteClustersQuery["everouteClusters"][0]["status"];
     licenseExpired: boolean;
   };
-  AgentClusterDisassociationModal: {
-    everouteClusterId: string;
-    elfClusterId: string;
-    elfClusterName: string;
-  };
-  AgentVdsesAssociationModal: {
-    everouteClusterId: string;
-    elfClusterId: string;
-    elfClusterName: string;
-  };
   CannotIsolationVmModal: {
     vlansId: string[];
     vmName: string;
@@ -1362,7 +1380,10 @@ export type ModalProps = {
   };
   HowToCreateVmTemplateModal: {};
   ImportVmVolumeWizard: {
-    clusterId?: string;
+    where?: {
+      resource: "datacenters" | "clusters" | "hosts" | "vm_folders" | "vms";
+      id: string;
+    };
   };
   ExportVmVolumeModal: {
     id: string;
@@ -1457,5 +1478,54 @@ export type ModalProps = {
   };
   ImportSecurityPoliciesTaskInfoModal: {
     taskId: string;
+  };
+  CreateMigrationNetworkModal: {
+    clusterId: string;
+  };
+  CreateAccessNetworkModal: {
+    clusterId: string;
+  };
+  EditStorageNetworkModal: {
+    vlanId: string;
+  };
+  EditMigrationNetworkModal: {
+    vlanId: string;
+  };
+  EditAccessNetworkModal: {
+    vlanId: string;
+  };
+  EditAccessNetworkConfirmModal: {
+    vlanName: string;
+    clusterName: string;
+    onOk: () => void;
+  };
+  DeleteMigrationNetworkModal: {
+    vlanId: string;
+  };
+  DeleteAccessNetworkModal: {
+    vlanId: string;
+  };
+  EditBandwidthModal: {
+    vdsId: string;
+  };
+  EnableIommuModal: {
+    id: string;
+    name: string;
+  };
+  EditGpuDescription: {
+    id: string;
+    name: string;
+    description: string;
+  };
+  EditGpuMountedVms: {
+    id: string;
+  };
+  EditUsbDescription: {
+    id: string;
+    name: string;
+    description: string;
+  };
+  EditUsbMountedVms: {
+    id: string;
   };
 };

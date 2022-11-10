@@ -6,7 +6,9 @@
 import { kitContext } from "@cloudtower/eagle/kit/specify";
 ```
 
-### 组件放在哪里？
+## 新增组件
+
+### 组件放置
 
 组件可以放置在
 
@@ -26,7 +28,12 @@ import { kitContext } from "@cloudtower/eagle/kit/specify";
 
 如果不确定的话，建议放在 `src/components` 下。
 
-### 新增组件
+### specify 修改
+
+当新增组件满足以下条件时，可修改 `src/kit/specify/src/ui-kit/base.ts` 的接口。
+
+- 组件的构成中无 <kit.XXX/> 的书写方式。（避免循环引用，直接引用 <XXX/>）
+- 期望以 <kit.YYY/> 方式使用
 
 ### 组件调试
 
