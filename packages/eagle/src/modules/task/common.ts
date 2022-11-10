@@ -7,7 +7,7 @@ import {
   PreviewTasksQuery,
   TaskStatus,
   TaskTableQuery,
-} from "../../generated/react-hooks";
+} from "@cloudtower/eagle/generated/react-hooks";
 import { RootState } from "../../store";
 import { Node } from "../../store/task";
 
