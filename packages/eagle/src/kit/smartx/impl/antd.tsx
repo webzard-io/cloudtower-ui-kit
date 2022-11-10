@@ -15,6 +15,7 @@ import { styled } from "@linaria/react";
 import { Field } from "@smartx/react-final-form";
 import {
   formatBitPerSecond,
+  formatBits,
   formatBps,
   formatBytes,
   formatFrequency,
@@ -681,28 +682,6 @@ export const RightEndSelectStyle = css`
     border-bottom-left-radius: 0;
   }
 `;
-
-interface FormattedResult {
-  value: number;
-  unit: string;
-}
-
-export function formatBits(bits: number, decimals = 2): FormattedResult {
-  if (bits <= 0 || bits === MAGIC_METRIC_NULL) {
-    return {
-      value: 0,
-      unit: "b",
-    };
-  }
-  const k = 1000;
-  const units = ["b", "Kb", "Mb", "Gb", "Tb", "Pb"];
-  let i = Math.floor(Math.log(bits) / Math.log(k));
-  i = i < 0 ? 0 : i > units.length - 1 ? units.length - 1 : i;
-  return {
-    value: parseFloat((bits / Math.pow(k, i)).toFixed(decimals)),
-    unit: units[i],
-  };
-}
 
 const Arch: Kit["arch"] = (props) => {
   const { architecture } = props;
