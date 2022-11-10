@@ -3,7 +3,7 @@
   "pipeline": {
     "generate": {
       "dependsOn": ["^generate"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**", "src/generated/**"]
     },
     "build": {
       "dependsOn": ["^build", "generate"],

@@ -86,7 +86,10 @@ const emptyImpl: Kit = {
   },
   inputGroup: ThrowError,
   get Empty() {
-    throw new Error("");
+    if (process.env.NODE_ENV !== "production") {
+      throw new Error("");
+    }
+    return null;
   },
   alert: ThrowError,
   searchInput: ThrowError,

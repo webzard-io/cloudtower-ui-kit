@@ -1,4 +1,5 @@
 import "i18next";
+import "antd";
 
 import * as resources from "@tower/i18n/lib/locales";
 
@@ -22,5 +23,11 @@ declare global {
       resources: typeof resources;
       i18next: typeof i18next;
     };
+  }
+}
+
+declare module "antd/lib/modal" {
+  export interface ModalProps {
+    focusTriggerAfterClose?: boolean;
   }
 }

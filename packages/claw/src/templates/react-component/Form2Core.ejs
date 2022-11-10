@@ -1,0 +1,16 @@
+/* eslint-disable
+@typescript-eslint/no-namespace
+*/
+
+import React, { useCallback, useRef } from 'react';
+import { FieldState, FORM_ERROR } from '@smartx/final-form';
+import {
+  Form as ReactFinalForm,
+  FormSpy as ReactFinalFormSpy,
+} from '@smartx/react-final-form';
+import * as FormKit from '../components/form';
+import { kitContext } from '@cloudtower/sparrow';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
+import { Scalars, Maybe, <%- enums.join(', ') -%> } from './react-hooks';
+import { antdKit } from '../antdKit';
