@@ -1,0 +1,128 @@
+query views($where: ViewWhereInput!) {
+  views(where: $where, orderBy: name_ASC) {
+    id
+    name
+    time_span
+    time_unit
+  }
+}
+
+query graphs($where: GraphWhereInput!) {
+  graphs(where: $where, orderBy: title_ASC) {
+    id
+    metric_name
+    title
+    type
+    targets
+    resource_type
+    metric_type
+    metric_count
+    vms(where: { in_recycle_bin: false }) {
+      id
+      local_id
+    }
+    cluster {
+      id
+      local_id
+    }
+    hosts {
+      id
+      local_id
+      chunk_id
+    }
+    disks {
+      id
+      serial
+      name
+      host {
+        id
+        local_id
+      }
+    }
+    vmVolumes {
+      id
+      local_id
+    }
+    luns {
+      id
+      zbs_volume_id
+    }
+    namespaces {
+      id
+      zbs_volume_id
+    }
+    nics {
+      id
+      name
+      local_id
+    }
+    vmNics {
+      id
+      local_id
+      mac_address
+      vm {
+        id
+        local_id
+      }
+    }
+    zones {
+      id
+      local_id
+      is_preferred
+      cluster {
+        id
+        name
+      }
+    }
+    service
+    network
+    instance_ids
+  }
+}
+
+mutation createView($data: ViewCreateInput!) {
+  createView(data: $data) {
+    id
+    name
+    time_span
+    time_unit
+  }
+}
+
+mutation updateView($data: ViewUpdateInput!, $where: ViewWhereUniqueInput!) {
+  updateView(data: $data, where: $where) {
+    id
+    name
+    time_span
+    time_unit
+  }
+}
+
+mutation deleteView($where: ViewWhereUniqueInput!) {
+  deleteView(where: $where) {
+    id
+  }
+}
+
+mutation createGraph($data: GraphCreateInput!, $effect: CreateGraphEffect) {
+  createGraph(data: $data, effect: $effect) {
+    id
+  }
+}
+
+mutation updateGraph($data: GraphUpdateInput!, $where: GraphWhereUniqueInput!) {
+  updateGraph(data: $data, where: $where) {
+    id
+    resource_type
+    metric_name
+    title
+    type
+    targets
+  }
+}
+
+mutation deleteGraph($where: GraphWhereUniqueInput!) {
+  deleteGraph(where: $where) {
+    id
+  }
+}

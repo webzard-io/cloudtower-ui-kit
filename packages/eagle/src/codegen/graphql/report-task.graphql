@@ -1,0 +1,12 @@
+mutation createReportTask($data: ReportTaskCreateInput!) {
+  createReportTask(data: $data) {
+    id
+    name
+  }
+}
+
+mutation deleteReportTask($where: ReportTaskWhereUniqueInput!) {
+  deleteReportTask(where: $where) {
+    id
+  }
+}

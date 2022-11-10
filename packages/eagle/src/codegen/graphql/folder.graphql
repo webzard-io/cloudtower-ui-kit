@@ -1,0 +1,43 @@
+query folderBasic($where: VmFolderWhereUniqueInput!) {
+  vmFolder(where: $where) {
+    id
+    name
+    cluster {
+      id
+      name
+      datacenters {
+        id
+        name
+      }
+    }
+  }
+}
+
+query checkVmFolderByName($name: String!, $clusterId: ID!) {
+  vmFolders(where: { name: $name, cluster: { id: $clusterId } }) {
+    id
+  }
+}
+
+mutation createVmFolder($data: VmFolderCreateInput!) {
+  createVmFolder(data: $data) {
+    id
+    name
+  }
+}
+
+mutation updateVmFolder(
+  $data: VmFolderUpdateInput!
+  $where: VmFolderWhereUniqueInput!
+) {
+  updateVmFolder(data: $data, where: $where) {
+    id
+    name
+  }
+}
+
+mutation deleteVmFolder($where: VmFolderWhereUniqueInput!) {
+  deleteVmFolder(where: $where) {
+    id
+  }
+}

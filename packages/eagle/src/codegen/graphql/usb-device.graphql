@@ -1,0 +1,90 @@
+mutation updateUsbDevice(
+  $data: UsbDeviceUpdateInput!
+  $where: UsbDeviceWhereUniqueInput!
+) {
+  updateUsbDevice(data: $data, where: $where) {
+    id
+  }
+}
+
+query usbDeviceDetail($where: UsbDeviceWhereUniqueInput!) {
+  usbDevice(where: $where) {
+    id
+    name
+    description
+    status
+    entityAsyncStatus
+    host {
+      id
+      name
+      cluster {
+        id
+        connect_state
+        version
+        type
+      }
+    }
+    vms {
+      id
+      name
+    }
+  }
+}
+
+query usbDeviceInfo($where: UsbDeviceWhereUniqueInput!) {
+  usbDevice(where: $where) {
+    id
+    name
+    description
+    usb_type
+    size
+    manufacturer
+    entityAsyncStatus
+    vms {
+      id
+    }
+    host {
+      id
+      name
+      zone {
+        id
+        is_preferred
+        datacenter {
+          id
+          name
+        }
+      }
+      cluster {
+        id
+        name
+        connect_state
+        stretch
+        version
+        type
+        datacenters {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+query usbDeviceForEditVms($where: UsbDeviceWhereUniqueInput!) {
+  usbDevice(where: $where) {
+    id
+    name
+    host {
+      id
+      name
+      cluster {
+        id
+      }
+    }
+    vms {
+      id
+      name
+      status
+    }
+  }
+}

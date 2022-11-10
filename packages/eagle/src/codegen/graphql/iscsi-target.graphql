@@ -1,0 +1,301 @@
+query iscsiTargetBasic($where: IscsiTargetWhereUniqueInput!) {
+  iscsiTarget(where: $where) {
+    id
+    name
+    internal
+    entityAsyncStatus
+    cluster {
+      id
+      name
+      version
+      type
+      connect_state
+      disconnected_reason
+      disconnected_date
+      datacenters {
+        id
+        name
+      }
+    }
+  }
+}
+
+query iscsiTargetInfo($where: IscsiTargetWhereUniqueInput!) {
+  iscsiTarget(where: $where) {
+    id
+    local_id
+    name
+    internal
+    replica_num
+    thin_provision
+    external_use
+    ip_whitelist
+    iqn_whitelist
+    iqn_name
+    chap_enabled
+    chap_name
+    chap_secret
+    stripe_num
+    stripe_size
+    description
+    cluster {
+      id
+    }
+    iops
+    iops_rd
+    iops_wr
+    bps
+    bps_rd
+    bps_wr
+  }
+}
+
+query iscsiTargetEditInitValue($id: ID!) {
+  iscsiTarget(where: { id: $id }) {
+    id
+    name
+    ip_whitelist
+    iqn_whitelist
+    adaptive_iqn_whitelist
+    iqn_name
+    chap_enabled
+    chap_name
+    chap_secret
+    stripe_num
+    stripe_size
+    description
+    iops
+    iops_rd
+    iops_wr
+    bps
+    bps_rd
+    bps_wr
+    iops_max
+    iops_max_length
+    iops_rd_max
+    iops_rd_max_length
+    iops_wr_max
+    iops_wr_max_length
+    bps_max
+    bps_max_length
+    bps_rd_max
+    bps_rd_max_length
+    bps_wr_max
+    bps_wr_max_length
+    replica_num
+    cluster {
+      id
+      version
+      type
+      stretch
+    }
+    initiator_chaps {
+      initiator_iqn
+      chap_name
+      chap_secret
+    }
+  }
+  iscsiLunsConnection(where: { iscsi_target: { id: $id } }) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query iscsiTargetDetail($id: ID!) {
+  iscsiTarget(where: { id: $id }) {
+    id
+    local_id
+    name
+    internal
+    replica_num
+    thin_provision
+    external_use
+    ip_whitelist
+    iqn_whitelist
+    adaptive_iqn_whitelist
+    iqn_name
+    chap_enabled
+    chap_name
+    chap_secret
+    stripe_num
+    stripe_size
+    description
+    iops
+    iops_rd
+    iops_wr
+    bps
+    bps_rd
+    bps_wr
+    iops_max
+    iops_max_length
+    iops_rd_max
+    iops_rd_max_length
+    iops_wr_max
+    iops_wr_max_length
+    bps_max
+    bps_max_length
+    bps_rd_max
+    bps_rd_max_length
+    bps_wr_max
+    bps_wr_max_length
+    luns {
+      id
+      replica_num
+    }
+    cluster {
+      id
+      ip
+      type
+      version
+      iscsi_vip
+      connect_state
+      hosts {
+        id
+        access_ip
+      }
+    }
+    initiator_chaps {
+      initiator_iqn
+      chap_name
+      chap_secret
+    }
+  }
+
+  iscsiLunSnapshots(where: { iscsi_target: { id: $id } }) {
+    id
+  }
+
+  iscsiConnections(where: { iscsi_target: { id: $id } }) {
+    id
+    initiator_ip
+  }
+}
+
+query iscsiTargetIqn($where: IscsiTargetWhereUniqueInput!) {
+  iscsiTarget(where: $where) {
+    id
+    iqn_whitelist
+  }
+}
+
+query iscsiTargetForCreateLun($where: IscsiTargetWhereUniqueInput!) {
+  iscsiTarget(where: $where) {
+    id
+    cluster {
+      id
+      version
+      type
+      hosts {
+        id
+      }
+      stretch
+      license_type
+      license_expire_date
+      nvmf_enabled
+      software_edition
+    }
+    adaptive_iqn_whitelist
+    iqn_whitelist
+    ip_whitelist
+    replica_num
+    stripe_num
+    iops
+    iops_rd
+    iops_wr
+    bps
+    bps_rd
+    bps_wr
+    iops_max
+    iops_max_length
+    iops_rd_max
+    iops_rd_max_length
+    iops_wr_max
+    iops_wr_max_length
+    bps_max
+    bps_max_length
+    bps_rd_max
+    bps_rd_max_length
+    bps_wr_max
+    bps_wr_max_length
+    luns {
+      id
+    }
+  }
+}
+
+query checkIscsiTargetByName($name: String!, $clusterId: ID!) {
+  iscsiTargets(where: { name: $name, cluster: { id: $clusterId } }, first: 1) {
+    id
+  }
+  nvmfSubsystems(
+    where: { name: $name, cluster: { id: $clusterId } }
+    first: 1
+  ) {
+    id
+  }
+
+  nfsExports(where: { name: $name, cluster: { id: $clusterId } }, first: 1) {
+    id
+  }
+}
+
+mutation createIscsiTarget($data: IscsiTargetCreateInput!) {
+  createIscsiTarget(data: $data) {
+    id
+    iqn_whitelist
+    replica_num
+  }
+}
+
+mutation updateIscsiTarget(
+  $data: IscsiTargetUpdateInput!
+  $where: IscsiTargetWhereUniqueInput!
+) {
+  updateIscsiTarget(data: $data, where: $where) {
+    id
+    name
+    ip_whitelist
+    iqn_whitelist
+  }
+}
+
+mutation deleteIscsiTarget($where: IscsiTargetWhereUniqueInput!) {
+  deleteIscsiTarget(where: $where) {
+    id
+  }
+}
+
+query clusterVersion($id: ID!) {
+  cluster(where: { id: $id }) {
+    id
+    version
+    type
+    hosts {
+      id
+    }
+    stretch
+  }
+}
+
+query iscsiTargetsFromConsistencyGroup($where: IscsiTargetWhereInput) {
+  iscsiTargets(where: $where, orderBy: name_ASC) {
+    id
+    name
+    internal
+    luns(orderBy: name_ASC) {
+      id
+      name
+      consistency_group {
+        id
+        name
+      }
+    }
+  }
+}
+
+query checkIscsiTargetNum($where: IscsiTargetWhereInput!) {
+  iscsiTargets(where: $where) {
+    id
+  }
+}

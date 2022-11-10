@@ -1,0 +1,163 @@
+query getClusterTopo($clusterId: ID!) {
+  clusterTopoes(where: { cluster: { id: $clusterId } }, first: 1) {
+    id
+    local_id
+    name
+    zone_topoes {
+      id
+      local_id
+      rack_topoes(orderBy: name_ASC) {
+        id
+        local_id
+        name
+        height
+        brick_topoes(orderBy: position_ASC) {
+          id
+          local_id
+          name
+          position
+          height
+          capacity {
+            row
+            column
+          }
+          node_topoes {
+            id
+            local_id
+            name
+            position {
+              row
+              column
+            }
+            host {
+              id
+              local_id
+              name
+              status
+              management_ip
+            }
+          }
+        }
+      }
+    }
+    brick_topoes {
+      id
+      local_id
+      name
+      position
+      height
+      capacity {
+        row
+        column
+      }
+      node_topoes {
+        id
+        local_id
+        name
+        position {
+          row
+          column
+        }
+        host {
+          id
+          local_id
+          name
+          status
+          management_ip
+        }
+      }
+    }
+    node_topoes {
+      id
+      local_id
+      name
+      position {
+        row
+        column
+      }
+      host {
+        id
+        local_id
+        name
+        status
+        management_ip
+      }
+    }
+    cluster {
+      id
+      name
+      stretch
+      connect_state
+      disconnected_reason
+      disconnected_date
+    }
+  }
+  hosts(where: { cluster: { id: $clusterId } }) {
+    id
+    name
+  }
+}
+
+mutation createRackTopo($data: RackTopoCreateInput!) {
+  createRackTopo(data: $data) {
+    id
+    name
+  }
+}
+
+mutation updateRackTopo(
+  $where: RackTopoWhereUniqueInput!
+  $data: RackTopoUpdateInput!
+) {
+  updateRackTopo(where: $where, data: $data) {
+    id
+    name
+    height
+  }
+}
+
+mutation deleteRackTopo($where: RackTopoWhereUniqueInput!) {
+  deleteRackTopo(where: $where) {
+    id
+    name
+  }
+}
+
+mutation createBrickTopo($data: BrickTopoCreateInput!) {
+  createBrickTopo(data: $data) {
+    id
+    name
+  }
+}
+
+mutation updateBrickTopo(
+  $where: BrickTopoWhereUniqueInput!
+  $data: BrickTopoUpdateInput!
+) {
+  updateBrickTopo(where: $where, data: $data) {
+    id
+    name
+    position
+    height
+    capacity {
+      row
+      column
+    }
+  }
+}
+mutation deleteBrickTopo($where: BrickTopoWhereUniqueInput!) {
+  deleteBrickTopo(where: $where) {
+    id
+    name
+  }
+}
+
+mutation updateNodeTopo(
+  $where: NodeTopoWhereUniqueInput!
+  $data: NodeTopoUpdateInput!
+) {
+  updateNodeTopo(where: $where, data: $data) {
+    id
+    name
+  }
+}

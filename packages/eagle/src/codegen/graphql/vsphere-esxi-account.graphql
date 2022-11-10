@@ -1,0 +1,30 @@
+mutation updateVsphereEsxiAccount(
+  $data: VsphereEsxiAccountUpdateInput!
+  $where: VsphereEsxiAccountWhereUniqueInput!
+  $effect: UpdateVsphereEsxiAccountEffect!
+) {
+  updateVsphereEsxiAccount(data: $data, where: $where, effect: $effect) {
+    id
+    local_id
+    ip
+    username
+    password
+    port
+    is_valid
+  }
+}
+
+mutation updateEsxiHostsBatch(
+  $where: BatchUpdateVsphereEsxiAccountsWhereInput!
+  $effect: BatchUpdateVsphereEsxiAccountsEffect!
+) {
+  updateEsxiHostsBatch(where: $where, effect: $effect) {
+    id
+    local_id
+    ip
+    username
+    password
+    port
+    is_valid
+  }
+}

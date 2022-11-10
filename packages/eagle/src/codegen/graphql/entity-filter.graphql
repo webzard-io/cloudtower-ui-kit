@@ -1,0 +1,141 @@
+query listEntityFilter($where: EntityFilterWhereInput) {
+  entityFilters(where: $where) {
+    apply_to_all_clusters
+    clusters {
+      id
+      name
+      connect_state
+      disconnected_reason
+      disconnected_date
+      datacenters {
+        id
+        name
+      }
+    }
+    exec_failed_cluster {
+      id
+      name
+    }
+    entity_type
+    exclude_ids
+    id
+    ids
+    last_executed_at
+    name
+    preset
+    rules {
+      aggregation
+      duration
+      metric
+      op
+      quantile
+      threshold
+    }
+    filter_status
+    filter_error
+  }
+}
+
+mutation createEntityFilter($data: EntityFilterCreateInput!) {
+  createEntityFilter(data: $data) {
+    apply_to_all_clusters
+    clusters {
+      id
+      name
+      datacenters {
+        id
+        name
+      }
+    }
+    entity_type
+    exclude_ids
+    id
+    ids
+    last_executed_at
+    name
+    preset
+    rules {
+      aggregation
+      duration
+      metric
+      op
+      quantile
+      threshold
+    }
+    filter_status
+    filter_error
+  }
+}
+
+mutation updateEntityFilter(
+  $data: EntityFilterUpdateInput!
+  $where: EntityFilterWhereUniqueInput!
+) {
+  updateEntityFilter(data: $data, where: $where) {
+    apply_to_all_clusters
+    clusters {
+      id
+      name
+      datacenters {
+        id
+        name
+      }
+    }
+    entity_type
+    exclude_ids
+    id
+    ids
+    last_executed_at
+    name
+    preset
+    rules {
+      aggregation
+      duration
+      metric
+      op
+      quantile
+      threshold
+    }
+    filter_status
+    filter_error
+  }
+}
+
+mutation deleteEntityFilter($where: EntityFilterWhereUniqueInput!) {
+  deleteEntityFilter(where: $where) {
+    id
+  }
+}
+
+subscription entityFilter {
+  entityFilter {
+    node {
+      apply_to_all_clusters
+      clusters {
+        id
+        name
+        datacenters {
+          id
+          name
+        }
+      }
+      entity_type
+      exclude_ids
+      id
+      ids
+      last_executed_at
+      name
+      preset
+      rules {
+        aggregation
+        duration
+        metric
+        op
+        quantile
+        threshold
+      }
+      filter_status
+      filter_error
+    }
+  }
+}

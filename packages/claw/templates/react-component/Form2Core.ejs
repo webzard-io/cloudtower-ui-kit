@@ -1,0 +1,16 @@
+/* eslint-disable
+@typescript-eslint/no-namespace
+*/
+
+import { FieldState, FORM_ERROR } from "@smartx/final-form";
+import {
+  Form as ReactFinalForm,
+  FormSpy as ReactFinalFormSpy,
+} from "@smartx/react-final-form";
+import React, { useCallback, useRef } from "react";
+import { useSelector } from "react-redux";
+
+import { antdKit, RootState } from "../kit/smartx";
+import * as FormKit from "../kit/smartx";
+import { kitContext } from "../kit/specify";
+import { Scalars, Maybe, <%- enums.join(', ') -%> } from './react-hooks';

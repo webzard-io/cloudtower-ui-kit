@@ -6,7 +6,7 @@ export const plugin: PluginFunction = (schema, documents, config) => {
   const { globalSearch, pluralizes } = getConfig(config);
   const pluralize = setPluralize(pluralizes);
 
-  let output = "import { SearchAllQuery } from './react-hooks';";
+  let output = 'import { SearchAllQuery } from "./react-hooks";';
   output += "\n\n";
 
   output += "export type UnionDataMap = ";

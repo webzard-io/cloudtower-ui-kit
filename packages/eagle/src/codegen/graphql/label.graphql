@@ -1,0 +1,931 @@
+query getLabels($where: LabelWhereInput = {}, $first: Int, $skip: Int) {
+  labels(
+    where: { AND: [$where, { key_not_starts_with: "system.cloudtower/" }] }
+    first: $first
+    skip: $skip
+  ) {
+    id
+    key
+    value
+    total_num
+    datacenters {
+      id
+      name
+    }
+    security_policies {
+      id
+      name
+    }
+    isolation_policies {
+      id
+      vm {
+        id
+        name
+      }
+    }
+  }
+}
+
+query getLabel($where: LabelWhereUniqueInput!) {
+  label(where: $where) {
+    id
+    key
+    value
+    total_num
+  }
+}
+
+mutation createLabel($data: LabelCreateInput!) {
+  createLabel(data: $data) {
+    id
+    key
+    value
+  }
+}
+
+mutation deleteLabel($where: LabelWhereUniqueInput!) {
+  deleteLabel(where: $where) {
+    id
+  }
+}
+
+mutation deleteLabels($where: LabelWhereInput) {
+  deleteManyLabels(where: $where) {
+    count
+  }
+}
+
+mutation updateLabel($id: ID!, $data: LabelUpdateInput!) {
+  updateLabel(where: { id: $id }, data: $data) {
+    id
+    key
+    value
+    datacenters {
+      id
+      name
+      labels {
+        id
+        key
+        value
+      }
+    }
+  }
+}
+
+query getLabelDaterCenters($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    datacenter_num
+    datacenters(first: $first, skip: $skip) {
+      id
+      name
+    }
+  }
+}
+
+query getLabelClusters($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    cluster_num
+    clusters(first: $first, skip: $skip) {
+      id
+      name
+    }
+  }
+}
+
+query getLabelHosts($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    host_num
+    hosts(first: $first, skip: $skip) {
+      id
+      name
+      cluster {
+        id
+        name
+      }
+    }
+  }
+}
+
+query getLabelDisks($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    disk_num
+    disks(first: $first, skip: $skip) {
+      id
+      name
+      host {
+        id
+        name
+        cluster {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+query getLabelNics($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    nic_num
+    nics(first: $first, skip: $skip) {
+      id
+      name
+      host {
+        id
+        name
+        cluster {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+query getLabelVdses($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    vds_num
+    vdses(first: $first, skip: $skip) {
+      id
+      name
+      cluster {
+        id
+        name
+      }
+    }
+  }
+}
+
+query getLabelVmVlans($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    vlans(first: $first, skip: $skip, where: { type: VM }) {
+      id
+      name
+      vds {
+        id
+        name
+        cluster {
+          id
+          name
+        }
+      }
+    }
+  }
+  vlansConnection(where: { labels_some: { id: $id }, type: VM }) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query getLabelSystemVlans($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    vlans(first: $first, skip: $skip, where: { type_not: VM }) {
+      id
+      name
+      vds {
+        id
+        name
+        cluster {
+          id
+          name
+        }
+      }
+    }
+  }
+  vlansConnection(where: { labels_some: { id: $id }, type_not: VM }) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query getLabelVms($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    vm_num
+    vms(where: { in_recycle_bin: false }, first: $first, skip: $skip) {
+      id
+      name
+      cluster {
+        id
+        name
+      }
+    }
+  }
+}
+
+query getLabelVmSnapshots($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    vm_snapshot_num
+    vm_snapshots(first: $first, skip: $skip) {
+      id
+      name
+      vm {
+        id
+        name
+        cluster {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+query getLabelElfImages($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    elf_image_num
+    elf_images(first: $first, skip: $skip) {
+      id
+      name
+      cluster {
+        id
+        name
+      }
+    }
+  }
+}
+
+query getLabelVmTemplates($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    vm_template_num
+    vm_templates(first: $first, skip: $skip) {
+      id
+      name
+      cluster {
+        id
+        name
+      }
+    }
+  }
+}
+
+query getLabelVmVolumes($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    vm_volume_num
+    vm_volumes(first: $first, skip: $skip) {
+      id
+      name
+      cluster {
+        id
+        name
+      }
+    }
+  }
+}
+
+query getLabelIscsiTargets($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    iscsi_target_num
+    iscsi_targets(first: $first, skip: $skip) {
+      id
+      name
+      cluster {
+        id
+        name
+      }
+    }
+  }
+}
+
+query getLabelIscsiLuns($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    iscsi_lun_num
+    iscsi_luns(first: $first, skip: $skip) {
+      id
+      name
+      iscsi_target {
+        id
+        name
+        cluster {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+query getLabelIscsiLunSnapshots($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    iscsi_lun_snapshot_num
+    iscsi_lun_snapshots(first: $first, skip: $skip) {
+      id
+      name
+      iscsi_target {
+        id
+        name
+        cluster {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+query getLabelNfsExports($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    nfs_export_num
+    nfs_exports(first: $first, skip: $skip) {
+      id
+      name
+      cluster {
+        id
+        name
+      }
+    }
+  }
+}
+
+query getLabelNvmfSubsystems($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    nvmf_subsystem_num
+    nvmf_subsystems(first: $first, skip: $skip) {
+      id
+      name
+      cluster {
+        id
+        name
+      }
+    }
+  }
+}
+
+query getLabelNvmfNamespaces($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    nvmf_namespace_num
+    nvmf_namespaces(first: $first, skip: $skip) {
+      id
+      name
+      nvmf_subsystem {
+        id
+        name
+        cluster {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+query getLabelNamespaceGroups($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    namespace_group_num
+    namespace_groups(first: $first, skip: $skip) {
+      id
+      name
+      nvmf_subsystem {
+        id
+        name
+        cluster {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+query getLabelNvmfNamespaceSnapshots($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    nvmf_namespace_snapshot_num
+    nvmf_namespace_snapshots(first: $first, skip: $skip) {
+      id
+      name
+      nvmf_subsystem {
+        id
+        name
+        cluster {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+query getLabelNfsInodes($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    nfs_inode_num
+    nfs_inodes(first: $first, skip: $skip) {
+      id
+      name
+      file
+      nfs_export {
+        id
+        name
+        cluster {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+query getLabelConsistencyGroups($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    consistency_group_num
+    consistency_groups(first: $first, skip: $skip) {
+      id
+      name
+      cluster {
+        id
+        name
+      }
+    }
+  }
+}
+
+query getLabelConsistencyGroupSnapshots($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    consistency_group_snapshot_num
+    consistency_group_snapshots(first: $first, skip: $skip) {
+      id
+      name
+      consistency_group {
+        id
+        name
+        cluster {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+query getLabelContentLibraryImages($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    content_library_image_num
+    content_library_images(first: $first, skip: $skip) {
+      id
+      name
+    }
+  }
+}
+
+query getLabelContentLibraryVmTemplates($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    content_library_vm_template_num
+    content_library_vm_templates(first: $first, skip: $skip) {
+      id
+      name
+    }
+  }
+}
+
+query getLabelGpuDevices($id: ID!, $first: Int, $skip: Int) {
+  label(where: { id: $id }) {
+    id
+    key
+    gpu_device_num
+    gpu_devices(first: $first, skip: $skip) {
+      id
+      name
+      host {
+        id
+        cluster {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+query getDatacentersLabels($where: DatacenterWhereInput) {
+  datacenters(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getClustersLabels($where: ClusterWhereInput) {
+  clusters(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getHostsLabels($where: HostWhereInput) {
+  hosts(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getDisksLabels($where: DiskWhereInput) {
+  disks(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getNicsLabels($where: NicWhereInput) {
+  nics(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getVdsesLabels($where: VdsWhereInput) {
+  vdses(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getVlansLabels($where: VlanWhereInput) {
+  vlans(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+query getVmsLabels($where: VmWhereInput) {
+  vms(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getVmSnapshotsLabels($where: VmSnapshotWhereInput) {
+  vmSnapshots(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getElfImagesLabels($where: ElfImageWhereInput) {
+  elfImages(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getVmTemplatesLabels($where: VmTemplateWhereInput) {
+  vmTemplates(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getVmVolumesLabels($where: VmVolumeWhereInput) {
+  vmVolumes(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getIscsiTargetsLabels($where: IscsiTargetWhereInput) {
+  iscsiTargets(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getIscsiLunsLabels($where: IscsiLunWhereInput) {
+  iscsiLuns(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getIscsiLunSnapshotsLabels($where: IscsiLunSnapshotWhereInput) {
+  iscsiLunSnapshots(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getNfsExportsLabels($where: NfsExportWhereInput) {
+  nfsExports(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getNvmfSubsystemsLabels($where: NvmfSubsystemWhereInput) {
+  nvmfSubsystems(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getNvmfNamespacesLabels($where: NvmfNamespaceWhereInput) {
+  nvmfNamespaces(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getNamespaceGroupsLabels($where: NamespaceGroupWhereInput) {
+  namespaceGroups(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getNvmfNamespaceSnapshotsLabels($where: NvmfNamespaceSnapshotWhereInput) {
+  nvmfNamespaceSnapshots(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getNfsInodesLabels($where: NfsInodeWhereInput) {
+  nfsInodes(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getConsistencyGroupsLabels($where: ConsistencyGroupWhereInput) {
+  consistencyGroups(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getConsistencyGroupSnapshotsLabels(
+  $where: ConsistencyGroupSnapshotWhereInput
+) {
+  consistencyGroupSnapshots(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getContentLibraryImagesLabels($where: ContentLibraryImageWhereInput) {
+  contentLibraryImages(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getContentLibraryVmTemplatesLabels(
+  $where: ContentLibraryVmTemplateWhereInput
+) {
+  contentLibraryVmTemplates(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getGpuDevicesLabels($where: GpuDeviceWhereInput) {
+  gpuDevices(where: $where) {
+    id
+    name
+    labels {
+      id
+      key
+      value
+    }
+  }
+}
+
+query getAllClusterInfo($where: ClusterWhereInput) {
+  clusters(where: $where) {
+    id
+    type
+    hypervisor
+    nvmf_enabled
+    software_edition
+  }
+}
+
+query getLabelsInSecurityGroup(
+  $where: LabelWhereInput = {}
+  $first: Int
+  $skip: Int
+) {
+  labels(
+    where: { AND: [$where, { key_not_starts_with: "system.cloudtower/" }] }
+    first: $first
+    skip: $skip
+  ) {
+    id
+    key
+    value
+    vms {
+      id
+      name
+      vm_usage
+      in_recycle_bin
+      cluster {
+        id
+        name
+        everoute_cluster {
+          id
+          name
+        }
+      }
+      vm_nics {
+        id
+        vlan {
+          id
+          name
+          vds {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+        }
+      }
+      labels {
+        id
+        key
+        value
+      }
+    }
+  }
+  labelsConnection(
+    where: { AND: [$where, { key_not_starts_with: "system.cloudtower/" }] }
+  ) {
+    aggregate {
+      count
+    }
+  }
+}

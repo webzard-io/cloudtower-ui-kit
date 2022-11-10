@@ -1,0 +1,158 @@
+query getVds($where: VdsWhereUniqueInput!) {
+  vds(where: $where) {
+    id
+    name
+    ovsbr_name
+    local_id
+    internal
+    vlans_num
+    bond_mode
+    type
+    nics {
+      id
+    }
+  }
+}
+
+query vdsDetail($where: VdsWhereUniqueInput!) {
+  vds(where: $where) {
+    id
+    name
+    type
+    entityAsyncStatus
+    bond_mode
+    nics {
+      id
+      speed
+      up
+      running
+      host {
+        id
+      }
+    }
+    vlans {
+      id
+      qos_min_bandwidth
+      type
+    }
+    cluster {
+      id
+      type
+      version
+      connect_state
+      disconnected_reason
+      disconnected_date
+    }
+    everoute_cluster {
+      id
+      name
+    }
+  }
+}
+
+query vdsInfo($where: VdsWhereUniqueInput!) {
+  vds(where: $where) {
+    id
+    name
+    cluster {
+      id
+      name
+      version
+      type
+      stretch
+      datacenters {
+        id
+        name
+      }
+      rdma_enabled
+    }
+    nics {
+      id
+      speed
+      up
+      running
+      host {
+        id
+      }
+    }
+    vlans {
+      id
+      name
+      type
+      vlan_id
+      network_identities
+      qos_min_bandwidth
+      qos_priority
+      qos_max_bandwidth
+      qos_burst
+    }
+    bond_mode
+    rb_interval
+    ovsbr_name
+  }
+}
+
+query getVlanConnectionByVdsId($id: ID!) {
+  vlansConnection(where: { vds: { id: $id } }) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query checkVdsName($where: VdsWhereInput, $first: Int = 1) {
+  vdses(where: $where, first: $first) {
+    id
+    name
+  }
+}
+
+mutation createVds($data: VdsCreateInput!, $effect: CreateVdsEffect) {
+  createVds(data: $data, effect: $effect) {
+    id
+    name
+    ovsbr_name
+  }
+}
+
+mutation updateVds($data: VdsUpdateInput!, $where: VdsWhereUniqueInput!) {
+  updateVds(data: $data, where: $where) {
+    id
+    name
+    ovsbr_name
+    local_id
+    internal
+    vlans_num
+    bond_mode
+    type
+    nics {
+      id
+    }
+  }
+}
+
+mutation deleteVds($where: VdsWhereUniqueInput!) {
+  deleteVds(where: $where) {
+    id
+  }
+}
+
+query checkVdsBandwidth($where: VdsWhereInput) {
+  vdses(where: $where) {
+    id
+    bond_mode
+    nics {
+      id
+      up
+      running
+      speed
+      host {
+        id
+      }
+    }
+    vlans {
+      id
+      qos_min_bandwidth
+    }
+  }
+}

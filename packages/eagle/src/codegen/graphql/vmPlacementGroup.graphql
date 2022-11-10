@@ -1,0 +1,85 @@
+query vmPlacementGroupInfo($where: VmPlacementGroupWhereUniqueInput!) {
+  vmPlacementGroup(where: $where) {
+    id
+    name
+    description
+    enabled
+    entityAsyncStatus
+    cluster {
+      id
+      name
+      connect_state
+      version
+      type
+      disconnected_reason
+      disconnected_date
+      datacenters {
+        id
+        name
+      }
+    }
+    local_created_at
+    local_id
+    local_updated_at
+    vm_host_must_enabled
+    vm_host_must_host_uuids {
+      id
+      name
+    }
+    vm_host_must_policy
+    vm_host_prefer_enabled
+    vm_host_prefer_policy
+    vm_host_prefer_host_uuids {
+      id
+      name
+    }
+    vm_vm_policy
+    vm_vm_policy_enabled
+    vms {
+      id
+      local_id
+      name
+      status
+      host {
+        id
+        name
+      }
+    }
+  }
+}
+
+query checkVmPlacementGroupByName($name: String!, $clusterId: ID!) {
+  vmPlacementGroups(
+    where: { name: $name, cluster: { id: $clusterId } }
+    first: 1
+  ) {
+    id
+  }
+}
+
+mutation createVmPlacementGroup($data: VmPlacementGroupCreateInput!) {
+  createVmPlacementGroup(data: $data) {
+    id
+    name
+    description
+    enabled
+  }
+}
+
+mutation updateVmPlacementGroup(
+  $where: VmPlacementGroupWhereUniqueInput!
+  $data: VmPlacementGroupUpdateInput!
+) {
+  updateVmPlacementGroup(where: $where, data: $data) {
+    id
+    name
+    description
+    enabled
+  }
+}
+
+mutation deleteVmPlacementGroup($where: VmPlacementGroupWhereUniqueInput!) {
+  deleteVmPlacementGroup(where: $where) {
+    id
+  }
+}

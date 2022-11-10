@@ -1,0 +1,1612 @@
+mutation createSecurityPolicy($data: SecurityPolicyCreateInput!) {
+  createSecurityPolicy(data: $data) {
+    id
+  }
+}
+
+mutation updateSecurityPolicy(
+  $data: SecurityPolicyUpdateInput!
+  $where: SecurityPolicyWhereUniqueInput!
+) {
+  updateSecurityPolicy(data: $data, where: $where) {
+    id
+  }
+}
+
+mutation updateManySecurityPolicies(
+  $data: SecurityPolicyUpdateManyMutationInput!
+  $where: SecurityPolicyWhereInput
+) {
+  updateManySecurityPolicies(data: $data, where: $where) {
+    count
+  }
+}
+
+mutation deleteSecurityPolicy($where: SecurityPolicyWhereUniqueInput!) {
+  deleteSecurityPolicy(where: $where) {
+    id
+  }
+}
+
+query securityPolicy($where: SecurityPolicyWhereUniqueInput!) {
+  securityPolicy(where: $where) {
+    id
+    everoute_cluster {
+      id
+      name
+      version
+    }
+    name
+    description
+    apply_to {
+      selector_ids
+      selector {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+      communicable
+      type
+      security_group_id
+      security_group {
+        id
+        name
+        everoute_cluster {
+          id
+          name
+        }
+        label_groups {
+          label_ids
+          labels {
+            id
+            key
+            value
+            vms {
+              id
+              name
+              in_recycle_bin
+              cluster {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                  vds {
+                    id
+                    name
+                    everoute_cluster {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+              labels {
+                id
+                key
+                value
+              }
+            }
+          }
+        }
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    ingress {
+      type
+      ip_block
+      selector_ids
+      except_ip_block
+      selector {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+      ports {
+        protocol
+        port
+      }
+      security_group_id
+      security_group {
+        id
+        name
+        everoute_cluster {
+          id
+          name
+        }
+        label_groups {
+          label_ids
+          labels {
+            id
+            key
+            value
+            vms {
+              id
+              name
+              in_recycle_bin
+              cluster {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                  vds {
+                    id
+                    name
+                    everoute_cluster {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+              labels {
+                id
+                key
+                value
+              }
+            }
+          }
+        }
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    egress {
+      type
+      ip_block
+      selector_ids
+      except_ip_block
+      selector {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+      ports {
+        protocol
+        port
+      }
+      security_group {
+        id
+        name
+        everoute_cluster {
+          id
+          name
+        }
+        label_groups {
+          label_ids
+          labels {
+            id
+            key
+            value
+            vms {
+              id
+              name
+              in_recycle_bin
+              cluster {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                  vds {
+                    id
+                    name
+                    everoute_cluster {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+              labels {
+                id
+                key
+                value
+              }
+            }
+          }
+        }
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    policy_mode
+  }
+}
+
+query securityPolicyDetail($where: SecurityPolicyWhereUniqueInput!) {
+  securityPolicy(where: $where) {
+    id
+    everoute_cluster {
+      id
+      name
+    }
+    name
+    description
+    apply_to {
+      type
+      selector_ids
+      selector {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          vm_usage
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+      communicable
+      security_group_id
+      security_group {
+        id
+        name
+        description
+        everoute_cluster {
+          id
+          name
+        }
+        label_groups {
+          label_ids
+          labels {
+            id
+            key
+            value
+            vms {
+              id
+              name
+              vm_usage
+              in_recycle_bin
+              cluster {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                  vds {
+                    id
+                    name
+                    everoute_cluster {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+              labels {
+                id
+                key
+                value
+              }
+            }
+          }
+        }
+        vms {
+          id
+          name
+          vm_usage
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    ingress {
+      type
+      ip_block
+      selector_ids
+      except_ip_block
+      selector {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          vm_usage
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+      ports {
+        protocol
+        port
+      }
+      security_group_id
+      security_group {
+        id
+        name
+        description
+        everoute_cluster {
+          id
+          name
+        }
+        label_groups {
+          label_ids
+          labels {
+            id
+            key
+            value
+            vms {
+              id
+              name
+              vm_usage
+              in_recycle_bin
+              cluster {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                  vds {
+                    id
+                    name
+                    everoute_cluster {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+              labels {
+                id
+                key
+                value
+              }
+            }
+          }
+        }
+        vms {
+          id
+          name
+          vm_usage
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    egress {
+      type
+      ip_block
+      selector_ids
+      except_ip_block
+      selector {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          vm_usage
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+      ports {
+        protocol
+        port
+      }
+      security_group_id
+      security_group {
+        id
+        name
+        description
+        everoute_cluster {
+          id
+          name
+        }
+        label_groups {
+          label_ids
+          labels {
+            id
+            key
+            value
+            vms {
+              id
+              name
+              vm_usage
+              in_recycle_bin
+              cluster {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                  vds {
+                    id
+                    name
+                    everoute_cluster {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+              labels {
+                id
+                key
+                value
+              }
+            }
+          }
+        }
+        vms {
+          id
+          name
+          vm_usage
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+  }
+}
+
+query securityPolicyNameAndDescription(
+  $where: SecurityPolicyWhereUniqueInput!
+) {
+  securityPolicy(where: $where) {
+    id
+    name
+    description
+    policy_mode
+    everoute_cluster {
+      id
+      name
+      phase
+      version
+      status {
+        conditions {
+          type
+          lastProbeTime
+        }
+        controllers {
+          instances {
+            isHealth
+            metrics {
+              cpuUsage
+              memoryUsage
+              dataVolumeUsage
+            }
+            vm {
+              id
+              name
+              host {
+                id
+                name
+              }
+              cluster {
+                id
+                name
+                architecture
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                }
+              }
+            }
+          }
+        }
+        agents {
+          instances {
+            hostID
+            isHealth
+            phase
+            host {
+              id
+              name
+              cluster {
+                id
+                name
+              }
+            }
+          }
+          manageVDSes {
+            vds {
+              id
+              name
+              cluster {
+                id
+                name
+                connect_state
+                disconnected_date
+              }
+            }
+            phase
+          }
+        }
+      }
+    }
+  }
+}
+
+query checkNameOfSecurityPolicyExists($name: String, $id: ID) {
+  securityPolicies(where: { name: $name, id_not: $id }) {
+    id
+  }
+}
+
+query labelVmsInEveroute($labelIds: [ID!], $everouteClusterId: ID!) {
+  labels(where: { id_in: $labelIds }) {
+    id
+    vms(
+      where: {
+        cluster: { everoute_cluster: { id: $everouteClusterId } }
+        vm_nics_every: {
+          vlan: { vds: { everoute_cluster: { id: $everouteClusterId } } }
+        }
+      }
+    ) {
+      id
+      name
+    }
+  }
+}
+
+query getSecurityPoliciesNum {
+  securityPoliciesConnection {
+    aggregate {
+      count
+    }
+  }
+}
+
+query vmsForSecurityPolicy($where: VmWhereInput!) {
+  vms(where: $where) {
+    id
+    name
+    cluster {
+      id
+      name
+      everoute_cluster {
+        id
+        name
+      }
+    }
+    vm_nics {
+      id
+      vlan {
+        id
+        vds {
+          id
+          everoute_cluster {
+            id
+            name
+          }
+        }
+      }
+    }
+  }
+}
+
+query exportSecurityPolicy($where: ExportSecurityPolicyInput!) {
+  exportSecurityPolicy(where: $where) {
+    id
+    name
+    description
+    policy_mode
+    everoute_cluster {
+      id
+      name
+      version
+    }
+    apply_to {
+      communicable
+      type
+      selector {
+        id
+        key
+        value
+      }
+      security_group {
+        id
+        name
+        description
+        label_groups {
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    ingress {
+      type
+      ip_block
+      except_ip_block
+      ports {
+        protocol
+        port
+      }
+      selector {
+        id
+        key
+        value
+      }
+      security_group {
+        id
+        name
+        description
+        label_groups {
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    egress {
+      type
+      ip_block
+      except_ip_block
+      ports {
+        protocol
+        port
+      }
+      selector {
+        id
+        key
+        value
+      }
+      security_group {
+        id
+        name
+        description
+        label_groups {
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+  }
+}
+
+mutation importSecurityPolicy($data: ImportManySecurityPoliciesInput!) {
+  importSecurityPolicy(data: $data) {
+    count
+  }
+}
+
+query getLabelsAndSecurityGroups(
+  $label: LabelWhereInput
+  $securityGroup: SecurityGroupWhereInput
+) {
+  labels(where: $label) {
+    id
+    key
+    value
+    vms {
+      id
+      name
+      vm_usage
+      in_recycle_bin
+      cluster {
+        id
+        name
+        everoute_cluster {
+          id
+          name
+        }
+      }
+      vm_nics {
+        id
+        vlan {
+          id
+          name
+          vds {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+        }
+      }
+      labels {
+        id
+        key
+        value
+      }
+    }
+  }
+  securityGroups(where: $securityGroup) {
+    id
+    name
+    description
+    everoute_cluster {
+      id
+      name
+    }
+    label_groups {
+      labels {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          vm_usage
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    vms {
+      id
+      name
+      vm_usage
+      in_recycle_bin
+      cluster {
+        id
+        name
+        everoute_cluster {
+          id
+          name
+        }
+      }
+      vm_nics {
+        id
+        vlan {
+          id
+          name
+          vds {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+        }
+      }
+      labels {
+        id
+        key
+        value
+      }
+    }
+  }
+}
+
+query getAllNamesOfSecurityPolicy {
+  securityPolicies(where: { everoute_cluster: { id_not: null } }) {
+    id
+    name
+  }
+}
+
+query getManySecurityPolicies($where: SecurityPolicyWhereInput) {
+  securityPolicies(where: $where) {
+    id
+    everoute_cluster {
+      id
+      name
+      version
+    }
+    name
+    description
+    apply_to {
+      selector_ids
+      selector {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+      communicable
+      type
+      security_group_id
+      security_group {
+        id
+        name
+        everoute_cluster {
+          id
+          name
+        }
+        label_groups {
+          label_ids
+          labels {
+            id
+            key
+            value
+            vms {
+              id
+              name
+              in_recycle_bin
+              cluster {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                  vds {
+                    id
+                    name
+                    everoute_cluster {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+              labels {
+                id
+                key
+                value
+              }
+            }
+          }
+        }
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    ingress {
+      type
+      ip_block
+      selector_ids
+      except_ip_block
+      selector {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+      ports {
+        protocol
+        port
+      }
+      security_group_id
+      security_group {
+        id
+        name
+        everoute_cluster {
+          id
+          name
+        }
+        label_groups {
+          label_ids
+          labels {
+            id
+            key
+            value
+            vms {
+              id
+              name
+              in_recycle_bin
+              cluster {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                  vds {
+                    id
+                    name
+                    everoute_cluster {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+              labels {
+                id
+                key
+                value
+              }
+            }
+          }
+        }
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    egress {
+      type
+      ip_block
+      selector_ids
+      except_ip_block
+      selector {
+        id
+        key
+        value
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+      ports {
+        protocol
+        port
+      }
+      security_group {
+        id
+        name
+        everoute_cluster {
+          id
+          name
+        }
+        label_groups {
+          label_ids
+          labels {
+            id
+            key
+            value
+            vms {
+              id
+              name
+              in_recycle_bin
+              cluster {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+              vm_nics {
+                id
+                vlan {
+                  id
+                  name
+                  vds {
+                    id
+                    name
+                    everoute_cluster {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+              labels {
+                id
+                key
+                value
+              }
+            }
+          }
+        }
+        vms {
+          id
+          name
+          in_recycle_bin
+          cluster {
+            id
+            name
+            everoute_cluster {
+              id
+              name
+            }
+          }
+          vm_nics {
+            id
+            vlan {
+              id
+              name
+              vds {
+                id
+                name
+                everoute_cluster {
+                  id
+                  name
+                }
+              }
+            }
+          }
+          labels {
+            id
+            key
+            value
+          }
+        }
+      }
+    }
+    policy_mode
+  }
+}

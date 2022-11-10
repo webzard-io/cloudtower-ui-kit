@@ -1,0 +1,74 @@
+mutation createNamespaceGroup($data: NamespaceGroupCreateInput!) {
+  createNamespaceGroup(data: $data) {
+    id
+    name
+    namespaces {
+      id
+      name
+    }
+  }
+}
+
+query checkNamespaceGroupName(
+  $where: NamespaceGroupWhereInput!
+  $first: Int = 1
+) {
+  namespaceGroups(where: $where, first: $first) {
+    id
+  }
+}
+
+query namespaceGroupsConnection($where: NamespaceGroupWhereInput!) {
+  namespaceGroupsConnection(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}
+
+mutation updateNamespaceGroup(
+  $data: NamespaceGroupUpdateInput!
+  $where: NamespaceGroupWhereUniqueInput!
+) {
+  updateNamespaceGroup(data: $data, where: $where) {
+    id
+  }
+}
+
+mutation deleteNamespaceGroup($where: NamespaceGroupWhereUniqueInput!) {
+  deleteNamespaceGroup(where: $where) {
+    id
+  }
+}
+
+query nvmfNamespacesConnection($where: NvmfNamespaceWhereInput!) {
+  nvmfNamespacesConnection(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query namespaceGroupBasic($where: NamespaceGroupWhereUniqueInput!) {
+  namespaceGroup(where: $where) {
+    id
+    name
+    nvmf_subsystem {
+      id
+      name
+      cluster {
+        id
+        name
+        version
+        type
+        connect_state
+        disconnected_reason
+        disconnected_date
+        datacenters {
+          id
+          name
+        }
+      }
+    }
+  }
+}

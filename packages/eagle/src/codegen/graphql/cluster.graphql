@@ -1,0 +1,1240 @@
+query clusterConnector($input: ClusterConnectorInput!) {
+  clusterConnector(input: $input) {
+    hypervisor
+    name
+    version
+    uuid
+    type
+    architecture
+    software_edition
+    license_type
+    stretch
+    host_uuids
+    zones {
+      id
+      host_uuids
+    }
+  }
+  deploys(first: 1) {
+    id
+    license {
+      id
+      max_chunk_num
+      type
+      software_edition
+    }
+  }
+  hostsConnection {
+    aggregate {
+      count
+    }
+  }
+}
+
+query clusterBasic($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    local_id
+    name
+    ip
+    datacenters {
+      name
+      id
+    }
+    type
+    hypervisor
+    architecture
+    version
+    stretch
+    connect_state
+    disconnected_reason
+    disconnected_date
+    nvmf_enabled
+    software_edition
+    pmem_enabled
+    zones {
+      id
+      local_id
+      is_preferred
+      datacenter {
+        id
+        name
+      }
+    }
+    everoute_cluster {
+      id
+      name
+    }
+  }
+}
+
+query clusterNameAndVersion($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    name
+    version
+    type
+  }
+}
+
+mutation createCluster($data: ClusterCreateInput!) {
+  createCluster(data: $data) {
+    id
+    name
+    hypervisor
+    version
+  }
+}
+
+query clusterMetroStatusBasic($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    name
+    stretch
+    hypervisor
+    zones {
+      id
+      is_preferred
+      host_num
+      vm_num
+    }
+    witness {
+      id
+      name
+      data_ip
+    }
+    metro_availability_checklist {
+      primaryZone {
+        status
+        critical
+        notice
+        info
+        items {
+          key
+          labels
+          status
+          critical
+          notice
+          info
+        }
+      }
+      secondaryZone {
+        status
+        critical
+        notice
+        info
+        items {
+          key
+          labels
+          status
+          critical
+          notice
+          info
+        }
+      }
+      witness {
+        status
+        critical
+        notice
+        info
+        items {
+          key
+          labels
+          status
+          critical
+          notice
+          info
+        }
+      }
+      zoneAndZone {
+        status
+        critical
+        notice
+        info
+        items {
+          key
+          labels
+          status
+          critical
+          notice
+          info
+        }
+      }
+      primaryZoneAndWitness {
+        status
+        critical
+        notice
+        info
+        items {
+          key
+          labels
+          status
+          critical
+          notice
+          info
+        }
+      }
+      secondaryZoneAndWitness {
+        status
+        critical
+        notice
+        info
+        items {
+          key
+          labels
+          status
+          critical
+          notice
+          info
+        }
+      }
+    }
+  }
+}
+query clusterWitnessNodeInfo($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    witness {
+      id
+      name
+      data_ip
+      total_memory_bytes
+      total_cpu_cores
+      system_data_capacity
+      system_used_data_space
+    }
+  }
+}
+
+query clusterPrimaryZoneChecklist($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    stretch
+    zones {
+      id
+      is_preferred
+    }
+    metro_availability_checklist {
+      primaryZone {
+        items {
+          key
+          labels
+          status
+          critical
+          notice
+          info
+        }
+      }
+    }
+  }
+}
+
+query clusterSecondaryZoneChecklist($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    stretch
+    zones {
+      id
+      is_preferred
+    }
+    metro_availability_checklist {
+      secondaryZone {
+        items {
+          key
+          labels
+          status
+          critical
+          notice
+          info
+        }
+      }
+    }
+  }
+}
+
+query clusterWitnessChecklist($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    name
+    stretch
+    metro_availability_checklist {
+      witness {
+        items {
+          key
+          labels
+          status
+          critical
+          notice
+          info
+        }
+      }
+    }
+    witness {
+      id
+    }
+  }
+}
+
+query clusterZoneAndZoneChecklist($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    stretch
+    metro_availability_checklist {
+      zoneAndZone {
+        items {
+          key
+          labels
+          status
+          critical
+          notice
+          info
+        }
+      }
+    }
+  }
+}
+
+query clusterPrimaryZoneAndWitnessChecklist($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    stretch
+    metro_availability_checklist {
+      primaryZoneAndWitness {
+        items {
+          key
+          labels
+          status
+          critical
+          notice
+          info
+        }
+      }
+    }
+    zones(where: { is_preferred: true }) {
+      id
+      is_preferred
+      from_witness_gateway
+      to_witness_gateway
+    }
+  }
+}
+
+query clusterSecondaryZoneAndWitnessChecklist(
+  $where: ClusterWhereUniqueInput!
+) {
+  cluster(where: $where) {
+    id
+    stretch
+    metro_availability_checklist {
+      secondaryZoneAndWitness {
+        items {
+          key
+          labels
+          status
+          critical
+          notice
+          info
+        }
+      }
+    }
+    zones(where: { is_preferred: false }) {
+      id
+      is_preferred
+      from_witness_gateway
+      to_witness_gateway
+    }
+  }
+}
+
+query clusterZoneInfo($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    hypervisor
+    zones {
+      id
+      is_preferred
+      host_num
+      vm_num
+      provisioned_memory_bytes
+      provisioned_cpu_cores_for_active_vm
+      running_vm_num
+      suspended_vm_num
+      total_data_capacity
+      used_data_space
+      failure_data_space
+      datacenter {
+        id
+        name
+      }
+    }
+  }
+}
+
+mutation updateCluster(
+  $data: ClusterUpdateInput!
+  $effect: UpdateClusterEffect
+  $where: ClusterWhereUniqueInput!
+) {
+  updateCluster(data: $data, effect: $effect, where: $where) {
+    id
+    ip
+    datacenters {
+      id
+      name
+    }
+    current_cpu_model
+    type
+    license_type
+    software_edition
+    license_sign_date
+    license_expire_date
+    hypervisor
+    version
+    license_serial
+    maintenance_start_date
+    maintenance_end_date
+    max_chunk_num
+    has_metrox
+    has_remote_backup
+    ntp_mode
+    ntp_servers
+  }
+}
+
+mutation updateClusterVcenterAccount(
+  $data: ClusterUpdateInput!
+  $effect: UpdateClusterEffect
+  $where: ClusterWhereUniqueInput!
+) {
+  updateCluster(data: $data, effect: $effect, where: $where) {
+    id
+    ip
+    vcenterAccount {
+      id
+      local_id
+      ip
+      port
+      username
+      password
+      is_valid
+    }
+  }
+}
+
+mutation deleteCluster($where: ClusterWhereUniqueInput!) {
+  deleteCluster(where: $where) {
+    id
+  }
+}
+
+query clusterDetail($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    name
+    connect_state
+    disconnected_reason
+    disconnected_date
+    type
+    hypervisor
+    version
+    ip
+    host_num
+    vm_num
+    total_data_capacity
+    used_data_space
+    valid_data_space
+    total_cache_capacity
+    total_cpu_hz
+    used_cpu_hz
+    provisioned_cpu_cores
+    total_memory_bytes
+    used_memory_bytes
+    provisioned_memory_bytes
+    failure_data_space
+    datacenters {
+      id
+      name
+    }
+  }
+}
+
+query clusterBasicSettings($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    name
+    version
+    ip
+    license_type
+    software_edition
+    dns
+    ntp_mode
+    ntp_servers
+    current_cpu_model
+    recommended_cpu_models
+    total_cpu_models
+    hosts {
+      id
+      name
+      ipmi {
+        id
+        ip
+        valid
+        username
+      }
+    }
+  }
+}
+
+query clusterName($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    name
+    version
+  }
+}
+
+query clusterInfo($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    name
+    version
+    type
+    hypervisor
+    connect_state
+    disconnected_reason
+    disconnected_date
+    everoute_cluster {
+      id
+      name
+    }
+    vms {
+      id
+      name
+      vm_usage
+      in_recycle_bin
+    }
+    architecture
+    stretch
+    pmem_enabled
+  }
+}
+
+query clusterDns($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    dns
+  }
+}
+
+query clusterConnectState($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    connect_state
+    disconnected_reason
+    disconnected_date
+  }
+}
+
+query getClusterId(
+  $iscsiTargetId: ID
+  $hostId: ID
+  $zoneId: ID
+  $skipIscsiTarget: Boolean!
+  $skipHost: Boolean!
+  $skipZone: Boolean!
+) {
+  iscsiTarget(where: { id: $iscsiTargetId }) @skip(if: $skipIscsiTarget) {
+    id
+    cluster {
+      id
+    }
+  }
+  host(where: { id: $hostId }) @skip(if: $skipHost) {
+    id
+    cluster {
+      id
+    }
+  }
+  zone(where: { id: $zoneId }) @skip(if: $skipZone) {
+    id
+    cluster {
+      id
+    }
+  }
+}
+
+query clusterVip($id: ID!) {
+  cluster(where: { id: $id }) {
+    id
+    management_vip
+    iscsi_vip
+    hosts {
+      management_ip
+      data_ip
+      access_ip
+    }
+    hypervisor
+    type
+    settings {
+      id
+      enabled_iscsi
+    }
+  }
+  svtImagesConnection(where: { cluster: { id: $id } }) {
+    aggregate {
+      count
+    }
+  }
+  vdses(where: { cluster: { id: $id }, type: ACCESS }) {
+    id
+  }
+}
+
+query clusterNtp($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    ntp_mode
+    ntp_servers
+  }
+}
+
+query clusterIpmi($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    hypervisor
+    hosts(orderBy: management_ip_ASC) {
+      id
+      name
+      scvm_name
+      ipmi {
+        id
+        ip
+        valid
+        username
+      }
+    }
+  }
+}
+
+query clustersBasic($where: ClusterWhereInput) {
+  clusters(where: $where) {
+    id
+    local_id
+    name
+    type
+    hypervisor
+    stretch
+    datacenters {
+      name
+      id
+    }
+    zones {
+      id
+      is_preferred
+      datacenter {
+        id
+        name
+      }
+    }
+    hosts {
+      id
+      name
+      allocatable_memory_bytes
+    }
+    version
+    stretch
+    vhost_enabled
+    connect_state
+    disconnected_reason
+    disconnected_date
+    architecture
+    pmem_enabled
+    settings {
+      id
+      default_storage_policy
+    }
+  }
+}
+
+query clustersBasicForUploadPanel($where: ClusterWhereInput!) {
+  clusters(where: $where) {
+    id
+    name
+    ip
+  }
+}
+
+query clusterCpuModel($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    current_cpu_model
+    recommended_cpu_models
+    total_cpu_models
+  }
+}
+
+query clusterAutoConverge($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    auto_converge
+  }
+}
+
+query getClusterForCreateGraph($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    local_id
+    name
+    type
+    hypervisor
+    version
+    vhost_enabled
+    stretch
+    nvmf_enabled
+    software_edition
+    hosts {
+      id
+      name
+      data_ip
+      hypervisor_ip
+    }
+    settings {
+      id
+      enabled_iscsi
+    }
+  }
+}
+
+query getAllClustersType {
+  clusters {
+    id
+    type
+    hypervisor
+  }
+}
+
+query getClustersType($where: ClusterWhereInput) {
+  clusters(where: $where) {
+    id
+    type
+    hypervisor
+    architecture
+    version
+    stretch
+    pmem_enabled
+    nvmf_enabled
+    software_edition
+  }
+}
+
+query getClustersTypeAndSetting($where: ClusterWhereInput) {
+  clusters(where: $where) {
+    id
+    type
+    hypervisor
+    settings {
+      id
+      enabled_iscsi
+    }
+  }
+}
+
+query clusterNums($where: ClusterWhereInput) {
+  clustersConnection(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query clusterLicense($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    local_id
+    type
+    license_type
+    software_edition
+    license_sign_date
+    license_expire_date
+    hypervisor
+    version
+    license_serial
+    maintenance_start_date
+    maintenance_end_date
+    max_chunk_num
+    has_metrox
+    has_remote_backup
+    vhost_enabled
+    rdma_enabled
+    pmem_enabled
+    architecture
+    max_physical_data_capacity
+    nvmf_enabled
+  }
+}
+
+query clusterLicenseWidget($clusterId: ID!) {
+  cluster(where: { id: $clusterId }) {
+    id
+    local_id
+    type
+    license_type
+    software_edition
+    license_sign_date
+    license_expire_date
+    hypervisor
+    license_serial
+    maintenance_start_date
+    maintenance_end_date
+    max_chunk_num
+    has_metrox
+    has_remote_backup
+    vhost_enabled
+    rdma_enabled
+    pmem_enabled
+    architecture
+    max_physical_data_capacity
+    nvmf_enabled
+    version
+    upgrade_tool_version
+    nvme_over_tcp_enabled
+    nvme_over_rdma_enabled
+  }
+  hosts(where: { cluster: { id: $clusterId } }) {
+    id
+    os_version
+    status
+  }
+  clusterImages(where: { cluster: { id: $clusterId } }) {
+    id
+    version
+    upgrade_tool_version
+    upgrade_from
+  }
+}
+
+query getClusterInfoForCheckVCenter($id: ID!) {
+  cluster(where: { id: $id }) {
+    id
+    hypervisor
+    datacenters {
+      id
+    }
+  }
+}
+
+query getClusterVersion($id: ID!) {
+  cluster(where: { id: $id }) {
+    id
+    version
+    type
+  }
+}
+
+mutation parseLicenseConnector(
+  $license: String!
+  $cluster: ClusterWhereUniqueInput!
+) {
+  parseLicenseConnector(license: $license, cluster: $cluster) {
+    license_type
+    software_edition
+    license_sign_date
+    license_expire_date
+    license_serial
+    maintenance_start_date
+    maintenance_end_date
+    max_chunk_num
+    has_metrox
+    has_remote_backup
+  }
+}
+
+query getClusterResources($id: ID) {
+  entityFilters(
+    where: {
+      OR: [{ clusters_every: { id: null } }, { clusters_some: { id: $id } }]
+    }
+  ) {
+    id
+    name
+    preset
+    clusters {
+      id
+    }
+  }
+  vms(where: { cluster: { id: $id } }) {
+    id
+    name
+    original_name
+    in_recycle_bin
+    backup_plans {
+      id
+      name
+    }
+  }
+  deployedMonitorApplications: applications(
+    where: { cluster: { id: $id }, state: DEPLOYED, type: MONITOR }
+    first: 1
+  ) {
+    id
+  }
+  cluster(where: { id: $id }) {
+    id
+    connect_state
+    disconnected_reason
+    disconnected_date
+  }
+
+  contentLibraryImages(
+    where: { clusters_some: { id: $id } }
+    orderBy: name_ASC
+  ) {
+    id
+    name
+    clusters {
+      id
+    }
+  }
+
+  contentLibraryVmTemplates(
+    where: { clusters_some: { id: $id } }
+    orderBy: name_ASC
+  ) {
+    id
+    name
+    clusters {
+      id
+    }
+  }
+}
+
+query clusterVcenterAccount($id: ID) {
+  cluster(where: { id: $id }) {
+    id
+    name
+    hypervisor
+    vcenterAccount {
+      id
+      ip
+      port
+      username
+      password
+      is_valid
+    }
+  }
+}
+
+query clusterEsxiAccounts($id: ID) {
+  cluster(where: { id: $id }) {
+    id
+    name
+    hypervisor
+    hosts(orderBy: data_ip_ASC) {
+      id
+      scvm_name
+      vsphereEsxiAccount {
+        id
+        local_id
+        ip
+        port
+        username
+        password
+        is_valid
+      }
+    }
+  }
+}
+
+query clusterDetailForUpgrade($id: ID!) {
+  cluster(where: { id: $id }) {
+    id
+    name
+    version
+    ip
+    hypervisor
+  }
+  hosts(where: { cluster: { id: $id } }) {
+    id
+    name
+    scvm_name
+    data_ip
+    management_ip
+  }
+}
+query getClustersForDeploy($where: ClusterWhereInput) {
+  clusters(where: $where) {
+    id
+    name
+    version
+    connect_state
+    disconnected_reason
+    disconnected_date
+    type
+    vcenterAccount {
+      id
+      is_valid
+    }
+    hypervisor
+    applications(where: { type: MONITOR }) {
+      id
+      version
+      vcpu
+      memory
+      volume_size
+      storage_ip
+      state
+    }
+    application_highest_version
+    architecture
+  }
+}
+
+query getClustersDetailForDeploy($ids: [ID!]!) {
+  clusters(where: { id_in: $ids }) {
+    id
+    name
+    version
+    iscsi_vip
+    management_vip
+    application_highest_version
+    hosts {
+      id
+      data_ip
+      access_ip
+      management_ip
+      vmotion_ip
+      nics(where: { type: STORAGE }) {
+        id
+        type
+        subnet_mask
+      }
+    }
+  }
+}
+
+query getPingMetrics($clusterId: ID!) {
+  cluster(where: { id: $clusterId }) {
+    id
+    name
+    hypervisor
+    zones {
+      id
+      is_preferred
+      hosts {
+        id
+        local_id
+        name
+      }
+    }
+    witness {
+      id
+      local_id
+      name
+    }
+    metro_availability_checklist {
+      primaryZoneAndWitness {
+        items {
+          key
+          status
+        }
+      }
+      secondaryZoneAndWitness {
+        items {
+          key
+          status
+        }
+      }
+      zoneAndZone {
+        items {
+          key
+          status
+        }
+      }
+    }
+  }
+  hostsPingTime: metrics(
+    input: {
+      cluster: { id: $clusterId }
+      metric: "host_network_ping_time_ns"
+      labels: { network: STORAGE }
+    }
+  ) {
+    unit
+    samples {
+      labels {
+        _host
+        _network
+        _to_uuid
+      }
+      point {
+        t
+        v
+      }
+    }
+  }
+  hostsPingPacketLoss: metrics(
+    input: {
+      cluster: { id: $clusterId }
+      metric: "host_network_ping_packet_loss_percent"
+      labels: { network: STORAGE }
+    }
+  ) {
+    unit
+    samples {
+      labels {
+        _host
+        _network
+        _to_uuid
+      }
+      point {
+        t
+        v
+      }
+    }
+  }
+  witnessPingTime: metrics(
+    input: {
+      cluster: { id: $clusterId }
+      metric: "witness_network_ping_time_ns"
+      labels: { network: STORAGE }
+    }
+  ) {
+    unit
+    samples {
+      labels {
+        _witness
+        _network
+        _to_uuid
+      }
+      point {
+        t
+        v
+      }
+    }
+  }
+  witnessPingPacketLoss: metrics(
+    input: {
+      cluster: { id: $clusterId }
+      metric: "witness_network_ping_packet_loss_percent"
+      labels: { network: STORAGE }
+    }
+  ) {
+    unit
+    samples {
+      labels {
+        _witness
+        _network
+        _to_uuid
+      }
+      point {
+        t
+        v
+      }
+    }
+  }
+  scvmPingTime: metrics(
+    input: {
+      cluster: { id: $clusterId }
+      metric: "scvm_network_ping_time_ns"
+      labels: { network: STORAGE }
+    }
+  ) {
+    unit
+    samples {
+      labels {
+        _scvm
+        _network
+        _to_uuid
+      }
+      point {
+        t
+        v
+      }
+    }
+  }
+  scvmPingPacketLoss: metrics(
+    input: {
+      cluster: { id: $clusterId }
+      metric: "scvm_network_ping_packet_loss_percent"
+      labels: { network: STORAGE }
+    }
+  ) {
+    unit
+    samples {
+      labels {
+        _scvm
+        _network
+        _to_uuid
+      }
+      point {
+        t
+        v
+      }
+    }
+  }
+}
+
+query clusterManagementIp($id: ID!) {
+  cluster(where: { id: $id }) {
+    id
+    management_vip
+    iscsi_vip
+    mgt_gateway
+    mgt_netmask
+    entityAsyncStatus
+    hosts(orderBy: name_ASC) {
+      id
+      name
+      local_id
+      management_ip
+      data_ip
+      access_ip
+      vmotion_ip
+    }
+    hypervisor
+  }
+}
+
+query clustersBasicForUpdateImage($where: ClusterWhereInput!) {
+  clusters(where: $where) {
+    id
+    name
+    connect_state
+  }
+}
+
+query getClusterHostsAndWitness($id: ID) {
+  hosts(where: { cluster: { id: $id } }) {
+    id
+    name
+  }
+  witnesses(where: { cluster: { id: $id } }) {
+    id
+    name
+  }
+}
+
+query clusterInfoForLogCollection($where: ClusterWhereUniqueInput!) {
+  cluster(where: $where) {
+    id
+    name
+    version
+    type
+    hosts {
+      id
+      name
+    }
+    witness {
+      id
+      name
+    }
+  }
+}
+
+query clustersForImportOvfToTemplate($where: ClusterWhereInput!) {
+  clusters(where: $where) {
+    id
+    name
+    version
+  }
+}
