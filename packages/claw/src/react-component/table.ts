@@ -158,8 +158,8 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
       SelectProps,
       SingleSelectProps,
     } from "@cloudtower/eagle/kit/specify";
-    import { FailedLoad } from "@cloudtower/eagle/kit/specify";
-    import { Icon } from "@cloudtower/eagle/kit/specify";
+    import { FailedLoad } from "@cloudtower/eagle/kit/smartx";
+    import { Icon } from "@cloudtower/eagle/kit/smartx";
     import { kitContext } from "@cloudtower/eagle/kit/specify";
     import {
       DateTimeRangeProps,
