@@ -1,9 +1,0 @@
-query elfStoragePolicies($where: ElfStoragePolicyWhereInput!) {
-  elfStoragePolicies(where: $where) {
-    id
-    local_id
-    name
-    replica_num
-    thin_provision
-  }
-}
