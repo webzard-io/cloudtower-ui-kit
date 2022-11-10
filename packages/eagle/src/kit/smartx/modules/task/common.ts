@@ -4,12 +4,11 @@ import {
   TaskTableQuery,
 } from "@cloudtower/eagle/generated/react-hooks";
 import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
+import { RootState } from "@cloudtower/eagle/kit/smartx";
+import { Node } from "@cloudtower/eagle/kit/smartx";
 import { IPV4_REGEXP, IPV6_REGEXP, URL_REGEXP } from "@tower/utils";
 import { TOptions } from "i18next";
 import { UseTranslationResponse } from "react-i18next";
-
-import { RootState } from "../../store";
-import { Node } from "../../store/task";
 
 // TODO handle this by better error code from connector
 const UNSAFE_EXTRACT_DATA_REG = /message:\s*?({.+})/;

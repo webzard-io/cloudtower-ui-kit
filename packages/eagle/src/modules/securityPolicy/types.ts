@@ -2,7 +2,7 @@ import {
   NetworkPolicyRuleType,
   SecurityPoliciesQuery,
   SecurityPolicyDetailQuery,
-} from "../../generated/react-hooks";
+} from "@cloudtower/eagle/generated/react-hooks";
 
 type BaseSecurityPolicyType = SecurityPoliciesQuery["securityPolicies"][0];
 

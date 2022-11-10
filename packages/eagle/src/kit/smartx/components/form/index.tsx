@@ -1,5 +1,6 @@
 import { FormLayoutContext as Form1LayoutContext } from "@cloudtower/eagle/generated/forms";
 import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
+import { RootState } from "@cloudtower/eagle/kit/smartx";
 import { Kit } from "@cloudtower/eagle/kit/specify";
 import {
   FieldState,
@@ -43,7 +44,6 @@ import { CSSTransition } from "react-transition-group";
 
 import { FormItemDiv } from "../../../../styles";
 import FieldError from "../../components/FormError";
-import { RootState } from "../../store";
 
 type FormItemLayout = {
   label?: ColProps;

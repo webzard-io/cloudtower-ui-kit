@@ -1,6 +1,0 @@
-subscription apolloClientEvent {
-  apolloClientEvent {
-    type
-    data
-  }
-}

@@ -1,2 +1,2 @@
-export * from "../../generated/images-type";
+export * from "@cloudtower/eagle/generated/images-type";
 export * from "./src";

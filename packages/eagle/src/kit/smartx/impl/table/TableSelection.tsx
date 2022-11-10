@@ -4,6 +4,7 @@
 */
 
 import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
+import { RootState, store, TableActions } from "@cloudtower/eagle/kit/smartx";
 import {
   kitContext,
   Resources,
@@ -21,7 +22,6 @@ import React, {
   useState,
 } from "react";
 
-import { RootState, store, TableActions } from "../../store";
 import { eventStopPropagation } from "./common";
 
 const CheckboxStyle = css`
