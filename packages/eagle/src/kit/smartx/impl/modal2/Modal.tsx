@@ -1,5 +1,6 @@
 import { CloseCircleFilled } from "@ant-design/icons";
 import { useKitDispatch, useKitSelector } from "@cloudtower/eagle/kit/smartx";
+import { ModalActions, RootState } from "@cloudtower/eagle/kit/smartx";
 import { kitContext, Modal2Props } from "@cloudtower/eagle/kit/specify";
 import { Modal as AntdModal } from "antd";
 import cs from "classnames";
@@ -7,7 +8,6 @@ import { isNil } from "lodash";
 import React, { useContext, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
-import { ModalActions, RootState } from "../../store";
 import { ModalFooterError } from "./Error";
 
 const Modal: React.FC<Modal2Props> = (props) => {

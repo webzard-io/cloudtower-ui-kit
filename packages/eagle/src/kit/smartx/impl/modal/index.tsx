@@ -1,5 +1,6 @@
 import { CheckOutlined, CloseCircleFilled } from "@ant-design/icons";
 import { useKitDispatch, useKitSelector } from "@cloudtower/eagle/kit/smartx";
+import { ModalActions, RootState } from "@cloudtower/eagle/kit/smartx";
 import { kitContext, ModalProps } from "@cloudtower/eagle/kit/specify";
 import { Modal as AntdModal, Steps } from "antd";
 import cs from "classnames";
@@ -7,7 +8,6 @@ import React, { useContext, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import { WizardBody } from "../../../../styles";
-import { ModalActions, RootState } from "../../store";
 
 const Modal: React.FC<ModalProps> = (props) => {
   const { t } = useTranslation();
