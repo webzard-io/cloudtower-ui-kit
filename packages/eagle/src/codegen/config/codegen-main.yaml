@@ -4,7 +4,7 @@ documents:
   - "./src/generated/query.graphql"
   - "./src/generated/global-search.graphql"
   - "./src/generated/fetch-by-ids.graphql"
-  - "./src/codegen/graphql/*.graphql"
+  - "./src/codegen/graphql/task.graphql"
 hooks:
   afterAllFileWrite:
     - prettier --write
@@ -30,12 +30,12 @@ generates:
       - "../claw/dist/src/react-component/select.js"
   src/generated/forms-types.tsx:
     plugins:
-      - "../claw/dist/react-component/form.js"
+      - "../claw/dist/src/react-component/form.js"
     config:
       generateTypes: true
   src/generated/forms.tsx:
     plugins:
-      - "../claw/dist/react-component/form.js"
+      - "../claw/dist/src/react-component/form.js"
   src/generated/forms2.tsx:
     schema: src/codegen/config/form-schema.graphql
     plugins:

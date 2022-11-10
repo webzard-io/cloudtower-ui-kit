@@ -32,17 +32,17 @@ const config = {
       plugins: ["../claw/dist/src/react-component/select.js"],
     },
     "src/generated/forms-types.tsx": {
-      plugins: ["../claw/dist/react-component/form.js"],
+      plugins: ["../claw/dist/src/react-component/form.js"],
       config: {
         generateTypes: true,
       },
     },
     "src/generated/forms.tsx": {
-      plugins: ["../claw/dist/react-component/form.js"],
+      plugins: ["../claw/dist/src/react-component/form.js"],
     },
     "src/generated/forms2.tsx": {
       schema: "src/codegen/config/form-schema.graphql",
-      plugins: ["../claw/dist/react-component/form2.js"],
+      plugins: ["../claw/dist/src/react-component/form2.js"],
     },
     "src/generated/type-dependencies-map.ts": {
       plugins: ["../claw/dist/src/graphql/type-dependencies-map.js"],

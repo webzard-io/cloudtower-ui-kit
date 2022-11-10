@@ -353,9 +353,12 @@ export const generateTypes = async (
   const TEMPLATES = {
     CORE: path.resolve(
       __dirname,
-      "../templates/react-component/FormTypesCore.ejs"
+      "../../templates/react-component/FormTypesCore.ejs"
     ),
-    FORM: path.resolve(__dirname, "../templates/react-component/FormTypes.ejs"),
+    FORM: path.resolve(
+      __dirname,
+      "../../templates/react-component/FormTypes.ejs"
+    ),
   };
   let output = [
     "/* eslint-disable",
@@ -385,11 +388,14 @@ export const generateTypes = async (
 
 export const generate = async (forms: FormConfigs) => {
   const TEMPLATES = {
-    CORE: path.resolve(__dirname, "../templates/react-component/FormCore.ejs"),
-    FORM: path.resolve(__dirname, "../templates/react-component/Form.ejs"),
+    CORE: path.resolve(
+      __dirname,
+      "../../templates/react-component/FormCore.ejs"
+    ),
+    FORM: path.resolve(__dirname, "../../templates/react-component/Form.ejs"),
     UTILS: path.resolve(
       __dirname,
-      "../templates/react-component/FormUtils.ejs"
+      "../../templates/react-component/FormUtils.ejs"
     ),
   };
 
