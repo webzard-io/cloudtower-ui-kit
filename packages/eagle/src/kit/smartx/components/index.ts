@@ -5,3 +5,4 @@ export * from "./FormError";
 export { default as FieldError } from "./FormError";
 export * from "./KitProvider";
 export { default as KitProvider } from "./KitProvider";
+export { default as Loading } from "./Loading";

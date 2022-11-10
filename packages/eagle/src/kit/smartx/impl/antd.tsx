@@ -3,11 +3,11 @@ import {
   ExportOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
+import { Loading } from "@cloudtower/eagle/kit/smartx";
 import {
   getAlertIcon,
   Icon,
   Kit,
-  Loading,
   TextAreaProps,
 } from "@cloudtower/eagle/kit/specify";
 import { css, cx } from "@linaria/core";
