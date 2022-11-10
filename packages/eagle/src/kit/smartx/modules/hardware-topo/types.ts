@@ -1,4 +1,4 @@
-import { GetClusterTopoQuery } from "../../../../generated/react-hooks";
+import { GetClusterTopoQuery } from "@cloudtower/eagle/generated/react-hooks";
 
 export type ClusterTopo = NonNullable<GetClusterTopoQuery["clusterTopoes"][0]>;
 export type ZoneTopo = NonNullable<ClusterTopo["zone_topoes"]>[0];

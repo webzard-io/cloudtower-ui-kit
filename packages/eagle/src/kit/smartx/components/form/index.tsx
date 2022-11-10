@@ -1,3 +1,5 @@
+import { FormLayoutContext as Form1LayoutContext } from "@cloudtower/eagle/generated/forms";
+import { Kit } from "@cloudtower/eagle/kit/specify";
 import {
   FieldState,
   FieldValidator,
@@ -39,9 +41,7 @@ import React, {
 import { useSelector } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 
-import { FormLayoutContext as Form1LayoutContext } from "../../../../generated/forms";
 import { FormItemDiv } from "../../../../styles";
-import { Kit } from "../../../specify";
 import FieldError from "../../components/FormError";
 import { RootState } from "../../store";
 

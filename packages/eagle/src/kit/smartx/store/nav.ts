@@ -5,7 +5,7 @@ export type NavState = {
   view?: string;
 };
 
-export const enum NavActions {
+export enum NavActions {
   SET_RESOURCE_AND_VIEW = "SET_RESOURCE_AND_VIEW",
   REMOVE_RESOURCE_AND_VIEW = "REMOVE_RESOURCE_AND_VIEW",
 }
@@ -22,9 +22,12 @@ export type Actions =
       type: NavActions.REMOVE_RESOURCE_AND_VIEW;
     };
 
-export const initialState: NavState = {};
+export const initialNavState: NavState = {};
 
-export const navReducer = (state: NavState = initialState, action: Actions) => {
+export const navReducer = (
+  state: NavState = initialNavState,
+  action: Actions
+) => {
   switch (action.type) {
     case NavActions.SET_RESOURCE_AND_VIEW: {
       const { resource, view } = action.payload;

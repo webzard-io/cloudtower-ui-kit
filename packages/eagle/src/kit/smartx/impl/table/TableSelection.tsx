@@ -3,7 +3,11 @@
 @typescript-eslint/no-explicit-any,
 */
 
-import { kitContext, Resources, TableProps } from "../../../specify";
+import {
+  kitContext,
+  Resources,
+  TableProps,
+} from "@cloudtower/eagle/kit/specify";
 import { css } from "@linaria/core";
 import { CheckboxChangeEvent } from "antd/es/checkbox";
 import _ from "lodash";

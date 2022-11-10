@@ -1,3 +1,4 @@
+import { ButtonProps, Icon } from "@cloudtower/eagle/kit/specify";
 import { css } from "@linaria/core";
 import { Button as AntdButton } from "antd";
 import { ButtonType as AntdButtonType } from "antd/lib/button";
@@ -5,7 +6,6 @@ import cs from "classnames";
 import React, { useState } from "react";
 
 import { Typo } from "../../../../styles";
-import { ButtonProps, Icon } from "../../../specify";
 
 const ButtonStyle = css`
   &.ant-btn {

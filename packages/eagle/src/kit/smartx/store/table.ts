@@ -48,10 +48,10 @@ export type Actions =
       };
     };
 
-export const initialState: TableState = {};
+export const initialTableState: TableState = {};
 
 export const tableReducer = (
-  state: TableState = initialState,
+  state: TableState = initialTableState,
   action: Actions
 ) => {
   switch (action.type) {

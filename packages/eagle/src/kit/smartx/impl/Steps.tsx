@@ -3,7 +3,7 @@ import { Steps as AntdSteps } from "antd";
 import { StepProps } from "antd/lib/steps";
 import React from "react";
 
-import { IStepsPorps } from "../../specify";
+import { IStepsPorps } from "@cloudtower/eagle/kit/specify";
 
 const StepsContainer = styled.div`
   $item: ant-steps-item;

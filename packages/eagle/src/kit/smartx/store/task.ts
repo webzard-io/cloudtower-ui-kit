@@ -1,4 +1,4 @@
-import { TaskSubscription } from "../../../generated/react-hooks";
+import { TaskSubscription } from "@cloudtower/eagle/generated/react-hooks";
 
 export type Node = Omit<
   Exclude<TaskSubscription["task"]["node"], null | undefined>,
@@ -50,13 +50,13 @@ export type Actions =
     }
   | { type: TaskActions.REMOVE_ALL_FAILED_TASK };
 
-export const initialState: TaskState = {
+export const initialTaskState: TaskState = {
   executing: [],
   failed: [],
 };
 
 export const taskReducer = (
-  state: TaskState = initialState,
+  state: TaskState = initialTaskState,
   action: Actions
 ) => {
   switch (action.type) {

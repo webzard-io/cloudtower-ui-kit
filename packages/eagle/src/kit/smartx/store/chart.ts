@@ -11,7 +11,7 @@ export type ChartState = {
   averageData: Partial<Record<string, number>>;
 };
 
-export const enum ChartActions {
+export enum ChartActions {
   SET_POINTER = "SET_POINTER",
   SET_RESOURCE_DATA = "SET_RESOURCE_DATA",
   SET_AVERAGE_DATA = "SET_AVERAGE_DATA",
@@ -31,14 +31,14 @@ export type Actions =
       payload: { average: number; uuid: string };
     };
 
-export const initialState: ChartState = {
+export const initialChartState: ChartState = {
   pointers: {},
   resourceData: {},
   averageData: {},
 };
 
 export const chartReducer = (
-  state: ChartState = initialState,
+  state: ChartState = initialChartState,
   action: Actions
 ) => {
   switch (action.type) {

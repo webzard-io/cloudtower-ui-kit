@@ -1,9 +1,4 @@
-import { ModalProps as CommonModalProps } from "@cloudtower/sparrow";
-import { CreateVmAction } from "@cloudtower/sparrow";
-import { ReplicaProgressInfo } from "@tower/utils";
-import React from "react";
-
-import { ImportSecurityPolicies } from "../generated/forms2";
+import { ImportSecurityPolicies } from "@cloudtower/eagle/generated/forms2";
 import {
   Architecture,
   Cluster,
@@ -32,7 +27,12 @@ import {
   VmEntityFilterResultsQuery,
   VmStatus,
   VmVideoType,
-} from "../generated/react-hooks";
+} from "@cloudtower/eagle/generated/react-hooks";
+import { ModalProps as CommonModalProps } from "@cloudtower/eagle/kit/specify";
+import { CreateVmAction } from "@cloudtower/eagle/kit/specify";
+import { ReplicaProgressInfo } from "@tower/utils";
+import React from "react";
+
 import { BackupServiceOperationItem } from "../modules/backupService/types";
 import { EverouteClusterOperationItem } from "../modules/everoute/types";
 import {
@@ -67,7 +67,7 @@ export type ModalState = {
   closeId: number;
 };
 
-export const enum ModalActions {
+export enum ModalActions {
   PUSH_MODAL = "PUSH_MODAL",
   POP_MODAL = "POP_MODAL",
   REMOVE_MODAL = "REMOVE_MODAL",
@@ -109,7 +109,7 @@ export type Actions =
   | REMOVE_MODAL
   | CLOSE_MODAL;
 
-export const initialState: ModalState = {
+export const initialModalState: ModalState = {
   stack: [],
   closeId: 0,
 };
@@ -117,7 +117,7 @@ export const initialState: ModalState = {
 let MODAL_ID = 1;
 
 export const modalReducer = (
-  state: ModalState = initialState,
+  state: ModalState = initialModalState,
   action: Actions
 ) => {
   switch (action.type) {

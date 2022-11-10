@@ -1,4 +1,4 @@
-import { Sidebar, useSearch } from "../../../specify";
+import { Sidebar, useSearch } from "@cloudtower/eagle/kit/specify";
 import React, { useCallback, useLayoutEffect, useRef } from "react";
 
 // FIXME

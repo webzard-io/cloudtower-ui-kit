@@ -6,7 +6,7 @@ import {
   VmNicModel,
   VmToolsStatus,
   VmUsage,
-} from "../../../../generated/react-hooks";
+} from "@cloudtower/eagle/generated/react-hooks";
 
 export type OperationVmRecord = Pick<
   Vm,

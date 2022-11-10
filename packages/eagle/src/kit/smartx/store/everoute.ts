@@ -22,10 +22,10 @@ export type Actions =
       };
     };
 
-export const initialState: EverouteState = {};
+export const initialEverouteState: EverouteState = {};
 
 export const everouteReducer = (
-  state: EverouteState = initialState,
+  state: EverouteState = initialEverouteState,
   action: Actions
 ): EverouteState => {
   switch (action.type) {

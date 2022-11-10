@@ -6,7 +6,7 @@ import {
   IntProps,
   kitContext,
   StringProps,
-} from "../../../specify";
+} from "@cloudtower/eagle/kit/specify";
 import { css } from "@linaria/core";
 import _ from "lodash";
 import React, { useContext, useRef } from "react";

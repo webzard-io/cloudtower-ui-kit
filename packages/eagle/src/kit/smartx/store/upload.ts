@@ -1,7 +1,7 @@
 import {
   UploadResourceType,
   UploadTaskStatus,
-} from "../../../generated/react-hooks";
+} from "@cloudtower/eagle/generated/react-hooks";
 
 type UploadTask = {
   id: string;
@@ -22,7 +22,7 @@ export type UploadState = {
   uploadTasks: UploadTask[];
 };
 
-export const enum UploadActions {
+export enum UploadActions {
   START_TASK = "START_TASK",
   UPDATE_TASK = "UPDATE_TASK",
   REMOVE_TASK = "REMOVE_TASK",
@@ -44,12 +44,12 @@ type UPLOAD_START_TASK =
 
 export type Actions = UPLOAD_START_TASK;
 
-export const initialState: UploadState = {
+export const initialUploadState: UploadState = {
   uploadTasks: [],
 };
 
 export const uploadReducer = (
-  state: UploadState = initialState,
+  state: UploadState = initialUploadState,
   action: Actions
 ) => {
   switch (action.type) {
