@@ -104,7 +104,7 @@
     "generate": "yarn generate:query && yarn generate:main",
     "pretypings": "rm -rf typings",
     "typings": "yarn typings:main",
-    "typings:main": "tsc -v && tsc --outDir typings --declaration --emitDeclarationOnly --skipLibCheck -p tsconfig.json || exit 0"
+    "typings:main": "tsc -v && tsc --outDir typings --declaration --emitDeclarationOnly --skipLibCheck --noEmit false -p tsconfig.json || exit 0"
   },
   "dependencies": {
     "@linaria/core": "^4.2.2",
