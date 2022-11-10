@@ -50,7 +50,7 @@ import { Action } from "../plugins/CloudTowerAlpha";
 
 export type CloseCb = { onClose: () => void; modalId: number };
 
-export type Modal<TProps> = TProps extends void
+export type ModalType<TProps> = TProps extends void
   ? {
       component: React.FC<TProps & CloseCb>;
     }
@@ -62,7 +62,7 @@ export type Modal<TProps> = TProps extends void
     };
 
 export type ModalState = {
-  stack: Array<Modal<unknown> & { id: number }>;
+  stack: Array<ModalType<unknown> & { id: number }>;
   closeId: number;
 };
 
@@ -85,7 +85,7 @@ export enum BackupOperationItem {
 
 type PUSH_MODAL<TProps> = {
   type: ModalActions.PUSH_MODAL;
-  payload: Modal<TProps>;
+  payload: ModalType<TProps>;
 };
 
 type POP_MODAL = {
