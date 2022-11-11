@@ -16,7 +16,7 @@ import { SerializableObject } from "@tower/utils";
 import { ApolloError } from "apollo-boost";
 import cs from "classnames";
 import _ from "lodash";
-import React, { useContext, useEffect, useRef } from "react";
+import React, { createContext, useContext, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 const TablePaginationStyle = css``;
@@ -150,6 +150,8 @@ export const TableLoading: React.FC = () => {
   );
 };
 
+export const clearInputContext = createContext<(() => void) | null>(null);
+
 export const TableEmpty: React.FC<{
   query: { where?: Maybe<SerializableObject> };
   setQuery: (query: {}) => void;
@@ -159,9 +161,8 @@ export const TableEmpty: React.FC<{
   const { query, setQuery, base, clearGlobalSearch = true } = props;
   const { t, i18n } = useTranslation();
   const kit = useContext(kitContext);
-  const clearGlobalSearchFn = useKitSelector<
-    KitRootState["globalSearch"]["clearInput"]
-  >((state) => state.globalSearch.clearInput);
+
+  const clearGlobalSearchFn = useContext(clearInputContext);
 
   return (
     <div className="table-default-empty">
@@ -179,7 +180,7 @@ export const TableEmpty: React.FC<{
             onClick={() => {
               setQuery({});
               if (tableCanClearQuery(base) && clearGlobalSearch) {
-                clearGlobalSearchFn();
+                clearGlobalSearchFn?.();
               }
             }}
           >
