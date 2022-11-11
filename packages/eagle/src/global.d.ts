@@ -1,6 +1,6 @@
 import "antd";
 
-import { resources } from "i18next";
+import { i18n, Resource } from "i18next";
 
 declare module "i18next" {
   interface i18n {
@@ -25,8 +25,8 @@ declare global {
       }
     >;
     __cloudtower_i18n__: {
-      resources: typeof resources;
-      i18next: typeof i18next;
+      resources: Resource;
+      i18next: i18n;
     };
   }
 }
