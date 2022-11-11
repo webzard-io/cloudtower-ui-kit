@@ -62,10 +62,10 @@ export namespace <%= name %> {
         }
       : undefined
 
-   const stack = useSelector<KitRootState, KitRootState['modal']['stack']>(
+   const stack = useKitSelector<KitRootState['modal']['stack']>(
      state => state.modal.stack
    );
-   const id = useSelector<KitRootState, KitRootState['modal']['closeId']>(
+   const id = useKitSelector<KitRootState['modal']['closeId']>(
      state => state.modal.closeId
    );
    const idRef = useRef(stack[stack.length - 1]?.id);
