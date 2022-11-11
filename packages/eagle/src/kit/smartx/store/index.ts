@@ -27,9 +27,9 @@ import {
 import {
   Actions as ModalActionType,
   CloseCb,
+  IModalProps,
   initialModalState,
   ModalActions,
-  ModalProps,
   modalReducer,
   ModalState,
   ModalType,
@@ -125,8 +125,8 @@ export const rootReducer = (state: RootState | undefined, action: Actions) => {
 
 export const store = createStore(rootReducer);
 
-export function pushModal<K extends keyof ModalProps>(
-  modal: ModalType<ModalProps[K]>
+export function pushModal<K extends keyof IModalProps>(
+  modal: ModalType<IModalProps[K]>
 ) {
   store.dispatch({
     type: ModalActions.PUSH_MODAL,
@@ -148,7 +148,8 @@ export function closeModal(id: number) {
   });
 }
 
-export type GetModalProps<K extends keyof ModalProps> = ModalProps[K] & CloseCb;
+export type GetModalProps<K extends keyof IModalProps> = IModalProps[K] &
+  CloseCb;
 
 export * from "./backup";
 export * from "./chart";

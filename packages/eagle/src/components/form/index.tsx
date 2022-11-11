@@ -1,6 +1,6 @@
 import { FormLayoutContext as Form1LayoutContext } from "@cloudtower/eagle/generated/forms";
-import { RootState } from "@cloudtower/eagle/kit/smartx";
-import { FormItemDiv, Kit } from "@cloudtower/sparrow";
+import { FieldError, RootState } from "@cloudtower/eagle/kit/smartx";
+import { Kit } from "@cloudtower/eagle/kit/specify";
 import {
   FieldState,
   FieldValidator,
@@ -42,7 +42,7 @@ import React, {
 import { useSelector } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 
-import FieldError from "../../components/FormError";
+import { FormItemDiv } from "../../styles/common";
 
 type FormItemLayout = {
   label?: ColProps;

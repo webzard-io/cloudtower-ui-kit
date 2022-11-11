@@ -83,6 +83,8 @@ const emptyImpl: Kit = {
     Speed: ThrowError,
     Second: ThrowError,
     Bps: ThrowError,
+    BitPerSecond: ThrowError,
+    Bit: ThrowError,
   },
   inputGroup: ThrowError,
   get Empty() {
@@ -102,7 +104,12 @@ const emptyImpl: Kit = {
   progress: ThrowError,
   divider: ThrowError,
   skeleton: ThrowError,
-  menu: ThrowError,
+  menu: Object.assign(ThrowError, {
+    Divider: ThrowError,
+    Item: ThrowError,
+    SubMenu: ThrowError,
+    ItemGroup: ThrowError,
+  }),
   menuItem: ThrowError,
   menuItemGroup: ThrowError,
   list: ThrowError,
