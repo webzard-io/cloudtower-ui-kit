@@ -210,7 +210,7 @@ const Base<%= tableName %>: React.FC<<%= props %> & {
   } = props;
   const kit = useContext(kitContext);
   const { t, i18n } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useKitDispatch();
 
   const refetching = networkStatus === NetworkStatus.refetch;
   const polling = networkStatus === NetworkStatus.poll;
@@ -614,7 +614,7 @@ export const <%= tableName %>: React.FC<<%- props %>> = props => {
     ),
   };
 
-  const dispatch = useDispatch();
+  const dispatch = useKitDispatch();
   dispatch({ type: TableActions.SET_RESOURCE_QUERY, payload: {
     resource: "<%= typename %>",
     query: {

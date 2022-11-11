@@ -120,7 +120,7 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
       useState,
     } from "react";
     import { useTranslation } from "react-i18next";
-    import { useDispatch } from "react-redux";
+    import { useKitDispatch } from "@cloudtower/eagle/kit/smartx";
     
     import {
       BLANK_COLUMN,
