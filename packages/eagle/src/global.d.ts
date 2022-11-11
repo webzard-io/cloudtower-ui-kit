@@ -1,5 +1,6 @@
-import "i18next";
 import "antd";
+
+import { i18n, Resource } from "i18next";
 
 declare module "i18next" {
   interface i18n {
@@ -8,15 +9,24 @@ declare module "i18next" {
   }
 }
 
-declare global {
-  interface Window {
-    i18nBatchHelper: any;
-    i18n: any;
-  }
-}
-
 declare module "antd/lib/modal" {
   export interface ModalProps {
     focusTriggerAfterClose?: boolean;
+  }
+}
+
+declare global {
+  interface Window {
+    i18nBatchHelper: Record<
+      string,
+      {
+        patterns: RegExp[];
+        batchKey: string;
+      }
+    >;
+    __cloudtower_i18n__: {
+      resources: Resource;
+      i18next: i18n;
+    };
   }
 }
