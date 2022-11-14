@@ -67,7 +67,6 @@ export function <%= selectName %>(props: React.PropsWithChildren<SelectProps<<%=
     <% } %>
     ...restProps
   } = props;
-  const { t } = useTranslation()
   const [name, setName] = useState('');
   const isMultiple = mode === 'multiple';
   const inputFields =
@@ -156,7 +155,7 @@ export function <%= selectName %>(props: React.PropsWithChildren<SelectProps<<%=
     <kit.select
       loading={loading}
       disabled={isFirstLoading}
-      placeholder={loading ? t('common.current_loading_with_dot') : placeholder}
+      placeholder={loading ? parrotI18n.t('common.current_loading_with_dot') : placeholder}
       error={error && <FailedLoad error={error} refetch={refetch} />}
       onDropdownVisibleChange={open => {
         if (open && lazy && !data) {
@@ -246,7 +245,7 @@ export function <%= selectName %>(props: React.PropsWithChildren<SelectProps<<%=
               setCreating(creating);
               if (!creating && data && typeof onResourceCreated === 'function') onResourceCreated(data);
             }}
-            placeholder={t('common.create_<%= type %>')}
+            placeholder={parrotI18n.t('common.create_<%= type %>')}
           />
         </div>);
       }}
@@ -255,7 +254,7 @@ export function <%= selectName %>(props: React.PropsWithChildren<SelectProps<<%=
       e.stopPropagation();
      }}
      {...restProps}>
-      {allowAll && !name && Boolean(data?.<%= pluralized %>.length) && <kit.option value="">{allText || t('common.all')}</kit.option>}
+      {allowAll && !name && Boolean(data?.<%= pluralized %>.length) && <kit.option value="">{allText || parrotI18n.t('common.all')}</kit.option>}
       {prefixOptions}
       {data &&
         (renderOptions
@@ -273,7 +272,7 @@ export function <%= selectName %>(props: React.PropsWithChildren<SelectProps<<%=
           disabled
           key="....fetching-more...."
           value="....fetching-more....">
-          {t('common.fetching-more')}
+          {parrotI18n.t('common.fetching-more')}
         </kit.option>
       )}
       {!data?.<%= pluralized %>.length && extraData.length > 0 && (

@@ -119,7 +119,7 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
       useRef,
       useState,
     } from "react";
-    import { useTranslation } from "react-i18next";
+    import { parrotI18n } from "@cloudtower/parrot";
     import { useKitDispatch } from "@cloudtower/eagle/kit/smartx";
     
     import {

@@ -1,9 +1,9 @@
 import { kitContext } from "@cloudtower/eagle/kit/specify";
+import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { ApolloError } from "apollo-boost";
 import cs from "classnames";
 import React, { useContext } from "react";
-import { useTranslation } from "react-i18next";
 
 const FailedLoadStyle = css`
   width: 100%;
@@ -30,12 +30,11 @@ const FailedLoad: React.FC<{
 }> = (props) => {
   const { error, refetch, className, title, refetchText } = props;
   const kit = useContext(kitContext);
-  const { t } = useTranslation();
   return (
     <div className={cs(FailedLoadStyle, className)} title={title}>
       <div className="error-text">{String(error)}</div>
       <kit.button type="ordinary" onClick={() => refetch()}>
-        {refetchText || t("overview.retry")}
+        {refetchText || parrotI18n.t("overview.retry")}
       </kit.button>
     </div>
   );

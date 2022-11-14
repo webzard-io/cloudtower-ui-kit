@@ -1,7 +1,7 @@
 import { kitContext, Modal2Props } from "@cloudtower/eagle/kit/specify";
+import { parrotI18n } from "@cloudtower/parrot";
 import { ApolloError } from "apollo-boost";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
 
 import { ModalContentError } from "./Error";
 import BaseModal from "./Modal";
@@ -17,7 +17,6 @@ const InitializedModal: React.FC<InitializedModalType> = (props) => {
   const kit = useContext(kitContext);
   const changeCount = useRef<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
-  const { t } = useTranslation();
 
   useEffect(() => {
     if (changeCount.current > 2) {
@@ -49,7 +48,9 @@ const InitializedModal: React.FC<InitializedModalType> = (props) => {
       {...modal2PropsArgs}
       showOk={canRenderChildren && modal2PropsArgs.showOk}
       cancelText={
-        canRenderChildren ? modal2PropsArgs.cancelText : t("common.close")
+        canRenderChildren
+          ? modal2PropsArgs.cancelText
+          : parrotI18n.t("common.close")
       }
     >
       {getContent()}

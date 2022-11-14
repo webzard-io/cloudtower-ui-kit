@@ -1,10 +1,10 @@
 import { CheckOutlined } from "@ant-design/icons";
 import { kitContext, Modal2Props } from "@cloudtower/eagle/kit/specify";
+import { parrotI18n } from "@cloudtower/parrot";
 import { Steps } from "antd";
 import cs from "classnames";
 import { isNil } from "lodash";
 import React, { useContext, useMemo, useRef } from "react";
-import { useTranslation } from "react-i18next";
 
 import { WizardBody } from "../../../../styles";
 import { ModalFooterError } from "./Error";
@@ -28,7 +28,6 @@ type WizardModalType = Modal2Props & {
 };
 
 const WizardModal: React.FC<WizardModalType> = (props) => {
-  const { t } = useTranslation();
   const kit = useContext(kitContext);
 
   const {
@@ -44,8 +43,8 @@ const WizardModal: React.FC<WizardModalType> = (props) => {
     okButtonProps,
     confirmLoading,
     okLoading,
-    okText = t("cluster.confirm"),
-    cancelText = t("common.cancel"),
+    okText = parrotI18n.t("cluster.confirm"),
+    cancelText = parrotI18n.t("common.cancel"),
     step,
     steps,
     disablePrevStep,
@@ -62,7 +61,9 @@ const WizardModal: React.FC<WizardModalType> = (props) => {
   >(fullscreen ? "fullscreen-modal" : "modal-zoom");
 
   const prevText = useMemo(() => {
-    let text: React.ReactNode = <span>&lt; {t("common.prev_step")}</span>;
+    let text: React.ReactNode = (
+      <span>&lt; {parrotI18n.t("common.prev_step")}</span>
+    );
 
     if (steps[step]) {
       if (typeof steps[step].prevText === "string") {
@@ -73,7 +74,7 @@ const WizardModal: React.FC<WizardModalType> = (props) => {
     }
 
     return text;
-  }, [t, steps, step]);
+  }, [steps, step]);
 
   const stepsRef = useRef<React.ReactNode[]>([]);
   if (!destroyOtherStep && steps[step]) {
@@ -86,11 +87,11 @@ const WizardModal: React.FC<WizardModalType> = (props) => {
     if (steps[step]) {
       text =
         step < steps.length - 1
-          ? steps[step].okText || t("common.next_step")
+          ? steps[step].okText || parrotI18n.t("common.next_step")
           : steps[step].okText || text;
     }
     return text;
-  }, [okButtonProps, okText, t, steps, step]);
+  }, [okButtonProps, okText, steps, step]);
 
   const getFooter = () => {
     if (isNil(footer)) {

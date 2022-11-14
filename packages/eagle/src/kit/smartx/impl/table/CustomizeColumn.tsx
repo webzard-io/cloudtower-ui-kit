@@ -1,10 +1,10 @@
 import { Icon } from "@cloudtower/eagle/kit/smartx";
 import { kitContext } from "@cloudtower/eagle/kit/specify";
+import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { Checkbox } from "antd";
 import React, { DragEvent, useContext } from "react";
-import { useTranslation } from "react-i18next";
 
 import { arrayMove } from "./common";
 import { CustomizeColumnType, useCustomizeColumn } from "./customize-column";
@@ -164,13 +164,12 @@ const DropdownOverlay: React.FC<CustomizeColumnProps> = (props) => {
   const [customizeColumn, setCustomizeColumn] = useCustomizeColumn(
     ...defaultCustomizeColumn
   );
-  const { t } = useTranslation();
 
   const columns = customizeColumn.map((column) => {
     let title: React.ReactNode = "";
     const mappedTitle = columnTitleMap[column.key];
     if (column.key === "_action_") {
-      title = t("common._action_");
+      title = parrotI18n.t("common._action_");
     } else if (typeof mappedTitle === "function") {
       title = mappedTitle();
     } else if (mappedTitle) {
@@ -232,7 +231,7 @@ const DropdownOverlay: React.FC<CustomizeColumnProps> = (props) => {
 
   return (
     <>
-      <Title>{t("components.custom_column")}</Title>
+      <Title>{parrotI18n.t("components.custom_column")}</Title>
       <Checkbox.Group
         className={CheckboxStyle}
         defaultValue={customizeColumn

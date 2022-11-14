@@ -7,6 +7,7 @@ import {
   useElementsSize,
   useSearch,
 } from "@cloudtower/eagle/kit/specify";
+import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { SerializableObject } from "@tower/utils";
@@ -14,7 +15,6 @@ import { ApolloError } from "apollo-boost";
 import cs from "classnames";
 import _ from "lodash";
 import React, { createContext, useContext, useEffect, useRef } from "react";
-import { useTranslation } from "react-i18next";
 
 const TablePaginationStyle = css``;
 
@@ -158,7 +158,6 @@ export const TableEmpty: React.FC<{
   clearGlobalSearch?: boolean;
 }> = (props) => {
   const { query, setQuery, base, clearGlobalSearch = true } = props;
-  const { t, i18n } = useTranslation();
   const kit = useContext(kitContext);
 
   const { onClearSearchButtonEffect } = useContext(KitTableContext);
@@ -166,12 +165,12 @@ export const TableEmpty: React.FC<{
   return (
     <div className="table-default-empty">
       {_.isEmpty(query.where) ? (
-        t("common.empty") + i18n.td(`common.${base}`)
+        parrotI18n.t("common.empty") + parrotI18n.t(`common.${base}`)
       ) : (
         <>
           <div>
-            {t("common.no_match_filter", {
-              resource: i18n.td(`common.${base}`),
+            {parrotI18n.t("common.no_match_filter", {
+              resource: parrotI18n.t(`common.${base}`),
             })}
           </div>
           <kit.button
@@ -183,7 +182,7 @@ export const TableEmpty: React.FC<{
               }
             }}
           >
-            {t("common.clear_query")}
+            {parrotI18n.t("common.clear_query")}
           </kit.button>
         </>
       )}
@@ -196,13 +195,12 @@ export const TableError: React.FC<{
   refetch: () => Promise<unknown>;
 }> = (props) => {
   const { error, refetch } = props;
-  const { t } = useTranslation();
   const kit = useContext(kitContext);
   return (
     <div className="table-default-error">
       <div>{String(error)}</div>
       <kit.button type="ordinary" onClick={() => refetch()}>
-        {t("overview.retry")}
+        {parrotI18n.t("overview.retry")}
       </kit.button>
     </div>
   );

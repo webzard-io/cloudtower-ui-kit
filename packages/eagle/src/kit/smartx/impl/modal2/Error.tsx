@@ -1,6 +1,6 @@
+import { parrotI18n } from "@cloudtower/parrot";
 import { css, cx } from "@linaria/core";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 import { FullView, Typo } from "../../../../styles";
 import { analyzeFallbackError } from "../../components/FormError";
@@ -16,7 +16,6 @@ interface ModalErrorType {
 
 export const ModalContentError: React.FC<ModalErrorType> = (props) => {
   const { error } = props;
-  const { t, i18n } = useTranslation();
 
   if (React.isValidElement(error)) {
     return error;
@@ -25,9 +24,11 @@ export const ModalContentError: React.FC<ModalErrorType> = (props) => {
   if (typeof error === "string") {
     return (
       <FullView className={FullViewErrorStyle}>
-        <p className={Typo.Display.d2_bold_title}>{t("common.load_failed")}</p>
+        <p className={Typo.Display.d2_bold_title}>
+          {parrotI18n.t("common.load_failed")}
+        </p>
         <p className={Typo.Label.l1_regular_title}>
-          {t("task.error_message")}:&nbsp;<span>{error}</span>
+          {parrotI18n.t("task.error_message")}:&nbsp;<span>{error}</span>
         </p>
       </FullView>
     );
@@ -35,9 +36,12 @@ export const ModalContentError: React.FC<ModalErrorType> = (props) => {
   if (error instanceof Error) {
     return (
       <FullView className={FullViewErrorStyle}>
-        <p className={Typo.Display.d2_bold_title}>{t("common.load_failed")}</p>
+        <p className={Typo.Display.d2_bold_title}>
+          {parrotI18n.t("common.load_failed")}
+        </p>
         <p className={Typo.Label.l1_regular_title}>
-          {t("task.error_message")}:&nbsp;<span>{error.message}</span>
+          {parrotI18n.t("task.error_message")}:&nbsp;
+          <span>{error.message}</span>
         </p>
       </FullView>
     );
@@ -48,9 +52,11 @@ export const ModalContentError: React.FC<ModalErrorType> = (props) => {
   if (errorMsg?.msg) {
     return (
       <FullView className={FullViewErrorStyle}>
-        <p className={Typo.Display.d2_bold_title}>{t("common.load_failed")}</p>
+        <p className={Typo.Display.d2_bold_title}>
+          {parrotI18n.t("common.load_failed")}
+        </p>
         <p className={Typo.Label.l1_regular_title}>
-          {t("task.error_message")}:&nbsp;<span>{errorMsg.msg}</span>
+          {parrotI18n.t("task.error_message")}:&nbsp;<span>{errorMsg.msg}</span>
         </p>
       </FullView>
     );
@@ -65,7 +71,6 @@ interface ModalFooterErrorType extends ModalErrorType {
 
 export const ModalFooterError: React.FC<ModalFooterErrorType> = (props) => {
   const { error, className } = props;
-  const { i18n } = useTranslation();
 
   if (React.isValidElement(error)) {
     return <span className="modal-error">{error}</span>;
