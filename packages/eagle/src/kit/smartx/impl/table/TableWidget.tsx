@@ -1,12 +1,9 @@
 import { Maybe, Scalars } from "@cloudtower/eagle/generated/react-hooks";
-import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
-import { KitRootState } from "@cloudtower/eagle/kit/smartx";
 import { Icon } from "@cloudtower/eagle/kit/smartx";
 import {
   kitContext,
   SearchOperation,
   SetSearch,
-  tableCanClearQuery,
   useElementsSize,
   useSearch,
 } from "@cloudtower/eagle/kit/specify";
@@ -150,7 +147,10 @@ export const TableLoading: React.FC = () => {
   );
 };
 
-export const clearInputContext = createContext<(() => void) | null>(null);
+export const KitTableContext = createContext<{
+  onClearSearchButtonEffect?: () => void;
+  tableCanClearQuery?: (base: string) => boolean;
+}>({});
 
 export const TableEmpty: React.FC<{
   query: { where?: Maybe<SerializableObject> };
@@ -162,7 +162,8 @@ export const TableEmpty: React.FC<{
   const { t, i18n } = useTranslation();
   const kit = useContext(kitContext);
 
-  const clearGlobalSearchFn = useContext(clearInputContext);
+  const { onClearSearchButtonEffect, tableCanClearQuery } =
+    useContext(KitTableContext);
 
   return (
     <div className="table-default-empty">
@@ -179,8 +180,8 @@ export const TableEmpty: React.FC<{
             type="ordinary"
             onClick={() => {
               setQuery({});
-              if (tableCanClearQuery(base) && clearGlobalSearch) {
-                clearGlobalSearchFn?.();
+              if (tableCanClearQuery?.(base) && clearGlobalSearch) {
+                onClearSearchButtonEffect?.();
               }
             }}
           >
