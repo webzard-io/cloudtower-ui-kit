@@ -9,7 +9,8 @@
     "baseUrl": "./",
     "paths": {
       "@cloudtower/eagle/generated/*": ["./src/generated/*"],
-      "@cloudtower/eagle/kit/*": ["./src/kit/*"]
+      "@cloudtower/eagle/kit/*": ["./src/kit/*"],
+      "@cloudtower/parrot": ["../parrot/src/index.ts"]
     }
   },
   "include": ["src"],

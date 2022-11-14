@@ -25,8 +25,8 @@ declare global {
       }
     >;
     __cloudtower_i18n__: {
-      resources: Resource;
-      i18next: i18n;
+      resources?: Resource;
+      i18next?: i18n;
     };
   }
 }

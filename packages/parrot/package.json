@@ -16,7 +16,7 @@
     "lint": "eslint src --ext .ts --quiet"
   },
   "devDependencies": {
-    "i18next": "^22.0.5",
+    "i18next": "^21.10.0",
     "typescript": "^4.8.4"
   }
 }
