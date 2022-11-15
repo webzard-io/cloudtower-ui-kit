@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "./typings",
+    "jsx": "react-jsx",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@cloudtower/eagle/generated/*": ["./src/generated/*"],
+      "@cloudtower/eagle/kit/*": ["./src/kit/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
