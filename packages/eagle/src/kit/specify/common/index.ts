@@ -1,4 +1,3 @@
-export * from "./canQuery";
 export * from "./constants";
 export * from "./formatValue";
 export * from "./history";
