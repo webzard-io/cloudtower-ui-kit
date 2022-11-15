@@ -13,9 +13,12 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "tsc",
+    "build:watch": "tsc --watch",
+    "generate:reexport": "node --loader ts-node/esm src/tools/index.mts",
     "lint": "eslint src --ext .ts --quiet"
   },
   "devDependencies": {
+    "ejs": "^3.1.8",
     "i18next": "^21.10.0",
     "typescript": "^4.8.4"
   }

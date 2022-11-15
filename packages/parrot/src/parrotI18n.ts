@@ -1,6 +1,6 @@
 import i18next from "i18next";
 
-import { enUS, zhCN } from "./locales";
+import locales from "./locales";
 
 const parrotI18n = i18next.createInstance({
   fallbackLng: "en",
@@ -8,18 +8,7 @@ const parrotI18n = i18next.createInstance({
 });
 
 parrotI18n.init({
-  resources: {
-    en: {
-      translation: {
-        ...enUS.basic,
-      },
-    },
-    "zh-CN": {
-      translation: {
-        ...zhCN.basic,
-      },
-    },
-  },
+  resources: locales,
 });
 
 export default parrotI18n;

@@ -1,0 +1,9 @@
+<% for (let name of names) { %>
+import <%= name.camelCase %> from "./<%= name.originCase %>.json";<% } %>
+
+const locale = {
+<% for (let name of names) { %>
+"<%= name.originCase %>" : <%= name.camelCase %>,<% } %>
+}
+
+export default locale;
