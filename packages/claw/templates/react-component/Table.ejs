@@ -508,7 +508,7 @@ const Base<%= tableName %>: React.FC<<%= props %> & {
     <TableEmpty query={query} setQuery={setQuery} base={'<%= base %>'} />
   );
   // TODO: should show the error correctly  TOWER-614
-  const _error = error && <FailedLoad error={t('cluster.retry_when_access_data_failed')} title={error.message} refetch={refetch} />;
+  const _error = error && <FailedLoad error={parrotI18n.t('cluster.retry_when_access_data_failed')} title={error.message} refetch={refetch} />;
 
 
   return (
@@ -522,7 +522,7 @@ const Base<%= tableName %>: React.FC<<%= props %> & {
             loading={loading && !polling}
             initLoading={initLoading}
             error={_error}
-            key={`<%= tableName %>-${i18n.language}`}
+            key={`<%= tableName %>-${parrotI18n.language}`}
             dataSource={data?.<%= pluralized %>}
             columns={finalColumns}
             onSorterChange={(order, key) => {

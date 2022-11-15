@@ -47,7 +47,7 @@ export const ModalContentError: React.FC<ModalErrorType> = (props) => {
     );
   }
 
-  const errorMsg = analyzeFallbackError(error, i18n);
+  const errorMsg = analyzeFallbackError(error, parrotI18n);
 
   if (errorMsg?.msg) {
     return (
@@ -76,7 +76,7 @@ export const ModalFooterError: React.FC<ModalFooterErrorType> = (props) => {
     return <span className="modal-error">{error}</span>;
   }
 
-  const errorMsg = analyzeFallbackError(error, i18n);
+  const errorMsg = analyzeFallbackError(error, parrotI18n);
   if (!errorMsg) {
     return null;
   }
