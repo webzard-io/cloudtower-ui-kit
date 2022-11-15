@@ -4,7 +4,11 @@
 */
 
 import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
-import { RootState, store, TableActions } from "@cloudtower/eagle/kit/smartx";
+import {
+  KitRootState,
+  store,
+  TableActions,
+} from "@cloudtower/eagle/kit/smartx";
 import {
   kitContext,
   Resources,
@@ -32,7 +36,7 @@ const CheckboxStyle = css`
   }
 `;
 
-type Resource = RootState["table"][Resources];
+type Resource = KitRootState["table"][Resources];
 
 const TitleCheckbox = <T extends { id: string }>(props: {
   resource: string;

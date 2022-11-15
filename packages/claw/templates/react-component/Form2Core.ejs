@@ -8,9 +8,9 @@ import {
   FormSpy as ReactFinalFormSpy,
 } from "@smartx/react-final-form";
 import React, { useCallback, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
 
-import { antdKit, RootState } from "@cloudtower/eagle/kit/smartx";
+import { antdKit, KitRootState } from "@cloudtower/eagle/kit/smartx";
 import * as FormKit from "@cloudtower/eagle/kit/smartx";
 import { kitContext } from "@cloudtower/eagle/kit/specify";
 import { Scalars, Maybe, <%- enums.join(', ') -%> } from '@cloudtower/eagle/generated/react-hooks';

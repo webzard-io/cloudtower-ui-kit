@@ -1,5 +1,6 @@
 import { FormLayoutContext as Form1LayoutContext } from "@cloudtower/eagle/generated/forms";
-import { FieldError, RootState } from "@cloudtower/eagle/kit/smartx";
+import { FieldError, KitRootState } from "@cloudtower/eagle/kit/smartx";
+import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
 import { Kit } from "@cloudtower/eagle/kit/specify";
 import {
   FieldState,
@@ -39,7 +40,6 @@ import React, {
   useMemo,
   useRef,
 } from "react";
-import { useSelector } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 
 import { FormItemDiv } from "../../styles/common";
@@ -702,10 +702,10 @@ export type OnSubmit<T> = (
   | undefined
   | void;
 export const usePreventSubmitOnModalClose = <T,>(onSubmit: OnSubmit<T>) => {
-  const stack = useSelector<RootState, RootState["modal"]["stack"]>(
+  const stack = useKitSelector<KitRootState["modal"]["stack"]>(
     (state) => state.modal.stack
   );
-  const id = useSelector<RootState, RootState["modal"]["closeId"]>(
+  const id = useKitSelector<KitRootState["modal"]["closeId"]>(
     (state) => state.modal.closeId
   );
   const idRef = useRef(stack[stack.length - 1]?.id);

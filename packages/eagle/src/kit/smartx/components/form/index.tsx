@@ -1,6 +1,6 @@
 import { FormLayoutContext as Form1LayoutContext } from "@cloudtower/eagle/generated/forms";
 import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
-import { RootState } from "@cloudtower/eagle/kit/smartx";
+import { KitRootState } from "@cloudtower/eagle/kit/smartx";
 import { Kit } from "@cloudtower/eagle/kit/specify";
 import {
   FieldState,
@@ -703,10 +703,10 @@ export type OnSubmit<T> = (
   | undefined
   | void;
 export const usePreventSubmitOnModalClose = <T,>(onSubmit: OnSubmit<T>) => {
-  const stack = useKitSelector<RootState["modal"]["stack"]>(
+  const stack = useKitSelector<KitRootState["modal"]["stack"]>(
     (state) => state.modal.stack
   );
-  const id = useKitSelector<RootState["modal"]["closeId"]>(
+  const id = useKitSelector<KitRootState["modal"]["closeId"]>(
     (state) => state.modal.closeId
   );
   const idRef = useRef(stack[stack.length - 1]?.id);

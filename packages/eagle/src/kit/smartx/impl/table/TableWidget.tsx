@@ -1,12 +1,9 @@
 import { Maybe, Scalars } from "@cloudtower/eagle/generated/react-hooks";
-import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
-import { RootState } from "@cloudtower/eagle/kit/smartx";
 import { Icon } from "@cloudtower/eagle/kit/smartx";
 import {
   kitContext,
   SearchOperation,
   SetSearch,
-  tableCanClearQuery,
   useElementsSize,
   useSearch,
 } from "@cloudtower/eagle/kit/specify";
@@ -16,7 +13,7 @@ import { SerializableObject } from "@tower/utils";
 import { ApolloError } from "apollo-boost";
 import cs from "classnames";
 import _ from "lodash";
-import React, { useContext, useEffect, useRef } from "react";
+import React, { createContext, useContext, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 const TablePaginationStyle = css``;
@@ -150,6 +147,10 @@ export const TableLoading: React.FC = () => {
   );
 };
 
+export const KitTableContext = createContext<{
+  onClearSearchButtonEffect?: (base: string) => void;
+}>({});
+
 export const TableEmpty: React.FC<{
   query: { where?: Maybe<SerializableObject> };
   setQuery: (query: {}) => void;
@@ -159,9 +160,8 @@ export const TableEmpty: React.FC<{
   const { query, setQuery, base, clearGlobalSearch = true } = props;
   const { t, i18n } = useTranslation();
   const kit = useContext(kitContext);
-  const clearGlobalSearchFn = useKitSelector<
-    RootState["globalSearch"]["clearInput"]
-  >((state) => state.globalSearch.clearInput);
+
+  const { onClearSearchButtonEffect } = useContext(KitTableContext);
 
   return (
     <div className="table-default-empty">
@@ -178,8 +178,8 @@ export const TableEmpty: React.FC<{
             type="ordinary"
             onClick={() => {
               setQuery({});
-              if (tableCanClearQuery(base) && clearGlobalSearch) {
-                clearGlobalSearchFn();
+              if (clearGlobalSearch) {
+                onClearSearchButtonEffect?.(base);
               }
             }}
           >

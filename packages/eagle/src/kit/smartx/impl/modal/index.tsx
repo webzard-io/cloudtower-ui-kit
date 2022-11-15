@@ -1,6 +1,6 @@
 import { CheckOutlined, CloseCircleFilled } from "@ant-design/icons";
 import { useKitDispatch, useKitSelector } from "@cloudtower/eagle/kit/smartx";
-import { ModalActions, RootState } from "@cloudtower/eagle/kit/smartx";
+import { KitRootState, ModalActions } from "@cloudtower/eagle/kit/smartx";
 import { kitContext, ModalProps } from "@cloudtower/eagle/kit/specify";
 import { Modal as AntdModal, Steps } from "antd";
 import cs from "classnames";
@@ -34,10 +34,10 @@ const Modal: React.FC<ModalProps> = (props) => {
   } = props;
   const kit = useContext(kitContext);
 
-  const stack = useKitSelector<RootState["modal"]["stack"]>(
+  const stack = useKitSelector<KitRootState["modal"]["stack"]>(
     (state) => state.modal.stack
   );
-  const id = useKitSelector<RootState["modal"]["closeId"]>(
+  const id = useKitSelector<KitRootState["modal"]["closeId"]>(
     (state) => state.modal.closeId
   );
   const dispatch = useKitDispatch();

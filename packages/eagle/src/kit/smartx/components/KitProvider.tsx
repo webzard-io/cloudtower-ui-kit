@@ -6,9 +6,9 @@ import {
   ReactReduxContextValue,
 } from "react-redux";
 
-import { Actions, RootState, store } from "../store";
+import { Actions, KitRootState, store } from "../store";
 
-const ctx = createContext<ReactReduxContextValue<RootState, Actions>>({
+const ctx = createContext<ReactReduxContextValue<KitRootState, Actions>>({
   store: store,
   storeState: store.getState(),
 });
@@ -27,5 +27,5 @@ const KitProvider = (props: PropsWithChildren<IProps>) => {
 
 export default KitProvider;
 
-export const useKitDispatch = createDispatchHook<RootState>(ctx);
-export const useKitSelector = createSelectorHook<RootState>(ctx);
+export const useKitDispatch = createDispatchHook<KitRootState>(ctx);
+export const useKitSelector = createSelectorHook<KitRootState>(ctx);
