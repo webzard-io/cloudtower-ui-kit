@@ -35,12 +35,12 @@ export class Batcher {
     const action = this.getAction(batchKey);
 
     if (process.env.NODE_ENV !== "production") {
-      if (window.__cloudtower_i18n__.i18next == null) {
+      if (window.__cloudtower_i18n__?.i18next == null) {
         throw new Error("i18n not exist on window");
       }
     }
 
-    if (!(window.__cloudtower_i18n__.i18next ?? parrotI18n).exists(action)) {
+    if (!(window.__cloudtower_i18n__?.i18next ?? parrotI18n).exists(action)) {
       // can not be batched when i18n not ready
       this.originalMethod(content);
       return;
@@ -148,11 +148,11 @@ export class Batcher {
 
   private getBatchContent(batchKey: string, count: number): string {
     if (process.env.NODE_ENV !== "production") {
-      if (window.__cloudtower_i18n__.i18next == null) {
+      if (window.__cloudtower_i18n__?.i18next == null) {
         throw new Error("i18n not exist on window");
       }
     }
-    return (window.__cloudtower_i18n__.i18next?.td ?? parrotI18n.t)(
+    return (window.__cloudtower_i18n__?.i18next?.td ?? parrotI18n.t)(
       this.getAction(batchKey),
       {
         count,
