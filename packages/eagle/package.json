@@ -1,11 +1,12 @@
 {
   "name": "@cloudtower/eagle",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "main": "dist/umd/index.js",
   "module": "./dist/esm/index.js",
   "types": "typings/index.d.ts",
   "files": [
     "dist",
+    "typings",
     "src/styles",
     "src/generated/forms2.tsx"
   ],
@@ -109,17 +110,17 @@
     "generate": "yarn generate:query && yarn generate:main",
     "pretypings": "rm -rf typings",
     "typings": "yarn typings:main",
-    "typings:main": "tsc -v && tsc --outDir typings --declaration --emitDeclarationOnly --skipLibCheck --noEmit false -p tsconfig.json || exit 0"
+    "typings:main": "tsc -v && tsc -p tsconfig.typings.json || exit 0"
   },
   "dependencies": {
-    "@cloudtower/parrot": "^0.7.0",
+    "@cloudtower/parrot": "^0.8.0",
     "@linaria/core": "^4.2.2",
     "@linaria/react": "^4.3.0",
     "@tower/i18n": "^1.9.2",
     "history": "^4.9"
   },
   "devDependencies": {
-    "@cloudtower/claw": "^0.7.0",
+    "@cloudtower/claw": "^0.8.0",
     "@graphql-codegen/cli": "^1.12",
     "@graphql-codegen/client-preset": "^1.0.6",
     "@graphql-codegen/typescript": "^1.22",

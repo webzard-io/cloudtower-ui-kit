@@ -15,7 +15,7 @@ const ctx = createContext<ReactReduxContextValue<KitRootState, Actions>>({
 
 interface IProps {}
 
-const KitProvider = (props: PropsWithChildren<IProps>) => {
+const KitStoreProvider = (props: PropsWithChildren<IProps>) => {
   const { children } = props;
 
   return (
@@ -25,7 +25,7 @@ const KitProvider = (props: PropsWithChildren<IProps>) => {
   );
 };
 
-export default KitProvider;
+export default KitStoreProvider;
 
 export const useKitDispatch = createDispatchHook<KitRootState>(ctx);
 export const useKitSelector = createSelectorHook<KitRootState>(ctx);

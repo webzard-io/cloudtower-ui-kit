@@ -4,6 +4,6 @@ export * from "./form";
 export * from "./FormError";
 export { default as FieldError } from "./FormError";
 export { default as Icon } from "./Icon";
-export * from "./KitProvider";
-export { default as KitProvider } from "./KitProvider";
+export * from "./KitStoreProvider";
+export { default as KitStoreProvider } from "./KitStoreProvider";
 export { default as Loading } from "./Loading";
