@@ -6,6 +6,7 @@
   "types": "typings/index.d.ts",
   "files": [
     "dist",
+    "typings",
     "src/styles",
     "src/generated/forms2.tsx"
   ],
