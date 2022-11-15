@@ -148,8 +148,7 @@ export const TableLoading: React.FC = () => {
 };
 
 export const KitTableContext = createContext<{
-  onClearSearchButtonEffect?: () => void;
-  tableCanClearQuery?: (base: string) => boolean;
+  onClearSearchButtonEffect?: (base: string) => void;
 }>({});
 
 export const TableEmpty: React.FC<{
@@ -162,8 +161,7 @@ export const TableEmpty: React.FC<{
   const { t, i18n } = useTranslation();
   const kit = useContext(kitContext);
 
-  const { onClearSearchButtonEffect, tableCanClearQuery } =
-    useContext(KitTableContext);
+  const { onClearSearchButtonEffect } = useContext(KitTableContext);
 
   return (
     <div className="table-default-empty">
@@ -180,8 +178,8 @@ export const TableEmpty: React.FC<{
             type="ordinary"
             onClick={() => {
               setQuery({});
-              if (tableCanClearQuery?.(base) && clearGlobalSearch) {
-                onClearSearchButtonEffect?.();
+              if (clearGlobalSearch) {
+                onClearSearchButtonEffect?.(base);
               }
             }}
           >
