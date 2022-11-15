@@ -1,0 +1,9 @@
+{
+  "initial": "初始化",
+  "group_name": "组织名称",
+  "please_input_group_name": "请输入组织名称",
+  "confirm_password": "确认密码",
+  "confirm_password_again": "请再次输入密码",
+  "diff_password": "两次输入的密码不一致",
+  "super_manager_password": "超级管理员密码"
+}

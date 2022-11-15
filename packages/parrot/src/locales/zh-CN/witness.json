@@ -1,0 +1,8 @@
+{
+  "service_status": "服务状态",
+  "service_name": "服务名称",
+  "running_state": "运行状态",
+  "active": "运行中",
+  "inactive": "未运行",
+  "duration": "持续时间"
+}

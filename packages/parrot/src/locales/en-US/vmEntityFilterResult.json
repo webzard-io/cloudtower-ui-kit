@@ -1,0 +1,8 @@
+{
+  "_action": "Action",
+  "cluster": "Cluster",
+  "vm__memory": "Memory Allocated",
+  "vm__name": "Name",
+  "vm__status": "Status",
+  "vm__vcpu": "vCPU Allocated"
+}

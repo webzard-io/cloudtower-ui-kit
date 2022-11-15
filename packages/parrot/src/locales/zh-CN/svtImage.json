@@ -1,0 +1,11 @@
+{
+  "version_and_release": "版本及分发状况",
+  "not_vm_tools_yet": "尚未添加虚拟机工具 ISO 映像",
+  "upload_vmtools": "上传虚拟机工具 ISO 映像",
+  "upload_vm_tools_image": "上传虚拟机工具共享映像",
+  "current_version": "当前版本",
+  "install_vm_tools_to_cluster": "上传虚拟机工具安装 ISO 映像到集群 {name}",
+  "install_vm_tools_to_cluster_with_version": "上传虚拟机工具安装 ISO 映像版本 {version} 到集群 {name}",
+  "clusters_with_svtImage": "{count}个包含该映像的集群",
+  "invalid_iso": "请上传虚拟机工具的 ISO 文件"
+}

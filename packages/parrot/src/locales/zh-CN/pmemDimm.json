@@ -1,0 +1,11 @@
+{
+  "name": "名称",
+  "health_status": "健康状态",
+  "numa_node": "所属 NUMA Node",
+  "device_locator": "内存插槽",
+  "remaining_life_percent": "剩余寿命",
+  "capacity": "容量",
+  "part_number": "型号",
+  "version": "固件版本",
+  "empty_pmem": "暂无 PMem"
+}

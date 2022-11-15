@@ -1,0 +1,8 @@
+{
+  "_action": "操作",
+  "cluster": "所属集群",
+  "vm__memory": "内存分配",
+  "vm__name": "名称",
+  "vm__status": "状态",
+  "vm__vcpu": "vCPU 分配"
+}

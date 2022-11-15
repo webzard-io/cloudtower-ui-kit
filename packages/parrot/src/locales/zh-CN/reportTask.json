@@ -1,0 +1,7 @@
+{
+  "name": "名称",
+  "createdAt": "生成时间",
+  "template": "报表模板",
+  "delete_generated_report": "删除已生成的报表",
+  "delete_report_confirm": "确认删除已生成报表 <1>{name}</1> 吗？"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "名称",
+  "local_created_at": "创建时间",
+  "labels": "标签",
+  "unique_size": "独占容量",
+  "local_id": "UUID",
+  "empty_snapshot": "暂无一致性快照组",
+  "rollback_snapshot": "回滚一致性快照组",
+  "snapshot_created_time": "该一致性快照组创建于 {time}。",
+  "rollback_confirm": "确认要将一致性组 <0>{group_name}</0> 包含的成员回滚到快照时的状态吗？",
+  "rollback": "回滚",
+  "create_snapshot_fail": "无法创建一致性快照组",
+  "create_snapshot_fail_reason": "一致性组中快照组的数量不能超过 64 个。",
+  "create_snapshot_fail_advice": "请先删除一致性组中部分快照组，再尝试创建。",
+  "create_snapshot_message": "对一致性组 <0>{group_name}</0> 创建当前时间点的快照。",
+  "delete_snapshot_radio": "删除快照",
+  "delete_snapshot_radio_desc": "本操作无法被撤回。该一致性快照组包含的所有快照将会被删除，可释放存储空间：<0>{size}</0>。",
+  "keep_snapshot_radio": "保留快照",
+  "keep_snapshot_radio_desc": "保留的快照可在各成员“详情”的“快照”标签页中查看。",
+  "delete_only_group": "仅删除一致性快照组",
+  "delete_snapshot_and_group": "删除一致性快照组和快照",
+  "delete_select": "该一致性快照组中包含快照。删除一致性快照组时是否一同删除其中包含的快照？"
+}

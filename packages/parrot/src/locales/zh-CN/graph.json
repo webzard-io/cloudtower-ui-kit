@@ -1,0 +1,11 @@
+{
+  "metric_name": "指标名称",
+  "resource_type": "资源类型",
+  "metric_count": "指标数量",
+  "metric_type": "指标类型",
+  "service": "服务",
+  "title": "图表标题",
+  "type": "图表类型",
+  "object": "对象",
+  "topk_object": "最近 2 小时内指标平均值{metric_type}的 {metric_count} 个资源"
+}

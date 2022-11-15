@@ -1,0 +1,14 @@
+{
+  "assigned_size": "分配容量",
+  "belongsCluster": "所属集群",
+  "filter_file": "筛选文件或文件夹",
+  "local_id": "ID",
+  "local_updated_at": "更新时间",
+  "name": "名称",
+  "shared_size": "共享容量",
+  "unique_size": "独占容量",
+  "labels": "标签",
+  "storage_strategy": "存储策略",
+  "replica_num": "副本数",
+  "thin_provision": "置备"
+}
