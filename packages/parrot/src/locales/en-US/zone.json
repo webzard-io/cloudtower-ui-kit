@@ -1,0 +1,13 @@
+{
+  "primary_zone": "Primary Availability Zone",
+  "secondary_zone": "Secondary Availability Zone",
+  "edit_data_center": "Edit the data center",
+  "edit_sub_title": "Change the data center of {type} of the MetroX cluster {name}:",
+  "data_center_empty": "The data center cannot be empty",
+  "zone_name": "Availability zone and cluster",
+  "zone_no_exists": "The availability zone no longer exists",
+  "zone_datacenter_has_primary": "There is already a primary zone in this data center",
+  "zone_datacenter_has_secondary": "There is already a secondary zone in this data center",
+  "primary_to_second": "Primary AZ to Secondary AZ",
+  "second_to_primary": "Secondary AZ to Primary AZ"
+}

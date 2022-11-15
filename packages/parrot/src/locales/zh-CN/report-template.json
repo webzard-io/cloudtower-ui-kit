@@ -1,0 +1,20 @@
+{
+  "generate_report": "生成报表",
+  "generating_report_and_wait": "正在生成报表，请稍候……",
+  "wait_as_too_many_content": "如果报表内容较多，您可能需要等待几秒钟。",
+  "generated": "已生成。",
+  "download_as_excel": "以 Excel 格式下载",
+  "download_as_csv": "以 CSV 格式下载",
+  "cron_plan_enabled": "定时生成计划（已启用）",
+  "set_cron_plan_success": "配置报表生成计划成功",
+  "select_a_date_at_least": "请至少选择一个生成日期",
+  "save_30_report_at_most_per_plan": "每个计划最多保留 30 份自动生成的报表",
+  "save_one_report_at_least_per_plan": "每个计划至少保留 1 份自动生成的报表",
+  "set_report_generate_plan": "配置报表生成计划",
+  "undefined": "为报表模板",
+  "set_more_cron_plan_to_check_or_download_at_generated_report": "配置一个或多个定时生成计划。自动生成的报表可以在“已生成报表”中查看或下载。",
+  "no_cron_plan": "暂无定时计划",
+  "set_plan": "设置定时计划",
+  "add_cron_plan": "添加计划",
+  "can_not_be_empty": "保留份数不能为空"
+}

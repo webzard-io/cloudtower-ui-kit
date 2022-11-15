@@ -1,0 +1,13 @@
+{
+  "path": "Log File Name",
+  "hosts": "Host",
+  "started_at": "Start Time of Collection Task",
+  "status": "Status of Collection Task",
+  "progress": "Progress of Collection Task",
+  "log_started_at": "Log Start Time",
+  "log_ended_at": "Log End Time",
+  "filter": "Log File Name",
+  "cannot_create_log_collection": "Cannot collect cluster logs",
+  "cannot_create_log_collection_desc01": "Cannot collect logs for the cluster <1>{ name }</1>.",
+  "cannot_create_log_collection_desc02": "The response to the log collection service for this cluster is invalid (Error code: 502)."
+}

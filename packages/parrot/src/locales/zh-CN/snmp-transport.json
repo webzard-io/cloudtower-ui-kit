@@ -1,0 +1,13 @@
+{
+  "create_snap_transport": "创建 SNMP 传输",
+  "protocol": "协议",
+  "group": "群组",
+  "privacy_agreement": "隐私协议",
+  "private_key": "私有秘钥",
+  "delete_snmp_transport": "删除 SNMP 传输",
+  "confirm_delete_snmp_transport": "确认删除该 SNMP 传输吗？",
+  "not_update_when_empty": "留空不更新",
+  "password": "用户密码",
+  "edit_snmp_transport": "编辑 SNMP 传输",
+  "encryption_algorithm": "身份认证协议"
+}

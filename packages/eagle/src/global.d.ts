@@ -24,9 +24,9 @@ declare global {
         batchKey: string;
       }
     >;
-    __cloudtower_i18n__: {
-      resources: Resource;
-      i18next: i18n;
+    __cloudtower_i18n__?: {
+      resources?: Resource;
+      i18next?: i18n;
     };
   }
 }

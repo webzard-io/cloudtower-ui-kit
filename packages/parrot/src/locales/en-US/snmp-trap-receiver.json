@@ -1,0 +1,13 @@
+{
+  "add_trap": "Add SNMP Trap Receiver",
+  "remote_ip": "Remote IP",
+  "language": "Language",
+  "english": "English",
+  "simple_chinese": "简体中文",
+  "yes": "Yes",
+  "no": "No",
+  "engine_id": "Engine ID",
+  "delete_trap": "Delete SNMP Trap Receiver",
+  "confirm_delete_trap": "Are you sure to delete this SNMP trap receiver?",
+  "edit_trap": "Edit SNMP Trap Receiver"
+}

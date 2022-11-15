@@ -1,0 +1,16 @@
+{
+  "Bad Request": "The client's request has a syntax error that the server cannot understand.",
+  "Unauthorized": "Request user authentication.",
+  "Forbidden": "The server understands the client's request, but refuses to execute the request.",
+  "Not Found": "The server cannot find the resource based on the client's request.",
+  "Method Not Allowed": "The method in the client request is forbidden.",
+  "Not Acceptable": "The server cannot fulfill the request based on the content characteristics of the client request.",
+  "Proxy Authentication Required": "Request proxy authentication.",
+  "Request Time-out": "The server has been waiting too long for a request from the client.",
+  "Internal Server Error": "The request could not be completed due to an internal server error.",
+  "Not Implemented": "The server does not support the requested function and cannot complete the request.",
+  "Bad Gateway": "A server acting as a gateway or proxy received an invalid response from the remote server when attempting to execute a request.",
+  "Service Unavailable": "Due to overloading or system maintenance, the server is temporarily unable to process the client's request.",
+  "Gateway Time-out": "The server acting as a gateway or proxy did not get the request from the remote server in time.",
+  "HTTP Version not supported": "The server does not support the requested version of the HTTP protocol and cannot complete processing."
+}

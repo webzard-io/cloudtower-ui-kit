@@ -1,0 +1,13 @@
+{
+  "validate_no_title": "请填写概要",
+  "validate_no_desc": "请填写描述",
+  "submit_ticket": "提交 ticket",
+  "ticket_type": "问题类型",
+  "defect": "缺陷",
+  "improvement": "改进",
+  "title": "概要",
+  "annotation": "标注",
+  "session_replay": "操作过程",
+  "submit": "提交",
+  "alpha_input": "输入关键词搜索..."
+}

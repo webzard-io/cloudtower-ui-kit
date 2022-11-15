@@ -2,16 +2,15 @@ import { CloseCircleFilled } from "@ant-design/icons";
 import { useKitDispatch, useKitSelector } from "@cloudtower/eagle/kit/smartx";
 import { KitRootState, ModalActions } from "@cloudtower/eagle/kit/smartx";
 import { kitContext, Modal2Props } from "@cloudtower/eagle/kit/specify";
+import { parrotI18n } from "@cloudtower/parrot";
 import { Modal as AntdModal } from "antd";
 import cs from "classnames";
 import { isNil } from "lodash";
 import React, { useContext, useRef } from "react";
-import { useTranslation } from "react-i18next";
 
 import { ModalFooterError } from "./Error";
 
 const Modal: React.FC<Modal2Props> = (props) => {
-  const { t } = useTranslation();
   const kit = useContext(kitContext);
 
   const {
@@ -32,8 +31,8 @@ const Modal: React.FC<Modal2Props> = (props) => {
     okButtonProps,
     confirmLoading,
     okLoading,
-    okText = t("cluster.confirm"),
-    cancelText = t("common.cancel"),
+    okText = parrotI18n.t("cluster.confirm"),
+    cancelText = parrotI18n.t("common.cancel"),
     size,
     ...modalPropsArgs
   } = props;

@@ -1,0 +1,17 @@
+{
+  "local_created_at": "恢复点",
+  "physical_size": "备份文件大小",
+  "valid_size": "备份有效容量",
+  "type": "备份类型",
+  "creation": "执行类型",
+  "compression_ratio": "压缩比",
+  "local_id": "",
+  "delete_restore_point_title": "删除恢复点",
+  "delete_restore_point_confirm": "删除恢复点 {name} 会导致以下恢复点全部被删除。确认删除以下 {num} 个恢复点吗？",
+  "delete_restore_point_info": "本操作无法被撤回。",
+  "delete_restore_point": "删除 {num} 个恢复点",
+  "cannot_delete_restore_point_title": "无法删除恢复点",
+  "cannot_delete_restore_point": "删除恢复点 {restore_time} 会导致以下恢复点全部被删除。虚拟机基于以下恢复点的备份或恢复任务尚未结束，因此无法删除以下恢复点。",
+  "cannot_delete_restore_point_reason": "无法删除恢复点 <0>{restore_point}</0>。该备份计划所属的备份服务 <1>{backup_service}</1> 正在升级中。",
+  "cannot_delete_restore_point_info": "请等待备份服务升级结束后，再尝试删除恢复点。"
+}

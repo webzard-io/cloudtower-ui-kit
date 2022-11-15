@@ -1,0 +1,18 @@
+{
+  "about": "About",
+  "chinese_text": "中文（简体）",
+  "login_ldap": "LDAP login",
+  "login_localhost": "Local user login",
+  "good_evening": "Good morning",
+  "good_morning": "Good morning",
+  "good_morning_am": "Good morning",
+  "good_afternoon": "Good afternoon",
+  "good_afternoon_pm": "Good afternoon",
+  "good_evening_pm": "Good evening",
+  "good_night": "Good evening",
+  "login": "Login",
+  "switch_user": "Switch account",
+  "locked": "Your account has been locked due to multiple failed login attempts. Please try to log in again in {remainTime} minutes.",
+  "remain_num": "Wrong password. You have {remainMissNum} remaining login attempts, if all fail, your account will be locked for 30 minutes.",
+  "password_expired": "The current password has expired, please <0>Reset Password</0> and try to log in again."
+}

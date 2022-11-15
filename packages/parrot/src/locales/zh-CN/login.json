@@ -1,0 +1,18 @@
+{
+  "about": "关于",
+  "chinese_text": "中文（简体）",
+  "login_ldap": "以 LDAP 登录",
+  "login_localhost": "以本地账户登录",
+  "good_evening": "凌晨好",
+  "good_morning": "早安",
+  "good_morning_am": "上午好",
+  "good_afternoon": "午安",
+  "good_afternoon_pm": "下午好",
+  "good_evening_pm": "傍晚好",
+  "good_night": "晚上好",
+  "login": "登录",
+  "switch_user": "切换用户",
+  "locked": "由于多次登录失败，您的账户已被锁定。请在 {remainTime} 分钟之后尝试再次登录。",
+  "remain_num": "密码错误。您还有 {remainMissNum} 次登录机会，若全部失败，您的账户将会被锁定 30 分钟。",
+  "password_expired": "当前密码已过期，请<0>重置密码</0>后尝试再次登录。"
+}

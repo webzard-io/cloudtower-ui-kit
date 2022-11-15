@@ -1,0 +1,22 @@
+{
+  "basicInfo": "基本信息",
+  "copy": "复制",
+  "createReportTemplate": "创建报表模板",
+  "description": "描述",
+  "execute_plan__period": "定时生成计划",
+  "filterCondition": "筛选条件",
+  "generateReportImmediately": "立即生成报表",
+  "name": "名称",
+  "planSetting": "设置定时生成计划",
+  "reportLists": "自动生成的报表",
+  "reportTemplate": "报表模板",
+  "resourceType": "资源类型",
+  "ALL_RESOURCE": "资产列表",
+  "ALL_RESOURCE_description": "受管的所有物理、虚拟资源和其他管理对象的资产列表",
+  "ENTITY_FILTER": "资源优化",
+  "ENTITY_FILTER_description": "反映资源优化筛选结果的资源列表集合",
+  "task_num": "自动生成的报表",
+  "save_plan_with_plan_and_retain": "{ plan }，保留 { retain } 份",
+  "plan_with_count": "{ count } 个计划",
+  "set_cron_plan_for_template_to_check_with_name": "为报表模板 {name} 设置一个或多个定时生成计划。自动生成的报表可以在“已生成报表”中查看或下载。"
+}

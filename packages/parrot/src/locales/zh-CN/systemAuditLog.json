@@ -1,0 +1,14 @@
+{
+  "action": "事件类型",
+  "cluster": "所属集群",
+  "message": "描述",
+  "local_created_at": "触发时间",
+  "finished_at": "结束时间",
+  "status": "状态",
+  "VM_HA": "虚拟机高可用重建",
+  "AUTO_EXECUTE_BACKUP_PLAN": "自动执行备份计划",
+  "AUTO_DELETE_BACKUP_RESTORE_POINT": "自动删除恢复点",
+  "ADD_DEVICE": "主机新增 USB 设备",
+  "REMOVE_DEVICE": "主机移除 USB 设备",
+  "ENABLE_CPU_EXCLUSIVE": "虚拟机恢复独占"
+}

@@ -114,10 +114,10 @@ export const <%= filtersName %> = (renderer?: Partial<{
               name="<%= field.name %>"
               enumValues={[
                 <% field.values.forEach(v => { -%>
-                  { text: i18next.t('enum.<%= field.enumName %>_<%= v %>'), value: "<%= v %>" },
+                  { text: parrotI18n.t('enum.<%= field.enumName %>_<%= v %>'), value: "<%= v %>" },
                 <% }) -%>
               ]}
-              placeholder={i18next.t('common.all') + (i18next.language === SupportLanguage.en ? ' ' : '') + i18next.t('<%= type %>.<%= field.name %>')}
+              placeholder={parrotI18n.t('common.all') + (parrotI18n.language === SupportLanguage.en ? ' ' : '') + parrotI18n.t('<%= type %>.<%= field.name %>')}
               {...renderer?.["<%= field.name %>"]?.props}
             />,
           <% break -%>
@@ -148,7 +148,7 @@ export const <%= filtersName %> = (renderer?: Partial<{
                   }])
                 }
                 mode="multiple"
-                placeholder={i18next.t('common.all') + (i18next.language === SupportLanguage.en ? ' ' : '') + i18next.t('<%= type %>.<%= field.name %>')}
+                placeholder={parrotI18n.t('common.all') + (i18next.language === SupportLanguage.en ? ' ' : '') + parrotI18n.t('<%= type %>.<%= field.name %>')}
                 {...renderer?.["<%= field.alias || field.name %>"]?.props}
             />)
           },
@@ -209,7 +209,6 @@ const Base<%= tableName %>: React.FC<<%= props %> & {
     rowKey,
   } = props;
   const kit = useContext(kitContext);
-  const { t, i18n } = useTranslation();
   const dispatch = useKitDispatch();
 
   const refetching = networkStatus === NetworkStatus.refetch;
@@ -244,7 +243,7 @@ const Base<%= tableName %>: React.FC<<%= props %> & {
   const allColumns: Column[] = [
     <% visibleFields.forEach((field, fieldIndex) => { -%>
     {
-      title: t("<%= type %>.<%= field.alias || field.name %>"),
+      title: parrotI18n.t("<%= type %>.<%= field.alias || field.name %>"),
       key: "<%= field.alias || field.name %>",
       dataIndex: [<%- field.dataIndex %>],
       <% if (['Int', 'Float'].includes(field.type)) { -%>
@@ -509,7 +508,7 @@ const Base<%= tableName %>: React.FC<<%= props %> & {
     <TableEmpty query={query} setQuery={setQuery} base={'<%= base %>'} />
   );
   // TODO: should show the error correctly  TOWER-614
-  const _error = error && <FailedLoad error={t('cluster.retry_when_access_data_failed')} title={error.message} refetch={refetch} />;
+  const _error = error && <FailedLoad error={parrotI18n.t('cluster.retry_when_access_data_failed')} title={error.message} refetch={refetch} />;
 
 
   return (
@@ -523,7 +522,7 @@ const Base<%= tableName %>: React.FC<<%= props %> & {
             loading={loading && !polling}
             initLoading={initLoading}
             error={_error}
-            key={`<%= tableName %>-${i18n.language}`}
+            key={`<%= tableName %>-${parrotI18n.language}`}
             dataSource={data?.<%= pluralized %>}
             columns={finalColumns}
             onSorterChange={(order, key) => {

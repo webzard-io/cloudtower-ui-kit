@@ -7,10 +7,10 @@ import {
   kitContext,
   StringProps,
 } from "@cloudtower/eagle/kit/specify";
+import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import _ from "lodash";
 import React, { useContext, useRef } from "react";
-import { useTranslation } from "react-i18next";
 
 const AffixWrapper = css`
   height: 32px;
@@ -27,7 +27,6 @@ export const StringField = <T extends Record<string, unknown>>(
   props: FieldProps<T> & StringProps
 ) => {
   const kit = useContext(kitContext);
-  const { t } = useTranslation();
   const { where, setWhere, __rawWhere, ...restProps } = props;
   const name = String(props.name);
 
@@ -61,8 +60,11 @@ export const StringField = <T extends Record<string, unknown>>(
         }}
         meta={{}}
         enumValues={[
-          { value: `${name}_contains`, text: t("common.contains") },
-          { value: `${name}_not_contains`, text: t("common.not_contains") },
+          { value: `${name}_contains`, text: parrotI18n.t("common.contains") },
+          {
+            value: `${name}_not_contains`,
+            text: parrotI18n.t("common.not_contains"),
+          },
         ]}
         defaultValue={refWhere.current.key as string}
       />
@@ -92,7 +94,6 @@ export const BooleanField = <T extends Record<string, unknown>>(
   const name = String(props.name);
   const value = _.get(where, name);
   const parseValue = typeof value === "boolean" ? `${value}` : "all";
-  const { t } = useTranslation();
 
   return (
     <kit.fields.Enum
@@ -111,9 +112,9 @@ export const BooleanField = <T extends Record<string, unknown>>(
       }}
       defaultValue={parseValue}
       enumValues={[
-        { value: "all", text: t("common.all") },
-        { value: "true", text: t("common.enable") },
-        { value: "false", text: t("common.not_enable") },
+        { value: "all", text: parrotI18n.t("common.all") },
+        { value: "true", text: parrotI18n.t("common.enable") },
+        { value: "false", text: parrotI18n.t("common.not_enable") },
       ]}
       meta={{}}
       {...restProps}
@@ -282,7 +283,6 @@ export const EnumField = <T extends Record<string, unknown>>(
   props: FieldProps<T, string[]> & EnumProps
 ) => {
   const kit = useContext(kitContext);
-  const { t } = useTranslation();
   const { where, setWhere, enumValues, placeholder, __rawWhere, ...restProps } =
     props;
   const name = String(props.name);
@@ -290,7 +290,7 @@ export const EnumField = <T extends Record<string, unknown>>(
 
   return (
     <kit.fields.Enum
-      emptyLabel={t("common.all")}
+      emptyLabel={parrotI18n.t("common.all")}
       input={{
         value: _.get(where, key) || "",
         onChange: (e: string[]) =>

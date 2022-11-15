@@ -9,6 +9,7 @@ import {
   Kit,
   TextAreaProps,
 } from "@cloudtower/eagle/kit/specify";
+import { parrotI18n } from "@cloudtower/parrot";
 import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { Field } from "@smartx/react-final-form";
@@ -53,7 +54,6 @@ import _ from "lodash";
 import moment from "moment";
 import React, { Fragment, ReactNode, useEffect, useMemo, useRef } from "react";
 import { findDOMNode } from "react-dom";
-import { useTranslation } from "react-i18next";
 import { isElement } from "react-is";
 
 import { FullView, Typo } from "../../../styles";
@@ -684,10 +684,9 @@ export const RightEndSelectStyle = css`
 
 const Arch: Kit["arch"] = (props) => {
   const { architecture } = props;
-  const { i18n } = useTranslation();
   let text = "";
   if (architecture) {
-    text = i18n.td(`enum.Architecture_${architecture}`);
+    text = parrotI18n.t(`enum.Architecture_${architecture}`);
   }
   return <span>{text}</span>;
 };
@@ -1146,12 +1145,11 @@ export function getAntdKit(): Kit {
     },
     units: {
       Byte({ rawValue, noUnitOnZero, decimals }) {
-        const { t } = useTranslation();
         if (isEmpty(rawValue)) {
           return Empty;
         }
         if (rawValue === -1) {
-          return <span>{t("iscsiTarget.calculation")}</span>;
+          return <span>{parrotI18n.t("iscsiTarget.calculation")}</span>;
         }
         const { value, unit } = formatBytes(rawValue, decimals);
         if (noUnitOnZero && value === 0) {
@@ -1237,7 +1235,6 @@ export function getAntdKit(): Kit {
         );
       },
       Second({ rawValue, decimals, abbreviate }) {
-        const { i18n } = useTranslation();
         if (isEmpty(rawValue)) {
           return Empty;
         }
@@ -1246,7 +1243,9 @@ export function getAntdKit(): Kit {
           <span>
             <span className="value">{value} </span>
             <span className="unit">
-              {i18n.td(`common.${abbreviate ? `${unit}_abbreviation` : unit}`)}
+              {parrotI18n.t(
+                `common.${abbreviate ? `${unit}_abbreviation` : unit}`
+              )}
             </span>
           </span>
         );

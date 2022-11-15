@@ -1,0 +1,13 @@
+{
+  "create_snap_transport": "Create SNMP Transport",
+  "protocol": "Protocol",
+  "group": "Group",
+  "privacy_agreement": "Privacy Protocol",
+  "private_key": "Private Key",
+  "delete_snmp_transport": "Delete SNMP Transport",
+  "confirm_delete_snmp_transport": "Are you sure to delete this SNMP transport?",
+  "not_update_when_empty": "Leave blank without updating",
+  "password": "Password",
+  "edit_snmp_transport": "Edit SNMP Transport",
+  "encryption_algorithm": "Authentication Protocol"
+}

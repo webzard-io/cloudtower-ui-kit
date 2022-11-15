@@ -1,0 +1,9 @@
+{
+  "initial": "Initialize",
+  "group_name": "Organization Name",
+  "please_input_group_name": "Please enter the organization name",
+  "confirm_password": "Confirm Password",
+  "confirm_password_again": "Please enter your password again",
+  "diff_password": "The two entered passwords are inconsistent",
+  "super_manager_password": "Super administrator password"
+}

@@ -1,0 +1,16 @@
+{
+  "menu": "Menu",
+  "sync_succeed": "Data synchronization completed",
+  "sync_failed": "Data synchronization failed",
+  "sync_HOST": "Synchronize Host Data",
+  "sync_DISK": "Synchronize Physical Disk Data",
+  "sync_NIC": "Synchronize Network Port Data",
+  "sync_VM": "Synchronize Virtual Machine Data",
+  "times": "times",
+  "personal_settings": "Personal Settings",
+  "personal_info": "Personal Info",
+  "account_safety": "Account Security",
+  "contact_info": "Contact Info",
+  "change": "Modify",
+  "sync_NVMF_SUBSYSTEM": "Synchronize NVMe Subsystem"
+}

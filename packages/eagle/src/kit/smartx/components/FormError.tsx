@@ -1,3 +1,4 @@
+import { parrotI18n } from "@cloudtower/parrot";
 import { styled } from "@linaria/react";
 import {
   ARRAY_ERROR,
@@ -12,32 +13,28 @@ import {
   useField,
   useFormState,
 } from "@smartx/react-final-form";
-import { i18n as I18nType, TOptions } from "i18next";
+import { i18n, i18n as I18nType, TOptions } from "i18next";
 import _ from "lodash";
 import React, { ReactElement } from "react";
-import { useTranslation, UseTranslationResponse } from "react-i18next";
 
 // TODO handle this by better error code from connector
 const UNSAFE_EXTRACT_DATA_REG = /message:\s*?({.+})/;
 const UNSAFE_EXTRACT_ERROR_REG = /"error":\s*?"([^"]+)"/;
 
-function extractJsonError(
-  msg: string,
-  i18n: UseTranslationResponse["i18n"]
-): string | false {
+function extractJsonError(msg: string, parrotI18n: i18n): string | false {
   try {
     const data = JSON.parse(msg);
     const ec = data["ec"];
     if (ec === "EOK") {
       return false;
     }
-    if (data[i18n.language]) {
-      return data[i18n.language];
+    if (data[parrotI18n.language]) {
+      return data[parrotI18n.language];
     } else if (ec) {
-      return i18n.exists(`error.${`EC_${ec}`}`)
-        ? i18n.td(`error.${`EC_${ec}`}`)
-        : i18n.exists(`error.${ec}`)
-        ? i18n.td(`error.${ec}`)
+      return parrotI18n.exists(`error.${`EC_${ec}`}`)
+        ? parrotI18n.t(`error.${`EC_${ec}`}`)
+        : parrotI18n.exists(`error.${ec}`)
+        ? parrotI18n.t(`error.${ec}`)
         : ec;
     } else {
       return false;
@@ -50,14 +47,14 @@ function extractJsonError(
 export function tryToExtractError(
   error_code: string | null | undefined,
   msg: string | null | undefined,
-  i18n: UseTranslationResponse["i18n"]
+  i18n: i18n
 ): { msg: string; key?: string; options?: TOptions } {
   if (!msg) {
     return { msg: "" };
   }
 
   if (msg.startsWith("EC_")) {
-    return { msg: i18n.td(`error.${msg}`) };
+    return { msg: parrotI18n.t(`error.${msg}`) };
   }
 
   const errorInJson = extractJsonError(msg, i18n);
@@ -77,7 +74,7 @@ export function tryToExtractError(
         const [, info = ""] = matched2[1].match(reg) || [];
         if (info) {
           return {
-            msg: i18n.td("error.EC_GUEST_SET_USER_PASSWORD_FAILED", {
+            msg: parrotI18n.t("error.EC_GUEST_SET_USER_PASSWORD_FAILED", {
               info: info.trim(),
             }),
           };
@@ -90,7 +87,7 @@ export function tryToExtractError(
         if (i18n.exists(`error.${error_code}`)) {
           return {
             key: error_code,
-            msg: i18n.td(`error.${error_code}`),
+            msg: parrotI18n.t(`error.${error_code}`),
           };
         }
       }
@@ -105,12 +102,12 @@ export function tryToExtractError(
       msg.includes("connect EHOSTUNREACH")
     ) {
       return {
-        msg: i18n.td("error.EC_TIME_OUT"),
+        msg: parrotI18n.t("error.EC_TIME_OUT"),
       };
     }
     if (i18n.exists(`error.${error_code}`)) {
       return {
-        msg: i18n.td(`error.${error_code}`),
+        msg: parrotI18n.t(`error.${error_code}`),
       };
     }
     return {
@@ -133,7 +130,7 @@ export function tryToExtractError(
           escapeValue: false,
         },
       };
-      return { msg: i18n.td(key, options), key, options };
+      return { msg: parrotI18n.t(key, options), key, options };
     }
     if (elfJobData?.job?.task_list) {
       const errorTask = elfJobData.job.task_list
@@ -152,7 +149,7 @@ export function tryToExtractError(
             escapeValue: false,
           },
         };
-        return { msg: i18n.td(key, options), key, options };
+        return { msg: parrotI18n.t(key, options), key, options };
       }
     }
     if (elfJobData?.ec) {
@@ -163,10 +160,10 @@ export function tryToExtractError(
           escapeValue: false,
         },
       };
-      return { msg: i18n.td(key, options), key, options };
+      return { msg: parrotI18n.t(key, options), key, options };
     }
     if (i18n.exists(`error.${error_code}`)) {
-      return { msg: i18n.td(`error.${error_code}`) };
+      return { msg: parrotI18n.t(`error.${error_code}`) };
     }
     return { msg: "parsed" };
   } catch (error) {
@@ -223,7 +220,7 @@ export const findFirstError = (
 
 export function analyzeFallbackError(
   fallback: unknown,
-  i18n: I18nType
+  parrotI18n: i18n
 ): {
   msg: string;
   originalMsg: string;
@@ -235,7 +232,7 @@ export function analyzeFallbackError(
   const code = (fallback as MaybeGraphqlError).graphQLErrors?.find(
     (e) => e.code
   )?.code;
-  const codeTrans = i18n.td(`error.${code}`);
+  const codeTrans = parrotI18n.t(`error.${code}`);
   const originalMsg = (fallback as MaybeGraphqlError).graphQLErrors?.find(
     (e) => e.message
   )?.message;
@@ -245,7 +242,11 @@ export function analyzeFallbackError(
     // 'ELF_ERROR' is a fallback error code provided by connector,
     // which may need to be extracted to get the expected message
     if (code === "ELF_ERROR") {
-      const extractResult = tryToExtractError(code, originalMsg, i18n).msg;
+      const extractResult = tryToExtractError(
+        code,
+        originalMsg,
+        parrotI18n
+      ).msg;
       if (extractResult !== msg) msg = extractResult;
     }
   } else if (originalMsg) {
@@ -259,7 +260,6 @@ export const SubmitError: React.FC<{
   fallback?: unknown;
 }> = (props) => {
   const { className, fallback } = props;
-  const { t, i18n } = useTranslation();
   return (
     <FormSpy
       subscription={{
@@ -275,7 +275,7 @@ export const SubmitError: React.FC<{
           hasValidationErrors ? errors : submitErrors
         );
         if (!err || !submitFailed) {
-          const error = analyzeFallbackError(fallback, i18n);
+          const error = analyzeFallbackError(fallback, parrotI18n);
           if (!error) {
             return null;
           }
@@ -293,12 +293,12 @@ export const SubmitError: React.FC<{
         const params = payload ? { ...payload, ...param } : param;
         const isArray = _.isArray(err["msg"]);
         if (FORM_ERROR in err) {
-          msg = t(err[FORM_ERROR], params);
+          msg = parrotI18n.t(err[FORM_ERROR], params);
           return <FormError className={className}>{msg}</FormError>;
         }
         if (isArray) {
           if (err["msg"][ARRAY_ERROR]) {
-            msg = t(err["msg"][ARRAY_ERROR], params);
+            msg = parrotI18n.t(err["msg"][ARRAY_ERROR], params);
             return <FormError className={className}>{msg}</FormError>;
           } else {
             const field = err["msg"].find((item: unknown) => item !== null);
@@ -308,12 +308,12 @@ export const SubmitError: React.FC<{
             const msg = deepGetErrorKey(field);
             return msg ? (
               <FormError className={className}>
-                {i18n.td(`validation.${msg}`)}
+                {parrotI18n.t(`validation.${msg}`)}
               </FormError>
             ) : null;
           }
         } else {
-          msg = t(err["msg"], params);
+          msg = parrotI18n.t(err["msg"], params);
           return <FormError className={className}>{msg}</FormError>;
         }
       }}
@@ -326,9 +326,8 @@ export const V2AnalyzedError: React.FC<{
   fallback?: unknown;
 }> = (props) => {
   const { className, fallback } = props;
-  const { i18n } = useTranslation();
 
-  const error = analyzeFallbackError(fallback, i18n);
+  const error = analyzeFallbackError(fallback, parrotI18n);
   if (!error) {
     return null;
   }
@@ -347,7 +346,6 @@ const FieldError: <T>(props: {
   name: string;
   children?: (props: FieldRenderProps<T>) => ReactElement;
 }) => ReactElement | null = ({ name, children }) => {
-  const { t } = useTranslation();
   const info = useField(name, {
     subscription: {
       touched: true,
@@ -374,7 +372,9 @@ const FieldError: <T>(props: {
     fieldError &&
     typeof fieldError === "string") ||
     (!dirtySinceLastSubmit && submitError) ? (
-    <FormError>{t(fieldError, param) || extract(submitError)}</FormError>
+    <FormError>
+      {parrotI18n.t(fieldError, param) || extract(submitError)}
+    </FormError>
   ) : null;
 };
 

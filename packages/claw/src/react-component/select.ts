@@ -51,7 +51,7 @@ export const plugin: PluginFunction = async (schema, documents, config) => {
     "import/first",
     "*/",
     'import React, { useEffect, useContext, useRef, useState, useMemo } from "react";',
-    "import { useTranslation } from 'react-i18next';",
+    "import { parrotI18n } from '@cloudtower/parrot';",
     "import _ from 'lodash';",
     "import { kitContext } from '@cloudtower/eagle/kit/specify';",
     "import { KitSelectProps } from '@cloudtower/eagle/kit/specify';",

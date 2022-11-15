@@ -1,0 +1,11 @@
+{
+  "name": "Name",
+  "health_status": "Health Status",
+  "numa_node": " NUMA Node",
+  "device_locator": "Memory Slot",
+  "remaining_life_percent": "Remaining Lifetime",
+  "capacity": "Capacity",
+  "part_number": "Part Number",
+  "version": "Firmware Version",
+  "empty_pmem": "No PMem"
+}

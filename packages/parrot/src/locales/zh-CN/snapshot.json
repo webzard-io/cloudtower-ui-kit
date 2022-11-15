@@ -1,0 +1,18 @@
+{
+  "vm_snapshot_will_not_include": "虚拟机快照中将不包含原虚拟机中的",
+  "contains_special_rules": "名称仅支持英文字母、数字、下划线（_）、连字符（-）",
+  "nic": "网卡",
+  "ip_address": "IP 地址",
+  "hot_add_not_enabled": "未启用热添加",
+  "disks_will_rebuild": "回滚将会重建如下虚拟盘，并挂载到虚拟机：",
+  "disks_will_rebuild_title": "将会重建并重新挂载的虚拟盘",
+  "disks_will_unmount": "快照中不包含如下虚拟盘，回滚会引起卸载：",
+  "disks_will_unmount_title": "将会被卸载的虚拟盘",
+  "disks_cannot_rebuild": "快照中如下虚拟盘在创建快照后被挂载至其他虚拟机，将无法被回滚：",
+  "disks_cannot_rebuild_title": "无法被回滚的虚拟盘",
+  "snapshot_would_not_contain_usb_device": "虚拟机快照中将不会包含虚拟机挂载的直通 USB 设备。",
+  "labels": "标签",
+  "has_deleted_images": "该快照中存在 CD-ROM 所使用的 ISO 映像已经被删除，回滚后 CD-ROM 中将不包含原 ISO 映像。",
+  "images_will_unmount": "快照中不包含如下 ISO 映像，回滚将会引起卸载：",
+  "images_will_unmount_title": "将会被卸载的 ISO 映像"
+}

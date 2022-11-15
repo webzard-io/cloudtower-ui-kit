@@ -1,0 +1,9 @@
+{
+  "name": "名称",
+  "unique_size": "独占容量",
+  "consistency_group": "所属一致性组",
+  "local_created_at": "创建时间",
+  "iscsi_lun": "所属 LUN",
+  "rollback_lun_desc": "确定要将 LUN  <1>{lunName}</1> 回滚至快照 <3>{lunSnapshotName}</3> 的状态吗？",
+  "rollback_lun_desc2": "该快照创建于 {time}。"
+}

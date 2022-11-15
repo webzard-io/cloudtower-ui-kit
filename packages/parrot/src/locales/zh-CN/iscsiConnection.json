@@ -1,0 +1,12 @@
+{
+  "host": "接入主机",
+  "initiator_ip": "客户端 IP",
+  "client_port": "客户端端口",
+  "access_ip": "接入 IP",
+  "iscsi_target": "已连接 Target",
+  "nvmf_subsystem": "已连接 Subsystem",
+  "type": "存储对象类型",
+  "connection_object": "已连接的存储对象",
+  "iscsi_target__name": "已连接的存储对象",
+  "tr_type": "传输类型"
+}
