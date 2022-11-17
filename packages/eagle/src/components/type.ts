@@ -3,7 +3,7 @@ import {
   Maybe,
   Metric,
   MetricStream,
-} from "@tower/utils/lib/generated/types";
+} from "@cloudtower/eagle/generated/react-hooks";
 import { TFunction } from "i18next";
 
 export type FormatName = (params: {

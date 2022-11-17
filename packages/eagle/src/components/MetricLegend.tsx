@@ -1,11 +1,11 @@
 import { DoubleRightOutlined } from "@ant-design/icons";
+import { Maybe, MetricStream } from "@cloudtower/eagle/generated/react-hooks";
 import { ExtraOverflow } from "@cloudtower/eagle/kit/smartx";
 import { Truncate } from "@cloudtower/eagle/kit/smartx";
 import { kitContext } from "@cloudtower/eagle/kit/specify";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { getMetricQueryType } from "@tower/utils";
-import { Maybe, MetricStream } from "@tower/utils/lib/generated/types";
 import { Menu } from "antd";
 import cs from "classnames";
 import { TFunction } from "i18next";

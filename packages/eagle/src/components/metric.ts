@@ -1,3 +1,14 @@
+import {
+  DataPoint,
+  GraphType,
+  Maybe,
+  MetricLabelInput,
+  MetricStream,
+  MetricType,
+  MetricUnit,
+  NetworkType,
+  TimeUnit,
+} from "@cloudtower/eagle/generated/react-hooks";
 import { DateRange } from "@cloudtower/eagle/kit/specify/type";
 import {
   Cluster,
@@ -20,17 +31,6 @@ import {
   SECOND,
   WEEK,
 } from "@tower/utils";
-import {
-  DataPoint,
-  GraphType,
-  Maybe,
-  MetricLabelInput,
-  MetricStream,
-  MetricType,
-  MetricUnit,
-  NetworkType,
-  TimeUnit,
-} from "@tower/utils/lib/generated/types";
 import dayjs from "dayjs";
 import { TFunction } from "i18next";
 import _ from "lodash";

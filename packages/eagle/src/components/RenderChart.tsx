@@ -1,7 +1,3 @@
-import { DateRange, useHistory } from "@cloudtower/eagle/kit/specify";
-import { css, cx } from "@linaria/core";
-import { styled } from "@linaria/react";
-import { getMetricQueryType, MetricLabels, parseLabel } from "@tower/utils";
 import {
   ClusterType,
   DataPoint,
@@ -10,7 +6,11 @@ import {
   Maybe,
   MetricLabelInput,
   MetricUnit,
-} from "@tower/utils/lib/generated/types";
+} from "@cloudtower/eagle/generated/react-hooks";
+import { DateRange, useHistory } from "@cloudtower/eagle/kit/specify";
+import { css, cx } from "@linaria/core";
+import { styled } from "@linaria/react";
+import { getMetricQueryType, MetricLabels, parseLabel } from "@tower/utils";
 import cs from "classnames";
 import { t } from "i18next";
 import React, { useMemo, useState } from "react";
