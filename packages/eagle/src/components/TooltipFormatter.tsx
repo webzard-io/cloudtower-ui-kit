@@ -1,9 +1,9 @@
 import { ChartState, useKitSelector } from "@cloudtower/eagle/kit/smartx";
 import { styled } from "@linaria/react";
+import { MetricUnit } from "@tower/utils/lib/generated/types";
 import { TooltipProps } from "recharts";
 import { Payload as TooltipPayload } from "recharts/types/component/DefaultTooltipContent";
 
-import { MetricUnit } from "../generated/react-hooks";
 import { transformDataAndUnit, UNIT_FORMATTER } from "./metric";
 import { ColorBlock, LegendComponent } from "./MetricLegend";
 

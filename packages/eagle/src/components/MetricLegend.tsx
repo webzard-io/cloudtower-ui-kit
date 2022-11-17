@@ -5,13 +5,13 @@ import { kitContext } from "@cloudtower/eagle/kit/specify";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { getMetricQueryType } from "@tower/utils";
+import { Maybe, MetricStream } from "@tower/utils/lib/generated/types";
 import { Menu } from "antd";
 import cs from "classnames";
 import { TFunction } from "i18next";
 import React, { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Maybe, MetricStream } from "../generated/react-hooks";
 import { FormatName, IMetricData } from "./type";
 
 export const metricColors = [
