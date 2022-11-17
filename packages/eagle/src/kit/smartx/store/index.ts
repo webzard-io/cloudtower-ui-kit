@@ -1,6 +1,12 @@
 import { combineReducers, createStore } from "redux";
 
 import {
+  Actions as ChartActionType,
+  chartReducer,
+  ChartState,
+  initialChartState,
+} from "./chart";
+import {
   Actions as ModalActionType,
   CloseCb,
   IModalProps,
@@ -17,18 +23,25 @@ import {
   TableState,
 } from "./table";
 
+export { ChartActions } from "./chart";
+export { ModalActions } from "./modal";
+export { TableActions } from "./table";
+
 export type KitRootState = {
+  chart: ChartState;
   modal: ModalState;
   table: TableState;
 };
 
 const appReducer = combineReducers({
+  chart: chartReducer,
   modal: modalReducer,
   table: tableReducer,
 });
 
 export type Actions =
   | ModalActionType
+  | ChartActionType
   | TableActionType
   | {
       type: "RESET";
@@ -40,6 +53,7 @@ export const rootReducer = (
   if (action.type === "RESET") {
     state = {
       modal: initialModalState,
+      chart: initialChartState,
       table: initialTableState,
     };
   }
@@ -74,5 +88,6 @@ export function closeModal(id: number) {
 export type GetModalProps<K extends keyof IModalProps> = IModalProps[K] &
   CloseCb;
 
+export * from "./chart";
 export * from "./modal";
 export * from "./table";
