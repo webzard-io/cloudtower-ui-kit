@@ -36,6 +36,11 @@
       "require": "./dist/umd/generated/global-search.js",
       "types": "./typings/generated/global-search.d.ts"
     },
+    "./generated/images-type": {
+      "import": "./dist/esm/generated/images-type.js",
+      "require": "./dist/umd/generated/images-type.js",
+      "types": "./typings/generated/images-type.d.ts"
+    },
     "./generated/react-hooks": {
       "import": "./dist/esm/generated/react-hooks.js",
       "require": "./dist/umd/generated/react-hooks.js",
@@ -82,6 +87,9 @@
       ],
       "generated/global-search": [
         "./typings/generated/global-search.d.ts"
+      ],
+      "generated/images-type": [
+        "./typings/generated/images-type.d.ts"
       ],
       "generated/react-hooks": [
         "./typings/generated/react-hooks.d.ts"
