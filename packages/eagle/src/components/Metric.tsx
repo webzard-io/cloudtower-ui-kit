@@ -1,3 +1,12 @@
+import {
+  DataPoint,
+  GraphType,
+  MetricLabelInput,
+  MetricUnit,
+  TimeUnit,
+} from "@cloudtower/eagle/generated/react-hooks";
+import { ErrorBoundary } from "@cloudtower/eagle/kit/smartx";
+import { DateRange } from "@cloudtower/eagle/kit/specify";
 import { styled } from "@linaria/react";
 import { getMetricQueryType, makeUUID } from "@tower/utils";
 import cs from "classnames";
@@ -7,15 +16,6 @@ import React, { useEffect, useImperativeHandle, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FullView } from "src/styles";
 
-import {
-  DataPoint,
-  GraphType,
-  MetricLabelInput,
-  MetricUnit,
-  TimeUnit,
-} from "../generated/react-hooks";
-import { ErrorBoundary } from "../kit/smartx";
-import { DateRange } from "../kit/specify";
 import {
   IClusterBasicQuery,
   MetricRefType,
