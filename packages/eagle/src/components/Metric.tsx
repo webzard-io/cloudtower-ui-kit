@@ -138,7 +138,7 @@ export type MetricProps = {
   formatLegendItemName?: FormatName;
 };
 
-export const MetricComponent = React.forwardRef<
+export const Metric = React.forwardRef<
   MetricRefType,
   MetricProps & {
     chartData: IMetricsQuery;
@@ -256,4 +256,4 @@ export const MetricComponent = React.forwardRef<
   );
 });
 
-export default MetricComponent;
+export default Metric;
