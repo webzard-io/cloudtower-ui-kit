@@ -124,6 +124,7 @@
     "history": "^4.9"
   },
   "devDependencies": {
+    "@apollo/react-hooks": "^3",
     "@cloudtower/claw": "^0.8.1",
     "@graphql-codegen/cli": "^1.12",
     "@graphql-codegen/client-preset": "^1.0.6",
