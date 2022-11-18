@@ -81,32 +81,6 @@ type exportCSVDataType = {
   unit?: MetricUnit;
 };
 
-export type ChartProps = {
-  metric: string;
-  labels?: MetricLabelInput;
-  clusterId: string;
-  yAxisAlign?: "left" | "right";
-  showXaxis?: boolean;
-  showLegend?: boolean;
-  showMenu?: boolean;
-  uuid: string;
-  height: number;
-  topk?: number;
-  bottomk?: number;
-  range: string;
-  type: GraphType;
-  mode?: "simple" | "legend" | "single";
-  service?: Maybe<string>;
-  resourceType?: Maybe<string>;
-  offScreen: boolean;
-  averageLine?: boolean;
-  addView?: () => void;
-  exportCSV?: () => void;
-  onChartDataChange?: (data: Array<exportCSVDataType>) => void;
-  dateRange?: DateRange;
-  formatLegendItemName?: FormatName;
-};
-
 export type MetricProps = {
   groupId?: string;
   metric: string;
@@ -132,7 +106,7 @@ export type MetricProps = {
   service?: Maybe<string>;
   resourceType?: Maybe<string>;
   averageLine?: boolean;
-  addView?: () => void;
+  dropdown?: React.ReactNode;
   exportCSVTitle?: string;
   dateRange?: DateRange;
   formatLegendItemName?: FormatName;
@@ -161,7 +135,7 @@ export const Metric = React.forwardRef<
     bottomk,
     timeSpan = "2h",
     resourceType = "",
-    addView,
+    dropdown,
     exportCSVTitle,
     chartData,
     topkData,
@@ -243,8 +217,7 @@ export const Metric = React.forwardRef<
               range={stringifyTimeSpan(timeSpan)}
               type={type}
               resourceType={resourceType}
-              addView={addView}
-              exportCSV={() => exportCSV(exportCSVTitle || "")}
+              dropdown={dropdown}
               onChartDataChange={onChartDataChange}
               {...restProps}
             />

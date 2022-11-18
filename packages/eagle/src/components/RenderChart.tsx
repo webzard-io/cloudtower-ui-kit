@@ -125,8 +125,7 @@ export interface IChartProps {
   service?: Maybe<string>;
   resourceType?: Maybe<string>;
   averageLine?: boolean;
-  addView?: () => void;
-  exportCSV?: () => void;
+  dropdown?: React.ReactNode;
   onChartDataChange?: (data: Array<exportCSVDataType>) => void;
   dateRange?: DateRange;
   formatLegendItemName?: FormatName;
@@ -156,9 +155,8 @@ const RenderChart: React.FC<
     mode = "legend",
     service,
     averageLine = false,
+    dropdown,
     resourceType,
-    addView,
-    exportCSV,
     dateRange,
     formatLegendItemName,
     hidePointer,
@@ -394,9 +392,7 @@ const RenderChart: React.FC<
           ) : (
             <LegendComponent metric={metric} onLabelsChange={onLabelsChange} />
           ))}
-        {showMenu && (
-          <Actions info={info} addView={addView} exportCSV={exportCSV} />
-        )}
+        {showMenu && <Actions info={info} dropdown={dropdown} />}
       </div>
       <ResponsiveContainer height={height}>
         <AreaChart
