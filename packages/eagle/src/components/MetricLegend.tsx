@@ -8,12 +8,11 @@ import { css } from "@linaria/core";
 import { getMetricQueryType } from "@tower/utils";
 import { Menu } from "antd";
 import cs from "classnames";
-import { TFunction } from "i18next";
 import React, { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { getColorsByMetric, metricColors } from "./metric";
-import { FormatName, IMetricData } from "./type";
+import { FormatName } from "./type";
 
 const LegendStyle = css`
   display: flex;
@@ -69,150 +68,13 @@ export const ColorBlock: React.FC<{
   <div className={cs(ColorBlockStyle, "color-block")} style={{ background }} />
 );
 
-const getDeselectedValueWithSuffix = (
+export type GetDeselectedValueWithSuffix<MetricData extends { id: string }> = (
   type: string | undefined,
-  data: IMetricData,
+  data: MetricData,
   metricName: string,
   sample_stream?: MetricStream
-) => {
-  const result = getDeselectedValue(type, data, metricName, sample_stream);
-  let suffix = "";
-  if (
-    metricName.includes("_read_write_") &&
-    sample_stream?.labels?.metric_name
-  ) {
-    suffix = sample_stream?.labels.metric_name.includes("_write_")
-      ? "-write"
-      : "-read";
-  }
-  return `${result}${suffix}`;
-};
-
-const getDeselectedValue = (
-  type: string | undefined,
-  data: IMetricData,
-  metricName: string,
-  sample_stream?: MetricStream
-) => {
-  if (!data) {
-    return "";
-  }
-  switch (metricName) {
-    case "host_cpu_temperature_celsius":
-      return data.local_id + data.cpu;
-    default:
-      break;
-  }
-
-  switch (type) {
-    case "host":
-    case "scvm": {
-      if (metricName.includes("_network_ping_packet")) {
-        return data.local_id + "_" + (sample_stream?.labels?.to_hostname || "");
-      }
-      return data.local_id;
-    }
-    case "zbs_chunk":
-      return data.chunk_id;
-    case "host_service":
-      return data.local_id;
-    case "host_network":
-      return data.name + data.host.local_id;
-    case "vm_network":
-      return (data.mac_address || "") + data.vm.local_id;
-    case "disk":
-    case "scvm_disk":
-      return `${data.name}${data.host?.local_id}`;
-    case "iscsi_lun":
-      return data.zbs_volume_id + sample_stream?.labels?.instance;
-    case "nvmf_namespace":
-      return data.zbs_volume_id + sample_stream?.labels?.instance;
-    default:
-      return data.local_id;
-  }
-};
-
-const formatName: FormatName = (params) => {
-  const { type, data, service, metricName, t, sample_streams, dIndex } = params;
-  if (!data) {
-    return "";
-  }
-  const readWriteRender = readWrite({
-    metricName,
-    t,
-    sample_streams,
-    dIndex,
-  });
-  switch (metricName) {
-    case "host_cpu_temperature_celsius":
-      return `[${data.name}]${data.cpu}`;
-    case "host_network_ping_packet_loss_percent":
-      return `[${data.name}] to [${sample_streams[dIndex].labels.to_hostname}]`;
-    default:
-      break;
-  }
-
-  switch (type) {
-    case "host_network":
-      return `[${data.host?.name || t("enum.VmStatus_UNKNOWN")}]${
-        data.name
-      }${readWriteRender}`;
-    case "vm_network":
-      return `[${data.vm?.name || t("enum.VmStatus_UNKNOWN")}]${
-        data.name
-      }${readWriteRender}`;
-    case "host_service":
-      return `${data.name}/${service}${readWriteRender}`;
-    case "disk":
-      return `${data.host?.name || t("enum.VmStatus_UNKNOWN")}/${
-        data.name
-      }${readWriteRender}`;
-    case "scvm":
-      return `${data.scvm_name}`;
-    case "scvm_disk":
-      return `${data.host?.scvm_name || t("enum.VmStatus_UNKNOWN")}/${
-        data.name
-      }${readWriteRender}`;
-    case "scvm_network":
-      return `[${data.host.scvm_name}] ${data.name}`;
-    case "iscsi_lun":
-      return `${data.name}/${
-        sample_streams[dIndex].labels.instance?.split(":")[0]
-      }${readWriteRender}`;
-    case "nvmf_namespace":
-      return `${data.name}/${
-        sample_streams[dIndex].labels.instance?.split(":")[0]
-      }${readWriteRender}`;
-    case "zone":
-      return `${
-        data.is_preferred
-          ? t("zone.primary_to_second")
-          : t("zone.second_to_primary")
-      }`;
-    default:
-      return `${data.name}${readWriteRender}`;
-  }
-};
-
-const readWrite = (params: {
-  metricName: string;
-  t: TFunction;
-  sample_streams: MetricStream[];
-  dIndex: number;
-}) => {
-  const { metricName, t, sample_streams, dIndex } = params;
-  if (metricName.includes("read_write")) {
-    if (sample_streams[dIndex].labels.metric_name?.includes("_write_")) {
-      return `-${t("metric.write")}`;
-    } else {
-      return `-${t("metric.read")}`;
-    }
-  }
-  return "";
-};
-
-// TODO: when too many, refer to the fisheye
-const MetricLegend: React.FC<{
+) => string;
+interface IProps<MetricData extends { id: string }> {
   sample_streams: MetricStream[];
   metricName: string;
   deselected: string[];
@@ -220,32 +82,36 @@ const MetricLegend: React.FC<{
   service?: Maybe<string>;
   resourceType?: Maybe<string>;
   onLabelsChange?: (labels: string[]) => void;
-  formatLegendItemName?: FormatName;
-  data: IMetricData[];
-}> = (props) => {
+  formatLegendItemName: FormatName<MetricData>;
+  getDeselectedValueWithSuffix: GetDeselectedValueWithSuffix<MetricData>;
+  data: MetricData[];
+}
+
+// TODO: when too many, refer to the fisheye
+const MetricLegend = <MetricData extends { id: string }>(
+  props: IProps<MetricData>
+) => {
   const {
     sample_streams,
     metricName,
-
     deselected,
     onClick,
     service,
     resourceType,
     onLabelsChange,
     formatLegendItemName,
+    getDeselectedValueWithSuffix,
     data,
   } = props;
   const kit = useContext(kitContext);
 
   const metricType = getMetricQueryType(metricName, resourceType || "");
 
-  const _formatName = formatLegendItemName || formatName;
-
   useEffect(() => {
     let labels: string[] = [];
     if (data && data.length > 0) {
       labels = data.map((d, idx) =>
-        _formatName({
+        formatLegendItemName({
           type: metricType,
           data: d,
           service,
@@ -264,7 +130,7 @@ const MetricLegend: React.FC<{
     metricName,
     sample_streams,
     onLabelsChange,
-    _formatName,
+    formatLegendItemName,
   ]);
 
   return (
@@ -291,14 +157,12 @@ const MetricLegend: React.FC<{
                       LegendItemStyle,
                       deselected.includes(deselectedValue) && "deselected"
                     )}
-                    key={`${d?.id}_${
-                      d?.local_id || d?.chunk_id || d?.mac_address
-                    }_${idx}`}
+                    key={d.id}
                     onClick={() => onClick(deselectedValue)}
                   >
                     <ColorBlock background={metricColors[end + idx]} />
                     <span>
-                      {_formatName({
+                      {formatLegendItemName({
                         type: metricType,
                         data: d,
                         service,
@@ -333,15 +197,13 @@ const MetricLegend: React.FC<{
               LegendItemStyle,
               deselected.includes(deselectedValue) && "deselected"
             )}
-            key={`${d?.id}_${
-              d?.local_id || d?.chunk_id || d?.mac_address
-            }_${index}`}
+            key={d.id}
             onClick={() => onClick(deselectedValue)}
           >
             <ColorBlock background={metricColors[index]} />
             <span>
               <Truncate
-                text={_formatName({
+                text={formatLegendItemName({
                   type: metricType,
                   data: d,
                   service,

@@ -40,9 +40,12 @@ import {
   xaxisCal,
   yAxisFomatter,
 } from "./metric";
-import MetricLegend, { LegendComponent } from "./MetricLegend";
+import MetricLegend, {
+  GetDeselectedValueWithSuffix,
+  LegendComponent,
+} from "./MetricLegend";
 import TooltipFormatter from "./TooltipFormatter";
-import { FormatName, IMetricData, IMetricsQuery } from "./type";
+import { FormatName, IMetricsQuery } from "./type";
 
 const MetricPlaceholderWrapper = styled.div`
   color: $text-light-secondary;
@@ -109,7 +112,7 @@ type exportCSVDataType = {
   unit?: MetricUnit;
 };
 
-export interface IChartProps {
+export interface IChartProps<MetricData extends { id: string }> {
   metric: string;
   labels?: MetricLabelInput;
   clusterId: string;
@@ -128,20 +131,20 @@ export interface IChartProps {
   dropdown?: React.ReactNode;
   onChartDataChange?: (data: Array<exportCSVDataType>) => void;
   dateRange?: DateRange;
-  formatLegendItemName?: FormatName;
+  formatLegendItemName: FormatName<MetricData>;
+  getDeselectedValueWithSuffix: GetDeselectedValueWithSuffix<MetricData>;
+  hidePointer?: CategoricalChartFunc;
+  handleMouseMove?: CategoricalChartFunc;
+  onLabelsChange?: (labels: string[]) => void;
+  metricLegendData: MetricData[];
+  data: IMetricsQuery;
+  topkData: IMetricsQuery;
+  clusterData: IClusterBasicQuery;
 }
 
-const RenderChart: React.FC<
-  IChartProps & {
-    hidePointer?: CategoricalChartFunc;
-    handleMouseMove?: CategoricalChartFunc;
-    onLabelsChange?: (labels: string[]) => void;
-    metricLegendData: IMetricData[];
-    data: IMetricsQuery;
-    topkData: IMetricsQuery;
-    clusterData: IClusterBasicQuery;
-  }
-> = (props) => {
+const RenderChart = <MetricData extends { id: string }>(
+  props: IChartProps<MetricData>
+) => {
   const {
     metric,
     showLegend,
@@ -159,6 +162,7 @@ const RenderChart: React.FC<
     resourceType,
     dateRange,
     formatLegendItemName,
+    getDeselectedValueWithSuffix,
     hidePointer,
     handleMouseMove,
     onLabelsChange,
@@ -222,6 +226,7 @@ const RenderChart: React.FC<
               resourceType={resourceType}
               onClick={() => {}}
               formatLegendItemName={formatLegendItemName}
+              getDeselectedValueWithSuffix={getDeselectedValueWithSuffix}
             />
           ) : mode !== "single" ? (
             <LegendComponent metric={metric} />
@@ -387,6 +392,7 @@ const RenderChart: React.FC<
               }}
               onLabelsChange={onLabelsChange}
               formatLegendItemName={formatLegendItemName}
+              getDeselectedValueWithSuffix={getDeselectedValueWithSuffix}
               data={metricLegendData}
             />
           ) : (

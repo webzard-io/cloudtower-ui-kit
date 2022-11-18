@@ -23,9 +23,10 @@ import {
   toLocalTime,
   transformDataToCsv,
 } from "./metric";
+import { GetDeselectedValueWithSuffix } from "./MetricLegend";
 import Pointer from "./Pointer";
 import RenderChart from "./RenderChart";
-import { FormatName, IMetricData, IMetricsQuery } from "./type";
+import { FormatName, IMetricsQuery } from "./type";
 
 const MetricWrapper = styled.div`
   position: relative;
@@ -81,7 +82,7 @@ type exportCSVDataType = {
   unit?: MetricUnit;
 };
 
-export type MetricProps = {
+export type MetricProps<MetricData extends { id: string }> = {
   groupId?: string;
   metric: string;
   clusterId: string;
@@ -109,18 +110,18 @@ export type MetricProps = {
   dropdown?: React.ReactNode;
   exportCSVTitle?: string;
   dateRange?: DateRange;
-  formatLegendItemName?: FormatName;
+  formatLegendItemName: FormatName<MetricData>;
+  getDeselectedValueWithSuffix: GetDeselectedValueWithSuffix<MetricData>;
+  chartData: IMetricsQuery;
+  topkData: IMetricsQuery;
+  clusterData: IClusterBasicQuery;
+  metricLegendData: MetricData[];
 };
 
-export const Metric = React.forwardRef<
-  MetricRefType,
-  MetricProps & {
-    chartData: IMetricsQuery;
-    topkData: IMetricsQuery;
-    clusterData: IClusterBasicQuery;
-    metricLegendData: IMetricData[];
-  }
->((props, ref) => {
+export const Metric = <MetricData extends { id: string }>(
+  props: MetricProps<MetricData>,
+  ref: React.ForwardedRef<MetricRefType>
+) => {
   const {
     groupId,
     metric,
@@ -227,6 +228,17 @@ export const Metric = React.forwardRef<
       </MetricWrapper>
     </ErrorBoundary>
   );
-});
+};
 
-export default Metric;
+const component = React.forwardRef(Metric) as <
+  MetricData extends { id: string }
+>(
+  props: MetricProps<MetricData> & {
+    ref?: React.ForwardedRef<MetricRefType>;
+  }
+) => ReturnType<typeof Metric>;
+
+export default component;
+
+//@ts-ignore
+component.name = "Metric";
