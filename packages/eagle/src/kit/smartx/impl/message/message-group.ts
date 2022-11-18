@@ -180,10 +180,10 @@ export function patchMessageMethods(m: typeof _message): typeof _message {
     const originalMethod = m[method];
     if (process.env.NODE_ENV !== "production") {
       if (window.i18nBatchHelper == null) {
-        throw new Error("i18nBatchHelper not exist on window");
+        console.warn("i18nBatchHelper not exist on window");
       }
     }
-    const batcher = new Batcher(originalMethod, window.i18nBatchHelper);
+    const batcher = new Batcher(originalMethod, window.i18nBatchHelper ?? {});
     m[method] = function (...args: Parameters<typeof _message["success"]>) {
       const key = makeUUID();
       const content = normalizeContent(args, method);
