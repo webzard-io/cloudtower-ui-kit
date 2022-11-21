@@ -140,6 +140,8 @@ export interface IChartProps<MetricData extends { id: string }> {
   data: IMetricsQuery;
   topkData: IMetricsQuery;
   clusterData: IClusterBasicQuery;
+  getColorsByMetric: (metric: string) => string;
+  metricColors: string[];
 }
 
 const RenderChart = <MetricData extends { id: string }>(
@@ -170,6 +172,8 @@ const RenderChart = <MetricData extends { id: string }>(
     data,
     topkData,
     clusterData,
+    getColorsByMetric,
+    metricColors,
   } = props;
 
   const history = useHistory();
@@ -227,9 +231,13 @@ const RenderChart = <MetricData extends { id: string }>(
               onClick={() => {}}
               formatLegendItemName={formatLegendItemName}
               getDeselectedValueWithSuffix={getDeselectedValueWithSuffix}
+              metricColors={metricColors}
             />
           ) : mode !== "single" ? (
-            <LegendComponent metric={metric} />
+            <LegendComponent
+              metric={metric}
+              getColorsByMetric={getColorsByMetric}
+            />
           ) : undefined}
         </div>
         <div className={cs("content", mode === "single" && "single-content")}>
@@ -394,9 +402,14 @@ const RenderChart = <MetricData extends { id: string }>(
               formatLegendItemName={formatLegendItemName}
               getDeselectedValueWithSuffix={getDeselectedValueWithSuffix}
               data={metricLegendData}
+              metricColors={metricColors}
             />
           ) : (
-            <LegendComponent metric={metric} onLabelsChange={onLabelsChange} />
+            <LegendComponent
+              metric={metric}
+              onLabelsChange={onLabelsChange}
+              getColorsByMetric={getColorsByMetric}
+            />
           ))}
         {showMenu && <Actions info={info} dropdown={dropdown} />}
       </div>
@@ -435,6 +448,7 @@ const RenderChart = <MetricData extends { id: string }>(
                 deselectedIndex={deselectedIndex}
                 isLegend={isLegend}
                 metric={metric}
+                getColorsByMetric={getColorsByMetric}
               />
             }
           />
@@ -448,6 +462,8 @@ const RenderChart = <MetricData extends { id: string }>(
               isLegend,
               index,
               metric,
+              getColorsByMetric,
+              metricColors,
             });
             return (
               <Area
@@ -469,7 +485,16 @@ const RenderChart = <MetricData extends { id: string }>(
           {averageLine && sample_streams.length === 1 && (
             <Area
               dataKey="average"
-              stroke={getColor({ type, isLegend, index: 0, metric }).stroke}
+              stroke={
+                getColor({
+                  type,
+                  isLegend,
+                  index: 0,
+                  metric,
+                  getColorsByMetric,
+                  metricColors,
+                }).stroke
+              }
               strokeWidth="2"
               strokeOpacity="0.5"
               fill="none"

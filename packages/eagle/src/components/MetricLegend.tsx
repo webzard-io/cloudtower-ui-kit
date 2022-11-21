@@ -11,7 +11,6 @@ import cs from "classnames";
 import React, { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import { getColorsByMetric, metricColors } from "./metric";
 import { FormatName } from "./type";
 
 const LegendStyle = css`
@@ -85,6 +84,7 @@ interface IProps<MetricData extends { id: string }> {
   formatLegendItemName: FormatName<MetricData>;
   getDeselectedValueWithSuffix: GetDeselectedValueWithSuffix<MetricData>;
   data: MetricData[];
+  metricColors: string[];
 }
 
 // TODO: when too many, refer to the fisheye
@@ -102,6 +102,7 @@ const MetricLegend = <MetricData extends { id: string }>(
     formatLegendItemName,
     getDeselectedValueWithSuffix,
     data,
+    metricColors,
   } = props;
   const kit = useContext(kitContext);
 
@@ -226,8 +227,9 @@ const MetricLegend = <MetricData extends { id: string }>(
 export const LegendComponent: React.FC<{
   metric: string;
   onLabelsChange?: (labels: string[]) => void;
+  getColorsByMetric: (metric: string) => string;
 }> = (props) => {
-  const { metric, onLabelsChange } = props;
+  const { metric, onLabelsChange, getColorsByMetric } = props;
   const { i18n } = useTranslation();
   const name = i18n.td(`metric.${metric}`);
   const color = getColorsByMetric(metric);

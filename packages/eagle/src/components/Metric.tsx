@@ -116,6 +116,8 @@ export type MetricProps<MetricData extends { id: string }> = {
   topkData: IMetricsQuery;
   clusterData: IClusterBasicQuery;
   metricLegendData: MetricData[];
+  getColorsByMetric: (metric: string) => string;
+  metricColors: string[];
 };
 
 export const Metric = <MetricData extends { id: string }>(
@@ -142,6 +144,8 @@ export const Metric = <MetricData extends { id: string }>(
     topkData,
     clusterData,
     metricLegendData,
+    getColorsByMetric,
+    metricColors,
     ...restProps
   } = props;
   const [width, setWidth] = useState(0);
@@ -220,6 +224,8 @@ export const Metric = <MetricData extends { id: string }>(
               resourceType={resourceType}
               dropdown={dropdown}
               onChartDataChange={onChartDataChange}
+              getColorsByMetric={getColorsByMetric}
+              metricColors={metricColors}
               {...restProps}
             />
             {showPointer && <Pointer uuid={uuid.current} metricWidth={width} />}
