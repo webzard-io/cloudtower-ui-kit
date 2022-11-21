@@ -9,4 +9,3 @@ export * from "./KitStoreProvider";
 export { default as KitStoreProvider } from "./KitStoreProvider";
 export { default as Loading } from "./Loading";
 export { default as Truncate } from "./Truncate";
-export { default as UserPrivilege } from "./UserPrivilege";
