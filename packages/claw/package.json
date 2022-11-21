@@ -1,15 +1,15 @@
 {
   "name": "@cloudtower/claw",
-  "version": "0.8.0",
+  "version": "0.8.5",
   "description": "claw of eagle",
   "private": true,
   "license": "MIT",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
-    "pregenerate": "rm -rf dist",
-    "generate": "tsc",
-    "postgenerate": "cp -r templates dist/templates"
+    "preclaw:build": "rm -rf dist",
+    "claw:build": "tsc",
+    "postclaw:build": "cp -r templates dist/templates"
   },
   "devDependencies": {
     "@graphql-codegen/plugin-helpers": "^1.9",

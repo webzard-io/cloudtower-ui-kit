@@ -17,7 +17,7 @@ declare module "antd/lib/modal" {
 
 declare global {
   interface Window {
-    i18nBatchHelper: Record<
+    i18nBatchHelper?: Record<
       string,
       {
         patterns: RegExp[];
