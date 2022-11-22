@@ -4,7 +4,7 @@ import cs from "classnames";
 import _ from "lodash";
 import React, { useMemo, useState } from "react";
 
-type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
+export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
   type: ImagesType;
   active?: boolean;
   hoverType?: ImagesType;
