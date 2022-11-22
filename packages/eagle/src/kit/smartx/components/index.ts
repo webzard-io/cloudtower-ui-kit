@@ -1,4 +1,5 @@
 export * from "./DropdownRender";
+export { default as ErrorBoundary } from "./ErrorBoundary";
 export { default as FailedLoad } from "./FailedLoad";
 export * from "./form";
 export * from "./FormError";
@@ -7,3 +8,4 @@ export { default as Icon } from "./Icon";
 export * from "./KitStoreProvider";
 export { default as KitStoreProvider } from "./KitStoreProvider";
 export { default as Loading } from "./Loading";
+export { default as Truncate } from "./Truncate";
