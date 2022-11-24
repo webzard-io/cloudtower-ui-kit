@@ -1,8 +1,8 @@
 import { ImagesType } from "@cloudtower/eagle/generated/images-type";
-import { css } from "@linaria/core";
-import cs from "classnames";
 import _ from "lodash";
 import React, { useMemo, useState } from "react";
+
+import BaseIcon from "./BaseIcon";
 
 export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
   type: ImagesType;
@@ -23,26 +23,6 @@ export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
     activeType?: ImagesType;
   };
 };
-
-const IconWrapper = css`
-  display: inline-flex;
-  align-items: center;
-
-  .icon-inner {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .icon-inner + span,
-  span + .icon-inner.suffix {
-    margin-left: 4px;
-  }
-  &.is-rotate {
-    img {
-      animation: rotate 680ms linear infinite;
-    }
-  }
-`;
 
 const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
   const {
@@ -109,14 +89,12 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
   }, [active, fileFormat, hover, suffixType]);
 
   return (
-    <span
-      ref={ref}
-      className={cs(
-        IconWrapper,
-        "icon-wrapper",
-        className,
-        isRotate && "is-rotate"
-      )}
+    <BaseIcon
+      src={src}
+      suffixIconSrc={suffixIconSrc}
+      height={_iconHeight}
+      width={_iconWidth}
+      prefixNode={prefix}
       style={_.pickBy({ cursor: cursor, ...style })}
       {...restProps}
       onMouseEnter={(e) => {
@@ -137,32 +115,7 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
           setHover(false);
         }
       }}
-    >
-      {prefix}
-      <span className="icon-inner">
-        <img
-          alt={type}
-          src={src}
-          width={`${_iconWidth}px`}
-          height={
-            typeof _iconHeight === "string" ? _iconHeight : `${_iconWidth}px`
-          }
-        />
-      </span>
-      {children && <span className="icon-children">{children}</span>}
-      {suffixIconSrc && (
-        <span className="icon-inner suffix">
-          <img
-            alt={type}
-            src={suffixIconSrc}
-            width={`${_iconWidth}px`}
-            height={
-              typeof _iconHeight === "string" ? _iconHeight : `${_iconWidth}px`
-            }
-          />
-        </span>
-      )}
-    </span>
+    />
   );
 });
 
