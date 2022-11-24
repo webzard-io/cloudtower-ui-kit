@@ -11,4 +11,6 @@ export * from "./RenderChart";
 export { default as RenderChart } from "./RenderChart";
 export * from "./TooltipFormatter";
 export { default as TooltipFormatter } from "./TooltipFormatter";
+export { default as TowerTable } from "./TowerTable";
+export * from "./TowerTable";
 export * from "./type";
