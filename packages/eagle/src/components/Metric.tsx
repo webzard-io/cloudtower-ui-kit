@@ -14,8 +14,8 @@ import download from "downloadjs";
 import Maybe from "graphql/tsutils/Maybe";
 import React, { useEffect, useImperativeHandle, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FullView } from "src/styles";
 
+import { FullView } from "../styles";
 import {
   IClusterBasicQuery,
   MetricRefType,
