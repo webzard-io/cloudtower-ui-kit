@@ -25,7 +25,6 @@ module.exports = {
           rule.include?.reduce((p, c) => {
             return p || c.includes("story/src");
           }, false) === true && rule.loader.includes("babel-loader");
-        console.log("test test", matched);
         return matched;
       },
       {
@@ -61,8 +60,6 @@ module.exports = {
 
     delete match.loader;
     delete match.options;
-
-    console.log("test test", JSON.stringify(webpackConfig.module, null, 2));
 
     return webpackConfig;
   },
