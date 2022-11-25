@@ -1,3 +1,5 @@
+export { default as BaseIcon } from "./BaseIcon";
+export * from "./BaseIcon";
 export * from "./DropdownRender";
 export { default as ErrorBoundary } from "./ErrorBoundary";
 export { default as FailedLoad } from "./FailedLoad";
