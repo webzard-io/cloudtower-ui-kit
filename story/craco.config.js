@@ -1,7 +1,7 @@
 const path = require("path");
-const { getLoader, loaderByName } = require("@craco/craco");
+const { getLoader, loaderByName, addBeforeLoader } = require("@craco/craco");
 
-const packages = path.join(__dirname, "../packages");
+const packages = path.join(__dirname, "../packages/*");
 
 module.exports = {
   webpack: {
@@ -16,13 +16,13 @@ module.exports = {
           : [match.loader.include];
         match.loader.include = include.concat(packages);
 
-        webpackConfig.module.rules.shift({
+        addBeforeLoader(webpackConfig, loaderByName("babel-loader"), {
           test: /\.m?js/,
           resolve: {
             fullySpecified: false,
           },
         });
-        
+
         match.use = [
           { loader: match.loader, options: match.options },
           {

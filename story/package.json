@@ -18,7 +18,7 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "GENERATE_SOURCEMAP=false craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "craco eject",
