@@ -1,5 +1,5 @@
 ---
-schema: "../../../tower/packages/server/src/generated/schema.graphql"
+schema: "./src/codegen/config/schema.graphql"
 documents:
   - "./src/generated/query.graphql"
   - "./src/generated/global-search.graphql"
