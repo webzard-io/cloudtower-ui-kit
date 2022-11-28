@@ -6,6 +6,8 @@ stages:
 
 build:
   stage: build
+  before_script:
+    - apk add --no-cache libc6-compat
   script:
     - yarn install
     - yarn build
