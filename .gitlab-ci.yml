@@ -1,0 +1,28 @@
+image: node:15.12-alpine3.13
+
+stages:
+  - build
+  - pages
+
+build:
+  stage: build
+  script:
+    - yarn install
+    - yarn build
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "story" || $CI_COMMIT_REF_NAME == "main"
+
+pages:
+  stage: pages
+  cache:
+    key: "sp-storybook"
+    paths:
+      - public
+  script:
+    - cd story && yarn build build-storybook
+    - mv story/storybook-static ../public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "story" || $CI_COMMIT_REF_NAME == "main"
