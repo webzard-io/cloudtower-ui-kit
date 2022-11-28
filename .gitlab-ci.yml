@@ -21,6 +21,8 @@ pages:
     paths:
       - public
   script:
+    - yarn install
+    - yarn build
     - cd story && yarn build-storybook
     - mv story/storybook-static ../public
   artifacts:
