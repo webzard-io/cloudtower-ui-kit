@@ -1,4 +1,4 @@
-image: node:16.16-alpine3.13
+image: registry.smtx.io/cloudtower/node:16-alpine
 
 stages:
   - build
