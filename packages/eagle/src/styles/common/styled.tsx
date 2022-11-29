@@ -512,7 +512,7 @@ export const SelectOptionDisabledText = styled.div`
 export const OperationWraper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   .icon-wrapper {
     margin-right: 16px;
   }
