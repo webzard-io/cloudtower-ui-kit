@@ -34,6 +34,7 @@
   },
   "resolutions": {
     "typescript": "^4.8.4",
-    "@types/react": "^17.0.50"
+    "@types/react": "^17.0.50",
+    "@ant-design/icons": "4.2.1"
   }
 }
