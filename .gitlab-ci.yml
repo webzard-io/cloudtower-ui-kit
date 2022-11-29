@@ -11,7 +11,7 @@ pages:
       - public
   before_script:
     - apk add --no-cache libc6-compat
-    - 'which ssh-agent || ( apk add openssh-client -y )'
+    - which ssh-agent || ( apk add --no-cache openssh-client)
     # Run ssh-agent (inside the build environment)
     - eval $(ssh-agent -s)
     # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
