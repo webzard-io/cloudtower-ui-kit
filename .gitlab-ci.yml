@@ -11,11 +11,20 @@ pages:
       - public
   before_script:
     - apk add --no-cache libc6-compat
+    - 'which ssh-agent || ( apk add openssh-client -y )'
+    # Run ssh-agent (inside the build environment)
+    - eval $(ssh-agent -s)
+    # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
     - yarn install
     - yarn build
     - cd story && yarn build-storybook
-    - cd .. && mv ./story/storybook-static ./public
+    - cd .. && cp ./story/storybook-static ./public
+    - scp -r ./story/storybook-static smartx@http://192.168.28.80/:~/workspace/storybook-static
+
   artifacts:
     paths:
       - public
