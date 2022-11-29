@@ -1,7 +1,26 @@
 image: registry.smtx.io/cloudtower/node:16-alpine
 
 stages:
+  - build
   - pages
+
+build:
+  stage: build
+  cache:
+    - key: "sp-storybook"
+      paths:
+        - public
+    - key: "node_modules"
+      paths:
+        - node_modules
+  before_script:
+    - apk add --no-cache libc6-compat
+  script:
+    - yarn install
+    - yarn build
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "story" || $CI_COMMIT_REF_NAME == "main"
+
 pages:
   variables:
     SSH_PRIVATE_KEY_28_80: $SSH_PRIVATE_KEY_28_80
@@ -27,7 +46,7 @@ pages:
     - yarn build
     - cd story && yarn build-storybook
     - cd .. && cp -r ./story/storybook-static ./public
-    - scp -r ./story/storybook-static smartx@192.168.28.80:~/workspace/storybook-static
+    - scp -r ./story/storybook-static root@192.168.28.80:~/workspace/storybook-static
 
   artifacts:
     paths:
