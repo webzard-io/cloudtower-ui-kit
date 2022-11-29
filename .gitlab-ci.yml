@@ -6,9 +6,12 @@ stages:
 pages:
   stage: pages
   cache:
-    key: "sp-storybook"
-    paths:
-      - public
+    - key: "sp-storybook"
+      paths:
+        - public
+    - key: "node_modules"
+      paths:
+        - node_modules
   before_script:
     - apk add --no-cache libc6-compat
     - which ssh-agent || ( apk add --no-cache openssh-client)
