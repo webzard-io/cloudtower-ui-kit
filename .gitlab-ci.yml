@@ -3,10 +3,11 @@ image: registry.smtx.io/cloudtower/node:16-alpine
 stages:
   - pages
 
-variables:
-  28_80_SSH_PRIVATE_KEY: $28_80_SSH_PRIVATE_KEY
+
 
 pages:
+  variables:
+    SSH_PRIVATE_KEY_28_80: $SSH_PRIVATE_KEY_28_80
   stage: pages
   cache:
     - key: "sp-storybook"
@@ -21,7 +22,7 @@ pages:
     # Run ssh-agent (inside the build environment)
     - eval $(ssh-agent -s)
     # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
-    - ssh-add <(echo "$28_80_SSH_PRIVATE_KEY")
+    - ssh-add <(echo "$SSH_PRIVATE_KEY_28_80")
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
