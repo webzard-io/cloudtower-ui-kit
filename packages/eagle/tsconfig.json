@@ -13,6 +13,6 @@
       "@cloudtower/parrot": ["../parrot/src/index.ts"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "react.d.ts"],
   "exclude": ["node_modules"]
 }
