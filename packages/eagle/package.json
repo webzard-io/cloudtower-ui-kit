@@ -61,6 +61,11 @@
       "require": "./dist/umd/smartx/index.js",
       "types": "./typings/kit/smartx/index.d.ts"
     },
+    "./kit/images": {
+      "import": "./dist/esm/images/index.js",
+      "require": "./dist/umd/images/index.js",
+      "types": "./typings/kit/images/index.d.ts"
+    },
     "./kit/specify/style.css": {
       "import": "./dist/kit/specify/style.css"
     },
@@ -102,6 +107,9 @@
       ],
       "kit/smartx": [
         "./typings/kit/smartx/index.d.ts"
+      ],
+      "kit/images": [
+        "./typings/kit/images/index.d.ts"
       ]
     }
   },
@@ -180,6 +188,7 @@
     "rollup-plugin-esbuild": "^4.10.1",
     "rollup-plugin-polyfill-node": "^0.10.2",
     "rollup-plugin-scss": "^3.0.0",
+    "rollup-plugin-svg": "^2.0.0",
     "rollup-plugin-visualizer": "^5.8.2",
     "sass": "^1.55.0",
     "smart-cache-invalidation": "^1.2.0",
