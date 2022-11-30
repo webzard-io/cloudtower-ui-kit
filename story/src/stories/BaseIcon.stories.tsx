@@ -1,4 +1,4 @@
-import { svg_1_active_connection_16_gradiendt_blue } from "@cloudtower/eagle/kit/images";
+import { number1ActiveConnection16GradiendtBlue } from "@cloudtower/eagle/kit/images";
 import { BaseIcon } from "@cloudtower/eagle/kit/smartx";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
@@ -21,5 +21,5 @@ const Template: ComponentStory<typeof BaseIcon> = (args) => (
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  src: svg_1_active_connection_16_gradiendt_blue,
+  src: number1ActiveConnection16GradiendtBlue,
 };
