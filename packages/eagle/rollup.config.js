@@ -1,9 +1,9 @@
 import linaria from "@linaria/rollup";
+import image from "@rollup/plugin-image";
 import { defineConfig } from "rollup";
 import esbuild from "rollup-plugin-esbuild";
 import nodePolyfills from "rollup-plugin-polyfill-node";
 import scss from "rollup-plugin-scss";
-import svg from "rollup-plugin-svg";
 import { visualizer } from "rollup-plugin-visualizer";
 
 const config = defineConfig([
@@ -144,7 +144,7 @@ const config = defineConfig([
           failOnError: true,
           prefix: "@import 'src/styles/common/variables.scss';",
         }),
-        svg({
+        image({
           base64: true,
         }),
         visualizer({
