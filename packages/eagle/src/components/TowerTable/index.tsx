@@ -5,11 +5,9 @@ import {
   HeaderCell,
   PendingTable,
   tableScrollToTop,
-  useTransformScrollAndColumns,
 } from "@cloudtower/eagle/kit/smartx";
 import {
   kitContext,
-  RequiredColumnProps,
   TableProps as KitTableProps,
   TableProps,
 } from "@cloudtower/eagle/kit/specify";
@@ -26,19 +24,18 @@ export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
 };
 
-interface IBaseTableProps<BaseTableData extends { id: string }>
+export interface ITowerTableProps<BaseTableData extends { id: string }>
   extends KitTableProps<BaseTableData> {
-  uniqueKey: string;
+  uniqueTableKey: string;
   pagination: {
     count: number;
     skip: number;
-    size: number;
-    defaultSize: number;
+    size?: number;
+    defaultSize?: number;
     onChange?: (page: number) => void;
     onSizeChange?: ((size: number) => void) | undefined;
   };
   sortable?: boolean;
-  emptyTablekey: string;
   tableKey?: string;
   stickyHeader?: boolean;
   sidebar?: boolean;
@@ -52,12 +49,12 @@ interface IBaseTableProps<BaseTableData extends { id: string }>
 }
 
 const TowerTable = <BaseTableData extends { id: string }>(
-  props: IBaseTableProps<BaseTableData>
+  props: ITowerTableProps<BaseTableData>
 ) => {
   const {
+    uniqueTableKey,
     dataSource,
     columns,
-    uniqueKey,
     pagination,
     onRowClick,
     onSorterChange,
@@ -77,7 +74,6 @@ const TowerTable = <BaseTableData extends { id: string }>(
     sidebar,
     tableLayout,
     wrapper,
-    emptyTablekey,
     stickyHeader = true,
     rowKey,
     defaultCustomizeColumn,
@@ -86,8 +82,6 @@ const TowerTable = <BaseTableData extends { id: string }>(
 
   const polling = networkStatus === NetworkStatus.poll;
   const initLoading = networkStatus === NetworkStatus.loading;
-
-  type Column = RequiredColumnProps<BaseTableData>;
 
   const auxiliaryLine = useRef<HTMLDivElement>(null);
   const _components = useMemo<TableProps<BaseTableData>["components"]>(() => {
@@ -125,24 +119,6 @@ const TowerTable = <BaseTableData extends { id: string }>(
     return { ...components, ...result };
   }, [components, defaultCustomizeColumn, resizable, sortable, wrapper]);
 
-  const [_scroll, finalColumns] = useTransformScrollAndColumns<Column>({
-    wrapper,
-    loading,
-    rowSelection,
-    data: dataSource,
-    tableKey,
-    uniqueKey,
-    stickyHeader,
-    columns,
-    scroll,
-  });
-
-  if (!_scroll?.x) {
-    finalColumns.forEach((column) => {
-      column.fixed = undefined;
-    });
-  }
-
   return (
     <PendingTable>
       <WrapperComponent
@@ -176,11 +152,11 @@ const TowerTable = <BaseTableData extends { id: string }>(
               }
               key={`IscsiConnectionTable-${parrotI18n.language}`}
               dataSource={dataSource}
-              columns={finalColumns}
+              columns={columns}
               onSorterChange={onSorterChange}
               onRowClick={onRowClick}
               rowClassName={rowClassName}
-              scroll={_scroll}
+              scroll={scroll}
               components={_components}
               rowSelection={rowSelection}
               tableLayout={tableLayout}
@@ -188,7 +164,7 @@ const TowerTable = <BaseTableData extends { id: string }>(
                 empty || (
                   <TableEmpty
                     searching={searching}
-                    emptyTablekey={emptyTablekey}
+                    emptyTablekey={uniqueTableKey}
                   />
                 )
               }
@@ -200,7 +176,7 @@ const TowerTable = <BaseTableData extends { id: string }>(
             <TablePagination
               count={pagination.count}
               skip={pagination.skip || 0}
-              size={pagination.size || pagination.defaultSize}
+              size={pagination.size || pagination.defaultSize || 10}
               onChange={(page) => {
                 pagination.onChange?.(page);
                 tableScrollToTop(wrapper);
