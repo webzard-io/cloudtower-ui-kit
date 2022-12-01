@@ -15,7 +15,6 @@ export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
   iconHeight?: number | "auto";
   cursor?: "pointer" | string;
   isRotate?: boolean;
-  fileFormat?: "jpg" | "png" | "svg";
   prefix?: React.ReactNode;
   suffixType?: {
     type: ImagesType;
@@ -23,6 +22,25 @@ export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
     activeType?: ImagesType;
   };
 };
+
+const parseType = (type: string) => {
+  return type
+    .substring(type.indexOf("/") + 1)
+    .split("-")
+    .reduce((p, v, i) => {
+      if (i === 0) {
+        const parsed = parseFloat(v);
+        if (isNaN(parsed)) {
+          return v;
+        }
+        return "number" + v.charAt(0).toUpperCase() + v.slice(1);
+      } else {
+        return p + v.charAt(0).toUpperCase() + v.slice(1);
+      }
+    }, "");
+};
+
+const errorImage = "1-status-unknown-questionmark-16-red";
 
 const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
   const {
@@ -42,30 +60,35 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
     isRotate,
     prefix,
     suffixType,
-    fileFormat = "svg",
     ...restProps
   } = props;
+
   const [hover, setHover] = useState(false);
   const defaultWidth = 16;
   const _iconWidth = iconWidth || (type.includes("24") ? 24 : defaultWidth);
   const _iconHeight = iconHeight || _iconWidth;
 
+  const errorType = useMemo(() => {
+    return parseType(errorImage);
+  }, []);
+
   const src = useMemo(() => {
     try {
       if (active && activeType) {
-        return require(`../../images/${activeType}.${fileFormat}`);
+        const parsedActiveType = parseType(activeType);
+        return require("@cloudtower/eagle/kit/images")[parsedActiveType];
       }
       if (hover && hoverType) {
-        return require(`../../images/${hoverType}.${fileFormat}`);
+        const parsedHoverType = parseType(hoverType);
+        return require("@cloudtower/eagle/kit/images")[parsedHoverType];
       }
-
-      return require(`../../images/${type}.${fileFormat}`);
+      const parsedType = parseType(type);
+      return require("@cloudtower/eagle/kit/images")[parsedType];
     } catch (error) {
       console.error(error);
-      return require("../../images/1-status-unknown-questionmark-16-red.svg")
-        .default;
+      return require("@cloudtower/eagle/kit/images")[errorType];
     }
-  }, [active, activeType, hoverType, type, hover, fileFormat]);
+  }, [active, activeType, hover, hoverType, type, errorType]);
 
   const suffixIconSrc = useMemo(() => {
     try {
@@ -75,18 +98,20 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
 
       const { activeType, hoverType, type } = suffixType;
       if (active && activeType) {
-        return require(`../../images/${activeType}.${fileFormat}`);
+        const parsedActiveType = parseType(activeType);
+        return require("@cloudtower/eagle/kit/images")[parsedActiveType];
       }
       if (hover && hoverType) {
-        return require(`../../images/${hoverType}.${fileFormat}`);
+        const parsedHoverType = parseType(hoverType);
+        return require("@cloudtower/eagle/kit/images")[parsedHoverType];
       }
-      return require(`../../images/${type}.${fileFormat}`);
+      const parsedType = parseType(type);
+      return require("@cloudtower/eagle/kit/images")[parsedType];
     } catch (error) {
       console.error(error);
-      return require("../../images/1-status-unknown-questionmark-16-red.svg")
-        .default;
+      return require("@cloudtower/eagle/kit/images")[errorType];
     }
-  }, [active, fileFormat, hover, suffixType]);
+  }, [active, errorType, hover, suffixType]);
 
   return (
     <BaseIcon
