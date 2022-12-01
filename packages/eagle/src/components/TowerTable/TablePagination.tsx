@@ -1,5 +1,5 @@
 import { kitContext } from "@cloudtower/eagle/kit/specify";
-import { useContext } from "react";
+import React, { useContext } from "react";
 
 const TablePagination = (props: {
   count?: number;

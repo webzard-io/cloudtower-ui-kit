@@ -1,7 +1,7 @@
 import { KitTableContext } from "@cloudtower/eagle/kit/smartx";
 import { kitContext } from "@cloudtower/eagle/kit/specify";
 import { parrotI18n } from "@cloudtower/parrot";
-import { useContext } from "react";
+import React, { useContext } from "react";
 
 const TableEmpty: React.FC<{
   searching?: boolean;
