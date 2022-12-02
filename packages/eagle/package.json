@@ -66,14 +66,14 @@
       "require": "./dist/umd/images/index.js",
       "types": "./typings/kit/images/index.d.ts"
     },
-    "./kit/specify/style.css": {
-      "import": "./dist/kit/specify/style.css"
-    },
     "./kit/smartx/style.css": {
       "import": "./dist/kit/smartx/style.css"
     },
     "./styles/reset.css": {
       "import": "./src/styles/reset.css"
+    },
+    "./styles/override.scss": {
+      "import": "./src/styles/override.scss"
     },
     "./styles/fonts/font.css": {
       "import": "./src/styles/fonts/font.css"
