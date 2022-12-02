@@ -9,12 +9,11 @@ import {
 import {
   kitContext,
   TableProps as KitTableProps,
-  TableProps,
 } from "@cloudtower/eagle/kit/specify";
 import { parrotI18n } from "@cloudtower/parrot";
 import { ApolloError, NetworkStatus } from "apollo-client";
 import cs from "classnames";
-import React, { useContext, useMemo, useRef } from "react";
+import React, { useContext, useRef } from "react";
 
 import TableEmpty from "./TableEmpty";
 import TablePagination from "./TablePagination";
@@ -42,7 +41,7 @@ export interface ITowerTableProps<BaseTableData extends { id: string }>
   error?: ApolloError;
   loading?: boolean;
   searching?: boolean;
-  refetch: () => Promise<unknown>;
+  refetch?: () => Promise<unknown>;
   networkStatus?: number;
   wrapper: React.MutableRefObject<HTMLDivElement | null>;
   defaultCustomizeColumn: [string, () => CustomizeColumnType[]];
@@ -84,40 +83,6 @@ const TowerTable = <BaseTableData extends { id: string }>(
   const initLoading = networkStatus === NetworkStatus.loading;
 
   const auxiliaryLine = useRef<HTMLDivElement>(null);
-  const _components = useMemo<TableProps<BaseTableData>["components"]>(() => {
-    const result: TableProps<BaseTableData>["components"] = {
-      header: {},
-      body: {
-        cell: () => {
-          return null;
-        },
-      },
-    };
-
-    if (resizable || sortable) {
-      result.header!.cell = (props: {
-        index: number;
-        sortable: boolean;
-        className: string;
-        children: React.ReactNode;
-      }) => (
-        <HeaderCell
-          {...props}
-          resizable={resizable}
-          draggable={props.sortable}
-          components={components}
-          auxiliaryLine={auxiliaryLine}
-          wrapper={wrapper}
-          defaultCustomizeColumn={defaultCustomizeColumn}
-        />
-      );
-    }
-
-    result.body!.cell = (props) => (
-      <td {...props} className={`${props.className} cell_${props.unique}`} />
-    );
-    return { ...components, ...result };
-  }, [components, defaultCustomizeColumn, resizable, sortable, wrapper]);
 
   return (
     <PendingTable>
@@ -140,7 +105,8 @@ const TowerTable = <BaseTableData extends { id: string }>(
               loading={loading && !polling}
               initLoading={initLoading}
               error={
-                error && (
+                error &&
+                refetch && (
                   <FailedLoad
                     error={parrotI18n.t(
                       "cluster.retry_when_access_data_failed"
@@ -157,7 +123,38 @@ const TowerTable = <BaseTableData extends { id: string }>(
               onRowClick={onRowClick}
               rowClassName={rowClassName}
               scroll={scroll}
-              components={_components}
+              components={{
+                header: {
+                  cell: (props: {
+                    index: number;
+                    sortable: boolean;
+                    className: string;
+                    children: React.ReactNode;
+                  }) => {
+                    console.log("test test HeaderCell", props);
+
+                    return (
+                      <HeaderCell
+                        {...props}
+                        resizable={resizable}
+                        draggable={props.sortable}
+                        components={components}
+                        auxiliaryLine={auxiliaryLine}
+                        wrapper={wrapper}
+                        defaultCustomizeColumn={defaultCustomizeColumn}
+                      />
+                    );
+                  },
+                },
+                body: {
+                  cell: (props) => (
+                    <td
+                      {...props}
+                      className={`${props.className} cell_${props.unique}`}
+                    />
+                  ),
+                },
+              }}
               rowSelection={rowSelection}
               tableLayout={tableLayout}
               empty={

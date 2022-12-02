@@ -1,4 +1,3 @@
-import { FormLayoutContext as Form1LayoutContext } from "@cloudtower/eagle/generated/forms";
 import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
 import { KitRootState } from "@cloudtower/eagle/kit/smartx";
 import { Kit } from "@cloudtower/eagle/kit/specify";
@@ -44,6 +43,8 @@ import { CSSTransition } from "react-transition-group";
 
 import { FormItemDiv } from "../../../../styles";
 import FieldError from "../../components/FormError";
+
+export const FormLayoutContext = React.createContext<Form1LayoutProps>({});
 
 type FormItemLayout = {
   label?: ColProps;
@@ -649,7 +650,7 @@ export const InfoField = (props: {
     labelCol: contextLabelCol = { span: 8 },
     wrapperCol: contextWrapperCol = { span: 16 },
     labelAlign: contextLabelAlign = "left",
-  } = useContext(Form1LayoutContext);
+  } = useContext(FormLayoutContext);
   const classes = {
     "form-item": cs(
       "form-item",

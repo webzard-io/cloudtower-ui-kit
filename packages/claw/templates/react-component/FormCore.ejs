@@ -35,11 +35,11 @@ import { FieldError } from "@cloudtower/eagle/kit/smartx";
 import { kitContext } from "@cloudtower/eagle/kit/specify";
 import * as FormKit from "@cloudtower/eagle/kit/smartx";
 import * as FT from "@cloudtower/eagle/generated/forms-types";
-
+import { FormLayoutContext } from "@cloudtower/eagle/kit/smartx";
 export * from '@cloudtower/eagle/generated/forms-types'
 
 /* Core */
-export const FormLayoutContext = React.createContext<FT.LayoutProps>({});
+
 export const BaseField = <
   T,
   RP extends AnyObject,
