@@ -4,6 +4,7 @@
   "private": true,
   "license": "MIT",
   "workspaces": [
+    "story",
     "packages/*"
   ],
   "scripts": {
@@ -28,11 +29,12 @@
     "husky": "^8.0.1",
     "lerna": "^4.0.0",
     "lint-staged": "^13.0.3",
-    "turbo": "^1.5.6",
+    "turbo": "^1.6.3",
     "typescript": "^4.8.4"
   },
   "resolutions": {
     "typescript": "^4.8.4",
-    "@types/react": "^17.0.50"
+    "@types/react": "^17.0.50",
+    "@ant-design/icons": "4.2.1"
   }
 }

@@ -3,15 +3,14 @@ import {
   EllipsisOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
+import { Typo } from "@cloudtower/eagle";
+import { getAntdKit } from "@cloudtower/eagle/kit/smartx";
 import { ButtonProps } from "@cloudtower/eagle/kit/specify";
 import { Space } from "antd";
 import cs from "classnames";
 import _ from "lodash";
 import React from "react";
 import { withDesign } from "storybook-addon-designs";
-
-import { Typo } from "../../../../styles";
-import { getAntdKit } from "../antd";
 
 const kit = getAntdKit();
 

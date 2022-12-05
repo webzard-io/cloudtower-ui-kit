@@ -1,4 +1,4 @@
-schema: "../../../tower/packages/server/src/generated/schema.graphql"
+schema: "./src/codegen/config/schema.graphql"
 generates:
   src/generated/query.graphql:
     plugins:
