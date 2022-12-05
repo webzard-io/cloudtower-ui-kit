@@ -1,0 +1,2 @@
+<% for (let { exportName, relativePath } of values) { %>
+export { default as <%= exportName %> } from "./<%= relativePath %>";<% } %>

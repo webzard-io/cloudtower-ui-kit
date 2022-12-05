@@ -131,11 +131,7 @@ export function CreateResourceDropdownRender<
         <kit.button
           icon={
             creating ? (
-              <Icon
-                type="1-loading-24-gradient-blue"
-                fileFormat="png"
-                isRotate={true}
-              />
+              <Icon type="1-loading-24-gradient-blue" isRotate={true} />
             ) : (
               <Icon type="1-plus-add-create-new-24-gradient-gray" />
             )

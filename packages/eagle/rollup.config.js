@@ -1,4 +1,5 @@
 import linaria from "@linaria/rollup";
+import image from "@rollup/plugin-image";
 import { defineConfig } from "rollup";
 import esbuild from "rollup-plugin-esbuild";
 import nodePolyfills from "rollup-plugin-polyfill-node";
@@ -112,7 +113,7 @@ const config = defineConfig([
       ],
     };
   }),
-  ...["specify", "smartx"].map((name) => {
+  ...["specify", "smartx", "images"].map((name) => {
     return {
       input: [`src/kit/${name}/index.ts`],
       plugins: [
@@ -142,6 +143,9 @@ const config = defineConfig([
           output: `dist/kit/${name}/style.css`,
           failOnError: true,
           prefix: "@import 'src/styles/common/variables.scss';",
+        }),
+        image({
+          base64: true,
         }),
         visualizer({
           emitFile: true,
