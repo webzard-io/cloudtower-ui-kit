@@ -862,9 +862,7 @@ export function getAntdKit(): Kit {
     button: Button,
     modal: Modal,
     modal2: Modal2,
-    dropdown: (props) => {
-      return <Dropdown {...props} />;
-    },
+    dropdown: Dropdown,
     switch: Switch,
     tooltip: Tooltip,
     input: Input,
