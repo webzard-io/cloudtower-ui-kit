@@ -1,4 +1,6 @@
 import { ImagesType } from "@cloudtower/eagle/generated/images-type";
+import { css } from "@linaria/core";
+import cs from "classnames";
 import _ from "lodash";
 import React, { useMemo, useState } from "react";
 
@@ -22,6 +24,26 @@ export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
     activeType?: ImagesType;
   };
 };
+
+const IconWrapper = css`
+  display: inline-flex;
+  align-items: center;
+
+  .icon-inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-inner + span,
+  span + .icon-inner.suffix {
+    margin-left: 4px;
+  }
+  &.is-rotate {
+    img {
+      animation: rotate 680ms linear infinite;
+    }
+  }
+`;
 
 const parseType = (type: string) => {
   return type
@@ -116,6 +138,12 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
   return (
     <BaseIcon
       src={src}
+      className={cs(
+        IconWrapper,
+        "icon-wrapper",
+        className,
+        isRotate && "is-rotate"
+      )}
       suffixIconSrc={suffixIconSrc}
       height={_iconHeight}
       width={_iconWidth}
