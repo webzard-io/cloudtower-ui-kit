@@ -43,7 +43,6 @@ export interface ITowerTableProps<BaseTableData extends { id: string }>
   searching?: boolean;
   refetch?: () => Promise<unknown>;
   networkStatus?: number;
-  wrapper: React.MutableRefObject<HTMLDivElement | null>;
   defaultCustomizeColumn: [string, () => CustomizeColumnType[]];
 }
 
@@ -72,7 +71,6 @@ const TowerTable = <BaseTableData extends { id: string }>(
     networkStatus,
     sidebar,
     tableLayout,
-    wrapper,
     stickyHeader = true,
     rowKey,
     defaultCustomizeColumn,
@@ -83,6 +81,7 @@ const TowerTable = <BaseTableData extends { id: string }>(
   const initLoading = networkStatus === NetworkStatus.loading;
 
   const auxiliaryLine = useRef<HTMLDivElement>(null);
+  const wrapper = useRef<HTMLDivElement | null>(null);
 
   return (
     <PendingTable>

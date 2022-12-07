@@ -83,8 +83,6 @@ const args = {
 };
 
 function App() {
-  const wrapper = useRef<HTMLDivElement | null>(null);
-
   return (
     <kitContext.Provider value={antdKit}>
       <div className="App">
@@ -92,7 +90,7 @@ function App() {
         <antdKit.button loading={true} />
         <antdKit.button loading={true}>button</antdKit.button>
         <Button loading={true}>button</Button>
-        <TowerTable {...args} wrapper={wrapper} />
+        <TowerTable {...args} />
       </div>
     </kitContext.Provider>
   );
