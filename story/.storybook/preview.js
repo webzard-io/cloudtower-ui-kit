@@ -3,6 +3,10 @@ import "antd/dist/antd.css";
 import "@cloudtower/eagle/kit/smartx/style.css";
 import "@cloudtower/eagle/styles/reset.css";
 import "@cloudtower/eagle/styles/fonts/font.css";
+import "@cloudtower/eagle/styles/override.scss";
+
+import "./overrideRoot.css";
+
 import { initParrotI18n } from "@cloudtower/parrot";
 
 initParrotI18n();
