@@ -1,5 +1,6 @@
 import { ITowerTableProps, TowerTable } from "@cloudtower/eagle";
 import { antdKit } from "@cloudtower/eagle/kit/smartx";
+import { CustomizeColumnType } from "@cloudtower/eagle/kit/smartx";
 import { kitContext } from "@cloudtower/eagle/kit/specify";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
@@ -28,10 +29,10 @@ const Template: ComponentStory<
   React.FC<ITowerTableProps<{ id: string; h1: string; h2: string }>>
 > = (args) => <TowerTable {...args} />;
 
-export const ISCSITarget = Template.bind({});
+export const common = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-ISCSITarget.args = {
-  resizable: true,
+common.args = {
+  uniqueTableKey: "TestTowerTable",
   loading: false,
   dataSource: [
     {
@@ -55,12 +56,20 @@ ISCSITarget.args = {
     {
       title: "h1",
       key: "h1",
+      onHeaderCell: () => ({
+        index: 0,
+      }),
       dataIndex: "h1",
+      sortable: true,
     },
     {
       title: "h2",
       key: "h2",
+      onHeaderCell: () => ({
+        index: 1,
+      }),
       dataIndex: "h2",
+      sortable: true,
     },
   ],
   defaultCustomizeColumn: [
@@ -79,5 +88,8 @@ ISCSITarget.args = {
         },
       ];
     },
-  ],
+  ] as [string, () => CustomizeColumnType[]],
+  refetch: async () => {
+    return [];
+  },
 };
