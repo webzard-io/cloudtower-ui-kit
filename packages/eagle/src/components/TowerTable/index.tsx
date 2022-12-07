@@ -116,7 +116,7 @@ const TowerTable = <BaseTableData extends { id: string }>(
                   />
                 )
               }
-              key={`IscsiConnectionTable-${parrotI18n.language}`}
+              key={`${tableKey}-${parrotI18n.language}`}
               dataSource={dataSource}
               columns={columns}
               onSorterChange={onSorterChange}
@@ -131,8 +131,6 @@ const TowerTable = <BaseTableData extends { id: string }>(
                     className: string;
                     children: React.ReactNode;
                   }) => {
-                    console.log("test test HeaderCell", props);
-
                     return (
                       <HeaderCell
                         {...props}
