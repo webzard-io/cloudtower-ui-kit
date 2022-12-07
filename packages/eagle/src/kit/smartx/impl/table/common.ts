@@ -266,26 +266,33 @@ export const useTransformScrollAndColumns = <T>(tableProps: {
     totalWidth,
     data,
   ]);
-
-  if (totalWidth < sizes.wrapper.width) {
-    if (
-      (columns as unknown as { key: string }[]).find(
-        (item) => item.key === "_action_"
-      )
-    ) {
-      (columns as (T | typeof BLANK_COLUMN)[]).splice(
-        columns.length - 1,
-        0,
-        BLANK_COLUMN
-      );
-    } else {
-      (columns as (T | typeof BLANK_COLUMN)[]).splice(
-        columns.length,
-        0,
-        BLANK_COLUMN
-      );
+  useEffect(() => {
+    if (totalWidth < sizes.wrapper.width) {
+      if (
+        !(columns as unknown as { key: string }[]).find(
+          (item) => item.key === "blankColumn"
+        )
+      ) {
+        if (
+          (columns as unknown as { key: string }[]).find(
+            (item) => item.key === "_action_"
+          )
+        ) {
+          (columns as (T | typeof BLANK_COLUMN)[]).splice(
+            columns.length - 1,
+            0,
+            BLANK_COLUMN
+          );
+        } else {
+          (columns as (T | typeof BLANK_COLUMN)[]).splice(
+            columns.length,
+            0,
+            BLANK_COLUMN
+          );
+        }
+      }
     }
-  }
+  }, [columns, sizes.wrapper.width, totalWidth]);
 
   return [scrollConfig, columns];
 };
