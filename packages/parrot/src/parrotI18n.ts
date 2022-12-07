@@ -25,3 +25,7 @@ const parrotI18n = i18next.createInstance({
 });
 
 export default parrotI18n;
+
+export const initParrotI18n = () => {
+  parrotI18n.init({});
+};

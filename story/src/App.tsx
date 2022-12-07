@@ -11,8 +11,11 @@ import {
   Icon,
 } from "@cloudtower/eagle/kit/smartx";
 import { kitContext } from "@cloudtower/eagle/kit/specify";
+import { initParrotI18n } from "@cloudtower/parrot";
 import { Button } from "antd";
 import React, { useRef } from "react";
+
+initParrotI18n();
 
 const args = {
   uniqueTableKey: "TestTowerTable",
