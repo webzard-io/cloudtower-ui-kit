@@ -13,7 +13,7 @@ import {
 import { kitContext } from "@cloudtower/eagle/kit/specify";
 import { initParrotI18n } from "@cloudtower/parrot";
 import { Button } from "antd";
-import React, { useRef } from "react";
+import React from "react";
 
 initParrotI18n();
 

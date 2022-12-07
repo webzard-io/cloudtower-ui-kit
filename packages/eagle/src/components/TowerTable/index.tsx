@@ -5,9 +5,11 @@ import {
   HeaderCell,
   PendingTable,
   tableScrollToTop,
+  useTransformScrollAndColumns,
 } from "@cloudtower/eagle/kit/smartx";
 import {
   kitContext,
+  RequiredColumnProps,
   TableProps as KitTableProps,
 } from "@cloudtower/eagle/kit/specify";
 import { parrotI18n } from "@cloudtower/parrot";
@@ -49,6 +51,8 @@ export interface ITowerTableProps<BaseTableData extends { id: string }>
 const TowerTable = <BaseTableData extends { id: string }>(
   props: ITowerTableProps<BaseTableData>
 ) => {
+  type Column = RequiredColumnProps<BaseTableData>;
+
   const {
     uniqueTableKey,
     dataSource,
@@ -82,6 +86,24 @@ const TowerTable = <BaseTableData extends { id: string }>(
 
   const auxiliaryLine = useRef<HTMLDivElement>(null);
   const wrapper = useRef<HTMLDivElement | null>(null);
+
+  const [_scroll, finalColumns] = useTransformScrollAndColumns<Column>({
+    wrapper,
+    loading,
+    rowSelection,
+    data: dataSource,
+    tableKey,
+    uniqueKey: tableKey,
+    stickyHeader,
+    columns,
+    scroll,
+  });
+
+  if (!_scroll?.x) {
+    finalColumns.forEach((column) => {
+      column.fixed = undefined;
+    });
+  }
 
   return (
     <PendingTable>
@@ -117,11 +139,11 @@ const TowerTable = <BaseTableData extends { id: string }>(
               }
               key={`${tableKey}-${parrotI18n.language}`}
               dataSource={dataSource}
-              columns={columns}
+              columns={finalColumns}
               onSorterChange={onSorterChange}
               onRowClick={onRowClick}
               rowClassName={rowClassName}
-              scroll={scroll}
+              scroll={_scroll}
               components={{
                 header: {
                   cell: (props: {

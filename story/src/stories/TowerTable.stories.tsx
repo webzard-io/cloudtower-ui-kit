@@ -34,6 +34,7 @@ export const common = Template.bind({});
 common.args = {
   uniqueTableKey: "TestTowerTable",
   loading: false,
+  empty: false,
   dataSource: [
     {
       id: "1",
