@@ -15,7 +15,7 @@ import {
 import { parrotI18n } from "@cloudtower/parrot";
 import { ApolloError, NetworkStatus } from "apollo-client";
 import cs from "classnames";
-import React, { useContext, useRef } from "react";
+import React, { useContext, useMemo, useRef } from "react";
 
 import TableEmpty from "./TableEmpty";
 import TablePagination from "./TablePagination";
@@ -144,36 +144,46 @@ const TowerTable = <BaseTableData extends { id: string }>(
               onRowClick={onRowClick}
               rowClassName={rowClassName}
               scroll={_scroll}
-              components={{
-                header: {
-                  cell: (props: {
-                    index: number;
-                    sortable: boolean;
-                    className: string;
-                    children: React.ReactNode;
-                  }) => {
-                    return (
-                      <HeaderCell
-                        {...props}
-                        resizable={resizable}
-                        draggable={props.sortable}
-                        components={components}
-                        auxiliaryLine={auxiliaryLine}
-                        wrapper={wrapper}
-                        defaultCustomizeColumn={defaultCustomizeColumn}
-                      />
-                    );
+              components={useMemo(() => {
+                return {
+                  header: {
+                    cell:
+                      resizable || sortable
+                        ? (props: {
+                            index: number;
+                            sortable: boolean;
+                            className: string;
+                            children: React.ReactNode;
+                          }) => {
+                            return (props: {
+                              index: number;
+                              sortable: boolean;
+                              className: string;
+                              children: React.ReactNode;
+                            }) => (
+                              <HeaderCell
+                                {...props}
+                                resizable={resizable}
+                                draggable={props.sortable}
+                                components={components}
+                                auxiliaryLine={auxiliaryLine}
+                                wrapper={wrapper}
+                                defaultCustomizeColumn={defaultCustomizeColumn}
+                              />
+                            );
+                          }
+                        : undefined,
                   },
-                },
-                body: {
-                  cell: (props) => (
-                    <td
-                      {...props}
-                      className={`${props.className} cell_${props.unique}`}
-                    />
-                  ),
-                },
-              }}
+                  body: {
+                    cell: (props) => (
+                      <td
+                        {...props}
+                        className={`${props.className} cell_${props.unique}`}
+                      />
+                    ),
+                  },
+                };
+              }, [components, defaultCustomizeColumn, resizable, sortable])}
               rowSelection={rowSelection}
               tableLayout={tableLayout}
               empty={
