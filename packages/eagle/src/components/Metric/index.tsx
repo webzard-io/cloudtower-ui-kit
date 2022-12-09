@@ -70,6 +70,7 @@ export type MetricProps<IMetricData extends { id: string }> = {
   getColorsByMetric: (metric: string) => string;
   metricColors: string[];
   metricType: string;
+  step: number;
 };
 
 export const Metric = <IMetricData extends { id: string }>(

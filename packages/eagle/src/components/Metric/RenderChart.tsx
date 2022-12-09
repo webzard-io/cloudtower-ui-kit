@@ -30,7 +30,6 @@ import {
   findMaxAndCurrent,
   formatStreams,
   getColor,
-  getStep,
   getXAxisDomain,
   getYAxisDomain,
   IClusterBasicQuery,
@@ -83,6 +82,7 @@ export interface IChartProps {
   getColorsByMetric: (metric: string) => string;
   metricColors: string[];
   metricType: string;
+  step: number;
 }
 
 const RenderChart = (props: IChartProps) => {
@@ -114,6 +114,7 @@ const RenderChart = (props: IChartProps) => {
     getColorsByMetric,
     metricColors,
     metricType,
+    step,
   } = props;
 
   const history = useHistory();
@@ -186,11 +187,6 @@ const RenderChart = (props: IChartProps) => {
   }
 
   const { unit } = data.metrics;
-
-  /**
-   * TODO: unify this step logic in UI and server
-   */
-  const step = range === "2h" ? data.metrics.step : getStep(range, metric);
 
   const yAxisTickFormatter = yAxisFomatter(unit);
   const points = data.metrics.sample_streams

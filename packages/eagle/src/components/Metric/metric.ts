@@ -18,12 +18,9 @@ import {
   formatNanoSecond,
   formatPercent,
   formatTemperature,
-  getMetricGranularity,
-  Granularity,
   HOUR,
   MINUTE,
   roundToDecimals,
-  SECOND,
   WEEK,
 } from "@tower/utils";
 import dayjs from "dayjs";
@@ -396,38 +393,6 @@ export function transformDataAndUnit(
     }
   }
 }
-
-export const getStep = (timeRange: string, metric: string): number => {
-  const granularity = getMetricGranularity(metric);
-  if (granularity === Granularity.Thick) {
-    switch (timeRange) {
-      case "2h":
-        return MINUTE * 5 * 1000;
-      case "24h":
-        return HOUR * 1 * 1000;
-      case "7d":
-        return DAY * 1000;
-      case "30d":
-        return DAY * 1000;
-      case "182d":
-        return WEEK * 1000;
-      default:
-        return DAY * 1000;
-    }
-  }
-  switch (timeRange) {
-    case "2h":
-      return SECOND * 30 * 1000;
-    case "24h":
-      return MINUTE * 5 * 1000;
-    case "7d":
-      return MINUTE * 30 * 1000;
-    case "30d":
-      return DAY * 1000;
-    default:
-      return DAY * 1000;
-  }
-};
 
 export const findMaxAndCurrent = (points: DataPoint[], unit: MetricUnit) => {
   const v = points[points.length - 1]?.v;
