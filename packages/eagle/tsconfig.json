@@ -3,7 +3,7 @@
   "compilerOptions": {
     "noEmit": true,
     "outDir": "./dist",
-    "jsx": "react-jsx",
+    "jsx": "react",
     "downlevelIteration": true,
     "disableSizeLimit": true,
     "baseUrl": "./",
