@@ -1,15 +1,12 @@
 import {
-  ClusterType,
   DataPoint,
   GraphType,
-  Hypervisor,
   Maybe,
   MetricLabelInput,
   MetricUnit,
 } from "@cloudtower/eagle/generated/react-hooks";
 import { DateRange, useHistory } from "@cloudtower/eagle/kit/specify";
 import { cx } from "@linaria/core";
-import { MetricLabels, parseLabel } from "@tower/utils";
 import cs from "classnames";
 import { t } from "i18next";
 import React, { useMemo, useState } from "react";
@@ -65,7 +62,6 @@ export interface IChartProps {
   type: GraphType;
   mode?: "simple" | "legend" | "single";
   service?: Maybe<string>;
-  resourceType?: Maybe<string>;
   averageLine?: boolean;
   dropdown?: React.ReactNode;
   onChartDataChange?: (data: Array<exportCSVDataType>) => void;
@@ -83,6 +79,7 @@ export interface IChartProps {
   metricColors: string[];
   metricType: string;
   step: number;
+  deselectedIndex: number[];
 }
 
 const RenderChart = (props: IChartProps) => {
@@ -100,7 +97,6 @@ const RenderChart = (props: IChartProps) => {
     service,
     averageLine = false,
     dropdown,
-    resourceType,
     dateRange,
     formatLegendItemName,
     getDeselectedValueWithSuffix,
@@ -115,6 +111,7 @@ const RenderChart = (props: IChartProps) => {
     metricColors,
     metricType,
     step,
+    deselectedIndex,
   } = props;
 
   const history = useHistory();
@@ -196,98 +193,6 @@ const RenderChart = (props: IChartProps) => {
       v,
       unit,
     }));
-
-  let deselectedIndex: number[] = [];
-  if (deselected.length) {
-    deselectedIndex = sample_streams.reduce((prev, cur, index) => {
-      const labels = parseLabel(
-        { __name__: metric, ...cur.labels } as MetricLabels,
-        clusterData!.cluster as {
-          local_id?: string;
-          type: ClusterType;
-          hypervisor?: Maybe<Hypervisor>;
-        },
-        resourceType || ""
-      )?.labels;
-
-      if (!labels) {
-        return prev;
-      }
-
-      if (metric.includes("_read_write_") && cur.labels.metric_name) {
-        const suffix = cur.labels.metric_name.includes("_write_")
-          ? "-write"
-          : "-read";
-        let _id: string | undefined;
-        if (metricType === "zbs_chunk") {
-          _id = labels.chunk_id;
-        } else if (metricType === "scvm_disk" || metricType === "disk") {
-          _id = labels.serial;
-        } else {
-          _id = labels.local_id;
-        }
-        if (deselected.includes(_id! + suffix)) {
-          prev.push(index);
-        }
-        return prev;
-      }
-
-      if (
-        metric.includes("_network_ping_packet") &&
-        ["host", "scvm"].includes(metricType || "")
-      ) {
-        const _id = labels.local_id + "_" + (cur.labels.to_hostname || "");
-        if (deselected.includes(_id)) {
-          prev.push(index);
-        }
-        return prev;
-      }
-
-      if (metricType === "host_network") {
-        if (deselected.includes(labels.nic_name! + labels.host_local_id!)) {
-          prev.push(index);
-        }
-        return prev;
-      }
-
-      if (metricType === "vm_network") {
-        if (deselected.includes(labels.nic_mac! + labels.vm_local_id!)) {
-          prev.push(index);
-        }
-        return prev;
-      }
-
-      if (metric === "host_cpu_temperature_celsius") {
-        if (deselected.includes(`${labels.local_id}Temp${index + 1}`)) {
-          prev.push(index);
-        }
-        return prev;
-      }
-
-      if (metricType === "disk" || metricType === "scvm_disk") {
-        if (deselected.includes(labels.device! + labels.host_local_id!)) {
-          prev.push(index);
-        }
-        return prev;
-      }
-
-      if (metricType === "iscsi_lun" || metricType === "nvmf_namespace") {
-        if (deselected.includes(labels.zbs_volume_id! + labels.instance!)) {
-          prev.push(index);
-        }
-        return prev;
-      }
-
-      if (
-        Object.values(labels || {}).some((r) =>
-          deselected.includes(r as string)
-        )
-      ) {
-        prev.push(index);
-      }
-      return prev;
-    }, [] as number[]);
-  }
 
   const areaChartData = transformData(
     sample_streams,

@@ -56,7 +56,6 @@ export type MetricProps<IMetricData extends { id: string }> = {
   type?: GraphType;
   mode?: "simple" | "legend" | "single";
   service?: Maybe<string>;
-  resourceType?: Maybe<string>;
   averageLine?: boolean;
   dropdown?: React.ReactNode;
   exportCSVTitle?: string;
@@ -71,6 +70,7 @@ export type MetricProps<IMetricData extends { id: string }> = {
   metricColors: string[];
   metricType: string;
   step: number;
+  deselectedIndex: number[];
 };
 
 export const Metric = <IMetricData extends { id: string }>(
@@ -90,7 +90,6 @@ export const Metric = <IMetricData extends { id: string }>(
     topk,
     bottomk,
     timeSpan = "2h",
-    resourceType = "",
     dropdown,
     exportCSVTitle,
     chartData,
@@ -170,7 +169,6 @@ export const Metric = <IMetricData extends { id: string }>(
               showXaxis={showXaxis}
               range={stringifyTimeSpan(timeSpan)}
               type={type}
-              resourceType={resourceType}
               dropdown={dropdown}
               onChartDataChange={onChartDataChange}
               getColorsByMetric={getColorsByMetric}
