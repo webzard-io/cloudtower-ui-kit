@@ -37,7 +37,6 @@ type exportCSVDataType = {
 export type MetricProps<IMetricData extends { id: string }> = {
   groupId?: string;
   metric: string;
-  clusterId: string;
   labels?: MetricLabelInput;
   height?: number;
   showPointer?: boolean;

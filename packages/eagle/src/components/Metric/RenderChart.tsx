@@ -56,7 +56,6 @@ type exportCSVDataType = {
 export interface IChartProps {
   metric: string;
   labels?: MetricLabelInput;
-  clusterId: string;
   yAxisAlign?: "left" | "right";
   showXaxis?: boolean;
   showLegend?: boolean;
