@@ -8,21 +8,21 @@ import {
 import { ErrorBoundary } from "@cloudtower/eagle/kit/smartx";
 import { DateRange } from "@cloudtower/eagle/kit/specify";
 import { styled } from "@linaria/react";
-import { getMetricQueryType, makeUUID } from "@tower/utils";
+import { makeUUID } from "@tower/utils";
 import cs from "classnames";
 import download from "downloadjs";
 import Maybe from "graphql/tsutils/Maybe";
 import React, { useEffect, useImperativeHandle, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { FullView } from "../styles";
+import { FullView } from "../../styles";
 import {
   IClusterBasicQuery,
   MetricRefType,
   stringifyTimeSpan,
   toLocalTime,
   transformDataToCsv,
-} from "./metric";
+} from ".";
 import { GetDeselectedValueWithSuffix } from "./MetricLegend";
 import Pointer from "./Pointer";
 import RenderChart from "./RenderChart";
@@ -82,7 +82,7 @@ type exportCSVDataType = {
   unit?: MetricUnit;
 };
 
-export type MetricProps<MetricData extends { id: string }> = {
+export type MetricProps<IMetricData extends { id: string }> = {
   groupId?: string;
   metric: string;
   clusterId: string;
@@ -110,18 +110,19 @@ export type MetricProps<MetricData extends { id: string }> = {
   dropdown?: React.ReactNode;
   exportCSVTitle?: string;
   dateRange?: DateRange;
-  formatLegendItemName: FormatName<MetricData>;
-  getDeselectedValueWithSuffix: GetDeselectedValueWithSuffix<MetricData>;
+  formatLegendItemName: FormatName;
+  getDeselectedValueWithSuffix: GetDeselectedValueWithSuffix;
   chartData: IMetricsQuery;
   topkData: IMetricsQuery;
   clusterData: IClusterBasicQuery;
-  metricLegendData: MetricData[];
+  metricLegendData: IMetricData[];
   getColorsByMetric: (metric: string) => string;
   metricColors: string[];
+  metricType: string;
 };
 
-export const Metric = <MetricData extends { id: string }>(
-  props: MetricProps<MetricData>,
+export const Metric = <IMetricData extends { id: string }>(
+  props: MetricProps<IMetricData>,
   ref: React.ForwardedRef<MetricRefType>
 ) => {
   const {
@@ -197,11 +198,7 @@ export const Metric = <MetricData extends { id: string }>(
         style={{ height: showLegend ? height + 30 : height }}
       >
         {/* TODO: hard code */}
-        {!labels &&
-        !topk &&
-        !bottomk &&
-        getMetricQueryType(metric, resourceType || "") !== "cluster" &&
-        getMetricQueryType(metric, resourceType || "") !== "witness" ? (
+        {!labels && !topk && !bottomk ? (
           <FullView>{t("metric.empty")}</FullView>
         ) : topnNotTwoHour ? (
           <FullView>{t("metric.topn_only_two_hour")}</FullView>
@@ -237,9 +234,9 @@ export const Metric = <MetricData extends { id: string }>(
 };
 
 const component = React.forwardRef(Metric) as <
-  MetricData extends { id: string }
+  IMetricData extends { id: string }
 >(
-  props: MetricProps<MetricData> & {
+  props: MetricProps<IMetricData> & {
     ref?: React.ForwardedRef<MetricRefType>;
   }
 ) => ReturnType<typeof Metric>;
@@ -248,3 +245,16 @@ export default component;
 
 //@ts-ignore
 component.name = "Metric";
+
+export * from "./Actions";
+export { default as Actions } from "./Actions";
+export * from "./metric";
+export * from "./MetricLegend";
+export { default as MetricLegend } from "./MetricLegend";
+export * from "./Pointer";
+export { default as Pointer } from "./Pointer";
+export * from "./RenderChart";
+export { default as RenderChart } from "./RenderChart";
+export * from "./TooltipFormatter";
+export { default as TooltipFormatter } from "./TooltipFormatter";
+export * from "./type";

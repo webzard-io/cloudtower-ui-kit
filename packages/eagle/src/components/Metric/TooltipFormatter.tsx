@@ -1,6 +1,7 @@
 import { MetricUnit } from "@cloudtower/eagle/generated/react-hooks";
 import { ChartState, useKitSelector } from "@cloudtower/eagle/kit/smartx";
 import { styled } from "@linaria/react";
+import React from "react";
 import { TooltipProps } from "recharts";
 import { Payload as TooltipPayload } from "recharts/types/component/DefaultTooltipContent";
 

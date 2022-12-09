@@ -8,9 +8,8 @@ import {
   MetricUnit,
 } from "@cloudtower/eagle/generated/react-hooks";
 import { DateRange, useHistory } from "@cloudtower/eagle/kit/specify";
-import { css, cx } from "@linaria/core";
-import { styled } from "@linaria/react";
-import { getMetricQueryType, MetricLabels, parseLabel } from "@tower/utils";
+import { cx } from "@linaria/core";
+import { MetricLabels, parseLabel } from "@tower/utils";
 import cs from "classnames";
 import { t } from "i18next";
 import React, { useMemo, useState } from "react";
@@ -25,7 +24,7 @@ import {
 } from "recharts";
 import { CategoricalChartFunc } from "recharts/types/chart/generateCategoricalChart";
 
-import { Typo } from "../styles";
+import { Typo } from "../../styles";
 import Actions from "./Actions";
 import {
   findMaxAndCurrent,
@@ -44,67 +43,9 @@ import MetricLegend, {
   GetDeselectedValueWithSuffix,
   LegendComponent,
 } from "./MetricLegend";
+import { MetricLegendTabStyle, MetricPlaceholderWrapper } from "./styled";
 import TooltipFormatter from "./TooltipFormatter";
-import { FormatName, IMetricsQuery } from "./type";
-
-const MetricPlaceholderWrapper = styled.div`
-  color: $text-light-secondary;
-  text-align: center;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 100%;
-
-  .link {
-    color: $text-light-general;
-    cursor: pointer;
-  }
-`;
-
-const MetricLegendTabStyle = css`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-
-  .name-toolbar {
-    width: 100%;
-    display: flex;
-    line-height: 30px;
-    padding: 0 16px;
-    justify-content: space-between;
-    .metric-extra {
-      display: flex;
-      font-size: 12px;
-      align-items: center;
-
-      .info-item {
-        color: $gray-60;
-      }
-      .info-item + .info-item {
-        margin-left: 10px;
-      }
-
-      .menu-trigger {
-        margin-left: 10px;
-        cursor: pointer;
-      }
-    }
-  }
-
-  .content {
-    flex: 1;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .single-content {
-    height: 65px;
-  }
-`;
+import { FormatName, IMetricData, IMetricsQuery } from "./type";
 
 type exportCSVDataType = {
   labelName: string;
@@ -112,7 +53,7 @@ type exportCSVDataType = {
   unit?: MetricUnit;
 };
 
-export interface IChartProps<MetricData extends { id: string }> {
+export interface IChartProps {
   metric: string;
   labels?: MetricLabelInput;
   clusterId: string;
@@ -131,22 +72,21 @@ export interface IChartProps<MetricData extends { id: string }> {
   dropdown?: React.ReactNode;
   onChartDataChange?: (data: Array<exportCSVDataType>) => void;
   dateRange?: DateRange;
-  formatLegendItemName: FormatName<MetricData>;
-  getDeselectedValueWithSuffix: GetDeselectedValueWithSuffix<MetricData>;
+  formatLegendItemName: FormatName;
+  getDeselectedValueWithSuffix: GetDeselectedValueWithSuffix;
   hidePointer?: CategoricalChartFunc;
   handleMouseMove?: CategoricalChartFunc;
   onLabelsChange?: (labels: string[]) => void;
-  metricLegendData: MetricData[];
+  metricLegendData: IMetricData[];
   data: IMetricsQuery;
   topkData: IMetricsQuery;
   clusterData: IClusterBasicQuery;
   getColorsByMetric: (metric: string) => string;
   metricColors: string[];
+  metricType: string;
 }
 
-const RenderChart = <MetricData extends { id: string }>(
-  props: IChartProps<MetricData>
-) => {
+const RenderChart = (props: IChartProps) => {
   const {
     metric,
     showLegend,
@@ -174,13 +114,12 @@ const RenderChart = <MetricData extends { id: string }>(
     clusterData,
     getColorsByMetric,
     metricColors,
+    metricType,
   } = props;
 
   const history = useHistory();
 
   const isLegend = mode === "legend";
-
-  const metricType = getMetricQueryType(metric, resourceType || "");
 
   const sample_streams = useMemo(
     () =>
@@ -227,11 +166,11 @@ const RenderChart = <MetricData extends { id: string }>(
               metricName={metric}
               deselected={[]}
               service={service}
-              resourceType={resourceType}
               onClick={() => {}}
               formatLegendItemName={formatLegendItemName}
               getDeselectedValueWithSuffix={getDeselectedValueWithSuffix}
               metricColors={metricColors}
+              metricType={metricType}
             />
           ) : mode !== "single" ? (
             <LegendComponent
@@ -385,7 +324,7 @@ const RenderChart = <MetricData extends { id: string }>(
               metricName={metric}
               deselected={deselected}
               service={service}
-              resourceType={resourceType}
+              metricType={metricType}
               onClick={(id) => {
                 setDeselected((prev) => {
                   const include = prev.includes(id);

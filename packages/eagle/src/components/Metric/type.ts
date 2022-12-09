@@ -5,9 +5,9 @@ import {
 } from "@cloudtower/eagle/generated/react-hooks";
 import { TFunction } from "i18next";
 
-export type FormatName<MetricData extends { id: string }> = (params: {
+export type FormatName = (params: {
   type: string | undefined;
-  data: MetricData;
+  data: IMetricData;
   service?: Maybe<string>;
   metricName: string;
   t: TFunction;
@@ -17,4 +17,8 @@ export type FormatName<MetricData extends { id: string }> = (params: {
 
 export interface IMetricsQuery {
   metrics: Metric;
+}
+
+export interface IMetricData {
+  id: string;
 }
