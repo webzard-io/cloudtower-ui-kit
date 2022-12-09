@@ -7,7 +7,6 @@ import {
 } from "@cloudtower/eagle/generated/react-hooks";
 import { ErrorBoundary } from "@cloudtower/eagle/kit/smartx";
 import { DateRange } from "@cloudtower/eagle/kit/specify";
-import { styled } from "@linaria/react";
 import { makeUUID } from "@tower/utils";
 import cs from "classnames";
 import download from "downloadjs";
@@ -26,55 +25,8 @@ import {
 import { GetDeselectedValueWithSuffix } from "./MetricLegend";
 import Pointer from "./Pointer";
 import RenderChart from "./RenderChart";
+import { MetricWrapper } from "./styled";
 import { FormatName, IMetricsQuery } from "./type";
-
-const MetricWrapper = styled.div`
-  position: relative;
-
-  &.hidden-xaxis .pointer-wrapper {
-    bottom: -12px;
-  }
-
-  .metric-toolbar {
-    display: flex;
-    justify-content: space-between;
-    line-height: 30px;
-    margin: 0 16px;
-
-    .metric-extra {
-      display: flex;
-      font-size: 12px;
-      align-items: center;
-
-      .info-item {
-        color: $gray-60;
-      }
-      .info-item + .info-item {
-        margin-left: 10px;
-      }
-
-      .menu-trigger {
-        margin-left: 10px;
-        cursor: pointer;
-      }
-    }
-  }
-
-  .recharts-xAxis {
-    font-size: 12px;
-  }
-
-  .pointer-wrapper {
-    position: absolute;
-    bottom: 10px;
-    padding: 0 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    color: $white;
-    background: rgba(0, 0, 0, 0.75);
-    transform: translateX(-50%);
-  }
-`;
 
 type exportCSVDataType = {
   labelName: string;

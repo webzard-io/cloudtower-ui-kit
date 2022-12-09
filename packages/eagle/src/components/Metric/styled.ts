@@ -107,3 +107,76 @@ export const ExtraResource = css`
     margin: 0;
   }
 `;
+
+export const MetricWrapper = styled.div`
+  position: relative;
+
+  &.hidden-xaxis .pointer-wrapper {
+    bottom: -12px;
+  }
+
+  .metric-toolbar {
+    display: flex;
+    justify-content: space-between;
+    line-height: 30px;
+    margin: 0 16px;
+
+    .metric-extra {
+      display: flex;
+      font-size: 12px;
+      align-items: center;
+
+      .info-item {
+        color: $gray-60;
+      }
+      .info-item + .info-item {
+        margin-left: 10px;
+      }
+
+      .menu-trigger {
+        margin-left: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .recharts-xAxis {
+    font-size: 12px;
+  }
+
+  .pointer-wrapper {
+    position: absolute;
+    bottom: 10px;
+    padding: 0 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: $white;
+    background: rgba(0, 0, 0, 0.75);
+    transform: translateX(-50%);
+  }
+`;
+
+export const TooltipWrapper = styled.div`
+  min-width: 200px;
+`;
+
+export const TooltipColumn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #b4beca;
+  font-size: 12px;
+  padding: 3px 6px;
+
+  &:first-child {
+    padding-top: 3px;
+  }
+  &:last-child {
+    padding-bottom: 3px;
+  }
+  .column-value {
+    color: $white;
+    margin-left: 8px;
+  }
+`;
