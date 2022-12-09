@@ -29,7 +29,6 @@ import {
   getColor,
   getXAxisDomain,
   getYAxisDomain,
-  IClusterBasicQuery,
   tickFormatter,
   transformData,
   xaxisCal,
@@ -42,7 +41,6 @@ import MetricLegend, {
 import { MetricLegendTabStyle, MetricPlaceholderWrapper } from "./styled";
 import TooltipFormatter from "./TooltipFormatter";
 import { FormatName, IMetricData, IMetricsQuery } from "./type";
-
 type exportCSVDataType = {
   labelName: string;
   pointData: DataPoint[];
@@ -74,7 +72,6 @@ export interface IChartProps {
   metricLegendData: IMetricData[];
   data: IMetricsQuery;
   topkData: IMetricsQuery;
-  clusterData: IClusterBasicQuery;
   getColorsByMetric: (metric: string) => string;
   metricColors: string[];
   metricType: string;
@@ -106,7 +103,6 @@ const RenderChart = (props: IChartProps) => {
     metricLegendData,
     data,
     topkData,
-    clusterData,
     getColorsByMetric,
     metricColors,
     metricType,
@@ -156,7 +152,7 @@ const RenderChart = (props: IChartProps) => {
     return (
       <div className={MetricLegendTabStyle}>
         <div className="name-toolbar">
-          {isLegend && clusterData?.cluster ? (
+          {isLegend ? (
             <MetricLegend
               data={metricLegendData}
               sample_streams={sample_streams || []}
@@ -216,9 +212,7 @@ const RenderChart = (props: IChartProps) => {
     <>
       <div className="metric-toolbar">
         {showLegend &&
-          (isLegend &&
-          clusterData?.cluster &&
-          data.metrics.sample_streams.length > 0 ? (
+          (isLegend && data.metrics.sample_streams.length > 0 ? (
             <MetricLegend
               sample_streams={sample_streams}
               metricName={metric}

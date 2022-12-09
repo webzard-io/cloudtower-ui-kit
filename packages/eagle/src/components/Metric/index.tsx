@@ -16,7 +16,6 @@ import { useTranslation } from "react-i18next";
 
 import { FullView } from "../../styles";
 import {
-  IClusterBasicQuery,
   MetricRefType,
   stringifyTimeSpan,
   toLocalTime,
@@ -64,7 +63,6 @@ export type MetricProps<IMetricData extends { id: string }> = {
   getDeselectedValueWithSuffix: GetDeselectedValueWithSuffix;
   chartData: IMetricsQuery;
   topkData: IMetricsQuery;
-  clusterData: IClusterBasicQuery;
   metricLegendData: IMetricData[];
   getColorsByMetric: (metric: string) => string;
   metricColors: string[];
@@ -94,7 +92,6 @@ export const Metric = <IMetricData extends { id: string }>(
     exportCSVTitle,
     chartData,
     topkData,
-    clusterData,
     metricLegendData,
     getColorsByMetric,
     metricColors,
@@ -158,7 +155,6 @@ export const Metric = <IMetricData extends { id: string }>(
             <RenderChart
               data={chartData}
               topkData={topkData}
-              clusterData={clusterData}
               metricLegendData={metricLegendData}
               height={height}
               uuid={uuid.current}
