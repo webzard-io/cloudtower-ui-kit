@@ -4,7 +4,8 @@ import "@cloudtower/eagle/styles/reset.css";
 import "@cloudtower/eagle/styles/fonts/font.css";
 import "@cloudtower/eagle/styles/override.scss";
 
-import { TowerTable } from "@cloudtower/eagle";
+import { IMetricsQuery, Metric, TowerTable } from "@cloudtower/eagle";
+import { MetricUnit } from "@cloudtower/eagle/generated/react-hooks";
 import {
   antdKit,
   CustomizeColumnType,
@@ -14,6 +15,8 @@ import { kitContext } from "@cloudtower/eagle/kit/specify";
 import { initParrotI18n } from "@cloudtower/parrot";
 import { Button } from "antd";
 import React from "react";
+
+import sample_streams from "./sample_streams";
 
 initParrotI18n();
 
@@ -82,6 +85,50 @@ const args = {
   },
 };
 
+const metricArgs = {
+  metric: "test",
+  formatLegendItemName: () => {
+    return "hello legend";
+  },
+  getDeselectedValueWithSuffix: () => {
+    return "hello suffix";
+  },
+  chartData: {
+    metrics: {
+      dropped: false,
+      step: 1,
+      unit: MetricUnit.Count,
+    },
+  },
+  topkData: {
+    metrics: {
+      dropped: false,
+      step: 1,
+      unit: MetricUnit.Count,
+    },
+  },
+  getColorsByMetric: () => {
+    return "#ABCABC";
+  },
+  metricColors: ["#ABCABC"],
+  metricType: "hellometricType",
+  step: 1,
+  deselectedIndex: [1],
+  topk: 0,
+  bottomk: 1,
+};
+
+const chartData: IMetricsQuery = {
+  metrics: {
+    sample_streams: sample_streams,
+    samples: null,
+    unit: MetricUnit.DataSize,
+    step: 30000,
+    dropped: false,
+    __typename: "Metric",
+  },
+};
+
 function App() {
   return (
     <kitContext.Provider value={antdKit}>
@@ -91,6 +138,11 @@ function App() {
         <antdKit.button loading={true}>button</antdKit.button>
         <Button loading={true}>button</Button>
         <TowerTable {...args} />
+        <Metric
+          {...metricArgs}
+          metricLegendData={[{ id: "1" }, { id: "2" }]}
+          chartData={chartData}
+        />
       </div>
     </kitContext.Provider>
   );
