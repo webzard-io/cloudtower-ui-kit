@@ -7,7 +7,6 @@ import {
 } from "@cloudtower/eagle/generated/react-hooks";
 import { DateRange } from "@cloudtower/eagle/kit/specify/type";
 import {
-  Cluster,
   convertUnit,
   DAY,
   formatBitPerSecond,
@@ -99,7 +98,7 @@ export const formatStreams = (params: {
     return undefined;
   }
   if (!topkData?.metrics.samples) {
-    return metricData.metrics.sample_streams!.map((sample_stream) => {
+    return metricData.metrics.sample_streams?.map((sample_stream) => {
       if (sample_stream?.points) {
         const points = filterPointsByDateRange(sample_stream.points, dateRange);
         return {
@@ -355,10 +354,6 @@ export const transformData = (
       : convertDataForMultiArea(sample_streams, range, unit, step, dateRange);
   return result;
 };
-
-export interface IClusterBasicQuery {
-  cluster: Cluster;
-}
 
 export function transformDataAndUnit(
   unit: MetricUnit | undefined,

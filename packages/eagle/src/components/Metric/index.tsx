@@ -7,12 +7,12 @@ import {
 } from "@cloudtower/eagle/generated/react-hooks";
 import { ErrorBoundary } from "@cloudtower/eagle/kit/smartx";
 import { DateRange } from "@cloudtower/eagle/kit/specify";
+import { parrotI18n } from "@cloudtower/parrot";
 import { makeUUID } from "@tower/utils";
 import cs from "classnames";
 import download from "downloadjs";
 import Maybe from "graphql/tsutils/Maybe";
 import React, { useEffect, useImperativeHandle, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
 
 import { FullView } from "../../styles";
 import {
@@ -25,7 +25,7 @@ import { GetDeselectedValueWithSuffix } from "./MetricLegend";
 import Pointer from "./Pointer";
 import RenderChart from "./RenderChart";
 import { MetricWrapper } from "./styled";
-import { FormatName, IMetricsQuery } from "./type";
+import { FormatName, IMetricData, IMetricsQuery } from "./type";
 
 type exportCSVDataType = {
   labelName: string;
@@ -33,7 +33,7 @@ type exportCSVDataType = {
   unit?: MetricUnit;
 };
 
-export type MetricProps<IMetricData extends { id: string }> = {
+export type MetricProps = {
   groupId?: string;
   metric: string;
   labels?: MetricLabelInput;
@@ -71,8 +71,8 @@ export type MetricProps<IMetricData extends { id: string }> = {
   deselectedIndex: number[];
 };
 
-export const Metric = <IMetricData extends { id: string }>(
-  props: MetricProps<IMetricData>,
+export const Metric = (
+  props: MetricProps,
   ref: React.ForwardedRef<MetricRefType>
 ) => {
   const {
@@ -99,7 +99,6 @@ export const Metric = <IMetricData extends { id: string }>(
   } = props;
   const [width, setWidth] = useState(0);
   const uuid = useRef(groupId || makeUUID(5));
-  const { t } = useTranslation();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const exportCSVDataRef = useRef<Array<exportCSVDataType>>([]);
 
@@ -113,7 +112,11 @@ export const Metric = <IMetricData extends { id: string }>(
     filetype: string;
   } = (filename = "") => {
     const shift = new Date().getTimezoneOffset() * 60000;
-    const csvStr = transformDataToCsv(exportCSVDataRef.current, shift, t);
+    const csvStr = transformDataToCsv(
+      exportCSVDataRef.current,
+      shift,
+      parrotI18n.t
+    );
     const now = toLocalTime(new Date().getTime(), shift);
     return {
       data: csvStr,
@@ -147,9 +150,9 @@ export const Metric = <IMetricData extends { id: string }>(
       >
         {/* TODO: hard code */}
         {!labels && !topk && !bottomk ? (
-          <FullView>{t("metric.empty")}</FullView>
+          <FullView>{parrotI18n.t("metric.empty")}</FullView>
         ) : topnNotTwoHour ? (
-          <FullView>{t("metric.topn_only_two_hour")}</FullView>
+          <FullView>{parrotI18n.t("metric.topn_only_two_hour")}</FullView>
         ) : (
           <>
             <RenderChart
@@ -179,10 +182,8 @@ export const Metric = <IMetricData extends { id: string }>(
   );
 };
 
-const component = React.forwardRef(Metric) as <
-  IMetricData extends { id: string }
->(
-  props: MetricProps<IMetricData> & {
+const component = React.forwardRef(Metric) as (
+  props: MetricProps & {
     ref?: React.ForwardedRef<MetricRefType>;
   }
 ) => ReturnType<typeof Metric>;

@@ -6,9 +6,9 @@ import {
   MetricUnit,
 } from "@cloudtower/eagle/generated/react-hooks";
 import { DateRange, useHistory } from "@cloudtower/eagle/kit/specify";
+import { parrotI18n } from "@cloudtower/parrot";
 import { cx } from "@linaria/core";
 import cs from "classnames";
-import { t } from "i18next";
 import React, { useMemo, useState } from "react";
 import { Trans } from "react-i18next";
 import {
@@ -129,7 +129,7 @@ const RenderChart = (props: IChartProps) => {
   if (data.metrics.dropped) {
     return (
       <MetricPlaceholderWrapper className={Typo.Label.l4_regular}>
-        <p>{t("metric.no_application_monitor_desc_1")}</p>
+        <p>{parrotI18n.t("metric.no_application_monitor_desc_1")}</p>
         <p>
           <Trans i18nKey="metric.no_application_monitor_desc_2">
             <span className={Typo.Label.l4_bold}></span>
@@ -173,7 +173,7 @@ const RenderChart = (props: IChartProps) => {
           ) : undefined}
         </div>
         <div className={cs("content", mode === "single" && "single-content")}>
-          {t("metric.empty")}
+          {parrotI18n.t("metric.empty")}
         </div>
       </div>
     );
