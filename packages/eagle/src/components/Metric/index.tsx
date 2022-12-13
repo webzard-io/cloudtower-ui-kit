@@ -1,6 +1,5 @@
 import {
   DataPoint,
-  GraphType,
   MetricLabelInput,
   MetricUnit,
   TimeUnit,
@@ -23,9 +22,9 @@ import {
 } from ".";
 import { GetDeselectedValueWithSuffix } from "./MetricLegend";
 import Pointer from "./Pointer";
-import RenderChart from "./RenderChart";
+import RenderChart, { IChartProps } from "./RenderChart";
 import { MetricWrapper } from "./styled";
-import { FormatName, IMetricData, IMetricsQuery } from "./type";
+import { FormatName } from "./type";
 
 type exportCSVDataType = {
   labelName: string;
@@ -35,11 +34,9 @@ type exportCSVDataType = {
 
 export type MetricProps = {
   groupId?: string;
-  metric: string;
   labels?: MetricLabelInput;
   height?: number;
   showPointer?: boolean;
-  showMenu?: boolean;
   yAxisAlign?: "left" | "right";
   showXaxis?: boolean;
   showLegend?: boolean;
@@ -52,24 +49,17 @@ export type MetricProps = {
         unit: TimeUnit;
       }
     | string;
-  type?: GraphType;
   mode?: "simple" | "legend" | "single";
   service?: Maybe<string>;
   averageLine?: boolean;
-  dropdown?: React.ReactNode;
-  exportCSVTitle?: string;
   dateRange?: DateRange;
   formatLegendItemName: FormatName;
   getDeselectedValueWithSuffix: GetDeselectedValueWithSuffix;
-  chartData: IMetricsQuery;
-  topkData: IMetricsQuery;
-  metricLegendData: IMetricData[];
-  getColorsByMetric: (metric: string) => string;
-  metricColors: string[];
   metricType: string;
   step: number;
   deselectedIndex: number[];
   areaChartData: DataPoint[];
+  chartProps: IChartProps;
 };
 
 export const Metric = (
@@ -78,25 +68,15 @@ export const Metric = (
 ) => {
   const {
     groupId,
-    metric,
     labels,
     height = 154,
     showPointer = true,
-    showMenu = false,
     showLegend = true,
     showXaxis = false,
-    type = GraphType.Area,
     topk,
     bottomk,
     timeSpan = "2h",
-    dropdown,
-    exportCSVTitle,
-    chartData,
-    topkData,
-    metricLegendData,
-    getColorsByMetric,
-    metricColors,
-    ...restProps
+    chartProps,
   } = props;
   const [width, setWidth] = useState(0);
   const uuid = useRef(groupId || makeUUID(5));
@@ -156,25 +136,7 @@ export const Metric = (
           <FullView>{parrotI18n.t("metric.topn_only_two_hour")}</FullView>
         ) : (
           <>
-            <RenderChart
-              data={chartData}
-              topkData={topkData}
-              metricLegendData={metricLegendData}
-              height={height}
-              uuid={uuid.current}
-              metric={metric}
-              labels={labels}
-              showLegend={showLegend}
-              showMenu={showMenu}
-              showXaxis={showXaxis}
-              range={stringifyTimeSpan(timeSpan)}
-              type={type}
-              dropdown={dropdown}
-              onChartDataChange={onChartDataChange}
-              getColorsByMetric={getColorsByMetric}
-              metricColors={metricColors}
-              {...restProps}
-            />
+            <RenderChart {...chartProps} />
             {showPointer && <Pointer uuid={uuid.current} metricWidth={width} />}
           </>
         )}

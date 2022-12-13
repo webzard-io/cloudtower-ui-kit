@@ -3,6 +3,7 @@ import {
   GraphType,
   Maybe,
   MetricLabelInput,
+  MetricStream,
   MetricUnit,
 } from "@cloudtower/eagle/generated/react-hooks";
 import { DateRange, useHistory } from "@cloudtower/eagle/kit/specify";
@@ -78,6 +79,8 @@ export interface IChartProps {
   step: number;
   deselectedIndex: number[];
   areaChartData: DataPoint[];
+  streams: MetricStream[];
+  dropped: boolean;
 }
 
 const RenderChart = (props: IChartProps) => {
@@ -103,32 +106,22 @@ const RenderChart = (props: IChartProps) => {
     onLabelsChange,
     metricLegendData,
     data,
-    topkData,
     getColorsByMetric,
     metricColors,
     metricType,
-    step,
     deselectedIndex,
     areaChartData,
+    streams,
+    dropped,
   } = props;
 
   const history = useHistory();
 
   const isLegend = mode === "legend";
 
-  const sample_streams = useMemo(
-    () =>
-      formatStreams({
-        topkData,
-        metricData: data,
-        dateRange,
-      }),
-    [topkData, data, dateRange]
-  );
-
   const [deselected, setDeselected] = useState<string[]>([]);
 
-  if (data.metrics.dropped) {
+  if (dropped) {
     return (
       <MetricPlaceholderWrapper className={Typo.Label.l4_regular}>
         <p>{parrotI18n.t("metric.no_application_monitor_desc_1")}</p>
@@ -147,9 +140,8 @@ const RenderChart = (props: IChartProps) => {
 
   if (
     !data ||
-    !data.metrics.sample_streams?.length ||
-    !sample_streams?.length ||
-    sample_streams.every((stream) => !stream.points?.length)
+    !streams?.length ||
+    streams.every((stream) => !stream.points?.length)
   ) {
     return (
       <div className={MetricLegendTabStyle}>
@@ -157,7 +149,7 @@ const RenderChart = (props: IChartProps) => {
           {isLegend ? (
             <MetricLegend
               data={metricLegendData}
-              sample_streams={sample_streams || []}
+              streams={streams || []}
               metricName={metric}
               deselected={[]}
               service={service}
@@ -184,7 +176,7 @@ const RenderChart = (props: IChartProps) => {
   const { unit } = data.metrics;
 
   const yAxisTickFormatter = yAxisFomatter(unit);
-  const points = data.metrics.sample_streams
+  const points = streams
     .find((stream) => !!stream.points?.length)!
     .points!.map(({ t, v }) => ({
       t,
@@ -193,7 +185,7 @@ const RenderChart = (props: IChartProps) => {
     }));
 
   // const areaChartData = transformData(
-  //   sample_streams,
+  //   streams,
   //   range,
   //   unit,
   //   step,
@@ -204,7 +196,7 @@ const RenderChart = (props: IChartProps) => {
   const xAxisDomain = getXAxisDomain(areaChartData, points, range, dateRange);
 
   let info = { current: "-", max: "-" };
-  if (data?.metrics.sample_streams?.length) {
+  if (streams?.length) {
     info = findMaxAndCurrent(areaChartData, data.metrics.unit);
   }
 
@@ -214,9 +206,9 @@ const RenderChart = (props: IChartProps) => {
     <>
       <div className="metric-toolbar">
         {showLegend &&
-          (isLegend && data.metrics.sample_streams.length > 0 ? (
+          (isLegend && streams.length > 0 ? (
             <MetricLegend
-              sample_streams={sample_streams}
+              streams={streams}
               metricName={metric}
               deselected={deselected}
               service={service}
@@ -227,8 +219,7 @@ const RenderChart = (props: IChartProps) => {
                   const newDeselected = include
                     ? prev.filter((r) => r !== id)
                     : [...prev, id];
-                  return newDeselected.length >=
-                    data.metrics.sample_streams!.length
+                  return newDeselected.length >= streams!.length
                     ? prev
                     : newDeselected;
                 });
@@ -287,7 +278,7 @@ const RenderChart = (props: IChartProps) => {
               />
             }
           />
-          {sample_streams.map((item, index) => {
+          {streams.map((item, index) => {
             if (deselectedIndex.includes(index)) {
               return null;
             }
@@ -303,7 +294,7 @@ const RenderChart = (props: IChartProps) => {
             return (
               <Area
                 key={index}
-                dataKey={sample_streams?.length === 1 ? "v" : `v${index}`}
+                dataKey={streams?.length === 1 ? "v" : `v${index}`}
                 stackId={type === GraphType.Stack ? "stack" : undefined}
                 stroke={stroke}
                 fill={fill}
@@ -317,7 +308,7 @@ const RenderChart = (props: IChartProps) => {
               />
             );
           })}
-          {averageLine && sample_streams.length === 1 && (
+          {averageLine && streams.length === 1 && (
             <Area
               dataKey="average"
               stroke={

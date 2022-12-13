@@ -11,7 +11,7 @@ export type FormatName = (params: {
   service?: Maybe<string>;
   metricName: string;
   t: TFunction;
-  sample_streams: MetricStream[];
+  streams: MetricStream[];
   dIndex: number;
 }) => string;
 

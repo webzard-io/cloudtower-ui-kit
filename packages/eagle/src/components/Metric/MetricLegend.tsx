@@ -30,7 +30,7 @@ export type GetDeselectedValueWithSuffix = (
   sample_stream?: MetricStream
 ) => string;
 interface IProps {
-  sample_streams: MetricStream[];
+  streams: MetricStream[];
   metricName: string;
   deselected: string[];
   onClick: (id: string) => void;
@@ -46,7 +46,7 @@ interface IProps {
 // TODO: when too many, refer to the fisheye
 const MetricLegend = (props: IProps) => {
   const {
-    sample_streams,
+    streams,
     metricName,
     deselected,
     onClick,
@@ -70,7 +70,7 @@ const MetricLegend = (props: IProps) => {
           service,
           metricName,
           t: parrotI18n.t,
-          sample_streams,
+          streams,
           dIndex: idx,
         })
       );
@@ -81,7 +81,7 @@ const MetricLegend = (props: IProps) => {
     metricType,
     service,
     metricName,
-    sample_streams,
+    streams,
     onLabelsChange,
     formatLegendItemName,
   ]);
@@ -102,7 +102,7 @@ const MetricLegend = (props: IProps) => {
                   metricType,
                   d,
                   metricName,
-                  sample_streams[end + idx]
+                  streams[end + idx]
                 );
                 return (
                   <Menu.Item
@@ -121,7 +121,7 @@ const MetricLegend = (props: IProps) => {
                         service,
                         metricName,
                         t: parrotI18n.t,
-                        sample_streams,
+                        streams,
                         dIndex: end + idx,
                       })}
                     </span>
@@ -142,7 +142,7 @@ const MetricLegend = (props: IProps) => {
           metricType,
           d,
           metricName,
-          sample_streams[index]
+          streams[index]
         );
         return (
           <div
@@ -162,7 +162,7 @@ const MetricLegend = (props: IProps) => {
                   service,
                   metricName,
                   t: parrotI18n.t,
-                  sample_streams,
+                  streams,
                   dIndex: index,
                 })}
                 len={50}
