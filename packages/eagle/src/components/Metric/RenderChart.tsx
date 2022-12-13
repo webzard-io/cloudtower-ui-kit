@@ -77,8 +77,6 @@ export interface IChartProps {
   deselectedIndex: number[];
   areaChartData: DataPoint[];
   streams: MetricStream[];
-  dropped: boolean;
-  onDroppedClick?: () => void;
   metricUnit: MetricUnit;
 }
 
@@ -110,34 +108,12 @@ const RenderChart = (props: IChartProps) => {
     deselectedIndex,
     areaChartData,
     streams,
-    dropped,
     metricUnit,
-    onDroppedClick,
   } = props;
 
   const isLegend = mode === "legend";
 
   const [deselected, setDeselected] = useState<string[]>([]);
-
-  if (dropped) {
-    return (
-      <MetricPlaceholderWrapper className={Typo.Label.l4_regular}>
-        <p>{parrotI18n.t("metric.no_application_monitor_desc_1")}</p>
-        <p>
-          <Trans
-            i18nKey="metric.no_application_monitor_desc_2"
-            i18n={parrotI18n}
-          >
-            <span className={Typo.Label.l4_bold}></span>
-            <span
-              className={cx(Typo.Label.l4_bold, "link")}
-              onClick={onDroppedClick}
-            ></span>
-          </Trans>
-        </p>
-      </MetricPlaceholderWrapper>
-    );
-  }
 
   if (!streams?.length || streams.every((stream) => !stream.points?.length)) {
     return (
