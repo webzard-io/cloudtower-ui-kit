@@ -117,7 +117,6 @@ function App() {
           step={1}
           deselectedIndex={[]}
           areaChartData={areaChartData}
-          dropped={false}
           streams={sample_streams}
         />
       </div>
