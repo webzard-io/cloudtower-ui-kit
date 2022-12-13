@@ -1,7 +1,6 @@
 import {
   DataPoint,
   GraphType,
-  MetricStream,
   MetricUnit,
   TimeUnit,
 } from "@cloudtower/eagle/generated/react-hooks";
@@ -25,8 +24,6 @@ import {
 import dayjs from "dayjs";
 import { TFunction } from "i18next";
 import _ from "lodash";
-
-import { IMetricsQuery } from "./type";
 
 export const getColor = (prams: {
   type: GraphType;
@@ -87,51 +84,6 @@ export function filterPointsByDateRange(
 
   return points;
 }
-
-export const formatStreams = (params: {
-  topkData: IMetricsQuery | undefined;
-  metricData?: IMetricsQuery;
-  dateRange?: DateRange | undefined | null;
-}) => {
-  const { topkData, metricData, dateRange } = params;
-  if (!metricData) {
-    return undefined;
-  }
-  if (!topkData?.metrics.samples) {
-    return metricData.metrics.sample_streams?.map((sample_stream) => {
-      if (sample_stream?.points) {
-        const points = filterPointsByDateRange(sample_stream.points, dateRange);
-        return {
-          ...sample_stream,
-          points,
-        };
-      }
-
-      return sample_stream;
-    });
-  }
-
-  const orderList = topkData.metrics.samples.map((stream) =>
-    _.compact(Object.values(stream.labels)).join("")
-  );
-
-  return orderList
-    .map((item) => {
-      const sample_streams = metricData.metrics.sample_streams!.find(
-        (stream) => _.compact(Object.values(stream.labels)).join("") === item
-      )!;
-
-      if (sample_streams?.points) {
-        return {
-          ...sample_streams,
-          points: filterPointsByDateRange(sample_streams.points, dateRange),
-        };
-      }
-
-      return sample_streams;
-    })
-    .filter((r) => r);
-};
 
 export const parseRange = (range: string) => {
   const span = parseInt(range.slice(0, range.length - 1));
@@ -334,27 +286,6 @@ export const addMissingDataWithZero = (
   );
 };
 
-export const transformData = (
-  sample_streams: MetricStream[],
-  range: string,
-  unit: MetricUnit,
-  step: number,
-  averageLine: boolean,
-  dateRange?: DateRange
-) => {
-  const result =
-    sample_streams.length === 1
-      ? addMissingDataWithZero(
-          sample_streams[0].points || [],
-          range,
-          unit,
-          step,
-          dateRange
-        )
-      : convertDataForMultiArea(sample_streams, range, unit, step, dateRange);
-  return result;
-};
-
 export function transformDataAndUnit(
   unit: MetricUnit | undefined,
   data: number
@@ -508,35 +439,6 @@ export const getYAxisDomain = (
     }
   }
   return [0, getYAxisUpperBound(max, unitType)];
-};
-
-export const convertDataForMultiArea = (
-  data: MetricStream[],
-  range: string,
-  unit: MetricUnit,
-  step: number,
-  dateRange?: DateRange
-) => {
-  data.forEach((item) => {
-    item.points = addMissingDataWithZero(item?.points || [], range, unit, step);
-  });
-  if (!data[0].points?.length) {
-    return [];
-  }
-  const finalData: Record<string, string | number | null | undefined>[] = [];
-  const pointsNum: number = getMs(range) / step;
-
-  for (let j = 0; j < pointsNum; j++) {
-    finalData[j] = {
-      t: data[0].points[0].t + step * j,
-      unit,
-    };
-    for (let i = 0; i < data.length; i++) {
-      finalData[j][`v${i}`] = data[i].points?.[j]?.v;
-    }
-  }
-
-  return filterPointsByDateRange(finalData as DataPoint[], dateRange);
 };
 
 export const getFirstExpectedTimestamp = (

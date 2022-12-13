@@ -39,7 +39,7 @@ import MetricLegend, {
 } from "./MetricLegend";
 import { MetricLegendTabStyle, MetricPlaceholderWrapper } from "./styled";
 import TooltipFormatter from "./TooltipFormatter";
-import { FormatName, IMetricData, IMetricsQuery } from "./type";
+import { FormatName, IMetricData } from "./type";
 
 type exportCSVDataType = {
   labelName: string;
@@ -70,7 +70,6 @@ export interface IChartProps {
   handleMouseMove?: CategoricalChartFunc;
   onLabelsChange?: (labels: string[]) => void;
   metricLegendData: IMetricData[];
-  data: IMetricsQuery;
   getColorsByMetric: (metric: string) => string;
   metricColors: string[];
   metricType: string;
@@ -79,6 +78,7 @@ export interface IChartProps {
   areaChartData: DataPoint[];
   streams: MetricStream[];
   dropped: boolean;
+  metricUnit: MetricUnit;
 }
 
 const RenderChart = (props: IChartProps) => {
@@ -103,7 +103,6 @@ const RenderChart = (props: IChartProps) => {
     handleMouseMove,
     onLabelsChange,
     metricLegendData,
-    data,
     getColorsByMetric,
     metricColors,
     metricType,
@@ -111,6 +110,7 @@ const RenderChart = (props: IChartProps) => {
     areaChartData,
     streams,
     dropped,
+    metricUnit,
   } = props;
 
   const history = useHistory();
@@ -139,11 +139,7 @@ const RenderChart = (props: IChartProps) => {
     );
   }
 
-  if (
-    !data ||
-    !streams?.length ||
-    streams.every((stream) => !stream.points?.length)
-  ) {
+  if (!streams?.length || streams.every((stream) => !stream.points?.length)) {
     return (
       <div className={MetricLegendTabStyle}>
         <div className="name-toolbar">
@@ -174,25 +170,23 @@ const RenderChart = (props: IChartProps) => {
     );
   }
 
-  const { unit } = data.metrics;
-
-  const yAxisTickFormatter = yAxisFomatter(unit);
+  const yAxisTickFormatter = yAxisFomatter(metricUnit);
   const points = streams
     .find((stream) => !!stream.points?.length)!
     .points!.map(({ t, v }) => ({
       t,
       v,
-      unit,
+      unit: metricUnit,
     }));
 
   const xAxisDomain = getXAxisDomain(areaChartData, points, range, dateRange);
 
   let info = { current: "-", max: "-" };
   if (streams?.length) {
-    info = findMaxAndCurrent(areaChartData, data.metrics.unit);
+    info = findMaxAndCurrent(areaChartData, metricUnit);
   }
 
-  const yDomain = getYAxisDomain(areaChartData, type, unit);
+  const yDomain = getYAxisDomain(areaChartData, type, metricUnit);
 
   return (
     <>
