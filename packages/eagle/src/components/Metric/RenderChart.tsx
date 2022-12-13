@@ -2,16 +2,12 @@ import {
   DataPoint,
   GraphType,
   Maybe,
-  MetricLabelInput,
-  MetricStream,
   MetricUnit,
 } from "@cloudtower/eagle/generated/react-hooks";
 import { DateRange } from "@cloudtower/eagle/kit/specify";
 import { parrotI18n } from "@cloudtower/parrot";
-import { cx } from "@linaria/core";
 import cs from "classnames";
-import React, { useState } from "react";
-import { Trans } from "react-i18next";
+import React, { useMemo, useState } from "react";
 import {
   Area,
   AreaChart,
@@ -22,14 +18,15 @@ import {
 } from "recharts";
 import { CategoricalChartFunc } from "recharts/types/chart/generateCategoricalChart";
 
-import { Typo } from "../../styles";
 import Actions from "./Actions";
 import {
   findMaxAndCurrent,
+  formatStreams,
   getColor,
   getXAxisDomain,
   getYAxisDomain,
   tickFormatter,
+  transformData,
   xaxisCal,
   yAxisFomatter,
 } from "./metric";
@@ -37,9 +34,9 @@ import MetricLegend, {
   GetDeselectedValueWithSuffix,
   LegendComponent,
 } from "./MetricLegend";
-import { MetricLegendTabStyle, MetricPlaceholderWrapper } from "./styled";
+import { MetricLegendTabStyle } from "./styled";
 import TooltipFormatter from "./TooltipFormatter";
-import { FormatName, IMetricData } from "./type";
+import { FormatName, IMetric, IMetricData } from "./type";
 
 type exportCSVDataType = {
   labelName: string;
@@ -48,8 +45,7 @@ type exportCSVDataType = {
 };
 
 export interface IChartProps {
-  metric: string;
-  labels?: MetricLabelInput;
+  metricName: string;
   yAxisAlign?: "left" | "right";
   showXAxis?: boolean;
   showLegend?: boolean;
@@ -73,16 +69,13 @@ export interface IChartProps {
   getColorsByMetric: (metric: string) => string;
   metricColors: string[];
   metricType: string;
-  step: number;
   deselectedIndex: number[];
-  areaChartData: DataPoint[];
-  streams: MetricStream[];
-  metricUnit: MetricUnit;
+  metric: IMetric;
 }
 
 const RenderChart = (props: IChartProps) => {
   const {
-    metric,
+    metricName,
     showLegend,
     showMenu,
     uuid,
@@ -93,7 +86,6 @@ const RenderChart = (props: IChartProps) => {
     type,
     mode = "legend",
     service,
-    averageLine = false,
     dropdown,
     dateRange,
     formatLegendItemName,
@@ -106,14 +98,57 @@ const RenderChart = (props: IChartProps) => {
     metricColors,
     metricType,
     deselectedIndex,
-    areaChartData,
-    streams,
-    metricUnit,
+    metric,
   } = props;
 
   const isLegend = mode === "legend";
 
   const [deselected, setDeselected] = useState<string[]>([]);
+
+  const streams = useMemo(
+    () => formatStreams({ metric, dateRange }),
+    [dateRange, metric]
+  );
+
+  const areaChartData = useMemo(
+    () => transformData(streams, range, metric.unit, metric.step, dateRange),
+    [dateRange, metric.step, metric.unit, range, streams]
+  );
+
+  const yDomain = useMemo(
+    () => getYAxisDomain(areaChartData, type, metric.unit),
+    [areaChartData, metric.unit, type]
+  );
+
+  const yAxisTickFormatter = useMemo(
+    () => yAxisFomatter(metric.unit),
+    [metric.unit]
+  );
+
+  const points = useMemo(
+    () =>
+      streams
+        .find((stream) => !!stream.points?.length)!
+        .points!.map(({ t, v }) => ({
+          t,
+          v,
+          unit: metric.unit,
+        })),
+    [metric.unit, streams]
+  );
+
+  const xAxisDomain = useMemo(
+    () => getXAxisDomain(areaChartData, points, range, dateRange),
+    [areaChartData, dateRange, points, range]
+  );
+
+  const info = useMemo(() => {
+    let info = { current: "-", max: "-" };
+    if (streams?.length) {
+      info = findMaxAndCurrent(areaChartData, metric.unit);
+    }
+    return info;
+  }, [areaChartData, metric.unit, streams?.length]);
 
   if (!streams?.length || streams.every((stream) => !stream.points?.length)) {
     return (
@@ -123,7 +158,7 @@ const RenderChart = (props: IChartProps) => {
             <MetricLegend
               data={metricLegendData}
               streams={streams || []}
-              metricName={metric}
+              metricName={metricName}
               deselected={[]}
               service={service}
               onClick={() => {}}
@@ -134,7 +169,7 @@ const RenderChart = (props: IChartProps) => {
             />
           ) : mode !== "single" ? (
             <LegendComponent
-              metric={metric}
+              metricName={metricName}
               getColorsByMetric={getColorsByMetric}
             />
           ) : undefined}
@@ -146,24 +181,6 @@ const RenderChart = (props: IChartProps) => {
     );
   }
 
-  const yAxisTickFormatter = yAxisFomatter(metricUnit);
-  const points = streams
-    .find((stream) => !!stream.points?.length)!
-    .points!.map(({ t, v }) => ({
-      t,
-      v,
-      unit: metricUnit,
-    }));
-
-  const xAxisDomain = getXAxisDomain(areaChartData, points, range, dateRange);
-
-  let info = { current: "-", max: "-" };
-  if (streams?.length) {
-    info = findMaxAndCurrent(areaChartData, metricUnit);
-  }
-
-  const yDomain = getYAxisDomain(areaChartData, type, metricUnit);
-
   return (
     <>
       <div className="metric-toolbar">
@@ -171,7 +188,7 @@ const RenderChart = (props: IChartProps) => {
           (isLegend && streams.length > 0 ? (
             <MetricLegend
               streams={streams}
-              metricName={metric}
+              metricName={metricName}
               deselected={deselected}
               service={service}
               metricType={metricType}
@@ -194,7 +211,7 @@ const RenderChart = (props: IChartProps) => {
             />
           ) : (
             <LegendComponent
-              metric={metric}
+              metricName={metricName}
               onLabelsChange={onLabelsChange}
               getColorsByMetric={getColorsByMetric}
             />
@@ -246,7 +263,7 @@ const RenderChart = (props: IChartProps) => {
                 uuid={uuid}
                 deselectedIndex={deselectedIndex}
                 isLegend={isLegend}
-                metric={metric}
+                metricName={metricName}
                 getColorsByMetric={getColorsByMetric}
               />
             }
@@ -260,7 +277,7 @@ const RenderChart = (props: IChartProps) => {
               type,
               isLegend,
               index,
-              metric,
+              metricName,
               getColorsByMetric,
               metricColors,
             });
@@ -281,26 +298,6 @@ const RenderChart = (props: IChartProps) => {
               />
             );
           })}
-          {averageLine && streams.length === 1 && (
-            <Area
-              dataKey="average"
-              stroke={
-                getColor({
-                  type,
-                  isLegend,
-                  index: 0,
-                  metric,
-                  getColorsByMetric,
-                  metricColors,
-                }).stroke
-              }
-              strokeWidth="2"
-              strokeOpacity="0.5"
-              fill="none"
-              isAnimationActive={false}
-              activeDot={false}
-            />
-          )}
         </AreaChart>
       </ResponsiveContainer>
     </>

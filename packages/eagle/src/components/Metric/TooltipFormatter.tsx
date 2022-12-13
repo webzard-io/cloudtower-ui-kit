@@ -15,8 +15,8 @@ const TooltipFormatter: React.FC<
     uuid: string;
     deselectedIndex: number[];
     isLegend: boolean;
-    metric: string;
-    getColorsByMetric: (metric: string) => string;
+    metricName: string;
+    getColorsByMetric: (metricName: string) => string;
   }
 > = (props) => {
   const {
@@ -25,7 +25,7 @@ const TooltipFormatter: React.FC<
     uuid,
     deselectedIndex,
     isLegend,
-    metric,
+    metricName,
     getColorsByMetric,
   } = props;
   const resourceData = useKitSelector<ChartState["resourceData"]>(
@@ -77,7 +77,7 @@ const TooltipFormatter: React.FC<
       <TooltipWrapper>
         <TooltipColumn>
           <LegendComponent
-            metric={metric}
+            metricName={metricName}
             getColorsByMetric={getColorsByMetric}
           />
           <div className="column-value">{transformColumnValue(payload)}</div>

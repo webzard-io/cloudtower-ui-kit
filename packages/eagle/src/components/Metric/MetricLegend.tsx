@@ -177,14 +177,14 @@ const MetricLegend = (props: IProps) => {
 };
 
 export const LegendComponent: React.FC<{
-  metric: string;
+  metricName: string;
   onLabelsChange?: (labels: string[]) => void;
-  getColorsByMetric: (metric: string) => string;
+  getColorsByMetric: (metricName: string) => string;
 }> = (props) => {
-  const { metric, onLabelsChange, getColorsByMetric } = props;
+  const { metricName, onLabelsChange, getColorsByMetric } = props;
   const { i18n } = useTranslation();
-  const name = i18n.td(`metric.${metric}`);
-  const color = getColorsByMetric(metric);
+  const name = i18n.td(`metric.${metricName}`);
+  const color = getColorsByMetric(metricName);
 
   if (typeof onLabelsChange === "function") {
     onLabelsChange([name]);

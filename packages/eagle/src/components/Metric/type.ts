@@ -1,4 +1,8 @@
-import { Maybe, MetricStream } from "@cloudtower/eagle/generated/react-hooks";
+import {
+  Maybe,
+  MetricStream,
+  MetricUnit,
+} from "@cloudtower/eagle/generated/react-hooks";
 import { TFunction } from "i18next";
 
 export type FormatName = (params: {
@@ -13,4 +17,21 @@ export type FormatName = (params: {
 
 export interface IMetricData {
   id: string;
+}
+
+export interface IDataPoint {
+  __typename?: "DataPoint";
+  t: number;
+  unit: MetricUnit;
+  [key: DataPointValueKey]: number;
+}
+
+type DataPointValueKey = `v${number}`;
+
+export interface IMetric {
+  sample_streams: MetricStream[];
+  unit: MetricUnit;
+  step: number;
+  dropped: boolean;
+  __typename: string;
 }

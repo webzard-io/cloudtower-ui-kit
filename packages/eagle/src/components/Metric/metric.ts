@@ -1,6 +1,7 @@
 import {
   DataPoint,
   GraphType,
+  MetricStream,
   MetricUnit,
   TimeUnit,
 } from "@cloudtower/eagle/generated/react-hooks";
@@ -25,23 +26,25 @@ import dayjs from "dayjs";
 import { TFunction } from "i18next";
 import _ from "lodash";
 
+import { IMetric } from "./type";
+
 export const getColor = (prams: {
   type: GraphType;
   isLegend: boolean;
   index?: number;
-  metric: string;
-  getColorsByMetric: (metric: string) => string;
+  metricName: string;
+  getColorsByMetric: (metricName: string) => string;
   metricColors: string[];
 }) => {
   const {
     type,
     isLegend,
     index = 0,
-    metric,
+    metricName,
     getColorsByMetric,
     metricColors,
   } = prams;
-  const stroke = isLegend ? metricColors[index] : getColorsByMetric(metric);
+  const stroke = isLegend ? metricColors[index] : getColorsByMetric(metricName);
   // 1A === 10% transparency
   const fill = type === GraphType.Stack ? stroke : `${stroke}1A`;
 
@@ -626,4 +629,74 @@ export type MetricRefType = {
     filename: string;
     filetype: string;
   };
+};
+
+export const formatStreams = (params: {
+  metric: IMetric;
+  dateRange?: DateRange | null;
+}) => {
+  const { metric, dateRange } = params;
+
+  return metric.sample_streams!.map((sample_stream) => {
+    if (sample_stream?.points) {
+      const points = filterPointsByDateRange(sample_stream.points, dateRange);
+      return {
+        ...sample_stream,
+        points,
+      };
+    }
+
+    return sample_stream;
+  });
+};
+
+export const transformData = (
+  streams: MetricStream[],
+  range: string,
+  unit: MetricUnit,
+  step: number,
+  dateRange?: DateRange
+) => {
+  debugger;
+  const result =
+    streams.length === 1
+      ? addMissingDataWithZero(
+          streams[0].points || [],
+          range,
+          unit,
+          step,
+          dateRange
+        )
+      : convertDataForMultiArea(streams, range, unit, step, dateRange);
+  debugger;
+  return result;
+};
+
+export const convertDataForMultiArea = (
+  streams: MetricStream[],
+  range: string,
+  unit: MetricUnit,
+  step: number,
+  dateRange?: DateRange
+) => {
+  streams.forEach((item) => {
+    item.points = addMissingDataWithZero(item?.points || [], range, unit, step);
+  });
+  if (!streams[0].points?.length) {
+    return [];
+  }
+  const finalData: Record<string, string | number | null | undefined>[] = [];
+  const pointsNum: number = getMs(range) / step;
+
+  for (let j = 0; j < pointsNum; j++) {
+    finalData[j] = {
+      t: streams[0].points[0].t + step * j,
+      unit,
+    };
+    for (let i = 0; i < streams.length; i++) {
+      finalData[j][`v${i}`] = streams[i].points?.[j]?.v;
+    }
+  }
+
+  return filterPointsByDateRange(finalData as DataPoint[], dateRange);
 };
