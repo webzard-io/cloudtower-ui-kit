@@ -6,7 +6,7 @@ import {
   MetricStream,
   MetricUnit,
 } from "@cloudtower/eagle/generated/react-hooks";
-import { DateRange, useHistory } from "@cloudtower/eagle/kit/specify";
+import { DateRange } from "@cloudtower/eagle/kit/specify";
 import { parrotI18n } from "@cloudtower/parrot";
 import { cx } from "@linaria/core";
 import cs from "classnames";
@@ -78,6 +78,7 @@ export interface IChartProps {
   areaChartData: DataPoint[];
   streams: MetricStream[];
   dropped: boolean;
+  onDroppedClick?: () => void;
   metricUnit: MetricUnit;
 }
 
@@ -111,9 +112,8 @@ const RenderChart = (props: IChartProps) => {
     streams,
     dropped,
     metricUnit,
+    onDroppedClick,
   } = props;
-
-  const history = useHistory();
 
   const isLegend = mode === "legend";
 
@@ -131,7 +131,7 @@ const RenderChart = (props: IChartProps) => {
             <span className={Typo.Label.l4_bold}></span>
             <span
               className={cx(Typo.Label.l4_bold, "link")}
-              onClick={() => history.push("/settings/advance-monitor")}
+              onClick={onDroppedClick}
             ></span>
           </Trans>
         </p>
