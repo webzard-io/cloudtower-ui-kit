@@ -45,13 +45,7 @@ Primary.args = {
     return "hello suffix";
   },
   metricLegendData: [],
-  data: {
-    metrics: {
-      dropped: false,
-      step: 1,
-      unit: MetricUnit.Count,
-    },
-  },
+  metricUnit: MetricUnit.Count,
   getColorsByMetric: () => {
     return "#ABCABC";
   },
