@@ -4,7 +4,8 @@ import "@cloudtower/eagle/styles/reset.css";
 import "@cloudtower/eagle/styles/fonts/font.css";
 import "@cloudtower/eagle/styles/override.scss";
 
-import { TowerTable } from "@cloudtower/eagle";
+import { RenderChart, TowerTable } from "@cloudtower/eagle";
+import { GraphType, MetricUnit } from "@cloudtower/eagle/generated/react-hooks";
 import {
   antdKit,
   CustomizeColumnType,
@@ -14,6 +15,9 @@ import { kitContext } from "@cloudtower/eagle/kit/specify";
 import { initParrotI18n } from "@cloudtower/parrot";
 import { Button } from "antd";
 import React from "react";
+
+import areaChartData from "./areaChartData";
+import sample_streams from "./sample_streams";
 
 initParrotI18n();
 
@@ -91,6 +95,37 @@ function App() {
         <antdKit.button loading={true}>button</antdKit.button>
         <Button loading={true}>button</Button>
         <TowerTable {...args} />
+        <RenderChart
+          metric={"hello"}
+          uuid={"abc"}
+          height={200}
+          range={"1h"}
+          type={GraphType.Area}
+          formatLegendItemName={() => {
+            return "hello legend";
+          }}
+          getDeselectedValueWithSuffix={() => {
+            return "hello suffix";
+          }}
+          metricLegendData={[]}
+          data={{
+            metrics: {
+              dropped: false,
+              step: 1,
+              unit: MetricUnit.Count,
+            },
+          }}
+          getColorsByMetric={() => {
+            return "#ABCABC";
+          }}
+          metricColors={["#ABCABC"]}
+          metricType={"hellometricType"}
+          step={1}
+          deselectedIndex={[]}
+          areaChartData={areaChartData}
+          dropped={false}
+          streams={sample_streams}
+        />
       </div>
     </kitContext.Provider>
   );

@@ -71,7 +71,6 @@ export interface IChartProps {
   onLabelsChange?: (labels: string[]) => void;
   metricLegendData: IMetricData[];
   data: IMetricsQuery;
-  topkData: IMetricsQuery;
   getColorsByMetric: (metric: string) => string;
   metricColors: string[];
   metricType: string;

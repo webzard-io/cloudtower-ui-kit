@@ -27,33 +27,4 @@ const Template: ComponentStory<typeof Metric> = (args) => <Metric {...args} />;
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  metric: "test",
-  formatLegendItemName: () => {
-    return "hello legend";
-  },
-  getDeselectedValueWithSuffix: () => {
-    return "hello suffix";
-  },
-  chartData: {
-    metrics: {
-      dropped: false,
-      step: 1,
-      unit: MetricUnit.Count,
-    },
-  },
-  topkData: {
-    metrics: {
-      dropped: false,
-      step: 1,
-      unit: MetricUnit.Count,
-    },
-  },
-  getColorsByMetric: () => {
-    return "#ABCABC";
-  },
-  metricColors: ["#ABCABC"],
-  metricType: "hellometricType",
-  step: 1,
-  deselectedIndex: [1],
-};
+Primary.args = {};
