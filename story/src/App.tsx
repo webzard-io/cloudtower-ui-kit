@@ -5,7 +5,7 @@ import "@cloudtower/eagle/styles/fonts/font.css";
 import "@cloudtower/eagle/styles/override.scss";
 
 import { RenderChart, TowerTable } from "@cloudtower/eagle";
-import { GraphType, MetricUnit } from "@cloudtower/eagle/generated/react-hooks";
+import { GraphType } from "@cloudtower/eagle/generated/react-hooks";
 import {
   antdKit,
   CustomizeColumnType,
@@ -16,8 +16,7 @@ import { initParrotI18n } from "@cloudtower/parrot";
 import { Button } from "antd";
 import React from "react";
 
-import areaChartData from "./areaChartData";
-import sample_streams from "./sample_streams";
+import mockMetric from "./mockMetric";
 
 initParrotI18n();
 
@@ -86,6 +85,28 @@ const args = {
   },
 };
 
+const renderChartArgs = {
+  metricName: "hello",
+  metric: mockMetric,
+  uuid: "abc",
+  height: 200,
+  range: "1h",
+  type: GraphType.Area,
+  formatLegendItemName: () => {
+    return "hello legend";
+  },
+  getDeselectedValueWithSuffix: () => {
+    return "hello suffix";
+  },
+  metricLegendData: [],
+  getColorsByMetric: () => {
+    return "#ABCABC";
+  },
+  metricColors: ["#ABCABC"],
+  metricType: "hellometricType",
+  deselectedIndex: [],
+};
+
 function App() {
   return (
     <kitContext.Provider value={antdKit}>
@@ -95,30 +116,7 @@ function App() {
         <antdKit.button loading={true}>button</antdKit.button>
         <Button loading={true}>button</Button>
         <TowerTable {...args} />
-        <RenderChart
-          metric={"hello"}
-          uuid={"abc"}
-          height={200}
-          range={"1h"}
-          type={GraphType.Area}
-          formatLegendItemName={() => {
-            return "hello legend";
-          }}
-          getDeselectedValueWithSuffix={() => {
-            return "hello suffix";
-          }}
-          metricLegendData={[]}
-          metricUnit={MetricUnit.Count}
-          getColorsByMetric={() => {
-            return "#ABCABC";
-          }}
-          metricColors={["#ABCABC"]}
-          metricType={"hellometricType"}
-          step={1}
-          deselectedIndex={[]}
-          areaChartData={areaChartData}
-          streams={sample_streams}
-        />
+        <RenderChart {...renderChartArgs} />
       </div>
     </kitContext.Provider>
   );
