@@ -5,12 +5,10 @@ import {
   TimeUnit,
 } from "@cloudtower/eagle/generated/react-hooks";
 import { ErrorBoundary } from "@cloudtower/eagle/kit/smartx";
-import { DateRange } from "@cloudtower/eagle/kit/specify";
 import { parrotI18n } from "@cloudtower/parrot";
 import { makeUUID } from "@tower/utils";
 import cs from "classnames";
 import download from "downloadjs";
-import Maybe from "graphql/tsutils/Maybe";
 import React, { useEffect, useImperativeHandle, useRef, useState } from "react";
 
 import { FullView } from "../../styles";
@@ -20,11 +18,9 @@ import {
   toLocalTime,
   transformDataToCsv,
 } from ".";
-import { GetDeselectedValueWithSuffix } from "./MetricLegend";
 import Pointer from "./Pointer";
 import RenderChart, { IChartProps } from "./RenderChart";
 import { MetricWrapper } from "./styled";
-import { FormatName } from "./type";
 
 type exportCSVDataType = {
   labelName: string;
@@ -40,7 +36,6 @@ export type MetricProps = {
   yAxisAlign?: "left" | "right";
   showXaxis?: boolean;
   showLegend?: boolean;
-  metricWidth?: Record<string, number>;
   topk?: number;
   bottomk?: number;
   timeSpan?:
@@ -49,16 +44,6 @@ export type MetricProps = {
         unit: TimeUnit;
       }
     | string;
-  mode?: "simple" | "legend" | "single";
-  service?: Maybe<string>;
-  averageLine?: boolean;
-  dateRange?: DateRange;
-  formatLegendItemName: FormatName;
-  getDeselectedValueWithSuffix: GetDeselectedValueWithSuffix;
-  metricType: string;
-  step: number;
-  deselectedIndex: number[];
-  areaChartData: DataPoint[];
   chartProps: IChartProps;
 };
 
@@ -136,7 +121,10 @@ export const Metric = (
           <FullView>{parrotI18n.t("metric.topn_only_two_hour")}</FullView>
         ) : (
           <>
-            <RenderChart {...chartProps} />
+            <RenderChart
+              onChartDataChange={onChartDataChange}
+              {...chartProps}
+            />
             {showPointer && <Pointer uuid={uuid.current} metricWidth={width} />}
           </>
         )}
