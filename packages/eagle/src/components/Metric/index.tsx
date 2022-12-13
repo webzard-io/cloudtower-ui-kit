@@ -69,6 +69,7 @@ export type MetricProps = {
   metricType: string;
   step: number;
   deselectedIndex: number[];
+  areaChartData: DataPoint[];
 };
 
 export const Metric = (

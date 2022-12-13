@@ -16,6 +16,7 @@ import { initParrotI18n } from "@cloudtower/parrot";
 import { Button } from "antd";
 import React from "react";
 
+import areaChartData from "./areaChartData";
 import sample_streams from "./sample_streams";
 
 initParrotI18n();
@@ -142,6 +143,7 @@ function App() {
           {...metricArgs}
           metricLegendData={[{ id: "1" }, { id: "2" }]}
           chartData={chartData}
+          areaChartData={areaChartData}
         />
       </div>
     </kitContext.Provider>

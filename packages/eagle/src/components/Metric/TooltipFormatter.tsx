@@ -53,7 +53,7 @@ const TooltipFormatter: React.FC<
       payload.unit,
       "v" in payload ? payload.v : payload[`v${index}`]
     );
-    const baseUnit = UNIT_FORMATTER[payload.unit as unknown as MetricUnit][1];
+    const baseUnit = UNIT_FORMATTER[payload.unit as unknown as MetricUnit]?.[1];
     const formattedValue =
       value !== -Infinity
         ? value.toFixed(unit === baseUnit && unit !== TOWER_PERCENT ? 0 : 2)

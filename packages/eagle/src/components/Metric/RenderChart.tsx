@@ -77,6 +77,7 @@ export interface IChartProps {
   metricType: string;
   step: number;
   deselectedIndex: number[];
+  areaChartData: DataPoint[];
 }
 
 const RenderChart = (props: IChartProps) => {
@@ -108,6 +109,7 @@ const RenderChart = (props: IChartProps) => {
     metricType,
     step,
     deselectedIndex,
+    areaChartData,
   } = props;
 
   const history = useHistory();
@@ -190,14 +192,14 @@ const RenderChart = (props: IChartProps) => {
       unit,
     }));
 
-  const areaChartData = transformData(
-    sample_streams,
-    range,
-    unit,
-    step,
-    averageLine,
-    dateRange
-  );
+  // const areaChartData = transformData(
+  //   sample_streams,
+  //   range,
+  //   unit,
+  //   step,
+  //   averageLine,
+  //   dateRange
+  // );
 
   const xAxisDomain = getXAxisDomain(areaChartData, points, range, dateRange);
 
