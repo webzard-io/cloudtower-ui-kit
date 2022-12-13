@@ -10,7 +10,7 @@ import { DateRange, useHistory } from "@cloudtower/eagle/kit/specify";
 import { parrotI18n } from "@cloudtower/parrot";
 import { cx } from "@linaria/core";
 import cs from "classnames";
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { Trans } from "react-i18next";
 import {
   Area,
@@ -26,12 +26,10 @@ import { Typo } from "../../styles";
 import Actions from "./Actions";
 import {
   findMaxAndCurrent,
-  formatStreams,
   getColor,
   getXAxisDomain,
   getYAxisDomain,
   tickFormatter,
-  transformData,
   xaxisCal,
   yAxisFomatter,
 } from "./metric";
@@ -42,6 +40,7 @@ import MetricLegend, {
 import { MetricLegendTabStyle, MetricPlaceholderWrapper } from "./styled";
 import TooltipFormatter from "./TooltipFormatter";
 import { FormatName, IMetricData, IMetricsQuery } from "./type";
+
 type exportCSVDataType = {
   labelName: string;
   pointData: DataPoint[];
@@ -52,7 +51,7 @@ export interface IChartProps {
   metric: string;
   labels?: MetricLabelInput;
   yAxisAlign?: "left" | "right";
-  showXaxis?: boolean;
+  showXAxis?: boolean;
   showLegend?: boolean;
   showMenu?: boolean;
   uuid: string;
@@ -89,7 +88,7 @@ const RenderChart = (props: IChartProps) => {
     showLegend,
     showMenu,
     uuid,
-    showXaxis,
+    showXAxis,
     yAxisAlign,
     height,
     range,
@@ -184,15 +183,6 @@ const RenderChart = (props: IChartProps) => {
       unit,
     }));
 
-  // const areaChartData = transformData(
-  //   streams,
-  //   range,
-  //   unit,
-  //   step,
-  //   averageLine,
-  //   dateRange
-  // );
-
   const xAxisDomain = getXAxisDomain(areaChartData, points, range, dateRange);
 
   let info = { current: "-", max: "-" };
@@ -253,7 +243,7 @@ const RenderChart = (props: IChartProps) => {
           onMouseMove={handleMouseMove}
         >
           <XAxis
-            hide={!showXaxis}
+            hide={!showXAxis}
             dataKey="t"
             axisLine={false}
             tickLine={false}
