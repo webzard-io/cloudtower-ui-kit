@@ -254,6 +254,17 @@ const RenderChart = (props: IChartProps) => {
             }
             ticks={xaxisCal(xAxisDomain[1], range, dateRange)}
           />
+          <YAxis
+            width={200}
+            mirror
+            allowDataOverflow
+            axisLine={false}
+            tickLine={false}
+            domain={yDomain}
+            ticks={[0, yDomain[1] / 2, yDomain[1]]}
+            tickFormatter={yAxisTickFormatter}
+            orientation={yAxisAlign}
+          />
           <Tooltip
             active
             wrapperStyle={{ zIndex: 1000 }}
@@ -318,17 +329,6 @@ const RenderChart = (props: IChartProps) => {
               activeDot={false}
             />
           )}
-          <YAxis
-            width={200}
-            mirror
-            allowDataOverflow
-            axisLine={false}
-            tickLine={false}
-            domain={yDomain}
-            ticks={[0, yDomain[1] / 2, yDomain[1]]}
-            tickFormatter={yAxisTickFormatter}
-            orientation={yAxisAlign}
-          />
         </AreaChart>
       </ResponsiveContainer>
     </>
