@@ -124,7 +124,10 @@ const RenderChart = (props: IChartProps) => {
       <MetricPlaceholderWrapper className={Typo.Label.l4_regular}>
         <p>{parrotI18n.t("metric.no_application_monitor_desc_1")}</p>
         <p>
-          <Trans i18nKey="metric.no_application_monitor_desc_2">
+          <Trans
+            i18nKey="metric.no_application_monitor_desc_2"
+            i18n={parrotI18n}
+          >
             <span className={Typo.Label.l4_bold}></span>
             <span
               className={cx(Typo.Label.l4_bold, "link")}
