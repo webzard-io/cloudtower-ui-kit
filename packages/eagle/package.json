@@ -115,7 +115,6 @@
   },
   "license": "MIT",
   "scripts": {
-    "prebuild": "rm -rf dist",
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
     "test": "vitest",
     "coverage": "vitest run --coverage",
@@ -123,7 +122,6 @@
     "generate:query": "graphql-codegen --config src/codegen/config/codegen-query.yaml",
     "generate:main": "graphql-codegen --config src/codegen/config/codegen-main.yaml",
     "generate": "yarn generate:query && yarn generate:main",
-    "pretypings": "rm -rf typings",
     "typings": "yarn typings:main",
     "typings:main": "tsc -v && tsc -p tsconfig.typings.json || exit 0",
     "generate:images": "node --loader ts-node/esm tools/index.mts"
