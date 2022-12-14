@@ -155,12 +155,7 @@ const TowerTable = <BaseTableData extends { id: string }>(
                             className: string;
                             children: React.ReactNode;
                           }) => {
-                            return (props: {
-                              index: number;
-                              sortable: boolean;
-                              className: string;
-                              children: React.ReactNode;
-                            }) => (
+                            return (
                               <HeaderCell
                                 {...props}
                                 resizable={resizable}
