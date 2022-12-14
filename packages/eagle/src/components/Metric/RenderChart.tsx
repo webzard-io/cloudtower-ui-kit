@@ -128,12 +128,12 @@ const RenderChart = (props: IChartProps) => {
   const points = useMemo(
     () =>
       streams
-        .find((stream) => !!stream.points?.length)!
-        .points!.map(({ t, v }) => ({
+        .find((stream) => stream.points != null && stream.points?.length !== 0)
+        ?.points?.map(({ t, v }) => ({
           t,
           v,
           unit: metric.unit,
-        })),
+        })) ?? [],
     [metric.unit, streams]
   );
 

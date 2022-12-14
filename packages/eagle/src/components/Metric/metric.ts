@@ -75,6 +75,7 @@ export function filterPointsByDateRange(
 
     return points?.filter((point) => {
       const pointDate = dayjs(point.t);
+
       if (startDate && pointDate.isBefore(startDate)) {
         return false;
       }
@@ -159,6 +160,9 @@ export function getXAxisDomain(
   range: string,
   dateRange?: DateRange | undefined
 ): [number, number] {
+  if (areaChartData.length === 0 || points.length === 0) {
+    return [0, 0];
+  }
   const xaxisLastTime: number = areaChartData[areaChartData.length - 1]
     ? Number(areaChartData[areaChartData.length - 1].t)
     : points[points.length - 1].t;
@@ -186,7 +190,7 @@ export function getXAxisDomain(
   return [xaxisDomainStartTimestamp, xaxisLastTime];
 }
 
-const getMs = (timeRange: string): number => {
+export const getMs = (timeRange: string): number => {
   switch (timeRange) {
     case "2h":
       return HOUR * 2 * 1000;
@@ -637,8 +641,8 @@ export const formatStreams = (params: {
 }) => {
   const { metric, dateRange } = params;
 
-  return metric.sample_streams!.map((sample_stream) => {
-    if (sample_stream?.points) {
+  return metric.sample_streams.map((sample_stream) => {
+    if (sample_stream.points) {
       const points = filterPointsByDateRange(sample_stream.points, dateRange);
       return {
         ...sample_stream,
@@ -657,18 +661,16 @@ export const transformData = (
   step: number,
   dateRange?: DateRange
 ) => {
-  debugger;
   const result =
     streams.length === 1
       ? addMissingDataWithZero(
-          streams[0].points || [],
+          streams[0].points ?? [],
           range,
           unit,
           step,
           dateRange
         )
       : convertDataForMultiArea(streams, range, unit, step, dateRange);
-  debugger;
   return result;
 };
 
@@ -679,10 +681,19 @@ export const convertDataForMultiArea = (
   step: number,
   dateRange?: DateRange
 ) => {
-  streams.forEach((item) => {
-    item.points = addMissingDataWithZero(item?.points || [], range, unit, step);
+  const data = streams.map((item) => {
+    const points = addMissingDataWithZero(
+      item?.points || [],
+      range,
+      unit,
+      step
+    );
+    return {
+      ...item,
+      points,
+    };
   });
-  if (!streams[0].points?.length) {
+  if (data[0].points == null || data[0].points?.length === 0) {
     return [];
   }
   const finalData: Record<string, string | number | null | undefined>[] = [];
@@ -690,11 +701,11 @@ export const convertDataForMultiArea = (
 
   for (let j = 0; j < pointsNum; j++) {
     finalData[j] = {
-      t: streams[0].points[0].t + step * j,
+      t: data[0].points[0].t + step * j,
       unit,
     };
-    for (let i = 0; i < streams.length; i++) {
-      finalData[j][`v${i}`] = streams[i].points?.[j]?.v;
+    for (let i = 0; i < data.length; i++) {
+      finalData[j][`v${i}`] = data[i].points?.[j]?.v;
     }
   }
 
