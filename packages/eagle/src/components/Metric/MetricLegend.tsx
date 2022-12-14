@@ -7,7 +7,6 @@ import { parrotI18n } from "@cloudtower/parrot";
 import { Menu } from "antd";
 import cs from "classnames";
 import React, { useContext, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 
 import {
   ColorBlockStyle,
@@ -182,8 +181,7 @@ export const LegendComponent: React.FC<{
   getColorsByMetric: (metricName: string) => string;
 }> = (props) => {
   const { metricName, onLabelsChange, getColorsByMetric } = props;
-  const { i18n } = useTranslation();
-  const name = i18n.td(`metric.${metricName}`);
+  const name = parrotI18n.t(`metric.${metricName}`);
   const color = getColorsByMetric(metricName);
 
   if (typeof onLabelsChange === "function") {
