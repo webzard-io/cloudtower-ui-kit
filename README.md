@@ -33,6 +33,46 @@ The Source Code is Maintained on [github](https://github.com/webzard-io/cloud-to
 }
 ```
 
+## Quick Start
+
+- Install Deps
+
+  At Root of Project, Run
+
+  ```
+  yarn
+  ```
+
+- Build Packages
+
+  > Due to Codegen's code, It will take 10min.
+
+  > You can remove part of the codegen code, for qucik start.
+
+  > Please check branch `smaller` 's commit `tmp: remove some codegen component`.
+
+  At Root of Project, Run
+
+  ```
+  yarn build
+  ```
+
+- Start Stroy
+
+  At Story Folder, Run a Storybook
+
+  ```
+  yarn storybook
+  ```
+
+  Or
+
+  At Story Folder, Run a CRA Project
+
+  ```
+  yarn start
+  ```
+
 ## About Husky
 
 husky is enabled for foramt code and check eslint error.
