@@ -71,6 +71,7 @@ export interface IChartProps {
   metricType: string;
   deselectedIndex: number[];
   metric: IMetric;
+  now?: number;
 }
 
 const RenderChart = (props: IChartProps) => {
@@ -99,6 +100,7 @@ const RenderChart = (props: IChartProps) => {
     metricType,
     deselectedIndex,
     metric,
+    now = Date.now(),
   } = props;
 
   const isLegend = mode === "legend";
@@ -111,8 +113,9 @@ const RenderChart = (props: IChartProps) => {
   );
 
   const areaChartData = useMemo(
-    () => transformData(streams, range, metric.unit, metric.step, dateRange),
-    [dateRange, metric.step, metric.unit, range, streams]
+    () =>
+      transformData(streams, range, metric.unit, metric.step, dateRange, now),
+    [dateRange, metric.step, metric.unit, now, range, streams]
   );
 
   const yDomain = useMemo(

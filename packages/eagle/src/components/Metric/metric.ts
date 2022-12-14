@@ -238,14 +238,11 @@ export const addMissingDataWithZero = (
   timeRange: string,
   unit: MetricUnit,
   step: number,
-  dateRange?: DateRange
+  dateRange?: DateRange,
+  now = Date.now()
 ) => {
-  const now = Date.now();
-
   const inRangePoints = deletePointsOutOfRange(data, timeRange, now);
-  if (!inRangePoints.length) {
-    return [];
-  }
+
   const firsExpectedTimestamp = getFirstExpectedTimestamp(
     inRangePoints,
     timeRange,
@@ -267,6 +264,7 @@ export const addMissingDataWithZero = (
       v: -Infinity,
     });
   }
+
   inRangePoints.forEach((item, index) => {
     expectedPoints.push({
       t: item?.t,
@@ -659,7 +657,8 @@ export const transformData = (
   range: string,
   unit: MetricUnit,
   step: number,
-  dateRange?: DateRange
+  dateRange?: DateRange,
+  now = Date.now()
 ) => {
   const result =
     streams.length === 1
@@ -668,9 +667,10 @@ export const transformData = (
           range,
           unit,
           step,
-          dateRange
+          dateRange,
+          now
         )
-      : convertDataForMultiArea(streams, range, unit, step, dateRange);
+      : convertDataForMultiArea(streams, range, unit, step, dateRange, now);
   return result;
 };
 
@@ -679,15 +679,19 @@ export const convertDataForMultiArea = (
   range: string,
   unit: MetricUnit,
   step: number,
-  dateRange?: DateRange
+  dateRange?: DateRange,
+  now = Date.now()
 ) => {
   const data = streams.map((item) => {
     const points = addMissingDataWithZero(
       item?.points || [],
       range,
       unit,
-      step
+      step,
+      dateRange,
+      now
     );
+
     return {
       ...item,
       points,
