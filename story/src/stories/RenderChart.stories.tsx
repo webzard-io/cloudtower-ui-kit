@@ -38,8 +38,13 @@ Primary.args = {
   legends: [
     {
       id: "1",
-      name: "string",
+      name: "legend1",
       bgColor: "#abcabc",
+    },
+    {
+      id: "2",
+      name: "legend2",
+      bgColor: "#0bc0bc",
     },
   ],
   metricName: "hello",
