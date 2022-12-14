@@ -1,36 +1,12 @@
 import { MetricUnit } from "@cloudtower/eagle/generated/react-hooks";
 import { ChartState, useKitSelector } from "@cloudtower/eagle/kit/smartx";
-import { styled } from "@linaria/react";
+import React from "react";
 import { TooltipProps } from "recharts";
 import { Payload as TooltipPayload } from "recharts/types/component/DefaultTooltipContent";
 
 import { transformDataAndUnit, UNIT_FORMATTER } from "./metric";
 import { ColorBlock, LegendComponent } from "./MetricLegend";
-
-const TooltipWrapper = styled.div`
-  min-width: 200px;
-`;
-
-const TooltipColumn = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.75);
-  color: #b4beca;
-  font-size: 12px;
-  padding: 3px 6px;
-
-  &:first-child {
-    padding-top: 3px;
-  }
-  &:last-child {
-    padding-bottom: 3px;
-  }
-  .column-value {
-    color: $white;
-    margin-left: 8px;
-  }
-`;
+import { TooltipColumn, TooltipWrapper } from "./styled";
 
 const TOWER_PERCENT = "%";
 
@@ -39,8 +15,8 @@ const TooltipFormatter: React.FC<
     uuid: string;
     deselectedIndex: number[];
     isLegend: boolean;
-    metric: string;
-    getColorsByMetric: (metric: string) => string;
+    metricName: string;
+    getColorsByMetric: (metricName: string) => string;
   }
 > = (props) => {
   const {
@@ -49,7 +25,7 @@ const TooltipFormatter: React.FC<
     uuid,
     deselectedIndex,
     isLegend,
-    metric,
+    metricName,
     getColorsByMetric,
   } = props;
   const resourceData = useKitSelector<ChartState["resourceData"]>(
@@ -77,7 +53,7 @@ const TooltipFormatter: React.FC<
       payload.unit,
       "v" in payload ? payload.v : payload[`v${index}`]
     );
-    const baseUnit = UNIT_FORMATTER[payload.unit as unknown as MetricUnit][1];
+    const baseUnit = UNIT_FORMATTER[payload.unit as unknown as MetricUnit]?.[1];
     const formattedValue =
       value !== -Infinity
         ? value.toFixed(unit === baseUnit && unit !== TOWER_PERCENT ? 0 : 2)
@@ -101,7 +77,7 @@ const TooltipFormatter: React.FC<
       <TooltipWrapper>
         <TooltipColumn>
           <LegendComponent
-            metric={metric}
+            metricName={metricName}
             getColorsByMetric={getColorsByMetric}
           />
           <div className="column-value">{transformColumnValue(payload)}</div>

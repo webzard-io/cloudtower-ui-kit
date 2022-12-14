@@ -7,7 +7,6 @@ import {
 } from "@cloudtower/eagle/generated/react-hooks";
 import { DateRange } from "@cloudtower/eagle/kit/specify/type";
 import {
-  Cluster,
   convertUnit,
   DAY,
   formatBitPerSecond,
@@ -18,37 +17,34 @@ import {
   formatNanoSecond,
   formatPercent,
   formatTemperature,
-  getMetricGranularity,
-  Granularity,
   HOUR,
   MINUTE,
   roundToDecimals,
-  SECOND,
   WEEK,
 } from "@tower/utils";
 import dayjs from "dayjs";
 import { TFunction } from "i18next";
 import _ from "lodash";
 
-import { IMetricsQuery } from "./type";
+import { IMetric } from "./type";
 
 export const getColor = (prams: {
   type: GraphType;
   isLegend: boolean;
   index?: number;
-  metric: string;
-  getColorsByMetric: (metric: string) => string;
+  metricName: string;
+  getColorsByMetric: (metricName: string) => string;
   metricColors: string[];
 }) => {
   const {
     type,
     isLegend,
     index = 0,
-    metric,
+    metricName,
     getColorsByMetric,
     metricColors,
   } = prams;
-  const stroke = isLegend ? metricColors[index] : getColorsByMetric(metric);
+  const stroke = isLegend ? metricColors[index] : getColorsByMetric(metricName);
   // 1A === 10% transparency
   const fill = type === GraphType.Stack ? stroke : `${stroke}1A`;
 
@@ -79,6 +75,7 @@ export function filterPointsByDateRange(
 
     return points?.filter((point) => {
       const pointDate = dayjs(point.t);
+
       if (startDate && pointDate.isBefore(startDate)) {
         return false;
       }
@@ -91,51 +88,6 @@ export function filterPointsByDateRange(
 
   return points;
 }
-
-export const formatStreams = (params: {
-  topkData: IMetricsQuery | undefined;
-  metricData?: IMetricsQuery;
-  dateRange?: DateRange | undefined | null;
-}) => {
-  const { topkData, metricData, dateRange } = params;
-  if (!metricData) {
-    return undefined;
-  }
-  if (!topkData?.metrics.samples) {
-    return metricData.metrics.sample_streams!.map((sample_stream) => {
-      if (sample_stream?.points) {
-        const points = filterPointsByDateRange(sample_stream.points, dateRange);
-        return {
-          ...sample_stream,
-          points,
-        };
-      }
-
-      return sample_stream;
-    });
-  }
-
-  const orderList = topkData.metrics.samples.map((stream) =>
-    _.compact(Object.values(stream.labels)).join("")
-  );
-
-  return orderList
-    .map((item) => {
-      const sample_streams = metricData.metrics.sample_streams!.find(
-        (stream) => _.compact(Object.values(stream.labels)).join("") === item
-      )!;
-
-      if (sample_streams?.points) {
-        return {
-          ...sample_streams,
-          points: filterPointsByDateRange(sample_streams.points, dateRange),
-        };
-      }
-
-      return sample_streams;
-    })
-    .filter((r) => r);
-};
 
 export const parseRange = (range: string) => {
   const span = parseInt(range.slice(0, range.length - 1));
@@ -208,6 +160,9 @@ export function getXAxisDomain(
   range: string,
   dateRange?: DateRange | undefined
 ): [number, number] {
+  if (areaChartData.length === 0 || points.length === 0) {
+    return [0, 0];
+  }
   const xaxisLastTime: number = areaChartData[areaChartData.length - 1]
     ? Number(areaChartData[areaChartData.length - 1].t)
     : points[points.length - 1].t;
@@ -235,7 +190,7 @@ export function getXAxisDomain(
   return [xaxisDomainStartTimestamp, xaxisLastTime];
 }
 
-const getMs = (timeRange: string): number => {
+export const getMs = (timeRange: string): number => {
   switch (timeRange) {
     case "2h":
       return HOUR * 2 * 1000;
@@ -283,14 +238,11 @@ export const addMissingDataWithZero = (
   timeRange: string,
   unit: MetricUnit,
   step: number,
-  dateRange?: DateRange
+  dateRange?: DateRange,
+  now = Date.now()
 ) => {
-  const now = Date.now();
-
   const inRangePoints = deletePointsOutOfRange(data, timeRange, now);
-  if (!inRangePoints.length) {
-    return [];
-  }
+
   const firsExpectedTimestamp = getFirstExpectedTimestamp(
     inRangePoints,
     timeRange,
@@ -312,6 +264,7 @@ export const addMissingDataWithZero = (
       v: -Infinity,
     });
   }
+
   inRangePoints.forEach((item, index) => {
     expectedPoints.push({
       t: item?.t,
@@ -337,31 +290,6 @@ export const addMissingDataWithZero = (
     dateRange
   );
 };
-
-export const transformData = (
-  sample_streams: MetricStream[],
-  range: string,
-  unit: MetricUnit,
-  step: number,
-  averageLine: boolean,
-  dateRange?: DateRange
-) => {
-  const result =
-    sample_streams.length === 1
-      ? addMissingDataWithZero(
-          sample_streams[0].points || [],
-          range,
-          unit,
-          step,
-          dateRange
-        )
-      : convertDataForMultiArea(sample_streams, range, unit, step, dateRange);
-  return result;
-};
-
-export interface IClusterBasicQuery {
-  cluster: Cluster;
-}
 
 export function transformDataAndUnit(
   unit: MetricUnit | undefined,
@@ -396,38 +324,6 @@ export function transformDataAndUnit(
     }
   }
 }
-
-export const getStep = (timeRange: string, metric: string): number => {
-  const granularity = getMetricGranularity(metric);
-  if (granularity === Granularity.Thick) {
-    switch (timeRange) {
-      case "2h":
-        return MINUTE * 5 * 1000;
-      case "24h":
-        return HOUR * 1 * 1000;
-      case "7d":
-        return DAY * 1000;
-      case "30d":
-        return DAY * 1000;
-      case "182d":
-        return WEEK * 1000;
-      default:
-        return DAY * 1000;
-    }
-  }
-  switch (timeRange) {
-    case "2h":
-      return SECOND * 30 * 1000;
-    case "24h":
-      return MINUTE * 5 * 1000;
-    case "7d":
-      return MINUTE * 30 * 1000;
-    case "30d":
-      return DAY * 1000;
-    default:
-      return DAY * 1000;
-  }
-};
 
 export const findMaxAndCurrent = (points: DataPoint[], unit: MetricUnit) => {
   const v = points[points.length - 1]?.v;
@@ -548,35 +444,6 @@ export const getYAxisDomain = (
     }
   }
   return [0, getYAxisUpperBound(max, unitType)];
-};
-
-export const convertDataForMultiArea = (
-  data: MetricStream[],
-  range: string,
-  unit: MetricUnit,
-  step: number,
-  dateRange?: DateRange
-) => {
-  data.forEach((item) => {
-    item.points = addMissingDataWithZero(item?.points || [], range, unit, step);
-  });
-  if (!data[0].points?.length) {
-    return [];
-  }
-  const finalData: Record<string, string | number | null | undefined>[] = [];
-  const pointsNum: number = getMs(range) / step;
-
-  for (let j = 0; j < pointsNum; j++) {
-    finalData[j] = {
-      t: data[0].points[0].t + step * j,
-      unit,
-    };
-    for (let i = 0; i < data.length; i++) {
-      finalData[j][`v${i}`] = data[i].points?.[j]?.v;
-    }
-  }
-
-  return filterPointsByDateRange(finalData as DataPoint[], dateRange);
 };
 
 export const getFirstExpectedTimestamp = (
@@ -764,4 +631,87 @@ export type MetricRefType = {
     filename: string;
     filetype: string;
   };
+};
+
+export const formatStreams = (params: {
+  metric: IMetric;
+  dateRange?: DateRange | null;
+}) => {
+  const { metric, dateRange } = params;
+
+  return metric.sample_streams.map((sample_stream) => {
+    if (sample_stream.points) {
+      const points = filterPointsByDateRange(sample_stream.points, dateRange);
+      return {
+        ...sample_stream,
+        points,
+      };
+    }
+
+    return sample_stream;
+  });
+};
+
+export const transformData = (
+  streams: MetricStream[],
+  range: string,
+  unit: MetricUnit,
+  step: number,
+  dateRange?: DateRange,
+  now = Date.now()
+) => {
+  const result =
+    streams.length === 1
+      ? addMissingDataWithZero(
+          streams[0].points ?? [],
+          range,
+          unit,
+          step,
+          dateRange,
+          now
+        )
+      : convertDataForMultiArea(streams, range, unit, step, dateRange, now);
+  return result;
+};
+
+export const convertDataForMultiArea = (
+  streams: MetricStream[],
+  range: string,
+  unit: MetricUnit,
+  step: number,
+  dateRange?: DateRange,
+  now = Date.now()
+) => {
+  const data = streams.map((item) => {
+    const points = addMissingDataWithZero(
+      item?.points || [],
+      range,
+      unit,
+      step,
+      dateRange,
+      now
+    );
+
+    return {
+      ...item,
+      points,
+    };
+  });
+  if (data[0].points == null || data[0].points?.length === 0) {
+    return [];
+  }
+  const finalData: Record<string, string | number | null | undefined>[] = [];
+  const pointsNum: number = getMs(range) / step;
+
+  for (let j = 0; j < pointsNum; j++) {
+    finalData[j] = {
+      t: data[0].points[0].t + step * j,
+      unit,
+    };
+    for (let i = 0; i < data.length; i++) {
+      finalData[j][`v${i}`] = data[i].points?.[j]?.v;
+    }
+  }
+
+  return filterPointsByDateRange(finalData as DataPoint[], dateRange);
 };

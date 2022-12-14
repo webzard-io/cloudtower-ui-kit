@@ -1,5 +1,6 @@
 import { ChartState, useKitSelector } from "@cloudtower/eagle/kit/smartx";
 import _ from "lodash";
+import React from "react";
 
 const Pointer: React.FC<{
   metricWidth: number;

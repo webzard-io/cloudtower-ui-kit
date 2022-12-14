@@ -10,9 +10,7 @@ export default {
   title: "TowerTable",
   component: TowerTable,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {
-    backgroundColor: { control: "color" },
-  },
+  argTypes: {},
   decorators: [
     (Story) => {
       return (

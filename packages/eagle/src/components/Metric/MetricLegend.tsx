@@ -4,62 +4,18 @@ import { ExtraOverflow } from "@cloudtower/eagle/kit/smartx";
 import { Truncate } from "@cloudtower/eagle/kit/smartx";
 import { kitContext } from "@cloudtower/eagle/kit/specify";
 import { parrotI18n } from "@cloudtower/parrot";
-import { css } from "@linaria/core";
-import { getMetricQueryType } from "@tower/utils";
 import { Menu } from "antd";
 import cs from "classnames";
 import React, { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import { FormatName } from "./type";
-
-const LegendStyle = css`
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 100%;
-
-  .ant-dropdown-trigger {
-    margin-left: auto;
-    font-size: 12px;
-  }
-`;
-
-const LegendItemStyle = css`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 12px;
-  cursor: pointer;
-
-  &:not(:last-child) {
-    margin-right: 20px;
-  }
-  &.deselected {
-    opacity: 0.4;
-
-    .color-block {
-      background: #b4beca !important;
-    }
-  }
-`;
-
-const ColorBlockStyle = css`
-  display: inline-block;
-  height: 8px;
-  width: 8px;
-  margin-right: 8px;
-`;
-
-const ExtraResource = css`
-  .ant-dropdown-menu-item {
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    margin: 0;
-  }
-`;
+import {
+  ColorBlockStyle,
+  ExtraResource,
+  LegendItemStyle,
+  LegendStyle,
+} from "./styled";
+import { FormatName, IMetricData } from "./type";
 
 export const ColorBlock: React.FC<{
   background: string;
@@ -67,37 +23,35 @@ export const ColorBlock: React.FC<{
   <div className={cs(ColorBlockStyle, "color-block")} style={{ background }} />
 );
 
-export type GetDeselectedValueWithSuffix<MetricData extends { id: string }> = (
+export type GetDeselectedValueWithSuffix = (
   type: string | undefined,
-  data: MetricData,
+  data: IMetricData,
   metricName: string,
   sample_stream?: MetricStream
 ) => string;
-interface IProps<MetricData extends { id: string }> {
-  sample_streams: MetricStream[];
+interface IProps {
+  streams: MetricStream[];
   metricName: string;
   deselected: string[];
   onClick: (id: string) => void;
   service?: Maybe<string>;
-  resourceType?: Maybe<string>;
   onLabelsChange?: (labels: string[]) => void;
-  formatLegendItemName: FormatName<MetricData>;
-  getDeselectedValueWithSuffix: GetDeselectedValueWithSuffix<MetricData>;
-  data: MetricData[];
+  formatLegendItemName: FormatName;
+  getDeselectedValueWithSuffix: GetDeselectedValueWithSuffix;
+  data: IMetricData[];
   metricColors: string[];
+  metricType: string;
 }
 
 // TODO: when too many, refer to the fisheye
-const MetricLegend = <MetricData extends { id: string }>(
-  props: IProps<MetricData>
-) => {
+const MetricLegend = (props: IProps) => {
   const {
-    sample_streams,
+    streams,
     metricName,
     deselected,
     onClick,
     service,
-    resourceType,
+    metricType,
     onLabelsChange,
     formatLegendItemName,
     getDeselectedValueWithSuffix,
@@ -105,8 +59,6 @@ const MetricLegend = <MetricData extends { id: string }>(
     metricColors,
   } = props;
   const kit = useContext(kitContext);
-
-  const metricType = getMetricQueryType(metricName, resourceType || "");
 
   useEffect(() => {
     let labels: string[] = [];
@@ -118,7 +70,7 @@ const MetricLegend = <MetricData extends { id: string }>(
           service,
           metricName,
           t: parrotI18n.t,
-          sample_streams,
+          streams,
           dIndex: idx,
         })
       );
@@ -129,7 +81,7 @@ const MetricLegend = <MetricData extends { id: string }>(
     metricType,
     service,
     metricName,
-    sample_streams,
+    streams,
     onLabelsChange,
     formatLegendItemName,
   ]);
@@ -150,7 +102,7 @@ const MetricLegend = <MetricData extends { id: string }>(
                   metricType,
                   d,
                   metricName,
-                  sample_streams[end + idx]
+                  streams[end + idx]
                 );
                 return (
                   <Menu.Item
@@ -169,7 +121,7 @@ const MetricLegend = <MetricData extends { id: string }>(
                         service,
                         metricName,
                         t: parrotI18n.t,
-                        sample_streams,
+                        streams,
                         dIndex: end + idx,
                       })}
                     </span>
@@ -190,7 +142,7 @@ const MetricLegend = <MetricData extends { id: string }>(
           metricType,
           d,
           metricName,
-          sample_streams[index]
+          streams[index]
         );
         return (
           <div
@@ -210,7 +162,7 @@ const MetricLegend = <MetricData extends { id: string }>(
                   service,
                   metricName,
                   t: parrotI18n.t,
-                  sample_streams,
+                  streams,
                   dIndex: index,
                 })}
                 len={50}
@@ -225,14 +177,14 @@ const MetricLegend = <MetricData extends { id: string }>(
 };
 
 export const LegendComponent: React.FC<{
-  metric: string;
+  metricName: string;
   onLabelsChange?: (labels: string[]) => void;
-  getColorsByMetric: (metric: string) => string;
+  getColorsByMetric: (metricName: string) => string;
 }> = (props) => {
-  const { metric, onLabelsChange, getColorsByMetric } = props;
+  const { metricName, onLabelsChange, getColorsByMetric } = props;
   const { i18n } = useTranslation();
-  const name = i18n.td(`metric.${metric}`);
-  const color = getColorsByMetric(metric);
+  const name = i18n.td(`metric.${metricName}`);
+  const color = getColorsByMetric(metricName);
 
   if (typeof onLabelsChange === "function") {
     onLabelsChange([name]);

@@ -4,7 +4,8 @@ import "@cloudtower/eagle/styles/reset.css";
 import "@cloudtower/eagle/styles/fonts/font.css";
 import "@cloudtower/eagle/styles/override.scss";
 
-import { TowerTable } from "@cloudtower/eagle";
+import { IChartProps, RenderChart, TowerTable } from "@cloudtower/eagle";
+import { GraphType } from "@cloudtower/eagle/generated/react-hooks";
 import {
   antdKit,
   CustomizeColumnType,
@@ -13,7 +14,10 @@ import {
 import { kitContext } from "@cloudtower/eagle/kit/specify";
 import { initParrotI18n } from "@cloudtower/parrot";
 import { Button } from "antd";
+import dayjs from "dayjs";
 import React from "react";
+
+import mockMetric from "./mockMetric";
 
 initParrotI18n();
 
@@ -82,6 +86,30 @@ const args = {
   },
 };
 
+const renderChartArgs: IChartProps = {
+  metricName: "hello",
+  metric: mockMetric,
+  uuid: "abc",
+  height: 200,
+  range: "2h",
+  type: GraphType.Area,
+  formatLegendItemName: () => {
+    return "hello legend";
+  },
+  getDeselectedValueWithSuffix: () => {
+    return "hello suffix";
+  },
+  metricLegendData: [],
+  getColorsByMetric: () => {
+    return "#ABCABC";
+  },
+  metricColors: ["#ABCABC"],
+  metricType: "hellometricType",
+  deselectedIndex: [],
+  dateRange: [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
+  now: new Date("2022-12-13 18:00").getTime(),
+};
+
 function App() {
   return (
     <kitContext.Provider value={antdKit}>
@@ -91,6 +119,7 @@ function App() {
         <antdKit.button loading={true}>button</antdKit.button>
         <Button loading={true}>button</Button>
         <TowerTable {...args} />
+        <RenderChart {...renderChartArgs} />
       </div>
     </kitContext.Provider>
   );
