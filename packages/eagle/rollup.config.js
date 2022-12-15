@@ -61,7 +61,7 @@ const config = defineConfig([
     // "forms2.tsx",
     // "global-search.ts",
     "images-type.ts",
-    "react-hooks.ts",
+    // "react-hooks.ts",
     // "tables.tsx",
   ].map((name) => {
     return {

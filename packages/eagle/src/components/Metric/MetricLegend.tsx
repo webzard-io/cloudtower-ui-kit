@@ -1,5 +1,4 @@
 import { DoubleRightOutlined } from "@ant-design/icons";
-import { MetricStream } from "@cloudtower/eagle/generated/react-hooks";
 import { ExtraOverflow } from "@cloudtower/eagle/kit/smartx";
 import { Truncate } from "@cloudtower/eagle/kit/smartx";
 import { kitContext } from "@cloudtower/eagle/kit/specify";
@@ -13,7 +12,7 @@ import {
   LegendItemStyle,
   LegendStyle,
 } from "./styled";
-import { ILegend, IMetricData } from "./type";
+import { ILegend, IMetricData, IMetricStream } from "./type";
 
 export const ColorBlock: React.FC<{
   background?: string;
@@ -25,11 +24,11 @@ export type GetDeselectedValueWithSuffix = (
   type: string | undefined,
   data: IMetricData,
   metricName: string,
-  sample_stream?: MetricStream
+  sample_stream?: IMetricStream
 ) => string;
 
 export interface IMetricLegendProps {
-  streams: MetricStream[];
+  streams: IMetricStream[];
   metricName: string;
   deselected: string[];
   onClick: (id: string) => void;

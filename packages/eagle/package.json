@@ -99,7 +99,7 @@
     "pregenerate": "rm -rf src/generated",
     "generate:query": "graphql-codegen --config src/codegen/config/codegen-query.yaml",
     "generate:main": "graphql-codegen --config src/codegen/config/codegen-main.yaml",
-    "generate": "yarn generate:query && yarn generate:main",
+    "generate": "yarn generate:main",
     "typings": "yarn typings:main",
     "typings:main": "tsc -v && tsc -p tsconfig.typings.json || exit 0",
     "generate:images": "node --loader ts-node/esm tools/index.mts"

@@ -1,5 +1,3 @@
-import { GraphType } from "@cloudtower/eagle/generated/react-hooks";
-import { DateRange } from "@cloudtower/eagle/kit/specify";
 import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
 import React, { useCallback, useMemo, useState } from "react";
@@ -28,7 +26,7 @@ import {
 import MetricLegend, { LegendComponent } from "./MetricLegend";
 import { MetricLegendTabStyle } from "./styled";
 import TooltipFormatter from "./TooltipFormatter";
-import { IExportCSVDataType, IMetric } from "./type";
+import { DateRange, GraphType, IExportCSVDataType, IMetric } from "./type";
 
 export interface IChartProps {
   metricName: string;

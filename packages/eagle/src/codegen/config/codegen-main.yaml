@@ -9,19 +9,19 @@ hooks:
   afterAllFileWrite:
     - prettier --write
 generates:
-  src/generated/react-hooks.ts:
-    plugins:
-      - typescript
-      - typescript-operations
-      - typescript-react-apollo
-    config:
-      scalars:
-        DateTime: string
-        JSON: "{ [key: string]: any }"
-      withComponent: false
-      withHOC: false
-      withHooks: true
-      maybeValue: T | null | undefined
+  # src/generated/react-hooks.ts:
+  #   plugins:
+  #     - typescript
+  #     - typescript-operations
+  #     - typescript-react-apollo
+  #   config:
+  #     scalars:
+  #       DateTime: string
+  #       JSON: "{ [key: string]: any }"
+  #     withComponent: false
+  #     withHOC: false
+  #     withHooks: true
+  #     maybeValue: T | null | undefined
   # src/generated/tables.tsx:
   #   plugins:
   #     - "../claw/dist/src/react-component/table.js"

@@ -1,20 +1,4 @@
-import {
-  Maybe,
-  MetricLabel,
-  MetricStream,
-  MetricUnit,
-} from "@cloudtower/eagle/generated/react-hooks";
-import { TFunction } from "i18next";
-
-export type FormatName = (params: {
-  type: string | undefined;
-  data: IMetricData;
-  service?: Maybe<string>;
-  metricName: string;
-  t: TFunction;
-  streams: MetricStream[];
-  dIndex: number;
-}) => string;
+import { Dayjs } from "dayjs";
 
 export interface IMetricData {
   id: string;
@@ -38,7 +22,6 @@ export interface ILegend {
 
 export interface IMetricStream {
   __typename?: "MetricStream";
-  labels: MetricLabel;
   points: IDataPoint[];
   legend: ILegend;
 }
@@ -56,3 +39,29 @@ export type IExportCSVDataType = {
   pointData: IDataPoint[];
   unit?: MetricUnit;
 };
+
+export enum TimeUnit {
+  Day = "DAY",
+  Hour = "HOUR",
+  Month = "MONTH",
+}
+
+export enum MetricUnit {
+  Count = "COUNT",
+  DataRateBit = "DATA_RATE_BIT",
+  DataRateByte = "DATA_RATE_BYTE",
+  DataSize = "DATA_SIZE",
+  Frequency = "FREQUENCY",
+  Load = "LOAD",
+  Percent = "PERCENT",
+  Ratio = "RATIO",
+  Temperature = "TEMPERATURE",
+  Time = "TIME",
+}
+
+export enum GraphType {
+  Area = "AREA",
+  Stack = "STACK",
+}
+
+export type DateRange = [Dayjs | null, Dayjs | null];

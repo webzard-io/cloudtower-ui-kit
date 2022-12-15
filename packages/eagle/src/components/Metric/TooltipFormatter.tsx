@@ -1,4 +1,3 @@
-import { MetricUnit } from "@cloudtower/eagle/generated/react-hooks";
 import React from "react";
 import { TooltipProps } from "recharts";
 import { Payload as TooltipPayload } from "recharts/types/component/DefaultTooltipContent";
@@ -6,7 +5,7 @@ import { Payload as TooltipPayload } from "recharts/types/component/DefaultToolt
 import { transformDataAndUnit, UNIT_FORMATTER } from "./metric";
 import { ColorBlock } from "./MetricLegend";
 import { TooltipColumn, TooltipWrapper } from "./styled";
-import { ILegend } from "./type";
+import { ILegend, MetricUnit } from "./type";
 
 const TOWER_PERCENT = "%";
 
