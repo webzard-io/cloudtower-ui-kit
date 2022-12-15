@@ -1,5 +1,6 @@
 import {
   Maybe,
+  MetricLabel,
   MetricStream,
   MetricUnit,
 } from "@cloudtower/eagle/generated/react-hooks";
@@ -22,14 +23,18 @@ export interface IMetricData {
 export interface IDataPoint {
   __typename?: "DataPoint";
   t: number;
-  unit: MetricUnit;
-  [key: DataPointValueKey]: number;
+  unit?: MetricUnit;
+  v: number;
 }
 
-type DataPointValueKey = `v${number}`;
+export interface IMetricStream {
+  __typename?: "MetricStream";
+  labels: MetricLabel;
+  points: IDataPoint[];
+}
 
 export interface IMetric {
-  sample_streams: MetricStream[];
+  sample_streams: IMetricStream[];
   unit: MetricUnit;
   step: number;
   dropped: boolean;
