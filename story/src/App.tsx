@@ -93,13 +93,18 @@ const renderChartArgs: IChartProps = {
   legends: [
     {
       id: "1",
-      name: "legend1",
+      name: "loooooooooooooooooooooooooooooooooooooooooooong_legend1",
       bgColor: "#abcabc",
     },
     {
       id: "2",
-      name: "legend2",
+      name: "loooooooooooooooooooooooooooooooooooooooooooong_legend2",
       bgColor: "#0bc0bc",
+    },
+    {
+      id: "3",
+      name: "loooooooooooooooooooooooooooooooooooooooooooong_legend3",
+      bgColor: "#ff0101",
     },
   ],
   metricName: "hello",

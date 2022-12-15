@@ -47,13 +47,14 @@ const TooltipFormatter: React.FC<
   TooltipProps<number, string> & {
     uuid: string;
     deselectedIndex: number[];
-    legendProps?: ILegend;
+    legends: ILegend[];
+    // legendProps?: ILegend;
   }
 > = (props) => {
-  const { active, payload, uuid, deselectedIndex, legendProps } = props;
-  const resourceData = useKitSelector<ChartState["resourceData"]>(
-    (state) => state.chart.resourceData
-  );
+  const { active, payload, uuid, deselectedIndex, legends } = props;
+  // const resourceData = useKitSelector<ChartState["resourceData"]>(
+  //   (state) => state.chart.resourceData
+  // );
 
   if (!active || !payload?.length) {
     return null;
@@ -74,16 +75,16 @@ const TooltipFormatter: React.FC<
   //   );
   // }
 
-  const data = resourceData[uuid];
+  // const data = resourceData[uuid];
   return (
     <TooltipWrapper>
-      {sortArr?.map((item) => {
+      {sortArr.map((item, index) => {
         const displayIndex = Number((item.name || "").slice(1));
         return deselectedIndex.includes(displayIndex) ? null : (
           <TooltipColumn key={displayIndex}>
             <div>
-              <ColorBlock background={item.color!} />
-              {data && data[displayIndex]?.name}
+              <ColorBlock background={legends[index]?.bgColor} />
+              {legends[index]?.name}
             </div>
             <div className="column-value">
               {transformColumnValue(payload, displayIndex)}
