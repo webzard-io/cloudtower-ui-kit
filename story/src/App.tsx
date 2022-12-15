@@ -87,24 +87,30 @@ const args = {
 };
 
 const renderChartArgs: IChartProps = {
+  mode: "legend",
+  showLegend: true,
+  legends: [
+    {
+      id: "1",
+      name: "legend1",
+      bgColor: "#abcabc",
+    },
+    {
+      id: "2",
+      name: "legend2",
+      bgColor: "#0bc0bc",
+    },
+  ],
   metricName: "hello",
   metric: mockMetric,
   uuid: "abc",
   height: 200,
   range: "2h",
   type: GraphType.Area,
-  formatLegendItemName: () => {
-    return "hello legend";
-  },
-  getDeselectedValueWithSuffix: () => {
-    return "hello suffix";
-  },
-  metricLegendData: [],
   getColorsByMetric: () => {
     return "#ABCABC";
   },
   metricColors: ["#ABCABC"],
-  metricType: "hellometricType",
   deselectedIndex: [],
   dateRange: [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
   now: new Date("2022-12-13 18:00").getTime(),
