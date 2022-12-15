@@ -3,6 +3,7 @@ import "@cloudtower/eagle/kit/smartx/style.css";
 import "@cloudtower/eagle/styles/reset.css";
 import "@cloudtower/eagle/styles/fonts/font.css";
 import "@cloudtower/eagle/styles/override.scss";
+import "@cloudtower/eagle/style.css";
 
 import { IChartProps, RenderChart, TowerTable } from "@cloudtower/eagle";
 import { GraphType } from "@cloudtower/eagle/generated/react-hooks";
@@ -87,27 +88,21 @@ const args = {
 };
 
 const renderChartArgs: IChartProps = {
+  mode: "legend",
+  showLegend: true,
   metricName: "hello",
   metric: mockMetric,
   uuid: "abc",
   height: 200,
   range: "2h",
   type: GraphType.Area,
-  formatLegendItemName: () => {
-    return "hello legend";
-  },
-  getDeselectedValueWithSuffix: () => {
-    return "hello suffix";
-  },
-  metricLegendData: [],
   getColorsByMetric: () => {
     return "#ABCABC";
   },
   metricColors: ["#ABCABC"],
-  metricType: "hellometricType",
-  deselectedIndex: [],
   dateRange: [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
   now: new Date("2022-12-13 18:00").getTime(),
+  showXAxis: true,
 };
 
 function App() {

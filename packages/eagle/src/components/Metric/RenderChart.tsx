@@ -1,13 +1,8 @@
-import {
-  DataPoint,
-  GraphType,
-  Maybe,
-  MetricUnit,
-} from "@cloudtower/eagle/generated/react-hooks";
+import { GraphType } from "@cloudtower/eagle/generated/react-hooks";
 import { DateRange } from "@cloudtower/eagle/kit/specify";
 import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import {
   Area,
   AreaChart,
@@ -30,19 +25,10 @@ import {
   xaxisCal,
   yAxisFomatter,
 } from "./metric";
-import MetricLegend, {
-  GetDeselectedValueWithSuffix,
-  LegendComponent,
-} from "./MetricLegend";
+import MetricLegend, { LegendComponent } from "./MetricLegend";
 import { MetricLegendTabStyle } from "./styled";
 import TooltipFormatter from "./TooltipFormatter";
-import { FormatName, IMetric, IMetricData } from "./type";
-
-type exportCSVDataType = {
-  labelName: string;
-  pointData: DataPoint[];
-  unit?: MetricUnit;
-};
+import { IExportCSVDataType, IMetric } from "./type";
 
 export interface IChartProps {
   metricName: string;
@@ -55,21 +41,15 @@ export interface IChartProps {
   range: string;
   type: GraphType;
   mode?: "simple" | "legend" | "single";
-  service?: Maybe<string>;
   averageLine?: boolean;
   dropdown?: React.ReactNode;
-  onChartDataChange?: (data: Array<exportCSVDataType>) => void;
+  onChartDataChange?: (data: Array<IExportCSVDataType>) => void;
   dateRange?: DateRange;
-  formatLegendItemName: FormatName;
-  getDeselectedValueWithSuffix: GetDeselectedValueWithSuffix;
   hidePointer?: CategoricalChartFunc;
   handleMouseMove?: CategoricalChartFunc;
   onLabelsChange?: (labels: string[]) => void;
-  metricLegendData: IMetricData[];
   getColorsByMetric: (metric: string) => string;
   metricColors: string[];
-  metricType: string;
-  deselectedIndex: number[];
   metric: IMetric;
   now?: number;
 }
@@ -86,19 +66,13 @@ const RenderChart = (props: IChartProps) => {
     range,
     type,
     mode = "legend",
-    service,
     dropdown,
     dateRange,
-    formatLegendItemName,
-    getDeselectedValueWithSuffix,
     hidePointer,
     handleMouseMove,
     onLabelsChange,
-    metricLegendData,
     getColorsByMetric,
     metricColors,
-    metricType,
-    deselectedIndex,
     metric,
     now = Date.now(),
   } = props;
@@ -111,6 +85,10 @@ const RenderChart = (props: IChartProps) => {
     () => formatStreams({ metric, dateRange }),
     [dateRange, metric]
   );
+
+  const legends = useMemo(() => {
+    return streams.map((stream) => stream.legend);
+  }, [streams]);
 
   const areaChartData = useMemo(
     () =>
@@ -145,6 +123,11 @@ const RenderChart = (props: IChartProps) => {
     [areaChartData, dateRange, points, range]
   );
 
+  const xAxisTicks = useMemo(
+    () => xaxisCal(xAxisDomain[1], range, dateRange),
+    [dateRange, range, xAxisDomain]
+  );
+
   const info = useMemo(() => {
     let info = { current: "-", max: "-" };
     if (streams?.length) {
@@ -153,27 +136,37 @@ const RenderChart = (props: IChartProps) => {
     return info;
   }, [areaChartData, metric.unit, streams?.length]);
 
+  const onLegendClick = useCallback(
+    (id) => {
+      setDeselected((prev) => {
+        const include = prev.includes(id);
+        const newDeselected = include
+          ? prev.filter((r) => r !== id)
+          : [...prev, id];
+        onLabelsChange?.(newDeselected);
+        return newDeselected.length >= streams!.length ? prev : newDeselected;
+      });
+    },
+    [onLabelsChange, streams]
+  );
+
   if (!streams?.length || streams.every((stream) => !stream.points?.length)) {
     return (
       <div className={MetricLegendTabStyle}>
         <div className="name-toolbar">
           {isLegend ? (
             <MetricLegend
-              data={metricLegendData}
-              streams={streams || []}
+              streams={streams}
               metricName={metricName}
-              deselected={[]}
-              service={service}
-              onClick={() => {}}
-              formatLegendItemName={formatLegendItemName}
-              getDeselectedValueWithSuffix={getDeselectedValueWithSuffix}
-              metricColors={metricColors}
-              metricType={metricType}
+              deselected={deselected}
+              onClick={onLegendClick}
+              legends={legends}
             />
           ) : mode !== "single" ? (
             <LegendComponent
-              metricName={metricName}
-              getColorsByMetric={getColorsByMetric}
+              id={legends[0].id}
+              name={legends[0].name}
+              bgColor={legends[0].bgColor}
             />
           ) : undefined}
         </div>
@@ -193,30 +186,14 @@ const RenderChart = (props: IChartProps) => {
               streams={streams}
               metricName={metricName}
               deselected={deselected}
-              service={service}
-              metricType={metricType}
-              onClick={(id) => {
-                setDeselected((prev) => {
-                  const include = prev.includes(id);
-                  const newDeselected = include
-                    ? prev.filter((r) => r !== id)
-                    : [...prev, id];
-                  return newDeselected.length >= streams!.length
-                    ? prev
-                    : newDeselected;
-                });
-              }}
-              onLabelsChange={onLabelsChange}
-              formatLegendItemName={formatLegendItemName}
-              getDeselectedValueWithSuffix={getDeselectedValueWithSuffix}
-              data={metricLegendData}
-              metricColors={metricColors}
+              onClick={onLegendClick}
+              legends={legends}
             />
           ) : (
             <LegendComponent
-              metricName={metricName}
-              onLabelsChange={onLabelsChange}
-              getColorsByMetric={getColorsByMetric}
+              id={legends[0].id}
+              name={legends[0].name}
+              bgColor={legends[0].bgColor}
             />
           ))}
         {showMenu && <Actions info={info} dropdown={dropdown} />}
@@ -244,7 +221,7 @@ const RenderChart = (props: IChartProps) => {
             tickFormatter={(tick: number) =>
               tickFormatter(tick, range, dateRange)
             }
-            ticks={xaxisCal(xAxisDomain[1], range, dateRange)}
+            ticks={xAxisTicks}
           />
           <YAxis
             width={200}
@@ -264,19 +241,17 @@ const RenderChart = (props: IChartProps) => {
             content={
               <TooltipFormatter
                 uuid={uuid}
-                deselectedIndex={deselectedIndex}
-                isLegend={isLegend}
-                metricName={metricName}
-                getColorsByMetric={getColorsByMetric}
+                deselected={deselected}
+                legends={legends}
               />
             }
           />
           {streams.map((item, index) => {
-            if (deselectedIndex.includes(index)) {
+            if (deselected.includes(item.legend.id)) {
               return null;
             }
 
-            const { stroke, fill } = getColor({
+            const { fill } = getColor({
               type,
               isLegend,
               index,
@@ -284,16 +259,17 @@ const RenderChart = (props: IChartProps) => {
               getColorsByMetric,
               metricColors,
             });
+
             return (
               <Area
                 key={index}
                 dataKey={streams?.length === 1 ? "v" : `v${index}`}
                 stackId={type === GraphType.Stack ? "stack" : undefined}
-                stroke={stroke}
+                stroke={item.legend.bgColor}
                 fill={fill}
                 isAnimationActive={false}
                 activeDot={{
-                  stroke,
+                  stroke: item.legend.bgColor,
                   r: 4,
                   strokeWidth: 2,
                   fill: "white",

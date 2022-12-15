@@ -33,25 +33,19 @@ const Template: ComponentStory<typeof RenderChart> = (args) => (
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
+  mode: "legend",
+  showLegend: true,
   metricName: "hello",
   metric: mockMetric,
   uuid: "abc",
   height: 200,
   range: "2h",
   type: GraphType.Area,
-  formatLegendItemName: () => {
-    return "hello legend";
-  },
-  getDeselectedValueWithSuffix: () => {
-    return "hello suffix";
-  },
-  metricLegendData: [],
   getColorsByMetric: () => {
     return "#ABCABC";
   },
   metricColors: ["#ABCABC"],
-  metricType: "hellometricType",
-  deselectedIndex: [],
   dateRange: [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
   now: new Date("2022-12-13 18:00").getTime(),
+  showXAxis: true,
 };

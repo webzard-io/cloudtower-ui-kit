@@ -1,7 +1,5 @@
 import {
-  DataPoint,
   GraphType,
-  MetricStream,
   MetricUnit,
   TimeUnit,
 } from "@cloudtower/eagle/generated/react-hooks";
@@ -26,7 +24,7 @@ import dayjs from "dayjs";
 import { TFunction } from "i18next";
 import _ from "lodash";
 
-import { IMetric } from "./type";
+import { IDataPoint, IExportCSVDataType, IMetric, IMetricStream } from "./type";
 
 export const getColor = (prams: {
   type: GraphType;
@@ -67,9 +65,9 @@ export type ChartMouseMoveParam =
     };
 
 export function filterPointsByDateRange(
-  points: DataPoint[],
+  points: IDataPoint[],
   dateRange?: DateRange | undefined | null
-): DataPoint[] {
+): IDataPoint[] {
   if (dateRange) {
     const [startDate, endDate] = dateRange;
 
@@ -155,8 +153,8 @@ export const tickFormatter = (
 };
 
 export function getXAxisDomain(
-  areaChartData: DataPoint[],
-  points: DataPoint[],
+  areaChartData: IDataPoint[],
+  points: IDataPoint[],
   range: string,
   dateRange?: DateRange | undefined
 ): [number, number] {
@@ -206,7 +204,7 @@ export const getMs = (timeRange: string): number => {
 };
 
 export const deletePointsOutOfRange = (
-  data: DataPoint[],
+  data: IDataPoint[],
   timeRange: string,
   now: number
 ) => {
@@ -234,7 +232,7 @@ const getFaultToleranceTime = (timeRange: string) => {
 };
 
 export const addMissingDataWithZero = (
-  data: DataPoint[],
+  data: IDataPoint[],
   timeRange: string,
   unit: MetricUnit,
   step: number,
@@ -249,7 +247,7 @@ export const addMissingDataWithZero = (
     now,
     step
   );
-  const expectedPoints: DataPoint[] = [];
+  const expectedPoints: IDataPoint[] = [];
   // Infinity means no value
   const tolerance = getFaultToleranceTime(timeRange);
   if (inRangePoints[0].t - firsExpectedTimestamp > tolerance + step) {
@@ -325,7 +323,7 @@ export function transformDataAndUnit(
   }
 }
 
-export const findMaxAndCurrent = (points: DataPoint[], unit: MetricUnit) => {
+export const findMaxAndCurrent = (points: IDataPoint[], unit: MetricUnit) => {
   const v = points[points.length - 1]?.v;
   let _current: string;
   if (v === undefined || v === null || v === -Infinity) {
@@ -358,10 +356,7 @@ export const yAxisFomatter = (unit: MetricUnit) => (prop: number) => {
   return value + " " + suffix;
 };
 
-export const getYDataMax = (
-  dataPoints: Record<string, string | number | null | undefined>[],
-  type: GraphType
-) => {
+export const getYDataMax = (dataPoints: IDataPoint[], type: GraphType) => {
   const values = dataPoints.map((p) => {
     if (_.isNumber(p?.v)) {
       return p.v;
@@ -431,7 +426,7 @@ export const getYAxisUpperBound = (max: number, type: MetricUnit) => {
 };
 
 export const getYAxisDomain = (
-  dataPoints: Record<string, string | number | null | undefined>[],
+  dataPoints: IDataPoint[],
   graphType: GraphType,
   unitType: MetricUnit
 ): [number, number] => {
@@ -447,7 +442,7 @@ export const getYAxisDomain = (
 };
 
 export const getFirstExpectedTimestamp = (
-  data: DataPoint[],
+  data: IDataPoint[],
   timeRange: string,
   now: number,
   step: number
@@ -491,18 +486,12 @@ export const stringifyTimeSpan = (
   return _span + _unit.charAt(0).toLowerCase();
 };
 
-export type exportCSVDataType = {
-  labelName: string;
-  pointData: DataPoint[];
-  unit?: MetricUnit;
-};
-
 export function getExportUnit(
-  data: exportCSVDataType[],
+  data: IExportCSVDataType[],
   baseUnit: MetricUnit | undefined
 ) {
   const sortedPointDataList = data
-    .reduce<DataPoint[]>((allData, cur) => allData.concat(cur.pointData), [])
+    .reduce<IDataPoint[]>((allData, cur) => allData.concat(cur.pointData), [])
     .sort((a, b) => (a?.v || 0) - (b?.v || 0));
 
   let unit = "";
@@ -560,7 +549,7 @@ export const toLocalTime = (now: number, shift: number) =>
   new Date(now - shift).toISOString().slice(0, -5);
 
 export function transformDataToCsv(
-  data: exportCSVDataType[],
+  data: IExportCSVDataType[],
   shift: number,
   t: TFunction
 ): string {
@@ -653,7 +642,7 @@ export const formatStreams = (params: {
 };
 
 export const transformData = (
-  streams: MetricStream[],
+  streams: IMetricStream[],
   range: string,
   unit: MetricUnit,
   step: number,
@@ -675,7 +664,7 @@ export const transformData = (
 };
 
 export const convertDataForMultiArea = (
-  streams: MetricStream[],
+  streams: IMetricStream[],
   range: string,
   unit: MetricUnit,
   step: number,
@@ -700,7 +689,7 @@ export const convertDataForMultiArea = (
   if (data[0].points == null || data[0].points?.length === 0) {
     return [];
   }
-  const finalData: Record<string, string | number | null | undefined>[] = [];
+  const finalData: IDataPoint[] = [];
   const pointsNum: number = getMs(range) / step;
 
   for (let j = 0; j < pointsNum; j++) {
@@ -713,5 +702,5 @@ export const convertDataForMultiArea = (
     }
   }
 
-  return filterPointsByDateRange(finalData as DataPoint[], dateRange);
+  return filterPointsByDateRange(finalData, dateRange);
 };
