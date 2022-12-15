@@ -1,8 +1,8 @@
-import { UserSource } from "@cloudtower/eagle/generated/react-hooks";
 import { SupportLanguage } from "@tower/i18n";
 import { Serializable, SerializableObject } from "@tower/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { UserSource } from "../../type";
 import { GlobalSearchHistory, PastTime } from "../types";
 import { getValue } from "./utils";
 

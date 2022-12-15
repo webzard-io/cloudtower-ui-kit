@@ -1,10 +1,4 @@
 import {
-  GraphType,
-  MetricUnit,
-  TimeUnit,
-} from "@cloudtower/eagle/generated/react-hooks";
-import { DateRange } from "@cloudtower/eagle/kit/specify/type";
-import {
   convertUnit,
   DAY,
   formatBitPerSecond,
@@ -24,7 +18,16 @@ import dayjs from "dayjs";
 import { TFunction } from "i18next";
 import _ from "lodash";
 
-import { IDataPoint, IExportCSVDataType, IMetric, IMetricStream } from "./type";
+import {
+  DateRange,
+  GraphType,
+  IDataPoint,
+  IExportCSVDataType,
+  IMetric,
+  IMetricStream,
+  MetricUnit,
+  TimeUnit,
+} from "./type";
 
 export const getColor = (prams: {
   type: GraphType;

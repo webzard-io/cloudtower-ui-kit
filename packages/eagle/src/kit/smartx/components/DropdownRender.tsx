@@ -1,10 +1,10 @@
+import { Icon } from "@cloudtower/eagle/kit/smartx";
 import {
   EntityAsyncStatus,
+  kitContext,
   Maybe,
   TaskStatus,
-} from "@cloudtower/eagle/generated/react-hooks";
-import { Icon } from "@cloudtower/eagle/kit/smartx";
-import { kitContext } from "@cloudtower/eagle/kit/specify";
+} from "@cloudtower/eagle/kit/specify";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import React, { useContext, useEffect, useState } from "react";

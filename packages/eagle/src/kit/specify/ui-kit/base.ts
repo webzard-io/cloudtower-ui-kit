@@ -1,5 +1,4 @@
 import { ImagesType } from "@cloudtower/eagle/generated/images-type";
-import { Architecture } from "@cloudtower/eagle/generated/react-hooks";
 import { FieldRenderProps } from "@smartx/react-final-form";
 import { FieldArrayRenderProps } from "@smartx/react-final-form-arrays";
 import { SerializableObject } from "@tower/utils";
@@ -18,7 +17,7 @@ import { SiderProps } from "antd/lib/layout";
 import { BasicProps } from "antd/lib/layout/layout";
 import { ListProps } from "antd/lib/list";
 import { ListItemMetaProps, ListItemProps } from "antd/lib/list/Item";
-import Menu, { MenuItemGroupProps, MenuProps } from "antd/lib/menu";
+import { MenuItemGroupProps, MenuProps } from "antd/lib/menu";
 import { MenuItemProps } from "antd/lib/menu/MenuItem";
 import { SubMenuProps } from "antd/lib/menu/SubMenu";
 import { MessageInstance } from "antd/lib/message";
@@ -46,6 +45,8 @@ import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
 import { ApolloError } from "apollo-boost";
 import React, { ReactNode } from "react";
+
+import { Architecture } from "../type";
 
 type BadgeTypeProps = "warning" | "error" | "info";
 type Primitive = "Int" | "Float" | "DateTime" | "Enum" | "String" | "Boolean";

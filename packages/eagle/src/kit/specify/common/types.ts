@@ -1,8 +1,3 @@
-import {
-  ConnectState,
-  MaintenanceModeEnum,
-} from "@cloudtower/eagle/generated/react-hooks";
-
 export type ExcludeMaybe<T> = Exclude<
   T extends string | number | boolean
     ? T
@@ -51,6 +46,20 @@ export type SidebarType =
   | "backupStoreRepository"
   | "securityGroup"
   | "everouteCluster";
+
+export enum ConnectState {
+  Connected = "CONNECTED",
+  Disconnected = "DISCONNECTED",
+  Initializing = "INITIALIZING",
+  Removing = "REMOVING",
+}
+
+export enum MaintenanceModeEnum {
+  EnteringMaintenanceMode = "ENTERING_MAINTENANCE_MODE",
+  InUse = "IN_USE",
+  MaintenanceMode = "MAINTENANCE_MODE",
+  Removing = "REMOVING",
+}
 
 export type Sidebar =
   | {

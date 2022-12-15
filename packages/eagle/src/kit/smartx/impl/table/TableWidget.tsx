@@ -1,7 +1,8 @@
-import { Maybe, Scalars } from "@cloudtower/eagle/generated/react-hooks";
 import { Icon } from "@cloudtower/eagle/kit/smartx";
 import {
   kitContext,
+  Maybe,
+  Scalars,
   SearchOperation,
   SetSearch,
   useElementsSize,

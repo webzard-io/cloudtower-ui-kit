@@ -1,7 +1,3 @@
-import {
-  MetricLabelInput,
-  TimeUnit,
-} from "@cloudtower/eagle/generated/react-hooks";
 import { ErrorBoundary } from "@cloudtower/eagle/kit/smartx";
 import { parrotI18n } from "@cloudtower/parrot";
 import { makeUUID } from "@tower/utils";
@@ -19,11 +15,10 @@ import {
 import Pointer from "./Pointer";
 import RenderChart, { IChartProps } from "./RenderChart";
 import { MetricWrapper } from "./styled";
-import { IExportCSVDataType } from "./type";
+import { IExportCSVDataType, TimeUnit } from "./type";
 
 export type MetricProps = {
   groupId?: string;
-  labels?: MetricLabelInput;
   height?: number;
   showPointer?: boolean;
   yAxisAlign?: "left" | "right";
@@ -46,7 +41,7 @@ export const Metric = (
 ) => {
   const {
     groupId,
-    labels,
+
     height = 154,
     showPointer = true,
     showLegend = true,
@@ -107,8 +102,7 @@ export const Metric = (
         ref={wrapperRef}
         style={{ height: showLegend ? height + 30 : height }}
       >
-        {/* TODO: hard code */}
-        {!labels && !topk && !bottomk ? (
+        {!topk && !bottomk ? (
           <FullView>{parrotI18n.t("metric.empty")}</FullView>
         ) : topnNotTwoHour ? (
           <FullView>{parrotI18n.t("metric.topn_only_two_hour")}</FullView>
