@@ -1,5 +1,7 @@
+import { ChartActions, useKitDispatch } from "@cloudtower/eagle/kit/smartx";
 import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
+import dayjs from "dayjs";
 import React, { useCallback, useMemo, useState } from "react";
 import {
   Area,
@@ -43,8 +45,6 @@ export interface IChartProps {
   dropdown?: React.ReactNode;
   onChartDataChange?: (data: Array<IExportCSVDataType>) => void;
   dateRange?: DateRange;
-  hidePointer?: CategoricalChartFunc;
-  handleMouseMove?: CategoricalChartFunc;
   onLabelsChange?: (labels: string[]) => void;
   getColorsByMetric: (metric: string) => string;
   metricColors: string[];
@@ -66,8 +66,6 @@ const RenderChart = (props: IChartProps) => {
     mode = "legend",
     dropdown,
     dateRange,
-    hidePointer,
-    handleMouseMove,
     onLabelsChange,
     getColorsByMetric,
     metricColors,
@@ -76,7 +74,7 @@ const RenderChart = (props: IChartProps) => {
   } = props;
 
   const isLegend = mode === "legend";
-
+  const dispatch = useKitDispatch();
   const [deselected, setDeselected] = useState<string[]>([]);
 
   const streams = useMemo(
@@ -146,6 +144,37 @@ const RenderChart = (props: IChartProps) => {
       });
     },
     [onLabelsChange, streams]
+  );
+
+  const hidePointer: CategoricalChartFunc = useCallback(() => {
+    dispatch({
+      type: ChartActions.SET_POINTER,
+      payload: { visible: false, uuid },
+    });
+  }, [dispatch, uuid]);
+
+  const handleMouseMove: CategoricalChartFunc = useCallback(
+    (e) => {
+      if (e.isTooltipActive) {
+        const { chartX, activePayload } = e;
+        if (!activePayload?.[0]?.payload) {
+          return;
+        }
+        dispatch({
+          type: ChartActions.SET_POINTER,
+          payload: {
+            uuid,
+            visible: true,
+            left: chartX,
+            text: dayjs(Number(activePayload[0].payload.t)).format(
+              "MM-DD HH:mm:ss"
+            ),
+            value: activePayload[0].payload.v,
+          },
+        });
+      }
+    },
+    [dispatch, uuid]
   );
 
   if (!streams?.length || streams.every((stream) => !stream.points?.length)) {

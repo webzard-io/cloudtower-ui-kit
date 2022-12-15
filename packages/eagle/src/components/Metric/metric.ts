@@ -52,21 +52,6 @@ export const getColor = (prams: {
   return { stroke, fill };
 };
 
-export type ChartMouseMoveParam =
-  | { isTooltipActive: false }
-  | {
-      activeCoordinate: {
-        x: number;
-        y: number;
-      };
-      activeLabel: string | number;
-      activeTooltipIndex: number;
-      chartX: number;
-      chartY: number;
-      isTooltipActive: true;
-      activePayload: { payload: { t: string; v: number } }[];
-    };
-
 export function filterPointsByDateRange(
   points: IDataPoint[],
   dateRange?: DateRange | undefined | null
