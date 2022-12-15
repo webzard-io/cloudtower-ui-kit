@@ -123,6 +123,11 @@ const RenderChart = (props: IChartProps) => {
     [areaChartData, dateRange, points, range]
   );
 
+  const xAxisTicks = useMemo(
+    () => xaxisCal(xAxisDomain[1], range, dateRange),
+    [dateRange, range, xAxisDomain]
+  );
+
   const info = useMemo(() => {
     let info = { current: "-", max: "-" };
     if (streams?.length) {
@@ -216,7 +221,7 @@ const RenderChart = (props: IChartProps) => {
             tickFormatter={(tick: number) =>
               tickFormatter(tick, range, dateRange)
             }
-            ticks={xaxisCal(xAxisDomain[1], range, dateRange)}
+            ticks={xAxisTicks}
           />
           <YAxis
             width={200}
