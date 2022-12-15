@@ -1,30 +1,8 @@
-import { IMetric } from "@cloudtower/eagle";
-import { MetricUnit } from "@cloudtower/eagle/generated/react-hooks";
+import { IMetric, MetricUnit } from "@cloudtower/eagle";
 
 const mockMetric: IMetric = {
   sample_streams: [
     {
-      labels: {
-        _cluster: null,
-        _chunk: "1",
-        serial_number: null,
-        _vm: null,
-        _volume: null,
-        _host: null,
-        _device: null,
-        _service: null,
-        _mac: null,
-        _scvm: null,
-        _witness: null,
-        to_hostname: null,
-        instance: "10.37.27.154:10104",
-        _network: null,
-        _to_uuid: null,
-        _zone: null,
-        name: "xiaojun-502-ELF-nestedX20220426111859X1",
-        metric_name: "zbs_chunk_readwrite_iops",
-        __typename: "MetricLabel",
-      },
       points: [
         {
           t: 1670918587000,
@@ -1235,27 +1213,6 @@ const mockMetric: IMetric = {
       __typename: "MetricStream",
     },
     {
-      labels: {
-        _cluster: null,
-        _chunk: "2",
-        serial_number: null,
-        _vm: null,
-        _volume: null,
-        _host: null,
-        _device: null,
-        _service: null,
-        _mac: null,
-        _scvm: null,
-        _witness: null,
-        to_hostname: null,
-        instance: "10.37.27.154:10104",
-        _network: null,
-        _to_uuid: null,
-        _zone: null,
-        name: "xiaojun-502-ELF-nestedX20220426111859X2",
-        metric_name: "zbs_chunk_readwrite_iops",
-        __typename: "MetricLabel",
-      },
       points: [
         {
           t: 1670918587000,
@@ -2466,27 +2423,6 @@ const mockMetric: IMetric = {
       __typename: "MetricStream",
     },
     {
-      labels: {
-        _cluster: null,
-        _chunk: "3",
-        serial_number: null,
-        _vm: null,
-        _volume: null,
-        _host: null,
-        _device: null,
-        _service: null,
-        _mac: null,
-        _scvm: null,
-        _witness: null,
-        to_hostname: null,
-        instance: "10.37.27.154:10104",
-        _network: null,
-        _to_uuid: null,
-        _zone: null,
-        name: "xiaojun-502-ELF-nestedX20220426111859X3",
-        metric_name: "zbs_chunk_readwrite_iops",
-        __typename: "MetricLabel",
-      },
       points: [
         {
           t: 1670918587000,

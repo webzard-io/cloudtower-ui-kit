@@ -1,5 +1,4 @@
 import { Metric } from "@cloudtower/eagle";
-import { MetricUnit } from "@cloudtower/eagle/generated/react-hooks";
 import { antdKit } from "@cloudtower/eagle/kit/smartx";
 import { kitContext } from "@cloudtower/eagle/kit/specify";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
