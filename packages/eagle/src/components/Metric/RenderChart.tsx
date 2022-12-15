@@ -1,4 +1,4 @@
-import { GraphType, MetricUnit } from "@cloudtower/eagle/generated/react-hooks";
+import { GraphType } from "@cloudtower/eagle/generated/react-hooks";
 import { DateRange } from "@cloudtower/eagle/kit/specify";
 import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
@@ -50,7 +50,6 @@ export interface IChartProps {
   onLabelsChange?: (labels: string[]) => void;
   getColorsByMetric: (metric: string) => string;
   metricColors: string[];
-  deselectedIndex: number[];
   metric: IMetric;
   now?: number;
 }
@@ -74,7 +73,6 @@ const RenderChart = (props: IChartProps) => {
     onLabelsChange,
     getColorsByMetric,
     metricColors,
-    deselectedIndex,
     metric,
     now = Date.now(),
   } = props;
@@ -238,20 +236,17 @@ const RenderChart = (props: IChartProps) => {
             content={
               <TooltipFormatter
                 uuid={uuid}
-                deselectedIndex={deselectedIndex}
+                deselected={deselected}
                 legends={legends}
-                // isLegend={isLegend}
-                // metricName={metricName}
-                // getColorsByMetric={getColorsByMetric}
               />
             }
           />
           {streams.map((item, index) => {
-            if (deselectedIndex.includes(index)) {
+            if (deselected.includes(item.legend.id)) {
               return null;
             }
 
-            const { stroke, fill } = getColor({
+            const { fill } = getColor({
               type,
               isLegend,
               index,
@@ -259,16 +254,17 @@ const RenderChart = (props: IChartProps) => {
               getColorsByMetric,
               metricColors,
             });
+
             return (
               <Area
                 key={index}
                 dataKey={streams?.length === 1 ? "v" : `v${index}`}
                 stackId={type === GraphType.Stack ? "stack" : undefined}
-                stroke={stroke}
+                stroke={item.legend.bgColor}
                 fill={fill}
                 isAnimationActive={false}
                 activeDot={{
-                  stroke,
+                  stroke: item.legend.bgColor,
                   r: 4,
                   strokeWidth: 2,
                   fill: "white",

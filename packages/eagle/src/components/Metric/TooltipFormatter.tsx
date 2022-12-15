@@ -46,36 +46,42 @@ const transformColumnValue = (
 const TooltipFormatter: React.FC<
   TooltipProps<number, string> & {
     uuid: string;
-    deselectedIndex: number[];
+    deselected: string[];
     legends: ILegend[];
   }
 > = (props) => {
-  const { active, payload, deselectedIndex, legends } = props;
+  const { active, payload, deselected, legends } = props;
 
   if (!active || !payload?.length) {
     return null;
   }
 
-  const sortArr = payload
-    .slice()
-    .sort((a, b) => (b.value as number) - (a.value as number));
-
   return (
     <TooltipWrapper>
-      {sortArr.map((item, index) => {
-        const displayIndex = Number((item.name || "").slice(1));
-        return deselectedIndex.includes(displayIndex) ? null : (
-          <TooltipColumn key={displayIndex}>
-            <div>
-              <ColorBlock background={legends[index]?.bgColor} />
-              {legends[index]?.name}
-            </div>
-            <div className="column-value">
-              {transformColumnValue(payload, displayIndex)}
-            </div>
-          </TooltipColumn>
-        );
-      })}
+      {payload
+        .map((item, index) => {
+          return {
+            ...item,
+            legend: legends[index],
+          };
+        })
+        .sort((a, b) => (b.value as number) - (a.value as number))
+        .map((item) => {
+          return deselected.includes(item.legend.id) ? null : (
+            <TooltipColumn key={item.legend.id}>
+              <div>
+                <ColorBlock background={item.legend.bgColor} />
+                {item.legend.name}
+              </div>
+              <div className="column-value">
+                {transformColumnValue(
+                  payload,
+                  Number((item.name || "").slice(1))
+                )}
+              </div>
+            </TooltipColumn>
+          );
+        })}
     </TooltipWrapper>
   );
 };
