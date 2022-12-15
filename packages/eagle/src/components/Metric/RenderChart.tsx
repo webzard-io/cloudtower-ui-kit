@@ -155,6 +155,12 @@ const RenderChart = (props: IChartProps) => {
     [onLabelsChange, streams]
   );
 
+  const tooltipLegend = useMemo(() => {
+    if (isLegend) {
+      return legends[0];
+    }
+  }, [isLegend, legends]);
+
   if (!streams?.length || streams.every((stream) => !stream.points?.length)) {
     return (
       <div className={MetricLegendTabStyle}>
@@ -247,9 +253,10 @@ const RenderChart = (props: IChartProps) => {
               <TooltipFormatter
                 uuid={uuid}
                 deselectedIndex={deselectedIndex}
-                isLegend={isLegend}
-                metricName={metricName}
-                getColorsByMetric={getColorsByMetric}
+                legendProps={tooltipLegend}
+                // isLegend={isLegend}
+                // metricName={metricName}
+                // getColorsByMetric={getColorsByMetric}
               />
             }
           />

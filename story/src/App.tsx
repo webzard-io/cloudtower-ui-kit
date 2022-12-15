@@ -3,6 +3,7 @@ import "@cloudtower/eagle/kit/smartx/style.css";
 import "@cloudtower/eagle/styles/reset.css";
 import "@cloudtower/eagle/styles/fonts/font.css";
 import "@cloudtower/eagle/styles/override.scss";
+import "@cloudtower/eagle/style.css";
 
 import { IChartProps, RenderChart, TowerTable } from "@cloudtower/eagle";
 import { GraphType } from "@cloudtower/eagle/generated/react-hooks";

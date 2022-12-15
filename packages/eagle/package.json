@@ -66,6 +66,9 @@
       "require": "./dist/umd/images/index.js",
       "types": "./typings/kit/images/index.d.ts"
     },
+    "./style.css": {
+      "import": "./dist/style.css"
+    },
     "./kit/smartx/style.css": {
       "import": "./dist/kit/smartx/style.css"
     },

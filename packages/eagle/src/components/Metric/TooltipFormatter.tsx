@@ -5,7 +5,7 @@ import { TooltipProps } from "recharts";
 import { Payload as TooltipPayload } from "recharts/types/component/DefaultTooltipContent";
 
 import { transformDataAndUnit, UNIT_FORMATTER } from "./metric";
-import { ColorBlock, LegendComponent } from "./MetricLegend";
+import { ColorBlock, ILegend, LegendComponent } from "./MetricLegend";
 import { TooltipColumn, TooltipWrapper } from "./styled";
 
 const TOWER_PERCENT = "%";
@@ -14,20 +14,10 @@ const TooltipFormatter: React.FC<
   TooltipProps<number, string> & {
     uuid: string;
     deselectedIndex: number[];
-    isLegend: boolean;
-    metricName: string;
-    getColorsByMetric: (metricName: string) => string;
+    legendProps?: ILegend;
   }
 > = (props) => {
-  const {
-    active,
-    payload,
-    uuid,
-    deselectedIndex,
-    isLegend,
-    metricName,
-    getColorsByMetric,
-  } = props;
+  const { active, payload, uuid, deselectedIndex, legendProps } = props;
   const resourceData = useKitSelector<ChartState["resourceData"]>(
     (state) => state.chart.resourceData
   );
@@ -72,14 +62,11 @@ const TooltipFormatter: React.FC<
     return formattedValue + " " + unit;
   };
 
-  if (!isLegend) {
+  if (legendProps) {
     return (
       <TooltipWrapper>
         <TooltipColumn>
-          <LegendComponent
-            metricName={metricName}
-            getColorsByMetric={getColorsByMetric}
-          />
+          <LegendComponent {...legendProps} />
           <div className="column-value">{transformColumnValue(payload)}</div>
         </TooltipColumn>
       </TooltipWrapper>
