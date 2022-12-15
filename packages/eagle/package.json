@@ -16,26 +16,6 @@
       "require": "./dist/umd/index.js",
       "types": "./typings/index.d.ts"
     },
-    "./generated/forms-types": {
-      "import": "./dist/esm/generated/forms-types.js",
-      "require": "./dist/umd/generated/forms-types.js",
-      "types": "./typings/generated/forms-types.d.ts"
-    },
-    "./generated/forms": {
-      "import": "./dist/esm/generated/forms.js",
-      "require": "./dist/umd/generated/forms.js",
-      "types": "./typings/generated/forms.d.ts"
-    },
-    "./generated/forms2": {
-      "import": "./dist/esm/generated/forms2.js",
-      "require": "./dist/umd/generated/forms2.js",
-      "types": "./typings/generated/forms2.d.ts"
-    },
-    "./generated/global-search": {
-      "import": "./dist/esm/generated/global-search.js",
-      "require": "./dist/umd/generated/global-search.js",
-      "types": "./typings/generated/global-search.d.ts"
-    },
     "./generated/images-type": {
       "import": "./dist/esm/generated/images-type.js",
       "require": "./dist/umd/generated/images-type.js",
@@ -45,11 +25,6 @@
       "import": "./dist/esm/generated/react-hooks.js",
       "require": "./dist/umd/generated/react-hooks.js",
       "types": "./typings/generated/react-hooks.d.ts"
-    },
-    "./generated/tables": {
-      "import": "./dist/esm/generated/tables.js",
-      "require": "./dist/umd/generated/tables.js",
-      "types": "./typings/generated/tables.d.ts"
     },
     "./kit/specify": {
       "import": "./dist/esm/specify/index.js",
@@ -115,7 +90,6 @@
   },
   "license": "MIT",
   "scripts": {
-    "prebuild": "rm -rf dist",
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
     "test": "vitest",
     "coverage": "vitest run --coverage",
@@ -123,7 +97,6 @@
     "generate:query": "graphql-codegen --config src/codegen/config/codegen-query.yaml",
     "generate:main": "graphql-codegen --config src/codegen/config/codegen-main.yaml",
     "generate": "yarn generate:query && yarn generate:main",
-    "pretypings": "rm -rf typings",
     "typings": "yarn typings:main",
     "typings:main": "tsc -v && tsc -p tsconfig.typings.json || exit 0",
     "generate:images": "node --loader ts-node/esm tools/index.mts"

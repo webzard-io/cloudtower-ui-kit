@@ -56,13 +56,13 @@ const config = defineConfig([
     ],
   },
   ...[
-    "forms-types.tsx",
-    "forms.tsx",
-    "forms2.tsx",
-    "global-search.ts",
+    // "forms-types.tsx",
+    // "forms.tsx",
+    // "forms2.tsx",
+    // "global-search.ts",
     "images-type.ts",
     "react-hooks.ts",
-    "tables.tsx",
+    // "tables.tsx",
   ].map((name) => {
     return {
       input: [`src/generated/${name}`],

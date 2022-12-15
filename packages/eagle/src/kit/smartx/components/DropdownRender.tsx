@@ -2,7 +2,6 @@ import {
   EntityAsyncStatus,
   Maybe,
   TaskStatus,
-  useTaskSubscription,
 } from "@cloudtower/eagle/generated/react-hooks";
 import { Icon } from "@cloudtower/eagle/kit/smartx";
 import { kitContext } from "@cloudtower/eagle/kit/specify";
@@ -45,14 +44,23 @@ export function CreateResourceDropdownRender<
   isAsync?: boolean;
   onCreatingChange?: (creating: boolean, data?: T) => void;
   placeholder?: string;
+  taskData:
+    | {
+        task: {
+          node?: {
+            snapshot: string;
+            status: TaskStatus;
+          };
+        };
+      }
+    | undefined;
 }): JSX.Element {
-  const { onCreate, isAsync, onCreatingChange, placeholder } = props;
+  const { onCreate, isAsync, onCreatingChange, placeholder, taskData } = props;
   const kit = useContext(kitContext);
   const [name, setName] = useState("");
   const [creating, setCreating] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [creatData, setCreateData] = useState<T>();
-  const { data: taskData } = useTaskSubscription();
 
   useEffect(() => {
     if (isAsync && creatData && taskData?.task.node?.snapshot) {
