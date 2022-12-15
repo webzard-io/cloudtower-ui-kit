@@ -1,4 +1,3 @@
-import { Resources } from "@cloudtower/eagle/generated/global-search";
 import {
   ConnectState,
   MaintenanceModeEnum,
@@ -122,12 +121,10 @@ export type Data = {
 type HistoryRecord =
   | {
       data: Data;
-      type: Resources;
+      type: string;
     }
   | { type: "search-keyword"; data: string };
 
-export type GlobalSearchHistory = Partial<
-  Record<Resources, HistoryRecord[]>
-> & {
+export type GlobalSearchHistory = Partial<Record<string, HistoryRecord[]>> & {
   _head?: HistoryRecord[];
 };
