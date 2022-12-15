@@ -10,6 +10,39 @@ import { TooltipColumn, TooltipWrapper } from "./styled";
 
 const TOWER_PERCENT = "%";
 
+const transformColumnValue = (
+  payloads: readonly TooltipPayload<number, string>[] | undefined,
+  index = 0
+) => {
+  if (!payloads?.length) return "";
+  const { payload } =
+    payloads.find(
+      (payload) => payload.name === `v${payload.name === "v" ? "" : index}`
+    ) || {};
+  if (!payload) return "-";
+  const { unit, value } = transformDataAndUnit(
+    payload.unit,
+    "v" in payload ? payload.v : payload[`v${index}`]
+  );
+  const baseUnit = UNIT_FORMATTER[payload.unit as unknown as MetricUnit]?.[1];
+  const formattedValue =
+    value !== -Infinity
+      ? value.toFixed(unit === baseUnit && unit !== TOWER_PERCENT ? 0 : 2)
+      : "-";
+  if (
+    [
+      MetricUnit.Count,
+      MetricUnit.Ratio,
+      MetricUnit.Percent,
+      MetricUnit.Load,
+      MetricUnit.Temperature,
+    ].includes(payload.unit)
+  ) {
+    return formattedValue + unit;
+  }
+  return formattedValue + " " + unit;
+};
+
 const TooltipFormatter: React.FC<
   TooltipProps<number, string> & {
     uuid: string;
@@ -29,49 +62,17 @@ const TooltipFormatter: React.FC<
   const sortArr = payload
     .slice()
     .sort((a, b) => (b.value as number) - (a.value as number));
-  const transformColumnValue = (
-    payloads: readonly TooltipPayload<number, string>[] | undefined,
-    index = 0
-  ) => {
-    if (!payloads?.length) return "";
-    const { payload } =
-      payloads.find(
-        (payload) => payload.name === `v${payload.name === "v" ? "" : index}`
-      ) || {};
-    if (!payload) return "-";
-    const { unit, value } = transformDataAndUnit(
-      payload.unit,
-      "v" in payload ? payload.v : payload[`v${index}`]
-    );
-    const baseUnit = UNIT_FORMATTER[payload.unit as unknown as MetricUnit]?.[1];
-    const formattedValue =
-      value !== -Infinity
-        ? value.toFixed(unit === baseUnit && unit !== TOWER_PERCENT ? 0 : 2)
-        : "-";
-    if (
-      [
-        MetricUnit.Count,
-        MetricUnit.Ratio,
-        MetricUnit.Percent,
-        MetricUnit.Load,
-        MetricUnit.Temperature,
-      ].includes(payload.unit)
-    ) {
-      return formattedValue + unit;
-    }
-    return formattedValue + " " + unit;
-  };
 
-  if (legendProps) {
-    return (
-      <TooltipWrapper>
-        <TooltipColumn>
-          <LegendComponent {...legendProps} />
-          <div className="column-value">{transformColumnValue(payload)}</div>
-        </TooltipColumn>
-      </TooltipWrapper>
-    );
-  }
+  // if (legendProps) {
+  //   return (
+  //     <TooltipWrapper>
+  //       <TooltipColumn>
+  //         <LegendComponent {...legendProps} />
+  //         <div className="column-value">{transformColumnValue(payload)}</div>
+  //       </TooltipColumn>
+  //     </TooltipWrapper>
+  //   );
+  // }
 
   const data = resourceData[uuid];
   return (
