@@ -5,13 +5,7 @@ import cs from "classnames";
 import download from "downloadjs";
 import React, { useEffect, useImperativeHandle, useRef, useState } from "react";
 
-import { FullView } from "../../styles";
-import {
-  MetricRefType,
-  stringifyTimeSpan,
-  toLocalTime,
-  transformDataToCsv,
-} from ".";
+import { MetricRefType, toLocalTime, transformDataToCsv } from ".";
 import Pointer from "./Pointer";
 import RenderChart, { IChartProps } from "./RenderChart";
 import { MetricWrapper } from "./styled";
@@ -24,8 +18,6 @@ export type MetricProps = {
   yAxisAlign?: "left" | "right";
   showXaxis?: boolean;
   showLegend?: boolean;
-  topk?: number;
-  bottomk?: number;
   timeSpan?:
     | {
         span: number;
@@ -41,14 +33,10 @@ export const Metric = (
 ) => {
   const {
     groupId,
-
     height = 154,
     showPointer = true,
     showLegend = true,
     showXaxis = false,
-    topk,
-    bottomk,
-    timeSpan = "2h",
     chartProps,
   } = props;
   const [width, setWidth] = useState(0);
@@ -92,9 +80,6 @@ export const Metric = (
     exportCSVDataRef.current = data;
   }
 
-  const topnNotTwoHour =
-    topk !== undefined && stringifyTimeSpan(timeSpan) !== "2h";
-
   return (
     <ErrorBoundary>
       <MetricWrapper
@@ -102,19 +87,8 @@ export const Metric = (
         ref={wrapperRef}
         style={{ height: showLegend ? height + 30 : height }}
       >
-        {!topk && !bottomk ? (
-          <FullView>{parrotI18n.t("metric.empty")}</FullView>
-        ) : topnNotTwoHour ? (
-          <FullView>{parrotI18n.t("metric.topn_only_two_hour")}</FullView>
-        ) : (
-          <>
-            <RenderChart
-              onChartDataChange={onChartDataChange}
-              {...chartProps}
-            />
-            {showPointer && <Pointer uuid={uuid.current} metricWidth={width} />}
-          </>
-        )}
+        <RenderChart onChartDataChange={onChartDataChange} {...chartProps} />
+        {showPointer && <Pointer uuid={uuid.current} metricWidth={width} />}
       </MetricWrapper>
     </ErrorBoundary>
   );
