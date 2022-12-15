@@ -1227,6 +1227,11 @@ const mockMetric: IMetric = {
           __typename: "DataPoint",
         },
       ],
+      legend: {
+        id: "1",
+        name: "loooooooooooooooooooooooooooooooooooooooooooong_legend1",
+        bgColor: "#abcabc",
+      },
       __typename: "MetricStream",
     },
     {
@@ -2453,6 +2458,11 @@ const mockMetric: IMetric = {
           __typename: "DataPoint",
         },
       ],
+      legend: {
+        id: "2",
+        name: "loooooooooooooooooooooooooooooooooooooooooooong_legend2",
+        bgColor: "#0bc0bc",
+      },
       __typename: "MetricStream",
     },
     {
@@ -3679,6 +3689,11 @@ const mockMetric: IMetric = {
           __typename: "DataPoint",
         },
       ],
+      legend: {
+        id: "3",
+        name: "loooooooooooooooooooooooooooooooooooooooooooong_legend3",
+        bgColor: "#ff0101",
+      },
       __typename: "MetricStream",
     },
   ],

@@ -90,23 +90,6 @@ const args = {
 const renderChartArgs: IChartProps = {
   mode: "legend",
   showLegend: true,
-  legends: [
-    {
-      id: "1",
-      name: "loooooooooooooooooooooooooooooooooooooooooooong_legend1",
-      bgColor: "#abcabc",
-    },
-    {
-      id: "2",
-      name: "loooooooooooooooooooooooooooooooooooooooooooong_legend2",
-      bgColor: "#0bc0bc",
-    },
-    {
-      id: "3",
-      name: "loooooooooooooooooooooooooooooooooooooooooooong_legend3",
-      bgColor: "#ff0101",
-    },
-  ],
   metricName: "hello",
   metric: mockMetric,
   uuid: "abc",

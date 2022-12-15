@@ -1,12 +1,12 @@
 import { MetricUnit } from "@cloudtower/eagle/generated/react-hooks";
-import { ChartState, useKitSelector } from "@cloudtower/eagle/kit/smartx";
 import React from "react";
 import { TooltipProps } from "recharts";
 import { Payload as TooltipPayload } from "recharts/types/component/DefaultTooltipContent";
 
 import { transformDataAndUnit, UNIT_FORMATTER } from "./metric";
-import { ColorBlock, ILegend, LegendComponent } from "./MetricLegend";
+import { ColorBlock } from "./MetricLegend";
 import { TooltipColumn, TooltipWrapper } from "./styled";
+import { ILegend } from "./type";
 
 const TOWER_PERCENT = "%";
 
@@ -48,13 +48,9 @@ const TooltipFormatter: React.FC<
     uuid: string;
     deselectedIndex: number[];
     legends: ILegend[];
-    // legendProps?: ILegend;
   }
 > = (props) => {
-  const { active, payload, uuid, deselectedIndex, legends } = props;
-  // const resourceData = useKitSelector<ChartState["resourceData"]>(
-  //   (state) => state.chart.resourceData
-  // );
+  const { active, payload, deselectedIndex, legends } = props;
 
   if (!active || !payload?.length) {
     return null;
@@ -64,18 +60,6 @@ const TooltipFormatter: React.FC<
     .slice()
     .sort((a, b) => (b.value as number) - (a.value as number));
 
-  // if (legendProps) {
-  //   return (
-  //     <TooltipWrapper>
-  //       <TooltipColumn>
-  //         <LegendComponent {...legendProps} />
-  //         <div className="column-value">{transformColumnValue(payload)}</div>
-  //       </TooltipColumn>
-  //     </TooltipWrapper>
-  //   );
-  // }
-
-  // const data = resourceData[uuid];
   return (
     <TooltipWrapper>
       {sortArr.map((item, index) => {

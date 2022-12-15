@@ -1,7 +1,5 @@
 import {
-  DataPoint,
   MetricLabelInput,
-  MetricUnit,
   TimeUnit,
 } from "@cloudtower/eagle/generated/react-hooks";
 import { ErrorBoundary } from "@cloudtower/eagle/kit/smartx";
@@ -21,12 +19,7 @@ import {
 import Pointer from "./Pointer";
 import RenderChart, { IChartProps } from "./RenderChart";
 import { MetricWrapper } from "./styled";
-
-type exportCSVDataType = {
-  labelName: string;
-  pointData: DataPoint[];
-  unit?: MetricUnit;
-};
+import { IExportCSVDataType } from "./type";
 
 export type MetricProps = {
   groupId?: string;
@@ -66,7 +59,7 @@ export const Metric = (
   const [width, setWidth] = useState(0);
   const uuid = useRef(groupId || makeUUID(5));
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const exportCSVDataRef = useRef<Array<exportCSVDataType>>([]);
+  const exportCSVDataRef = useRef<Array<IExportCSVDataType>>([]);
 
   useEffect(() => {
     setWidth(wrapperRef.current!.offsetWidth);
@@ -100,7 +93,7 @@ export const Metric = (
 
   useImperativeHandle(ref, () => ({ exportCSV, getCSVFileData }));
 
-  function onChartDataChange(data: Array<exportCSVDataType>) {
+  function onChartDataChange(data: Array<IExportCSVDataType>) {
     exportCSVDataRef.current = data;
   }
 

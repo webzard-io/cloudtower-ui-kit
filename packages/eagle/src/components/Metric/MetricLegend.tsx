@@ -13,7 +13,7 @@ import {
   LegendItemStyle,
   LegendStyle,
 } from "./styled";
-import { IMetricData } from "./type";
+import { ILegend, IMetricData } from "./type";
 
 export const ColorBlock: React.FC<{
   background?: string;
@@ -28,11 +28,6 @@ export type GetDeselectedValueWithSuffix = (
   sample_stream?: MetricStream
 ) => string;
 
-export interface ILegend {
-  id: string;
-  name: string;
-  bgColor?: string;
-}
 export interface IMetricLegendProps {
   streams: MetricStream[];
   metricName: string;

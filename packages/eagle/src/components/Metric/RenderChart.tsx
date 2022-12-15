@@ -1,8 +1,4 @@
-import {
-  DataPoint,
-  GraphType,
-  MetricUnit,
-} from "@cloudtower/eagle/generated/react-hooks";
+import { GraphType, MetricUnit } from "@cloudtower/eagle/generated/react-hooks";
 import { DateRange } from "@cloudtower/eagle/kit/specify";
 import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
@@ -29,16 +25,10 @@ import {
   xaxisCal,
   yAxisFomatter,
 } from "./metric";
-import MetricLegend, { ILegend, LegendComponent } from "./MetricLegend";
+import MetricLegend, { LegendComponent } from "./MetricLegend";
 import { MetricLegendTabStyle } from "./styled";
 import TooltipFormatter from "./TooltipFormatter";
-import { IMetric } from "./type";
-
-type exportCSVDataType = {
-  labelName: string;
-  pointData: DataPoint[];
-  unit?: MetricUnit;
-};
+import { IExportCSVDataType, IMetric } from "./type";
 
 export interface IChartProps {
   metricName: string;
@@ -53,7 +43,7 @@ export interface IChartProps {
   mode?: "simple" | "legend" | "single";
   averageLine?: boolean;
   dropdown?: React.ReactNode;
-  onChartDataChange?: (data: Array<exportCSVDataType>) => void;
+  onChartDataChange?: (data: Array<IExportCSVDataType>) => void;
   dateRange?: DateRange;
   hidePointer?: CategoricalChartFunc;
   handleMouseMove?: CategoricalChartFunc;
@@ -63,7 +53,6 @@ export interface IChartProps {
   deselectedIndex: number[];
   metric: IMetric;
   now?: number;
-  legends: ILegend[];
 }
 
 const RenderChart = (props: IChartProps) => {
@@ -88,7 +77,6 @@ const RenderChart = (props: IChartProps) => {
     deselectedIndex,
     metric,
     now = Date.now(),
-    legends,
   } = props;
 
   const isLegend = mode === "legend";
@@ -99,6 +87,10 @@ const RenderChart = (props: IChartProps) => {
     () => formatStreams({ metric, dateRange }),
     [dateRange, metric]
   );
+
+  const legends = useMemo(() => {
+    return streams.map((stream) => stream.legend);
+  }, [streams]);
 
   const areaChartData = useMemo(
     () =>

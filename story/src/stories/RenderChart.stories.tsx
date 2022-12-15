@@ -35,18 +35,6 @@ export const Primary = Template.bind({});
 Primary.args = {
   mode: "legend",
   showLegend: true,
-  legends: [
-    {
-      id: "1",
-      name: "legend1",
-      bgColor: "#abcabc",
-    },
-    {
-      id: "2",
-      name: "legend2",
-      bgColor: "#0bc0bc",
-    },
-  ],
   metricName: "hello",
   metric: mockMetric,
   uuid: "abc",
