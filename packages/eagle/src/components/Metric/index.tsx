@@ -39,13 +39,13 @@ export const Metric = (
     showXaxis = false,
     chartProps,
   } = props;
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState<number>();
   const uuid = useRef(groupId || makeUUID(5));
   const wrapperRef = useRef<HTMLDivElement>(null);
   const exportCSVDataRef = useRef<Array<IExportCSVDataType>>([]);
 
   useEffect(() => {
-    setWidth(wrapperRef.current!.offsetWidth);
+    setWidth(wrapperRef.current?.offsetWidth);
   }, []);
 
   const getCSVFileData: (filename?: string) => {

@@ -3,7 +3,7 @@ import _ from "lodash";
 import React from "react";
 
 const Pointer: React.FC<{
-  metricWidth: number;
+  metricWidth: number | undefined;
   uuid: string;
 }> = ({ uuid = "", metricWidth }) => {
   const pointers = useKitSelector<ChartState["pointers"]>((state) =>
