@@ -56,10 +56,10 @@ const config = defineConfig([
     ],
   },
   ...[
-    "forms-types.tsx",
+    // "forms-types.tsx",
     // "forms.tsx",
     // "forms2.tsx",
-    "global-search.ts",
+    // "global-search.ts",
     "images-type.ts",
     "react-hooks.ts",
     // "tables.tsx",
