@@ -220,7 +220,10 @@ export const addMissingDataWithZero = (
   const expectedPoints: IDataPoint[] = [];
   // Infinity means no value
   const tolerance = getFaultToleranceTime(timeRange);
-  if (inRangePoints[0].t - firsExpectedTimestamp > tolerance + step) {
+  if (
+    firsExpectedTimestamp != null &&
+    inRangePoints[0]?.t - firsExpectedTimestamp > tolerance + step
+  ) {
     inRangePoints.unshift({
       t: firsExpectedTimestamp,
       v: -Infinity,
@@ -293,6 +296,9 @@ export const getFirstExpectedTimestamp = (
   now: number,
   step: number
 ) => {
+  if (data.length === 0) {
+    return;
+  }
   const first = now - getMs(timeRange);
   const firstRealTimestamp = data[0].t;
   return (
@@ -374,7 +380,7 @@ export const transformData = (
   const result =
     streams.length === 1
       ? addMissingDataWithZero(
-          streams[0].points ?? [],
+          streams[0]?.points ?? [],
           range,
           unit,
           step,
