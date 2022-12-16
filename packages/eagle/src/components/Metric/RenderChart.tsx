@@ -12,6 +12,7 @@ import {
   YAxis,
 } from "recharts";
 import { CategoricalChartFunc } from "recharts/types/chart/generateCategoricalChart";
+import { Payload } from "recharts/types/component/DefaultTooltipContent";
 import { AxisDomain } from "recharts/types/util/types";
 
 import Actions from "./Actions";
@@ -59,6 +60,9 @@ export interface IChartProps {
       max: string;
     };
   };
+  tooltipProps: {
+    format: (payload: Payload<number, string>[]) => string;
+  };
 }
 
 const RenderChart = (props: IChartProps) => {
@@ -81,6 +85,7 @@ const RenderChart = (props: IChartProps) => {
     now = Date.now(),
     yAxisProps,
     actionsProps,
+    tooltipProps,
   } = props;
 
   const isLegend = mode === "legend";
@@ -262,6 +267,7 @@ const RenderChart = (props: IChartProps) => {
                 uuid={uuid}
                 deselected={deselected}
                 legends={legends}
+                {...tooltipProps}
               />
             }
           />

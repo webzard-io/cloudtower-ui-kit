@@ -3,9 +3,10 @@ import { parrotI18n } from "@cloudtower/parrot";
 import { makeUUID } from "@tower/utils";
 import cs from "classnames";
 import download from "downloadjs";
+import { TFunction } from "i18next";
 import React, { useEffect, useImperativeHandle, useRef, useState } from "react";
 
-import { MetricRefType, toLocalTime, transformDataToCsv } from ".";
+import { MetricRefType, toLocalTime } from ".";
 import Pointer from "./Pointer";
 import RenderChart, { IChartProps } from "./RenderChart";
 import { MetricWrapper } from "./styled";
@@ -25,6 +26,11 @@ export type MetricProps = {
       }
     | string;
   chartProps: IChartProps;
+  transformDataToCsv: (
+    data: IExportCSVDataType[],
+    shift: number,
+    t: TFunction
+  ) => string;
 };
 
 export const Metric = (
@@ -38,6 +44,7 @@ export const Metric = (
     showLegend = true,
     showXaxis = false,
     chartProps,
+    transformDataToCsv,
   } = props;
   const [width, setWidth] = useState<number>();
   const uuid = useRef(groupId || makeUUID(5));
