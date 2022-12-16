@@ -408,7 +408,7 @@ export const convertDataForMultiArea = (
       points,
     };
   });
-  if (data[0].points == null || data[0].points?.length === 0) {
+  if (data[0]?.points == null || data[0]?.points?.length === 0) {
     return [];
   }
   const finalData: IDataPoint[] = [];
