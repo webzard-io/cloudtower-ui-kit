@@ -12,18 +12,16 @@ import {
   YAxis,
 } from "recharts";
 import { CategoricalChartFunc } from "recharts/types/chart/generateCategoricalChart";
+import { AxisDomain } from "recharts/types/util/types";
 
 import Actions from "./Actions";
 import {
-  findMaxAndCurrent,
   formatStreams,
   getColor,
   getXAxisDomain,
-  getYAxisDomain,
   tickFormatter,
   transformData,
   xaxisCal,
-  yAxisFomatter,
 } from "./metric";
 import MetricLegend, { LegendComponent } from "./MetricLegend";
 import { MetricLegendTabStyle } from "./styled";
@@ -35,7 +33,6 @@ export interface IChartProps {
   yAxisAlign?: "left" | "right";
   showXAxis?: boolean;
   showLegend?: boolean;
-  showMenu?: boolean;
   uuid: string;
   height: number;
   range: string;
@@ -50,13 +47,24 @@ export interface IChartProps {
   metricColors: string[];
   metric: IMetric;
   now?: number;
+  yAxisProps?: {
+    domain?: AxisDomain;
+    ticks?: (string | number)[];
+    tickFormatter?: (value: any, index: number) => string;
+  };
+  actionsProps?: {
+    show?: boolean;
+    info: {
+      current: string;
+      max: string;
+    };
+  };
 }
 
 const RenderChart = (props: IChartProps) => {
   const {
     metricName,
     showLegend,
-    showMenu,
     uuid,
     showXAxis,
     yAxisAlign,
@@ -71,6 +79,8 @@ const RenderChart = (props: IChartProps) => {
     metricColors,
     metric,
     now = Date.now(),
+    yAxisProps,
+    actionsProps,
   } = props;
 
   const isLegend = mode === "legend";
@@ -90,16 +100,6 @@ const RenderChart = (props: IChartProps) => {
     () =>
       transformData(streams, range, metric.unit, metric.step, dateRange, now),
     [dateRange, metric.step, metric.unit, now, range, streams]
-  );
-
-  const yDomain = useMemo(
-    () => getYAxisDomain(areaChartData, type, metric.unit),
-    [areaChartData, metric.unit, type]
-  );
-
-  const yAxisTickFormatter = useMemo(
-    () => yAxisFomatter(metric.unit),
-    [metric.unit]
   );
 
   const points = useMemo(
@@ -123,14 +123,6 @@ const RenderChart = (props: IChartProps) => {
     () => xaxisCal(xAxisDomain[1], range, dateRange),
     [dateRange, range, xAxisDomain]
   );
-
-  const info = useMemo(() => {
-    let info = { current: "-", max: "-" };
-    if (streams?.length) {
-      info = findMaxAndCurrent(areaChartData, metric.unit);
-    }
-    return info;
-  }, [areaChartData, metric.unit, streams?.length]);
 
   const onLegendClick = useCallback(
     (id) => {
@@ -223,7 +215,9 @@ const RenderChart = (props: IChartProps) => {
               bgColor={legends[0].bgColor}
             />
           ))}
-        {showMenu && <Actions info={info} dropdown={dropdown} />}
+        {actionsProps?.show && (
+          <Actions dropdown={dropdown} {...actionsProps} />
+        )}
       </div>
       <ResponsiveContainer height={height}>
         <AreaChart
@@ -256,10 +250,8 @@ const RenderChart = (props: IChartProps) => {
             allowDataOverflow
             axisLine={false}
             tickLine={false}
-            domain={yDomain}
-            ticks={[0, yDomain[1] / 2, yDomain[1]]}
-            tickFormatter={yAxisTickFormatter}
             orientation={yAxisAlign}
+            {...yAxisProps}
           />
           <Tooltip
             active

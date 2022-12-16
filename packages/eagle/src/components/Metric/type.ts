@@ -7,7 +7,7 @@ export interface IMetricData {
 export interface IDataPoint {
   __typename?: "DataPoint";
   t: number;
-  unit?: MetricUnit;
+  unit?: string;
   v?: number;
   [key: DataPointValueKey]: number | undefined;
 }
@@ -28,7 +28,7 @@ export interface IMetricStream {
 
 export interface IMetric {
   sample_streams: IMetricStream[];
-  unit: MetricUnit;
+  unit: string;
   step: number;
   dropped: boolean;
   __typename: string;
@@ -37,7 +37,7 @@ export interface IMetric {
 export type IExportCSVDataType = {
   labelName: string;
   pointData: IDataPoint[];
-  unit?: MetricUnit;
+  unit?: string;
 };
 
 export enum TimeUnit {
@@ -46,18 +46,18 @@ export enum TimeUnit {
   Month = "MONTH",
 }
 
-export enum MetricUnit {
-  Count = "COUNT",
-  DataRateBit = "DATA_RATE_BIT",
-  DataRateByte = "DATA_RATE_BYTE",
-  DataSize = "DATA_SIZE",
-  Frequency = "FREQUENCY",
-  Load = "LOAD",
-  Percent = "PERCENT",
-  Ratio = "RATIO",
-  Temperature = "TEMPERATURE",
-  Time = "TIME",
-}
+// export enum MetricUnit {
+//   Count = "COUNT",
+//   DataRateBit = "DATA_RATE_BIT",
+//   DataRateByte = "DATA_RATE_BYTE",
+//   DataSize = "DATA_SIZE",
+//   Frequency = "FREQUENCY",
+//   Load = "LOAD",
+//   Percent = "PERCENT",
+//   Ratio = "RATIO",
+//   Temperature = "TEMPERATURE",
+//   Time = "TIME",
+// }
 
 export enum GraphType {
   Area = "AREA",
