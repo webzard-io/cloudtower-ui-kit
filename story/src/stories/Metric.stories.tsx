@@ -30,12 +30,13 @@ const Template: ComponentStory<typeof Metric> = (args) => <Metric {...args} />;
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
+  showPointer: true,
+  uuid: "abc",
   chartProps: {
     mode: "legend",
     showLegend: true,
     metricName: "hello",
     metric: mockMetric,
-    uuid: "abc",
     height: 200,
     range: "2h",
     type: GraphType.Area,
@@ -45,6 +46,13 @@ Primary.args = {
     tooltipProps: {
       format: () => {
         return "hello tooltip";
+      },
+    },
+    actionsProps: {
+      show: true,
+      info: {
+        max: "hello",
+        current: "hello current",
       },
     },
   },

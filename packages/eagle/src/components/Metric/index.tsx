@@ -1,6 +1,5 @@
 import { ErrorBoundary } from "@cloudtower/eagle/kit/smartx";
 import { parrotI18n } from "@cloudtower/parrot";
-import { makeUUID } from "@tower/utils";
 import cs from "classnames";
 import download from "downloadjs";
 import { TFunction } from "i18next";
@@ -13,7 +12,7 @@ import { MetricWrapper } from "./styled";
 import { IExportCSVDataType, TimeUnit } from "./type";
 
 export type MetricProps = {
-  groupId?: string;
+  uuid: string;
   height?: number;
   showPointer?: boolean;
   yAxisAlign?: "left" | "right";
@@ -25,7 +24,7 @@ export type MetricProps = {
         unit: TimeUnit;
       }
     | string;
-  chartProps: IChartProps;
+  chartProps: Omit<IChartProps, "uuid">;
   transformDataToCsv: (
     data: IExportCSVDataType[],
     shift: number,
@@ -38,7 +37,7 @@ export const Metric = (
   ref: React.ForwardedRef<MetricRefType>
 ) => {
   const {
-    groupId,
+    uuid,
     height = 154,
     showPointer = true,
     showLegend = true,
@@ -47,7 +46,6 @@ export const Metric = (
     transformDataToCsv,
   } = props;
   const [width, setWidth] = useState<number>();
-  const uuid = useRef(groupId || makeUUID(5));
   const wrapperRef = useRef<HTMLDivElement>(null);
   const exportCSVDataRef = useRef<Array<IExportCSVDataType>>([]);
 
@@ -94,8 +92,12 @@ export const Metric = (
         ref={wrapperRef}
         style={{ height: showLegend ? height + 30 : height }}
       >
-        <RenderChart onChartDataChange={onChartDataChange} {...chartProps} />
-        {showPointer && <Pointer uuid={uuid.current} metricWidth={width} />}
+        <RenderChart
+          onChartDataChange={onChartDataChange}
+          uuid={uuid}
+          {...chartProps}
+        />
+        {showPointer && <Pointer uuid={uuid} metricWidth={width} />}
       </MetricWrapper>
     </ErrorBoundary>
   );
