@@ -1,4 +1,4 @@
-import { IMetric, MetricUnit } from "@cloudtower/eagle";
+import { IMetric } from "@cloudtower/eagle";
 
 const mockMetric: IMetric = {
   sample_streams: [
@@ -3633,7 +3633,7 @@ const mockMetric: IMetric = {
       __typename: "MetricStream",
     },
   ],
-  unit: MetricUnit.Count,
+  unit: "COUNT",
   step: 30000,
   dropped: false,
   __typename: "Metric",
