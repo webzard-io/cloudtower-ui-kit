@@ -18,7 +18,6 @@ import { AxisDomain } from "recharts/types/util/types";
 import Actions from "./Actions";
 import {
   formatStreams,
-  getColor,
   getXAxisDomain,
   tickFormatter,
   transformData,
@@ -44,8 +43,6 @@ export interface IChartProps {
   onChartDataChange?: (data: Array<IExportCSVDataType>) => void;
   dateRange?: DateRange;
   onLabelsChange?: (labels: string[]) => void;
-  getColorsByMetric: (metric: string) => string;
-  metricColors: string[];
   metric: IMetric;
   now?: number;
   yAxisProps?: {
@@ -79,8 +76,6 @@ const RenderChart = (props: IChartProps) => {
     dropdown,
     dateRange,
     onLabelsChange,
-    getColorsByMetric,
-    metricColors,
     metric,
     now = Date.now(),
     yAxisProps,
@@ -190,7 +185,7 @@ const RenderChart = (props: IChartProps) => {
             <LegendComponent
               id={legends[0].id}
               name={legends[0].name}
-              bgColor={legends[0].bgColor}
+              color={legends[0].color}
             />
           ) : undefined}
         </div>
@@ -217,7 +212,7 @@ const RenderChart = (props: IChartProps) => {
             <LegendComponent
               id={legends[0].id}
               name={legends[0].name}
-              bgColor={legends[0].bgColor}
+              color={legends[0].color}
             />
           ))}
         {actionsProps?.show && (
@@ -276,25 +271,20 @@ const RenderChart = (props: IChartProps) => {
               return null;
             }
 
-            const { fill } = getColor({
-              type,
-              isLegend,
-              index,
-              metricName,
-              getColorsByMetric,
-              metricColors,
-            });
-
             return (
               <Area
                 key={index}
                 dataKey={streams?.length === 1 ? "v" : `v${index}`}
                 stackId={type === GraphType.Stack ? "stack" : undefined}
-                stroke={item.legend.bgColor}
-                fill={fill}
+                stroke={
+                  item.legend.stroke
+                    ? `${item.legend.color}1A`
+                    : item.legend.color
+                }
+                fill={item.legend.fill}
                 isAnimationActive={false}
                 activeDot={{
-                  stroke: item.legend.bgColor,
+                  stroke: item.legend.color,
                   r: 4,
                   strokeWidth: 2,
                   fill: "white",

@@ -11,29 +11,6 @@ import {
   TimeUnit,
 } from "./type";
 
-export const getColor = (prams: {
-  type: GraphType;
-  isLegend: boolean;
-  index?: number;
-  metricName: string;
-  getColorsByMetric: (metricName: string) => string;
-  metricColors: string[];
-}) => {
-  const {
-    type,
-    isLegend,
-    index = 0,
-    metricName,
-    getColorsByMetric,
-    metricColors,
-  } = prams;
-  const stroke = isLegend ? metricColors[index] : getColorsByMetric(metricName);
-  // 1A === 10% transparency
-  const fill = type === GraphType.Stack ? stroke : `${stroke}1A`;
-
-  return { stroke, fill };
-};
-
 export function filterPointsByDateRange(
   points: IDataPoint[],
   dateRange?: DateRange | undefined | null

@@ -1208,7 +1208,9 @@ const mockMetric: IMetric = {
       legend: {
         id: "1",
         name: "loooooooooooooooooooooooooooooooooooooooooooong_legend1",
-        bgColor: "#abcabc",
+        color: "#abcabc",
+        fill: "#abcabc",
+        stroke: true,
       },
       __typename: "MetricStream",
     },
@@ -2418,7 +2420,8 @@ const mockMetric: IMetric = {
       legend: {
         id: "2",
         name: "loooooooooooooooooooooooooooooooooooooooooooong_legend2",
-        bgColor: "#0bc0bc",
+        color: "#0bc0bc",
+        fill: "#0bc0bc",
       },
       __typename: "MetricStream",
     },
@@ -3628,7 +3631,8 @@ const mockMetric: IMetric = {
       legend: {
         id: "3",
         name: "loooooooooooooooooooooooooooooooooooooooooooong_legend3",
-        bgColor: "#ff0101",
+        color: "#ff0101",
+        fill: "#ff0101",
       },
       __typename: "MetricStream",
     },

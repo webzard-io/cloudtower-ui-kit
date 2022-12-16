@@ -17,7 +17,9 @@ type DataPointValueKey = `v${number}`;
 export interface ILegend {
   id: string;
   name: string;
-  bgColor?: string;
+  color?: string;
+  fill?: string;
+  stroke?: boolean;
 }
 
 export interface IMetricStream {

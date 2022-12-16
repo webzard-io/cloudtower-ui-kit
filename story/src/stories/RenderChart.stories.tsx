@@ -40,11 +40,12 @@ Primary.args = {
   height: 200,
   range: "2h",
   type: GraphType.Area,
-  getColorsByMetric: () => {
-    return "#ABCABC";
-  },
-  metricColors: ["#ABCABC"],
   dateRange: [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
   now: new Date("2022-12-13 18:00").getTime(),
   showXAxis: true,
+  tooltipProps: {
+    format: () => {
+      return "hello tooltip";
+    },
+  },
 };
