@@ -3,15 +3,10 @@ import { parrotI18n } from "@cloudtower/parrot";
 import { makeUUID } from "@tower/utils";
 import cs from "classnames";
 import download from "downloadjs";
+import { TFunction } from "i18next";
 import React, { useEffect, useImperativeHandle, useRef, useState } from "react";
 
-import { FullView } from "../../styles";
-import {
-  MetricRefType,
-  stringifyTimeSpan,
-  toLocalTime,
-  transformDataToCsv,
-} from ".";
+import { MetricRefType, toLocalTime } from ".";
 import Pointer from "./Pointer";
 import RenderChart, { IChartProps } from "./RenderChart";
 import { MetricWrapper } from "./styled";
@@ -24,8 +19,6 @@ export type MetricProps = {
   yAxisAlign?: "left" | "right";
   showXaxis?: boolean;
   showLegend?: boolean;
-  topk?: number;
-  bottomk?: number;
   timeSpan?:
     | {
         span: number;
@@ -33,6 +26,11 @@ export type MetricProps = {
       }
     | string;
   chartProps: IChartProps;
+  transformDataToCsv: (
+    data: IExportCSVDataType[],
+    shift: number,
+    t: TFunction
+  ) => string;
 };
 
 export const Metric = (
@@ -41,23 +39,20 @@ export const Metric = (
 ) => {
   const {
     groupId,
-
     height = 154,
     showPointer = true,
     showLegend = true,
     showXaxis = false,
-    topk,
-    bottomk,
-    timeSpan = "2h",
     chartProps,
+    transformDataToCsv,
   } = props;
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState<number>();
   const uuid = useRef(groupId || makeUUID(5));
   const wrapperRef = useRef<HTMLDivElement>(null);
   const exportCSVDataRef = useRef<Array<IExportCSVDataType>>([]);
 
   useEffect(() => {
-    setWidth(wrapperRef.current!.offsetWidth);
+    setWidth(wrapperRef.current?.offsetWidth);
   }, []);
 
   const getCSVFileData: (filename?: string) => {
@@ -92,9 +87,6 @@ export const Metric = (
     exportCSVDataRef.current = data;
   }
 
-  const topnNotTwoHour =
-    topk !== undefined && stringifyTimeSpan(timeSpan) !== "2h";
-
   return (
     <ErrorBoundary>
       <MetricWrapper
@@ -102,19 +94,8 @@ export const Metric = (
         ref={wrapperRef}
         style={{ height: showLegend ? height + 30 : height }}
       >
-        {!topk && !bottomk ? (
-          <FullView>{parrotI18n.t("metric.empty")}</FullView>
-        ) : topnNotTwoHour ? (
-          <FullView>{parrotI18n.t("metric.topn_only_two_hour")}</FullView>
-        ) : (
-          <>
-            <RenderChart
-              onChartDataChange={onChartDataChange}
-              {...chartProps}
-            />
-            {showPointer && <Pointer uuid={uuid.current} metricWidth={width} />}
-          </>
-        )}
+        <RenderChart onChartDataChange={onChartDataChange} {...chartProps} />
+        {showPointer && <Pointer uuid={uuid.current} metricWidth={width} />}
       </MetricWrapper>
     </ErrorBoundary>
   );

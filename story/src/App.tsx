@@ -5,8 +5,12 @@ import "@cloudtower/eagle/styles/fonts/font.css";
 import "@cloudtower/eagle/styles/override.scss";
 import "@cloudtower/eagle/style.css";
 
-import { IChartProps, RenderChart, TowerTable } from "@cloudtower/eagle";
-import { GraphType } from "@cloudtower/eagle/generated/react-hooks";
+import {
+  GraphType,
+  IChartProps,
+  RenderChart,
+  TowerTable,
+} from "@cloudtower/eagle";
 import {
   antdKit,
   CustomizeColumnType,
@@ -103,6 +107,11 @@ const renderChartArgs: IChartProps = {
   dateRange: [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
   now: new Date("2022-12-13 18:00").getTime(),
   showXAxis: true,
+  tooltipProps: {
+    format: () => {
+      return "hello tooltip";
+    },
+  },
 };
 
 function App() {

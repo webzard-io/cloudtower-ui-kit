@@ -1,5 +1,4 @@
-import { RenderChart } from "@cloudtower/eagle";
-import { GraphType } from "@cloudtower/eagle/generated/react-hooks";
+import { GraphType, RenderChart } from "@cloudtower/eagle";
 import { antdKit } from "@cloudtower/eagle/kit/smartx";
 import { kitContext } from "@cloudtower/eagle/kit/specify";
 import { ComponentMeta, ComponentStory } from "@storybook/react";

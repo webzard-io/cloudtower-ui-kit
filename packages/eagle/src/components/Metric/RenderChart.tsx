@@ -1,5 +1,7 @@
+import { ChartActions, useKitDispatch } from "@cloudtower/eagle/kit/smartx";
 import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
+import dayjs from "dayjs";
 import React, { useCallback, useMemo, useState } from "react";
 import {
   Area,
@@ -10,18 +12,17 @@ import {
   YAxis,
 } from "recharts";
 import { CategoricalChartFunc } from "recharts/types/chart/generateCategoricalChart";
+import { Payload } from "recharts/types/component/DefaultTooltipContent";
+import { AxisDomain } from "recharts/types/util/types";
 
 import Actions from "./Actions";
 import {
-  findMaxAndCurrent,
   formatStreams,
   getColor,
   getXAxisDomain,
-  getYAxisDomain,
   tickFormatter,
   transformData,
   xaxisCal,
-  yAxisFomatter,
 } from "./metric";
 import MetricLegend, { LegendComponent } from "./MetricLegend";
 import { MetricLegendTabStyle } from "./styled";
@@ -33,7 +34,6 @@ export interface IChartProps {
   yAxisAlign?: "left" | "right";
   showXAxis?: boolean;
   showLegend?: boolean;
-  showMenu?: boolean;
   uuid: string;
   height: number;
   range: string;
@@ -43,20 +43,32 @@ export interface IChartProps {
   dropdown?: React.ReactNode;
   onChartDataChange?: (data: Array<IExportCSVDataType>) => void;
   dateRange?: DateRange;
-  hidePointer?: CategoricalChartFunc;
-  handleMouseMove?: CategoricalChartFunc;
   onLabelsChange?: (labels: string[]) => void;
   getColorsByMetric: (metric: string) => string;
   metricColors: string[];
   metric: IMetric;
   now?: number;
+  yAxisProps?: {
+    domain?: AxisDomain;
+    ticks?: (string | number)[];
+    tickFormatter?: (value: any, index: number) => string;
+  };
+  actionsProps?: {
+    show?: boolean;
+    info: {
+      current: string;
+      max: string;
+    };
+  };
+  tooltipProps: {
+    format: (payload: Payload<number, string>[]) => string;
+  };
 }
 
 const RenderChart = (props: IChartProps) => {
   const {
     metricName,
     showLegend,
-    showMenu,
     uuid,
     showXAxis,
     yAxisAlign,
@@ -66,17 +78,18 @@ const RenderChart = (props: IChartProps) => {
     mode = "legend",
     dropdown,
     dateRange,
-    hidePointer,
-    handleMouseMove,
     onLabelsChange,
     getColorsByMetric,
     metricColors,
     metric,
     now = Date.now(),
+    yAxisProps,
+    actionsProps,
+    tooltipProps,
   } = props;
 
   const isLegend = mode === "legend";
-
+  const dispatch = useKitDispatch();
   const [deselected, setDeselected] = useState<string[]>([]);
 
   const streams = useMemo(
@@ -92,16 +105,6 @@ const RenderChart = (props: IChartProps) => {
     () =>
       transformData(streams, range, metric.unit, metric.step, dateRange, now),
     [dateRange, metric.step, metric.unit, now, range, streams]
-  );
-
-  const yDomain = useMemo(
-    () => getYAxisDomain(areaChartData, type, metric.unit),
-    [areaChartData, metric.unit, type]
-  );
-
-  const yAxisTickFormatter = useMemo(
-    () => yAxisFomatter(metric.unit),
-    [metric.unit]
   );
 
   const points = useMemo(
@@ -126,14 +129,6 @@ const RenderChart = (props: IChartProps) => {
     [dateRange, range, xAxisDomain]
   );
 
-  const info = useMemo(() => {
-    let info = { current: "-", max: "-" };
-    if (streams?.length) {
-      info = findMaxAndCurrent(areaChartData, metric.unit);
-    }
-    return info;
-  }, [areaChartData, metric.unit, streams?.length]);
-
   const onLegendClick = useCallback(
     (id) => {
       setDeselected((prev) => {
@@ -146,6 +141,37 @@ const RenderChart = (props: IChartProps) => {
       });
     },
     [onLabelsChange, streams]
+  );
+
+  const hidePointer: CategoricalChartFunc = useCallback(() => {
+    dispatch({
+      type: ChartActions.SET_POINTER,
+      payload: { visible: false, uuid },
+    });
+  }, [dispatch, uuid]);
+
+  const handleMouseMove: CategoricalChartFunc = useCallback(
+    (e) => {
+      if (e.isTooltipActive) {
+        const { chartX, activePayload } = e;
+        if (!activePayload?.[0]?.payload) {
+          return;
+        }
+        dispatch({
+          type: ChartActions.SET_POINTER,
+          payload: {
+            uuid,
+            visible: true,
+            left: chartX,
+            text: dayjs(Number(activePayload[0].payload.t)).format(
+              "MM-DD HH:mm:ss"
+            ),
+            value: activePayload[0].payload.v,
+          },
+        });
+      }
+    },
+    [dispatch, uuid]
   );
 
   if (!streams?.length || streams.every((stream) => !stream.points?.length)) {
@@ -194,7 +220,9 @@ const RenderChart = (props: IChartProps) => {
               bgColor={legends[0].bgColor}
             />
           ))}
-        {showMenu && <Actions info={info} dropdown={dropdown} />}
+        {actionsProps?.show && (
+          <Actions dropdown={dropdown} {...actionsProps} />
+        )}
       </div>
       <ResponsiveContainer height={height}>
         <AreaChart
@@ -227,10 +255,8 @@ const RenderChart = (props: IChartProps) => {
             allowDataOverflow
             axisLine={false}
             tickLine={false}
-            domain={yDomain}
-            ticks={[0, yDomain[1] / 2, yDomain[1]]}
-            tickFormatter={yAxisTickFormatter}
             orientation={yAxisAlign}
+            {...yAxisProps}
           />
           <Tooltip
             active
@@ -241,6 +267,7 @@ const RenderChart = (props: IChartProps) => {
                 uuid={uuid}
                 deselected={deselected}
                 legends={legends}
+                {...tooltipProps}
               />
             }
           />
