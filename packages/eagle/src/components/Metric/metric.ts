@@ -1,4 +1,4 @@
-import { DAY, HOUR, MINUTE, WEEK } from "@tower/utils";
+import { DAY, HOUR, MINUTE } from "@tower/utils";
 import dayjs from "dayjs";
 import _ from "lodash";
 
@@ -13,7 +13,7 @@ import {
 
 export function filterPointsByDateRange(
   points: IDataPoint[],
-  dateRange?: DateRange | undefined | null
+  dateRange: DateRange | undefined | null
 ): IDataPoint[] {
   if (dateRange) {
     const [startDate, endDate] = dateRange;
@@ -52,26 +52,14 @@ export const rangeToTimestamp = (range: string) => {
   }
 };
 
-function getRangeTimestamp(range: string, dateRange?: DateRange) {
-  if (dateRange) {
-    const [startDate, endDate] = dateRange;
+function getRangeTimestamp(dateRange: DateRange) {
+  const [startDate, endDate] = dateRange;
 
-    if (startDate && endDate) {
-      return endDate.valueOf() - startDate.valueOf();
-    } else if (startDate && !endDate) {
-      return Date.now() - startDate.valueOf();
-    }
-  }
-
-  return rangeToTimestamp(range);
+  return endDate.valueOf() - startDate.valueOf();
 }
 
-export const xaxisCal = (
-  lastTime: number,
-  range: string,
-  dateRange?: DateRange
-) => {
-  const tangeTime = getRangeTimestamp(range, dateRange);
+export const xaxisCal = (lastTime: number, dateRange: DateRange) => {
+  const tangeTime = getRangeTimestamp(dateRange);
   const tick = tangeTime / 4;
 
   const msPerMinute = MINUTE * 1000;
@@ -84,12 +72,8 @@ export const xaxisCal = (
   return [baseline - tick * 3, baseline - tick * 2, baseline - tick, baseline];
 };
 
-export const tickFormatter = (
-  tick: number,
-  range: string,
-  dateRange?: DateRange
-) => {
-  const rangeTime = getRangeTimestamp(range, dateRange);
+export const tickFormatter = (tick: number, dateRange: DateRange) => {
+  const rangeTime = getRangeTimestamp(dateRange);
   if (rangeTime <= 2 * HOUR * 1000) {
     return dayjs(tick).format("HH:mm:ss");
   }
@@ -100,62 +84,25 @@ export const tickFormatter = (
 };
 
 export function getXAxisDomain(
-  areaChartData: IDataPoint[],
-  points: IDataPoint[],
-  range: string,
-  dateRange?: DateRange | undefined
+  dateRange: DateRange,
+  xaxisLastTime?: number
 ): [number, number] {
-  if (areaChartData.length === 0 || points.length === 0) {
-    return [0, 0];
-  }
-  const xaxisLastTime: number = areaChartData[areaChartData.length - 1]
-    ? Number(areaChartData[areaChartData.length - 1].t)
-    : points[points.length - 1].t;
+  const [startDate, endDate] = dateRange;
 
-  const xaxisDomainStartTimestamp: number =
-    xaxisLastTime - rangeToTimestamp(range);
-
-  if (dateRange) {
-    const [startTimestamp, endTimestamp] = dateRange.map((date) =>
-      date ? date.valueOf() : null
-    );
-
-    const startTimestampIsNumber = typeof startTimestamp === "number";
-    const endTimestampIsNumber = typeof endTimestamp === "number";
-
-    if (startTimestampIsNumber && endTimestampIsNumber) {
-      return [startTimestamp, endTimestamp];
-    } else if (startTimestampIsNumber && !endTimestampIsNumber) {
-      return [startTimestamp, xaxisLastTime];
-    } else if (!startTimestampIsNumber && endTimestampIsNumber) {
-      return [xaxisDomainStartTimestamp, endTimestamp];
-    }
-  }
-
-  return [xaxisDomainStartTimestamp, xaxisLastTime];
+  return [startDate.valueOf(), xaxisLastTime ?? endDate.valueOf()];
 }
 
-export const getMs = (timeRange: string): number => {
-  switch (timeRange) {
-    case "2h":
-      return HOUR * 2 * 1000;
-    case "24h":
-      return DAY * 1000;
-    case "7d":
-      return WEEK * 1000;
-    case "30d":
-      return DAY * 30 * 1000;
-    default:
-      return DAY * 182 * 1000;
-  }
+export const getMs = (dateRange: DateRange): number => {
+  const [startDate, endDate] = dateRange;
+  return endDate.valueOf() - startDate.valueOf();
 };
 
 export const deletePointsOutOfRange = (
   data: IDataPoint[],
-  timeRange: string,
+  dateRange: DateRange,
   now: number
 ) => {
-  const first = now - getMs(timeRange);
+  const first = now - getMs(dateRange);
   return (
     data?.filter((item) => {
       return item.t >= first && item.t <= now;
@@ -163,40 +110,46 @@ export const deletePointsOutOfRange = (
   );
 };
 
-export const getFaultToleranceTime = (timeRange: string) => {
-  switch (timeRange) {
-    case "2h":
-      return 120 * 1000;
-    case "24h":
-      return 10 * 60 * 1000;
-    case "7d":
-    case "30d":
-      return 60 * 60 * 1000;
-    case "182d":
-      return 24 * 60 * 60 * 1000;
+const getFaultToleranceTime = (dateRange: DateRange) => {
+  const [startDate, endDate] = dateRange;
+  const range = endDate.valueOf() - startDate.valueOf();
+
+  if (range < 2 * 60 * 60 * 1000) {
+    return 2 * 60 * 1000;
   }
+
+  if (range < 24 * 60 * 60 * 1000) {
+    return 10 * 60 * 1000;
+  }
+
+  if (range < 30 * 24 * 60 * 60 * 1000) {
+    return 60 * 60 * 1000;
+  }
+  if (range < 182 * 24 * 60 * 60 * 1000) {
+    return 24 * 60 * 60 * 1000;
+  }
+
   return 120 * 1000;
 };
 
 export const addMissingDataWithZero = (
   data: IDataPoint[],
-  timeRange: string,
   unit: string,
   step: number,
-  dateRange?: DateRange,
+  dateRange: DateRange,
   now = Date.now()
 ) => {
-  const inRangePoints = deletePointsOutOfRange(data, timeRange, now);
+  const inRangePoints = deletePointsOutOfRange(data, dateRange, now);
 
   const firsExpectedTimestamp = getFirstExpectedTimestamp(
     inRangePoints,
-    timeRange,
+    dateRange,
     now,
     step
   );
   const expectedPoints: IDataPoint[] = [];
   // Infinity means no value
-  const tolerance = getFaultToleranceTime(timeRange);
+  const tolerance = getFaultToleranceTime(dateRange);
   if (
     firsExpectedTimestamp != null &&
     inRangePoints[0]?.t - firsExpectedTimestamp > tolerance + step
@@ -269,14 +222,14 @@ export const getYDataMax = (dataPoints: IDataPoint[], type: GraphType) => {
 
 export const getFirstExpectedTimestamp = (
   data: IDataPoint[],
-  timeRange: string,
+  dateRange: DateRange,
   now: number,
   step: number
 ) => {
   if (data.length === 0) {
     return;
   }
-  const first = now - getMs(timeRange);
+  const first = now - getMs(dateRange);
   const firstRealTimestamp = data[0].t;
   return (
     firstRealTimestamp - Math.floor((firstRealTimestamp - first) / step) * step
@@ -329,7 +282,7 @@ export type MetricRefType = {
 
 export const formatStreams = (params: {
   metric: IMetric;
-  dateRange?: DateRange | null;
+  dateRange: DateRange | null;
 }) => {
   const { metric, dateRange } = params;
 
@@ -348,38 +301,34 @@ export const formatStreams = (params: {
 
 export const transformData = (
   streams: IMetricStream[],
-  range: string,
   unit: string,
   step: number,
-  dateRange?: DateRange,
+  dateRange: DateRange,
   now = Date.now()
 ) => {
   const result =
     streams.length === 1
       ? addMissingDataWithZero(
           streams[0]?.points ?? [],
-          range,
           unit,
           step,
           dateRange,
           now
         )
-      : convertDataForMultiArea(streams, range, unit, step, dateRange, now);
+      : convertDataForMultiArea(streams, unit, step, dateRange, now);
   return result;
 };
 
 export const convertDataForMultiArea = (
   streams: IMetricStream[],
-  range: string,
   unit: string,
   step: number,
-  dateRange?: DateRange,
+  dateRange: DateRange,
   now = Date.now()
 ) => {
   const data = streams.map((item) => {
     const points = addMissingDataWithZero(
       item?.points || [],
-      range,
       unit,
       step,
       dateRange,
@@ -395,7 +344,7 @@ export const convertDataForMultiArea = (
     return [];
   }
   const finalData: IDataPoint[] = [];
-  const pointsNum: number = getMs(range) / step;
+  const pointsNum: number = getMs(dateRange) / step;
 
   for (let j = 0; j < pointsNum; j++) {
     finalData[j] = {

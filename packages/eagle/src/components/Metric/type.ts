@@ -63,4 +63,4 @@ export enum GraphType {
   Stack = "STACK",
 }
 
-export type DateRange = [Dayjs | null, Dayjs | null];
+export type DateRange = [Dayjs, Dayjs];
