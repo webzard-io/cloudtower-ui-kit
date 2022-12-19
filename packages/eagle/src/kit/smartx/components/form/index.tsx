@@ -1,4 +1,4 @@
-import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
+import { FormItemDiv, useKitSelector } from "@cloudtower/eagle/kit/smartx";
 import { KitRootState } from "@cloudtower/eagle/kit/smartx";
 import { Kit } from "@cloudtower/eagle/kit/specify";
 import {
@@ -41,7 +41,6 @@ import React, {
 } from "react";
 import { CSSTransition } from "react-transition-group";
 
-import { FormItemDiv } from "../../../../styles";
 import FieldError from "../../components/FormError";
 
 export const FormLayoutContext = React.createContext<Form1LayoutProps>({});

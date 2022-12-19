@@ -11,4 +11,5 @@ export * from "./Icon";
 export * from "./KitStoreProvider";
 export { default as KitStoreProvider } from "./KitStoreProvider";
 export { default as Loading } from "./Loading";
+export * from "./styled";
 export { default as Truncate } from "./Truncate";

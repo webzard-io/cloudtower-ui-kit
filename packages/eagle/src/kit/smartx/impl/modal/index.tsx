@@ -1,13 +1,15 @@
 import { CheckOutlined, CloseCircleFilled } from "@ant-design/icons";
-import { useKitDispatch, useKitSelector } from "@cloudtower/eagle/kit/smartx";
+import {
+  useKitDispatch,
+  useKitSelector,
+  WizardBody,
+} from "@cloudtower/eagle/kit/smartx";
 import { KitRootState, ModalActions } from "@cloudtower/eagle/kit/smartx";
 import { kitContext, ModalProps } from "@cloudtower/eagle/kit/specify";
 import { parrotI18n } from "@cloudtower/parrot";
 import { Modal as AntdModal, Steps } from "antd";
 import cs from "classnames";
 import React, { useContext, useMemo, useRef } from "react";
-
-import { WizardBody } from "../../../../styles";
 
 const Modal: React.FC<ModalProps> = (props) => {
   const {
