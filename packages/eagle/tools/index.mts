@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { globby } from "globby";
+import generateType from "./generateType.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -56,8 +57,24 @@ const convert = async () => {
       path.resolve(__dirname, `../src/kit/images/index.ts`),
       result
     );
-    return;
   } catch (error) {}
+
+  try {
+    const folderPath = path.resolve(__dirname, "../src/kit/images");
+    let output = "export type ImagesType =";
+    output += generateType(folderPath);
+    fs.mkdirSync(path.resolve(__dirname, `../src/generated`), {
+      recursive: true,
+    });
+    fs.writeFileSync(
+      path.resolve(__dirname, `../src/generated/images-type.ts`),
+      output
+    );
+  } catch (error) {
+    console.log(error);
+  }
+
+  return;
 };
 
 Promise.resolve(convert());
