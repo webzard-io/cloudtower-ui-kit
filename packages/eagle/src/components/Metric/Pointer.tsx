@@ -1,4 +1,4 @@
-import { ChartState, useKitSelector } from "@cloudtower/eagle/kit/smartx";
+import { ChartState, useKitSelector } from "@cloudtower/eagle";
 import _ from "lodash";
 import React from "react";
 

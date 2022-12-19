@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 
-import { getSize } from "../dom";
+import { getSize } from "../components/spec/common/dom";
 
 type Size<K extends string> = Record<K, { width: number; height: number }>;
 function getAllSize<K extends string>(classMap: Record<K, string>) {

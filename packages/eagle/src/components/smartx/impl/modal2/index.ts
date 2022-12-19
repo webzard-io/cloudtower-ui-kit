@@ -1,12 +1,8 @@
+import { Modal2Type } from "@cloudtower/eagle";
+
 import InitializedModal from "./InitializedModal";
 import BaseModal from "./Modal";
 import WizardModal from "./WizardModal";
-
-type BaseModalType = typeof BaseModal;
-export interface Modal2Type extends BaseModalType {
-  Initialized: typeof InitializedModal;
-  Wizard: typeof WizardModal;
-}
 
 const Modal: Modal2Type = BaseModal as Modal2Type;
 

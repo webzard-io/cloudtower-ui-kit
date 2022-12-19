@@ -1,7 +1,7 @@
 import { parrotI18n } from "@cloudtower/parrot";
 import React from "react";
 
-const Actions: React.FC<{
+const MetricActions: React.FC<{
   info: { current: string; max: string };
   dropdown?: React.ReactNode;
 }> = (props) => {
@@ -23,4 +23,4 @@ const Actions: React.FC<{
   );
 };
 
-export default Actions;
+export default MetricActions;

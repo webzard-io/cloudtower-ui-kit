@@ -3,7 +3,7 @@
 > 使用 kit specify 或者 smartx kit 时。请使用`别名`导入。esbuild 在构建时，会将相对路径下的代码打包，会造成 kitContext 不唯一的情况。
 
 ```js
-import { kitContext } from "@cloudtower/eagle/kit/specify";
+import { kitContext } from "@cloudtower/eagle";
 ```
 
 ## 新增组件
@@ -43,11 +43,11 @@ import { kitContext } from "@cloudtower/eagle/kit/specify";
 
 当前分为四类导出
 
-- @cloudtower/eagle/kit/specify
+- @cloudtower/eagle
 
   kit 接口定义，包含 kitContext 与 emptyImpl
 
-- @cloudtower/eagle/kit/smartx
+- @cloudtower/eagle
 
   kit 实现，包含 kit 的 antd 实现，与 smartx 功能组件（非业务紧耦合）。
 

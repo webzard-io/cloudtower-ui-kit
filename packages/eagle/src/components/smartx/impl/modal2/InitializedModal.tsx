@@ -1,4 +1,4 @@
-import { kitContext, Modal2Props } from "@cloudtower/eagle/kit/specify";
+import { kitContext, Modal2Props } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { ApolloError } from "apollo-boost";
 import React, { useContext, useEffect, useRef, useState } from "react";

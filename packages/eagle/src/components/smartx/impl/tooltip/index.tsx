@@ -1,4 +1,4 @@
-import { TooltipProps } from "@cloudtower/eagle/kit/specify";
+import { TooltipProps } from "@cloudtower/eagle";
 import { Tooltip as AntdTooltip } from "antd";
 import cs from "classnames";
 import React, { useCallback, useEffect, useMemo, useRef } from "react";

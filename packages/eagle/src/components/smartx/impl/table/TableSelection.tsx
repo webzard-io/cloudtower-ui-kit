@@ -3,17 +3,9 @@
 @typescript-eslint/no-explicit-any,
 */
 
-import { useKitSelector } from "@cloudtower/eagle/kit/smartx";
-import {
-  KitRootState,
-  store,
-  TableActions,
-} from "@cloudtower/eagle/kit/smartx";
-import {
-  kitContext,
-  Resources,
-  TableProps,
-} from "@cloudtower/eagle/kit/specify";
+import { kitContext, Resources, TableProps } from "@cloudtower/eagle";
+import { useKitSelector } from "@cloudtower/eagle";
+import { KitRootState, store, TableActions } from "@cloudtower/eagle";
 import { css } from "@linaria/core";
 import { CheckboxChangeEvent } from "antd/es/checkbox";
 import _ from "lodash";

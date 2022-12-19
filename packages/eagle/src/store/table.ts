@@ -1,5 +1,3 @@
-export type Resources = string;
-
 export type TableState = {
   [key: string]: {
     selectRows?: { id: string }[];
@@ -22,25 +20,25 @@ export type Actions =
   | {
       type: TableActions.SET_ROWS_SELECTION;
       payload: {
-        resource: Resources;
+        resource: string;
         rows: { id: string }[];
       };
     }
   | {
       type: TableActions.REMOVE_ROW_SELECTION;
-      payload: { resource: Resources; id: string };
+      payload: { resource: string; id: string };
     }
   | {
       type: TableActions.SET_RESOURCE_DATA;
       payload: {
-        resource: Resources;
+        resource: string;
         rows: { id: string }[];
       };
     }
   | {
       type: TableActions.SET_RESOURCE_QUERY;
       payload: {
-        resource: Resources;
+        resource: string;
         query: {
           where?: unknown;
           orderBy?: unknown;

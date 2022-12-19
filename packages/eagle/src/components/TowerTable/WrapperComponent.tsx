@@ -1,4 +1,4 @@
-import { SidebarTable } from "@cloudtower/eagle/kit/smartx";
+import { SidebarTable } from "@cloudtower/eagle";
 import React, { PropsWithChildren } from "react";
 
 const WrapperComponent = (

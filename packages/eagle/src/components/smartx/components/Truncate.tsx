@@ -1,4 +1,4 @@
-import { kitContext } from "@cloudtower/eagle/kit/specify";
+import { kitContext } from "@cloudtower/eagle";
 import { css } from "@linaria/core";
 import cs from "classnames";
 import React, { useContext } from "react";

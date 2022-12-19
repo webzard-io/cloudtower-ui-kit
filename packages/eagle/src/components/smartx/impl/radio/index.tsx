@@ -2,7 +2,7 @@ import {
   EMPTY_FUNCTION,
   RadioButtonProps,
   RadioProps,
-} from "@cloudtower/eagle/kit/specify";
+} from "@cloudtower/eagle";
 import { css, cx } from "@linaria/core";
 import { Input, InputNumber, Radio as AntdRadio } from "antd";
 import { RadioGroupProps as AntdRadioGroupProps } from "antd/lib/radio";

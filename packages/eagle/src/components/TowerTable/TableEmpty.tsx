@@ -1,5 +1,5 @@
-import { KitTableContext } from "@cloudtower/eagle/kit/smartx";
-import { kitContext } from "@cloudtower/eagle/kit/specify";
+import { KitTableContext } from "@cloudtower/eagle";
+import { kitContext } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import React, { useContext } from "react";
 

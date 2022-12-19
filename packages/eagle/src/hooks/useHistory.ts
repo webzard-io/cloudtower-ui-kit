@@ -1,4 +1,4 @@
-import { history } from "../router";
+import { history } from "../components/spec/common/router";
 
 const useHistory = () => {
   return history;

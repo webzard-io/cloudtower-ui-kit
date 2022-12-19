@@ -3,8 +3,8 @@ import _ from "lodash";
 import qs from "querystring";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { hashHistory as history } from "../history";
-import { getAllSearch } from "../router";
+import { hashHistory as history } from "../components/spec/common/history";
+import { getAllSearch } from "../components/spec/common/router";
 import { getSearch, getValue } from "./utils";
 
 export type SearchOperation = {

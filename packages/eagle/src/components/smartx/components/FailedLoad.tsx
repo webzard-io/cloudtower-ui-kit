@@ -1,4 +1,4 @@
-import { kitContext } from "@cloudtower/eagle/kit/specify";
+import { kitContext } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { ApolloError } from "apollo-boost";

@@ -6,7 +6,7 @@ import {
   IntProps,
   kitContext,
   StringProps,
-} from "@cloudtower/eagle/kit/specify";
+} from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import _ from "lodash";

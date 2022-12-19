@@ -8,8 +8,7 @@
     "disableSizeLimit": true,
     "baseUrl": "./",
     "paths": {
-      "@cloudtower/eagle/generated/*": ["./src/generated/*"],
-      "@cloudtower/eagle/kit/*": ["./src/kit/*"],
+      "@cloudtower/eagle": ["./src/index.ts"],
       "@cloudtower/parrot": ["../parrot/src/index.ts"]
     }
   },

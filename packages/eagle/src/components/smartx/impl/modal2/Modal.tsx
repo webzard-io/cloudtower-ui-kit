@@ -1,7 +1,7 @@
 import { CloseCircleFilled } from "@ant-design/icons";
-import { useKitDispatch, useKitSelector } from "@cloudtower/eagle/kit/smartx";
-import { KitRootState, ModalActions } from "@cloudtower/eagle/kit/smartx";
-import { kitContext, Modal2Props } from "@cloudtower/eagle/kit/specify";
+import { useKitDispatch, useKitSelector } from "@cloudtower/eagle";
+import { KitRootState, ModalActions } from "@cloudtower/eagle";
+import { kitContext, Modal2Props } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { Modal as AntdModal } from "antd";
 import cs from "classnames";

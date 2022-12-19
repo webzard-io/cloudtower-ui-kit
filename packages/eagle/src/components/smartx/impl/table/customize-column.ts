@@ -1,4 +1,4 @@
-import { getValue, useLocalStorage } from "@cloudtower/eagle/kit/specify";
+import { getValue, useLocalStorage } from "@cloudtower/eagle";
 import _ from "lodash";
 import { useCallback, useMemo, useRef } from "react";
 

@@ -3,12 +3,8 @@ import {
   ExportOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { FullView, Icon, Loading, Typo } from "@cloudtower/eagle/kit/smartx";
-import {
-  getAlertIcon,
-  Kit,
-  TextAreaProps,
-} from "@cloudtower/eagle/kit/specify";
+import { getAlertIcon, Kit, TextAreaProps } from "@cloudtower/eagle";
+import { Icon, Loading } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";

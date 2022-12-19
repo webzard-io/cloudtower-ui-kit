@@ -1,5 +1,5 @@
-import { Icon } from "@cloudtower/eagle/kit/smartx";
-import { kitContext } from "@cloudtower/eagle/kit/specify";
+import { kitContext } from "@cloudtower/eagle";
+import { Icon } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";

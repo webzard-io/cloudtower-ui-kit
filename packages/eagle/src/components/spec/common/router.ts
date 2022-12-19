@@ -4,44 +4,12 @@ import qs from "querystring";
 
 import { hashHistory } from "./history";
 
-export type Resources =
-  | "overview"
-  | "datacenters"
-  | "clusters"
-  | "hosts"
-  | "vms"
-  | "vm_folders"
-  | "login"
-  | "tasks"
-  | "alerts"
-  | "alert_rules"
-  | "disks"
-  | "elfImages"
-  | "vmTemplates"
-  | "vmVolumes"
-  | "iscsiTargets"
-  | "nfsExports"
-  | "monitor"
-  | "report-templates"
-  | "report-tasks"
-  | "tasks"
-  | "vm-recycle"
-  | "usbDevices"
-  | "snapshot-plans"
-  | "vmPlacementGroup"
-  | "settings"
-  | "zones"
-  | "nvmfSubsystems"
-  | "namespaceGroups"
-  | "content-library";
-
 type Route = {
   path: string;
   views?: string[];
 };
 
-/* FIXME(junjia): Type lint */
-export const routes: Record<Resources, Route> = {
+export const routes: Record<string, Route> = {
   overview: {
     path: "",
   },
@@ -164,6 +132,7 @@ export const routes: Record<Resources, Route> = {
   },
   "content-library": { path: "content-library" },
 };
+
 export const routeKeys = Object.keys(routes);
 
 export const getAllSearch = () => {
@@ -173,7 +142,7 @@ export const getAllSearch = () => {
   >;
 };
 
-export const routeHasView = (route: Resources, view?: string) => {
+export const routeHasView = (route: string, view?: string) => {
   if (!view) return false;
   return routes[route].views?.includes(view);
 };
@@ -181,7 +150,7 @@ export const routeHasView = (route: Resources, view?: string) => {
 export type State = HistoryLocation["state"];
 
 export type Location = {
-  resource: Resources;
+  resource: string;
   id?: string;
   search?:
     | {

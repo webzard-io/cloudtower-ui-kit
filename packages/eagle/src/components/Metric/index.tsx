@@ -1,4 +1,4 @@
-import { ErrorBoundary } from "@cloudtower/eagle/kit/smartx";
+import { ErrorBoundary } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
 import download from "downloadjs";
@@ -114,9 +114,9 @@ export default component;
 //@ts-ignore
 component.name = "Metric";
 
-export * from "./Actions";
-export { default as Actions } from "./Actions";
 export * from "./metric";
+export * from "./MetricActions";
+export { default as MetricActions } from "./MetricActions";
 export * from "./MetricLegend";
 export { default as MetricLegend } from "./MetricLegend";
 export * from "./Pointer";
