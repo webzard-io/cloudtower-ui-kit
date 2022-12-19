@@ -1,4 +1,3 @@
-import { SupportLanguage } from "@tower/i18n";
 import { Serializable, SerializableObject } from "@tower/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -7,6 +6,11 @@ import { GlobalSearchHistory, PastTime } from "../types";
 import { getValue } from "./utils";
 
 type SetValue<T> = (obj: T | ((val: T) => T)) => void;
+
+export enum SupportLanguage {
+  zh = "zh-CN",
+  en = "en-US",
+}
 
 interface CustomStorageEvent<T> extends Event {
   key?: string;

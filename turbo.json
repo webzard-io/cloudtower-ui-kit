@@ -1,11 +1,8 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
-    "claw:build": {
-      "outputs": ["dist/**"]
-    },
     "generate": {
-      "dependsOn": ["claw:build"],
+      "dependsOn": [],
       "outputs": ["src/generated/**"]
     },
     "build": {
