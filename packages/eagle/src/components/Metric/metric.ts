@@ -163,7 +163,7 @@ export const deletePointsOutOfRange = (
   );
 };
 
-const getFaultToleranceTime = (timeRange: string) => {
+export const getFaultToleranceTime = (timeRange: string) => {
   switch (timeRange) {
     case "2h":
       return 120 * 1000;
