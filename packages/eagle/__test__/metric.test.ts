@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { describe, expect, it } from "vitest";
 
+import { DateRange } from "../src/components";
 import {
   addMissingDataWithZero,
   deletePointsOutOfRange,
@@ -16,13 +17,20 @@ describe("deletePointsOutOfRange", () => {
     const mockPoints = mockMetric.sample_streams[0].points!;
 
     const date = new Date("2022-12-13 18:00").getTime();
-    const result = deletePointsOutOfRange(mockPoints, "2h", date);
+    const result = deletePointsOutOfRange(
+      mockPoints,
+      [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
+      date
+    );
 
     expect(result.length).toBe(234);
   });
 
   it("getMs", () => {
-    const result = getMs("2h");
+    const result = getMs([
+      dayjs("2022-12-13 16:00"),
+      dayjs("2022-12-13 18:00"),
+    ]);
     expect(result).toBe(60 * 60 * 2 * 1000);
   });
 });
@@ -52,7 +60,10 @@ describe("formatStreams", () => {
 
 describe("addMissingDataWithZero", () => {
   it("has data", () => {
-    const dateRange = [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")];
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2022-12-13 18:00"),
+    ];
 
     const streams = formatStreams({
       metric: mockMetric,
@@ -60,7 +71,6 @@ describe("addMissingDataWithZero", () => {
     });
     const result = addMissingDataWithZero(
       streams[0].points ?? [],
-      "2h",
       mockMetric.unit,
       mockMetric.step,
       dateRange,
@@ -79,7 +89,6 @@ describe("transformData", () => {
 
     const result = transformData(
       streams,
-      "2h",
       mockMetric.unit,
       mockMetric.step,
       [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
