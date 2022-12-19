@@ -53,12 +53,8 @@ import { kitContext } from "@cloudtower/eagle/kit/specify";
 
 - @cloudtower/eagle/generated/xxx
 
-  generated 是 graphql codegen 生成代码，包含 类型，组件。与业务耦合度高。
+  generated 是生成代码，目前只包含 images-type 类型。（将弃用）
 
 - @cloudtower/eagle
 
   根导出直接导出 `src/components` 组件，便于使用。
-
-## 待修复
-
-`generated/form2.tsx` 类型过大，生成产生问题
