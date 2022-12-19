@@ -9,7 +9,7 @@ import { RadioGroupProps as AntdRadioGroupProps } from "antd/lib/radio";
 import _ from "lodash";
 import React, { useState } from "react";
 
-import { Typo } from "../../../../styles";
+import { Typo } from "../../components";
 
 const RadioStyle = css`
   &.ant-radio-wrapper {

@@ -3,7 +3,7 @@ import {
   ExportOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { FullView, Icon, Loading } from "@cloudtower/eagle/kit/smartx";
+import { FullView, Icon, Loading, Typo } from "@cloudtower/eagle/kit/smartx";
 import {
   getAlertIcon,
   Kit,
@@ -56,7 +56,6 @@ import React, { Fragment, ReactNode, useEffect, useMemo, useRef } from "react";
 import { findDOMNode } from "react-dom";
 import { isElement } from "react-is";
 
-import { Typo } from "../../../styles";
 import Button from "./button";
 import ButtonGroup from "./buttonGroup";
 import { message } from "./message";

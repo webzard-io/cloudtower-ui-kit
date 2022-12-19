@@ -1,9 +1,8 @@
-import { FullView } from "@cloudtower/eagle/kit/smartx";
+import { FullView, Typo } from "@cloudtower/eagle/kit/smartx";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css, cx } from "@linaria/core";
 import React from "react";
 
-import { Typo } from "../../../../styles";
 import { analyzeFallbackError } from "../../components/FormError";
 
 const FullViewErrorStyle = css`
