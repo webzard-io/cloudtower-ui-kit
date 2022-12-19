@@ -11,6 +11,8 @@ const convert = async () => {
   const paths = await globby([
     path.resolve(__dirname, "../src/kit/images/**/*.svg"),
     path.resolve(__dirname, "../src/kit/images/**/*.png"),
+    path.resolve(__dirname, "../src/kit/images/**/*.jpg"),
+    path.resolve(__dirname, "../src/kit/images/**/*.jpeg"),
   ]);
 
   const values = paths.map((imagePath) => {
