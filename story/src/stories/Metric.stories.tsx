@@ -30,25 +30,29 @@ const Template: ComponentStory<typeof Metric> = (args) => <Metric {...args} />;
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
+  showPointer: true,
+  uuid: "abc",
   chartProps: {
     mode: "legend",
     showLegend: true,
     metricName: "hello",
     metric: mockMetric,
-    uuid: "abc",
     height: 200,
     range: "2h",
     type: GraphType.Area,
-    getColorsByMetric: () => {
-      return "#ABCABC";
-    },
-    metricColors: ["#ABCABC"],
     dateRange: [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
     now: new Date("2022-12-13 18:00").getTime(),
     showXAxis: true,
     tooltipProps: {
       format: () => {
         return "hello tooltip";
+      },
+    },
+    actionsProps: {
+      show: true,
+      info: {
+        max: "hello",
+        current: "hello current",
       },
     },
   },

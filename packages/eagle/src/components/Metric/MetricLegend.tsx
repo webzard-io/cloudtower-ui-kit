@@ -57,7 +57,7 @@ const MetricLegend = (props: IMetricLegendProps) => {
                     key={legend.id}
                     onClick={() => onClick(legend.id)}
                   >
-                    <ColorBlock background={legend.bgColor} />
+                    <ColorBlock background={legend.color} />
                     <span>{legend.name}</span>
                   </Menu.Item>
                 );
@@ -78,7 +78,7 @@ const MetricLegend = (props: IMetricLegendProps) => {
             key={legend.id}
             onClick={() => onClick(legend.id)}
           >
-            <ColorBlock background={legend.bgColor} />
+            <ColorBlock background={legend.color} />
             <span>
               <Truncate text={legend.name} len={50} backLen={20} />
             </span>
@@ -90,11 +90,11 @@ const MetricLegend = (props: IMetricLegendProps) => {
 };
 
 export const LegendComponent: React.FC<ILegend> = (props) => {
-  const { name, bgColor } = props;
+  const { name, color } = props;
 
   return (
     <div className={cs(LegendItemStyle, "legend-component")}>
-      <ColorBlock background={bgColor} />
+      <ColorBlock background={color} />
       <span>{name}</span>
     </div>
   );

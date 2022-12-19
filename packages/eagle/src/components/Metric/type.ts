@@ -5,7 +5,6 @@ export interface IMetricData {
 }
 
 export interface IDataPoint {
-  __typename?: "DataPoint";
   t: number;
   unit?: string;
   v?: number;
@@ -17,11 +16,12 @@ type DataPointValueKey = `v${number}`;
 export interface ILegend {
   id: string;
   name: string;
-  bgColor?: string;
+  color?: string;
+  fill?: string;
+  stroke?: boolean;
 }
 
 export interface IMetricStream {
-  __typename?: "MetricStream";
   points: IDataPoint[];
   legend: ILegend;
 }
@@ -31,7 +31,6 @@ export interface IMetric {
   unit: string;
   step: number;
   dropped: boolean;
-  __typename: string;
 }
 
 export type IExportCSVDataType = {

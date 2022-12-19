@@ -34,7 +34,7 @@ const TooltipFormatter: React.FC<
           return deselected.includes(item.legend.id) ? null : (
             <TooltipColumn key={item.legend.id}>
               <div>
-                <ColorBlock background={item.legend.bgColor} />
+                <ColorBlock background={item.legend.color} />
                 {item.legend.name}
               </div>
               <div className="column-value">{format(payload)}</div>
