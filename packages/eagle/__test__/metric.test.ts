@@ -23,7 +23,11 @@ describe("deletePointsOutOfRange", () => {
     const mockPoints = mockMetric.sample_streams[0].points!;
 
     const date = new Date("2022-12-13 18:00").getTime();
-    const result = deletePointsOutOfRange(mockPoints, "2h", date);
+    const result = deletePointsOutOfRange(
+      mockPoints,
+      [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
+      date
+    );
 
     expect(result.length).toBe(234);
   });
@@ -72,7 +76,6 @@ describe("addMissingDataWithZero", () => {
     });
     const result = addMissingDataWithZero(
       streams[0].points ?? [],
-      "2h",
       mockMetric.unit,
       mockMetric.step,
       dateRange,
@@ -91,7 +94,6 @@ describe("transformData", () => {
 
     const result = transformData(
       streams,
-      "2h",
       mockMetric.unit,
       mockMetric.step,
       [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
