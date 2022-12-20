@@ -1,9 +1,0 @@
-{
-  "user_audit": "用户操作",
-  "system": "系统",
-  "high_trigger": "高可用触发",
-  "data_recovery": "数据恢复",
-  "data_migration": "数据迁移",
-  "user_audit_log": "用户事件",
-  "system_log": "系统事件"
-}

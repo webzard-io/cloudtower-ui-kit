@@ -1,9 +1,0 @@
-{
-  "user_audit": "User Operation",
-  "system": "System",
-  "high_trigger": "Triggered by HA",
-  "data_recovery": "Data Recovery",
-  "data_migration": "Data Migration",
-  "user_audit_log": "User Event",
-  "system_log": "System Event"
-}
