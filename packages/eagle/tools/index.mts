@@ -10,15 +10,15 @@ const __dirname = path.dirname(__filename);
 
 const convert = async () => {
   const paths = await globby([
-    path.resolve(__dirname, "../src/kit/images/**/*.svg"),
-    path.resolve(__dirname, "../src/kit/images/**/*.png"),
-    path.resolve(__dirname, "../src/kit/images/**/*.jpg"),
-    path.resolve(__dirname, "../src/kit/images/**/*.jpeg"),
+    path.resolve(__dirname, "../src/components/images/**/*.svg"),
+    path.resolve(__dirname, "../src/components/images/**/*.png"),
+    path.resolve(__dirname, "../src/components/images/**/*.jpg"),
+    path.resolve(__dirname, "../src/components/images/**/*.jpeg"),
   ]);
 
   const values = paths.map((imagePath) => {
     const relativePath = path.relative(
-      path.resolve(__dirname, "../src/kit/images"),
+      path.resolve(__dirname, "../src/components/images"),
       imagePath
     );
     const exportName = relativePath
@@ -54,13 +54,13 @@ const convert = async () => {
     );
 
     fs.writeFileSync(
-      path.resolve(__dirname, `../src/kit/images/index.ts`),
+      path.resolve(__dirname, `../src/components/images/index.ts`),
       result
     );
   } catch (error) {}
 
   try {
-    const folderPath = path.resolve(__dirname, "../src/kit/images");
+    const folderPath = path.resolve(__dirname, "../src/components/images");
     let output = "export type ImagesType =";
     output += generateType(folderPath);
     fs.mkdirSync(path.resolve(__dirname, `../src/generated`), {
