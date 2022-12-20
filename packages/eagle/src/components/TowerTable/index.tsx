@@ -6,12 +6,12 @@ import {
   PendingTable,
   tableScrollToTop,
   useTransformScrollAndColumns,
-} from "@cloudtower/eagle/kit/smartx";
+} from "@cloudtower/eagle";
 import {
   kitContext,
   RequiredColumnProps,
   TableProps as KitTableProps,
-} from "@cloudtower/eagle/kit/specify";
+} from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { ApolloError, NetworkStatus } from "apollo-client";
 import cs from "classnames";

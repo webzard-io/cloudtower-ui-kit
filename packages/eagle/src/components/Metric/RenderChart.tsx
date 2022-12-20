@@ -1,4 +1,4 @@
-import { ChartActions, useKitDispatch } from "@cloudtower/eagle/kit/smartx";
+import { ChartActions, useKitDispatch } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
 import dayjs from "dayjs";
@@ -15,7 +15,6 @@ import { CategoricalChartFunc } from "recharts/types/chart/generateCategoricalCh
 import { Payload } from "recharts/types/component/DefaultTooltipContent";
 import { AxisDomain } from "recharts/types/util/types";
 
-import Actions from "./Actions";
 import {
   formatStreams,
   getXAxisDomain,
@@ -23,6 +22,7 @@ import {
   transformData,
   xaxisCal,
 } from "./metric";
+import MetricActions from "./MetricActions";
 import MetricLegend, { LegendComponent } from "./MetricLegend";
 import { MetricLegendTabStyle } from "./styled";
 import TooltipFormatter from "./TooltipFormatter";
@@ -216,7 +216,7 @@ const RenderChart = (props: IChartProps) => {
             />
           ))}
         {actionsProps?.show && (
-          <Actions dropdown={dropdown} {...actionsProps} />
+          <MetricActions dropdown={dropdown} {...actionsProps} />
         )}
       </div>
       <ResponsiveContainer height={height}>
