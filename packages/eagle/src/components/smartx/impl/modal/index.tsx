@@ -1,5 +1,5 @@
 import { CheckOutlined, CloseCircleFilled } from "@ant-design/icons";
-import { kitContext, ModalProps } from "@cloudtower/eagle";
+import { kitContext, ModalProps, WizardBody } from "@cloudtower/eagle";
 import { useKitDispatch, useKitSelector } from "@cloudtower/eagle";
 import { KitRootState, ModalActions } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
@@ -10,7 +10,7 @@ import React, { useContext, useMemo, useRef } from "react";
 const Modal: React.FC<ModalProps> = (props) => {
   const {
     error,
-    okText = parrotI18n.t("cluster.confirm"),
+    okText = parrotI18n.t("common.confirm"),
     cancelText = parrotI18n.t("common.cancel"),
     confirmLoading,
     okButtonProps,

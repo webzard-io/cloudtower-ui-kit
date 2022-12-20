@@ -1,5 +1,5 @@
 import { CheckOutlined } from "@ant-design/icons";
-import { kitContext, Modal2Props } from "@cloudtower/eagle";
+import { kitContext, Modal2Props, WizardBody } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { Steps } from "antd";
 import cs from "classnames";
@@ -42,7 +42,7 @@ const WizardModal: React.FC<WizardModalType> = (props) => {
     okButtonProps,
     confirmLoading,
     okLoading,
-    okText = parrotI18n.t("cluster.confirm"),
+    okText = parrotI18n.t("common.confirm"),
     cancelText = parrotI18n.t("common.cancel"),
     step,
     steps,
