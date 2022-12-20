@@ -140,7 +140,9 @@ export const addMissingDataWithZero = (
   now = Date.now()
 ) => {
   const inRangePoints = deletePointsOutOfRange(data, dateRange, now);
-
+  if (!inRangePoints.length) {
+    return [];
+  }
   const firsExpectedTimestamp = getFirstExpectedTimestamp(
     inRangePoints,
     dateRange,
