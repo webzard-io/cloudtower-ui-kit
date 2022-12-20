@@ -110,22 +110,22 @@ export const deletePointsOutOfRange = (
   );
 };
 
-const getFaultToleranceTime = (dateRange: DateRange) => {
+export const getFaultToleranceTime = (dateRange: DateRange) => {
   const [startDate, endDate] = dateRange;
   const range = endDate.valueOf() - startDate.valueOf();
 
-  if (range < 2 * 60 * 60 * 1000) {
+  if (range <= 2 * 60 * 60 * 1000) {
     return 2 * 60 * 1000;
   }
 
-  if (range < 24 * 60 * 60 * 1000) {
+  if (range <= 24 * 60 * 60 * 1000) {
     return 10 * 60 * 1000;
   }
 
-  if (range < 30 * 24 * 60 * 60 * 1000) {
+  if (range <= 30 * 24 * 60 * 60 * 1000) {
     return 60 * 60 * 1000;
   }
-  if (range < 182 * 24 * 60 * 60 * 1000) {
+  if (range <= 182 * 24 * 60 * 60 * 1000) {
     return 24 * 60 * 60 * 1000;
   }
 

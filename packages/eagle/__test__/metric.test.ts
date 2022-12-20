@@ -35,7 +35,11 @@ describe("deletePointsOutOfRange", () => {
 
 describe("getMs", () => {
   it("2h should be 2*60*60*1000", () => {
-    const result = getMs("2h");
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2022-12-13 18:00"),
+    ];
+    const result = getMs(dateRange);
     expect(result).toBe(60 * 60 * 2 * 1000);
   });
 });
@@ -105,32 +109,56 @@ describe("transformData", () => {
 
 describe("getFaultToleranceTime", () => {
   it("h2 be 120 * 1000", () => {
-    const h2 = getFaultToleranceTime("2h");
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2022-12-13 18:00"),
+    ];
+    const h2 = getFaultToleranceTime(dateRange);
 
     expect(h2).toBe(120 * 1000);
   });
   it("h24 be 10 * 60 * 1000", () => {
-    const h24 = getFaultToleranceTime("24h");
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2022-12-14 16:00"),
+    ];
+    const h24 = getFaultToleranceTime(dateRange);
 
     expect(h24).toBe(10 * 60 * 1000);
   });
   it("d7 be 60 * 60 * 1000", () => {
-    const d7 = getFaultToleranceTime("7d");
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2022-12-20 16:00"),
+    ];
+    const d7 = getFaultToleranceTime(dateRange);
 
     expect(d7).toBe(60 * 60 * 1000);
   });
   it("d30 be 60 * 60 * 1000", () => {
-    const d30 = getFaultToleranceTime("30d");
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2023-01-12 16:00"),
+    ];
+    const d30 = getFaultToleranceTime(dateRange);
 
     expect(d30).toBe(60 * 60 * 1000);
   });
   it("d182 be 24 * 60 * 60 * 1000", () => {
-    const d182 = getFaultToleranceTime("182d");
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2023-06-13 16:00"),
+    ];
+    const d182 = getFaultToleranceTime(dateRange);
 
     expect(d182).toBe(24 * 60 * 60 * 1000);
   });
   it("d188 be 120 * 1000", () => {
-    const d188 = getFaultToleranceTime("188d");
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2023-06-19 16:00"),
+    ];
+    const d188 = getFaultToleranceTime(dateRange);
 
     expect(d188).toBe(120 * 1000);
   });
@@ -157,13 +185,12 @@ describe("getXAxisDomain", () => {
     const now = new Date("2022-12-13 18:00").getTime();
     const areaChartData = transformData(
       streams,
-      range,
       metric.unit,
       metric.step,
       dateRange,
       now
     );
-    const res = getXAxisDomain(areaChartData, points, range, dateRange);
+    const res = getXAxisDomain(dateRange);
     expect(res).toEqual([1670918400000, 1670925600000]);
   });
 });
@@ -175,7 +202,7 @@ describe("xaxisCal", () => {
       dayjs("2022-12-13 18:00"),
     ];
     const range = "2h";
-    const res = xaxisCal(1670925600000, range, dateRange);
+    const res = xaxisCal(1670925600000, dateRange);
     expect(res).toEqual([
       1670920200000, 1670922000000, 1670923800000, 1670925600000,
     ]);
@@ -192,7 +219,7 @@ describe("tickFormatter", () => {
     const res = [
       1670920200000, 1670922000000, 1670923800000, 1670925600000,
     ].map((tick) => {
-      return tickFormatter(tick, range, dateRange);
+      return tickFormatter(tick, dateRange);
     });
     expect(res).toEqual(["16:30:00", "17:00:00", "17:30:00", "18:00:00"]);
   });
@@ -214,13 +241,13 @@ describe("getFirstExpectedTimestamp", () => {
 
     const inRangePoints = deletePointsOutOfRange(
       streams[0].points ?? [],
-      timeRange,
+      dateRange,
       now
     );
 
     const firsExpectedTimestamp = getFirstExpectedTimestamp(
       inRangePoints,
-      timeRange,
+      dateRange,
       now,
       mockMetric.step
     );
@@ -245,7 +272,6 @@ describe("convertDataForMultiArea", () => {
 
     const res = convertDataForMultiArea(
       streams,
-      range,
       mockMetric.unit,
       mockMetric.step,
       dateRange,
