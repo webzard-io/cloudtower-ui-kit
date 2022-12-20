@@ -1,3 +1,4 @@
+export * from "./images";
 export * from "./KitStoreProvider";
 export { default as KitStoreProvider } from "./KitStoreProvider";
 export * from "./Metric";
