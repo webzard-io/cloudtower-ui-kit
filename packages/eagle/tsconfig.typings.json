@@ -2,14 +2,14 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": false,
-    "outDir": "./typings",
-    "jsx": "react-jsx",
+    "outDir": "./dist",
     "declaration": true,
     "emitDeclarationOnly": true,
     "skipLibCheck": true,
+    "baseUrl": "./",
     "paths": {
-      "@cloudtower/eagle/generated/*": ["./src/generated/*"],
-      "@cloudtower/eagle/kit/*": ["./src/kit/*"]
+      "@cloudtower/eagle": ["./src/index.ts"],
+      "@cloudtower/parrot": ["../parrot/src/index.ts"]
     }
   },
   "include": ["src", "images.d.ts"],
