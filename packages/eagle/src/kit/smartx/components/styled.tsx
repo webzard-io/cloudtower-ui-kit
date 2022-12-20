@@ -223,7 +223,7 @@ export const FormField = styled.div`
   }
 `;
 
-export const Error = styled.span`
+export const ErrorSpan = styled.span`
   color: $red;
   margin-right: 10px;
 `;
@@ -279,7 +279,7 @@ export const ModalWrapper = css`
 
 type TagColor = "red" | "yellow" | "blue";
 
-export const Tag = styled.span<{ color: TagColor }>`
+export const TagSpan = styled.span<{ color: TagColor }>`
   font-size: 12px;
   line-height: 18px;
   font-weight: bold;
