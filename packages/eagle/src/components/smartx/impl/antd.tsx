@@ -3,7 +3,13 @@ import {
   ExportOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { getAlertIcon, Kit, TextAreaProps } from "@cloudtower/eagle";
+import {
+  FullView,
+  getAlertIcon,
+  Kit,
+  TextAreaProps,
+  Typo,
+} from "@cloudtower/eagle";
 import { Icon, Loading } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css, cx } from "@linaria/core";

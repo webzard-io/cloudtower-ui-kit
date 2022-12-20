@@ -1,5 +1,5 @@
 import { CheckOutlined, CloseCircleFilled } from "@ant-design/icons";
-import { kitContext, ModalProps } from "@cloudtower/eagle";
+import { kitContext, ModalProps, WizardBody } from "@cloudtower/eagle";
 import { useKitDispatch, useKitSelector } from "@cloudtower/eagle";
 import { KitRootState, ModalActions } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";

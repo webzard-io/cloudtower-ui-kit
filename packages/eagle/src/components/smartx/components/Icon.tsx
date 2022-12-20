@@ -1,4 +1,4 @@
-import { ImagesType } from "@cloudtower/eagle/generated/images-type";
+import { ImagesType } from "@cloudtower/eagle";
 import { css } from "@linaria/core";
 import cs from "classnames";
 import _ from "lodash";

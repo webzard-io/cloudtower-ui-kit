@@ -1,4 +1,4 @@
-import { Icon } from "@cloudtower/eagle";
+import { Icon, Typo } from "@cloudtower/eagle";
 import { ButtonProps } from "@cloudtower/eagle";
 import { css } from "@linaria/core";
 import { Button as AntdButton } from "antd";
