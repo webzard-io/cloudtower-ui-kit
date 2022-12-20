@@ -8,8 +8,7 @@
     "skipLibCheck": true,
     "baseUrl": "./",
     "paths": {
-      "@cloudtower/eagle": ["./src/index.ts"],
-      "@cloudtower/parrot": ["../parrot/src/index.ts"]
+      "@cloudtower/eagle": ["./src/index.ts"]
     }
   },
   "include": ["src", "images.d.ts"],
