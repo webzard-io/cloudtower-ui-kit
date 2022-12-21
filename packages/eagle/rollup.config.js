@@ -40,8 +40,7 @@ const config = defineConfig([
         processor: () =>
           postcss([
             url({
-              url: "copy",
-              assetsPath: "assets",
+              url: "inline",
               basePath: [path.resolve("src/styles/fonts")],
             }),
           ]),
