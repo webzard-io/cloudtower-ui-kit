@@ -27,5 +27,5 @@ const KitStoreProvider = (props: PropsWithChildren<IProps>) => {
 
 export default KitStoreProvider;
 
-export const useKitDispatch = createDispatchHook<KitRootState>(ctx);
-export const useKitSelector = createSelectorHook<KitRootState>(ctx);
+export const useKitDispatch = createDispatchHook<KitRootState, Actions>(ctx);
+export const useKitSelector = createSelectorHook<KitRootState, Actions>(ctx);

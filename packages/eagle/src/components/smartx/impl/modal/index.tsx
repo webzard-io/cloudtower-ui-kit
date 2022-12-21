@@ -39,7 +39,7 @@ const Modal: React.FC<ModalProps> = (props) => {
   );
   const dispatch = useKitDispatch();
 
-  const idRef = useRef(stack[stack.length - 1].id);
+  const idRef = useRef(stack[stack.length - 1]?.id);
   const transitionClass = useRef<
     "modal-zoom" | "modal-send" | "fullscreen-modal" | ""
   >(fullscreen ? "fullscreen-modal" : "modal-zoom");
