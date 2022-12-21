@@ -1,12 +1,11 @@
 import { kitContext, Modal2Props } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
-import { ApolloError } from "apollo-boost";
 import React, { useContext, useEffect, useRef, useState } from "react";
 
 import { ModalContentError } from "./Error";
 import BaseModal from "./Modal";
 
-type ErrorType = string | React.ReactNode | Error | ApolloError;
+type ErrorType = string | React.ReactNode | Error;
 type InitializedModalType = Modal2Props & {
   initLoading: boolean;
   initError: ErrorType;

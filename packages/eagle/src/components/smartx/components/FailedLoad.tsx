@@ -1,7 +1,6 @@
 import { kitContext } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
-import { ApolloError } from "apollo-boost";
 import cs from "classnames";
 import React, { useContext } from "react";
 
@@ -22,7 +21,7 @@ const FailedLoadStyle = css`
 `;
 
 const FailedLoad: React.FC<{
-  error: ApolloError | string;
+  error: Error | string;
   refetch: () => Promise<unknown>;
   refetchText?: string;
   className?: string;

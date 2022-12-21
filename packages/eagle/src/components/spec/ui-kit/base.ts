@@ -43,7 +43,6 @@ import { TagType } from "antd/lib/tag";
 import { TimePickerProps } from "antd/lib/time-picker";
 import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
-import { ApolloError } from "apollo-boost";
 import React, { ReactNode } from "react";
 
 import { Architecture } from "../type";
@@ -244,13 +243,11 @@ export interface FloatProps {
 export type TooltipProps = AntdTooltipProps & {
   followMouse?: boolean;
 };
-export type FieldBaseProps<
-  V,
-  T extends HTMLElement = HTMLElement
-> = FieldRenderProps<V, T> & {
-  disabled?: boolean;
-  className?: string;
-};
+export type FieldBaseProps<V, T extends HTMLElement = HTMLElement> =
+  FieldRenderProps<V, T> & {
+    disabled?: boolean;
+    className?: string;
+  };
 export type WizardSteps = {
   title: string;
   render: React.ReactNode;
@@ -371,7 +368,7 @@ export type IStepsPorps = StepsProps & {
   showStepCount?: boolean;
 };
 
-type ErrorType = string | React.ReactNode | Error | ApolloError;
+type ErrorType = string | React.ReactNode | Error;
 type InitializedModalType = Modal2Props & {
   initLoading: boolean;
   initError: ErrorType;

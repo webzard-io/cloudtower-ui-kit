@@ -31,7 +31,6 @@
     "recharts": "^2.1.16"
   },
   "devDependencies": {
-    "@cloudtower/claw": "^0.13.0",
     "@linaria/core": "^4.2.2",
     "@linaria/react": "^4.3.0",
     "@linaria/rollup": "^4.1.5",
@@ -63,7 +62,7 @@
     "rollup": "^3.2.2",
     "rollup-plugin-esbuild": "^4.10.1",
     "rollup-plugin-polyfill-node": "^0.10.2",
-    "rollup-plugin-scss": "^3.0.0",
+    "rollup-plugin-scss": "^4.0.0",
     "rollup-plugin-visualizer": "^5.8.2",
     "sass": "^1.55.0",
     "smart-cache-invalidation": "^1.2.0",
