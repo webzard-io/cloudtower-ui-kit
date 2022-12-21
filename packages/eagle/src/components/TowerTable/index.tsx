@@ -24,7 +24,7 @@ export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
 };
 
-export declare enum NetworkStatus {
+export enum NetworkStatus {
   loading = 1,
   setVariables = 2,
   fetchMore = 3,
@@ -53,7 +53,7 @@ export interface ITowerTableProps<BaseTableData extends { id: string }>
   loading?: boolean;
   searching?: boolean;
   refetch?: () => Promise<unknown>;
-  networkStatus?: number;
+  networkStatus?: NetworkStatus;
   defaultCustomizeColumn: [string, () => CustomizeColumnType[]];
 }
 
