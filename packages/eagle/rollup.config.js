@@ -35,7 +35,6 @@ const config = defineConfig([
         include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
         output: "dist/style.css",
         failOnError: true,
-        prefix: "@import 'src/styles/common/variables.scss';",
       }),
       image({
         base64: true,
