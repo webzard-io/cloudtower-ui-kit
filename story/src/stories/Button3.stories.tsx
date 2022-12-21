@@ -1,4 +1,4 @@
-import { antdKit } from "@cloudtower/eagle/kit/smartx";
+import { antdKit } from "@cloudtower/eagle";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 

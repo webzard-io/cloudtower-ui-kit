@@ -1,5 +1,5 @@
-import { number1ActiveConnection16GradiendtBlue } from "@cloudtower/eagle/kit/images";
-import { BaseIcon } from "@cloudtower/eagle/kit/smartx";
+import { number1ActiveConnection16GradiendtBlue } from "@cloudtower/eagle";
+import { BaseIcon } from "@cloudtower/eagle";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 

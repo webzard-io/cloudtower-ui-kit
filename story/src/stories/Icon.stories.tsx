@@ -1,4 +1,4 @@
-import { Icon } from "@cloudtower/eagle/kit/smartx";
+import { Icon } from "@cloudtower/eagle";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 
