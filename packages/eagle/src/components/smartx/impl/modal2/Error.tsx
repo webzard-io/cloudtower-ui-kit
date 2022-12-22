@@ -1,9 +1,8 @@
 import { FullView, Typo } from "@cloudtower/eagle/kit/smartx";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css, cx } from "@linaria/core";
+import { i18n } from "i18next";
 import React from "react";
-
-import { analyzeFallbackError } from "../../components/FormError";
 
 const FullViewErrorStyle = css`
   flex-direction: column;
@@ -12,10 +11,14 @@ const FullViewErrorStyle = css`
 
 interface ModalErrorType {
   error: Error | string | React.ReactNode;
+  analyzeFallbackError(fallback: unknown): {
+    msg: string;
+    originalMsg: string;
+  } | null;
 }
 
 export const ModalContentError: React.FC<ModalErrorType> = (props) => {
-  const { error } = props;
+  const { error, analyzeFallbackError } = props;
 
   if (React.isValidElement(error)) {
     return error;
@@ -47,7 +50,7 @@ export const ModalContentError: React.FC<ModalErrorType> = (props) => {
     );
   }
 
-  const errorMsg = analyzeFallbackError(error, parrotI18n);
+  const errorMsg = analyzeFallbackError(error);
 
   if (errorMsg?.msg) {
     return (
@@ -71,13 +74,13 @@ interface ModalFooterErrorType extends ModalErrorType {
 }
 
 export const ModalFooterError: React.FC<ModalFooterErrorType> = (props) => {
-  const { error, className } = props;
+  const { error, className, analyzeFallbackError } = props;
 
   if (React.isValidElement(error)) {
     return <span className="modal-error">{error}</span>;
   }
 
-  const errorMsg = analyzeFallbackError(error, parrotI18n);
+  const errorMsg = analyzeFallbackError(error);
   if (!errorMsg) {
     return null;
   }
