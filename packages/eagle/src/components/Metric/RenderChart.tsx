@@ -35,13 +35,12 @@ export interface IChartProps {
   showLegend?: boolean;
   uuid: string;
   height: number;
-  range: string;
   type: GraphType;
   mode?: "simple" | "legend" | "single";
   averageLine?: boolean;
   dropdown?: React.ReactNode;
   onChartDataChange?: (data: Array<IExportCSVDataType>) => void;
-  dateRange?: DateRange;
+  dateRange: DateRange;
   onLabelsChange?: (labels: string[]) => void;
   metric: IMetric;
   now?: number;
@@ -70,7 +69,6 @@ const RenderChart = (props: IChartProps) => {
     showXAxis,
     yAxisAlign,
     height,
-    range,
     type,
     mode = "legend",
     dropdown,
@@ -97,31 +95,15 @@ const RenderChart = (props: IChartProps) => {
   }, [streams]);
 
   const areaChartData = useMemo(
-    () =>
-      transformData(streams, range, metric.unit, metric.step, dateRange, now),
-    [dateRange, metric.step, metric.unit, now, range, streams]
+    () => transformData(streams, metric.unit, metric.step, dateRange, now),
+    [dateRange, metric.step, metric.unit, now, streams]
   );
 
-  const points = useMemo(
-    () =>
-      streams
-        .find((stream) => stream.points != null && stream.points?.length !== 0)
-        ?.points?.map(({ t, v }) => ({
-          t,
-          v,
-          unit: metric.unit,
-        })) ?? [],
-    [metric.unit, streams]
-  );
-
-  const xAxisDomain = useMemo(
-    () => getXAxisDomain(areaChartData, points, range, dateRange),
-    [areaChartData, dateRange, points, range]
-  );
+  const xAxisDomain = useMemo(() => getXAxisDomain(dateRange), [dateRange]);
 
   const xAxisTicks = useMemo(
-    () => xaxisCal(xAxisDomain[1], range, dateRange),
-    [dateRange, range, xAxisDomain]
+    () => xaxisCal(xAxisDomain[1], dateRange),
+    [dateRange, xAxisDomain]
   );
 
   const onLegendClick = useCallback(
@@ -239,9 +221,7 @@ const RenderChart = (props: IChartProps) => {
             tickLine={false}
             type="number"
             domain={xAxisDomain}
-            tickFormatter={(tick: number) =>
-              tickFormatter(tick, range, dateRange)
-            }
+            tickFormatter={(tick: number) => tickFormatter(tick, dateRange)}
             ticks={xAxisTicks}
           />
           <YAxis
