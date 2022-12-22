@@ -1,5 +1,8 @@
 import linaria from "@linaria/rollup";
 import image from "@rollup/plugin-image";
+import path from "path";
+import postcss from "postcss";
+import url from "postcss-url";
 import { defineConfig } from "rollup";
 import esbuild from "rollup-plugin-esbuild";
 import nodePolyfills from "rollup-plugin-polyfill-node";
@@ -34,8 +37,15 @@ const config = defineConfig([
       scss({
         include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
         output: "dist/style.css",
+        processor: () =>
+          postcss([
+            url({
+              url: "copy",
+              assetsPath: "assets",
+              basePath: [path.resolve("src/styles/fonts")],
+            }),
+          ]),
         failOnError: true,
-        prefix: "@import 'src/styles/common/variables.scss';",
       }),
       image({
         base64: true,

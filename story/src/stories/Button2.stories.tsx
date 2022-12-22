@@ -4,8 +4,8 @@ import {
   PlusOutlined,
 } from "@ant-design/icons";
 import { Typo } from "@cloudtower/eagle";
-import { getAntdKit } from "@cloudtower/eagle/kit/smartx";
-import { ButtonProps } from "@cloudtower/eagle/kit/specify";
+import { getAntdKit } from "@cloudtower/eagle";
+import { ButtonProps } from "@cloudtower/eagle";
 import { Space } from "antd";
 import cs from "classnames";
 import _ from "lodash";

@@ -12,7 +12,6 @@ import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { SerializableObject } from "@tower/utils";
-import { ApolloError } from "apollo-boost";
 import cs from "classnames";
 import _ from "lodash";
 import React, { createContext, useContext, useEffect, useRef } from "react";
@@ -192,7 +191,7 @@ export const TableEmpty: React.FC<{
 };
 
 export const TableError: React.FC<{
-  error: ApolloError;
+  error: Error;
   refetch: () => Promise<unknown>;
 }> = (props) => {
   const { error, refetch } = props;

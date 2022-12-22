@@ -1,10 +1,6 @@
 import "antd/dist/antd.css";
 
-import "@cloudtower/eagle/kit/smartx/style.css";
-import "@cloudtower/eagle/styles/reset.css";
-import "@cloudtower/eagle/styles/fonts/font.css";
-import "@cloudtower/eagle/styles/override.scss";
-import "@cloudtower/eagle/style.css";
+import "@cloudtower/eagle/dist/style.css";
 
 import "./overrideRoot.css";
 

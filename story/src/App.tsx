@@ -1,9 +1,5 @@
 import "antd/dist/antd.css";
-import "@cloudtower/eagle/kit/smartx/style.css";
-import "@cloudtower/eagle/styles/reset.css";
-import "@cloudtower/eagle/styles/fonts/font.css";
-import "@cloudtower/eagle/styles/override.scss";
-import "@cloudtower/eagle/style.css";
+import "@cloudtower/eagle/dist/style.css";
 
 import {
   GraphType,
@@ -11,12 +7,8 @@ import {
   RenderChart,
   TowerTable,
 } from "@cloudtower/eagle";
-import {
-  antdKit,
-  CustomizeColumnType,
-  Icon,
-} from "@cloudtower/eagle/kit/smartx";
-import { kitContext } from "@cloudtower/eagle/kit/specify";
+import { antdKit, CustomizeColumnType, Icon } from "@cloudtower/eagle";
+import { kitContext } from "@cloudtower/eagle";
 import { initParrotI18n } from "@cloudtower/parrot";
 import { Button } from "antd";
 import dayjs from "dayjs";

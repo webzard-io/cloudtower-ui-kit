@@ -1,6 +1,6 @@
 import { GraphType, Metric } from "@cloudtower/eagle";
-import { antdKit } from "@cloudtower/eagle/kit/smartx";
-import { kitContext } from "@cloudtower/eagle/kit/specify";
+import { antdKit } from "@cloudtower/eagle";
+import { kitContext } from "@cloudtower/eagle";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import dayjs from "dayjs";
 import React from "react";

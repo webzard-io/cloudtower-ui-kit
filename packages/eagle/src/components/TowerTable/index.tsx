@@ -13,7 +13,6 @@ import {
   TableProps as KitTableProps,
 } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
-import { ApolloError, NetworkStatus } from "apollo-client";
 import cs from "classnames";
 import React, { useContext, useMemo, useRef } from "react";
 
@@ -24,6 +23,16 @@ import WrapperComponent from "./WrapperComponent";
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
 };
+
+export enum NetworkStatus {
+  loading = 1,
+  setVariables = 2,
+  fetchMore = 3,
+  refetch = 4,
+  poll = 6,
+  ready = 7,
+  error = 8,
+}
 
 export interface ITowerTableProps<BaseTableData extends { id: string }>
   extends KitTableProps<BaseTableData> {
@@ -40,11 +49,11 @@ export interface ITowerTableProps<BaseTableData extends { id: string }>
   tableKey?: string;
   stickyHeader?: boolean;
   sidebar?: boolean;
-  error?: ApolloError;
+  error?: Error;
   loading?: boolean;
   searching?: boolean;
   refetch?: () => Promise<unknown>;
-  networkStatus?: number;
+  networkStatus?: NetworkStatus;
   defaultCustomizeColumn: [string, () => CustomizeColumnType[]];
 }
 
