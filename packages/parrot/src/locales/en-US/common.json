@@ -390,5 +390,6 @@
   "securityGroup": "Security Group",
   "securityGroupMembers": "Security Group Members",
   "isolation-vms": "Quarantine VM",
-  "error_message": "Error Message"
+  "error_message": "Error Message",
+  "retry": "Retry"
 }

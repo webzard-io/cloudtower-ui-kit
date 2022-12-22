@@ -392,5 +392,6 @@
   "no_edit_permission": "无编辑权限",
   "usbDeviceVms": "虚拟机",
   "gpuDeviceVms": "虚拟机",
-  "error_message": "错误信息"
+  "error_message": "错误信息",
+  "retry": "重试"
 }

@@ -34,7 +34,7 @@ const FailedLoad: React.FC<{
     <div className={cs(FailedLoadStyle, className)} title={title}>
       <div className="error-text">{String(error)}</div>
       <kit.button type="ordinary" onClick={() => refetch()}>
-        {refetchText || parrotI18n.t("overview.retry")}
+        {refetchText || parrotI18n.t("common.retry")}
       </kit.button>
     </div>
   );
