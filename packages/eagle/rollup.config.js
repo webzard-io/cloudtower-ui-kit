@@ -37,6 +37,9 @@ const config = defineConfig([
         failOnError: true,
         prefix: "@import 'src/styles/common/variables.scss';",
       }),
+      image({
+        base64: true,
+      }),
       visualizer({
         emitFile: true,
         filename: "stats1.html",
@@ -55,117 +58,6 @@ const config = defineConfig([
       },
     ],
   },
-  ...[
-    // "forms-types.tsx",
-    // "forms.tsx",
-    // "forms2.tsx",
-    // "global-search.ts",
-    "images-type.ts",
-    // "react-hooks.ts",
-    // "tables.tsx",
-  ].map((name) => {
-    return {
-      input: [`src/generated/${name}`],
-      plugins: [
-        nodePolyfills(),
-        esbuild.default({
-          include: /\.[jt]sx?$/,
-          exclude: /node_modules/,
-          sourceMap: true,
-          minify: process.env.NODE_ENV === "production",
-          target: "es2017",
-          jsx: "transform",
-          jsxFactory: "React.createElement",
-          jsxFragment: "React.Fragment",
-          define: {},
-          tsconfig: "tsconfig.json",
-          loaders: {
-            ".json": "json",
-            ".js": "jsx",
-          },
-        }),
-        linaria.default({
-          sourceMap: false,
-          preprocessor: "none",
-        }),
-        scss({
-          include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
-          output: false,
-          failOnError: true,
-          prefix: "@import 'src/styles/common/variables.scss';",
-        }),
-        visualizer({
-          emitFile: true,
-          filename: `${name}-stats1.html`,
-        }),
-      ],
-      output: [
-        {
-          dir: "dist/umd/generated",
-          name: "index",
-          format: "umd",
-        },
-        {
-          dir: "dist/esm/generated",
-          name: "index",
-          format: "esm",
-        },
-      ],
-    };
-  }),
-  ...["specify", "smartx", "images"].map((name) => {
-    return {
-      input: [`src/kit/${name}/index.ts`],
-      plugins: [
-        nodePolyfills(),
-        esbuild.default({
-          include: /\.[jt]sx?$/,
-          exclude: /node_modules/,
-          sourceMap: true,
-          minify: process.env.NODE_ENV === "production",
-          target: "es2017",
-          jsx: "transform",
-          jsxFactory: "React.createElement",
-          jsxFragment: "React.Fragment",
-          define: {},
-          tsconfig: "tsconfig.json",
-          loaders: {
-            ".json": "json",
-            ".js": "jsx",
-          },
-        }),
-        linaria.default({
-          sourceMap: false,
-          preprocessor: "none",
-        }),
-        scss({
-          include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
-          output: `dist/kit/${name}/style.css`,
-          failOnError: true,
-          prefix: "@import 'src/styles/common/variables.scss';",
-        }),
-        image({
-          base64: true,
-        }),
-        visualizer({
-          emitFile: true,
-          filename: `${name}-stats1.html`,
-        }),
-      ],
-      output: [
-        {
-          dir: `dist/umd/${name}`,
-          name: "index",
-          format: "umd",
-        },
-        {
-          dir: `dist/esm/${name}`,
-          name: "index",
-          format: "esm",
-        },
-      ],
-    };
-  }),
 ]);
 
 export default config;

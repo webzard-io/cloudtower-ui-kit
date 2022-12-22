@@ -1,4 +1,4 @@
-import { ImagesType } from "@cloudtower/eagle/generated/images-type";
+import { ImagesType } from "@cloudtower/eagle";
 import { FieldRenderProps } from "@smartx/react-final-form";
 import { FieldArrayRenderProps } from "@smartx/react-final-form-arrays";
 import { SerializableObject } from "@tower/utils";

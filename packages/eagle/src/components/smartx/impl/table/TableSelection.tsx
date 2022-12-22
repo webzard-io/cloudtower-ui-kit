@@ -1,9 +1,4 @@
-// TODO: improve type
-/* eslint-disable
-@typescript-eslint/no-explicit-any,
-*/
-
-import { kitContext, Resources, TableProps } from "@cloudtower/eagle";
+import { kitContext, TableProps } from "@cloudtower/eagle";
 import { useKitSelector } from "@cloudtower/eagle";
 import { KitRootState, store, TableActions } from "@cloudtower/eagle";
 import { css } from "@linaria/core";
@@ -28,7 +23,7 @@ const CheckboxStyle = css`
   }
 `;
 
-type Resource = KitRootState["table"][Resources];
+type Resource = KitRootState["table"][string];
 
 const TitleCheckbox = <T extends { id: string }>(props: {
   resource: string;
@@ -176,7 +171,7 @@ export const onShiftChanged = <T extends { id: string }>(payload: {
 
 export const useTableSelection = <T extends { id: string }>(
   rowSelection: TableProps<T>["rowSelection"],
-  resource: Resources | string
+  resource: string
 ) => {
   const isSelection = Boolean(rowSelection);
   const { selectRows, rows } = useKitSelector<Resource>(

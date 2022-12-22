@@ -1,4 +1,4 @@
-import { ImagesType } from "@cloudtower/eagle/generated/images-type";
+import { ImagesType } from "@cloudtower/eagle";
 import { css } from "@linaria/core";
 import cs from "classnames";
 import _ from "lodash";
@@ -98,17 +98,17 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
     try {
       if (active && activeType) {
         const parsedActiveType = parseType(activeType);
-        return require("@cloudtower/eagle/kit/images")[parsedActiveType];
+        return require("@cloudtower/eagle")[parsedActiveType];
       }
       if (hover && hoverType) {
         const parsedHoverType = parseType(hoverType);
-        return require("@cloudtower/eagle/kit/images")[parsedHoverType];
+        return require("@cloudtower/eagle")[parsedHoverType];
       }
       const parsedType = parseType(type);
-      return require("@cloudtower/eagle/kit/images")[parsedType];
+      return require("@cloudtower/eagle")[parsedType];
     } catch (error) {
       console.error(error);
-      return require("@cloudtower/eagle/kit/images")[errorType];
+      return require("@cloudtower/eagle")[errorType];
     }
   }, [active, activeType, hover, hoverType, type, errorType]);
 
@@ -121,17 +121,17 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
       const { activeType, hoverType, type } = suffixType;
       if (active && activeType) {
         const parsedActiveType = parseType(activeType);
-        return require("@cloudtower/eagle/kit/images")[parsedActiveType];
+        return require("@cloudtower/eagle")[parsedActiveType];
       }
       if (hover && hoverType) {
         const parsedHoverType = parseType(hoverType);
-        return require("@cloudtower/eagle/kit/images")[parsedHoverType];
+        return require("@cloudtower/eagle")[parsedHoverType];
       }
       const parsedType = parseType(type);
-      return require("@cloudtower/eagle/kit/images")[parsedType];
+      return require("@cloudtower/eagle")[parsedType];
     } catch (error) {
       console.error(error);
-      return require("@cloudtower/eagle/kit/images")[errorType];
+      return require("@cloudtower/eagle")[errorType];
     }
   }, [active, errorType, hover, suffixType]);
 

@@ -1,5 +1,5 @@
 import { CheckOutlined } from "@ant-design/icons";
-import { kitContext, Modal2Props } from "@cloudtower/eagle";
+import { kitContext, Modal2Props, WizardBody } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { Steps } from "antd";
 import cs from "classnames";

@@ -1,4 +1,4 @@
-import { FullView, Typo } from "@cloudtower/eagle/kit/smartx";
+import { FullView, Typo } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css, cx } from "@linaria/core";
 import React from "react";
