@@ -28,7 +28,7 @@ export const ModalContentError: React.FC<ModalErrorType> = (props) => {
           {parrotI18n.t("common.load_failed")}
         </p>
         <p className={Typo.Label.l1_regular_title}>
-          {parrotI18n.t("task.error_message")}:&nbsp;<span>{error}</span>
+          {parrotI18n.t("common.error_message")}:&nbsp;<span>{error}</span>
         </p>
       </FullView>
     );
@@ -40,7 +40,7 @@ export const ModalContentError: React.FC<ModalErrorType> = (props) => {
           {parrotI18n.t("common.load_failed")}
         </p>
         <p className={Typo.Label.l1_regular_title}>
-          {parrotI18n.t("task.error_message")}:&nbsp;
+          {parrotI18n.t("common.error_message")}:&nbsp;
           <span>{error.message}</span>
         </p>
       </FullView>
@@ -56,7 +56,8 @@ export const ModalContentError: React.FC<ModalErrorType> = (props) => {
           {parrotI18n.t("common.load_failed")}
         </p>
         <p className={Typo.Label.l1_regular_title}>
-          {parrotI18n.t("task.error_message")}:&nbsp;<span>{errorMsg.msg}</span>
+          {parrotI18n.t("common.error_message")}:&nbsp;
+          <span>{errorMsg.msg}</span>
         </p>
       </FullView>
     );
