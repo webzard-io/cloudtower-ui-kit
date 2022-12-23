@@ -5,7 +5,6 @@ import { DateRange } from "../src/components";
 import {
   addMissingDataWithZero,
   convertDataForMultiArea,
-  deletePointsOutOfRange,
   filterPointsByDateRange,
   formatStreams,
   getFaultToleranceTime,
@@ -17,21 +16,6 @@ import {
   xaxisCal,
 } from "../src/components/Metric/metric";
 import mockMetric from "./mockMetric";
-
-describe("deletePointsOutOfRange", () => {
-  it("2h should has 234 data", () => {
-    const mockPoints = mockMetric.sample_streams[0].points!;
-
-    const date = new Date("2022-12-13 18:00").getTime();
-    const result = deletePointsOutOfRange(
-      mockPoints,
-      [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
-      date
-    );
-
-    expect(result.length).toBe(234);
-  });
-});
 
 describe("getMs", () => {
   it("2h should be 2*60*60*1000", () => {
@@ -81,7 +65,7 @@ describe("addMissingDataWithZero", () => {
     const result = addMissingDataWithZero(
       streams[0].points ?? [],
       mockMetric.unit,
-      mockMetric.step,
+      30000,
       dateRange,
       new Date("2022-12-13 18:00").getTime()
     );
@@ -91,16 +75,20 @@ describe("addMissingDataWithZero", () => {
 
 describe("transformData", () => {
   it("has 240 data", () => {
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2022-12-13 18:00"),
+    ];
     const streams = formatStreams({
       metric: mockMetric,
-      dateRange: [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
+      dateRange: dateRange,
     });
 
     const result = transformData(
       streams,
       mockMetric.unit,
-      mockMetric.step,
-      [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
+      30000,
+      dateRange,
       new Date("2022-12-13 18:00").getTime()
     );
     expect(result.length).toBe(240);
@@ -170,26 +158,7 @@ describe("getXAxisDomain", () => {
       dayjs("2022-12-13 16:00"),
       dayjs("2022-12-13 18:00"),
     ];
-    const metric = mockMetric;
-    const streams = formatStreams({ metric, dateRange });
-    const points =
-      streams
-        .find((stream) => stream.points != null && stream.points?.length !== 0)
-        ?.points?.map(({ t, v }) => ({
-          t,
-          v,
-          unit: metric.unit,
-        })) ?? [];
 
-    const range = "2h";
-    const now = new Date("2022-12-13 18:00").getTime();
-    const areaChartData = transformData(
-      streams,
-      metric.unit,
-      metric.step,
-      dateRange,
-      now
-    );
     const res = getXAxisDomain(dateRange);
     expect(res).toEqual([1670918400000, 1670925600000]);
   });
@@ -201,7 +170,6 @@ describe("xaxisCal", () => {
       dayjs("2022-12-13 16:00"),
       dayjs("2022-12-13 18:00"),
     ];
-    const range = "2h";
     const res = xaxisCal(1670925600000, dateRange);
     expect(res).toEqual([
       1670920200000, 1670922000000, 1670923800000, 1670925600000,
@@ -215,7 +183,6 @@ describe("tickFormatter", () => {
       dayjs("2022-12-13 16:00"),
       dayjs("2022-12-13 18:00"),
     ];
-    const range = "2h";
     const res = [
       1670920200000, 1670922000000, 1670923800000, 1670925600000,
     ].map((tick) => {
@@ -231,7 +198,7 @@ describe("getFirstExpectedTimestamp", () => {
       dayjs("2022-12-13 16:00"),
       dayjs("2022-12-13 18:00"),
     ];
-    const timeRange = "2h";
+
     const now = new Date("2022-12-13 18:00").getTime();
 
     const streams = formatStreams({
@@ -239,17 +206,16 @@ describe("getFirstExpectedTimestamp", () => {
       dateRange,
     });
 
-    const inRangePoints = deletePointsOutOfRange(
+    const inRangePoints = filterPointsByDateRange(
       streams[0].points ?? [],
-      dateRange,
-      now
+      dateRange
     );
 
     const firsExpectedTimestamp = getFirstExpectedTimestamp(
       inRangePoints,
       dateRange,
       now,
-      mockMetric.step
+      30000
     );
 
     expect(firsExpectedTimestamp).toBe(1670918407000);
@@ -262,7 +228,7 @@ describe("convertDataForMultiArea", () => {
       dayjs("2022-12-13 16:00"),
       dayjs("2022-12-13 18:00"),
     ];
-    const range = "2h";
+
     const now = new Date("2022-12-13 18:00").getTime();
 
     const streams = formatStreams({
@@ -273,7 +239,7 @@ describe("convertDataForMultiArea", () => {
     const res = convertDataForMultiArea(
       streams,
       mockMetric.unit,
-      mockMetric.step,
+      30000,
       dateRange,
       now
     );
