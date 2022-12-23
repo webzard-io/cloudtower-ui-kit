@@ -58,7 +58,7 @@ export interface IChartProps {
     };
   };
   tooltipProps: {
-    format: (payload: Payload<number, string>[]) => string;
+    format: (payload: Payload<number, string>) => string;
   };
 }
 
