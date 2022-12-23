@@ -28,6 +28,7 @@ describe("getMs", () => {
     ];
     const result = getMs(dateRange);
     expect(result).toBe(60 * 60 * 2 * 1000);
+    expect(result).toMatchSnapshot();
   });
 });
 
@@ -41,6 +42,7 @@ describe("filterPointsByDateRange", () => {
     ]);
 
     expect(points.length).toBe(234);
+    expect(points).toMatchSnapshot();
   });
 });
 
@@ -51,6 +53,7 @@ describe("formatStreams", () => {
       dateRange: [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
     });
     expect(result[0]?.points?.length).toBe(234);
+    expect(result).toMatchSnapshot();
   });
 });
 
@@ -73,6 +76,7 @@ describe("addMissingDataWithZero", () => {
       new Date("2022-12-13 18:00").getTime()
     );
     expect(result.length).toBe(240);
+    expect(result).toMatchSnapshot();
   });
 });
 
@@ -95,6 +99,7 @@ describe("transformData", () => {
       new Date("2022-12-13 18:00").getTime()
     );
     expect(result.length).toBe(240);
+    expect(result).toMatchSnapshot();
   });
 });
 
@@ -107,6 +112,7 @@ describe("getFaultToleranceTime", () => {
     const h2 = getFaultToleranceTime(dateRange);
 
     expect(h2).toBe(120 * 1000);
+    expect(h2).toMatchSnapshot();
   });
   it("h24 be 10 * 60 * 1000", () => {
     const dateRange: DateRange = [
@@ -116,6 +122,7 @@ describe("getFaultToleranceTime", () => {
     const h24 = getFaultToleranceTime(dateRange);
 
     expect(h24).toBe(10 * 60 * 1000);
+    expect(h24).toMatchSnapshot();
   });
   it("d7 be 60 * 60 * 1000", () => {
     const dateRange: DateRange = [
@@ -125,6 +132,7 @@ describe("getFaultToleranceTime", () => {
     const d7 = getFaultToleranceTime(dateRange);
 
     expect(d7).toBe(60 * 60 * 1000);
+    expect(d7).toMatchSnapshot();
   });
   it("d30 be 60 * 60 * 1000", () => {
     const dateRange: DateRange = [
@@ -134,6 +142,7 @@ describe("getFaultToleranceTime", () => {
     const d30 = getFaultToleranceTime(dateRange);
 
     expect(d30).toBe(60 * 60 * 1000);
+    expect(d30).toMatchSnapshot();
   });
   it("d182 be 24 * 60 * 60 * 1000", () => {
     const dateRange: DateRange = [
@@ -143,6 +152,7 @@ describe("getFaultToleranceTime", () => {
     const d182 = getFaultToleranceTime(dateRange);
 
     expect(d182).toBe(24 * 60 * 60 * 1000);
+    expect(d182).toMatchSnapshot();
   });
   it("d188 be 120 * 1000", () => {
     const dateRange: DateRange = [
@@ -152,6 +162,7 @@ describe("getFaultToleranceTime", () => {
     const d188 = getFaultToleranceTime(dateRange);
 
     expect(d188).toBe(120 * 1000);
+    expect(d188).toMatchSnapshot();
   });
 });
 
@@ -164,6 +175,7 @@ describe("getXAxisDomain", () => {
 
     const res = getXAxisDomain(dateRange);
     expect(res).toEqual([1670918400000, 1670925600000]);
+    expect(res).toMatchSnapshot();
   });
 });
 
@@ -177,6 +189,7 @@ describe("xaxisCal", () => {
     expect(res).toEqual([
       1670920200000, 1670922000000, 1670923800000, 1670925600000,
     ]);
+    expect(res).toMatchSnapshot();
   });
 });
 
@@ -192,6 +205,7 @@ describe("tickFormatter", () => {
       return tickFormatter(tick, dateRange);
     });
     expect(res).toEqual(["16:30:00", "17:00:00", "17:30:00", "18:00:00"]);
+    expect(res).toMatchSnapshot();
   });
 });
 
@@ -222,6 +236,7 @@ describe("getFirstExpectedTimestamp", () => {
     );
 
     expect(firsExpectedTimestamp).toBe(1670918407000);
+    expect(firsExpectedTimestamp).toMatchSnapshot();
   });
 });
 
@@ -248,6 +263,7 @@ describe("convertDataForMultiArea", () => {
     );
 
     expect(res.length).toBe(240);
+    expect(res).toMatchSnapshot();
   });
 });
 
@@ -260,6 +276,7 @@ describe("getStep", () => {
 
     const step = getStep(dateRange);
     expect(step).toBe(MINUTE * 5 * 1000);
+    expect(step).toMatchSnapshot();
   });
 
   it("1 day should be HOUR * 1 * 1000", () => {
@@ -270,6 +287,7 @@ describe("getStep", () => {
 
     const step = getStep(dateRange);
     expect(step).toBe(HOUR * 1 * 1000);
+    expect(step).toMatchSnapshot();
   });
 
   it("7 days should be DAY * 1000", () => {
@@ -280,6 +298,7 @@ describe("getStep", () => {
 
     const step = getStep(dateRange);
     expect(step).toBe(DAY * 1000);
+    expect(step).toMatchSnapshot();
   });
 
   it("30 days should be DAY * 1000", () => {
@@ -290,6 +309,7 @@ describe("getStep", () => {
 
     const step = getStep(dateRange);
     expect(step).toBe(DAY * 1000);
+    expect(step).toMatchSnapshot();
   });
 
   it("182 days should be WEEK * 1000", () => {
@@ -300,6 +320,7 @@ describe("getStep", () => {
 
     const step = getStep(dateRange);
     expect(step).toBe(WEEK * 1000);
+    expect(step).toMatchSnapshot();
   });
 
   it("max than 182 days should be WEEK * 1000", () => {
@@ -310,6 +331,7 @@ describe("getStep", () => {
 
     const step = getStep(dateRange);
     expect(step).toBe(WEEK * 1000);
+    expect(step).toMatchSnapshot();
   });
 });
 
@@ -317,16 +339,19 @@ describe("convertDataStruct", () => {
   it("no data", () => {
     const res = convertDataStruct([]);
     expect(res).toEqual([]);
+    expect(res).toMatchSnapshot();
   });
 
   it("one data", () => {
     const res = convertDataStruct([[{ t: 1, v: 0 }]]);
     expect(res).toEqual([{ t: 1, v0: 0 }]);
+    expect(res).toMatchSnapshot();
   });
 
   it("two data", () => {
     const res = convertDataStruct([[{ t: 1, v: 0 }], [{ t: 1, v: 1 }]]);
     expect(res).toEqual([{ t: 1, v0: 0, v1: 1 }]);
+    expect(res).toMatchSnapshot();
   });
 
   it("three data", () => {
@@ -336,6 +361,7 @@ describe("convertDataStruct", () => {
       [{ t: 1, v: 2 }],
     ]);
     expect(res).toEqual([{ t: 1, v0: 0, v1: 1, v2: 2 }]);
+    expect(res).toMatchSnapshot();
   });
 
   it("other data", () => {
@@ -357,5 +383,6 @@ describe("convertDataStruct", () => {
       { t: 1, v0: 0, v1: 1, v2: 2 },
       { t: 2, v0: 0.1, v1: 1.1, v2: 2.1 },
     ]);
+    expect(res).toMatchSnapshot();
   });
 });
