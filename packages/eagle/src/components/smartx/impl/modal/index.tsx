@@ -10,7 +10,7 @@ import React, { useContext, useMemo, useRef } from "react";
 const Modal: React.FC<ModalProps> = (props) => {
   const {
     error,
-    okText = parrotI18n.t("cluster.confirm"),
+    okText = parrotI18n.t("common.confirm"),
     cancelText = parrotI18n.t("common.cancel"),
     confirmLoading,
     okButtonProps,

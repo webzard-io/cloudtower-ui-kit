@@ -1,8 +1,0 @@
-{
-  "name": "View Name",
-  "time_span": "Value of Time Range",
-  "time_unit": "Unit of Time Range",
-  "cluster_performance": "Cluster performance",
-  "resource_usage": "Resource usage",
-  "vm": "Vm"
-}

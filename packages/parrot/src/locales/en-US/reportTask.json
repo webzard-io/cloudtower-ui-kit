@@ -1,7 +1,0 @@
-{
-  "name": "Name",
-  "createdAt": "Generated Time",
-  "template": "Report Template",
-  "delete_generated_report": "Delete report",
-  "delete_report_confirm": "Are you sure to delete the report <1>{name}</1>?"
-}

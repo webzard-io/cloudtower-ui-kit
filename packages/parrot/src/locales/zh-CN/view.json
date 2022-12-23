@@ -1,8 +1,0 @@
-{
-  "name": "视图名",
-  "time_span": "时间范围数值",
-  "time_unit": "时间范围单位",
-  "cluster_performance": "集群性能",
-  "resource_usage": "资源用量",
-  "vm": "虚拟机"
-}

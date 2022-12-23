@@ -1,9 +1,0 @@
-{
-  "original_name": "Name",
-  "cluster": "Cluster",
-  "host": "Host",
-  "vcpu": "vCPU Allocation",
-  "memory": "Memory Allocation",
-  "size": "Free Space",
-  "deleted_at": "Time Added to Recycle Bin"
-}
