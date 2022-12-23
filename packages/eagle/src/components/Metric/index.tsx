@@ -12,7 +12,6 @@ import { MetricWrapper } from "./styled";
 import { IExportCSVDataType, TimeUnit } from "./type";
 
 export type MetricProps = {
-  uuid: string;
   height?: number;
   showPointer?: boolean;
   yAxisAlign?: "left" | "right";
@@ -37,7 +36,6 @@ export const Metric = (
   ref: React.ForwardedRef<MetricRefType>
 ) => {
   const {
-    uuid,
     height = 154,
     showPointer = true,
     showLegend = true,
@@ -92,12 +90,10 @@ export const Metric = (
         ref={wrapperRef}
         style={{ height: showLegend ? height + 30 : height }}
       >
-        <RenderChart
-          onChartDataChange={onChartDataChange}
-          uuid={uuid}
-          {...chartProps}
-        />
-        {showPointer && <Pointer uuid={uuid} metricWidth={width} />}
+        <RenderChart onChartDataChange={onChartDataChange} {...chartProps} />
+        {showPointer && (
+          <Pointer uuid={chartProps.syncId} metricWidth={width} />
+        )}
       </MetricWrapper>
     </ErrorBoundary>
   );
