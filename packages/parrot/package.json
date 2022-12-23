@@ -14,7 +14,7 @@
     "prebuild": "rm -rf dist",
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "generate:reexport": "node --loader ts-node/esm src/tools/index.mts",
+    "generate:reexport": "node --loader ts-node/esm tools/index.mts",
     "lint": "eslint src --ext .ts --quiet"
   },
   "devDependencies": {

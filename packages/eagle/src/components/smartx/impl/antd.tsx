@@ -1148,7 +1148,7 @@ export function getAntdKit(): Kit {
           return Empty;
         }
         if (rawValue === -1) {
-          return <span>{parrotI18n.t("iscsiTarget.calculation")}</span>;
+          return <span>{parrotI18n.t("common.calculation")}</span>;
         }
         const { value, unit } = formatBytes(rawValue, decimals);
         if (noUnitOnZero && value === 0) {

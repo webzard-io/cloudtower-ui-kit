@@ -200,7 +200,7 @@ export const TableError: React.FC<{
     <div className="table-default-error">
       <div>{String(error)}</div>
       <kit.button type="ordinary" onClick={() => refetch()}>
-        {parrotI18n.t("overview.retry")}
+        {parrotI18n.t("common.retry")}
       </kit.button>
     </div>
   );
