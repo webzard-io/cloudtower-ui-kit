@@ -11,7 +11,7 @@
     },
     "typings": {
       "dependsOn": ["generate"],
-      "outputs": ["typings/**"]
+      "outputs": ["dist/**"]
     },
     "lint": {
       "outputs": []

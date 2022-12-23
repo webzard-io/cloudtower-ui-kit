@@ -11,7 +11,7 @@ const TooltipFormatter: React.FC<
     uuid: string;
     deselected: string[];
     legends: ILegend[];
-    format: (payload: Payload<number, string>[]) => string;
+    format: (payload: Payload<number, string>) => string;
   }
 > = (props) => {
   const { active, payload, deselected, legends, format } = props;
@@ -37,7 +37,7 @@ const TooltipFormatter: React.FC<
                 <ColorBlock background={item.legend.color} />
                 {item.legend.name}
               </div>
-              <div className="column-value">{format(payload)}</div>
+              <div className="column-value">{format(item)}</div>
             </TooltipColumn>
           );
         })}

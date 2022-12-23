@@ -17,6 +17,7 @@ import { AxisDomain } from "recharts/types/util/types";
 
 import {
   formatStreams,
+  getStep,
   getXAxisDomain,
   tickFormatter,
   transformData,
@@ -57,7 +58,7 @@ export interface IChartProps {
     };
   };
   tooltipProps: {
-    format: (payload: Payload<number, string>[]) => string;
+    format: (payload: Payload<number, string>) => string;
   };
 }
 
@@ -94,12 +95,24 @@ const RenderChart = (props: IChartProps) => {
     return streams.map((stream) => stream.legend);
   }, [streams]);
 
+  const step = useMemo(() => {
+    return getStep(dateRange);
+  }, [dateRange]);
+
   const areaChartData = useMemo(
-    () => transformData(streams, metric.unit, metric.step, dateRange, now),
-    [dateRange, metric.step, metric.unit, now, streams]
+    () => transformData(streams, metric.unit, step, dateRange, now),
+    [dateRange, metric.unit, now, step, streams]
   );
 
-  const xAxisDomain = useMemo(() => getXAxisDomain(dateRange), [dateRange]);
+  const xaxisEndTime = useMemo(
+    () => areaChartData[areaChartData.length - 1]?.t ?? dateRange[1],
+    [areaChartData, dateRange]
+  );
+
+  const xAxisDomain = useMemo(
+    () => getXAxisDomain(dateRange, xaxisEndTime),
+    [dateRange, xaxisEndTime]
+  );
 
   const xAxisTicks = useMemo(
     () => xaxisCal(xAxisDomain[1], dateRange),
@@ -254,7 +267,7 @@ const RenderChart = (props: IChartProps) => {
             return (
               <Area
                 key={index}
-                dataKey={streams?.length === 1 ? "v" : `v${index}`}
+                dataKey={`v${index}`}
                 stackId={type === GraphType.Stack ? "stack" : undefined}
                 stroke={
                   item.legend.stroke

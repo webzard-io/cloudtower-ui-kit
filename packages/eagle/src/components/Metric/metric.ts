@@ -1,4 +1,4 @@
-import { DAY, HOUR, MINUTE } from "@tower/utils";
+import { DAY, HOUR, MINUTE, WEEK } from "@tower/utils";
 import dayjs from "dayjs";
 import _ from "lodash";
 
@@ -13,25 +13,21 @@ import {
 
 export function filterPointsByDateRange(
   points: IDataPoint[],
-  dateRange: DateRange | undefined | null
+  dateRange: DateRange
 ): IDataPoint[] {
-  if (dateRange) {
-    const [startDate, endDate] = dateRange;
+  const [startDate, endDate] = dateRange;
 
-    return points?.filter((point) => {
-      const pointDate = dayjs(point.t);
+  return points?.filter((point) => {
+    const pointDate = dayjs(point.t);
 
-      if (startDate && pointDate.isBefore(startDate)) {
-        return false;
-      }
-      if (endDate && pointDate.isAfter(endDate)) {
-        return false;
-      }
-      return true;
-    });
-  }
-
-  return points;
+    if (startDate && pointDate.isBefore(startDate)) {
+      return false;
+    }
+    if (endDate && pointDate.isAfter(endDate)) {
+      return false;
+    }
+    return true;
+  });
 }
 
 export const parseRange = (range: string) => {
@@ -97,17 +93,26 @@ export const getMs = (dateRange: DateRange): number => {
   return endDate.valueOf() - startDate.valueOf();
 };
 
-export const deletePointsOutOfRange = (
-  data: IDataPoint[],
-  dateRange: DateRange,
-  now: number
-) => {
-  const first = now - getMs(dateRange);
-  return (
-    data?.filter((item) => {
-      return item.t >= first && item.t <= now;
-    }) || []
-  );
+export const getStep = (dateRange: DateRange): number => {
+  const [startDate, endDate] = dateRange;
+  const range = endDate.valueOf() - startDate.valueOf();
+
+  if (range <= 2 * 60 * 60 * 1000) {
+    return MINUTE * 5 * 1000;
+  }
+  if (range <= 24 * 60 * 60 * 1000) {
+    return HOUR * 1 * 1000;
+  }
+  if (range <= 7 * 24 * 60 * 60 * 1000) {
+    return DAY * 1000;
+  }
+  if (range <= 30 * 24 * 60 * 60 * 1000) {
+    return DAY * 1000;
+  }
+  if (range <= 182 * 24 * 60 * 60 * 1000) {
+    return WEEK * 1000;
+  }
+  return WEEK * 1000;
 };
 
 export const getFaultToleranceTime = (dateRange: DateRange) => {
@@ -139,7 +144,7 @@ export const addMissingDataWithZero = (
   dateRange: DateRange,
   now = Date.now()
 ) => {
-  const inRangePoints = deletePointsOutOfRange(data, dateRange, now);
+  const inRangePoints = filterPointsByDateRange(data, dateRange);
   if (!inRangePoints.length) {
     return [];
   }
@@ -284,7 +289,7 @@ export type MetricRefType = {
 
 export const formatStreams = (params: {
   metric: IMetric;
-  dateRange: DateRange | null;
+  dateRange: DateRange;
 }) => {
   const { metric, dateRange } = params;
 
@@ -301,6 +306,30 @@ export const formatStreams = (params: {
   });
 };
 
+export const convertDataStruct = (streams: IDataPoint[][]) => {
+  const points: IDataPoint[] = streams.flatMap((points, index) => {
+    return points.map((point) => {
+      return { ...point, [`v${index}`]: point.v };
+    });
+  });
+
+  const groupedPoints = _.groupBy(points, (point) => {
+    return point.t;
+  });
+
+  const combinedPoints = Object.entries(groupedPoints).map(([key, values]) => {
+    return values.reduce((p, c) => {
+      const { v, ...values } = {
+        ...p,
+        ...c,
+      };
+      return values;
+    }, {} as IDataPoint);
+  });
+
+  return combinedPoints;
+};
+
 export const transformData = (
   streams: IMetricStream[],
   unit: string,
@@ -308,16 +337,14 @@ export const transformData = (
   dateRange: DateRange,
   now = Date.now()
 ) => {
-  const result =
-    streams.length === 1
-      ? addMissingDataWithZero(
-          streams[0]?.points ?? [],
-          unit,
-          step,
-          dateRange,
-          now
-        )
-      : convertDataForMultiArea(streams, unit, step, dateRange, now);
+  const filledStreams = streams.map((stream) => {
+    return addMissingDataWithZero(stream.points, unit, step, dateRange, now);
+  });
+
+  const converted = convertDataStruct(filledStreams);
+
+  const result = filterPointsByDateRange(converted, dateRange);
+
   return result;
 };
 
