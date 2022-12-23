@@ -100,7 +100,6 @@ export const getStep = (dateRange: DateRange): number => {
   if (range <= 2 * 60 * 60 * 1000) {
     return MINUTE * 5 * 1000;
   }
-
   if (range <= 24 * 60 * 60 * 1000) {
     return HOUR * 1 * 1000;
   }
@@ -113,7 +112,7 @@ export const getStep = (dateRange: DateRange): number => {
   if (range <= 182 * 24 * 60 * 60 * 1000) {
     return WEEK * 1000;
   }
-  return DAY * 1000;
+  return WEEK * 1000;
 };
 
 export const getFaultToleranceTime = (dateRange: DateRange) => {

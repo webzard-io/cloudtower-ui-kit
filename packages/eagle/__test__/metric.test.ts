@@ -1,3 +1,4 @@
+import { DAY, HOUR, MINUTE, WEEK } from "@tower/utils";
 import dayjs from "dayjs";
 import { describe, expect, it } from "vitest";
 
@@ -10,6 +11,7 @@ import {
   getFaultToleranceTime,
   getFirstExpectedTimestamp,
   getMs,
+  getStep,
   getXAxisDomain,
   tickFormatter,
   transformData,
@@ -245,5 +247,67 @@ describe("convertDataForMultiArea", () => {
     );
 
     expect(res.length).toBe(240);
+  });
+});
+
+describe("getStep", () => {
+  it("2 hours should be MINUTE * 5 * 1000", () => {
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2022-12-13 18:00"),
+    ];
+
+    const step = getStep(dateRange);
+    expect(step).toBe(MINUTE * 5 * 1000);
+  });
+
+  it("1 day should be HOUR * 1 * 1000", () => {
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2022-12-14 16:00"),
+    ];
+
+    const step = getStep(dateRange);
+    expect(step).toBe(HOUR * 1 * 1000);
+  });
+
+  it("7 days should be DAY * 1000", () => {
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2022-12-20 16:00"),
+    ];
+
+    const step = getStep(dateRange);
+    expect(step).toBe(DAY * 1000);
+  });
+
+  it("30 days should be DAY * 1000", () => {
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2023-01-12 16:00"),
+    ];
+
+    const step = getStep(dateRange);
+    expect(step).toBe(DAY * 1000);
+  });
+
+  it("182 days should be WEEK * 1000", () => {
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2023-06-13 16:00"),
+    ];
+
+    const step = getStep(dateRange);
+    expect(step).toBe(WEEK * 1000);
+  });
+
+  it("max than 182 days should be WEEK * 1000", () => {
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2023-08-13 16:00"),
+    ];
+
+    const step = getStep(dateRange);
+    expect(step).toBe(WEEK * 1000);
   });
 });
