@@ -319,11 +319,12 @@ export const convertDataStruct = (streams: IDataPoint[][]) => {
 
   const combinedPoints = Object.entries(groupedPoints).map(([key, values]) => {
     return values.reduce((p, c) => {
-      return {
+      const { v, ...values } = {
         ...p,
         ...c,
       };
-    });
+      return values;
+    }, {} as IDataPoint);
   });
 
   return combinedPoints;

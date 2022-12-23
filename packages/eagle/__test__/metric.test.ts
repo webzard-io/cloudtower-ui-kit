@@ -6,6 +6,7 @@ import { DateRange } from "../src/components";
 import {
   addMissingDataWithZero,
   convertDataForMultiArea,
+  convertDataStruct,
   filterPointsByDateRange,
   formatStreams,
   getFaultToleranceTime,
@@ -309,5 +310,52 @@ describe("getStep", () => {
 
     const step = getStep(dateRange);
     expect(step).toBe(WEEK * 1000);
+  });
+});
+
+describe("convertDataStruct", () => {
+  it("no data", () => {
+    const res = convertDataStruct([]);
+    expect(res).toEqual([]);
+  });
+
+  it("one data", () => {
+    const res = convertDataStruct([[{ t: 1, v: 0 }]]);
+    expect(res).toEqual([{ t: 1, v0: 0 }]);
+  });
+
+  it("two data", () => {
+    const res = convertDataStruct([[{ t: 1, v: 0 }], [{ t: 1, v: 1 }]]);
+    expect(res).toEqual([{ t: 1, v0: 0, v1: 1 }]);
+  });
+
+  it("three data", () => {
+    const res = convertDataStruct([
+      [{ t: 1, v: 0 }],
+      [{ t: 1, v: 1 }],
+      [{ t: 1, v: 2 }],
+    ]);
+    expect(res).toEqual([{ t: 1, v0: 0, v1: 1, v2: 2 }]);
+  });
+
+  it("other data", () => {
+    const res = convertDataStruct([
+      [
+        { t: 1, v: 0 },
+        { t: 2, v: 0.1 },
+      ],
+      [
+        { t: 1, v: 1 },
+        { t: 2, v: 1.1 },
+      ],
+      [
+        { t: 1, v: 2 },
+        { t: 2, v: 2.1 },
+      ],
+    ]);
+    expect(res).toEqual([
+      { t: 1, v0: 0, v1: 1, v2: 2 },
+      { t: 2, v0: 0.1, v1: 1.1, v2: 2.1 },
+    ]);
   });
 });
