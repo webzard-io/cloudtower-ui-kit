@@ -1,5 +1,5 @@
 import { CheckOutlined } from "@ant-design/icons";
-import { kitContext, Modal2Props, WizardBody } from "@cloudtower/eagle";
+import { kitContext, WizardBody, WizardModalType } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { Steps } from "antd";
 import cs from "classnames";
@@ -8,23 +8,6 @@ import React, { useContext, useMemo, useRef } from "react";
 
 import { ModalFooterError } from "./Error";
 import BaseModal from "./Modal";
-
-type WizardModalType = Modal2Props & {
-  step: number;
-  onStepChange?: (step: number) => void;
-  steps: {
-    title: string;
-    render: React.ReactNode;
-    prevText?: string | React.ReactNode;
-    okText?: string | React.ReactNode;
-    onOk?: (e: React.MouseEvent<HTMLElement>) => void;
-    disabled?: boolean;
-  }[];
-  right?: React.ReactNode;
-  destroyOtherStep?: boolean;
-  disablePrevStep?: boolean;
-  stepsPosition?: "top" | "side";
-};
 
 const WizardModal: React.FC<WizardModalType> = (props) => {
   const kit = useContext(kitContext);
@@ -51,6 +34,7 @@ const WizardModal: React.FC<WizardModalType> = (props) => {
     destroyOtherStep,
     right,
     stepsPosition = "side",
+    analyzeFallbackError,
     ...wizardModalProps
   } = props;
 
@@ -105,7 +89,11 @@ const WizardModal: React.FC<WizardModalType> = (props) => {
                 {prevText}
               </span>
             )}
-            <ModalFooterError className="modal-error" error={footerError} />
+            <ModalFooterError
+              className="modal-error"
+              error={footerError}
+              analyzeFallbackError={analyzeFallbackError}
+            />
           </div>
           <div className="modal-footer-btn-group">
             {showCancel && (
@@ -154,6 +142,7 @@ const WizardModal: React.FC<WizardModalType> = (props) => {
         onCancel={onCancel}
         className={cs(fullscreen && "wizard")}
         fullscreen
+        analyzeFallbackError={analyzeFallbackError}
         {...wizardModalProps}
         footer={getFooter()}
       >
@@ -212,6 +201,7 @@ const WizardModal: React.FC<WizardModalType> = (props) => {
       onCancel={onCancel}
       className={cs(fullscreen && "wizard")}
       fullscreen
+      analyzeFallbackError={analyzeFallbackError}
       {...wizardModalProps}
       footer={getFooter()}
     >

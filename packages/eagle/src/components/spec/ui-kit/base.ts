@@ -369,12 +369,17 @@ export type IStepsPorps = StepsProps & {
 };
 
 type ErrorType = string | React.ReactNode | Error;
-type InitializedModalType = Modal2Props & {
+
+export type InitializedModalType = Modal2Props & {
   initLoading: boolean;
   initError: ErrorType;
+  analyzeFallbackError: (fallback: unknown) => {
+    msg: string;
+    originalMsg: string;
+  } | null;
 };
 
-type WizardModalType = Modal2Props & {
+export type WizardModalType = Modal2Props & {
   step: number;
   onStepChange?: (step: number) => void;
   steps: {
@@ -389,6 +394,10 @@ type WizardModalType = Modal2Props & {
   destroyOtherStep?: boolean;
   disablePrevStep?: boolean;
   stepsPosition?: "top" | "side";
+  analyzeFallbackError: (fallback: unknown) => {
+    msg: string;
+    originalMsg: string;
+  } | null;
 };
 
 export interface Modal2Type extends React.FC<Modal2Props> {

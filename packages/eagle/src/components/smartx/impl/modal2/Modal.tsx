@@ -10,7 +10,14 @@ import React, { useContext, useRef } from "react";
 
 import { ModalFooterError } from "./Error";
 
-const Modal: React.FC<Modal2Props> = (props) => {
+const Modal: React.FC<
+  Modal2Props & {
+    analyzeFallbackError: (fallback: unknown) => {
+      msg: string;
+      originalMsg: string;
+    } | null;
+  }
+> = (props) => {
   const kit = useContext(kitContext);
 
   const {
@@ -34,6 +41,7 @@ const Modal: React.FC<Modal2Props> = (props) => {
     okText = parrotI18n.t("common.confirm"),
     cancelText = parrotI18n.t("common.cancel"),
     size,
+    analyzeFallbackError,
     ...modalPropsArgs
   } = props;
 
@@ -96,7 +104,11 @@ const Modal: React.FC<Modal2Props> = (props) => {
       return (
         <>
           <div className="modal-footer-left">
-            <ModalFooterError className="modal-error" error={footerError} />
+            <ModalFooterError
+              className="modal-error"
+              error={footerError}
+              analyzeFallbackError={analyzeFallbackError}
+            />
           </div>
           <div className="modal-footer-btn-group">
             {showCancel && (

@@ -1,18 +1,18 @@
-import { kitContext, Modal2Props } from "@cloudtower/eagle";
+import { InitializedModalType, kitContext } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import React, { useContext, useEffect, useRef, useState } from "react";
 
 import { ModalContentError } from "./Error";
 import BaseModal from "./Modal";
 
-type ErrorType = string | React.ReactNode | Error;
-type InitializedModalType = Modal2Props & {
-  initLoading: boolean;
-  initError: ErrorType;
-};
-
 const InitializedModal: React.FC<InitializedModalType> = (props) => {
-  const { initLoading, initError, children, ...modal2PropsArgs } = props;
+  const {
+    initLoading,
+    initError,
+    children,
+    analyzeFallbackError,
+    ...modal2PropsArgs
+  } = props;
   const kit = useContext(kitContext);
   const changeCount = useRef<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
@@ -34,7 +34,12 @@ const InitializedModal: React.FC<InitializedModalType> = (props) => {
     }
 
     if (initError) {
-      return <ModalContentError error={initError} />;
+      return (
+        <ModalContentError
+          error={initError}
+          analyzeFallbackError={analyzeFallbackError}
+        />
+      );
     }
 
     return children;
@@ -45,6 +50,7 @@ const InitializedModal: React.FC<InitializedModalType> = (props) => {
   return (
     <BaseModal
       {...modal2PropsArgs}
+      analyzeFallbackError={analyzeFallbackError}
       showOk={canRenderChildren && modal2PropsArgs.showOk}
       cancelText={
         canRenderChildren
