@@ -141,12 +141,13 @@ export const useTransformScrollAndColumns = <T>(tableProps: {
     stickyHeader,
     scroll,
   } = tableProps;
-  const defaultScroll = useRef<
-    | "autoHeight"
-    | "auto"
-    | { x?: boolean | number | string; y?: boolean | number | string }
-    | undefined
-  >(scroll);
+  const defaultScroll =
+    useRef<
+      | "autoHeight"
+      | "auto"
+      | { x?: boolean | number | string; y?: boolean | number | string }
+      | undefined
+    >(scroll);
   const [scrollConfig, setScrollConfig] = useState<TableScrollConfig>({});
   const [headerAndPaginationHeight, setHeaderAndPaginationHeight] =
     useState<number>(0);
