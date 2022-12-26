@@ -43,9 +43,10 @@ import { TagType } from "antd/lib/tag";
 import { TimePickerProps } from "antd/lib/time-picker";
 import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
-import React, { ReactNode } from "react";
+import React, { createContext, ReactNode } from "react";
 
-import { Architecture } from "../type";
+import emptyImpl from "./emptyImpl";
+import { Architecture } from "./type";
 
 type BadgeTypeProps = "warning" | "error" | "info";
 type Primitive = "Int" | "Float" | "DateTime" | "Enum" | "String" | "Boolean";
@@ -519,3 +520,5 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   >;
   steps: React.FC<IStepsPorps>;
 }
+
+export const kitContext = createContext<Kit>(emptyImpl);

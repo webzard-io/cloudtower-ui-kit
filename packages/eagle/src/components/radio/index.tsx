@@ -255,9 +255,8 @@ const RadioButton: React.FC<RadioButtonProps> = ({
     precision,
     initialValue,
   } = props;
-  const [inputValue, setInputValue] = useState<string | number | undefined>(
-    initialValue
-  );
+  const [inputValue, setInputValue] =
+    useState<string | number | undefined>(initialValue);
   const radioButtonValue =
     type === "input" || type === "input-number" ? inputValue : props.value;
   const radioGroupContext = React.useContext(KitRadioGroupContext);
