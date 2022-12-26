@@ -32,19 +32,6 @@ export class Batcher {
 
   public addMessage(content: KeyedArgsProps) {
     const batchKey = this.getBatchKey(content);
-    const action = this.getAction(batchKey);
-
-    if (process.env.NODE_ENV !== "production") {
-      if (window.__cloudtower_i18n__?.i18next == null) {
-        throw new Error("i18n not exist on window");
-      }
-    }
-
-    if (!(window.__cloudtower_i18n__?.i18next ?? parrotI18n).exists(action)) {
-      // can not be batched when i18n not ready
-      this.originalMethod(content);
-      return;
-    }
 
     if (!this.scheduler[batchKey]) {
       this.scheduler[batchKey] = {
@@ -147,17 +134,9 @@ export class Batcher {
   }
 
   private getBatchContent(batchKey: string, count: number): string {
-    if (process.env.NODE_ENV !== "production") {
-      if (window.__cloudtower_i18n__?.i18next == null) {
-        throw new Error("i18n not exist on window");
-      }
-    }
-    return (window.__cloudtower_i18n__?.i18next?.td ?? parrotI18n.t)(
-      this.getAction(batchKey),
-      {
-        count,
-      }
-    );
+    return parrotI18n.t(this.getAction(batchKey), {
+      count,
+    });
   }
 
   private getAction(batchKey: string) {

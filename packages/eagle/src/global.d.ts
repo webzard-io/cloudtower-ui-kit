@@ -5,3 +5,15 @@ declare module "antd/lib/modal" {
     focusTriggerAfterClose?: boolean;
   }
 }
+
+declare global {
+  interface Window {
+    i18nBatchHelper?: Record<
+      string,
+      {
+        patterns: RegExp[];
+        batchKey: string;
+      }
+    >;
+  }
+}
