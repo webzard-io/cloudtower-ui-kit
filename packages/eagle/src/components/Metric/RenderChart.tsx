@@ -1,4 +1,8 @@
-import { ChartActions, useKitDispatch } from "@cloudtower/eagle";
+import {
+  ChartActions,
+  TooltipFormatter,
+  useKitDispatch,
+} from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
 import dayjs from "dayjs";
@@ -8,15 +12,21 @@ import {
   AreaChart,
   ResponsiveContainer,
   Tooltip,
+  TooltipProps,
   XAxis,
   YAxis,
 } from "recharts";
 import { CategoricalChartFunc } from "recharts/types/chart/generateCategoricalChart";
-import { Payload } from "recharts/types/component/DefaultTooltipContent";
+import {
+  NameType,
+  Payload,
+  ValueType,
+} from "recharts/types/component/DefaultTooltipContent";
 import { AxisDomain } from "recharts/types/util/types";
 
 import {
   formatStreams,
+  getStep,
   getXAxisDomain,
   tickFormatter,
   transformData,
@@ -25,23 +35,24 @@ import {
 import MetricActions from "./MetricActions";
 import MetricLegend, { LegendComponent } from "./MetricLegend";
 import { MetricLegendTabStyle } from "./styled";
-import TooltipFormatter from "./TooltipFormatter";
 import { DateRange, GraphType, IExportCSVDataType, IMetric } from "./type";
 
-export interface IChartProps {
+export interface IChartProps<
+  TValue extends ValueType = string,
+  TName extends NameType = number
+> {
   metricName: string;
   yAxisAlign?: "left" | "right";
   showXAxis?: boolean;
   showLegend?: boolean;
-  uuid: string;
+  syncId: string;
   height: number;
-  range: string;
   type: GraphType;
   mode?: "simple" | "legend" | "single";
   averageLine?: boolean;
   dropdown?: React.ReactNode;
   onChartDataChange?: (data: Array<IExportCSVDataType>) => void;
-  dateRange?: DateRange;
+  dateRange: DateRange;
   onLabelsChange?: (labels: string[]) => void;
   metric: IMetric;
   now?: number;
@@ -57,8 +68,8 @@ export interface IChartProps {
       max: string;
     };
   };
-  tooltipProps: {
-    format: (payload: Payload<number, string>[]) => string;
+  tooltipProps: TooltipProps<TValue, TName> & {
+    format?: (payload: Payload<number, string>) => string;
   };
 }
 
@@ -66,11 +77,10 @@ const RenderChart = (props: IChartProps) => {
   const {
     metricName,
     showLegend,
-    uuid,
+    syncId,
     showXAxis,
     yAxisAlign,
     height,
-    range,
     type,
     mode = "legend",
     dropdown,
@@ -96,32 +106,28 @@ const RenderChart = (props: IChartProps) => {
     return streams.map((stream) => stream.legend);
   }, [streams]);
 
+  const step = useMemo(() => {
+    return getStep(dateRange);
+  }, [dateRange]);
+
   const areaChartData = useMemo(
-    () =>
-      transformData(streams, range, metric.unit, metric.step, dateRange, now),
-    [dateRange, metric.step, metric.unit, now, range, streams]
+    () => transformData(streams, metric.unit, step, dateRange, now),
+    [dateRange, metric.unit, now, step, streams]
   );
 
-  const points = useMemo(
-    () =>
-      streams
-        .find((stream) => stream.points != null && stream.points?.length !== 0)
-        ?.points?.map(({ t, v }) => ({
-          t,
-          v,
-          unit: metric.unit,
-        })) ?? [],
-    [metric.unit, streams]
+  const xaxisEndTime = useMemo(
+    () => areaChartData[areaChartData.length - 1]?.t ?? dateRange[1],
+    [areaChartData, dateRange]
   );
 
   const xAxisDomain = useMemo(
-    () => getXAxisDomain(areaChartData, points, range, dateRange),
-    [areaChartData, dateRange, points, range]
+    () => getXAxisDomain(dateRange, xaxisEndTime),
+    [dateRange, xaxisEndTime]
   );
 
   const xAxisTicks = useMemo(
-    () => xaxisCal(xAxisDomain[1], range, dateRange),
-    [dateRange, range, xAxisDomain]
+    () => xaxisCal(xAxisDomain[1], dateRange),
+    [dateRange, xAxisDomain]
   );
 
   const onLegendClick = useCallback(
@@ -141,9 +147,9 @@ const RenderChart = (props: IChartProps) => {
   const hidePointer: CategoricalChartFunc = useCallback(() => {
     dispatch({
       type: ChartActions.SET_POINTER,
-      payload: { visible: false, uuid },
+      payload: { visible: false, syncId },
     });
-  }, [dispatch, uuid]);
+  }, [dispatch, syncId]);
 
   const handleMouseMove: CategoricalChartFunc = useCallback(
     (e) => {
@@ -155,7 +161,7 @@ const RenderChart = (props: IChartProps) => {
         dispatch({
           type: ChartActions.SET_POINTER,
           payload: {
-            uuid,
+            syncId,
             visible: true,
             left: chartX,
             text: dayjs(Number(activePayload[0].payload.t)).format(
@@ -166,7 +172,7 @@ const RenderChart = (props: IChartProps) => {
         });
       }
     },
-    [dispatch, uuid]
+    [dispatch, syncId]
   );
 
   if (!streams?.length || streams.every((stream) => !stream.points?.length)) {
@@ -228,7 +234,7 @@ const RenderChart = (props: IChartProps) => {
               : { top: 20, left: 10, right: 10, bottom: 5 }
           }
           data={areaChartData}
-          syncId={uuid}
+          syncId={syncId}
           onMouseLeave={hidePointer}
           onMouseMove={handleMouseMove}
         >
@@ -239,9 +245,7 @@ const RenderChart = (props: IChartProps) => {
             tickLine={false}
             type="number"
             domain={xAxisDomain}
-            tickFormatter={(tick: number) =>
-              tickFormatter(tick, range, dateRange)
-            }
+            tickFormatter={(tick: number) => tickFormatter(tick, dateRange)}
             ticks={xAxisTicks}
           />
           <YAxis
@@ -254,17 +258,16 @@ const RenderChart = (props: IChartProps) => {
             {...yAxisProps}
           />
           <Tooltip
-            active
-            wrapperStyle={{ zIndex: 1000 }}
-            isAnimationActive={false}
             content={
-              <TooltipFormatter
-                uuid={uuid}
-                deselected={deselected}
-                legends={legends}
-                {...tooltipProps}
-              />
+              tooltipProps.format && (
+                <TooltipFormatter
+                  deselected={deselected}
+                  legends={legends}
+                  format={tooltipProps.format}
+                />
+              )
             }
+            {...tooltipProps}
           />
           {streams.map((item, index) => {
             if (deselected.includes(item.legend.id)) {
@@ -274,7 +277,7 @@ const RenderChart = (props: IChartProps) => {
             return (
               <Area
                 key={index}
-                dataKey={streams?.length === 1 ? "v" : `v${index}`}
+                dataKey={`v${index}`}
                 stackId={type === GraphType.Stack ? "stack" : undefined}
                 stroke={
                   item.legend.stroke

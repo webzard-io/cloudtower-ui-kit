@@ -42,7 +42,7 @@ const WizardModal: React.FC<WizardModalType> = (props) => {
     okButtonProps,
     confirmLoading,
     okLoading,
-    okText = parrotI18n.t("cluster.confirm"),
+    okText = parrotI18n.t("common.confirm"),
     cancelText = parrotI18n.t("common.cancel"),
     step,
     steps,

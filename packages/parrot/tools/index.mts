@@ -17,7 +17,7 @@ const snakeToCamel = (str: string) =>
 
 Promise.allSettled(
   locales.map(async (locale) => {
-    const relativePath = `../locales/${locale}`;
+    const relativePath = `../src/locales/${locale}`;
     const fileNames = fs.readdirSync(path.resolve(__dirname, relativePath));
 
     const names = fileNames

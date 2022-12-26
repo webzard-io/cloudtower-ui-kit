@@ -29,7 +29,6 @@ export interface IMetricStream {
 export interface IMetric {
   sample_streams: IMetricStream[];
   unit: string;
-  step: number;
   dropped: boolean;
 }
 
@@ -63,4 +62,4 @@ export enum GraphType {
   Stack = "STACK",
 }
 
-export type DateRange = [Dayjs | null, Dayjs | null];
+export type DateRange = [Dayjs, Dayjs];

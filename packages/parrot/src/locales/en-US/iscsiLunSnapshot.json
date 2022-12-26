@@ -1,9 +1,0 @@
-{
-  "name": "Name",
-  "unique_size": "Exclusive Capacity",
-  "consistency_group": "Consistency Group",
-  "local_created_at": "Created Time",
-  "iscsi_lun": "LUN",
-  "rollback_lun_desc": "Are you sure to rollback LUN <1>{lunName}</1> to the state of snapshot <3>{lunSnapshotName}</3>?",
-  "rollback_lun_desc2": "This snapshot was created at {time}."
-}

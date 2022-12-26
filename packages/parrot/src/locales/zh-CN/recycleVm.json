@@ -1,9 +1,0 @@
-{
-  "original_name": "名称",
-  "cluster": "所属集群",
-  "host": "所属主机",
-  "vcpu": "vCPU 分配",
-  "memory": "内存分配",
-  "size": "可释放空间",
-  "deleted_at": "加入回收站时间"
-}

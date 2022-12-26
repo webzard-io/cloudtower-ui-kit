@@ -1,8 +1,0 @@
-{
-  "service_status": "Service Status",
-  "service_name": "Service Name",
-  "running_state": "Running State",
-  "active": "Running",
-  "inactive": "Not Running",
-  "duration": "Duration"
-}
