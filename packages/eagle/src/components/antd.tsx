@@ -59,17 +59,17 @@ import React, { Fragment, ReactNode, useEffect, useMemo, useRef } from "react";
 import { findDOMNode } from "react-dom";
 import { isElement } from "react-is";
 
-import Button from "./button";
-import ButtonGroup from "./buttonGroup";
-import Modal from "./modal";
-import Modal2 from "./modal2";
+import Button from "./Button";
+import ButtonGroup from "./ButtonGroup";
+import Modal from "./Modal";
+import Modal2 from "./Modal2";
 import Overflow from "./Overflow";
-import Pagination from "./pagination";
-import Radio, { RadioButton, RadioGroup } from "./radio";
+import Pagination from "./Pagination";
+import Radio, { RadioButton, RadioGroup } from "./Radio";
 import Steps from "./Steps";
-import Switch from "./switch";
-import KitTable from "./table";
-import Tooltip from "./tooltip";
+import Switch from "./Switch";
+import KitTable from "./Table";
+import Tooltip from "./Tooltip";
 
 type AntdOption = Kit["option"] & {
   isSelectOption: boolean;

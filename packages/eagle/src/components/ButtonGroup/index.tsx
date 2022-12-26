@@ -3,8 +3,8 @@ import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
 import React from "react";
 
-import BaseButton from "../button";
-import Tooltip from "../tooltip";
+import BaseButton from "../Button";
+import Tooltip from "../Tooltip";
 
 export const ButtonStyle = css`
   padding: 4px 11px;
