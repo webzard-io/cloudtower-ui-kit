@@ -1,10 +1,10 @@
+import { hashHistory as history } from "@cloudtower/eagle";
+import { getAllSearch } from "@cloudtower/eagle";
 import { Serializable } from "@tower/utils";
 import _ from "lodash";
 import qs from "querystring";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { hashHistory as history } from "../components/spec/common/history";
-import { getAllSearch } from "../components/spec/common/router";
 import { getSearch, getValue } from "./utils";
 
 export type SearchOperation = {
