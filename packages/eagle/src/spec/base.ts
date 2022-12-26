@@ -45,8 +45,8 @@ import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
 import React, { createContext, ReactNode } from "react";
 
-import { Architecture } from "../type";
 import emptyImpl from "./emptyImpl";
+import { Architecture } from "./type";
 
 type BadgeTypeProps = "warning" | "error" | "info";
 type Primitive = "Int" | "Float" | "DateTime" | "Enum" | "String" | "Boolean";
