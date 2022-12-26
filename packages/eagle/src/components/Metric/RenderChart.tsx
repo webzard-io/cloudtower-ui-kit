@@ -147,7 +147,7 @@ const RenderChart = (props: IChartProps) => {
   const hidePointer: CategoricalChartFunc = useCallback(() => {
     dispatch({
       type: ChartActions.SET_POINTER,
-      payload: { visible: false, syncId },
+      payload: { visible: false, uuid: syncId },
     });
   }, [dispatch, syncId]);
 
@@ -161,7 +161,7 @@ const RenderChart = (props: IChartProps) => {
         dispatch({
           type: ChartActions.SET_POINTER,
           payload: {
-            syncId,
+            uuid: syncId,
             visible: true,
             left: chartX,
             text: dayjs(Number(activePayload[0].payload.t)).format(
