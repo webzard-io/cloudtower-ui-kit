@@ -1,7 +1,6 @@
 import { FullView, Typo } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css, cx } from "@linaria/core";
-import { i18n } from "i18next";
 import React from "react";
 
 const FullViewErrorStyle = css`
@@ -11,7 +10,7 @@ const FullViewErrorStyle = css`
 
 interface ModalErrorType {
   error: Error | string | React.ReactNode;
-  analyzeFallbackError(fallback: unknown): {
+  analyzeFallbackError: (fallback: unknown) => {
     msg: string;
     originalMsg: string;
   } | null;

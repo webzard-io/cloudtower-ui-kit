@@ -50,6 +50,7 @@ import {
 import { CheckboxProps } from "antd/lib/checkbox";
 import { InputProps } from "antd/lib/input";
 import { InputNumberProps } from "antd/lib/input-number";
+import message from "antd/lib/message";
 import { TimePickerProps } from "antd/lib/time-picker";
 import cs from "classnames";
 import _ from "lodash";
@@ -60,7 +61,6 @@ import { isElement } from "react-is";
 
 import Button from "./button";
 import ButtonGroup from "./buttonGroup";
-import { message } from "./message";
 import Modal from "./modal";
 import Modal2 from "./modal2";
 import Overflow from "./Overflow";
