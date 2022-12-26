@@ -109,3 +109,6 @@ export const modalReducer = (
 };
 
 export interface IModalProps {}
+
+export type GetModalProps<K extends keyof IModalProps> = IModalProps[K] &
+  CloseCb;

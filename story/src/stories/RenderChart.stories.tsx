@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import React from "react";
 
 import mockMetric from "../mockMetric";
+import mockMetric2 from "../mockMetric2";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -45,6 +46,33 @@ Primary.args = {
   tooltipProps: {
     format: () => {
       return "hello tooltip";
+    },
+  },
+};
+
+export const Secondary = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Secondary.args = {
+  mode: "legend",
+  showLegend: true,
+  metricName: "hello",
+  metric: mockMetric2,
+  uuid: "abc",
+  height: 200,
+  type: GraphType.Area,
+  dateRange: [
+    dayjs("2022-12-21T13:35:01.234Z"),
+    dayjs("2022-12-22T13:35:01.234Z"),
+  ],
+  now: new Date("2022-12-22T13:35:01.234Z").getTime(),
+  showXAxis: true,
+  tooltipProps: {
+    format: function (payload: Array<Payload<number, string>>): string {
+      const { name, value: rawValue } = payload[0];
+      if (Number.isFinite(rawValue)) {
+        return `${name}: ${rawValue}`;
+      }
+      return "-";
     },
   },
 };

@@ -7,6 +7,9 @@ stages:
 build:
   stage: build
   cache:
+    - key: yarn-cache
+      paths: 
+        - .yarn
     - key: "sp-storybook"
       paths:
         - public
@@ -15,6 +18,7 @@ build:
         - node_modules
   before_script:
     - apk add --no-cache libc6-compat
+    - yarn config set cache-folder .yarn
   script:
     - yarn install
     - yarn build
@@ -26,6 +30,9 @@ pages:
     SSH_PRIVATE_KEY_28_80: $SSH_PRIVATE_KEY_28_80
   stage: pages
   cache:
+    - key: yarn-cache
+      paths: 
+        - .yarn
     - key: "sp-storybook"
       paths:
         - public
@@ -41,6 +48,7 @@ pages:
     - eval "$(ssh-agent -s)"
     - ssh-add ~/.ssh/id_rsa
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - yarn config set cache-folder .yarn
   script:
     - yarn install
     - yarn build
