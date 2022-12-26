@@ -2915,7 +2915,6 @@ const mockMetric: IMetric = {
     },
   ],
   unit: "COUNT",
-  step: 30000,
   dropped: false,
 };
 
