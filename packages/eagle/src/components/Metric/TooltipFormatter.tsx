@@ -8,7 +8,6 @@ import { ILegend } from "./type";
 
 const TooltipFormatter: React.FC<
   TooltipProps<number, string> & {
-    uuid: string;
     deselected: string[];
     legends: ILegend[];
     format: (payload: Payload<number, string>) => string;
