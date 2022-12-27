@@ -1,7 +1,8 @@
-const mockMetric2 = {
+import { IMetric } from "@cloudtower/eagle";
+
+const mockMetric2: IMetric = {
   sample_streams: [
     {
-      labels: {},
       points: [
         {
           t: 1671632220000,
@@ -101,7 +102,6 @@ const mockMetric2 = {
       },
     },
     {
-      labels: {},
       points: [
         {
           t: 1671632220000,
@@ -201,7 +201,6 @@ const mockMetric2 = {
       },
     },
   ],
-  step: 3600000,
   dropped: false,
   unit: "bps",
 };

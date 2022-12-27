@@ -4,10 +4,10 @@ import { kitContext } from "@cloudtower/eagle";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import dayjs from "dayjs";
 import React from "react";
+import { Payload } from "recharts/types/component/DefaultTooltipContent";
 
 import mockMetric from "../mockMetric";
 import mockMetric2 from "../mockMetric2";
-
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "RenderChart",
@@ -37,7 +37,7 @@ Primary.args = {
   showLegend: true,
   metricName: "hello",
   metric: mockMetric,
-  uuid: "abc",
+  syncId: "abc",
   height: 200,
   type: GraphType.Area,
   dateRange: [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
@@ -57,7 +57,7 @@ Secondary.args = {
   showLegend: true,
   metricName: "hello",
   metric: mockMetric2,
-  uuid: "abc",
+  syncId: "abc",
   height: 200,
   type: GraphType.Area,
   dateRange: [
@@ -67,8 +67,8 @@ Secondary.args = {
   now: new Date("2022-12-22T13:35:01.234Z").getTime(),
   showXAxis: true,
   tooltipProps: {
-    format: function (payload: Array<Payload<number, string>>): string {
-      const { name, value: rawValue } = payload[0];
+    format: function (payload: Payload<number, string>): string {
+      const { name, value: rawValue } = payload;
       if (Number.isFinite(rawValue)) {
         return `${name}: ${rawValue}`;
       }
