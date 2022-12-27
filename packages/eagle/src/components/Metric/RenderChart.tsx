@@ -177,21 +177,13 @@ const RenderChart = (props: IChartProps) => {
     return (
       <div className={MetricLegendTabStyle}>
         <div className="name-toolbar">
-          {isLegend ? (
-            <MetricLegend
-              streams={streams}
-              metricName={metricName}
-              deselected={deselected}
-              onClick={onLegendClick}
-              legends={legends}
-            />
-          ) : mode !== "single" ? (
-            <LegendComponent
-              id={legends[0].id}
-              name={legends[0].name}
-              color={legends[0].color}
-            />
-          ) : undefined}
+          <MetricLegend
+            streams={streams}
+            metricName={metricName}
+            deselected={deselected}
+            onClick={onLegendClick}
+            legends={legends}
+          />
         </div>
         <div className={cs("content", mode === "single" && "single-content")}>
           {parrotI18n.t("metric.empty")}
@@ -203,22 +195,15 @@ const RenderChart = (props: IChartProps) => {
   return (
     <>
       <div className="metric-toolbar">
-        {showLegend &&
-          (isLegend && streams.length > 0 ? (
-            <MetricLegend
-              streams={streams}
-              metricName={metricName}
-              deselected={deselected}
-              onClick={onLegendClick}
-              legends={legends}
-            />
-          ) : (
-            <LegendComponent
-              id={legends[0].id}
-              name={legends[0].name}
-              color={legends[0].color}
-            />
-          ))}
+        {showLegend && (
+          <MetricLegend
+            streams={streams}
+            metricName={metricName}
+            deselected={deselected}
+            onClick={onLegendClick}
+            legends={legends}
+          />
+        )}
         {actionsProps?.show && (
           <MetricActions dropdown={dropdown} {...actionsProps} />
         )}
