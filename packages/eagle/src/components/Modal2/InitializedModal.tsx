@@ -1,7 +1,7 @@
-import { InitializedModalType, kitContext } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import React, { useContext, useEffect, useRef, useState } from "react";
 
+import { InitializedModalType, kitContext } from "../../spec";
 import { ModalContentError } from "./Error";
 import BaseModal from "./Modal";
 

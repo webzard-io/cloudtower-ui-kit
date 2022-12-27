@@ -1,21 +1,17 @@
-import {
-  AuxiliaryLine,
-  CustomizeColumnType,
-  FailedLoad,
-  HeaderCell,
-  PendingTable,
-  tableScrollToTop,
-  useTransformScrollAndColumns,
-} from "@cloudtower/eagle";
-import {
-  kitContext,
-  RequiredColumnProps,
-  TableProps as KitTableProps,
-} from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
 import React, { useContext, useMemo, useRef } from "react";
 
+import { kitContext, RequiredColumnProps, TableProps } from "../../spec";
+import FailedLoad from "../FailedLoad";
+import {
+  AuxiliaryLine,
+  CustomizeColumnType,
+  HeaderCell,
+  PendingTable,
+  tableScrollToTop,
+  useTransformScrollAndColumns,
+} from "../Table";
 import TableEmpty from "./TableEmpty";
 import TablePagination from "./TablePagination";
 import WrapperComponent from "./WrapperComponent";
@@ -35,7 +31,7 @@ export enum NetworkStatus {
 }
 
 export interface ITowerTableProps<BaseTableData extends { id: string }>
-  extends KitTableProps<BaseTableData> {
+  extends TableProps<BaseTableData> {
   uniqueTableKey: string;
   pagination: {
     count: number;

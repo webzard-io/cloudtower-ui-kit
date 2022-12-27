@@ -1,5 +1,4 @@
-import { Modal2Type } from "@cloudtower/eagle";
-
+import { Modal2Type } from "../../spec";
 import InitializedModal from "./InitializedModal";
 import BaseModal from "./Modal";
 import WizardModal from "./WizardModal";

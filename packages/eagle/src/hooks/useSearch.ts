@@ -1,10 +1,9 @@
-import { hashHistory as history } from "@cloudtower/eagle";
-import { getAllSearch } from "@cloudtower/eagle";
 import { Serializable } from "@tower/utils";
 import _ from "lodash";
 import qs from "querystring";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { getAllSearch, hashHistory } from "../utils";
 import { getSearch, getValue } from "./utils";
 
 export type SearchOperation = {
@@ -49,7 +48,7 @@ const useSearch = <T extends Serializable>(
         ? { ...nextSearch, [key]: JSON.stringify(value) }
         : _.omit(nextSearch, key);
 
-      history[control]({ search: qs.stringify(search) });
+      hashHistory[control]({ search: qs.stringify(search) });
     },
     [key]
   );
@@ -57,7 +56,7 @@ const useSearch = <T extends Serializable>(
   // this effect is used to add history listener to watch changes of target `key`
   // the listener should be remounted when `key` has changed
   useEffect(() => {
-    const unsubscribe = history.listen(() => {
+    const unsubscribe = hashHistory.listen(() => {
       const allSearch = getAllSearch();
       const searchString = allSearch[key];
       if (prevSearch.current[key] !== searchString && !option?.preventRender) {

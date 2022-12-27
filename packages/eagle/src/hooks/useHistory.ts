@@ -1,5 +1,4 @@
-import { history } from "@cloudtower/eagle";
-
+import { history } from "../utils";
 const useHistory = () => {
   return history;
 };

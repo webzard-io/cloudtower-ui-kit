@@ -1,8 +1,8 @@
-import { ButtonGroupType } from "@cloudtower/eagle";
 import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
 import React from "react";
 
+import { ButtonGroupType } from "../../spec";
 import BaseButton from "../Button";
 import Tooltip from "../Tooltip";
 

@@ -1,11 +1,11 @@
 import { DoubleRightOutlined } from "@ant-design/icons";
-import { ExtraOverflow } from "@cloudtower/eagle";
-import { Truncate } from "@cloudtower/eagle";
-import { kitContext } from "@cloudtower/eagle";
 import { Menu } from "antd";
 import cs from "classnames";
 import React, { useContext } from "react";
 
+import { kitContext } from "../../spec";
+import { ExtraOverflow } from "../Overflow";
+import Truncate from "../Truncate";
 import {
   ColorBlockStyle,
   ExtraResource,

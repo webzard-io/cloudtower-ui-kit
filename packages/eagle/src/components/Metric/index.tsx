@@ -1,10 +1,10 @@
-import { ErrorBoundary } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
 import download from "downloadjs";
 import { TFunction } from "i18next";
 import React, { useEffect, useImperativeHandle, useRef, useState } from "react";
 
+import ErrorBoundary from "../ErrorBoundary";
 import { MetricRefType, toLocalTime } from ".";
 import Pointer from "./Pointer";
 import RenderChart, { IChartProps } from "./RenderChart";

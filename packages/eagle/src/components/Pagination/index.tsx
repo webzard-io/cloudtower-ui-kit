@@ -1,10 +1,11 @@
-import { kitContext, PaginationProps } from "@cloudtower/eagle";
-import { Icon } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { Menu } from "antd";
 import cs from "classnames";
 import React, { useContext, useEffect, useMemo, useRef } from "react";
+
+import { kitContext, PaginationProps } from "../../spec";
+import Icon from "../Icon";
 
 const PaginationStyle = css`
   display: flex;

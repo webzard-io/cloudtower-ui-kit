@@ -1,7 +1,8 @@
-import { kitContext } from "@cloudtower/eagle";
 import { css } from "@linaria/core";
 import cs from "classnames";
 import React, { useContext } from "react";
+
+import { kitContext } from "../../spec";
 
 const Inline = css`
   display: inline-block;

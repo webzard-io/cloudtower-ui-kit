@@ -5,12 +5,7 @@
     "outDir": "./dist",
     "jsx": "react",
     "downlevelIteration": true,
-    "disableSizeLimit": true,
-    "baseUrl": "./",
-    "paths": {
-      "@cloudtower/eagle": ["./src/index.ts"],
-      "@cloudtower/parrot": ["../parrot/src/index.ts"]
-    }
+    "disableSizeLimit": true
   },
   "include": ["src", "images.d.ts"],
   "exclude": ["node_modules"]

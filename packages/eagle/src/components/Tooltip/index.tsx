@@ -1,7 +1,8 @@
-import { TooltipProps } from "@cloudtower/eagle";
 import { Tooltip as AntdTooltip } from "antd";
 import cs from "classnames";
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
+
+import { TooltipProps } from "../../spec";
 
 let componentId = 0;
 const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {

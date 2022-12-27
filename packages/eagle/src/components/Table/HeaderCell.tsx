@@ -1,7 +1,7 @@
-import { TableProps } from "@cloudtower/eagle";
 import { css, cx } from "@linaria/core";
 import React from "react";
 
+import { TableProps } from "../../spec";
 import { arrayMove } from "./common";
 import { CustomizeColumnType, useCustomizeColumn } from "./customize-column";
 

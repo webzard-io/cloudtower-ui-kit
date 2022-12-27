@@ -41,7 +41,6 @@ packages:
         - node_modules
   before_script:
     - apk add --no-cache libc6-compat
-    - mkdir .yarn
   script:
     - yarn install --cache-folder=.yarn
     - yarn build
