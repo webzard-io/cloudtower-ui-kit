@@ -1247,11 +1247,6 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cloudtower/parrot@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@cloudtower/parrot/-/parrot-0.13.0.tgz#2df7b9621e2d907fc68eb03cd60b092ec2857699"
-  integrity sha512-S7SS4wrlxNcmPLCoN1z6FMKMoxUEQl78S8LDC9OCPiWN0nPwb/xKvBorkNvBtoHJkYpg+LKcAQDrlOLTK8Nz0Q==
-
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"

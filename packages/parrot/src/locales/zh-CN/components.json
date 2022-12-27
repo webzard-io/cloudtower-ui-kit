@@ -8,6 +8,8 @@
   "previous_items": "前 {size} 项",
   "next_items": "后 {size} 项",
   "push_to": "跳转至",
+  "pagination_range": "第 {range1} – {range2} 项",
+  "pagination_total": "第 {range1} – {range2} 项，共 {total} 项",
   "unknow_error": "未知错误",
   "to": "至"
 }

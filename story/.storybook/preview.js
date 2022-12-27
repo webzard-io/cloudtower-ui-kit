@@ -4,7 +4,7 @@ import "@cloudtower/eagle/dist/style.css";
 
 import "./overrideRoot.css";
 
-import { initParrotI18n } from "@cloudtower/parrot";
+import { initParrotI18n } from "@cloudtower/eagle";
 
 initParrotI18n();
 

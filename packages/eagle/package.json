@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/eagle",
-  "version": "0.15.3-alpha.0",
+  "version": "0.15.3",
   "main": "dist/umd/index.js",
   "module": "./dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -19,7 +19,7 @@
     "generate:images": "node --loader ts-node/esm tools/index.mts"
   },
   "dependencies": {
-    "@cloudtower/parrot": "^0.13.0",
+    "@cloudtower/parrot": "^0.15.3",
     "@linaria/core": "^4.2.2",
     "@linaria/react": "^4.3.0",
     "@smartx/final-form": "^4.19.1-rc2",

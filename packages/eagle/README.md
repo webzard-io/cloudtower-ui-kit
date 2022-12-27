@@ -3,7 +3,7 @@
 ```tsx
 import { antdKit } from "@cloudtower/eagle";
 import { KitStoreProvider, kitContext } from "@cloudtower/eagle";
-import { initParrotI18n } from "@cloudtower/parrot";
+import { initParrotI18n } from "@cloudtower/eagle";
 
 import "@cloudtower/eagle/dist/style.css";
 
