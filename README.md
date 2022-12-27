@@ -116,7 +116,6 @@ tree -d -I "node_modules|dist"
 |   |   |   |   ├── KitStoreProvider (Store Provider,Redux hooks)
 │   │   │   │   ├── antd.tsx
 │   │   │   │   └── ...
-│   │   │   ├── generated
 │   │   │   ├── hooks
 │   │   │   ├── spec (kitContext defined)
 │   │   │   ├── store

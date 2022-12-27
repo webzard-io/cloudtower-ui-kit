@@ -67,7 +67,7 @@ const convert = async () => {
       recursive: true,
     });
     fs.writeFileSync(
-      path.resolve(__dirname, `../src/generated/images-type.ts`),
+      path.resolve(__dirname, `../src/components/images/images-type.ts`),
       output
     );
   } catch (error) {
