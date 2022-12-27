@@ -41,7 +41,6 @@ Primary.args = {
   height: 200,
   type: GraphType.Area,
   dateRange: [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
-  now: new Date("2022-12-13 18:00").getTime(),
   showXAxis: true,
   tooltipProps: {
     format: () => {
@@ -64,7 +63,6 @@ Secondary.args = {
     dayjs("2022-12-21T13:35:01.234Z"),
     dayjs("2022-12-22T13:35:01.234Z"),
   ],
-  now: new Date("2022-12-22T13:35:01.234Z").getTime(),
   showXAxis: true,
   tooltipProps: {
     format: function (payload: Payload<number, string>): string {

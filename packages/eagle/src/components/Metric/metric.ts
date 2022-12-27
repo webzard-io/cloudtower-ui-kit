@@ -1,4 +1,4 @@
-import { DAY, HOUR, MINUTE, WEEK } from "@tower/utils";
+import { DAY, HOUR, MINUTE, SECOND } from "@tower/utils";
 import dayjs from "dayjs";
 import _ from "lodash";
 
@@ -98,105 +98,52 @@ export const getStep = (dateRange: DateRange): number => {
   const range = endDate.valueOf() - startDate.valueOf();
 
   if (range <= 2 * 60 * 60 * 1000) {
+    return SECOND * 30 * 1000;
+  }
+  if (range <= 24 * 60 * 60 * 1000) {
     return MINUTE * 5 * 1000;
   }
-  if (range <= 24 * 60 * 60 * 1000) {
-    return HOUR * 1 * 1000;
-  }
   if (range <= 7 * 24 * 60 * 60 * 1000) {
-    return DAY * 1000;
+    return MINUTE * 30 * 1000;
   }
   if (range <= 30 * 24 * 60 * 60 * 1000) {
     return DAY * 1000;
   }
-  if (range <= 182 * 24 * 60 * 60 * 1000) {
-    return WEEK * 1000;
-  }
-  return WEEK * 1000;
+  return DAY * 1000;
 };
 
-export const getFaultToleranceTime = (dateRange: DateRange) => {
-  const [startDate, endDate] = dateRange;
-  const range = endDate.valueOf() - startDate.valueOf();
-
-  if (range <= 2 * 60 * 60 * 1000) {
-    return 2 * 60 * 1000;
-  }
-
-  if (range <= 24 * 60 * 60 * 1000) {
-    return 10 * 60 * 1000;
-  }
-
-  if (range <= 30 * 24 * 60 * 60 * 1000) {
-    return 60 * 60 * 1000;
-  }
-  if (range <= 182 * 24 * 60 * 60 * 1000) {
-    return 24 * 60 * 60 * 1000;
-  }
-
-  return 120 * 1000;
-};
-
-export const addMissingDataWithZero = (
-  data: IDataPoint[],
-  unit: string,
+const filterDataOverlapping = (
+  data: {
+    t: number;
+    v?: number;
+  }[],
+  startTimestamp: number,
+  length: number,
   step: number,
-  dateRange: DateRange,
-  now = Date.now()
+  tolerance: number
 ) => {
-  const inRangePoints = filterPointsByDateRange(data, dateRange);
-  if (!inRangePoints.length) {
-    return [];
-  }
-  const firsExpectedTimestamp = getFirstExpectedTimestamp(
-    inRangePoints,
-    dateRange,
-    now,
-    step
-  );
-  const expectedPoints: IDataPoint[] = [];
-  // Infinity means no value
-  const tolerance = getFaultToleranceTime(dateRange);
-  if (
-    firsExpectedTimestamp != null &&
-    inRangePoints[0]?.t - firsExpectedTimestamp > tolerance + step
-  ) {
-    inRangePoints.unshift({
-      t: firsExpectedTimestamp,
-      v: -Infinity,
-    });
-  }
-  if (now - inRangePoints[inRangePoints.length - 1].t > tolerance + step) {
-    inRangePoints.push({
-      t: now,
-      v: -Infinity,
-    });
-  }
-
-  inRangePoints.forEach((item, index) => {
-    expectedPoints.push({
-      t: item?.t,
-      v: item?.v,
-    });
-    if (index + 1 <= inRangePoints.length - 1) {
-      const nowTimeRange = inRangePoints[index + 1]?.t - item?.t;
-      if (nowTimeRange > tolerance + step) {
-        const n = Math.floor(nowTimeRange / step);
-        for (let i = 1; i < n; i++) {
-          expectedPoints.push({
-            t: item?.t + step * i,
-            v: -Infinity,
-          });
+  const points = [...new Array(length)]
+    .map((_, index) => {
+      return startTimestamp + index * step;
+    })
+    .map((timestamp) => {
+      const closestPoint = _.minBy(
+        data.filter((value) => {
+          return Math.abs(value.t - timestamp) < tolerance;
+        }),
+        (value) => {
+          return Math.abs(value.t - timestamp);
         }
+      );
+      if (closestPoint == null) {
+        return {
+          t: timestamp,
+          v: -Infinity,
+        };
       }
-    }
-  });
-
-  // TODO: let tooltipFormatter get unit from RenderChart
-  return filterPointsByDateRange(
-    expectedPoints.map((p) => ({ ...p, unit })),
-    dateRange
-  );
+      return closestPoint;
+    });
+  return points;
 };
 
 export const getYDataMax = (dataPoints: IDataPoint[], type: GraphType) => {
@@ -332,18 +279,26 @@ export const convertDataStruct = (streams: IDataPoint[][]) => {
 
 export const transformData = (
   streams: IMetricStream[],
-  unit: string,
-  step: number,
-  dateRange: DateRange,
-  now = Date.now()
+  dateRange: DateRange
 ) => {
+  const [startDate] = dateRange;
+  const step = getStep(dateRange);
+  const tolerance = step / 2 - step / 10;
+  const range = getMs(dateRange);
+  const length = range / step;
+
   const filledStreams = streams.map((stream) => {
-    return addMissingDataWithZero(stream.points, unit, step, dateRange, now);
+    const points = filterDataOverlapping(
+      stream.points,
+      startDate.valueOf(),
+      stream.step == null ? length : range / stream.step,
+      stream.step ?? step,
+      stream.tolerance ?? tolerance
+    );
+    return points;
   });
 
   const converted = convertDataStruct(filledStreams);
 
-  const result = filterPointsByDateRange(converted, dateRange);
-
-  return result;
+  return converted;
 };
