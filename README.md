@@ -45,12 +45,6 @@ The Source Code is Maintained on [github](https://github.com/webzard-io/cloud-to
 
 - Build Packages
 
-  > Due to Codegen's code, It will take 10min.
-
-  > You can remove part of the codegen code, for qucik start.
-
-  > Please check branch `smaller` 's commit `tmp: remove some codegen component`.
-
   At Root of Project, Run
 
   ```
@@ -63,14 +57,6 @@ The Source Code is Maintained on [github](https://github.com/webzard-io/cloud-to
 
   ```
   yarn storybook
-  ```
-
-  Or
-
-  At Story Folder, Run a CRA Project
-
-  ```
-  yarn start
   ```
 
 ## About Husky
@@ -111,28 +97,40 @@ flowchart TB
 ## Key Points of Migration
 
 - Images
-- Graphql Schema
-- Codegen Plugin
 
 Images is copied from @tower/ui
 
-Graphql Schema not been maintenance in ui-kit, Note the relationship between UI-kit and the Graphql schema.
-
-Codegen Plugin is copying from @tower/codegen
-
 ## Packages Introduction
 
-### @cloudtower/eagle
+generate tree list
 
-- Antd-Kit Impl
-- Codegen Component
-- UI-Kit Interface And EmptyImpl
-- Base Component
+```
+tree -d -I "node_modules|dist"
+```
 
-### @cloudtower/claw
-
-- Codegen Plugin
-
-### @cloudtower/parrot
-
-- I18n for @cloudtower/sparrow's UI-Kit
+```
+├── packages
+│   ├── eagle
+│   │   ├── src
+│   │   │   ├── components
+|   |   |   |   ├── KitStoreProvider (Store Provider,Redux hooks)
+│   │   │   │   ├── antd.tsx
+│   │   │   │   └── ...
+│   │   │   ├── generated
+│   │   │   ├── hooks
+│   │   │   ├── spec (kitContext defined)
+│   │   │   ├── store
+│   │   │   ├── styles
+│   │   │   └── utils
+│   │   ├── __test__
+│   │   └── tools
+│   │       └── templates
+│   └── parrot
+│       ├── src
+│       │   └── locales
+│       │       ├── en-US
+│       │       └── zh-CN
+│       └── tools
+│           └── templates
+└── story
+```
