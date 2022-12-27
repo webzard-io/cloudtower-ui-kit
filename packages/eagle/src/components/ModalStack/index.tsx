@@ -1,7 +1,6 @@
+import { closeModal, KitRootState } from "@cloudtower/eagle";
+import { useKitSelector } from "@cloudtower/eagle";
 import React from "react";
-
-import { closeModal, KitRootState } from "../store";
-import { useKitSelector } from "./KitStoreProvider";
 
 const ModalStack: React.FC = () => {
   const stack = useKitSelector<KitRootState["modal"]["stack"]>(

@@ -1,3 +1,4 @@
+import { Actions, KitRootState, store } from "@cloudtower/eagle";
 import React, { createContext, PropsWithChildren } from "react";
 import {
   createDispatchHook,
@@ -5,8 +6,6 @@ import {
   Provider,
   ReactReduxContextValue,
 } from "react-redux";
-
-import { Actions, KitRootState, store } from "../store";
 
 const ctx = createContext<ReactReduxContextValue<KitRootState, Actions>>({
   store: store,
