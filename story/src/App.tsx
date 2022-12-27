@@ -9,7 +9,7 @@ import {
 } from "@cloudtower/eagle";
 import { antdKit, CustomizeColumnType, Icon } from "@cloudtower/eagle";
 import { kitContext } from "@cloudtower/eagle";
-import { initParrotI18n } from "@cloudtower/parrot";
+import { initParrotI18n } from "@cloudtower/eagle";
 import { Button } from "antd";
 import dayjs from "dayjs";
 import React from "react";
