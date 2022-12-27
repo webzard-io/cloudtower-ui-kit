@@ -1,11 +1,12 @@
 import { CheckOutlined } from "@ant-design/icons";
-import { kitContext, WizardBody, WizardModalType } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { Steps } from "antd";
 import cs from "classnames";
 import { isNil } from "lodash";
 import React, { useContext, useMemo, useRef } from "react";
 
+import { kitContext, WizardModalType } from "../../spec";
+import { WizardBody } from "../Styled";
 import { ModalFooterError } from "./Error";
 import BaseModal from "./Modal";
 

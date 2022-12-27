@@ -1,13 +1,11 @@
-import { Icon } from "@cloudtower/eagle";
-import {
-  EntityAsyncStatus,
-  kitContext,
-  Maybe,
-  TaskStatus,
-} from "@cloudtower/eagle";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
+import { EntityAsyncStatus } from "@tower/utils";
+import { Maybe, TaskStatus } from "@tower/utils/lib/generated/types";
 import React, { useContext, useEffect, useState } from "react";
+
+import { kitContext } from "../../spec";
+import Icon from "../Icon";
 
 export const CreatingSelectDropdownStyle = css`
   .ant-select-item {

@@ -1,13 +1,3 @@
-import {
-  kitContext,
-  Maybe,
-  Scalars,
-  SearchOperation,
-  SetSearch,
-  useElementsSize,
-  useSearch,
-} from "@cloudtower/eagle";
-import { Icon } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
@@ -15,6 +5,15 @@ import { SerializableObject } from "@tower/utils";
 import cs from "classnames";
 import _ from "lodash";
 import React, { createContext, useContext, useEffect, useRef } from "react";
+
+import {
+  SearchOperation,
+  SetSearch,
+  useElementsSize,
+  useSearch,
+} from "../../hooks";
+import { kitContext, Maybe, Scalars } from "../../spec";
+import Icon from "../Icon";
 
 const TablePaginationStyle = css``;
 

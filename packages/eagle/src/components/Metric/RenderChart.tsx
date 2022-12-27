@@ -1,8 +1,3 @@
-import {
-  ChartActions,
-  TooltipFormatter,
-  useKitDispatch,
-} from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
 import dayjs from "dayjs";
@@ -24,6 +19,8 @@ import {
 } from "recharts/types/component/DefaultTooltipContent";
 import { AxisDomain } from "recharts/types/util/types";
 
+import { ChartActions } from "../../store";
+import { useKitDispatch } from "../KitStoreProvider";
 import {
   formatStreams,
   getStep,
@@ -35,6 +32,7 @@ import {
 import MetricActions from "./MetricActions";
 import MetricLegend, { LegendComponent } from "./MetricLegend";
 import { MetricLegendTabStyle } from "./styled";
+import TooltipFormatter from "./TooltipFormatter";
 import { DateRange, GraphType, IExportCSVDataType, IMetric } from "./type";
 
 export interface IChartProps<

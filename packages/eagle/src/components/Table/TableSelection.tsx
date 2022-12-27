@@ -1,8 +1,6 @@
-import { kitContext, TableProps } from "@cloudtower/eagle";
-import { useKitSelector } from "@cloudtower/eagle";
-import { KitRootState, store, TableActions } from "@cloudtower/eagle";
 import { css } from "@linaria/core";
 import { CheckboxChangeEvent } from "antd/es/checkbox";
+import { TableProps } from "antd/lib/table";
 import _ from "lodash";
 import React, {
   useCallback,
@@ -13,6 +11,9 @@ import React, {
   useState,
 } from "react";
 
+import { kitContext } from "../../spec";
+import { KitRootState, store, TableActions } from "../../store";
+import { useKitSelector } from "../KitStoreProvider";
 import { eventStopPropagation } from "./common";
 
 const CheckboxStyle = css`

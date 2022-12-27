@@ -1,8 +1,9 @@
-import { kitContext } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import cs from "classnames";
 import React, { useContext } from "react";
+
+import { kitContext } from "../../spec";
 
 const FailedLoadStyle = css`
   width: 100%;

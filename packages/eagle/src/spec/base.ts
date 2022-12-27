@@ -1,4 +1,3 @@
-import { ImagesType } from "@cloudtower/eagle";
 import { FieldRenderProps } from "@smartx/react-final-form";
 import { FieldArrayRenderProps } from "@smartx/react-final-form-arrays";
 import { SerializableObject } from "@tower/utils";
@@ -45,6 +44,7 @@ import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
 import React, { createContext, ReactNode } from "react";
 
+import { ImagesType } from "..";
 import emptyImpl from "./emptyImpl";
 import { Architecture } from "./type";
 

@@ -1,7 +1,9 @@
-import { FullView, Typo } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css, cx } from "@linaria/core";
 import React from "react";
+
+import { FullView } from "../Styled";
+import { Typo } from "../Typo";
 
 const FullViewErrorStyle = css`
   flex-direction: column;

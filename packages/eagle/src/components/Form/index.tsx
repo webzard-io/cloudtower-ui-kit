@@ -1,6 +1,3 @@
-import { FormItemDiv, useKitSelector } from "@cloudtower/eagle";
-import { KitRootState } from "@cloudtower/eagle";
-import { Kit } from "@cloudtower/eagle";
 import {
   FieldState,
   FieldValidator,
@@ -42,6 +39,10 @@ import React, {
 import { CSSTransition } from "react-transition-group";
 
 import FieldError from "../../components/FormError";
+import { Kit } from "../../spec";
+import { KitRootState } from "../../store";
+import { useKitSelector } from "../KitStoreProvider";
+import { FormItemDiv } from "../Styled";
 
 export const FormLayoutContext = React.createContext<Form1LayoutProps>({});
 

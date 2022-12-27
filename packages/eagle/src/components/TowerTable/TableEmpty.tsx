@@ -1,7 +1,8 @@
-import { KitTableContext } from "@cloudtower/eagle";
-import { kitContext } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import React, { useContext } from "react";
+
+import { kitContext } from "../../spec";
+import { KitTableContext } from "../Table";
 
 const TableEmpty: React.FC<{
   searching?: boolean;

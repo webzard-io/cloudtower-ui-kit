@@ -1,5 +1,6 @@
-import { SidebarTable } from "@cloudtower/eagle";
 import React, { PropsWithChildren } from "react";
+
+import { SidebarTable } from "../Table";
 
 const WrapperComponent = (
   props: PropsWithChildren<{

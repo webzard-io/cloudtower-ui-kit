@@ -1,13 +1,13 @@
 import { CloseCircleFilled } from "@ant-design/icons";
-import { useKitDispatch, useKitSelector } from "@cloudtower/eagle";
-import { KitRootState, ModalActions } from "@cloudtower/eagle";
-import { kitContext, Modal2Props } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { Modal as AntdModal } from "antd";
 import cs from "classnames";
 import { isNil } from "lodash";
 import React, { useContext, useRef } from "react";
 
+import { kitContext, Modal2Props } from "../../spec";
+import { KitRootState, ModalActions } from "../../store";
+import { useKitDispatch, useKitSelector } from "../KitStoreProvider";
 import { ModalFooterError } from "./Error";
 
 const Modal: React.FC<

@@ -3,14 +3,6 @@ import {
   ExportOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import {
-  FullView,
-  getAlertIcon,
-  Kit,
-  TextAreaProps,
-  Typo,
-} from "@cloudtower/eagle";
-import { Icon, Loading } from "@cloudtower/eagle";
 import { parrotI18n } from "@cloudtower/parrot";
 import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
@@ -59,17 +51,23 @@ import React, { Fragment, ReactNode, useEffect, useMemo, useRef } from "react";
 import { findDOMNode } from "react-dom";
 import { isElement } from "react-is";
 
+import { Kit, TextAreaProps } from "../spec";
+import { getAlertIcon } from "../utils";
 import Button from "./Button";
 import ButtonGroup from "./ButtonGroup";
+import Icon from "./Icon";
+import Loading from "./Loading";
 import Modal from "./Modal";
 import Modal2 from "./Modal2";
 import Overflow from "./Overflow";
 import Pagination from "./Pagination";
 import Radio, { RadioButton, RadioGroup } from "./Radio";
 import Steps from "./Steps";
+import { FullView } from "./Styled";
 import Switch from "./Switch";
 import KitTable from "./Table";
 import Tooltip from "./Tooltip";
+import { Typo } from "./Typo";
 
 type AntdOption = Kit["option"] & {
   isSelectOption: boolean;

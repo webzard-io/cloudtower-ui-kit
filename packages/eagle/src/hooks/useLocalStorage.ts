@@ -1,8 +1,8 @@
-import { UserSource } from "@cloudtower/eagle";
-import { GlobalSearchHistory, PastTime } from "@cloudtower/eagle";
 import { Serializable, SerializableObject } from "@tower/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { UserSource } from "../spec";
+import { GlobalSearchHistory, PastTime } from "../utils";
 import { getValue } from "./utils";
 
 type SetValue<T> = (obj: T | ((val: T) => T)) => void;

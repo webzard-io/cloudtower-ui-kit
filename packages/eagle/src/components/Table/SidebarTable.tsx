@@ -1,5 +1,7 @@
-import { Sidebar, useSearch } from "@cloudtower/eagle";
 import React, { useCallback, useLayoutEffect, useRef } from "react";
+
+import { useSearch } from "../../hooks";
+import { Sidebar } from "../../utils";
 
 // FIXME
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

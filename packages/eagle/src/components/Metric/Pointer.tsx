@@ -1,6 +1,8 @@
-import { ChartState, useKitSelector } from "@cloudtower/eagle";
 import _ from "lodash";
 import React from "react";
+
+import { ChartState } from "../../store";
+import { useKitSelector } from "../KitStoreProvider";
 
 const Pointer: React.FC<{
   metricWidth: number | undefined;

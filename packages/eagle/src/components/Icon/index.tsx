@@ -1,9 +1,10 @@
-import { ImagesType } from "@cloudtower/eagle";
-import { BaseIcon } from "@cloudtower/eagle";
 import { css } from "@linaria/core";
 import cs from "classnames";
 import _ from "lodash";
 import React, { useMemo, useState } from "react";
+
+import { ImagesType } from "../../generated/images-type";
+import BaseIcon from "../BaseIcon";
 
 export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
   type: ImagesType;

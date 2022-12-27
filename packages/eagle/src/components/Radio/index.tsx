@@ -1,14 +1,11 @@
-import {
-  EMPTY_FUNCTION,
-  RadioButtonProps,
-  RadioProps,
-} from "@cloudtower/eagle";
 import { css, cx } from "@linaria/core";
 import { Input, InputNumber, Radio as AntdRadio } from "antd";
 import { RadioGroupProps as AntdRadioGroupProps } from "antd/lib/radio";
 import _ from "lodash";
 import React, { useState } from "react";
 
+import { RadioButtonProps, RadioProps } from "../../spec";
+import { EMPTY_FUNCTION } from "../../utils";
 import { Typo } from "..";
 
 const RadioStyle = css`
