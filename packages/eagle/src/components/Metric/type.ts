@@ -6,7 +6,6 @@ export interface IMetricData {
 
 export interface IDataPoint {
   t: number;
-  unit?: string;
   v?: number;
   [key: DataPointValueKey]: number | undefined;
 }

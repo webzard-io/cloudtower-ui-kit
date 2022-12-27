@@ -93,11 +93,16 @@ export const getStep = (dateRange: DateRange): number => {
   return DAY * 1000;
 };
 
-const filterDataOverlapping = (
-  data: {
+const filterDataOverlapping = <
+  Data extends {
     t: number;
     v?: number;
-  }[],
+  } = {
+    t: number;
+    v?: number;
+  }
+>(
+  data: Data[],
   startTimestamp: number,
   length: number,
   step: number,
