@@ -2,14 +2,7 @@ import { DAY, HOUR, MINUTE, SECOND } from "@tower/utils";
 import dayjs from "dayjs";
 import _ from "lodash";
 
-import {
-  DateRange,
-  GraphType,
-  IDataPoint,
-  IMetric,
-  IMetricStream,
-  TimeUnit,
-} from "./type";
+import { DateRange, IDataPoint, IMetricStream } from "./type";
 
 export function filterPointsByDateRange(
   points: IDataPoint[],
@@ -34,18 +27,6 @@ export const parseRange = (range: string) => {
   const span = parseInt(range.slice(0, range.length - 1));
   const unit = range.slice(range.length - 1) as "h" | "d";
   return { span, unit };
-};
-
-export const rangeToTimestamp = (range: string) => {
-  const { span, unit } = parseRange(range);
-
-  switch (unit) {
-    case "h":
-      return span * HOUR * 1000;
-
-    case "d":
-      return span * DAY * 1000;
-  }
 };
 
 function getRangeTimestamp(dateRange: DateRange) {
@@ -146,82 +127,6 @@ const filterDataOverlapping = (
   return points;
 };
 
-export const getYDataMax = (dataPoints: IDataPoint[], type: GraphType) => {
-  const values = dataPoints.map((p) => {
-    if (_.isNumber(p?.v)) {
-      return p.v;
-    }
-    const entries = Object.entries(p);
-    if (type === GraphType.Stack) {
-      let sum = 0;
-      for (const [key, value] of entries) {
-        if (/^v(\d*)$/.test(key) && _.isNumber(value)) {
-          sum += value;
-        }
-      }
-      return sum;
-    } else {
-      // Area Graph
-      let max = 0;
-      for (const [key, value] of entries) {
-        if (/^v(\d*)$/.test(key) && _.isNumber(value) && value > max) {
-          max = value;
-        }
-      }
-      return max;
-    }
-  });
-  return Math.max(...values, 0);
-};
-
-export const getFirstExpectedTimestamp = (
-  data: IDataPoint[],
-  dateRange: DateRange,
-  now: number,
-  step: number
-) => {
-  if (data.length === 0) {
-    return;
-  }
-  const first = now - getMs(dateRange);
-  const firstRealTimestamp = data[0].t;
-  return (
-    firstRealTimestamp - Math.floor((firstRealTimestamp - first) / step) * step
-  );
-};
-
-export const stringifyTimeSpan = (
-  timeSpan: { span: number; unit: TimeUnit } | string
-) => {
-  if (typeof timeSpan === "string") return timeSpan;
-  // preset time span
-  switch (`${timeSpan.span}${timeSpan.unit}`) {
-    case "2HOUR":
-      return "2h";
-    case "24HOUR":
-      return "24h";
-    case "7DAY":
-      return "7d";
-    case "30DAY":
-      return "30d";
-    case "6MONTH":
-      return "182d";
-    default:
-      break;
-  }
-  let _span = timeSpan.span;
-  let _unit = timeSpan.unit;
-  if (_unit === TimeUnit.Month) {
-    const before6Month = new Date().setMonth(new Date().getMonth() - _span);
-    const oneDay = 24 * 60 * 60 * 1000;
-    _span = Math.round(
-      Math.abs((new Date().getTime() - before6Month) / oneDay)
-    );
-    _unit = TimeUnit.Day;
-  }
-  return _span + _unit.charAt(0).toLowerCase();
-};
-
 export const toLocalTime = (now: number, shift: number) =>
   new Date(now - shift).toISOString().slice(0, -5);
 
@@ -232,25 +137,6 @@ export type MetricRefType = {
     filename: string;
     filetype: string;
   };
-};
-
-export const formatStreams = (params: {
-  metric: IMetric;
-  dateRange: DateRange;
-}) => {
-  const { metric, dateRange } = params;
-
-  return metric.sample_streams.map((sample_stream) => {
-    if (sample_stream.points) {
-      const points = filterPointsByDateRange(sample_stream.points, dateRange);
-      return {
-        ...sample_stream,
-        points,
-      };
-    }
-
-    return sample_stream;
-  });
 };
 
 export const convertDataStruct = (streams: IDataPoint[][]) => {

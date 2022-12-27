@@ -22,7 +22,6 @@ import { AxisDomain } from "recharts/types/util/types";
 import { ChartActions } from "../../store";
 import { useKitDispatch } from "../KitStoreProvider";
 import {
-  formatStreams,
   getXAxisDomain,
   tickFormatter,
   transformData,
@@ -91,14 +90,11 @@ const RenderChart = (props: IChartProps) => {
   const dispatch = useKitDispatch();
   const [deselected, setDeselected] = useState<string[]>([]);
 
-  const streams = useMemo(
-    () => formatStreams({ metric, dateRange }),
-    [dateRange, metric]
-  );
+  const streams = useMemo(() => metric.sample_streams, [metric]);
 
   const legends = useMemo(() => {
-    return streams.map((stream) => stream.legend);
-  }, [streams]);
+    return metric.sample_streams.map((stream) => stream.legend);
+  }, [metric.sample_streams]);
 
   const areaChartData = useMemo(
     () => transformData(streams, dateRange),
