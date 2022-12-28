@@ -47,7 +47,6 @@ packages:
     - NPM_TOKEN=$QINGHUA_CUI_SMARTX_NPM_TOKEN yarn lerna publish from-package
   only:
     - tags
-    - main
 
 pages:
   variables:
