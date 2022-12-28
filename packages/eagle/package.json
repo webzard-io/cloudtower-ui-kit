@@ -26,7 +26,6 @@
     "@smartx/final-form-arrays": "^3.0.2-rc4",
     "@smartx/react-final-form": "^6.4.0-rc4",
     "@smartx/react-final-form-arrays": "^3.1.1-rc5",
-    "downloadjs": "^1.4.7",
     "history": "^4.9",
     "recharts": "^2.1.16"
   },
@@ -40,7 +39,6 @@
     "@testing-library/react-hooks": "^8.0.1",
     "@tower/provider-interface": "^1.9.1",
     "@tower/utils": "^1.10.0",
-    "@types/downloadjs": "^1.4.3",
     "@types/history": "^4.7.11",
     "@types/react": "^17.0.50",
     "@types/react-is": "^17.0.3",

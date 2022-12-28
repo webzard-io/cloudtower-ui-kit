@@ -31,7 +31,7 @@ import MetricActions from "./MetricActions";
 import MetricLegend from "./MetricLegend";
 import { MetricLegendTabStyle } from "./styled";
 import TooltipFormatter from "./TooltipFormatter";
-import { DateRange, GraphType, IExportCSVDataType, IMetric } from "./type";
+import { DateRange, GraphType, IMetric } from "./type";
 
 export interface IChartProps<
   TValue extends ValueType = string,
@@ -47,7 +47,6 @@ export interface IChartProps<
   mode?: "simple" | "legend" | "single";
   averageLine?: boolean;
   dropdown?: React.ReactNode;
-  onChartDataChange?: (data: Array<IExportCSVDataType>) => void;
   dateRange: DateRange;
   onLabelsChange?: (labels: string[]) => void;
   metric: IMetric;
