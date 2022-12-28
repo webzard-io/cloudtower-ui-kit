@@ -2,7 +2,6 @@ import cs from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 
 import ErrorBoundary from "../ErrorBoundary";
-import { MetricRefType } from ".";
 import Pointer from "./Pointer";
 import RenderChart, { IChartProps } from "./RenderChart";
 import { MetricWrapper } from "./styled";
@@ -23,10 +22,7 @@ export type MetricProps = {
   chartProps: Omit<IChartProps, "uuid">;
 };
 
-export const Metric = (
-  props: MetricProps,
-  ref: React.ForwardedRef<MetricRefType>
-) => {
+const Metric = (props: MetricProps) => {
   const {
     height = 154,
     showPointer = true,
@@ -57,16 +53,7 @@ export const Metric = (
   );
 };
 
-const component = React.forwardRef(Metric) as (
-  props: MetricProps & {
-    ref?: React.ForwardedRef<MetricRefType>;
-  }
-) => ReturnType<typeof Metric>;
-
-export default component;
-
-//@ts-ignore
-component.name = "Metric";
+export default Metric;
 
 export * from "./metric";
 export * from "./MetricActions";
