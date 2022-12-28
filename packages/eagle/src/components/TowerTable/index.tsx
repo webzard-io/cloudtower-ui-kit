@@ -2,11 +2,11 @@ import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
 import React, { useContext, useMemo, useRef } from "react";
 
+import { CustomizeColumnType } from "../../hooks";
 import { kitContext, RequiredColumnProps, TableProps } from "../../spec";
 import FailedLoad from "../FailedLoad";
 import {
   AuxiliaryLine,
-  CustomizeColumnType,
   HeaderCell,
   PendingTable,
   tableScrollToTop,

@@ -1,9 +1,10 @@
 import { css, cx } from "@linaria/core";
 import React from "react";
 
+import { CustomizeColumnType } from "../../hooks";
 import { TableProps } from "../../spec";
 import { arrayMove } from "./common";
-import { CustomizeColumnType, useCustomizeColumn } from "./customize-column";
+import { useCustomizeColumn } from "./customize-column";
 
 const thCss = css`
   background: white;
