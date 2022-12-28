@@ -22,8 +22,6 @@ build:
   script:
     - yarn install --cache-folder=.yarn
     - yarn build
-  rules:
-    - if: $CI_COMMIT_REF_NAME == "main"
 
 packages:
   variables:
@@ -82,5 +80,5 @@ pages:
   artifacts:
     paths:
       - public
-  rules:
-    - if: $CI_COMMIT_REF_NAME == "main"
+  only:
+    - main
