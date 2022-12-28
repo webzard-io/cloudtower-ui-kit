@@ -1,26 +1,28 @@
 import _ from "lodash";
 import { useCallback, useMemo, useRef } from "react";
 
-import { getValue, useLocalStorage } from "../../hooks";
+import { CustomizeColumnType, getValue, useLocalStorage } from "../../hooks";
 
-export type CustomizeColumnType = {
-  key: string;
-  width?: number;
-  display: boolean;
-};
-
-type T = CustomizeColumnType[];
 export const useCustomizeColumn = (
   key: string,
-  defaultFieldsValue: T | (() => T)
-): [T, (obj: T | ((val: T) => T)) => void, (_key?: string) => void] => {
+  defaultFieldsValue: CustomizeColumnType[] | (() => CustomizeColumnType[])
+): [
+  CustomizeColumnType[],
+  (
+    obj:
+      | CustomizeColumnType[]
+      | ((val: CustomizeColumnType[]) => CustomizeColumnType[])
+  ) => void,
+  (_key?: string) => void
+] => {
   const [storage, setStorage] = useLocalStorage("table-customize-column", {});
   const keyRef = useRef(key);
   keyRef.current = key;
 
   const fieldsValue = useMemo(
     () => {
-      const unwrappedValue = getValue<T>(defaultFieldsValue);
+      const unwrappedValue =
+        getValue<CustomizeColumnType[]>(defaultFieldsValue);
       if (key in storage) {
         const setOfOldColumnKeys = new Set(
           storage[key].map((item) => item.key)
@@ -44,8 +46,12 @@ export const useCustomizeColumn = (
     [storage, key]
   );
 
-  const setValue = (val: T | ((val: T) => T)) => {
-    const nextValue = getValue<T>(val, fieldsValue);
+  const setValue = (
+    val:
+      | CustomizeColumnType[]
+      | ((val: CustomizeColumnType[]) => CustomizeColumnType[])
+  ) => {
+    const nextValue = getValue<CustomizeColumnType[]>(val, fieldsValue);
     setStorage({ ...storage, [key]: nextValue });
   };
 

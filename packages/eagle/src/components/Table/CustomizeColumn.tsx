@@ -4,10 +4,10 @@ import { styled } from "@linaria/react";
 import { Checkbox } from "antd";
 import React, { DragEvent, useContext } from "react";
 
+import { CustomizeColumnType } from "../../hooks";
 import { kitContext } from "../../spec";
 import Icon from "../Icon";
 import { arrayMove } from "./common";
-import { CustomizeColumnType, useCustomizeColumn } from "./customize-column";
 
 const DropdownWrapper = css`
   &.ant-dropdown {
@@ -139,31 +139,30 @@ type Customize = CustomizeColumnType & {
 };
 
 type CustomizeColumnProps = {
-  defaultCustomizeColumn: [
-    string,
-    CustomizeColumnType[] | (() => CustomizeColumnType[])
-  ];
   disabledColumnKeys: string[];
-  allColumnKeys?: string[];
+  renderKeys: string[];
   columnTitleMap: Record<string, React.ReactNode | (() => React.ReactNode)>;
   ["data-test-id"]: string;
   customizableColumnKeys?: string[];
+  customizeColumn: CustomizeColumnType[];
+  setCustomizeColumn: (
+    obj:
+      | CustomizeColumnType[]
+      | ((val: CustomizeColumnType[]) => CustomizeColumnType[])
+  ) => void;
 };
 
 let dragColumnIndex = 0;
 
 const DropdownOverlay: React.FC<CustomizeColumnProps> = (props) => {
   const {
-    defaultCustomizeColumn,
-    allColumnKeys,
+    renderKeys,
     disabledColumnKeys,
     columnTitleMap,
-    customizableColumnKeys,
+    customizeColumn,
+    setCustomizeColumn,
   } = props;
   const kit = useContext(kitContext);
-  const [customizeColumn, setCustomizeColumn] = useCustomizeColumn(
-    ...defaultCustomizeColumn
-  );
 
   const columns = customizeColumn.map((column) => {
     let title: React.ReactNode = "";
@@ -175,20 +174,12 @@ const DropdownOverlay: React.FC<CustomizeColumnProps> = (props) => {
     } else if (mappedTitle) {
       title = mappedTitle;
     }
-    const isRender = () => {
-      if (allColumnKeys && !allColumnKeys.includes(column.key)) {
-        return false;
-      }
-      if (customizableColumnKeys) {
-        return customizableColumnKeys.includes(column.key);
-      }
-      return true;
-    };
+
     return {
       ...column,
       disable: disabledColumnKeys.includes(column.key),
       title,
-      render: isRender(),
+      render: renderKeys.includes(column.key),
     };
   });
 
@@ -253,17 +244,15 @@ const DropdownOverlay: React.FC<CustomizeColumnProps> = (props) => {
                   disabled={column.disable}
                   onChange={(event) => {
                     setCustomizeColumn((columns) => {
-                      // TODO: should not init width
-                      const defaultColumn =
-                        typeof defaultCustomizeColumn[1] === "function"
-                          ? defaultCustomizeColumn[1]()
-                          : defaultCustomizeColumn[1];
-
-                      columns.forEach((column, index) => {
-                        column.width = defaultColumn[index].width;
+                      return columns.map((col, i) => {
+                        if (i === index) {
+                          return {
+                            ...col,
+                            display: event.target.checked,
+                          };
+                        }
+                        return col;
                       });
-                      columns[index].display = event.target.checked;
-                      return columns;
                     });
                   }}
                 >

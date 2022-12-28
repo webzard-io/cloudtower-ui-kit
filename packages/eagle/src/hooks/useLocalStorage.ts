@@ -33,10 +33,10 @@ type LocalStorageUser =
   | { id: string; username: string; name: string; source: UserSource }
   | undefined;
 
-type CustomizeColumnType = {
+export type CustomizeColumnType = {
   key: string;
   width?: number;
-  display: boolean;
+  display?: boolean;
 };
 
 export type LocalStorage = {
