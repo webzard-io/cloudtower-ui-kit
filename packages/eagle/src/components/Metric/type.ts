@@ -6,7 +6,6 @@ export interface IMetricData {
 
 export interface IDataPoint {
   t: number;
-  unit?: string;
   v?: number;
   [key: DataPointValueKey]: number | undefined;
 }
@@ -24,6 +23,8 @@ export interface ILegend {
 export interface IMetricStream {
   points: IDataPoint[];
   legend: ILegend;
+  step?: number;
+  tolerance?: number;
 }
 
 export interface IMetric {

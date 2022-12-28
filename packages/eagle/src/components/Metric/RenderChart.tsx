@@ -22,15 +22,13 @@ import { AxisDomain } from "recharts/types/util/types";
 import { ChartActions } from "../../store";
 import { useKitDispatch } from "../KitStoreProvider";
 import {
-  formatStreams,
-  getStep,
   getXAxisDomain,
   tickFormatter,
   transformData,
   xaxisCal,
 } from "./metric";
 import MetricActions from "./MetricActions";
-import MetricLegend, { LegendComponent } from "./MetricLegend";
+import MetricLegend from "./MetricLegend";
 import { MetricLegendTabStyle } from "./styled";
 import TooltipFormatter from "./TooltipFormatter";
 import { DateRange, GraphType, IExportCSVDataType, IMetric } from "./type";
@@ -53,7 +51,6 @@ export interface IChartProps<
   dateRange: DateRange;
   onLabelsChange?: (labels: string[]) => void;
   metric: IMetric;
-  now?: number;
   yAxisProps?: {
     domain?: AxisDomain;
     ticks?: (string | number)[];
@@ -85,32 +82,23 @@ const RenderChart = (props: IChartProps) => {
     dateRange,
     onLabelsChange,
     metric,
-    now = Date.now(),
     yAxisProps,
     actionsProps,
     tooltipProps,
   } = props;
 
-  const isLegend = mode === "legend";
   const dispatch = useKitDispatch();
   const [deselected, setDeselected] = useState<string[]>([]);
 
-  const streams = useMemo(
-    () => formatStreams({ metric, dateRange }),
-    [dateRange, metric]
-  );
+  const streams = useMemo(() => metric.sample_streams, [metric]);
 
   const legends = useMemo(() => {
-    return streams.map((stream) => stream.legend);
-  }, [streams]);
-
-  const step = useMemo(() => {
-    return getStep(dateRange);
-  }, [dateRange]);
+    return metric.sample_streams.map((stream) => stream.legend);
+  }, [metric.sample_streams]);
 
   const areaChartData = useMemo(
-    () => transformData(streams, metric.unit, step, dateRange, now),
-    [dateRange, metric.unit, now, step, streams]
+    () => transformData(streams, dateRange),
+    [dateRange, streams]
   );
 
   const xaxisEndTime = useMemo(
@@ -177,21 +165,13 @@ const RenderChart = (props: IChartProps) => {
     return (
       <div className={MetricLegendTabStyle}>
         <div className="name-toolbar">
-          {isLegend ? (
-            <MetricLegend
-              streams={streams}
-              metricName={metricName}
-              deselected={deselected}
-              onClick={onLegendClick}
-              legends={legends}
-            />
-          ) : mode !== "single" ? (
-            <LegendComponent
-              id={legends[0].id}
-              name={legends[0].name}
-              color={legends[0].color}
-            />
-          ) : undefined}
+          <MetricLegend
+            streams={streams}
+            metricName={metricName}
+            deselected={deselected}
+            onClick={onLegendClick}
+            legends={legends}
+          />
         </div>
         <div className={cs("content", mode === "single" && "single-content")}>
           {parrotI18n.t("metric.empty")}
@@ -203,22 +183,15 @@ const RenderChart = (props: IChartProps) => {
   return (
     <>
       <div className="metric-toolbar">
-        {showLegend &&
-          (isLegend && streams.length > 0 ? (
-            <MetricLegend
-              streams={streams}
-              metricName={metricName}
-              deselected={deselected}
-              onClick={onLegendClick}
-              legends={legends}
-            />
-          ) : (
-            <LegendComponent
-              id={legends[0].id}
-              name={legends[0].name}
-              color={legends[0].color}
-            />
-          ))}
+        {showLegend && (
+          <MetricLegend
+            streams={streams}
+            metricName={metricName}
+            deselected={deselected}
+            onClick={onLegendClick}
+            legends={legends}
+          />
+        )}
         {actionsProps?.show && (
           <MetricActions dropdown={dropdown} {...actionsProps} />
         )}
