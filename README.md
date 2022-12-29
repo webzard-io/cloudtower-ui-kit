@@ -133,3 +133,13 @@ tree -d -I "node_modules|dist"
 │           └── templates
 └── story
 ```
+
+## How To Release
+
+1. Checkout a new branch named `ci` from main
+2. Do Version Update [Version Update](#version-update)
+3. Push to Gitlab
+
+```
+git push gitlab ci
+```
