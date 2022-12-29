@@ -1,15 +1,11 @@
-import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
-import download from "downloadjs";
-import { TFunction } from "i18next";
-import React, { useEffect, useImperativeHandle, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import ErrorBoundary from "../ErrorBoundary";
-import { MetricRefType, toLocalTime } from ".";
 import Pointer from "./Pointer";
 import RenderChart, { IChartProps } from "./RenderChart";
 import { MetricWrapper } from "./styled";
-import { IExportCSVDataType, TimeUnit } from "./type";
+import { TimeUnit } from "./type";
 
 export type MetricProps = {
   height?: number;
@@ -24,64 +20,22 @@ export type MetricProps = {
       }
     | string;
   chartProps: Omit<IChartProps, "uuid">;
-  transformDataToCsv: (
-    data: IExportCSVDataType[],
-    shift: number,
-    t: TFunction
-  ) => string;
 };
 
-export const Metric = (
-  props: MetricProps,
-  ref: React.ForwardedRef<MetricRefType>
-) => {
+const Metric = (props: MetricProps) => {
   const {
     height = 154,
     showPointer = true,
     showLegend = true,
     showXaxis = false,
     chartProps,
-    transformDataToCsv,
   } = props;
   const [width, setWidth] = useState<number>();
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const exportCSVDataRef = useRef<Array<IExportCSVDataType>>([]);
 
   useEffect(() => {
     setWidth(wrapperRef.current?.offsetWidth);
   }, []);
-
-  const getCSVFileData: (filename?: string) => {
-    data: string;
-    filename: string;
-    filetype: string;
-  } = (filename = "") => {
-    const shift = new Date().getTimezoneOffset() * 60000;
-    const csvStr = transformDataToCsv(
-      exportCSVDataRef.current,
-      shift,
-      parrotI18n.t
-    );
-    const now = toLocalTime(new Date().getTime(), shift);
-    return {
-      data: csvStr,
-      filename: `${filename}-${now}.csv`,
-      filetype: "text/csv;charset=utf-8",
-    };
-  };
-
-  // default export csv & download function
-  const exportCSV = (filename: string) => {
-    const file = getCSVFileData(filename);
-
-    download(file.data, file.filename, file.filetype);
-  };
-
-  useImperativeHandle(ref, () => ({ exportCSV, getCSVFileData }));
-
-  function onChartDataChange(data: Array<IExportCSVDataType>) {
-    exportCSVDataRef.current = data;
-  }
 
   return (
     <ErrorBoundary>
@@ -90,7 +44,7 @@ export const Metric = (
         ref={wrapperRef}
         style={{ height: showLegend ? height + 30 : height }}
       >
-        <RenderChart onChartDataChange={onChartDataChange} {...chartProps} />
+        <RenderChart {...chartProps} />
         {showPointer && (
           <Pointer uuid={chartProps.syncId} metricWidth={width} />
         )}
@@ -99,16 +53,7 @@ export const Metric = (
   );
 };
 
-const component = React.forwardRef(Metric) as (
-  props: MetricProps & {
-    ref?: React.ForwardedRef<MetricRefType>;
-  }
-) => ReturnType<typeof Metric>;
-
-export default component;
-
-//@ts-ignore
-component.name = "Metric";
+export default Metric;
 
 export * from "./metric";
 export * from "./MetricActions";

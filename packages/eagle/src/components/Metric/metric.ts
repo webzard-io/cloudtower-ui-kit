@@ -132,9 +132,6 @@ export const filterDataOverlapping = <
   return points;
 };
 
-export const toLocalTime = (now: number, shift: number) =>
-  new Date(now - shift).toISOString().slice(0, -5);
-
 export type MetricRefType = {
   exportCSV: (filename: string) => void;
   getCSVFileData: (filename?: string) => {

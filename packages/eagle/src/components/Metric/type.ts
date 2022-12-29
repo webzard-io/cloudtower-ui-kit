@@ -33,12 +33,6 @@ export interface IMetric {
   dropped: boolean;
 }
 
-export type IExportCSVDataType = {
-  labelName: string;
-  pointData: IDataPoint[];
-  unit?: string;
-};
-
 export enum TimeUnit {
   Day = "DAY",
   Hour = "HOUR",
