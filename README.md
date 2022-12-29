@@ -136,10 +136,10 @@ tree -d -I "node_modules|dist"
 
 ## How To Release
 
-1. Checkout a new branch named `ci` from main
+1. Checkout a new branch named `${ci_branch}` from main
 
 ```
-git switch -c ci origin/main
+git switch -c ${ci_branch} origin/main
 ```
 
 2. Do Version Update [Version Update](#version-update)
@@ -147,5 +147,5 @@ git switch -c ci origin/main
 3. Push to Gitlab
 
 ```
-git push gitlab ci
+git push gitlab ${ci_branch}
 ```
