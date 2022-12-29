@@ -166,6 +166,7 @@ const mockMetric2: IMetric = {
     },
   ],
   dropped: false,
+  unit: "bps",
 };
 
 export default mockMetric2;
