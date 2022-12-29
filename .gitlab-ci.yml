@@ -1,12 +1,12 @@
 image: registry.smtx.io/cloudtower/node:16-alpine
 
 stages:
-  - build
+  - unit-test
   - packages
   - pages
 
-build:
-  stage: build
+unit-test:
+  stage: unit-test
   cache:
     - key: yarn-cache
       paths:
@@ -22,8 +22,6 @@ build:
   script:
     - yarn install --cache-folder=.yarn
     - yarn build
-  rules:
-    - if: $CI_COMMIT_REF_NAME == "main"
 
 packages:
   variables:
@@ -82,5 +80,5 @@ pages:
   artifacts:
     paths:
       - public
-  rules:
-    - if: $CI_COMMIT_REF_NAME == "main"
+  only:
+    - main
