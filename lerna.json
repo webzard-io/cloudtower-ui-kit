@@ -1,10 +1,13 @@
 {
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "0.16.2",
+  "version": "0.16.2-publish.5",
   "command": {
     "version": {
-      "allowBranch": ["main", "ci"],
+      "allowBranch": [
+        "main",
+        "ci"
+      ],
       "message": "chore(release): publish %s"
     }
   }
