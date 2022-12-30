@@ -4,9 +4,7 @@
   "version": "0.16.2",
   "command": {
     "version": {
-      "allowBranch": [
-        "ci"
-      ]
+      "noAllowBranch": ["main"]
     }
   }
 }
