@@ -38,7 +38,7 @@ packages:
       paths:
         - node_modules
   before_script:
-    - apk add --no-cache libc6-compat
+    - apk add --no-cache libc6-compat git
   script:
     - echo //registry.npmjs.org/:_authToken=${QINGHUA_CUI_SMARTX_NPM_TOKEN} > .npmrc
     - yarn install --cache-folder=.yarn
