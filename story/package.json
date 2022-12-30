@@ -1,9 +1,9 @@
 {
   "name": "@cloudtower/story",
-  "version": "0.16.2-publish.5",
+  "version": "0.16.2-publish.8",
   "private": true,
   "dependencies": {
-    "@cloudtower/eagle": "0.16.2-publish.5",
+    "@cloudtower/eagle": "0.16.2-publish.8",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
