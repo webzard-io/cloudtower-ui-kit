@@ -4,11 +4,7 @@
   "version": "0.16.2-publish.5",
   "command": {
     "version": {
-      "allowBranch": [
-        "main",
-        "ci"
-      ],
-      "message": "chore(release): publish %s"
+      "message": "chore(release): pre publish %s"
     }
   }
 }
