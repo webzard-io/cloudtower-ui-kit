@@ -4,7 +4,8 @@
   "version": "0.16.2",
   "command": {
     "version": {
-      "allowBranch": ["main"]
+      "allowBranch": ["main", "ci"],
+      "message": "chore(release): publish %s"
     }
   }
 }
