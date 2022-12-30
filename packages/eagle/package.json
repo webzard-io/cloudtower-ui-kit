@@ -12,8 +12,6 @@
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "pregenerate": "rm -rf src/generated",
-    "generate": "yarn generate:images",
     "typings": "yarn typings:main",
     "typings:main": "tsc -v && tsc -p tsconfig.typings.json",
     "generate:images": "node --loader ts-node/esm tools/index.mts"
