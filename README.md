@@ -74,7 +74,7 @@ If you are using Yarn + Windows. You can check this document https://typicode.gi
 use lerna cli for quick version update
 
 ```
-yarn lerna version patch
+yarn lerna version patch --exact --force-publish
 ```
 
 ```mermaid
@@ -138,14 +138,30 @@ tree -d -I "node_modules|dist"
 
 1. Checkout a new branch named `${ci_branch}` from main
 
-```
-git switch -c ${ci_branch} origin/main
-```
+   ```
+   git switch -c ${ci_branch} origin/main
+   ```
 
 2. Do Version Update [Version Update](#version-update)
 
-3. Push to Gitlab
+   ```
+   yarn lerna version patch --exact --force-publish
+   ```
 
-```
-git push gitlab ${ci_branch}
-```
+3. Push To Gitlab
+
+   It will trigger ci on gitlab
+
+   ```
+   git push gitlab ${ci_branch} --follow-tags
+   ```
+
+4. Create PR
+
+   After Released,Please Create a PR.
+
+   Source is `${ci_branch}`
+
+   Target is `main`
+
+   Make the version in the main branch up to date.
