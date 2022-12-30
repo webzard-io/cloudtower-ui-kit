@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/eagle",
-  "version": "0.16.1",
+  "version": "0.16.2-publish.12",
   "main": "dist/umd/index.js",
   "module": "./dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -12,14 +12,12 @@
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "pregenerate": "rm -rf src/generated",
-    "generate": "yarn generate:images",
     "typings": "yarn typings:main",
     "typings:main": "tsc -v && tsc -p tsconfig.typings.json",
     "generate:images": "node --loader ts-node/esm tools/index.mts"
   },
   "dependencies": {
-    "@cloudtower/parrot": "^0.16.1",
+    "@cloudtower/parrot": "0.16.2-publish.12",
     "@linaria/core": "^4.2.2",
     "@linaria/react": "^4.3.0",
     "@smartx/final-form": "^4.19.1-rc2",
