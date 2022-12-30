@@ -42,9 +42,8 @@ packages:
   script:
     - echo //registry.npmjs.org/:_authToken=${QINGHUA_CUI_SMARTX_NPM_TOKEN} > .npmrc
     - yarn install --cache-folder=.yarn
-    - yarn lerna version $CI_COMMIT_TAG --exact --force-publish --yes
     - yarn build
-    - yarn lerna publish from-package --no-verify-access --yes
+    - yarn lerna publish $CI_COMMIT_TAG --exact --force-publish --yes
   rules:
     - if: "$CI_COMMIT_TAG"
 
