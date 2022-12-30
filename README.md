@@ -148,6 +148,12 @@ tree -d -I "node_modules|dist"
    yarn lerna version patch --exact --force-publish
    ```
 
+   or
+
+   ```
+   yarn lerna version ${your_version} --exact --force-publish
+   ```
+
 3. Push To Gitlab
 
    It will trigger ci on gitlab
