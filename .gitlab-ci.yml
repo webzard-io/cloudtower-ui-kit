@@ -41,7 +41,7 @@ packages:
     - apk add --no-cache libc6-compat git
   script:
     - echo //registry.npmjs.org/:_authToken=${QINGHUA_CUI_SMARTX_NPM_TOKEN} > ~/.npmrc
-    - yarn install --cache-folder=.yarn
+    - yarn install --frozen-lockfile --cache-folder=.yarn
     - yarn build
     - yarn lerna publish from-git --no-verify-access --yes
   rules:
