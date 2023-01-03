@@ -1,4 +1,3 @@
-import { parrotI18n } from "@cloudtower/parrot";
 import React from "react";
 import { WithTranslation, withTranslation } from "react-i18next";
 
@@ -28,4 +27,4 @@ class ErrorBoundary extends React.Component<
   }
 }
 
-export default withTranslation(parrotI18n)(ErrorBoundary);
+export default withTranslation()(ErrorBoundary);

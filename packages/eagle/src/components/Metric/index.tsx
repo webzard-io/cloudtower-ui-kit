@@ -1,3 +1,4 @@
+import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -38,7 +39,7 @@ const Metric = (props: MetricProps) => {
   }, []);
 
   return (
-    <ErrorBoundary>
+    <ErrorBoundary i18n={parrotI18n}>
       <MetricWrapper
         className={cs("metric-wrapper", !showXaxis && "hidden-xaxis")}
         ref={wrapperRef}
