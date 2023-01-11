@@ -22,9 +22,9 @@ import { AxisDomain } from "recharts/types/util/types";
 import { ChartActions } from "../../store";
 import { useKitDispatch } from "../KitStoreProvider";
 import {
+  convertDataStruct,
   getXAxisDomain,
   tickFormatter,
-  transformData,
   xaxisCal,
 } from "./metric";
 import MetricActions from "./MetricActions";
@@ -96,8 +96,8 @@ const RenderChart = (props: IChartProps) => {
   }, [metric.sample_streams]);
 
   const areaChartData = useMemo(
-    () => transformData(streams, dateRange),
-    [dateRange, streams]
+    () => convertDataStruct(streams.map((stream) => stream.points)),
+    [streams]
   );
 
   const xaxisEndTime = useMemo(
