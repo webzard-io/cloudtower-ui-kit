@@ -77,6 +77,8 @@ const mockMetric2: IMetric = {
           v: 1596,
         },
       ],
+      step: 3600_000,
+      tolerance: 1700_000,
       legend: {
         id: "send_bandwidth",
         name: "send_bandwidth",
@@ -158,6 +160,8 @@ const mockMetric2: IMetric = {
           v: 1596,
         },
       ],
+      step: 3600_000,
+      tolerance: 1700_000,
       legend: {
         id: "receive_bandwidth",
         name: "receive_bandwidth",

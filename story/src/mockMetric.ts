@@ -965,6 +965,8 @@ const mockMetric: IMetric = {
           v: 0,
         },
       ],
+      step: 30_000,
+      tolerance: 14_000,
       legend: {
         id: "1",
         name: "loooooooooooooooooooooooooooooooooooooooooooong_legend1",
@@ -1936,6 +1938,8 @@ const mockMetric: IMetric = {
           v: 0,
         },
       ],
+      step: 30_000,
+      tolerance: 14_000,
       legend: {
         id: "2",
         name: "loooooooooooooooooooooooooooooooooooooooooooong_legend2",
@@ -2906,6 +2910,8 @@ const mockMetric: IMetric = {
           v: 1,
         },
       ],
+      step: 30_000,
+      tolerance: 14_000,
       legend: {
         id: "3",
         name: "loooooooooooooooooooooooooooooooooooooooooooong_legend3",
