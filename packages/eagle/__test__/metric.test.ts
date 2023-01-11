@@ -990,8 +990,9 @@ describe("filterDataOverlapping", () => {
     const step = 20 * 60 * 1000;
     const tolerance = step / 2 - step / 10;
     const range = getMs(dateRange);
-    const length = range / step;
     const stream: IMetricStream = {
+      step,
+      tolerance,
       points: [
         {
           t: dayjs("2022-12-13 15:55").valueOf(),
@@ -1042,9 +1043,9 @@ describe("filterDataOverlapping", () => {
     const result = filterDataOverlapping(
       stream.points,
       startDate.valueOf(),
-      stream.step == null ? length : range / stream.step,
-      stream.step ?? step,
-      stream.tolerance ?? tolerance
+      range / stream.step,
+      stream.step,
+      stream.tolerance
     );
     expect(result.length).toBe(6);
     expect(result).toMatchInlineSnapshot(`
