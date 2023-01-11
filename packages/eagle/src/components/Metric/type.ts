@@ -23,8 +23,8 @@ export interface ILegend {
 export interface IMetricStream {
   points: IDataPoint[];
   legend: ILegend;
-  step?: number;
-  tolerance?: number;
+  step: number;
+  tolerance: number;
 }
 
 export interface IMetric {

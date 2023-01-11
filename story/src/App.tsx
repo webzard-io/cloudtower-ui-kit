@@ -1,20 +1,12 @@
 import "antd/dist/antd.css";
 import "@cloudtower/eagle/dist/style.css";
 
-import {
-  GraphType,
-  IChartProps,
-  RenderChart,
-  TowerTable,
-} from "@cloudtower/eagle";
+import { TowerTable } from "@cloudtower/eagle";
 import { antdKit, CustomizeColumnType, Icon } from "@cloudtower/eagle";
 import { kitContext } from "@cloudtower/eagle";
 import { initParrotI18n } from "@cloudtower/eagle";
 import { Button } from "antd";
-import dayjs from "dayjs";
 import React from "react";
-
-import mockMetric from "./mockMetric";
 
 initParrotI18n();
 
@@ -83,23 +75,6 @@ const args = {
   },
 };
 
-const renderChartArgs: IChartProps = {
-  mode: "legend",
-  showLegend: true,
-  metricName: "hello",
-  metric: mockMetric,
-  syncId: "abc",
-  height: 200,
-  type: GraphType.Area,
-  dateRange: [dayjs("2022-12-13 16:00"), dayjs("2022-12-13 18:00")],
-  showXAxis: true,
-  tooltipProps: {
-    format: () => {
-      return "hello tooltip";
-    },
-  },
-};
-
 function App() {
   return (
     <kitContext.Provider value={antdKit}>
@@ -109,7 +84,6 @@ function App() {
         <antdKit.button loading={true}>button</antdKit.button>
         <Button loading={true}>button</Button>
         <TowerTable {...args} />
-        <RenderChart {...renderChartArgs} />
       </div>
     </kitContext.Provider>
   );
