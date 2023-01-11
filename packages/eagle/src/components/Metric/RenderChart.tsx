@@ -21,17 +21,12 @@ import { AxisDomain } from "recharts/types/util/types";
 
 import { ChartActions } from "../../store";
 import { useKitDispatch } from "../KitStoreProvider";
-import {
-  convertDataStruct,
-  getXAxisDomain,
-  tickFormatter,
-  xaxisCal,
-} from "./metric";
+import { convertDataStruct } from "./metric";
 import MetricActions from "./MetricActions";
 import MetricLegend from "./MetricLegend";
 import { MetricLegendTabStyle } from "./styled";
 import TooltipFormatter from "./TooltipFormatter";
-import { DateRange, GraphType, IMetric } from "./type";
+import { GraphType, IMetric } from "./type";
 
 export interface IChartProps<
   TValue extends ValueType = string,
@@ -47,10 +42,14 @@ export interface IChartProps<
   mode?: "simple" | "legend" | "single";
   averageLine?: boolean;
   dropdown?: React.ReactNode;
-  dateRange: DateRange;
   onLabelsChange?: (labels: string[]) => void;
   metric: IMetric;
   yAxisProps?: {
+    domain?: AxisDomain;
+    ticks?: (string | number)[];
+    tickFormatter?: (value: any, index: number) => string;
+  };
+  xAxisProps?: {
     domain?: AxisDomain;
     ticks?: (string | number)[];
     tickFormatter?: (value: any, index: number) => string;
@@ -78,10 +77,10 @@ const RenderChart = (props: IChartProps) => {
     type,
     mode = "legend",
     dropdown,
-    dateRange,
     onLabelsChange,
     metric,
     yAxisProps,
+    xAxisProps,
     actionsProps,
     tooltipProps,
   } = props;
@@ -98,21 +97,6 @@ const RenderChart = (props: IChartProps) => {
   const areaChartData = useMemo(
     () => convertDataStruct(streams.map((stream) => stream.points)),
     [streams]
-  );
-
-  const xaxisEndTime = useMemo(
-    () => areaChartData[areaChartData.length - 1]?.t ?? dateRange[1],
-    [areaChartData, dateRange]
-  );
-
-  const xAxisDomain = useMemo(
-    () => getXAxisDomain(dateRange, xaxisEndTime),
-    [dateRange, xaxisEndTime]
-  );
-
-  const xAxisTicks = useMemo(
-    () => xaxisCal(xAxisDomain[1], dateRange),
-    [dateRange, xAxisDomain]
   );
 
   const onLegendClick = useCallback(
@@ -214,9 +198,7 @@ const RenderChart = (props: IChartProps) => {
             axisLine={false}
             tickLine={false}
             type="number"
-            domain={xAxisDomain}
-            tickFormatter={(tick: number) => tickFormatter(tick, dateRange)}
-            ticks={xAxisTicks}
+            {...xAxisProps}
           />
           <YAxis
             width={200}
