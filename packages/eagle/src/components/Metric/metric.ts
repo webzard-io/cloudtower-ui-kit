@@ -2,7 +2,7 @@ import { DAY, HOUR, MINUTE, SECOND } from "@tower/utils";
 import dayjs from "dayjs";
 import _ from "lodash";
 
-import { DateRange, IDataPoint } from "./type";
+import { DateRange, IDataPoint, IMetric } from "./type";
 
 export function filterPointsByDateRange(
   points: IDataPoint[],
@@ -163,4 +163,24 @@ export const convertDataStruct = (streams: IDataPoint[][]) => {
   });
 
   return combinedPoints;
+};
+
+export const filterOverlappingMetric = (
+  metric: IMetric,
+  dateRange: DateRange
+) => {
+  const range = getMs(dateRange);
+  return {
+    ...metric,
+    sample_streams: metric.sample_streams.map((stream) => ({
+      ...stream,
+      points: filterDataOverlapping(
+        stream.points,
+        dateRange[0].valueOf(),
+        range / stream.step,
+        stream.step,
+        stream.tolerance
+      ),
+    })),
+  };
 };

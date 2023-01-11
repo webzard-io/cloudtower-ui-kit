@@ -1,7 +1,6 @@
 import {
   DateRange,
-  filterDataOverlapping,
-  getMs,
+  filterOverlappingMetric,
   getXAxisDomain,
   GraphType,
   Metric,
@@ -45,7 +44,6 @@ const dateRange1: DateRange = [
   dayjs("2022-12-13 18:00"),
 ];
 const domain1 = getXAxisDomain(dateRange1, dateRange1[1].valueOf());
-const range1 = getMs(dateRange1);
 
 Primary.args = {
   showPointer: true,
@@ -54,19 +52,7 @@ Primary.args = {
     mode: "legend",
     showLegend: true,
     metricName: "hello",
-    metric: {
-      ...mockMetric,
-      sample_streams: mockMetric.sample_streams.map((stream) => ({
-        ...stream,
-        points: filterDataOverlapping(
-          stream.points,
-          dateRange1[0].valueOf(),
-          range1 / stream.step,
-          stream.step,
-          stream.tolerance
-        ),
-      })),
-    },
+    metric: filterOverlappingMetric(mockMetric, dateRange1),
     height: 200,
     type: GraphType.Area,
     xAxisProps: {
@@ -98,26 +84,13 @@ const dateRange2: DateRange = [
   dayjs("2022-12-22T13:35:01.234Z"),
 ];
 const domain2 = getXAxisDomain(dateRange2, dateRange2[1].valueOf());
-const range2 = getMs(dateRange2);
 
 Secondary.args = {
   chartProps: {
     mode: "legend",
     showLegend: true,
     metricName: "hello",
-    metric: {
-      ...mockMetric2,
-      sample_streams: mockMetric2.sample_streams.map((stream) => ({
-        ...stream,
-        points: filterDataOverlapping(
-          stream.points,
-          dateRange2[0].valueOf(),
-          range2 / stream.step,
-          stream.step,
-          stream.tolerance
-        ),
-      })),
-    },
+    metric: filterOverlappingMetric(mockMetric2, dateRange2),
     syncId: "abc",
     height: 200,
     type: GraphType.Area,
