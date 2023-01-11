@@ -108,7 +108,7 @@ export const filterDataOverlapping = <
   step: number,
   tolerance: number
 ) => {
-  const points = [...new Array(length)]
+  const points = [...new Array(Math.round(length))]
     .map((_, index) => {
       return startTimestamp + index * step;
     })
