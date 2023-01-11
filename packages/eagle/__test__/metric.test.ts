@@ -1077,6 +1077,52 @@ describe("filterDataOverlapping", () => {
       ]
     `);
   });
+
+  it("should accept double length", () => {
+    const dateRange: DateRange = [
+      dayjs("2022-12-13 16:00"),
+      dayjs("2022-12-13 18:00"),
+    ];
+    const [startDate] = dateRange;
+    const stream: IMetricStream = {
+      points: [
+        {
+          t: dayjs("2022-12-13 18:02").valueOf(),
+          v: 6,
+        },
+      ],
+      legend: {
+        id: "test",
+        name: "hello",
+      },
+    };
+
+    const result = filterDataOverlapping(
+      stream.points,
+      startDate.valueOf(),
+      3.01,
+      10,
+      10
+    );
+
+    expect(result.length).toBe(3);
+    expect(result).toMatchInlineSnapshot(`
+      [
+        {
+          "t": 1670918400000,
+          "v": -Infinity,
+        },
+        {
+          "t": 1670918400010,
+          "v": -Infinity,
+        },
+        {
+          "t": 1670918400020,
+          "v": -Infinity,
+        },
+      ]
+    `);
+  });
 });
 
 describe("transformData", () => {
