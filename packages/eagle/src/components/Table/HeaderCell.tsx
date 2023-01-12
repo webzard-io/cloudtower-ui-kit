@@ -30,7 +30,7 @@ const thCss = css`
   }
 `;
 
-interface HeaderCellProps {
+interface HeaderCellProps<ColumnType extends CustomizeColumnType> {
   draggable: boolean;
   resizable: boolean;
   index: number;
@@ -40,11 +40,9 @@ interface HeaderCellProps {
   children?: React.ReactNode;
   auxiliaryLine: React.RefObject<HTMLDivElement>;
   wrapper: React.RefObject<HTMLDivElement>;
-  customizeColumn: CustomizeColumnType[];
+  customizeColumn: ColumnType[];
   setCustomizeColumn: (
-    obj:
-      | CustomizeColumnType[]
-      | ((val: CustomizeColumnType[]) => CustomizeColumnType[])
+    obj: ColumnType[] | ((val: ColumnType[]) => ColumnType[])
   ) => void;
   onMouseEnter?: (
     event: React.MouseEvent<HTMLTableHeaderCellElement, MouseEvent>
@@ -57,11 +55,9 @@ type DragEvent = React.DragEvent<HTMLTableHeaderCellElement>;
 
 let dragColumnIndex = 0;
 
-interface HeaderCellComponent {
-  (props: HeaderCellProps): React.ReactElement | null;
-}
-
-const HeaderCell: HeaderCellComponent = (props) => {
+const HeaderCell = <ColumnType extends CustomizeColumnType>(
+  props: HeaderCellProps<ColumnType>
+) => {
   const {
     draggable,
     resizable,
@@ -195,7 +191,7 @@ const HeaderCell: HeaderCellComponent = (props) => {
         val[index].width =
           val[index].width &&
           val[index].width! * (dragDistance / columnWidth + 1);
-        return val;
+        return [...val];
       });
 
       line.style.transform = "translateX(-9999px)";

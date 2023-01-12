@@ -138,23 +138,23 @@ type Customize = CustomizeColumnType & {
   disable: boolean;
 };
 
-type CustomizeColumnProps = {
+interface IProps<ColumnType> {
   disabledColumnKeys: string[];
   renderKeys: string[];
   columnTitleMap: Record<string, React.ReactNode | (() => React.ReactNode)>;
   ["data-test-id"]: string;
   customizableColumnKeys?: string[];
-  customizeColumn: CustomizeColumnType[];
+  customizeColumn: ColumnType[];
   setCustomizeColumn: (
-    obj:
-      | CustomizeColumnType[]
-      | ((val: CustomizeColumnType[]) => CustomizeColumnType[])
+    obj: ColumnType[] | ((val: ColumnType[]) => ColumnType[])
   ) => void;
-};
+}
 
 let dragColumnIndex = 0;
 
-const DropdownOverlay: React.FC<CustomizeColumnProps> = (props) => {
+const DropdownOverlay = <ColumnType extends CustomizeColumnType>(
+  props: IProps<ColumnType>
+) => {
   const {
     renderKeys,
     disabledColumnKeys,
@@ -275,7 +275,9 @@ const DropdownOverlay: React.FC<CustomizeColumnProps> = (props) => {
   );
 };
 
-const CustomizeColumn: React.FC<CustomizeColumnProps> = (props) => {
+const CustomizeColumn = <ColumnType extends CustomizeColumnType>(
+  props: IProps<ColumnType>
+) => {
   const kit = useContext(kitContext);
 
   return (

@@ -1,28 +1,34 @@
 import _ from "lodash";
 import { useCallback, useMemo, useRef } from "react";
 
-import { CustomizeColumnType, getValue, useLocalStorage } from "../../hooks";
+import {
+  CustomizeColumnType,
+  getValue,
+  localStorageVersions,
+  useLocalStorage,
+} from "../../hooks";
 
-export const useCustomizeColumn = (
+export const useCustomizeColumn = <
+  ColumnType extends CustomizeColumnType[] = CustomizeColumnType[]
+>(
   key: string,
-  defaultFieldsValue: CustomizeColumnType[] | (() => CustomizeColumnType[])
+  defaultFieldsValue: ColumnType | (() => ColumnType)
 ): [
-  CustomizeColumnType[],
-  (
-    obj:
-      | CustomizeColumnType[]
-      | ((val: CustomizeColumnType[]) => CustomizeColumnType[])
-  ) => void,
+  ColumnType,
+  (obj: ColumnType | ((val: ColumnType) => ColumnType)) => void,
   (_key?: string) => void
 ] => {
-  const [storage, setStorage] = useLocalStorage("table-customize-column", {});
+  const [storage, setStorage] = useLocalStorage<Record<string, ColumnType>>(
+    "table-customize-column",
+    localStorageVersions["table-customize-column"],
+    {}
+  );
   const keyRef = useRef(key);
   keyRef.current = key;
 
   const fieldsValue = useMemo(
     () => {
-      const unwrappedValue =
-        getValue<CustomizeColumnType[]>(defaultFieldsValue);
+      const unwrappedValue = getValue<ColumnType>(defaultFieldsValue);
       if (key in storage) {
         const setOfOldColumnKeys = new Set(
           storage[key].map((item) => item.key)
@@ -46,12 +52,8 @@ export const useCustomizeColumn = (
     [storage, key]
   );
 
-  const setValue = (
-    val:
-      | CustomizeColumnType[]
-      | ((val: CustomizeColumnType[]) => CustomizeColumnType[])
-  ) => {
-    const nextValue = getValue<CustomizeColumnType[]>(val, fieldsValue);
+  const setValue = (val: ColumnType | ((val: ColumnType) => ColumnType)) => {
+    const nextValue = getValue<ColumnType>(val, fieldsValue);
     setStorage({ ...storage, [key]: nextValue });
   };
 

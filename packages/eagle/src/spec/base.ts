@@ -130,16 +130,10 @@ export interface RequiredColumnProps<T>
   dataIndex: Exclude<ColumnType<T>["dataIndex"], undefined>;
   sortable?: boolean;
   width?: number;
-  // TODO: improve type
-  /* eslint-disable @typescript-eslint/no-explicit-any */
+  display?: boolean;
   onHeaderCell?: (column: ColumnType<T>) => any;
   onCell?: (column: T) => any;
-  /* eslint-enable @typescript-eslint/no-explicit-any */
-  /**
-   * removed params for title function
-   * because we need to cast the function in customize column
-   * which cannot access the header params
-   */
+
   title: React.ReactNode | (() => React.ReactNode);
   customizable?: boolean;
 }
