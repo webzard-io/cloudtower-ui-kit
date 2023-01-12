@@ -71,23 +71,6 @@ common.args = {
       sortable: true,
     },
   ],
-  defaultCustomizeColumn: [
-    "h1",
-    () => {
-      return [
-        {
-          key: "h1",
-          width: 100,
-          display: true,
-        },
-        {
-          key: "h2",
-          width: 100,
-          display: true,
-        },
-      ];
-    },
-  ] as [string, () => CustomizeColumnType[]],
   refetch: async () => {
     return [];
   },

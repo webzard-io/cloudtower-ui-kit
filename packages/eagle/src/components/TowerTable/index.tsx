@@ -1,15 +1,16 @@
 import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
-import React, { useContext, useMemo, useRef } from "react";
+import React, { useContext, useEffect, useMemo, useRef } from "react";
 
-import { CustomizeColumnType } from "../../hooks";
 import { kitContext, RequiredColumnProps, TableProps } from "../../spec";
 import FailedLoad from "../FailedLoad";
 import {
   AuxiliaryLine,
+  CustomizeColumn,
   HeaderCell,
   PendingTable,
   tableScrollToTop,
+  useCustomizeColumn,
   useTransformScrollAndColumns,
 } from "../Table";
 import TableEmpty from "./TableEmpty";
@@ -50,7 +51,6 @@ export interface ITowerTableProps<BaseTableData extends { id: string }>
   searching?: boolean;
   refetch?: () => Promise<unknown>;
   networkStatus?: NetworkStatus;
-  defaultCustomizeColumn: [string, () => CustomizeColumnType[]];
 }
 
 const TowerTable = <BaseTableData extends { id: string }>(
@@ -82,7 +82,6 @@ const TowerTable = <BaseTableData extends { id: string }>(
     tableLayout,
     stickyHeader = true,
     rowKey,
-    defaultCustomizeColumn,
   } = props;
   const kit = useContext(kitContext);
 
@@ -92,7 +91,7 @@ const TowerTable = <BaseTableData extends { id: string }>(
   const auxiliaryLine = useRef<HTMLDivElement>(null);
   const wrapper = useRef<HTMLDivElement | null>(null);
 
-  const [_scroll, finalColumns] = useTransformScrollAndColumns<Column>({
+  const [_scroll, defaultColumns] = useTransformScrollAndColumns<Column>({
     wrapper,
     loading,
     rowSelection,
@@ -104,11 +103,84 @@ const TowerTable = <BaseTableData extends { id: string }>(
     scroll,
   });
 
+  const [customizeColumn, setCustomizeColumn] = useCustomizeColumn(
+    uniqueTableKey,
+    defaultColumns
+  );
+
+  const allColumnKeys = useMemo(
+    () => defaultColumns.map((col) => col.key),
+    [defaultColumns]
+  );
+
+  const columnTitleMap = useMemo(() => {
+    return defaultColumns?.reduce((prev, cur) => {
+      return {
+        ...prev,
+        [cur.key as string]: cur.title,
+      };
+    }, {});
+  }, [defaultColumns]);
+
+  const columnsWithAction: Column[] = useMemo(
+    () => [
+      ...defaultColumns
+        .filter((col) =>
+          customizeColumn
+            .filter((col) => col.display)
+            .map((col) => col.key)
+            .includes(col.key)
+        )
+        .sort((a, b) => {
+          return (
+            customizeColumn.map((col) => col.key).indexOf(a.key) -
+            customizeColumn.map((col) => col.key).indexOf(b.key)
+          );
+        }),
+      {
+        key: "action",
+        dataIndex: "id",
+        title: (
+          <CustomizeColumn
+            customizeColumn={customizeColumn}
+            setCustomizeColumn={setCustomizeColumn}
+            renderKeys={allColumnKeys}
+            disabledColumnKeys={[allColumnKeys[0]]}
+            columnTitleMap={columnTitleMap}
+            data-test-id={"customize-column-a"}
+          />
+        ),
+        fixed: "right",
+        width: 32,
+      },
+    ],
+    [
+      allColumnKeys,
+      columnTitleMap,
+      customizeColumn,
+      defaultColumns,
+      setCustomizeColumn,
+    ]
+  );
+
   if (!_scroll?.x) {
-    finalColumns.forEach((column) => {
+    defaultColumns.forEach((column) => {
       column.fixed = undefined;
     });
   }
+
+  useEffect(() => {
+    if (!customizeColumn.map((column) => column.display).includes(true)) {
+      setCustomizeColumn(
+        customizeColumn.map((col) => {
+          return {
+            ...col,
+            display: true,
+          };
+        })
+      );
+    }
+  }, [customizeColumn, setCustomizeColumn]);
 
   return (
     <PendingTable>
@@ -144,7 +216,7 @@ const TowerTable = <BaseTableData extends { id: string }>(
               }
               key={`${tableKey}-${parrotI18n.language}`}
               dataSource={dataSource}
-              columns={finalColumns}
+              columns={columnsWithAction}
               onSorterChange={onSorterChange}
               onRowClick={onRowClick}
               rowClassName={rowClassName}
@@ -168,7 +240,8 @@ const TowerTable = <BaseTableData extends { id: string }>(
                                 components={components}
                                 auxiliaryLine={auxiliaryLine}
                                 wrapper={wrapper}
-                                defaultCustomizeColumn={defaultCustomizeColumn}
+                                customizeColumn={customizeColumn}
+                                setCustomizeColumn={setCustomizeColumn}
                               />
                             );
                           }
@@ -183,7 +256,13 @@ const TowerTable = <BaseTableData extends { id: string }>(
                     ),
                   },
                 };
-              }, [components, defaultCustomizeColumn, resizable, sortable])}
+              }, [
+                components,
+                customizeColumn,
+                resizable,
+                setCustomizeColumn,
+                sortable,
+              ])}
               rowSelection={rowSelection}
               tableLayout={tableLayout}
               empty={
