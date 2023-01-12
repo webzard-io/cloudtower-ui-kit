@@ -1,6 +1,5 @@
 import { ITowerTableProps, TowerTable } from "@cloudtower/eagle";
 import { antdKit } from "@cloudtower/eagle";
-import { CustomizeColumnType } from "@cloudtower/eagle";
 import { kitContext } from "@cloudtower/eagle";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
@@ -59,7 +58,9 @@ common.args = {
         index: 0,
       }),
       dataIndex: "h1",
+      sortOrder: "ascend",
       sortable: true,
+      sorter: true,
     },
     {
       title: "h2",
