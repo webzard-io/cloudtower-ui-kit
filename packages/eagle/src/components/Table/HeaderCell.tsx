@@ -4,7 +4,6 @@ import React from "react";
 import { CustomizeColumnType } from "../../hooks";
 import { TableProps } from "../../spec";
 import { arrayMove } from "./common";
-import { useCustomizeColumn } from "./customize-column";
 
 const thCss = css`
   background: white;
@@ -41,10 +40,12 @@ interface HeaderCellProps {
   children?: React.ReactNode;
   auxiliaryLine: React.RefObject<HTMLDivElement>;
   wrapper: React.RefObject<HTMLDivElement>;
-  defaultCustomizeColumn: [
-    string,
-    CustomizeColumnType[] | (() => CustomizeColumnType[])
-  ];
+  customizeColumn: CustomizeColumnType[];
+  setCustomizeColumn: (
+    obj:
+      | CustomizeColumnType[]
+      | ((val: CustomizeColumnType[]) => CustomizeColumnType[])
+  ) => void;
   onMouseEnter?: (
     event: React.MouseEvent<HTMLTableHeaderCellElement, MouseEvent>
   ) => void;
@@ -70,17 +71,14 @@ const HeaderCell: HeaderCellComponent = (props) => {
     components,
     auxiliaryLine,
     wrapper,
-    defaultCustomizeColumn,
     onMouseEnter,
     onMouseLeave,
+    customizeColumn,
+    setCustomizeColumn,
     ...restProps
   } = props;
   const Th = components?.header?.cell || "th";
   const line = auxiliaryLine.current!;
-
-  const [customizeColumn, setCustomizeColumn] = useCustomizeColumn(
-    ...defaultCustomizeColumn
-  );
 
   if (
     className.includes("ant-tablezhichenasd-selection-column") ||
