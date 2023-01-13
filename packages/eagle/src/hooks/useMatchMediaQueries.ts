@@ -13,9 +13,11 @@ const ResponseArray: LayoutMode[] = [
   LayoutMode.MD,
   LayoutMode.LG,
 ];
-const useMatchMediaQueries: (mode?: {
-  [key in LayoutMode]: string;
-}) => LayoutMode = (
+const useMatchMediaQueries: (
+  mode?: {
+    [key in LayoutMode]: string;
+  }
+) => LayoutMode = (
   mode = {
     [LayoutMode.XS]: "1279px",
     [LayoutMode.SM]: "1536px",
@@ -41,6 +43,7 @@ const useMatchMediaQueries: (mode?: {
         mediaQueryList: mediaQueryList,
       });
     }
+
     if (!mediaQueries.length) {
       if (sizeState !== LayoutMode.XS) {
         setSizeState(LayoutMode.XS);
@@ -60,6 +63,7 @@ const useMatchMediaQueries: (mode?: {
     return () => {
       window.removeEventListener("resize", listenerWindowResize);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mode]);
 
   return sizeState;

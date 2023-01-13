@@ -17,6 +17,8 @@ export default defineConfig({
     setupFiles: [path.resolve(__dirname, "__test__/setup.ts")],
   },
   resolve: {
-    alias: {},
+    alias: {
+      "@cloudtower/parrot": path.resolve(__dirname, "../parrot/src/index.ts"),
+    },
   },
 });

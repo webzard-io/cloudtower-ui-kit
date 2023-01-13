@@ -33,8 +33,9 @@ export type CustomizeColumnType = {
   display?: boolean;
 };
 
-export const localStorageVersions: Record<string, number> = {
+export const localStorageVersions = {
   "table-customize-column": 11,
+  "test-local-storage": 2,
 };
 
 export default function useLocalStorage<V extends Serializable>(
