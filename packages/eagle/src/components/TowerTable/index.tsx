@@ -132,7 +132,8 @@ const TowerTable = <BaseTableData extends { id: string }>(
               index,
             }),
           };
-        }),
+        })
+        .filter((col) => col.display),
       {
         key: "_action_",
         dataIndex: "id",
