@@ -105,6 +105,43 @@ const TowerTable = <BaseTableData extends { id: string }>(
     fillDisplayColumns
   );
 
+  const _components = useMemo(() => {
+    return {
+      header: {
+        cell:
+          resizable || sortable
+            ? (props: {
+                index: number;
+                sortable: boolean;
+                className: string;
+                children: React.ReactNode;
+              }) => {
+                return (
+                  <HeaderCell
+                    {...props}
+                    resizable={resizable}
+                    draggable={props.sortable}
+                    components={components}
+                    auxiliaryLine={auxiliaryLine}
+                    wrapper={wrapper}
+                    customizeColumn={customizeColumn}
+                    setCustomizeColumn={setCustomizeColumn}
+                  />
+                );
+              }
+            : undefined,
+      },
+      body: {
+        cell: (props: any) => (
+          <td
+            {...props}
+            className={`${props.className} cell_${props.unique}`}
+          />
+        ),
+      },
+    };
+  }, [components, customizeColumn, resizable, setCustomizeColumn, sortable]);
+
   const allColumnKeys = useMemo(() => columns.map((col) => col.key), [columns]);
 
   const columnTitleMap = useMemo(() => {
@@ -210,48 +247,7 @@ const TowerTable = <BaseTableData extends { id: string }>(
             onRowClick={onRowClick}
             rowClassName={rowClassName}
             scroll={_scroll}
-            components={useMemo(() => {
-              return {
-                header: {
-                  cell:
-                    resizable || sortable
-                      ? (props: {
-                          index: number;
-                          sortable: boolean;
-                          className: string;
-                          children: React.ReactNode;
-                        }) => {
-                          return (
-                            <HeaderCell
-                              {...props}
-                              resizable={resizable}
-                              draggable={props.sortable}
-                              components={components}
-                              auxiliaryLine={auxiliaryLine}
-                              wrapper={wrapper}
-                              customizeColumn={customizeColumn}
-                              setCustomizeColumn={setCustomizeColumn}
-                            />
-                          );
-                        }
-                      : undefined,
-                },
-                body: {
-                  cell: (props) => (
-                    <td
-                      {...props}
-                      className={`${props.className} cell_${props.unique}`}
-                    />
-                  ),
-                },
-              };
-            }, [
-              components,
-              customizeColumn,
-              resizable,
-              setCustomizeColumn,
-              sortable,
-            ])}
+            components={_components}
             rowSelection={rowSelection}
             tableLayout={tableLayout}
             empty={
