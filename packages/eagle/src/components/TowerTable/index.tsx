@@ -8,7 +8,6 @@ import {
   AuxiliaryLine,
   CustomizeColumn,
   HeaderCell,
-  PendingTable,
   tableScrollToTop,
   useCustomizeColumn,
   useTransformScrollAndColumns,
@@ -91,54 +90,51 @@ const TowerTable = <BaseTableData extends { id: string }>(
   const auxiliaryLine = useRef<HTMLDivElement>(null);
   const wrapper = useRef<HTMLDivElement | null>(null);
 
-  const [_scroll, defaultColumns] = useTransformScrollAndColumns<Column>({
-    wrapper,
-    loading,
-    rowSelection,
-    data: dataSource,
-    tableKey,
-    uniqueKey: tableKey,
-    stickyHeader,
-    columns,
-    scroll,
-  });
+  const fillDisplayColumns = useMemo(() => {
+    return columns.map((col) => {
+      if (col.display == null) {
+        return { ...col, display: true };
+      }
+      return col;
+    });
+  }, [columns]);
 
+  // useCustomizeColumn will lost all function. in column.
   const [customizeColumn, setCustomizeColumn] = useCustomizeColumn(
     uniqueTableKey,
-    defaultColumns
+    fillDisplayColumns
   );
 
-  const allColumnKeys = useMemo(
-    () => defaultColumns.map((col) => col.key),
-    [defaultColumns]
-  );
+  const allColumnKeys = useMemo(() => columns.map((col) => col.key), [columns]);
 
   const columnTitleMap = useMemo(() => {
-    return defaultColumns?.reduce((prev, cur) => {
+    return columns?.reduce((prev, cur) => {
       return {
         ...prev,
         [cur.key as string]: cur.title,
       };
     }, {});
-  }, [defaultColumns]);
+  }, [columns]);
 
-  const columnsWithAction: Column[] = useMemo(
+  const columnsWithAction = useMemo(
     () => [
-      ...defaultColumns
-        .filter((col) =>
-          customizeColumn
-            .filter((col) => col.display)
-            .map((col) => col.key)
-            .includes(col.key)
-        )
+      ...customizeColumn
         .sort((a, b) => {
           return (
             customizeColumn.map((col) => col.key).indexOf(a.key) -
             customizeColumn.map((col) => col.key).indexOf(b.key)
           );
+        })
+        .map((col, index) => {
+          return {
+            ...col,
+            onHeaderCell: () => ({
+              index,
+            }),
+          };
         }),
       {
-        key: "action",
+        key: "_action_",
         dataIndex: "id",
         title: (
           <CustomizeColumn
@@ -152,146 +148,137 @@ const TowerTable = <BaseTableData extends { id: string }>(
         ),
         fixed: "right",
         width: 32,
-      },
+      } as RequiredColumnProps<BaseTableData>,
     ],
-    [
-      allColumnKeys,
-      columnTitleMap,
-      customizeColumn,
-      defaultColumns,
-      setCustomizeColumn,
-    ]
+    [allColumnKeys, columnTitleMap, customizeColumn, setCustomizeColumn]
   );
 
-  if (!_scroll?.x) {
-    defaultColumns.forEach((column) => {
-      column.fixed = undefined;
-    });
-  }
+  const [_scroll, withBlankColumns] = useTransformScrollAndColumns<Column>({
+    wrapper,
+    loading,
+    rowSelection,
+    data: dataSource,
+    tableKey,
+    uniqueKey: tableKey,
+    stickyHeader,
+    columns: columnsWithAction,
+    scroll,
+  });
 
   useEffect(() => {
-    if (!customizeColumn.map((column) => column.display).includes(true)) {
-      setCustomizeColumn(
-        customizeColumn.map((col) => {
-          return {
-            ...col,
-            display: true,
-          };
-        })
-      );
+    if (!_scroll?.x) {
+      withBlankColumns.forEach((column) => {
+        column.fixed = undefined;
+      });
     }
-  }, [customizeColumn, setCustomizeColumn]);
+  }, [_scroll?.x, withBlankColumns]);
 
   return (
-    <PendingTable>
-      <WrapperComponent
-        sidebar={sidebar}
-        initLoading={initLoading}
-        wrapper={wrapper}
+    <WrapperComponent
+      sidebar={sidebar}
+      initLoading={initLoading}
+      wrapper={wrapper}
+    >
+      <div
+        className={cs(
+          "table-wrapper",
+          tableKey && `${tableKey}-table-wrapper`,
+          stickyHeader && "table-sticky-header"
+        )}
+        ref={wrapper}
       >
-        <div
-          className={cs(
-            "table-wrapper",
-            tableKey && `${tableKey}-table-wrapper`,
-            stickyHeader && "table-sticky-header"
-          )}
-          ref={wrapper}
-        >
-          <div className="relative table-content">
-            <kit.table<BaseTableData>
-              wrapper={wrapper}
-              loading={loading && !polling}
-              initLoading={initLoading}
-              error={
-                error &&
-                refetch && (
-                  <FailedLoad
-                    error={parrotI18n.t(
-                      "cluster.retry_when_access_data_failed"
-                    )}
-                    title={error.message}
-                    refetch={refetch}
-                  />
-                )
-              }
-              key={`${tableKey}-${parrotI18n.language}`}
-              dataSource={dataSource}
-              columns={columnsWithAction}
-              onSorterChange={onSorterChange}
-              onRowClick={onRowClick}
-              rowClassName={rowClassName}
-              scroll={_scroll}
-              components={useMemo(() => {
-                return {
-                  header: {
-                    cell:
-                      resizable || sortable
-                        ? (props: {
-                            index: number;
-                            sortable: boolean;
-                            className: string;
-                            children: React.ReactNode;
-                          }) => {
-                            return (
-                              <HeaderCell
-                                {...props}
-                                resizable={resizable}
-                                draggable={props.sortable}
-                                components={components}
-                                auxiliaryLine={auxiliaryLine}
-                                wrapper={wrapper}
-                                customizeColumn={customizeColumn}
-                                setCustomizeColumn={setCustomizeColumn}
-                              />
-                            );
-                          }
-                        : undefined,
-                  },
-                  body: {
-                    cell: (props) => (
-                      <td
-                        {...props}
-                        className={`${props.className} cell_${props.unique}`}
-                      />
-                    ),
-                  },
-                };
-              }, [
-                components,
-                customizeColumn,
-                resizable,
-                setCustomizeColumn,
-                sortable,
-              ])}
-              rowSelection={rowSelection}
-              tableLayout={tableLayout}
-              empty={
-                empty || (
-                  <TableEmpty
-                    searching={searching}
-                    emptyTablekey={uniqueTableKey}
-                  />
-                )
-              }
-              rowKey={rowKey}
-            />
-            <AuxiliaryLine ref={auxiliaryLine} />
-          </div>
-          {dataSource && (
-            <TablePagination
-              count={pagination.count}
-              skip={pagination.skip || 0}
-              size={pagination.size || pagination.defaultSize || 10}
-              onChange={(page) => {
-                pagination.onChange?.(page);
-                tableScrollToTop(wrapper);
-              }}
-              onSizeChange={pagination.onSizeChange}
-            />
-          )}
+        <div className="relative table-content">
+          <kit.table<BaseTableData>
+            wrapper={wrapper}
+            loading={loading && !polling}
+            initLoading={initLoading}
+            error={
+              error &&
+              refetch && (
+                <FailedLoad
+                  error={parrotI18n.t("cluster.retry_when_access_data_failed")}
+                  title={error.message}
+                  refetch={refetch}
+                />
+              )
+            }
+            key={`${tableKey}-${parrotI18n.language}`}
+            dataSource={dataSource}
+            columns={withBlankColumns}
+            onSorterChange={onSorterChange}
+            onRowClick={onRowClick}
+            rowClassName={rowClassName}
+            scroll={_scroll}
+            components={useMemo(() => {
+              return {
+                header: {
+                  cell:
+                    resizable || sortable
+                      ? (props: {
+                          index: number;
+                          sortable: boolean;
+                          className: string;
+                          children: React.ReactNode;
+                        }) => {
+                          return (
+                            <HeaderCell
+                              {...props}
+                              resizable={resizable}
+                              draggable={props.sortable}
+                              components={components}
+                              auxiliaryLine={auxiliaryLine}
+                              wrapper={wrapper}
+                              customizeColumn={customizeColumn}
+                              setCustomizeColumn={setCustomizeColumn}
+                            />
+                          );
+                        }
+                      : undefined,
+                },
+                body: {
+                  cell: (props) => (
+                    <td
+                      {...props}
+                      className={`${props.className} cell_${props.unique}`}
+                    />
+                  ),
+                },
+              };
+            }, [
+              components,
+              customizeColumn,
+              resizable,
+              setCustomizeColumn,
+              sortable,
+            ])}
+            rowSelection={rowSelection}
+            tableLayout={tableLayout}
+            empty={
+              empty || (
+                <TableEmpty
+                  searching={searching}
+                  emptyTablekey={uniqueTableKey}
+                />
+              )
+            }
+            rowKey={rowKey}
+          />
+          <AuxiliaryLine ref={auxiliaryLine} />
         </div>
-      </WrapperComponent>
-    </PendingTable>
+        {dataSource && (
+          <TablePagination
+            count={pagination.count}
+            skip={pagination.skip || 0}
+            size={pagination.size || pagination.defaultSize || 10}
+            onChange={(page) => {
+              pagination.onChange?.(page);
+              tableScrollToTop(wrapper);
+            }}
+            onSizeChange={pagination.onSizeChange}
+          />
+        )}
+      </div>
+    </WrapperComponent>
   );
 };
 

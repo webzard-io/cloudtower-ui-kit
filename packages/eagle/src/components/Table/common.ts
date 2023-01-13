@@ -151,6 +151,7 @@ export const useTransformScrollAndColumns = <T>(tableProps: {
       | undefined
     >(scroll);
   const [scrollConfig, setScrollConfig] = useState<TableScrollConfig>({});
+
   const [headerAndPaginationHeight, setHeaderAndPaginationHeight] =
     useState<number>(0);
   const kit = useContext(kitContext);
@@ -269,7 +270,8 @@ export const useTransformScrollAndColumns = <T>(tableProps: {
     totalWidth,
     data,
   ]);
-  useEffect(() => {
+
+  const innerColumns = useMemo(() => {
     if (totalWidth < sizes.wrapper.width) {
       if (
         !(columns as unknown as { key: string }[]).find(
@@ -281,21 +283,18 @@ export const useTransformScrollAndColumns = <T>(tableProps: {
             (item) => item.key === "_action_"
           )
         ) {
-          (columns as (T | typeof BLANK_COLUMN)[]).splice(
-            columns.length - 1,
-            0,
-            BLANK_COLUMN
-          );
+          return [
+            ...columns.slice(0, columns.length - 1),
+            BLANK_COLUMN as T,
+            ...columns.slice(-1),
+          ];
         } else {
-          (columns as (T | typeof BLANK_COLUMN)[]).splice(
-            columns.length,
-            0,
-            BLANK_COLUMN
-          );
+          return [...columns, BLANK_COLUMN as T];
         }
       }
     }
+    return columns;
   }, [columns, sizes.wrapper.width, totalWidth]);
 
-  return [scrollConfig, columns];
+  return [scrollConfig, innerColumns];
 };
