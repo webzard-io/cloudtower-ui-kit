@@ -33,3 +33,9 @@ export enum TaskStatus {
   Pending = "PENDING",
   Successed = "SUCCESSED",
 }
+
+export interface AdditionOptions {
+  error?: boolean;
+  controls?: boolean;
+  suffix?: string;
+}

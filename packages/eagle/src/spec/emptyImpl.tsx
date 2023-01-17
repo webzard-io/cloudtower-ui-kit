@@ -63,6 +63,7 @@ const emptyImpl: Kit = {
   fields: {
     // scalars
     Int: ThrowError,
+    Integer: ThrowError,
     Float: ThrowError,
     DateTime: ThrowError,
     Enum: ThrowError,
