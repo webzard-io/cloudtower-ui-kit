@@ -51,11 +51,12 @@ import React, { Fragment, ReactNode, useEffect, useMemo, useRef } from "react";
 import { findDOMNode } from "react-dom";
 import { isElement } from "react-is";
 
-import { Kit, TextAreaProps } from "../spec";
+import { AdditionOptions, Kit, TextAreaProps } from "../spec";
 import { getAlertIcon } from "../utils";
 import Button from "./Button";
 import ButtonGroup from "./ButtonGroup";
 import Icon from "./Icon";
+import InputInteger from "./InputInteger";
 import Loading from "./Loading";
 import Modal from "./Modal";
 import Modal2 from "./Modal2";
@@ -349,6 +350,109 @@ export const InputStyle = css`
   }
 `;
 
+export const AntdInputNumberStyled = styled(AntdInputNumber)<{
+  controls: boolean;
+  suffix?: string;
+  prefix?: string;
+}>`
+  .ant-input-number-handler-wrap {
+    display: ${(props) => (props.controls ? "initial" : "none")};
+  }
+  .ant-input-number-input-wrap {
+    padding: 4px 11px;
+    display: inline-flex;
+    line-height: 1.5715;
+    height: inherit;
+  }
+
+  .ant-input-number-input-wrap::after {
+    content: ${(props) => `"${props.suffix ? props.suffix : ""}"`};
+    display: ${({ suffix }) => (suffix ? "flex" : "none")};
+    flex: none;
+    align-items: center;
+    margin-left: 4px;
+  }
+
+  .ant-input-number-input-wrap::before {
+    content: ${(props) => `"${props.prefix ? props.prefix : ""}"`};
+    display: ${({ prefix }) => (prefix ? "flex" : "none")};
+    flex: none;
+    align-items: center;
+    margin-right: 4px;
+    cursor: auto;
+  }
+
+  .ant-input-number-input {
+    padding: 0;
+    margin: 0;
+    height: auto;
+    font-size: inherit;
+  }
+`;
+
+export const AntdIntStyled = styled(AntdInputNumber)<{
+  controls: boolean;
+  suffix?: string;
+  prefix?: string;
+}>`
+  .ant-input-number-handler-wrap {
+    display: ${(props) => (props.controls ? "initial" : "none")};
+  }
+  .ant-input-number-input-wrap {
+    padding: 5px 12px;
+    display: inline-flex;
+    line-height: 1.5715;
+    height: 100%;
+    width: 100%;
+  }
+
+  .ant-input-number-input-wrap::after {
+    content: ${(props) => `"${props.suffix ? props.suffix : ""}"`};
+    display: ${({ suffix }) => (suffix ? "flex" : "none")};
+    flex: none;
+    align-items: center;
+    margin-left: 4px;
+    color: rgba(44, 56, 82, 0.6);
+  }
+
+  .ant-input-number-input-wrap::before {
+    content: ${(props) => `"${props.prefix ? props.prefix : ""}"`};
+    display: ${({ prefix }) => (prefix ? "flex" : "none")};
+    flex: none;
+    align-items: center;
+    margin-right: 4px;
+    cursor: auto;
+    color: rgba(44, 56, 82, 0.6);
+  }
+
+  &.ant-input-number {
+    width: 100%;
+    border-radius: 6px;
+  }
+  &.ant-input-number:not([disabled]) {
+    &:focus,
+    &:active,
+    &.ant-input-number-focused {
+      border-color: $blue;
+      box-shadow: $shadow-light-active;
+    }
+  }
+  &.ant-input-number.error:not([disabled]) {
+    &:hover,
+    &.ant-input-number-focused {
+      border-color: $red;
+      box-shadow: $shadow-light-error;
+    }
+  }
+
+  .ant-input-number-input {
+    padding: 0;
+    margin: 0;
+    height: auto;
+    font-size: inherit;
+  }
+`;
+
 export const LeftEndInputStyle = css`
   @at-root {
     input#{&}.ant-input {
@@ -397,10 +501,13 @@ const Input: React.FC<InputProps & { error?: boolean }> = ({
   );
 };
 
-const InputNumber: React.FC<InputNumberProps & { error?: boolean }> = ({
+const InputNumber: React.FC<InputNumberProps & AdditionOptions> = ({
   className,
   error,
   size = "middle",
+  suffix,
+  prefix,
+  controls = true,
   ...props
 }) => {
   const typo = {
@@ -409,10 +516,13 @@ const InputNumber: React.FC<InputNumberProps & { error?: boolean }> = ({
     small: Typo.Label.l4_regular,
   }[size];
   return (
-    <AntdInputNumber
+    <AntdInputNumberStyled
       {...props}
       size={size}
+      controls={controls}
       data-test={props.name}
+      suffix={controls ? "" : suffix}
+      prefix={prefix}
       className={cs(className, InputStyle, typo, error ? "error" : "")}
     />
   );
@@ -873,8 +983,6 @@ export function getAntdKit(): Kit {
         meta,
         onBlur,
         autoComplete = "off",
-        maximum,
-        minimum,
         supportNegativeValue = false,
         ...props
       }) => (
@@ -896,28 +1004,6 @@ export function getAntdKit(): Kit {
               }
             }}
             onBlur={(e) => {
-              const maximumIsValid = typeof maximum === "number";
-              const minimumIsValid = typeof minimum === "number";
-              if (maximumIsValid || minimumIsValid) {
-                const value = parseInt(e.target.value) || 0;
-                if (_.isNil(value)) {
-                  input.onChange(undefined);
-                }
-                if (
-                  !_.isNil(value) &&
-                  maximumIsValid &&
-                  (maximum || 0) < value
-                ) {
-                  input.onChange(maximum);
-                }
-                if (
-                  !_.isNil(value) &&
-                  minimumIsValid &&
-                  (minimum || 0) > value
-                ) {
-                  input.onChange(minimum);
-                }
-              }
               onBlur ? onBlur(input, e) : input.onBlur(e);
             }}
             autoComplete={autoComplete}
@@ -929,6 +1015,21 @@ export function getAntdKit(): Kit {
           />
         </>
       ),
+      Integer: ({ meta, input, onBlur, ...props }) => {
+        return (
+          <>
+            <InputInteger
+              {...props}
+              {...input}
+              onBlur={(e) => (onBlur ? onBlur(input, e) : input.onBlur(e))}
+              error={
+                meta.touched &&
+                (meta.error || (!meta.dirtySinceLastSubmit && meta.submitError))
+              }
+            />
+          </>
+        );
+      },
       Float: ({ input, meta, onBlur, autoComplete = "off", ...props }) => (
         <>
           <InputNumber

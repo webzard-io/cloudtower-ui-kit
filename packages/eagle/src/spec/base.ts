@@ -12,6 +12,7 @@ import { DividerProps as AntdDividerProps } from "antd/lib/divider";
 import { DropDownProps } from "antd/lib/dropdown";
 import { InputProps } from "antd/lib/input";
 import { TextAreaProps as AntdTextAreaProps } from "antd/lib/input/TextArea";
+import { InputNumberProps } from "antd/lib/input-number";
 import { SiderProps } from "antd/lib/layout";
 import { BasicProps } from "antd/lib/layout/layout";
 import { ListProps } from "antd/lib/list";
@@ -334,6 +335,23 @@ export type ButtonGroupType = {
   >;
 };
 
+export type IntegerFieldProps<
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  V = any,
+  T extends HTMLElement = HTMLElement
+> = FieldBaseProps<V, T> &
+  InputNumberProps & {
+    onChange?: FieldBaseProps<V, T>["input"]["onChange"];
+    controls?: boolean;
+    suffix?: string;
+    prefix?: string;
+    size?: InputSize;
+    onBlur?: (
+      input: FieldBaseProps<number, HTMLInputElement>["input"],
+      event?: React.FocusEvent<HTMLInputElement>
+    ) => void;
+  };
+
 export type ButtonProps = {
   prefixIcon?: ImagesType;
   hoverPrefixIcon?: ImagesType;
@@ -439,6 +457,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   fields: {
     // scalars
     Int: React.FunctionComponent<IntFieldProps<V, T>>;
+    Integer: React.FunctionComponent<IntegerFieldProps<V, T>>;
     Float: React.FunctionComponent<
       FieldBaseProps<V, T> &
         FloatProps & {
