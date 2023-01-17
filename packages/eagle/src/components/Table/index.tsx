@@ -447,13 +447,20 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
     initLoading,
     rowKey,
     wrapper,
+    pagination,
   } = props;
   const kit = useContext(kitContext);
   const orderRef = useRef<"descend" | "ascend" | undefined | null>(null);
   const hasScrollBard = useTableBodyHasScrollBar(wrapper, dataSource);
 
   return (
-    <div className={cx(TableContainerStyle, !hasScrollBard && "no-scroll-bar")}>
+    <div
+      className={cx(
+        TableContainerStyle,
+        "table-container",
+        !hasScrollBard && "no-scroll-bar"
+      )}
+    >
       <BaseTable
         className={cs(
           tableStyleCover,
@@ -470,7 +477,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
           emptyText: error || <>{loading ? "" : empty}</>,
         }}
         dataSource={dataSource || []}
-        pagination={false}
+        pagination={pagination || false}
         columns={columns.map((column) =>
           column.sorter
             ? {

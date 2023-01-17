@@ -32,7 +32,7 @@ export enum NetworkStatus {
 }
 
 export interface ITowerTableProps<BaseTableData extends { id: string }>
-  extends TableProps<BaseTableData> {
+  extends Omit<TableProps<BaseTableData>, "pagination"> {
   uniqueTableKey: string;
   pagination: {
     count: number;

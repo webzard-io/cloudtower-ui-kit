@@ -183,6 +183,10 @@ export interface TableProps<T extends { id: string }> {
   initLoading?: boolean;
   rowKey?: AntdTableProps<T>["rowKey"];
   wrapper?: React.MutableRefObject<HTMLDivElement | null>;
+  pagination?: {
+    current: number;
+    pageSize: number;
+  };
 }
 interface TableComponent {
   <TData extends IdObject>(
