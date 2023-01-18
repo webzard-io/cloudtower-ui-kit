@@ -63,9 +63,6 @@ const convert = async () => {
     const folderPath = path.resolve(__dirname, "../src/components/images");
     let output = "export type ImagesType =";
     output += generateType(folderPath);
-    fs.mkdirSync(path.resolve(__dirname, `../src/generated`), {
-      recursive: true,
-    });
     fs.writeFileSync(
       path.resolve(__dirname, `../src/components/images/images-type.ts`),
       output
