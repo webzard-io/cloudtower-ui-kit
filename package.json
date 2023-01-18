@@ -9,7 +9,6 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "prebuild": "turbo run generate",
     "postbuild": "turbo run typings",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
