@@ -689,57 +689,64 @@ const SelectStyle = css`
     border-radius: 6px;
   }
 
-  &.ant-select.ant-select-single {
-    width: 100%;
-    height: 30px;
-    color: $text-primary-light;
-    border-color: $strokes-light-trans-2;
-    transition: border 160ms ease 8ms, box-shadow 160ms ease 8ms;
-    font-size: 13px;
-
-    &.ant-select-lg {
-      height: 38px;
+  &.ant-select {
+    &.ant-select-single {
+      width: 100%;
+      height: 30px;
+      color: $text-primary-light;
+      border-color: $strokes-light-trans-2;
+      transition: border 160ms ease 8ms, box-shadow 160ms ease 8ms;
       font-size: 13px;
-    }
 
-    .ant-select-arrow,
-    .ant-select-arrow .anticon-down {
-      transition: 160ms ease;
-    }
-
-    .ant-select-arrow-loading {
-      color: $fills-light-general-general;
-    }
-
-    &:not(.ant-select-disabled) {
-      &:hover .ant-select-selector,
-      &.__pseudo-states-hover .ant-select-selector {
-        border-color: $strokes-light-trans-4;
-        box-shadow: $shadow-light-hover;
+      &.ant-select-lg {
+        height: 38px;
+        font-size: 13px;
       }
 
-      &:hover .ant-select-arrow,
-      &.__pseudo-states-hover .ant-select-arrow {
+      .ant-select-arrow,
+      .ant-select-arrow .anticon-down {
+        transition: 160ms ease;
+      }
+
+      .ant-select-arrow-loading {
         color: $fills-light-general-general;
       }
 
-      &:active,
-      &:focus,
-      &.ant-select-focused,
-      &.ant-select-open,
-      &.__pseudo-states-active,
-      &.__pseudo-states-focus {
-        .ant-select-selector {
-          border-color: $fills-light-general-general;
-          box-shadow: $shadow-light-active;
+      &:not(.ant-select-disabled) {
+        &:hover .ant-select-selector,
+        &.__pseudo-states-hover .ant-select-selector {
+          border-color: $strokes-light-trans-4;
+          box-shadow: $shadow-light-hover;
+        }
+
+        &:hover .ant-select-arrow,
+        &.__pseudo-states-hover .ant-select-arrow {
+          color: $fills-light-general-general;
+        }
+
+        &:active,
+        &:focus,
+        &.ant-select-focused,
+        &.ant-select-open,
+        &.__pseudo-states-active,
+        &.__pseudo-states-focus {
+          .ant-select-selector {
+            border-color: $fills-light-general-general;
+            box-shadow: $shadow-light-active;
+          }
+        }
+
+        &.ant-select-open .ant-select-arrow .anticon-down {
+          transform: rotate(180deg);
         }
       }
 
-      &.ant-select-open .ant-select-arrow .anticon-down {
-        transform: rotate(180deg);
+      &.ant-select-disabled .ant-select-selector {
+        background: $fills-light-trans-3;
+        border-color: $strokes-light-trans-3;
+        cursor: "not-allowed";
       }
     }
-
     &.select-error:not(.ant-select-disabled) {
       .ant-select-selector {
         border-color: $fills-light-serious-serious !important;
@@ -765,12 +772,6 @@ const SelectStyle = css`
       &.ant-select-open .ant-select-arrow .anticon-down {
         transform: rotate(180deg);
       }
-    }
-
-    &.ant-select-disabled .ant-select-selector {
-      background: $fills-light-trans-3;
-      border-color: $strokes-light-trans-3;
-      cursor: "not-allowed";
     }
   }
 `;
