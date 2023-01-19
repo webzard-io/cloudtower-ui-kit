@@ -162,7 +162,7 @@ export type FormContextType<Validators = {}, OnChanges = {}> = {
   onChanges: OnChanges;
 };
 
-type BaseFieldState<T> = FieldMetaState<T> & { value: T };
+type BaseFieldState<T> = FieldMetaState<T> & { value: T; name: string };
 export type FieldProps<T> = {
   defaultValue?: T;
   initialValue?: T;
@@ -197,7 +197,9 @@ export type FieldListenerProps<T, FV> = {
 const FieldListener = function <T, FV>(props: FieldListenerProps<T, FV>) {
   const { name, onChange } = props;
   const form = useForm() as UseFormApi<FV>;
-  const previousRef = useRef<T>();
+  const previousRef = useRef<T | undefined>(
+    _.get(form.getState().values, name)
+  );
   useEffect(
     () =>
       form.registerField(
@@ -312,7 +314,7 @@ export class BaseField<
                     >
                       <label>
                         {typeof label === "function"
-                          ? label({ ...meta, value: input.value })
+                          ? label({ ...meta, value: input.value, name })
                           : label}
                       </label>
                     </Col>
@@ -338,7 +340,7 @@ export class BaseField<
                       >
                         <div className="form-item-error">
                           {typeof error === "function"
-                            ? error({ ...meta, value: input.value })
+                            ? error({ ...meta, value: input.value, name })
                             : error || <FieldError name={name} />}
                         </div>
                       </CSSTransition>
@@ -348,7 +350,7 @@ export class BaseField<
                 {/* Extra */}
                 {extra ? (
                   typeof extra === "function" ? (
-                    extra({ ...meta, value: input.value })
+                    extra({ ...meta, value: input.value, name })
                   ) : (
                     <div className="form-item-extra">{extra}</div>
                   )

@@ -26,6 +26,7 @@ import {
   DatePicker,
   Divider,
   Dropdown,
+  Form,
   Input as AntdInput,
   InputNumber as AntdInputNumber,
   Layout,
@@ -1428,6 +1429,7 @@ export function getAntdKit(): Kit {
     arch: Arch,
     buttonGroup: ButtonGroup,
     steps: Steps,
+    form: Form,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
