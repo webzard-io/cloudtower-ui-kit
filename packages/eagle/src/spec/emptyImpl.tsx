@@ -138,6 +138,7 @@ const emptyImpl: Kit = {
   arch: ThrowError,
   buttonGroup: forwardRef(ThrowError),
   steps: ThrowError,
+  form: ThrowError,
 };
 
 export default emptyImpl;
