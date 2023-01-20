@@ -1148,7 +1148,7 @@ export function getAntdKit(): Kit {
               onClick={onClick}
               prefix={
                 focusIndicator ? (
-                  <Icon type="1-focus-indicator-16-blue " />
+                  <Icon type="1-focus-indicator-16-blue" />
                 ) : undefined
               }
               error={
