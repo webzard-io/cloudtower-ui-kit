@@ -291,7 +291,7 @@ export type ImagesType =
   | "1-filter-gear-display-setting-24-gradient-gray"
   | "1-flash-light-16-gradient-blue"
   | "1-flow-round-trip-24-gray"
-  | "1-focus-indicator-16-blue "
+  | "1-focus-indicator-16-blue"
   | "1-fullscreen-24-gradient-blue"
   | "1-fullscreen-24-gradient-gray"
   | "1-generate-snapshot-immediately-16-blue"
