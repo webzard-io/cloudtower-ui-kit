@@ -71,15 +71,30 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupType>(
           if (hideTitle) {
             return (
               <Tooltip key={key || index} overlay={title || children}>
-                <BaseButton
-                  type={type}
-                  size={size}
-                  danger={danger}
-                  ghost={ghost}
-                  className={cx(ButtonStyle, className)}
-                  prefixIcon={icon}
-                  {...buttonPropArgs}
-                />
+                {buttonPropArgs.disabled ? (
+                  <span style={{ cursor: "not-allowed" }}>
+                    <BaseButton
+                      style={{ pointerEvents: "none" }}
+                      type={type}
+                      size={size}
+                      danger={danger}
+                      ghost={ghost}
+                      className={cx(ButtonStyle, className)}
+                      prefixIcon={icon}
+                      {...buttonPropArgs}
+                    />
+                  </span>
+                ) : (
+                  <BaseButton
+                    type={type}
+                    size={size}
+                    danger={danger}
+                    ghost={ghost}
+                    className={cx(ButtonStyle, className)}
+                    prefixIcon={icon}
+                    {...buttonPropArgs}
+                  />
+                )}
               </Tooltip>
             );
           }
