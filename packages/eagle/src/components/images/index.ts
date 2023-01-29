@@ -856,7 +856,6 @@ export { default as number1VmgroupFolder16GradientGray } from "./1-vmgroup-folde
 export { default as number1VmgroupFolder24GradientBlue } from "./1-vmgroup-folder-24-gradient-blue.svg";
 export { default as number1VmgroupFolder24GradientGray } from "./1-vmgroup-folder-24-gradient-gray.svg";
 export { default as number1VmgroupFolderFill16Ontint } from "./1-vmgroup-folder-fill-16-ontint.svg";
-export { default as number1VmgroupFolderFill16Ontint } from "./1-vmgroup-folder-fill-16-ontint.svg.svg";
 export { default as number1VmgroupFolderGradientBlue24 } from "./1-vmgroup-folder-gradient-blue-24.svg";
 export { default as number1VmgroupFolderNotGrouped16GradientBlue } from "./1-vmgroup-folder-not-grouped-16-gradient-blue.svg";
 export { default as number1VmgroupFolderNotGrouped16GradientGray } from "./1-vmgroup-folder-not-grouped-16-gradient-gray.svg";

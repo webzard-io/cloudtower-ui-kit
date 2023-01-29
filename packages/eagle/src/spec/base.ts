@@ -331,7 +331,7 @@ export type ButtonGroupType = {
       key: string;
       title?: string;
       hideTitle?: boolean;
-      icon?: ImagesType;
+      icon?: ImagesType | JSX.Element;
     }
   >;
 };
@@ -354,10 +354,10 @@ export type IntegerFieldProps<
   };
 
 export type ButtonProps = {
-  prefixIcon?: ImagesType;
-  hoverPrefixIcon?: ImagesType;
-  suffixIcon?: ImagesType;
-  hoverSuffixIcon?: ImagesType;
+  prefixIcon?: ImagesType | JSX.Element;
+  hoverPrefixIcon?: ImagesType | JSX.Element;
+  suffixIcon?: ImagesType | JSX.Element;
+  hoverSuffixIcon?: ImagesType | JSX.Element;
   type?:
     | ButtonType
     | "secondary"

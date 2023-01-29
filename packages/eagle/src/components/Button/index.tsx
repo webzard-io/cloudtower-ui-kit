@@ -5,7 +5,7 @@ import cs from "classnames";
 import React, { useState } from "react";
 
 import { ButtonProps } from "../../spec";
-import Icon from "../Icon";
+import HoverableIcon from "../HoverableIcon";
 import { Typo } from "../Typo";
 
 const ButtonStyle = css`
@@ -407,24 +407,20 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...restProps}
       >
         {prefixIcon && (
-          <Icon
-            type={
-              status === "hover" && hoverPrefixIcon
-                ? hoverPrefixIcon
-                : prefixIcon
-            }
-            className="button-prefix-icon"
+          <HoverableIcon
+            icon={prefixIcon}
+            hoverIcon={hoverPrefixIcon}
+            hover={status === "hover"}
+            className={"button-prefix-icon"}
           />
         )}
         {children}
         {suffixIcon && (
-          <Icon
-            type={
-              status === "hover" && hoverSuffixIcon
-                ? hoverSuffixIcon
-                : suffixIcon
-            }
-            className="button-suffix-icon"
+          <HoverableIcon
+            icon={suffixIcon}
+            hoverIcon={hoverSuffixIcon}
+            hover={status === "hover"}
+            className={"button-suffix-icon"}
           />
         )}
       </AntdButton>

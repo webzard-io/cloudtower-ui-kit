@@ -9,6 +9,7 @@ export { default as FailedLoad } from "./FailedLoad";
 export * from "./Form";
 export * from "./FormError";
 export { default as FieldError } from "./FormError";
+export { default as HoverableIcon } from "./HoverableIcon";
 export { default as Icon } from "./Icon";
 export * from "./Icon";
 export * from "./images";
