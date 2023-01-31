@@ -83,3 +83,4 @@ pages:
       - public
   only:
     - main
+    - story
