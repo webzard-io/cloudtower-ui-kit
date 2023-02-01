@@ -1,3 +1,4 @@
+import { FormInstance } from "antd/lib/form";
 import { BasicProps } from "antd/lib/layout/layout";
 import { TagProps } from "antd/lib/tag";
 import { forwardRef } from "react";
@@ -138,7 +139,13 @@ const emptyImpl: Kit = {
   arch: ThrowError,
   buttonGroup: forwardRef(ThrowError),
   steps: ThrowError,
-  form: ThrowError,
+  form: Object.assign(forwardRef<FormInstance>(ThrowError), {
+    useForm: ThrowError,
+    Item: ThrowError,
+    List: ThrowError,
+    Provider: ThrowError,
+    create: ThrowError,
+  }),
 };
 
 export default emptyImpl;
