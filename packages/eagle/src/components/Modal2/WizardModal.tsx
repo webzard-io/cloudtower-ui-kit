@@ -6,9 +6,10 @@ import { isNil } from "lodash";
 import React, { useContext, useMemo, useRef } from "react";
 
 import { kitContext, WizardModalType } from "../../spec";
-import { WizardBody } from "../Styled";
-import { ModalFooterError } from "./Error";
+import { FullView, WizardBody } from "../Styled";
+import { Typo } from "../Typo";
 import BaseModal from "./Modal";
+import { FullViewErrorStyle } from "./styled";
 
 const WizardModal: React.FC<WizardModalType> = (props) => {
   const kit = useContext(kitContext);
@@ -35,7 +36,7 @@ const WizardModal: React.FC<WizardModalType> = (props) => {
     destroyOtherStep,
     right,
     stepsPosition = "side",
-    analyzeFallbackError,
+    contentError,
     ...wizardModalProps
   } = props;
 
@@ -90,11 +91,19 @@ const WizardModal: React.FC<WizardModalType> = (props) => {
                 {prevText}
               </span>
             )}
-            <ModalFooterError
-              className="modal-error"
-              error={footerError}
-              analyzeFallbackError={analyzeFallbackError}
-            />
+            {typeof contentError === "string" ? (
+              <FullView className={FullViewErrorStyle}>
+                <p className={Typo.Display.d2_bold_title}>
+                  {parrotI18n.t("common.load_failed")}
+                </p>
+                <p className={Typo.Label.l1_regular_title}>
+                  {parrotI18n.t("common.error_message")}:&nbsp;
+                  <span>{contentError}</span>
+                </p>
+              </FullView>
+            ) : (
+              contentError
+            )}
           </div>
           <div className="modal-footer-btn-group">
             {showCancel && (
@@ -143,7 +152,6 @@ const WizardModal: React.FC<WizardModalType> = (props) => {
         onCancel={onCancel}
         className={cs(fullscreen && "wizard")}
         fullscreen
-        analyzeFallbackError={analyzeFallbackError}
         {...wizardModalProps}
         footer={getFooter()}
       >
@@ -202,7 +210,6 @@ const WizardModal: React.FC<WizardModalType> = (props) => {
       onCancel={onCancel}
       className={cs(fullscreen && "wizard")}
       fullscreen
-      analyzeFallbackError={analyzeFallbackError}
       {...wizardModalProps}
       footer={getFooter()}
     >

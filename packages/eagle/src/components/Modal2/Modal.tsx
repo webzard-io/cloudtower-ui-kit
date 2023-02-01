@@ -8,16 +8,9 @@ import React, { useContext, useRef } from "react";
 import { kitContext, Modal2Props } from "../../spec";
 import { KitRootState, ModalActions } from "../../store";
 import { useKitDispatch, useKitSelector } from "../KitStoreProvider";
-import { ModalFooterError } from "./Error";
+import { FullView } from "../Styled";
 
-const Modal: React.FC<
-  Modal2Props & {
-    analyzeFallbackError: (fallback: unknown) => {
-      msg: string;
-      originalMsg: string;
-    } | null;
-  }
-> = (props) => {
+const Modal: React.FC<Modal2Props> = (props) => {
   const kit = useContext(kitContext);
 
   const {
@@ -41,7 +34,6 @@ const Modal: React.FC<
     okText = parrotI18n.t("common.confirm"),
     cancelText = parrotI18n.t("common.cancel"),
     size,
-    analyzeFallbackError,
     ...modalPropsArgs
   } = props;
 
@@ -103,13 +95,11 @@ const Modal: React.FC<
     if (isNil(footer)) {
       return (
         <>
-          <div className="modal-footer-left">
-            <ModalFooterError
-              className="modal-error"
-              error={footerError}
-              analyzeFallbackError={analyzeFallbackError}
-            />
-          </div>
+          {typeof footerError === "string" ? (
+            <span className="modal-error">{footerError}</span>
+          ) : (
+            <div className="modal-footer-left">{footerError}</div>
+          )}
           <div className="modal-footer-btn-group">
             {showCancel && (
               <kit.button

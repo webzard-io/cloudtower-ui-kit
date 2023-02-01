@@ -3,55 +3,82 @@ import {
   kitContext as UIKitContext,
   KitStoreProvider,
   ModalStack,
-  ModalWrapper,
   pushModal,
 } from "@cloudtower/eagle";
-import { ComponentMeta } from "@storybook/react";
-import React, { useContext } from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import React from "react";
 
-const Modal1: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-  const UIKit = useContext(UIKitContext);
-
-  return (
-    <UIKit.modal
-      title="Label"
-      className={ModalWrapper}
-      fullscreen
-      okText="Button Title"
-      cancelText="Button Title"
-      onCancel={onClose}
-    >
-      <div>Main Area</div>
-    </UIKit.modal>
-  );
-};
-
-export const ImmersiveDialog = () => {
-  return (
-    <KitStoreProvider>
-      <UIKitContext.Provider value={antdKit}>
-        <ModalStack />
-        <button
-          onClick={() => {
-            pushModal({
-              component: Modal1,
-              props: {
-                name: "modal1",
-              },
-            });
-          }}
-        >
-          open modal
-        </button>
-      </UIKitContext.Provider>
-    </KitStoreProvider>
-  );
-};
-
-ImmersiveDialog.story = {
-  name: "Immersive Dialog",
-};
+import ContentErrorModal from "./modal/ContentErrorModal";
+import FootErrorModal from "./modal/FootErrorModal";
+import ImmersiveModal from "./modal/ImmersiveModal";
 
 export default {
   title: "Modal",
-} as ComponentMeta<typeof antdKit.select>;
+  decorators: [
+    (Story) => {
+      return (
+        <KitStoreProvider>
+          <UIKitContext.Provider value={antdKit}>
+            <ModalStack />
+            <Story />
+          </UIKitContext.Provider>
+        </KitStoreProvider>
+      );
+    },
+  ],
+} as ComponentMeta<
+  (
+    props: React.DetailedHTMLProps<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    >
+  ) => JSX.Element
+>;
+
+const Template: ComponentStory<
+  (
+    props: React.DetailedHTMLProps<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    >
+  ) => JSX.Element
+> = (args) => <button {...args}>open modal</button>;
+
+export const ImmersiveDialog = Template.bind({});
+
+ImmersiveDialog.args = {
+  onClick: () => {
+    pushModal({
+      component: ImmersiveModal,
+      props: {
+        name: "ImmersiveModal",
+      },
+    });
+  },
+};
+
+export const FootErrorDialog = Template.bind({});
+
+FootErrorDialog.args = {
+  onClick: () => {
+    pushModal({
+      component: FootErrorModal,
+      props: {
+        name: "FootErrorDialog",
+      },
+    });
+  },
+};
+
+export const ContentErrorDialog = Template.bind({});
+
+ContentErrorDialog.args = {
+  onClick: () => {
+    pushModal({
+      component: ContentErrorModal,
+      props: {
+        name: "ContentErrorModal",
+      },
+    });
+  },
+};

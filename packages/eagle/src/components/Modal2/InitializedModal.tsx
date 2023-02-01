@@ -2,17 +2,13 @@ import { parrotI18n } from "@cloudtower/parrot";
 import React, { useContext, useEffect, useRef, useState } from "react";
 
 import { InitializedModalType, kitContext } from "../../spec";
-import { ModalContentError } from "./Error";
+import { FullView } from "../Styled";
+import { Typo } from "../Typo";
 import BaseModal from "./Modal";
+import { FullViewErrorStyle } from "./styled";
 
 const InitializedModal: React.FC<InitializedModalType> = (props) => {
-  const {
-    initLoading,
-    initError,
-    children,
-    analyzeFallbackError,
-    ...modal2PropsArgs
-  } = props;
+  const { initLoading, contentError, children, ...modal2PropsArgs } = props;
   const kit = useContext(kitContext);
   const changeCount = useRef<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
@@ -33,24 +29,30 @@ const InitializedModal: React.FC<InitializedModalType> = (props) => {
       return <kit.loading />;
     }
 
-    if (initError) {
-      return (
-        <ModalContentError
-          error={initError}
-          analyzeFallbackError={analyzeFallbackError}
-        />
+    if (contentError) {
+      return typeof contentError === "string" ? (
+        <FullView className={FullViewErrorStyle}>
+          <p className={Typo.Display.d2_bold_title}>
+            {parrotI18n.t("common.load_failed")}
+          </p>
+          <p className={Typo.Label.l1_regular_title}>
+            {parrotI18n.t("common.error_message")}:&nbsp;
+            <span>{contentError}</span>
+          </p>
+        </FullView>
+      ) : (
+        contentError
       );
     }
 
     return children;
   };
 
-  const canRenderChildren = !loading && !initError;
+  const canRenderChildren = !loading && !contentError;
 
   return (
     <BaseModal
       {...modal2PropsArgs}
-      analyzeFallbackError={analyzeFallbackError}
       showOk={canRenderChildren && modal2PropsArgs.showOk}
       cancelText={
         canRenderChildren
