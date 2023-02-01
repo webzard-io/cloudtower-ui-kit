@@ -10,7 +10,7 @@ import { CheckboxProps } from "antd/lib/checkbox";
 import { DatePickerProps } from "antd/lib/date-picker";
 import { DividerProps as AntdDividerProps } from "antd/lib/divider";
 import { DropDownProps } from "antd/lib/dropdown";
-import { FormProps } from "antd/lib/form";
+import type Form from "antd/lib/form";
 import { InputProps } from "antd/lib/input";
 import { TextAreaProps as AntdTextAreaProps } from "antd/lib/input/TextArea";
 import { InputNumberProps } from "antd/lib/input-number";
@@ -543,7 +543,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     ButtonGroupType & React.RefAttributes<HTMLDivElement>
   >;
   steps: React.FC<IStepsPorps>;
-  form: React.FC<FormProps>;
+  form: Form;
 }
 
 export const kitContext = createContext<Kit>(emptyImpl);
