@@ -291,7 +291,7 @@ export type Modal2Props = AntdModalProps & {
   /** Set disabled type for ok button */
   okDisabled?: boolean;
   /** Set error in footer */
-  footerError?: string | React.ReactNode | Error;
+  footerError?: JSX.Element | string;
   children?: React.ReactNode;
   /** Display cancel button */
   showCancel?: boolean;
@@ -392,15 +392,9 @@ export type IStepsPorps = StepsProps & {
   showStepCount?: boolean;
 };
 
-type ErrorType = string | React.ReactNode | Error;
-
 export type InitializedModalType = Modal2Props & {
   initLoading: boolean;
-  initError: ErrorType;
-  analyzeFallbackError: (fallback: unknown) => {
-    msg: string;
-    originalMsg: string;
-  } | null;
+  contentError?: JSX.Element | string;
 };
 
 export type WizardModalType = Modal2Props & {
@@ -418,10 +412,7 @@ export type WizardModalType = Modal2Props & {
   destroyOtherStep?: boolean;
   disablePrevStep?: boolean;
   stepsPosition?: "top" | "side";
-  analyzeFallbackError: (fallback: unknown) => {
-    msg: string;
-    originalMsg: string;
-  } | null;
+  contentError?: JSX.Element | string;
 };
 
 export interface Modal2Type extends React.FC<Modal2Props> {

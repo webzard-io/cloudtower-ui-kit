@@ -10,7 +10,6 @@ Modal.Wizard = WizardModal;
 
 export default Modal;
 export { InitializedModal, Modal, WizardModal };
-export * from "./Error";
 export * from "./InitializedModal";
 export * from "./Modal";
 export * from "./WizardModal";
