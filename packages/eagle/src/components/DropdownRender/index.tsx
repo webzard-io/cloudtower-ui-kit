@@ -6,6 +6,10 @@ import React, { useContext, useEffect, useState } from "react";
 
 import { kitContext } from "../../spec";
 import Icon from "../Icon";
+import {
+  loading24GradientBlue,
+  plusAddCreateNew24GradientGray,
+} from "../images";
 
 export const CreatingSelectDropdownStyle = css`
   .ant-select-item {
@@ -137,9 +141,13 @@ export function CreateResourceDropdownRender<
         <kit.button
           icon={
             creating ? (
-              <Icon type="1-loading-24-gradient-blue" isRotate={true} />
+              <Icon
+                src={loading24GradientBlue}
+                iconWidth={24}
+                isRotate={true}
+              />
             ) : (
-              <Icon type="1-plus-add-create-new-24-gradient-gray" />
+              <Icon src={plusAddCreateNew24GradientGray} iconWidth={24} />
             )
           }
           disabled={!name || creating}

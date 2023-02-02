@@ -5,7 +5,13 @@ import cs from "classnames";
 import React, { useContext, useEffect, useMemo, useRef } from "react";
 
 import { kitContext, PaginationProps } from "../../spec";
+import BaseIcon from "../BaseIcon";
 import Icon from "../Icon";
+import {
+  arrowChevronDownSmall16Blue,
+  arrowChevronDownSmall16Secondary,
+  arrowChevronLeftSmall16BoldBlue,
+} from "../images";
 
 const PaginationStyle = css`
   display: flex;
@@ -139,8 +145,8 @@ const Pagination: React.FC<PaginationProps> = (props) => {
         >
           <Icon
             className="pagination-left dropdown-trigger"
-            type="1-arrow-chevron-down-small-16-secondary"
-            hoverType="1-arrow-chevron-down-small-16-blue"
+            src={arrowChevronDownSmall16Secondary}
+            hoverSrc={arrowChevronDownSmall16Blue}
             prefix={content}
           />
         </kit.dropdown>
@@ -170,7 +176,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             className="prev-btn"
             type="quiet"
             size="small"
-            prefixIcon="1-arrow-chevron-left-small-16-bold-blue"
+            prefixIcon={<BaseIcon src={arrowChevronLeftSmall16BoldBlue} />}
             onClick={() => {
               onChange?.(current - 1);
             }}
@@ -183,7 +189,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             className="next-btn"
             type="quiet"
             size="small"
-            suffixIcon="1-arrow-chevron-left-small-16-bold-blue"
+            prefixIcon={<BaseIcon src={arrowChevronLeftSmall16BoldBlue} />}
             onClick={() => {
               onChange?.(current + 1);
             }}
