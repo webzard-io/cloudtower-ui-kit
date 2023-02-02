@@ -4,13 +4,12 @@ import _ from "lodash";
 import React, { useMemo, useState } from "react";
 
 import BaseIcon from "../BaseIcon";
-import { ImagesType } from "../images/images-type";
 
 export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
-  type: ImagesType;
+  src: string;
   active?: boolean;
-  hoverType?: ImagesType;
-  activeType?: ImagesType;
+  hoverSrc?: string;
+  activeSrc?: string;
   className?: string;
   alt?: string;
   iconWidth?: number;
@@ -18,10 +17,10 @@ export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
   cursor?: "pointer" | string;
   isRotate?: boolean;
   prefix?: React.ReactNode;
-  suffixType?: {
-    type: ImagesType;
-    hoverType?: ImagesType;
-    activeType?: ImagesType;
+  suffix?: {
+    src: string;
+    hoverSrc?: string;
+    activeSrc?: string;
   };
 };
 
@@ -45,99 +44,56 @@ const IconWrapper = css`
   }
 `;
 
-const parseType = (type: string) => {
-  return type
-    .substring(type.indexOf("/") + 1)
-    .split("-")
-    .reduce((p, v, i) => {
-      if (i === 0) {
-        const parsed = parseFloat(v);
-        if (isNaN(parsed)) {
-          return v;
-        }
-        return "number" + v.charAt(0).toUpperCase() + v.slice(1);
-      } else {
-        return p + v.charAt(0).toUpperCase() + v.slice(1);
-      }
-    }, "");
-};
-
-const errorImage = "1-status-unknown-questionmark-16-red";
-
 const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
   const {
-    type = "",
-    hoverType,
+    src,
+    hoverSrc,
     active,
-    activeType,
+    activeSrc,
     onMouseEnter,
     onMouseLeave,
     onMouseMove,
     className,
-    iconWidth,
+    iconWidth = 16,
     iconHeight,
     cursor,
     style,
     children,
     isRotate,
     prefix,
-    suffixType,
+    suffix,
     ...restProps
   } = props;
 
   const [hover, setHover] = useState(false);
-  const defaultWidth = 16;
-  const _iconWidth = iconWidth || (type.includes("24") ? 24 : defaultWidth);
-  const _iconHeight = iconHeight || _iconWidth;
 
-  const errorType = useMemo(() => {
-    return parseType(errorImage);
-  }, []);
-
-  const src = useMemo(() => {
-    try {
-      if (active && activeType) {
-        const parsedActiveType = parseType(activeType);
-        return require("@cloudtower/eagle")[parsedActiveType];
-      }
-      if (hover && hoverType) {
-        const parsedHoverType = parseType(hoverType);
-        return require("@cloudtower/eagle")[parsedHoverType];
-      }
-      const parsedType = parseType(type);
-      return require("@cloudtower/eagle")[parsedType];
-    } catch (error) {
-      console.error(error);
-      return require("@cloudtower/eagle")[errorType];
+  const _src = useMemo(() => {
+    if (active && activeSrc) {
+      return activeSrc;
     }
-  }, [active, activeType, hover, hoverType, type, errorType]);
+    if (hover && hoverSrc) {
+      return hoverSrc;
+    }
+    return src;
+  }, [active, activeSrc, hover, hoverSrc, src]);
 
   const suffixIconSrc = useMemo(() => {
-    try {
-      if (!suffixType) {
-        return null;
-      }
-
-      const { activeType, hoverType, type } = suffixType;
-      if (active && activeType) {
-        const parsedActiveType = parseType(activeType);
-        return require("@cloudtower/eagle")[parsedActiveType];
-      }
-      if (hover && hoverType) {
-        const parsedHoverType = parseType(hoverType);
-        return require("@cloudtower/eagle")[parsedHoverType];
-      }
-      const parsedType = parseType(type);
-      return require("@cloudtower/eagle")[parsedType];
-    } catch (error) {
-      console.error(error);
-      return require("@cloudtower/eagle")[errorType];
+    if (!suffix) {
+      return undefined;
     }
-  }, [active, errorType, hover, suffixType]);
+    const { activeSrc, hoverSrc, src } = suffix;
+    if (active && activeSrc) {
+      return activeSrc;
+    }
+    if (hover && hoverSrc) {
+      return hoverSrc;
+    }
+    return src;
+  }, [active, hover, suffix]);
 
   return (
     <BaseIcon
-      src={src}
+      src={_src}
       className={cs(
         IconWrapper,
         "icon-wrapper",
@@ -145,26 +101,26 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
         isRotate && "is-rotate"
       )}
       suffixIconSrc={suffixIconSrc}
-      height={_iconHeight}
-      width={_iconWidth}
+      height={iconHeight}
+      width={iconWidth}
       prefixNode={prefix}
       style={_.pickBy({ cursor: cursor, ...style })}
       {...restProps}
       onMouseEnter={(e) => {
         onMouseEnter?.(e);
-        if (hoverType) {
+        if (hover) {
           setHover(true);
         }
       }}
       onMouseMove={(e) => {
         onMouseMove?.(e);
-        if (hoverType) {
+        if (hoverSrc) {
           setHover(true);
         }
       }}
       onMouseLeave={(e) => {
         onMouseLeave?.(e);
-        if (hoverType) {
+        if (hoverSrc) {
           setHover(false);
         }
       }}

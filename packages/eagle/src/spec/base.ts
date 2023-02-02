@@ -46,7 +46,6 @@ import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
 import React, { createContext, ReactNode } from "react";
 
-import { ImagesType } from "..";
 import emptyImpl from "./emptyImpl";
 import { Architecture } from "./type";
 
@@ -331,7 +330,7 @@ export type ButtonGroupType = {
       key: string;
       title?: string;
       hideTitle?: boolean;
-      icon?: ImagesType | JSX.Element;
+      icon?: JSX.Element;
     }
   >;
 };
@@ -354,10 +353,10 @@ export type IntegerFieldProps<
   };
 
 export type ButtonProps = {
-  prefixIcon?: ImagesType | JSX.Element;
-  hoverPrefixIcon?: ImagesType | JSX.Element;
-  suffixIcon?: ImagesType | JSX.Element;
-  hoverSuffixIcon?: ImagesType | JSX.Element;
+  prefixIcon?: JSX.Element;
+  hoverPrefixIcon?: JSX.Element;
+  suffixIcon?: JSX.Element;
+  hoverSuffixIcon?: JSX.Element;
   type?:
     | ButtonType
     | "secondary"
