@@ -50,10 +50,6 @@ const emptyImpl: Kit = {
   table: ThrowError,
   button: ThrowError,
   modal: ThrowError,
-  modal2: Object.assign(ThrowError, {
-    Initialized: ThrowError,
-    Wizard: ThrowError,
-  }),
   dropdown: ThrowError,
   switch: ThrowError,
   tooltip: ThrowError,

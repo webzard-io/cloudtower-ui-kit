@@ -12,7 +12,6 @@ export { default as Loading } from "./Loading";
 export * from "./Metric";
 export { default as Metric } from "./Metric";
 export * from "./Modal";
-export * from "./Modal2";
 export { default as ModalStack } from "./ModalStack";
 export * from "./Overflow";
 export * from "./Pagination";

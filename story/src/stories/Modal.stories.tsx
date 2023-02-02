@@ -8,8 +8,6 @@ import {
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 
-import ContentErrorModal from "./modal/ContentErrorModal";
-import FootErrorModal from "./modal/FootErrorModal";
 import ImmersiveModal from "./modal/ImmersiveModal";
 
 export default {
@@ -52,32 +50,6 @@ ImmersiveDialog.args = {
       component: ImmersiveModal,
       props: {
         name: "ImmersiveModal",
-      },
-    });
-  },
-};
-
-export const FootErrorDialog = Template.bind({});
-
-FootErrorDialog.args = {
-  onClick: () => {
-    pushModal({
-      component: FootErrorModal,
-      props: {
-        name: "FootErrorDialog",
-      },
-    });
-  },
-};
-
-export const ContentErrorDialog = Template.bind({});
-
-ContentErrorDialog.args = {
-  onClick: () => {
-    pushModal({
-      component: ContentErrorModal,
-      props: {
-        name: "ContentErrorModal",
       },
     });
   },
