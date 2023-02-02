@@ -7,6 +7,10 @@ import React, { DragEvent, useContext } from "react";
 import { CustomizeColumnType } from "../../hooks";
 import { kitContext } from "../../spec";
 import Icon from "../Icon";
+import {
+  settingsGear16GradientBlue,
+  settingsGear16GradientGray,
+} from "../images";
 import { arrayMove } from "./common";
 
 const DropdownWrapper = css`
@@ -287,8 +291,8 @@ const CustomizeColumn: React.FC<CustomizeColumnProps> = (props) => {
     >
       <Icon
         className="anticon-setting"
-        type="1-settings-gear-16-gradient-gray"
-        hoverType="1-settings-gear-16-gradient-blue"
+        src={settingsGear16GradientGray}
+        hoverSrc={settingsGear16GradientBlue}
         alt="setting"
         aria-label="setting"
       />

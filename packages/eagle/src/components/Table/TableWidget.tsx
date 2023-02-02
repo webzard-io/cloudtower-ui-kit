@@ -14,6 +14,7 @@ import {
 } from "../../hooks";
 import { kitContext, Maybe, Scalars } from "../../spec";
 import Icon from "../Icon";
+import { arrowChevronUp16BoldSecondary } from "../images";
 
 const TablePaginationStyle = css``;
 
@@ -278,7 +279,7 @@ export const ColumnTitle: React.FC<{
       {
         <Icon
           className={cs("order-icon", sortOrder)}
-          type="1-arrow-chevron-up-16-bold-secondary"
+          src={arrowChevronUp16BoldSecondary}
         />
       }
     </>

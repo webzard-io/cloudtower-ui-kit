@@ -5,7 +5,6 @@ import cs from "classnames";
 import React, { useContext, useEffect, useMemo, useRef } from "react";
 
 import { kitContext, PaginationProps } from "../../spec";
-import BaseIcon from "../BaseIcon";
 import Icon from "../Icon";
 import {
   arrowChevronDownSmall16Blue,
@@ -176,7 +175,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             className="prev-btn"
             type="quiet"
             size="small"
-            prefixIcon={<BaseIcon src={arrowChevronLeftSmall16BoldBlue} />}
+            prefixIcon={<Icon src={arrowChevronLeftSmall16BoldBlue} />}
             onClick={() => {
               onChange?.(current - 1);
             }}
@@ -189,7 +188,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             className="next-btn"
             type="quiet"
             size="small"
-            prefixIcon={<BaseIcon src={arrowChevronLeftSmall16BoldBlue} />}
+            prefixIcon={<Icon src={arrowChevronLeftSmall16BoldBlue} />}
             onClick={() => {
               onChange?.(current + 1);
             }}
