@@ -283,26 +283,6 @@ export type ModalProps = Omit<AntdModalProps, "okType"> & {
     | boolean;
 };
 
-export type Modal2Props = AntdModalProps & {
-  /** Set is fullscreen to display modal */
-  fullscreen?: boolean;
-  /** Set loading type for ok button */
-  okLoading?: boolean;
-  /** Set disabled type for ok button */
-  okDisabled?: boolean;
-  /** Set error in footer */
-  footerError?: JSX.Element | string;
-  children?: React.ReactNode;
-  /** Display cancel button */
-  showCancel?: boolean;
-  /** Display ok button */
-  showOk?: boolean;
-  /** Set is a normal modal, width is 460px. If width is set it will fail */
-  normal?: boolean;
-  // FIXME: add props size
-  size?: "normal" | "medium" | "fullscreen";
-};
-
 type SearchInputProps = Omit<InputProps, "onChange"> & {
   onChange: (value: string) => void;
   debounceWait?: number;
@@ -392,34 +372,6 @@ export type IStepsPorps = StepsProps & {
   showStepCount?: boolean;
 };
 
-export type InitializedModalType = Modal2Props & {
-  initLoading: boolean;
-  contentError?: JSX.Element | string;
-};
-
-export type WizardModalType = Modal2Props & {
-  step: number;
-  onStepChange?: (step: number) => void;
-  steps: {
-    title: string;
-    render: React.ReactNode;
-    prevText?: string | React.ReactNode;
-    okText?: string | React.ReactNode;
-    onOk?: (e: React.MouseEvent<HTMLElement>) => void;
-    disabled?: boolean;
-  }[];
-  right?: React.ReactNode;
-  destroyOtherStep?: boolean;
-  disablePrevStep?: boolean;
-  stepsPosition?: "top" | "side";
-  contentError?: JSX.Element | string;
-};
-
-export interface Modal2Type extends React.FC<Modal2Props> {
-  Initialized: React.FC<InitializedModalType>;
-  Wizard: React.FC<WizardModalType>;
-}
-
 export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   // constants
   PAGINATION_SELECTOR: string;
@@ -436,7 +388,6 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   table: TableComponent;
   button: React.FC<ButtonProps>;
   modal: React.FC<ModalProps>;
-  modal2: React.FC<Modal2Props> & Modal2Type;
   dropdown: React.FC<DropDownProps>;
   switch: React.FC<SwitchProps>;
   tooltip: React.FC<TooltipProps>;

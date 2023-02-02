@@ -60,7 +60,6 @@ import Icon from "./Icon";
 import InputInteger from "./InputInteger";
 import Loading from "./Loading";
 import Modal from "./Modal";
-import Modal2 from "./Modal2";
 import Overflow from "./Overflow";
 import Pagination from "./Pagination";
 import Radio, { RadioButton, RadioGroup } from "./Radio";
@@ -972,7 +971,6 @@ export function getAntdKit(): Kit {
     table: KitTable,
     button: Button,
     modal: Modal,
-    modal2: Modal2,
     dropdown: Dropdown,
     switch: Switch,
     tooltip: Tooltip,
