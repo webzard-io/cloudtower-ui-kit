@@ -57,6 +57,7 @@ import { getAlertIcon } from "../utils";
 import Button from "./Button";
 import ButtonGroup from "./ButtonGroup";
 import Icon from "./Icon";
+import { focusIndicator16Blue } from "./images";
 import InputInteger from "./InputInteger";
 import Loading from "./Loading";
 import Modal from "./Modal";
@@ -1145,9 +1146,7 @@ export function getAntdKit(): Kit {
               allowClear={allowClear}
               onClick={onClick}
               prefix={
-                focusIndicator ? (
-                  <Icon type="1-focus-indicator-16-blue" />
-                ) : undefined
+                focusIndicator ? <Icon src={focusIndicator16Blue} /> : undefined
               }
               error={
                 meta.touched &&
@@ -1362,7 +1361,7 @@ export function getAntdKit(): Kit {
       closeText,
       ...props
     }) => {
-      const _icon = <Icon type={getAlertIcon(type)} />;
+      const _icon = <Icon src={getAlertIcon(type)} />;
       const _type = type === "normal" ? "info" : type;
       return (
         <Alert
