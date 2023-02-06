@@ -5,7 +5,8 @@
       "outputs": ["dist/**"]
     },
     "typings": {
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**"],
+      "dependsOn": ["^typings"]
     },
     "lint": {
       "outputs": []
