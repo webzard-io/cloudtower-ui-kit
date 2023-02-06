@@ -1,3 +1,6 @@
+import "@testing-library/jest-dom";
+
+import ResizeObserver from "resize-observer-polyfill";
 import { vi } from "vitest";
 
 Object.defineProperty(window, "matchMedia", {
@@ -13,5 +16,7 @@ Object.defineProperty(window, "matchMedia", {
     dispatchEvent: vi.fn(),
   })),
 });
+
+global.ResizeObserver = ResizeObserver;
 
 export {};
