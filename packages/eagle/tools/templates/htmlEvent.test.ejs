@@ -1,0 +1,51 @@
+import { fireEvent, render, screen } from "@testing-library/react";
+import React, { PropsWithChildren, useContext } from "react";
+import { describe, expect, it, vi } from "vitest";
+
+import { kitContext } from "../../../spec";
+import { antdKit } from "../../antd";
+import KitStoreProvider from "../../KitStoreProvider";
+import ModalStack from "../../ModalStack";
+
+const AllTheProviders = ({ children }: PropsWithChildren<{}>) => {
+  return (
+    <KitStoreProvider>
+      <kitContext.Provider value={antdKit}>
+        <ModalStack />
+        {children}
+      </kitContext.Provider>
+    </KitStoreProvider>
+  );
+};
+
+
+<% events.forEach(function(event){ %>
+const on<%= event %> = vi.fn();
+<% }); %>
+
+const Component = () => {
+  const kit = useContext(kitContext);
+
+  return (
+    <kit.<%= camelCase(component) %>
+      <% events.forEach(function(event){ %>
+        on<%= event %>={on<%= event %>}
+      <% }); %>
+      data-testid="<%= component %>"
+    />
+  );
+};
+
+describe("<%= component %> htmlEvent", () => {
+  <% events.forEach(function(event){ %>
+    it("on<%= event %>", () => {
+      render(<Component />, {
+        wrapper: AllTheProviders,
+      });
+  
+      fireEvent.<%= camelCase(event) %>(screen.getByTestId("<%= component %>"));
+  
+      expect(on<%= event %>).toBeCalledTimes(1);
+    });
+  <% }); %>
+});
