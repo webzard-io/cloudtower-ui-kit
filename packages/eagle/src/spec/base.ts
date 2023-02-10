@@ -1,3 +1,4 @@
+import { StyledMeta } from "@linaria/react";
 import { FieldRenderProps } from "@smartx/react-final-form";
 import { FieldArrayRenderProps } from "@smartx/react-final-form-arrays";
 import { SerializableObject } from "@tower/utils";
@@ -11,13 +12,13 @@ import { DatePickerProps } from "antd/lib/date-picker";
 import { DividerProps as AntdDividerProps } from "antd/lib/divider";
 import { DropDownProps } from "antd/lib/dropdown";
 import type Form from "antd/lib/form";
-import { InputProps } from "antd/lib/input";
+import { GroupProps, InputProps } from "antd/lib/input";
 import { TextAreaProps as AntdTextAreaProps } from "antd/lib/input/TextArea";
 import { InputNumberProps } from "antd/lib/input-number";
 import { SiderProps } from "antd/lib/layout";
 import { BasicProps } from "antd/lib/layout/layout";
 import { ListProps } from "antd/lib/list";
-import { ListItemMetaProps, ListItemProps } from "antd/lib/list/Item";
+import { ListItemProps } from "antd/lib/list/Item";
 import { MenuItemGroupProps, MenuProps } from "antd/lib/menu";
 import { MenuItemProps } from "antd/lib/menu/MenuItem";
 import { SubMenuProps } from "antd/lib/menu/SubMenu";
@@ -51,7 +52,7 @@ import { Architecture } from "./type";
 
 type BadgeTypeProps = "warning" | "error" | "info";
 type Primitive = "Int" | "Float" | "DateTime" | "Enum" | "String" | "Boolean";
-type Child =
+export type Child =
   | {
       type: Exclude<Primitive, "Enum">;
     }
@@ -249,7 +250,7 @@ export interface FloatProps {
 export type TooltipProps = AntdTooltipProps & {
   followMouse?: boolean;
 };
-export type FieldBaseProps<V, T extends HTMLElement = HTMLElement> =
+export type FieldBaseProps<V = any, T extends HTMLElement = HTMLElement> =
   FieldRenderProps<V, T> & {
     disabled?: boolean;
     className?: string;
@@ -315,22 +316,26 @@ export type ButtonGroupType = {
   >;
 };
 
-export type IntegerFieldProps<
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  V = any,
-  T extends HTMLElement = HTMLElement
-> = FieldBaseProps<V, T> &
-  InputNumberProps & {
-    onChange?: FieldBaseProps<V, T>["input"]["onChange"];
-    controls?: boolean;
-    suffix?: string;
-    prefix?: string;
-    size?: InputSize;
-    onBlur?: (
-      input: FieldBaseProps<number, HTMLInputElement>["input"],
-      event?: React.FocusEvent<HTMLInputElement>
-    ) => void;
-  };
+export type IntegerFieldProps<V = any, T extends HTMLElement = HTMLElement> =
+  FieldBaseProps<V, T> &
+    InputNumberProps & {
+      onChange?: FieldBaseProps<V, T>["input"]["onChange"];
+      controls?: boolean;
+      suffix?: string;
+      prefix?: string;
+      size?: InputSize;
+      onBlur?: (
+        input: FieldBaseProps<number, HTMLInputElement>["input"],
+        event?: React.FocusEvent<HTMLInputElement>
+      ) => void;
+    };
+
+export type FloatFieldProps<V = any, T extends HTMLElement = HTMLElement> =
+  FieldBaseProps<V, T> &
+    FloatProps & {
+      onChange?: FieldBaseProps<V, T>["input"]["onChange"];
+      autoComplete?: "on" | "off";
+    };
 
 export type ButtonProps = {
   prefixIcon?: JSX.Element;
@@ -379,11 +384,11 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   TBODY_SELECTOR: string;
   MODAL_WHITELIST: string[];
   // general UI
-  loading: React.FunctionComponent<{ fullView?: boolean }>;
+  loading: KitLoadingComponentType;
   error: React.FunctionComponent<{ error: unknown }>;
   pagination: React.FC<PaginationProps>;
-  select: React.FunctionComponent<LooseFieldRenderProps<V, T> & KitSelectProps>;
-  option: React.FunctionComponent<OptionProps>;
+  select: SelectComponentType<V, T>;
+  option: OptionComponentType;
   table: TableComponent;
   button: React.FC<ButtonProps>;
   modal: React.FC<ModalProps>;
@@ -400,13 +405,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     // scalars
     Int: React.FunctionComponent<IntFieldProps<V, T>>;
     Integer: React.FunctionComponent<IntegerFieldProps<V, T>>;
-    Float: React.FunctionComponent<
-      FieldBaseProps<V, T> &
-        FloatProps & {
-          onChange?: FieldBaseProps<V, T>["input"]["onChange"];
-          autoComplete?: "on" | "off";
-        }
-    >;
+    Float: React.FunctionComponent<FloatFieldProps<V, T>>;
     DateTime: React.FunctionComponent<FieldBaseProps<V, T>>;
     Enum: React.FunctionComponent<
       {
@@ -441,19 +440,16 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     BitPerSecond: UnitFn;
     Bit: UnitFn;
   };
-  inputGroup: React.FunctionComponent<{ compact: boolean }>;
+  inputGroup: InputGroupComponentType;
   Empty: React.ReactElement | null;
-  alert: React.FunctionComponent<
-    Omit<AlertProps, "type"> & { type?: AlertProps["type"] | "normal" }
-  >;
+  alert: AlertComponentType;
   searchInput: React.FC<SearchInputProps>;
-  exportButton: React.FC<{ href?: string }>;
-  badge: React.FC<BadgeProps & { type?: BadgeTypeProps }>;
+  badge: BadgeComponentType;
   radio: React.FC<RadioProps>;
   radioGroup: React.FC<AntdRadioGroupProps>;
   radioButton: React.FC<RadioButtonProps>;
   tree: React.FC<AntdTreeProps>;
-  progress: React.FC<ProgressProps>;
+  progress: ProgressComponentType;
   divider: React.FC<AntdDividerProps>;
   skeleton: React.FC<AntdSkeletonProps>;
   menu: React.ComponentType<MenuProps> & {
@@ -466,7 +462,6 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   menuItemGroup: React.ComponentType<MenuItemGroupProps>;
   list: <T>(props: ListProps<T>) => JSX.Element;
   listItem: React.FC<ListItemProps>;
-  listItemMeta: React.FC<ListItemMetaProps>;
   layout: React.ComponentType<BasicProps> & {
     Header: React.ComponentType<BasicProps>;
     Footer: React.ComponentType<BasicProps>;
@@ -479,7 +474,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   popover: React.ForwardRefExoticComponent<
     PopoverProps & React.RefAttributes<unknown>
   >;
-  arch: React.FC<{ architecture?: Architecture }>;
+  arch: ArchComponentType;
   buttonGroup: React.ForwardRefExoticComponent<
     ButtonGroupType & React.RefAttributes<HTMLDivElement>
   >;
@@ -488,3 +483,38 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
 }
 
 export const kitContext = createContext<Kit>(emptyImpl);
+
+export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
+
+export type SelectComponentType<V = any, T extends HTMLElement = HTMLElement> =
+  React.FunctionComponent<LooseFieldRenderProps<V, T> & KitSelectProps>;
+
+export type OptionComponentType = React.FC<OptionProps> & {
+  isSelectOption: boolean;
+};
+
+export type BadgeComponentType = React.FC<
+  BadgeProps & { type?: BadgeTypeProps }
+>;
+
+export type ProgressComponentType = React.FC<ProgressProps>;
+
+export type InputGroupComponentType = StyledMeta & React.FC<GroupProps>;
+
+export type AlertComponentType = React.FunctionComponent<
+  Omit<AlertProps, "type"> & { type?: AlertProps["type"] | "normal" }
+>;
+
+export type SearchInputComponentType = React.FC<SearchInputProps>;
+
+export type KitLoadingComponentType = React.FunctionComponent<{
+  fullView?: boolean;
+}>;
+
+export type KitEnumProps<V = any, T extends HTMLElement = HTMLElement> = {
+  input: Partial<FieldRenderProps<V, T>["input"]>;
+  meta: FieldRenderProps<V, T>["meta"];
+  disabled?: boolean;
+  className?: string;
+  dropdownClassName?: string;
+} & EnumProps;

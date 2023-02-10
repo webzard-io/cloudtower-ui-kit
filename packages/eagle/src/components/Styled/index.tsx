@@ -521,3 +521,284 @@ export const OperationWraper = styled.div`
 export const TertiaryText = styled.div`
   color: $text-light-tertiary;
 `;
+
+export const InputStyle = css`
+  &.ant-input {
+    padding: 5px 12px;
+    line-height: 20px;
+    color: $text-primary-light;
+    border-radius: 6px;
+    border-color: $strokes-light-trans-3;
+    transition: height 240ms ease 8ms, border 160ms ease 8ms,
+      box-shadow 160ms ease 8ms;
+  }
+
+  &.ant-input.ant-input-lg {
+    padding: 8px 16px;
+    line-height: 22px;
+  }
+
+  &.ant-input.ant-input-sm {
+    padding: 2px 8px;
+    line-height: 18px;
+  }
+
+  &.ant-input:not([disabled]),
+  &.ant-input-number:not([disabled]) {
+    &:hover,
+    &.__pseudo-states-hover {
+      border-color: $strokes-light-trans-4;
+      box-shadow: $shadow-light-hover;
+    }
+
+    &:active,
+    &:focus,
+    &.__pseudo-states-active,
+    &.__pseudo-states-focus {
+      border-color: $blue;
+      box-shadow: $shadow-light-active;
+    }
+  }
+
+  &.ant-input.error:not([disabled]),
+  &.ant-picker.error:not([disabled]),
+  &.ant-input-number.error:not([disabled]) {
+    border-color: $red;
+    color: $red;
+
+    &:hover,
+    &.__pseudo-states-hover {
+      border-color: $red;
+      box-shadow: $shadow-light-hover;
+    }
+
+    &:active,
+    &:focus,
+    &.__pseudo-states-active,
+    &.__pseudo-states-focus {
+      border-color: $red;
+      box-shadow: $shadow-light-error;
+    }
+  }
+
+  &.ant-input[disabled],
+  &.ant-input.ant-input-disabled,
+  &.ant-input-number[disabled],
+  &.ant-input-number.ant-input-number-disabled {
+    background: $fills-trans-terdiary-light;
+    color: $text-light-tertiary;
+    border-color: $strokes-light-trans-3;
+  }
+
+  &.ant-input-affix-wrapper {
+    padding: 5px 12px;
+    border-radius: 6px;
+    border-color: $strokes-light-trans-3;
+    line-height: 20px;
+    color: $text-primary-light;
+    transition: height 240ms ease 8ms, border 160ms ease 8ms,
+      box-shadow 160ms ease 8ms;
+
+    .ant-input-suffix,
+    .ant-input-prefix {
+      color: $text-secondary-light;
+    }
+  }
+
+  &.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
+    padding: 8px 16px;
+    line-height: 22px;
+  }
+
+  &.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
+    padding: 2px 8px;
+    line-height: 18px;
+  }
+
+  &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
+    &:hover,
+    &.__pseudo-states-hover {
+      border-color: $strokes-light-trans-4;
+      box-shadow: $shadow-light-hover;
+    }
+
+    &:active,
+    &:focus,
+    &.ant-input-affix-wrapper-focused,
+    &.__pseudo-states-active,
+    &.__pseudo-states-focus {
+      border-color: $blue;
+      box-shadow: $shadow-light-active;
+    }
+  }
+
+  &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
+    border-color: $red;
+    > .ant-input {
+      color: $red;
+    }
+
+    &:hover,
+    &.__pseudo-states-hover {
+      border-color: $red;
+      box-shadow: $shadow-light-hover;
+    }
+
+    &:active,
+    &:focus,
+    &.ant-input-affix-wrapper-focused,
+    &.__pseudo-states-active,
+    &.__pseudo-states-focus {
+      border-color: $red;
+      box-shadow: $shadow-light-error;
+    }
+  }
+
+  &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
+    background: $fills-trans-terdiary-light;
+    color: $text-light-tertiary;
+    border-color: $strokes-light-trans-3;
+  }
+
+  @at-root {
+    textarea#{&}.ant-input {
+      transition-property: height;
+      transition-delay: 50ms;
+      &.textarea-large {
+        min-height: 40px;
+        height: 40px;
+      }
+      &.textarea-large:focus {
+        height: 80px;
+      }
+      &.textarea-middle {
+        min-height: 32px;
+        height: 32px;
+      }
+      &.textarea-middle:focus {
+        height: 64px;
+      }
+      &.textarea-small {
+        min-height: 24px;
+        height: 24px;
+      }
+      &.textarea-small:focus {
+        height: 40px;
+      }
+    }
+  }
+`;
+
+export const KitInputStyle = css`
+  input,
+  &.input-tags {
+    border: 1px solid rgba(213, 219, 227, 0.6);
+    border-radius: 4px;
+  }
+  &.input-tags {
+    position: relative;
+    padding: 6px;
+    height: 32px;
+    cursor: pointer;
+    transition: border 150ms;
+
+    &:hover {
+      border-color: $blue-60;
+      box-shadow: 0 0 0px 2px rgba($blue-60, 0.1);
+    }
+
+    &.kit-input-suffix-wrapper {
+      padding-right: 30px;
+    }
+
+    .input-tags-inner {
+      display: flex;
+      .tags-overflow-auto {
+        display: flex;
+      }
+    }
+
+    .input-tag-suffix {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      .anticon-close-circle {
+        color: rgba(0, 0, 0, 0.25);
+        font-size: 12px;
+        cursor: pointer;
+        &:hover {
+          color: rgba(0, 0, 0, 0.45);
+        }
+      }
+    }
+  }
+  &.has-focus-indicator {
+    position: relative;
+    overflow: hidden;
+
+    .ant-input-prefix {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: -16px;
+      transition: left 150ms ease;
+      opacity: 0;
+    }
+    &.ant-input-affix-wrapper-focused .ant-input-prefix {
+      left: 8px;
+      opacity: 1;
+    }
+
+    input {
+      transition: margin-left 150ms ease;
+      margin-left: 0px;
+      &:focus {
+        margin-left: 16px;
+      }
+    }
+  }
+`;
+
+export const LeftEndInputStyle = css`
+  @at-root {
+    input#{&}.ant-input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  &.ant-input-affix-wrapper {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+`;
+
+export const RightEndInputStyle = css`
+  @at-root {
+    input#{&}.ant-input {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  &.ant-input-affix-wrapper {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+`;
+
+export const LeftEndSelectStyle = css`
+  &.ant-select,
+  &.ant-select .ant-select-selector {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+`;
+
+export const RightEndSelectStyle = css`
+  &.ant-select,
+  &.ant-select .ant-select-selector {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+`;
