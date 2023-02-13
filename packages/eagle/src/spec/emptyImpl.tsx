@@ -3,7 +3,7 @@ import { BasicProps } from "antd/lib/layout/layout";
 import { TagProps } from "antd/lib/tag";
 import { forwardRef } from "react";
 
-import { Kit } from "./base";
+import { InputGroupComponentType, Kit, OptionComponentType } from "./base";
 
 const ThrowError = () => {
   throw new Error("");
@@ -46,7 +46,7 @@ const emptyImpl: Kit = {
   error: ThrowError,
   pagination: ThrowError,
   select: ThrowError,
-  option: ThrowError,
+  option: ThrowError as unknown as OptionComponentType,
   table: ThrowError,
   button: ThrowError,
   modal: ThrowError,
@@ -84,7 +84,7 @@ const emptyImpl: Kit = {
     BitPerSecond: ThrowError,
     Bit: ThrowError,
   },
-  inputGroup: ThrowError,
+  inputGroup: ThrowError as unknown as InputGroupComponentType,
   get Empty() {
     if (process.env.NODE_ENV !== "production") {
       throw new Error("");
@@ -93,7 +93,6 @@ const emptyImpl: Kit = {
   },
   alert: ThrowError,
   searchInput: ThrowError,
-  exportButton: ThrowError,
   badge: ThrowError,
   radio: ThrowError,
   radioGroup: ThrowError,
@@ -112,7 +111,6 @@ const emptyImpl: Kit = {
   menuItemGroup: ThrowError,
   list: ThrowError,
   listItem: ThrowError,
-  listItemMeta: ThrowError,
   layout: Object.assign(forwardRef<{}, BasicProps>(ThrowError), {
     Header: forwardRef<{}, BasicProps>(ThrowError),
     Footer: forwardRef<{}, BasicProps>(ThrowError),

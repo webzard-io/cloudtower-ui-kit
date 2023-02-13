@@ -6,7 +6,7 @@ import React, { useEffect, useMemo, useRef } from "react";
 import { findDOMNode } from "react-dom";
 import { isElement } from "react-is";
 
-import { Kit } from "../../spec";
+import { SelectComponentType } from "../../spec";
 import Loading from "../Loading";
 import { Typo } from "../Typo";
 
@@ -103,7 +103,7 @@ const SelectStyle = css`
   }
 `;
 
-const Select: Kit["select"] = ({
+const Select: SelectComponentType<any, HTMLElement> = ({
   input,
   multiple,
   className,
