@@ -15,7 +15,6 @@ import {
 import message from "antd/lib/message";
 import React from "react";
 
-import KitLoading from "../KitLoading";
 import { Kit, OptionComponentType } from "../spec";
 import Alert from "./Alert";
 import Arch from "./Arch";
@@ -40,6 +39,7 @@ import Int from "./Int";
 import Integer from "./Integer";
 import KitArray from "./KitArray";
 import KitBoolean from "./KitBoolean";
+import KitLoading from "./KitLoading";
 import KitString from "./KitString";
 import KitTextArea from "./KitTextArea";
 import Modal from "./Modal";

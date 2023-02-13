@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
-import { FullView, Loading } from "../components";
-import { KitLoadingComponentType } from "../spec";
+import { KitLoadingComponentType } from "../../spec";
+import { FullView, Loading } from "..";
 
 const KitLoading: KitLoadingComponentType = ({ fullView = true }) => {
   const Wrapper = fullView ? FullView : Fragment;
