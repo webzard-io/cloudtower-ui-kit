@@ -1,8 +1,8 @@
 import { TextAreaProps } from "antd/lib/input";
 import React from "react";
 
-import { FieldBaseProps } from "../../spec";
-import TextArea from "../TextArea";
+import { FieldBaseProps } from "../../../spec";
+import TextArea from "../../TextArea";
 
 const KitTextArea = ({
   input,

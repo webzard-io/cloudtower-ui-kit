@@ -1,8 +1,8 @@
 import { TimePickerProps } from "antd/lib/time-picker";
 import React from "react";
 
-import { FieldBaseProps } from "../../spec";
-import TimePicker from "../TimePicker";
+import { FieldBaseProps } from "../../../spec";
+import TimePicker from "../../TimePicker";
 
 const FieldsTimePicker = ({
   input,

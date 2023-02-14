@@ -26,22 +26,12 @@ import Button from "./Button";
 import ButtonGroup from "./ButtonGroup";
 import Byte from "./Byte";
 import Checkbox from "./Checkbox";
-import DateTime from "./DateTime";
-import DateTimeRange from "./DateTimeRange";
 import Empty from "./Empty";
-import Enum from "./Enum";
-import FieldsTimePicker from "./FieldsTimePicker";
-import Float from "./Float";
+import fields from "./Fields";
 import Frequency from "./Frequency";
 import Input from "./Input";
 import InputGroup from "./InputGroup";
-import Int from "./Int";
-import Integer from "./Integer";
-import KitArray from "./KitArray";
-import KitBoolean from "./KitBoolean";
 import KitLoading from "./KitLoading";
-import KitString from "./KitString";
-import KitTextArea from "./KitTextArea";
 import Modal from "./Modal";
 import Pagination from "./Pagination";
 import Percent from "./Percent";
@@ -52,6 +42,13 @@ import Second from "./Second";
 import Select from "./Select";
 import Speed from "./Speed";
 import Steps from "./Steps";
+import {
+  MODAL_WHITELIST,
+  PAGINATION_SELECTOR,
+  TABLE_WRAPPER_SELECTOR,
+  TBODY_SELECTOR,
+  THEAD_SELECTOR,
+} from "./Styled";
 import Switch from "./Switch";
 import KitTable from "./Table";
 import TextArea from "./TextArea";
@@ -59,18 +56,11 @@ import Tooltip from "./Tooltip";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
-    PAGINATION_SELECTOR: ".pagination-wrapper",
-    TABLE_WRAPPER_SELECTOR: ".table-wrapper",
-    THEAD_SELECTOR: ".ant-table-thead",
-    TBODY_SELECTOR: ".ant-table-tbody",
-    MODAL_WHITELIST: [
-      ".ant-select-dropdown",
-      ".ant-picker-dropdown",
-      ".ant-dropdown",
-      ".ant-dropdown-menu-submenu",
-      ".ant-tooltip",
-      ".ant-dropdown-menu-item-group-list",
-    ],
+    PAGINATION_SELECTOR,
+    TABLE_WRAPPER_SELECTOR,
+    THEAD_SELECTOR,
+    TBODY_SELECTOR,
+    MODAL_WHITELIST,
     loading: KitLoading,
     error: ({ error }) => <div className="error">{String(error)}</div>,
     pagination: Pagination,
@@ -85,19 +75,7 @@ export function getAntdKit(): Kit {
     input: Input,
     textArea: TextArea,
     checkbox: Checkbox,
-    fields: {
-      Int: Int,
-      Integer: Integer,
-      Float: Float,
-      DateTime: DateTime,
-      TimePicker: FieldsTimePicker,
-      Enum: Enum,
-      String: KitString,
-      Boolean: KitBoolean,
-      TextArea: KitTextArea,
-      Array: KitArray,
-      DateTimeRange: DateTimeRange,
-    },
+    fields,
     units: {
       Byte,
       Frequency,

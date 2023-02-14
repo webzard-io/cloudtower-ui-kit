@@ -2,8 +2,8 @@ import { Field } from "@smartx/react-final-form";
 import { FieldArrayRenderProps } from "@smartx/react-final-form-arrays";
 import React, { useContext } from "react";
 
-import { Child, kitContext } from "../../spec";
-import Button from "../Button";
+import { Child, kitContext } from "../../../spec";
+import Button from "../../Button";
 
 const KitArray = <T extends HTMLElement = HTMLElement>({
   fields,

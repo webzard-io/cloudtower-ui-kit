@@ -3,7 +3,7 @@ import { DatePickerProps } from "antd/lib/date-picker";
 import moment from "moment";
 import React from "react";
 
-import { FieldBaseProps } from "../../spec";
+import { FieldBaseProps } from "../../../spec";
 
 const DateTimeRange = ({
   input,

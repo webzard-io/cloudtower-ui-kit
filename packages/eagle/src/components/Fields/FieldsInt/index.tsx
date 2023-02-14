@@ -1,7 +1,7 @@
 import React from "react";
 
-import { IntFieldProps } from "../../spec";
-import Input from "../Input";
+import { IntFieldProps } from "../../../spec";
+import Input from "../../Input";
 
 const Int = ({
   input,

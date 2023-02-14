@@ -1,7 +1,7 @@
 import { DatePicker } from "antd";
 import React from "react";
 
-import { FieldBaseProps } from "../../spec";
+import { FieldBaseProps } from "../../../spec";
 
 const DateTime = ({ input }: FieldBaseProps) => (
   <>

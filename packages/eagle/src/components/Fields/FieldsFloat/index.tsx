@@ -1,7 +1,7 @@
 import React from "react";
 
-import { FloatFieldProps } from "../../spec";
-import InputNumber from "../InputNumber";
+import { FloatFieldProps } from "../../../spec";
+import InputNumber from "../../InputNumber";
 
 const Float = ({
   input,

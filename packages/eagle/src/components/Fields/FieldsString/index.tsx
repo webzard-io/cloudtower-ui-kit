@@ -2,13 +2,13 @@ import { CloseCircleFilled } from "@ant-design/icons";
 import cs from "classnames";
 import React from "react";
 
-import { FieldBaseProps, StringProps } from "../../spec";
-import Icon from "../Icon";
-import { focusIndicator16Blue } from "../images";
-import Input from "../Input";
-import InputTagItem from "../InputTagItem";
-import Overflow from "../Overflow";
-import { KitInputStyle } from "../Styled";
+import { FieldBaseProps, StringProps } from "../../../spec";
+import Icon from "../../Icon";
+import { focusIndicator16Blue } from "../../images";
+import Input from "../../Input";
+import InputTagItem from "../../InputTagItem";
+import Overflow from "../../Overflow";
+import { KitInputStyle } from "../../Styled";
 
 const KitString = ({
   input,

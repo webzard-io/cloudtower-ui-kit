@@ -1,7 +1,7 @@
 import React from "react";
 
-import { FieldBaseProps } from "../../spec";
-import Checkbox from "../Checkbox";
+import { FieldBaseProps } from "../../../spec";
+import Checkbox from "../../Checkbox";
 
 const KitBoolean = ({ input, children, ...props }: FieldBaseProps) => {
   return (

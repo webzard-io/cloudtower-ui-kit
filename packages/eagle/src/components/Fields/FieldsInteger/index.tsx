@@ -1,7 +1,7 @@
 import React from "react";
 
-import { IntegerFieldProps } from "../../spec";
-import InputInteger from "../InputInteger";
+import { IntegerFieldProps } from "../../../spec";
+import InputInteger from "../../InputInteger";
 
 const Integer = ({ meta, input, onBlur, ...props }: IntegerFieldProps) => {
   return (
