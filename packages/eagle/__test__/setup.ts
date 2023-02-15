@@ -1,7 +1,10 @@
 import "@testing-library/jest-dom";
 
+import fs from "fs";
+import path from "path";
+import { format, plugins } from "pretty-format";
 import ResizeObserver from "resize-observer-polyfill";
-import { vi } from "vitest";
+import { expect, vi } from "vitest";
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,
@@ -18,5 +21,50 @@ Object.defineProperty(window, "matchMedia", {
 });
 
 global.ResizeObserver = ResizeObserver;
+
+const styleMapFileName = path.join(__dirname, "../linaria-temp-map.json");
+
+expect.addSnapshotSerializer({
+  serialize(
+    val: { linaria: true; dom: HTMLElement },
+    config,
+    indentation,
+    depth,
+    refs,
+    printer
+  ) {
+    if (val.linaria) {
+      return format(val.dom, {
+        plugins: [
+          plugins.DOMElement,
+          {
+            serialize(val, config, indentation, depth, refs, printer) {
+              const classNames = val.split(" ");
+              const styles = JSON.parse(
+                fs.readFileSync(styleMapFileName).toString()
+              );
+              return classNames
+                .map((classname) => {
+                  if (styles[`.${classname}`] != null) {
+                    return styles[`.${classname}`];
+                  }
+                  return classname;
+                })
+                .toString();
+            },
+            test(val) {
+              return typeof val === "string";
+            },
+          },
+        ],
+      });
+    }
+    return printer(val, config, indentation, depth, refs);
+  },
+
+  test: (val) => {
+    return val?.linaria;
+  },
+});
 
 export {};

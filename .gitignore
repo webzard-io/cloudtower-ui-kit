@@ -10,3 +10,4 @@ generated
 .tsc
 typings
 storybook-static
+linaria-temp-map.json
