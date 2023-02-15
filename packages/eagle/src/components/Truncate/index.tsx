@@ -1,8 +1,8 @@
 import { css } from "@linaria/core";
 import cs from "classnames";
-import React, { useContext } from "react";
+import React from "react";
 
-import { kitContext } from "../../spec";
+import Tooltip from "../Tooltip";
 
 const Inline = css`
   display: inline-block;
@@ -19,7 +19,6 @@ export type TruncatePropTypes = {
 };
 
 const Truncate: React.FC<TruncatePropTypes> = (props) => {
-  const kit = useContext(kitContext);
   const {
     text,
     len = 100,
@@ -68,7 +67,7 @@ const Truncate: React.FC<TruncatePropTypes> = (props) => {
   if (!hoverShowFullText || text.length <= len) {
     return Text;
   }
-  return <kit.tooltip title={text}>{Text}</kit.tooltip>;
+  return <Tooltip title={text}>{Text}</Tooltip>;
 };
 
 export default Truncate;

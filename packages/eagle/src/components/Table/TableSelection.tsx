@@ -4,15 +4,14 @@ import { TableProps } from "antd/lib/table";
 import _ from "lodash";
 import React, {
   useCallback,
-  useContext,
   useEffect,
   useMemo,
   useRef,
   useState,
 } from "react";
 
-import { kitContext } from "../../spec";
 import { KitRootState, store, TableActions } from "../../store";
+import Checkbox from "../Checkbox";
 import { useKitSelector } from "../KitStoreProvider";
 import { eventStopPropagation } from "./common";
 
@@ -35,7 +34,6 @@ const TitleCheckbox = <T extends { id: string }>(props: {
     record?: T
   ) => void;
 }) => {
-  const kit = useContext(kitContext);
   const { resource, onChange } = props;
   const state = useKitSelector<Resource>((state) => state.table[resource]) || {
     selectRows: [],
@@ -45,7 +43,7 @@ const TitleCheckbox = <T extends { id: string }>(props: {
 
   const isChecked = selectRows?.length === rows.length;
   return (
-    <kit.checkbox
+    <Checkbox
       className={CheckboxStyle}
       checked={Boolean(selectRows?.length) && isChecked}
       indeterminate={!isChecked && Boolean(selectRows?.length)}
@@ -67,7 +65,6 @@ const TableCheckbox = <T extends { id: string }>(props: {
     record?: T
   ) => void;
 }) => {
-  const kit = useContext(kitContext);
   const { resource, record, onChange, ...restProps } = props;
   const selectRows =
     useKitSelector<Resource["selectRows"]>(
@@ -75,7 +72,7 @@ const TableCheckbox = <T extends { id: string }>(props: {
     ) || [];
 
   return (
-    <kit.checkbox
+    <Checkbox
       {...restProps}
       className={CheckboxStyle}
       checked={Boolean(selectRows.find((r) => r.id === record.id))}

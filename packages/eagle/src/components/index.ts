@@ -7,7 +7,6 @@ export { default as ErrorBoundary } from "./ErrorBoundary";
 export { default as FailedLoad } from "./FailedLoad";
 export * from "./KitStoreProvider";
 export { default as KitStoreProvider } from "./KitStoreProvider";
-export { default as Loading } from "./Loading";
 export * from "./Metric";
 export { default as Metric } from "./Metric";
 export * from "./Modal";

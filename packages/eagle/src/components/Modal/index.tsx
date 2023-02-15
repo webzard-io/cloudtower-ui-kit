@@ -2,10 +2,11 @@ import { CheckOutlined, CloseCircleFilled } from "@ant-design/icons";
 import { parrotI18n } from "@cloudtower/parrot";
 import { Modal as AntdModal, Steps } from "antd";
 import cs from "classnames";
-import React, { useContext, useMemo, useRef } from "react";
+import React, { useMemo, useRef } from "react";
 
-import { kitContext, ModalProps } from "../../spec";
+import { ModalProps } from "../../spec";
 import { KitRootState, ModalActions } from "../../store";
+import Button from "../Button";
 import { useKitDispatch, useKitSelector } from "../KitStoreProvider";
 import { WizardBody } from "../Styled";
 
@@ -31,7 +32,6 @@ const Modal: React.FC<ModalProps> = (props) => {
     afterClose,
     ...restProps
   } = props;
-  const kit = useContext(kitContext);
 
   const stack = useKitSelector<KitRootState["modal"]["stack"]>(
     (state) => state.modal.stack
@@ -137,7 +137,7 @@ const Modal: React.FC<ModalProps> = (props) => {
               </div>
               <div className="modal-footer-btn-group">
                 {showCancel && (
-                  <kit.button
+                  <Button
                     type="quiet"
                     onMouseDown={(e) => {
                       e.preventDefault();
@@ -150,10 +150,10 @@ const Modal: React.FC<ModalProps> = (props) => {
                     {...cancelButtonProps}
                   >
                     {cancelText}
-                  </kit.button>
+                  </Button>
                 )}
                 {showOk && (
-                  <kit.button
+                  <Button
                     onClick={(e) => {
                       onOk?.(e);
                       if (
@@ -169,7 +169,7 @@ const Modal: React.FC<ModalProps> = (props) => {
                     {...okButtonProps}
                   >
                     {confirmText}
-                  </kit.button>
+                  </Button>
                 )}
               </div>
             </>

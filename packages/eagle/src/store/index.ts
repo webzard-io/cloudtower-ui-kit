@@ -67,8 +67,7 @@ export function pushModal<K extends keyof IModalProps>(
 ) {
   store.dispatch({
     type: ModalActions.PUSH_MODAL,
-    // eslint-disable-next-line
-    payload: modal as any,
+    payload: modal,
   });
 }
 

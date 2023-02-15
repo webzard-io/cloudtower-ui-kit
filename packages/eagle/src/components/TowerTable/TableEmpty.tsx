@@ -1,7 +1,7 @@
 import { parrotI18n } from "@cloudtower/parrot";
 import React, { useContext } from "react";
 
-import { kitContext } from "../../spec";
+import Button from "../Button";
 import { KitTableContext } from "../Table";
 
 const TableEmpty: React.FC<{
@@ -10,7 +10,6 @@ const TableEmpty: React.FC<{
   clearGlobalSearch?: boolean;
 }> = (props) => {
   const { searching, emptyTablekey, clearGlobalSearch = true } = props;
-  const kit = useContext(kitContext);
 
   const { onClearSearchButtonEffect } = useContext(KitTableContext);
 
@@ -25,7 +24,7 @@ const TableEmpty: React.FC<{
               resource: parrotI18n.t(`common.${emptyTablekey}`),
             })}
           </div>
-          <kit.button
+          <Button
             type="ordinary"
             onClick={() => {
               if (clearGlobalSearch) {
@@ -34,7 +33,7 @@ const TableEmpty: React.FC<{
             }}
           >
             {parrotI18n.t("common.clear_query")}
-          </kit.button>
+          </Button>
         </>
       )}
     </div>

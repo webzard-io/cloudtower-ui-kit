@@ -108,7 +108,11 @@ export const modalReducer = (
   }
 };
 
-export interface IModalProps {}
+export interface IModalProps {
+  [key: string]: Partial<{
+    [key: string]: unknown;
+  }>;
+}
 
 export type GetModalProps<K extends keyof IModalProps> = IModalProps[K] &
   CloseCb;

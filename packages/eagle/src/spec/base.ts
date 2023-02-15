@@ -196,7 +196,7 @@ interface TableComponent {
     context?: unknown
   ): React.ReactElement | null;
 }
-export interface EnumProps {
+export interface BaseEnumProps {
   enumValues: readonly (string | { value: string; text: string })[];
   placeholder?: string;
   emptyLabel?: string;
@@ -384,7 +384,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   TBODY_SELECTOR: string;
   MODAL_WHITELIST: string[];
   // general UI
-  loading: KitLoadingComponentType;
+  loading: LoadingComponentType;
   error: React.FunctionComponent<{ error: unknown }>;
   pagination: React.FC<PaginationProps>;
   select: SelectComponentType<V, T>;
@@ -414,7 +414,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
         disabled?: boolean;
         className?: string;
         dropdownClassName?: string;
-      } & EnumProps
+      } & BaseEnumProps
     >;
     String: React.FunctionComponent<FieldBaseProps<V, T> & StringProps>;
     Boolean: React.FunctionComponent<FieldBaseProps<V, T>>;
@@ -507,14 +507,14 @@ export type AlertComponentType = React.FunctionComponent<
 
 export type SearchInputComponentType = React.FC<SearchInputProps>;
 
-export type KitLoadingComponentType = React.FunctionComponent<{
+export type LoadingComponentType = React.FunctionComponent<{
   fullView?: boolean;
 }>;
 
-export type KitEnumProps<V = any, T extends HTMLElement = HTMLElement> = {
+export type EnumProps<V = any, T extends HTMLElement = HTMLElement> = {
   input: Partial<FieldRenderProps<V, T>["input"]>;
   meta: FieldRenderProps<V, T>["meta"];
   disabled?: boolean;
   className?: string;
   dropdownClassName?: string;
-} & EnumProps;
+} & BaseEnumProps;
