@@ -1,5 +1,5 @@
-import { css, cx } from "@linaria/core";
-import { styled } from "@linaria/react";
+import { css, cx } from "linaria";
+import { styled } from "linaria/react";
 import React from "react";
 
 import { ButtonGroupType } from "../../spec";

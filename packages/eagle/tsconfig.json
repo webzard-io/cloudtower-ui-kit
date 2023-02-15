@@ -1,10 +1,16 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
     "outDir": "./dist",
     "jsx": "react",
     "downlevelIteration": true,
-    "disableSizeLimit": true
+    "disableSizeLimit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@cloudtower/parrot": ["../parrot/src/index.ts"]
+    }
   },
   "include": ["src", "images.d.ts"],
   "exclude": ["node_modules"]

@@ -1,7 +1,7 @@
-import { css, cx } from "@linaria/core";
-import { styled } from "@linaria/react";
 import { Switch as AntdSwitch } from "antd";
 import { SwitchProps as AntdSwitchProps } from "antd/lib/switch";
+import { css, cx } from "linaria";
+import { styled } from "linaria/react";
 import React from "react";
 
 import { SwitchProps } from "../../spec";

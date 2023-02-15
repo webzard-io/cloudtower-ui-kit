@@ -1,6 +1,6 @@
-import { css } from "@linaria/core";
 import { Select as AntdSelect } from "antd";
 import cs from "classnames";
+import { css } from "linaria";
 import _ from "lodash";
 import React, { useEffect, useMemo, useRef } from "react";
 import { findDOMNode } from "react-dom";
