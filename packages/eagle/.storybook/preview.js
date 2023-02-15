@@ -1,10 +1,8 @@
 import "antd/dist/antd.css";
 
-import "@cloudtower/eagle/dist/style.css";
-
 import "./overrideRoot.css";
 
-import { initParrotI18n } from "@cloudtower/eagle";
+import { initParrotI18n } from "@cloudtower/parrot";
 
 initParrotI18n();
 

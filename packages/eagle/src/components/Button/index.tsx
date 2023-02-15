@@ -1,7 +1,7 @@
-import { css } from "@linaria/core";
 import { Button as AntdButton } from "antd";
 import { ButtonType as AntdButtonType } from "antd/lib/button";
 import cs from "classnames";
+import { css } from "linaria";
 import React, { useState } from "react";
 
 import { ButtonProps } from "../../spec";

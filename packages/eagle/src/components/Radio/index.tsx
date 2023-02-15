@@ -1,6 +1,6 @@
-import { css, cx } from "@linaria/core";
 import { Input, InputNumber, Radio as AntdRadio } from "antd";
 import { RadioGroupProps as AntdRadioGroupProps } from "antd/lib/radio";
+import { css, cx } from "linaria";
 import _ from "lodash";
 import React, { useState } from "react";
 

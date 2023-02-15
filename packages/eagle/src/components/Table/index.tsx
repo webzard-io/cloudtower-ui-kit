@@ -1,6 +1,6 @@
-import { css, cx } from "@linaria/core";
 import { Table as BaseTable } from "antd";
 import cs from "classnames";
+import { css, cx } from "linaria";
 import React, { useRef } from "react";
 
 import { TableProps } from "../../spec";

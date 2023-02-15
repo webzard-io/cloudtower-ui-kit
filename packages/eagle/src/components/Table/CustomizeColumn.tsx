@@ -1,8 +1,8 @@
 import { parrotI18n } from "@cloudtower/parrot";
-import { css } from "@linaria/core";
-import { styled } from "@linaria/react";
 import { Checkbox as AntdCheckbox } from "antd";
 import { Dropdown as AntdDropdown } from "antd";
+import { css } from "linaria";
+import { styled } from "linaria/react";
 import React, { DragEvent } from "react";
 
 import { CustomizeColumnType } from "../../hooks";

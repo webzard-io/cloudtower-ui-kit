@@ -1,4 +1,3 @@
-import { StyledMeta } from "@linaria/react";
 import { FieldRenderProps } from "@smartx/react-final-form";
 import { FieldArrayRenderProps } from "@smartx/react-final-form-arrays";
 import { SerializableObject } from "@tower/utils";
@@ -45,6 +44,7 @@ import { TagType } from "antd/lib/tag";
 import { TimePickerProps } from "antd/lib/time-picker";
 import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
+import { StyledMeta } from "linaria/react";
 import React, { createContext, ReactNode } from "react";
 
 import emptyImpl from "./emptyImpl";

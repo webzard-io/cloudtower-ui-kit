@@ -1,4 +1,4 @@
-import { css, cx } from "@linaria/core";
+import { css, cx } from "linaria";
 import React from "react";
 
 import { CustomizeColumnType } from "../../hooks";

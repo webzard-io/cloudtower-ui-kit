@@ -1,4 +1,4 @@
-import { css } from "@linaria/core";
+import { css } from "linaria";
 
 const d1_bold_title = css`
   @include Inter(bold);

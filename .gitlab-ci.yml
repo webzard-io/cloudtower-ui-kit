@@ -74,9 +74,9 @@ pages:
   script:
     - yarn install --cache-folder=.yarn
     - yarn build
-    - cd story && yarn build-storybook
-    - cd .. && cp -r ./story/storybook-static ./public
-    - scp -r ./story/storybook-static root@192.168.28.80:~/workspace/
+    - cd packages/eagle && yarn build-storybook && cd -
+    - cp -r ./packages/eagle/storybook-static ./public
+    - scp -r ./packages/eagle/storybook-static root@192.168.28.80:~/workspace/
 
   artifacts:
     paths:

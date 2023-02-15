@@ -1,7 +1,7 @@
-import { styled } from "@linaria/react";
 import { InputNumber as AntdInputNumber } from "antd";
 import { InputNumberProps } from "antd/lib/input-number";
 import cs from "classnames";
+import { styled } from "linaria/react";
 import React from "react";
 
 import { AdditionOptions } from "../../spec";

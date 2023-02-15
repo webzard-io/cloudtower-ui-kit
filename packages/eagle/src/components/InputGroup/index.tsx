@@ -1,5 +1,5 @@
-import { styled } from "@linaria/react";
 import { Input as AntdInput } from "antd";
+import { styled } from "linaria/react";
 
 const InputGroup = styled(AntdInput.Group)`
   &.ant-input-group.ant-input-group-compact {
