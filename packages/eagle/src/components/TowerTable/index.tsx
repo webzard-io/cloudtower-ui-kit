@@ -1,8 +1,8 @@
 import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
-import React, { useContext, useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 
-import { kitContext, RequiredColumnProps, TableProps } from "../../spec";
+import { RequiredColumnProps, TableProps } from "../../spec";
 import FailedLoad from "../FailedLoad";
 import {
   AuxiliaryLine,
@@ -13,6 +13,7 @@ import {
   useCustomizeColumn,
   useTransformScrollAndColumns,
 } from "../Table";
+import Table from "../Table";
 import TableEmpty from "./TableEmpty";
 import TablePagination from "./TablePagination";
 import WrapperComponent from "./WrapperComponent";
@@ -83,7 +84,6 @@ const TowerTable = <BaseTableData extends { id: string }>(
     stickyHeader = true,
     rowKey,
   } = props;
-  const kit = useContext(kitContext);
 
   const polling = networkStatus === NetworkStatus.poll;
   const initLoading = networkStatus === NetworkStatus.loading;
@@ -198,7 +198,7 @@ const TowerTable = <BaseTableData extends { id: string }>(
           ref={wrapper}
         >
           <div className="relative table-content">
-            <kit.table<BaseTableData>
+            <Table<BaseTableData>
               wrapper={wrapper}
               loading={loading && !polling}
               initLoading={initLoading}

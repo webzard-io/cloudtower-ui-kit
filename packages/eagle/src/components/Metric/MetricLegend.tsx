@@ -1,9 +1,9 @@
 import { DoubleRightOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
+import { Dropdown as AntdDropdown } from "antd";
 import cs from "classnames";
-import React, { useContext } from "react";
+import React from "react";
 
-import { kitContext } from "../../spec";
 import { ExtraOverflow } from "../Overflow";
 import Truncate from "../Truncate";
 import {
@@ -37,13 +37,12 @@ export interface IMetricLegendProps {
 
 const MetricLegend = (props: IMetricLegendProps) => {
   const { deselected, onClick, legends } = props;
-  const kit = useContext(kitContext);
 
   return (
     <ExtraOverflow
       className={LegendStyle}
       extraEl={(end) => (
-        <kit.dropdown
+        <AntdDropdown
           overlayClassName={ExtraResource}
           overlay={
             <Menu>
@@ -66,7 +65,7 @@ const MetricLegend = (props: IMetricLegendProps) => {
           }
         >
           <DoubleRightOutlined rotate={90} />
-        </kit.dropdown>
+        </AntdDropdown>
       )}
       els={legends.map((legend) => {
         return (

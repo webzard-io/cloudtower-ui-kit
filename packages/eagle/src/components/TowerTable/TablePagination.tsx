@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import { kitContext } from "../../spec";
+import Pagination from "../Pagination";
 
 const TablePagination = (props: {
   count?: number;
@@ -10,10 +10,9 @@ const TablePagination = (props: {
   onChange: (page: number) => void;
 }) => {
   const { count, skip, size, onSizeChange, onChange } = props;
-  const kit = useContext(kitContext);
 
   return (
-    <kit.pagination
+    <Pagination
       current={(skip || 0) / size + 1}
       count={count || 0}
       size={size}

@@ -2,7 +2,6 @@ import { isEqual, isNil } from "lodash";
 import getScrollBarSize from "rc-util/lib/getScrollBarSize";
 import React, {
   BaseSyntheticEvent,
-  useContext,
   useEffect,
   useMemo,
   useRef,
@@ -10,7 +9,12 @@ import React, {
 } from "react";
 
 import { useElementsSize } from "../../hooks";
-import { kitContext } from "../../spec";
+import {
+  PAGINATION_SELECTOR,
+  TABLE_WRAPPER_SELECTOR,
+  TBODY_SELECTOR,
+  THEAD_SELECTOR,
+} from "../Styled";
 
 export type TableRenderer<T, C> = (
   cell: T,
@@ -153,7 +157,6 @@ export const useTransformScrollAndColumns = <T>(tableProps: {
   const [scrollConfig, setScrollConfig] = useState<TableScrollConfig>({});
   const [headerAndPaginationHeight, setHeaderAndPaginationHeight] =
     useState<number>(0);
-  const kit = useContext(kitContext);
   const scrollBarSize = useMemo(
     () => (defaultScroll.current ? getScrollBarSize() : 0),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -186,15 +189,15 @@ export const useTransformScrollAndColumns = <T>(tableProps: {
   }, [wrapper, data]);
 
   const wrapperClass = tableKey
-    ? `${kit.TABLE_WRAPPER_SELECTOR}.${tableKey}-table-wrapper`
-    : kit.TABLE_WRAPPER_SELECTOR;
+    ? `${TABLE_WRAPPER_SELECTOR}.${tableKey}-table-wrapper`
+    : TABLE_WRAPPER_SELECTOR;
 
   const sizes = useElementsSize(
     {
       wrapper: wrapperClass,
-      pagination: `${wrapperClass} ${kit.PAGINATION_SELECTOR}`,
-      thead: `${wrapperClass} ${kit.THEAD_SELECTOR}`,
-      tbody: `${wrapperClass} ${kit.TBODY_SELECTOR}`,
+      pagination: `${wrapperClass} ${PAGINATION_SELECTOR}`,
+      thead: `${wrapperClass} ${THEAD_SELECTOR}`,
+      tbody: `${wrapperClass} ${TBODY_SELECTOR}`,
     },
     {
       prevent: loading,

@@ -12,9 +12,11 @@ import {
   useElementsSize,
   useSearch,
 } from "../../hooks";
-import { kitContext, Maybe, Scalars } from "../../spec";
+import { Maybe, Scalars } from "../../spec";
+import Button from "../Button";
 import Icon from "../Icon";
 import { arrowChevronUp16BoldSecondary } from "../images";
+import Pagination from "../Pagination";
 
 const TablePaginationStyle = css``;
 
@@ -84,7 +86,6 @@ export const TablePagination = <T,>(props: {
   onChange?: (page?: number, size?: number) => void;
 }) => {
   const { count, skip, size, setQuery, onChange } = props;
-  const kit = useContext(kitContext);
 
   useEffect(() => {
     if (!count || skip < count) return;
@@ -97,7 +98,7 @@ export const TablePagination = <T,>(props: {
   }, [skip, count, setQuery, size]);
 
   return (
-    <kit.pagination
+    <Pagination
       current={(skip || 0) / size + 1}
       count={count || 0}
       size={size}
@@ -158,7 +159,6 @@ export const TableEmpty: React.FC<{
   clearGlobalSearch?: boolean;
 }> = (props) => {
   const { query, setQuery, base, clearGlobalSearch = true } = props;
-  const kit = useContext(kitContext);
 
   const { onClearSearchButtonEffect } = useContext(KitTableContext);
 
@@ -173,7 +173,7 @@ export const TableEmpty: React.FC<{
               resource: parrotI18n.t(`common.${base}`),
             })}
           </div>
-          <kit.button
+          <Button
             type="ordinary"
             onClick={() => {
               setQuery({});
@@ -183,7 +183,7 @@ export const TableEmpty: React.FC<{
             }}
           >
             {parrotI18n.t("common.clear_query")}
-          </kit.button>
+          </Button>
         </>
       )}
     </div>
@@ -195,13 +195,12 @@ export const TableError: React.FC<{
   refetch: () => Promise<unknown>;
 }> = (props) => {
   const { error, refetch } = props;
-  const kit = useContext(kitContext);
   return (
     <div className="table-default-error">
       <div>{String(error)}</div>
-      <kit.button type="ordinary" onClick={() => refetch()}>
+      <Button type="ordinary" onClick={() => refetch()}>
         {parrotI18n.t("common.retry")}
-      </kit.button>
+      </Button>
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import { css, cx } from "@linaria/core";
 import { Table as BaseTable } from "antd";
 import cs from "classnames";
-import React, { useContext, useRef } from "react";
+import React, { useRef } from "react";
 
-import { kitContext, TableProps } from "../../spec";
+import { TableProps } from "../../spec";
+import Loading from "../Loading";
 import { useTableBodyHasScrollBar } from "./common";
 import { ColumnTitle, TableLoading } from "./TableWidget";
 
@@ -449,7 +450,6 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
     wrapper,
     pagination,
   } = props;
-  const kit = useContext(kitContext);
   const orderRef = useRef<"descend" | "ascend" | undefined | null>(null);
   const hasScrollBard = useTableBodyHasScrollBar(wrapper, dataSource);
 
@@ -471,7 +471,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
         bordered={bordered}
         loading={{
           spinning: loading,
-          indicator: initLoading ? <TableLoading /> : <kit.loading />,
+          indicator: initLoading ? <TableLoading /> : <Loading />,
         }}
         locale={{
           emptyText: error || <>{loading ? "" : empty}</>,

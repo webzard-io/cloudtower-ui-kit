@@ -1,10 +1,12 @@
 import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { Menu } from "antd";
+import { Dropdown as AntdDropdown } from "antd";
 import cs from "classnames";
-import React, { useContext, useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 
-import { kitContext, PaginationProps } from "../../spec";
+import { PaginationProps } from "../../spec";
+import Button from "../Button";
 import Icon from "../Icon";
 import {
   arrowChevronDownSmall16Blue,
@@ -89,7 +91,6 @@ const Pagination: React.FC<PaginationProps> = (props) => {
     className,
     selectorVisible = true,
   } = props;
-  const kit = useContext(kitContext);
   const sizeRef = useRef(size);
   useEffect(() => {
     if (sizeRef.current === size) return;
@@ -124,7 +125,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
     });
     if (selectorVisible) {
       return (
-        <kit.dropdown
+        <AntdDropdown
           placement="topLeft"
           overlayClassName={DropdownOverlayStyle}
           overlay={
@@ -148,7 +149,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             hoverSrc={arrowChevronDownSmall16Blue}
             prefix={content}
           />
-        </kit.dropdown>
+        </AntdDropdown>
       );
     }
     return <span className="pagination-left">{content}</span>;
@@ -171,7 +172,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
       {renderLeft()}
       <span className="pagination-right">
         {current > 1 && (
-          <kit.button
+          <Button
             className="prev-btn"
             type="quiet"
             size="small"
@@ -181,10 +182,10 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             }}
           >
             {parrotI18n.t("components.previous_items", { size })}
-          </kit.button>
+          </Button>
         )}
         {current * size < count && (
-          <kit.button
+          <Button
             className="next-btn"
             type="quiet"
             size="small"
@@ -194,7 +195,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             }}
           >
             {parrotI18n.t("components.next_items", { size })}
-          </kit.button>
+          </Button>
         )}
       </span>
     </div>

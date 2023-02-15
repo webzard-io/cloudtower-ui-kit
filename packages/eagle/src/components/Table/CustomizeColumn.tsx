@@ -1,11 +1,12 @@
 import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
-import { Checkbox } from "antd";
-import React, { DragEvent, useContext } from "react";
+import { Checkbox as AntdCheckbox } from "antd";
+import { Dropdown as AntdDropdown } from "antd";
+import React, { DragEvent } from "react";
 
 import { CustomizeColumnType } from "../../hooks";
-import { kitContext } from "../../spec";
+import Checkbox from "../Checkbox";
 import Icon from "../Icon";
 import {
   settingsGear16GradientBlue,
@@ -166,7 +167,6 @@ const DropdownOverlay: React.FC<CustomizeColumnProps> = (props) => {
     customizeColumn,
     setCustomizeColumn,
   } = props;
-  const kit = useContext(kitContext);
 
   const columns = customizeColumn.map((column) => {
     let title: React.ReactNode = "";
@@ -227,7 +227,7 @@ const DropdownOverlay: React.FC<CustomizeColumnProps> = (props) => {
   return (
     <>
       <Title>{parrotI18n.t("components.custom_column")}</Title>
-      <Checkbox.Group
+      <AntdCheckbox.Group
         className={CheckboxStyle}
         defaultValue={customizeColumn
           .filter((item) => item.display)
@@ -243,7 +243,7 @@ const DropdownOverlay: React.FC<CustomizeColumnProps> = (props) => {
                 key={column.key}
                 {...dragProps(column, index)}
               >
-                <kit.checkbox
+                <Checkbox
                   value={column.key}
                   disabled={column.disable}
                   onChange={(event) => {
@@ -261,7 +261,7 @@ const DropdownOverlay: React.FC<CustomizeColumnProps> = (props) => {
                   }}
                 >
                   {column.title}
-                </kit.checkbox>
+                </Checkbox>
                 {!column.disable && (
                   // TODO: wait icon
                   <div className="point-group">
@@ -274,16 +274,14 @@ const DropdownOverlay: React.FC<CustomizeColumnProps> = (props) => {
             )
           );
         })}
-      </Checkbox.Group>
+      </AntdCheckbox.Group>
     </>
   );
 };
 
 const CustomizeColumn: React.FC<CustomizeColumnProps> = (props) => {
-  const kit = useContext(kitContext);
-
   return (
-    <kit.dropdown
+    <AntdDropdown
       data-test-id={props["data-test-id"]}
       overlayClassName={DropdownWrapper}
       overlay={<DropdownOverlay {...props} />}
@@ -296,7 +294,7 @@ const CustomizeColumn: React.FC<CustomizeColumnProps> = (props) => {
         alt="setting"
         aria-label="setting"
       />
-    </kit.dropdown>
+    </AntdDropdown>
   );
 };
 

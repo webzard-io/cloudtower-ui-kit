@@ -1,9 +1,9 @@
 import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import cs from "classnames";
-import React, { useContext } from "react";
+import React from "react";
 
-import { kitContext } from "../../spec";
+import Button from "../Button";
 
 const FailedLoadStyle = css`
   width: 100%;
@@ -29,13 +29,12 @@ const FailedLoad: React.FC<{
   title?: string;
 }> = (props) => {
   const { error, refetch, className, title, refetchText } = props;
-  const kit = useContext(kitContext);
   return (
     <div className={cs(FailedLoadStyle, className)} title={title}>
       <div className="error-text">{String(error)}</div>
-      <kit.button type="ordinary" onClick={() => refetch()}>
+      <Button type="ordinary" onClick={() => refetch()}>
         {refetchText || parrotI18n.t("common.retry")}
-      </kit.button>
+      </Button>
     </div>
   );
 };

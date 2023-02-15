@@ -1,10 +1,12 @@
 import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import _ from "lodash";
-import React, { useContext, useRef } from "react";
+import React, { useRef } from "react";
 
-import { EnumProps, IntProps, kitContext, StringProps } from "../../spec";
+import { EnumProps, IntProps, StringProps } from "../../spec";
 import { EMPTY_FUNCTION, FormatUnit, getFormatValue } from "../../utils";
+import fields from "../Fields";
+import InputGroup from "../InputGroup";
 
 const AffixWrapper = css`
   height: 32px;
@@ -20,7 +22,6 @@ type FieldProps<T, V = T[keyof T]> = {
 export const StringField = <T extends Record<string, unknown>>(
   props: FieldProps<T> & StringProps
 ) => {
-  const kit = useContext(kitContext);
   const { where, setWhere, __rawWhere, ...restProps } = props;
   const name = String(props.name);
 
@@ -34,8 +35,8 @@ export const StringField = <T extends Record<string, unknown>>(
   });
 
   return (
-    <kit.inputGroup compact>
-      <kit.fields.Enum
+    <InputGroup compact>
+      <fields.Enum
         input={{
           onChange: (key) => {
             setWhere([
@@ -62,7 +63,7 @@ export const StringField = <T extends Record<string, unknown>>(
         ]}
         defaultValue={refWhere.current.key as string}
       />
-      <kit.fields.String
+      <fields.String
         input={{
           value: refWhere.current.value || "",
           onChange: (e) => {
@@ -76,21 +77,20 @@ export const StringField = <T extends Record<string, unknown>>(
         meta={{}}
         {...restProps}
       />
-    </kit.inputGroup>
+    </InputGroup>
   );
 };
 
 export const BooleanField = <T extends Record<string, unknown>>(
   props: FieldProps<T, boolean> & Partial<EnumProps>
 ) => {
-  const kit = useContext(kitContext);
   const { where, setWhere, __rawWhere, ...restProps } = props;
   const name = String(props.name);
   const value = _.get(where, name);
   const parseValue = typeof value === "boolean" ? `${value}` : "all";
 
   return (
-    <kit.fields.Enum
+    <fields.Enum
       input={{
         value: parseValue,
         onChange: (e) =>
@@ -119,7 +119,6 @@ export const BooleanField = <T extends Record<string, unknown>>(
 export const IntField = <T extends Record<string, unknown>>(
   props: FieldProps<T> & IntProps
 ) => {
-  const kit = useContext(kitContext);
   const { where, setWhere, __rawWhere, ...restProps } = props;
   const name = String(props.name);
   const enumValues = [
@@ -149,8 +148,8 @@ export const IntField = <T extends Record<string, unknown>>(
   });
 
   return (
-    <kit.inputGroup compact>
-      <kit.fields.Enum
+    <InputGroup compact>
+      <fields.Enum
         input={{
           onChange: (val) => {
             const key = val === "eq" ? name : (`${name}_${val}` as keyof T);
@@ -172,7 +171,7 @@ export const IntField = <T extends Record<string, unknown>>(
         enumValues={enumValues}
         defaultValue={defaultKey}
       />
-      <kit.fields.Int
+      <fields.Int
         input={{
           value: refWhere.current.value,
           onChange: (e) => {
@@ -186,7 +185,7 @@ export const IntField = <T extends Record<string, unknown>>(
         meta={{}}
         {...restProps}
       />
-    </kit.inputGroup>
+    </InputGroup>
   );
 };
 
@@ -196,7 +195,6 @@ export const FormatIntField = <T extends Record<string, unknown>>(
       formatUnit: FormatUnit;
     }
 ) => {
-  const kit = useContext(kitContext);
   const { where, setWhere, formatUnit, __rawWhere, ...restProps } = props;
   const name = String(props.name);
   const formatValue = getFormatValue(formatUnit);
@@ -228,8 +226,8 @@ export const FormatIntField = <T extends Record<string, unknown>>(
   });
 
   return (
-    <kit.inputGroup compact>
-      <kit.fields.Enum
+    <InputGroup compact>
+      <fields.Enum
         input={{
           onChange: (val) => {
             const key = val === "eq" ? name : (`${name}_${val}` as keyof T);
@@ -251,7 +249,7 @@ export const FormatIntField = <T extends Record<string, unknown>>(
         enumValues={enumValues}
         defaultValue={defaultKey}
       />
-      <kit.fields.Int
+      <fields.Int
         className={AffixWrapper}
         input={{
           value: !_.isNil(refWhere.current.value)
@@ -269,21 +267,20 @@ export const FormatIntField = <T extends Record<string, unknown>>(
         meta={{}}
         {...restProps}
       />
-    </kit.inputGroup>
+    </InputGroup>
   );
 };
 
 export const EnumField = <T extends Record<string, unknown>>(
   props: FieldProps<T, string[]> & EnumProps
 ) => {
-  const kit = useContext(kitContext);
   const { where, setWhere, enumValues, placeholder, __rawWhere, ...restProps } =
     props;
   const name = String(props.name);
   const key = `${name}_in`;
 
   return (
-    <kit.fields.Enum
+    <fields.Enum
       emptyLabel={parrotI18n.t("common.all")}
       input={{
         value: _.get(where, key) || "",
