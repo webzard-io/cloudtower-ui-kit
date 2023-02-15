@@ -5,7 +5,7 @@ import React from "react";
 
 import { FieldBaseProps } from "../../../spec";
 
-const DateTimeRange = ({
+const FieldsDateTimeRange = ({
   input,
   ...props
 }: FieldBaseProps & DatePickerProps) => (
@@ -23,4 +23,4 @@ const DateTimeRange = ({
   </div>
 );
 
-export default DateTimeRange;
+export default FieldsDateTimeRange;

@@ -5,7 +5,7 @@ import React, { useContext } from "react";
 import { Child, kitContext } from "../../../spec";
 import Button from "../../Button";
 
-const KitArray = <T extends HTMLElement = HTMLElement>({
+const FieldsArray = <T extends HTMLElement = HTMLElement>({
   fields,
   child,
 }: FieldArrayRenderProps<string, T> & { child: Child }) => {
@@ -37,4 +37,4 @@ const KitArray = <T extends HTMLElement = HTMLElement>({
   );
 };
 
-export default KitArray;
+export default FieldsArray;

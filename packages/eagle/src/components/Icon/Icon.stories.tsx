@@ -1,6 +1,8 @@
-import { Icon } from "@cloudtower/eagle";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
+
+import { arrowChevronDownSmall16Blue } from "../images";
+import Icon from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -18,5 +20,5 @@ const Template: ComponentStory<typeof Icon> = (args) => <Icon {...args} />;
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  type: "1-active-connection-16-gradiendt-blue",
+  src: arrowChevronDownSmall16Blue,
 };

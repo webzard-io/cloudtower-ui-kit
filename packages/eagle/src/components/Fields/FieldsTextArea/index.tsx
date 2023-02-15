@@ -4,7 +4,7 @@ import React from "react";
 import { FieldBaseProps } from "../../../spec";
 import TextArea from "../../TextArea";
 
-const KitTextArea = ({
+const FieldsTextArea = ({
   input,
   meta,
   onFocusChangeHeight,
@@ -34,4 +34,4 @@ const KitTextArea = ({
   );
 };
 
-export default KitTextArea;
+export default FieldsTextArea;

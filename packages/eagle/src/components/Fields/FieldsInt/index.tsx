@@ -3,7 +3,7 @@ import React from "react";
 import { IntFieldProps } from "../../../spec";
 import Input from "../../Input";
 
-const Int = ({
+const FieldsInt = ({
   input,
   meta,
   onBlur,
@@ -41,4 +41,4 @@ const Int = ({
   </>
 );
 
-export default Int;
+export default FieldsInt;

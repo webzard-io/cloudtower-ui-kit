@@ -10,7 +10,7 @@ import InputTagItem from "../../InputTagItem";
 import Overflow from "../../Overflow";
 import { KitInputStyle } from "../../Styled";
 
-const KitString = ({
+const FieldsString = ({
   input,
   meta,
   autoComplete = "off",
@@ -83,4 +83,4 @@ const KitString = ({
   );
 };
 
-export default KitString;
+export default FieldsString;

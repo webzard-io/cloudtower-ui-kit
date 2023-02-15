@@ -1,17 +1,18 @@
 import { Select as AntdSelect } from "antd";
 import React from "react";
 
-import { KitEnumProps } from "../../../spec";
-import KitSelect from "../../Select";
-const Enum = ({
+import { EnumProps } from "../../../spec";
+import Select from "../../Select";
+
+const FieldsEnum = ({
   meta: __,
   enumValues,
   emptyLabel,
   ...restProps
-}: KitEnumProps) => {
+}: EnumProps) => {
   return (
     <>
-      <KitSelect {...restProps}>
+      <Select {...restProps}>
         {emptyLabel && (
           <AntdSelect.Option value="">{emptyLabel}</AntdSelect.Option>
         )}
@@ -27,8 +28,8 @@ const Enum = ({
             </AntdSelect.Option>
           );
         })}
-      </KitSelect>
+      </Select>
     </>
   );
 };
-export default Enum;
+export default FieldsEnum;

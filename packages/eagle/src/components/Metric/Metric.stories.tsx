@@ -1,21 +1,18 @@
-import {
-  DateRange,
-  filterOverlappingMetric,
-  getXAxisDomain,
-  GraphType,
-  Metric,
-  tickFormatter,
-  xaxisCal,
-} from "@cloudtower/eagle";
-import { antdKit } from "@cloudtower/eagle";
-import { kitContext } from "@cloudtower/eagle";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import dayjs from "dayjs";
 import React from "react";
 import { Payload } from "recharts/types/component/DefaultTooltipContent";
 
-import mockMetric from "../mockMetric";
-import mockMetric2 from "../mockMetric2";
+import Metric from ".";
+import {
+  filterOverlappingMetric,
+  getXAxisDomain,
+  tickFormatter,
+  xaxisCal,
+} from "./metric";
+import mockMetric from "./mockMetric.test";
+import mockMetric2 from "./mockMetric2.test";
+import { DateRange, GraphType } from "./type";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -25,11 +22,7 @@ export default {
   argTypes: {},
   decorators: [
     (Story) => {
-      return (
-        <kitContext.Provider value={antdKit}>
-          <Story />
-        </kitContext.Provider>
-      );
+      return <Story />;
     },
   ],
 } as ComponentMeta<typeof Metric>;

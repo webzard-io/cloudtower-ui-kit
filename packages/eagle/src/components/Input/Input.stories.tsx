@@ -1,15 +1,13 @@
-import {
-  getAntdKit,
-  LeftEndInputStyle,
-  RightEndInputStyle,
-  Typo,
-} from "@cloudtower/eagle";
 import { Col, Row as AntdRow } from "antd";
 import cs from "classnames";
 import React, { Fragment } from "react";
 import { withDesign } from "storybook-addon-designs";
 
-const kit = getAntdKit();
+import Checkbox from "../Checkbox";
+import { LeftEndInputStyle, RightEndInputStyle } from "../Styled";
+import TextArea from "../TextArea";
+import { Typo } from "../Typo";
+import Input from ".";
 
 const Info: React.FC = ({ children }) => (
   <div
@@ -67,15 +65,15 @@ const Row: React.FC<RowProps> = ({ state, size }) => {
 
   return (
     <div className={size}>
-      <kit.input size={size} {...inputProps} placeholder="Label" />
-      <kit.input
+      <Input size={size} {...inputProps} placeholder="Label" />
+      <Input
         size={size}
         {...inputProps}
         className={cs(inputProps.className, LeftEndInputStyle)}
         placeholder="Label"
         suffix="Unit"
       />
-      <kit.input
+      <Input
         size={size}
         {...inputProps}
         className={cs(inputProps.className, RightEndInputStyle)}
@@ -106,7 +104,7 @@ const Section = ({ size }: { size: "large" | "middle" | "small" }) => {
       <Row size={size} state="Error Active" />
       <Row size={size} state="Error Focus" />
       <div className={size}>
-        <kit.textArea size={size} placeholder="Label" />
+        <TextArea size={size} placeholder="Label" />
         <Info>TextArea</Info>
       </div>
     </Fragment>
@@ -118,7 +116,7 @@ export default {
   decorators: [withDesign],
 };
 
-export const Input = () => {
+export const InputStory = () => {
   return (
     <div style={{ padding: "20px" }}>
       <Section size="large" />
@@ -128,7 +126,7 @@ export const Input = () => {
   );
 };
 
-Input.story = {
+InputStory.story = {
   name: "Text Field",
   parameters: {
     design: {
@@ -177,32 +175,32 @@ const CheckboxRow: React.FC<Row2Props> = ({ state }) => {
     <Fragment>
       <AntdRow>
         <Col span={4}>
-          <kit.checkbox {...checkboxProps} />
+          <Checkbox {...checkboxProps} />
         </Col>
         <Col span={5}>
-          <kit.checkbox {...checkboxProps}>Button Title</kit.checkbox>
+          <Checkbox {...checkboxProps}>Button Title</Checkbox>
         </Col>
         <Col span={5}>
-          <kit.checkbox
+          <Checkbox
             {...checkboxProps}
             description="Detail description paragraph here."
           >
             Button Title
-          </kit.checkbox>
+          </Checkbox>
         </Col>
         <Col span={5}>
-          <kit.checkbox {...checkboxProps} compact>
+          <Checkbox {...checkboxProps} compact>
             Button Title
-          </kit.checkbox>
+          </Checkbox>
         </Col>
         <Col span={5}>
-          <kit.checkbox
+          <Checkbox
             {...checkboxProps}
             compact
             description="Detail description paragraph here."
           >
             Button Title
-          </kit.checkbox>
+          </Checkbox>
         </Col>
       </AntdRow>
       <Info>{state}</Info>
@@ -210,7 +208,7 @@ const CheckboxRow: React.FC<Row2Props> = ({ state }) => {
   );
 };
 
-export const Checkbox = () => {
+export const CheckboxStory = () => {
   return (
     <div style={{ padding: "20px" }}>
       <CheckboxRow state="Normal" />
@@ -224,7 +222,7 @@ export const Checkbox = () => {
   );
 };
 
-Checkbox.story = {
+CheckboxStory.story = {
   parameters: {
     design: {
       type: "figma",

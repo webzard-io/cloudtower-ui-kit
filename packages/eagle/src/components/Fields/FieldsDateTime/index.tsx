@@ -3,7 +3,7 @@ import React from "react";
 
 import { FieldBaseProps } from "../../../spec";
 
-const DateTime = ({ input }: FieldBaseProps) => (
+const FieldsDateTime = ({ input }: FieldBaseProps) => (
   <>
     <DatePicker
       onFocus={() => input.onFocus?.()}
@@ -15,4 +15,4 @@ const DateTime = ({ input }: FieldBaseProps) => (
   </>
 );
 
-export default DateTime;
+export default FieldsDateTime;

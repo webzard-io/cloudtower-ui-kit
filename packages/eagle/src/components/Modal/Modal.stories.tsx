@@ -1,14 +1,10 @@
-import {
-  antdKit,
-  kitContext as UIKitContext,
-  KitStoreProvider,
-  ModalStack,
-  pushModal,
-} from "@cloudtower/eagle";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 
-import ImmersiveModal from "./modal/ImmersiveModal";
+import { pushModal } from "../../store";
+import KitStoreProvider from "../KitStoreProvider";
+import ModalStack from "../ModalStack";
+import ImmersiveModal from "./ImmersiveModal";
 
 export default {
   title: "Modal",
@@ -16,10 +12,8 @@ export default {
     (Story) => {
       return (
         <KitStoreProvider>
-          <UIKitContext.Provider value={antdKit}>
-            <ModalStack />
-            <Story />
-          </UIKitContext.Provider>
+          <ModalStack />
+          <Story />
         </KitStoreProvider>
       );
     },

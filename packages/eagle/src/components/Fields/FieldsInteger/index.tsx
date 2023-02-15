@@ -3,7 +3,12 @@ import React from "react";
 import { IntegerFieldProps } from "../../../spec";
 import InputInteger from "../../InputInteger";
 
-const Integer = ({ meta, input, onBlur, ...props }: IntegerFieldProps) => {
+const FieldsInteger = ({
+  meta,
+  input,
+  onBlur,
+  ...props
+}: IntegerFieldProps) => {
   return (
     <>
       <InputInteger
@@ -19,4 +24,4 @@ const Integer = ({ meta, input, onBlur, ...props }: IntegerFieldProps) => {
   );
 };
 
-export default Integer;
+export default FieldsInteger;

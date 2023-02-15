@@ -3,7 +3,7 @@ import React from "react";
 import { FieldBaseProps } from "../../../spec";
 import Checkbox from "../../Checkbox";
 
-const KitBoolean = ({ input, children, ...props }: FieldBaseProps) => {
+const FieldsBoolean = ({ input, children, ...props }: FieldBaseProps) => {
   return (
     <>
       <Checkbox
@@ -17,4 +17,4 @@ const KitBoolean = ({ input, children, ...props }: FieldBaseProps) => {
   );
 };
 
-export default KitBoolean;
+export default FieldsBoolean;

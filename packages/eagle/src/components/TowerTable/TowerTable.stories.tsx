@@ -1,8 +1,7 @@
-import { ITowerTableProps, TowerTable } from "@cloudtower/eagle";
-import { antdKit } from "@cloudtower/eagle";
-import { kitContext } from "@cloudtower/eagle";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
+
+import TowerTable, { ITowerTableProps } from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -12,11 +11,7 @@ export default {
   argTypes: {},
   decorators: [
     (Story) => {
-      return (
-        <kitContext.Provider value={antdKit}>
-          <Story />
-        </kitContext.Provider>
-      );
+      return <Story />;
     },
   ],
 } as ComponentMeta<typeof TowerTable>;

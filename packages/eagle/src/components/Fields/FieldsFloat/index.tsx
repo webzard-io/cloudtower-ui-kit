@@ -3,7 +3,7 @@ import React from "react";
 import { FloatFieldProps } from "../../../spec";
 import InputNumber from "../../InputNumber";
 
-const Float = ({
+const FieldsFloat = ({
   input,
   meta,
   onBlur,
@@ -24,4 +24,4 @@ const Float = ({
   </>
 );
 
-export default Float;
+export default FieldsFloat;

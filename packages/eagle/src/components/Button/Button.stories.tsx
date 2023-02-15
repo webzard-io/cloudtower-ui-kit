@@ -3,16 +3,15 @@ import {
   EllipsisOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
-import { Typo } from "@cloudtower/eagle";
-import { getAntdKit } from "@cloudtower/eagle";
-import { ButtonProps } from "@cloudtower/eagle";
 import { Space } from "antd";
 import cs from "classnames";
 import _ from "lodash";
 import React from "react";
 import { withDesign } from "storybook-addon-designs";
 
-const kit = getAntdKit();
+import { ButtonProps } from "../../spec";
+import { Typo } from "../Typo";
+import Button from ".";
 
 const Title: React.FC = ({ children }) => (
   <div style={{ marginTop: "16px" }} className={Typo.Display.d2_bold_title}>
@@ -38,36 +37,36 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
         style={{ padding: "12px", width: "100%", background }}
       >
         <Subtitle>{_.capitalize(type)}</Subtitle>
-        <kit.button icon={<PlusOutlined />} type={type}>
+        <Button icon={<PlusOutlined />} type={type}>
           Label
-        </kit.button>
-        <kit.button
+        </Button>
+        <Button
           icon={<PlusOutlined />}
           type={type}
           className="__pseudo-states-hover"
         >
           Hover
-        </kit.button>
-        <kit.button
+        </Button>
+        <Button
           icon={<PlusOutlined />}
           type={type}
           className="__pseudo-states-active"
         >
           Active
-        </kit.button>
-        <kit.button
+        </Button>
+        <Button
           icon={<PlusOutlined />}
           type={type}
           className="__pseudo-states-focus"
         >
           Focus
-        </kit.button>
-        <kit.button disabled icon={<PlusOutlined />} type={type}>
+        </Button>
+        <Button disabled icon={<PlusOutlined />} type={type}>
           Disabled
-        </kit.button>
-        <kit.button icon={<DownOutlined />} type={type} />
-        <kit.button icon={<EllipsisOutlined />} type={type} shape="circle" />
-        <kit.button loading type={type} />
+        </Button>
+        <Button icon={<DownOutlined />} type={type} />
+        <Button icon={<EllipsisOutlined />} type={type} shape="circle" />
+        <Button loading type={type} />
       </Space>
 
       <Space
@@ -75,36 +74,36 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
         style={{ padding: "12px", width: "100%", background }}
       >
         <Subtitle>{_.capitalize(type)} Danger</Subtitle>
-        <kit.button danger icon={<PlusOutlined />} type={type}>
+        <Button danger icon={<PlusOutlined />} type={type}>
           Label
-        </kit.button>
-        <kit.button
+        </Button>
+        <Button
           danger
           icon={<PlusOutlined />}
           type={type}
           className="__pseudo-states-hover"
         >
           Hover
-        </kit.button>
-        <kit.button
+        </Button>
+        <Button
           danger
           icon={<PlusOutlined />}
           type={type}
           className="__pseudo-states-active"
         >
           Active
-        </kit.button>
-        <kit.button
+        </Button>
+        <Button
           danger
           icon={<PlusOutlined />}
           type={type}
           className="__pseudo-states-focus"
         >
           Focus
-        </kit.button>
-        <kit.button danger disabled icon={<PlusOutlined />} type={type}>
+        </Button>
+        <Button danger disabled icon={<PlusOutlined />} type={type}>
           Disabled
-        </kit.button>
+        </Button>
       </Space>
 
       <Space
@@ -112,42 +111,42 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
         style={{ padding: "12px", width: "100%", background }}
       >
         <Subtitle>{_.capitalize(type)} Orange</Subtitle>
-        <kit.button
+        <Button
           icon={<PlusOutlined />}
           type={type}
           className="btn-primary-orange"
         >
           Label
-        </kit.button>
-        <kit.button
+        </Button>
+        <Button
           icon={<PlusOutlined />}
           type={type}
           className={cs("btn-primary-orange", "__pseudo-states-hover")}
         >
           Hover
-        </kit.button>
-        <kit.button
+        </Button>
+        <Button
           icon={<PlusOutlined />}
           type={type}
           className={cs("btn-primary-orange", "__pseudo-states-active")}
         >
           Active
-        </kit.button>
-        <kit.button
+        </Button>
+        <Button
           icon={<PlusOutlined />}
           type={type}
           className={cs("btn-primary-orange", "__pseudo-states-focus")}
         >
           Focus
-        </kit.button>
-        <kit.button
+        </Button>
+        <Button
           className="btn-primary-orange"
           disabled
           icon={<PlusOutlined />}
           type={type}
         >
           Disabled
-        </kit.button>
+        </Button>
       </Space>
 
       {(type === "ordinary" || type === "ordinary-onTint") && (
@@ -156,48 +155,44 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
           style={{ padding: "12px", width: "100%", background }}
         >
           <Subtitle>{_.capitalize(type)} Blue</Subtitle>
-          <kit.button
-            className="ordinary-blue"
-            icon={<PlusOutlined />}
-            type={type}
-          >
+          <Button className="ordinary-blue" icon={<PlusOutlined />} type={type}>
             Label
-          </kit.button>
-          <kit.button
+          </Button>
+          <Button
             className={cs("ordinary-blue", "__pseudo-states-hover")}
             icon={<PlusOutlined />}
             type={type}
           >
             Hover
-          </kit.button>
-          <kit.button
+          </Button>
+          <Button
             className={cs("ordinary-blue", "__pseudo-states-active")}
             icon={<PlusOutlined />}
             type={type}
           >
             Active
-          </kit.button>
-          <kit.button
+          </Button>
+          <Button
             className={cs("ordinary-blue", "__pseudo-states-focus")}
             icon={<PlusOutlined />}
             type={type}
           >
             Focus
-          </kit.button>
-          <kit.button
+          </Button>
+          <Button
             className="ordinary-blue"
             disabled
             icon={<PlusOutlined />}
             type={type}
           >
             Disabled
-          </kit.button>
-          <kit.button
+          </Button>
+          <Button
             className="ordinary-blue"
             icon={<DownOutlined />}
             type={type}
           />
-          <kit.button
+          <Button
             className="ordinary-blue"
             icon={<EllipsisOutlined />}
             type={type}
@@ -212,48 +207,40 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
           style={{ padding: "12px", width: "100%", background }}
         >
           <Subtitle>{_.capitalize(type)} Basic</Subtitle>
-          <kit.button
-            className="quiet-blue"
-            icon={<PlusOutlined />}
-            type={type}
-          >
+          <Button className="quiet-blue" icon={<PlusOutlined />} type={type}>
             Label
-          </kit.button>
-          <kit.button
+          </Button>
+          <Button
             className={cs("quiet-blue", "__pseudo-states-hover")}
             icon={<PlusOutlined />}
             type={type}
           >
             Hover
-          </kit.button>
-          <kit.button
+          </Button>
+          <Button
             className={cs("quiet-blue", "__pseudo-states-active")}
             icon={<PlusOutlined />}
             type={type}
           >
             Active
-          </kit.button>
-          <kit.button
+          </Button>
+          <Button
             className={cs("quiet-blue", "__pseudo-states-focus")}
             icon={<PlusOutlined />}
             type={type}
           >
             Focus
-          </kit.button>
-          <kit.button
+          </Button>
+          <Button
             className="quiet-blue"
             disabled
             icon={<PlusOutlined />}
             type={type}
           >
             Disabled
-          </kit.button>
-          <kit.button
-            className="quiet-blue"
-            icon={<DownOutlined />}
-            type={type}
-          />
-          <kit.button
+          </Button>
+          <Button className="quiet-blue" icon={<DownOutlined />} type={type} />
+          <Button
             className="quiet-blue"
             icon={<EllipsisOutlined />}
             type={type}
@@ -275,13 +262,13 @@ export const Basic = () => {
     <div style={{ padding: "20px" }}>
       <Title>Size</Title>
       <Space style={{ marginTop: "12px" }}>
-        <kit.button type="primary" size="large">
+        <Button type="primary" size="large">
           Label
-        </kit.button>
-        <kit.button type="primary">Label</kit.button>
-        <kit.button type="primary" size="small">
+        </Button>
+        <Button type="primary">Label</Button>
+        <Button type="primary" size="small">
           Label
-        </kit.button>
+        </Button>
       </Space>
 
       <Title>Type</Title>

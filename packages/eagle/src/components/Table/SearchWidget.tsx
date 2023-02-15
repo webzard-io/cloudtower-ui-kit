@@ -3,7 +3,7 @@ import { css } from "@linaria/core";
 import _ from "lodash";
 import React, { useRef } from "react";
 
-import { EnumProps, IntProps, StringProps } from "../../spec";
+import { BaseEnumProps, IntProps, StringProps } from "../../spec";
 import { EMPTY_FUNCTION, FormatUnit, getFormatValue } from "../../utils";
 import fields from "../Fields";
 import InputGroup from "../InputGroup";
@@ -82,7 +82,7 @@ export const StringField = <T extends Record<string, unknown>>(
 };
 
 export const BooleanField = <T extends Record<string, unknown>>(
-  props: FieldProps<T, boolean> & Partial<EnumProps>
+  props: FieldProps<T, boolean> & Partial<BaseEnumProps>
 ) => {
   const { where, setWhere, __rawWhere, ...restProps } = props;
   const name = String(props.name);
@@ -272,7 +272,7 @@ export const FormatIntField = <T extends Record<string, unknown>>(
 };
 
 export const EnumField = <T extends Record<string, unknown>>(
-  props: FieldProps<T, string[]> & EnumProps
+  props: FieldProps<T, string[]> & BaseEnumProps
 ) => {
   const { where, setWhere, enumValues, placeholder, __rawWhere, ...restProps } =
     props;

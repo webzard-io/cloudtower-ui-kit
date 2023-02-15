@@ -1,4 +1,4 @@
-import { IMetric } from "@cloudtower/eagle";
+import { IMetric } from "./type";
 
 const mockMetric2: IMetric = {
   sample_streams: [

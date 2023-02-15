@@ -31,7 +31,7 @@ import fields from "./Fields";
 import Frequency from "./Frequency";
 import Input from "./Input";
 import InputGroup from "./InputGroup";
-import KitLoading from "./KitLoading";
+import Loading from "./Loading";
 import Modal from "./Modal";
 import Pagination from "./Pagination";
 import Percent from "./Percent";
@@ -50,7 +50,7 @@ import {
   THEAD_SELECTOR,
 } from "./Styled";
 import Switch from "./Switch";
-import KitTable from "./Table";
+import Table from "./Table";
 import TextArea from "./TextArea";
 import Tooltip from "./Tooltip";
 
@@ -61,12 +61,12 @@ export function getAntdKit(): Kit {
     THEAD_SELECTOR,
     TBODY_SELECTOR,
     MODAL_WHITELIST,
-    loading: KitLoading,
+    loading: Loading,
     error: ({ error }) => <div className="error">{String(error)}</div>,
     pagination: Pagination,
     select: Select,
     option: AntdSelect.Option as OptionComponentType,
-    table: KitTable,
+    table: Table,
     button: Button,
     modal: Modal,
     dropdown: Dropdown,
