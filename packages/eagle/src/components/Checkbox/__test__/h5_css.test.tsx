@@ -4,7 +4,7 @@ import { describe, it } from "vitest";
 
 import Checkbox from "..";
 
-describe("Table h5_css", () => {
+describe("Checkbox h5_css", () => {
   it("image", async () => {});
 
   it.concurrent("h5_css with_children without_description", ({ expect }) => {
