@@ -1,8 +1,8 @@
+import { styled } from "@linaria/react";
 import { ComponentMeta } from "@storybook/react";
 import { Space as AntdSpace } from "antd";
 import { Select as AntdSelect } from "antd";
 import cs from "classnames";
-import { styled } from "linaria/react";
 import React from "react";
 import { withDesign } from "storybook-addon-designs";
 

@@ -1,5 +1,5 @@
+import { css } from "@linaria/core";
 import cs from "classnames";
-import { css } from "linaria";
 import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 
 import { useElementResize } from "../../hooks";

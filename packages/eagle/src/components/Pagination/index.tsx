@@ -1,8 +1,8 @@
 import { parrotI18n } from "@cloudtower/parrot";
+import { css } from "@linaria/core";
 import { Menu } from "antd";
 import { Dropdown as AntdDropdown } from "antd";
 import cs from "classnames";
-import { css } from "linaria";
 import React, { useEffect, useMemo, useRef } from "react";
 
 import { PaginationProps } from "../../spec";

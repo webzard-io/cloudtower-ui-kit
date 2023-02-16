@@ -1,6 +1,6 @@
+import { styled } from "@linaria/react";
 import { Steps as AntdSteps } from "antd";
 import { StepProps } from "antd/lib/steps";
-import { styled } from "linaria/react";
 import React from "react";
 
 import { IStepsPorps } from "../../spec";

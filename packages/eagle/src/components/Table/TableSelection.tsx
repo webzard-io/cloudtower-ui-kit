@@ -1,6 +1,6 @@
+import { css } from "@linaria/core";
 import { CheckboxChangeEvent } from "antd/es/checkbox";
 import { TableProps } from "antd/lib/table";
-import { css } from "linaria";
 import _ from "lodash";
 import React, {
   useCallback,

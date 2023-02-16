@@ -1,8 +1,8 @@
 import { parrotI18n } from "@cloudtower/parrot";
+import { css } from "@linaria/core";
+import { styled } from "@linaria/react";
 import { SerializableObject } from "@tower/utils";
 import cs from "classnames";
-import { css } from "linaria";
-import { styled } from "linaria/react";
 import _ from "lodash";
 import React, { createContext, useContext, useEffect, useRef } from "react";
 
