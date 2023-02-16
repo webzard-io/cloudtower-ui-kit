@@ -3,6 +3,8 @@ import React from "react";
 import { FieldBaseProps } from "../../../spec";
 import Checkbox from "../../Checkbox";
 
+// FIXME
+// onBlur onFocus in input is not needed.
 const FieldsBoolean = ({ input, children, ...props }: FieldBaseProps) => {
   return (
     <>
