@@ -1,11 +1,10 @@
-import i18next from "i18next";
+import i18next, { Callback, InitOptions } from "i18next";
 
 import locales from "./locales";
 
 const parrotI18n = i18next.createInstance({
   lng: "zh-CN",
   fallbackLng: "en-US",
-  debug: true,
   interpolation: {
     prefix: "{",
     suffix: "}",
@@ -26,6 +25,9 @@ const parrotI18n = i18next.createInstance({
 
 export default parrotI18n;
 
-export const initParrotI18n = () => {
-  parrotI18n.init({});
+export const initParrotI18n = (
+  options: InitOptions,
+  callback?: Callback | undefined
+) => {
+  parrotI18n.init(options, callback);
 };
