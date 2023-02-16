@@ -1,5 +1,5 @@
+import { css } from "@linaria/core";
 import cs from "classnames";
-import { css } from "linaria";
 import _ from "lodash";
 import React, { useMemo, useState } from "react";
 

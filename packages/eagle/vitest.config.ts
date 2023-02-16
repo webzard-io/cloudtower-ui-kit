@@ -37,6 +37,9 @@ export default defineConfig({
 
         return cssText;
       },
+      babelOptions: {
+        presets: ["react-app"],
+      },
     }),
     react(),
   ],

@@ -1,7 +1,7 @@
+import { css } from "@linaria/core";
 import { Checkbox as AntdCheckbox } from "antd";
 import { CheckboxProps } from "antd/lib/checkbox";
 import cs from "classnames";
-import { css } from "linaria";
 import React, { ReactNode } from "react";
 
 import { Typo } from "../Typo";

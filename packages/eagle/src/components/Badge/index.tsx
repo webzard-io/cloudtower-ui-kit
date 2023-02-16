@@ -1,5 +1,5 @@
+import { cx } from "@linaria/core";
 import { Badge as AntdBadge } from "antd";
-import { cx } from "linaria";
 import React from "react";
 
 import { BadgeComponentType } from "../../spec";

@@ -1,4 +1,4 @@
-import { styled } from "linaria/react";
+import { styled } from "@linaria/react";
 
 const InputTagItem = styled.span`
   height: 18px;

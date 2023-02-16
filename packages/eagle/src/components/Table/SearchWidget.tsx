@@ -1,5 +1,5 @@
 import { parrotI18n } from "@cloudtower/parrot";
-import { css } from "linaria";
+import { css } from "@linaria/core";
 import _ from "lodash";
 import React, { useRef } from "react";
 

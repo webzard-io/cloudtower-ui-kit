@@ -1,6 +1,6 @@
 import { parrotI18n } from "@cloudtower/parrot";
+import { css } from "@linaria/core";
 import cs from "classnames";
-import { css } from "linaria";
 import React from "react";
 
 import Button from "../Button";

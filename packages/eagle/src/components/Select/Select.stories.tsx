@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "@linaria/react";
 import { ComponentMeta } from "@storybook/react";
 import { Space as AntdSpace } from "antd";
 import { Select as AntdSelect } from "antd";
