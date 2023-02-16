@@ -30,13 +30,6 @@ module.exports = {
           },
         },
       },
-      {
-        loader: "ts-loader",
-        options: {
-          transpileOnly: true,
-          configFile: path.resolve(__dirname, "../tsconfig.json"),
-        },
-      },
     ];
 
     config.module.rules.push(
@@ -109,6 +102,15 @@ module.exports = {
         ],
       }
     );
+
+    config.module.rules.push({
+      test: /\.(js|mjs|jsx|ts|tsx)$/,
+      loader: "ts-loader",
+      options: {
+        transpileOnly: true,
+        configFile: path.resolve(__dirname, "../tsconfig.json"),
+      },
+    });
 
     delete config.module.rules[2].oneOf[3].loader;
     delete config.module.rules[2].oneOf[3].options;
