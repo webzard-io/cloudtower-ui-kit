@@ -1,8 +1,9 @@
 import i18next, { Callback, InitOptions } from "i18next";
+import merge from "lodash.merge";
 
 import locales from "./locales";
 
-const parrotI18n = i18next.createInstance({
+const defaultOptions = {
   lng: "zh-CN",
   fallbackLng: "en-US",
   interpolation: {
@@ -21,13 +22,15 @@ const parrotI18n = i18next.createInstance({
       },
     },
   },
-});
+};
+
+const parrotI18n = i18next.createInstance(defaultOptions);
 
 export default parrotI18n;
 
 export const initParrotI18n = (
-  options: InitOptions,
+  options?: InitOptions,
   callback?: Callback | undefined
 ) => {
-  parrotI18n.init(options, callback);
+  parrotI18n.init(merge(defaultOptions, options), callback);
 };
