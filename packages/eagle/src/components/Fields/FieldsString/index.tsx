@@ -10,6 +10,10 @@ import InputTagItem from "../../InputTagItem";
 import Overflow from "../../Overflow";
 import { KitInputStyle } from "../../Styled";
 
+// FIXME
+// No Needed Property onBlur onFocus in input field
+// Same Problem as FieldsBoolean Component
+
 const FieldsString = ({
   input,
   meta,
