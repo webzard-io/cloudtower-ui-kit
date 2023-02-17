@@ -22,10 +22,12 @@
     "lint": "eslint src --ext .ts --quiet"
   },
   "dependencies": {
-    "i18next": "21.10.0"
+    "i18next": "21.10.0",
+    "lodash.merge": "^4.6.2"
   },
   "devDependencies": {
     "@rollup/plugin-json": "^6.0.0",
+    "@types/lodash.merge": "^4.6.7",
     "ejs": "^3.1.8",
     "rollup": "^3.12.1",
     "rollup-plugin-esbuild": "5.0.0",
