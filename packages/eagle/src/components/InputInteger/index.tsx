@@ -7,6 +7,7 @@ import React from "react";
 import { AdditionOptions } from "../../spec";
 import { InputStyle } from "../Styled";
 import { Typo } from "../Typo";
+import formatterInteger from "./formatterInteger";
 
 export const AntdIntStyled = styled(AntdInputNumber)<{
   controls: boolean;
@@ -89,26 +90,12 @@ const InputInteger: React.FC<InputNumberProps & AdditionOptions> = ({
     small: Typo.Label.l4_regular,
   }[size];
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const formatterNumber = (value: any) => {
-    const reg = /^\.|[^\d]/g;
-    if (typeof value === "string") {
-      return !isNaN(Number(value.replace(reg, "")))
-        ? value.replace(reg, "")
-        : "";
-    } else if (typeof value === "number") {
-      return !isNaN(value) ? String(value).replace(reg, "") : "";
-    } else {
-      return "";
-    }
-  };
-
   return (
     <AntdIntStyled
       {...props}
       size={size}
-      formatter={formatterNumber}
-      parser={formatterNumber}
+      formatter={formatterInteger}
+      parser={formatterInteger}
       min={min}
       max={max}
       controls={controls}
