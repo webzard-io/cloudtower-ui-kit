@@ -419,10 +419,6 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     String: React.FunctionComponent<FieldBaseProps<V, T> & StringProps>;
     Boolean: React.FunctionComponent<FieldBaseProps<V, T>>;
     TextArea: React.FC<FieldBaseProps<V, T> & TextAreaProps>;
-    // list
-    Array: React.FunctionComponent<
-      FieldArrayRenderProps<V, T> & { child: Child }
-    >;
     // compose
     DateTimeRange: React.FunctionComponent<
       FieldBaseProps<V, T> & DatePickerProps

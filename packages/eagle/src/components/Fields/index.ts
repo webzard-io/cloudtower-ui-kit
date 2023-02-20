@@ -1,4 +1,3 @@
-import FieldsArray from "./FieldsArray";
 import FieldsBoolean from "./FieldsBoolean";
 import FieldsDateTime from "./FieldsDateTime";
 import FieldsDateTimeRange from "./FieldsDateTimeRange";
@@ -20,7 +19,6 @@ const fields = {
   String: FieldsString,
   Boolean: FieldsBoolean,
   TextArea: FieldsTextArea,
-  Array: FieldsArray,
   DateTimeRange: FieldsDateTimeRange,
 };
 
