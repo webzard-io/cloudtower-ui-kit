@@ -1,13 +1,13 @@
 import React from "react";
 
-interface IProps {
+export interface IHoverableElementProps {
   className?: string;
   hover: boolean;
   icon: JSX.Element | null | undefined;
   hoverEle: JSX.Element | null | undefined;
 }
 
-const HoverableElement = (props: IProps) => {
+const HoverableElement = (props: IHoverableElementProps) => {
   const { className, hover = false, icon, hoverEle } = props;
 
   if (hover) {
