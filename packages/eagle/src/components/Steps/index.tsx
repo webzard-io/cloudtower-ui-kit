@@ -3,7 +3,7 @@ import { Steps as AntdSteps } from "antd";
 import { StepProps } from "antd/lib/steps";
 import React from "react";
 
-import { IStepsPorps } from "../../spec";
+import { IStepsProps } from "../../spec";
 
 const StepsContainer = styled.div`
   $item: ant-steps-item;
@@ -99,7 +99,7 @@ const StepsContainer = styled.div`
   }
 `;
 
-const Steps: React.FC<IStepsPorps> = (props) => {
+const Steps: React.FC<IStepsProps> = (props) => {
   const { stepsConfig, containerClassname, showStepCount, ...stepsProps } =
     props;
 

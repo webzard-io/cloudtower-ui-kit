@@ -370,7 +370,7 @@ export type RadioButtonProps = AntdRadioButtonProps & {
   onInputChange?: (val: number | string | undefined) => void;
 };
 
-export type IStepsPorps = StepsProps & {
+export type IStepsProps = StepsProps & {
   stepsConfig?: Array<StepProps>;
   containerClassname?: string;
   showStepCount?: boolean;
@@ -474,7 +474,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   buttonGroup: React.ForwardRefExoticComponent<
     ButtonGroupType & React.RefAttributes<HTMLDivElement>
   >;
-  steps: React.FC<IStepsPorps>;
+  steps: React.FC<IStepsProps>;
   form: Form;
 }
 
