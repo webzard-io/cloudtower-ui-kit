@@ -67,8 +67,6 @@ const emptyImpl: Kit = {
     String: ThrowError,
     Boolean: ThrowError,
     TextArea: ThrowError,
-    // list
-    Array: ThrowError,
     // compose
     DateTimeRange: ThrowError,
     TimePicker: ThrowError,
