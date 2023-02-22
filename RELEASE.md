@@ -25,10 +25,10 @@ flowchart TB
 
 ## How To Release
 
-1. Checkout a new branch named `${ci_branch}` from main
+1. Checkout a new branch named `${release_branch}` from main
 
    ```
-   git switch -c ${ci_branch} origin/main
+   git switch -c ${release_branch} ${your_target_branch}
    ```
 
 2. Do Version Update [Version Update](#version-update)
@@ -48,14 +48,14 @@ flowchart TB
    It will trigger ci on gitlab
 
    ```
-   git push gitlab ${ci_branch} --follow-tags
+   git push gitlab ${release_branch} --follow-tags
    ```
 
 4. Create PR
 
    After Released,Please Create a PR.
 
-   Source is `${ci_branch}`
+   Source is `${release_branch}`
 
    Target is `main`
 

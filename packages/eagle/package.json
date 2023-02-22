@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/eagle",
-  "version": "0.19.1",
+  "version": "0.19.2-beta.0",
   "main": "dist/umd/index.js",
   "module": "./dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -11,6 +11,7 @@
   "scripts": {
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
     "test": "vitest",
+    "test:ci": "vitest run",
     "coverage": "vitest run --coverage",
     "typings": "tsc -v && tsc --emitDeclarationOnly --paths null",
     "generate:images": "node --loader ts-node/esm tools/index.mts",
@@ -18,7 +19,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@cloudtower/parrot": "0.19.1",
+    "@cloudtower/parrot": "0.19.2-beta.0",
     "@linaria/core": "^4.2.2",
     "@linaria/react": "^4.3.0",
     "antd": "4.5.0",
@@ -64,8 +65,9 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-is": "^18.2.0",
-    "resize-observer-polyfill": "^1.5.1",
     "react-scripts": "^5.0.1",
+    "readline": "^1.3.0",
+    "resize-observer-polyfill": "^1.5.1",
     "rollup": "^3.12.1",
     "rollup-plugin-esbuild": "5.0.0",
     "rollup-plugin-polyfill-node": "^0.12.0",

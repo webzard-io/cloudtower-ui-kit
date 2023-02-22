@@ -1,0 +1,57 @@
+name: ci
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16]
+    name: Test on Node ${{ matrix.node }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: "yarn"
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+        timeout-minutes: 3
+      - name: Test
+        run: cd packages/eagle && yarn run test:ci
+  publish:
+    needs: [test]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16]
+    name: Publish on Node ${{ matrix.node }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: "yarn"
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+        timeout-minutes: 3
+      - name: Build
+        run: yarn build
+      - name: Write .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.QINGHUA_CUI_SMARTX_NPM_TOKEN }}
+        run: |
+          echo //registry.npmjs.org/:_authToken=$NPM_TOKEN > ~/.npmrc
+      - name: Publish
+        run: |
+          yarn lerna publish from-git --no-verify-access --yes
+      - name: Clean .npmrc
+        if: always()
+        run: rm ~/.npmrc

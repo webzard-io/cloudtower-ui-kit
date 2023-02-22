@@ -10,8 +10,8 @@ import {
   tickFormatter,
   xaxisCal,
 } from "./metric";
-import mockMetric from "./mockMetric.test";
-import mockMetric2 from "./mockMetric2.test";
+import mockMetric from "./mockMetric";
+import mockMetric2 from "./mockMetric2";
 import { DateRange, GraphType } from "./type";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

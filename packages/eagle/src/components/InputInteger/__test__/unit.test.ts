@@ -18,12 +18,12 @@ describe("formatterInteger", () => {
   it("invalid_number", ({ expect }) => {
     const value = 20.1;
     const result = formatterInteger(value);
-    expect(result).toBe(201);
+    expect(result).toBe("201");
   });
 
   it("invalid_string", ({ expect }) => {
     const value = "20.1";
     const result = formatterInteger(value);
-    expect(result).toBe(201);
+    expect(result).toBe("201");
   });
 });

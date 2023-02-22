@@ -201,7 +201,7 @@ describe("FieldsInteger h5_css", () => {
         line-height: 20px;
       ,
         .ant-input-number-handler-wrap {
-          display: var(--a1qsdn98-0);
+          display: var(--at4ovwe-0);
         }
         .ant-input-number-input-wrap {
           padding: 5px 12px;
@@ -212,8 +212,8 @@ describe("FieldsInteger h5_css", () => {
         }
 
         .ant-input-number-input-wrap::after {
-          content: var(--a1qsdn98-1);
-          display: var(--a1qsdn98-2);
+          content: var(--at4ovwe-1);
+          display: var(--at4ovwe-2);
           flex: none;
           align-items: center;
           margin-left: 4px;
@@ -221,8 +221,8 @@ describe("FieldsInteger h5_css", () => {
         }
 
         .ant-input-number-input-wrap::before {
-          content: var(--a1qsdn98-3);
-          display: var(--a1qsdn98-4);
+          content: var(--at4ovwe-3);
+          display: var(--at4ovwe-4);
           flex: none;
           align-items: center;
           margin-right: 4px;
@@ -257,7 +257,7 @@ describe("FieldsInteger h5_css", () => {
           font-size: inherit;
         }
 
-          style=--a1qsdn98-0:,none;,--a1qsdn98-1:,"";,--a1qsdn98-2:,none;,--a1qsdn98-3:,"";,--a1qsdn98-4:,none;
+          style=--at4ovwe-0:,none;,--at4ovwe-1:,"";,--at4ovwe-2:,none;,--at4ovwe-3:,"";,--at4ovwe-4:,none;
         >
           <div
             class=ant-input-number-handler-wrap
@@ -537,7 +537,7 @@ describe("FieldsInteger h5_css", () => {
         line-height: 20px;
       ,
         .ant-input-number-handler-wrap {
-          display: var(--a1qsdn98-0);
+          display: var(--at4ovwe-0);
         }
         .ant-input-number-input-wrap {
           padding: 5px 12px;
@@ -548,8 +548,8 @@ describe("FieldsInteger h5_css", () => {
         }
 
         .ant-input-number-input-wrap::after {
-          content: var(--a1qsdn98-1);
-          display: var(--a1qsdn98-2);
+          content: var(--at4ovwe-1);
+          display: var(--at4ovwe-2);
           flex: none;
           align-items: center;
           margin-left: 4px;
@@ -557,8 +557,8 @@ describe("FieldsInteger h5_css", () => {
         }
 
         .ant-input-number-input-wrap::before {
-          content: var(--a1qsdn98-3);
-          display: var(--a1qsdn98-4);
+          content: var(--at4ovwe-3);
+          display: var(--at4ovwe-4);
           flex: none;
           align-items: center;
           margin-right: 4px;
@@ -593,7 +593,7 @@ describe("FieldsInteger h5_css", () => {
           font-size: inherit;
         }
 
-          style=--a1qsdn98-0:,none;,--a1qsdn98-1:,"";,--a1qsdn98-2:,none;,--a1qsdn98-3:,"";,--a1qsdn98-4:,none;
+          style=--at4ovwe-0:,none;,--at4ovwe-1:,"";,--at4ovwe-2:,none;,--at4ovwe-3:,"";,--at4ovwe-4:,none;
         >
           <div
             class=ant-input-number-handler-wrap
@@ -872,7 +872,7 @@ describe("FieldsInteger h5_css", () => {
         line-height: 20px;
       ,
         .ant-input-number-handler-wrap {
-          display: var(--a1qsdn98-0);
+          display: var(--at4ovwe-0);
         }
         .ant-input-number-input-wrap {
           padding: 5px 12px;
@@ -883,8 +883,8 @@ describe("FieldsInteger h5_css", () => {
         }
 
         .ant-input-number-input-wrap::after {
-          content: var(--a1qsdn98-1);
-          display: var(--a1qsdn98-2);
+          content: var(--at4ovwe-1);
+          display: var(--at4ovwe-2);
           flex: none;
           align-items: center;
           margin-left: 4px;
@@ -892,8 +892,8 @@ describe("FieldsInteger h5_css", () => {
         }
 
         .ant-input-number-input-wrap::before {
-          content: var(--a1qsdn98-3);
-          display: var(--a1qsdn98-4);
+          content: var(--at4ovwe-3);
+          display: var(--at4ovwe-4);
           flex: none;
           align-items: center;
           margin-right: 4px;
@@ -928,7 +928,7 @@ describe("FieldsInteger h5_css", () => {
           font-size: inherit;
         }
 
-          style=--a1qsdn98-0:,none;,--a1qsdn98-1:,"";,--a1qsdn98-2:,none;,--a1qsdn98-3:,"";,--a1qsdn98-4:,none;
+          style=--at4ovwe-0:,none;,--at4ovwe-1:,"";,--at4ovwe-2:,none;,--at4ovwe-3:,"";,--at4ovwe-4:,none;
         >
           <div
             class=ant-input-number-handler-wrap
@@ -1208,7 +1208,7 @@ describe("FieldsInteger h5_css", () => {
         line-height: 20px;
       ,
         .ant-input-number-handler-wrap {
-          display: var(--a1qsdn98-0);
+          display: var(--at4ovwe-0);
         }
         .ant-input-number-input-wrap {
           padding: 5px 12px;
@@ -1219,8 +1219,8 @@ describe("FieldsInteger h5_css", () => {
         }
 
         .ant-input-number-input-wrap::after {
-          content: var(--a1qsdn98-1);
-          display: var(--a1qsdn98-2);
+          content: var(--at4ovwe-1);
+          display: var(--at4ovwe-2);
           flex: none;
           align-items: center;
           margin-left: 4px;
@@ -1228,8 +1228,8 @@ describe("FieldsInteger h5_css", () => {
         }
 
         .ant-input-number-input-wrap::before {
-          content: var(--a1qsdn98-3);
-          display: var(--a1qsdn98-4);
+          content: var(--at4ovwe-3);
+          display: var(--at4ovwe-4);
           flex: none;
           align-items: center;
           margin-right: 4px;
@@ -1264,7 +1264,7 @@ describe("FieldsInteger h5_css", () => {
           font-size: inherit;
         }
 
-          style=--a1qsdn98-0:,none;,--a1qsdn98-1:,"";,--a1qsdn98-2:,none;,--a1qsdn98-3:,"";,--a1qsdn98-4:,none;
+          style=--at4ovwe-0:,none;,--at4ovwe-1:,"";,--at4ovwe-2:,none;,--at4ovwe-3:,"";,--at4ovwe-4:,none;
         >
           <div
             class=ant-input-number-handler-wrap
@@ -1543,7 +1543,7 @@ describe("FieldsInteger h5_css", () => {
         line-height: 20px;
       ,
         .ant-input-number-handler-wrap {
-          display: var(--a1qsdn98-0);
+          display: var(--at4ovwe-0);
         }
         .ant-input-number-input-wrap {
           padding: 5px 12px;
@@ -1554,8 +1554,8 @@ describe("FieldsInteger h5_css", () => {
         }
 
         .ant-input-number-input-wrap::after {
-          content: var(--a1qsdn98-1);
-          display: var(--a1qsdn98-2);
+          content: var(--at4ovwe-1);
+          display: var(--at4ovwe-2);
           flex: none;
           align-items: center;
           margin-left: 4px;
@@ -1563,8 +1563,8 @@ describe("FieldsInteger h5_css", () => {
         }
 
         .ant-input-number-input-wrap::before {
-          content: var(--a1qsdn98-3);
-          display: var(--a1qsdn98-4);
+          content: var(--at4ovwe-3);
+          display: var(--at4ovwe-4);
           flex: none;
           align-items: center;
           margin-right: 4px;
@@ -1599,7 +1599,7 @@ describe("FieldsInteger h5_css", () => {
           font-size: inherit;
         }
 
-          style=--a1qsdn98-0:,none;,--a1qsdn98-1:,"";,--a1qsdn98-2:,none;,--a1qsdn98-3:,"";,--a1qsdn98-4:,none;
+          style=--at4ovwe-0:,none;,--at4ovwe-1:,"";,--at4ovwe-2:,none;,--at4ovwe-3:,"";,--at4ovwe-4:,none;
         >
           <div
             class=ant-input-number-handler-wrap
