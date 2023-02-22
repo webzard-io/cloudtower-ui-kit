@@ -1,4 +1,4 @@
-import { TiB } from "@tower/utils";
+import { TiB } from "./tower";
 
 export const EMPTY_FUNCTION = () => {};
 export const EMPTY_ARRAY = [];

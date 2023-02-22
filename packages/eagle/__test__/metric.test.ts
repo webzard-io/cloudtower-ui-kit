@@ -1,4 +1,3 @@
-import { DAY, MINUTE, SECOND } from "@tower/utils";
 import dayjs from "dayjs";
 import { describe, expect, it } from "vitest";
 
@@ -14,6 +13,7 @@ import {
   tickFormatter,
   xaxisCal,
 } from "../src/components/Metric/metric";
+import { DAY, MINUTE, SECOND } from "../src/utils/tower";
 import mockMetric from "./mockMetric";
 
 describe("getMs", () => {

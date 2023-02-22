@@ -1,8 +1,8 @@
-import { Serializable, SerializableObject } from "@tower/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { UserSource } from "../spec";
 import { GlobalSearchHistory, PastTime } from "../utils";
+import { Serializable, SerializableObject } from "../utils/tower";
 import { getValue } from "./utils";
 
 type SetValue<T> = (obj: T | ((val: T) => T)) => void;

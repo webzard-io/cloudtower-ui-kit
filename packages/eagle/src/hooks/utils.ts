@@ -1,4 +1,4 @@
-import { Serializable } from "@tower/utils";
+import { Serializable } from "../utils/tower";
 
 export const getSearch = <T extends Serializable>(
   searchString: string,

@@ -1,8 +1,8 @@
-import { formatBits } from "@tower/utils";
 import React from "react";
 
 import { UnitFn } from "../../spec";
 import isEmpty from "../../utils/isEmpty";
+import { formatBits } from "../../utils/tower";
 import Empty from "../Empty";
 
 const Bit: UnitFn = ({ rawValue, decimals }) => {
