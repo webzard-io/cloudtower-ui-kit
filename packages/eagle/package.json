@@ -12,7 +12,7 @@
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "typings": "tsc -v && tsc --emitDeclarationOnly",
+    "typings": "tsc -v && tsc --emitDeclarationOnly --paths null",
     "generate:images": "node --loader ts-node/esm tools/index.mts",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
