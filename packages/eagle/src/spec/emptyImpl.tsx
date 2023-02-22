@@ -42,17 +42,17 @@ const emptyImpl: Kit = {
     return [""];
   },
   // general UI
-  loading: ThrowError,
-  error: ThrowError,
-  pagination: ThrowError,
+  // loading: ThrowError,
+  // error: ThrowError,
+  // pagination: ThrowError,
   select: ThrowError,
   option: ThrowError as unknown as OptionComponentType,
   table: ThrowError,
-  button: ThrowError,
+  // button: ThrowError,
   modal: ThrowError,
   dropdown: ThrowError,
-  switch: ThrowError,
-  tooltip: ThrowError,
+  // switch: ThrowError,
+  // tooltip: ThrowError,
   input: ThrowError,
   textArea: ThrowError,
   checkbox: ThrowError,
@@ -67,40 +67,38 @@ const emptyImpl: Kit = {
     String: ThrowError,
     Boolean: ThrowError,
     TextArea: ThrowError,
-    // list
-    Array: ThrowError,
     // compose
     DateTimeRange: ThrowError,
     TimePicker: ThrowError,
   },
   // specific unit data UI
-  units: {
-    Byte: ThrowError,
-    Frequency: ThrowError,
-    Percent: ThrowError,
-    Speed: ThrowError,
-    Second: ThrowError,
-    Bps: ThrowError,
-    BitPerSecond: ThrowError,
-    Bit: ThrowError,
-  },
+  // units: {
+  //   Byte: ThrowError,
+  //   Frequency: ThrowError,
+  //   Percent: ThrowError,
+  //   Speed: ThrowError,
+  //   Second: ThrowError,
+  //   Bps: ThrowError,
+  //   BitPerSecond: ThrowError,
+  //   Bit: ThrowError,
+  // },
   inputGroup: ThrowError as unknown as InputGroupComponentType,
-  get Empty() {
-    if (process.env.NODE_ENV !== "production") {
-      throw new Error("");
-    }
-    return null;
-  },
-  alert: ThrowError,
+  // get Empty() {
+  //   if (process.env.NODE_ENV !== "production") {
+  //     throw new Error("");
+  //   }
+  //   return null;
+  // },
+  // alert: ThrowError,
   searchInput: ThrowError,
-  badge: ThrowError,
-  radio: ThrowError,
-  radioGroup: ThrowError,
-  radioButton: ThrowError,
-  tree: ThrowError,
-  progress: ThrowError,
-  divider: ThrowError,
-  skeleton: ThrowError,
+  // badge: ThrowError,
+  // radio: ThrowError,
+  // radioGroup: ThrowError,
+  // radioButton: ThrowError,
+  // tree: ThrowError,
+  // progress: ThrowError,
+  // divider: ThrowError,
+  // skeleton: ThrowError,
   menu: Object.assign(ThrowError, {
     Divider: ThrowError,
     Item: ThrowError,
@@ -111,35 +109,35 @@ const emptyImpl: Kit = {
   menuItemGroup: ThrowError,
   list: ThrowError,
   listItem: ThrowError,
-  layout: Object.assign(forwardRef<{}, BasicProps>(ThrowError), {
-    Header: forwardRef<{}, BasicProps>(ThrowError),
-    Footer: forwardRef<{}, BasicProps>(ThrowError),
-    Content: forwardRef<{}, BasicProps>(ThrowError),
-    Sider: forwardRef<{}, BasicProps>(ThrowError),
-  }),
+  // layout: Object.assign(forwardRef<{}, BasicProps>(ThrowError), {
+  //   Header: forwardRef<{}, BasicProps>(ThrowError),
+  //   Footer: forwardRef<{}, BasicProps>(ThrowError),
+  //   Content: forwardRef<{}, BasicProps>(ThrowError),
+  //   Sider: forwardRef<{}, BasicProps>(ThrowError),
+  // }),
   autoComplete: forwardRef(ThrowError),
-  message: {
-    info: ThrowError,
-    success: ThrowError,
-    error: ThrowError,
-    warning: ThrowError,
-    loading: ThrowError,
-    open: ThrowError,
-  },
-  tag: Object.assign(forwardRef<HTMLElement, TagProps>(ThrowError), {
-    CheckableTag: ThrowError,
-  }),
-  popover: forwardRef(ThrowError),
-  arch: ThrowError,
-  buttonGroup: forwardRef(ThrowError),
-  steps: ThrowError,
-  form: Object.assign(forwardRef<FormInstance>(ThrowError), {
-    useForm: ThrowError,
-    Item: ThrowError,
-    List: ThrowError,
-    Provider: ThrowError,
-    create: ThrowError,
-  }),
+  // message: {
+  //   info: ThrowError,
+  //   success: ThrowError,
+  //   error: ThrowError,
+  //   warning: ThrowError,
+  //   loading: ThrowError,
+  //   open: ThrowError,
+  // },
+  // tag: Object.assign(forwardRef<HTMLElement, TagProps>(ThrowError), {
+  //   CheckableTag: ThrowError,
+  // }),
+  // popover: forwardRef(ThrowError),
+  // arch: ThrowError,
+  // buttonGroup: forwardRef(ThrowError),
+  // steps: ThrowError,
+  // form: Object.assign(forwardRef<FormInstance>(ThrowError), {
+  //   useForm: ThrowError,
+  //   Item: ThrowError,
+  //   List: ThrowError,
+  //   Provider: ThrowError,
+  //   create: ThrowError,
+  // }),
 };
 
 export default emptyImpl;

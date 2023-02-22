@@ -1,6 +1,6 @@
 import { StyledMeta } from "@linaria/react";
 import { FieldRenderProps } from "@smartx/react-final-form";
-import { FieldArrayRenderProps } from "@smartx/react-final-form-arrays";
+// import { FieldArrayRenderProps } from "@smartx/react-final-form-arrays";
 import { SerializableObject } from "@tower/utils";
 import { SizeType } from "antd/es/config-provider/SizeContext";
 import { AlertProps } from "antd/lib/alert";
@@ -370,7 +370,7 @@ export type RadioButtonProps = AntdRadioButtonProps & {
   onInputChange?: (val: number | string | undefined) => void;
 };
 
-export type IStepsPorps = StepsProps & {
+export type IStepsProps = StepsProps & {
   stepsConfig?: Array<StepProps>;
   containerClassname?: string;
   showStepCount?: boolean;
@@ -384,17 +384,17 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   TBODY_SELECTOR: string;
   MODAL_WHITELIST: string[];
   // general UI
-  loading: LoadingComponentType;
-  error: React.FunctionComponent<{ error: unknown }>;
-  pagination: React.FC<PaginationProps>;
+  // loading: LoadingComponentType;
+  // error: React.FunctionComponent<{ error: unknown }>;
+  // pagination: React.FC<PaginationProps>;
   select: SelectComponentType<V, T>;
   option: OptionComponentType;
   table: TableComponent;
-  button: React.FC<ButtonProps>;
+  // button: React.FC<ButtonProps>;
   modal: React.FC<ModalProps>;
   dropdown: React.FC<DropDownProps>;
-  switch: React.FC<SwitchProps>;
-  tooltip: React.FC<TooltipProps>;
+  // switch: React.FC<SwitchProps>;
+  // tooltip: React.FC<TooltipProps>;
   input: React.FC<InputProps & { error?: boolean }>;
   textArea: React.FC<TextAreaProps>;
   checkbox: React.FC<
@@ -426,28 +426,28 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     TimePicker: React.FunctionComponent<FieldBaseProps<V, T> & TimePickerProps>;
   };
   // specific unit data UI
-  units: {
-    Byte: UnitFn;
-    Frequency: UnitFn;
-    Percent: UnitFn;
-    Speed: UnitFn;
-    Second: UnitFn;
-    Bps: UnitFn;
-    BitPerSecond: UnitFn;
-    Bit: UnitFn;
-  };
+  // units: {
+  //   Byte: UnitFn;
+  //   Frequency: UnitFn;
+  //   Percent: UnitFn;
+  //   Speed: UnitFn;
+  //   Second: UnitFn;
+  //   Bps: UnitFn;
+  //   BitPerSecond: UnitFn;
+  //   Bit: UnitFn;
+  // };
   inputGroup: InputGroupComponentType;
-  Empty: React.ReactElement | null;
-  alert: AlertComponentType;
+  // Empty: React.ReactElement | null;
+  // alert: AlertComponentType;
   searchInput: React.FC<SearchInputProps>;
-  badge: BadgeComponentType;
-  radio: React.FC<RadioProps>;
-  radioGroup: React.FC<AntdRadioGroupProps>;
-  radioButton: React.FC<RadioButtonProps>;
-  tree: React.FC<AntdTreeProps>;
-  progress: ProgressComponentType;
-  divider: React.FC<AntdDividerProps>;
-  skeleton: React.FC<AntdSkeletonProps>;
+  // badge: BadgeComponentType;
+  // radio: React.FC<RadioProps>;
+  // radioGroup: React.FC<AntdRadioGroupProps>;
+  // radioButton: React.FC<RadioButtonProps>;
+  // tree: React.FC<AntdTreeProps>;
+  // progress: ProgressComponentType;
+  // divider: React.FC<AntdDividerProps>;
+  // skeleton: React.FC<AntdSkeletonProps>;
   menu: React.ComponentType<MenuProps> & {
     Divider: React.FC<import("rc-menu/lib/Divider").DividerProps>;
     Item: React.ComponentType<MenuItemProps>;
@@ -458,24 +458,24 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   menuItemGroup: React.ComponentType<MenuItemGroupProps>;
   list: <T>(props: ListProps<T>) => JSX.Element;
   listItem: React.FC<ListItemProps>;
-  layout: React.ComponentType<BasicProps> & {
-    Header: React.ComponentType<BasicProps>;
-    Footer: React.ComponentType<BasicProps>;
-    Content: React.ComponentType<BasicProps>;
-    Sider: React.ComponentType<SiderProps>;
-  };
+  // layout: React.ComponentType<BasicProps> & {
+  //   Header: React.ComponentType<BasicProps>;
+  //   Footer: React.ComponentType<BasicProps>;
+  //   Content: React.ComponentType<BasicProps>;
+  //   Sider: React.ComponentType<SiderProps>;
+  // };
   autoComplete: React.ForwardRefExoticComponent<AutoCompleteProps>;
-  message: MessageInstance;
-  tag: TagType;
-  popover: React.ForwardRefExoticComponent<
-    PopoverProps & React.RefAttributes<unknown>
-  >;
-  arch: ArchComponentType;
-  buttonGroup: React.ForwardRefExoticComponent<
-    ButtonGroupType & React.RefAttributes<HTMLDivElement>
-  >;
-  steps: React.FC<IStepsPorps>;
-  form: Form;
+  // message: MessageInstance;
+  // tag: TagType;
+  // popover: React.ForwardRefExoticComponent<
+  //   PopoverProps & React.RefAttributes<unknown>
+  // >;
+  // arch: ArchComponentType;
+  // buttonGroup: React.ForwardRefExoticComponent<
+  //   ButtonGroupType & React.RefAttributes<HTMLDivElement>
+  // >;
+  // steps: React.FC<IStepsProps>;
+  // form: Form;
 }
 
 export const kitContext = createContext<Kit>(emptyImpl);

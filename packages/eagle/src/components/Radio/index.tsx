@@ -6,7 +6,7 @@ import React, { useState } from "react";
 
 import { RadioButtonProps, RadioProps } from "../../spec";
 import { EMPTY_FUNCTION } from "../../utils";
-import { Typo } from "..";
+import { Typo } from "../Typo";
 
 const RadioStyle = css`
   &.ant-radio-wrapper {
