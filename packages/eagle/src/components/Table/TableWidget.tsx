@@ -1,7 +1,6 @@
 import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
-import { SerializableObject } from "@tower/utils";
 import cs from "classnames";
 import _ from "lodash";
 import React, { createContext, useContext, useEffect, useRef } from "react";
@@ -13,6 +12,7 @@ import {
   useSearch,
 } from "../../hooks";
 import { Maybe, Scalars } from "../../spec";
+import { SerializableObject } from "../../utils/tower";
 import Button from "../Button";
 import Icon from "../Icon";
 import { arrowChevronUp16BoldSecondary } from "../images";

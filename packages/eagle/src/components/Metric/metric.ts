@@ -1,7 +1,7 @@
-import { DAY, HOUR, MINUTE, SECOND } from "@tower/utils";
 import dayjs from "dayjs";
 import _ from "lodash";
 
+import { DAY, HOUR, MINUTE, SECOND } from "../../utils/tower";
 import { DateRange, IDataPoint, IMetric } from "./type";
 
 export function filterPointsByDateRange(

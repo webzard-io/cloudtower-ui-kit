@@ -5,6 +5,7 @@ import linaria from "@linaria/vite";
 import react from "@vitejs/plugin-react";
 import fs from "fs";
 import path from "path";
+import readline from "readline";
 import { defineConfig } from "vitest/config";
 
 const styleMapFileName = path.join(__dirname, "linaria-temp-map.json");
@@ -18,8 +19,7 @@ export default defineConfig({
           value = fs.readFileSync(styleMapFileName).toString();
         } catch (error) {}
         try {
-          process.stdout.cursorTo(0);
-          process.stdout.clearLine(0);
+          readline.cursorTo(process.stdout, 0);
           process.stdout.write(
             `[custom preprocessor]: writing css...${selector}`
           );

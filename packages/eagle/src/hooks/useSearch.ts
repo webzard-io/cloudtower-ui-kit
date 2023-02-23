@@ -1,9 +1,9 @@
-import { Serializable } from "@tower/utils";
 import _ from "lodash";
 import qs from "querystring";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { getAllSearch, hashHistory } from "../utils";
+import { Serializable } from "../utils/tower";
 import { getSearch, getValue } from "./utils";
 
 export type SearchOperation = {

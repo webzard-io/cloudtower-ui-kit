@@ -1,7 +1,4 @@
 import { StyledMeta } from "@linaria/react";
-import { FieldRenderProps } from "@smartx/react-final-form";
-// import { FieldArrayRenderProps } from "@smartx/react-final-form-arrays";
-import { SerializableObject } from "@tower/utils";
 import { SizeType } from "antd/es/config-provider/SizeContext";
 import { AlertProps } from "antd/lib/alert";
 import { AutoCompleteProps } from "antd/lib/auto-complete";
@@ -47,7 +44,9 @@ import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
 import React, { createContext, ReactNode } from "react";
 
+import { SerializableObject } from "../utils/tower";
 import emptyImpl from "./emptyImpl";
+import { FieldRenderProps } from "./react-final-form";
 import { Architecture } from "./type";
 
 type BadgeTypeProps = "warning" | "error" | "info";

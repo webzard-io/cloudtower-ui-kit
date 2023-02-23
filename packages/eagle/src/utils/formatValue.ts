@@ -1,5 +1,4 @@
-import { GiB, KiB } from "@tower/utils";
-
+import { GiB, KiB } from "./tower";
 import { FormatUnit } from "./types";
 
 export const getFormatValue = (formatUnit: FormatUnit) => {

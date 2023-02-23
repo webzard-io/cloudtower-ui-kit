@@ -1,8 +1,8 @@
-import { SerializableObject } from "@tower/utils";
 import { History, Location as HistoryLocation } from "history";
 import qs from "querystring";
 
 import { hashHistory } from "./history";
+import { SerializableObject } from "./tower";
 
 type Route = {
   path: string;
