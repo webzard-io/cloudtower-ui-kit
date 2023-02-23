@@ -201,7 +201,7 @@ describe("FieldsFloat h5_css", () => {
         line-height: 20px;
       ,
         .ant-input-number-handler-wrap {
-          display: var(--a18hmdhw-0);
+          display: var(--a6dbbkm-0);
         }
         .ant-input-number-input-wrap {
           padding: 4px 11px;
@@ -211,16 +211,16 @@ describe("FieldsFloat h5_css", () => {
         }
 
         .ant-input-number-input-wrap::after {
-          content: var(--a18hmdhw-1);
-          display: var(--a18hmdhw-2);
+          content: var(--a6dbbkm-1);
+          display: var(--a6dbbkm-2);
           flex: none;
           align-items: center;
           margin-left: 4px;
         }
 
         .ant-input-number-input-wrap::before {
-          content: var(--a18hmdhw-3);
-          display: var(--a18hmdhw-4);
+          content: var(--a6dbbkm-3);
+          display: var(--a6dbbkm-4);
           flex: none;
           align-items: center;
           margin-right: 4px;
@@ -234,7 +234,7 @@ describe("FieldsFloat h5_css", () => {
           font-size: inherit;
         }
 
-          style=--a18hmdhw-0:,initial;,--a18hmdhw-1:,"";,--a18hmdhw-2:,none;,--a18hmdhw-3:,"";,--a18hmdhw-4:,none;
+          style=--a6dbbkm-0:,initial;,--a6dbbkm-1:,"";,--a6dbbkm-2:,none;,--a6dbbkm-3:,"";,--a6dbbkm-4:,none;
         >
           <div
             class=ant-input-number-handler-wrap

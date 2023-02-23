@@ -1,9 +1,9 @@
 import { parrotI18n } from "@cloudtower/parrot";
-import { formatSeconds } from "@tower/utils";
 import React from "react";
 
 import { UnitFn } from "../../spec";
 import isEmpty from "../../utils/isEmpty";
+import { formatSeconds } from "../../utils/tower";
 import Empty from "../Empty";
 
 const Second: UnitFn = ({ rawValue, decimals, abbreviate }) => {
