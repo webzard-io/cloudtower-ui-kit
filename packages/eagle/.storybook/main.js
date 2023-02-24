@@ -1,6 +1,6 @@
 const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const fs = require("fs");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const GlobalSassPath = path.resolve(
   __dirname,
@@ -9,7 +9,6 @@ const GlobalSassPath = path.resolve(
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
-    "@storybook/preset-create-react-app",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
@@ -19,51 +18,23 @@ module.exports = {
     builder: "webpack5",
   },
   webpackFinal: async (config, { configType }) => {
-    const { loader, options } = config.module.rules[2].oneOf[3];
+    const additionalData = fs.readFileSync(GlobalSassPath, {
+      encoding: "utf8",
+    });
 
-    config.module.rules[2].oneOf[3].use = [
-      {
-        loader: require.resolve("linaria/loader"),
-        options: {
-          babelOptions: {
-            presets: [...options.presets],
-          },
-        },
-      },
-    ];
+    config.plugins.push(new MiniCssExtractPlugin());
 
     config.module.rules.push(
       {
-        test: /\.m?js$/,
-        include: /node_modules/,
-        resolve: {
-          fullySpecified: false,
-        },
-      },
-      {
-        test: /(linaria\.css|scss)$/,
+        test: /(\.(linaria\.css|scss))$/,
         use: [
-          // process.env.NODE_ENV === "production"
-          //   ? {
-          //       loader: MiniCssExtractPlugin.loader,
-          //     }
-          //   : "style-loader",
-          // {
-          //   loader: "css-loader",
-          //   options: {
-          //     sourceMap: process.env.NODE_ENV !== "production",
-          //   },
-          // },
           {
             loader: "sass-loader",
             options: {
               sassOptions: {
                 sourceComments: false,
               },
-              additionalData: () =>
-                fs.readFileSync(GlobalSassPath, "utf8", (err, file) => {
-                  return file;
-                }),
+              additionalData,
             },
           },
         ],
@@ -84,6 +55,7 @@ module.exports = {
               lessOptions: {
                 sourceMap: true,
                 javascriptEnabled: true,
+                math: "always",
                 // https://ant.design/docs/react/customize-theme-cn
                 modifyVars: {
                   "@primary-color": "#0080FF",
@@ -105,15 +77,22 @@ module.exports = {
 
     config.module.rules.push({
       test: /\.(js|mjs|jsx|ts|tsx)$/,
-      loader: "ts-loader",
-      options: {
-        transpileOnly: true,
-        configFile: path.resolve(__dirname, "../tsconfig.json"),
-      },
+      use: [
+        {
+          loader: require.resolve("@linaria/webpack-loader"),
+          options: {
+            preprocessor: "none",
+          },
+        },
+        {
+          loader: "ts-loader",
+          options: {
+            transpileOnly: true,
+            configFile: path.resolve(__dirname, "../tsconfig.json"),
+          },
+        },
+      ],
     });
-
-    delete config.module.rules[2].oneOf[3].loader;
-    delete config.module.rules[2].oneOf[3].options;
 
     config.resolve.alias = {
       ...config.resolve.alias,
