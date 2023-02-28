@@ -138,6 +138,7 @@ const emptyImpl: Kit = {
   //   Provider: ThrowError,
   //   create: ThrowError,
   // }),
+  simplePagination: ThrowError,
 };
 
 export default emptyImpl;

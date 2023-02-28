@@ -375,6 +375,14 @@ export type IStepsProps = StepsProps & {
   showStepCount?: boolean;
 };
 
+export interface ISimplePaginationProps {
+  className?: string;
+  current: number;
+  count: number;
+  size: number;
+  onPageChange?: (page: number) => void;
+}
+
 export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   // constants
   PAGINATION_SELECTOR: string;
@@ -475,6 +483,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   // >;
   // steps: React.FC<IStepsProps>;
   // form: Form;
+  simplePagination: React.FC<ISimplePaginationProps>;
 }
 
 export const kitContext = createContext<Kit>(emptyImpl);

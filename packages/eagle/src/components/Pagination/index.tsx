@@ -14,7 +14,7 @@ import {
   arrowChevronLeftSmall16BoldBlue,
 } from "../images";
 
-const PaginationStyle = css`
+export const PaginationStyle = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
