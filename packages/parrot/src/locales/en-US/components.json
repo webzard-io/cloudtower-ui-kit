@@ -10,6 +10,7 @@
   "push_to": "Jump to",
   "pagination_range": "Item {range1} – {range2}",
   "pagination_total": "Item {range1} – {range2}, {total} in total",
+  "pagination_lots_total": "{total} items in total",
   "unknow_error": "Unknown error",
   "to": "to"
 }
