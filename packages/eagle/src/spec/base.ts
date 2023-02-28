@@ -81,6 +81,15 @@ interface LooseFieldRenderProps<V, T extends HTMLElement> {
   meta?: FieldRenderProps<V, T>["meta"];
   focusIndicator?: boolean;
 }
+
+export interface ISimplePaginationProps {
+  className?: string;
+  current: number;
+  count: number;
+  size: number;
+  onPageChange?: (page: number) => void;
+}
+
 export interface PaginationProps {
   current: number;
   count: number;
@@ -544,6 +553,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   >;
   steps: React.FC<IStepsPorps>;
   form: React.FC<FormProps>;
+  simplePagination: React.FC<ISimplePaginationProps>;
 }
 
 export const kitContext = createContext<Kit>(emptyImpl);

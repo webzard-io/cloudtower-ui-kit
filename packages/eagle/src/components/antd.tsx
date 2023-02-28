@@ -64,6 +64,7 @@ import Modal2 from "./Modal2";
 import Overflow from "./Overflow";
 import Pagination from "./Pagination";
 import Radio, { RadioButton, RadioGroup } from "./Radio";
+import SimplePagination from "./SimplePagination";
 import Steps from "./Steps";
 import { FullView } from "./Styled";
 import Switch from "./Switch";
@@ -1430,6 +1431,7 @@ export function getAntdKit(): Kit {
     buttonGroup: ButtonGroup,
     steps: Steps,
     form: Form,
+    simplePagination: SimplePagination,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19

@@ -7,7 +7,7 @@ import React, { useContext, useEffect, useMemo, useRef } from "react";
 import { kitContext, PaginationProps } from "../../spec";
 import Icon from "../Icon";
 
-const PaginationStyle = css`
+export const PaginationStyle = css`
   display: flex;
   justify-content: space-between;
   align-items: center;

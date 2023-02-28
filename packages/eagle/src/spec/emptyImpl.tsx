@@ -139,6 +139,7 @@ const emptyImpl: Kit = {
   buttonGroup: forwardRef(ThrowError),
   steps: ThrowError,
   form: ThrowError,
+  simplePagination: ThrowError,
 };
 
 export default emptyImpl;
