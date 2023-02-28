@@ -40,6 +40,7 @@ import Radio, { RadioButton, RadioGroup } from "./Radio";
 import SearchInput from "./SearchInput";
 import Second from "./Second";
 import Select from "./Select";
+import SimplePagination from "./SimplePagination";
 import Speed from "./Speed";
 import Steps from "./Steps";
 import {
@@ -112,6 +113,7 @@ export function getAntdKit(): Kit {
     // buttonGroup: ButtonGroup,
     // steps: Steps,
     // form: Form,
+    simplePagination: SimplePagination,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19

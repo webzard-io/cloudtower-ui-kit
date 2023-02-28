@@ -3,19 +3,13 @@ import { css } from "@linaria/core";
 import cs from "classnames";
 import React, { useCallback } from "react";
 
+import { ISimplePaginationProps } from "../../spec";
 import Button from "../Button";
 import Icon from "../Icon";
 import { arrowChevronLeftSmall16BoldBlue } from "../images";
 import InputInteger from "../InputInteger";
 import { PaginationStyle } from "../Pagination";
 import { Typo } from "../Typo";
-export interface ISimplePaginationProps {
-  className?: string;
-  current: number;
-  count: number;
-  size: number;
-  onPageChange?: (page: number) => void;
-}
 
 const inputStyle = css`
   height: 24px;
@@ -30,14 +24,17 @@ const SimplePagination = (props: ISimplePaginationProps) => {
   const showPrev = current > 1;
   const showNext = current * size < count;
 
-  const changeValue = useCallback((value: string) => {
-    const page = parseInt(value);
-    if (page > 0) {
-      onPageChange?.(Math.min(pageLength, page));
-    } else {
-      onPageChange?.(1);
-    }
-  }, []);
+  const changeValue = useCallback(
+    (value: string) => {
+      const page = parseInt(value);
+      if (page > 0) {
+        onPageChange?.(Math.min(pageLength, page));
+      } else {
+        onPageChange?.(1);
+      }
+    },
+    [onPageChange, pageLength]
+  );
 
   return (
     <div className={cs(PaginationStyle, "pagination-wrapper", className)}>
