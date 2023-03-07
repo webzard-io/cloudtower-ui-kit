@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd packages/eagle && yarn run build-storybook",
-  "devCommand": "cd packages/eagle && yarn run storybook",
+  "buildCommand": "yarn turbo run generate-icons && cd packages/eagle && yarn run build-storybook",
+  "devCommand": "yarn turbo run generate-icons && cd packages/eagle && yarn run storybook",
   "installCommand": "yarn install",
   "framework": null,
   "outputDirectory": "./packages/eagle/storybook-static"

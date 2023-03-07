@@ -2,11 +2,16 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build": {
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**"],
+      "dependsOn": ["generate-icons"]
     },
     "typings": {
       "outputs": ["dist/**"],
       "dependsOn": ["^typings"]
+    },
+    "generate-icons": {
+      "outputs": ["16/**", "24/**", "32/**"],
+      "dependsOn": ["^generate-icons"]
     },
     "lint": {
       "outputs": []

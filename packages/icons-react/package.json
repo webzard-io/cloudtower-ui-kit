@@ -1,0 +1,158 @@
+{
+  "name": "@cloudtower/icons-react",
+  "license": "MIT",
+  "version": "0.20.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/tailwindlabs/heroicons#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tailwindlabs/heroicons.git"
+  },
+  "files": [
+    "20",
+    "24",
+    "32",
+    "index.esm.js",
+    "index.js"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": ">= 16"
+  },
+  "scripts": {
+    "lint": "node ./scripts/verify-names.js",
+    "pregenerate-icons": "rimraf ./{16,24,32}",
+    "generate-icons": "node scripts/build.js"
+  },
+  "devDependencies": {
+    "@cloudtower/icons": "0.20.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.js"
+    },
+    "./package.json": {
+      "default": "./package.json"
+    },
+    "./16/outline": {
+      "types": "./16/outline/index.d.ts",
+      "import": "./16/outline/index.js",
+      "require": "./16/outline/index.js"
+    },
+    "./16/outline/*": {
+      "types": "./16/outline/*.d.ts",
+      "import": "./16/outline/esm/*.js",
+      "require": "./16/outline/*.js"
+    },
+    "./16/outline/*.js": {
+      "types": "./16/outline/*.d.ts",
+      "import": "./16/outline/esm/*.js",
+      "require": "./16/outline/*.js"
+    },
+    "./16/outline/esm/*": {
+      "types": "./16/outline/*.d.ts",
+      "import": "./16/outline/esm/*.js"
+    },
+    "./16/outline/esm/*.js": {
+      "types": "./16/outline/*.d.ts",
+      "import": "./16/outline/esm/*.js"
+    },
+    "./24/outline": {
+      "types": "./24/outline/index.d.ts",
+      "import": "./24/outline/index.js",
+      "require": "./24/outline/index.js"
+    },
+    "./24/outline/*": {
+      "types": "./24/outline/*.d.ts",
+      "import": "./24/outline/esm/*.js",
+      "require": "./24/outline/*.js"
+    },
+    "./24/outline/*.js": {
+      "types": "./24/outline/*.d.ts",
+      "import": "./24/outline/esm/*.js",
+      "require": "./24/outline/*.js"
+    },
+    "./24/outline/esm/*": {
+      "types": "./24/outline/*.d.ts",
+      "import": "./24/outline/esm/*.js"
+    },
+    "./24/outline/esm/*.js": {
+      "types": "./24/outline/*.d.ts",
+      "import": "./24/outline/esm/*.js"
+    },
+    "./32/outline": {
+      "types": "./32/outline/index.d.ts",
+      "import": "./32/outline/index.js",
+      "require": "./32/outline/index.js"
+    },
+    "./32/outline/*": {
+      "types": "./32/outline/*.d.ts",
+      "import": "./32/outline/esm/*.js",
+      "require": "./32/outline/*.js"
+    },
+    "./32/outline/*.js": {
+      "types": "./32/outline/*.d.ts",
+      "import": "./32/outline/esm/*.js",
+      "require": "./32/outline/*.js"
+    },
+    "./32/outline/esm/*": {
+      "types": "./32/outline/*.d.ts",
+      "import": "./32/outline/esm/*.js"
+    },
+    "./32/outline/esm/*.js": {
+      "types": "./32/outline/*.d.ts",
+      "import": "./32/outline/esm/*.js"
+    },
+    "./16/filled": {
+      "types": "./16/filled/index.d.ts",
+      "import": "./16/filled/index.js",
+      "require": "./16/filled/index.js"
+    },
+    "./16/filled/*": {
+      "types": "./16/filled/*.d.ts",
+      "import": "./16/filled/esm/*.js",
+      "require": "./16/filled/*.js"
+    },
+    "./16/filled/*.js": {
+      "types": "./16/filled/*.d.ts",
+      "import": "./16/filled/esm/*.js",
+      "require": "./16/filled/*.js"
+    },
+    "./16/filled/esm/*": {
+      "types": "./16/filled/*.d.ts",
+      "import": "./16/filled/esm/*.js"
+    },
+    "./16/filled/esm/*.js": {
+      "types": "./16/filled/*.d.ts",
+      "import": "./16/filled/esm/*.js"
+    },
+    "./24/filled": {
+      "types": "./24/filled/index.d.ts",
+      "import": "./24/filled/index.js",
+      "require": "./24/filled/index.js"
+    },
+    "./24/filled/*": {
+      "types": "./24/filled/*.d.ts",
+      "import": "./24/filled/esm/*.js",
+      "require": "./24/filled/*.js"
+    },
+    "./24/filled/*.js": {
+      "types": "./24/filled/*.d.ts",
+      "import": "./24/filled/esm/*.js",
+      "require": "./24/filled/*.js"
+    },
+    "./24/filled/esm/*": {
+      "types": "./24/filled/*.d.ts",
+      "import": "./24/filled/esm/*.js"
+    },
+    "./24/filled/esm/*.js": {
+      "types": "./24/filled/*.d.ts",
+      "import": "./24/filled/esm/*.js"
+    }
+  }
+}
