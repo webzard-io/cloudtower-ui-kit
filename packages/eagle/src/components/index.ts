@@ -20,6 +20,7 @@ export * from "./Steps";
 export * from "./Styled";
 export * from "./Switch";
 export * from "./Table";
+export * from "./TimeZoneSelect";
 export * from "./Tooltip";
 export { default as TowerTable } from "./TowerTable";
 export * from "./TowerTable";

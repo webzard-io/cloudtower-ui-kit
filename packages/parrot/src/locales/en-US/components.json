@@ -12,5 +12,7 @@
   "pagination_total": "Item {range1} – {range2}, {total} in total",
   "pagination_lots_total": "{total} items in total",
   "unknow_error": "Unknown error",
-  "to": "to"
+  "to": "to",
+  "time_zone_select_placeholder": "Enter country, city or time zone",
+  "browser_tbrowser_time_zoneime": "Browser Time"
 }
