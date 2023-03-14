@@ -11,6 +11,7 @@ import {
   Skeleton,
   Tag,
   Tree,
+  Space,
 } from "antd";
 import message from "antd/lib/message";
 import React from "react";
@@ -114,6 +115,7 @@ export function getAntdKit(): Kit {
     // steps: Steps,
     // form: Form,
     simplePagination: SimplePagination,
+    space: Space,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19

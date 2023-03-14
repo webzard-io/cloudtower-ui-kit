@@ -47,7 +47,7 @@ import React, { createContext, ReactNode } from "react";
 import { SerializableObject } from "../utils/tower";
 import emptyImpl from "./emptyImpl";
 import { FieldRenderProps } from "./react-final-form";
-import { Architecture } from "./type";
+import { Architecture, ISpaceProps } from "./type";
 
 type BadgeTypeProps = "warning" | "error" | "info";
 type Primitive = "Int" | "Float" | "DateTime" | "Enum" | "String" | "Boolean";
@@ -484,6 +484,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   // steps: React.FC<IStepsProps>;
   // form: Form;
   simplePagination: React.FC<ISimplePaginationProps>;
+  space: React.FC<ISpaceProps>;
 }
 
 export const kitContext = createContext<Kit>(emptyImpl);
