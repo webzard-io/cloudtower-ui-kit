@@ -9,6 +9,10 @@ const ThrowError = () => {
   throw new Error("");
 };
 
+const genThrowError = (msg: string) => () => {
+  throw new Error("");
+};
+
 const emptyImpl: Kit = {
   // constants
   get PAGINATION_SELECTOR() {
@@ -139,6 +143,7 @@ const emptyImpl: Kit = {
   //   create: ThrowError,
   // }),
   simplePagination: ThrowError,
+  space: genThrowError("space"),
 };
 
 export default emptyImpl;
