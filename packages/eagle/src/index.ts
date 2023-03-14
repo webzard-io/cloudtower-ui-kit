@@ -11,6 +11,7 @@ export {
 } from "./components";
 export type { Kit, KitSelectProps, SorterOrder } from "./spec";
 export { kitContext } from "./spec";
+export * from "./spec/type";
 export type { KitRootState } from "./store";
 export { closeModal, popModal, pushModal } from "./store";
 export type { SelectProps } from "./utils";
