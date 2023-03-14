@@ -51,7 +51,7 @@ function exportAll(icons, format, includeExtension = true) {
 
 async function ensureWrite(file, text) {
   await fs.mkdir(dirname(file), { recursive: true });
-  await fs.writeFile(file, text, "utf8");
+  await fs.writeFile(file, text + "\n", "utf8");
 }
 
 async function ensureWriteJson(file, json) {

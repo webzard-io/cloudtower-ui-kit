@@ -1,7 +1,7 @@
 {
   "name": "@cloudtower/icons-react",
   "license": "MIT",
-  "version": "0.20.0",
+  "version": "0.21.2",
   "description": "",
   "keywords": [],
   "homepage": "https://github.com/tailwindlabs/heroicons#readme",
@@ -10,7 +10,7 @@
     "url": "https://github.com/tailwindlabs/heroicons.git"
   },
   "files": [
-    "20",
+    "16",
     "24",
     "32",
     "index.esm.js",
@@ -29,7 +29,7 @@
     "generate-icons": "node scripts/build.js"
   },
   "devDependencies": {
-    "@cloudtower/icons": "0.20.0"
+    "@cloudtower/icons": "0.21.2"
   },
   "exports": {
     ".": {
