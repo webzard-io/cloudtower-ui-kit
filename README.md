@@ -1,12 +1,11 @@
 # CloudTower UI KIT
 
-The Source Code is Maintained on [github](https://github.com/webzard-io/cloud-tower-ui-kit)
-
 [storybook]: https://cloudtower-ui-kit.vercel.app
+[贡献代码]: ./CONTRIBUTE.md
 
 ## [StoryBook]
 
-## Usage
+## 使用
 
 ```tsx
 import { antdKit } from "@cloudtower/eagle";
@@ -52,6 +51,11 @@ const App = () => {
 export default App;
 ```
 
-## Stories
+## 如何 [贡献代码]
 
-[Stories](http://192.168.28.80:8080/) is built by storybook
+- 快速开始
+  ```
+  yarn && cd packages/eagle && yarn storybook
+  ```
+
+详细参考 [贡献代码]
