@@ -10,10 +10,11 @@ export {
   useKitSelector,
 } from "./components";
 export type { Kit, KitSelectProps, SorterOrder } from "./spec";
-export { kitContext } from "./spec";
 export * from "./spec/type";
 export type { KitRootState } from "./store";
 export { closeModal, popModal, pushModal } from "./store";
+export * from "./UIKitProvider";
+export { default as UIKitProvider } from "./UIKitProvider";
 export type { SelectProps } from "./utils";
 export * from "@cloudtower/parrot";
 export type { DropDownProps } from "antd/lib/dropdown";

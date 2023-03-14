@@ -45,7 +45,6 @@ import { TreeProps as AntdTreeProps } from "antd/lib/tree";
 import React, { createContext, ReactNode } from "react";
 
 import { SerializableObject } from "../utils/tower";
-import emptyImpl from "./emptyImpl";
 import { FieldRenderProps } from "./react-final-form";
 import { Architecture, ISpaceProps, ITimeZoneSelectProps } from "./type";
 
@@ -487,8 +486,6 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   space: React.FC<ISpaceProps>;
   timeZoneSelect: React.FC<ITimeZoneSelectProps>;
 }
-
-export const kitContext = createContext<Kit>(emptyImpl);
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
 

@@ -9,7 +9,6 @@
 
 ```tsx
 import { antdKit } from "@cloudtower/eagle";
-import { KitStoreProvider, kitContext } from "@cloudtower/eagle";
 import { initParrotI18n } from "@cloudtower/eagle";
 // Set Up Style
 import "@cloudtower/eagle/dist/style.css";
@@ -19,9 +18,7 @@ initParrotI18n();
 ReactDOM.render(
   <React.StrictMode>
     <KitStoreProvider>
-      <kitContext.Provider value={antdKit}>
-        <App />
-      </kitContext.Provider>
+      <App />
     </KitStoreProvider>
   </React.StrictMode>,
   document.getElementById("root") as HTMLElement
@@ -29,12 +26,12 @@ ReactDOM.render(
 ```
 
 ```tsx
-import { kitContext } from "@cloudtower/eagle";
+import { useUIKit } from "@cloudtower/eagle";
 import React, { useContext } from "react";
 
 const App = () => {
   // Use Component
-  const kit = useContext(kitContext);
+  const kit = useUIKit();
   return (
     <div>
       <kit.button
