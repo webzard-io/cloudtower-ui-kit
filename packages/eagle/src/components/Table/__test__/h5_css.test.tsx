@@ -1,19 +1,17 @@
 import { render } from "@testing-library/react";
-import React, { PropsWithChildren, useContext } from "react";
+import React, { PropsWithChildren } from "react";
 import { describe, it } from "vitest";
 
-import { kitContext, RequiredColumnProps } from "../../../spec";
-import { antdKit } from "../../antd";
+import { RequiredColumnProps } from "../../../spec";
 import KitStoreProvider from "../../KitStoreProvider";
 import ModalStack from "../../ModalStack";
+import Table from "..";
 
 const AllTheProviders = ({ children }: PropsWithChildren<{}>) => {
   return (
     <KitStoreProvider>
-      <kitContext.Provider value={antdKit}>
-        <ModalStack />
-        {children}
-      </kitContext.Provider>
+      <ModalStack />
+      {children}
     </KitStoreProvider>
   );
 };
@@ -81,9 +79,7 @@ const data: DataType[] = [
 ];
 
 const Component = () => {
-  const kit = useContext(kitContext);
-
-  return <kit.table<DataType> dataSource={data} columns={columns} />;
+  return <Table<DataType> dataSource={data} columns={columns} />;
 };
 
 describe("Table h5_css", () => {
