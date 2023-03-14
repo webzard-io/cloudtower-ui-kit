@@ -1,62 +1,39 @@
-## Version Update
+# 如何发版
 
-use lerna cli for quick version update
+## Patch 版本
 
-```
-yarn lerna version patch --exact --force-publish
-```
-
-```mermaid
-flowchart TB
-    Incompatible{Incompatible Change}
-    Features{New Features}
-    Bug[Bug Fix]
-
-    Patch[Version Patch]
-    Minor[Version Minor]
-    Major[Version Major]
-
-    Incompatible -->|true| Major
-    Incompatible -->|false| Features
-    Features -->|true| Minor
-    Features -->|false| Bug
-    Bug --> Patch
-```
-
-## How To Release
-
-1. Checkout a new branch named `${release_branch}` from main
+1. 切换到指定的分支，如 `v0.21.x`
 
    ```
-   git switch -c ${release_branch} ${your_target_branch}
+   git switch v0.21.x
    ```
 
-2. Do Version Update [Version Update](#version-update)
+2. Cherry Pick 相关的 Commit
+
+   建议使用图形化工具操作
+
+3. 使用 lerna 更新版本，并推送相关 tag
 
    ```
    yarn lerna version patch --exact --force-publish
    ```
 
-   or
+## Minor 版本
+
+## Patch 版本
+
+1. 从 `main` 创建分支，如 `v0.22.x`
 
    ```
-   yarn lerna version ${your_version} --exact --force-publish
+   git checkout main
+   git pull
+   git switch -c v0.22.x
    ```
 
-3. Push To Gitlab
-
-   It will trigger ci on gitlab
+2. 使用 lerna 更新版本，并推送相关 tag
 
    ```
-   git push gitlab ${release_branch} --follow-tags
+   yarn lerna version minor --exact --force-publish
    ```
 
-4. Create PR
-
-   After Released,Please Create a PR.
-
-   Source is `${release_branch}`
-
-   Target is `main`
-
-   Make the version in the main branch up to date.
+3. 等待 CI 结果，发布完成后创建 PR 合入 `main` 分支
