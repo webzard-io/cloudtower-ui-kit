@@ -144,6 +144,7 @@ const emptyImpl: Kit = {
   // }),
   simplePagination: ThrowError,
   space: genThrowError("space"),
+  timeZoneSelect: genThrowError("timeZoneSelect"),
 };
 
 export default emptyImpl;

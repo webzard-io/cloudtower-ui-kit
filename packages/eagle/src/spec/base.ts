@@ -47,7 +47,7 @@ import React, { createContext, ReactNode } from "react";
 import { SerializableObject } from "../utils/tower";
 import emptyImpl from "./emptyImpl";
 import { FieldRenderProps } from "./react-final-form";
-import { Architecture, ISpaceProps } from "./type";
+import { Architecture, ISpaceProps, ITimeZoneSelectProps } from "./type";
 
 type BadgeTypeProps = "warning" | "error" | "info";
 type Primitive = "Int" | "Float" | "DateTime" | "Enum" | "String" | "Boolean";
@@ -485,6 +485,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   // form: Form;
   simplePagination: React.FC<ISimplePaginationProps>;
   space: React.FC<ISpaceProps>;
+  timeZoneSelect: React.FC<ITimeZoneSelectProps>;
 }
 
 export const kitContext = createContext<Kit>(emptyImpl);

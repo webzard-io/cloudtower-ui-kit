@@ -55,6 +55,7 @@ import Table from "./Table";
 import TextArea from "./TextArea";
 import Tooltip from "./Tooltip";
 import Space from "./Space";
+import TimeZoneSelect from "./TimeZoneSelect";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -116,6 +117,7 @@ export function getAntdKit(): Kit {
     // form: Form,
     simplePagination: SimplePagination,
     space: Space,
+    timeZoneSelect: TimeZoneSelect,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19

@@ -5,6 +5,7 @@ import { sortBy, uniqBy } from "lodash";
 import React, { useCallback, useEffect, useState } from "react";
 import TimeZones from "timezones.json";
 
+import { ITimeZoneSelectProps } from "../../spec/type";
 import Select from "../Select";
 import { Typo } from "../Typo";
 
@@ -61,14 +62,6 @@ const OptionSecondLineStyle = cx(
   Typo.Label.l4_regular
 );
 
-interface Props {
-  value: string | undefined;
-  onChange: (value: string) => void;
-  defaultUseBrowserTime?: boolean;
-  disabled?: boolean;
-  className?: string;
-}
-
 const BrowserTimeValue = "browser_time_zone";
 
 // get browser time zone
@@ -76,7 +69,7 @@ const browserTzName = Intl.DateTimeFormat().resolvedOptions().timeZone;
 const browserTz =
   flatTimeZones.find((tz) => tz.value === browserTzName) || flatTimeZones[0];
 
-const TimeZoneSelect: React.FC<Props> = (props: Props) => {
+const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
   const { value, onChange, disabled, defaultUseBrowserTime, className } = props;
   // innerValue could be BrowserTimeValue
   const [innerValue, setInnerValue] = useState(value);
