@@ -1,11 +1,13 @@
-import React, { PropsWithChildren, useContext } from "react";
+import React, { createContext, PropsWithChildren, useContext } from "react";
 
 import { antdKit } from "../components/antd";
-import { Kit, kitContext } from "../spec";
+import { Kit } from "../spec";
 
 interface IProps {
   kit?: Kit;
 }
+
+export const kitContext = createContext<Kit>(antdKit);
 
 const UIKitProvider = (props: PropsWithChildren<IProps>) => {
   const { children, kit = antdKit } = props;
