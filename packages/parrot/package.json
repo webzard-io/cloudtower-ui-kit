@@ -14,6 +14,11 @@
   "files": [
     "dist"
   ],
+  "homepage": "https://github.com/webzard-io/cloudtower-ui-kit#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webzard-io/cloudtower-ui-kit.git"
+  },
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
