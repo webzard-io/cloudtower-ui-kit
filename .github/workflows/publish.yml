@@ -45,6 +45,10 @@ jobs:
         timeout-minutes: 3
       - name: Build
         run: yarn build
+      - name: Copy Readme
+        run: |
+          cp README package/eagle/README.md
+          cp CONTRIBUTE package/eagle/CONTRIBUTE.md
       - name: Write .npmrc
         env:
           NPM_TOKEN: ${{ secrets.QINGHUA_CUI_SMARTX_NPM_TOKEN }}
