@@ -42,7 +42,7 @@ Simple.args = {
     onFocus: () => {
       console.log("onFocus");
     },
-    value: dayjs("12:08:23", "HH:mm:ss"),
+    value: dayjs("2023 01 01 12:08:23", "YYYY MM DD HH:mm:ss"),
   },
   meta: {},
 };
