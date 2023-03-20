@@ -1,5 +1,11 @@
 ## 快速开始
 
+- 调整编辑器使用 typescript5.0
+
+  以 vscode 为例
+
+  打开一个 \*.ts 文件，输入 `ctrl + shift + p`, 在弹出框中输入 `select typescript version`
+
 - 安装依赖
 
   项目根目录，执行

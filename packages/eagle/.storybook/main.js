@@ -17,6 +17,9 @@ module.exports = {
   core: {
     builder: "webpack5",
   },
+  typescript: {
+    reactDocgen: "react-docgen-typescript-plugin",
+  },
   webpackFinal: async (config, { configType }) => {
     const additionalData = fs.readFileSync(GlobalSassPath, {
       encoding: "utf8",
