@@ -47,7 +47,7 @@ jobs:
         run: yarn build
       - name: Copy Readme
         run: |
-          cp README.md package/eagle/README.md
+          cp ./README.md package/eagle/README.md
       - name: Write .npmrc
         env:
           NPM_TOKEN: ${{ secrets.QINGHUA_CUI_SMARTX_NPM_TOKEN }}
