@@ -70,7 +70,7 @@ export function getAntdKit(): Kit {
     select: Select,
     option: AntdSelect.Option as OptionComponentType,
     table: Table,
-    // button: Button,
+    button: Button,
     modal: Modal,
     dropdown: Dropdown,
     // switch: Switch,

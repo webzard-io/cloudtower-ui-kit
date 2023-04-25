@@ -396,7 +396,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   select: SelectComponentType<V, T>;
   option: OptionComponentType;
   table: TableComponent;
-  // button: React.FC<ButtonProps>;
+  button: React.FC<ButtonProps>;
   modal: React.FC<ModalProps>;
   dropdown: React.FC<DropDownProps>;
   // switch: React.FC<SwitchProps>;
