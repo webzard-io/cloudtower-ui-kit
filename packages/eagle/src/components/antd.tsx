@@ -99,7 +99,7 @@ export function getAntdKit(): Kit {
     // radioButton: RadioButton,
     // tree: Tree,
     // progress: Progress,
-    // divider: Divider,
+    divider: Divider,
     // skeleton: Skeleton,
     list: List,
     listItem: List.Item,

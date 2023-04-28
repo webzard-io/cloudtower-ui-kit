@@ -452,7 +452,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   // radioButton: React.FC<RadioButtonProps>;
   // tree: React.FC<AntdTreeProps>;
   // progress: ProgressComponentType;
-  // divider: React.FC<AntdDividerProps>;
+  divider: React.FC<AntdDividerProps>;
   // skeleton: React.FC<AntdSkeletonProps>;
   menu: React.ComponentType<MenuProps> & {
     Divider: React.FC<import("rc-menu/lib/Divider").DividerProps>;
