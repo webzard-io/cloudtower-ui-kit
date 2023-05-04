@@ -1,0 +1,18 @@
+{
+  "EINTR": "请求异常（RequestError: EINTR）",
+  "EAGAIN": "请求异常（RequestError: EAGAIN）",
+  "EBUSY": "请求异常（RequestError: EBUSY）",
+  "EMFILE": "请求异常（RequestError: EMFILE）",
+  "EPIPE": "请求异常（RequestError: EPIPE）",
+  "EADDRINUSE": "请求异常（RequestError: EADDRINUSE）",
+  "ENETDOWN": "请求异常（RequestError: ENETDOWN）",
+  "ENETUNREACH": "请求异常（RequestError: ENETUNREACH）",
+  "ENETRESET": "请求异常（RequestError: ENETRESET）",
+  "ECONNRESET": "请求异常（RequestError: ECONNRESET）",
+  "ENOBUFS": "请求异常（RequestError: ENOBUFS）",
+  "ENOTCONN": "请求异常（RequestError: ENOTCONN）",
+  "ETIMEDOUT": "请求异常（RequestError: connect ETIMEDOUT）",
+  "ECONNREFUSED": "请求异常（RequestError: connect ECONNREFUSED）",
+  "EHOSTDOWN": "请求异常（RequestError: EHOSTDOWN）",
+  "EHOSTUNREACH": "请求异常（RequestError: EHOSTUNREACH）"
+}

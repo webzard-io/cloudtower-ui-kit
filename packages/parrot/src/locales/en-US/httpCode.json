@@ -1,0 +1,16 @@
+{
+  "Bad Request": "HTTPError: 400 (Bad Request)",
+  "Unauthorized": "HTTPError: 401 (Unauthorized)",
+  "Forbidden": "HTTPError: 403 (Forbidden)",
+  "Not Found": "HTTPError: 404 (Not Found)",
+  "Method Not Allowed": "HTTPError: 405 (Method Not Allowed)",
+  "Not Acceptable": "HTTPError: 406 (Not Acceptable)",
+  "Proxy Authentication Required": "HTTPError: 407 (Proxy Authentication Required)",
+  "Request Time-out": "HTTPError: 408 (Request Time-out)",
+  "Internal Server Error": "HTTPError: 500 (Internal Server Error)",
+  "Not Implemented": "HTTPError: 501 (Not Implemented)",
+  "Bad Gateway": "HTTPError: 502 (Bad Gateway)",
+  "Service Unavailable": "HTTPError: 503 (Service Unavailable)",
+  "Gateway Time-out": "HTTPError: 504 (Gateway Time-out)",
+  "HTTP Version not supported": "HTTPError: 505 (HTTP Version not supported)"
+}

@@ -1,0 +1,18 @@
+{
+  "EINTR": "Request Exception(RequestError: EINTR)",
+  "EAGAIN": "Request Exception(RequestError: EAGAIN)",
+  "EBUSY": "Request Exception(RequestError: EBUSY)",
+  "EMFILE": "Request Exception(RequestError: EMFILE)",
+  "EPIPE": "Request Exception(RequestError: EPIPE)",
+  "EADDRINUSE": "Request Exception(RequestError: EADDRINUSE)",
+  "ENETDOWN": "Request Exception(RequestError: ENETDOWN)",
+  "ENETUNREACH": "Request Exception(RequestError: ENETUNREACH)",
+  "ENETRESET": "Request Exception(RequestError: ENETRESET)",
+  "ECONNRESET": "Request Exception(RequestError: ECONNRESET)",
+  "ENOBUFS": "Request Exception(RequestError: ENOBUFS)",
+  "ENOTCONN": "Request Exception(RequestError: ENOTCONN)",
+  "ETIMEDOUT": "Request Exception(RequestError: connect ETIMEDOUT)",
+  "ECONNREFUSED": "Request Exception(RequestError: connect ECONNREFUSED)",
+  "EHOSTDOWN": "Request Exception(RequestError: EHOSTDOWN)",
+  "EHOSTUNREACH": "Request Exception(RequestError: EHOSTUNREACH)"
+}
