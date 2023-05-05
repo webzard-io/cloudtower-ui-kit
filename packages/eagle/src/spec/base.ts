@@ -248,11 +248,13 @@ export interface FloatProps {
 export type TooltipProps = AntdTooltipProps & {
   followMouse?: boolean;
 };
-export type FieldBaseProps<V = any, T extends HTMLElement = HTMLElement> =
-  FieldRenderProps<V, T> & {
-    disabled?: boolean;
-    className?: string;
-  };
+export type FieldBaseProps<
+  V = any,
+  T extends HTMLElement = HTMLElement
+> = FieldRenderProps<V, T> & {
+  disabled?: boolean;
+  className?: string;
+};
 export type WizardSteps = {
   title: string;
   render: React.ReactNode;
@@ -314,26 +316,30 @@ export type ButtonGroupType = {
   >;
 };
 
-export type IntegerFieldProps<V = any, T extends HTMLElement = HTMLElement> =
-  FieldBaseProps<V, T> &
-    InputNumberProps & {
-      onChange?: FieldBaseProps<V, T>["input"]["onChange"];
-      controls?: boolean;
-      suffix?: string;
-      prefix?: string;
-      size?: InputSize;
-      onBlur?: (
-        input: FieldBaseProps<number, HTMLInputElement>["input"],
-        event?: React.FocusEvent<HTMLInputElement>
-      ) => void;
-    };
+export type IntegerFieldProps<
+  V = any,
+  T extends HTMLElement = HTMLElement
+> = FieldBaseProps<V, T> &
+  InputNumberProps & {
+    onChange?: FieldBaseProps<V, T>["input"]["onChange"];
+    controls?: boolean;
+    suffix?: string;
+    prefix?: string;
+    size?: InputSize;
+    onBlur?: (
+      input: FieldBaseProps<number, HTMLInputElement>["input"],
+      event?: React.FocusEvent<HTMLInputElement>
+    ) => void;
+  };
 
-export type FloatFieldProps<V = any, T extends HTMLElement = HTMLElement> =
-  FieldBaseProps<V, T> &
-    FloatProps & {
-      onChange?: FieldBaseProps<V, T>["input"]["onChange"];
-      autoComplete?: "on" | "off";
-    };
+export type FloatFieldProps<
+  V = any,
+  T extends HTMLElement = HTMLElement
+> = FieldBaseProps<V, T> &
+  FloatProps & {
+    onChange?: FieldBaseProps<V, T>["input"]["onChange"];
+    autoComplete?: "on" | "off";
+  };
 
 export type ButtonProps = {
   prefixIcon?: JSX.Element;
@@ -390,7 +396,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   TBODY_SELECTOR: string;
   MODAL_WHITELIST: string[];
   // general UI
-  // loading: LoadingComponentType;
+  loading: LoadingComponentType;
   // error: React.FunctionComponent<{ error: unknown }>;
   // pagination: React.FC<PaginationProps>;
   select: SelectComponentType<V, T>;
@@ -472,7 +478,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   // };
   autoComplete: React.ForwardRefExoticComponent<AutoCompleteProps>;
   // message: MessageInstance;
-  // tag: TagType;
+  tag: TagType;
   // popover: React.ForwardRefExoticComponent<
   //   PopoverProps & React.RefAttributes<unknown>
   // >;
@@ -489,8 +495,10 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
 
-export type SelectComponentType<V = any, T extends HTMLElement = HTMLElement> =
-  React.FunctionComponent<LooseFieldRenderProps<V, T> & KitSelectProps>;
+export type SelectComponentType<
+  V = any,
+  T extends HTMLElement = HTMLElement
+> = React.FunctionComponent<LooseFieldRenderProps<V, T> & KitSelectProps>;
 
 export type OptionComponentType = React.FC<OptionProps> & {
   isSelectOption: boolean;
