@@ -396,11 +396,11 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   select: SelectComponentType<V, T>;
   option: OptionComponentType;
   table: TableComponent;
-  // button: React.FC<ButtonProps>;
+  button: React.FC<ButtonProps>;
   modal: React.FC<ModalProps>;
   dropdown: React.FC<DropDownProps>;
   // switch: React.FC<SwitchProps>;
-  // tooltip: React.FC<TooltipProps>;
+  tooltip: React.FC<TooltipProps>;
   input: React.FC<InputProps & { error?: boolean }>;
   textArea: React.FC<TextAreaProps>;
   checkbox: React.FC<
@@ -447,9 +447,9 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   // alert: AlertComponentType;
   searchInput: React.FC<SearchInputProps>;
   // badge: BadgeComponentType;
-  // radio: React.FC<RadioProps>;
-  // radioGroup: React.FC<AntdRadioGroupProps>;
-  // radioButton: React.FC<RadioButtonProps>;
+  radio: React.FC<RadioProps>;
+  radioGroup: React.FC<AntdRadioGroupProps>;
+  radioButton: React.FC<RadioButtonProps>;
   // tree: React.FC<AntdTreeProps>;
   // progress: ProgressComponentType;
   divider: React.FC<AntdDividerProps>;

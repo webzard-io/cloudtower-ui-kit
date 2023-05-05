@@ -12,6 +12,7 @@ export {
   TBODY_SELECTOR,
   THEAD_SELECTOR,
   tickFormatter,
+  Typo,
   useKitDispatch,
   useKitSelector,
 } from "./components";
