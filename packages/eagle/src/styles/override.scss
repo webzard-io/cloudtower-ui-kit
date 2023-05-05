@@ -1,22 +1,5 @@
 @import './component/menu.scss';
 
-body {
-  font-feature-settings: normal;
-  -webkit-font-feature-settings: normal;
-  font-variant: normal;
-  min-width: 1280px;
-  overflow: hidden;
-}
-
-p {
-  margin: 0;
-}
-
-#root {
-  width: 100vw;
-  overflow-x: auto;
-}
-
 .disable-select {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
