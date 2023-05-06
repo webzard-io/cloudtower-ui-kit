@@ -1,5 +1,6 @@
 import {
   AutoComplete,
+  Col,
   Divider,
   Dropdown,
   Form,
@@ -7,6 +8,7 @@ import {
   List,
   Menu,
   Popover,
+  Row,
   Select as AntdSelect,
   Skeleton,
   Tag,
@@ -41,6 +43,7 @@ import SearchInput from "./SearchInput";
 import Second from "./Second";
 import Select from "./Select";
 import SimplePagination from "./SimplePagination";
+import Space from "./Space";
 import Speed from "./Speed";
 import Steps from "./Steps";
 import {
@@ -53,9 +56,8 @@ import {
 import Switch from "./Switch";
 import Table from "./Table";
 import TextArea from "./TextArea";
-import Tooltip from "./Tooltip";
-import Space from "./Space";
 import TimeZoneSelect from "./TimeZoneSelect";
+import Tooltip from "./Tooltip";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -71,6 +73,9 @@ export function getAntdKit(): Kit {
     option: AntdSelect.Option as OptionComponentType,
     table: Table,
     button: Button,
+    row: Row,
+    col: Col,
+    // button: Button,
     modal: Modal,
     dropdown: Dropdown,
     // switch: Switch,
