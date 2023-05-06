@@ -5,6 +5,7 @@ import { AutoCompleteProps } from "antd/lib/auto-complete";
 import { BadgeProps } from "antd/lib/badge";
 import { ButtonProps as AntdButtonProps, ButtonType } from "antd/lib/button";
 import { CheckboxProps } from "antd/lib/checkbox";
+import { ColProps } from "antd/lib/col";
 import { DatePickerProps } from "antd/lib/date-picker";
 import { DividerProps as AntdDividerProps } from "antd/lib/divider";
 import { DropDownProps } from "antd/lib/dropdown";
@@ -28,6 +29,7 @@ import {
   RadioProps as AntdRadioProps,
 } from "antd/lib/radio";
 import { RadioButtonProps as AntdRadioButtonProps } from "antd/lib/radio/radioButton";
+import { RowProps } from "antd/lib/row";
 import { SelectProps as AntdSelectProps } from "antd/lib/select";
 import { SkeletonProps as AntdSkeletonProps } from "antd/lib/skeleton";
 import { StepProps, StepsProps } from "antd/lib/steps";
@@ -485,6 +487,8 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   simplePagination: React.FC<ISimplePaginationProps>;
   space: React.FC<ISpaceProps>;
   timeZoneSelect: React.FC<ITimeZoneSelectProps>;
+  col: React.FC<ColProps>;
+  row: React.FC<RowProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
