@@ -15,8 +15,14 @@ export {
   Typo,
   useKitDispatch,
   useKitSelector,
+  useCustomizeColumn,
+  CustomizeColumn,
+  TableLoading,
+  AuxiliaryLine,
+  HeaderCell,
+  useTransformScrollAndColumns,
 } from "./components";
-export { useElementsSize } from "./hooks";
+export { useElementsSize, type CustomizeColumnType } from "./hooks";
 export type {
   DateTimeRangeProps,
   EnumProps,
