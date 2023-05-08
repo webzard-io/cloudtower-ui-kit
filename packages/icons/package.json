@@ -4,23 +4,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "prepublishOnly": "npm run build",
-    "pregenerate-icons": "rimraf ./{16,24,32}",
-    "generate-icons": "npm run generate-outline && npm run generate-filled",
-    "generate-outline": "npm run generate-16-outline && npm run generate-24-outline && npm run generate-32-outline",
-    "generate-filled": "npm run generate-16-filled && npm run generate-24-filled",
-    "generate-16-outline": "svgo --config=svgo.16.outline.yaml -f ./src/16/outline -o ./16/outline --pretty --indent=2",
-    "generate-24-outline": "svgo --config=svgo.24.outline.yaml -f ./src/24/outline -o ./24/outline --pretty --indent=2",
-    "generate-32-outline": "svgo --config=svgo.32.outline.yaml -f ./src/32/outline -o ./32/outline --pretty --indent=2",
-    "generate-16-filled": "svgo --config=svgo.16.filled.yaml -f ./src/16/filled -o ./16/filled --pretty --indent=2",
-    "generate-24-filled": "svgo --config=svgo.24.filled.yaml -f ./src/24/filled -o ./24/filled --pretty --indent=2",
-    "generate-32-filled": "svgo --config=svgo.32.filled.yaml -f ./src/32/filled -o ./32/filled --pretty --indent=2"
+    "prebuild": "rimraf ./dist",
+    "build": "svgo --config=svgo.yaml -f ./src/ -o ./dist --pretty --indent=2"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.0",
-    "@babel/plugin-transform-react-jsx": "^7.21.0",
-    "@svgr/core": "^5.0.0",
-    "camelcase": "^6.0.0",
     "rimraf": "^3.0.0",
     "svgo": "^1.0.0"
   }

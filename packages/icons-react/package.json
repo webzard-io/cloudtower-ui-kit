@@ -29,7 +29,11 @@
     "generate-icons": "node scripts/build.js"
   },
   "devDependencies": {
-    "@cloudtower/icons": "0.22.11"
+    "@cloudtower/icons": "0.22.11",
+    "@babel/core": "^7.21.0",
+    "@babel/plugin-transform-react-jsx": "^7.21.0",
+    "@svgr/core": "^5.0.0",
+    "camelcase": "^6.0.0"
   },
   "exports": {
     ".": {
