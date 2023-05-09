@@ -12,7 +12,7 @@
     "postbuild": "turbo run typings",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "lint": "eslint **/*.{tsx,ts} --fix",
+    "lint": "eslint \"**/*.{tsx,ts}\" --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "lint-staged": {

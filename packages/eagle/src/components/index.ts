@@ -23,7 +23,5 @@ export * from "./Switch";
 export * from "./Table";
 export * from "./TimeZoneSelect";
 export * from "./Tooltip";
-export { default as TowerTable } from "./TowerTable";
-export * from "./TowerTable";
 export { default as Truncate } from "./Truncate";
 export * from "./Typo";
