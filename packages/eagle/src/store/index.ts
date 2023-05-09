@@ -16,12 +16,6 @@ import {
   ModalState,
   ModalType,
 } from "./modal";
-import {
-  Actions as TableActionType,
-  initialTableState,
-  tableReducer,
-  TableState,
-} from "./table";
 
 export { ChartActions } from "./chart";
 export { ModalActions } from "./modal";
@@ -30,55 +24,55 @@ export { TableActions } from "./table";
 export type KitRootState = {
   chart: ChartState;
   modal: ModalState;
-  table: TableState;
+  // table: TableState;
 };
 
 const appReducer = combineReducers({
   chart: chartReducer,
   modal: modalReducer,
-  table: tableReducer,
+  // table: tableReducer,
 });
 
 export type Actions =
   | ModalActionType
   | ChartActionType
-  | TableActionType
+  // | TableActionType
   | {
-      type: "RESET";
+      type: "RESET_UI_KIT_STORE";
     };
 export const rootReducer = (
   state: KitRootState | undefined,
   action: Actions
 ) => {
-  if (action.type === "RESET") {
+  if (action.type === "RESET_UI_KIT_STORE") {
     state = {
       modal: initialModalState,
       chart: initialChartState,
-      table: initialTableState,
+      // table: initialTableState,
     };
   }
   return appReducer(state, action as any);
 };
 
-export const store = createStore(rootReducer);
+export const UIKitStore = createStore(rootReducer);
 
 export function pushModal<K extends keyof IModalProps>(
   modal: ModalType<IModalProps[K]>
 ) {
-  store.dispatch({
+  UIKitStore.dispatch({
     type: ModalActions.PUSH_MODAL,
     payload: modal,
   });
 }
 
 export function popModal() {
-  store.dispatch({
+  UIKitStore.dispatch({
     type: ModalActions.POP_MODAL,
   });
 }
 
 export function closeModal(id: number) {
-  store.dispatch({
+  UIKitStore.dispatch({
     type: ModalActions.CLOSE_MODAL,
     id,
   });
@@ -89,4 +83,4 @@ export type GetModalProps<K extends keyof IModalProps> = IModalProps[K] &
 
 export * from "./chart";
 export * from "./modal";
-export * from "./table";
+// export * from "./table";
