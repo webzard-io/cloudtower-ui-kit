@@ -392,9 +392,9 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   TBODY_SELECTOR: string;
   MODAL_WHITELIST: string[];
   // general UI
-  // loading: LoadingComponentType;
+  loading: LoadingComponentType;
   // error: React.FunctionComponent<{ error: unknown }>;
-  // pagination: React.FC<PaginationProps>;
+  pagination: React.FC<PaginationProps>;
   select: SelectComponentType<V, T>;
   option: OptionComponentType;
   table: TableComponent;
@@ -446,7 +446,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   // };
   inputGroup: InputGroupComponentType;
   // Empty: React.ReactElement | null;
-  // alert: AlertComponentType;
+  alert: AlertComponentType;
   searchInput: React.FC<SearchInputProps>;
   // badge: BadgeComponentType;
   radio: React.FC<RadioProps>;
@@ -466,15 +466,15 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   menuItemGroup: React.ComponentType<MenuItemGroupProps>;
   list: <T>(props: ListProps<T>) => JSX.Element;
   listItem: React.FC<ListItemProps>;
-  // layout: React.ComponentType<BasicProps> & {
-  //   Header: React.ComponentType<BasicProps>;
-  //   Footer: React.ComponentType<BasicProps>;
-  //   Content: React.ComponentType<BasicProps>;
-  //   Sider: React.ComponentType<SiderProps>;
-  // };
+  layout: React.ComponentType<BasicProps> & {
+    Header: React.ComponentType<BasicProps>;
+    Footer: React.ComponentType<BasicProps>;
+    Content: React.ComponentType<BasicProps>;
+    Sider: React.ComponentType<SiderProps>;
+  };
   autoComplete: React.ForwardRefExoticComponent<AutoCompleteProps>;
   // message: MessageInstance;
-  // tag: TagType;
+  tag: TagType;
   // popover: React.ForwardRefExoticComponent<
   //   PopoverProps & React.RefAttributes<unknown>
   // >;
