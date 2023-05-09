@@ -517,6 +517,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
 
 export default Table;
 
+export type { CustomizeColumnType } from "../../hooks";
 export * from "./common";
 export * from "./customize-column";
 export * from "./CustomizeColumn";
