@@ -1,24 +1,11 @@
-import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
-import { styled } from "@linaria/react";
 import cs from "classnames";
 import _ from "lodash";
-import React, { createContext, useContext, useEffect, useRef } from "react";
+import React, { createContext } from "react";
 
-import {
-  SearchOperation,
-  SetSearch,
-  useElementsSize,
-  useSearch,
-} from "../../hooks";
-import { Maybe, Scalars } from "../../spec";
-import { SerializableObject } from "../../utils/tower";
-import Button from "../Button";
+import { useElementsSize } from "../../hooks";
 import Icon from "../Icon";
 import { arrowChevronUp16BoldSecondary } from "../images";
-import Pagination from "../Pagination";
-
-const TablePaginationStyle = css``;
 
 const TableLoadingStyle = css`
   height: 100%;
@@ -54,79 +41,6 @@ const TableLoadingStyle = css`
   }
 `;
 
-export const AuxiliaryLine = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 1px;
-  background: $blue-60;
-  transform: translateX(-9999px);
-  z-index: 999;
-
-  &::before {
-    content: "";
-    position: absolute;
-    height: 34px;
-    width: 3px;
-    top: 0;
-    left: -1px;
-    background: $blue-60;
-  }
-`;
-
-export const TablePagination = <T,>(props: {
-  count?: number;
-  skip: number;
-  size: number;
-  setQuery: (
-    val: T | ((val: T) => T),
-    operation?: SearchOperation | undefined
-  ) => void;
-  onChange?: (page?: number, size?: number) => void;
-}) => {
-  const { count, skip, size, setQuery, onChange } = props;
-
-  useEffect(() => {
-    if (!count || skip < count) return;
-    setQuery((query) => ({
-      ...query,
-      first: size,
-      // reset skip when size changed
-      skip: 0,
-    }));
-  }, [skip, count, setQuery, size]);
-
-  return (
-    <Pagination
-      current={(skip || 0) / size + 1}
-      count={count || 0}
-      size={size}
-      className={TablePaginationStyle}
-      onChange={(page) => {
-        setQuery((query) => ({
-          ...query,
-          skip: (page - 1) * size,
-        }));
-        if (typeof onChange === "function") {
-          onChange(page, undefined);
-        }
-      }}
-      onSizeChange={(newSize) => {
-        setQuery((query) => ({
-          ...query,
-          first: newSize,
-          // reset skip when size changed
-          skip: 0,
-        }));
-        if (typeof onChange === "function") {
-          onChange(undefined, newSize);
-        }
-      }}
-    />
-  );
-};
-
 export const TableLoading: React.FC = () => {
   const sizes = useElementsSize(
     { loading: ".ant-table-wrapper .ant-spin" },
@@ -151,121 +65,6 @@ export const TableLoading: React.FC = () => {
 export const KitTableContext = createContext<{
   onClearSearchButtonEffect?: (base: string) => void;
 }>({});
-
-export const TableEmpty: React.FC<{
-  query: { where?: Maybe<SerializableObject> };
-  setQuery: (query: {}) => void;
-  base: string;
-  clearGlobalSearch?: boolean;
-}> = (props) => {
-  const { query, setQuery, base, clearGlobalSearch = true } = props;
-
-  const { onClearSearchButtonEffect } = useContext(KitTableContext);
-
-  return (
-    <div className="table-default-empty">
-      {_.isEmpty(query.where) ? (
-        parrotI18n.t("common.empty") + parrotI18n.t(`common.${base}`)
-      ) : (
-        <>
-          <div>
-            {parrotI18n.t("common.no_match_filter", {
-              resource: parrotI18n.t(`common.${base}`),
-            })}
-          </div>
-          <Button
-            type="ordinary"
-            onClick={() => {
-              setQuery({});
-              if (clearGlobalSearch) {
-                onClearSearchButtonEffect?.(base);
-              }
-            }}
-          >
-            {parrotI18n.t("common.clear_query")}
-          </Button>
-        </>
-      )}
-    </div>
-  );
-};
-
-export const TableError: React.FC<{
-  error: Error;
-  refetch: () => Promise<unknown>;
-}> = (props) => {
-  const { error, refetch } = props;
-  return (
-    <div className="table-default-error">
-      <div>{String(error)}</div>
-      <Button type="ordinary" onClick={() => refetch()}>
-        {parrotI18n.t("common.retry")}
-      </Button>
-    </div>
-  );
-};
-
-export const usePosition = <
-  V extends { skip?: Maybe<Scalars["Int"]>; first?: Maybe<Scalars["Int"]> }
->(props: {
-  wrapper: React.MutableRefObject<HTMLDivElement | null>;
-  setQuery: SetSearch<V>;
-  defaultSize: number;
-  data: unknown;
-  elSelector?: { row?: string; wrapper?: string };
-}) => {
-  const { wrapper, setQuery, defaultSize, data, elSelector } = props;
-
-  const [position, setPosition] = useSearch<string | undefined>(
-    "position",
-    undefined
-  );
-
-  const resourceIndex = useRef(-1);
-  const isCompleted = useRef(false);
-
-  const positionOnCompleted = (count: number) => {
-    if (!position) return;
-    isCompleted.current = false;
-    setQuery(
-      (query) => {
-        const currentPage = Math.floor(
-          (count + 1) / (query.first || defaultSize)
-        );
-        resourceIndex.current = count % 50;
-        return { ...query, skip: currentPage * 50 };
-      },
-      { control: "replace" }
-    );
-    setPosition(undefined, { control: "replace" });
-  };
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (!data || resourceIndex.current === -1 || isCompleted.current) return;
-
-      const rowHeight =
-        wrapper.current?.querySelector<HTMLTableDataCellElement>(
-          elSelector?.row || ".ant-table-row"
-        )?.offsetHeight;
-      if (!rowHeight) return;
-
-      const tbody = wrapper.current?.querySelector<HTMLTableElement>(
-        elSelector?.wrapper || ".ant-table-body"
-      );
-      if (!tbody) return;
-      const maxScroll = tbody.scrollHeight - tbody.offsetHeight;
-      const currentScroll = rowHeight * resourceIndex.current;
-
-      const scroll = Math.min(currentScroll, maxScroll);
-      tbody.scroll(0, scroll);
-
-      isCompleted.current = true;
-    }, 0);
-  }, [data, wrapper, elSelector]);
-
-  return { positionOnCompleted };
-};
 
 export const ColumnTitle: React.FC<{
   sortOrder?: "descend" | "ascend" | null;

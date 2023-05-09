@@ -527,7 +527,5 @@ export { default as HeaderCell } from "./HeaderCell";
 export * from "./PendingTable";
 export { default as PendingTable } from "./PendingTable";
 export * from "./SearchWidget";
-export * from "./SidebarTable";
-export { default as SidebarTable } from "./SidebarTable";
 export * from "./TableSelection";
 export * from "./TableWidget";

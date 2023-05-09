@@ -41,6 +41,7 @@ export type {
   SingleSelectProps,
 } from "./utils";
 export * from "@cloudtower/parrot";
+export { Col, Row } from "antd";
 export type { ColProps } from "antd/lib/col";
 export type { DropDownProps } from "antd/lib/dropdown";
 export type { RowProps } from "antd/lib/row";
@@ -49,5 +50,3 @@ export type {
   ColumnType,
   TableRowSelection,
 } from "antd/lib/table/interface";
-
-export { Row, Col } from "antd";
