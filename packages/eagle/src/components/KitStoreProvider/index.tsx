@@ -6,11 +6,11 @@ import {
   ReactReduxContextValue,
 } from "react-redux";
 
-import { Actions, KitRootState, store } from "../../store";
+import { Actions, KitRootState, UIKitStore } from "../../store";
 
 const ctx = createContext<ReactReduxContextValue<KitRootState, Actions>>({
-  store: store,
-  storeState: store.getState(),
+  store: UIKitStore,
+  storeState: UIKitStore.getState(),
 });
 
 interface IProps {}
@@ -19,7 +19,7 @@ const KitStoreProvider = (props: PropsWithChildren<IProps>) => {
   const { children } = props;
 
   return (
-    <Provider context={ctx} store={store}>
+    <Provider context={ctx} store={UIKitStore}>
       {children}
     </Provider>
   );

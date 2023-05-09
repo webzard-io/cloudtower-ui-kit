@@ -6,6 +6,7 @@ export {
   Button,
   FailedLoad,
   KitStoreProvider,
+  ModalStack,
   PAGINATION_SELECTOR,
   TABLE_WRAPPER_SELECTOR,
   tableStyleCover,
@@ -31,8 +32,20 @@ export type {
   TableProps,
 } from "./spec";
 export * from "./spec/type";
-export type { KitRootState } from "./store";
-export { closeModal, popModal, pushModal } from "./store";
+export type {
+  CloseCb,
+  GetModalProps,
+  IModalProps,
+  KitRootState,
+  ModalType,
+} from "./store";
+export {
+  closeModal,
+  ModalActions,
+  popModal,
+  pushModal,
+  UIKitStore,
+} from "./store";
 export * from "./UIKitProvider";
 export { default as UIKitProvider } from "./UIKitProvider";
 export type {
