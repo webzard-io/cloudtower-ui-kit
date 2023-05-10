@@ -3,6 +3,7 @@ const camelcase = require("camelcase");
 const svgr = require("@svgr/core").default;
 const babel = require("@babel/core");
 const { dirname } = require("path");
+const { execSync } = require('child_process');
 
 const reactTransform = async (svg, componentName, format) => {
   let component = await svgr(
@@ -85,101 +86,16 @@ async function buildIcons(style, format) {
   await ensureWrite(`${outDir}/index.d.ts`, exportAll(icons, "esm", false));
 }
 
-/**
- * @param {string[]} styles
- */
-async function buildExports(styles) {
-  let pkg = {};
-
-  // To appease Vite's optimizeDeps feature which requires a root-level import
-  pkg["."] = {
-    import: "./index.esm.js",
-    require: "./index.js",
-  };
-
-  // For those that want to read the version from package.json
-  pkg["./package.json"] = { default: "./package.json" };
-
-  // Explicit exports for each style:
-  for (let style of styles) {
-    pkg[`./${style}`] = {
-      types: `./${style}/index.d.ts`,
-      import: `./${style}/index.js`,
-      require: `./${style}/index.js`,
-    };
-    pkg[`./${style}/*`] = {
-      types: `./${style}/*.d.ts`,
-      import: `./${style}/esm/*.js`,
-      require: `./${style}/*.js`,
-    };
-    pkg[`./${style}/*.js`] = {
-      types: `./${style}/*.d.ts`,
-      import: `./${style}/esm/*.js`,
-      require: `./${style}/*.js`,
-    };
-
-    // This dir is basically an implementation detail, but it's needed for
-    // backwards compatibility in case people were importing from it directly.
-    pkg[`./${style}/esm/*`] = {
-      types: `./${style}/*.d.ts`,
-      import: `./${style}/esm/*.js`,
-    };
-    pkg[`./${style}/esm/*.js`] = {
-      types: `./${style}/*.d.ts`,
-      import: `./${style}/esm/*.js`,
-    };
-  }
-
-  return pkg;
-}
-
 async function main() {
-  const cjsPackageJson = { module: "./esm/index.js", sideEffects: false };
-  const esmPackageJson = { type: "module", sideEffects: false };
-
   console.log("Building icons-react package...");
 
   await Promise.all([
-    buildIcons("16/outline", "cjs"),
-    buildIcons("16/outline", "esm"),
-    buildIcons("24/outline", "cjs"),
-    buildIcons("24/outline", "esm"),
-    buildIcons("32/outline", "cjs"),
-    buildIcons("32/outline", "esm"),
-
-    buildIcons("16/filled", "cjs"),
-    buildIcons("16/filled", "esm"),
-    buildIcons("24/filled", "cjs"),
-    buildIcons("24/filled", "esm"),
-    // buildIcons("32/filled", "cjs"),
-    // buildIcons("32/filled", "esm"),
-
-    ensureWriteJson("./16/outline/esm/package.json", esmPackageJson),
-    // ensureWriteJson("./16/outline/package.json", cjsPackageJson),
-    // ensureWriteJson("./24/outline/esm/package.json", esmPackageJson),
-    // ensureWriteJson("./24/outline/package.json", cjsPackageJson),
-    // ensureWriteJson("./32/outline/esm/package.json", esmPackageJson),
-    // ensureWriteJson("./32/outline/package.json", cjsPackageJson),
-
-    // ensureWriteJson("./16/filled/esm/package.json", esmPackageJson),
-    // ensureWriteJson("./16/filled/package.json", cjsPackageJson),
-    // ensureWriteJson("./24/filled/esm/package.json", esmPackageJson),
-    // ensureWriteJson("./24/filled/package.json", cjsPackageJson),
-    // ensureWriteJson("./32/filled/esm/package.json", esmPackageJson),
-    // ensureWriteJson("./32/filled/package.json", cjsPackageJson),
+    buildIcons("dist", "cjs"),
+    buildIcons("dist", "esm"),
   ]);
 
   let packageJson = JSON.parse(await fs.readFile("./package.json", "utf8"));
 
-  packageJson.exports = await buildExports([
-    "16/outline",
-    "24/outline",
-    "32/outline",
-
-    "16/filled",
-    "24/filled",
-    // "32/filled",
-  ]);
 
   await ensureWriteJson("./package.json", packageJson);
 
