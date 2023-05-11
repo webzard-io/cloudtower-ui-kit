@@ -1,5 +1,6 @@
 import { fireEvent } from "@testing-library/react";
 import { act, renderHook } from "@testing-library/react-hooks";
+
 import { useLocalStorage } from "../src/hooks";
 
 export async function resizeTo(width: number, height: number): Promise<void> {
