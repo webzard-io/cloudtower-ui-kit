@@ -5,7 +5,6 @@ export {
   antdKit,
   Button,
   FailedLoad,
-  formatImagesStr,
   KitStoreProvider,
   ModalStack,
   PAGINATION_SELECTOR,

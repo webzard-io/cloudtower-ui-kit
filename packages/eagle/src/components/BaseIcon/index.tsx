@@ -1,11 +1,8 @@
+import * as SVG from "@cloudtower/icons-react";
 import _ from "lodash";
 import React from "react";
 
-export type SrcType =
-  | string
-  | React.ForwardRefExoticComponent<
-      React.SVGProps<SVGSVGElement> & { title?: string; titleId?: string }
-    >;
+export type SrcType = string | typeof SVG[keyof typeof SVG];
 export interface IBaseIconProps extends React.HTMLAttributes<HTMLSpanElement> {
   className?: string;
   alt?: string;
