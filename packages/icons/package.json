@@ -10,5 +10,8 @@
   "devDependencies": {
     "rimraf": "^3.0.0",
     "svgo": "^1.0.0"
+  },
+  "exports": {
+    ".": "./dist"
   }
 }

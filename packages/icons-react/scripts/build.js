@@ -3,7 +3,6 @@ const camelcase = require("camelcase");
 const svgr = require("@svgr/core").default;
 const babel = require("@babel/core");
 const { dirname } = require("path");
-const { execSync } = require('child_process');
 
 const reactTransform = async (svg, componentName, format) => {
   let component = await svgr(

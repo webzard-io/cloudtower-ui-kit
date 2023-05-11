@@ -1,15 +1,16 @@
+import * as SVG from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import cs from "classnames";
 import _ from "lodash";
 import React, { useMemo, useState } from "react";
 
-import BaseIcon from "../BaseIcon";
+import BaseIcon, { SrcType } from "../BaseIcon";
 
 export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
-  src: string;
+  src: SrcType;
   active?: boolean;
-  hoverSrc?: string;
-  activeSrc?: string;
+  hoverSrc?: SrcType;
+  activeSrc?: SrcType;
   className?: string;
   alt?: string;
   iconWidth?: number;
@@ -18,9 +19,9 @@ export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
   isRotate?: boolean;
   prefix?: React.ReactNode;
   suffix?: {
-    src: string;
-    hoverSrc?: string;
-    activeSrc?: string;
+    src: SrcType;
+    hoverSrc?: SrcType;
+    activeSrc?: SrcType;
   };
 };
 
@@ -127,5 +128,9 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
     />
   );
 });
+
+export const formatImagesStr = (src: string) => {
+  return [_.upperFirst(_.camelCase(src)), "Icon"].join("") as keyof typeof SVG;
+};
 
 export default Icon;

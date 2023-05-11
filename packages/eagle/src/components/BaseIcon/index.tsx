@@ -1,6 +1,11 @@
 import _ from "lodash";
 import React from "react";
 
+export type SrcType =
+  | string
+  | React.ForwardRefExoticComponent<
+      React.SVGProps<SVGSVGElement> & { title?: string; titleId?: string }
+    >;
 export interface IBaseIconProps extends React.HTMLAttributes<HTMLSpanElement> {
   className?: string;
   alt?: string;
@@ -8,8 +13,8 @@ export interface IBaseIconProps extends React.HTMLAttributes<HTMLSpanElement> {
   height?: number | "auto";
   cursor?: "pointer" | string;
   prefixNode?: React.ReactNode;
-  suffixIconSrc?: string;
-  src: string;
+  suffixIconSrc?: SrcType;
+  src: SrcType;
 }
 
 const BaseIcon = React.forwardRef<HTMLSpanElement, IBaseIconProps>(
@@ -23,8 +28,8 @@ const BaseIcon = React.forwardRef<HTMLSpanElement, IBaseIconProps>(
       style,
       children,
       prefixNode,
-      suffixIconSrc,
-      src,
+      suffixIconSrc: SuffixSrc,
+      src: Src,
       ...HTMLSpanElementProps
     } = props;
 
@@ -37,12 +42,20 @@ const BaseIcon = React.forwardRef<HTMLSpanElement, IBaseIconProps>(
       >
         {prefixNode}
         <span className="icon-inner">
-          <img alt={alt} src={src} width={width} height={height} />
+          {typeof Src === "string" ? (
+            <img alt={alt} src={Src} width={width} height={height} />
+          ) : (
+            <Src width={width} height={height} />
+          )}
         </span>
         {children && <span className="icon-children">{children}</span>}
-        {suffixIconSrc && (
+        {SuffixSrc && (
           <span className="icon-inner suffix">
-            <img alt={alt} src={suffixIconSrc} width={width} height={height} />
+            {typeof SuffixSrc === "string" ? (
+              <img alt={alt} src={SuffixSrc} width={width} height={height} />
+            ) : (
+              <SuffixSrc width={width} height={height} />
+            )}
           </span>
         )}
       </span>

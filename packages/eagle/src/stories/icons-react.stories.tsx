@@ -1,29 +1,33 @@
-import { PlusCircleBlueIcon } from "@cloudtower/icons-react/16/filled";
-import { AlertBellGradientBlueIcon } from "@cloudtower/icons-react/24/filled";
+import * as Icons from "@cloudtower/icons-react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import React from "react";
+import { Divider } from "antd";
+import _ from "lodash";
+import React, { useMemo, useState } from "react";
+
+import Input from "../components/Input";
 
 const IconStories = (props: any) => {
+  const [filter, setFilter] = useState<string>("");
+  const filteredIcons = useMemo(() => {
+    const keys = Object.keys(Icons).filter((k) =>
+      k.toLocaleLowerCase().includes(filter.trim().toLocaleLowerCase())
+    );
+    return _.pick(Icons, keys);
+  }, [filter]);
+
   return (
     <div>
-      <div>
-        16
-        <div>
-          <PlusCircleBlueIcon />
-        </div>
-      </div>
-      <div>
-        24
-        <div>
-          <AlertBellGradientBlueIcon />
-        </div>
-      </div>
+      <Input onChange={(e) => setFilter(e.target.value)} />
+      <Divider />
+      {Object.values(filteredIcons).map((I) => (
+        <I />
+      ))}
     </div>
   );
 };
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "icons-react/FillIcons",
+  title: "@cloudtower/react-icons",
   component: IconStories,
 } as ComponentMeta<typeof IconStories>;
 

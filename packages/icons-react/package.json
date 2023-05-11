@@ -28,7 +28,8 @@
     "clean": "rimraf ./dist",
     "build-icons": "cd ../icons && npm run build && cd ../icons-react",
     "prebuild": "npm run clean && npm run build-icons",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "postbuild": "node ./scripts/images-types.js"
   },
   "devDependencies": {
     "@cloudtower/icons": "0.22.11",
