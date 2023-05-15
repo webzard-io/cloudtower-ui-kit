@@ -119,6 +119,8 @@ export interface RawValue {
   decimals?: number;
   noUnitOnZero?: boolean;
   abbreviate?: boolean;
+  valueClassName?: string;
+  unitClassName?: string;
 }
 export type UnitFn = React.FC<RawValue>;
 
@@ -434,16 +436,16 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     TimePicker: React.FunctionComponent<FieldBaseProps<V, T> & TimePickerProps>;
   };
   // specific unit data UI
-  // units: {
-  //   Byte: UnitFn;
-  //   Frequency: UnitFn;
-  //   Percent: UnitFn;
-  //   Speed: UnitFn;
-  //   Second: UnitFn;
-  //   Bps: UnitFn;
-  //   BitPerSecond: UnitFn;
-  //   Bit: UnitFn;
-  // };
+  units: {
+    Percent: UnitFn;
+    // Byte: UnitFn;
+    // Frequency: UnitFn;
+    // Speed: UnitFn;
+    // Second: UnitFn;
+    // Bps: UnitFn;
+    // BitPerSecond: UnitFn;
+    // Bit: UnitFn;
+  };
   inputGroup: InputGroupComponentType;
   // Empty: React.ReactElement | null;
   alert: AlertComponentType;
