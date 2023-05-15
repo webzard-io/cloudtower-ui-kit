@@ -62,6 +62,7 @@
     "@vitejs/plugin-react": "^2.1.0",
     "@vitest/coverage-c8": "^0.24.1",
     "babel-loader": "^8.3.0",
+    "copy-to-clipboard": "^3.3.3",
     "css-loader": "^6.7.3",
     "globby": "^13.1.2",
     "jsdom": "^20.0.1",

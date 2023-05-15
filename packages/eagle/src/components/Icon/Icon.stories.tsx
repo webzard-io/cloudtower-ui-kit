@@ -1,4 +1,8 @@
-import { ActiveUninstal14GradiendtRedIcon } from "@cloudtower/icons-react";
+import {
+  ActiveUninstal14GradiendtRedIcon,
+  VmIcon24BlueIcon,
+  CopyToEllipsis324GradientBlueIcon,
+} from "@cloudtower/icons-react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Row } from "antd";
 import _ from "lodash";
@@ -17,6 +21,12 @@ const IconStories = (props: any) => {
       <Row>Icon 和 @cloudtower/react-icons</Row>
       <Row>
         <Icon src={ActiveUninstal14GradiendtRedIcon} />
+        <Icon src={VmIcon24BlueIcon} iconHeight={24} iconWidth={24} />
+        <Icon
+          src={CopyToEllipsis324GradientBlueIcon}
+          iconHeight={32}
+          iconWidth={32}
+        />
       </Row>
     </div>
   );
