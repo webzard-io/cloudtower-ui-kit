@@ -7,7 +7,7 @@ export * from "./ButtonGroup";
 export { default as ErrorBoundary } from "./ErrorBoundary";
 export { default as FailedLoad } from "./FailedLoad";
 export type { IconProps } from "./Icon";
-export { formatImagesStr, default as Icon } from "./Icon";
+export { default as Icon } from "./Icon";
 export * from "./KitStoreProvider";
 export { default as KitStoreProvider } from "./KitStoreProvider";
 export { default as Loading } from "./Loading";

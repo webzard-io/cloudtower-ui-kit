@@ -1,4 +1,3 @@
-import * as SVG from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import cs from "classnames";
 import _ from "lodash";
@@ -128,9 +127,5 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
     />
   );
 });
-
-export const formatImagesStr = (src: string) => {
-  return [_.upperFirst(_.camelCase(src)), "Icon"].join("") as keyof typeof SVG;
-};
 
 export default Icon;
