@@ -55,7 +55,7 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
     onMouseMove,
     className,
     iconWidth = 16,
-    iconHeight,
+    iconHeight = 16,
     cursor,
     style,
     children,

@@ -775,6 +775,7 @@ describe("SimplePagination h5_css", () => {
                   class=icon-inner
                 >
                   <img
+                    height=16
                     src=/src/components/images/arrow-chevron-left-small-16-bold-blue.svg
                     width=16
                   />
@@ -1232,6 +1233,7 @@ describe("SimplePagination h5_css", () => {
                   class=icon-inner
                 >
                   <img
+                    height=16
                     src=/src/components/images/arrow-chevron-left-small-16-bold-blue.svg
                     width=16
                   />
@@ -2014,6 +2016,7 @@ describe("SimplePagination h5_css", () => {
                   class=icon-inner
                 >
                   <img
+                    height=16
                     src=/src/components/images/arrow-chevron-left-small-16-bold-blue.svg
                     width=16
                   />
