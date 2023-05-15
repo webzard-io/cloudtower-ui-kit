@@ -30,6 +30,7 @@ export type {
   SorterOrder,
   StringProps,
   TableProps,
+  TooltipProps,
 } from "./spec";
 export * from "./spec/type";
 export type {
