@@ -21,7 +21,7 @@
     "coverage": "vitest run --coverage",
     "typings": "tsc -v && tsc --emitDeclarationOnly --paths null",
     "generate:images": "node --loader ts-node/esm tools/index.mts",
-    "prestorybook": "cd ../.. && yarn turbo run generate-icons",
+    "prestorybook": "cd ../.. && yarn turbo run build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
