@@ -59,7 +59,6 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
     iconHeight = 16,
     cursor,
     style,
-    children,
     isRotate,
     prefix,
     suffix,

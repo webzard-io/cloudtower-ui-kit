@@ -24,6 +24,7 @@ const IconStories = (props: any) => {
       <Row>
         <Icon src={ActiveUninstal14GradiendtRedIcon} />
         <Icon src={Loading16GradientBlueIcon} isRotate={true} />
+        <Icon src={Loading16GradientBlueIcon}>加载中</Icon>
         <Icon src={VmIcon24BlueIcon} iconHeight={24} iconWidth={24} />
         <Icon
           src={CopyToEllipsis324GradientBlueIcon}
