@@ -475,7 +475,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     Sider: React.ComponentType<SiderProps>;
   };
   autoComplete: React.ForwardRefExoticComponent<AutoCompleteProps>;
-  // message: MessageInstance;
+  message: MessageInstance;
   tag: TagType;
   // popover: React.ForwardRefExoticComponent<
   //   PopoverProps & React.RefAttributes<unknown>
@@ -485,7 +485,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   //   ButtonGroupType & React.RefAttributes<HTMLDivElement>
   // >;
   // steps: React.FC<IStepsProps>;
-  // form: Form;
+  form: Form;
   simplePagination: React.FC<ISimplePaginationProps>;
   space: React.FC<ISpaceProps>;
   timeZoneSelect: React.FC<ITimeZoneSelectProps>;
