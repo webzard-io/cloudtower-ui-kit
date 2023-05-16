@@ -438,13 +438,13 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   // specific unit data UI
   units: {
     Percent: UnitFn;
-    // Byte: UnitFn;
-    // Frequency: UnitFn;
-    // Speed: UnitFn;
-    // Second: UnitFn;
-    // Bps: UnitFn;
-    // BitPerSecond: UnitFn;
-    // Bit: UnitFn;
+    Byte: UnitFn;
+    Frequency: UnitFn;
+    Speed: UnitFn;
+    Second: UnitFn;
+    Bps: UnitFn;
+    BitPerSecond: UnitFn;
+    Bit: UnitFn;
   };
   inputGroup: InputGroupComponentType;
   // Empty: React.ReactElement | null;
