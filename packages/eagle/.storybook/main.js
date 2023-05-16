@@ -2,10 +2,15 @@ const path = require("path");
 const fs = require("fs");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const GlobalSassPath = path.resolve(
+const VariableSassPath = path.resolve(
   __dirname,
   "../src/styles/common/variables.scss"
 );
+
+const AnimationPath = path.resolve(__dirname, 
+  "../src/styles/common/animation.scss"
+)
+
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
@@ -21,9 +26,12 @@ module.exports = {
     reactDocgen: "react-docgen-typescript-plugin",
   },
   webpackFinal: async (config, { configType }) => {
-    const additionalData = fs.readFileSync(GlobalSassPath, {
+    const varData = fs.readFileSync(VariableSassPath, {
       encoding: "utf8",
     });
+    const animationData = fs.readFileSync(AnimationPath, {
+      encoding: "utf-8",
+    })
 
     config.plugins.push(new MiniCssExtractPlugin());
 
@@ -37,7 +45,10 @@ module.exports = {
               sassOptions: {
                 sourceComments: false,
               },
-              additionalData,
+              additionalData:  [
+                varData,
+                animationData
+              ].join('\n')
             },
           },
         ],

@@ -19,6 +19,15 @@
   cd packages/eagle && yarn storybook
   ```
 
+## 如何贡献代码
+
+### 如何新增 icon
+
+- 将需要新增的 svg 图片放到 pacakge/icons/src 下面即可。
+- 提交 pr 前可以切换到 packages/icons-react 执行 `yarn build`，执行成功，即表示 SVG 构建成功。然后切换至 packages/ealge 执行 `yarn storybook` 可以在 react-icons 下看到对应的 icon 效果。
+- 提交名称注意名称合法性，目前是会将 `x-y-z` 转换为 `XZY` 格式的组件。注意名称中不要以数字开头和带上 `-` 之外的标点符号。
+- 目前 icon 只支持 SVG 格式，非 SVG 格式的 icon 目前需要在自己的 repo 中通过 `require('demo.png')` 的方式进行使用
+
 ## 建议的 VSCode 配置
 
 **.vscode/extensions.json**
@@ -156,38 +165,9 @@ husky 被用于格式化代码和检查 eslint 错误。
     │   └── tools
     │       └── templates
     ├── icons
-    │   ├── 16
-    │   │   ├── filled
-    │   │   └── outline
-    │   ├── 24
-    │   │   ├── filled
-    │   │   └── outline
-    │   ├── 32
-    │   │   └── outline
-    │   └── src
-    │       ├── 16
-    │       │   ├── filled
-    │       │   └── outline
-    │       ├── 24
-    │       │   ├── filled
-    │       │   └── outline
-    │       └── 32
-    │           └── outline
+    │   ├── src
     ├── icons-react
-    │   ├── 16
-    │   │   ├── filled
-    │   │   │   └── esm
-    │   │   └── outline
-    │   │       └── esm
-    │   ├── 24
-    │   │   ├── filled
-    │   │   │   └── esm
-    │   │   └── outline
-    │   │       └── esm
-    │   ├── 32
-    │   │   └── outline
-    │   │       └── esm
-    │   └── scripts
+    │   ├── dist
     └── parrot
         ├── src
         │   └── locales

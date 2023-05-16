@@ -765,7 +765,8 @@ describe("SimplePagination h5_css", () => {
           margin-left: 4px;
         }
         &.is-rotate {
-          img {
+          img,
+          svg {
             animation: rotate 680ms linear infinite;
           }
         }
@@ -1223,7 +1224,8 @@ describe("SimplePagination h5_css", () => {
           margin-left: 4px;
         }
         &.is-rotate {
-          img {
+          img,
+          svg {
             animation: rotate 680ms linear infinite;
           }
         }
@@ -2006,7 +2008,8 @@ describe("SimplePagination h5_css", () => {
           margin-left: 4px;
         }
         &.is-rotate {
-          img {
+          img,
+          svg {
             animation: rotate 680ms linear infinite;
           }
         }

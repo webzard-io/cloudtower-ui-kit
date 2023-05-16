@@ -3,15 +3,14 @@
   "pipeline": {
     "build": {
       "outputs": ["dist/**"],
-      "dependsOn": ["generate-icons"]
+      "dependsOn": ["^prebuild"]
     },
     "typings": {
       "outputs": ["dist/**"],
       "dependsOn": ["^typings"]
     },
-    "generate-icons": {
-      "outputs": ["16/**", "24/**", "32/**"],
-      "dependsOn": ["^generate-icons"]
+    "prebuild": {
+      "dependsOn": ["^prebuild"]
     },
     "lint": {
       "outputs": []

@@ -1,14 +1,15 @@
 import {
   ActiveUninstal14GradiendtRedIcon,
-  VmIcon24BlueIcon,
   CopyToEllipsis324GradientBlueIcon,
+  Loading16GradientBlueIcon,
+  VmIcon24BlueIcon,
 } from "@cloudtower/icons-react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Row } from "antd";
 import _ from "lodash";
 import React from "react";
 
-import { arrowChevronDownSmall16Blue } from "../images";
+import { arrowChevronDownSmall16Blue, loading24GradientBlue } from "../images";
 import Icon from ".";
 
 const IconStories = (props: any) => {
@@ -17,10 +18,13 @@ const IconStories = (props: any) => {
       <Row>Icon 和本地 repe 的 image src 的使用</Row>
       <Row>
         <Icon src={arrowChevronDownSmall16Blue} />
+        <Icon src={loading24GradientBlue} isRotate={true} />
       </Row>
       <Row>Icon 和 @cloudtower/react-icons</Row>
       <Row>
         <Icon src={ActiveUninstal14GradiendtRedIcon} />
+        <Icon src={Loading16GradientBlueIcon} isRotate={true} />
+        <Icon src={Loading16GradientBlueIcon}>加载中</Icon>
         <Icon src={VmIcon24BlueIcon} iconHeight={24} iconWidth={24} />
         <Icon
           src={CopyToEllipsis324GradientBlueIcon}

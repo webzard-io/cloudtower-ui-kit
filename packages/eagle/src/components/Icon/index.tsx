@@ -38,7 +38,8 @@ const IconWrapper = css`
     margin-left: 4px;
   }
   &.is-rotate {
-    img {
+    img,
+    svg {
       animation: rotate 680ms linear infinite;
     }
   }
@@ -58,7 +59,6 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
     iconHeight = 16,
     cursor,
     style,
-    children,
     isRotate,
     prefix,
     suffix,
