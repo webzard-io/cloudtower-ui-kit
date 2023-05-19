@@ -403,7 +403,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   button: React.FC<ButtonProps>;
   modal: React.FC<ModalProps>;
   dropdown: React.FC<DropDownProps>;
-  // switch: React.FC<SwitchProps>;
+  switch: React.FC<SwitchProps>;
   tooltip: React.FC<TooltipProps>;
   input: React.FC<InputProps & { error?: boolean }>;
   textArea: React.FC<TextAreaProps>;
@@ -447,17 +447,17 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     Bit: UnitFn;
   };
   inputGroup: InputGroupComponentType;
-  // Empty: React.ReactElement | null;
+  Empty: React.ReactElement | null;
   alert: AlertComponentType;
   searchInput: React.FC<SearchInputProps>;
-  // badge: BadgeComponentType;
+  badge: BadgeComponentType;
   radio: React.FC<RadioProps>;
   radioGroup: React.FC<AntdRadioGroupProps>;
   radioButton: React.FC<RadioButtonProps>;
-  // tree: React.FC<AntdTreeProps>;
-  // progress: ProgressComponentType;
+  tree: React.FC<AntdTreeProps>;
+  progress: ProgressComponentType;
   divider: React.FC<AntdDividerProps>;
-  // skeleton: React.FC<AntdSkeletonProps>;
+  skeleton: React.FC<AntdSkeletonProps>;
   menu: React.ComponentType<MenuProps> & {
     Divider: React.FC<import("rc-menu/lib/Divider").DividerProps>;
     Item: React.ComponentType<MenuItemProps>;
@@ -477,14 +477,14 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   autoComplete: React.ForwardRefExoticComponent<AutoCompleteProps>;
   message: MessageInstance;
   tag: TagType;
-  // popover: React.ForwardRefExoticComponent<
-  //   PopoverProps & React.RefAttributes<unknown>
-  // >;
-  // arch: ArchComponentType;
-  // buttonGroup: React.ForwardRefExoticComponent<
-  //   ButtonGroupType & React.RefAttributes<HTMLDivElement>
-  // >;
-  // steps: React.FC<IStepsProps>;
+  popover: React.ForwardRefExoticComponent<
+    PopoverProps & React.RefAttributes<unknown>
+  >;
+  arch: ArchComponentType;
+  buttonGroup: React.ForwardRefExoticComponent<
+    ButtonGroupType & React.RefAttributes<HTMLDivElement>
+  >;
+  steps: React.FC<IStepsProps>;
   form: Form;
   simplePagination: React.FC<ISimplePaginationProps>;
   space: React.FC<ISpaceProps>;
