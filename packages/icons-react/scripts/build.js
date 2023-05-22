@@ -13,6 +13,7 @@ const reactTransform = async (svg, componentName, format) => {
   let { code } = await babel.transformAsync(component, {
     plugins: [
       [require("@babel/plugin-transform-react-jsx"), { useBuiltIns: true }],
+      [require("./transformId"), { componentName }]
     ],
   });
 
