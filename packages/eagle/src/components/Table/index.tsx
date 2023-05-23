@@ -519,12 +519,4 @@ export default Table;
 
 export type { CustomizeColumnType } from "../../hooks";
 export * from "./common";
-export * from "./customize-column";
-export * from "./CustomizeColumn";
-export { default as CustomizeColumn } from "./CustomizeColumn";
-export * from "./HeaderCell";
-export { default as HeaderCell } from "./HeaderCell";
-export * from "./PendingTable";
-export { default as PendingTable } from "./PendingTable";
-export * from "./SearchWidget";
 export * from "./TableWidget";

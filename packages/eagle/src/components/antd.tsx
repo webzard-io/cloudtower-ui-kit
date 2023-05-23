@@ -46,13 +46,6 @@ import SimplePagination from "./SimplePagination";
 import Space from "./Space";
 import Speed from "./Speed";
 import Steps from "./Steps";
-import {
-  MODAL_WHITELIST,
-  PAGINATION_SELECTOR,
-  TABLE_WRAPPER_SELECTOR,
-  TBODY_SELECTOR,
-  THEAD_SELECTOR,
-} from "./Styled";
 import Switch from "./Switch";
 import Table from "./Table";
 import TextArea from "./TextArea";
@@ -61,11 +54,6 @@ import Tooltip from "./Tooltip";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
-    PAGINATION_SELECTOR,
-    TABLE_WRAPPER_SELECTOR,
-    THEAD_SELECTOR,
-    TBODY_SELECTOR,
-    MODAL_WHITELIST,
     loading: Loading,
     // error: ({ error }) => <div className="error">{String(error)}</div>,
     pagination: Pagination,

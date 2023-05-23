@@ -19,24 +19,20 @@ import {
 
 export { ChartActions } from "./chart";
 export { ModalActions } from "./modal";
-export { TableActions } from "./table";
 
 export type KitRootState = {
   chart: ChartState;
   modal: ModalState;
-  // table: TableState;
 };
 
 const appReducer = combineReducers({
   chart: chartReducer,
   modal: modalReducer,
-  // table: tableReducer,
 });
 
 export type Actions =
   | ModalActionType
   | ChartActionType
-  // | TableActionType
   | {
       type: "RESET_UI_KIT_STORE";
     };
@@ -48,7 +44,6 @@ export const rootReducer = (
     state = {
       modal: initialModalState,
       chart: initialChartState,
-      // table: initialTableState,
     };
   }
   return appReducer(state, action as any);
@@ -83,4 +78,3 @@ export type GetModalProps<K extends keyof IModalProps> = IModalProps[K] &
 
 export * from "./chart";
 export * from "./modal";
-// export * from "./table";
