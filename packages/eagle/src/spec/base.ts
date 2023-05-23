@@ -387,12 +387,6 @@ export interface ISimplePaginationProps {
 }
 
 export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
-  // constants
-  PAGINATION_SELECTOR: string;
-  TABLE_WRAPPER_SELECTOR: string;
-  THEAD_SELECTOR: string;
-  TBODY_SELECTOR: string;
-  MODAL_WHITELIST: string[];
   // general UI
   loading: LoadingComponentType;
   // error: React.FunctionComponent<{ error: unknown }>;
