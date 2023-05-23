@@ -318,6 +318,7 @@ export const tableStyleCover = css`
           > span {
             overflow: hidden;
             text-overflow: ellipsis;
+            flex: 1;
           }
         }
 
