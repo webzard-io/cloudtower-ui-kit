@@ -407,6 +407,7 @@ describe("Table h5_css", () => {
                 > span {
                   overflow: hidden;
                   text-overflow: ellipsis;
+                  flex: 1;
                 }
               }
 
