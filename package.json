@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/ejs": "^3.1.1",
+    "bundlewatch": "^0.3.3",
     "eslint": "^8.25.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-simple-import-sort": "^8.0.0",
@@ -35,5 +36,21 @@
   "resolutions": {
     "@types/react": "^17.0.50",
     "@ant-design/icons": "4.2.1"
+  },
+  "bundlewatch": {
+    "files": [
+      {
+        "path": "./packages/eagle/dist/**/*.js",
+        "maxSize": "30 kB"
+      },
+      {
+        "path": "./packages/icons-react/dist/*.js",
+        "maxSize": "110 kB"
+      },
+      {
+        "path": "./packages/parrot/dist/**/*.js",
+        "maxSize": "5 kB"
+      }
+    ]
   }
 }
