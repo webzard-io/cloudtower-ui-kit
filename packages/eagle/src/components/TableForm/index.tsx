@@ -7,29 +7,16 @@ import React, {
   useState,
 } from "react";
 
+import AddRowButton from "./AddRowButton";
 import {
   BatchInputListBodyItemStyle,
   BatchInputListHeaderItemStyle,
+  TableFormWrapper,
 } from "./style";
 import { TableFormBodyCell } from "./TableFormBodyCell";
 import { BatchInputListHeaderCell } from "./TableFormHeaderCell";
-import { ErrorInfo, TableFormColumn } from "./types";
-
-type TableFormProps = {
-  defaultData: any[];
-  columns: TableFormColumn[];
-  rowCount?: number;
-  errorInfo?: ErrorInfo;
-  disabled?: boolean;
-  onHeaderChange?: (data: unknown[]) => void;
-  onHeaderBlur?: (data: unknown[]) => void;
-  onBodyChange?: (value: unknown[], path: string) => void;
-  onBodyBlur?: (value: unknown, path: string) => void;
-};
-
-export type TableFormHandle = {
-  setData: (data: Record<string, any>[]) => void;
-};
+import { TableFormHandle, TableFormProps } from "./types";
+import { genEmptyRow } from "./utils";
 
 const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
   (
@@ -39,6 +26,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       rowCount = 3,
       errorInfo = {},
       disabled,
+      rowAddConfig,
       onHeaderChange,
       onHeaderBlur,
       onBodyChange,
@@ -51,18 +39,14 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
     const [latestData, setLatestData] =
       useState<Record<string, any>[]>(defaultData);
 
-    useEffect(() => {
-      setLatestData(defaultData);
-      setData(defaultData);
-    }, [defaultData]);
+    const updateData = useCallback((data: Record<string, any>[]) => {
+      setLatestData(data);
+      setData(data);
+    }, []);
 
-    const genEmptyRow = useCallback(() => {
-      const row: Record<string, any> = {};
-      columns.forEach((col) => {
-        row[col.key] = col.defaultValue;
-      });
-      return row;
-    }, [columns]);
+    useEffect(() => {
+      updateData(defaultData);
+    }, [defaultData, updateData]);
 
     const handleBatchChange = useCallback(
       (newData) => {
@@ -93,17 +77,18 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
     );
     const handleChange = useCallback(
       (newData, path) => {
-        setLatestData(newData);
-        setData(newData);
+        updateData(newData);
         onBodyChange?.(newData, path);
       },
-      [onBodyChange]
+      [onBodyChange, updateData]
     );
 
-    const handleClear = useCallback((newData, path) => {
-      setLatestData(newData);
-      setData(newData);
-    }, []);
+    const handleClear = useCallback(
+      (newData, path) => {
+        updateData(newData);
+      },
+      [updateData]
+    );
 
     const handleBlur = useCallback(
       (newData, path) => {
@@ -120,27 +105,29 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       if (rowCount < data.length) {
         const newData = data.slice(0, rowCount);
 
-        setLatestData(newData);
-        setData(newData);
+        updateData(newData);
         return;
       }
 
       const newData = [...data];
       while (rowCount > newData.length) {
-        newData.push(genEmptyRow());
+        newData.push(genEmptyRow(columns));
       }
-      setLatestData(newData);
-      setData(newData);
+      updateData(newData);
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [rowCount, genEmptyRow]);
+    }, [rowCount, columns]);
 
-    useImperativeHandle(ref, () => ({
-      setData: (data: Record<string, any>[]) => {
-        console.log("useImperativeHandle", data);
-        setLatestData(data);
-        setData(data);
-      },
-    }));
+    useImperativeHandle(
+      ref,
+      () => ({
+        setData: (data: Record<string, any>[]) => {
+          console.log("useImperativeHandle", data);
+          updateData(data);
+        },
+        getData: () => data,
+      }),
+      [data, updateData]
+    );
 
     const items = useMemo(() => {
       return data.map((_d, i) => {
@@ -188,14 +175,22 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
     });
 
     return (
-      <div>
+      <TableFormWrapper>
         <AntdList size="small">
           <AntdList.Item className={BatchInputListHeaderItemStyle}>
             {headerCells}
           </AntdList.Item>
           {items}
         </AntdList>
-      </div>
+        {rowAddConfig?.addible ? (
+          <AddRowButton
+            config={rowAddConfig}
+            updateData={updateData}
+            columns={columns}
+            data={data}
+          />
+        ) : null}
+      </TableFormWrapper>
     );
   }
 );

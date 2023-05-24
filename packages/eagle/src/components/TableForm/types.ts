@@ -57,3 +57,34 @@ export interface ColumnBodyCellProps {
   // Whether the password is show or hide
   visible?: boolean;
 }
+
+export type AddRowButtonProps = {
+  config: RowAddConfigurations;
+  columns: TableFormColumn[];
+  updateData: (data: Record<string, any>[]) => void;
+  data: Record<string, any>[];
+};
+
+export type RowAddConfigurations = {
+  addible: boolean;
+  maximum?: number;
+  className?: string;
+  CustomizedButton?: (props: AddRowButtonProps) => React.ReactElement;
+};
+
+export type TableFormProps = {
+  defaultData: any[];
+  columns: TableFormColumn[];
+  rowCount?: number;
+  errorInfo?: ErrorInfo;
+  disabled?: boolean;
+  rowAddConfig?: RowAddConfigurations;
+  onHeaderChange?: (data: unknown[]) => void;
+  onHeaderBlur?: (data: unknown[]) => void;
+  onBodyChange?: (value: unknown[], path: string) => void;
+  onBodyBlur?: (value: unknown, path: string) => void;
+};
+
+export type TableFormHandle = {
+  setData: (data: Record<string, any>[]) => void;
+};

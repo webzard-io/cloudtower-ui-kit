@@ -1,4 +1,5 @@
 import { css } from "@linaria/core";
+import { styled } from "@linaria/react";
 
 export const BatchInputListBodyItemStyle = css`
   display: flex;
@@ -71,5 +72,25 @@ export const BodyCellIconStyle = css`
 export const CheckboxStyle = css`
   & .ant-checkbox {
     height: 32px !important;
+  }
+`;
+
+export const TableFormWrapper = styled.div``;
+
+export const AddRowButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  button.ant-btn {
+    padding: 2px 8px;
+    height: 24px;
+  }
+  & > span.maximum-desc {
+    display: none;
+    margin-left: 8px;
+    color: $text-secondary-light;
+    &.disabled {
+      display: inline;
+    }
   }
 `;

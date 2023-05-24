@@ -1,3 +1,5 @@
+import { TableFormColumn } from "./types";
+
 export function increaseLastNumber(str: string, num: number): string {
   const lastNumberMatch = str.match(/(\d+)$/);
 
@@ -16,3 +18,11 @@ export function increaseLastNumber(str: string, num: number): string {
 
   return `${prefix}${newLastNumber}`;
 }
+
+export const genEmptyRow = (columns: TableFormColumn[]) => {
+  const row: Record<string, any> = {};
+  columns.forEach((col) => {
+    row[col.key] = col.defaultValue;
+  });
+  return row;
+};
