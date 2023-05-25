@@ -8,6 +8,7 @@ export { default as ErrorBoundary } from "./ErrorBoundary";
 export { default as FailedLoad } from "./FailedLoad";
 export type { IconProps } from "./Icon";
 export { default as Icon } from "./Icon";
+export { default as InputTagItem } from "./InputTagItem";
 export * from "./KitStoreProvider";
 export { default as KitStoreProvider } from "./KitStoreProvider";
 export { default as Loading } from "./Loading";

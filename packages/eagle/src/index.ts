@@ -6,6 +6,7 @@ export {
   Button,
   FailedLoad,
   Icon,
+  InputTagItem,
   KitStoreProvider,
   ModalStack,
   PAGINATION_SELECTOR,
