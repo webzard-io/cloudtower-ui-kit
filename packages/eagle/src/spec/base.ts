@@ -32,6 +32,7 @@ import { RadioButtonProps as AntdRadioButtonProps } from "antd/lib/radio/radioBu
 import { RowProps } from "antd/lib/row";
 import { SelectProps as AntdSelectProps } from "antd/lib/select";
 import { SkeletonProps as AntdSkeletonProps } from "antd/lib/skeleton";
+import { SkeletonButtonProps } from "antd/lib/skeleton/Button";
 import { StepProps, StepsProps } from "antd/lib/steps";
 import { SwitchProps as AntdSwitchProps } from "antd/lib/switch";
 import {
@@ -452,6 +453,12 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   progress: ProgressComponentType;
   divider: React.FC<AntdDividerProps>;
   skeleton: React.FC<AntdSkeletonProps>;
+  skeletonButton: {
+    (props: SkeletonButtonProps): JSX.Element;
+    defaultProps: {
+      size: string;
+    };
+  };
   menu: React.ComponentType<MenuProps> & {
     Divider: React.FC<import("rc-menu/lib/Divider").DividerProps>;
     Item: React.ComponentType<MenuItemProps>;
