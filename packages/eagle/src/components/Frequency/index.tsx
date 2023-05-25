@@ -1,19 +1,25 @@
 import React from "react";
+import { cx } from "@linaria/core";
 
 import { UnitFn } from "../../spec";
 import isEmpty from "../../utils/isEmpty";
 import { formatFrequency } from "../../utils/tower";
 import Empty from "../Empty";
 
-const Frequency: UnitFn = ({ rawValue, decimals }) => {
+const Frequency: UnitFn = ({
+  rawValue,
+  decimals,
+  valueClassName,
+  unitClassName,
+}) => {
   if (isEmpty(rawValue)) {
     return Empty;
   }
   const { value, unit } = formatFrequency(rawValue, decimals);
   return (
     <span>
-      <span className="value">{value}</span>
-      <span className="unit">{` ${unit}`}</span>
+      <span className={cx("value", valueClassName)}>{value}</span>
+      <span className={cx("unit", unitClassName)}>{` ${unit}`}</span>
     </span>
   );
 };
