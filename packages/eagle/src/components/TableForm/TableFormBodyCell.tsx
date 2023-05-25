@@ -1,7 +1,6 @@
 import React from "react";
 
 import { ColumnBodyImpls } from "./Columns";
-import { BatchInputListBodyCellStyle } from "./style";
 import { ColumnBodyCellProps } from "./types";
 
 export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
@@ -14,7 +13,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
     : column.width + "px";
   return (
     <div
-      className={BatchInputListBodyCellStyle}
+      className="eagle-table-form-cell"
       style={{
         maxWidth: column.width ? width : "",
         minWidth: column.width ? width : "",

@@ -1,51 +1,6 @@
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 
-export const BatchInputListBodyItemStyle = css`
-  display: flex;
-  justify-content: flex-start !important;
-  align-items: flex-start !important;
-  flex-wrap: nowrap !important;
-  padding: 0 6px !important;
-  padding-top: 10px !important;
-  border: 1px solid transparent !important;
-`;
-
-export const BatchInputListHeaderItemStyle = css`
-  display: flex;
-  padding: 6px !important;
-  & {
-    align-items: inherit;
-  }
-  flex-wrap: nowrap !important;
-  justify-content: flex-start !important;
-  background: rgba(237, 241, 250, 0.6);
-  font-size: 14px;
-  color: rgba(44, 56, 82, 0.75);
-  border: 1px solid rgba(225, 230, 241, 0.6);
-  border-radius: 5px;
-`;
-
-export const BatchInputListBodyCellStyle = css`
-  flex: 1 1 0;
-  min-width: 0;
-
-  &:not(:last-child) {
-    margin-right: 10px;
-  }
-`;
-
-export const BatchInputListHeaderCellStyle = css`
-  flex: 1 1 0;
-  min-width: 0;
-  white-space: nowrap;
-  color: #00122e;
-
-  &:not(:last-child) {
-    margin-right: 10px;
-  }
-`;
-
 export const TitleStyle = css`
   height: 22px;
   margin-bottom: 4px;
@@ -65,17 +20,57 @@ export const BodyCellTextStyle = css`
 `;
 
 export const BodyCellIconStyle = css`
-  line-height: 32px !important;
+  line-height: 32px;
   margin-right: 6px;
 `;
 
 export const CheckboxStyle = css`
   & .ant-checkbox {
-    height: 32px !important;
+    height: 32px;
   }
 `;
 
-export const TableFormWrapper = styled.div``;
+export const TableFormWrapper = styled.div`
+  .ant-list {
+    .eagle-table-form-header {
+      display: flex;
+      padding: 8px;
+      & {
+        align-items: inherit;
+      }
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      background: rgba(237, 241, 250, 0.6);
+      font-size: 14px;
+      color: rgba(44, 56, 82, 0.75);
+      border: 1px solid rgba(225, 230, 241, 0.6);
+      border-radius: 5px;
+    }
+    .eagle-table-form-row {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      padding: 8px;
+      border: none;
+    }
+    .eagle-table-form-cell {
+      flex: 1 0 0;
+
+      &:not(:last-child) {
+        margin-right: 8px;
+      }
+    }
+    .ant-list-item-action {
+      min-width: 24px;
+      align-self: center;
+    }
+    .delete-row-icon.disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+`;
 
 export const AddRowButtonWrapper = styled.div`
   display: flex;

@@ -1,7 +1,6 @@
 import React from "react";
 
 import { ColumnHeaderImpls } from "./Columns";
-import { BatchInputListHeaderCellStyle } from "./style";
 import { ColumnHeaderCellProps } from "./types";
 
 export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
@@ -16,7 +15,7 @@ export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
     : column.width + "px";
   return (
     <div
-      className={BatchInputListHeaderCellStyle}
+      className="eagle-table-form-cell"
       style={{
         maxWidth: column.width ? width : "",
         minWidth: column.width ? width : "",

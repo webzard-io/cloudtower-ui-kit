@@ -30,28 +30,32 @@ export type TableFormColumn = {
 };
 
 export interface ColumnHeaderCellProps {
-  data: Record<string, any>[];
-  latestData: Record<string, any>[];
+  data: DataType[];
+  latestData: DataType[];
   column: TableFormColumn;
   disabled?: boolean;
   errorInfo: ErrorInfo;
-  onChange?: (newData: Record<string, any>[], key: string) => void;
+  onChange?: (newData: DataType[], key: string) => void;
   onBlur?: (key: string, error?: string) => void;
   // Used to control whether the body password input is show or hide
   onVisibleChange?: (visible: boolean) => void;
 }
 
+export type DataType = {
+  [columnKey: string]: any;
+  deletable?: boolean;
+};
+
 export interface ColumnBodyCellProps {
-  data: Record<string, any>[];
-  latestData: Record<string, any>[];
-  defaultData: Record<string, any>[];
+  data: DataType[];
+  latestData: DataType[];
   errorInfo: ColumnHeaderCellProps["errorInfo"];
   index: number;
   column: TableFormColumn;
   disabled?: boolean;
-  onChange?: (newData: Record<string, any>[], path: string) => void;
-  onBlur?: (newData: Record<string, any>[], path: string) => void;
-  onClear?: (newData: Record<string, any>[], path: string) => void;
+  onChange?: (newData: DataType[], path: string) => void;
+  onBlur?: (newData: DataType[], path: string) => void;
+  onClear?: (newData: DataType[], path: string) => void;
   customData?: any;
   placeholderValue?: string;
   // Whether the password is show or hide
@@ -61,8 +65,8 @@ export interface ColumnBodyCellProps {
 export type AddRowButtonProps = {
   config: RowAddConfigurations;
   columns: TableFormColumn[];
-  updateData: (data: Record<string, any>[]) => void;
-  data: Record<string, any>[];
+  updateData: (data: DataType[]) => void;
+  data: DataType[];
 };
 
 export type RowAddConfigurations = {
@@ -72,6 +76,21 @@ export type RowAddConfigurations = {
   CustomizedButton?: (props: AddRowButtonProps) => React.ReactElement;
 };
 
+export interface TableFormRowsProps
+  extends Omit<
+    TableFormProps,
+    | "rowCount"
+    | "rowAddConfig"
+    | "onHeaderChange"
+    | "onHeaderBlur"
+    | "defaultData"
+  > {
+  data: DataType[];
+  latestData: DataType[];
+  updateData: (data: DataType[]) => void;
+  passwordVisible: boolean;
+}
+
 export type TableFormProps = {
   defaultData: any[];
   columns: TableFormColumn[];
@@ -79,12 +98,14 @@ export type TableFormProps = {
   errorInfo?: ErrorInfo;
   disabled?: boolean;
   rowAddConfig?: RowAddConfigurations;
+  deletable?: boolean;
+  size?: "default" | "large";
   onHeaderChange?: (data: unknown[]) => void;
   onHeaderBlur?: (data: unknown[]) => void;
-  onBodyChange?: (value: unknown[], path: string) => void;
-  onBodyBlur?: (value: unknown, path: string) => void;
+  onBodyChange?: (value: DataType[], path: string) => void;
+  onBodyBlur?: (value: DataType, path: string) => void;
 };
 
 export type TableFormHandle = {
-  setData: (data: Record<string, any>[]) => void;
+  setData: (data: DataType[]) => void;
 };

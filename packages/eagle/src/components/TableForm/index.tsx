@@ -3,19 +3,14 @@ import React, {
   useCallback,
   useEffect,
   useImperativeHandle,
-  useMemo,
   useState,
 } from "react";
 
 import AddRowButton from "./AddRowButton";
-import {
-  BatchInputListBodyItemStyle,
-  BatchInputListHeaderItemStyle,
-  TableFormWrapper,
-} from "./style";
-import { TableFormBodyCell } from "./TableFormBodyCell";
+import { TableFormWrapper } from "./style";
+import TableFormBodyRows from "./TableFormBodyRows";
 import { BatchInputListHeaderCell } from "./TableFormHeaderCell";
-import { TableFormHandle, TableFormProps } from "./types";
+import { DataType, TableFormHandle, TableFormProps } from "./types";
 import { genEmptyRow } from "./utils";
 
 const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
@@ -27,6 +22,8 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       errorInfo = {},
       disabled,
       rowAddConfig,
+      deletable,
+      size = "default",
       onHeaderChange,
       onHeaderBlur,
       onBodyChange,
@@ -34,12 +31,11 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
     },
     ref
   ) => {
-    const [data, setData] = useState<Record<string, any>[]>(defaultData);
+    const [data, setData] = useState<DataType[]>(defaultData);
     const [passwordVisible, setPasswordVisible] = useState(false);
-    const [latestData, setLatestData] =
-      useState<Record<string, any>[]>(defaultData);
+    const [latestData, setLatestData] = useState<DataType[]>(defaultData);
 
-    const updateData = useCallback((data: Record<string, any>[]) => {
+    const updateData = useCallback((data: DataType[]) => {
       setLatestData(data);
       setData(data);
     }, []);
@@ -55,6 +51,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       },
       [onHeaderChange]
     );
+
     const handleBatchBlur = useCallback(
       (key, error) => {
         if (error) {
@@ -74,27 +71,6 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
         }
       },
       [latestData, onHeaderBlur]
-    );
-    const handleChange = useCallback(
-      (newData, path) => {
-        updateData(newData);
-        onBodyChange?.(newData, path);
-      },
-      [onBodyChange, updateData]
-    );
-
-    const handleClear = useCallback(
-      (newData, path) => {
-        updateData(newData);
-      },
-      [updateData]
-    );
-
-    const handleBlur = useCallback(
-      (newData, path) => {
-        onBodyBlur?.(newData, path);
-      },
-      [onBodyBlur]
     );
 
     // modify data size when rowCount changes
@@ -120,7 +96,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
     useImperativeHandle(
       ref,
       () => ({
-        setData: (data: Record<string, any>[]) => {
+        setData: (data: DataType[]) => {
           console.log("useImperativeHandle", data);
           updateData(data);
         },
@@ -128,35 +104,6 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       }),
       [data, updateData]
     );
-
-    const items = useMemo(() => {
-      return data.map((_d, i) => {
-        const cells = columns.map((col, index) => {
-          return (
-            <TableFormBodyCell
-              key={col.key}
-              column={col}
-              data={data}
-              latestData={latestData}
-              defaultData={defaultData}
-              disabled={disabled}
-              index={i}
-              errorInfo={errorInfo}
-              onClear={handleClear}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              visible={passwordVisible}
-            />
-          );
-        });
-        return (
-          <AntdList.Item className={BatchInputListBodyItemStyle} key={i}>
-            {cells}
-          </AntdList.Item>
-        );
-      });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [columns, data, disabled, errorInfo, latestData, passwordVisible]);
 
     const headerCells = columns.map((col) => {
       return (
@@ -176,11 +123,25 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
 
     return (
       <TableFormWrapper>
-        <AntdList size="small">
-          <AntdList.Item className={BatchInputListHeaderItemStyle}>
+        <AntdList size={size}>
+          <AntdList.Item
+            className="eagle-table-form-header"
+            actions={deletable ? [<></>] : undefined}
+          >
             {headerCells}
           </AntdList.Item>
-          {items}
+          <TableFormBodyRows
+            data={data}
+            latestData={latestData}
+            columns={columns}
+            passwordVisible={passwordVisible}
+            errorInfo={errorInfo}
+            deletable={deletable}
+            disabled={disabled}
+            onBodyBlur={onBodyBlur}
+            onBodyChange={onBodyChange}
+            updateData={updateData}
+          />
         </AntdList>
         {rowAddConfig?.addible ? (
           <AddRowButton
