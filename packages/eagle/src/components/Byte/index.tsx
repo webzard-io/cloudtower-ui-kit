@@ -1,3 +1,4 @@
+import { cx } from "@linaria/core";
 import { parrotI18n } from "@cloudtower/parrot";
 import React from "react";
 
@@ -6,7 +7,13 @@ import isEmpty from "../../utils/isEmpty";
 import { formatBytes } from "../../utils/tower";
 import Empty from "../Empty";
 
-const Byte: UnitFn = ({ rawValue, noUnitOnZero, decimals }) => {
+const Byte: UnitFn = ({
+  rawValue,
+  noUnitOnZero,
+  decimals,
+  valueClassName,
+  unitClassName,
+}) => {
   if (isEmpty(rawValue)) {
     return Empty;
   }
@@ -19,8 +26,8 @@ const Byte: UnitFn = ({ rawValue, noUnitOnZero, decimals }) => {
   }
   return (
     <span>
-      <span className="value">{value}</span>
-      <span className="unit">{` ${unit}`}</span>
+      <span className={cx("value", valueClassName)}>{value}</span>
+      <span className={cx("unit", unitClassName)}>{` ${unit}`}</span>
     </span>
   );
 };
