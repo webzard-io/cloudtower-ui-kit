@@ -93,6 +93,7 @@ export function getAntdKit(): Kit {
     progress: Progress,
     divider: Divider,
     skeleton: Skeleton,
+    skeletonButton: Skeleton.Button,
     list: List,
     listItem: List.Item,
     menu: Menu,
