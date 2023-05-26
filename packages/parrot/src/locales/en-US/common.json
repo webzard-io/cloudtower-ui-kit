@@ -23,5 +23,15 @@
   "calculation": "Computing",
   "on": "On",
   "error_message": "Error Message",
-  "retry": "Retry"
+  "retry": "Retry",
+  "week_abbreviation": "week",
+  "day_abbreviation": "day",
+  "hour_abbreviation": "h",
+  "minute_abbreviation": "min",
+  "second_abbreviation": "sec",
+  "week": "Week",
+  "day": "Day",
+  "hour": "Hour",
+  "minute": "Minute",
+  "second": "Second"
 }
