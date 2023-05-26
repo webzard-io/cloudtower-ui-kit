@@ -23,5 +23,15 @@
   "calculation": "计算中",
   "on": "开启",
   "error_message": "错误信息",
-  "retry": "重试"
+  "retry": "重试",
+  "week_abbreviation": "周",
+  "day_abbreviation": "天",
+  "hour_abbreviation": "小时",
+  "minute_abbreviation": "分钟",
+  "second_abbreviation": "秒",
+  "week": "周",
+  "day": "天",
+  "hour": "小时",
+  "minute": "分钟",
+  "second": "秒"
 }
