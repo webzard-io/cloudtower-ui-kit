@@ -55,7 +55,7 @@ import Tooltip from "./Tooltip";
 export function getAntdKit(): Kit {
   const kit: Kit = {
     loading: Loading,
-    // error: ({ error }) => <div className="error">{String(error)}</div>,
+    error: ({ error }) => <div className="error">{String(error)}</div>,
     pagination: Pagination,
     select: Select,
     option: AntdSelect.Option as OptionComponentType,
