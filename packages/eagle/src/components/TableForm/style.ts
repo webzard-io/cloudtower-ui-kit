@@ -53,6 +53,12 @@ export const TableFormWrapper = styled.div`
       flex-wrap: nowrap;
       padding: 8px;
       border: none;
+      &:hover {
+        background-color: $fills-light-trans-1;
+      }
+      &.isDragging {
+        background-color: $fills-light-general-general-light;
+      }
     }
     .eagle-table-form-cell {
       flex: 1 0 0;
@@ -88,4 +94,11 @@ export const AddRowButtonWrapper = styled.div`
       display: inline;
     }
   }
+`;
+
+export const DraggableHandleWrapper = styled.div`
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  align-self: center;
 `;

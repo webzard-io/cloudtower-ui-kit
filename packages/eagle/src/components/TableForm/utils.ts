@@ -26,3 +26,17 @@ export const genEmptyRow = (columns: TableFormColumn[]) => {
   });
   return row;
 };
+
+export const moveItemInArray: <T>(
+  array: T[],
+  fromIndex: number,
+  toIndex: number
+) => T[] = (array, fromIndex, toIndex) => {
+  const arrLength = array.length;
+  const sortArr = [...array];
+  if (fromIndex > -1 && fromIndex < arrLength) {
+    const moveItem = sortArr.splice(fromIndex, 1)[0];
+    sortArr.splice(toIndex, 0, moveItem);
+  }
+  return sortArr;
+};

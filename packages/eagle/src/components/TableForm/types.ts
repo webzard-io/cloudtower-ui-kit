@@ -100,6 +100,7 @@ export type TableFormProps = {
   rowAddConfig?: RowAddConfigurations;
   deletable?: boolean;
   size?: "default" | "large";
+  draggable?: boolean;
   onHeaderChange?: (data: unknown[]) => void;
   onHeaderBlur?: (data: unknown[]) => void;
   onBodyChange?: (value: DataType[], path: string) => void;

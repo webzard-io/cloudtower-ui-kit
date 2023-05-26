@@ -7,7 +7,7 @@ import React, {
 } from "react";
 
 import AddRowButton from "./AddRowButton";
-import { TableFormWrapper } from "./style";
+import { DraggableHandleWrapper, TableFormWrapper } from "./style";
 import TableFormBodyRows from "./TableFormBodyRows";
 import { BatchInputListHeaderCell } from "./TableFormHeaderCell";
 import { DataType, TableFormHandle, TableFormProps } from "./types";
@@ -24,6 +24,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       rowAddConfig,
       deletable,
       size = "default",
+      draggable,
       onHeaderChange,
       onHeaderBlur,
       onBodyChange,
@@ -128,6 +129,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
             className="eagle-table-form-header"
             actions={deletable ? [<></>] : undefined}
           >
+            {draggable ? <DraggableHandleWrapper /> : null}
             {headerCells}
           </AntdList.Item>
           <TableFormBodyRows
@@ -138,6 +140,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
             errorInfo={errorInfo}
             deletable={deletable}
             disabled={disabled}
+            draggable={draggable}
             onBodyBlur={onBodyBlur}
             onBodyChange={onBodyChange}
             updateData={updateData}

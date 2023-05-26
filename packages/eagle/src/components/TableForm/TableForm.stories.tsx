@@ -3,7 +3,8 @@ import React, { useRef } from "react";
 import { withDesign } from "storybook-addon-designs";
 
 import { Typo } from "../Typo";
-import TableForm, { TableFormHandle } from ".";
+import TableForm from ".";
+import { TableFormHandle } from "./types";
 
 const Title: React.FC = ({ children }) => (
   <div style={{ marginTop: "16px" }} className={Typo.Display.d2_bold_title}>
@@ -26,6 +27,12 @@ export const Basic = () => {
           ref={ref}
           onHeaderChange={(data) => {}}
           defaultData={[]}
+          deletable
+          draggable
+          rowAddConfig={{
+            addible: true,
+            maximum: 5,
+          }}
           columns={[
             {
               type: "text",
@@ -54,6 +61,15 @@ export const Basic = () => {
                   return "校验错误";
                 }
               },
+            },
+            {
+              type: "input",
+              title: "测试递增 input",
+              subTitle: "连续递增",
+              key: "increase",
+              defaultValue: "",
+              hidden: false,
+              autoIncrease: true,
             },
             {
               type: "password",
