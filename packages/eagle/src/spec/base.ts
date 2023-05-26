@@ -390,7 +390,7 @@ export interface ISimplePaginationProps {
 export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   // general UI
   loading: LoadingComponentType;
-  // error: React.FunctionComponent<{ error: unknown }>;
+  error: React.FunctionComponent<{ error: unknown }>;
   pagination: React.FC<PaginationProps>;
   select: SelectComponentType<V, T>;
   option: OptionComponentType;
