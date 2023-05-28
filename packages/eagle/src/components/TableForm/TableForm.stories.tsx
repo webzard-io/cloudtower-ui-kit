@@ -68,6 +68,9 @@ export const Basic = () => {
                   return "校验错误";
                 }
               },
+              renderDescription({ rowIndex }) {
+                return rowIndex === 0 ? "this is a special description" : null;
+              },
             },
             {
               type: "input",
@@ -131,6 +134,11 @@ export const Basic = () => {
               },
             },
           ]}
+          renderRowDescription={({ rowIndex }) =>
+            rowIndex === 2
+              ? "Description.Description.Description.Description.Description.Description.Description.Description.Description.Description.Description.Description.Description.Description.Description.Description."
+              : null
+          }
         />
       </Space>
     </div>

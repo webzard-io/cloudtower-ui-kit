@@ -23,6 +23,7 @@ import { DraggableHandleWrapper } from "./style";
 import { TableFormBodyCell } from "./TableFormBodyCell";
 import { TableFormRowsProps } from "./types";
 import { moveItemInArray } from "./utils";
+import { Typo } from "../Typo";
 
 const TableFormRow: React.FC<
   TableFormRowsProps & {
@@ -45,6 +46,7 @@ const TableFormRow: React.FC<
     rowIndex,
     provided,
     snapshot,
+    renderRowDescription,
   } = props;
 
   const rowData = data[rowIndex];
@@ -90,7 +92,7 @@ const TableFormRow: React.FC<
     return deletable ? [FinalRenderIcon] : undefined;
   };
 
-  const cells = columns.map((col) => {
+  const Cells = columns.map((col) => {
     return (
       <TableFormBodyCell
         key={col.key}
@@ -121,6 +123,22 @@ const TableFormRow: React.FC<
     [draggable, provided]
   );
 
+  const RowDescription = useMemo(() => {
+    const RenderResult =
+      renderRowDescription?.({
+        rowIndex,
+        rowData,
+        latestData,
+      }) || null;
+    return typeof RenderResult === "string" ? (
+      <p className={cx(Typo.Label.l4_regular, "row-description")}>
+        {RenderResult}
+      </p>
+    ) : (
+      RenderResult
+    );
+  }, [rowIndex, rowData, latestData, renderRowDescription]);
+
   return (
     <AntdList.Item
       key={rowIndex}
@@ -131,7 +149,8 @@ const TableFormRow: React.FC<
       actions={getRowActions(rowIndex, rowData.deletable)}
     >
       {DraggableHandle}
-      {cells}
+      {Cells}
+      {RowDescription}
     </AntdList.Item>
   );
 };

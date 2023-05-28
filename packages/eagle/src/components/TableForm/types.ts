@@ -37,6 +37,7 @@ export type TableFormColumn = {
   disableSuffix?: boolean;
   headerValidator?: (value: any) => string;
   customData?: any;
+  renderDescription?: (props: RenderRowDescriptionProps) => React.ReactNode;
   render?: (props: CustomizedColumnRenderProps) => React.ReactElement;
 };
 
@@ -108,6 +109,12 @@ export interface TableFormRowsProps
   passwordVisible: boolean;
 }
 
+export type RenderRowDescriptionProps = {
+  rowIndex: number;
+  rowData: DataType;
+  latestData: DataType[];
+};
+
 export type TableFormProps = {
   defaultData: any[];
   columns: TableFormColumn[];
@@ -119,6 +126,7 @@ export type TableFormProps = {
   size?: "default" | "large";
   draggable?: boolean;
   disableBatchFilling?: boolean;
+  renderRowDescription?: (props: RenderRowDescriptionProps) => React.ReactNode;
   onHeaderChange?: (data: unknown[], columnKey: string) => void;
   onHeaderBlur?: (data: unknown[]) => void;
   onBodyChange?: (

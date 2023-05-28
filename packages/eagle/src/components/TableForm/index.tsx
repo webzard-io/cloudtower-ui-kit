@@ -26,6 +26,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       size = "default",
       draggable,
       disableBatchFilling = false,
+      renderRowDescription,
       onHeaderChange,
       onHeaderBlur,
       onBodyChange,
@@ -145,6 +146,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
             draggable={draggable}
             onBodyBlur={onBodyBlur}
             updateData={updateData}
+            renderRowDescription={renderRowDescription}
           />
         </AntdList>
         {rowAddConfig?.addible ? (

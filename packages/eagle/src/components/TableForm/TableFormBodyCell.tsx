@@ -1,5 +1,7 @@
-import React from "react";
+import { cx } from "@linaria/core";
+import React, { useMemo } from "react";
 
+import { Typo } from "../Typo";
 import { ColumnBodyImpls } from "./Columns";
 import { ColumnBodyCellProps } from "./types";
 
@@ -38,6 +40,20 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
       })
     : renderDefaultComponent();
 
+  const CellDescription = useMemo(() => {
+    const Result =
+      column.renderDescription?.({
+        rowIndex,
+        rowData: data[rowIndex],
+        latestData,
+      }) ?? null;
+    return typeof Result === "string" ? (
+      <p className={cx(Typo.Label.l4_regular, "cell-description")}>{Result}</p>
+    ) : (
+      Result
+    );
+  }, [rowIndex, data, latestData, column]);
+
   return (
     <div
       className="eagle-table-form-cell"
@@ -48,6 +64,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
       }}
     >
       {Cell}
+      {CellDescription}
     </div>
   );
 };

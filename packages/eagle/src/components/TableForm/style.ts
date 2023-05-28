@@ -50,9 +50,15 @@ export const TableFormWrapper = styled.div`
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
       padding: 8px;
       border: none;
+      .row-description {
+        flex-basis: 100%;
+        margin: 12px 0 0;
+        order: 99;
+        color: $text-secondary-light;
+      }
       &:hover {
         background-color: $fills-light-trans-1;
       }
@@ -62,6 +68,9 @@ export const TableFormWrapper = styled.div`
     }
     .eagle-table-form-cell {
       flex: 1 0 0;
+      .cell-description {
+        color: $text-secondary-light;
+      }
 
       &:not(:last-child) {
         margin-right: 8px;
