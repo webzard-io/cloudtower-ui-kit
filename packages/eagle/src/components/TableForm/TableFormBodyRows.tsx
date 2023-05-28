@@ -7,7 +7,7 @@ import {
 import { parrotI18n } from "@cloudtower/parrot";
 import { cx } from "@linaria/core";
 import { List as AntdList } from "antd";
-import React, { useCallback, useMemo } from "react";
+import React, { memo, useCallback, useMemo } from "react";
 import {
   DragDropContext,
   Draggable,
@@ -19,11 +19,11 @@ import {
 
 import Icon from "../Icon";
 import Tooltip from "../Tooltip";
+import { Typo } from "../Typo";
 import { DraggableHandleWrapper } from "./style";
 import { TableFormBodyCell } from "./TableFormBodyCell";
 import { TableFormRowsProps } from "./types";
 import { moveItemInArray } from "./utils";
-import { Typo } from "../Typo";
 
 const TableFormRow: React.FC<
   TableFormRowsProps & {
@@ -37,16 +37,16 @@ const TableFormRow: React.FC<
     columns,
     latestData,
     disabled,
-    errorInfo = {},
     passwordVisible,
     deletable,
     draggable,
-    updateData,
-    onBodyBlur,
     rowIndex,
     provided,
     snapshot,
+    updateData,
+    onBodyBlur,
     renderRowDescription,
+    rowValidator,
   } = props;
 
   const rowData = data[rowIndex];
@@ -92,6 +92,18 @@ const TableFormRow: React.FC<
     return deletable ? [FinalRenderIcon] : undefined;
   };
 
+  const RowValidateResult = useMemo(() => {
+    const result = rowValidator?.(rowIndex, data[rowIndex]);
+    if (typeof result === "string" && result) {
+      return (
+        <p className={cx(Typo.Label.l4_regular, "row-error-message")}>
+          {result}
+        </p>
+      );
+    }
+    return null;
+  }, [rowValidator, rowIndex, data]);
+
   const Cells = columns.map((col) => {
     return (
       <TableFormBodyCell
@@ -101,11 +113,11 @@ const TableFormRow: React.FC<
         latestData={latestData}
         disabled={disabled}
         index={rowIndex}
-        errorInfo={errorInfo}
         onClear={handleClear}
         onChange={updateData}
         onBlur={handleBlur}
         visible={passwordVisible}
+        isRowError={!!RowValidateResult}
       />
     );
   });
@@ -150,12 +162,13 @@ const TableFormRow: React.FC<
     >
       {DraggableHandle}
       {Cells}
+      {RowValidateResult}
       {RowDescription}
     </AntdList.Item>
   );
 };
 
-const TableFormBodyRows: React.FC<TableFormRowsProps> = (props) => {
+const TableFormBodyRows: React.FC<TableFormRowsProps> = memo((props) => {
   const { data, draggable, updateData } = props;
 
   const onDragEnd: OnDragEndResponder = useCallback(
@@ -204,6 +217,6 @@ const TableFormBodyRows: React.FC<TableFormRowsProps> = (props) => {
       ))}
     </>
   );
-};
+});
 
 export default TableFormBodyRows;

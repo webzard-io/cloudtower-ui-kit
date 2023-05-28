@@ -80,6 +80,12 @@ export const Basic = () => {
               defaultValue: "",
               hidden: false,
               autoIncrease: true,
+              validator(value, rowIndex) {
+                const val = value as string;
+                if (val.includes("validation") && rowIndex === 2) {
+                  return "this is a special error for row 2";
+                }
+              },
             },
             {
               type: "password",
@@ -132,8 +138,19 @@ export const Basic = () => {
                   />
                 );
               },
+              validator(value, rowIndex) {
+                const val = value as string;
+                if (val?.includes("3") && rowIndex === 1) {
+                  return "this is a special error for row 1";
+                }
+              },
             },
           ]}
+          rowValidator={(rowIndex, rowData) => {
+            if (rowIndex === 1 && !rowData["password"]) {
+              return "you must enter your password";
+            }
+          }}
           renderRowDescription={({ rowIndex }) =>
             rowIndex === 2
               ? "Description.Description.Description.Description.Description.Description.Description.Description.Description.Description.Description.Description.Description.Description.Description.Description."

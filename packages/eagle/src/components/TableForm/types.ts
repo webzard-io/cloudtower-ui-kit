@@ -39,6 +39,11 @@ export type TableFormColumn = {
   customData?: any;
   renderDescription?: (props: RenderRowDescriptionProps) => React.ReactNode;
   render?: (props: CustomizedColumnRenderProps) => React.ReactElement;
+  validator?: (
+    value: unknown,
+    rowIndex: number,
+    rowData: DataType
+  ) => string | undefined;
 };
 
 export interface ColumnHeaderCellProps {
@@ -46,7 +51,6 @@ export interface ColumnHeaderCellProps {
   latestData: DataType[];
   column: TableFormColumn;
   disabled?: boolean;
-  errorInfo: ErrorInfo;
   disableBatchFilling?: boolean;
   onChange?: (newData: DataType[], columnKey?: string) => void;
   onBlur?: (key: string, error?: string) => void;
@@ -62,7 +66,6 @@ export type DataType = {
 export interface ColumnBodyCellProps {
   data: DataType[];
   latestData: DataType[];
-  errorInfo: ColumnHeaderCellProps["errorInfo"];
   index: number;
   column: TableFormColumn;
   disabled?: boolean;
@@ -77,6 +80,7 @@ export interface ColumnBodyCellProps {
   placeholderValue?: string;
   // Whether the password is show or hide
   visible?: boolean;
+  isRowError?: boolean;
 }
 
 export type AddRowButtonProps = {
@@ -119,7 +123,6 @@ export type TableFormProps = {
   defaultData: any[];
   columns: TableFormColumn[];
   rowCount?: number;
-  errorInfo?: ErrorInfo;
   disabled?: boolean;
   rowAddConfig?: RowAddConfigurations;
   deletable?: boolean;
@@ -127,6 +130,7 @@ export type TableFormProps = {
   draggable?: boolean;
   disableBatchFilling?: boolean;
   renderRowDescription?: (props: RenderRowDescriptionProps) => React.ReactNode;
+  rowValidator?: (rowIndex: number, rowData: DataType) => string | undefined;
   onHeaderChange?: (data: unknown[], columnKey: string) => void;
   onHeaderBlur?: (data: unknown[]) => void;
   onBodyChange?: (
@@ -139,4 +143,5 @@ export type TableFormProps = {
 
 export type TableFormHandle = {
   setData: (data: DataType[]) => void;
+  getData: () => DataType[];
 };

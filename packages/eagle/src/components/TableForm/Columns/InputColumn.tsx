@@ -77,7 +77,6 @@ export const InputColumnHeaderCell: React.FC<ColumnHeaderCellProps> = ({
   column,
   onChange,
   onBlur,
-  errorInfo,
   onVisibleChange,
 }) => {
   const [value, setValue] = useState<string>("");
@@ -86,12 +85,9 @@ export const InputColumnHeaderCell: React.FC<ColumnHeaderCellProps> = ({
   const isShowError = useMemo(() => {
     // do not display the batch input error message only if all body inputs are not empty and have no errors
     const currentColumnData = data.map((d) => d[column.key]).filter((v) => !!v);
-    const currentColumnErrors = Object.entries(errorInfo)
-      .filter(([key]) => key.includes(column.key))
-      .some(([, value]) => value.isError);
 
-    return !(currentColumnData.length === data.length && !currentColumnErrors);
-  }, [column.key, data, errorInfo]);
+    return !(currentColumnData.length === data.length);
+  }, [column.key, data]);
 
   const _onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
@@ -148,7 +144,6 @@ export const InputColumnBodyCell: React.FC<ColumnBodyCellProps> = ({
   data,
   latestData,
   column,
-  errorInfo,
   index,
   disabled,
   onChange,
@@ -156,7 +151,6 @@ export const InputColumnBodyCell: React.FC<ColumnBodyCellProps> = ({
   visible,
 }) => {
   const path = `${index}.${column.key}`;
-  const error = errorInfo[path];
   const placeHolderValue =
     column.type === "password" ? "" : latestData[index][column.key];
   const [value, setValue] = useState<string>(
@@ -187,20 +181,15 @@ export const InputColumnBodyCell: React.FC<ColumnBodyCellProps> = ({
   };
 
   return (
-    <FormItem
-      validateStatus={error?.isError ? "error" : ""}
-      message={error?.errorMessage || ""}
-    >
-      <CustomInput
-        className={inputStyle}
-        type={column.type}
-        value={value}
-        disabled={disabled}
-        placeholder={placeHolderValue || column.placeholder}
-        onChange={_onChange}
-        onBlur={_onBlur}
-        visible={visible}
-      />
-    </FormItem>
+    <CustomInput
+      className={inputStyle}
+      type={column.type}
+      value={value}
+      disabled={disabled}
+      placeholder={placeHolderValue || column.placeholder}
+      onChange={_onChange}
+      onBlur={_onBlur}
+      visible={visible}
+    />
   );
 };

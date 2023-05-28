@@ -38,29 +38,12 @@ export const TextColumnHeaderCell: React.FC<ColumnHeaderCellProps> = ({
 
 export const TextColumnBodyCell: React.FC<ColumnBodyCellProps> = ({
   data,
-  errorInfo,
   column,
   index,
 }) => {
-  const error = errorInfo[`${index}.${column.key}`];
-  const icon = error?.isError ? column.bodyErrorIcon : column.bodyIcon;
   const text = column.displayText || data[index][column.key];
 
   return (
-    <FormItem
-      validateStatus={error?.isError ? "error" : ""}
-      message={error?.errorMessage || ""}
-    >
-      {icon ? (
-        // <Icon className={BodyCellIconStyle} icon={icon} />
-        <div>icon</div>
-      ) : null}
-      <span
-        style={{ color: error?.isError ? COLOR_MAP.danger : "" }}
-        className={cx(Typo.Label.l4_medium, BodyCellTextStyle)}
-      >
-        {text}
-      </span>
-    </FormItem>
+    <span className={cx(Typo.Label.l4_medium, BodyCellTextStyle)}>{text}</span>
   );
 };

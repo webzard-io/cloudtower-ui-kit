@@ -3,6 +3,7 @@ import React, { useMemo } from "react";
 
 import { Typo } from "../Typo";
 import { ColumnBodyImpls } from "./Columns";
+import { FormItem } from "./Columns/FormItem";
 import { ColumnBodyCellProps } from "./types";
 
 export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
@@ -13,6 +14,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
     data,
     onChange,
     latestData,
+    isRowError,
   } = props;
 
   const width = Number.isNaN(Number(column.width))
@@ -54,6 +56,25 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
     );
   }, [rowIndex, data, latestData, column]);
 
+  const validateResult:
+    | {
+        msg: string;
+        isError: boolean;
+      }
+    | undefined = useMemo(() => {
+    if (isRowError) {
+      return {
+        msg: "",
+        isError: true,
+      };
+    }
+    const value = data[rowIndex][column.key];
+    const result = column.validator?.(value, rowIndex, data[rowIndex]);
+    if (typeof result === "string" && result) {
+      return { msg: result, isError: true };
+    }
+  }, [data, column, rowIndex, isRowError]);
+
   return (
     <div
       className="eagle-table-form-cell"
@@ -63,8 +84,17 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
         visibility: column.hidden ? "hidden" : "visible",
       }}
     >
-      {Cell}
-      {CellDescription}
+      <FormItem
+        validateStatus={validateResult?.isError ? "error" : ""}
+        message={
+          validateResult?.isError && validateResult.msg
+            ? validateResult.msg
+            : undefined
+        }
+      >
+        {Cell}
+        {CellDescription}
+      </FormItem>
     </div>
   );
 };

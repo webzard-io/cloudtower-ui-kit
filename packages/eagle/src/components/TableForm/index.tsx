@@ -19,7 +19,6 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       defaultData,
       columns,
       rowCount = 3,
-      errorInfo = {},
       disabled,
       rowAddConfig,
       deletable,
@@ -27,6 +26,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       draggable,
       disableBatchFilling = false,
       renderRowDescription,
+      rowValidator,
       onHeaderChange,
       onHeaderBlur,
       onBodyChange,
@@ -119,7 +119,6 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
           disableBatchFilling={disableBatchFilling}
           onChange={handleBatchChange}
           onBlur={handleBatchBlur}
-          errorInfo={errorInfo}
           onVisibleChange={setPasswordVisible}
         />
       );
@@ -140,13 +139,13 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
             latestData={latestData}
             columns={columns}
             passwordVisible={passwordVisible}
-            errorInfo={errorInfo}
             deletable={deletable}
             disabled={disabled}
             draggable={draggable}
             onBodyBlur={onBodyBlur}
             updateData={updateData}
             renderRowDescription={renderRowDescription}
+            rowValidator={rowValidator}
           />
         </AntdList>
         {rowAddConfig?.addible ? (

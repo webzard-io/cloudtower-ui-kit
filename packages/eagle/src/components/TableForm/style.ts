@@ -59,6 +59,12 @@ export const TableFormWrapper = styled.div`
         order: 99;
         color: $text-secondary-light;
       }
+      .row-error-message {
+        color: $text-light-serious;
+        flex-basis: 100%;
+        order: 98;
+        margin: 12px 0 0;
+      }
       &:hover {
         background-color: $fills-light-trans-1;
       }
