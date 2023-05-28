@@ -4,7 +4,7 @@ import {
 } from "@cloudtower/icons-react";
 import { parrotI18n } from "@cloudtower/parrot";
 import { cx } from "@linaria/core";
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 
 import Button from "../Button";
 import Icon from "../Icon";
@@ -20,21 +20,19 @@ const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
     updateData,
     data,
   } = props;
-  const [disabled, setDisabled] = useState(false);
 
   const onAdd = useCallback(() => {
     const newData = [...data];
     const newRow = genEmptyRow(columns);
     newData.push(newRow);
-    if (newData.length === maximum) {
-      setDisabled(true);
-    }
     updateData(newData);
-  }, [columns, updateData, data, maximum]);
+  }, [columns, updateData, data]);
 
   if (!columns.length) {
     return null;
   }
+
+  const disabled = maximum === data.length;
 
   return CustomizedButton ? (
     <CustomizedButton {...props} />

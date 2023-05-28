@@ -41,7 +41,6 @@ const TableFormRow: React.FC<
     deletable,
     draggable,
     updateData,
-    onBodyChange,
     onBodyBlur,
     rowIndex,
     provided,
@@ -55,14 +54,6 @@ const TableFormRow: React.FC<
       updateData(newData);
     },
     [updateData]
-  );
-
-  const handleChange = useCallback(
-    (newData, path) => {
-      updateData(newData);
-      onBodyChange?.(newData, path);
-    },
-    [onBodyChange, updateData]
   );
 
   const handleBlur = useCallback(
@@ -110,7 +101,7 @@ const TableFormRow: React.FC<
         index={rowIndex}
         errorInfo={errorInfo}
         onClear={handleClear}
-        onChange={handleChange}
+        onChange={updateData}
         onBlur={handleBlur}
         visible={passwordVisible}
       />

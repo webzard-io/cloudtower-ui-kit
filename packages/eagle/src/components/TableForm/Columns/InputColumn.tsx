@@ -1,11 +1,9 @@
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
-import { css, cx } from "@linaria/core";
+import { css } from "@linaria/core";
 import { Input } from "antd";
 import { InputProps } from "antd/lib/input";
 import React, { useEffect, useMemo, useState } from "react";
 
-import { Typo } from "../../Typo";
-import { TitleStyle } from "../style";
 import { ColumnBodyCellProps, ColumnHeaderCellProps } from "../types";
 // import { validators } from "../../../traits/validation";
 import { increaseLastNumber } from "../utils";
@@ -133,7 +131,6 @@ export const InputColumnHeaderCell: React.FC<ColumnHeaderCellProps> = ({
       validateStatus={isShowError && errorMsg ? "error" : ""}
       message={isShowError ? errorMsg : undefined}
     >
-      <p className={cx(Typo.Label.l2_regular, TitleStyle)}>{column.title}</p>
       <CustomInput
         className={inputStyle}
         type={column.type}
@@ -179,7 +176,7 @@ export const InputColumnBodyCell: React.FC<ColumnBodyCellProps> = ({
     newData[index] = newCell;
     setValue(newValue);
     if (onChange) {
-      onChange(newData, path);
+      onChange(newData, index, column.key);
     }
   };
 

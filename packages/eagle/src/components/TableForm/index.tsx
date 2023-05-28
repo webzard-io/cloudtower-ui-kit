@@ -25,6 +25,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       deletable,
       size = "default",
       draggable,
+      disableBatchFilling = false,
       onHeaderChange,
       onHeaderBlur,
       onBodyChange,
@@ -36,19 +37,19 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [latestData, setLatestData] = useState<DataType[]>(defaultData);
 
-    const updateData = useCallback((data: DataType[]) => {
-      setLatestData(data);
-      setData(data);
-    }, []);
-
-    useEffect(() => {
-      updateData(defaultData);
-    }, [defaultData, updateData]);
+    const updateData = useCallback(
+      (value: DataType[], rowIndex?: number, columnKey?: string) => {
+        setLatestData(value);
+        setData(value);
+        onBodyChange?.(value, rowIndex, columnKey);
+      },
+      [onBodyChange]
+    );
 
     const handleBatchChange = useCallback(
-      (newData) => {
+      (newData, columnKey) => {
         setLatestData(newData);
-        onHeaderChange?.(newData);
+        onHeaderChange?.(newData, columnKey);
       },
       [onHeaderChange]
     );
@@ -114,6 +115,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
           latestData={latestData}
           disabled={disabled}
           column={col}
+          disableBatchFilling={disableBatchFilling}
           onChange={handleBatchChange}
           onBlur={handleBatchBlur}
           errorInfo={errorInfo}
@@ -142,7 +144,6 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
             disabled={disabled}
             draggable={draggable}
             onBodyBlur={onBodyBlur}
-            onBodyChange={onBodyChange}
             updateData={updateData}
           />
         </AntdList>

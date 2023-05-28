@@ -7,7 +7,6 @@ import {
   // BodyCellIconStyle,
   BodyCellTextStyle,
   SubtitleStyle,
-  TitleStyle,
 } from "../style";
 import { ColumnBodyCellProps, ColumnHeaderCellProps } from "../types";
 import { FormItem } from "./FormItem";
@@ -26,17 +25,14 @@ export const TextColumnHeaderCell: React.FC<ColumnHeaderCellProps> = ({
   column,
 }) => {
   return (
-    <>
-      <p className={cx(Typo.Label.l2_regular, TitleStyle)}>{column.title}</p>
-      <p
-        style={{
-          color: ({ ...COLOR_MAP, "": "" } as any)[column.subTitleColor || ""],
-        }}
-        className={cx(Typo.Label.l4_regular, SubtitleStyle)}
-      >
-        {column.subTitle}
-      </p>
-    </>
+    <p
+      style={{
+        color: ({ ...COLOR_MAP, "": "" } as any)[column.subTitleColor || ""],
+      }}
+      className={cx(Typo.Label.l4_regular, SubtitleStyle)}
+    >
+      {column.subTitle}
+    </p>
   );
 };
 

@@ -52,27 +52,24 @@ export const AffixColumnHeaderCell: React.FC<ColumnHeaderCellProps> = ({
   };
 
   return (
-    <>
-      <p>{column.title}</p>
-      <Space>
-        {!column.disablePrefix ? (
-          <Input
-            value={prefix}
-            placeholder="前缀"
-            onChange={onPrefixChange}
-            onBlur={onPrefixBlur}
-          />
-        ) : undefined}
+    <Space>
+      {!column.disablePrefix ? (
+        <Input
+          value={prefix}
+          placeholder="前缀"
+          onChange={onPrefixChange}
+          onBlur={onPrefixBlur}
+        />
+      ) : undefined}
 
-        {!column.disableSuffix ? (
-          <Input
-            value={suffix}
-            placeholder="后缀"
-            onChange={onSuffixChange}
-            onBlur={onSuffixBlur}
-          />
-        ) : undefined}
-      </Space>
-    </>
+      {!column.disableSuffix ? (
+        <Input
+          value={suffix}
+          placeholder="后缀"
+          onChange={onSuffixChange}
+          onBlur={onSuffixBlur}
+        />
+      ) : undefined}
+    </Space>
   );
 };

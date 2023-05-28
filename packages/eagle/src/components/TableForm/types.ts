@@ -7,8 +7,18 @@ export type ErrorInfo = Record<
     isError: boolean;
   }
 >;
+
+export type CustomizedColumnRenderProps = {
+  value?: unknown;
+  onChange: (value: unknown) => void;
+  disabled?: boolean;
+  onBlur?: () => void;
+  placeholder?: string;
+  isHeader: boolean;
+};
+
 export type TableFormColumn = {
-  type: keyof typeof ColumnBodyImpls;
+  type?: keyof typeof ColumnBodyImpls;
   title?: string;
   key: string;
   subTitle?: string;
@@ -27,6 +37,7 @@ export type TableFormColumn = {
   disableSuffix?: boolean;
   headerValidator?: (value: any) => string;
   customData?: any;
+  render?: (props: CustomizedColumnRenderProps) => React.ReactElement;
 };
 
 export interface ColumnHeaderCellProps {
@@ -35,7 +46,8 @@ export interface ColumnHeaderCellProps {
   column: TableFormColumn;
   disabled?: boolean;
   errorInfo: ErrorInfo;
-  onChange?: (newData: DataType[], key: string) => void;
+  disableBatchFilling?: boolean;
+  onChange?: (newData: DataType[], columnKey?: string) => void;
   onBlur?: (key: string, error?: string) => void;
   // Used to control whether the body password input is show or hide
   onVisibleChange?: (visible: boolean) => void;
@@ -53,7 +65,11 @@ export interface ColumnBodyCellProps {
   index: number;
   column: TableFormColumn;
   disabled?: boolean;
-  onChange?: (newData: DataType[], path: string) => void;
+  onChange?: (
+    newData: DataType[],
+    rowIndex?: number,
+    columnKey?: string
+  ) => void;
   onBlur?: (newData: DataType[], path: string) => void;
   onClear?: (newData: DataType[], path: string) => void;
   customData?: any;
@@ -84,6 +100,7 @@ export interface TableFormRowsProps
     | "onHeaderChange"
     | "onHeaderBlur"
     | "defaultData"
+    | "onBodyChange"
   > {
   data: DataType[];
   latestData: DataType[];
@@ -101,9 +118,14 @@ export type TableFormProps = {
   deletable?: boolean;
   size?: "default" | "large";
   draggable?: boolean;
-  onHeaderChange?: (data: unknown[]) => void;
+  disableBatchFilling?: boolean;
+  onHeaderChange?: (data: unknown[], columnKey: string) => void;
   onHeaderBlur?: (data: unknown[]) => void;
-  onBodyChange?: (value: DataType[], path: string) => void;
+  onBodyChange?: (
+    value: DataType[],
+    rowIndex?: number,
+    columnKey?: string
+  ) => void;
   onBodyBlur?: (value: DataType, path: string) => void;
 };
 

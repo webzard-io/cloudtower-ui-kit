@@ -28,7 +28,7 @@ export const CheckboxColumnBodyCell: React.FC<ColumnBodyCellProps> = ({
     const newData = [...data];
     newData[index] = newCell;
     if (onChange) {
-      onChange(newData, `${index}.${column.key}`);
+      onChange(newData, index, column.key);
     }
   };
 

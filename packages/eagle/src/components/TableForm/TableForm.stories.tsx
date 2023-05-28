@@ -1,4 +1,4 @@
-import { Space } from "antd";
+import { Select, Space } from "antd";
 import React, { useRef } from "react";
 import { withDesign } from "storybook-addon-designs";
 
@@ -17,6 +17,13 @@ const story = {
   decorators: [withDesign],
 };
 
+const selectOptions = [
+  { label: "选项 1", value: "option 1" },
+  { label: "选项 2", value: "option 2" },
+  { label: "选项 3", value: "option 3" },
+  { label: "选项 4", value: "option 4" },
+];
+
 export const Basic = () => {
   const ref = useRef<TableFormHandle | null>(null);
   return (
@@ -29,6 +36,7 @@ export const Basic = () => {
           defaultData={[]}
           deletable
           draggable
+          // disableBatchFilling
           rowAddConfig={{
             addible: true,
             maximum: 5,
@@ -37,11 +45,10 @@ export const Basic = () => {
             {
               type: "text",
               title: "title",
-              subTitle: "批量输入",
+              subTitle: "批量填充",
               key: "name",
               defaultValue: "",
               displayText: "主机",
-              subTitleColor: "danger",
               placeholder: "",
               hidden: false,
             },
@@ -64,7 +71,7 @@ export const Basic = () => {
             },
             {
               type: "input",
-              title: "测试递增 input",
+              title: "递增 input",
               subTitle: "连续递增",
               key: "increase",
               defaultValue: "",
@@ -100,6 +107,28 @@ export const Basic = () => {
               placeholder: "",
               hidden: false,
               subTitleColor: "",
+            },
+            {
+              title: "自定义组件",
+              subTitle: "",
+              key: "customizedCmpt",
+              // defaultValue: "option 2",
+              render({ isHeader, value, ...restProps }) {
+                return (
+                  <Select
+                    {...restProps}
+                    placeholder={
+                      isHeader
+                        ? "批量选择"
+                        : selectOptions.find(
+                            (o) => o.value === restProps.placeholder
+                          )?.label || "请选择"
+                    }
+                    value={value as string}
+                    options={selectOptions}
+                  />
+                );
+              },
             },
           ]}
         />

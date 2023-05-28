@@ -4,13 +4,40 @@ import { ColumnBodyImpls } from "./Columns";
 import { ColumnBodyCellProps } from "./types";
 
 export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
-  const { column } = props;
-
-  const CellComponent = ColumnBodyImpls[column.type];
+  const {
+    column,
+    disabled,
+    index: rowIndex,
+    data,
+    onChange,
+    latestData,
+  } = props;
 
   const width = Number.isNaN(Number(column.width))
     ? column.width
     : column.width + "px";
+
+  const renderDefaultComponent = () => {
+    if (!column.type) return null;
+    const CellComponent = ColumnBodyImpls[column.type];
+    return <CellComponent {...props} customData={column.customData} />;
+  };
+
+  const Cell = column.render
+    ? column.render({
+        isHeader: false,
+        disabled,
+        placeholder: props.placeholderValue || latestData[rowIndex][column.key],
+        value: data[rowIndex][column.key],
+        onChange: (value) => {
+          const newData = data.map((row, i) =>
+            i === rowIndex ? { ...row, [column.key]: value } : row
+          );
+          onChange?.(newData, rowIndex, column.key);
+        },
+      })
+    : renderDefaultComponent();
+
   return (
     <div
       className="eagle-table-form-cell"
@@ -20,7 +47,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
         visibility: column.hidden ? "hidden" : "visible",
       }}
     >
-      <CellComponent {...props} customData={column.customData} />
+      {Cell}
     </div>
   );
 };
