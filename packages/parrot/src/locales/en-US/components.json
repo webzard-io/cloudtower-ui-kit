@@ -14,5 +14,7 @@
   "unknow_error": "Unknown error",
   "to": "to",
   "time_zone_select_placeholder": "Enter country, city or time zone",
-  "browser_tbrowser_time_zoneime": "Browser Time"
+  "browser_tbrowser_time_zoneime": "Browser Time",
+  "Architecture_AARCH64": "AArch64",
+  "Architecture_X86_64": "x86_64"
 }
