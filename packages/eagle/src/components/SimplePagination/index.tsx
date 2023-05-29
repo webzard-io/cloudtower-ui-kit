@@ -53,7 +53,12 @@ const SimplePagination = (props: ISimplePaginationProps) => {
             style={{
               marginRight: "8px",
             }}
-            prefixIcon={<Icon src={arrowChevronLeftSmall16BoldBlue} />}
+            prefixIcon={
+              <Icon
+                alt={"arrowChevronLeftSmall16BoldBlue"}
+                src={arrowChevronLeftSmall16BoldBlue}
+              />
+            }
             onClick={() => {
               onPageChange?.(current - 1);
             }}
@@ -88,7 +93,12 @@ const SimplePagination = (props: ISimplePaginationProps) => {
             style={{
               marginLeft: "8px",
             }}
-            prefixIcon={<Icon src={arrowChevronLeftSmall16BoldBlue} />}
+            prefixIcon={
+              <Icon
+                alt={"arrowChevronLeftSmall16BoldBlue"}
+                src={arrowChevronLeftSmall16BoldBlue}
+              />
+            }
             onClick={() => {
               onPageChange?.(current + 1);
             }}

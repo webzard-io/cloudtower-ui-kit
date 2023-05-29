@@ -76,6 +76,7 @@ export const ColumnTitle: React.FC<{
       {title}
       {
         <Icon
+          alt={"arrowChevronUp16BoldSecondary"}
           className={cs("order-icon", sortOrder)}
           src={arrowChevronUp16BoldSecondary}
         />
