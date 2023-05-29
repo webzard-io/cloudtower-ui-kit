@@ -144,6 +144,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
           }
         >
           <Icon
+            alt={"arrowChevronDownSmall16Secondary"}
             className="pagination-left dropdown-trigger"
             src={arrowChevronDownSmall16Secondary}
             hoverSrc={arrowChevronDownSmall16Blue}
@@ -176,7 +177,12 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             className="prev-btn"
             type="quiet"
             size="small"
-            prefixIcon={<Icon src={arrowChevronLeftSmall16BoldBlue} />}
+            prefixIcon={
+              <Icon
+                alt={"arrowChevronLeftSmall16BoldBlue"}
+                src={arrowChevronLeftSmall16BoldBlue}
+              />
+            }
             onClick={() => {
               onChange?.(current - 1);
             }}
@@ -189,7 +195,12 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             className="next-btn"
             type="quiet"
             size="small"
-            prefixIcon={<Icon src={arrowChevronLeftSmall16BoldBlue} />}
+            prefixIcon={
+              <Icon
+                alt={"arrowChevronLeftSmall16BoldBlue"}
+                src={arrowChevronLeftSmall16BoldBlue}
+              />
+            }
             onClick={() => {
               onChange?.(current + 1);
             }}

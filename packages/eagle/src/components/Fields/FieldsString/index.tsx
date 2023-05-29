@@ -69,7 +69,9 @@ const FieldsString = ({
         allowClear={allowClear}
         onClick={onClick}
         prefix={
-          focusIndicator ? <Icon src={focusIndicator16Blue} /> : undefined
+          focusIndicator ? (
+            <Icon alt={"focusIndicator16Blue"} src={focusIndicator16Blue} />
+          ) : undefined
         }
         error={
           meta.touched &&

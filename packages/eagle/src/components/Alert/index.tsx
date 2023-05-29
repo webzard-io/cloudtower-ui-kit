@@ -15,7 +15,7 @@ const Alert: AlertComponentType = ({
   closeText,
   ...props
 }) => {
-  const _icon = <Icon src={getAlertIcon(type)} />;
+  const _icon = <Icon alt={type} src={getAlertIcon(type)} />;
   const _type = type === "normal" ? "info" : type;
   return (
     <AntdAlert
