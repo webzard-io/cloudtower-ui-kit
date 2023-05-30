@@ -1,5 +1,6 @@
 import {
   AutoComplete,
+  Button as AntdButton,
   Col,
   Divider,
   Dropdown,
@@ -115,6 +116,9 @@ export function getAntdKit(): Kit {
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
   kit.option.isSelectOption = true;
+
+  // https://github.com/ant-design/ant-design/issues/9581
+  (kit.button as typeof AntdButton).__ANT_BUTTON = true;
 
   return kit;
 }
