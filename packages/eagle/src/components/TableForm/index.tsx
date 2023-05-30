@@ -3,6 +3,7 @@ import React, {
   useCallback,
   useEffect,
   useImperativeHandle,
+  useMemo,
   useState,
 } from "react";
 
@@ -13,18 +14,21 @@ import { BatchInputListHeaderCell } from "./TableFormHeaderCell";
 import { DataType, TableFormHandle, TableFormProps } from "./types";
 import { genEmptyRow } from "./utils";
 
+const DEFAULT_ROW_COUNT = 3;
+
 const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
   (
     {
       defaultData,
       columns,
-      rowCount = 3,
       disabled,
       rowAddConfig,
       deletable,
       size = "default",
+      className,
       draggable,
       disableBatchFilling = false,
+      rowSplitType = "border",
       renderRowDescription,
       rowValidator,
       onHeaderChange,
@@ -34,9 +38,16 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
     },
     ref
   ) => {
-    const [data, setData] = useState<DataType[]>(defaultData);
+    const treatedDefaultData = useMemo(() => {
+      return (
+        defaultData ||
+        [...Array(DEFAULT_ROW_COUNT)].map(() => genEmptyRow(columns))
+      );
+    }, [defaultData, columns]);
+    const [data, setData] = useState<DataType[]>(treatedDefaultData);
     const [passwordVisible, setPasswordVisible] = useState(false);
-    const [latestData, setLatestData] = useState<DataType[]>(defaultData);
+    const [latestData, setLatestData] =
+      useState<DataType[]>(treatedDefaultData);
 
     const updateData = useCallback(
       (value: DataType[], rowIndex?: number, columnKey?: string) => {
@@ -70,42 +81,21 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
         } else {
           // update current column body input value
           setData(latestData);
+          onBodyChange?.(latestData, undefined, key);
           onHeaderBlur?.(latestData);
         }
       },
-      [latestData, onHeaderBlur]
+      [latestData, onHeaderBlur, onBodyChange]
     );
-
-    // modify data size when rowCount changes
-    useEffect(() => {
-      if (rowCount === undefined || rowCount === data.length || rowCount === -1)
-        return;
-
-      if (rowCount < data.length) {
-        const newData = data.slice(0, rowCount);
-
-        updateData(newData);
-        return;
-      }
-
-      const newData = [...data];
-      while (rowCount > newData.length) {
-        newData.push(genEmptyRow(columns));
-      }
-      updateData(newData);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [rowCount, columns]);
 
     useImperativeHandle(
       ref,
       () => ({
         setData: (data: DataType[]) => {
-          console.log("useImperativeHandle", data);
           updateData(data);
         },
-        getData: () => data,
       }),
-      [data, updateData]
+      [updateData]
     );
 
     const headerCells = columns.map((col) => {
@@ -125,29 +115,32 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
     });
 
     return (
-      <TableFormWrapper>
-        <AntdList size={size}>
-          <AntdList.Item
-            className="eagle-table-form-header"
-            actions={deletable ? [<></>] : undefined}
-          >
-            {draggable ? <DraggableHandleWrapper /> : null}
-            {headerCells}
-          </AntdList.Item>
-          <TableFormBodyRows
-            data={data}
-            latestData={latestData}
-            columns={columns}
-            passwordVisible={passwordVisible}
-            deletable={deletable}
-            disabled={disabled}
-            draggable={draggable}
-            onBodyBlur={onBodyBlur}
-            updateData={updateData}
-            renderRowDescription={renderRowDescription}
-            rowValidator={rowValidator}
-          />
-        </AntdList>
+      <div className={className}>
+        <TableFormWrapper className={`table-form row-split-by-${rowSplitType}`}>
+          <AntdList size={size} className={`size-${size}`}>
+            <AntdList.Item
+              className="eagle-table-form-header"
+              actions={deletable ? [<></>] : undefined}
+            >
+              {draggable ? <DraggableHandleWrapper /> : null}
+              {headerCells}
+            </AntdList.Item>
+            <TableFormBodyRows
+              data={data}
+              latestData={latestData}
+              columns={columns}
+              passwordVisible={passwordVisible}
+              deletable={deletable}
+              disabled={disabled}
+              draggable={draggable}
+              rowSplitType={rowSplitType}
+              onBodyBlur={onBodyBlur}
+              updateData={updateData}
+              renderRowDescription={renderRowDescription}
+              rowValidator={rowValidator}
+            />
+          </AntdList>
+        </TableFormWrapper>
         {rowAddConfig?.addible ? (
           <AddRowButton
             config={rowAddConfig}
@@ -156,7 +149,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
             data={data}
           />
         ) : null}
-      </TableFormWrapper>
+      </div>
     );
   }
 );

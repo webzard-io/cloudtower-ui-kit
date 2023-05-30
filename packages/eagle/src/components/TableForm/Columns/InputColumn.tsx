@@ -1,20 +1,9 @@
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
-import { css } from "@linaria/core";
 import { Input } from "antd";
 import { InputProps } from "antd/lib/input";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { ColumnBodyCellProps, ColumnHeaderCellProps } from "../types";
-// import { validators } from "../../../traits/validation";
-import { increaseLastNumber } from "../utils";
-import { FormItem } from "./FormItem";
-
-const inputStyle = css`
-  border-radius: 6px !important;
-  & {
-    border-color: rgba(172, 186, 211, 0.6);
-  }
-`;
 
 const InputPassword: React.FC<
   InputProps & {
@@ -41,7 +30,6 @@ const InputPassword: React.FC<
     <Input
       {...props}
       type={inputType}
-      className={inputStyle}
       suffix={
         showPassword ? (
           <EyeOutlined
@@ -68,79 +56,38 @@ const CustomInput: React.FC<
   if (props.type === "password") {
     return <InputPassword {...props} />;
   }
-  return <Input className={inputStyle} {...props} />;
+  return <Input {...props} />;
 };
 
-export const InputColumnHeaderCell: React.FC<ColumnHeaderCellProps> = ({
-  data,
-  disabled,
-  column,
-  onChange,
-  onBlur,
-  onVisibleChange,
-}) => {
-  const [value, setValue] = useState<string>("");
-  const [errorMsg, setErrorMsg] = useState<string>("");
-
-  const isShowError = useMemo(() => {
-    // do not display the batch input error message only if all body inputs are not empty and have no errors
-    const currentColumnData = data.map((d) => d[column.key]).filter((v) => !!v);
-
-    return !(currentColumnData.length === data.length);
-  }, [column.key, data]);
-
+export const InputColumnHeaderCell: React.FC<
+  Omit<ColumnHeaderCellProps, "onChange" | "onBlur"> & {
+    onChange: (value: unknown) => void;
+    onBlur: () => void;
+  }
+> = ({ disabled, column, onChange, onBlur, onVisibleChange }) => {
   const _onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
-    const shouldAutoIncrease =
-      column.type !== "password" &&
-      // isValidIpv4(newValue) ||
-      column.autoIncrease;
-    setValue(newValue);
-
-    const error = column?.headerValidator?.(newValue) || "";
-    setErrorMsg(error);
-    if (onChange) {
-      const newData = data.map((cell, rowIndex) => {
-        return {
-          ...cell,
-          [column.key]: shouldAutoIncrease
-            ? increaseLastNumber(newValue, rowIndex)
-            : newValue,
-        };
-      });
-      onChange(newData, column.key);
-    }
-  };
-
-  const _onBlur = () => {
-    // validate current header input value
-    const error = column?.headerValidator?.(value) || "";
-
-    setErrorMsg(error);
-    if (!!value && onBlur) {
-      onBlur(column.key, error);
-    }
+    onChange(newValue);
   };
 
   return (
-    <FormItem
-      validateStatus={isShowError && errorMsg ? "error" : ""}
-      message={isShowError ? errorMsg : undefined}
-    >
-      <CustomInput
-        className={inputStyle}
-        type={column.type}
-        value={value}
-        placeholder={column.placeholder}
-        disabled={disabled}
-        onChange={_onChange}
-        onBlur={_onBlur}
-        onVisibleChange={onVisibleChange}
-      />
-    </FormItem>
+    <CustomInput
+      type={column.type}
+      placeholder={column.placeholder}
+      disabled={disabled}
+      size="small"
+      onChange={_onChange}
+      onBlur={onBlur}
+      onVisibleChange={onVisibleChange}
+    />
   );
 };
-export const InputColumnBodyCell: React.FC<ColumnBodyCellProps> = ({
+export const InputColumnBodyCell: React.FC<
+  Omit<ColumnBodyCellProps, "onChange" | "onBlur"> & {
+    onChange: (value: unknown) => void;
+    onBlur: () => void;
+  }
+> = ({
   data,
   latestData,
   column,
@@ -150,45 +97,25 @@ export const InputColumnBodyCell: React.FC<ColumnBodyCellProps> = ({
   onBlur,
   visible,
 }) => {
-  const path = `${index}.${column.key}`;
   const placeHolderValue =
     column.type === "password" ? "" : latestData[index][column.key];
-  const [value, setValue] = useState<string>(
-    data[index][column.key] || column.defaultValue
-  );
-
-  const v = data[index][column.key];
-  useEffect(() => {
-    setValue(v);
-  }, [v]);
 
   const _onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
-    const newCell = { ...data[index], [column.key]: newValue };
-    const newData = [...data];
 
-    newData[index] = newCell;
-    setValue(newValue);
-    if (onChange) {
-      onChange(newData, index, column.key);
-    }
-  };
-
-  const _onBlur = () => {
-    if (onBlur) {
-      onBlur(data, path);
-    }
+    onChange(newValue);
   };
 
   return (
     <CustomInput
-      className={inputStyle}
+      size="small"
+      value={data[index][column.key]}
       type={column.type}
-      value={value}
+      defaultValue={column.defaultValue as string}
       disabled={disabled}
       placeholder={placeHolderValue || column.placeholder}
       onChange={_onChange}
-      onBlur={_onBlur}
+      onBlur={onBlur}
       visible={visible}
     />
   );

@@ -2,9 +2,8 @@ import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 
 export const TitleStyle = css`
-  height: 22px;
   margin-bottom: 4px;
-  color: rgba(44, 56, 82, 0.75);
+  color: $text-secondary-light;
 `;
 
 export const SubtitleStyle = css`
@@ -12,11 +11,28 @@ export const SubtitleStyle = css`
   line-height: 32px;
   height: 32px;
   margin-bottom: 0;
+  &.primary,
+  &.info {
+    color: $text-light-general;
+  }
+  &.warning {
+    color: #ffa500;
+  }
+  &.success {
+    color: $text-light-positive;
+  }
+  &.danger,
+  &.error {
+    color: $text-light-serious;
+  }
+  &.normal {
+    color: $text-secondary-light;
+  }
 `;
 
 export const BodyCellTextStyle = css`
-  line-height: 32px;
   margin-bottom: 0;
+  color: $text-light-primary;
 `;
 
 export const BodyCellIconStyle = css`
@@ -24,13 +40,24 @@ export const BodyCellIconStyle = css`
   margin-right: 6px;
 `;
 
-export const CheckboxStyle = css`
-  & .ant-checkbox {
-    height: 32px;
+export const BodyCellTextWrapper = styled.div`
+  &.with-description {
+    height: 24px;
+    flex: 1;
+    position: relative;
+    top: -7px;
+  }
+  p {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 `;
 
 export const TableFormWrapper = styled.div`
+  border: 1px solid $strokes-light-trans-2;
+  border-radius: 8px;
   .ant-list {
     .eagle-table-form-header {
       display: flex;
@@ -40,11 +67,10 @@ export const TableFormWrapper = styled.div`
       }
       flex-wrap: nowrap;
       justify-content: flex-start;
-      background: rgba(237, 241, 250, 0.6);
+      background: $fills-light-opaque-1;
       font-size: 14px;
-      color: rgba(44, 56, 82, 0.75);
-      border: 1px solid rgba(225, 230, 241, 0.6);
-      border-radius: 5px;
+      color: $text-secondary-light;
+      border-bottom: 1px solid $fills-light-trans-2;
     }
     .eagle-table-form-row {
       display: flex;
@@ -76,19 +102,84 @@ export const TableFormWrapper = styled.div`
       flex: 1 0 0;
       .cell-description {
         color: $text-secondary-light;
+        margin: 0;
       }
 
-      &:not(:last-child) {
+      &.align-center {
+        .ant-form-item-control-input-content {
+          &,
+          & > * {
+            text-align: center;
+          }
+        }
+      }
+      &.align-left {
+        .ant-form-item-control-input-content {
+          p {
+            text-align: left;
+          }
+        }
+      }
+      &.align-right {
+        .ant-form-item-control-input-content {
+          p {
+            text-align: right;
+          }
+        }
+      }
+
+      &:not(:last-of-type) {
         margin-right: 8px;
       }
     }
     .ant-list-item-action {
-      min-width: 24px;
-      align-self: center;
+      padding: 4px;
+      width: 24px;
+      height: 24px;
+      overflow: hidden;
+      li {
+        padding: 0;
+      }
     }
     .delete-row-icon.disabled {
       cursor: not-allowed;
       opacity: 0.5;
+    }
+    &.size-default {
+      .ant-list-item-action {
+        margin: 0;
+      }
+      .eagle-table-form-cell {
+        .ant-input,
+        .ant-select-selector {
+          border-radius: 5px;
+          font-size: 12px;
+        }
+        .ant-input {
+          padding: 2px 8px;
+        }
+        .ant-input-affix-wrapper {
+          font-size: inherit;
+        }
+
+        .ant-form-item-control-input {
+          min-height: 24px;
+          font-size: 12px;
+          position: relative;
+        }
+      }
+    }
+  }
+  &.row-split-by-border {
+    .eagle-table-form-row {
+      border-bottom: 1px solid $fills-light-trans-2;
+    }
+  }
+  &.row-split-by-zebraMarking {
+    .draggable-container {
+      & > :nth-child(2n) {
+        background-color: $fills-trans-primary-light;
+      }
     }
   }
 `;
@@ -115,5 +206,5 @@ export const DraggableHandleWrapper = styled.div`
   width: 24px;
   height: 24px;
   padding: 4px;
-  align-self: center;
+  margin-right: 8px;
 `;

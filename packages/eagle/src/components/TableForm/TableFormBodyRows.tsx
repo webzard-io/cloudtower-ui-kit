@@ -22,7 +22,7 @@ import Tooltip from "../Tooltip";
 import { Typo } from "../Typo";
 import { DraggableHandleWrapper } from "./style";
 import { TableFormBodyCell } from "./TableFormBodyCell";
-import { TableFormRowsProps } from "./types";
+import { DataType, TableFormRowsProps } from "./types";
 import { moveItemInArray } from "./utils";
 
 const TableFormRow: React.FC<
@@ -51,21 +51,7 @@ const TableFormRow: React.FC<
 
   const rowData = data[rowIndex];
 
-  const handleClear = useCallback(
-    (newData, path) => {
-      updateData(newData);
-    },
-    [updateData]
-  );
-
-  const handleBlur = useCallback(
-    (newData, path) => {
-      onBodyBlur?.(newData, path);
-    },
-    [onBodyBlur]
-  );
-
-  const deleteRow = (index: number) => {
+  const deleteRow = (index: number, data: DataType[]) => {
     const newData = [...data];
     newData.splice(index, 1);
     updateData(newData);
@@ -80,7 +66,7 @@ const TableFormRow: React.FC<
         hoverSrc={isRowDeleteDisabled ? undefined : XmarkRemove16RegularRedIcon}
         onClick={() => {
           if (isRowDeleteDisabled) return;
-          deleteRow(index);
+          deleteRow(index, data);
         }}
       />
     );
@@ -113,9 +99,8 @@ const TableFormRow: React.FC<
         latestData={latestData}
         disabled={disabled}
         index={rowIndex}
-        onClear={handleClear}
         onChange={updateData}
-        onBlur={handleBlur}
+        onBlur={onBodyBlur}
         visible={passwordVisible}
         isRowError={!!RowValidateResult}
       />
@@ -186,7 +171,11 @@ const TableFormBodyRows: React.FC<TableFormRowsProps> = memo((props) => {
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="droppable">
         {(provided) => (
-          <div ref={provided.innerRef} {...provided.droppableProps}>
+          <div
+            className="draggable-container"
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
             {data.map((_d, i) => (
               <Draggable
                 draggableId={`draggable-id-${i}`}

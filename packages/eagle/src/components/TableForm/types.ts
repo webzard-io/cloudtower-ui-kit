@@ -1,3 +1,5 @@
+import { ButtonProps } from "src/spec";
+
 import { ColumnBodyImpls } from "./Columns";
 
 export type ErrorInfo = Record<
@@ -10,6 +12,7 @@ export type ErrorInfo = Record<
 
 export type CustomizedColumnRenderProps = {
   value?: unknown;
+  rowIndex?: number;
   onChange: (value: unknown) => void;
   disabled?: boolean;
   onBlur?: () => void;
@@ -35,15 +38,17 @@ export type TableFormColumn = {
   autoIncrease?: boolean;
   disablePrefix?: boolean;
   disableSuffix?: boolean;
-  headerValidator?: (value: any) => string;
+  // headerValidator?: (value: any) => string;
   customData?: any;
+  align?: "left" | "right" | "center";
   renderDescription?: (props: RenderRowDescriptionProps) => React.ReactNode;
-  render?: (props: CustomizedColumnRenderProps) => React.ReactElement;
-  validator?: (
-    value: unknown,
-    rowIndex: number,
-    rowData: DataType
-  ) => string | undefined;
+  render?: (props: CustomizedColumnRenderProps) => React.ReactNode;
+  validator?: (params: {
+    value: unknown;
+    rowIndex?: number;
+    rowData?: DataType;
+    isHeader?: boolean;
+  }) => string | undefined;
 };
 
 export interface ColumnHeaderCellProps {
@@ -74,8 +79,7 @@ export interface ColumnBodyCellProps {
     rowIndex?: number,
     columnKey?: string
   ) => void;
-  onBlur?: (newData: DataType[], path: string) => void;
-  onClear?: (newData: DataType[], path: string) => void;
+  onBlur?: (newData: DataType[], rowIndex?: number, columnKey?: string) => void;
   customData?: any;
   placeholderValue?: string;
   // Whether the password is show or hide
@@ -92,20 +96,25 @@ export type AddRowButtonProps = {
 
 export type RowAddConfigurations = {
   addible: boolean;
+  text?: (() => React.ReactNode) | string;
+  buttonProps?: ButtonProps;
   maximum?: number;
   className?: string;
   CustomizedButton?: (props: AddRowButtonProps) => React.ReactElement;
 };
 
 export interface TableFormRowsProps
-  extends Omit<
+  extends Pick<
     TableFormProps,
-    | "rowCount"
-    | "rowAddConfig"
-    | "onHeaderChange"
-    | "onHeaderBlur"
-    | "defaultData"
-    | "onBodyChange"
+    | "columns"
+    | "disabled"
+    | "deletable"
+    | "draggable"
+    | "disableBatchFilling"
+    | "rowSplitType"
+    | "renderRowDescription"
+    | "rowValidator"
+    | "onBodyBlur"
   > {
   data: DataType[];
   latestData: DataType[];
@@ -116,19 +125,20 @@ export interface TableFormRowsProps
 export type RenderRowDescriptionProps = {
   rowIndex: number;
   rowData: DataType;
-  latestData: DataType[];
+  latestData?: DataType[];
 };
 
 export type TableFormProps = {
-  defaultData: any[];
+  defaultData?: DataType[];
   columns: TableFormColumn[];
-  rowCount?: number;
   disabled?: boolean;
   rowAddConfig?: RowAddConfigurations;
   deletable?: boolean;
-  size?: "default" | "large";
+  size?: "default" | "large" | "small";
   draggable?: boolean;
   disableBatchFilling?: boolean;
+  className?: string;
+  rowSplitType?: "border" | "zebraMarking";
   renderRowDescription?: (props: RenderRowDescriptionProps) => React.ReactNode;
   rowValidator?: (rowIndex: number, rowData: DataType) => string | undefined;
   onHeaderChange?: (data: unknown[], columnKey: string) => void;
@@ -138,10 +148,9 @@ export type TableFormProps = {
     rowIndex?: number,
     columnKey?: string
   ) => void;
-  onBodyBlur?: (value: DataType, path: string) => void;
+  onBodyBlur?: (value: DataType, rowIndex?: number, columnKey?: string) => void;
 };
 
 export type TableFormHandle = {
   setData: (data: DataType[]) => void;
-  getData: () => DataType[];
 };
