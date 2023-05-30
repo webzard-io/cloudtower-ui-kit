@@ -17,6 +17,7 @@ export {
 } from "./components";
 export { useElementsSize } from "./hooks";
 export type {
+  ButtonProps,
   DateTimeRangeProps,
   EnumProps,
   FloatProps,
