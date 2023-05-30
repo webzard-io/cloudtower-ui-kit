@@ -1,7 +1,7 @@
 import { css, cx } from "@linaria/core";
 import { Table as BaseTable } from "antd";
 import cs from "classnames";
-import React, { useRef } from "react";
+import React, { useMemo, useRef } from "react";
 
 import { TableProps } from "../../spec";
 import Loading from "../Loading";
@@ -92,6 +92,7 @@ export const tableStyleCover = css`
   }
 
   .ant-table {
+    $columnAlignRightPaddingRight: 25px;
     border-radius: 0px;
     border-left: none;
     border-right: none;
@@ -189,6 +190,9 @@ export const tableStyleCover = css`
 
           &.cell_status {
             line-height: 0px;
+          }
+          &.align-right {
+            padding-right: $columnAlignRightPaddingRight;
           }
         }
 
@@ -323,13 +327,13 @@ export const tableStyleCover = css`
         }
 
         &.ant-table-column-has-sorters {
-          padding: 15px 28px 15px 8px;
+          padding: 15px $columnAlignRightPaddingRight 15px 8px;
 
           .ant-table-column-sorters {
             padding: 0;
             .order-icon {
               position: absolute;
-              right: 10px;
+              right: 6px;
               top: 50%;
               transform: translateY(-50%);
               height: 16px;
@@ -366,6 +370,9 @@ export const tableStyleCover = css`
           .ant-table-column-sorters .order-icon {
             display: block;
           }
+        }
+        &.align-right {
+          padding-right: $columnAlignRightPaddingRight;
         }
       }
     }
@@ -454,6 +461,25 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
   const orderRef = useRef<"descend" | "ascend" | undefined | null>(null);
   const hasScrollBard = useTableBodyHasScrollBar(wrapper, dataSource);
 
+  const _columns = useMemo(
+    () =>
+      columns.map((column) => {
+        const _column = { ...column };
+        if (_column.sorter) {
+          _column.title = (
+            <ColumnTitle title={column.title} sortOrder={column.sortOrder} />
+          );
+        }
+        if (_column.align === "right") {
+          _column.className = _column.className
+            ? `${_column.className} align-right`
+            : "align-right";
+        }
+        return _column;
+      }),
+    [columns]
+  );
+
   return (
     <div
       className={cx(
@@ -479,19 +505,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
         }}
         dataSource={dataSource || []}
         pagination={pagination || false}
-        columns={columns.map((column) =>
-          column.sorter
-            ? {
-                ...column,
-                title: (
-                  <ColumnTitle
-                    title={column.title}
-                    sortOrder={column.sortOrder}
-                  />
-                ),
-              }
-            : column
-        )}
+        columns={_columns}
         components={components}
         rowKey={rowKey || "id"}
         tableLayout={dataSource?.length ? tableLayout : "auto"}
