@@ -181,6 +181,7 @@ describe("Table h5_css", () => {
         }
 
         .ant-table {
+          $columnAlignRightPaddingRight: 25px;
           border-radius: 0px;
           border-left: none;
           border-right: none;
@@ -278,6 +279,9 @@ describe("Table h5_css", () => {
 
                 &.cell_status {
                   line-height: 0px;
+                }
+                &.align-right {
+                  padding-right: $columnAlignRightPaddingRight;
                 }
               }
 
@@ -412,13 +416,13 @@ describe("Table h5_css", () => {
               }
 
               &.ant-table-column-has-sorters {
-                padding: 15px 28px 15px 8px;
+                padding: 15px $columnAlignRightPaddingRight 15px 8px;
 
                 .ant-table-column-sorters {
                   padding: 0;
                   .order-icon {
                     position: absolute;
-                    right: 10px;
+                    right: 6px;
                     top: 50%;
                     transform: translateY(-50%);
                     height: 16px;
@@ -455,6 +459,9 @@ describe("Table h5_css", () => {
                 .ant-table-column-sorters .order-icon {
                   display: block;
                 }
+              }
+              &.align-right {
+                padding-right: $columnAlignRightPaddingRight;
               }
             }
           }
