@@ -4,7 +4,8 @@ import { AlertProps } from "antd/lib/alert";
 import { AutoCompleteProps } from "antd/lib/auto-complete";
 import { BadgeProps } from "antd/lib/badge";
 import { ButtonProps as AntdButtonProps, ButtonType } from "antd/lib/button";
-import { CheckboxProps } from "antd/lib/checkbox";
+import { CascaderProps } from "antd/lib/cascader";
+import { CheckboxGroupProps, CheckboxProps } from "antd/lib/checkbox";
 import { ColProps } from "antd/lib/col";
 import { DatePickerProps } from "antd/lib/date-picker";
 import { DividerProps as AntdDividerProps } from "antd/lib/divider";
@@ -43,9 +44,11 @@ import {
 import { TableRowSelection } from "antd/lib/table/interface";
 import { TagType } from "antd/lib/tag";
 import { TimePickerProps } from "antd/lib/time-picker";
+import { TimeLineItemProps, TimelineProps } from "antd/lib/timeline";
 import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
-import React, { createContext, ReactNode } from "react";
+import { TextProps } from "antd/lib/typography/Text";
+import React, { ReactNode } from "react";
 
 import { SerializableObject } from "../utils/tower";
 import { FieldRenderProps } from "./react-final-form";
@@ -492,6 +495,11 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   timeZoneSelect: React.FC<ITimeZoneSelectProps>;
   col: React.FC<ColProps>;
   row: React.FC<RowProps>;
+  timeline: React.FC<TimelineProps>;
+  timelineItem: React.FC<TimeLineItemProps>;
+  cascader: React.ComponentType<CascaderProps>;
+  checkboxGroup: React.ComponentType<CheckboxGroupProps>;
+  typographyText: React.FC<TextProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
