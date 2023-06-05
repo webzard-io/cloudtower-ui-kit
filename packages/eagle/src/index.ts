@@ -4,6 +4,7 @@ export type { DateRange, GraphType, IconProps, IDataPoint } from "./components";
 export {
   antdKit,
   Button,
+  ButtonStyle,
   FailedLoad,
   Icon,
   InputTagItem,
