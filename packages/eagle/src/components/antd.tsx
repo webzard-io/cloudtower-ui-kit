@@ -1,6 +1,8 @@
 import {
   AutoComplete,
   Button as AntdButton,
+  Cascader,
+  Checkbox as AntCheckbox,
   Col,
   Divider,
   Dropdown,
@@ -13,7 +15,9 @@ import {
   Select as AntdSelect,
   Skeleton,
   Tag,
+  Timeline,
   Tree,
+  Typography,
 } from "antd";
 import message from "antd/lib/message";
 import React from "react";
@@ -112,6 +116,11 @@ export function getAntdKit(): Kit {
     simplePagination: SimplePagination,
     space: Space,
     timeZoneSelect: TimeZoneSelect,
+    timeline: Timeline,
+    timelineItem: Timeline.Item,
+    checkboxGroup: AntCheckbox.Group,
+    typographyText: Typography.Text,
+    cascader: Cascader,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
