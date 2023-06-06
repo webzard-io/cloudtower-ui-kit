@@ -21,7 +21,6 @@ import {
   Typography,
   Upload,
 } from "antd";
-import message from "antd/lib/message";
 import React from "react";
 
 import { Kit, OptionComponentType } from "../spec";
@@ -41,6 +40,7 @@ import Frequency from "./Frequency";
 import Input from "./Input";
 import InputGroup from "./InputGroup";
 import Loading from "./Loading";
+import { createBatchMessageMethods } from "./message-group";
 import Modal from "./Modal";
 import Pagination from "./Pagination";
 import Percent from "./Percent";
@@ -108,7 +108,7 @@ export function getAntdKit(): Kit {
     menuItemGroup: Menu.ItemGroup,
     layout: Layout,
     autoComplete: AutoComplete,
-    message: message,
+    message: createBatchMessageMethods(),
     tag: Tag,
     popover: Popover,
     arch: Arch,

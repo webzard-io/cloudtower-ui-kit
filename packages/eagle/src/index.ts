@@ -5,6 +5,7 @@ export {
   antdKit,
   Button,
   ButtonStyle,
+  createBatchMessageMethods,
   FailedLoad,
   Icon,
   InputTagItem,

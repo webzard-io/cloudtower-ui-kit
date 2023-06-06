@@ -12,6 +12,7 @@ export { default as InputTagItem } from "./InputTagItem";
 export * from "./KitStoreProvider";
 export { default as KitStoreProvider } from "./KitStoreProvider";
 export { default as Loading } from "./Loading";
+export * from "./message-group";
 export * from "./Metric";
 export { default as Metric } from "./Metric";
 export * from "./Modal";
