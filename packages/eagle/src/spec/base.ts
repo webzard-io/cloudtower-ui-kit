@@ -7,10 +7,11 @@ import { ButtonProps as AntdButtonProps, ButtonType } from "antd/lib/button";
 import { CascaderProps } from "antd/lib/cascader";
 import { CheckboxGroupProps, CheckboxProps } from "antd/lib/checkbox";
 import { ColProps } from "antd/lib/col";
-import { DatePickerProps } from "antd/lib/date-picker";
+import { DatePickerProps, RangePickerProps } from "antd/lib/date-picker";
 import { DividerProps as AntdDividerProps } from "antd/lib/divider";
 import { DropDownProps } from "antd/lib/dropdown";
 import type Form from "antd/lib/form";
+import { FormItemProps } from "antd/lib/form";
 import { GroupProps, InputProps } from "antd/lib/input";
 import { TextAreaProps as AntdTextAreaProps } from "antd/lib/input/TextArea";
 import { InputNumberProps } from "antd/lib/input-number";
@@ -48,6 +49,7 @@ import { TimeLineItemProps, TimelineProps } from "antd/lib/timeline";
 import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
 import { TextProps } from "antd/lib/typography/Text";
+import { UploadProps } from "antd/lib/upload";
 import React, { ReactNode } from "react";
 
 import { SerializableObject } from "../utils/tower";
@@ -490,6 +492,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   >;
   steps: React.FC<IStepsProps>;
   form: Form;
+  formItem: React.FC<FormItemProps>;
   simplePagination: React.FC<ISimplePaginationProps>;
   space: React.FC<ISpaceProps>;
   timeZoneSelect: React.FC<ITimeZoneSelectProps>;
@@ -500,6 +503,8 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   cascader: React.ComponentType<CascaderProps>;
   checkboxGroup: React.ComponentType<CheckboxGroupProps>;
   typographyText: React.FC<TextProps>;
+  upload: React.ComponentType<UploadProps>;
+  datePickerRangePicker: React.ComponentType<RangePickerProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;

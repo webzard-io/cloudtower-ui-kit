@@ -4,6 +4,7 @@ import {
   Cascader,
   Checkbox as AntCheckbox,
   Col,
+  DatePicker,
   Divider,
   Dropdown,
   Form,
@@ -18,6 +19,7 @@ import {
   Timeline,
   Tree,
   Typography,
+  Upload,
 } from "antd";
 import message from "antd/lib/message";
 import React from "react";
@@ -113,6 +115,7 @@ export function getAntdKit(): Kit {
     buttonGroup: ButtonGroup,
     steps: Steps,
     form: Form,
+    formItem: Form.Item,
     simplePagination: SimplePagination,
     space: Space,
     timeZoneSelect: TimeZoneSelect,
@@ -121,6 +124,8 @@ export function getAntdKit(): Kit {
     checkboxGroup: AntCheckbox.Group,
     typographyText: Typography.Text,
     cascader: Cascader,
+    upload: Upload,
+    datePickerRangePicker: DatePicker.RangePicker,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
