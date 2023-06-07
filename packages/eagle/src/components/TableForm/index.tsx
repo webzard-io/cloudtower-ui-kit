@@ -7,38 +7,30 @@ import React, {
   useState,
 } from "react";
 
-import {
-  BatchInputListBodyItemStyle,
-  BatchInputListHeaderItemStyle,
-} from "./style";
-import { TableFormBodyCell } from "./TableFormBodyCell";
+import AddRowButton from "./AddRowButton";
+import { DraggableHandleWrapper, TableFormWrapper } from "./style";
+import TableFormBodyRows from "./TableFormBodyRows";
 import { BatchInputListHeaderCell } from "./TableFormHeaderCell";
-import { ErrorInfo, TableFormColumn } from "./types";
+import { DataType, TableFormHandle, TableFormProps } from "./types";
+import { genEmptyRow } from "./utils";
 
-type TableFormProps = {
-  defaultData: any[];
-  columns: TableFormColumn[];
-  rowCount?: number;
-  errorInfo?: ErrorInfo;
-  disabled?: boolean;
-  onHeaderChange?: (data: unknown[]) => void;
-  onHeaderBlur?: (data: unknown[]) => void;
-  onBodyChange?: (value: unknown[], path: string) => void;
-  onBodyBlur?: (value: unknown, path: string) => void;
-};
-
-export type TableFormHandle = {
-  setData: (data: Record<string, any>[]) => void;
-};
+const DEFAULT_ROW_COUNT = 3;
 
 const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
   (
     {
       defaultData,
       columns,
-      rowCount = 3,
-      errorInfo = {},
       disabled,
+      rowAddConfig,
+      deletable,
+      size = "default",
+      className,
+      draggable,
+      disableBatchFilling = false,
+      rowSplitType = "border",
+      renderRowDescription,
+      rowValidator,
       onHeaderChange,
       onHeaderBlur,
       onBodyChange,
@@ -46,31 +38,34 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
     },
     ref
   ) => {
-    const [data, setData] = useState<Record<string, any>[]>(defaultData);
+    const treatedDefaultData = useMemo(() => {
+      return (
+        defaultData ||
+        [...Array(DEFAULT_ROW_COUNT)].map(() => genEmptyRow(columns))
+      );
+    }, [defaultData, columns]);
+    const [data, setData] = useState<DataType[]>(treatedDefaultData);
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [latestData, setLatestData] =
-      useState<Record<string, any>[]>(defaultData);
+      useState<DataType[]>(treatedDefaultData);
 
-    useEffect(() => {
-      setLatestData(defaultData);
-      setData(defaultData);
-    }, [defaultData]);
-
-    const genEmptyRow = useCallback(() => {
-      const row: Record<string, any> = {};
-      columns.forEach((col) => {
-        row[col.key] = col.defaultValue;
-      });
-      return row;
-    }, [columns]);
+    const updateData = useCallback(
+      (value: DataType[], rowIndex?: number, columnKey?: string) => {
+        setLatestData(value);
+        setData(value);
+        onBodyChange?.(value, rowIndex, columnKey);
+      },
+      [onBodyChange]
+    );
 
     const handleBatchChange = useCallback(
-      (newData) => {
+      (newData, columnKey) => {
         setLatestData(newData);
-        onHeaderChange?.(newData);
+        onHeaderChange?.(newData, columnKey);
       },
       [onHeaderChange]
     );
+
     const handleBatchBlur = useCallback(
       (key, error) => {
         if (error) {
@@ -86,90 +81,22 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
         } else {
           // update current column body input value
           setData(latestData);
+          onBodyChange?.(latestData, undefined, key);
           onHeaderBlur?.(latestData);
         }
       },
-      [latestData, onHeaderBlur]
-    );
-    const handleChange = useCallback(
-      (newData, path) => {
-        setLatestData(newData);
-        setData(newData);
-        onBodyChange?.(newData, path);
-      },
-      [onBodyChange]
+      [latestData, onHeaderBlur, onBodyChange]
     );
 
-    const handleClear = useCallback((newData, path) => {
-      setLatestData(newData);
-      setData(newData);
-    }, []);
-
-    const handleBlur = useCallback(
-      (newData, path) => {
-        onBodyBlur?.(newData, path);
-      },
-      [onBodyBlur]
+    useImperativeHandle(
+      ref,
+      () => ({
+        setData: (data: DataType[]) => {
+          updateData(data);
+        },
+      }),
+      [updateData]
     );
-
-    // modify data size when rowCount changes
-    useEffect(() => {
-      if (rowCount === undefined || rowCount === data.length || rowCount === -1)
-        return;
-
-      if (rowCount < data.length) {
-        const newData = data.slice(0, rowCount);
-
-        setLatestData(newData);
-        setData(newData);
-        return;
-      }
-
-      const newData = [...data];
-      while (rowCount > newData.length) {
-        newData.push(genEmptyRow());
-      }
-      setLatestData(newData);
-      setData(newData);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [rowCount, genEmptyRow]);
-
-    useImperativeHandle(ref, () => ({
-      setData: (data: Record<string, any>[]) => {
-        console.log("useImperativeHandle", data);
-        setLatestData(data);
-        setData(data);
-      },
-    }));
-
-    const items = useMemo(() => {
-      return data.map((_d, i) => {
-        const cells = columns.map((col, index) => {
-          return (
-            <TableFormBodyCell
-              key={col.key}
-              column={col}
-              data={data}
-              latestData={latestData}
-              defaultData={defaultData}
-              disabled={disabled}
-              index={i}
-              errorInfo={errorInfo}
-              onClear={handleClear}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              visible={passwordVisible}
-            />
-          );
-        });
-        return (
-          <AntdList.Item className={BatchInputListBodyItemStyle} key={i}>
-            {cells}
-          </AntdList.Item>
-        );
-      });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [columns, data, disabled, errorInfo, latestData, passwordVisible]);
 
     const headerCells = columns.map((col) => {
       return (
@@ -179,22 +106,49 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
           latestData={latestData}
           disabled={disabled}
           column={col}
+          disableBatchFilling={disableBatchFilling}
           onChange={handleBatchChange}
           onBlur={handleBatchBlur}
-          errorInfo={errorInfo}
           onVisibleChange={setPasswordVisible}
         />
       );
     });
 
     return (
-      <div>
-        <AntdList size="small">
-          <AntdList.Item className={BatchInputListHeaderItemStyle}>
-            {headerCells}
-          </AntdList.Item>
-          {items}
-        </AntdList>
+      <div className={className}>
+        <TableFormWrapper className={`table-form row-split-by-${rowSplitType}`}>
+          <AntdList size={size} className={`size-${size}`}>
+            <AntdList.Item
+              className="eagle-table-form-header"
+              actions={deletable ? [<></>] : undefined}
+            >
+              {draggable ? <DraggableHandleWrapper /> : null}
+              {headerCells}
+            </AntdList.Item>
+            <TableFormBodyRows
+              data={data}
+              latestData={latestData}
+              columns={columns}
+              passwordVisible={passwordVisible}
+              deletable={deletable}
+              disabled={disabled}
+              draggable={draggable}
+              rowSplitType={rowSplitType}
+              onBodyBlur={onBodyBlur}
+              updateData={updateData}
+              renderRowDescription={renderRowDescription}
+              rowValidator={rowValidator}
+            />
+          </AntdList>
+        </TableFormWrapper>
+        {rowAddConfig?.addible ? (
+          <AddRowButton
+            config={rowAddConfig}
+            updateData={updateData}
+            columns={columns}
+            data={data}
+          />
+        ) : null}
       </div>
     );
   }

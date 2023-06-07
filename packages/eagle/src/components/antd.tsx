@@ -55,6 +55,7 @@ import Speed from "./Speed";
 import Steps from "./Steps";
 import Switch from "./Switch";
 import Table from "./Table";
+import TableForm from "./TableForm";
 import TextArea from "./TextArea";
 import TimeZoneSelect from "./TimeZoneSelect";
 import Tooltip from "./Tooltip";
@@ -126,6 +127,7 @@ export function getAntdKit(): Kit {
     cascader: Cascader,
     upload: Upload,
     datePickerRangePicker: DatePicker.RangePicker,
+    tableForm: TableForm,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19

@@ -16,5 +16,10 @@
   "time_zone_select_placeholder": "输入国家、城市、时区",
   "browser_time_zone": "浏览器时区",
   "Architecture_AARCH64": "AArch64",
-  "Architecture_X86_64": "x86_64"
+  "Architecture_X86_64": "x86_64",
+  "maximum_row_count_desc": "最多添加 {count} 项。",
+  "remove": "移除",
+  "add": "添加",
+  "prefix": "前缀",
+  "suffix": "后缀"
 }

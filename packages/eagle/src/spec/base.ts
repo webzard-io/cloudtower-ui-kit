@@ -51,6 +51,7 @@ import { TreeProps as AntdTreeProps } from "antd/lib/tree";
 import { TextProps } from "antd/lib/typography/Text";
 import { UploadProps } from "antd/lib/upload";
 import React, { ReactNode } from "react";
+import { TableFormProps } from "src/components/TableForm/types";
 
 import { SerializableObject } from "../utils/tower";
 import { FieldRenderProps } from "./react-final-form";
@@ -505,6 +506,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   typographyText: React.FC<TextProps>;
   upload: React.ComponentType<UploadProps>;
   datePickerRangePicker: React.ComponentType<RangePickerProps>;
+  tableForm: React.FC<TableFormProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
