@@ -4,6 +4,7 @@ import { AlertProps } from "antd/lib/alert";
 import { AutoCompleteProps } from "antd/lib/auto-complete";
 import { BadgeProps } from "antd/lib/badge";
 import { ButtonProps as AntdButtonProps, ButtonType } from "antd/lib/button";
+import { CalendarProps } from "antd/lib/calendar/generateCalendar";
 import { CascaderProps } from "antd/lib/cascader";
 import { CheckboxGroupProps, CheckboxProps } from "antd/lib/checkbox";
 import { ColProps } from "antd/lib/col";
@@ -22,7 +23,7 @@ import { ListItemProps } from "antd/lib/list/Item";
 import { MenuItemGroupProps, MenuProps } from "antd/lib/menu";
 import { MenuItemProps } from "antd/lib/menu/MenuItem";
 import { SubMenuProps } from "antd/lib/menu/SubMenu";
-import { MessageInstance } from "antd/lib/message";
+import { MessageApi, MessageInstance } from "antd/lib/message";
 import { ModalProps as AntdModalProps } from "antd/lib/modal";
 import { PopoverProps } from "antd/lib/popover";
 import { ProgressProps } from "antd/lib/progress";
@@ -32,7 +33,7 @@ import {
 } from "antd/lib/radio";
 import { RadioButtonProps as AntdRadioButtonProps } from "antd/lib/radio/radioButton";
 import { RowProps } from "antd/lib/row";
-import { SelectProps as AntdSelectProps } from "antd/lib/select";
+import { SelectProps as AntdSelectProps, SelectProps } from "antd/lib/select";
 import { SkeletonProps as AntdSkeletonProps } from "antd/lib/skeleton";
 import { SkeletonButtonProps } from "antd/lib/skeleton/Button";
 import { StepProps, StepsProps } from "antd/lib/steps";
@@ -43,13 +44,15 @@ import {
   TableProps as AntdTableProps,
 } from "antd/lib/table";
 import { TableRowSelection } from "antd/lib/table/interface";
+import { TabPaneProps, TabsProps } from "antd/lib/tabs";
 import { TagType } from "antd/lib/tag";
 import { TimePickerProps } from "antd/lib/time-picker";
 import { TimeLineItemProps, TimelineProps } from "antd/lib/timeline";
 import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
 import { TextProps } from "antd/lib/typography/Text";
-import { UploadProps } from "antd/lib/upload";
+import { DraggerProps, UploadProps } from "antd/lib/upload";
+import type { Moment } from "moment";
 import React, { ReactNode } from "react";
 import { TableFormProps } from "src/components/TableForm/types";
 
@@ -507,6 +510,17 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   upload: React.ComponentType<UploadProps>;
   datePickerRangePicker: React.ComponentType<RangePickerProps>;
   tableForm: React.FC<TableFormProps>;
+  uploadDragger: React.ComponentType<DraggerProps>;
+  calendar: React.FC<CalendarProps<Moment>>;
+  timePicker: React.FC<TimePickerProps>;
+  datePicker: React.ComponentType<DatePickerProps>;
+  tabs: React.FC<TabsProps>;
+  tabsTabPane: React.FC<TabPaneProps>;
+  antdBadge: React.FC<BadgeProps>;
+  antdMessage: MessageApi;
+  antdButton: React.ComponentType<AntdButtonProps>;
+  antdSelect: React.ComponentType<SelectProps<V>>;
+  antdTooltip: React.FC<TooltipProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
