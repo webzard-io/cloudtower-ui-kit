@@ -29,16 +29,16 @@ export class Batcher {
   private scheduler: Partial<Record<MessageKey, MessageStore>> = {};
 
   private originalMethod: typeof message["success"];
-  private batchHelper: (content: ReactNode) => {
-    batchKey?: string;
-    content: ReactNode;
+  private batchHelper: {
+    getBatchKey: (content: ReactNode) => string | undefined;
+    getBatchContent: (batchKey: string, count: number) => ReactNode;
   };
 
   constructor(
     originalMethod: typeof message["success"],
-    batchHelper: (content: ReactNode) => {
-      batchKey?: string;
-      content: ReactNode;
+    batchHelper: {
+      getBatchKey: (content: ReactNode) => string | undefined;
+      getBatchContent: (batchKey: string, count: number) => ReactNode;
     }
   ) {
     this.originalMethod = originalMethod;
@@ -46,7 +46,7 @@ export class Batcher {
   }
 
   public addMessage(originContent: KeyedArgsProps) {
-    const { batchKey, content } = this.batchHelper(originContent.content);
+    const batchKey = this.batchHelper.getBatchKey(originContent.content);
     if (batchKey == null) {
       // can not be batched when i18n not ready
       this.originalMethod(originContent);
@@ -67,7 +67,7 @@ export class Batcher {
     // if there are grouped messages, update the group context and re-render
     if (groupedCtx) {
       groupedCtx.count++;
-      this.applyContent({ ...originContent, content }, messageStore);
+      this.applyContent(batchKey, originContent, messageStore);
       return;
     }
 
@@ -96,7 +96,7 @@ export class Batcher {
         key: originContent.key,
         count: messageCount + 1,
       };
-      this.applyContent({ ...originContent, content }, messageStore);
+      this.applyContent(batchKey, originContent, messageStore);
       return;
     }
 
@@ -112,13 +112,22 @@ export class Batcher {
           delete firedHandlers[originContent.key];
           delete messageStore.groupedCtx;
         };
-        const handler = this.originalMethod(content);
+        const handler = this.originalMethod(originContent);
         firedHandlers[originContent.key] = handler;
       }
     }, this.batchTime);
   }
 
-  private applyContent(content: KeyedArgsProps, store: MessageStore) {
+  private applyContent(
+    batchKey: string,
+    content: KeyedArgsProps,
+    store: MessageStore
+  ) {
+    content.content = this.batchHelper.getBatchContent(
+      batchKey,
+      store.groupedCtx!.count
+    );
+
     content.key = store.groupedCtx!.key;
 
     content.onClose = () => {
@@ -129,12 +138,10 @@ export class Batcher {
   }
 }
 
-export function createBatchMessageMethods(
-  batchHelper?: (content: ReactNode) => {
-    batchKey?: string;
-    content: ReactNode;
-  }
-): typeof message {
+export function createBatchMessageMethods(batchHelper?: {
+  getBatchKey: (content: ReactNode) => string | undefined;
+  getBatchContent: (batchKey: string, count: number) => ReactNode;
+}): typeof message {
   if (batchHelper == null) {
     return message;
   }

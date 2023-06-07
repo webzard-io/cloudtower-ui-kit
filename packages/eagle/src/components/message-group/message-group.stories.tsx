@@ -18,19 +18,20 @@ const patterMap = {
   },
 };
 
-const batchHelper = (content: ReactNode) => {
-  let batchKey: string | undefined;
-  for (const key of Object.keys(patterMap)) {
-    if (patterMap[key]?.patterns.some((p) => p.test(String(content)))) {
-      batchKey = patterMap[key]?.batchKey;
-      break;
+const batchHelper = {
+  getBatchKey: (content: ReactNode) => {
+    let batchKey: string | undefined;
+    for (const key of Object.keys(patterMap)) {
+      if (patterMap[key]?.patterns.some((p) => p.test(String(content)))) {
+        batchKey = patterMap[key]?.batchKey;
+        break;
+      }
     }
-  }
-
-  return {
-    batchKey,
-    content: batchKey == null ? content : parrotI18n.t(batchKey),
-  };
+    return batchKey;
+  },
+  getBatchContent: (batchKey: string, count: number) => {
+    return parrotI18n.t(batchKey);
+  },
 };
 
 const message = createBatchMessageMethods(batchHelper);
