@@ -1,22 +1,18 @@
 import React, {
   createContext,
   PropsWithChildren,
-  ReactNode,
   useContext,
   useMemo,
 } from "react";
 
-import { createBatchMessageMethods } from "../components";
+import { BatchHelper, createBatchMessageMethods } from "../components";
 import { antdKit } from "../components/antd";
 import { Kit } from "../spec";
 
 interface IProps {
   kit?: Kit;
   message?: {
-    batch?: (content: ReactNode) => {
-      batchKey?: string;
-      content: ReactNode;
-    };
+    batch?: BatchHelper;
   };
 }
 

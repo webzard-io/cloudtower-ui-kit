@@ -13,6 +13,11 @@ export function makeUUID(length = 25) {
   return result;
 }
 
+export type BatchHelper = {
+  getBatchKey: (content: ReactNode) => string | undefined;
+  getBatchContent: (batchKey: string, count: number) => ReactNode;
+};
+
 type MessageKey = string;
 type MessageStore = {
   pendingFrom?: number;
@@ -29,17 +34,11 @@ export class Batcher {
   private scheduler: Partial<Record<MessageKey, MessageStore>> = {};
 
   private originalMethod: typeof message["success"];
-  private batchHelper: {
-    getBatchKey: (content: ReactNode) => string | undefined;
-    getBatchContent: (batchKey: string, count: number) => ReactNode;
-  };
+  private batchHelper: BatchHelper;
 
   constructor(
     originalMethod: typeof message["success"],
-    batchHelper: {
-      getBatchKey: (content: ReactNode) => string | undefined;
-      getBatchContent: (batchKey: string, count: number) => ReactNode;
-    }
+    batchHelper: BatchHelper
   ) {
     this.originalMethod = originalMethod;
     this.batchHelper = batchHelper;
@@ -138,10 +137,9 @@ export class Batcher {
   }
 }
 
-export function createBatchMessageMethods(batchHelper?: {
-  getBatchKey: (content: ReactNode) => string | undefined;
-  getBatchContent: (batchKey: string, count: number) => ReactNode;
-}): typeof message {
+export function createBatchMessageMethods(
+  batchHelper?: BatchHelper
+): typeof message {
   if (batchHelper == null) {
     return message;
   }
