@@ -12,3 +12,4 @@ typings
 storybook-static
 linaria-temp-map.json
 .vercel
+package-lock.json
