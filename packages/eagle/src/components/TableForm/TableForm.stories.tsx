@@ -212,6 +212,7 @@ export const Basic = () => {
           <TableForm
             {...commonTableFormProps}
             ref={ref1}
+            maxHeight={300}
             defaultData={[
               {
                 address: "Value",

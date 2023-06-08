@@ -61,8 +61,13 @@ export const BodyCellTextWrapper = styled.div`
 export const TableFormWrapper = styled.div`
   border: 1px solid $strokes-light-trans-2;
   border-radius: 8px;
+  overflow: auto;
   .ant-list {
+    position: relative;
     .eagle-table-form-header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
       display: flex;
       padding: 8px;
       & {

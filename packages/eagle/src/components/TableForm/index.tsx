@@ -3,6 +3,7 @@ import React, {
   useCallback,
   useImperativeHandle,
   useLayoutEffect,
+  useMemo,
   useState,
 } from "react";
 
@@ -29,6 +30,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       disableBatchFilling = false,
       rowSplitType = "border",
       validateTriggerType,
+      maxHeight,
       renderRowDescription,
       rowValidator,
       onHeaderChange,
@@ -120,9 +122,23 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       );
     });
 
+    const tableFormWrapperStyle: React.CSSProperties | undefined = useMemo(
+      () =>
+        maxHeight
+          ? {
+              maxHeight:
+                typeof maxHeight === "number" ? maxHeight + "px" : maxHeight,
+            }
+          : undefined,
+      []
+    );
+
     return (
       <div className={className}>
-        <TableFormWrapper className={`table-form row-split-by-${rowSplitType}`}>
+        <TableFormWrapper
+          className={`table-form row-split-by-${rowSplitType}`}
+          style={tableFormWrapperStyle}
+        >
           <AntdList size={size} className={`size-${size}`}>
             <AntdList.Item
               className="eagle-table-form-header"

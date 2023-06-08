@@ -155,6 +155,7 @@ export type TableFormProps = {
   className?: string;
   rowSplitType?: "border" | "zebraMarking";
   validateTriggerType?: ValidateTriggerType;
+  maxHeight?: number | string;
   renderRowDescription?: (props: RenderRowDescriptionProps) => React.ReactNode;
   rowValidator?: (rowIndex: number, rowData: DataType) => string | undefined;
   onHeaderChange?: (data: unknown[], columnKey: string) => void;
