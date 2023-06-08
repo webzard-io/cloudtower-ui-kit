@@ -7,6 +7,7 @@ import TimeZoneSelect from ".";
 export const TimeZoneSelectStory = () => {
   const [value, setValue] = useState<string>();
   const [value2, setValue2] = useState<string>();
+  const [value3, setValue3] = useState<string>();
   return (
     <Space direction="vertical">
       <Space direction="vertical">
@@ -33,6 +34,24 @@ export const TimeZoneSelectStory = () => {
           disabled
           onChange={(val) => undefined}
         />
+      </Space>
+      <Space direction="vertical">
+        <h1>Custom Placeholder</h1>
+        <TimeZoneSelect
+          value={undefined}
+          onChange={(val) => undefined}
+          placeholder="Hello, Timezone!"
+        />
+      </Space>
+      <Space direction="vertical">
+        <h1>With Default Option</h1>
+        <TimeZoneSelect
+          value={value3}
+          onChange={(val) => setValue3(val)}
+          defaultOptionValue={"Asia/Shanghai"}
+        />
+        <span>Selected time zone is: {value3}</span>
+        <button onClick={() => setValue3(undefined)}>reset</button>
       </Space>
     </Space>
   );
