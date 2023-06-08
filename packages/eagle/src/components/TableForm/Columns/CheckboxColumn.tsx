@@ -5,7 +5,9 @@ import React, { useCallback } from "react";
 import { ColumnBodyCellProps } from "../types";
 
 export const CheckboxColumnBodyCell: React.FC<
-  Omit<ColumnBodyCellProps, "onChange"> & { onChange: (value: unknown) => void }
+  Pick<ColumnBodyCellProps, "data" | "column" | "index"> & {
+    onChange: (value: unknown) => void;
+  }
 > = ({ data, column, index, onChange }) => {
   const value =
     data[index][column.key] === undefined

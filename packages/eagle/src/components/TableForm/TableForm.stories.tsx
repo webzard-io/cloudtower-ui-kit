@@ -1,12 +1,18 @@
 import { styled } from "@linaria/react";
 import { Checkbox, Form, Input, Select, Space } from "antd";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { withDesign } from "storybook-addon-designs";
 
 import Button from "../Button";
 import { Typo } from "../Typo";
 import TableForm from ".";
-import { DataType, TableFormHandle, TableFormProps } from "./types";
+import {
+  DataType,
+  DeletableConfigurations,
+  TableFormHandle,
+  TableFormProps,
+  ValidateTriggerType,
+} from "./types";
 
 const Title: React.FC = ({ children }) => (
   <div style={{ marginTop: "16px" }} className={Typo.Display.d2_bold_title}>
@@ -133,7 +139,7 @@ const commonTableFormProps: TableFormProps = {
       subTitle: "",
       key: "customizedCmpt",
       defaultValue: "option 2",
-      render({ isHeader, value, ...restProps }) {
+      render({ isHeader, value, rowIndex, ...restProps }) {
         return (
           <Select
             {...restProps}
@@ -174,13 +180,30 @@ const commonTableFormProps: TableFormProps = {
 export const Basic = () => {
   const [formHandle, setFormHandle] = useState<TableFormHandle>();
   const [tableForm2DataLength, setTableForm2DataLength] = useState<number>();
-  const ref = useRef<TableFormHandle>(null);
+  const ref1 = useRef<TableFormHandle>(null);
+  const ref2 = useRef<TableFormHandle>(null);
 
   useEffect(() => {
-    if (ref.current !== null) {
-      setFormHandle(ref.current);
+    if (ref2.current !== null) {
+      setFormHandle(ref2.current);
+    }
+    if (ref1.current !== null) {
+      ref1.current.validateWholeFields();
     }
   }, []);
+
+  const deleteConfig: DeletableConfigurations = useMemo(
+    () => ({
+      deletable: true,
+      specifyRowDeleteDisabled(index, data) {
+        if (data.length === 1) {
+          return true;
+        }
+        return false;
+      },
+    }),
+    []
+  );
   return (
     <div style={{ padding: "20px" }}>
       <Space direction="vertical">
@@ -188,6 +211,7 @@ export const Basic = () => {
         <ContentWrapper>
           <TableForm
             {...commonTableFormProps}
+            ref={ref1}
             defaultData={[
               {
                 address: "Value",
@@ -205,17 +229,17 @@ export const Basic = () => {
                 checkbox: false,
               },
               {
-                address: "row has address",
+                address: "Values",
                 password: "this-is-pwd",
                 checkbox: false,
               },
               {
-                address: "row has address",
+                address: "Values",
                 password: "this-is-pwd",
                 checkbox: false,
               },
               {
-                address: "row has address",
+                address: "Values",
                 password: "this-is-pwd",
                 checkbox: false,
               },
@@ -231,10 +255,11 @@ export const Basic = () => {
             tableForm2DataLength={tableForm2DataLength}
           />
           <TableForm
-            ref={ref}
+            ref={ref2}
             {...commonTableFormProps}
-            deletable
+            deleteConfig={deleteConfig}
             disableBatchFilling
+            validateTriggerType={ValidateTriggerType.Lazy}
             rowAddConfig={{
               addible: true,
               maximum: 8,
@@ -248,7 +273,12 @@ export const Basic = () => {
       <Space direction="vertical" style={{ marginTop: "32px", width: "100%" }}>
         <Title>Batch input TableForm</Title>
         <ContentWrapper>
-          <TableForm {...commonTableFormProps} disableBatchFilling draggable />
+          <TableForm
+            {...commonTableFormProps}
+            disableBatchFilling
+            draggable
+            validateTriggerType={ValidateTriggerType.Aggressive}
+          />
         </ContentWrapper>
       </Space>
     </div>

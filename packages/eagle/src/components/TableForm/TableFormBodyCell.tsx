@@ -1,47 +1,99 @@
 import { cx } from "@linaria/core";
-import React, { useCallback, useMemo } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import { Typo } from "../Typo";
 import { ColumnBodyImpls } from "./Columns";
 import { FormItem } from "./Columns/FormItem";
-import { ColumnBodyCellProps, DataType } from "./types";
+import { ColumnBodyCellProps, DataType, ValidateTriggerType } from "./types";
 
 export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
   const {
     column,
-    disabled,
     index: rowIndex,
     data,
-    onChange,
     latestData,
+    validateTriggerType,
     isRowError,
+    getRowValidateResult,
+    disabled,
+    onChange,
     onBlur,
+    validateAll,
   } = props;
+
+  const [validateResult, setValidateResult] =
+    useState<{
+      msg: string;
+      isError: boolean;
+    }>();
+  const isTouched = useRef(false);
 
   const width =
     typeof column.width === "number" ? column.width + "px" : column.width;
 
-  const _onChange = useCallback(
-    (value: unknown, data: DataType[]) => {
-      const newData = data.map((row, i) =>
-        i === rowIndex ? { ...row, [column.key]: value } : row
-      );
-      onChange?.(newData, rowIndex, column.key);
+  const triggerValidate = useCallback(
+    (currentValue?: unknown) => {
+      const value = currentValue || data[rowIndex][column.key];
+      const rowData = { ...data[rowIndex], [column.key]: value };
+      const rowValidateRes = getRowValidateResult(rowData);
+      if (rowValidateRes) {
+        return;
+      }
+      const result = column.validator?.({
+        value,
+        rowIndex,
+        rowData: data[rowIndex],
+      });
+      const isError = result ? typeof result === "string" : false;
+      setValidateResult({ msg: result || "", isError });
     },
-    [rowIndex, onChange, column]
+    [data, column, rowIndex, getRowValidateResult]
   );
 
+  useEffect(() => {
+    if (validateAll) {
+      isTouched.current = true;
+      triggerValidate();
+    }
+  }, [validateAll, triggerValidate]);
+
+  const _onChange = (value: unknown, data: DataType[]) => {
+    const newData = data.map((row, i) =>
+      i === rowIndex ? { ...row, [column.key]: value } : row
+    );
+    onChange?.(newData, rowIndex, column.key);
+    if (
+      (validateTriggerType === ValidateTriggerType.Normal &&
+        isTouched.current) ||
+      validateTriggerType === ValidateTriggerType.Aggressive
+    ) {
+      triggerValidate(value);
+    }
+  };
+
   const _onBlur = useCallback(() => {
+    isTouched.current = true;
+    triggerValidate();
     onBlur?.(data, rowIndex, column.key);
-  }, [rowIndex, column, onBlur, data]);
+  }, [rowIndex, column, onBlur, data, triggerValidate]);
 
   const renderDefaultComponent = () => {
     if (!column.type) return null;
     const CellComponent = ColumnBodyImpls[column.type];
     return (
       <CellComponent
-        {...props}
-        customData={column.customData}
+        disabled={disabled}
+        data={data}
+        index={rowIndex}
+        latestData={latestData}
+        column={column}
+        visible={props.visible}
         onChange={(val) => {
           _onChange(val, data);
         }}
@@ -79,29 +131,6 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
     );
   }, [rowIndex, data, latestData, column]);
 
-  const validateResult:
-    | {
-        msg: string;
-        isError: boolean;
-      }
-    | undefined = useMemo(() => {
-    if (isRowError) {
-      return {
-        msg: "",
-        isError: true,
-      };
-    }
-    const value = data[rowIndex][column.key];
-    const result = column.validator?.({
-      value,
-      rowIndex,
-      rowData: data[rowIndex],
-    });
-    if (typeof result === "string" && result) {
-      return { msg: result, isError: true };
-    }
-  }, [data, column, rowIndex, isRowError]);
-
   return (
     <div
       className={cx("eagle-table-form-cell", `align-${column.align || "left"}`)}
@@ -112,12 +141,8 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
       }}
     >
       <FormItem
-        validateStatus={validateResult?.isError ? "error" : ""}
-        message={
-          validateResult?.isError && validateResult.msg
-            ? validateResult.msg
-            : undefined
-        }
+        validateStatus={isRowError || validateResult?.isError ? "error" : ""}
+        message={isRowError ? "" : validateResult?.msg}
       >
         {Cell}
       </FormItem>

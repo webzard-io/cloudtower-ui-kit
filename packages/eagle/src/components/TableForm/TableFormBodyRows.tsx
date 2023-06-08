@@ -7,7 +7,7 @@ import {
 import { parrotI18n } from "@cloudtower/parrot";
 import { cx } from "@linaria/core";
 import { List as AntdList } from "antd";
-import React, { memo, useCallback, useMemo } from "react";
+import React, { memo, useCallback, useMemo, useState } from "react";
 import {
   DragDropContext,
   Draggable,
@@ -22,7 +22,7 @@ import Tooltip from "../Tooltip";
 import { Typo } from "../Typo";
 import { DraggableHandleWrapper } from "./style";
 import { TableFormBodyCell } from "./TableFormBodyCell";
-import { DataType, TableFormRowsProps } from "./types";
+import { DataType, TableFormRowsProps, ValidateTriggerType } from "./types";
 import { moveItemInArray } from "./utils";
 
 const TableFormRow: React.FC<
@@ -38,27 +38,36 @@ const TableFormRow: React.FC<
     latestData,
     disabled,
     passwordVisible,
-    deletable,
+    deleteConfig,
     draggable,
     rowIndex,
     provided,
     snapshot,
+    validateTriggerType = ValidateTriggerType.Normal,
     updateData,
     onBodyBlur,
     renderRowDescription,
     rowValidator,
+    validateAll,
   } = props;
 
   const rowData = data[rowIndex];
+  const [rowError, setRowError] = useState<string>();
 
-  const deleteRow = (index: number, data: DataType[]) => {
-    const newData = [...data];
-    newData.splice(index, 1);
-    updateData(newData);
-  };
+  const deleteRow = useCallback(
+    (index: number, data: DataType[]) => {
+      const newData = [...data];
+      newData.splice(index, 1);
+      updateData(newData);
+    },
+    [updateData]
+  );
 
-  const getRowActions = (index: number, rowDeletable?: boolean) => {
-    const isRowDeleteDisabled = rowDeletable === false;
+  const RowActions = useMemo(() => {
+    const isRowDeleteDisabled = deleteConfig?.specifyRowDeleteDisabled?.(
+      rowIndex,
+      data
+    );
     const DeleteIcon = (
       <Icon
         className={cx("delete-row-icon", isRowDeleteDisabled && "disabled")}
@@ -66,7 +75,7 @@ const TableFormRow: React.FC<
         hoverSrc={isRowDeleteDisabled ? undefined : XmarkRemove16RegularRedIcon}
         onClick={() => {
           if (isRowDeleteDisabled) return;
-          deleteRow(index, data);
+          deleteRow(rowIndex, data);
         }}
       />
     );
@@ -75,20 +84,17 @@ const TableFormRow: React.FC<
     ) : (
       <Tooltip title={parrotI18n.t("components.remove")}>{DeleteIcon}</Tooltip>
     );
-    return deletable ? [FinalRenderIcon] : undefined;
-  };
+    return deleteConfig?.deletable ? [FinalRenderIcon] : undefined;
+  }, [rowIndex, deleteConfig, data, deleteRow]);
 
-  const RowValidateResult = useMemo(() => {
-    const result = rowValidator?.(rowIndex, data[rowIndex]);
-    if (typeof result === "string" && result) {
-      return (
-        <p className={cx(Typo.Label.l4_regular, "row-error-message")}>
-          {result}
-        </p>
-      );
-    }
-    return null;
-  }, [rowValidator, rowIndex, data]);
+  const getRowValidateResult = useCallback(
+    (rowData: DataType): string | undefined => {
+      const result = rowValidator?.(rowIndex, rowData);
+      setRowError(result);
+      return result;
+    },
+    [rowValidator, rowIndex]
+  );
 
   const Cells = columns.map((col) => {
     return (
@@ -102,7 +108,10 @@ const TableFormRow: React.FC<
         onChange={updateData}
         onBlur={onBodyBlur}
         visible={passwordVisible}
-        isRowError={!!RowValidateResult}
+        validateTriggerType={validateTriggerType}
+        isRowError={!!rowError}
+        getRowValidateResult={getRowValidateResult}
+        validateAll={validateAll}
       />
     );
   });
@@ -143,11 +152,15 @@ const TableFormRow: React.FC<
         "eagle-table-form-row",
         snapshot?.isDragging && "isDragging"
       )}
-      actions={getRowActions(rowIndex, rowData.deletable)}
+      actions={RowActions}
     >
       {DraggableHandle}
       {Cells}
-      {RowValidateResult}
+      {rowError ? (
+        <p className={cx(Typo.Label.l4_regular, "row-error-message")}>
+          {rowError}
+        </p>
+      ) : null}
       {RowDescription}
     </AntdList.Item>
   );

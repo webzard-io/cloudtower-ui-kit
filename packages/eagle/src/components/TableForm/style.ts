@@ -4,6 +4,9 @@ import { styled } from "@linaria/react";
 export const TitleStyle = css`
   margin-bottom: 4px;
   color: $text-secondary-light;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const SubtitleStyle = css`
@@ -100,6 +103,7 @@ export const TableFormWrapper = styled.div`
     }
     .eagle-table-form-cell {
       flex: 1 0 0;
+      overflow: hidden;
       .cell-description {
         color: $text-secondary-light;
         margin: 0;

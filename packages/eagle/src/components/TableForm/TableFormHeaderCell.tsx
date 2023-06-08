@@ -76,15 +76,15 @@ export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
         visibility: column.hidden ? "hidden" : "visible",
       }}
     >
-      <FormItem
-        validateStatus={typeof errMsg === "string" && errMsg ? "error" : ""}
-        message={errMsg || undefined}
-      >
-        <p className={cx(Typo.Label.l3_bold_title, TitleStyle)}>
-          {column.title}
-        </p>
-        {disableBatchFilling ? null : renderCell()}
-      </FormItem>
+      <p className={cx(Typo.Label.l3_bold_title, TitleStyle)}>{column.title}</p>
+      {disableBatchFilling ? null : (
+        <FormItem
+          validateStatus={typeof errMsg === "string" && errMsg ? "error" : ""}
+          message={errMsg || undefined}
+        >
+          {renderCell()}
+        </FormItem>
+      )}
     </div>
   );
 };

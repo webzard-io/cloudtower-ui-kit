@@ -83,7 +83,10 @@ export const InputColumnHeaderCell: React.FC<
   );
 };
 export const InputColumnBodyCell: React.FC<
-  Omit<ColumnBodyCellProps, "onChange" | "onBlur"> & {
+  Pick<
+    ColumnBodyCellProps,
+    "data" | "latestData" | "column" | "index" | "disabled" | "visible"
+  > & {
     onChange: (value: unknown) => void;
     onBlur: () => void;
   }
