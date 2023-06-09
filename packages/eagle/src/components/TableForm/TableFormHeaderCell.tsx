@@ -21,7 +21,7 @@ export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
     : column.width + "px";
 
   const headerOnChange = useCallback(
-    (value: unknown) => {
+    (value: any, shouldUpdateData: boolean = false) => {
       const err = column.validator?.({ value, isHeader: true });
       setErrMsg(err || undefined);
       const shouldAutoIncrease =
@@ -35,7 +35,7 @@ export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
               : value,
         };
       });
-      onChange?.(newData, column.key);
+      onChange?.(newData, column.key, shouldUpdateData);
     },
     [onChange, data, column]
   );
@@ -76,15 +76,15 @@ export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
         visibility: column.hidden ? "hidden" : "visible",
       }}
     >
-      <FormItem
-        validateStatus={typeof errMsg === "string" && errMsg ? "error" : ""}
-        message={errMsg || undefined}
-      >
-        <p className={cx(Typo.Label.l3_bold_title, TitleStyle)}>
-          {column.title}
-        </p>
-        {disableBatchFilling ? null : renderCell()}
-      </FormItem>
+      <p className={cx(Typo.Label.l3_bold_title, TitleStyle)}>{column.title}</p>
+      {disableBatchFilling ? null : (
+        <FormItem
+          validateStatus={typeof errMsg === "string" && errMsg ? "error" : ""}
+          message={errMsg || undefined}
+        >
+          {renderCell()}
+        </FormItem>
+      )}
     </div>
   );
 };

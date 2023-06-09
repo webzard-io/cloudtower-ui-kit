@@ -2,10 +2,27 @@ import { Checkbox } from "antd";
 import { CheckboxChangeEvent } from "antd/lib/checkbox";
 import React, { useCallback } from "react";
 
-import { ColumnBodyCellProps } from "../types";
+import { ColumnBodyCellProps, ColumnHeaderCellProps } from "../types";
+
+export const CheckboxColumnHeaderCell: React.FC<
+  Omit<ColumnHeaderCellProps, "onChange" | "onBlur"> & {
+    onChange: (value: any, shouldUpdateData?: boolean) => void;
+  }
+> = ({ onChange }) => {
+  const _onChange = useCallback(
+    (e: CheckboxChangeEvent) => {
+      onChange(e.target.checked, true);
+    },
+    [onChange]
+  );
+
+  return <Checkbox onChange={_onChange} />;
+};
 
 export const CheckboxColumnBodyCell: React.FC<
-  Omit<ColumnBodyCellProps, "onChange"> & { onChange: (value: unknown) => void }
+  Pick<ColumnBodyCellProps, "data" | "column" | "index"> & {
+    onChange: (value: any) => void;
+  }
 > = ({ data, column, index, onChange }) => {
   const value =
     data[index][column.key] === undefined

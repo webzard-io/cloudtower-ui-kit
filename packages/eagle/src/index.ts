@@ -17,11 +17,7 @@ export {
   useKitDispatch,
   useKitSelector,
 } from "./components";
-export type {
-  TableFormColumn,
-  TableFormProps,
-  TableFormRowsProps,
-} from "./components/TableForm/types";
+export * from "./components/TableForm/types";
 export { useElementsSize } from "./hooks";
 export type {
   ButtonProps,

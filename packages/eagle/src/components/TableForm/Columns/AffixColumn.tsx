@@ -6,7 +6,7 @@ import { parrotI18n } from "@cloudtower/parrot";
 
 export const AffixColumnHeaderCell: React.FC<
   Omit<ColumnHeaderCellProps, "onChange" | "onBlur"> & {
-    onChange: (value: unknown) => void;
+    onChange: (value: any) => void;
     onBlur: () => void;
   }
 > = ({ data, column, onChange, onBlur }) => {

@@ -37,7 +37,7 @@ export const FormItem: React.FC<FormItemProps> = (props) => {
     <Form.Item
       className={FormItemStyle}
       validateStatus={validateStatus}
-      help={validateStatus ? message : ""}
+      help={validateStatus && message ? message : undefined}
     >
       {children}
     </Form.Item>

@@ -21,11 +21,9 @@ export const TextColumnHeaderCell: React.FC<ColumnHeaderCellProps> = ({
   );
 };
 
-export const TextColumnBodyCell: React.FC<ColumnBodyCellProps> = ({
-  data,
-  column,
-  index,
-}) => {
+export const TextColumnBodyCell: React.FC<
+  Pick<ColumnBodyCellProps, "data" | "column" | "index">
+> = ({ data, column, index }) => {
   const text = column.displayText || data[index][column.key];
 
   const CellDescription = useMemo(() => {

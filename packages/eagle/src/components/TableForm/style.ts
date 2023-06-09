@@ -4,6 +4,9 @@ import { styled } from "@linaria/react";
 export const TitleStyle = css`
   margin-bottom: 4px;
   color: $text-secondary-light;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const SubtitleStyle = css`
@@ -58,8 +61,13 @@ export const BodyCellTextWrapper = styled.div`
 export const TableFormWrapper = styled.div`
   border: 1px solid $strokes-light-trans-2;
   border-radius: 8px;
+  overflow: auto;
   .ant-list {
+    position: relative;
     .eagle-table-form-header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
       display: flex;
       padding: 8px;
       & {
@@ -100,32 +108,32 @@ export const TableFormWrapper = styled.div`
     }
     .eagle-table-form-cell {
       flex: 1 0 0;
+      overflow: hidden;
       .cell-description {
         color: $text-secondary-light;
         margin: 0;
       }
 
-      &.align-center {
+      @mixin text-align-style($align-position) {
+        & > * {
+          text-align: $align-position;
+        }
         .ant-form-item-control-input-content {
           &,
           & > * {
-            text-align: center;
+            text-align: $align-position;
           }
         }
+      }
+
+      &.align-center {
+        @include text-align-style(center);
       }
       &.align-left {
-        .ant-form-item-control-input-content {
-          p {
-            text-align: left;
-          }
-        }
+        @include text-align-style(left);
       }
       &.align-right {
-        .ant-form-item-control-input-content {
-          p {
-            text-align: right;
-          }
-        }
+        @include text-align-style(right);
       }
 
       &:not(:last-of-type) {
