@@ -15,6 +15,8 @@
   "to": "至",
   "time_zone_select_placeholder": "输入国家、城市、时区",
   "browser_time_zone": "浏览器时区",
+  "default_time_zone": "默认时区",
+  "coorddinated_universal_time": "协调世界时",
   "Architecture_AARCH64": "AArch64",
   "Architecture_X86_64": "x86_64",
   "maximum_row_count_desc": "最多添加 {count} 项。",
