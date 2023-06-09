@@ -17,9 +17,9 @@ export enum ValidateTriggerType {
 }
 
 export type CustomizedColumnRenderProps = {
-  value?: unknown;
+  value?: any;
   rowIndex?: number;
-  onChange: (value: unknown) => void;
+  onChange: (value: any) => void;
   disabled?: boolean;
   onBlur?: () => void;
   placeholder?: string;
@@ -38,7 +38,7 @@ export type TableFormColumn = {
   width?: number | string;
   displayText?: string;
 
-  defaultValue?: unknown;
+  defaultValue?: any;
   hidden?: boolean;
   placeholder?: string;
   autoIncrease?: boolean;
@@ -50,7 +50,7 @@ export type TableFormColumn = {
   renderDescription?: (props: RenderRowDescriptionProps) => React.ReactNode;
   render?: (props: CustomizedColumnRenderProps) => React.ReactNode;
   validator?: (params: {
-    value: unknown;
+    value: any;
     rowIndex?: number;
     rowData?: DataType;
     isHeader?: boolean;
@@ -63,7 +63,11 @@ export interface ColumnHeaderCellProps {
   column: TableFormColumn;
   disabled?: boolean;
   disableBatchFilling?: boolean;
-  onChange?: (newData: DataType[], columnKey?: string) => void;
+  onChange?: (
+    newData: DataType[],
+    columnKey: string,
+    shouldUpdateData: boolean
+  ) => void;
   onBlur?: (key: string, error?: string) => void;
   // Used to control whether the body password input is show or hide
   onVisibleChange?: (visible: boolean) => void;
@@ -158,8 +162,8 @@ export type TableFormProps = {
   maxHeight?: number | string;
   renderRowDescription?: (props: RenderRowDescriptionProps) => React.ReactNode;
   rowValidator?: (rowIndex: number, rowData: DataType) => string | undefined;
-  onHeaderChange?: (data: unknown[], columnKey: string) => void;
-  onHeaderBlur?: (data: unknown[]) => void;
+  onHeaderChange?: (data: any[], columnKey: string) => void;
+  onHeaderBlur?: (data: any[]) => void;
   onBodyChange?: (
     value: DataType[],
     rowIndex?: number,

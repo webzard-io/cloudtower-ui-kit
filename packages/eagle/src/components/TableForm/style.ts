@@ -114,27 +114,26 @@ export const TableFormWrapper = styled.div`
         margin: 0;
       }
 
-      &.align-center {
+      @mixin text-align-style($align-position) {
+        & > * {
+          text-align: $align-position;
+        }
         .ant-form-item-control-input-content {
           &,
           & > * {
-            text-align: center;
+            text-align: $align-position;
           }
         }
+      }
+
+      &.align-center {
+        @include text-align-style(center);
       }
       &.align-left {
-        .ant-form-item-control-input-content {
-          p {
-            text-align: left;
-          }
-        }
+        @include text-align-style(left);
       }
       &.align-right {
-        .ant-form-item-control-input-content {
-          p {
-            text-align: right;
-          }
-        }
+        @include text-align-style(right);
       }
 
       &:not(:last-of-type) {

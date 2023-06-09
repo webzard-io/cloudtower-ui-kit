@@ -64,11 +64,15 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
     }, []);
 
     const handleBatchChange = useCallback(
-      (newData, columnKey) => {
+      (newData, columnKey, shouldUpdateData: boolean) => {
         setLatestData(newData);
         onHeaderChange?.(newData, columnKey);
+        if (shouldUpdateData) {
+          setData(newData);
+          onBodyChange?.(newData, undefined, columnKey);
+        }
       },
-      [onHeaderChange]
+      [onHeaderChange, onBodyChange]
     );
 
     const handleBatchBlur = useCallback(

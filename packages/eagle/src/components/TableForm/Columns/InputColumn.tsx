@@ -61,7 +61,7 @@ const CustomInput: React.FC<
 
 export const InputColumnHeaderCell: React.FC<
   Omit<ColumnHeaderCellProps, "onChange" | "onBlur"> & {
-    onChange: (value: unknown) => void;
+    onChange: (value: any) => void;
     onBlur: () => void;
   }
 > = ({ disabled, column, onChange, onBlur, onVisibleChange }) => {
@@ -87,7 +87,7 @@ export const InputColumnBodyCell: React.FC<
     ColumnBodyCellProps,
     "data" | "latestData" | "column" | "index" | "disabled" | "visible"
   > & {
-    onChange: (value: unknown) => void;
+    onChange: (value: any) => void;
     onBlur: () => void;
   }
 > = ({

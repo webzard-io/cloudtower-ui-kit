@@ -1,6 +1,12 @@
 import { styled } from "@linaria/react";
 import { Checkbox, Form, Input, Select, Space } from "antd";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { withDesign } from "storybook-addon-designs";
 
 import Button from "../Button";
@@ -9,6 +15,7 @@ import TableForm from ".";
 import {
   DataType,
   DeletableConfigurations,
+  TableFormColumn,
   TableFormHandle,
   TableFormProps,
   ValidateTriggerType,
@@ -83,6 +90,42 @@ const selectOptions = [
   { label: "选项 2", value: "option 2" },
   { label: "选项 3", value: "option 3" },
   { label: "选项 4", value: "option 4" },
+];
+
+const getColumnsForValidation = (
+  type: ValidateTriggerType
+): TableFormColumn[] => [
+  {
+    title: "这是一个专门做校验的 tableForm",
+    type: "text",
+    key: "normalTitle",
+    render() {
+      switch (type) {
+        case ValidateTriggerType.Normal:
+          return "Normal类型的校验方式：onBlur 后的 onChange 才会触发校验";
+        case ValidateTriggerType.Lazy:
+          return "Lazy类型的校验方式：只有onBlur 才会触发校验";
+        case ValidateTriggerType.Aggressive:
+          return "Aggressive类型的校验方式：每次 onChange 都会触发校验";
+      }
+      return null;
+    },
+  },
+  {
+    title: "输入“Validation”触发校验失败吧~",
+    key: "validation",
+    type: "input",
+    validator({
+      value,
+      isHeader,
+    }: Parameters<NonNullable<TableFormColumn["validator"]>>[0] & {
+      value?: string;
+    }) {
+      if (!isHeader && value?.includes("Validation")) {
+        return "this is a special error for “Validation”!";
+      }
+    },
+  },
 ];
 
 const commonTableFormProps: TableFormProps = {
@@ -204,6 +247,13 @@ export const Basic = () => {
     }),
     []
   );
+
+  const rowValidationForValidationForm: TableFormProps["rowValidator"] =
+    useCallback((index, value: { validation?: string }) => {
+      if (index === 1 && value.validation?.includes("Validation")) {
+        return "this is a special row level error for “Validation”!";
+      }
+    }, []);
   return (
     <div style={{ padding: "20px" }}>
       <Space direction="vertical">
@@ -272,13 +322,45 @@ export const Basic = () => {
         </ContentWrapper>
       </Space>
       <Space direction="vertical" style={{ marginTop: "32px", width: "100%" }}>
-        <Title>Batch input TableForm</Title>
+        <Title>Draggable batch input TableForm</Title>
         <ContentWrapper>
           <TableForm
             {...commonTableFormProps}
             disableBatchFilling
             draggable
             validateTriggerType={ValidateTriggerType.Aggressive}
+          />
+        </ContentWrapper>
+      </Space>
+      <Space direction="vertical" style={{ marginTop: "32px", width: "100%" }}>
+        <Title>Normal validate type for TableForm</Title>
+        <ContentWrapper>
+          <TableForm
+            disableBatchFilling
+            columns={getColumnsForValidation(ValidateTriggerType.Normal)}
+            rowValidator={rowValidationForValidationForm}
+          />
+        </ContentWrapper>
+      </Space>
+      <Space direction="vertical" style={{ marginTop: "32px", width: "100%" }}>
+        <Title>Lazy validate type for TableForm</Title>
+        <ContentWrapper>
+          <TableForm
+            validateTriggerType={ValidateTriggerType.Lazy}
+            disableBatchFilling
+            columns={getColumnsForValidation(ValidateTriggerType.Lazy)}
+            rowValidator={rowValidationForValidationForm}
+          />
+        </ContentWrapper>
+      </Space>
+      <Space direction="vertical" style={{ marginTop: "32px", width: "100%" }}>
+        <Title>Aggressive validate type for TableForm</Title>
+        <ContentWrapper>
+          <TableForm
+            validateTriggerType={ValidateTriggerType.Aggressive}
+            disableBatchFilling
+            columns={getColumnsForValidation(ValidateTriggerType.Aggressive)}
+            rowValidator={rowValidationForValidationForm}
           />
         </ContentWrapper>
       </Space>

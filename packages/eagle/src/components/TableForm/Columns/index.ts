@@ -1,5 +1,8 @@
 import { AffixColumnHeaderCell } from "./AffixColumn";
-import { CheckboxColumnBodyCell } from "./CheckboxColumn";
+import {
+  CheckboxColumnBodyCell,
+  CheckboxColumnHeaderCell,
+} from "./CheckboxColumn";
 import { InputColumnBodyCell, InputColumnHeaderCell } from "./InputColumn";
 import { TextColumnBodyCell, TextColumnHeaderCell } from "./TextColumn";
 
@@ -8,7 +11,7 @@ export const ColumnHeaderImpls = {
   input: InputColumnHeaderCell,
   password: InputColumnHeaderCell,
   affix: AffixColumnHeaderCell,
-  checkbox: TextColumnHeaderCell,
+  checkbox: CheckboxColumnHeaderCell,
 };
 
 export const ColumnBodyImpls = {

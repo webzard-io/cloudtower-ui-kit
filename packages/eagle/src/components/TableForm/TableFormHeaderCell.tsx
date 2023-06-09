@@ -21,7 +21,7 @@ export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
     : column.width + "px";
 
   const headerOnChange = useCallback(
-    (value: unknown) => {
+    (value: any, shouldUpdateData: boolean = false) => {
       const err = column.validator?.({ value, isHeader: true });
       setErrMsg(err || undefined);
       const shouldAutoIncrease =
@@ -35,7 +35,7 @@ export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
               : value,
         };
       });
-      onChange?.(newData, column.key);
+      onChange?.(newData, column.key, shouldUpdateData);
     },
     [onChange, data, column]
   );
