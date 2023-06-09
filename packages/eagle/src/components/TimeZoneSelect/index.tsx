@@ -112,6 +112,12 @@ const OptionFirstLineStyle = cx(
     justify-content: space-between;
     height: 20px;
     line-height: 20px;
+
+    .timezone-title {
+      color: #2d3a56;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   `,
   Typo.Label.l3_regular
 );
@@ -232,7 +238,9 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
       {defaultTz ? (
         <AntdSelect.Option
           value={DefaultTimeValue}
-          label={parrotI18n.t("components.default_time_zone")}
+          label={`${parrotI18n.t(
+            "components.default_time_zone"
+          )} (${getUTCOffsetText(defaultTz.offset)})`}
           className={OptionWrapperStyle}
         >
           <TimeZoneOption
@@ -244,7 +252,9 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
       ) : undefined}
       <AntdSelect.Option
         value={BrowserTimeValue}
-        label={parrotI18n.t("components.browser_time_zone")}
+        label={`${parrotI18n.t(
+          "components.browser_time_zone"
+        )} (${getUTCOffsetText(browserTz.offset)})`}
         className={OptionWrapperStyle}
       >
         <TimeZoneOption
@@ -275,15 +285,19 @@ interface OptionProps {
   customLabel?: string;
 }
 
-const TimeZoneOption: React.FC<OptionProps> = ({ timeZone, customLabel }) => {
-  let tagText = "";
-  if (timeZone.offset === 0) {
-    tagText = "UTC";
-  } else if (timeZone.offset < 0) {
-    tagText = `UTC${timeZone.offset}:00`;
+function getUTCOffsetText(offset: number) {
+  if (offset === 0) {
+    return "UTC";
+  } else if (offset < 0) {
+    return `UTC${offset}:00`;
   } else {
-    tagText = `UTC+${timeZone.offset}:00`;
+    return `UTC+${offset}:00`;
   }
+}
+
+const TimeZoneOption: React.FC<OptionProps> = ({ timeZone, customLabel }) => {
+  let tagText = getUTCOffsetText(timeZone.offset);
+
   return (
     <>
       <div className={OptionFirstLineStyle}>
