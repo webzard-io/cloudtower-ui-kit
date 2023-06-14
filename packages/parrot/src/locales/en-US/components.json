@@ -13,9 +13,8 @@
   "pagination_lots_total": "{total} items in total",
   "unknow_error": "Unknown error",
   "to": "to",
-  "time_zone_select_placeholder": "Enter country, city or time zone",
+  "time_zone_select_placeholder": "Enter city or time zone",
   "browser_time_zone": "Browser Time Zone",
-  "default_time_zone": "Default Time Zone",
   "coorddinated_universal_time": "Coorddinated Universal Time",
   "Architecture_AARCH64": "AArch64",
   "Architecture_X86_64": "x86_64"
