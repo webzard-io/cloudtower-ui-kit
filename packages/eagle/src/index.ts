@@ -30,6 +30,7 @@ export type {
   IntProps,
   Kit,
   KitSelectProps,
+  ModalProps,
   RequiredColumnProps,
   SorterOrder,
   StringProps,
