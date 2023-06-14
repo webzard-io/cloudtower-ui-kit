@@ -1,7 +1,7 @@
-import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import cs from "classnames";
 import React, { useCallback } from "react";
+import { useTranslation } from "react-i18next";
 
 import { ISimplePaginationProps } from "../../spec";
 import Button from "../Button";
@@ -19,6 +19,7 @@ const inputStyle = css`
 
 const SimplePagination = (props: ISimplePaginationProps) => {
   const { className, current, count, size, onPageChange } = props;
+  const { t } = useTranslation();
 
   const pageLength = Math.ceil(count / size);
   const showPrev = current > 1;
@@ -39,7 +40,7 @@ const SimplePagination = (props: ISimplePaginationProps) => {
   return (
     <div className={cs(PaginationStyle, "pagination-wrapper", className)}>
       <span className={Typo.Label.l3_regular_title}>
-        {parrotI18n.t("components.pagination_lots_total", {
+        {t("components.pagination_lots_total", {
           total: count,
         })}
       </span>

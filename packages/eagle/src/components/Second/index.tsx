@@ -1,6 +1,6 @@
-import { parrotI18n } from "@cloudtower/parrot";
-import React from "react";
 import { cx } from "@linaria/core";
+import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { UnitFn } from "../../spec";
 import isEmpty from "../../utils/isEmpty";
@@ -14,6 +14,8 @@ const Second: UnitFn = ({
   unitClassName,
   abbreviate,
 }) => {
+  const { t } = useTranslation();
+
   if (isEmpty(rawValue)) {
     return Empty;
   }
@@ -22,7 +24,7 @@ const Second: UnitFn = ({
     <span>
       <span className={cx("value", valueClassName)}>{value} </span>
       <span className={cx("unit", unitClassName)}>
-        {parrotI18n.t(`common.${abbreviate ? `${unit}_abbreviation` : unit}`)}
+        {t(`common.${abbreviate ? `${unit}_abbreviation` : unit}`)}
       </span>
     </span>
   );

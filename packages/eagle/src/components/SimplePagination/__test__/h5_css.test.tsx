@@ -75,7 +75,9 @@ describe("SimplePagination h5_css", () => {
         font-size: 13px;
         line-height: 20px;
 
-          />
+          >
+            components.pagination_lots_total
+          </span>
           <span
             class=pagination-right
           >
@@ -860,7 +862,9 @@ describe("SimplePagination h5_css", () => {
         font-size: 13px;
         line-height: 20px;
 
-          />
+          >
+            components.pagination_lots_total
+          </span>
           <span
             class=pagination-right
           >
@@ -1645,7 +1649,9 @@ describe("SimplePagination h5_css", () => {
         font-size: 13px;
         line-height: 20px;
 
-          />
+          >
+            components.pagination_lots_total
+          </span>
           <span
             class=pagination-right
           >

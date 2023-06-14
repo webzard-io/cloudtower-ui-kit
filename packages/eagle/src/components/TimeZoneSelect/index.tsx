@@ -1,9 +1,9 @@
 import { CheckmarkDoneSuccessCorrect16BlueIcon } from "@cloudtower/icons-react";
-import { parrotI18n } from "@cloudtower/parrot";
 import { css, cx } from "@linaria/core";
 import { Select as AntdSelect, Tag } from "antd";
 import { groupBy, sortBy, toPairs, uniqBy } from "lodash";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import TimeZones from "timezones.json";
 
 import { ITimeZoneSelectProps } from "../../spec/type";
@@ -160,6 +160,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
   } = props;
   // innerValue could be BrowserTimeValue
   const [innerValue, setInnerValue] = useState(value);
+  const { t } = useTranslation();
 
   const defaultTz = useMemo(() => {
     return allTimeZones.find((tz) => tz.value === defaultOptionValue);
@@ -219,8 +220,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
       dropdownClassName={DropdownStyle}
       placeholder={
         <span>
-          {placeholder ||
-            parrotI18n.t("components.time_zone_select_placeholder")}
+          {placeholder || t("components.time_zone_select_placeholder")}
         </span>
       }
       value={innerValue}
@@ -238,35 +238,35 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
       {defaultTz ? (
         <AntdSelect.Option
           value={DefaultTimeValue}
-          label={`${parrotI18n.t(
-            "components.default_time_zone"
-          )} (${getUTCOffsetText(defaultTz.offset)})`}
+          label={`${t("components.default_time_zone")} (${getUTCOffsetText(
+            defaultTz.offset
+          )})`}
           className={OptionWrapperStyle}
         >
           <TimeZoneOption
             key={DefaultTimeValue}
-            customLabel={parrotI18n.t("components.default_time_zone")}
+            customLabel={t("components.default_time_zone")}
             timeZone={defaultTz}
           />
         </AntdSelect.Option>
       ) : undefined}
       <AntdSelect.Option
         value={BrowserTimeValue}
-        label={`${parrotI18n.t(
-          "components.browser_time_zone"
-        )} (${getUTCOffsetText(browserTz.offset)})`}
+        label={`${t("components.browser_time_zone")} (${getUTCOffsetText(
+          browserTz.offset
+        )})`}
         className={OptionWrapperStyle}
       >
         <TimeZoneOption
           key={BrowserTimeValue}
-          customLabel={parrotI18n.t("components.browser_time_zone")}
+          customLabel={t("components.browser_time_zone")}
           timeZone={browserTz}
         />
       </AntdSelect.Option>
       <AntdSelect.Option value="UTC" className={OptionWrapperStyle}>
         <TimeZoneOption
           key="utc"
-          customLabel={parrotI18n.t("components.coorddinated_universal_time")}
+          customLabel={t("components.coorddinated_universal_time")}
           timeZone={{
             value: "UTC",
             text: "UTC",

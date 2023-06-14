@@ -1,6 +1,6 @@
 import { cx } from "@linaria/core";
-import { parrotI18n } from "@cloudtower/parrot";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { UnitFn } from "../../spec";
 import isEmpty from "../../utils/isEmpty";
@@ -14,11 +14,12 @@ const Byte: UnitFn = ({
   valueClassName,
   unitClassName,
 }) => {
+  const { t } = useTranslation();
   if (isEmpty(rawValue)) {
     return Empty;
   }
   if (rawValue === -1) {
-    return <span>{parrotI18n.t("common.calculation")}</span>;
+    return <span>{t("common.calculation")}</span>;
   }
   const { value, unit } = formatBytes(rawValue, decimals);
   if (noUnitOnZero && value === 0) {

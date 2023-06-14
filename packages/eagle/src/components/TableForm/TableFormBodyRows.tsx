@@ -4,7 +4,6 @@ import {
   XmarkRemove16RegularRedIcon,
   XmarkRemove16SecondaryIcon,
 } from "@cloudtower/icons-react";
-import { parrotI18n } from "@cloudtower/parrot";
 import { cx } from "@linaria/core";
 import { List as AntdList } from "antd";
 import React, { memo, useCallback, useMemo, useState } from "react";
@@ -16,6 +15,7 @@ import {
   Droppable,
   OnDragEndResponder,
 } from "react-beautiful-dnd";
+import { useTranslation } from "react-i18next";
 
 import Icon from "../Icon";
 import Tooltip from "../Tooltip";
@@ -50,7 +50,7 @@ const TableFormRow: React.FC<
     rowValidator,
     validateAll,
   } = props;
-
+  const { t } = useTranslation();
   const rowData = data[rowIndex];
   const [rowError, setRowError] = useState<string>();
 
@@ -82,7 +82,7 @@ const TableFormRow: React.FC<
     const FinalRenderIcon = isRowDeleteDisabled ? (
       DeleteIcon
     ) : (
-      <Tooltip title={parrotI18n.t("components.remove")}>{DeleteIcon}</Tooltip>
+      <Tooltip title={t("components.remove")}>{DeleteIcon}</Tooltip>
     );
     return deleteConfig?.deletable ? [FinalRenderIcon] : undefined;
   }, [rowIndex, deleteConfig, data, deleteRow]);

@@ -1,7 +1,7 @@
-import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import cs from "classnames";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import Button from "../Button";
 
@@ -29,11 +29,12 @@ const FailedLoad: React.FC<{
   title?: string;
 }> = (props) => {
   const { error, refetch, className, title, refetchText } = props;
+  const { t } = useTranslation();
   return (
     <div className={cs(FailedLoadStyle, className)} title={title}>
       <div className="error-text">{String(error)}</div>
       <Button type="ordinary" onClick={() => refetch()}>
-        {refetchText || parrotI18n.t("common.retry")}
+        {refetchText || t("common.retry")}
       </Button>
     </div>
   );

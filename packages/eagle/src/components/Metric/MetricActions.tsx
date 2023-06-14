@@ -1,5 +1,5 @@
-import { parrotI18n } from "@cloudtower/parrot";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const MetricActions: React.FC<{
   info: { current: string; max: string };
@@ -8,14 +8,16 @@ const MetricActions: React.FC<{
   const { info, dropdown } = props;
   const { current, max } = info;
 
+  const { t } = useTranslation();
+
   return (
     <div className="metric-extra">
       <div>
         <span className="info-item">
-          {parrotI18n.t("metric.max")}：{max}
+          {t("metric.max")}：{max}
         </span>
         <span className="info-item">
-          {parrotI18n.t("metric.current")}：{current}
+          {t("metric.current")}：{current}
         </span>
       </div>
       {dropdown}

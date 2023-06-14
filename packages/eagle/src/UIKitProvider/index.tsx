@@ -1,9 +1,11 @@
+import { parrotI18n } from "@cloudtower/parrot";
 import React, {
   createContext,
   PropsWithChildren,
   useContext,
   useMemo,
 } from "react";
+import { I18nextProvider } from "react-i18next";
 
 import { BatchHelper, createBatchMessageMethods } from "../components";
 import { antdKit } from "../components/antd";
@@ -30,7 +32,11 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
     return kit;
   }, [kit, message?.batch]);
 
-  return <kitContext.Provider value={_kit}>{children}</kitContext.Provider>;
+  return (
+    <I18nextProvider i18n={parrotI18n}>
+      <kitContext.Provider value={_kit}>{children}</kitContext.Provider>
+    </I18nextProvider>
+  );
 };
 
 export default UIKitProvider;
