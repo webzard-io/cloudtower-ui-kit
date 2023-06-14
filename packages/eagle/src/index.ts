@@ -7,6 +7,7 @@ export {
   ButtonStyle,
   createBatchMessageMethods,
   FailedLoad,
+  FullView,
   Icon,
   InputTagItem,
   KitStoreProvider,
@@ -16,6 +17,7 @@ export {
   Typo,
   useKitDispatch,
   useKitSelector,
+  WizardBody,
 } from "./components";
 export * from "./components/TableForm/types";
 export { useElementsSize } from "./hooks";

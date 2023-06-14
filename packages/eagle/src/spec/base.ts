@@ -403,6 +403,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   pagination: React.FC<PaginationProps>;
   select: SelectComponentType<V, T>;
   option: OptionComponentType;
+  selectOptGroup: import("rc-select/lib/OptGroup").OptionGroupFC;
   table: TableComponent;
   button: React.FC<ButtonProps>;
   modal: React.FC<ModalProps>;
@@ -521,6 +522,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   antdButton: React.ComponentType<AntdButtonProps>;
   antdSelect: React.ComponentType<SelectProps<V>>;
   antdTooltip: React.FC<TooltipProps>;
+  antdModal: React.FC<AntdModalProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
