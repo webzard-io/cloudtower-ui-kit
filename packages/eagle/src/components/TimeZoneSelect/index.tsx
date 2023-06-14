@@ -2,7 +2,7 @@ import { CheckmarkDoneSuccessCorrect16BlueIcon } from "@cloudtower/icons-react";
 import { css, cx } from "@linaria/core";
 import { Select as AntdSelect, Tag } from "antd";
 import { groupBy, sortBy, toPairs, uniqBy } from "lodash";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import TimeZones from "timezones.json";
 
@@ -141,7 +141,6 @@ const TagStyle = css`
 `;
 
 const BrowserTimeValue = "browser_time_zone";
-const DefaultTimeValue = "default_time_zone";
 
 // get browser time zone
 const browserTzName = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -156,28 +155,21 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
     defaultUseBrowserTime,
     className,
     placeholder,
-    defaultOptionValue,
   } = props;
   // innerValue could be BrowserTimeValue
   const [innerValue, setInnerValue] = useState(value);
   const { t } = useTranslation();
-
-  const defaultTz = useMemo(() => {
-    return allTimeZones.find((tz) => tz.value === defaultOptionValue);
-  }, [defaultOptionValue]);
 
   const _onChange = useCallback(
     (val) => {
       setInnerValue(val);
       if (val === BrowserTimeValue) {
         onChange(browserTzName);
-      } else if (val === DefaultTimeValue && defaultTz) {
-        onChange(defaultTz?.value);
       } else {
         onChange(val);
       }
     },
-    [defaultTz, onChange]
+    [onChange]
   );
 
   useEffect(() => {
@@ -191,10 +183,9 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
   useEffect(() => {
     // update innerValue when props value changes
     if (innerValue === BrowserTimeValue && value === browserTzName) return;
-    if (innerValue === DefaultTimeValue && value === defaultTz?.value) return;
     if (innerValue === value) return;
     setInnerValue(value);
-  }, [defaultTz?.value, innerValue, value]);
+  }, [innerValue, value]);
 
   const timeZoneOptionGroups = timeZoneGroups.map(([key, timezones]) => {
     return (
@@ -202,7 +193,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
         {timezones.map((zone) => {
           return (
             <AntdSelect.Option
-              label={zone.value}
+              label={`${zone.value} (${getUTCOffsetText(zone.offset)})`}
               value={zone.value}
               className={OptionWrapperStyle}
             >
@@ -235,21 +226,6 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
       optionLabelProp="label"
       input={{}}
     >
-      {defaultTz ? (
-        <AntdSelect.Option
-          value={DefaultTimeValue}
-          label={`${t("components.default_time_zone")} (${getUTCOffsetText(
-            defaultTz.offset
-          )})`}
-          className={OptionWrapperStyle}
-        >
-          <TimeZoneOption
-            key={DefaultTimeValue}
-            customLabel={t("components.default_time_zone")}
-            timeZone={defaultTz}
-          />
-        </AntdSelect.Option>
-      ) : undefined}
       <AntdSelect.Option
         value={BrowserTimeValue}
         label={`${t("components.browser_time_zone")} (${getUTCOffsetText(
