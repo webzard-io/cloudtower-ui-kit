@@ -13,6 +13,8 @@ import {
   Layout,
   List,
   Menu,
+  message as AntdMessage,
+  Modal as AntdModal,
   Popover,
   Row,
   Select as AntdSelect,
@@ -21,7 +23,6 @@ import {
   Tag,
   Timeline,
   TimePicker,
-  message as AntdMessage,
   Tooltip as AntdTooltip,
   Tree,
   Typography,
@@ -73,6 +74,7 @@ export function getAntdKit(): Kit {
     pagination: Pagination,
     select: Select,
     option: AntdSelect.Option as OptionComponentType,
+    selectOptGroup: AntdSelect.OptGroup,
     table: Table,
     row: Row,
     col: Col,
@@ -145,6 +147,7 @@ export function getAntdKit(): Kit {
     antdButton: AntdButton,
     antdSelect: AntdSelect,
     antdTooltip: AntdTooltip,
+    antdModal: AntdModal,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
