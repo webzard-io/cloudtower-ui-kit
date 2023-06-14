@@ -1,9 +1,9 @@
-import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { Menu } from "antd";
 import { Dropdown as AntdDropdown } from "antd";
 import cs from "classnames";
 import React, { useEffect, useMemo, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 import { PaginationProps } from "../../spec";
 import Button from "../Button";
@@ -92,6 +92,8 @@ const Pagination: React.FC<PaginationProps> = (props) => {
     selectorVisible = true,
   } = props;
   const sizeRef = useRef(size);
+  const { t } = useTranslation();
+
   useEffect(() => {
     if (sizeRef.current === size) return;
     sizeRef.current = size;
@@ -105,20 +107,20 @@ const Pagination: React.FC<PaginationProps> = (props) => {
       const lastRange = value + size;
       return {
         value: i + 1,
-        text: parrotI18n.t("components.pagination_range", {
+        text: t("components.pagination_range", {
           range1: value + 1,
           range2: lastRange > count ? count : lastRange,
         }),
       };
     });
-  }, [selectorVisible, count, size]);
+  }, [selectorVisible, count, size, t]);
 
   let lastRange = current * size;
   lastRange = lastRange > count ? count : lastRange;
 
   const renderLeft = () => {
     if (!showTotal) return null;
-    const content = parrotI18n.t("components.pagination_total", {
+    const content = t("components.pagination_total", {
       range1: (current - 1) * size + 1,
       range2: lastRange,
       total: count,
@@ -130,7 +132,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
           overlayClassName={DropdownOverlayStyle}
           overlay={
             <Menu>
-              <Menu.ItemGroup title={parrotI18n.t("components.push_to")}>
+              <Menu.ItemGroup title={t("components.push_to")}>
                 {selectOptions.map((option) => (
                   <Menu.Item
                     key={option.value}
@@ -187,7 +189,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
               onChange?.(current - 1);
             }}
           >
-            {parrotI18n.t("components.previous_items", { size })}
+            {t("components.previous_items", { size })}
           </Button>
         )}
         {current * size < count && (
@@ -205,7 +207,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
               onChange?.(current + 1);
             }}
           >
-            {parrotI18n.t("components.next_items", { size })}
+            {t("components.next_items", { size })}
           </Button>
         )}
       </span>

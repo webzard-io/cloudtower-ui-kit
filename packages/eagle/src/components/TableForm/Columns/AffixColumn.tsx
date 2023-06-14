@@ -1,8 +1,8 @@
 import { Input, Space } from "antd";
 import React, { useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { ColumnHeaderCellProps } from "../types";
-import { parrotI18n } from "@cloudtower/parrot";
 
 export const AffixColumnHeaderCell: React.FC<
   Omit<ColumnHeaderCellProps, "onChange" | "onBlur"> & {
@@ -12,6 +12,7 @@ export const AffixColumnHeaderCell: React.FC<
 > = ({ data, column, onChange, onBlur }) => {
   const [suffix, setSuffix] = useState<string>("");
   const [prefix, setPrefix] = useState<string>("");
+  const { t } = useTranslation();
 
   const onPrefixChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +37,7 @@ export const AffixColumnHeaderCell: React.FC<
       {!column.disablePrefix ? (
         <Input
           value={prefix}
-          placeholder={parrotI18n.t("components.prefix")}
+          placeholder={t("components.prefix")}
           size="small"
           onChange={onPrefixChange}
           onBlur={onBlur}
@@ -46,7 +47,7 @@ export const AffixColumnHeaderCell: React.FC<
       {!column.disableSuffix ? (
         <Input
           value={suffix}
-          placeholder={parrotI18n.t("components.suffix")}
+          placeholder={t("components.suffix")}
           size="small"
           onChange={onSuffixChange}
           onBlur={onBlur}

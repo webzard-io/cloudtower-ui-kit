@@ -1,8 +1,8 @@
 import { CheckOutlined, CloseCircleFilled } from "@ant-design/icons";
-import { parrotI18n } from "@cloudtower/parrot";
 import { Modal as AntdModal, Steps } from "antd";
 import cs from "classnames";
 import React, { useMemo, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 import { ModalProps } from "../../spec";
 import { KitRootState, ModalActions } from "../../store";
@@ -11,10 +11,12 @@ import { useKitDispatch, useKitSelector } from "../KitStoreProvider";
 import { WizardBody } from "../Styled";
 
 const Modal: React.FC<ModalProps> = (props) => {
+  const { t } = useTranslation();
+
   const {
     error,
-    okText = parrotI18n.t("common.confirm"),
-    cancelText = parrotI18n.t("common.cancel"),
+    okText = t("common.confirm"),
+    cancelText = t("common.cancel"),
     confirmLoading,
     okButtonProps,
     onOk,
@@ -53,16 +55,14 @@ const Modal: React.FC<ModalProps> = (props) => {
       const { step, steps } = wizard;
       text =
         step < steps.length - 1
-          ? steps[step].okText || parrotI18n.t("common.next_step")
+          ? steps[step].okText || t("common.next_step")
           : steps[step].okText || text;
     }
     return text;
-  }, [okButtonProps, okText, wizard]);
+  }, [okButtonProps?.children, okText, t, wizard]);
 
   const prevText = useMemo(() => {
-    let text: React.ReactNode = (
-      <span>&lt; {parrotI18n.t("common.prev_step")}</span>
-    );
+    let text: React.ReactNode = <span>&lt; {t("common.prev_step")}</span>;
 
     if (wizard && typeof wizard === "object" && wizard.steps[wizard.step]) {
       const { step, steps } = wizard;
@@ -75,7 +75,7 @@ const Modal: React.FC<ModalProps> = (props) => {
     }
 
     return text;
-  }, [wizard]);
+  }, [t, wizard]);
 
   const stepsRef = useRef<React.ReactNode[]>([]);
   if (

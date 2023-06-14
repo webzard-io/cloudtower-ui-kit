@@ -1,7 +1,7 @@
 import { PlusOutlined } from "@ant-design/icons";
-import { parrotI18n } from "@cloudtower/parrot";
 import { cx } from "@linaria/core";
 import React, { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { ButtonProps } from "src/spec";
 
 import Button from "../Button";
@@ -17,6 +17,7 @@ const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
     updateData,
     data,
   } = props;
+  const { t } = useTranslation();
 
   const {
     disabled: disabledFromProp,
@@ -67,7 +68,7 @@ const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
         }}
         disabled={disabled}
       >
-        {CustomizedButtonText || parrotI18n.t("components.add")}
+        {CustomizedButtonText || t("components.add")}
       </Button>
       {typeof maximum === "number" ? (
         <span
@@ -77,7 +78,7 @@ const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
             disabled && "disabled"
           )}
         >
-          {parrotI18n.t("components.maximum_row_count_desc", {
+          {t("components.maximum_row_count_desc", {
             count: maximum,
           })}
         </span>

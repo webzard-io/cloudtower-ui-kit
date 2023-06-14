@@ -1,7 +1,7 @@
-import { parrotI18n } from "@cloudtower/parrot";
 import cs from "classnames";
 import dayjs from "dayjs";
 import React, { useCallback, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Area,
   AreaChart,
@@ -85,6 +85,8 @@ const RenderChart = (props: IChartProps) => {
     tooltipProps,
   } = props;
 
+  const { t } = useTranslation();
+
   const dispatch = useKitDispatch();
   const [deselected, setDeselected] = useState<string[]>([]);
 
@@ -157,7 +159,7 @@ const RenderChart = (props: IChartProps) => {
           />
         </div>
         <div className={cs("content", mode === "single" && "single-content")}>
-          {parrotI18n.t("metric.empty")}
+          {t("metric.empty")}
         </div>
       </div>
     );
