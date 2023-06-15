@@ -182,7 +182,13 @@ export function formatBytes(bytes: number, decimals = 2): FormattedResult {
   };
 }
 
-export function formatPercent(input: number, decimals = 2): FormattedResult {
+export function formatPercent(
+  input: number,
+  decimals = 2
+): {
+  value: string;
+  unit: string;
+} {
   if (input <= 0 || input === MAGIC_METRIC_NULL) {
     input = 0;
   }
@@ -190,16 +196,16 @@ export function formatPercent(input: number, decimals = 2): FormattedResult {
     input = 100;
   }
 
-  const value = parseFloat(input.toFixed(decimals));
-  if (value === 0 && input > 0) {
-    if (decimals - 1 >= 0) {
+  const value = input.toFixed(decimals);
+  if (parseFloat(value) === 0 && input > 0) {
+    if (decimals >= 1) {
       return {
-        value: parseFloat(`0.${"0".repeat(decimals - 1)}1`),
+        value: `0.${"0".repeat(decimals - 1)}1`,
         unit: "%",
       };
     }
     return {
-      value: 1,
+      value: "1",
       unit: "%",
     };
   }
