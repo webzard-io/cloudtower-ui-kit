@@ -1,5 +1,4 @@
-import { ButtonProps } from "src/spec";
-
+import { ButtonProps } from "../../spec";
 import { ColumnBodyImpls } from "./Columns";
 
 export type ErrorInfo = Record<

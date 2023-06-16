@@ -1,7 +1,7 @@
 import { Input, Space } from "antd";
 import React, { useCallback, useState } from "react";
-import { useTranslation } from "react-i18next";
 
+import useParrotTranslation from "../../../hooks/useParrotTranslation";
 import { ColumnHeaderCellProps } from "../types";
 
 export const AffixColumnHeaderCell: React.FC<
@@ -12,7 +12,7 @@ export const AffixColumnHeaderCell: React.FC<
 > = ({ data, column, onChange, onBlur }) => {
   const [suffix, setSuffix] = useState<string>("");
   const [prefix, setPrefix] = useState<string>("");
-  const { t } = useTranslation();
+  const { t } = useParrotTranslation();
 
   const onPrefixChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

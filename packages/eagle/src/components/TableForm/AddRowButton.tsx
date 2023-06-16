@@ -1,9 +1,9 @@
 import { PlusOutlined } from "@ant-design/icons";
 import { cx } from "@linaria/core";
 import React, { useMemo } from "react";
-import { useTranslation } from "react-i18next";
-import { ButtonProps } from "src/spec";
 
+import useParrotTranslation from "../../hooks/useParrotTranslation";
+import { ButtonProps } from "../../spec";
 import Button from "../Button";
 import { Typo } from "../Typo";
 import { AddRowButtonWrapper } from "./style";
@@ -17,7 +17,7 @@ const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
     updateData,
     data,
   } = props;
-  const { t } = useTranslation();
+  const { t } = useParrotTranslation();
 
   const {
     disabled: disabledFromProp,

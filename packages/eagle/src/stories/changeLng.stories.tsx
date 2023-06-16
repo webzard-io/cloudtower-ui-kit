@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 
 import Byte from "../components/Byte";
+import TimeZoneSelect from "../components/TimeZoneSelect";
 import UIKitProvider from "../UIKitProvider";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -40,6 +41,7 @@ ChangeLng.args = {
   children: (
     <div>
       <Byte rawValue={-1} />
+      <TimeZoneSelect value={undefined} onChange={() => {}} />
     </div>
   ),
 };

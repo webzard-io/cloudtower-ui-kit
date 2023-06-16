@@ -15,8 +15,8 @@ import {
   Droppable,
   OnDragEndResponder,
 } from "react-beautiful-dnd";
-import { useTranslation } from "react-i18next";
 
+import useParrotTranslation from "../../hooks/useParrotTranslation";
 import Icon from "../Icon";
 import Tooltip from "../Tooltip";
 import { Typo } from "../Typo";
@@ -50,7 +50,7 @@ const TableFormRow: React.FC<
     rowValidator,
     validateAll,
   } = props;
-  const { t } = useTranslation();
+  const { t } = useParrotTranslation();
   const rowData = data[rowIndex];
   const [rowError, setRowError] = useState<string>();
 
@@ -85,7 +85,7 @@ const TableFormRow: React.FC<
       <Tooltip title={t("components.remove")}>{DeleteIcon}</Tooltip>
     );
     return deleteConfig?.deletable ? [FinalRenderIcon] : undefined;
-  }, [rowIndex, deleteConfig, data, deleteRow]);
+  }, [deleteConfig, rowIndex, data, t, deleteRow]);
 
   const getRowValidateResult = useCallback(
     (rowData: DataType): string | undefined => {

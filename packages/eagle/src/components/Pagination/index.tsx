@@ -3,8 +3,8 @@ import { Menu } from "antd";
 import { Dropdown as AntdDropdown } from "antd";
 import cs from "classnames";
 import React, { useEffect, useMemo, useRef } from "react";
-import { useTranslation } from "react-i18next";
 
+import useParrotTranslation from "../../hooks/useParrotTranslation";
 import { PaginationProps } from "../../spec";
 import Button from "../Button";
 import Icon from "../Icon";
@@ -92,7 +92,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
     selectorVisible = true,
   } = props;
   const sizeRef = useRef(size);
-  const { t } = useTranslation();
+  const { t } = useParrotTranslation();
 
   useEffect(() => {
     if (sizeRef.current === size) return;

@@ -1,7 +1,7 @@
 import { cx } from "@linaria/core";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
+import useParrotTranslation from "../../hooks/useParrotTranslation";
 import { UnitFn } from "../../spec";
 import isEmpty from "../../utils/isEmpty";
 import { formatBytes } from "../../utils/tower";
@@ -14,7 +14,7 @@ const Byte: UnitFn = ({
   valueClassName,
   unitClassName,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useParrotTranslation();
   if (isEmpty(rawValue)) {
     return Empty;
   }

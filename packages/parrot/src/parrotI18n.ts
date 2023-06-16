@@ -22,6 +22,9 @@ const defaultOptions = {
       },
     },
   },
+  react: {
+    useSuspense: false,
+  },
 };
 
 const parrotI18n = i18next.createInstance(defaultOptions);
