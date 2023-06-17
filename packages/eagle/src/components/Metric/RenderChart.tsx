@@ -1,7 +1,6 @@
 import cs from "classnames";
 import dayjs from "dayjs";
 import React, { useCallback, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
 import {
   Area,
   AreaChart,
@@ -19,6 +18,7 @@ import {
 } from "recharts/types/component/DefaultTooltipContent";
 import { AxisDomain } from "recharts/types/util/types";
 
+import useParrotTranslation from "../../hooks/useParrotTranslation";
 import { ChartActions } from "../../store";
 import { useKitDispatch } from "../KitStoreProvider";
 import { convertDataStruct } from "./metric";
@@ -85,7 +85,7 @@ const RenderChart = (props: IChartProps) => {
     tooltipProps,
   } = props;
 
-  const { t } = useTranslation();
+  const { t } = useParrotTranslation();
 
   const dispatch = useKitDispatch();
   const [deselected, setDeselected] = useState<string[]>([]);

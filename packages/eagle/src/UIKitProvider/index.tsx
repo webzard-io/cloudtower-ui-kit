@@ -1,4 +1,3 @@
-import { parrotI18n } from "@cloudtower/parrot";
 import { ConfigProvider } from "antd";
 import { ConfigProviderProps } from "antd/lib/config-provider";
 import React, {
@@ -7,7 +6,6 @@ import React, {
   useContext,
   useMemo,
 } from "react";
-import { I18nextProvider } from "react-i18next";
 
 import { BatchHelper, createBatchMessageMethods } from "../components";
 import { antdKit } from "../components/antd";
@@ -36,13 +34,11 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
   }, [kit, message?.batch]);
 
   return (
-    <I18nextProvider i18n={parrotI18n}>
-      <kitContext.Provider value={_kit}>
-        <ConfigProvider autoInsertSpaceInButton={false} {...antdConfig}>
-          {children}
-        </ConfigProvider>
-      </kitContext.Provider>
-    </I18nextProvider>
+    <kitContext.Provider value={_kit}>
+      <ConfigProvider autoInsertSpaceInButton={false} {...antdConfig}>
+        {children}
+      </ConfigProvider>
+    </kitContext.Provider>
   );
 };
 

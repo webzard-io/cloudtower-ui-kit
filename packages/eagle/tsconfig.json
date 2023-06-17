@@ -7,7 +7,6 @@
     "jsx": "react",
     "downlevelIteration": true,
     "disableSizeLimit": true,
-    "baseUrl": ".",
     "paths": {
       "@cloudtower/parrot": ["../parrot/src/index.ts"]
     }

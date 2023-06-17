@@ -1,5 +1,6 @@
 import "@testing-library/jest-dom";
 
+import { initParrotI18n } from "@cloudtower/parrot";
 import fs from "fs";
 import path from "path";
 import { format, plugins } from "pretty-format";
@@ -66,5 +67,7 @@ expect.addSnapshotSerializer({
     return val?.linaria;
   },
 });
+
+initParrotI18n();
 
 export {};

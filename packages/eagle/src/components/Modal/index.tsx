@@ -2,8 +2,8 @@ import { CheckOutlined, CloseCircleFilled } from "@ant-design/icons";
 import { Modal as AntdModal, Steps } from "antd";
 import cs from "classnames";
 import React, { useMemo, useRef } from "react";
-import { useTranslation } from "react-i18next";
 
+import useParrotTranslation from "../../hooks/useParrotTranslation";
 import { ModalProps } from "../../spec";
 import { KitRootState, ModalActions } from "../../store";
 import Button from "../Button";
@@ -11,7 +11,7 @@ import { useKitDispatch, useKitSelector } from "../KitStoreProvider";
 import { WizardBody } from "../Styled";
 
 const Modal: React.FC<ModalProps> = (props) => {
-  const { t } = useTranslation();
+  const { t } = useParrotTranslation();
 
   const {
     error,

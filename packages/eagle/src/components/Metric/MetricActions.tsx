@@ -1,5 +1,6 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+
+import useParrotTranslation from "../../hooks/useParrotTranslation";
 
 const MetricActions: React.FC<{
   info: { current: string; max: string };
@@ -8,7 +9,7 @@ const MetricActions: React.FC<{
   const { info, dropdown } = props;
   const { current, max } = info;
 
-  const { t } = useTranslation();
+  const { t } = useParrotTranslation();
 
   return (
     <div className="metric-extra">

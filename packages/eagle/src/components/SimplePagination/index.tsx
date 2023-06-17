@@ -1,8 +1,8 @@
 import { css } from "@linaria/core";
 import cs from "classnames";
 import React, { useCallback } from "react";
-import { useTranslation } from "react-i18next";
 
+import useParrotTranslation from "../../hooks/useParrotTranslation";
 import { ISimplePaginationProps } from "../../spec";
 import Button from "../Button";
 import Icon from "../Icon";
@@ -19,7 +19,7 @@ const inputStyle = css`
 
 const SimplePagination = (props: ISimplePaginationProps) => {
   const { className, current, count, size, onPageChange } = props;
-  const { t } = useTranslation();
+  const { t } = useParrotTranslation();
 
   const pageLength = Math.ceil(count / size);
   const showPrev = current > 1;

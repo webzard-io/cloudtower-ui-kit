@@ -3,9 +3,9 @@ import { css, cx } from "@linaria/core";
 import { Select as AntdSelect, Tag } from "antd";
 import { groupBy, sortBy, toPairs, uniqBy } from "lodash";
 import React, { useCallback, useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import TimeZones from "timezones.json";
 
+import useParrotTranslation from "../../hooks/useParrotTranslation";
 import { ITimeZoneSelectProps } from "../../spec/type";
 import Icon from "../Icon";
 import Select from "../Select";
@@ -158,7 +158,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
   } = props;
   // innerValue could be BrowserTimeValue
   const [innerValue, setInnerValue] = useState(value);
-  const { t } = useTranslation();
+  const { t } = useParrotTranslation();
 
   const _onChange = useCallback(
     (val) => {

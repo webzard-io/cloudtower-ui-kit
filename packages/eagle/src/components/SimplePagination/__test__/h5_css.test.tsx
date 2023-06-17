@@ -76,7 +76,7 @@ describe("SimplePagination h5_css", () => {
         line-height: 20px;
 
           >
-            components.pagination_lots_total
+            共 300000 项
           </span>
           <span
             class=pagination-right
@@ -863,7 +863,7 @@ describe("SimplePagination h5_css", () => {
         line-height: 20px;
 
           >
-            components.pagination_lots_total
+            共 300000 项
           </span>
           <span
             class=pagination-right
@@ -1650,7 +1650,7 @@ describe("SimplePagination h5_css", () => {
         line-height: 20px;
 
           >
-            components.pagination_lots_total
+            共 300000 项
           </span>
           <span
             class=pagination-right

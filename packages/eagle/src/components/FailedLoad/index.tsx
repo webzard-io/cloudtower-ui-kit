@@ -1,8 +1,8 @@
 import { css } from "@linaria/core";
 import cs from "classnames";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
+import useParrotTranslation from "../../hooks/useParrotTranslation";
 import Button from "../Button";
 
 const FailedLoadStyle = css`
@@ -29,7 +29,7 @@ const FailedLoad: React.FC<{
   title?: string;
 }> = (props) => {
   const { error, refetch, className, title, refetchText } = props;
-  const { t } = useTranslation();
+  const { t } = useParrotTranslation();
   return (
     <div className={cs(FailedLoadStyle, className)} title={title}>
       <div className="error-text">{String(error)}</div>

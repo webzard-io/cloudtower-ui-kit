@@ -1,10 +1,10 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 
+import useParrotTranslation from "../../hooks/useParrotTranslation";
 import { ArchComponentType } from "../../spec";
 
 const Arch: ArchComponentType = (props) => {
-  const { t } = useTranslation();
+  const { t } = useParrotTranslation();
   const { architecture } = props;
   let text = "";
   if (architecture) {

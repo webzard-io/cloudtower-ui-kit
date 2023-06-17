@@ -54,8 +54,8 @@ import { TextProps } from "antd/lib/typography/Text";
 import { DraggerProps, UploadProps } from "antd/lib/upload";
 import type { Moment } from "moment";
 import React, { ReactNode } from "react";
-import { TableFormProps } from "src/components/TableForm/types";
 
+import { TableFormProps } from "../components/TableForm/types";
 import { SerializableObject } from "../utils/tower";
 import { FieldRenderProps } from "./react-final-form";
 import { Architecture, ISpaceProps, ITimeZoneSelectProps } from "./type";
