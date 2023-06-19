@@ -22,8 +22,7 @@
   "scripts": {
     "lint": "node ./scripts/verify-names.js",
     "clean": "rimraf ./dist",
-    "build-icons": "cd ../icons && npm run build-icons && cd ../icons-react",
-    "prebuild": "npm run clean && npm run build-icons",
+    "prebuild": "npm run clean",
     "build": "node scripts/build.js",
     "postbuild": "node ./scripts/images-types.js"
   },

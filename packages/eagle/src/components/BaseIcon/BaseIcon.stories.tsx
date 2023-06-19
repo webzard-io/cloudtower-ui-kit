@@ -1,3 +1,4 @@
+import { plusAddCreateNew24GradientGray } from "@cloudtower/icons";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 
@@ -23,4 +24,10 @@ export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
   src: arrowChevronDownSmall16Blue,
+};
+
+export const Secondary = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Secondary.args = {
+  src: plusAddCreateNew24GradientGray,
 };

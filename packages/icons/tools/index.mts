@@ -2,22 +2,21 @@ import ejs from "ejs";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { globby } from "globby";
+import globby from "globby";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const keyWords = ["delete"];
+
 const convert = async () => {
   const paths = await globby([
-    path.resolve(__dirname, "../src/components/images/**/*.svg"),
-    path.resolve(__dirname, "../src/components/images/**/*.png"),
-    path.resolve(__dirname, "../src/components/images/**/*.jpg"),
-    path.resolve(__dirname, "../src/components/images/**/*.jpeg"),
+    path.resolve(__dirname, "../src/images/**/*.svg"),
   ]);
 
   const values = paths.map((imagePath) => {
     const relativePath = path.relative(
-      path.resolve(__dirname, "../src/components/images"),
+      path.resolve(__dirname, "../src"),
       imagePath
     );
     const exportName = relativePath
@@ -42,7 +41,9 @@ const convert = async () => {
 
     return {
       relativePath,
-      exportName,
+      exportName: keyWords.includes(exportName)
+        ? exportName + "Str"
+        : exportName,
     };
   });
 
@@ -52,10 +53,7 @@ const convert = async () => {
       { values }
     );
 
-    fs.writeFileSync(
-      path.resolve(__dirname, `../src/components/images/index.ts`),
-      result
-    );
+    fs.writeFileSync(path.resolve(__dirname, `../src/index.ts`), result);
   } catch (error) {}
 
   return;

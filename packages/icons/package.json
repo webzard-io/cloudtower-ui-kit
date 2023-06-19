@@ -3,15 +3,21 @@
   "version": "0.24.1",
   "license": "MIT",
   "private": true,
+  "main": "dist/umd/index.js",
+  "module": "dist/esm/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "prebuild": "rimraf ./dist",
-    "build-icons": "svgo --config=svgo.yaml -f ./src/ -o ./dist --pretty --indent=2"
+    "build-icons": "svgo --config=svgo.yaml -f ./src/ -o ./dist --pretty --indent=2",
+    "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
+    "typings": "node --loader ts-node/esm tools/indexd.mts",
+    "generate:images": "node --loader ts-node/esm tools/index.mts"
   },
   "devDependencies": {
     "rimraf": "^3.0.0",
-    "svgo": "^1.0.0"
-  },
-  "exports": {
-    ".": "./dist"
+    "svgo": "^1.0.0",
+    "typescript": "5.0.2"
   }
 }

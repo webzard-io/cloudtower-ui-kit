@@ -13,7 +13,7 @@ const reactTransform = async (svg, componentName, format) => {
   let { code } = await babel.transformAsync(component, {
     plugins: [
       [require("@babel/plugin-transform-react-jsx"), { useBuiltIns: true }],
-      [require("./transformId"), { componentName }]
+      [require("./transformId"), { componentName }],
     ],
   });
 
@@ -22,15 +22,15 @@ const reactTransform = async (svg, componentName, format) => {
   }
 
   return code
-    .replace("import * as React from \"react\"", "const React = require(\"react\")")
+    .replace('import * as React from "react"', 'const React = require("react")')
     .replace("export default", "module.exports =");
 };
 
-async function getIcons(style) {
-  let files = await fs.readdir(`../icons/${style}`);
+async function getIcons() {
+  let files = await fs.readdir("../icons/src/images");
   return Promise.all(
     files.map(async (file) => ({
-      svg: await fs.readFile(`../icons/${style}/${file}`, "utf8"),
+      svg: await fs.readFile(`../icons/src/images/${file}`, "utf8"),
       componentName: `${camelcase(file.replace(/\.svg$/, ""), {
         pascalCase: true,
       })}Icon`,
@@ -59,13 +59,13 @@ async function ensureWriteJson(file, json) {
   await ensureWrite(file, JSON.stringify(json, null, 2));
 }
 
-async function buildIcons(style, format) {
-  let outDir = `./${style}`;
+async function buildIcons(format) {
+  let outDir = "./dist";
   if (format === "esm") {
     outDir += "/esm";
   }
 
-  let icons = await getIcons(style);
+  let icons = await getIcons();
 
   await Promise.all(
     icons.flatMap(async ({ componentName, svg }) => {
@@ -89,13 +89,9 @@ async function buildIcons(style, format) {
 async function main() {
   console.log("Building icons-react package...");
 
-  await Promise.all([
-    buildIcons("dist", "cjs"),
-    buildIcons("dist", "esm"),
-  ]);
+  await Promise.all([buildIcons("cjs"), buildIcons("esm")]);
 
   let packageJson = JSON.parse(await fs.readFile("./package.json", "utf8"));
-
 
   await ensureWriteJson("./package.json", packageJson);
 
