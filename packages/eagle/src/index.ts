@@ -3,6 +3,7 @@ import "./styles/index.scss";
 export type { DateRange, GraphType, IconProps, IDataPoint } from "./components";
 export {
   antdKit,
+  BaseIcon,
   Button,
   FailedLoad,
   Icon,
