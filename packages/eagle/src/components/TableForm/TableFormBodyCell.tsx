@@ -113,6 +113,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
         },
         onBlur: _onBlur,
         rowIndex,
+        error: validateResult?.isError,
       })
     : renderDefaultComponent();
 

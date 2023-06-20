@@ -23,6 +23,7 @@ export type CustomizedColumnRenderProps = {
   onBlur?: () => void;
   placeholder?: string;
   isHeader: boolean;
+  error?: boolean;
 };
 
 export type TableFormColumn = {

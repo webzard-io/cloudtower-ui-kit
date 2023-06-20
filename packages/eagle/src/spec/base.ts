@@ -559,3 +559,5 @@ export type EnumProps<V = any, T extends HTMLElement = HTMLElement> = {
   className?: string;
   dropdownClassName?: string;
 } & BaseEnumProps;
+
+export type TableFormPropsType = TableFormProps;
