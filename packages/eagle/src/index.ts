@@ -62,10 +62,17 @@ export type {
 } from "./utils";
 export * from "@cloudtower/parrot";
 export { Col, Row } from "antd";
+export type { CheckboxChangeEvent } from "antd/lib/checkbox";
 export type { ColProps } from "antd/lib/col";
 export type { DatePickerProps } from "antd/lib/date-picker";
+export type { DrawerProps } from "antd/lib/drawer";
 export type { DropDownProps } from "antd/lib/dropdown";
+export type { TextAreaProps } from "antd/lib/input";
+export type { InputProps } from "antd/lib/input";
+export type { InputNumberProps } from "antd/lib/input-number";
 export type { MenuProps } from "antd/lib/menu";
+export type { ModalProps as AntdModalProps } from "antd/lib/modal";
+export type { ProgressProps } from "antd/lib/progress";
 export type { RowProps } from "antd/lib/row";
 export type { SelectProps as AntdSelectProps } from "antd/lib/select";
 export type {
@@ -73,4 +80,6 @@ export type {
   ColumnType,
   TableRowSelection,
 } from "antd/lib/table/interface";
+export type { TabsProps } from "antd/lib/tabs";
+export type { DataNode, TreeProps } from "antd/lib/tree";
 export type { RcFile, UploadProps } from "antd/lib/upload";
