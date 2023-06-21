@@ -55,7 +55,7 @@ import { DraggerProps, UploadProps } from "antd/lib/upload";
 import type { Moment } from "moment";
 import React, { ReactNode } from "react";
 
-import { TableFormProps } from "../components/TableForm/types";
+import { TableFormHandle, TableFormProps } from "../components/TableForm/types";
 import { SerializableObject } from "../utils/tower";
 import { FieldRenderProps } from "./react-final-form";
 import { Architecture, ISpaceProps, ITimeZoneSelectProps } from "./type";
@@ -510,7 +510,9 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   typographyText: React.FC<TextProps>;
   upload: React.ComponentType<UploadProps>;
   datePickerRangePicker: React.ComponentType<RangePickerProps>;
-  tableForm: React.FC<TableFormProps>;
+  tableForm: React.ForwardRefExoticComponent<
+    TableFormProps & React.RefAttributes<TableFormHandle>
+  >;
   uploadDragger: React.ComponentType<DraggerProps>;
   calendar: React.FC<CalendarProps<Moment>>;
   timePicker: React.FC<TimePickerProps>;
@@ -560,4 +562,6 @@ export type EnumProps<V = any, T extends HTMLElement = HTMLElement> = {
   dropdownClassName?: string;
 } & BaseEnumProps;
 
-export type TableFormPropsType = TableFormProps;
+export type TableFormPropsType = React.ForwardRefExoticComponent<
+  TableFormProps & React.RefAttributes<TableFormHandle>
+>;
