@@ -63,10 +63,14 @@ export type {
 export * from "@cloudtower/parrot";
 export { Col, Row } from "antd";
 export type { ColProps } from "antd/lib/col";
+export type { DatePickerProps } from "antd/lib/date-picker";
 export type { DropDownProps } from "antd/lib/dropdown";
+export type { MenuProps } from "antd/lib/menu";
 export type { RowProps } from "antd/lib/row";
+export type { SelectProps as AntdSelectProps } from "antd/lib/select";
 export type {
   ColumnsType,
   ColumnType,
   TableRowSelection,
 } from "antd/lib/table/interface";
+export type { RcFile, UploadProps } from "antd/lib/upload";
