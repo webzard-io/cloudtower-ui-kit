@@ -140,6 +140,13 @@ const TagStyle = css`
   background: rgba(225, 230, 241, 0.6);
 `;
 
+const OptionPlaceholder = css`
+  pointer-events: none;
+  height: 32px;
+  width: 100%;
+  opacity: 0;
+`;
+
 const BrowserTimeValue = "browser_time_zone";
 
 // get browser time zone
@@ -252,6 +259,9 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
         />
       </AntdSelect.Option>
       {timeZoneOptionGroups}
+      <AntdSelect.Option value="__placeholder__" className={OptionPlaceholder}>
+        __invisible__
+      </AntdSelect.Option>
     </Select>
   );
 };
