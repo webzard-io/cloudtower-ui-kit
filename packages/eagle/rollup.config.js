@@ -67,6 +67,33 @@ const config = defineConfig([
       },
     ],
   },
+  {
+    input: ["src/styles/components.scss"],
+    plugins: [
+      scss({
+        include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
+        output: "dist/components.css",
+        failOnError: true,
+      }),
+    ],
+  },
+  {
+    input: ["src/styles/fonts/font.css"],
+    plugins: [
+      scss({
+        include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
+        output: "dist/font.css",
+        processor: () =>
+          postcss([
+            url({
+              url: "inline",
+              basePath: [path.resolve("src/styles/fonts")],
+            }),
+          ]),
+        failOnError: true,
+      }),
+    ],
+  },
 ]);
 
 export default config;
