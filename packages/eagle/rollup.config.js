@@ -68,12 +68,40 @@ const config = defineConfig([
     ],
   },
   {
-    input: ["src/styles/components.scss"],
+    input: ["src/index.ts"],
     plugins: [
+      nodePolyfills(),
+      esbuild.default({
+        include: /\.[jt]sx?$/,
+        exclude: /node_modules/,
+        sourceMap: true,
+        minify: process.env.NODE_ENV === "production",
+        target: "es2017",
+        jsx: "transform",
+        jsxFactory: "React.createElement",
+        jsxFragment: "React.Fragment",
+        define: {},
+        tsconfig: "tsconfig.json",
+        loaders: {
+          ".json": "json",
+          ".js": "jsx",
+        },
+      }),
+      linaria.default({
+        sourceMap: false,
+        preprocessor: "none",
+      }),
       scss({
         include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
         output: "dist/components.css",
         failOnError: true,
+      }),
+      image({
+        base64: true,
+      }),
+      visualizer({
+        emitFile: true,
+        filename: "stats1.html",
       }),
     ],
   },
