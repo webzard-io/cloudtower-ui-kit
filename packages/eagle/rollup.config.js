@@ -94,6 +94,21 @@ const config = defineConfig([
       scss({
         include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
         output: "dist/components.css",
+        processor: () =>
+          postcss([
+            {
+              postcssPlugin: "removeFontFace",
+              prepare: (result) => {
+                return {
+                  AtRule: {
+                    "font-face": (rule) => {
+                      rule.remove();
+                    },
+                  },
+                };
+              },
+            },
+          ]),
         failOnError: true,
       }),
       image({
