@@ -83,3 +83,7 @@ export type {
 export type { TabsProps } from "antd/lib/tabs";
 export type { DataNode, TreeProps } from "antd/lib/tree";
 export type { RcFile, UploadProps } from "antd/lib/upload";
+export type { TooltipPropsWithTitle } from "antd/lib/tooltip";
+export type { RadioChangeEvent } from "antd/lib/radio";
+export type { TreeSelectProps } from "antd/lib/tree-select";
+export type { CustomTagProps } from "rc-select/lib/interface/generator";

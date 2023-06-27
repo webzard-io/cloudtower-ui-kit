@@ -4,12 +4,14 @@ import {
   Button as AntdButton,
   Calendar,
   Cascader,
-  Checkbox as AntCheckbox,
+  Checkbox as AntdCheckbox,
   Col,
   DatePicker,
   Divider,
   Dropdown,
+  Empty as AntdEmpty,
   Form,
+  Input as AntdInput,
   Layout,
   List,
   Menu,
@@ -19,6 +21,7 @@ import {
   Row,
   Select as AntdSelect,
   Skeleton,
+  Table as AntdTable,
   Tabs,
   Tag,
   Timeline,
@@ -27,6 +30,10 @@ import {
   Tree,
   Typography,
   Upload,
+  Switch as AntdSwitch,
+  Collapse as AntdCollapse,
+  TreeSelect as AntdTreeSelect,
+  Drawer as AntdDrawer,
 } from "antd";
 import React from "react";
 
@@ -130,7 +137,7 @@ export function getAntdKit(): Kit {
     timeZoneSelect: TimeZoneSelect,
     timeline: Timeline,
     timelineItem: Timeline.Item,
-    checkboxGroup: AntCheckbox.Group,
+    checkboxGroup: AntdCheckbox.Group,
     typographyText: Typography.Text,
     cascader: Cascader,
     upload: Upload,
@@ -148,6 +155,14 @@ export function getAntdKit(): Kit {
     antdSelect: AntdSelect,
     antdTooltip: AntdTooltip,
     antdModal: AntdModal,
+    antdInput: AntdInput,
+    antdTable: AntdTable,
+    antdEmpty: AntdEmpty,
+    antdCheckbox: AntdCheckbox,
+    antdSwitch: AntdSwitch,
+    antdCollapse: AntdCollapse,
+    antdTreeSelect: AntdTreeSelect,
+    antdDrawer: AntdDrawer,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
