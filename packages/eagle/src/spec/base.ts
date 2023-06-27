@@ -11,9 +11,12 @@ import { ColProps } from "antd/lib/col";
 import { DatePickerProps, RangePickerProps } from "antd/lib/date-picker";
 import { DividerProps as AntdDividerProps } from "antd/lib/divider";
 import { DropDownProps } from "antd/lib/dropdown";
+import { EmptyProps } from "antd/lib/empty";
 import type Form from "antd/lib/form";
 import { FormItemProps } from "antd/lib/form";
 import { GroupProps, InputProps } from "antd/lib/input";
+import { PasswordProps } from "antd/lib/input/Password";
+import { SearchProps } from "antd/lib/input/Search";
 import { TextAreaProps as AntdTextAreaProps } from "antd/lib/input/TextArea";
 import { InputNumberProps } from "antd/lib/input-number";
 import { SiderProps } from "antd/lib/layout";
@@ -54,11 +57,24 @@ import { TextProps } from "antd/lib/typography/Text";
 import { DraggerProps, UploadProps } from "antd/lib/upload";
 import type { Moment } from "moment";
 import React, { ReactNode } from "react";
+import { SHOW_ALL, SHOW_PARENT, SHOW_CHILD } from "rc-tree-select";
 
 import { TableFormHandle, TableFormProps } from "../components/TableForm/types";
 import { SerializableObject } from "../utils/tower";
 import { FieldRenderProps } from "./react-final-form";
 import { Architecture, ISpaceProps, ITimeZoneSelectProps } from "./type";
+import { CollapsePanelProps, CollapseProps } from "antd/lib/collapse";
+import { TreeSelectProps } from "antd/lib/tree-select";
+import { DrawerProps } from "antd/lib/drawer";
+
+interface EmptyType extends React.FC<EmptyProps> {
+  PRESENTED_IMAGE_DEFAULT: React.ReactNode;
+  PRESENTED_IMAGE_SIMPLE: React.ReactNode;
+}
+
+export interface CollapseInterface extends React.FC<CollapseProps> {
+  Panel: React.FC<CollapsePanelProps>;
+}
 
 type BadgeTypeProps = "warning" | "error" | "info";
 type Primitive = "Int" | "Float" | "DateTime" | "Enum" | "String" | "Boolean";
@@ -525,6 +541,23 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   antdSelect: React.ComponentType<SelectProps<V>>;
   antdTooltip: React.FC<TooltipProps>;
   antdModal: React.FC<AntdModalProps>;
+  antdInput: React.ComponentType<InputProps> & {
+    Group: React.FC<GroupProps>;
+    Search: React.FC<SearchProps>;
+    TextArea: React.ComponentType<AntdTextAreaProps>;
+    Password: React.FC<PasswordProps>;
+  };
+  antdTable: TableComponent;
+  antdEmpty: EmptyType;
+  antdCheckbox: React.ComponentType<CheckboxProps>;
+  antdSwitch: React.FC<AntdSwitchProps>;
+  antdCollapse: CollapseInterface;
+  antdTreeSelect: React.ComponentType<TreeSelectProps<V>> & {
+    SHOW_ALL: typeof SHOW_ALL;
+    SHOW_PARENT: typeof SHOW_PARENT;
+    SHOW_CHILD: typeof SHOW_CHILD;
+  };
+  antdDrawer: React.FC<DrawerProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
