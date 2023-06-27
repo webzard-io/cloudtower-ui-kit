@@ -7,7 +7,7 @@ const { dirname } = require("path");
 const reactTransform = async (svg, componentName, format) => {
   let component = await svgr(
     svg,
-    { ref: true, titleProp: true },
+    { titleProp: true },
     { componentName }
   );
   let { code } = await babel.transformAsync(component, {
@@ -70,7 +70,7 @@ async function buildIcons(style, format) {
   await Promise.all(
     icons.flatMap(async ({ componentName, svg }) => {
       let content = await reactTransform(svg, componentName, format);
-      let types = `import * as React from 'react';\ndeclare const ${componentName}: React.ForwardRefExoticComponent<React.SVGProps<SVGSVGElement> & { title?: string, titleId?: string }>;\nexport default ${componentName};\n`;
+      let types = `import * as React from 'react';\ndeclare const ${componentName}: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;\nexport default ${componentName};\n`;
 
       return [
         ensureWrite(`${outDir}/${componentName}.js`, content),

@@ -1,6 +1,7 @@
 import * as SVG from "@cloudtower/icons-react";
 import _ from "lodash";
 import React from "react";
+import { SVGUniqueID } from "react-svg-unique-id";
 
 export type SrcType = string | typeof SVG[keyof typeof SVG];
 export interface IBaseIconProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -42,7 +43,7 @@ const BaseIcon = React.forwardRef<HTMLSpanElement, IBaseIconProps>(
           {typeof Src === "string" ? (
             <img alt={alt} src={Src} width={width} height={height} />
           ) : (
-            <Src width={width} height={height} />
+            <SVGUniqueID>{Src({ width, height })}</SVGUniqueID>
           )}
         </span>
         {children && <span className="icon-children">{children}</span>}
@@ -51,7 +52,7 @@ const BaseIcon = React.forwardRef<HTMLSpanElement, IBaseIconProps>(
             {typeof SuffixSrc === "string" ? (
               <img alt={alt} src={SuffixSrc} width={width} height={height} />
             ) : (
-              <SuffixSrc width={width} height={height} />
+              <SVGUniqueID>{SuffixSrc({ width, height })}</SVGUniqueID>
             )}
           </span>
         )}
