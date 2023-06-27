@@ -2,6 +2,7 @@ import {
   ActiveUninstal14GradiendtRedIcon,
   CopyToEllipsis324GradientBlueIcon,
   Loading16GradientBlueIcon,
+  PlusAddCreateNew24GradientGrayIcon,
   VmIcon24BlueIcon,
 } from "@cloudtower/icons-react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
@@ -30,6 +31,18 @@ const IconStories = (props: any) => {
           src={CopyToEllipsis324GradientBlueIcon}
           iconHeight={32}
           iconWidth={32}
+        />
+        <span style={{ display: "none" }}>
+          <Icon
+            src={PlusAddCreateNew24GradientGrayIcon}
+            iconHeight={24}
+            iconWidth={24}
+          />
+        </span>
+        <Icon
+          src={PlusAddCreateNew24GradientGrayIcon}
+          iconHeight={24}
+          iconWidth={24}
         />
       </Row>
     </div>
