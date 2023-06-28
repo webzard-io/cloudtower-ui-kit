@@ -38,6 +38,7 @@ export type {
   TableProps,
   TooltipProps,
   AntdInputComponentType,
+  AntdTreeSelectComponentType,
 } from "./spec";
 export * from "./spec/type";
 export type {
