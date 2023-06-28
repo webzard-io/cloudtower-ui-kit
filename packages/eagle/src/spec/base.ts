@@ -15,8 +15,7 @@ import { EmptyProps } from "antd/lib/empty";
 import type Form from "antd/lib/form";
 import { FormItemProps } from "antd/lib/form";
 import { GroupProps, InputProps } from "antd/lib/input";
-import { PasswordProps } from "antd/lib/input/Password";
-import { SearchProps } from "antd/lib/input/Search";
+import type Input from "antd/lib/input";
 import { TextAreaProps as AntdTextAreaProps } from "antd/lib/input/TextArea";
 import { InputNumberProps } from "antd/lib/input-number";
 import { SiderProps } from "antd/lib/layout";
@@ -412,6 +411,8 @@ export interface ISimplePaginationProps {
   onPageChange?: (page: number) => void;
 }
 
+export type AntdInputComponentType = Input;
+
 export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   // general UI
   loading: LoadingComponentType;
@@ -541,17 +542,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   antdSelect: React.ComponentType<SelectProps<V>>;
   antdTooltip: React.FC<TooltipProps>;
   antdModal: React.FC<AntdModalProps>;
-  antdInput: React.ComponentType<
-    InputProps & {
-      ref?: React.LegacyRef<Kit["antdInput"]>;
-    }
-  > & {
-    input: HTMLInputElement;
-    Group: React.FC<GroupProps>;
-    Search: React.FC<SearchProps>;
-    TextArea: React.ComponentType<AntdTextAreaProps>;
-    Password: React.FC<PasswordProps>;
-  };
+  antdInput: AntdInputComponentType;
   antdTable: TableComponent;
   antdEmpty: EmptyType;
   antdCheckbox: React.ComponentType<CheckboxProps>;

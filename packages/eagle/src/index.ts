@@ -37,6 +37,7 @@ export type {
   StringProps,
   TableProps,
   TooltipProps,
+  AntdInputComponentType,
 } from "./spec";
 export * from "./spec/type";
 export type {
