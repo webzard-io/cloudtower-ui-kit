@@ -45,6 +45,7 @@ import {
   ColumnType,
   TableProps as AntdTableProps,
 } from "antd/lib/table";
+import type Table from "antd/lib/table";
 import { TableRowSelection } from "antd/lib/table/interface";
 import { TabPaneProps, TabsProps } from "antd/lib/tabs";
 import { TagType } from "antd/lib/tag";
@@ -65,6 +66,10 @@ import { Architecture, ISpaceProps, ITimeZoneSelectProps } from "./type";
 import { CollapsePanelProps, CollapseProps } from "antd/lib/collapse";
 import { TreeSelectProps } from "antd/lib/tree-select";
 import { DrawerProps } from "antd/lib/drawer";
+
+export type AntdTableComponentType = <RecordType extends object = any>(
+  props: AntdTableProps<RecordType>
+) => JSX.Element;
 
 interface EmptyType extends React.FC<EmptyProps> {
   PRESENTED_IMAGE_DEFAULT: React.ReactNode;
@@ -543,7 +548,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   antdTooltip: React.FC<TooltipProps>;
   antdModal: React.FC<AntdModalProps>;
   antdInput: typeof Input;
-  antdTable: TableComponent;
+  antdTable: AntdTableComponentType;
   antdEmpty: EmptyType;
   antdCheckbox: React.ComponentType<CheckboxProps>;
   antdSwitch: React.FC<AntdSwitchProps>;
