@@ -541,8 +541,12 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   antdSelect: React.ComponentType<SelectProps<V>>;
   antdTooltip: React.FC<TooltipProps>;
   antdModal: React.FC<AntdModalProps>;
-  antdInput: React.ComponentType<InputProps> & {
-    ref?: React.LegacyRef<Kit["antdInput"]>;
+  antdInput: React.ComponentType<
+    InputProps & {
+      ref?: React.LegacyRef<Kit["antdInput"]>;
+    }
+  > & {
+    input: HTMLInputElement;
     Group: React.FC<GroupProps>;
     Search: React.FC<SearchProps>;
     TextArea: React.ComponentType<AntdTextAreaProps>;
