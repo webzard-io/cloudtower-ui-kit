@@ -15,7 +15,11 @@
   },
   "scripts": {
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
-    "postbuild": "cp src/styles/common/variables.scss dist/variables.scss",
+    "copyAntdLess": "mkdir -p dist/antd/dist && cp ../../node_modules/antd/dist/antd.less dist/antd/dist/antd.less",
+    "copyAntdLibStyle": "mkdir -p dist/antd/lib && cp -r ../../node_modules/antd/lib/style dist/antd/lib",
+    "copyLocale": "mkdir -p dist/antd/es && cp -r ../../node_modules/antd/es/locale dist/antd/es",
+    "copyVariables": "cp src/styles/common/variables.scss dist/variables.scss",
+    "postbuild": "yarn copyVariables && yarn copyAntdLess && yarn copyAntdLibStyle && yarn copyLocale",
     "test": "vitest",
     "test:ci": "vitest run",
     "coverage": "vitest run --coverage",
