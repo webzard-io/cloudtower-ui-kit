@@ -542,7 +542,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   antdSelect: React.ComponentType<SelectProps<V>>;
   antdTooltip: React.FC<TooltipProps>;
   antdModal: React.FC<AntdModalProps>;
-  antdInput: AntdInputComponentType;
+  antdInput: typeof Input;
   antdTable: TableComponent;
   antdEmpty: EmptyType;
   antdCheckbox: React.ComponentType<CheckboxProps>;
