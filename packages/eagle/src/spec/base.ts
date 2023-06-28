@@ -57,19 +57,20 @@ import { TextProps } from "antd/lib/typography/Text";
 import { DraggerProps, UploadProps } from "antd/lib/upload";
 import type { Moment } from "moment";
 import React, { ReactNode } from "react";
-import { SHOW_ALL, SHOW_PARENT, SHOW_CHILD } from "rc-tree-select";
 
 import { TableFormHandle, TableFormProps } from "../components/TableForm/types";
 import { SerializableObject } from "../utils/tower";
 import { FieldRenderProps } from "./react-final-form";
 import { Architecture, ISpaceProps, ITimeZoneSelectProps } from "./type";
 import { CollapsePanelProps, CollapseProps } from "antd/lib/collapse";
-import { TreeSelectProps } from "antd/lib/tree-select";
+import type TreeSelect from "antd/lib/tree-select";
 import { DrawerProps } from "antd/lib/drawer";
 
 export type AntdTableComponentType = <RecordType extends object = any>(
   props: AntdTableProps<RecordType>
 ) => JSX.Element;
+
+export type AntdTreeSelectComponentType<T> = TreeSelect<T>;
 
 interface EmptyType extends React.FC<EmptyProps> {
   PRESENTED_IMAGE_DEFAULT: React.ReactNode;
@@ -553,11 +554,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   antdCheckbox: React.ComponentType<CheckboxProps>;
   antdSwitch: React.FC<AntdSwitchProps>;
   antdCollapse: CollapseInterface;
-  antdTreeSelect: React.ComponentType<TreeSelectProps<V>> & {
-    SHOW_ALL: typeof SHOW_ALL;
-    SHOW_PARENT: typeof SHOW_PARENT;
-    SHOW_CHILD: typeof SHOW_CHILD;
-  };
+  antdTreeSelect: typeof TreeSelect;
   antdDrawer: React.FC<DrawerProps>;
 }
 
