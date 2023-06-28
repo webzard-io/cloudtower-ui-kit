@@ -1,7 +1,7 @@
 {
   "name": "@cloudtower/icons-react",
   "license": "MIT",
-  "version": "0.24.11",
+  "version": "0.24.12",
   "description": "",
   "keywords": [],
   "homepage": "https://github.com/webzard-io/cloudtower-ui-kit#readme",
@@ -30,7 +30,7 @@
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/plugin-transform-react-jsx": "^7.21.0",
-    "@cloudtower/icons": "0.24.11",
+    "@cloudtower/icons": "0.24.12",
     "@svgr/core": "^5.0.0",
     "camelcase": "^6.0.0"
   },
