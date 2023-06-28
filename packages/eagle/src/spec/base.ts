@@ -542,6 +542,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   antdTooltip: React.FC<TooltipProps>;
   antdModal: React.FC<AntdModalProps>;
   antdInput: React.ComponentType<InputProps> & {
+    ref?: React.LegacyRef<Kit["antdInput"]>;
     Group: React.FC<GroupProps>;
     Search: React.FC<SearchProps>;
     TextArea: React.ComponentType<AntdTextAreaProps>;
