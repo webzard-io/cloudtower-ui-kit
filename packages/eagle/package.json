@@ -5,7 +5,8 @@
   "module": "./dist/esm/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "antd"
   ],
   "license": "MIT",
   "homepage": "https://github.com/webzard-io/cloudtower-ui-kit#readme",
@@ -15,11 +16,15 @@
   },
   "scripts": {
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
-    "copyAntdLess": "mkdir -p dist/antd/dist && cp ../../node_modules/antd/dist/antd.less dist/antd/dist/antd.less",
-    "copyAntdLibStyle": "mkdir -p dist/antd/lib && cp -r ../../node_modules/antd/lib/style dist/antd/lib",
-    "copyLocale": "mkdir -p dist/antd/es && cp -r ../../node_modules/antd/es/locale dist/antd/es",
+    "copyLocale": "yarn copyLocaleIndex && yarn copyESLocale",
+    "copyLocaleIndex": "mkdir -p antd/es && cp -r ../../node_modules/antd/es/locale antd/es",
+    "copyESLocale": "rsync -av --include='antd/' --include='antd/es/' --include='antd/es/**/' --include='antd/es/**/locale' --include='antd/es/**/locale/*' --exclude '*' ../../node_modules/antd ./",
+    "copyStyle": "yarn copyStyleIndex && yarn copyESStyle && yarn copyLibStyle",
+    "copyStyleIndex": "mkdir -p antd/dist && cp ../../node_modules/antd/dist/antd.less antd/dist/antd.less",
+    "copyESStyle": "rsync -av --include='antd/' --include='antd/es/' --include='antd/es/**/' --include='antd/es/**/style' --include='antd/es/**/style/*' --exclude '*' ../../node_modules/antd ./",
+    "copyLibStyle": "rsync -av --include='antd/' --include='antd/lib/' --include='antd/lib/**/' --include='antd/lib/style/*' --include='antd/lib/style/**' --include='antd/lib/**/style' --include='antd/lib/**/style/*' --exclude '*' ../../node_modules/antd ./",
     "copyVariables": "cp src/styles/common/variables.scss dist/variables.scss",
-    "postbuild": "yarn copyVariables && yarn copyAntdLess && yarn copyAntdLibStyle && yarn copyLocale",
+    "postbuild": "yarn copyVariables && yarn copyStyle && yarn copyLocale",
     "test": "vitest",
     "test:ci": "vitest run",
     "coverage": "vitest run --coverage",
