@@ -7,3 +7,5 @@ const locales = {
 };
 
 export default locales;
+
+export type ParrotI18nSupportLng = keyof typeof locales;

@@ -9,7 +9,7 @@
 
 ```tsx
 import { antdKit } from "@cloudtower/eagle";
-import { initParrotI18n } from "@cloudtower/eagle";
+import { initParrotI18n, UIKitProvider } from "@cloudtower/eagle";
 // Set Up Style
 import "@cloudtower/eagle/dist/style.css";
 
@@ -18,7 +18,9 @@ initParrotI18n();
 ReactDOM.render(
   <React.StrictMode>
     <KitStoreProvider>
-      <App />
+      <UIKitProvider>
+        <App />
+      <UIKitProvider>
     </KitStoreProvider>
   </React.StrictMode>,
   document.getElementById("root") as HTMLElement

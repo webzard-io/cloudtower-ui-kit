@@ -1,9 +1,12 @@
+import { parrotI18n, ParrotI18nSupportLng } from "@cloudtower/parrot";
 import { ConfigProvider } from "antd";
-import { ConfigProviderProps } from "antd/lib/config-provider";
+import enUs from "antd/es/locale/en_US";
+import zhCN from "antd/es/locale/zh_CN";
 import React, {
   createContext,
   PropsWithChildren,
   useContext,
+  useEffect,
   useMemo,
 } from "react";
 
@@ -16,13 +19,20 @@ interface IProps {
   message?: {
     batch?: BatchHelper;
   };
-  antdConfig?: ConfigProviderProps;
+  lng?: ParrotI18nSupportLng;
+  getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement;
 }
 
 export const kitContext = createContext<Kit>(antdKit);
 
 const UIKitProvider = (props: PropsWithChildren<IProps>) => {
-  const { children, kit = antdKit, message, antdConfig } = props;
+  const {
+    children,
+    kit = antdKit,
+    message,
+    lng = "en-US",
+    getPopupContainer,
+  } = props;
   const _kit = useMemo(() => {
     if (message?.batch != null) {
       return {
@@ -33,9 +43,19 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
     return kit;
   }, [kit, message?.batch]);
 
+  useEffect(() => {
+    if (parrotI18n.language !== lng) {
+      parrotI18n.changeLanguage(lng);
+    }
+  }, [lng]);
+
   return (
     <kitContext.Provider value={_kit}>
-      <ConfigProvider autoInsertSpaceInButton={false} {...antdConfig}>
+      <ConfigProvider
+        autoInsertSpaceInButton={false}
+        locale={lng === "zh-CN" ? zhCN : enUs}
+        getPopupContainer={getPopupContainer}
+      >
         {children}
       </ConfigProvider>
     </kitContext.Provider>
