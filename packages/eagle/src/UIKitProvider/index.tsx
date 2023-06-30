@@ -1,7 +1,7 @@
 import { parrotI18n, ParrotI18nSupportLng } from "@cloudtower/parrot";
 import { ConfigProvider } from "antd";
-import enUs from "antd/es/locale/en_US";
-import zhCN from "antd/es/locale/zh_CN";
+import enUS from "antd/lib/locale/en_US";
+import zhCN from "antd/lib/locale/zh_CN";
 import React, {
   createContext,
   PropsWithChildren,
@@ -53,7 +53,7 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
     <kitContext.Provider value={_kit}>
       <ConfigProvider
         autoInsertSpaceInButton={false}
-        locale={lng === "zh-CN" ? zhCN : enUs}
+        locale={lng === "zh-CN" ? zhCN : enUS}
         getPopupContainer={getPopupContainer}
       >
         {children}
