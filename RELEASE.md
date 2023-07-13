@@ -2,25 +2,19 @@
 
 ## Patch 版本
 
-1. 切换到指定的分支，如 `v0.21.x`
+1. 切换 `main` 分支
 
    ```
-   git switch v0.21.x
+   git switch main
    ```
 
-2. Cherry Pick 相关的 Commit
-
-   建议使用图形化工具操作
-
-3. 使用 lerna 更新版本，并推送相关 tag
+2. 使用 lerna 更新版本，并推送相关 tag
 
    ```
    yarn lerna version patch --exact --force-publish
    ```
 
 ## Minor 版本
-
-## Patch 版本
 
 1. 从 `main` 创建分支，如 `v0.22.x`
 
