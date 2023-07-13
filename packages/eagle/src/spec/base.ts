@@ -8,14 +8,16 @@ import { CalendarProps } from "antd/lib/calendar/generateCalendar";
 import { CascaderProps } from "antd/lib/cascader";
 import { CheckboxGroupProps, CheckboxProps } from "antd/lib/checkbox";
 import { ColProps } from "antd/lib/col";
+import { CollapsePanelProps, CollapseProps } from "antd/lib/collapse";
 import { DatePickerProps, RangePickerProps } from "antd/lib/date-picker";
 import { DividerProps as AntdDividerProps } from "antd/lib/divider";
+import { DrawerProps } from "antd/lib/drawer";
 import { DropDownProps } from "antd/lib/dropdown";
 import { EmptyProps } from "antd/lib/empty";
 import type Form from "antd/lib/form";
 import { FormItemProps } from "antd/lib/form";
-import { GroupProps, InputProps } from "antd/lib/input";
 import type Input from "antd/lib/input";
+import { GroupProps, InputProps } from "antd/lib/input";
 import { TextAreaProps as AntdTextAreaProps } from "antd/lib/input/TextArea";
 import { InputNumberProps } from "antd/lib/input-number";
 import { SiderProps } from "antd/lib/layout";
@@ -45,7 +47,6 @@ import {
   ColumnType,
   TableProps as AntdTableProps,
 } from "antd/lib/table";
-import type Table from "antd/lib/table";
 import { TableRowSelection } from "antd/lib/table/interface";
 import { TabPaneProps, TabsProps } from "antd/lib/tabs";
 import { TagType } from "antd/lib/tag";
@@ -53,6 +54,7 @@ import { TimePickerProps } from "antd/lib/time-picker";
 import { TimeLineItemProps, TimelineProps } from "antd/lib/timeline";
 import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
+import type TreeSelect from "antd/lib/tree-select";
 import { TextProps } from "antd/lib/typography/Text";
 import { DraggerProps, UploadProps } from "antd/lib/upload";
 import type { Moment } from "moment";
@@ -62,9 +64,6 @@ import { TableFormHandle, TableFormProps } from "../components/TableForm/types";
 import { SerializableObject } from "../utils/tower";
 import { FieldRenderProps } from "./react-final-form";
 import { Architecture, ISpaceProps, ITimeZoneSelectProps } from "./type";
-import { CollapsePanelProps, CollapseProps } from "antd/lib/collapse";
-import type TreeSelect from "antd/lib/tree-select";
-import { DrawerProps } from "antd/lib/drawer";
 
 export type AntdTableComponentType = <RecordType extends object = any>(
   props: AntdTableProps<RecordType>
