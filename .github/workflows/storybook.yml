@@ -3,10 +3,10 @@ name: storybook
 on:
   push:
     branches: ["main"]
-    paths: ["packages/**/src/**",]
+    paths: ["packages/**/src/**", "packages/**/.storybook/**"]
   workflow_dispatch:
   pull_request:
-    paths: ["packages/**/src/**",]
+    paths: ["packages/**/src/**", "packages/**/.storybook/**"]
 
 jobs:
   test:

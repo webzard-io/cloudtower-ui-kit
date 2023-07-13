@@ -436,11 +436,11 @@ $footer-height: 64px;
     &.fullscreen-modal-enter,
     &.fullscreen-modal-appear {
       transform: translateY(100vh);
-      transition: transform 600ms cubic-bezier(0, 1, 0, 1);
     }
     &.fullscreen-modal-enter-active,
     &.fullscreen-modal-appear-active {
       transform: translateY(-50%);
+      transition: transform 600ms cubic-bezier(0, 1, 0, 1);
     }
     &.fullscreen-modal-leave {
       transition: none;
