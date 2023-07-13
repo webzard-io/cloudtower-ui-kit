@@ -69,26 +69,6 @@ export type Sidebar =
     }
   | undefined;
 
-export type MultipleSelectProps<T> = {
-  value: string[];
-  onChange: (value: string[], object?: T | T[], data?: T[]) => void;
-  mode?: "multiple";
-};
-
-export type SingleSelectProps<T> = {
-  value: string;
-  onChange: (value: string, object?: T, data?: T[]) => void;
-  mode?: "default";
-};
-
-export type SelectProps<T> = {
-  value: SingleSelectProps<T>["value"] | MultipleSelectProps<T>["value"];
-  onChange:
-    | SingleSelectProps<T>["onChange"]
-    | MultipleSelectProps<T>["onChange"];
-  mode?: "default" | "multiple";
-};
-
 export type CreateVmAction =
   | "create"
   | "createFromTemplate"

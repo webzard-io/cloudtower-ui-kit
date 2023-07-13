@@ -23,11 +23,16 @@ export {
 export * from "./components/TableForm/types";
 export { useElementsSize } from "./hooks";
 export type {
+  AntdInputComponentType,
+  AntdTreeSelectComponentType,
+  BaseEnumProps,
   ButtonProps,
   DateTimeRangeProps,
   EnumProps,
   FloatProps,
   InputSize,
+  IntegerFieldProps,
+  IntFieldProps,
   IntProps,
   Kit,
   KitSelectProps,
@@ -36,9 +41,9 @@ export type {
   SorterOrder,
   StringProps,
   TableProps,
+  TextAreaProps,
   TooltipProps,
-  AntdInputComponentType,
-  AntdTreeSelectComponentType,
+  WizardSteps,
 } from "./spec";
 export * from "./spec/type";
 export type {
@@ -57,35 +62,36 @@ export {
 } from "./store";
 export * from "./UIKitProvider";
 export { default as UIKitProvider } from "./UIKitProvider";
-export type {
-  MultipleSelectProps,
-  SelectProps,
-  SingleSelectProps,
-} from "./utils";
 export * from "@cloudtower/parrot";
 export { Col, Row } from "antd";
-export type { CheckboxChangeEvent } from "antd/lib/checkbox";
-export type { ColProps } from "antd/lib/col";
-export type { DatePickerProps } from "antd/lib/date-picker";
-export type { DrawerProps } from "antd/lib/drawer";
-export type { DropDownProps } from "antd/lib/dropdown";
-export type { TextAreaProps } from "antd/lib/input";
-export type { InputProps } from "antd/lib/input";
-export type { InputNumberProps } from "antd/lib/input-number";
-export type { MenuProps } from "antd/lib/menu";
+export type { CheckboxChangeEvent as AntdCheckboxChangeEvent } from "antd/lib/checkbox";
+export type { ColProps as AntdColProps } from "antd/lib/col";
+export type { DatePickerProps as AntdDatePickerProps } from "antd/lib/date-picker";
+export type { DrawerProps as AntdDrawerProps } from "antd/lib/drawer";
+export type { DropDownProps as AntdDropDownProps } from "antd/lib/dropdown";
+export type { TextAreaProps as AntdTextAreaProps } from "antd/lib/input";
+export type { InputProps as AntdInputProps } from "antd/lib/input";
+export type { InputNumberProps as AntdInputNumberProps } from "antd/lib/input-number";
+export type { MenuProps as AntdMenuProps } from "antd/lib/menu";
 export type { ModalProps as AntdModalProps } from "antd/lib/modal";
-export type { ProgressProps } from "antd/lib/progress";
-export type { RowProps } from "antd/lib/row";
+export type { ProgressProps as AntdProgressProps } from "antd/lib/progress";
+export type { RadioChangeEvent } from "antd/lib/radio";
+export type { RowProps as AntdRowProps } from "antd/lib/row";
 export type { SelectProps as AntdSelectProps } from "antd/lib/select";
 export type {
-  ColumnsType,
-  ColumnType,
-  TableRowSelection,
+  ColumnsType as AntdColumnsType,
+  ColumnType as AntdColumnType,
+  TableRowSelection as AntdTableRowSelection,
 } from "antd/lib/table/interface";
-export type { TabsProps } from "antd/lib/tabs";
-export type { DataNode, TreeProps } from "antd/lib/tree";
-export type { RcFile, UploadProps } from "antd/lib/upload";
-export type { TooltipPropsWithTitle } from "antd/lib/tooltip";
-export type { RadioChangeEvent } from "antd/lib/radio";
-export type { TreeSelectProps } from "antd/lib/tree-select";
-export type { CustomTagProps } from "rc-select/lib/interface/generator";
+export type { TabsProps as AntdTabsProps } from "antd/lib/tabs";
+export type { TooltipPropsWithTitle as AntdTooltipPropsWithTitle } from "antd/lib/tooltip";
+export type {
+  DataNode as AntdDataNode,
+  TreeProps as AntdTreeProps,
+} from "antd/lib/tree";
+export type { TreeSelectProps as AntdTreeSelectProps } from "antd/lib/tree-select";
+export type {
+  RcFile as AntdRcFile,
+  UploadProps as AntdUploadProps,
+} from "antd/lib/upload";
+export type { CustomTagProps as AntdCustomTagProps } from "rc-select/lib/interface/generator";
