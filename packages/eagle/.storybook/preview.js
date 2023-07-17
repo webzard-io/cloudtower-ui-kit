@@ -1,6 +1,6 @@
 import "antd/dist/antd.less";
-import "./overrideRoot.css";
 import "../src/styles/components.scss";
+import "./overrideRoot.css";
 
 import { initParrotI18n } from "@cloudtower/parrot";
 
