@@ -25,16 +25,6 @@ export enum ModalActions {
   CLOSE_MODAL = "CLOSE_MODAL",
 }
 
-export enum EverouteOperationItem {
-  License = "License",
-  Image = "Image",
-}
-
-export enum BackupOperationItem {
-  License = "License",
-  Image = "Image",
-}
-
 type PUSH_MODAL<TProps> = {
   type: ModalActions.PUSH_MODAL;
   payload: ModalType<TProps>;
