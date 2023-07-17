@@ -1,5 +1,22 @@
 @import './component/menu.scss';
 
+body {
+  font-feature-settings: normal;
+  -webkit-font-feature-settings: normal;
+  font-variant: normal;
+  min-width: 1280px;
+  overflow: hidden;
+}
+
+p {
+  margin: 0;
+}
+
+#root {
+  width: 100vw;
+  overflow-x: auto;
+}
+
 .disable-select {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -320,7 +337,7 @@ $footer-height: 64px;
 }
 .select.ant-select-single .ant-select-selector .ant-select-selection-item {
   :first-child {
-    line-height: 30px;
+    line-height: 32px;
   }
 }
 

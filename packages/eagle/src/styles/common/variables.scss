@@ -369,6 +369,8 @@ $text-light-serious: $red-60;
 $text-light-notice: $yellow-60;
 $text-light-positive: $green-60;
 
+$text-light-storage: rgba(126, 65, 255, 1);
+
 /*  link   */
 $link-light-primary: $blue-60;
 $link-light-secondary: #2c3852;
@@ -432,6 +434,7 @@ $fills-element-light-container-outstanding: rgba(#0088ff, 0.1);
 $fills-element-light-container-serious: rgba(#ff4a4a, 0.1);
 $fills-element-light-container-notice: rgba(#ffbb00, 0.1);
 $fills-element-light-container-positive: rgba(#1ec97f, 0.1);
+$fills-element-light-container-storage: rgba(126, 65, 255, 0.1);
 
 /*  fill  interaction  */
 
@@ -482,6 +485,9 @@ $shadow-light-hover: 0px 0px 0px 4px rgba(225, 230, 241, 0.6);
 $shadow-light-active: 0px 0px 0px 4px rgba(0, 136, 255, 0.16);
 $shadow-light-focus: 0px 0px 0px 4px rgba(0, 136, 255, 0.16);
 $shadow-light-error: 0px 0px 0px 4px rgba(255, 74, 74, 0.16);
+$shadow-list-item-light-hover: 0px 0px 4px rgba(235, 239, 245, 0.6), 0px 8px 16px rgba(129, 138, 153, 0.18);
+$shadow-menu-light-default: 0px 0px 10px rgba(107, 125, 153, 0.18), 0px 12px 40px rgba(45, 58, 86, 0.3);
+$shadow-light-push-button-ordinary: 0px 1px 2px -1px rgba(44, 56, 82, 0.18);
 
 /*  fisheye   */
 $fisheye-gray-010: #f7f8fa;
