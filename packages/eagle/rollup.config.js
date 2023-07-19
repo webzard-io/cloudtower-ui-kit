@@ -40,8 +40,10 @@ const config = defineConfig([
         processor: () =>
           postcss([
             url({
-              url: "inline",
+              url: "copy",
               basePath: [path.resolve("src/styles/fonts")],
+              assetsPath: "assets",
+              useHash: true,
             }),
           ]),
         failOnError: true,
@@ -129,8 +131,10 @@ const config = defineConfig([
         processor: () =>
           postcss([
             url({
-              url: "inline",
+              url: "copy",
               basePath: [path.resolve("src/styles/fonts")],
+              assetsPath: "assets",
+              useHash: true,
             }),
           ]),
         failOnError: true,
