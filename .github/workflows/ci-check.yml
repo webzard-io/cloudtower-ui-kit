@@ -1,7 +1,7 @@
-name: storybook
+name: "CI Check"
 
 on:
-  push:
+  pull_request:
     branches: ["main"]
 
 jobs:
@@ -24,18 +24,35 @@ jobs:
       - name: Test
         run: cd packages/eagle && yarn run test:ci
 
-  storybook-production:
-    name: Storybook Production
+  size-report:
+    name: Size Report
     runs-on: ubuntu-latest
-    needs: [test]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: "yarn"
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+      - name: Build
+        run: yarn build
+      - name: Size Report
+        uses: jackyef/bundlewatch-gh-action@master
+        with:
+          bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+
+  storybook-staging:
+    name: Storybook Staging
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set Up Storybook Production
+      - name: Set Up Storybook Staging
         uses: amondnet/vercel-action@v20
-        id: vercel-action-production
+        id: vercel-action-staging
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: "--prod"
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}

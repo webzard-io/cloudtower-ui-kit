@@ -35,5 +35,20 @@
   "resolutions": {
     "@types/react": "^17.0.50",
     "@ant-design/icons": "4.2.1"
+  },
+  "bundlewatch": {
+    "trackBranches": [
+      "master"
+    ],
+    "files": [
+      {
+        "path": "./packages/eagle/dist/**/*.js",
+        "maxSize": "40 kB"
+      },
+      {
+        "path": "./packages/parrot/dist/**/*.js",
+        "maxSize": "5 kB"
+      }
+    ]
   }
 }
