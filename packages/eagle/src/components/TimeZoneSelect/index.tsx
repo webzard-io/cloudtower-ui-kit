@@ -64,6 +64,10 @@ const DropdownStyle = css`
     box-sizing: border-box;
     margin-top: 8px;
   }
+
+  .rc-virtual-list-holder-inner {
+    top: -20px !important;
+  }
 `;
 
 const OptionWrapperStyle = cx(
@@ -259,9 +263,6 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
         />
       </AntdSelect.Option>
       {timeZoneOptionGroups}
-      <AntdSelect.Option value="__placeholder__" className={OptionPlaceholder}>
-        __invisible__
-      </AntdSelect.Option>
     </Select>
   );
 };
