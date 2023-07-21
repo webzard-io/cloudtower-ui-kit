@@ -95,3 +95,12 @@
 .ant-dropdown.no-animation-leave {
   display: none;
 }
+
+.ant-message-notice-content {
+  max-width: 800px;
+  .ant-message-custom-content {
+    overflow: hidden;
+    white-space: nowrap;			
+    text-overflow: ellipsis;
+  }
+}

@@ -18,6 +18,9 @@ interface IProps {
   kit?: Kit;
   message?: {
     batch?: BatchHelper;
+    config?: {
+      maxCount?: number;
+    };
   };
   lng?: ParrotI18nSupportLng;
   getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement;
@@ -37,10 +40,23 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
     if (message?.batch != null) {
       return {
         ...kit,
-        message: createBatchMessageMethods(message.batch),
+        message: {
+          ...createBatchMessageMethods(message.batch),
+          config: {
+            maxCount: message?.config?.maxCount,
+          },
+        },
       };
     }
-    return kit;
+    return {
+      ...kit,
+      message: {
+        ...createBatchMessageMethods(),
+        config: {
+          maxCount: message?.config?.maxCount,
+        },
+      },
+    };
   }, [kit, message?.batch]);
 
   useEffect(() => {
