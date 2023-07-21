@@ -49,6 +49,7 @@ import ButtonGroup from "./ButtonGroup";
 import Byte from "./Byte";
 import Checkbox from "./Checkbox";
 import Empty from "./Empty";
+import FormItem from "./FormItem";
 import fields from "./Fields";
 import Frequency from "./Frequency";
 import Input from "./Input";
@@ -131,7 +132,7 @@ export function getAntdKit(): Kit {
     buttonGroup: ButtonGroup,
     steps: Steps,
     form: Form,
-    formItem: Form.Item,
+    formItem: FormItem,
     simplePagination: SimplePagination,
     space: Space,
     timeZoneSelect: TimeZoneSelect,
