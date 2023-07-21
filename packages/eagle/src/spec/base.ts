@@ -15,7 +15,6 @@ import { DrawerProps } from "antd/lib/drawer";
 import { DropDownProps } from "antd/lib/dropdown";
 import { EmptyProps } from "antd/lib/empty";
 import type Form from "antd/lib/form";
-import { FormItemProps } from "antd/lib/form";
 import type Input from "antd/lib/input";
 import { GroupProps, InputProps } from "antd/lib/input";
 import { TextAreaProps as AntdTextAreaProps } from "antd/lib/input/TextArea";
@@ -519,7 +518,6 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   >;
   steps: React.FC<IStepsProps>;
   form: Form;
-  formItem: React.FC<FormItemProps>;
   simplePagination: React.FC<ISimplePaginationProps>;
   space: React.FC<ISpaceProps>;
   timeZoneSelect: React.FC<ITimeZoneSelectProps>;
