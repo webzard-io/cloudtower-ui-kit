@@ -1,16 +1,15 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Row } from "antd";
 import React from "react";
 
 import Fields from "../Fields";
-import FormItem from ".";
+import Form from "../Form";
 
 const FormItemStories = (props: any) => {
   return (
     <div>
       <div style={{ width: "648px" }}>
         <h1>普通状态 648px</h1>
-        <FormItem label="IP 地址" labelCol={{ span: 6 }}>
+        <Form.Item label="IP 地址" labelCol={{ span: 6 }}>
           <Fields.String
             input={{
               name: "value",
@@ -21,8 +20,8 @@ const FormItemStories = (props: any) => {
             }}
             meta={{}}
           />
-        </FormItem>
-        <FormItem label="IP 地址" labelCol={{ span: 8 }}>
+        </Form.Item>
+        <Form.Item label="IP 地址" labelCol={{ span: 8 }}>
           <Fields.String
             input={{
               name: "value",
@@ -33,8 +32,8 @@ const FormItemStories = (props: any) => {
             }}
             meta={{}}
           />
-        </FormItem>
-        <FormItem label="IP 地址" labelCol={{ span: 12 }}>
+        </Form.Item>
+        <Form.Item label="IP 地址" labelCol={{ span: 12 }}>
           <Fields.String
             input={{
               name: "value",
@@ -45,11 +44,11 @@ const FormItemStories = (props: any) => {
             }}
             meta={{}}
           />
-        </FormItem>
+        </Form.Item>
       </div>
       <div style={{ width: "324px" }}>
         <h1>普通状态 324px</h1>
-        <FormItem label="IP 地址" labelCol={{ span: 6 }}>
+        <Form.Item label="IP 地址" labelCol={{ span: 6 }}>
           <Fields.String
             input={{
               name: "value",
@@ -60,8 +59,8 @@ const FormItemStories = (props: any) => {
             }}
             meta={{}}
           />
-        </FormItem>
-        <FormItem label="IP 地址" labelCol={{ span: 8 }}>
+        </Form.Item>
+        <Form.Item label="IP 地址" labelCol={{ span: 8 }}>
           <Fields.String
             input={{
               name: "value",
@@ -72,8 +71,8 @@ const FormItemStories = (props: any) => {
             }}
             meta={{}}
           />
-        </FormItem>
-        <FormItem label="IP 地址" labelCol={{ span: 12 }}>
+        </Form.Item>
+        <Form.Item label="IP 地址" labelCol={{ span: 12 }}>
           <Fields.String
             input={{
               name: "value",
@@ -84,11 +83,11 @@ const FormItemStories = (props: any) => {
             }}
             meta={{}}
           />
-        </FormItem>
+        </Form.Item>
       </div>
       <div style={{ width: "648px" }}>
         <h1>其他状态 648px</h1>
-        <FormItem
+        <Form.Item
           label="IP 地址"
           labelCol={{ span: 8 }}
           help="普通的 IP 地址， 普通的 IP 地址， 普通的 IP 地址"
@@ -103,8 +102,8 @@ const FormItemStories = (props: any) => {
             }}
             meta={{}}
           />
-        </FormItem>
-        <FormItem
+        </Form.Item>
+        <Form.Item
           label="IP 地址"
           labelCol={{ span: 8 }}
           help="IP 地址错误，请重新输入一个正确的 IP 地址"
@@ -120,7 +119,7 @@ const FormItemStories = (props: any) => {
             }}
             meta={{}}
           />
-        </FormItem>
+        </Form.Item>
       </div>
     </div>
   );
@@ -130,7 +129,7 @@ const FormItemStories = (props: any) => {
 export default {
   title: "FormItem",
   component: FormItemStories,
-} as ComponentMeta<typeof FormItem>;
+} as ComponentMeta<typeof Form.Item>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof FormItemStories> = (args) => {

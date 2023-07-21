@@ -131,7 +131,6 @@ export function getAntdKit(): Kit {
     buttonGroup: ButtonGroup,
     steps: Steps,
     form: Form,
-    formItem: Form.Item,
     simplePagination: SimplePagination,
     space: Space,
     timeZoneSelect: TimeZoneSelect,
