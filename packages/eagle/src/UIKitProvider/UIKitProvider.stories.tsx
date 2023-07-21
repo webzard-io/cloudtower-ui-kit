@@ -1,6 +1,9 @@
+import { parrotI18n } from "@cloudtower/parrot";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Pagination } from "antd";
 import { Calendar } from "antd";
+import { message as AntdMessage } from "antd";
+import { Button } from "antd";
 import enUs from "antd/es/locale/en_US";
 import zhCN from "antd/es/locale/zh_CN";
 import React from "react";
@@ -17,7 +20,10 @@ export default {
 const Template: ComponentStory<typeof UIKitProvider> = (args) => {
   return (
     <div>
-      <h1> 通过修改 antdConfig 可以调整 antd 组件相关配置，如 i18n 显示。</h1>
+      <h1>
+        通过修改 antdConfig 可以调整 antd 组件相关配置，如 i18n
+        显示、message提示。
+      </h1>
       <UIKitProvider {...args}>{args.children}</UIKitProvider>
     </div>
   );
@@ -48,5 +54,41 @@ English.args = {
   ),
   antdConfig: {
     locale: enUs,
+  },
+};
+
+export const message = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+message.args = {
+  children: (
+    <>
+      <Button
+        onClick={() => {
+          AntdMessage.info(parrotI18n.t("common.error_message"));
+        }}
+      >
+        click here
+      </Button>
+      <Button
+        onClick={() => {
+          AntdMessage.warn(parrotI18n.t("common.error_message"));
+        }}
+      >
+        click here
+      </Button>
+      <Button
+        onClick={() => {
+          AntdMessage.error(parrotI18n.t("common.error_message"));
+        }}
+      >
+        click here
+      </Button>
+    </>
+  ),
+
+  antdConfig: {
+    message: {
+      maxCount: 3,
+    },
   },
 };
