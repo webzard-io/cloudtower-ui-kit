@@ -30,11 +30,13 @@ const FormItemStyle = css`
   .ant-form-item-explain {
     margin-top: 4px;
     font-size: 12px;
+    min-height: 0px;
   }
 
   .ant-form-item-extra {
     font-size: 12px;
     color: rgba(44, 56, 82, 0.6);
+    min-height: 0px;
   }
 `;
 
