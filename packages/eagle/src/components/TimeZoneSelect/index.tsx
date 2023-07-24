@@ -64,10 +64,6 @@ const DropdownStyle = css`
     box-sizing: border-box;
     margin-top: 8px;
   }
-
-  .rc-virtual-list-holder-inner {
-    top: -20px !important;
-  }
 `;
 
 const OptionWrapperStyle = cx(
@@ -218,6 +214,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
 
   return (
     <Select
+      open
       className={cx(SelectStyle, className)}
       dropdownClassName={DropdownStyle}
       placeholder={
@@ -230,6 +227,16 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
       showSearch
       disabled={disabled}
       filterOption={(keyword, option) => {
+        // This is to fix http://jira.smartx.com/browse/SKS-1482
+        // Always show placeholder no matter search what
+        // and hide placeholder when no timezone is matched
+        const hasSome = allTimeZones.some((tz) =>
+          tz.value.toLowerCase().includes(keyword)
+        );
+        if (!hasSome) return false;
+        if (option?.value === "_placeholder_") {
+          return true;
+        }
         return (option?.value || "")
           .toLowerCase()
           .includes(keyword.toLowerCase());
@@ -263,6 +270,9 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
         />
       </AntdSelect.Option>
       {timeZoneOptionGroups}
+      <AntdSelect.Option value="_placeholder_" className={OptionPlaceholder}>
+        _placeholder_
+      </AntdSelect.Option>
     </Select>
   );
 };
