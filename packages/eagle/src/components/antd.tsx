@@ -10,7 +10,6 @@ import {
   Divider,
   Dropdown,
   Empty as AntdEmpty,
-  Form,
   Input as AntdInput,
   Layout,
   List,
@@ -73,6 +72,7 @@ import TableForm from "./TableForm";
 import TextArea from "./TextArea";
 import TimeZoneSelect from "./TimeZoneSelect";
 import Tooltip from "./Tooltip";
+import Form from "./Form";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
