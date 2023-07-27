@@ -214,7 +214,6 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
 
   return (
     <Select
-      open
       className={cx(SelectStyle, className)}
       dropdownClassName={DropdownStyle}
       placeholder={
