@@ -1,5 +1,5 @@
 import { message } from "antd";
-import { ArgsProps, MessageType } from "antd/lib/message";
+import { ArgsProps, ConfigOptions, MessageType } from "antd/lib/message";
 import { ReactNode } from "react";
 
 export function makeUUID(length = 25) {
@@ -137,14 +137,21 @@ export class Batcher {
   }
 }
 
-export function createBatchMessageMethods(
-  batchHelper?: BatchHelper
-): typeof message {
-  if (batchHelper == null) {
-    return message;
+export function createBatchMessageMethods({
+  config,
+  batchHelper,
+}: {
+  config?: ConfigOptions;
+  batchHelper?: BatchHelper;
+} = {}): typeof message {
+  let _message = message;
+  if (config) {
+    _message.config(config);
   }
 
-  let _message = message;
+  if (batchHelper == null) {
+    return _message;
+  }
 
   const methods = [
     "success",
