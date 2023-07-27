@@ -38,17 +38,23 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
   } = props;
   const _kit = useMemo(() => {
     if (message?.batch != null || message?.config) {
+      const newMessage = createBatchMessageMethods(message.batch);
+      newMessage.config(message?.config || {});
       return {
         ...kit,
         message: {
-          ...createBatchMessageMethods({
-            batchHelper: message.batch,
-            config: message?.config,
-          }),
+          ...newMessage,
         },
       };
     }
-    return kit;
+    const newMessage = createBatchMessageMethods();
+    newMessage.config(message?.config || {});
+    return {
+      ...kit,
+      message: {
+        ...newMessage,
+      },
+    };
   }, [kit, message?.batch, message?.config]);
 
   useEffect(() => {
