@@ -95,7 +95,7 @@ message.args = {
 
   message: {
     config: {
-      maxCount: 3,
+      maxCount: 2,
     },
   },
 };

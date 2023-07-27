@@ -137,17 +137,10 @@ export class Batcher {
   }
 }
 
-export function createBatchMessageMethods({
-  config,
-  batchHelper,
-}: {
-  config?: ConfigOptions;
-  batchHelper?: BatchHelper;
-} = {}): typeof message {
+export function createBatchMessageMethods(
+  batchHelper?: BatchHelper
+): typeof message {
   let _message = message;
-  if (config) {
-    _message.config(config);
-  }
 
   if (batchHelper == null) {
     return _message;
