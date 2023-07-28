@@ -37,19 +37,27 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
     getPopupContainer,
   } = props;
   const _kit = useMemo(() => {
-    if (message?.batch != null || message?.config) {
+    if (message?.batch != null) {
       return {
         ...kit,
         message: {
-          ...createBatchMessageMethods({
-            batchHelper: message.batch,
-            config: message?.config,
-          }),
+          ...createBatchMessageMethods(message.batch),
+          config: {
+            maxCount: message?.config?.maxCount,
+          },
         },
       };
     }
-    return kit;
-  }, [kit, message?.batch, message?.config]);
+    return {
+      ...kit,
+      message: {
+        ...createBatchMessageMethods(),
+        config: {
+          maxCount: message?.config?.maxCount,
+        },
+      },
+    };
+  }, [kit, message?.batch]);
 
   useEffect(() => {
     if (parrotI18n.language !== lng) {
