@@ -83,18 +83,11 @@ message.args = {
       >
         click here
       </Button>
-      <Button
-        onClick={() => {
-          AntdMessage.loading(parrotI18n.t("common.error_message"));
-        }}
-      >
-        click here
-      </Button>
     </>
   ),
 
-  message: {
-    config: {
+  antdConfig: {
+    message: {
       maxCount: 3,
     },
   },

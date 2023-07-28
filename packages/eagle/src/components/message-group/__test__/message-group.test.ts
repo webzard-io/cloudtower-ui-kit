@@ -72,7 +72,7 @@ const batchHelper = {
 
 describe("patchMessageMethods", () => {
   it("2 message", () => {
-    const message = createBatchMessageMethods({ batchHelper });
+    const message = createBatchMessageMethods(batchHelper);
 
     message.info("hello info 1");
 
@@ -83,7 +83,7 @@ describe("patchMessageMethods", () => {
   });
 
   it("3 message", () => {
-    const message = createBatchMessageMethods({ batchHelper });
+    const message = createBatchMessageMethods(batchHelper);
     message.warning("hello warning 3");
     message.warning("hello warning 4");
     message.warning("hello warning 5");
