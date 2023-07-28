@@ -101,11 +101,11 @@
   src: url("Inter-italic.var.woff2") format("woff2");
 }
 
-body {
+html body {
   font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans CJK SC', 'WenQuanYi Micro Hei', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; 
 }
 @supports (font-variation-settings: normal) {
-  body { font-family: 'Inter var', 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans CJK SC', 'WenQuanYi Micro Hei', sans-serif; }
+  html body { font-family: 'Inter var', 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans CJK SC', 'WenQuanYi Micro Hei', sans-serif; }
 }
