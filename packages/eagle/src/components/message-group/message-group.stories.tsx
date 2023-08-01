@@ -3,13 +3,13 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Button } from "antd";
 import React, { ReactNode } from "react";
 
-import { createBatchMessageMethods } from ".";
+import UIKitProvider, { useUIKit } from "../../UIKitProvider";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Message",
-  component: Button,
-} as ComponentMeta<typeof Button>;
+  component: UIKitProvider,
+} as ComponentMeta<typeof UIKitProvider>;
 
 const patterMap = {
   "common.error_message": {
@@ -34,25 +34,78 @@ const batchHelper = {
   },
 };
 
-const message = createBatchMessageMethods(batchHelper);
+let i = 0;
+const TestMessage = () => {
+  const UIKit = useUIKit();
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Button> = (args) => {
-  return <Button {...args}>click here</Button>;
+  return (
+    <>
+      <Button
+        onClick={() => {
+          UIKit.message.info(parrotI18n.t("common.error_message") + i++);
+        }}
+      >
+        click here
+      </Button>
+      <Button
+        onClick={() => {
+          UIKit.message.warning(parrotI18n.t("common.error_message") + i++);
+        }}
+      >
+        click here
+      </Button>
+      <Button
+        onClick={() => {
+          UIKit.message.success(parrotI18n.t("common.error_message") + i++);
+        }}
+      >
+        click here
+      </Button>
+      <Button
+        onClick={() => {
+          UIKit.message.error(parrotI18n.t("common.error_message") + i++);
+        }}
+      >
+        click here
+      </Button>
+    </>
+  );
 };
 
-export const info = Template.bind({});
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+const Template: ComponentStory<typeof UIKitProvider> = (args) => {
+  return (
+    <UIKitProvider {...args}>
+      <TestMessage />
+    </UIKitProvider>
+  );
+};
+
+export const simple = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-info.args = {
-  onClick: () => {
-    message.info(parrotI18n.t("common.error_message"));
+simple.args = {};
+
+export const batchInfo = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+batchInfo.args = {
+  message: {
+    batch: batchHelper,
   },
 };
 
-export const warning = Template.bind({});
+export const maxCount = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-warning.args = {
-  onClick: () => {
-    message.warning(parrotI18n.t("common.error_message"));
+maxCount.args = {
+  message: {
+    maxCount: 5,
+  },
+};
+
+export const batchWithMaxCount = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+batchWithMaxCount.args = {
+  message: {
+    batch: batchHelper,
+    maxCount: 2,
   },
 };

@@ -16,7 +16,8 @@
       {
         "allowNamespace": true
       }
-    ]
+    ],
+    "testing-library/no-node-access": "warn"
   },
   "ignorePatterns": ["node_modules", "**/*.md", "generated"]
 }

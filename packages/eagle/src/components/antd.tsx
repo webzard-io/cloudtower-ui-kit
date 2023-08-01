@@ -6,8 +6,10 @@ import {
   Cascader,
   Checkbox as AntdCheckbox,
   Col,
+  Collapse as AntdCollapse,
   DatePicker,
   Divider,
+  Drawer as AntdDrawer,
   Dropdown,
   Empty as AntdEmpty,
   Input as AntdInput,
@@ -20,6 +22,7 @@ import {
   Row,
   Select as AntdSelect,
   Skeleton,
+  Switch as AntdSwitch,
   Table as AntdTable,
   Tabs,
   Tag,
@@ -27,12 +30,9 @@ import {
   TimePicker,
   Tooltip as AntdTooltip,
   Tree,
+  TreeSelect as AntdTreeSelect,
   Typography,
   Upload,
-  Switch as AntdSwitch,
-  Collapse as AntdCollapse,
-  TreeSelect as AntdTreeSelect,
-  Drawer as AntdDrawer,
 } from "antd";
 import React from "react";
 
@@ -49,11 +49,12 @@ import Byte from "./Byte";
 import Checkbox from "./Checkbox";
 import Empty from "./Empty";
 import fields from "./Fields";
+import Form from "./Form";
 import Frequency from "./Frequency";
 import Input from "./Input";
 import InputGroup from "./InputGroup";
 import Loading from "./Loading";
-import { createBatchMessageMethods } from "./message-group";
+import message from "./message";
 import Modal from "./Modal";
 import Pagination from "./Pagination";
 import Percent from "./Percent";
@@ -72,7 +73,6 @@ import TableForm from "./TableForm";
 import TextArea from "./TextArea";
 import TimeZoneSelect from "./TimeZoneSelect";
 import Tooltip from "./Tooltip";
-import Form from "./Form";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -124,7 +124,7 @@ export function getAntdKit(): Kit {
     menuItemGroup: Menu.ItemGroup,
     layout: Layout,
     autoComplete: AutoComplete,
-    message: createBatchMessageMethods(),
+    message: message,
     tag: Tag,
     popover: Popover,
     arch: Arch,

@@ -12,15 +12,14 @@ import React, {
 
 import { BatchHelper, createBatchMessageMethods } from "../components";
 import { antdKit } from "../components/antd";
+import _message from "../components/message";
 import { Kit } from "../spec";
 
 interface IProps {
   kit?: Kit;
   message?: {
     batch?: BatchHelper;
-    config?: {
-      maxCount?: number;
-    };
+    maxCount?: number;
   };
   lng?: ParrotI18nSupportLng;
   getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement;
@@ -36,28 +35,22 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
     lng = "en-US",
     getPopupContainer,
   } = props;
+
   const _kit = useMemo(() => {
     if (message?.batch != null) {
       return {
         ...kit,
-        message: {
-          ...createBatchMessageMethods(message.batch),
-          config: {
-            maxCount: message?.config?.maxCount,
-          },
-        },
+        message: createBatchMessageMethods(_message, message.batch),
       };
     }
-    return {
-      ...kit,
-      message: {
-        ...createBatchMessageMethods(),
-        config: {
-          maxCount: message?.config?.maxCount,
-        },
-      },
-    };
+    return kit;
   }, [kit, message?.batch]);
+
+  useEffect(() => {
+    _message.config({
+      maxCount: message?.maxCount,
+    });
+  }, [message?.maxCount]);
 
   useEffect(() => {
     if (parrotI18n.language !== lng) {

@@ -26,7 +26,6 @@ import { ListItemProps } from "antd/lib/list/Item";
 import { MenuItemGroupProps, MenuProps } from "antd/lib/menu";
 import { MenuItemProps } from "antd/lib/menu/MenuItem";
 import { SubMenuProps } from "antd/lib/menu/SubMenu";
-import { MessageApi, MessageInstance } from "antd/lib/message";
 import { ModalProps as AntdModalProps } from "antd/lib/modal";
 import { PopoverProps } from "antd/lib/popover";
 import { ProgressProps } from "antd/lib/progress";
@@ -59,6 +58,7 @@ import { DraggerProps, UploadProps } from "antd/lib/upload";
 import type { Moment } from "moment";
 import React, { ReactNode } from "react";
 
+import { MessageApi } from "../components/message";
 import { TableFormHandle, TableFormProps } from "../components/TableForm/types";
 import { SerializableObject } from "../utils/tower";
 import { FieldRenderProps } from "./react-final-form";
@@ -507,7 +507,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     Sider: React.ComponentType<SiderProps>;
   };
   autoComplete: React.ForwardRefExoticComponent<AutoCompleteProps>;
-  message: MessageInstance;
+  message: MessageApi;
   tag: TagType;
   popover: React.ForwardRefExoticComponent<
     PopoverProps & React.RefAttributes<unknown>

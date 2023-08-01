@@ -1,0 +1,176 @@
+/* eslint-disable testing-library/no-node-access */
+import { SmileOutlined } from "@ant-design/icons";
+import { render } from "@testing-library/react";
+import React from "react";
+import { vi } from "vitest";
+
+import message from "..";
+
+describe("message", () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    message.destroy();
+    vi.useRealTimers();
+  });
+
+  it("should be able to hide manually", () => {
+    const hide1 = message.info("whatever", 0);
+    const hide2 = message.info("whatever", 0);
+    expect(document.querySelectorAll(".ant-message-notice").length).toBe(2);
+    hide1();
+    vi.runAllTimers();
+    expect(document.querySelectorAll(".ant-message-notice").length).toBe(1);
+    hide2();
+    vi.runAllTimers();
+    expect(document.querySelectorAll(".ant-message-notice").length).toBe(0);
+  });
+
+  it("should be able to destroy globally", () => {
+    message.info("whatever", 0);
+    message.info("whatever", 0);
+    expect(document.querySelectorAll(".ant-message").length).toBe(1);
+    expect(document.querySelectorAll(".ant-message-notice").length).toBe(2);
+    message.destroy();
+    expect(document.querySelectorAll(".ant-message").length).toBe(0);
+    expect(document.querySelectorAll(".ant-message-notice").length).toBe(0);
+  });
+
+  it("should not need to use duration argument when using the onClose arguments", () => {
+    message.info("whatever", () => {});
+  });
+
+  it("should have the default duration when using the onClose arguments", async () => {
+    return new Promise<void>((resolve) => {
+      vi.useRealTimers();
+      const defaultDuration = 3;
+      const now = Date.now();
+      message.info("whatever", 3, () => {
+        // calculate the approximately duration value
+        const aboutDuration = Math.floor((Date.now() - now) / 1000);
+        expect(aboutDuration).toBe(defaultDuration);
+        resolve();
+      });
+    });
+  });
+
+  // https://github.com/ant-design/ant-design/issues/8201
+  it("should hide message correctly", () => {
+    let hide: () => void = vi.fn();
+    class Test extends React.Component {
+      componentDidMount() {
+        hide = message.loading("Action in progress..", 0);
+      }
+
+      render() {
+        return <div>test</div>;
+      }
+    }
+    render(<Test />);
+    expect(document.querySelectorAll(".ant-message-notice").length).toBe(1);
+    hide?.();
+    vi.runAllTimers();
+    expect(document.querySelectorAll(".ant-message-notice").length).toBe(0);
+  });
+
+  it("should allow custom icon", () => {
+    message.open({
+      content: "Message",
+      icon: <SmileOutlined />,
+      duration: 0.1,
+      type: "info",
+    });
+    expect(document.querySelectorAll(".anticon-smile").length).toBe(1);
+  });
+
+  it("should have no icon", () => {
+    message.open({
+      content: "Message",
+      icon: <span />,
+      duration: 0.1,
+      type: "info",
+    });
+    expect(
+      document.querySelectorAll(".ant-message-notice .anticon").length
+    ).toBe(0);
+  });
+  it("should have no icon when not pass icon props", () => {
+    message.open({ content: "Message", duration: 3 });
+
+    expect(
+      document.querySelectorAll(".ant-message-notice .anticon").length
+    ).toBe(0);
+  });
+
+  // https://github.com/ant-design/ant-design/issues/8201
+  it("should destroy messages correctly", () => {
+    class Test extends React.Component {
+      componentDidMount() {
+        message.loading("Action in progress1..", 0);
+        message.loading("Action in progress2..", 0);
+        setTimeout(() => message.destroy(), 1000);
+      }
+
+      render() {
+        return <div>test</div>;
+      }
+    }
+    render(<Test />);
+    expect(document.querySelectorAll(".ant-message-notice").length).toBe(2);
+    vi.runAllTimers();
+    expect(document.querySelectorAll(".ant-message-notice").length).toBe(0);
+  });
+
+  it("should support update message content with a unique key", () => {
+    const key = "updatable";
+    class Test extends React.Component {
+      componentDidMount() {
+        message.loading({ content: "Loading...", key });
+        // Testing that content of the message should be updated.
+        setTimeout(() => message.success({ content: "Loaded", key }), 1000);
+        setTimeout(() => message.destroy(), 3000);
+      }
+
+      render() {
+        return <div>test</div>;
+      }
+    }
+
+    render(<Test />);
+    expect(document.querySelectorAll(".ant-message-notice").length).toBe(1);
+    vi.advanceTimersByTime(1500);
+    expect(document.querySelectorAll(".ant-message-notice").length).toBe(1);
+    vi.runAllTimers();
+    expect(document.querySelectorAll(".ant-message-notice").length).toBe(0);
+  });
+
+  it("update message content with a unique key and cancel manually", () => {
+    const key = "updatable";
+    class Test extends React.Component {
+      componentDidMount() {
+        const hideLoading = message.loading({
+          content: "Loading...",
+          key,
+          duration: 0,
+        });
+        // Testing that content of the message should be cancel manually.
+        setTimeout(hideLoading, 1000);
+      }
+
+      render() {
+        return <div>test</div>;
+      }
+    }
+
+    render(<Test />);
+    expect(document.querySelectorAll(".ant-message-notice").length).toBe(1);
+    vi.advanceTimersByTime(1500);
+    expect(document.querySelectorAll(".ant-message-notice").length).toBe(0);
+  });
+
+  it("should not throw error when pass null", () => {
+    message.error(null);
+  });
+});

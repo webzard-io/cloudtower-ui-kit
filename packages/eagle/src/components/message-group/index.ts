@@ -1,6 +1,7 @@
-import { message } from "antd";
-import { ArgsProps, MessageType } from "antd/lib/message";
+import { ArgsProps, ConfigOnClose, MessageType } from "antd/lib/message";
 import { ReactNode } from "react";
+
+import { MessageApi } from "../message";
 
 export function makeUUID(length = 25) {
   let result = "";
@@ -28,18 +29,23 @@ type MessageStore = {
 
 type KeyedArgsProps = ArgsProps & { key: string };
 
+declare type ConfigContent = React.ReactNode | string;
+declare type ConfigDuration = number | (() => void);
+declare type JointContent = ConfigContent | ArgsProps;
+type OriginalMethod = (
+  content: JointContent,
+  duration?: ConfigDuration,
+  onClose?: ConfigOnClose
+) => MessageType;
 export class Batcher {
   private batchSize = 2;
   private batchTime = 200;
   private scheduler: Partial<Record<MessageKey, MessageStore>> = {};
 
-  private originalMethod: typeof message["success"];
+  private originalMethod: OriginalMethod;
   private batchHelper: BatchHelper;
 
-  constructor(
-    originalMethod: typeof message["success"],
-    batchHelper: BatchHelper
-  ) {
+  constructor(originalMethod: OriginalMethod, batchHelper: BatchHelper) {
     this.originalMethod = originalMethod;
     this.batchHelper = batchHelper;
   }
@@ -138,13 +144,10 @@ export class Batcher {
 }
 
 export function createBatchMessageMethods(
-  batchHelper?: BatchHelper
-): typeof message {
-  if (batchHelper == null) {
-    return message;
-  }
-
-  let _message = message;
+  message: MessageApi,
+  batchHelper: BatchHelper
+): MessageApi {
+  let _message = { ...message };
 
   const methods = [
     "success",
@@ -158,9 +161,7 @@ export function createBatchMessageMethods(
   for (const method of methods) {
     const originalMethod = _message[method];
     const batcher = new Batcher(originalMethod, batchHelper);
-    _message[method] = function (
-      ...args: Parameters<typeof _message["success"]>
-    ) {
+    _message[method] = function (...args: Parameters<OriginalMethod>) {
       const key = makeUUID();
       const content = normalizeContent(args, method);
 
@@ -173,7 +174,7 @@ export function createBatchMessageMethods(
 }
 
 function normalizeContent(
-  args: Parameters<typeof message["success"]>,
+  args: Parameters<OriginalMethod>,
   type: ArgsProps["type"] | "warn"
 ): ArgsProps {
   const c = args[0];
