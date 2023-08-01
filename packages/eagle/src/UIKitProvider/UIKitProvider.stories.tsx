@@ -1,11 +1,6 @@
-import { parrotI18n } from "@cloudtower/parrot";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Pagination } from "antd";
 import { Calendar } from "antd";
-import { message as AntdMessage } from "antd";
-import { Button } from "antd";
-import enUs from "antd/es/locale/en_US";
-import zhCN from "antd/es/locale/zh_CN";
 import React from "react";
 
 import UIKitProvider from ".";
@@ -38,9 +33,7 @@ Chinese.args = {
       <Calendar />
     </div>
   ),
-  antdConfig: {
-    locale: zhCN,
-  },
+  lng: "zh-CN",
 };
 
 export const English = Template.bind({});
@@ -52,43 +45,4 @@ English.args = {
       <Calendar />
     </div>
   ),
-  antdConfig: {
-    locale: enUs,
-  },
-};
-
-export const message = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-message.args = {
-  children: (
-    <>
-      <Button
-        onClick={() => {
-          AntdMessage.info(parrotI18n.t("common.error_message"));
-        }}
-      >
-        click here
-      </Button>
-      <Button
-        onClick={() => {
-          AntdMessage.warn(parrotI18n.t("common.error_message"));
-        }}
-      >
-        click here
-      </Button>
-      <Button
-        onClick={() => {
-          AntdMessage.error(parrotI18n.t("common.error_message"));
-        }}
-      >
-        click here
-      </Button>
-    </>
-  ),
-
-  antdConfig: {
-    message: {
-      maxCount: 3,
-    },
-  },
 };

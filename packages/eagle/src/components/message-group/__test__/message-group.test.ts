@@ -1,14 +1,14 @@
 import { initParrotI18n, parrotI18n } from "@cloudtower/parrot";
 import { ReactNode } from "react";
 import { describe, it, vi } from "vitest";
-
+import _message from "../../message";
 import { createBatchMessageMethods } from "..";
 
 let infoCount = 0;
 
 let warningCount = 0;
 
-vi.mock("antd", () => {
+vi.mock("../../message", () => {
   const info = (content: string) => {
     infoCount++;
   };
@@ -23,7 +23,7 @@ vi.mock("antd", () => {
 
   const loading = (content: string) => {};
   return {
-    message: {
+    default: {
       info,
       success,
       error,
@@ -31,6 +31,12 @@ vi.mock("antd", () => {
       warn,
       loading,
     },
+    info,
+    success,
+    error,
+    warning,
+    warn,
+    loading,
   };
 });
 
@@ -72,7 +78,7 @@ const batchHelper = {
 
 describe("patchMessageMethods", () => {
   it("2 message", () => {
-    const message = createBatchMessageMethods(batchHelper);
+    const message = createBatchMessageMethods(_message, batchHelper);
 
     message.info("hello info 1");
 
@@ -83,7 +89,7 @@ describe("patchMessageMethods", () => {
   });
 
   it("3 message", () => {
-    const message = createBatchMessageMethods(batchHelper);
+    const message = createBatchMessageMethods(_message, batchHelper);
     message.warning("hello warning 3");
     message.warning("hello warning 4");
     message.warning("hello warning 5");

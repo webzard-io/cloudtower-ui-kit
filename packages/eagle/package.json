@@ -32,7 +32,9 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@cloudtower/parrot": "0.25.9",
+    "@cloudtower/parrot": "^0.25.9",
+    "@cloudtower/rc-notification": "^4.6.1",
+    "@cloudtower/icons-react": "^0.25.9",
     "@linaria/core": "^4.2.2",
     "@linaria/react": "^4.3.0",
     "antd": "4.5.0",
@@ -48,7 +50,6 @@
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@cloudtower/icons": "0.25.9",
-    "@cloudtower/icons-react": "0.25.9",
     "@linaria/babel-preset": "4.4.1",
     "@linaria/rollup": "^4.1.5",
     "@linaria/vite": "^4.2.5",
