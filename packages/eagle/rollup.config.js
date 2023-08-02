@@ -61,6 +61,7 @@ const config = defineConfig([
         dir: "dist/umd",
         name: "index",
         format: "umd",
+        interop: "auto",
       },
       {
         dir: "dist/esm",
