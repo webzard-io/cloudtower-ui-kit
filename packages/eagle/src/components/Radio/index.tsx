@@ -94,7 +94,6 @@ const RadioButtonStyle = css`
   border-color: $strokes-light-opaque-3;
 
   &:first-child {
-    color: $text-light-primary;
     border-color: $strokes-light-opaque-4;
   }
 
