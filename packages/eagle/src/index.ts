@@ -1,5 +1,7 @@
 import "./styles/index.scss";
 
+import { initParrotI18n } from "@cloudtower/parrot";
+
 export type { DateRange, GraphType, IconProps, IDataPoint } from "./components";
 export {
   antdKit,
@@ -96,3 +98,5 @@ export type {
   UploadProps as AntdUploadProps,
 } from "antd/lib/upload";
 export type { CustomTagProps as AntdCustomTagProps } from "rc-select/lib/interface/generator";
+
+initParrotI18n();
