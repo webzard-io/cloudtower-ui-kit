@@ -10,19 +10,21 @@ const defaultContext = createContext<
   storeState: UIKitStore.getState(),
 });
 
-export const ReduxContext = createContext(defaultContext);
+export const EagleReduxContext = createContext(defaultContext);
 
 interface IProps {
   reduxContext?: React.Context<ReactReduxContextValue<KitRootState, Actions>>;
 }
 
-const ReduxContextProvider = (props: PropsWithChildren<IProps>) => {
+const EagleReduxContextProvider = (props: PropsWithChildren<IProps>) => {
   const { children, reduxContext = defaultContext } = props;
+  window.EagleReduxContext = EagleReduxContext;
+
   return (
-    <ReduxContext.Provider value={reduxContext}>
+    <EagleReduxContext.Provider value={reduxContext}>
       {children}
-    </ReduxContext.Provider>
+    </EagleReduxContext.Provider>
   );
 };
 
-export default ReduxContextProvider;
+export default EagleReduxContextProvider;

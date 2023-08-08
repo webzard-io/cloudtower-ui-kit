@@ -1,4 +1,5 @@
 import React, {
+  Fragment,
   PropsWithChildren,
   useCallback,
   useContext,
@@ -13,29 +14,20 @@ import type {
   ModalType,
 } from "../../store";
 import { ModalActions } from "../../store";
-import { ReduxContext } from "./ReduxContextProvider";
+import { EagleReduxContext } from "./EagleReduxContextProvider";
 
 interface IProps {}
 
 const KitStoreProvider = (props: PropsWithChildren<IProps>) => {
   const { children } = props;
-  const reduxContext = useContext(ReduxContext);
-  const store = useContext(reduxContext);
-  return (
-    <Provider context={reduxContext} store={store.store}>
-      {children}
-    </Provider>
-  );
+  return <Fragment> {children}</Fragment>;
 };
 
 export default KitStoreProvider;
 
 export const useKitDispatch = () => {
-  const ctx = useContext(ReduxContext);
-  const useHook = useMemo(
-    () => createDispatchHook<KitRootState, Actions>(ctx),
-    [ctx]
-  );
+  const ctx = useContext(window.EagleReduxContext ?? EagleReduxContext);
+  const useHook = createDispatchHook<KitRootState, Actions>(ctx);
   return useHook();
 };
 
@@ -43,11 +35,8 @@ export const useKitSelector = <Selected extends unknown>(
   selector: (state: KitRootState) => Selected,
   equalityFn?: (previous: Selected, next: Selected) => boolean
 ) => {
-  const ctx = useContext(ReduxContext);
-  const useHook = useMemo(
-    () => createSelectorHook<KitRootState, Actions>(ctx),
-    [ctx]
-  );
+  const ctx = useContext(window.EagleReduxContext ?? EagleReduxContext);
+  const useHook = createSelectorHook<KitRootState, Actions>(ctx);
   return useHook(selector, equalityFn);
 };
 
