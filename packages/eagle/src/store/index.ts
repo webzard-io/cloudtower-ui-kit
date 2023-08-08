@@ -1,7 +1,5 @@
-import { useCallback } from "react";
 import { combineReducers, createStore } from "redux";
 
-import { useKitDispatch } from "../components/KitStoreProvider";
 import {
   Actions as ChartActionType,
   chartReducer,
@@ -66,19 +64,6 @@ export function pushModal<K extends keyof IModalProps>(
   });
 }
 
-export const usePushModal = () => {
-  const dispatch = useKitDispatch();
-  return useCallback(
-    <K extends keyof IModalProps>(modal: ModalType<IModalProps[K]>) => {
-      dispatch({
-        type: ModalActions.PUSH_MODAL,
-        payload: modal,
-      });
-    },
-    [dispatch]
-  );
-};
-
 /**
  * @deprecated
  */
@@ -87,15 +72,6 @@ export function popModal(store = UIKitStore) {
     type: ModalActions.POP_MODAL,
   });
 }
-
-export const usePopMoal = () => {
-  const dispatch = useKitDispatch();
-  return useCallback(() => {
-    dispatch({
-      type: ModalActions.POP_MODAL,
-    });
-  }, [dispatch]);
-};
 
 /**
  * @deprecated
@@ -106,19 +82,6 @@ export function closeModal(id: number, store = UIKitStore) {
     id,
   });
 }
-
-export const useCloseModal = () => {
-  const dispatch = useKitDispatch();
-  return useCallback(
-    (id: number) => {
-      dispatch({
-        type: ModalActions.CLOSE_MODAL,
-        id,
-      });
-    },
-    [dispatch]
-  );
-};
 
 export type GetModalProps<K extends keyof IModalProps> = IModalProps[K] &
   CloseCb;
