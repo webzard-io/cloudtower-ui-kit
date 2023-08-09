@@ -13,10 +13,11 @@ const Byte: UnitFn = ({
   decimals,
   valueClassName,
   unitClassName,
+  emptyProps,
 }) => {
   const { t } = useParrotTranslation();
   if (isEmpty(rawValue)) {
-    return Empty;
+    return <Empty {...emptyProps} />;
   }
   if (rawValue === -1) {
     return <span>{t("common.calculation")}</span>;

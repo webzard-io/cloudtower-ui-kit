@@ -13,11 +13,12 @@ const Second: UnitFn = ({
   valueClassName,
   unitClassName,
   abbreviate,
+  emptyProps,
 }) => {
   const { t } = useParrotTranslation();
 
   if (isEmpty(rawValue)) {
-    return Empty;
+    return <Empty {...emptyProps} />;
   }
   const { value, unit } = formatSeconds(rawValue, decimals);
   return (
