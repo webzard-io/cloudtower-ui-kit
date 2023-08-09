@@ -63,6 +63,7 @@ import { TableFormHandle, TableFormProps } from "../components/TableForm/types";
 import { SerializableObject } from "../utils/tower";
 import { FieldRenderProps } from "./react-final-form";
 import { Architecture, ISpaceProps, ITimeZoneSelectProps } from "./type";
+import { IEmptyProps } from "../components/Empty";
 
 export type AntdTableComponentType = <RecordType extends object = any>(
   props: AntdTableProps<RecordType>
@@ -151,7 +152,11 @@ export interface RawValue {
   valueClassName?: string;
   unitClassName?: string;
 }
-export type UnitFn = React.FC<RawValue>;
+export type UnitFn = React.FC<
+  RawValue & {
+    emptyProps: IEmptyProps;
+  }
+>;
 
 export type SorterOrder = "descend" | "ascend" | undefined;
 

@@ -20,3 +20,13 @@ Simple.args = {
   rawValue: 1000,
   decimals: 1,
 };
+
+export const Empty = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Empty.args = {
+  emptyProps: {
+    style: {
+      color: "red",
+    },
+  },
+};

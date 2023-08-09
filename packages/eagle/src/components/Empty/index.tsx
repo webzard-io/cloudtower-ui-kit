@@ -1,5 +1,17 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
-const Empty = <>-</>;
+export interface IEmptyProps {
+  className?: string;
+  style?: CSSProperties;
+}
+
+const Empty = (props: IEmptyProps) => {
+  const { className, style } = props;
+  return (
+    <span className={className} style={style}>
+      -
+    </span>
+  );
+};
 
 export default Empty;

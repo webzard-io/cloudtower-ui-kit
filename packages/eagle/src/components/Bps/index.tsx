@@ -6,9 +6,15 @@ import isEmpty from "../../utils/isEmpty";
 import { formatBps } from "../../utils/tower";
 import Empty from "../Empty";
 
-const Bps: UnitFn = ({ rawValue, decimals, valueClassName, unitClassName }) => {
+const Bps: UnitFn = ({
+  rawValue,
+  decimals,
+  valueClassName,
+  unitClassName,
+  emptyProps,
+}) => {
   if (isEmpty(rawValue)) {
-    return Empty;
+    return <Empty {...emptyProps} />;
   }
   const { value, unit } = formatBps(rawValue, decimals);
   return (

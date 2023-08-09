@@ -11,9 +11,10 @@ const Speed: UnitFn = ({
   decimals,
   valueClassName,
   unitClassName,
+  emptyProps,
 }) => {
   if (isEmpty(rawValue)) {
-    return Empty;
+    return <Empty {...emptyProps} />;
   }
   const { value, unit } = formatSpeed(rawValue, decimals);
   return (

@@ -11,9 +11,10 @@ const BitPerSeconds: UnitFn = ({
   decimals,
   valueClassName,
   unitClassName,
+  emptyProps,
 }) => {
   if (isEmpty(rawValue)) {
-    return Empty;
+    return <Empty {...emptyProps} />;
   }
   const { value, unit } = formatBitPerSecond(rawValue, decimals);
   return (

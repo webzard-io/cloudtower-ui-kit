@@ -6,9 +6,15 @@ import isEmpty from "../../utils/isEmpty";
 import { formatBits } from "../../utils/tower";
 import Empty from "../Empty";
 
-const Bit: UnitFn = ({ rawValue, decimals, unitClassName, valueClassName }) => {
+const Bit: UnitFn = ({
+  rawValue,
+  decimals,
+  unitClassName,
+  valueClassName,
+  emptyProps,
+}) => {
   if (isEmpty(rawValue)) {
-    return Empty;
+    return <Empty {...emptyProps} />;
   }
   const { value, unit } = formatBits(rawValue, decimals);
   return (
