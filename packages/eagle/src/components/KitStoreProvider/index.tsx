@@ -1,17 +1,25 @@
-import React, { PropsWithChildren, useContext, useMemo } from "react";
-import { createDispatchHook, createSelectorHook, Provider } from "react-redux";
+import React, { createContext, PropsWithChildren } from "react";
+import {
+  createDispatchHook,
+  createSelectorHook,
+  Provider,
+  ReactReduxContextValue,
+} from "react-redux";
 
-import type { Actions, KitRootState } from "../../store";
-import { ReduxContext } from "./ReduxContextProvider";
+import { Actions, KitRootState, UIKitStore } from "../../store";
+
+const ctx = createContext<ReactReduxContextValue<KitRootState, Actions>>({
+  store: UIKitStore,
+  storeState: UIKitStore.getState(),
+});
 
 interface IProps {}
 
 const KitStoreProvider = (props: PropsWithChildren<IProps>) => {
   const { children } = props;
-  const reduxContext = useContext(ReduxContext);
-  const store = useContext(reduxContext);
+
   return (
-    <Provider context={reduxContext} store={store.store}>
+    <Provider context={ctx} store={UIKitStore}>
       {children}
     </Provider>
   );
@@ -19,23 +27,5 @@ const KitStoreProvider = (props: PropsWithChildren<IProps>) => {
 
 export default KitStoreProvider;
 
-export const useKitDispatch = () => {
-  const ctx = useContext(ReduxContext);
-  const useHook = useMemo(
-    () => createDispatchHook<KitRootState, Actions>(ctx),
-    [ctx]
-  );
-  return useHook();
-};
-
-export const useKitSelector = <Selected extends unknown>(
-  selector: (state: KitRootState) => Selected,
-  equalityFn?: (previous: Selected, next: Selected) => boolean
-) => {
-  const ctx = useContext(ReduxContext);
-  const useHook = useMemo(
-    () => createSelectorHook<KitRootState, Actions>(ctx),
-    [ctx]
-  );
-  return useHook(selector, equalityFn);
-};
+export const useKitDispatch = createDispatchHook<KitRootState, Actions>(ctx);
+export const useKitSelector = createSelectorHook<KitRootState, Actions>(ctx);

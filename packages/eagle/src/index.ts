@@ -22,7 +22,6 @@ export {
   useKitSelector,
   WizardBody,
 } from "./components";
-export { default as ReduxContextProvider } from "./components/KitStoreProvider/ReduxContextProvider";
 export * from "./components/TableForm/types";
 export { useElementsSize } from "./hooks";
 export type {
