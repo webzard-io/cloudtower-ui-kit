@@ -58,12 +58,12 @@ import { DraggerProps, UploadProps } from "antd/lib/upload";
 import type { Moment } from "moment";
 import React, { ReactNode } from "react";
 
+import { IEmptyProps } from "../components/Empty";
 import { MessageApi } from "../components/message";
 import { TableFormHandle, TableFormProps } from "../components/TableForm/types";
 import { SerializableObject } from "../utils/tower";
 import { FieldRenderProps } from "./react-final-form";
 import { Architecture, ISpaceProps, ITimeZoneSelectProps } from "./type";
-import { IEmptyProps } from "../components/Empty";
 
 export type AntdTableComponentType = <RecordType extends object = any>(
   props: AntdTableProps<RecordType>
@@ -154,7 +154,7 @@ export interface RawValue {
 }
 export type UnitFn = React.FC<
   RawValue & {
-    emptyProps: IEmptyProps;
+    emptyProps?: IEmptyProps;
   }
 >;
 
