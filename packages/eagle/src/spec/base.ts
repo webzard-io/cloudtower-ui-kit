@@ -317,6 +317,8 @@ export type ModalProps = Omit<AntdModalProps, "okType"> & {
         disablePrevStep?: boolean;
       }
     | boolean;
+  visible: boolean;
+  removeModal: () => void;
 };
 
 type SearchInputProps = Omit<InputProps, "onChange"> & {

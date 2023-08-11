@@ -5,9 +5,7 @@ import React, { useMemo, useRef } from "react";
 
 import useParrotTranslation from "../../hooks/useParrotTranslation";
 import { ModalProps } from "../../spec";
-import { KitRootState, ModalActions } from "../../store";
 import Button from "../Button";
-import { useKitDispatch, useKitSelector } from "../KitStoreProvider";
 import { WizardBody } from "../Styled";
 
 const Modal: React.FC<ModalProps> = (props) => {
@@ -32,18 +30,11 @@ const Modal: React.FC<ModalProps> = (props) => {
     showCancel = true,
     showOk = true,
     afterClose,
+    removeModal,
+    visible,
     ...restProps
   } = props;
 
-  const stack = useKitSelector<KitRootState["modal"]["stack"]>(
-    (state) => state.modal.stack
-  );
-  const id = useKitSelector<KitRootState["modal"]["closeId"]>(
-    (state) => state.modal.closeId
-  );
-  const dispatch = useKitDispatch();
-
-  const idRef = useRef(stack[stack.length - 1]?.id);
   const transitionClass = useRef<
     "modal-zoom" | "modal-send" | "fullscreen-modal" | ""
   >(fullscreen ? "fullscreen-modal" : "modal-zoom");
@@ -108,9 +99,9 @@ const Modal: React.FC<ModalProps> = (props) => {
       {...restProps}
       afterClose={() => {
         afterClose?.();
-        dispatch({ type: ModalActions.REMOVE_MODAL, id: idRef.current });
+        removeModal();
       }}
-      visible={idRef.current !== id}
+      visible={visible}
       footer={
         <div className="footer-content">
           {footer === undefined ? (
