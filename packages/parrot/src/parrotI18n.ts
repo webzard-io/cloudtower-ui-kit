@@ -35,5 +35,7 @@ export const initParrotI18n = (
   options?: InitOptions,
   callback?: Callback | undefined
 ) => {
-  parrotI18n.init(merge(defaultOptions, options), callback);
+  if (!parrotI18n.isInitialized) {
+    parrotI18n.init(merge(defaultOptions, options), callback);
+  }
 };
