@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { useState } from "react";
 
-import Table from ".";
+import Table, { ColumnTitle } from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -16,59 +16,58 @@ interface DataType {
   address: string;
 }
 
+const columns = [
+  {
+    key: "Name",
+    title: "Name",
+    dataIndex: "name",
+    render: (text: string) => <a>{text}</a>,
+  },
+  {
+    key: "Age",
+    title: "Age",
+    dataIndex: "age",
+  },
+  {
+    key: "Address",
+    title: "Address",
+    dataIndex: "address",
+  },
+];
+
+const data: DataType[] = [
+  {
+    id: "1",
+    name: "John Brown",
+    age: 32,
+    address: "New York No. 1 Lake Park",
+  },
+  {
+    id: "2",
+    name: "Jim Green",
+    age: 42,
+    address: "London No. 1 Lake Park",
+  },
+  {
+    id: "3",
+    name: "Joe Black",
+    age: 32,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "4",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+];
+
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Table> = (args) => {
-  const [selectionType, setSelectionType] =
-    useState<"checkbox" | "radio">("checkbox");
-
-  const columns = [
-    {
-      key: "Name",
-      title: "Name",
-      dataIndex: "name",
-      render: (text: string) => <a>{text}</a>,
-    },
-    {
-      key: "Age",
-      title: "Age",
-      dataIndex: "age",
-    },
-    {
-      key: "Address",
-      title: "Address",
-      dataIndex: "address",
-    },
-  ];
-
-  const data: DataType[] = [
-    {
-      id: "1",
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-    },
-    {
-      id: "2",
-      name: "Jim Green",
-      age: 42,
-      address: "London No. 1 Lake Park",
-    },
-    {
-      id: "3",
-      name: "Joe Black",
-      age: 32,
-      address: "Sidney No. 1 Lake Park",
-    },
-    {
-      id: "4",
-      name: "Disabled User",
-      age: 99,
-      address: "Sidney No. 1 Lake Park",
-    },
-  ];
-
-  // rowSelection object indicates the need for row selection
-  const rowSelection = {};
+const Template: ComponentStory<typeof Table<DataType>> = (args) => {
+  const { columns, dataSource } = args;
+  const [selectionType, setSelectionType] = useState<"checkbox" | "radio">(
+    "checkbox",
+  );
 
   return (
     <Table<DataType>
@@ -79,7 +78,7 @@ const Template: ComponentStory<typeof Table> = (args) => {
           console.log(
             `selectedRowKeys: ${selectedRowKeys}`,
             "selectedRows: ",
-            selectedRows
+            selectedRows,
           );
         },
         getCheckboxProps: (record) => {
@@ -91,11 +90,44 @@ const Template: ComponentStory<typeof Table> = (args) => {
         },
       }}
       columns={columns}
-      dataSource={data}
+      dataSource={dataSource}
     />
   );
 };
 
 export const Simple = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Simple.args = {};
+Simple.args = {
+  columns: columns,
+  dataSource: data,
+};
+
+export const SortSimpleTitle = Template.bind({});
+SortSimpleTitle.args = {
+  columns: columns.map((column, index) => ({
+    ...column,
+    sorter: (a, b) => a - b,
+    title: `hello ${index}`,
+  })),
+  dataSource: data,
+};
+
+export const SortCustomTitle = Template.bind({});
+
+SortCustomTitle.args = {
+  columns: columns.map((column, index) => ({
+    ...column,
+    sorter: (a, b) => a - b,
+    title: ({ sortOrder, sortColumn, filters }) => {
+      return (
+        <ColumnTitle
+          title={`hello ${index}`}
+          sortOrder={
+            sortColumn?.dataIndex === column.dataIndex ? sortOrder : undefined
+          }
+        />
+      );
+    },
+  })),
+  dataSource: data,
+};

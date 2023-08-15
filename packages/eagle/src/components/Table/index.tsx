@@ -465,7 +465,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
     () =>
       columns.map((column) => {
         const _column = { ...column };
-        if (_column.sorter) {
+        if (_column.sorter && typeof _column.title !== "function") {
           _column.title = (
             <ColumnTitle title={column.title} sortOrder={column.sortOrder} />
           );
@@ -477,7 +477,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
         }
         return _column;
       }),
-    [columns]
+    [columns],
   );
 
   return (
@@ -485,7 +485,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
       className={cx(
         TableContainerStyle,
         "table-container",
-        !hasScrollBard && "no-scroll-bar"
+        !hasScrollBard && "no-scroll-bar",
       )}
     >
       <BaseTable
@@ -493,7 +493,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
           tableStyleCover,
           !dataSource?.length && "empty-table",
           initLoading && "table-init-loading",
-          rowSelection && "has-selection"
+          rowSelection && "has-selection",
         )}
         bordered={bordered}
         loading={{
