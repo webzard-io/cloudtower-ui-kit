@@ -457,6 +457,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
     rowKey,
     wrapper,
     pagination,
+    onRow,
   } = props;
   const orderRef = useRef<"descend" | "ascend" | undefined | null>(null);
   const hasScrollBard = useTableBodyHasScrollBar(wrapper, dataSource);
@@ -520,6 +521,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
         }}
         onRow={(record: T, index) => ({
           onClick: (evt) => onRowClick?.(record, index!, evt),
+          ...onRow?.(record, index), // supply antd table complete property
         })}
         rowClassName={rowClassName}
         scroll={scroll}
