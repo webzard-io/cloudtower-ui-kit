@@ -131,3 +131,42 @@ SortCustomTitle.args = {
   })),
   dataSource: data,
 };
+
+export const OnRowPropCustom: ComponentStory<typeof Table<DataType>> = (
+  args,
+) => {
+  const {
+    onRow = (record: DataType, index?: number) => {
+      return {
+        onClick: () => {
+          setBehaveior(`row ${index}:${record.name} click`);
+        },
+        onDoubleClick: () => {
+          setBehaveior(`row ${index}:${record.name} doubleClick`);
+        },
+        onContextMenu: () => {
+          setBehaveior(`row ${index}:${record.name} contextMenu`);
+        },
+        onMouseEnter: () => {
+          setBehaveior(`row ${index}:${record.name} mouseEnter`);
+        },
+        onMouseLeave: () => {
+          setBehaveior(`row ${index}:${record.name} mouseleave`);
+        },
+      };
+    },
+  } = args;
+  const [behavior, setBehaveior] = useState("");
+
+  return (
+    <>
+      <h1>{behavior}</h1>
+      <Table<DataType>
+        loading={false}
+        columns={columns}
+        dataSource={data}
+        onRow={onRow}
+      />
+    </>
+  );
+};
