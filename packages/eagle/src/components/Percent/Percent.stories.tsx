@@ -21,6 +21,14 @@ Simple.args = {
   decimals: 2,
 };
 
+export const Saturated = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Saturated.args = {
+  rawValue: 123.8,
+  decimals: 2,
+  saturated: false,
+};
+
 export const Empty = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Empty.args = {
