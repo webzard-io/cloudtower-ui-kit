@@ -66,7 +66,7 @@ import { FieldRenderProps } from "./react-final-form";
 import { Architecture, ISpaceProps, ITimeZoneSelectProps } from "./type";
 
 export type AntdTableComponentType = <RecordType extends object = any>(
-  props: AntdTableProps<RecordType>
+  props: AntdTableProps<RecordType>,
 ) => JSX.Element;
 
 export type AntdTreeSelectComponentType<T> = TreeSelect<T>;
@@ -101,7 +101,7 @@ interface LooseFieldRenderProps<V, T extends HTMLElement> {
     onBlur?: FieldRenderProps<V, T>["input"]["onBlur"];
     onChange?: (
       value: string | string[],
-      option: { object: V } | Array<{ object: V }>
+      option: { object: V } | Array<{ object: V }>,
     ) => void;
     onFocus?: FieldRenderProps<V, T>["input"]["onFocus"];
     type?: FieldRenderProps<V, T>["input"]["type"];
@@ -158,6 +158,13 @@ export type UnitFn = React.FC<
   }
 >;
 
+export type PercentFn = React.FC<
+  RawValue & {
+    saturated?: boolean;
+    emptyProps?: IEmptyProps;
+  }
+>;
+
 export type SorterOrder = "descend" | "ascend" | undefined;
 
 type Columns<T> = ColumnsType<T>[0];
@@ -192,7 +199,7 @@ export interface TableProps<T extends { id: string }> {
   onRowClick?: (
     record: T,
     index: number,
-    evt: React.MouseEvent<HTMLElement, MouseEvent>
+    evt: React.MouseEvent<HTMLElement, MouseEvent>,
   ) => void;
   rowClassName?: (record: T, index: number) => string;
   scroll?: { x?: number | string | true; y?: number | string };
@@ -229,7 +236,7 @@ export interface TableProps<T extends { id: string }> {
 interface TableComponent {
   <TData extends IdObject>(
     props: React.PropsWithChildren<TableProps<TData>>,
-    context?: unknown
+    context?: unknown,
   ): React.ReactElement | null;
 }
 export interface BaseEnumProps {
@@ -271,7 +278,7 @@ export interface IntProps {
   size?: InputSize;
   onBlur?: (
     input: FieldBaseProps<number, HTMLInputElement>["input"],
-    event?: React.FocusEvent<HTMLInputElement>
+    event?: React.FocusEvent<HTMLInputElement>,
   ) => void;
 }
 export interface FloatProps {
@@ -280,17 +287,19 @@ export interface FloatProps {
   size?: InputSize;
   onBlur?: (
     input: FieldBaseProps<number, HTMLInputElement>["input"],
-    event?: React.FocusEvent<HTMLInputElement>
+    event?: React.FocusEvent<HTMLInputElement>,
   ) => void;
 }
 export type TooltipProps = AntdTooltipProps & {
   followMouse?: boolean;
 };
-export type FieldBaseProps<V = any, T extends HTMLElement = HTMLElement> =
-  FieldRenderProps<V, T> & {
-    disabled?: boolean;
-    className?: string;
-  };
+export type FieldBaseProps<
+  V = any,
+  T extends HTMLElement = HTMLElement,
+> = FieldRenderProps<V, T> & {
+  disabled?: boolean;
+  className?: string;
+};
 export type WizardSteps = {
   title: string;
   render: React.ReactNode;
@@ -331,7 +340,7 @@ export type DateTimeRangeProps = DatePickerProps;
 export type IntFieldProps<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   V = any,
-  T extends HTMLElement = HTMLElement
+  T extends HTMLElement = HTMLElement,
 > = FieldBaseProps<V, T> &
   IntProps & {
     onChange?: FieldBaseProps<V, T>["input"]["onChange"];
@@ -354,26 +363,30 @@ export type ButtonGroupType = {
   >;
 };
 
-export type IntegerFieldProps<V = any, T extends HTMLElement = HTMLElement> =
-  FieldBaseProps<V, T> &
-    InputNumberProps & {
-      onChange?: FieldBaseProps<V, T>["input"]["onChange"];
-      controls?: boolean;
-      suffix?: string;
-      prefix?: string;
-      size?: InputSize;
-      onBlur?: (
-        input: FieldBaseProps<number, HTMLInputElement>["input"],
-        event?: React.FocusEvent<HTMLInputElement>
-      ) => void;
-    };
+export type IntegerFieldProps<
+  V = any,
+  T extends HTMLElement = HTMLElement,
+> = FieldBaseProps<V, T> &
+  InputNumberProps & {
+    onChange?: FieldBaseProps<V, T>["input"]["onChange"];
+    controls?: boolean;
+    suffix?: string;
+    prefix?: string;
+    size?: InputSize;
+    onBlur?: (
+      input: FieldBaseProps<number, HTMLInputElement>["input"],
+      event?: React.FocusEvent<HTMLInputElement>,
+    ) => void;
+  };
 
-export type FloatFieldProps<V = any, T extends HTMLElement = HTMLElement> =
-  FieldBaseProps<V, T> &
-    FloatProps & {
-      onChange?: FieldBaseProps<V, T>["input"]["onChange"];
-      autoComplete?: "on" | "off";
-    };
+export type FloatFieldProps<
+  V = any,
+  T extends HTMLElement = HTMLElement,
+> = FieldBaseProps<V, T> &
+  FloatProps & {
+    onChange?: FieldBaseProps<V, T>["input"]["onChange"];
+    autoComplete?: "on" | "off";
+  };
 
 export type ButtonProps = {
   prefixIcon?: JSX.Element;
@@ -564,8 +577,10 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
 
-export type SelectComponentType<V = any, T extends HTMLElement = HTMLElement> =
-  React.FunctionComponent<LooseFieldRenderProps<V, T> & KitSelectProps>;
+export type SelectComponentType<
+  V = any,
+  T extends HTMLElement = HTMLElement,
+> = React.FunctionComponent<LooseFieldRenderProps<V, T> & KitSelectProps>;
 
 export type OptionComponentType = React.FC<OptionProps> & {
   isSelectOption: boolean;
