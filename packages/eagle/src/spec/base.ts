@@ -486,7 +486,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   };
   // specific unit data UI
   units: {
-    Percent: UnitFn;
+    Percent: PercentFn;
     Byte: UnitFn;
     Frequency: UnitFn;
     Speed: UnitFn;
