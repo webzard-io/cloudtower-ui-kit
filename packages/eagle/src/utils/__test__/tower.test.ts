@@ -370,6 +370,20 @@ describe("format percent", () => {
       unit: "%",
     });
   });
+
+  it("should not be saturated and get original value 131.4", () => {
+    expect(formatPercent(131.4, 1, false)).toEqual({
+      value: "131.4",
+      unit: "%",
+    });
+  });
+
+  it("should not be saturated and get original value -10.7", () => {
+    expect(formatPercent(-10.7, 1, false)).toEqual({
+      value: "-10.7",
+      unit: "%",
+    });
+  });
 });
 
 describe("format speed", () => {
