@@ -1,14 +1,15 @@
 import { cx } from "@linaria/core";
 import React from "react";
 
-import { UnitFn } from "../../spec";
+import { PercentFn } from "../../spec";
 import isEmpty from "../../utils/isEmpty";
 import { formatPercent } from "../../utils/tower";
 import Empty from "../Empty";
 
-const Percent: UnitFn = ({
+const Percent: PercentFn = ({
   rawValue,
   decimals,
+  saturated,
   valueClassName,
   unitClassName,
   emptyProps,
@@ -16,7 +17,7 @@ const Percent: UnitFn = ({
   if (isEmpty(rawValue)) {
     return <Empty {...emptyProps} />;
   }
-  const { value, unit } = formatPercent(rawValue, decimals);
+  const { value, unit } = formatPercent(rawValue, decimals, saturated);
   return (
     <span>
       <span className={cx("value", valueClassName)}>{value}</span>
