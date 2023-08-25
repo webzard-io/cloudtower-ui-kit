@@ -196,6 +196,8 @@ export interface TableProps<T extends { id: string }> {
   dataSource: T[] | undefined;
   columns: RequiredColumnProps<T>[];
   onSorterChange?: (order: SorterOrder | null, key?: string | number) => void;
+  //TODO: abandon props
+  // Use onRow instead of onRowClick
   onRowClick?: (
     record: T,
     index: number,
@@ -232,6 +234,7 @@ export interface TableProps<T extends { id: string }> {
     current: number;
     pageSize: number;
   };
+  onRow?: AntdTableProps<T>["onRow"];
 }
 interface TableComponent {
   <TData extends IdObject>(
