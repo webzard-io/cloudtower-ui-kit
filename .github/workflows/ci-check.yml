@@ -2,7 +2,7 @@ name: "CI Check"
 
 on:
   pull_request:
-    branches: ["main"]
+    branches: ["main", "v3.2", "v3.3"]
 
 jobs:
   test:
