@@ -42,6 +42,18 @@ const TestMessage = () => {
     <>
       <Button
         onClick={() => {
+          const handler = setInterval(() => {
+            UIKit.message.info(parrotI18n.t("common.error_message") + i++);
+          }, 1000);
+          setTimeout(() => {
+            clearInterval(handler);
+          }, 10000);
+        }}
+      >
+        Emit one every second for 10 seconds
+      </Button>
+      <Button
+        onClick={() => {
           UIKit.message.info(parrotI18n.t("common.error_message") + i++);
         }}
       >
