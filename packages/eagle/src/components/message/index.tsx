@@ -80,7 +80,9 @@ function setMessageConfig(options: ConfigOptions) {
   }
 }
 
-document.addEventListener("visibilitychange", visibilitychangeHandler);
+if (typeof window !== "undefined") {
+  document.addEventListener("visibilitychange", visibilitychangeHandler);
+}
 
 function getRCNotificationInstance(
   args: ArgsProps,
