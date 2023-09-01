@@ -46,7 +46,9 @@ import Bps from "./Bps";
 import Button from "./Button";
 import ButtonGroup from "./ButtonGroup";
 import Byte from "./Byte";
+import Card from "./Card";
 import Checkbox from "./Checkbox";
+import Empty from "./Empty";
 import fields from "./Fields";
 import Form from "./Form";
 import Frequency from "./Frequency";
@@ -72,7 +74,6 @@ import TableForm from "./TableForm";
 import TextArea from "./TextArea";
 import TimeZoneSelect from "./TimeZoneSelect";
 import Tooltip from "./Tooltip";
-import Empty from "./Empty";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -162,6 +163,7 @@ export function getAntdKit(): Kit {
     antdCollapse: AntdCollapse,
     antdTreeSelect: AntdTreeSelect,
     antdDrawer: AntdDrawer,
+    card: Card,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
