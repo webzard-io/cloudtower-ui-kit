@@ -21,6 +21,8 @@ jobs:
       - name: Install deps
         run: yarn install --frozen-lockfile
         timeout-minutes: 3
+      - name: Build
+        run: yarn build
       - name: Test
         run: cd packages/eagle && yarn run test:ci
 
