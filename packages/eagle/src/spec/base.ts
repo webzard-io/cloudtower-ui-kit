@@ -57,8 +57,14 @@ import type TreeSelect from "antd/lib/tree-select";
 import { TextProps } from "antd/lib/typography/Text";
 import { DraggerProps, UploadProps } from "antd/lib/upload";
 import type { Moment } from "moment";
-import React, { ReactNode } from "react";
+import React, {
+  ForwardRefExoticComponent,
+  PropsWithoutRef,
+  ReactNode,
+  RefAttributes,
+} from "react";
 
+import { ICardProps } from "../components/Card";
 import { IEmptyProps } from "../components/Empty";
 import { MessageApi } from "../components/message";
 import { TableFormHandle, TableFormProps } from "../components/TableForm/types";
@@ -581,6 +587,9 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   antdCollapse: CollapseInterface;
   antdTreeSelect: typeof TreeSelect;
   antdDrawer: React.FC<DrawerProps>;
+  card: ForwardRefExoticComponent<
+    PropsWithoutRef<ICardProps> & RefAttributes<HTMLDivElement>
+  >;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;

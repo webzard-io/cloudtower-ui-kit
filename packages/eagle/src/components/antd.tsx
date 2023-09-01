@@ -47,6 +47,7 @@ import Bps from "./Bps";
 import Button from "./Button";
 import ButtonGroup from "./ButtonGroup";
 import Byte from "./Byte";
+import Card from "./Card";
 import Checkbox from "./Checkbox";
 import Empty from "./Empty";
 import fields from "./Fields";
@@ -166,6 +167,7 @@ export function getAntdKit(): Kit {
     antdTreeSelect: AntdTreeSelect,
     antdDrawer: AntdDrawer,
     antdSteps: AntdSteps,
+    card: Card,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
