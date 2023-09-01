@@ -23,9 +23,7 @@ describe("ui unit test - card", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=card-wrapper,class-string,
-        border-radius: 4px;
-        background-color: white;
+          class=
         box-shadow:
           0px 0.119595px 0.438513px rgba(129, 138, 153, 0.14),
           0px 0.271728px 0.996336px rgba(129, 138, 153, 0.106447),
@@ -35,6 +33,9 @@ describe("ui unit test - card", () => {
           0px 1.80882px 6.63236px rgba(129, 138, 153, 0.0600747),
           0px 3.00293px 11.0107px rgba(129, 138, 153, 0.0487776),
           0px 6px 22px rgba(129, 138, 153, 0.0335534);
+      ,card-wrapper,class-string,
+        border-radius: 4px;
+        background-color: white;
 
         >
           <div
