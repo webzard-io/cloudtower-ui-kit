@@ -1,8 +1,10 @@
 import { css } from "@linaria/core";
+import { Form as AntdForm } from "antd";
 import { FormItemProps } from "antd/lib/form";
-import { default as AntdFormItem } from "antd/lib/form/FormItem";
 import cs from "classnames";
 import React from "react";
+
+const { Item: AntdFormItem } = AntdForm;
 
 const FormItemStyle = css`
   width: 100%;
@@ -41,7 +43,7 @@ const FormItemStyle = css`
 `;
 
 const FormItem: (
-  props: React.PropsWithChildren<FormItemProps>
+  props: React.PropsWithChildren<FormItemProps>,
 ) => React.ReactElement = (props) => {
   return (
     <AntdFormItem {...props} className={cs(FormItemStyle, props.className)} />
