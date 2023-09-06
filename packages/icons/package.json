@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/icons",
-  "version": "0.26.3",
+  "version": "0.26.3-vpc-0.0.1",
   "license": "MIT",
   "private": true,
   "scripts": {
