@@ -44,7 +44,6 @@ export type TableFormColumn = {
   autoIncrease?: boolean;
   disablePrefix?: boolean;
   disableSuffix?: boolean;
-  // headerValidator?: (value: any) => string;
   customData?: any;
   align?: "left" | "right" | "center";
   renderDescription?: (props: RenderRowDescriptionProps) => React.ReactNode;
@@ -66,7 +65,7 @@ export interface ColumnHeaderCellProps {
   onChange?: (
     newData: DataType[],
     columnKey: string,
-    shouldUpdateData: boolean
+    shouldUpdateData: boolean,
   ) => void;
   onBlur?: (key: string, error?: string) => void;
   // Used to control whether the body password input is show or hide
@@ -86,7 +85,7 @@ export interface ColumnBodyCellProps {
   onChange?: (
     newData: DataType[],
     rowIndex?: number,
-    columnKey?: string
+    columnKey?: string,
   ) => void;
   onBlur?: (newData: DataType[], rowIndex?: number, columnKey?: string) => void;
   customData?: any;
@@ -121,19 +120,20 @@ export interface TableFormRowsProps
     | "columns"
     | "disabled"
     | "deleteConfig"
-    | "draggable"
     | "disableBatchFilling"
-    | "rowSplitType"
     | "validateTriggerType"
     | "renderRowDescription"
     | "rowValidator"
     | "onBodyBlur"
+    | "row"
   > {
   data: DataType[];
   latestData: DataType[];
   updateData: (data: DataType[]) => void;
   passwordVisible: boolean;
   validateAll: boolean;
+  draggable?: boolean;
+  rowSplitType?: TableFormRowSplitType;
 }
 
 export type RenderRowDescriptionProps = {
@@ -147,27 +147,67 @@ export type DeletableConfigurations = {
   specifyRowDeleteDisabled?: (rowIndex: number, allData: DataType[]) => boolean;
 };
 
+export type TableFormRowActions = "delete";
+
+export type TableFormRowSplitType = "border" | "zebraMarking";
+
+export type TableFormRowConfiguration = {
+  splitType?: TableFormRowSplitType;
+  draggable?: boolean;
+  deletable?: boolean | ((rowIndex: number, allData: DataType[]) => boolean);
+  descriptions?: string | React.ReactNode[];
+  disableActions?:
+    | TableFormRowActions[]
+    | ((
+        rowIndex: number,
+        allData: DataType[],
+      ) => TableFormRowActions[] | undefined);
+  validator?: (rowIndex: number, rowData: DataType) => string | undefined;
+  // Customize description for single row by call this function
+  customizedDescription?: (
+    props: RenderRowDescriptionProps,
+  ) => React.ReactNode | string;
+};
+
+export type TableFormErrorsType = (string | { [columnKey: string]: string })[];
+
 export type TableFormProps = {
   defaultData?: DataType[];
   columns: TableFormColumn[];
   disabled?: boolean;
   rowAddConfig?: RowAddConfigurations;
+  /**
+   * @deprecated use "row" configuration instead
+   */
   deleteConfig?: DeletableConfigurations;
   size?: "default" | "large" | "small";
+  /**
+   * @deprecated use "row" configuration instead
+   */
   draggable?: boolean;
   disableBatchFilling?: boolean;
   className?: string;
-  rowSplitType?: "border" | "zebraMarking";
+  /**
+   * @deprecated use "row" configuration instead
+   */
+  rowSplitType?: TableFormRowSplitType;
   validateTriggerType?: ValidateTriggerType;
   maxHeight?: number | string;
+  row?: TableFormRowConfiguration;
+  /**
+   * @deprecated use "row" configuration instead
+   */
   renderRowDescription?: (props: RenderRowDescriptionProps) => React.ReactNode;
+  /**
+   * @deprecated use "row" configuration instead
+   */
   rowValidator?: (rowIndex: number, rowData: DataType) => string | undefined;
   onHeaderChange?: (data: any[], columnKey: string) => void;
   onHeaderBlur?: (data: any[]) => void;
   onBodyChange?: (
     value: DataType[],
     rowIndex?: number,
-    columnKey?: string
+    columnKey?: string,
   ) => void;
   onBodyBlur?: (value: DataType, rowIndex?: number, columnKey?: string) => void;
 };
