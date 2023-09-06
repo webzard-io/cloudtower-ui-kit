@@ -22,8 +22,58 @@ import Tooltip from "../Tooltip";
 import { Typo } from "../Typo";
 import { DraggableHandleWrapper } from "./style";
 import { TableFormBodyCell } from "./TableFormBodyCell";
-import { DataType, TableFormRowsProps, ValidateTriggerType } from "./types";
+import {
+  DataType,
+  TableFormProps,
+  TableFormRowsProps,
+  ValidateTriggerType,
+} from "./types";
 import { moveItemInArray } from "./utils";
+
+const TableFormRowDeleteAction: React.FC<
+  Pick<TableFormProps, "deleteConfig" | "row"> & {
+    rowIndex: number;
+    updateData: (data: DataType[]) => void;
+    data: DataType[];
+  }
+> = (props) => {
+  const { deleteConfig, row, updateData, rowIndex, data } = props;
+  const { t } = useParrotTranslation();
+
+  if (typeof row?.deletable === "function" && !row.deletable(rowIndex, data)) {
+    return <></>;
+  }
+
+  const disableActionsFromRowConfig =
+    typeof row?.disableActions === "object"
+      ? row.disableActions
+      : row?.disableActions?.(rowIndex, data) ?? [];
+
+  const isRowDeleteDisabled =
+    (disableActionsFromRowConfig.includes("delete") ||
+      deleteConfig?.specifyRowDeleteDisabled?.(rowIndex, data)) ??
+    false;
+
+  const DeleteIcon = (
+    <Icon
+      className={cx("delete-row-icon", isRowDeleteDisabled && "disabled")}
+      src={XmarkRemove16SecondaryIcon}
+      hoverSrc={isRowDeleteDisabled ? undefined : XmarkRemove16RegularRedIcon}
+      onClick={() => {
+        if (isRowDeleteDisabled) return;
+        const newData = [...data];
+        newData.splice(rowIndex, 1);
+        updateData(newData);
+      }}
+    />
+  );
+  const DeleteAction = isRowDeleteDisabled ? (
+    DeleteIcon
+  ) : (
+    <Tooltip title={t("components.remove")}>{DeleteIcon}</Tooltip>
+  );
+  return DeleteAction;
+};
 
 const TableFormRow: React.FC<
   TableFormRowsProps & {
@@ -44,56 +94,30 @@ const TableFormRow: React.FC<
     provided,
     snapshot,
     validateTriggerType = ValidateTriggerType.Normal,
+    row,
     updateData,
     onBodyBlur,
     renderRowDescription,
-    rowValidator,
     validateAll,
   } = props;
-  const { t } = useParrotTranslation();
   const rowData = data[rowIndex];
   const [rowError, setRowError] = useState<string>();
+  const rowValidator = row?.validator || props.rowValidator;
 
-  const deleteRow = useCallback(
-    (index: number, data: DataType[]) => {
-      const newData = [...data];
-      newData.splice(index, 1);
-      updateData(newData);
-    },
-    [updateData]
-  );
-
-  const RowActions = useMemo(() => {
-    const isRowDeleteDisabled = deleteConfig?.specifyRowDeleteDisabled?.(
-      rowIndex,
-      data
-    );
-    const DeleteIcon = (
-      <Icon
-        className={cx("delete-row-icon", isRowDeleteDisabled && "disabled")}
-        src={XmarkRemove16SecondaryIcon}
-        hoverSrc={isRowDeleteDisabled ? undefined : XmarkRemove16RegularRedIcon}
-        onClick={() => {
-          if (isRowDeleteDisabled) return;
-          deleteRow(rowIndex, data);
-        }}
-      />
-    );
-    const FinalRenderIcon = isRowDeleteDisabled ? (
-      DeleteIcon
-    ) : (
-      <Tooltip title={t("components.remove")}>{DeleteIcon}</Tooltip>
-    );
-    return deleteConfig?.deletable ? [FinalRenderIcon] : undefined;
-  }, [deleteConfig, rowIndex, data, t, deleteRow]);
+  const rowDeletable =
+    typeof row?.deletable === "boolean"
+      ? row.deletable
+      : (typeof row?.deletable === "function" || deleteConfig?.deletable) ??
+        false;
 
   const getRowValidateResult = useCallback(
     (rowData: DataType): string | undefined => {
-      const result = rowValidator?.(rowIndex, rowData);
+      if (!rowValidator) return;
+      const result = rowValidator(rowIndex, rowData);
       setRowError(result);
       return result;
     },
-    [rowValidator, rowIndex]
+    [rowValidator, rowIndex],
   );
 
   const Cells = columns.map((col) => {
@@ -126,33 +150,50 @@ const TableFormRow: React.FC<
           />
         </DraggableHandleWrapper>
       ) : null,
-    [draggable, provided]
+    [draggable, provided],
   );
 
   const RowDescription = useMemo(() => {
-    const RenderResult =
-      renderRowDescription?.({
-        rowIndex,
-        rowData,
-        latestData,
-      }) || null;
-    return typeof RenderResult === "string" ? (
+    const rowDescFuncParams = {
+      rowIndex,
+      rowData,
+      latestData,
+    };
+    const DescriptionResult =
+      typeof row?.descriptions == "object"
+        ? row.descriptions[rowIndex]
+        : typeof row?.customizedDescription === "function"
+        ? row.customizedDescription(rowDescFuncParams)
+        : renderRowDescription?.(rowDescFuncParams) || null;
+    return typeof DescriptionResult === "string" ? (
       <p className={cx(Typo.Label.l4_regular, "row-description")}>
-        {RenderResult}
+        {DescriptionResult}
       </p>
     ) : (
-      RenderResult
+      DescriptionResult
     );
-  }, [rowIndex, rowData, latestData, renderRowDescription]);
+  }, [rowIndex, rowData, latestData, renderRowDescription, row]);
 
   return (
     <AntdList.Item
       key={rowIndex}
       className={cx(
         "eagle-table-form-row",
-        snapshot?.isDragging && "isDragging"
+        snapshot?.isDragging && "isDragging",
       )}
-      actions={RowActions}
+      actions={
+        rowDeletable
+          ? [
+              <TableFormRowDeleteAction
+                data={data}
+                rowIndex={rowIndex}
+                deleteConfig={deleteConfig}
+                row={row}
+                updateData={updateData}
+              />,
+            ]
+          : undefined
+      }
     >
       {DraggableHandle}
       {Cells}
@@ -177,7 +218,7 @@ const TableFormBodyRows: React.FC<TableFormRowsProps> = memo((props) => {
       const newData = moveItemInArray(data, fromIndex, toIndex);
       updateData(newData);
     },
-    [data, updateData]
+    [data, updateData],
   );
 
   return draggable ? (
