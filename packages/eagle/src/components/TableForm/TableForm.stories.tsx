@@ -1,3 +1,4 @@
+import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { Checkbox, Form, Input, Select, Space } from "antd";
 import React, {
@@ -18,6 +19,7 @@ import {
   TableFormColumn,
   TableFormHandle,
   TableFormProps,
+  TableFormRowConfiguration,
   ValidateTriggerType,
 } from "./types";
 
@@ -29,6 +31,16 @@ const Title: React.FC = ({ children }) => (
 
 const ContentWrapper = styled.div`
   padding: 20px;
+`;
+
+const formStyles = css`
+  margin-bottom: "10px";
+  max-width: "800px";
+  overflow: hidden;
+  .ant-form .ant-form-item {
+    width: unset !important;
+    flex-flow: unset;
+  }
 `;
 
 const BatchInputForm: React.FC<{
@@ -48,7 +60,7 @@ const BatchInputForm: React.FC<{
       initialValues={{ remember: true }}
       onFinish={onFinish}
       autoComplete="off"
-      style={{ marginBottom: "10px" }}
+      className={formStyles}
       size="small"
       layout="inline"
     >
@@ -93,7 +105,7 @@ const selectOptions = [
 ];
 
 const getColumnsForValidation = (
-  type: ValidateTriggerType
+  type: ValidateTriggerType,
 ): TableFormColumn[] => [
   {
     title: "这是一个专门做校验的 tableForm",
@@ -245,7 +257,7 @@ export const Basic = () => {
         return false;
       },
     }),
-    []
+    [],
   );
 
   const rowValidationForValidationForm: TableFormProps["rowValidator"] =
@@ -254,6 +266,23 @@ export const Basic = () => {
         return "this is a special row level error for “Validation”!";
       }
     }, []);
+
+  const tableFormRowConfig: TableFormRowConfiguration = useMemo(
+    () => ({
+      draggable: true,
+      deletable: (index) => index !== 1,
+      disableActions: (index) => (index === 2 ? ["delete"] : undefined),
+      validator: rowValidationForValidationForm,
+      splitType: "zebraMarking",
+      descriptions: ["this is a special desc for the first row"],
+      // same with above "descriptions" configuration
+      // customizedDescription: ({ rowIndex }) =>
+      //   rowIndex === 0
+      //     ? "this is a special desc for the first row"
+      //     : null,
+    }),
+    [rowValidationForValidationForm],
+  );
   return (
     <div style={{ padding: "20px" }}>
       <Space direction="vertical">
@@ -298,7 +327,7 @@ export const Basic = () => {
           />
         </ContentWrapper>
       </Space>
-      <Space direction="vertical" style={{ marginTop: "32px" }}>
+      <Space direction="vertical" style={{ marginTop: "32px", width: "100%" }}>
         <Title>Batch input TableForm with dynamic rows</Title>
         <ContentWrapper>
           <BatchInputForm
@@ -361,6 +390,17 @@ export const Basic = () => {
             disableBatchFilling
             columns={getColumnsForValidation(ValidateTriggerType.Aggressive)}
             rowValidator={rowValidationForValidationForm}
+          />
+        </ContentWrapper>
+      </Space>
+      <Space direction="vertical" style={{ marginTop: "32px", width: "100%" }}>
+        <Title>Use new "row" configuration TableForm</Title>
+        <ContentWrapper>
+          <TableForm
+            disableBatchFilling
+            columns={getColumnsForValidation(ValidateTriggerType.Normal)}
+            rowValidator={rowValidationForValidationForm}
+            row={tableFormRowConfig}
           />
         </ContentWrapper>
       </Space>
