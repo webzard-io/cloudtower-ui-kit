@@ -16,7 +16,7 @@ import Icon from ".";
 const IconStories = (props: any) => {
   return (
     <div>
-      <Row>Icon 和本地 repe 的 image src 的使用</Row>
+      <Row>Icon 和本地 repo 的 image src 的使用</Row>
       <Row>
         <Icon src={arrowChevronDownSmall16Blue} />
         <Icon src={loading24GradientBlue} isRotate={true} />
