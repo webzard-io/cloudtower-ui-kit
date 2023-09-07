@@ -749,6 +749,47 @@ td .ant-btn-link {
   filter: drop-shadow(0px 0px 0px 4px rgba(255, 74, 74, 0.16));
 }
 
+.ant-tag{
+  border: none;
+  border-radius: 4px;
+  & > .anticon + span {
+    margin-left: 4px;
+  }
+  &.ant-tag-red {
+    color:$fills-light-serious-serious;
+    background-color: $fills-light-serious-serious-light;
+  }
+  &.ant-tag-red-ontint {
+    color:$fills-light-serious-serious-bright;
+    background-color: $fills-light-serious-serious-light-active;
+  }
+  &.ant-tag-yellow {
+    color:$fills-light-notice-notice-dark;
+    background-color: $fills-light-notice-notice-light;
+  }
+  &.ant-tag-green {
+    color:$fills-light-positive-positive-dark;
+    background-color: $fills-light-positive-positive-light;
+  }
+  &.ant-tag-green-ontint {
+    color:$fills-light-positive-positive-bright;
+    background-color: $fills-light-positive-positive-light-active;
+  }
+  &.ant-tag-blue {
+    color:$fills-light-general-general;
+    background-color: $fills-light-general-general-light;
+  }
+  &.ant-tag-purple {
+    color:$text-light-storage;
+    background-color: $fills-element-light-container-storage;
+  }
+  &.ant-tag-gray {
+    color:$text-light-super;
+    background-color: $fills-element-light-container-general;
+  }
+}
+
+
 @media screen and (min-width: 1280px) {
   .cluster-topo-wrapper .panel-content > .rack-topo-wrapper,
   .cluster-topo-wrapper .panel-content > .brick-topo-wrapper {

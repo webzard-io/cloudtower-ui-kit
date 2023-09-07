@@ -47,7 +47,6 @@ import {
 } from "antd/lib/table";
 import { TableRowSelection } from "antd/lib/table/interface";
 import { TabPaneProps, TabsProps } from "antd/lib/tabs";
-import { TagType } from "antd/lib/tag";
 import { TagProps } from "antd/lib/tag";
 import { TimePickerProps } from "antd/lib/time-picker";
 import { TimeLineItemProps, TimelineProps } from "antd/lib/timeline";
@@ -536,7 +535,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   };
   autoComplete: React.ForwardRefExoticComponent<AutoCompleteProps>;
   message: MessageApi;
-  tag: TagType;
+  tag: TagComponentType;
   popover: React.ForwardRefExoticComponent<
     PopoverProps & React.RefAttributes<unknown>
   >;
@@ -628,6 +627,20 @@ export type TableFormPropsType = React.ForwardRefExoticComponent<
   TableFormProps & React.RefAttributes<TableFormHandle>
 >;
 
+export type TagComponentType = React.FC<
+  Omit<TagProps, "closable" | "closeIcon" | "onClose"> & {
+    color?:
+      | "red"
+      | "yellow"
+      | "green"
+      | "blue"
+      | "purple"
+      | "gray"
+      | "red-ontint"
+      | "green-ontint";
+    size?: "small" | "medium";
+  }
+>;
 export type TokenComponentType = React.FC<
   Omit<TagProps, "icon" | "closeIcon"> & {
     color?: "red" | "yellow" | "green" | "blue" | "gray" | string;
