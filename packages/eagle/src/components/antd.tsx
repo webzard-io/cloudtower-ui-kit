@@ -47,6 +47,7 @@ import Button from "./Button";
 import ButtonGroup from "./ButtonGroup";
 import Byte from "./Byte";
 import Checkbox from "./Checkbox";
+import Empty from "./Empty";
 import fields from "./Fields";
 import Form from "./Form";
 import Frequency from "./Frequency";
@@ -71,8 +72,8 @@ import Table from "./Table";
 import TableForm from "./TableForm";
 import TextArea from "./TextArea";
 import TimeZoneSelect from "./TimeZoneSelect";
+import Token from "./Token";
 import Tooltip from "./Tooltip";
-import Empty from "./Empty";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -142,6 +143,7 @@ export function getAntdKit(): Kit {
     upload: Upload,
     datePickerRangePicker: DatePicker.RangePicker,
     tableForm: TableForm,
+    token: Token,
     uploadDragger: Upload.Dragger,
     calendar: Calendar,
     timePicker: TimePicker,
