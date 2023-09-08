@@ -1,7 +1,7 @@
-import { Checkbox } from "antd";
 import { CheckboxChangeEvent } from "antd/lib/checkbox";
 import React, { useCallback } from "react";
 
+import Checkbox from "../../Checkbox";
 import { ColumnBodyCellProps, ColumnHeaderCellProps } from "../types";
 
 export const CheckboxColumnHeaderCell: React.FC<
@@ -13,7 +13,7 @@ export const CheckboxColumnHeaderCell: React.FC<
     (e: CheckboxChangeEvent) => {
       onChange(e.target.checked, true);
     },
-    [onChange]
+    [onChange],
   );
 
   return <Checkbox onChange={_onChange} />;
@@ -33,7 +33,7 @@ export const CheckboxColumnBodyCell: React.FC<
     (e: CheckboxChangeEvent) => {
       onChange(e.target.checked);
     },
-    [onChange]
+    [onChange],
   );
 
   const defaultChecked = column.defaultValue as boolean | undefined;
