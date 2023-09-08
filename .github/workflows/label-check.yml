@@ -1,8 +1,7 @@
 name: "Label Check"
 
 on:
-  pull_request_target:
-    types: [opened, labeled, unlabeled, synchronize]
+  pull_request:
     branches: ["main", "v3.2", "v3.3"]
 
 jobs:
