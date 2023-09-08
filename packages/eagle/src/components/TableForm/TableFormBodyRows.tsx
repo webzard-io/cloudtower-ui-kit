@@ -6,7 +6,7 @@ import {
 } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
 import { List as AntdList } from "antd";
-import React, { memo, useCallback, useMemo, useState } from "react";
+import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import {
   DragDropContext,
   Draggable,
@@ -56,6 +56,7 @@ const TableFormRowDeleteAction: React.FC<
 
   const DeleteIcon = (
     <Icon
+      data-testid="eagle-table-form-row-action"
       className={cx("delete-row-icon", isRowDeleteDisabled && "disabled")}
       src={XmarkRemove16SecondaryIcon}
       hoverSrc={isRowDeleteDisabled ? undefined : XmarkRemove16RegularRedIcon}
@@ -95,14 +96,26 @@ const TableFormRow: React.FC<
     snapshot,
     validateTriggerType = ValidateTriggerType.Normal,
     row,
+    errors = [],
     updateData,
     onBodyBlur,
     renderRowDescription,
     validateAll,
   } = props;
   const rowData = data[rowIndex];
-  const [rowError, setRowError] = useState<string>();
+  const errorFromProps = errors[rowIndex];
+  const rowLevelError =
+    typeof errorFromProps === "string" ? errorFromProps : undefined;
+  const [rowError, setRowError] = useState<string | undefined>(rowLevelError);
   const rowValidator = row?.validator || props.rowValidator;
+  const cellsLevelError =
+    errorFromProps && typeof errorFromProps === "object"
+      ? errorFromProps
+      : null;
+
+  useEffect(() => {
+    setRowError(rowLevelError);
+  }, [rowLevelError]);
 
   const rowDeletable =
     typeof row?.deletable === "boolean"
@@ -112,15 +125,16 @@ const TableFormRow: React.FC<
 
   const getRowValidateResult = useCallback(
     (rowData: DataType): string | undefined => {
-      if (!rowValidator) return;
+      if (!rowValidator) return rowLevelError;
       const result = rowValidator(rowIndex, rowData);
       setRowError(result);
       return result;
     },
-    [rowValidator, rowIndex],
+    [rowValidator, rowIndex, rowLevelError],
   );
 
   const Cells = columns.map((col) => {
+    const cellError = cellsLevelError?.[col.key];
     return (
       <TableFormBodyCell
         key={col.key}
@@ -136,6 +150,7 @@ const TableFormRow: React.FC<
         isRowError={!!rowError}
         getRowValidateResult={getRowValidateResult}
         validateAll={validateAll}
+        error={cellError}
       />
     );
   });
@@ -177,6 +192,7 @@ const TableFormRow: React.FC<
   return (
     <AntdList.Item
       key={rowIndex}
+      data-testid="eagle-table-form-row-for-test"
       className={cx(
         "eagle-table-form-row",
         snapshot?.isDragging && "isDragging",

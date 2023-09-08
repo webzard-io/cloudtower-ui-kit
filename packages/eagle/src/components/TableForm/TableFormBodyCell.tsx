@@ -25,17 +25,30 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
     onChange,
     onBlur,
     validateAll,
+    error,
   } = props;
 
-  const [validateResult, setValidateResult] =
-    useState<{
-      msg: string;
-      isError: boolean;
-    }>();
+  const [validateResult, setValidateResult] = useState<{
+    msg: string;
+    isError: boolean;
+  }>();
   const isTouched = useRef(false);
 
   const width =
     typeof column.width === "number" ? column.width + "px" : column.width;
+
+  const isCellErrorStyle = Boolean(validateResult?.isError || isRowError);
+
+  useEffect(() => {
+    setValidateResult(
+      error
+        ? {
+            msg: error,
+            isError: true,
+          }
+        : undefined,
+    );
+  }, [error]);
 
   const triggerValidate = useCallback(
     (currentValue?: unknown) => {
@@ -53,7 +66,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
       const isError = result ? typeof result === "string" : false;
       setValidateResult({ msg: result || "", isError });
     },
-    [data, column, rowIndex, getRowValidateResult]
+    [data, column, rowIndex, getRowValidateResult],
   );
 
   useEffect(() => {
@@ -65,7 +78,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
 
   const _onChange = (value: unknown, data: DataType[]) => {
     const newData = data.map((row, i) =>
-      i === rowIndex ? { ...row, [column.key]: value } : row
+      i === rowIndex ? { ...row, [column.key]: value } : row,
     );
     onChange?.(newData, rowIndex, column.key);
     if (
@@ -94,6 +107,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
         latestData={latestData}
         column={column}
         visible={props.visible}
+        error={isCellErrorStyle}
         onChange={(val) => {
           _onChange(val, data);
         }}
@@ -113,7 +127,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
         },
         onBlur: _onBlur,
         rowIndex,
-        error: validateResult?.isError,
+        error: isCellErrorStyle,
       })
     : renderDefaultComponent();
 
@@ -142,7 +156,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
       }}
     >
       <FormItem
-        validateStatus={isRowError || validateResult?.isError ? "error" : ""}
+        validateStatus={isCellErrorStyle ? "error" : ""}
         message={isRowError ? "" : validateResult?.msg}
       >
         {Cell}

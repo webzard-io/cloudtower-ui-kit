@@ -1,9 +1,10 @@
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
-import { Input } from "antd";
-import { InputProps } from "antd/lib/input";
 import React, { useEffect, useState } from "react";
 
+import Input from "../../Input";
 import { ColumnBodyCellProps, ColumnHeaderCellProps } from "../types";
+
+type InputProps = Parameters<typeof Input>[0];
 
 const InputPassword: React.FC<
   InputProps & {
@@ -89,6 +90,7 @@ export const InputColumnBodyCell: React.FC<
   > & {
     onChange: (value: any) => void;
     onBlur: () => void;
+    error: boolean;
   }
 > = ({
   data,
@@ -99,6 +101,7 @@ export const InputColumnBodyCell: React.FC<
   onChange,
   onBlur,
   visible,
+  error,
 }) => {
   const placeHolderValue =
     column.type === "password" ? "" : latestData[index][column.key];
@@ -120,6 +123,7 @@ export const InputColumnBodyCell: React.FC<
       onChange={_onChange}
       onBlur={onBlur}
       visible={visible}
+      error={error}
     />
   );
 };
