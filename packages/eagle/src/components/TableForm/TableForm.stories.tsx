@@ -404,6 +404,35 @@ export const Basic = () => {
           />
         </ContentWrapper>
       </Space>
+      <Space direction="vertical">
+        <Title>Use new "errors" configuration TableForm</Title>
+        <ContentWrapper>
+          <TableForm
+            {...commonTableFormProps}
+            disableBatchFilling
+            rowValidator={undefined}
+            defaultData={[
+              {
+                address: "Value",
+                password: "this-is-pwd",
+                checkbox: false,
+              },
+              {
+                address: "row has address",
+                password: "this-is-pwd",
+                checkbox: true,
+              },
+            ]}
+            errors={[
+              "this is a row error",
+              {
+                address: "this is address cell error",
+                password: "this is password cell error",
+              },
+            ]}
+          />
+        </ContentWrapper>
+      </Space>
     </div>
   );
 };

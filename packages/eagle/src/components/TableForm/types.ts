@@ -96,6 +96,7 @@ export interface ColumnBodyCellProps {
   isRowError: boolean;
   getRowValidateResult: (rowData: DataType) => string | undefined;
   validateAll: boolean;
+  error?: string | null;
 }
 
 export type AddRowButtonProps = {
@@ -126,6 +127,7 @@ export interface TableFormRowsProps
     | "rowValidator"
     | "onBodyBlur"
     | "row"
+    | "errors"
   > {
   data: DataType[];
   latestData: DataType[];
@@ -155,7 +157,7 @@ export type TableFormRowConfiguration = {
   splitType?: TableFormRowSplitType;
   draggable?: boolean;
   deletable?: boolean | ((rowIndex: number, allData: DataType[]) => boolean);
-  descriptions?: string | React.ReactNode[];
+  descriptions?: (string | React.ReactNode)[];
   disableActions?:
     | TableFormRowActions[]
     | ((
@@ -169,7 +171,11 @@ export type TableFormRowConfiguration = {
   ) => React.ReactNode | string;
 };
 
-export type TableFormErrorsType = (string | { [columnKey: string]: string })[];
+export type TableFormErrorsType = (
+  | string
+  | { [columnKey: string]: string | null }
+  | null
+)[];
 
 export type TableFormProps = {
   defaultData?: DataType[];
@@ -194,6 +200,7 @@ export type TableFormProps = {
   validateTriggerType?: ValidateTriggerType;
   maxHeight?: number | string;
   row?: TableFormRowConfiguration;
+  errors?: TableFormErrorsType;
   /**
    * @deprecated use "row" configuration instead
    */

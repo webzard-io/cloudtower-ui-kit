@@ -37,6 +37,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       onBodyChange,
       onBodyBlur,
       row,
+      errors,
     } = props;
     const [data, setData] = useState<DataType[]>(defaultData || []);
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -146,7 +147,9 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
           <AntdList size={size} className={`size-${size}`}>
             <AntdList.Item
               className="eagle-table-form-header"
-              actions={deleteConfig?.deletable ? [<></>] : undefined}
+              actions={
+                deleteConfig?.deletable || row?.deletable ? [<></>] : undefined
+              }
             >
               {draggable ? <DraggableHandleWrapper /> : null}
               {headerCells}
@@ -167,6 +170,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
               renderRowDescription={renderRowDescription}
               rowValidator={rowValidator}
               validateAll={validateAll}
+              errors={errors}
             />
           </AntdList>
         </TableFormWrapper>

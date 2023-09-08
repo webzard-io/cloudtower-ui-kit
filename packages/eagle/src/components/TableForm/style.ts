@@ -163,9 +163,6 @@ export const TableFormWrapper = styled.div`
           border-radius: 5px;
           font-size: 12px;
         }
-        .ant-input {
-          padding: 2px 8px;
-        }
         .ant-input-affix-wrapper {
           font-size: inherit;
         }
