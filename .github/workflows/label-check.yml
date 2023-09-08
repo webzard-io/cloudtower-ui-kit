@@ -2,7 +2,8 @@ name: "Label Check"
 
 on:
   pull_request_target:
-   types: [opened, labeled, unlabeled, synchronize]
+    types: [opened, labeled, unlabeled, synchronize]
+    branches: ["main", "v3.2", "v3.3"]
 
 jobs:
   label-check:
@@ -14,6 +15,6 @@ jobs:
     steps:
       - uses: jesusvasquez333/verify-pr-label-action@v1.4.0
         with:
-            github-token: '${{ secrets.GITHUB_TOKEN }}'
-            valid-labels: 'feat, fix, chore'
-            pull-request-number: '${{ github.event.pull_request.number }}'
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          valid-labels: "feat, fix, chore"
+          pull-request-number: "${{ github.event.pull_request.number }}"
