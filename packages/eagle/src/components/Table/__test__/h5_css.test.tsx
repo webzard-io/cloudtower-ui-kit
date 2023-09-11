@@ -547,25 +547,13 @@ describe("Table h5_css", () => {
                       class=loading
                     >
                       <div
-                        class=loading__sugar
+                        class=loading-indicator__line1
                       />
                       <div
-                        class=loading__sugar
+                        class=loading-indicator__line2
                       />
                       <div
-                        class=loading__sugar
-                      />
-                      <div
-                        class=loading__sugar
-                      />
-                      <div
-                        class=loading__sugar
-                      />
-                      <div
-                        class=loading__sugar
-                      />
-                      <div
-                        class=loading__sugar
+                        class=loading-indicator__line3
                       />
                     </div>
                   </div>
