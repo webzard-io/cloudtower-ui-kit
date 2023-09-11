@@ -9,13 +9,9 @@ const Loading: LoadingComponentType = ({ fullView = true }) => {
   return (
     <Wrapper {...props}>
       <div className="loading">
-        <div className="loading__sugar"></div>
-        <div className="loading__sugar"></div>
-        <div className="loading__sugar"></div>
-        <div className="loading__sugar"></div>
-        <div className="loading__sugar"></div>
-        <div className="loading__sugar"></div>
-        <div className="loading__sugar"></div>
+        <div className="loading-indicator__line1"></div>
+        <div className="loading-indicator__line2"></div>
+        <div className="loading-indicator__line3"></div>
       </div>
     </Wrapper>
   );

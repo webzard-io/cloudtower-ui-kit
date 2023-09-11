@@ -1,114 +1,124 @@
 @import '../common/variables.scss';
 
 .loading {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  display: inline-block;
-  opacity: 0;
-  animation-name: fadeIn;
-  /*
-    animation-delay: 0.4s; //FIXME: use a more accurate way to make this happen
-  */
-  animation-fill-mode: forwards;
-  line-height: $height;
-  width: $width;
 }
 
-.loading__sugar {
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
+.loading-indicator__line1 {
+ position: absolute;
+ width: 5px;
+ height: 48px;
+ left: 9.33px;
+ top: 40.5px;
 
-  &:before,
-  &:after {
-    content: '';
-    display: inline-block;
-    width: $radius;
-    height: $radius;
-    border-radius: 50%;
-    position: absolute;
-  }
+ background: linear-gradient(180deg, #0080FF 0%, rgba(0, 128, 255, 0.16) 100%);
+ border-radius: 5px;
+ transform: rotate(-128deg);
+ transform-origin: top left;
 
-  &:not(:last-child) {
-    margin-right: $margin;
-  }
-
-  @for $i from 1 through $total {
-    $delay: $i * -$interval;
-
-    &:nth-child(#{$i}) {
-      animation-delay: $delay;
-
-      &:before {
-        animation: animBefore $duration $loading-cublic-bezier infinite;
-        animation-delay: $delay;
-        background-color: $blue;
-      }
-
-      &:after {
-        animation: animAfter $duration $loading-cublic-bezier infinite;
-        animation-delay: $delay;
-        background-color: $green;
-      }
-    }
-  }
+ animation: loading-indicator1 1100ms ease-out  infinite;
 }
 
-@keyframes animBefore {
+.loading-indicator__line2 {
+  position: absolute;
+  width: 5px;
+  height: 48px;
+  left: 40.8px;
+  top: 8.4px;
+
+  background: linear-gradient(180deg, #0080FF 0%, rgba(0, 128, 255, 0.16) 100%);
+  border-radius: 5px;
+  transform: rotate(-8deg);
+  transform-origin: top left;
+
+  animation: loading-indicator2 1100ms ease-out  infinite;
+}
+
+.loading-indicator__line3 {
+  position: absolute;
+  width: 5px;
+  height: 48px;
+  left: 52.9px;
+  top: 51.8px;
+
+  background: linear-gradient(180deg, #0080FF 0%, rgba(0, 128, 255, 0.16) 100%);
+  border-radius: 5px;
+  transform: rotate(112deg);
+  transform-origin: top left;
+
+  animation: loading-indicator3 1100ms ease-out  infinite;
+}
+
+@keyframes loading-indicator1 {
   0% {
-    transform: translate3d(0, $negative-top, 1px);
+      height: 48px;
+      left: 9.33px;
+      top: 40.5px;
   }
-
-  25% {
-    transform: scale(#{$max-scale}),
-    translateZ(1px);
-  }
-
   50% {
-    transform: translate3d(0, $top, -1px);
+      height: 5px;
+      left: 9.33px;
+      top: 40.5px;
   }
-
-  75% {
-    background-color: $blue-t90;
-    transform: scale(#{$min-scale}),
-    translateZ(-1px);
-  }
-
-  100% {
-    transform: translate3d(0, $negative-top, -1px);
-  }
+  51% {
+      height: 5px;
+      left: 43.2px;
+      top: 14.02px;
+}
+ 100%{
+      height: 48px;
+      left: 9.33px;
+      top: 40.5px;
+}
 }
 
-@keyframes animAfter {
+@keyframes loading-indicator2 {
   0% {
-    transform: translate3d(0, $top, -1px);
+      height: 48px;
+      left: 40.8px;
+      top: 8.4px;
   }
-
-  25% {
-    background-color: $green-t90;
-    transform: scale(#{$min-scale}),
-    translateZ(-1px);
-  }
-
   50% {
-    transform: translate3d(0, $negative-top, 1px);
+     height: 5px;
+     left: 40.8px;
+     top: 8.4px;
   }
-
-  75% {
-    transform: scale(#{$max-scale}),
-    translateZ(1px);
-  }
-
-  100% {
-    transform: translate3d(0, $top, 1px);
-  }
+  51% {
+      height: 5px;
+      left: 46.8px;
+top: 51px;
+}
+100%{
+     height: 48px;
+     left: 40.8px;
+     top: 8.4px;
+}
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+@keyframes loading-indicator3 {
+  0% {
+      height: 48px;
+      left: 52.9px;
+      top: 51.8px;
   }
-
-  to {
-    opacity: 1;
+  50% {
+      height: 5px;
+      left: 52.9px;
+      top: 51.8px;
   }
+  51%{
+    height: 5px;
+    left: 13px;
+    top: 35.7px;
+}
+  100%{
+    height: 48px;
+    left: 52.9px;
+    top: 51.8px;
+}
 }
