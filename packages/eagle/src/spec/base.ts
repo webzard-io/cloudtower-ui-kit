@@ -621,7 +621,7 @@ export type TableFormPropsType = React.ForwardRefExoticComponent<
 
 export type TokenComponentType = React.FC<
   Omit<TagProps, "icon" | "closeIcon"> & {
-    color?: "red" | "yellow" | "green" | "blue" | "gray";
+    color?: "red" | "yellow" | "green" | "blue" | "gray" | string;
     size?: "small" | "medium" | "large";
     checked?: boolean;
   }

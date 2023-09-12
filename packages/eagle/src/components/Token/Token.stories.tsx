@@ -1,12 +1,21 @@
+import { ComponentMeta, ComponentStory, Story } from "@storybook/react";
 import { Space } from "antd";
 import React from "react";
-import { withDesign } from "storybook-addon-designs";
 
-import Select from "../Select";
+import { TokenComponentType } from "../../spec";
 import { Typo } from "../Typo";
-import Token from ".";
+import Token, { PresetColors } from ".";
 
-const colors = ["blue", "red", "yellow", "green", "gray"] as const;
+export default {
+  title: "Token",
+  component: Token,
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/ZE1a32eYk89k4cfGEEOph2/Tag-%26-Token-%7C-%E6%A0%87%E7%AD%BE%E5%92%8C%E5%8F%AF%E7%BC%96%E8%BE%91%E6%A0%87%E7%AD%BE?type=design&node-id=1-41&mode=design&t=nnkSC0vipHqxIYf7-0",
+    },
+  },
+} as ComponentMeta<TokenComponentType>;
 
 const Title: React.FC = ({ children }) => (
   <div style={{ marginTop: "16px" }} className={Typo.Display.d2_bold_title}>
@@ -14,57 +23,15 @@ const Title: React.FC = ({ children }) => (
   </div>
 );
 
-const story = {
-  title: "Token",
-  decorators: [withDesign],
-};
-
-const tagRender = (props: any) => {
-  const { label, value, closable, onClose } = props;
-  return (
-    <Token
-      color={value}
-      closable={closable}
-      onClose={onClose}
-      style={{ marginRight: 3 }}
-    >
-      {label}
-    </Token>
-  );
-};
-
-const TokenFiled = () => {
-  const options = [
-    { value: "blue" },
-    { value: "red" },
-    { value: "green" },
-    { value: "yellow" },
-  ];
-
-  return (
-    <div style={{ marginTop: "5px" }}>
-      <Select
-        size="small"
-        style={{ width: "300px" }}
-        input={{}}
-        mode="tags"
-        options={options}
-        tagRender={tagRender}
-        defaultValue={["blue"] as any}
-      />
-    </div>
-  );
-};
-
-export const Basic = () => {
+export const Basic: ComponentStory<TokenComponentType> = () => {
   return (
     <>
-      <Title>Size</Title>
+      <Title>Basic</Title>
       <Space direction="vertical" className="size">
         <div className="large-size">
           <div>Large</div>
           <Space>
-            {colors.map((color) => (
+            {PresetColors.map((color) => (
               <Space direction="vertical">
                 <Token closable size="large" color={color}>
                   Label
@@ -85,7 +52,7 @@ export const Basic = () => {
         <div className="medium-size">
           <div>Medium</div>
           <Space>
-            {colors.map((color) => (
+            {PresetColors.map((color) => (
               <Space direction="vertical">
                 <Token closable size="medium" color={color}>
                   Label
@@ -106,7 +73,7 @@ export const Basic = () => {
         <div className="small-size">
           <div>Small</div>
           <Space>
-            {colors.map((color) => (
+            {PresetColors.map((color) => (
               <Space direction="vertical">
                 <Token closable size="small" color={color}>
                   Label
@@ -125,20 +92,40 @@ export const Basic = () => {
           </Space>
         </div>
       </Space>
-      <Title>Token Field</Title>
-      <TokenFiled />
     </>
   );
 };
 
-Basic.story = {
-  name: "Basic",
-  parameters: {
-    design: {
-      type: "figma",
-      url: "https://www.figma.com/file/BpDArP1CG6k9D1sLNscKbM/CloudTower-UI?node-id=2%3A23&mode=dev",
+export const Custom: Story<{
+  maxWidth: string;
+  content: string;
+  color: string;
+  size: "small" | "medium" | "large";
+  closable: boolean;
+}> = ({ maxWidth, content, ...props }) => {
+  return (
+    <>
+      <Title>Custom</Title>
+      <Token style={{ maxWidth: maxWidth }} {...props}>
+        {content}
+      </Token>
+    </>
+  );
+};
+
+Custom.args = {
+  content: "label",
+  color: "magenta",
+  size: "small",
+  closable: true,
+  maxWidth: "100px",
+};
+
+Custom.argTypes = {
+  size: {
+    control: {
+      type: "select",
+      options: ["small", "medium", "large"],
     },
   },
 };
-
-export default story;

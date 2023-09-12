@@ -8,6 +8,8 @@ import { TokenComponentType } from "../../spec";
 import Icon from "../Icon";
 import { Typo } from "../Typo";
 
+export const PresetColors = ["blue", "red", "yellow", "green", "gray"];
+
 const Size: Record<"small" | "medium" | "large", LinariaClassName> = {
   small: css`
     padding: 0 8px;
@@ -24,17 +26,27 @@ const Size: Record<"small" | "medium" | "large", LinariaClassName> = {
 };
 
 const TokenStyle = css`
+  .ui-kit-token-label.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &.ant-tag:hover {
+    opacity: unset;
+  }
   &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
     margin: 0;
     display: inline-flex;
     align-items: center;
-    color: $text-light-on-tint;
     border: none;
     & .ant-tag-close-icon {
       width: 16px;
       height: 16px;
       color: inherit;
       margin-left: 4px;
+      &:hover {
+        color: $black;
+      }
     }
     &.ant-tag-blue {
       color: $fills-light-general-general;
@@ -80,7 +92,7 @@ const TokenStyle = css`
 
 const Token: TokenComponentType = ({
   size = "small",
-  color,
+  color = "gray",
   className,
   checked,
   ...props
@@ -92,9 +104,11 @@ const Token: TokenComponentType = ({
         className,
         Size[size],
         TokenStyle,
-        (size === "small" || size === "medium") && Typo.Label.l4_regular,
-        size === "large" && Typo.Label.l3_regular,
-        `ant-tag-${color}`,
+        {
+          [Typo.Label.l4_regular]: size === "small" || size === "medium",
+          [Typo.Label.l3_regular]: size === "large",
+          [`ant-tag-${color}`]: PresetColors.includes(color),
+        },
         "ui-kit-token",
         checked && "ui-kit-token-checked",
       )}
@@ -107,7 +121,9 @@ const Token: TokenComponentType = ({
         />
       }
       color={color === "gray" ? undefined : color}
-    />
+    >
+      <span className="ui-kit-token-label truncate">{props.children}</span>
+    </AntdTag>
   );
 };
 
