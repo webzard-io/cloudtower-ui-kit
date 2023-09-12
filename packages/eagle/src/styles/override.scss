@@ -755,9 +755,15 @@ td .ant-btn-link {
   & > .anticon + span {
     margin-left: 4px;
   }
+  &:hover{
+    opacity: unset;
+  }
   &.ant-tag-red {
     color:$fills-light-serious-serious;
     background-color: $fills-light-serious-serious-light;
+    &:hover{
+      background-color: $fills-interaction-light-serious-hover
+    }
   }
   &.ant-tag-red-ontint {
     color:$fills-light-serious-serious-bright;
@@ -766,10 +772,16 @@ td .ant-btn-link {
   &.ant-tag-yellow {
     color:$fills-light-notice-notice-dark;
     background-color: $fills-light-notice-notice-light;
+    &:hover{
+      background-color:  $fills-light-notice-notice-light-hover;
+    }
   }
   &.ant-tag-green {
     color:$fills-light-positive-positive-dark;
     background-color: $fills-light-positive-positive-light;
+    &:hover{
+      background-color:  $fills-light-positive-positive-light-hover;
+    }
   }
   &.ant-tag-green-ontint {
     color:$fills-light-positive-positive-bright;
@@ -777,7 +789,10 @@ td .ant-btn-link {
   }
   &.ant-tag-blue {
     color:$fills-light-general-general;
-    background-color: $fills-light-general-general-light;
+    background-color: $fills-element-light-container-outstanding;
+    &:hover{
+      background-color:  $fills-element-light-container-outstanding-hover;
+    }
   }
   &.ant-tag-purple {
     color:$text-light-storage;
@@ -786,6 +801,9 @@ td .ant-btn-link {
   &.ant-tag-gray {
     color:$text-light-super;
     background-color: $fills-element-light-container-general;
+    &:hover{
+      background-color:  $fills-interaction-light-general-hover;
+    }
   }
 }
 
