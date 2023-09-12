@@ -637,7 +637,8 @@ export type TagComponentType = React.FC<
       | "purple"
       | "gray"
       | "red-ontint"
-      | "green-ontint";
+      | "green-ontint"
+      | string;
     size?: "small" | "medium";
   }
 >;

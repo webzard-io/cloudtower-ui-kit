@@ -752,6 +752,9 @@ td .ant-btn-link {
 .ant-tag{
   border: none;
   border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   & > .anticon + span {
     margin-left: 4px;
   }

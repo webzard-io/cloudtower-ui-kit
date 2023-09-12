@@ -1,11 +1,12 @@
 import { BorderOutlined } from "@ant-design/icons";
+import { ComponentStory, Story } from "@storybook/react";
 import { Space } from "antd";
 import React from "react";
 import { withDesign } from "storybook-addon-designs";
 
+import { TagComponentType } from "../../spec";
 import { Typo } from "../Typo";
 import Tag from ".";
-
 const colors = [
   "blue",
   "red",
@@ -28,7 +29,7 @@ const story = {
   decorators: [withDesign],
 };
 
-export const Basic = () => {
+export const Basic: ComponentStory<TagComponentType> = () => {
   return (
     <div style={{ padding: "20px" }}>
       <Title>Small</Title>
@@ -73,6 +74,35 @@ Basic.story = {
     design: {
       type: "figma",
       url: "https://www.figma.com/file/nOhhbt8AO1EscJOfx60rfD/%5BArchived%5D-CloudTower-UI-1.0.5?type=design&node-id=405-9&mode=design&t=sD3RRB9kLjiEzIo4-0",
+    },
+  },
+};
+
+export const Custom: Story<{
+  maxWidth: string;
+  content: string;
+  color: string;
+  size: "small" | "medium";
+}> = ({ maxWidth, content, ...props }) => {
+  return (
+    <Tag style={{ maxWidth: maxWidth }} {...props}>
+      {content}
+    </Tag>
+  );
+};
+
+Custom.args = {
+  color: "magenta",
+  content: "label",
+  size: "small",
+  maxWidth: "100px",
+};
+
+Custom.argTypes = {
+  size: {
+    control: {
+      type: "select",
+      options: ["small", "medium"],
     },
   },
 };

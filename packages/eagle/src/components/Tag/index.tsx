@@ -15,25 +15,32 @@ const Size: Record<"small" | "medium", LinariaClassName> = {
   `,
 };
 
+const PresetColors = [
+  "blue",
+  "red",
+  "red-ontint",
+  "yellow",
+  "green",
+  "green-ontint",
+  "gray",
+  "purple",
+];
+
 const TagStyle = css`
   margin: 0;
 `;
 
 const Tag: TagComponentType = ({
   size = "small",
-  color,
+  color = "gray",
   className,
   ...props
 }) => (
   <AntdTag
     {...props}
-    className={cs(
-      className,
-      Size[size],
-      TagStyle,
-      Typo.Label.l4_regular,
-      `ant-tag-${color}`,
-    )}
+    className={cs(className, Size[size], TagStyle, Typo.Label.l4_regular, {
+      [`ant-tag-${color}`]: PresetColors.includes(color),
+    })}
     color={color === "gray" ? undefined : color}
     closable={false}
   />
