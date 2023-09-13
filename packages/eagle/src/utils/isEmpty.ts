@@ -5,7 +5,8 @@ function isEmpty(rawValue?: number | null): rawValue is null | undefined {
     rawValue === null ||
     rawValue === undefined ||
     rawValue === MAGIC_METRIC_NULL ||
-    Number.isNaN(rawValue)
+    Number.isNaN(rawValue) ||
+    !Number.isFinite(rawValue)
   ) {
     return true;
   }
