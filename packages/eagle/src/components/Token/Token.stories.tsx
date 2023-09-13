@@ -3,6 +3,7 @@ import { Space } from "antd";
 import React from "react";
 
 import { TokenComponentType } from "../../spec";
+import BaseTruncate from "../Truncate";
 import { Typo } from "../Typo";
 import Token, { PresetColors } from ".";
 
@@ -97,18 +98,15 @@ export const Basic: ComponentStory<TokenComponentType> = () => {
 };
 
 export const Custom: Story<{
-  maxWidth: string;
   content: string;
   color: string;
   size: "small" | "medium" | "large";
   closable: boolean;
-}> = ({ maxWidth, content, ...props }) => {
+}> = ({ content, ...props }) => {
   return (
     <>
       <Title>Custom</Title>
-      <Token style={{ maxWidth: maxWidth }} {...props}>
-        {content}
-      </Token>
+      <Token {...props}>{content}</Token>
     </>
   );
 };
@@ -118,7 +116,6 @@ Custom.args = {
   color: "magenta",
   size: "small",
   closable: true,
-  maxWidth: "100px",
 };
 
 Custom.argTypes = {
@@ -128,4 +125,31 @@ Custom.argTypes = {
       options: ["small", "medium", "large"],
     },
   },
+};
+
+export const Truncate: Story<{
+  content: string;
+  len: number;
+  color: string;
+  size: "small" | "medium" | "large";
+  closable: boolean;
+}> = ({ content, len, ...props }) => {
+  return (
+    <>
+      <div>配合 Truncate 组件使用</div>
+      <div style={{ marginTop: "50px" }}>
+        <Token {...props}>
+          <BaseTruncate backLen={0} text={content} len={len} />
+        </Token>
+      </div>
+    </>
+  );
+};
+
+Truncate.args = {
+  content: "longlonglonglong",
+  color: "magenta",
+  size: "small",
+  closable: true,
+  len: 10,
 };

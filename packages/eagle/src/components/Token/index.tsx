@@ -26,11 +26,6 @@ const Size: Record<"small" | "medium" | "large", LinariaClassName> = {
 };
 
 const TokenStyle = css`
-  .ui-kit-token-label.truncate {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
   &.ant-tag:hover {
     opacity: unset;
   }
@@ -44,8 +39,9 @@ const TokenStyle = css`
       height: 16px;
       color: inherit;
       margin-left: 4px;
+      opacity: 0.6;
       &:hover {
-        color: $black;
+        opacity: 1;
       }
     }
     &.ant-tag-blue {
@@ -121,9 +117,7 @@ const Token: TokenComponentType = ({
         />
       }
       color={color === "gray" ? undefined : color}
-    >
-      <span className="ui-kit-token-label truncate">{props.children}</span>
-    </AntdTag>
+    />
   );
 };
 
