@@ -640,6 +640,7 @@ export type TagComponentType = React.FC<
       | "green-ontint"
       | string;
     size?: "small" | "medium";
+    hoverable?: boolean;
   }
 >;
 export type TokenComponentType = React.FC<

@@ -6,17 +6,8 @@ import { withDesign } from "storybook-addon-designs";
 
 import { TagComponentType } from "../../spec";
 import { Typo } from "../Typo";
-import Tag from ".";
-const colors = [
-  "blue",
-  "red",
-  "red-ontint",
-  "yellow",
-  "green",
-  "green-ontint",
-  "gray",
-  "purple",
-] as const;
+import Tag, { PresetColors } from ".";
+const MediumColors = ["blue", "red", "yellow", "green", "gray", "purple"];
 
 const Title: React.FC = ({ children }) => (
   <div style={{ marginTop: "16px" }} className={Typo.Display.d2_bold_title}>
@@ -34,7 +25,7 @@ export const Basic: ComponentStory<TagComponentType> = () => {
     <div style={{ padding: "20px" }}>
       <Title>Small</Title>
       <Space direction="vertical" style={{ marginTop: "12px" }}>
-        {colors.map((color) => (
+        {PresetColors.map((color) => (
           <Space>
             <span style={{ display: "inline-block", width: "90px" }}>
               {color}
@@ -50,7 +41,7 @@ export const Basic: ComponentStory<TagComponentType> = () => {
       </Space>
       <Title>Medium</Title>
       <Space direction="vertical" style={{ marginTop: "12px" }}>
-        {colors.map((color) => (
+        {MediumColors.map((color) => (
           <Space>
             <span style={{ display: "inline-block", width: "90px" }}>
               {color}
@@ -83,6 +74,7 @@ export const Custom: Story<{
   content: string;
   color: string;
   size: "small" | "medium";
+  hoverable: boolean;
 }> = ({ maxWidth, content, ...props }) => {
   return (
     <Tag style={{ maxWidth: maxWidth }} {...props}>
@@ -92,7 +84,8 @@ export const Custom: Story<{
 };
 
 Custom.args = {
-  color: "magenta",
+  color: "blue",
+  hoverable: true,
   content: "label",
   size: "small",
   maxWidth: "100px",

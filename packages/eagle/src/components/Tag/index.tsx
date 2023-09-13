@@ -15,7 +15,7 @@ const Size: Record<"small" | "medium", LinariaClassName> = {
   `,
 };
 
-const PresetColors = [
+export const PresetColors = [
   "blue",
   "red",
   "red-ontint",
@@ -34,12 +34,14 @@ const Tag: TagComponentType = ({
   size = "small",
   color = "gray",
   className,
+  hoverable = false,
   ...props
 }) => (
   <AntdTag
     {...props}
     className={cs(className, Size[size], TagStyle, Typo.Label.l4_regular, {
       [`ant-tag-${color}`]: PresetColors.includes(color),
+      "tag-hover": hoverable,
     })}
     color={color === "gray" ? undefined : color}
     closable={false}
