@@ -38,3 +38,9 @@ Empty.args = {
     },
   },
 };
+
+export const EmptyInfinity = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+EmptyInfinity.args = {
+  rawValue: Infinity,
+};
