@@ -27,8 +27,6 @@ export function getKeyThenIncreaseKey() {
   return key++;
 }
 
-let fixMessage: ArgsProps[] = [];
-
 export let pageVisible = true;
 
 const visibilitychangeHandler = () => {
@@ -36,10 +34,6 @@ const visibilitychangeHandler = () => {
     pageVisible = false;
   } else {
     pageVisible = true;
-    fixMessage.forEach((message) => {
-      notice(message);
-    });
-    fixMessage = [];
   }
 };
 
@@ -186,14 +180,6 @@ function notice(args: ArgsProps): MessageType {
       return resolve(true);
     };
 
-    if (!pageVisible) {
-      fixMessage.push(args);
-      if (fixMessage.length > 2) {
-        fixMessage.shift();
-      }
-      return;
-    }
-
     getRCNotificationInstance(args, ({ prefixCls, instance }) => {
       instance.notice(
         getRCNoticeProps(
@@ -211,6 +197,10 @@ function notice(args: ArgsProps): MessageType {
   result.then = (filled: ThenableArgument, rejected: ThenableArgument) =>
     closePromise.then(filled, rejected);
   result.promise = closePromise;
+
+  if (!pageVisible) {
+    result();
+  }
   return result;
 }
 

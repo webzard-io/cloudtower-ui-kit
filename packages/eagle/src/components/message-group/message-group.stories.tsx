@@ -13,7 +13,7 @@ export default {
 
 const patterMap = {
   "common.error_message": {
-    batchKey: "common.error_message",
+    batchKey: "test.error_message_batch",
     patterns: [new RegExp("^错误信息"), new RegExp("^Error Message")],
   },
 };
@@ -30,7 +30,7 @@ const batchHelper = {
     return batchKey;
   },
   getBatchContent: (batchKey: string, count: number) => {
-    return parrotI18n.t(batchKey);
+    return parrotI18n.t(batchKey, { count });
   },
 };
 
@@ -51,6 +51,38 @@ const TestMessage = () => {
         }}
       >
         Emit one every second for 10 seconds
+      </Button>
+      <Button
+        onClick={() => {
+          const handler = setInterval(() => {
+            UIKit.message.info(parrotI18n.t("common.error_message") + i++);
+          }, 210);
+          setTimeout(() => {
+            clearInterval(handler);
+          }, 10000);
+        }}
+      >
+        Emit one every 210ms for 10 seconds
+      </Button>
+      <Button
+        onClick={() => {
+          Array(30)
+            .fill(undefined)
+            .forEach((v, index) => {
+              UIKit.message.info(parrotI18n.t("common.error_message") + index);
+            });
+          setTimeout(() => {
+            Array(30)
+              .fill(undefined)
+              .forEach((v, index) => {
+                UIKit.message.info(
+                  parrotI18n.t("common.error_message") + index,
+                );
+              });
+          }, 100);
+        }}
+      >
+        batch 60 message
       </Button>
       <Button
         onClick={() => {
