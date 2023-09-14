@@ -752,11 +752,9 @@ td .ant-btn-link {
 .ant-tag{
   border: none;
   border-radius: 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   & > .anticon + span {
     margin-left: 4px;
+    display: inline-block;
   }
   &:hover{
     opacity: unset;
@@ -764,7 +762,7 @@ td .ant-btn-link {
   &.ant-tag-red {
     color:$fills-light-serious-serious;
     background-color: $fills-light-serious-serious-light;
-    &.tag-hover:hover{
+    &.tag-hover:hover,&.__pseudo-states-hover{
       background-color: $fills-interaction-light-serious-hover
     }
   }
@@ -775,14 +773,14 @@ td .ant-btn-link {
   &.ant-tag-yellow {
     color:$fills-light-notice-notice-dark;
     background-color: $fills-light-notice-notice-light;
-    &.tag-hover:hover{
+    &.tag-hover:hover,&.__pseudo-states-hover{
       background-color:  $fills-light-notice-notice-light-hover;
     }
   }
   &.ant-tag-green {
     color:$fills-light-positive-positive-dark;
     background-color: $fills-light-positive-positive-light;
-    &.tag-hover:hover{
+    &.tag-hover:hover,&.__pseudo-states-hover{
       background-color:  $fills-light-positive-positive-light-hover;
     }
   }
@@ -793,18 +791,21 @@ td .ant-btn-link {
   &.ant-tag-blue {
     color:$fills-light-general-general;
     background-color: $fills-element-light-container-outstanding;
-    &.tag-hover:hover{
+    &.tag-hover:hover,&.__pseudo-states-hover{
       background-color:  $fills-element-light-container-outstanding-hover;
     }
   }
   &.ant-tag-purple {
     color:$text-light-storage;
     background-color: $fills-element-light-container-storage;
+    &.tag-hover:hover,&.__pseudo-states-hover{
+      background-color: $fills-light-interaction-purple-hover;
+    }
   }
   &.ant-tag-gray {
     color:$text-light-super;
     background-color: $fills-element-light-container-general;
-    &.tag-hover:hover{
+    &.tag-hover:hover,&.__pseudo-states-hover{
       background-color:  $fills-interaction-light-general-hover;
     }
   }

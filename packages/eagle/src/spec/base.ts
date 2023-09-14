@@ -643,6 +643,15 @@ export type TagComponentType = React.FC<
     hoverable?: boolean;
   }
 >;
+
+export type SplitTagComponentType = React.FC<
+  Omit<TagProps, "closable" | "closeIcon" | "onClose"> & {
+    color?: "red" | "yellow" | "green" | "blue" | "purple" | "gray";
+    size?: "small" | "medium";
+    primaryContent: React.ReactNode;
+    secondaryContent: React.ReactNode;
+  }
+>;
 export type TokenComponentType = React.FC<
   Omit<TagProps, "icon" | "closeIcon"> & {
     color?: "red" | "yellow" | "green" | "blue" | "gray" | string;

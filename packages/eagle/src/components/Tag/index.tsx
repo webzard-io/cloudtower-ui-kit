@@ -1,36 +1,18 @@
-import { css, LinariaClassName } from "@linaria/core";
 import { Tag as AntdTag } from "antd";
 import cs from "classnames";
 import React from "react";
 
-import { TagComponentType } from "../../spec";
+import { SplitTagComponentType, TagComponentType } from "../../spec";
 import { Typo } from "../Typo";
+import { PresetColors as BasePresetColors } from "./const";
+import SplitTag from "./SplitTag";
+import { Size, TagStyle } from "./style";
 
-const Size: Record<"small" | "medium", LinariaClassName> = {
-  small: css`
-    padding: 0 8px;
-  `,
-  medium: css`
-    padding: 2px 8px;
-  `,
-};
+export const PresetColors = [...BasePresetColors, "red-ontint", "green-ontint"];
 
-export const PresetColors = [
-  "blue",
-  "red",
-  "red-ontint",
-  "yellow",
-  "green",
-  "green-ontint",
-  "gray",
-  "purple",
-];
-
-const TagStyle = css`
-  margin: 0;
-`;
-
-const Tag: TagComponentType = ({
+const Tag: TagComponentType & {
+  SplitTag: SplitTagComponentType;
+} = ({
   size = "small",
   color = "gray",
   className,
@@ -43,9 +25,11 @@ const Tag: TagComponentType = ({
       [`ant-tag-${color}`]: PresetColors.includes(color),
       "tag-hover": hoverable,
     })}
-    color={color === "gray" ? undefined : color}
     closable={false}
+    color={color === "gray" ? undefined : color}
   />
 );
+
+Tag.SplitTag = SplitTag;
 
 export default Tag;
