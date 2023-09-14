@@ -1,7 +1,6 @@
 import { styled } from "@linaria/react";
 import { Space as AntdSpace } from "antd";
 import React from "react";
-import { withDesign } from "storybook-addon-designs";
 
 import { IStepsProps } from "../../spec";
 import { Typo } from "../Typo";
@@ -30,7 +29,6 @@ const stepsConfig: IStepsProps["stepsConfig"] = [
 
 export default {
   title: "Steps",
-  decorators: [withDesign],
 };
 
 export const Basic = () => {

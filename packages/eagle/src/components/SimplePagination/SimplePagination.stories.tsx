@@ -2,12 +2,10 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { useState } from "react";
 
 import SimplePagination from ".";
-import { withDesign } from "storybook-addon-designs";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "SimplePagination",
-  decorators: [withDesign],
 } as ComponentMeta<typeof SimplePagination>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
