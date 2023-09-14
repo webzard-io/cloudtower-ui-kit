@@ -31,3 +31,11 @@
    ```
 
 3. 等待 CI 结果，发布完成后创建 PR 合入 `main` 分支
+
+## 如何确定相关 PR 应该进入到哪个分支
+
+目前 UI-KIT 的版本和分支维护主要考虑的是搭配的 CloudTower 版本，活跃分支和对应 CloudTower 的关系如下：
+
+![Diagram show how to manage UI-KIT workflow.](statics/branches.png)
+
+发版统一由 qinghua 来处理。
