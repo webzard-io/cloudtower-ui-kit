@@ -48,6 +48,7 @@ import {
 import { TableRowSelection } from "antd/lib/table/interface";
 import { TabPaneProps, TabsProps } from "antd/lib/tabs";
 import { TagType } from "antd/lib/tag";
+import { TagProps } from "antd/lib/tag";
 import { TimePickerProps } from "antd/lib/time-picker";
 import { TimeLineItemProps, TimelineProps } from "antd/lib/timeline";
 import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
@@ -554,6 +555,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   tableForm: React.ForwardRefExoticComponent<
     TableFormProps & React.RefAttributes<TableFormHandle>
   >;
+  token: TokenComponentType;
   uploadDragger: React.ComponentType<DraggerProps>;
   calendar: React.FC<CalendarProps<Moment>>;
   timePicker: React.FC<TimePickerProps>;
@@ -615,4 +617,12 @@ export type EnumProps<V = any, T extends HTMLElement = HTMLElement> = {
 
 export type TableFormPropsType = React.ForwardRefExoticComponent<
   TableFormProps & React.RefAttributes<TableFormHandle>
+>;
+
+export type TokenComponentType = React.FC<
+  Omit<TagProps, "icon" | "closeIcon"> & {
+    color?: "red" | "yellow" | "green" | "blue" | "gray" | string;
+    size?: "small" | "medium" | "large";
+    checked?: boolean;
+  }
 >;
