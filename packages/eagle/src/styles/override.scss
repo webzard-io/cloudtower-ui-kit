@@ -485,7 +485,7 @@ $footer-height: 64px;
   .ant-alert-icon {
     position: static;
     height: 18px;
-    margin-right: 10px;
+    margin-right: 8px;
   }
   .ant-alert-close-icon {
     position: initial;
@@ -522,6 +522,12 @@ $footer-height: 64px;
   background: rgba(0, 136, 255, 0.1);
   .ant-alert-message {
     color: $fills-light-general-general-dark;
+  }
+}
+
+.ant-alert-info.action:not(.alert-normal){
+  .ant-alert-message {
+    color: $text-light-primary;
   }
 }
 
