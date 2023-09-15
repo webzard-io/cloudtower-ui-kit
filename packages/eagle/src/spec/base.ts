@@ -645,7 +645,7 @@ export type TagComponentType = React.FC<
 >;
 
 export type SplitTagComponentType = React.FC<
-  Omit<TagProps, "closable" | "closeIcon" | "onClose"> & {
+  Omit<TagProps, "closable" | "closeIcon" | "onClose" | "visible"> & {
     color?: "red" | "yellow" | "green" | "blue" | "purple" | "gray";
     size?: "small" | "medium";
     primaryContent: React.ReactNode;

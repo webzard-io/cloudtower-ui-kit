@@ -8,51 +8,13 @@ import { Typo } from "../Typo";
 import { PresetColors } from "./const";
 import { IconStyle, Size, TagStyle } from "./style";
 
-const WrapSize = {
-  small: css`
-    height: 18px;
-  `,
-  medium: css`
-    height: 24px;
-  `,
-};
-
 const WrapperStyle = css`
-  & {
-    display: inline-flex;
-    border-radius: 8px;
-
-    .primary-tag {
+  &.outside-tag {
+    padding-left: 0;
+    .inside-tag {
       border-radius: 4px 0 0 4px;
       padding-right: 4px;
-      &.ant-tag-red {
-        color: $fills-light-serious-serious;
-        background-color: $fills-interaction-light-serious-hover;
-      }
-      &.ant-tag-yellow {
-        color: $fills-light-notice-notice-dark;
-        background-color: $fills-light-notice-notice-light-hover;
-      }
-      &.ant-tag-green {
-        color: $fills-light-positive-positive-dark;
-        background-color: $fills-light-positive-positive-light-hover;
-      }
-      &.ant-tag-blue {
-        color: $fills-light-general-general;
-        background-color: $fills-element-light-container-outstanding-hover;
-      }
-      &.ant-tag-purple {
-        color: $text-light-storage;
-        background-color: $fills-light-interaction-purple-hover;
-      }
-      &.ant-tag-gray {
-        color: $text-light-super;
-        background-color: $fills-interaction-light-general-hover;
-      }
-    }
-    .secondary-tag {
-      border-radius: 0 4px 4px 0;
-      padding-left: 4px;
+      margin-right: 4px;
     }
   }
 `;
@@ -66,7 +28,20 @@ const SplitTag: SplitTagComponentType = ({
   icon,
   ...props
 }) => (
-  <div {...props} className={cs(WrapSize[size], className, WrapperStyle)}>
+  <AntdTag
+    {...props}
+    className={cs(
+      className,
+      TagStyle,
+      Size[size],
+      WrapperStyle,
+      Typo.Label.l4_regular,
+      {
+        [`ant-tag-${color}`]: PresetColors.includes(color),
+      },
+      "outside-tag",
+    )}
+  >
     <AntdTag
       className={cs(
         Size[size],
@@ -75,26 +50,14 @@ const SplitTag: SplitTagComponentType = ({
         {
           [`ant-tag-${color}`]: PresetColors.includes(color),
         },
-        "primary-tag",
+        "inside-tag",
       )}
     >
       {icon && <span className={cs("ui-kit-tag-icon", IconStyle)}>{icon}</span>}
       {primaryContent}
     </AntdTag>
-    <AntdTag
-      className={cs(
-        Size[size],
-        TagStyle,
-        Typo.Label.l4_regular,
-        {
-          [`ant-tag-${color}`]: PresetColors.includes(color),
-        },
-        "secondary-tag",
-      )}
-    >
-      {secondaryContent}
-    </AntdTag>
-  </div>
+    {secondaryContent}
+  </AntdTag>
 );
 
 export default SplitTag;
