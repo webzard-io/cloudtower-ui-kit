@@ -6,14 +6,25 @@ import React from "react";
 import { SplitTagComponentType } from "../../spec";
 import { Typo } from "../Typo";
 import { PresetColors } from "./const";
-import { Size, TagStyle } from "./style";
+import { IconStyle, Size, TagStyle } from "./style";
+
+const WrapSize = {
+  small: css`
+    height: 18px;
+  `,
+  medium: css`
+    height: 24px;
+  `,
+};
 
 const WrapperStyle = css`
   & {
     display: inline-flex;
     border-radius: 8px;
+
     .primary-tag {
       border-radius: 4px 0 0 4px;
+      padding-right: 4px;
       &.ant-tag-red {
         color: $fills-light-serious-serious;
         background-color: $fills-interaction-light-serious-hover;
@@ -55,7 +66,7 @@ const SplitTag: SplitTagComponentType = ({
   icon,
   ...props
 }) => (
-  <div {...props} className={cs(className, WrapperStyle)}>
+  <div {...props} className={cs(WrapSize[size], className, WrapperStyle)}>
     <AntdTag
       className={cs(
         Size[size],
@@ -66,8 +77,8 @@ const SplitTag: SplitTagComponentType = ({
         },
         "primary-tag",
       )}
-      icon={icon}
     >
+      {icon && <span className={cs("ui-kit-tag-icon", IconStyle)}>{icon}</span>}
       {primaryContent}
     </AntdTag>
     <AntdTag

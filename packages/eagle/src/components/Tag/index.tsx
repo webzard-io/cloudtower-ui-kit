@@ -6,7 +6,7 @@ import { SplitTagComponentType, TagComponentType } from "../../spec";
 import { Typo } from "../Typo";
 import { PresetColors as BasePresetColors } from "./const";
 import SplitTag from "./SplitTag";
-import { Size, TagStyle } from "./style";
+import { IconStyle, Size, TagStyle } from "./style";
 
 export const PresetColors = [...BasePresetColors, "red-ontint", "green-ontint"];
 
@@ -17,6 +17,8 @@ const Tag: TagComponentType & {
   color = "gray",
   className,
   hoverable = false,
+  icon,
+  children,
   ...props
 }) => (
   <AntdTag
@@ -27,7 +29,10 @@ const Tag: TagComponentType & {
     })}
     closable={false}
     color={color === "gray" ? undefined : color}
-  />
+  >
+    {icon && <span className={cs("ui-kit-tag-icon", IconStyle)}>{icon}</span>}
+    {children}
+  </AntdTag>
 );
 
 Tag.SplitTag = SplitTag;

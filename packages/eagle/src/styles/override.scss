@@ -752,10 +752,8 @@ td .ant-btn-link {
 .ant-tag{
   border: none;
   border-radius: 4px;
-  & > .anticon + span {
-    margin-left: 4px;
-    display: inline-block;
-  }
+  display: inline-flex;
+  align-items: center;
   &:hover{
     opacity: unset;
   }

@@ -1,11 +1,17 @@
-import { BorderOutlined } from "@ant-design/icons";
+import {
+  ErrorExclamationIcon,
+  InfoICircleFill16BlueIcon,
+  Loading16GradientBlueIcon,
+  NoticeTriangleFill16YellowIcon,
+  Placeholder16Icon,
+} from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import { ComponentStory, Story } from "@storybook/react";
-import { Space } from "antd";
 import React from "react";
 import { withDesign } from "storybook-addon-designs";
 
 import { SplitTagComponentType, TagComponentType } from "../../spec";
+import Stack from "../Stack";
 import BaseTruncate from "../Truncate";
 import { Typo } from "../Typo";
 import Tag, { PresetColors as TagPresetColors } from ".";
@@ -28,90 +34,113 @@ export const Basic: ComponentStory<TagComponentType> = () => {
   return (
     <div style={{ padding: "20px" }}>
       <Title>Small</Title>
-      <Space direction="vertical" style={{ marginTop: "12px" }}>
-        <Space
-          className={css`
-            & > div {
-              width: 90px;
-            }
-          `}
-          style={{ marginTop: "12px" }}
-        >
-          <span />
+      <Stack direction="vertical">
+        <Stack>
+          <span style={{ width: "90px" }} />
           {modes.map((mode) => (
-            <div>{mode}</div>
+            <div style={{ width: "90px" }}>{mode}</div>
           ))}
-        </Space>
+        </Stack>
         {TagPresetColors.map((color) => (
-          <Space
+          <Stack
             className={css`
-              & > div {
+              & > .box {
                 width: 90px;
               }
             `}
           >
-            <span>{color}</span>
-            <Tag size="small" color={color}>
-              Label
-            </Tag>
-            {color.includes("ontint") ? (
-              <span />
-            ) : (
-              <Tag className="__pseudo-states-hover" size="small" color={color}>
+            <span style={{ width: "90px" }}>{color}</span>
+            <div className="box">
+              <Tag size="small" color={color}>
                 Label
               </Tag>
-            )}
-            <Tag icon={<BorderOutlined />} size="small" color={color}>
-              Label
-            </Tag>
-            {color.includes("ontint") ? (
-              <span />
-            ) : (
-              <Tag
-                className="__pseudo-states-hover"
-                icon={<BorderOutlined />}
-                size="small"
-                color={color}
-              >
+            </div>
+            <div className="box">
+              {color.includes("ontint") ? (
+                <span />
+              ) : (
+                <Tag
+                  className="__pseudo-states-hover"
+                  size="small"
+                  color={color}
+                >
+                  Label
+                </Tag>
+              )}
+            </div>
+            <div className="box">
+              <Tag icon={<Placeholder16Icon />} size="small" color={color}>
                 Label
               </Tag>
-            )}
-          </Space>
+            </div>
+            <div className="box">
+              {color.includes("ontint") ? (
+                <span />
+              ) : (
+                <Tag
+                  className="__pseudo-states-hover"
+                  icon={<Placeholder16Icon />}
+                  size="small"
+                  color={color}
+                >
+                  Label
+                </Tag>
+              )}
+            </div>
+          </Stack>
         ))}
-      </Space>
+      </Stack>
       <Title>Medium</Title>
-      <Space direction="vertical" style={{ marginTop: "12px" }}>
-        {PresetColors.map((color) => (
-          <Space
+      <Stack direction="vertical">
+        {TagPresetColors.map((color) => (
+          <Stack
             className={css`
-              & > div {
+              & > .box {
                 width: 90px;
               }
             `}
           >
-            <span style={{ display: "inline-block", width: "90px" }}>
-              {color}
-            </span>
-            <Tag size="medium" color={color}>
-              Label
-            </Tag>
-            <Tag className="__pseudo-states-hover" size="medium" color={color}>
-              Label
-            </Tag>
-            <Tag icon={<BorderOutlined />} size="medium" color={color}>
-              Label
-            </Tag>
-            <Tag
-              className="__pseudo-states-hover"
-              icon={<BorderOutlined />}
-              size="medium"
-              color={color}
-            >
-              Label
-            </Tag>
-          </Space>
+            <span style={{ width: "90px" }}>{color}</span>
+            <div className="box">
+              <Tag size="medium" color={color}>
+                Label
+              </Tag>
+            </div>
+            <div className="box">
+              {color.includes("ontint") ? (
+                <span />
+              ) : (
+                <Tag
+                  className="__pseudo-states-hover"
+                  size="medium"
+                  color={color}
+                >
+                  Label
+                </Tag>
+              )}
+            </div>
+            <div className="box">
+              <Tag icon={<Placeholder16Icon />} size="medium" color={color}>
+                Label
+              </Tag>
+            </div>
+            <div className="box">
+              {color.includes("ontint") ? (
+                <span />
+              ) : (
+                <Tag
+                  className="__pseudo-states-hover"
+                  icon={<Placeholder16Icon />}
+                  size="medium"
+                  color={color}
+                >
+                  Label
+                </Tag>
+              )}
+            </div>
+          </Stack>
         ))}
-      </Space>
+      </Stack>
     </div>
   );
 };
@@ -156,9 +185,9 @@ export const SplitTag: ComponentStory<SplitTagComponentType> = () => {
     <div style={{ padding: "20px" }}>
       <div>Tag.SplitTag</div>
       <Title>Small</Title>
-      <Space direction="vertical" style={{ marginTop: "12px" }}>
+      <Stack direction="vertical">
         {PresetColors.map((color) => (
-          <Space>
+          <Stack>
             <span style={{ display: "inline-block", width: "90px" }}>
               {color}
             </span>
@@ -171,17 +200,17 @@ export const SplitTag: ComponentStory<SplitTagComponentType> = () => {
             <Tag.SplitTag
               primaryContent="Label"
               secondaryContent="Label"
-              icon={<BorderOutlined />}
+              icon={<Placeholder16Icon />}
               size="small"
               color={color}
             />
-          </Space>
+          </Stack>
         ))}
-      </Space>
+      </Stack>
       <Title>Medium</Title>
-      <Space direction="vertical" style={{ marginTop: "12px" }}>
+      <Stack direction="vertical">
         {PresetColors.map((color) => (
-          <Space>
+          <Stack>
             <span style={{ display: "inline-block", width: "90px" }}>
               {color}
             </span>
@@ -194,13 +223,13 @@ export const SplitTag: ComponentStory<SplitTagComponentType> = () => {
             <Tag.SplitTag
               primaryContent="Label"
               secondaryContent="Label"
-              icon={<BorderOutlined />}
+              icon={<Placeholder16Icon />}
               size="medium"
               color={color}
             />
-          </Space>
+          </Stack>
         ))}
-      </Space>
+      </Stack>
     </div>
   );
 };
@@ -236,6 +265,65 @@ Truncate.argTypes = {
       options: ["small", "medium"],
     },
   },
+};
+
+export const WithIcon = () => {
+  return (
+    <>
+      <Stack direction="vertical">
+        <Stack>
+          <span>small-tag</span>
+          <Stack>
+            <Tag icon={<ErrorExclamationIcon />} size="small" color="red">
+              1
+            </Tag>
+            <Tag
+              icon={<NoticeTriangleFill16YellowIcon />}
+              size="small"
+              color="yellow"
+            >
+              1
+            </Tag>
+            <Tag icon={<InfoICircleFill16BlueIcon />} size="small" color="blue">
+              2
+            </Tag>
+            <Tag icon={<Loading16GradientBlueIcon />} size="small" color="gray">
+              2
+            </Tag>
+          </Stack>
+        </Stack>
+        <Stack>
+          <span>medium-tag</span>
+          <Stack>
+            <Tag icon={<ErrorExclamationIcon />} size="medium" color="red">
+              1
+            </Tag>
+            <Tag
+              icon={<NoticeTriangleFill16YellowIcon />}
+              size="medium"
+              color="yellow"
+            >
+              1
+            </Tag>
+            <Tag
+              icon={<InfoICircleFill16BlueIcon />}
+              size="medium"
+              color="blue"
+            >
+              2
+            </Tag>
+            <Tag
+              icon={<Loading16GradientBlueIcon />}
+              size="medium"
+              color="gray"
+            >
+              2
+            </Tag>
+          </Stack>
+        </Stack>
+      </Stack>
+    </>
+  );
 };
 
 export default story;
