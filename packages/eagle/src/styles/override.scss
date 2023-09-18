@@ -749,6 +749,67 @@ td .ant-btn-link {
   filter: drop-shadow(0px 0px 0px 4px rgba(255, 74, 74, 0.16));
 }
 
+.ant-tag{
+  border: none;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  &:hover{
+    opacity: unset;
+  }
+  &.ant-tag-red {
+    color:$fills-light-serious-serious;
+    background-color: $fills-light-serious-serious-light;
+    &.tag-hover:hover,&.__pseudo-states-hover{
+      background-color: $fills-interaction-light-serious-hover
+    }
+  }
+  &.ant-tag-red-ontint {
+    color:$fills-light-serious-serious-bright;
+    background-color: $fills-light-serious-serious-light-active;
+  }
+  &.ant-tag-yellow {
+    color:$fills-light-notice-notice-dark;
+    background-color: $fills-light-notice-notice-light;
+    &.tag-hover:hover,&.__pseudo-states-hover{
+      background-color:  $fills-light-notice-notice-light-hover;
+    }
+  }
+  &.ant-tag-green {
+    color:$fills-light-positive-positive-dark;
+    background-color: $fills-light-positive-positive-light;
+    &.tag-hover:hover,&.__pseudo-states-hover{
+      background-color:  $fills-light-positive-positive-light-hover;
+    }
+  }
+  &.ant-tag-green-ontint {
+    color:$fills-light-positive-positive-bright;
+    background-color: $fills-light-positive-positive-light-active;
+  }
+  &.ant-tag-blue {
+    color:$fills-light-general-general;
+    background-color: $fills-element-light-container-outstanding;
+    &.tag-hover:hover,&.__pseudo-states-hover{
+      background-color:  $fills-element-light-container-outstanding-hover;
+    }
+  }
+  &.ant-tag-purple {
+    color:$text-light-storage;
+    background-color: $fills-element-light-container-storage;
+    &.tag-hover:hover,&.__pseudo-states-hover{
+      background-color: $fills-light-interaction-purple-hover;
+    }
+  }
+  &.ant-tag-gray {
+    color:$text-light-super;
+    background-color: $fills-element-light-container-general;
+    &.tag-hover:hover,&.__pseudo-states-hover{
+      background-color:  $fills-interaction-light-general-hover;
+    }
+  }
+}
+
+
 @media screen and (min-width: 1280px) {
   .cluster-topo-wrapper .panel-content > .rack-topo-wrapper,
   .cluster-topo-wrapper .panel-content > .brick-topo-wrapper {

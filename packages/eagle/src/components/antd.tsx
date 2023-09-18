@@ -26,7 +26,6 @@ import {
   Switch as AntdSwitch,
   Table as AntdTable,
   Tabs,
-  Tag,
   Timeline,
   TimePicker,
   Tooltip as AntdTooltip,
@@ -72,6 +71,7 @@ import Steps from "./Steps";
 import Switch from "./Switch";
 import Table from "./Table";
 import TableForm from "./TableForm";
+import Tag from "./Tag";
 import TextArea from "./TextArea";
 import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
