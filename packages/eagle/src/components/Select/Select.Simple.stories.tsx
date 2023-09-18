@@ -1,0 +1,68 @@
+import { Meta, StoryFn } from "@storybook/react";
+import { Select as AntdSelect } from "antd";
+import React from "react";
+
+import Select from ".";
+
+// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+export default {
+  title: "Select/Simple",
+  component: Select,
+} as Meta<typeof Select>;
+
+const options = [
+  { key: "a11", value: "a11a" },
+  { key: "b12", value: "b12b" },
+  { key: "c13", value: "c13c" },
+];
+
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+const Template: StoryFn<typeof Select> = (args) => {
+  return (
+    <Select {...args}>
+      {options.map((option) => {
+        return (
+          <AntdSelect.Option
+            key={option.key}
+            value={option.value}
+            // for search
+            label={option.value}
+          >
+            {option.value} hello
+          </AntdSelect.Option>
+        );
+      })}
+    </Select>
+  );
+};
+
+export const Simple = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Simple.args = {
+  input: {},
+  allowClear: true,
+};
+
+export const Multiple = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Multiple.args = {
+  style: {
+    width: "100%",
+  },
+  input: {},
+  allowClear: true,
+  mode: "multiple",
+};
+
+export const MultipleWithSearch = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+MultipleWithSearch.args = {
+  style: {
+    width: "100%",
+  },
+  input: {},
+  defaultValue: ["a11a"],
+  allowClear: true,
+  mode: "multiple",
+  showSearch: true,
+};
