@@ -7,7 +7,6 @@ import { Space } from "antd";
 import cs from "classnames";
 import _ from "lodash";
 import React from "react";
-import { withDesign } from "storybook-addon-designs";
 
 import { ButtonProps } from "../../spec";
 import { Typo } from "../Typo";
@@ -252,11 +251,6 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
   );
 };
 
-const story = {
-  title: "Button",
-  decorators: [withDesign],
-};
-
 export const Basic = () => {
   return (
     <div style={{ padding: "20px" }}>
@@ -291,6 +285,10 @@ Basic.story = {
       url: "https://www.figma.com/file/nOhhbt8AO1EscJOfx60rfD/CloudTower-UI-Components?node-id=99%3A0",
     },
   },
+};
+
+const story = {
+  title: "Button",
 };
 
 export default story;

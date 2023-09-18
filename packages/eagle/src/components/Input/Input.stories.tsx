@@ -1,7 +1,6 @@
 import { Col, Row as AntdRow } from "antd";
 import cs from "classnames";
 import React, { Fragment } from "react";
-import { withDesign } from "storybook-addon-designs";
 
 import Checkbox from "../Checkbox";
 import { LeftEndInputStyle, RightEndInputStyle } from "../Styled";
@@ -109,11 +108,6 @@ const Section = ({ size }: { size: "large" | "middle" | "small" }) => {
       </div>
     </Fragment>
   );
-};
-
-export default {
-  title: "Input",
-  decorators: [withDesign],
 };
 
 export const InputStory = () => {
@@ -230,3 +224,9 @@ CheckboxStory.story = {
     },
   },
 };
+
+const story = {
+  title: "Input",
+};
+
+export default story;
