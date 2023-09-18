@@ -1,14 +1,8 @@
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { Select as AntdSelect } from "antd";
 import React from "react";
 
 import Select from ".";
-
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
-  title: "Select/Simple",
-  component: Select,
-} as Meta<typeof Select>;
 
 const options = [
   { key: "a11", value: "a11a" },
@@ -36,33 +30,44 @@ const Template: StoryFn<typeof Select> = (args) => {
   );
 };
 
-export const Simple = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Simple.args = {
-  input: {},
-  allowClear: true,
+// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+const meta: Meta<typeof Select> = {
+  title: "Select/Simple",
+  component: Template,
 };
 
-export const Multiple = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Multiple.args = {
-  style: {
-    width: "100%",
+export default meta;
+
+type Story = StoryObj<typeof Select>;
+
+export const Simple: Story = {
+  args: {
+    input: {},
+    allowClear: true,
   },
-  input: {},
-  allowClear: true,
-  mode: "multiple",
 };
 
-export const MultipleWithSearch = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-MultipleWithSearch.args = {
-  style: {
-    width: "100%",
+export const Multiple: Story = {
+  args: {
+    style: {
+      width: "100%",
+    },
+    input: {},
+    allowClear: true,
+    mode: "multiple",
   },
-  input: {},
-  defaultValue: ["a11a"],
-  allowClear: true,
-  mode: "multiple",
-  showSearch: true,
+};
+
+export const MultipleWithSearch: Story = {
+  args: {
+    style: {
+      width: "100%",
+    },
+    input: {},
+    // @ts-ignore
+    defaultValue: ["a11a"],
+    allowClear: true,
+    mode: "multiple",
+    showSearch: true,
+  },
 };
