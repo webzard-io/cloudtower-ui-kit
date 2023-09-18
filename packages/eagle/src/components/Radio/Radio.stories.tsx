@@ -1,7 +1,6 @@
 import { css } from "@linaria/core";
 import { Space } from "antd";
 import React from "react";
-import { withDesign } from "storybook-addon-designs";
 
 import Radio from "./";
 
@@ -78,5 +77,4 @@ Compact.story = {
 
 export default {
   title: "Radio",
-  decorators: [withDesign],
 };

@@ -1,6 +1,5 @@
 import { Divider, Space } from "antd";
 import React, { useState } from "react";
-import { withDesign } from "storybook-addon-designs";
 
 import TimeZoneSelect from ".";
 
@@ -69,7 +68,6 @@ TimeZoneSelectStory.story = {
 
 const Story = {
   title: "TimeZoneSelect",
-  decorators: [withDesign],
 };
 
 export default Story;

@@ -1,12 +1,10 @@
 import React from "react";
-import { withDesign } from "storybook-addon-designs";
 import { Dropdown, Menu } from "antd";
 import { css, cx } from "@linaria/core";
 import { Typo } from "../components/Typo";
 
 export default {
   title: "Menu",
-  decorators: [withDesign],
 };
 
 const Page = css`

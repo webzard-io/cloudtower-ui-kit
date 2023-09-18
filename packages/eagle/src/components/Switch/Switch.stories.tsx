@@ -1,7 +1,6 @@
 import { Space } from "antd";
 import { css } from "linaria";
 import React, { useState } from "react";
-import { withDesign } from "storybook-addon-designs";
 
 import Switch from "./";
 
@@ -45,5 +44,4 @@ Basic.story = {
 
 export default {
   title: "Switch",
-  decorators: [withDesign],
 };

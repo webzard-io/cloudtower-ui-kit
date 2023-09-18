@@ -1,7 +1,6 @@
 import { css } from "@linaria/core";
 import { Space } from "antd";
 import React from "react";
-import { withDesign } from "storybook-addon-designs";
 
 import Radio, { RadioButton, RadioGroup } from "./";
 
@@ -67,5 +66,4 @@ GroupButton.story = {
 
 export default {
   title: "RadioGroup",
-  decorators: [withDesign],
 };

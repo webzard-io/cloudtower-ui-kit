@@ -7,7 +7,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { withDesign } from "storybook-addon-designs";
 
 import Button from "../Button";
 import { Typo } from "../Typo";
@@ -82,7 +81,6 @@ const BatchInputForm: React.FC<{
 
 const story = {
   title: "TableForm",
-  decorators: [withDesign],
 };
 
 const selectOptions = [

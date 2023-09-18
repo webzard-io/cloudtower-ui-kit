@@ -4,7 +4,6 @@ import { Space as AntdSpace } from "antd";
 import { Select as AntdSelect } from "antd";
 import cs from "classnames";
 import React from "react";
-import { withDesign } from "storybook-addon-designs";
 
 import { antdKit } from "../antd";
 import { LeftEndSelectStyle, RightEndSelectStyle } from "../Styled";
@@ -101,7 +100,6 @@ const Row: React.FC<RowProps> = ({ state }) => {
 
 export default {
   title: "Select",
-  decorators: [withDesign],
 } as ComponentMeta<typeof antdKit.select>;
 
 export const Basic = () => {

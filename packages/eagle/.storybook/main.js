@@ -1,3 +1,4 @@
+import { dirname, join } from "path";
 const path = require("path");
 const fs = require("fs");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -13,18 +14,33 @@ const AnimationPath = path.resolve(__dirname,
 
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
+    getAbsolutePath("@storybook/addon-essentials"),
+    getAbsolutePath("@storybook/addon-designs"),
+    {
+      name:  '@storybook/addon-storysource',
+      options: {
+        rule: {
+          // test: [/\.stories\.@(js|jsx|ts|tsx)?$/], //This is default
+          include: [path.resolve(__dirname, '../src')], // You can specify directories
+        },
+        loaderOptions: {
+          prettierConfig: { printWidth: 80, singleQuote: false },
+        },
+      },
+    }
   ],
-  framework: "@storybook/react",
-  core: {
-    builder: "webpack5",
+
+  framework: {
+    name: getAbsolutePath("@storybook/react-webpack5"),
+    options: {}
   },
+
   typescript: {
     reactDocgen: "react-docgen-typescript-plugin",
   },
+
   webpackFinal: async (config, { configType }) => {
     const varData = fs.readFileSync(VariableSassPath, {
       encoding: "utf8",
@@ -134,4 +150,12 @@ module.exports = {
 
     return config;
   },
+
+  docs: {
+    autodocs: true
+  }
 };
+
+function getAbsolutePath(value) {
+  return dirname(require.resolve(join(value, "package.json")));
+}
