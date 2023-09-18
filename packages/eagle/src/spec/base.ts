@@ -611,7 +611,10 @@ export type ProgressComponentType = React.FC<ProgressProps>;
 export type InputGroupComponentType = StyledMeta & React.FC<GroupProps>;
 
 export type AlertComponentType = React.FunctionComponent<
-  Omit<AlertProps, "type"> & { type?: AlertProps["type"] | "normal" }
+  Omit<AlertProps, "type"> & {
+    type?: AlertProps["type"] | "normal";
+    action?: React.ReactNode;
+  }
 >;
 
 export type SearchInputComponentType = React.FC<SearchInputProps>;
