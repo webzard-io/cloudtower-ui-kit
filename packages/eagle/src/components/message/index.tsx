@@ -27,16 +27,6 @@ export function getKeyThenIncreaseKey() {
   return key++;
 }
 
-export let pageVisible = true;
-
-const visibilitychangeHandler = () => {
-  if (document.hidden) {
-    pageVisible = false;
-  } else {
-    pageVisible = true;
-  }
-};
-
 export interface ConfigOptions {
   top?: number;
   duration?: number;
@@ -74,16 +64,12 @@ function setMessageConfig(options: ConfigOptions) {
   }
 }
 
-if (typeof window !== "undefined") {
-  document.addEventListener("visibilitychange", visibilitychangeHandler);
-}
-
 function getRCNotificationInstance(
   args: ArgsProps,
   callback: (info: {
     prefixCls: string;
     instance: RCNotificationInstance;
-  }) => void,
+  }) => void
 ) {
   const prefixCls = args.prefixCls || localPrefixCls;
   if (messageInstance) {
@@ -114,7 +100,7 @@ function getRCNotificationInstance(
         prefixCls,
         instance,
       });
-    },
+    }
   );
 }
 
@@ -180,12 +166,13 @@ function notice(args: ArgsProps): MessageType {
       return resolve(true);
     };
 
+    if (document.hidden) {
+      return;
+    }
+
     getRCNotificationInstance(args, ({ prefixCls, instance }) => {
       instance.notice(
-        getRCNoticeProps(
-          { ...args, key: target, onClose: callback },
-          prefixCls,
-        ),
+        getRCNoticeProps({ ...args, key: target, onClose: callback }, prefixCls)
       );
     });
   });
@@ -197,10 +184,6 @@ function notice(args: ArgsProps): MessageType {
   result.then = (filled: ThenableArgument, rejected: ThenableArgument) =>
     closePromise.then(filled, rejected);
   result.promise = closePromise;
-
-  if (!pageVisible) {
-    result();
-  }
   return result;
 }
 
@@ -231,7 +214,7 @@ export function attachTypeApi(originalApi: any, type: string) {
   originalApi[type] = (
     content: JointContent,
     duration?: ConfigDuration,
-    onClose?: ConfigOnClose,
+    onClose?: ConfigOnClose
   ) => {
     if (isArgsProps(content)) {
       return originalApi.open({ ...content, type });
@@ -247,7 +230,7 @@ export function attachTypeApi(originalApi: any, type: string) {
 }
 
 ["success", "info", "warning", "error", "loading"].forEach((type) =>
-  attachTypeApi(api, type),
+  attachTypeApi(api, type)
 );
 
 api.warn = api.warning;
@@ -256,27 +239,27 @@ export interface MessageInstance {
   info(
     content: JointContent,
     duration?: ConfigDuration,
-    onClose?: ConfigOnClose,
+    onClose?: ConfigOnClose
   ): MessageType;
   success(
     content: JointContent,
     duration?: ConfigDuration,
-    onClose?: ConfigOnClose,
+    onClose?: ConfigOnClose
   ): MessageType;
   error(
     content: JointContent,
     duration?: ConfigDuration,
-    onClose?: ConfigOnClose,
+    onClose?: ConfigOnClose
   ): MessageType;
   warning(
     content: JointContent,
     duration?: ConfigDuration,
-    onClose?: ConfigOnClose,
+    onClose?: ConfigOnClose
   ): MessageType;
   loading(
     content: JointContent,
     duration?: ConfigDuration,
-    onClose?: ConfigOnClose,
+    onClose?: ConfigOnClose
   ): MessageType;
   open(args: ArgsProps): MessageType;
 }
@@ -285,7 +268,7 @@ export interface MessageApi extends MessageInstance {
   warn(
     content: JointContent,
     duration?: ConfigDuration,
-    onClose?: ConfigOnClose,
+    onClose?: ConfigOnClose
   ): MessageType;
   config(options: ConfigOptions): void;
   destroy(): void;

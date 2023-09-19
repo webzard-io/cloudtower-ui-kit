@@ -76,7 +76,7 @@ const TestMessage = () => {
               .fill(undefined)
               .forEach((v, index) => {
                 UIKit.message.info(
-                  parrotI18n.t("common.error_message") + index,
+                  parrotI18n.t("common.error_message") + index
                 );
               });
           }, 100);
@@ -111,6 +111,34 @@ const TestMessage = () => {
         }}
       >
         click here
+      </Button>
+      <Button
+        onClick={() => {
+          let count = 0;
+          UIKit.message.error("测试开始，请切换到其他标签页，10s 后切换回来");
+          const handler = setInterval(() => {
+            console.log("count", count++);
+            UIKit.message.info(parrotI18n.t("common.error_message"));
+          }, 3000);
+
+          setTimeout(() => {
+            clearInterval(handler);
+            UIKit.message.info("不让batch显示");
+            UIKit.message.warn("不让batch显示");
+            console.log("切换回来");
+          }, 13000);
+        }}
+      >
+        complex test case
+      </Button>
+      <Button
+        onClick={() => {
+          new Array(3).fill("").forEach(() => {
+            UIKit.message.info(parrotI18n.t("common.error_message"));
+          });
+        }}
+      >
+        complex test case next step
       </Button>
     </>
   );
