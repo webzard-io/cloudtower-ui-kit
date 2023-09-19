@@ -35,7 +35,7 @@ declare type JointContent = ConfigContent | ArgsProps;
 type OriginalMethod = (
   content: JointContent,
   duration?: ConfigDuration,
-  onClose?: ConfigOnClose,
+  onClose?: ConfigOnClose
 ) => MessageType;
 export class Batcher {
   private batchSize = 2;
@@ -51,6 +51,9 @@ export class Batcher {
   }
 
   public addMessage(originContent: KeyedArgsProps) {
+    if (document.hidden) {
+      return;
+    }
     const batchKey = this.batchHelper.getBatchKey(originContent.content);
     if (batchKey == null) {
       // can not be batched when i18n not ready
@@ -125,11 +128,11 @@ export class Batcher {
   private applyContent(
     batchKey: string,
     content: KeyedArgsProps,
-    store: MessageStore,
+    store: MessageStore
   ) {
     content.content = this.batchHelper.getBatchContent(
       batchKey,
-      store.groupedCtx!.count,
+      store.groupedCtx!.count
     );
 
     content.key = store.groupedCtx!.key;
@@ -144,7 +147,7 @@ export class Batcher {
 
 export function createBatchMessageMethods(
   message: MessageApi,
-  batchHelper: BatchHelper,
+  batchHelper: BatchHelper
 ): MessageApi {
   let _message = { ...message };
 
@@ -174,7 +177,7 @@ export function createBatchMessageMethods(
 
 function normalizeContent(
   args: Parameters<OriginalMethod>,
-  type: ArgsProps["type"] | "warn",
+  type: ArgsProps["type"] | "warn"
 ): ArgsProps {
   const c = args[0];
   if (c && typeof c === "object" && "content" in c) {

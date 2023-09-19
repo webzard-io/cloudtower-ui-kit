@@ -68,6 +68,23 @@ expect.addSnapshotSerializer({
   },
 });
 
-initParrotI18n();
+initParrotI18n({
+  resources: {
+    "en-US": {
+      translation: {
+        test: {
+          error_message_batch: "Batch Error Message {count}",
+        },
+      },
+    },
+    "zh-CN": {
+      translation: {
+        test: {
+          error_message_batch: "聚合错误信息 {count}",
+        },
+      },
+    },
+  },
+});
 
 export {};
