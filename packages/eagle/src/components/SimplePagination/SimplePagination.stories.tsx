@@ -29,7 +29,6 @@ Simple.story = {
   parameters: {
     design: {
       type: "figspec",
-      accessToken: process.env.FIGMA_TOKEN,
       url: "https://www.figma.com/file/OoAcDQd2gX7gB1zel6MFbH/Pagination?type=design&node-id=1950-26203&mode=design&t=X9YgsPcknG7yxFcP-4",
     },
   },
