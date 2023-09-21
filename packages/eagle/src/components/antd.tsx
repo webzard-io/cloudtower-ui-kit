@@ -22,6 +22,7 @@ import {
   Row,
   Select as AntdSelect,
   Skeleton,
+  Steps as AntdSteps,
   Switch as AntdSwitch,
   Table as AntdTable,
   Tabs,
@@ -164,6 +165,7 @@ export function getAntdKit(): Kit {
     antdCollapse: AntdCollapse,
     antdTreeSelect: AntdTreeSelect,
     antdDrawer: AntdDrawer,
+    antdSteps: AntdSteps,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19

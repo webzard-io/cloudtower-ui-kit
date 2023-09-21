@@ -66,6 +66,7 @@ export * from "./UIKitProvider";
 export { default as UIKitProvider } from "./UIKitProvider";
 export * from "@cloudtower/parrot";
 export { Col, Row } from "antd";
+export type { ButtonProps as AntdButtonProps } from "antd/lib/button";
 export type { CheckboxChangeEvent as AntdCheckboxChangeEvent } from "antd/lib/checkbox";
 export type { ColProps as AntdColProps } from "antd/lib/col";
 export type { DatePickerProps as AntdDatePickerProps } from "antd/lib/date-picker";
@@ -80,6 +81,7 @@ export type { ProgressProps as AntdProgressProps } from "antd/lib/progress";
 export type { RadioChangeEvent } from "antd/lib/radio";
 export type { RowProps as AntdRowProps } from "antd/lib/row";
 export type { SelectProps as AntdSelectProps } from "antd/lib/select";
+export type { TableProps as AntdTableProps } from "antd/lib/table";
 export type {
   ColumnsType as AntdColumnsType,
   ColumnType as AntdColumnType,
