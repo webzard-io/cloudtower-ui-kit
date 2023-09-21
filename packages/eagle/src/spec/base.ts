@@ -38,7 +38,7 @@ import { RowProps } from "antd/lib/row";
 import { SelectProps as AntdSelectProps, SelectProps } from "antd/lib/select";
 import { SkeletonProps as AntdSkeletonProps } from "antd/lib/skeleton";
 import { SkeletonButtonProps } from "antd/lib/skeleton/Button";
-import { StepProps, StepsProps } from "antd/lib/steps";
+import Steps, { StepProps, StepsProps } from "antd/lib/steps";
 import { SwitchProps as AntdSwitchProps } from "antd/lib/switch";
 import {
   ColumnsType,
@@ -540,6 +540,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   >;
   steps: React.FC<IStepsProps>;
   form: Form;
+  antdSteps: typeof Steps;
   simplePagination: React.FC<ISimplePaginationProps>;
   space: React.FC<ISpaceProps>;
   timeZoneSelect: React.FC<ITimeZoneSelectProps>;
@@ -567,7 +568,11 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   antdButton: React.ComponentType<AntdButtonProps>;
   antdSelect: React.ComponentType<SelectProps<V>>;
   antdTooltip: React.FC<TooltipProps>;
-  antdModal: React.FC<AntdModalProps>;
+  antdModal: React.FC<
+    AntdModalProps & {
+      focusTriggerAfterClose?: boolean;
+    }
+  >;
   antdInput: typeof Input;
   antdTable: AntdTableComponentType;
   antdEmpty: EmptyType;
