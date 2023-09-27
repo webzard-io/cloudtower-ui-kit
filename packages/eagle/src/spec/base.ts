@@ -180,7 +180,7 @@ export interface RequiredColumnProps<T>
   key: Exclude<Columns<T>["key"], undefined | number>;
   dataIndex: Exclude<ColumnType<T>["dataIndex"], undefined>;
   sortable?: boolean;
-  width?: number;
+  width?: number | string;
   // TODO: improve type
   /* eslint-disable @typescript-eslint/no-explicit-any */
   onHeaderCell?: (column: ColumnType<T>) => any;
