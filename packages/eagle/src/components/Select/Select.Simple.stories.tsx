@@ -71,3 +71,23 @@ export const MultipleWithSearch: Story = {
     showSearch: true,
   },
 };
+
+export const SizeSmall: Story = {
+  args: {
+    style: {
+      width: "100%",
+    },
+    input: {},
+    size: "small",
+  },
+};
+
+export const SizeLarge: Story = {
+  args: {
+    style: {
+      width: "100%",
+    },
+    input: {},
+    size: "large",
+  },
+};

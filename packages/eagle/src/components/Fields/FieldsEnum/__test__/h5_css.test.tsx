@@ -25,7 +25,7 @@ describe("FieldsEnum h5_css", () => {
           value: "test value 1",
         }}
         meta={{}}
-      />
+      />,
     );
 
     expect({
@@ -43,10 +43,18 @@ describe("FieldsEnum h5_css", () => {
         &.ant-select {
           &.ant-select-single {
             width: 100%;
-            height: 30px;
+            &[data-size="small"] {
+            }
+            &[data-size="middle"] {
+              height: 30px;
+            }
+            &[data-size="large"] {
+            }
             color: $text-primary-light;
             border-color: $strokes-light-trans-2;
-            transition: border 160ms ease 8ms, box-shadow 160ms ease 8ms;
+            transition:
+              border 160ms ease 8ms,
+              box-shadow 160ms ease 8ms;
             font-size: 13px;
 
             &.ant-select-lg {
@@ -130,6 +138,7 @@ describe("FieldsEnum h5_css", () => {
         font-size: 13px;
         line-height: 20px;
       ,ant-select-single,ant-select-show-arrow
+          data-size=middle
           name=inputName1
         >
           <div
@@ -215,7 +224,7 @@ describe("FieldsEnum h5_css", () => {
           value: "test value 1",
         }}
         meta={{}}
-      />
+      />,
     );
 
     expect({
@@ -233,10 +242,18 @@ describe("FieldsEnum h5_css", () => {
         &.ant-select {
           &.ant-select-single {
             width: 100%;
-            height: 30px;
+            &[data-size="small"] {
+            }
+            &[data-size="middle"] {
+              height: 30px;
+            }
+            &[data-size="large"] {
+            }
             color: $text-primary-light;
             border-color: $strokes-light-trans-2;
-            transition: border 160ms ease 8ms, box-shadow 160ms ease 8ms;
+            transition:
+              border 160ms ease 8ms,
+              box-shadow 160ms ease 8ms;
             font-size: 13px;
 
             &.ant-select-lg {
@@ -320,6 +337,7 @@ describe("FieldsEnum h5_css", () => {
         font-size: 13px;
         line-height: 20px;
       ,ant-select-single,ant-select-show-arrow
+          data-size=middle
           name=inputName1
         >
           <div
@@ -405,7 +423,7 @@ describe("FieldsEnum h5_css", () => {
           value: "test value 1",
         }}
         meta={{}}
-      />
+      />,
     );
 
     expect({
@@ -423,10 +441,18 @@ describe("FieldsEnum h5_css", () => {
         &.ant-select {
           &.ant-select-single {
             width: 100%;
-            height: 30px;
+            &[data-size="small"] {
+            }
+            &[data-size="middle"] {
+              height: 30px;
+            }
+            &[data-size="large"] {
+            }
             color: $text-primary-light;
             border-color: $strokes-light-trans-2;
-            transition: border 160ms ease 8ms, box-shadow 160ms ease 8ms;
+            transition:
+              border 160ms ease 8ms,
+              box-shadow 160ms ease 8ms;
             font-size: 13px;
 
             &.ant-select-lg {
@@ -510,6 +536,7 @@ describe("FieldsEnum h5_css", () => {
         font-size: 13px;
         line-height: 20px;
       ,ant-select-single,ant-select-show-arrow
+          data-size=middle
           name=inputName1
         >
           <div

@@ -19,7 +19,7 @@ describe("InputGroup h5_css", () => {
           style={{ width: "50%" }}
           defaultValue="Xihu District, Hangzhou"
         />
-      </InputGroup>
+      </InputGroup>,
     );
 
     expect({
@@ -44,10 +44,18 @@ describe("InputGroup h5_css", () => {
         &.ant-select {
           &.ant-select-single {
             width: 100%;
-            height: 30px;
+            &[data-size="small"] {
+            }
+            &[data-size="middle"] {
+              height: 30px;
+            }
+            &[data-size="large"] {
+            }
             color: $text-primary-light;
             border-color: $strokes-light-trans-2;
-            transition: border 160ms ease 8ms, box-shadow 160ms ease 8ms;
+            transition:
+              border 160ms ease 8ms,
+              box-shadow 160ms ease 8ms;
             font-size: 13px;
 
             &.ant-select-lg {
@@ -131,6 +139,7 @@ describe("InputGroup h5_css", () => {
         font-size: 13px;
         line-height: 20px;
       ,ant-select-single,ant-select-show-arrow
+            data-size=middle
           >
             <div
               class=ant-select-selector
