@@ -21,7 +21,7 @@ const SimplePagination = (props: ISimplePaginationProps) => {
   const { className, current, count, size, onPageChange } = props;
   const { t } = useParrotTranslation();
 
-  const pageLength = Math.ceil(count / size);
+  const pageLength = count === 0 ? 1 : Math.ceil(count / size);
   const showPrev = current > 1;
   const showNext = current * size < count;
 
@@ -34,7 +34,7 @@ const SimplePagination = (props: ISimplePaginationProps) => {
         onPageChange?.(1);
       }
     },
-    [onPageChange, pageLength]
+    [onPageChange, pageLength],
   );
 
   return (
@@ -83,7 +83,7 @@ const SimplePagination = (props: ISimplePaginationProps) => {
             css`
               color: $text-secondary-light;
             `,
-            Typo.Label.l3_regular_upper
+            Typo.Label.l3_regular_upper,
           )}
         >{`/ ${pageLength}`}</span>
         {showNext && (
