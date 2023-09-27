@@ -1,7 +1,5 @@
 import "./styles/index.scss";
 
-import { initParrotI18n } from "@cloudtower/parrot";
-
 export type { DateRange, GraphType, IconProps, IDataPoint } from "./components";
 export {
   antdKit,
@@ -23,7 +21,7 @@ export {
   WizardBody,
 } from "./components";
 export * from "./components/TableForm/types";
-export { useElementsSize } from "./hooks";
+export { useElementsSize, useParrotTranslation } from "./hooks";
 export type {
   AntdInputComponentType,
   AntdTreeSelectComponentType,
