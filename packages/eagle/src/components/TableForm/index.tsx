@@ -17,18 +17,17 @@ import { genEmptyRow } from "./utils";
 const DEFAULT_ROW_COUNT = 3;
 
 const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
-  (
-    {
-      defaultData = [],
+  (props, ref) => {
+    const {
+      // The empty array is valid data so do not initialize "defaultData" with it
+      defaultData,
       columns,
       disabled,
       rowAddConfig,
       deleteConfig,
       size = "default",
       className,
-      draggable,
       disableBatchFilling = false,
-      rowSplitType = "border",
       validateTriggerType,
       maxHeight,
       renderRowDescription,
@@ -37,13 +36,15 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       onHeaderBlur,
       onBodyChange,
       onBodyBlur,
-    },
-    ref
-  ) => {
-    const [data, setData] = useState<DataType[]>(defaultData);
+      row,
+      errors,
+    } = props;
+    const [data, setData] = useState<DataType[]>(defaultData || []);
     const [passwordVisible, setPasswordVisible] = useState(false);
-    const [latestData, setLatestData] = useState<DataType[]>(defaultData);
+    const [latestData, setLatestData] = useState<DataType[]>(defaultData || []);
     const [validateAll, setValidateAll] = useState(false);
+    const rowSplitType = row?.splitType || props.rowSplitType || "border";
+    const draggable = row?.draggable ?? props.draggable ?? false;
 
     const updateData = useCallback(
       (value: DataType[], rowIndex?: number, columnKey?: string) => {
@@ -51,14 +52,14 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
         setData(value);
         onBodyChange?.(value, rowIndex, columnKey);
       },
-      [onBodyChange]
+      [onBodyChange],
     );
 
     useLayoutEffect(() => {
-      // While default data is empty in first render, generate 3 records
-      if (defaultData.length === 0) {
+      // While default data is not defined in first render, generate 3 records
+      if (!defaultData) {
         updateData(
-          [...Array(DEFAULT_ROW_COUNT)].map(() => genEmptyRow(columns))
+          [...Array(DEFAULT_ROW_COUNT)].map(() => genEmptyRow(columns)),
         );
       }
     }, []);
@@ -72,7 +73,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
           onBodyChange?.(newData, undefined, columnKey);
         }
       },
-      [onHeaderChange, onBodyChange]
+      [onHeaderChange, onBodyChange],
     );
 
     const handleBatchBlur = useCallback(
@@ -94,7 +95,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
           onHeaderBlur?.(latestData);
         }
       },
-      [latestData, onHeaderBlur, onBodyChange]
+      [latestData, onHeaderBlur, onBodyChange],
     );
 
     useImperativeHandle(
@@ -107,7 +108,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
           setValidateAll(true);
         },
       }),
-      [updateData]
+      [updateData],
     );
 
     const headerCells = columns.map((col) => {
@@ -134,7 +135,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
                 typeof maxHeight === "number" ? maxHeight + "px" : maxHeight,
             }
           : undefined,
-      []
+      [],
     );
 
     return (
@@ -146,7 +147,9 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
           <AntdList size={size} className={`size-${size}`}>
             <AntdList.Item
               className="eagle-table-form-header"
-              actions={deleteConfig?.deletable ? [<></>] : undefined}
+              actions={
+                deleteConfig?.deletable || row?.deletable ? [<></>] : undefined
+              }
             >
               {draggable ? <DraggableHandleWrapper /> : null}
               {headerCells}
@@ -161,11 +164,13 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
               draggable={draggable}
               rowSplitType={rowSplitType}
               validateTriggerType={validateTriggerType}
+              row={row}
               onBodyBlur={onBodyBlur}
               updateData={updateData}
               renderRowDescription={renderRowDescription}
               rowValidator={rowValidator}
               validateAll={validateAll}
+              errors={errors}
             />
           </AntdList>
         </TableFormWrapper>
@@ -179,7 +184,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
         ) : null}
       </div>
     );
-  }
+  },
 );
 
 export default TableForm;
