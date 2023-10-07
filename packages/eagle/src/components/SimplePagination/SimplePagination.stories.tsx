@@ -1,15 +1,12 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import React, { useState } from "react";
 
 import SimplePagination from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
-  title: "SimplePagination",
-} as ComponentMeta<typeof SimplePagination>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-export const Simple = (args) => {
+const Template: StoryFn<typeof SimplePagination> = (args) => {
   const [value, setValue] = useState(args.current);
 
   return (
@@ -24,18 +21,39 @@ export const Simple = (args) => {
   );
 };
 
-Simple.story = {
-  name: "Basic",
+const meta: Meta<typeof SimplePagination> = {
+  title: "SimplePagination",
+  component: Template,
+};
+
+export default meta;
+
+type Story = StoryObj<typeof SimplePagination>;
+
+export const Basic: Story = {
   parameters: {
     design: {
       type: "figspec",
       url: "https://www.figma.com/file/OoAcDQd2gX7gB1zel6MFbH/Pagination?type=design&node-id=1950-26203&mode=design&t=X9YgsPcknG7yxFcP-4",
     },
   },
+  args: {
+    current: 1,
+    count: 3000000,
+    size: 50,
+  },
 };
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Simple.args = {
-  current: 1,
-  count: 3000000,
-  size: 50,
+
+export const ZeroCount: Story = {
+  parameters: {
+    design: {
+      type: "figspec",
+      url: "https://www.figma.com/file/OoAcDQd2gX7gB1zel6MFbH/Pagination?type=design&node-id=1950-26203&mode=design&t=X9YgsPcknG7yxFcP-4",
+    },
+  },
+  args: {
+    current: 1,
+    count: 0,
+    size: 50,
+  },
 };
