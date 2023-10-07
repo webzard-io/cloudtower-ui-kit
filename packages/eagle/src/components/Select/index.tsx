@@ -19,10 +19,18 @@ const SelectStyle = css`
   &.ant-select {
     &.ant-select-single {
       width: 100%;
-      height: 30px;
+      &[data-size="small"] {
+      }
+      &[data-size="middle"] {
+        height: 30px;
+      }
+      &[data-size="large"] {
+      }
       color: $text-primary-light;
       border-color: $strokes-light-trans-2;
-      transition: border 160ms ease 8ms, box-shadow 160ms ease 8ms;
+      transition:
+        border 160ms ease 8ms,
+        box-shadow 160ms ease 8ms;
       font-size: 13px;
 
       &.ant-select-lg {
@@ -148,16 +156,16 @@ const Select: SelectComponentType<any, HTMLElement> = ({
     const realDom = findDOMNode(selectRef.current);
     if (realDom) {
       const inputDom = (realDom as HTMLDivElement).getElementsByClassName(
-        "ant-select-selection-search-input"
+        "ant-select-selection-search-input",
       )[0];
       const item = (realDom as HTMLDivElement).getElementsByClassName(
-        "ant-select-selection-item"
+        "ant-select-selection-item",
       )[0];
       inputDom &&
         (placeholder || item) &&
         inputDom.setAttribute(
           "data-test",
-          String(placeholder || item.textContent)
+          String(placeholder || item.textContent),
         );
     }
   }, [selectRef, placeholder]);
@@ -186,8 +194,9 @@ const Select: SelectComponentType<any, HTMLElement> = ({
         className,
         limitExceeded && "select-event-none",
         _danger ? "select-error" : "",
-        typo
+        typo,
       )}
+      data-size={size}
       dropdownClassName={cs(dropdownClassName, limitExceeded && "display-none")}
       showSearch={
         multiple

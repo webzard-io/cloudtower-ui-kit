@@ -76,7 +76,7 @@ const TestMessage = () => {
               .fill(undefined)
               .forEach((v, index) => {
                 UIKit.message.info(
-                  parrotI18n.t("common.error_message") + index
+                  parrotI18n.t("common.error_message") + index,
                 );
               });
           }, 100);
@@ -139,6 +139,27 @@ const TestMessage = () => {
         }}
       >
         complex test case next step
+      </Button>
+      <Button
+        onClick={() => {
+          new Array(9).fill("").forEach(() => {
+            UIKit.message.info(parrotI18n.t("common.error_message"));
+          });
+
+          setTimeout(() => {
+            UIKit.message.error(parrotI18n.t("common.error_message"));
+            setTimeout(() => {
+              UIKit.message.warn(parrotI18n.t("common.error_message"));
+              window.addEventListener("visibilitychange", () => {
+                if (!document.hidden) {
+                  UIKit.message.info(parrotI18n.t("common.error_message"));
+                }
+              });
+            }, 2000);
+          }, 3000);
+        }}
+      >
+        complex test case2
       </Button>
     </>
   );
