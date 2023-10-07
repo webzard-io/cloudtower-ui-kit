@@ -27,7 +27,7 @@
     "lint": "eslint src --ext .ts --quiet"
   },
   "dependencies": {
-    "i18next": "21.10.0",
+    "i18next": "^21.10.0",
     "lodash.merge": "^4.6.2"
   },
   "devDependencies": {
@@ -39,6 +39,5 @@
     "rollup-plugin-polyfill-node": "^0.12.0",
     "rollup-plugin-visualizer": "5.9.0",
     "typescript": "5.0.2"
-  },
-  "gitHead": "6c907fc1bed385f0d1a616e6d87753d91d4bb36b"
+  }
 }
