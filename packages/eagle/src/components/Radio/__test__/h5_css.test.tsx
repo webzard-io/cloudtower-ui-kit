@@ -21,7 +21,7 @@ describe("Radio h5_css", () => {
         >
           Button Title
         </Radio>
-      </Space>
+      </Space>,
     );
 
     expect({
@@ -446,7 +446,7 @@ describe("Radio h5_css", () => {
           <RadioButton value={2}>Label</RadioButton>
           <RadioButton value={3}>Label</RadioButton>
         </RadioGroup>
-      </Space>
+      </Space>,
     );
 
     expect({
@@ -489,6 +489,12 @@ describe("Radio h5_css", () => {
           }
         }
 
+        .ant-radio-group-small &.ant-radio-button-wrapper {
+          height: 22px;
+          padding: 0 7px;
+          line-height: 20px;
+        }
+
         &.ant-radio-button-wrapper:not(:first-child)::before {
           background: $strokes-light-opaque-3;
         }
@@ -502,11 +508,15 @@ describe("Radio h5_css", () => {
           opacity: 0.5;
         }
 
-        &.ant-radio-button-wrapper-checked:not([class*=" ant-radio-button-wrapper-disabled"]).ant-radio-button-wrapper:first-child {
+        &.ant-radio-button-wrapper-checked:not(
+            [class*=" ant-radio-button-wrapper-disabled"]
+          ).ant-radio-button-wrapper:first-child {
           border-right-color: $fills-light-general-general;
         }
 
-        &.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child {
+        &.ant-radio-button-wrapper-checked:not(
+            .ant-radio-button-wrapper-disabled
+          ):first-child {
           border-color: $fills-light-general-general;
         }
 
@@ -596,6 +606,12 @@ describe("Radio h5_css", () => {
           }
         }
 
+        .ant-radio-group-small &.ant-radio-button-wrapper {
+          height: 22px;
+          padding: 0 7px;
+          line-height: 20px;
+        }
+
         &.ant-radio-button-wrapper:not(:first-child)::before {
           background: $strokes-light-opaque-3;
         }
@@ -609,11 +625,15 @@ describe("Radio h5_css", () => {
           opacity: 0.5;
         }
 
-        &.ant-radio-button-wrapper-checked:not([class*=" ant-radio-button-wrapper-disabled"]).ant-radio-button-wrapper:first-child {
+        &.ant-radio-button-wrapper-checked:not(
+            [class*=" ant-radio-button-wrapper-disabled"]
+          ).ant-radio-button-wrapper:first-child {
           border-right-color: $fills-light-general-general;
         }
 
-        &.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child {
+        &.ant-radio-button-wrapper-checked:not(
+            .ant-radio-button-wrapper-disabled
+          ):first-child {
           border-color: $fills-light-general-general;
         }
 
@@ -702,6 +722,12 @@ describe("Radio h5_css", () => {
           }
         }
 
+        .ant-radio-group-small &.ant-radio-button-wrapper {
+          height: 22px;
+          padding: 0 7px;
+          line-height: 20px;
+        }
+
         &.ant-radio-button-wrapper:not(:first-child)::before {
           background: $strokes-light-opaque-3;
         }
@@ -715,11 +741,15 @@ describe("Radio h5_css", () => {
           opacity: 0.5;
         }
 
-        &.ant-radio-button-wrapper-checked:not([class*=" ant-radio-button-wrapper-disabled"]).ant-radio-button-wrapper:first-child {
+        &.ant-radio-button-wrapper-checked:not(
+            [class*=" ant-radio-button-wrapper-disabled"]
+          ).ant-radio-button-wrapper:first-child {
           border-right-color: $fills-light-general-general;
         }
 
-        &.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child {
+        &.ant-radio-button-wrapper-checked:not(
+            .ant-radio-button-wrapper-disabled
+          ):first-child {
           border-color: $fills-light-general-general;
         }
 

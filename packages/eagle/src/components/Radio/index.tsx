@@ -107,6 +107,12 @@ const RadioButtonStyle = css`
     }
   }
 
+  .ant-radio-group-small &.ant-radio-button-wrapper {
+    height: 22px;
+    padding: 0 7px;
+    line-height: 20px;
+  }
+
   &.ant-radio-button-wrapper:not(:first-child)::before {
     background: $strokes-light-opaque-3;
   }
@@ -120,11 +126,15 @@ const RadioButtonStyle = css`
     opacity: 0.5;
   }
 
-  &.ant-radio-button-wrapper-checked:not([class*=" ant-radio-button-wrapper-disabled"]).ant-radio-button-wrapper:first-child {
+  &.ant-radio-button-wrapper-checked:not(
+      [class*=" ant-radio-button-wrapper-disabled"]
+    ).ant-radio-button-wrapper:first-child {
     border-right-color: $fills-light-general-general;
   }
 
-  &.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child {
+  &.ant-radio-button-wrapper-checked:not(
+      .ant-radio-button-wrapper-disabled
+    ):first-child {
     border-color: $fills-light-general-general;
   }
 
@@ -251,8 +261,9 @@ const RadioButton: React.FC<RadioButtonProps> = ({
     precision,
     initialValue,
   } = props;
-  const [inputValue, setInputValue] =
-    useState<string | number | undefined>(initialValue);
+  const [inputValue, setInputValue] = useState<string | number | undefined>(
+    initialValue,
+  );
   const radioButtonValue =
     type === "input" || type === "input-number" ? inputValue : props.value;
   const radioGroupContext = React.useContext(KitRadioGroupContext);
