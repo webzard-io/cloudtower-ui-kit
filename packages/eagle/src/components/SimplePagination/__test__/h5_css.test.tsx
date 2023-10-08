@@ -7,7 +7,7 @@ import SimplePagination from "..";
 describe("SimplePagination h5_css", () => {
   it("h5_css first page", ({ expect }) => {
     const { container } = render(
-      <SimplePagination current={1} count={300000} size={50} />
+      <SimplePagination current={1} count={300000} size={50} />,
     );
 
     expect({
@@ -412,7 +412,10 @@ describe("SimplePagination h5_css", () => {
           height: 32px;
           border-radius: 6px;
           line-height: 22px;
-          transition: transform 160ms ease, background 160ms ease, opacity 160ms ease;
+          transition:
+            transform 160ms ease,
+            background 160ms ease,
+            opacity 160ms ease;
           transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
 
           &.ant-btn-lg {
@@ -741,8 +744,8 @@ describe("SimplePagination h5_css", () => {
           display: inline-flex;
         }
         .icon-wrapper {
-          display: inline-flex;
-          vertical-align: bottom;
+          display: flex;
+          vertical-align: middle;
         }
       ,has-icon,
         @include Inter();
@@ -756,6 +759,7 @@ describe("SimplePagination h5_css", () => {
                 class=
         display: inline-flex;
         align-items: center;
+        vertical-align: middle;
 
         .icon-inner {
           display: inline-flex;
@@ -794,7 +798,7 @@ describe("SimplePagination h5_css", () => {
 
   it("h5_css middle page", ({ expect }) => {
     const { container } = render(
-      <SimplePagination current={6000} count={300000} size={50} />
+      <SimplePagination current={6000} count={300000} size={50} />,
     );
 
     expect({
@@ -874,7 +878,10 @@ describe("SimplePagination h5_css", () => {
           height: 32px;
           border-radius: 6px;
           line-height: 22px;
-          transition: transform 160ms ease, background 160ms ease, opacity 160ms ease;
+          transition:
+            transform 160ms ease,
+            background 160ms ease,
+            opacity 160ms ease;
           transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
 
           &.ant-btn-lg {
@@ -1203,8 +1210,8 @@ describe("SimplePagination h5_css", () => {
           display: inline-flex;
         }
         .icon-wrapper {
-          display: inline-flex;
-          vertical-align: bottom;
+          display: flex;
+          vertical-align: middle;
         }
       ,has-icon,
         @include Inter();
@@ -1218,6 +1225,7 @@ describe("SimplePagination h5_css", () => {
                 class=
         display: inline-flex;
         align-items: center;
+        vertical-align: middle;
 
         .icon-inner {
           display: inline-flex;
@@ -1581,7 +1589,7 @@ describe("SimplePagination h5_css", () => {
 
   it("h5_css last page", ({ expect }) => {
     const { container } = render(
-      <SimplePagination current={6000} count={300000} size={50} />
+      <SimplePagination current={6000} count={300000} size={50} />,
     );
 
     expect({
@@ -1661,7 +1669,10 @@ describe("SimplePagination h5_css", () => {
           height: 32px;
           border-radius: 6px;
           line-height: 22px;
-          transition: transform 160ms ease, background 160ms ease, opacity 160ms ease;
+          transition:
+            transform 160ms ease,
+            background 160ms ease,
+            opacity 160ms ease;
           transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
 
           &.ant-btn-lg {
@@ -1990,8 +2001,8 @@ describe("SimplePagination h5_css", () => {
           display: inline-flex;
         }
         .icon-wrapper {
-          display: inline-flex;
-          vertical-align: bottom;
+          display: flex;
+          vertical-align: middle;
         }
       ,has-icon,
         @include Inter();
@@ -2005,6 +2016,7 @@ describe("SimplePagination h5_css", () => {
                 class=
         display: inline-flex;
         align-items: center;
+        vertical-align: middle;
 
         .icon-inner {
           display: inline-flex;

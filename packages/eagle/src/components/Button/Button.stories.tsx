@@ -1,8 +1,4 @@
-import {
-  DownOutlined,
-  EllipsisOutlined,
-  PlusOutlined,
-} from "@ant-design/icons";
+import { DownOutlined, EllipsisOutlined } from "@ant-design/icons";
 import { Space } from "antd";
 import cs from "classnames";
 import _ from "lodash";
@@ -11,6 +7,12 @@ import React from "react";
 import { ButtonProps } from "../../spec";
 import { Typo } from "../Typo";
 import Button from ".";
+import {
+  ArrowBoldDown16WhiteIcon,
+  MoreEllipsis316BoldOntintIcon,
+  PlusAddCreateNew16BoldOntintIcon,
+} from "@cloudtower/icons-react";
+import Icon from "../Icon";
 
 const Title: React.FC = ({ children }) => (
   <div style={{ marginTop: "16px" }} className={Typo.Display.d2_bold_title}>
@@ -36,35 +38,46 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
         style={{ padding: "12px", width: "100%", background }}
       >
         <Subtitle>{_.capitalize(type)}</Subtitle>
-        <Button icon={<PlusOutlined />} type={type}>
+        <Button
+          prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
+          type={type}
+        >
           Label
         </Button>
         <Button
-          icon={<PlusOutlined />}
+          prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
           type={type}
           className="__pseudo-states-hover"
         >
           Hover
         </Button>
         <Button
-          icon={<PlusOutlined />}
+          prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
           type={type}
           className="__pseudo-states-active"
         >
           Active
         </Button>
         <Button
-          icon={<PlusOutlined />}
+          prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
           type={type}
           className="__pseudo-states-focus"
         >
           Focus
         </Button>
-        <Button disabled icon={<PlusOutlined />} type={type}>
+        <Button
+          disabled
+          prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
+          type={type}
+        >
           Disabled
         </Button>
-        <Button icon={<DownOutlined />} type={type} />
-        <Button icon={<EllipsisOutlined />} type={type} shape="circle" />
+        <Button icon={<Icon src={ArrowBoldDown16WhiteIcon} />} type={type} />
+        <Button
+          icon={<Icon src={MoreEllipsis316BoldOntintIcon} />}
+          type={type}
+          shape="circle"
+        />
         <Button loading type={type} />
       </Space>
 
@@ -73,12 +86,16 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
         style={{ padding: "12px", width: "100%", background }}
       >
         <Subtitle>{_.capitalize(type)} Danger</Subtitle>
-        <Button danger icon={<PlusOutlined />} type={type}>
+        <Button
+          danger
+          prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
+          type={type}
+        >
           Label
         </Button>
         <Button
           danger
-          icon={<PlusOutlined />}
+          prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
           type={type}
           className="__pseudo-states-hover"
         >
@@ -86,7 +103,7 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
         </Button>
         <Button
           danger
-          icon={<PlusOutlined />}
+          prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
           type={type}
           className="__pseudo-states-active"
         >
@@ -94,13 +111,18 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
         </Button>
         <Button
           danger
-          icon={<PlusOutlined />}
+          prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
           type={type}
           className="__pseudo-states-focus"
         >
           Focus
         </Button>
-        <Button danger disabled icon={<PlusOutlined />} type={type}>
+        <Button
+          danger
+          disabled
+          prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
+          type={type}
+        >
           Disabled
         </Button>
       </Space>
@@ -111,28 +133,28 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
       >
         <Subtitle>{_.capitalize(type)} Orange</Subtitle>
         <Button
-          icon={<PlusOutlined />}
+          prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
           type={type}
           className="btn-primary-orange"
         >
           Label
         </Button>
         <Button
-          icon={<PlusOutlined />}
+          prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
           type={type}
           className={cs("btn-primary-orange", "__pseudo-states-hover")}
         >
           Hover
         </Button>
         <Button
-          icon={<PlusOutlined />}
+          prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
           type={type}
           className={cs("btn-primary-orange", "__pseudo-states-active")}
         >
           Active
         </Button>
         <Button
-          icon={<PlusOutlined />}
+          prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
           type={type}
           className={cs("btn-primary-orange", "__pseudo-states-focus")}
         >
@@ -141,7 +163,7 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
         <Button
           className="btn-primary-orange"
           disabled
-          icon={<PlusOutlined />}
+          prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
           type={type}
         >
           Disabled
@@ -154,26 +176,30 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
           style={{ padding: "12px", width: "100%", background }}
         >
           <Subtitle>{_.capitalize(type)} Blue</Subtitle>
-          <Button className="ordinary-blue" icon={<PlusOutlined />} type={type}>
+          <Button
+            className="ordinary-blue"
+            prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
+            type={type}
+          >
             Label
           </Button>
           <Button
             className={cs("ordinary-blue", "__pseudo-states-hover")}
-            icon={<PlusOutlined />}
+            prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
             type={type}
           >
             Hover
           </Button>
           <Button
             className={cs("ordinary-blue", "__pseudo-states-active")}
-            icon={<PlusOutlined />}
+            prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
             type={type}
           >
             Active
           </Button>
           <Button
             className={cs("ordinary-blue", "__pseudo-states-focus")}
-            icon={<PlusOutlined />}
+            prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
             type={type}
           >
             Focus
@@ -181,19 +207,19 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
           <Button
             className="ordinary-blue"
             disabled
-            icon={<PlusOutlined />}
+            prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
             type={type}
           >
             Disabled
           </Button>
           <Button
             className="ordinary-blue"
-            icon={<DownOutlined />}
+            icon={<Icon src={ArrowBoldDown16WhiteIcon} />}
             type={type}
           />
           <Button
             className="ordinary-blue"
-            icon={<EllipsisOutlined />}
+            icon={<Icon src={MoreEllipsis316BoldOntintIcon} />}
             type={type}
             shape="circle"
           />
@@ -206,26 +232,30 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
           style={{ padding: "12px", width: "100%", background }}
         >
           <Subtitle>{_.capitalize(type)} Basic</Subtitle>
-          <Button className="quiet-blue" icon={<PlusOutlined />} type={type}>
+          <Button
+            className="quiet-blue"
+            prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
+            type={type}
+          >
             Label
           </Button>
           <Button
             className={cs("quiet-blue", "__pseudo-states-hover")}
-            icon={<PlusOutlined />}
+            prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
             type={type}
           >
             Hover
           </Button>
           <Button
             className={cs("quiet-blue", "__pseudo-states-active")}
-            icon={<PlusOutlined />}
+            prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
             type={type}
           >
             Active
           </Button>
           <Button
             className={cs("quiet-blue", "__pseudo-states-focus")}
-            icon={<PlusOutlined />}
+            prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
             type={type}
           >
             Focus
@@ -233,15 +263,19 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
           <Button
             className="quiet-blue"
             disabled
-            icon={<PlusOutlined />}
+            prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
             type={type}
           >
             Disabled
           </Button>
-          <Button className="quiet-blue" icon={<DownOutlined />} type={type} />
           <Button
             className="quiet-blue"
-            icon={<EllipsisOutlined />}
+            icon={<Icon src={ArrowBoldDown16WhiteIcon} />}
+            type={type}
+          />
+          <Button
+            className="quiet-blue"
+            icon={<Icon src={MoreEllipsis316BoldOntintIcon} />}
             type={type}
             shape="circle"
           />

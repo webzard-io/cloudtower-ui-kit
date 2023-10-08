@@ -119,6 +119,7 @@ export const tableStyleCover = css`
     }
 
     .ant-table-selection {
+      position: unset;
       text-align: center;
     }
 
