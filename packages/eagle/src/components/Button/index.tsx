@@ -13,7 +13,10 @@ const ButtonStyle = css`
     height: 32px;
     border-radius: 6px;
     line-height: 22px;
-    transition: transform 160ms ease, background 160ms ease, opacity 160ms ease;
+    transition:
+      transform 160ms ease,
+      background 160ms ease,
+      opacity 160ms ease;
     transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
 
     &.ant-btn-lg {
@@ -342,8 +345,8 @@ const ButtonStyle = css`
     display: inline-flex;
   }
   .icon-wrapper {
-    display: inline-flex;
-    vertical-align: bottom;
+    display: flex;
+    vertical-align: middle;
   }
 `;
 
@@ -354,7 +357,7 @@ const NoPadding = css`
 const isAntdButtonTypes = (type?: string): type is AntdButtonType => {
   return Boolean(
     type &&
-      ["default", "primary", "ghost", "dashed", "link", "text"].includes(type)
+      ["default", "primary", "ghost", "dashed", "link", "text"].includes(type),
   );
 };
 
@@ -388,7 +391,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           size === "middle" && Typo.Label.l2_regular_title,
           size === "small" && Typo.Label.l3_regular_title,
           type && `ant-btn-${type}`,
-          !children && children !== 0 && restProps.icon && "ant-btn-icon-only"
+          !children && children !== 0 && restProps.icon && "ant-btn-icon-only",
         )}
         type={isAntdButtonTypes(type) ? type : undefined}
         onMouseEnter={(e) => {
@@ -425,7 +428,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
       </AntdButton>
     );
-  }
+  },
 );
 
 export default Button;

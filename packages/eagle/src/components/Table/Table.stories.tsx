@@ -2,6 +2,13 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { useState } from "react";
 
 import Table, { ColumnTitle } from ".";
+import {
+  MoreEllipsis16BlueIcon,
+  MoreEllipsis316BoldBlueIcon,
+  SettingsGear16GradientGrayIcon,
+} from "@cloudtower/icons-react";
+import Icon from "../Icon";
+import Button from "../Button";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -32,6 +39,18 @@ const columns = [
     key: "Address",
     title: "Address",
     dataIndex: "address",
+  },
+  {
+    key: "Action",
+    dataIndex: "id",
+    title: () => <Icon src={SettingsGear16GradientGrayIcon} />,
+    render: () => (
+      <Button
+        size="small"
+        type="tertiary"
+        icon={<Icon src={MoreEllipsis316BoldBlueIcon} />}
+      />
+    ),
   },
 ];
 

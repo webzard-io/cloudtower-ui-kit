@@ -27,6 +27,7 @@ export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
 const IconWrapper = css`
   display: inline-flex;
   align-items: center;
+  vertical-align: middle;
 
   .icon-inner {
     display: inline-flex;
@@ -98,7 +99,7 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
         IconWrapper,
         "icon-wrapper",
         className,
-        isRotate && "is-rotate"
+        isRotate && "is-rotate",
       )}
       suffixIconSrc={suffixIconSrc}
       height={iconHeight}

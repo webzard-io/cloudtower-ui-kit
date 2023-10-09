@@ -208,6 +208,7 @@ describe("Table h5_css", () => {
           }
 
           .ant-table-selection {
+            position: unset;
             text-align: center;
           }
 
