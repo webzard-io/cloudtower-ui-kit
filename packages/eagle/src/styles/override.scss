@@ -763,6 +763,9 @@ td .ant-btn-link {
   &:hover{
     opacity: unset;
   }
+  &.ant-tag-hidden {
+    display: none;
+  }
   &.ant-tag-red {
     color:$fills-light-serious-serious;
     background-color: $fills-light-serious-serious-light;

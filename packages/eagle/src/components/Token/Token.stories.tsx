@@ -233,36 +233,6 @@ Default.argTypes = {
   },
 };
 
-export const Custom: StoryObj<{
-  content: string;
-  color: TokenColor;
-  size: "small" | "medium" | "large";
-  closable: boolean;
-}> = {
-  render: ({ content, ...props }) => {
-    return (
-      <>
-        <Title>Custom</Title>
-        <Token {...props}>{content}</Token>
-      </>
-    );
-  },
-};
-
-Custom.args = {
-  content: "label",
-  color: "magenta",
-  size: "small",
-  closable: true,
-};
-
-Custom.argTypes = {
-  size: {
-    control: "select",
-    options: ["small", "medium", "large"],
-  },
-};
-
 export const Truncate: StoryObj<{
   content: string;
   len: number;

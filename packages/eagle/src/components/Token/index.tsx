@@ -63,11 +63,11 @@ const TokenStyle = css`
       background-color: $fills-light-serious-serious-light;
     }
     &.ant-tag-yellow {
-      color: $text-light-notice;
+      color: $fills-light-notice-notice-dark;
       background-color: $fills-light-notice-notice-light;
     }
     &.ant-tag-green {
-      color: $text-light-positive;
+      color: $fills-light-positive-positive-dark;
       background-color: $fills-light-positive-positive-light;
     }
     &.ant-tag-gray {
