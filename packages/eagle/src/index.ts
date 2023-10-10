@@ -21,6 +21,7 @@ export {
   useKitDispatch,
   useKitSelector,
   WizardBody,
+  Truncate,
 } from "./components";
 export * from "./components/TableForm/types";
 export { useElementsSize } from "./hooks";
@@ -46,6 +47,7 @@ export type {
   TextAreaProps,
   TooltipProps,
   WizardSteps,
+  TagColor,
 } from "./spec";
 export * from "./spec/type";
 export type {

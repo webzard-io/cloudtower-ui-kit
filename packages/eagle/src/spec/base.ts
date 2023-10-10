@@ -67,6 +67,7 @@ import { ICardProps } from "../components/Card";
 import { IEmptyProps } from "../components/Empty";
 import { MessageApi } from "../components/message";
 import { TableFormHandle, TableFormProps } from "../components/TableForm/types";
+import { TruncatePropTypes } from "../components/Truncate";
 import { SerializableObject } from "../utils/tower";
 import { FieldRenderProps } from "./react-final-form";
 import { Architecture, ISpaceProps, ITimeZoneSelectProps } from "./type";
@@ -586,6 +587,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   antdCollapse: CollapseInterface;
   antdTreeSelect: typeof TreeSelect;
   antdDrawer: React.FC<DrawerProps>;
+  truncate: React.FC<TruncatePropTypes>;
   card: ForwardRefExoticComponent<
     PropsWithoutRef<ICardProps> & RefAttributes<HTMLDivElement>
   >;
@@ -635,22 +637,30 @@ export type TableFormPropsType = React.ForwardRefExoticComponent<
   TableFormProps & React.RefAttributes<TableFormHandle>
 >;
 
+export type TagColor =
+  | "red"
+  | "yellow"
+  | "green"
+  | "blue"
+  | "purple"
+  | "gray"
+  | "red-ontint"
+  | "green-ontint"
+  | "error"
+  | "warning"
+  | "processing"
+  | "default"
+  | "success";
+
 export type TagComponentType = React.FC<
   Omit<TagProps, "closable" | "closeIcon" | "onClose"> & {
-    color?:
-      | "red"
-      | "yellow"
-      | "green"
-      | "blue"
-      | "purple"
-      | "gray"
-      | "red-ontint"
-      | "green-ontint"
-      | string;
+    color?: TagColor;
     size?: "small" | "medium";
     hoverable?: boolean;
   }
->;
+> & {
+  SplitTag: SplitTagComponentType;
+};
 
 export type SplitTagComponentType = React.FC<
   Omit<TagProps, "closable" | "closeIcon" | "onClose" | "visible"> & {
@@ -660,9 +670,11 @@ export type SplitTagComponentType = React.FC<
     secondaryContent: React.ReactNode;
   }
 >;
+
+export type TokenColor = "red" | "yellow" | "green" | "blue" | "gray";
 export type TokenComponentType = React.FC<
-  Omit<TagProps, "icon" | "closeIcon"> & {
-    color?: "red" | "yellow" | "green" | "blue" | "gray" | string;
+  Omit<TagProps, "closeIcon"> & {
+    color?: TokenColor;
     size?: "small" | "medium" | "large";
     checked?: boolean;
   }

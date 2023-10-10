@@ -38,6 +38,7 @@ import React from "react";
 
 import { Kit, OptionComponentType } from "../spec";
 import Alert from "./Alert";
+import Truncate from "./Truncate";
 import Arch from "./Arch";
 import Badge from "./Badge";
 import Bit from "./Bit";
@@ -168,6 +169,7 @@ export function getAntdKit(): Kit {
     antdDrawer: AntdDrawer,
     antdSteps: AntdSteps,
     card: Card,
+    truncate: Truncate,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19

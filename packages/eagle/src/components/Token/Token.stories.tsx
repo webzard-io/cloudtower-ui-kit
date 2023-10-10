@@ -1,8 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
+import { Placeholder16Icon } from "@cloudtower/icons-react";
 import { Space } from "antd";
 import React from "react";
 
-import { TokenComponentType } from "../../spec";
+import { TokenColor, TokenComponentType } from "../../spec";
 import BaseTruncate from "../Truncate";
 import { Typo } from "../Typo";
 import Token, { PresetColors } from ".";
@@ -39,13 +40,45 @@ export const Basic: StoryObj<TokenComponentType> = {
                   <Token closable size="large" color={color}>
                     Label
                   </Token>
+                  <Token
+                    closable
+                    size="large"
+                    color={color}
+                    icon={<Placeholder16Icon />}
+                  >
+                    Label
+                  </Token>
                   <Token closable checked size="large" color={color}>
+                    Label
+                  </Token>
+                  <Token
+                    closable
+                    checked
+                    size="large"
+                    color={color}
+                    icon={<Placeholder16Icon />}
+                  >
                     Label
                   </Token>
                   <Token size="large" color={color}>
                     Label
                   </Token>
+                  <Token
+                    size="large"
+                    color={color}
+                    icon={<Placeholder16Icon />}
+                  >
+                    Label
+                  </Token>
                   <Token checked size="large" color={color}>
+                    Label
+                  </Token>
+                  <Token
+                    checked
+                    size="large"
+                    color={color}
+                    icon={<Placeholder16Icon />}
+                  >
                     Label
                   </Token>
                 </Space>
@@ -60,13 +93,45 @@ export const Basic: StoryObj<TokenComponentType> = {
                   <Token closable size="medium" color={color}>
                     Label
                   </Token>
+                  <Token
+                    closable
+                    size="large"
+                    color={color}
+                    icon={<Placeholder16Icon />}
+                  >
+                    Label
+                  </Token>
                   <Token closable checked size="medium" color={color}>
+                    Label
+                  </Token>
+                  <Token
+                    closable
+                    checked
+                    size="medium"
+                    color={color}
+                    icon={<Placeholder16Icon />}
+                  >
                     Label
                   </Token>
                   <Token size="medium" color={color}>
                     Label
                   </Token>
+                  <Token
+                    size="medium"
+                    color={color}
+                    icon={<Placeholder16Icon />}
+                  >
+                    Label
+                  </Token>
                   <Token checked size="medium" color={color}>
+                    Label
+                  </Token>
+                  <Token
+                    checked
+                    size="medium"
+                    color={color}
+                    icon={<Placeholder16Icon />}
+                  >
                     Label
                   </Token>
                 </Space>
@@ -81,13 +146,45 @@ export const Basic: StoryObj<TokenComponentType> = {
                   <Token closable size="small" color={color}>
                     Label
                   </Token>
+                  <Token
+                    closable
+                    size="small"
+                    color={color}
+                    icon={<Placeholder16Icon />}
+                  >
+                    Label
+                  </Token>
                   <Token closable checked size="small" color={color}>
+                    Label
+                  </Token>
+                  <Token
+                    closable
+                    checked
+                    size="small"
+                    color={color}
+                    icon={<Placeholder16Icon />}
+                  >
                     Label
                   </Token>
                   <Token size="small" color={color}>
                     Label
                   </Token>
+                  <Token
+                    size="small"
+                    color={color}
+                    icon={<Placeholder16Icon />}
+                  >
+                    Label
+                  </Token>
                   <Token checked size="small" color={color}>
+                    Label
+                  </Token>
+                  <Token
+                    checked
+                    size="small"
+                    color={color}
+                    icon={<Placeholder16Icon />}
+                  >
                     Label
                   </Token>
                 </Space>
@@ -100,9 +197,45 @@ export const Basic: StoryObj<TokenComponentType> = {
   },
 };
 
+export const Default: StoryObj<{
+  content: string;
+  color: TokenColor;
+  size: "small" | "medium" | "large";
+  closable: boolean;
+}> = {
+  render: ({ content, ...props }) => {
+    return (
+      <>
+        <Token {...props}>{content}</Token>
+      </>
+    );
+  },
+};
+
+Default.args = {
+  content: "label",
+  closable: undefined,
+  size: undefined,
+  color: undefined,
+};
+
+Default.argTypes = {
+  size: {
+    control: "radio",
+    options: ["small", "medium", "large"],
+  },
+  color: {
+    control: "radio",
+    options: ["blue", "red", "yellow", "green", "gray"],
+  },
+  closable: {
+    control: "boolean",
+  },
+};
+
 export const Custom: StoryObj<{
   content: string;
-  color: string;
+  color: TokenColor;
   size: "small" | "medium" | "large";
   closable: boolean;
 }> = {

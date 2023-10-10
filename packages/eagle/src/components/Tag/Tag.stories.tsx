@@ -9,7 +9,7 @@ import { css } from "@linaria/core";
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
-import { SplitTagComponentType, TagComponentType } from "../../spec";
+import { SplitTagComponentType, TagComponentType, TagColor } from "../../spec";
 import Stack from "../Stack";
 import BaseTruncate from "../Truncate";
 import { Typo } from "../Typo";
@@ -152,9 +152,35 @@ export const Basic: StoryObj<TagComponentType> = {
   },
 };
 
+export const Default: StoryObj<{
+  content: string;
+  color: TagColor;
+  size: "small" | "medium";
+  hoverable: boolean;
+}> = {
+  render: ({ content, ...props }) => {
+    return <Tag {...props}>{content}</Tag>;
+  },
+  args: {
+    content: "label",
+    size: undefined,
+    color: undefined,
+  },
+  argTypes: {
+    size: {
+      control: "radio",
+      options: ["small", "medium"],
+    },
+    color: {
+      control: "radio",
+      options: ["blue", "red", "yellow", "green", "gray"],
+    },
+  },
+};
+
 export const Custom: StoryObj<{
   content: string;
-  color: string;
+  color: TagColor;
   size: "small" | "medium";
   hoverable: boolean;
 }> = {
@@ -234,7 +260,7 @@ export const SplitTag: StoryObj<SplitTagComponentType> = {
 export const Truncate: StoryObj<{
   content: string;
   len: number;
-  color: string;
+  color: TagColor;
   size: "small" | "medium";
 }> = {
   render: ({ content, len, ...props }) => {
@@ -251,7 +277,7 @@ export const Truncate: StoryObj<{
   },
   args: {
     content: "longlonglonglong",
-    color: "magenta",
+    color: "default",
     size: "small",
     len: 10,
   },
@@ -262,6 +288,28 @@ export const Truncate: StoryObj<{
         options: ["small", "medium"],
       },
     },
+  },
+};
+
+export const legacyWithAntd = {
+  render: () => {
+    const antdColors: TagColor[] = [
+      "success",
+      "processing",
+      "error",
+      "warning",
+      "default",
+    ];
+    return (
+      <>
+        <div>对齐 antd 原来的命名</div>
+        {antdColors.map((color) => (
+          <Tag size="medium" style={{ marginRight: "5px" }} color={color}>
+            {color}
+          </Tag>
+        ))}
+      </>
+    );
   },
 };
 
