@@ -4,11 +4,18 @@ import { Tag as AntdTag } from "antd";
 import cs from "classnames";
 import React from "react";
 
-import { TokenComponentType } from "../../spec";
+import { TokenColor, TokenComponentType } from "../../spec";
+import { IconStyle } from "./style";
 import Icon from "../Icon";
 import { Typo } from "../Typo";
 
-export const PresetColors = ["blue", "red", "yellow", "green", "gray"];
+export const PresetColors: TokenColor[] = [
+  "blue",
+  "red",
+  "yellow",
+  "green",
+  "gray",
+];
 
 const Size: Record<"small" | "medium" | "large", LinariaClassName> = {
   small: css`
@@ -25,12 +32,14 @@ const Size: Record<"small" | "medium" | "large", LinariaClassName> = {
   `,
 };
 
+// TODO: remove margin-right after token field
 const TokenStyle = css`
   &.ant-tag:hover {
     opacity: unset;
   }
   &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
     margin: 0;
+    margin-right: 8px;
     display: inline-flex;
     align-items: center;
     border: none;
@@ -40,6 +49,7 @@ const TokenStyle = css`
       color: inherit;
       margin-left: 4px;
       opacity: 0.6;
+      display: inline-flex;
       &:hover {
         opacity: 1;
       }
@@ -53,11 +63,11 @@ const TokenStyle = css`
       background-color: $fills-light-serious-serious-light;
     }
     &.ant-tag-yellow {
-      color: $text-light-notice;
+      color: $fills-light-notice-notice-dark;
       background-color: $fills-light-notice-notice-light;
     }
     &.ant-tag-green {
-      color: $text-light-positive;
+      color: $fills-light-positive-positive-dark;
       background-color: $fills-light-positive-positive-light;
     }
     &.ant-tag-gray {
@@ -90,7 +100,9 @@ const Token: TokenComponentType = ({
   size = "small",
   color = "gray",
   className,
+  icon,
   checked,
+  children,
   ...props
 }) => {
   return (
@@ -117,7 +129,10 @@ const Token: TokenComponentType = ({
         />
       }
       color={color === "gray" ? undefined : color}
-    />
+    >
+      {icon && <span className={cs("ui-kit-tag-icon", IconStyle)}>{icon}</span>}
+      {children}
+    </AntdTag>
   );
 };
 
