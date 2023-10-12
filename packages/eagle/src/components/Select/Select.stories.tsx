@@ -2,11 +2,9 @@ import { styled } from "@linaria/react";
 import { ComponentMeta } from "@storybook/react";
 import { Space as AntdSpace } from "antd";
 import { Select as AntdSelect } from "antd";
-import cs from "classnames";
 import React from "react";
 
 import { antdKit } from "../antd";
-import { LeftEndSelectStyle, RightEndSelectStyle } from "../Styled";
 import { Typo } from "../Typo";
 import Select from ".";
 
@@ -75,18 +73,10 @@ const Row: React.FC<RowProps> = ({ state }) => {
         <Select placeholder="Label" {...props}>
           {options}
         </Select>
-        <Select
-          placeholder="Label"
-          {...props}
-          className={cs(props.className, LeftEndSelectStyle)}
-        >
+        <Select placeholder="Label" {...props} borderMode="left">
           {options}
         </Select>
-        <Select
-          placeholder="Label"
-          {...props}
-          className={cs(props.className, RightEndSelectStyle)}
-        >
+        <Select placeholder="Label" {...props} borderMode="right">
           {options}
         </Select>
         <Select placeholder="Label" danger {...props}>

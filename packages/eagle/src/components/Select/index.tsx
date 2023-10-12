@@ -1,3 +1,7 @@
+import {
+  ArrowChevronDown16BoldSecondaryTransparentIcon,
+  Loading16GradientBlueIcon,
+} from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import { Select as AntdSelect } from "antd";
 import cs from "classnames";
@@ -14,6 +18,18 @@ const SelectStyle = css`
   &.ant-select,
   &.ant-select .ant-select-selector {
     border-radius: 6px;
+  }
+
+  &.ant-select.border-left,
+  &.ant-select.border-left .ant-select-selector {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &.ant-select.border-right,
+  &.ant-select.border-right .ant-select-selector {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 
   &.ant-select {
@@ -76,10 +92,15 @@ const SelectStyle = css`
         }
       }
 
+      &.ant-select-disabled .ant-select-arrow {
+        opacity: 0.6;
+      }
+
       &.ant-select-disabled .ant-select-selector {
         background: $fills-light-trans-3;
         border-color: $strokes-light-trans-3;
-        cursor: "not-allowed";
+        cursor: not-allowed;
+        color: $text-light-tertiary;
       }
     }
     &.select-error:not(.ant-select-disabled) {
@@ -131,6 +152,7 @@ const Select: SelectComponentType<any, HTMLElement> = ({
   size = "middle",
   meta,
   placeholder,
+  borderMode = "default",
   ...restProps
 }) => {
   const limitExceeded =
@@ -192,6 +214,7 @@ const Select: SelectComponentType<any, HTMLElement> = ({
         SelectStyle,
         "select",
         className,
+        `border-${borderMode}`,
         limitExceeded && "select-event-none",
         _danger ? "select-error" : "",
         typo,
@@ -204,6 +227,23 @@ const Select: SelectComponentType<any, HTMLElement> = ({
           : typeof showSearch === "undefined"
           ? Boolean(onSearch)
           : showSearch
+      }
+      suffixIcon={
+        <span
+          role="img"
+          aria-label="down"
+          className={cs(
+            "anticon ant-select-suffix",
+            loading ? "anticon-loading" : "anticon-down",
+          )}
+        >
+          {restProps.suffixIcon ||
+            (loading ? (
+              <Loading16GradientBlueIcon className="anticon-spin" />
+            ) : (
+              <ArrowChevronDown16BoldSecondaryTransparentIcon />
+            ))}
+        </span>
       }
       filterOption={
         onSearch === undefined

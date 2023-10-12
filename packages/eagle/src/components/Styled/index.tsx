@@ -529,7 +529,9 @@ export const InputStyle = css`
     color: $text-primary-light;
     border-radius: 6px;
     border-color: $strokes-light-trans-3;
-    transition: height 240ms ease 8ms, border 160ms ease 8ms,
+    transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
       box-shadow 160ms ease 8ms;
   }
 
@@ -596,7 +598,9 @@ export const InputStyle = css`
     border-color: $strokes-light-trans-3;
     line-height: 20px;
     color: $text-primary-light;
-    transition: height 240ms ease 8ms, border 160ms ease 8ms,
+    transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
       box-shadow 160ms ease 8ms;
 
     .ant-input-suffix,
@@ -782,22 +786,6 @@ export const RightEndInputStyle = css`
   }
 
   &.ant-input-affix-wrapper {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-`;
-
-export const LeftEndSelectStyle = css`
-  &.ant-select,
-  &.ant-select .ant-select-selector {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-`;
-
-export const RightEndSelectStyle = css`
-  &.ant-select,
-  &.ant-select .ant-select-selector {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }

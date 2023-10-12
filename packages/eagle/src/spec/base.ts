@@ -114,6 +114,7 @@ interface LooseFieldRenderProps<V, T extends HTMLElement> {
     checked?: FieldRenderProps<V, T>["input"]["checked"];
     multiple?: FieldRenderProps<V, T>["input"]["multiple"];
   };
+  borderMode?: "default" | "left" | "right";
   meta?: FieldRenderProps<V, T>["meta"];
   focusIndicator?: boolean;
 }
