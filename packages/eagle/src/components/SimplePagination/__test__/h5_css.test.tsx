@@ -745,7 +745,7 @@ describe("SimplePagination h5_css", () => {
         }
         .icon-wrapper {
           display: flex;
-          vertical-align: middle;
+          justify-content: center;
         }
       ,has-icon,
         @include Inter();
@@ -1211,7 +1211,7 @@ describe("SimplePagination h5_css", () => {
         }
         .icon-wrapper {
           display: flex;
-          vertical-align: middle;
+          justify-content: center;
         }
       ,has-icon,
         @include Inter();
@@ -2002,7 +2002,7 @@ describe("SimplePagination h5_css", () => {
         }
         .icon-wrapper {
           display: flex;
-          vertical-align: middle;
+          justify-content: center;
         }
       ,has-icon,
         @include Inter();
