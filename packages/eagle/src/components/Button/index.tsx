@@ -346,7 +346,7 @@ const ButtonStyle = css`
   }
   .icon-wrapper {
     display: flex;
-    vertical-align: middle;
+    justify-content: center;
   }
 `;
 
