@@ -1,4 +1,3 @@
-import "antd/dist/antd.less";
 import "../src/styles/components.scss";
 import "./overrideRoot.css";
 
