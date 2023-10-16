@@ -408,6 +408,9 @@ describe("SimplePagination h5_css", () => {
             </span>
             <button
               class=ant-btn,next-btn,
+        &.ant-btn-icon-only {
+          justify-content: center;
+        }
         &.ant-btn {
           height: 32px;
           border-radius: 6px;
@@ -751,7 +754,7 @@ describe("SimplePagination h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
-      ,ant-btn-quiet,ant-btn-sm
+      ,ant-btn-quiet,ant-btn-icon-only,ant-btn-sm
               style=margin-left:,8px;
               type=button
             >
@@ -776,7 +779,7 @@ describe("SimplePagination h5_css", () => {
             animation: rotate 680ms linear infinite;
           }
         }
-      ,icon-wrapper,button-prefix-icon
+      ,icon-wrapper
               >
                 <span
                   class=icon-inner
@@ -874,6 +877,9 @@ describe("SimplePagination h5_css", () => {
           >
             <button
               class=ant-btn,prev-btn,
+        &.ant-btn-icon-only {
+          justify-content: center;
+        }
         &.ant-btn {
           height: 32px;
           border-radius: 6px;
@@ -1217,7 +1223,7 @@ describe("SimplePagination h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
-      ,ant-btn-quiet,ant-btn-sm
+      ,ant-btn-quiet,ant-btn-icon-only,ant-btn-sm
               style=margin-right:,8px;
               type=button
             >
@@ -1242,7 +1248,7 @@ describe("SimplePagination h5_css", () => {
             animation: rotate 680ms linear infinite;
           }
         }
-      ,icon-wrapper,button-prefix-icon
+      ,icon-wrapper
               >
                 <span
                   class=icon-inner
@@ -1665,6 +1671,9 @@ describe("SimplePagination h5_css", () => {
           >
             <button
               class=ant-btn,prev-btn,
+        &.ant-btn-icon-only {
+          justify-content: center;
+        }
         &.ant-btn {
           height: 32px;
           border-radius: 6px;
@@ -2008,7 +2017,7 @@ describe("SimplePagination h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
-      ,ant-btn-quiet,ant-btn-sm
+      ,ant-btn-quiet,ant-btn-icon-only,ant-btn-sm
               style=margin-right:,8px;
               type=button
             >
@@ -2033,7 +2042,7 @@ describe("SimplePagination h5_css", () => {
             animation: rotate 680ms linear infinite;
           }
         }
-      ,icon-wrapper,button-prefix-icon
+      ,icon-wrapper
               >
                 <span
                   class=icon-inner
