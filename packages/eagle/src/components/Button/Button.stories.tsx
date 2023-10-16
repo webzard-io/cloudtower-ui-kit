@@ -1,18 +1,17 @@
-import { DownOutlined, EllipsisOutlined } from "@ant-design/icons";
+import {
+  ArrowBoldDown16WhiteIcon,
+  MoreEllipsis316BoldOntintIcon,
+  PlusAddCreateNew16BoldOntintIcon,
+} from "@cloudtower/icons-react";
 import { Space } from "antd";
 import cs from "classnames";
 import _ from "lodash";
 import React from "react";
 
 import { ButtonProps } from "../../spec";
+import Icon from "../Icon";
 import { Typo } from "../Typo";
 import Button from ".";
-import {
-  ArrowBoldDown16WhiteIcon,
-  MoreEllipsis316BoldOntintIcon,
-  PlusAddCreateNew16BoldOntintIcon,
-} from "@cloudtower/icons-react";
-import Icon from "../Icon";
 
 const Title: React.FC = ({ children }) => (
   <div style={{ marginTop: "16px" }} className={Typo.Display.d2_bold_title}>
@@ -72,9 +71,12 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
         >
           Disabled
         </Button>
-        <Button icon={<Icon src={ArrowBoldDown16WhiteIcon} />} type={type} />
         <Button
-          icon={<Icon src={MoreEllipsis316BoldOntintIcon} />}
+          prefixIcon={<Icon src={ArrowBoldDown16WhiteIcon} />}
+          type={type}
+        />
+        <Button
+          prefixIcon={<Icon src={MoreEllipsis316BoldOntintIcon} />}
           type={type}
           shape="circle"
         />
@@ -214,12 +216,12 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
           </Button>
           <Button
             className="ordinary-blue"
-            icon={<Icon src={ArrowBoldDown16WhiteIcon} />}
+            prefixIcon={<Icon src={ArrowBoldDown16WhiteIcon} />}
             type={type}
           />
           <Button
             className="ordinary-blue"
-            icon={<Icon src={MoreEllipsis316BoldOntintIcon} />}
+            prefixIcon={<Icon src={MoreEllipsis316BoldOntintIcon} />}
             type={type}
             shape="circle"
           />
@@ -270,12 +272,12 @@ const Section: React.FC<{ type: ButtonProps["type"]; background?: string }> = ({
           </Button>
           <Button
             className="quiet-blue"
-            icon={<Icon src={ArrowBoldDown16WhiteIcon} />}
+            prefixIcon={<Icon src={ArrowBoldDown16WhiteIcon} />}
             type={type}
           />
           <Button
             className="quiet-blue"
-            icon={<Icon src={MoreEllipsis316BoldOntintIcon} />}
+            prefixIcon={<Icon src={MoreEllipsis316BoldOntintIcon} />}
             type={type}
             shape="circle"
           />
@@ -308,6 +310,36 @@ export const Basic = () => {
       <Section type="ordinary-onTint" background="#EDF0F7" />
       <Section type="quiet" />
     </div>
+  );
+};
+
+export const RoundedIcon = () => {
+  return (
+    <>
+      <Title>
+        为了避免与 suffixIcon 和 prefixIcon 属性混淆使用，移除了 icon
+        属性。如果您需要单独的图标按钮，请使用 suffixIcon 或 prefixIcon
+        属性，并且不需要传递 children。
+      </Title>
+      <div style={{ marginBottom: "10px" }}>
+        <span style={{ width: "110px", display: "inline-block" }}>
+          only prefixIcon:
+        </span>
+        <Button
+          prefixIcon={<Icon src={ArrowBoldDown16WhiteIcon} />}
+          type="primary"
+        />
+      </div>
+      <div>
+        <span style={{ width: "110px", display: "inline-block" }}>
+          only suffixIcon:
+        </span>
+        <Button
+          suffixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
+          type="primary"
+        />
+      </div>
+    </>
   );
 };
 
