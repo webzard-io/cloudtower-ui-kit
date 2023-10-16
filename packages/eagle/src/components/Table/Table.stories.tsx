@@ -1,14 +1,13 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import React, { useState } from "react";
-
-import Table, { ColumnTitle } from ".";
 import {
-  MoreEllipsis16BlueIcon,
   MoreEllipsis316BoldBlueIcon,
   SettingsGear16GradientGrayIcon,
 } from "@cloudtower/icons-react";
-import Icon from "../Icon";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import React, { useState } from "react";
+
 import Button from "../Button";
+import Icon from "../Icon";
+import Table, { ColumnTitle } from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -48,7 +47,7 @@ const columns = [
       <Button
         size="small"
         type="tertiary"
-        icon={<Icon src={MoreEllipsis316BoldBlueIcon} />}
+        prefixIcon={<Icon src={MoreEllipsis316BoldBlueIcon} />}
       />
     ),
   },

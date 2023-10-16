@@ -1,4 +1,4 @@
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusAddCreateNew16GrayIcon } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
 import React, { useMemo } from "react";
 
@@ -27,7 +27,7 @@ const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
 
   const onAdd = (
     e: React.MouseEvent<HTMLElement, MouseEvent>,
-    data: DataType[]
+    data: DataType[],
   ) => {
     const newData = [...data];
     const newRow = genEmptyRow(columns);
@@ -40,7 +40,7 @@ const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
     () =>
       disabledFromProp ||
       (typeof maximum === "number" && maximum <= data.length),
-    [maximum, data.length, disabledFromProp]
+    [maximum, data.length, disabledFromProp],
   );
 
   const CustomizedButtonText = useMemo(() => {
@@ -61,7 +61,9 @@ const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
         {...restButtonProps}
         type={restButtonProps.type || "ordinary"}
         size={restButtonProps.size || "small"}
-        icon={restButtonProps.icon || <PlusOutlined />}
+        prefixIcon={
+          restButtonProps.prefixIcon || <PlusAddCreateNew16GrayIcon />
+        }
         className={cx(Typo.Label.l3_regular, restButtonProps.className)}
         onClick={(e) => {
           onAdd(e, data);
@@ -75,7 +77,7 @@ const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
           className={cx(
             Typo.Label.l4_regular,
             "maximum-desc",
-            disabled && "disabled"
+            disabled && "disabled",
           )}
         >
           {t("components.maximum_row_count_desc", {
