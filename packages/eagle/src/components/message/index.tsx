@@ -1,8 +1,10 @@
-import CheckCircleFilled from "@ant-design/icons/CheckCircleFilled";
-import CloseCircleFilled from "@ant-design/icons/CloseCircleFilled";
-import ExclamationCircleFilled from "@ant-design/icons/ExclamationCircleFilled";
-import InfoCircleFilled from "@ant-design/icons/InfoCircleFilled";
-import LoadingOutlined from "@ant-design/icons/LoadingOutlined";
+import {
+  CheckmarkAddedCircleFill16SecondaryIcon,
+  InfoICircle16GradientBlueIcon,
+  InfoICircle16GradientGrayIcon,
+  LoadingGrayIcon,
+  XmarkClearFill24SecondaryIcon,
+} from "@cloudtower/icons-react";
 import RCNotification from "@cloudtower/rc-notification";
 import ConfigProvider, { globalConfig } from "antd/lib/config-provider";
 import { MessageApi, MessageType } from "antd/lib/message";
@@ -139,11 +141,11 @@ export interface ThenableArgument {
 }
 
 const typeToIcon = {
-  info: InfoCircleFilled,
-  success: CheckCircleFilled,
-  error: CloseCircleFilled,
-  warning: ExclamationCircleFilled,
-  loading: LoadingOutlined,
+  info: InfoICircle16GradientBlueIcon,
+  success: CheckmarkAddedCircleFill16SecondaryIcon,
+  error: XmarkClearFill24SecondaryIcon,
+  warning: InfoICircle16GradientGrayIcon,
+  loading: LoadingGrayIcon,
 };
 
 export const typeList = Object.keys(typeToIcon) as NoticeType[];

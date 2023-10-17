@@ -11,7 +11,6 @@ import { Typo } from "../Typo";
 export const AntdInputNumberStyled = styled(AntdInputNumber)<{
   controls: boolean;
   suffix?: string;
-  prefix?: string;
 }>`
   .ant-input-number-handler-wrap {
     display: ${(props) => (props.controls ? "initial" : "none")};

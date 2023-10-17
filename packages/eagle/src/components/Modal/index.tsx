@@ -7,6 +7,7 @@ import useParrotTranslation from "../../hooks/useParrotTranslation";
 import { ModalProps } from "../../spec";
 import { KitRootState, ModalActions } from "../../store";
 import Button from "../Button";
+import Icon from "../Icon";
 import { useKitDispatch, useKitSelector } from "../KitStoreProvider";
 import Steps from "../Steps";
 import { WizardBody } from "../Styled";
@@ -103,7 +104,7 @@ const Modal: React.FC<ModalProps> = (props) => {
         onCancel?.(e);
         transitionClass.current = fullscreen ? "" : "modal-zoom";
       }}
-      closeIcon={<CloseCircleFilled />}
+      closeIcon={<XmarkClearFill24SecondaryIcon />}
       destroyOnClose
       focusTriggerAfterClose={false}
       transitionName={transitionClass.current}

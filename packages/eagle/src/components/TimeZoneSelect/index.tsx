@@ -236,7 +236,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
         if (option?.value === "_placeholder_") {
           return true;
         }
-        return (option?.value || "")
+        return (option?.value?.toString() || "")
           .toLowerCase()
           .includes(keyword.toLowerCase());
       }}

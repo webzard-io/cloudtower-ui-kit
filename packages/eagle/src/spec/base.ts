@@ -14,7 +14,7 @@ import { DividerProps as AntdDividerProps } from "antd/lib/divider";
 import { DrawerProps } from "antd/lib/drawer";
 import { DropDownProps } from "antd/lib/dropdown";
 import { EmptyProps } from "antd/lib/empty";
-import type Form from "antd/lib/form";
+import Form from "antd/lib/form";
 import type Input from "antd/lib/input";
 import { GroupProps, InputProps } from "antd/lib/input";
 import { TextAreaProps as AntdTextAreaProps } from "antd/lib/input/TextArea";
@@ -49,10 +49,10 @@ import { TableRowSelection } from "antd/lib/table/interface";
 import { TabPaneProps, TabsProps } from "antd/lib/tabs";
 import { TagProps } from "antd/lib/tag";
 import { TimePickerProps } from "antd/lib/time-picker";
-import { TimeLineItemProps, TimelineProps } from "antd/lib/timeline";
+import { TimelineItemProps, TimelineProps } from "antd/lib/timeline";
 import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
-import type TreeSelect from "antd/lib/tree-select";
+import TreeSelect from "antd/lib/tree-select";
 import { TextProps } from "antd/lib/typography/Text";
 import { DraggerProps, UploadProps } from "antd/lib/upload";
 import type { Dayjs } from "dayjs";
@@ -91,7 +91,7 @@ export type AntdTableComponentType = <RecordType extends object = any>(
   props: AntdTableProps<RecordType>,
 ) => JSX.Element;
 
-export type AntdTreeSelectComponentType<T> = TreeSelect<T>;
+export type AntdTreeSelectComponentType<T> = typeof TreeSelect<T>;
 
 interface EmptyType extends React.FC<EmptyProps> {
   PRESENTED_IMAGE_DEFAULT: React.ReactNode;
@@ -575,7 +575,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     ButtonGroupType & React.RefAttributes<HTMLDivElement>
   >;
   steps: React.FC<IStepsProps>;
-  form: Form;
+  form: typeof Form;
   antdSteps: typeof Steps;
   simplePagination: React.FC<ISimplePaginationProps>;
   statusCapsule: StatusCapsuleComponentType;
@@ -584,7 +584,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   col: React.FC<ColProps>;
   row: React.FC<RowProps>;
   timeline: React.FC<TimelineProps>;
-  timelineItem: React.FC<TimeLineItemProps>;
+  timelineItem: React.FC<TimelineItemProps>;
   cascader: React.ComponentType<CascaderProps>;
   checkboxGroup: React.ComponentType<CheckboxGroupProps>;
   typographyText: React.FC<TextProps>;

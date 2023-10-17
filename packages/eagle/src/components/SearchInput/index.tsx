@@ -1,4 +1,4 @@
-import { SearchOutlined } from "@ant-design/icons";
+import { Search16SecondaryIcon } from "@cloudtower/icons-react";
 import _ from "lodash";
 import React from "react";
 
@@ -11,7 +11,7 @@ const SearchInput: SearchInputComponentType = (props) => {
   return (
     <Input
       style={{ width: 276 }}
-      prefix={<SearchOutlined />}
+      prefix={<Search16SecondaryIcon />}
       onChange={(e) => onSearch(e.target.value)}
       {...restProps}
     />
