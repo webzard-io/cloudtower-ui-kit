@@ -93,14 +93,14 @@ describe("message", () => {
       type: "info",
     });
     expect(
-      document.querySelectorAll(".ant-message-notice .anticon").length
+      document.querySelectorAll(".ant-message-notice .anticon").length,
     ).toBe(0);
   });
   it("should have no icon when not pass icon props", () => {
-    message.open({ content: "Message", duration: 3 });
+    message.open({ content: "Message", duration: 3, type: "info" });
 
     expect(
-      document.querySelectorAll(".ant-message-notice .anticon").length
+      document.querySelectorAll(".ant-message-notice .anticon").length,
     ).toBe(0);
   });
 

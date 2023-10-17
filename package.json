@@ -34,8 +34,7 @@
     "turbo": "^1.6.3"
   },
   "resolutions": {
-    "@types/react": "^17.0.50",
-    "@ant-design/icons": "4.2.1"
+    "@types/react": "^17.0.50"
   },
   "bundlewatch": {
     "trackBranches": [

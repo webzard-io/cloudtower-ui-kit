@@ -208,7 +208,8 @@ export function getAntdKit(): Kit {
   kit.option.isSelectOption = true;
 
   // https://github.com/ant-design/ant-design/issues/9581
-  (kit.button as typeof AntdButton).__ANT_BUTTON = true;
+  (kit.button as typeof AntdButton & { __ANT_BUTTON: boolean }).__ANT_BUTTON =
+    true;
 
   return kit;
 }
