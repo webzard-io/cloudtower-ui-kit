@@ -443,3 +443,11 @@ const story = {
 };
 
 export default story;
+
+export const ButtonWithTooltip = () => {
+  return (
+    <Tooltip placement="top" title="show tooltip here">
+      <Button>Test</Button>
+    </Tooltip>
+  );
+};

@@ -1,7 +1,7 @@
 import { StyledMeta } from "@linaria/react";
 import { SizeType } from "antd/es/config-provider/SizeContext";
 import { AlertProps } from "antd/lib/alert";
-import { AutoCompleteProps } from "antd/lib/auto-complete";
+import RefAutoComplete from "antd/lib/auto-complete";
 import { BadgeProps } from "antd/lib/badge";
 import { ButtonProps as AntdButtonProps, ButtonType } from "antd/lib/button";
 import { CalendarProps } from "antd/lib/calendar/generateCalendar";
@@ -476,7 +476,7 @@ export interface ISimplePaginationProps {
   onPageChange?: (page: number) => void;
 }
 
-export type AntdInputComponentType = Input;
+export type AntdInputComponentType = typeof Input;
 
 export interface IExpandableItemProps {
   header?: React.ReactNode;
@@ -552,12 +552,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   progress: ProgressComponentType;
   divider: React.FC<AntdDividerProps>;
   skeleton: React.FC<AntdSkeletonProps>;
-  skeletonButton: {
-    (props: SkeletonButtonProps): JSX.Element;
-    defaultProps: {
-      size: string;
-    };
-  };
+  skeletonButton: typeof Skeleton.Button;
   menu: React.ComponentType<MenuProps> & {
     Divider: React.FC<import("rc-menu/lib/Divider").DividerProps>;
     Item: React.ComponentType<MenuItemProps>;
@@ -574,7 +569,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     Content: React.ComponentType<BasicProps>;
     Sider: React.ComponentType<SiderProps>;
   };
-  autoComplete: React.ForwardRefExoticComponent<AutoCompleteProps>;
+  autoComplete: typeof RefAutoComplete;
   message: MessageApi;
   tag: TagComponentType;
   popover: React.ForwardRefExoticComponent<

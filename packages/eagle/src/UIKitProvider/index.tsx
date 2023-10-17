@@ -22,7 +22,7 @@ export interface IProps {
     maxCount?: number;
   };
   lng?: ParrotI18nSupportLng;
-  getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement;
+  getPopupContainer?: (triggerNode?: HTMLElement) => HTMLElement;
 }
 
 export const kitContext = createContext<Kit>(antdKit);
