@@ -12,7 +12,6 @@ import formatterInteger from "./formatterInteger";
 export const AntdIntStyled = styled(AntdInputNumber)<{
   controls: boolean;
   suffix?: string;
-  prefix?: string;
 }>`
   .ant-input-number-handler-wrap {
     display: ${(props) => (props.controls ? "initial" : "none")};

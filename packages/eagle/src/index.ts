@@ -112,4 +112,4 @@ export type {
   RcFile as AntdRcFile,
   UploadProps as AntdUploadProps,
 } from "antd/lib/upload";
-export type { CustomTagProps as AntdCustomTagProps } from "rc-select/lib/interface/generator";
+export type { CustomTagProps as AntdCustomTagProps } from "rc-select/lib/BaseSelect";

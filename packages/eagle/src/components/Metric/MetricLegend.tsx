@@ -1,4 +1,4 @@
-import { DoubleRightOutlined } from "@ant-design/icons";
+import { ArrowChevronDown16BoldSecondaryIcon } from "@cloudtower/icons-react";
 import { Menu } from "antd";
 import { Dropdown as AntdDropdown } from "antd";
 import cs from "classnames";
@@ -24,7 +24,7 @@ export type GetDeselectedValueWithSuffix = (
   type: string | undefined,
   data: IMetricData,
   metricName: string,
-  sample_stream?: IMetricStream
+  sample_stream?: IMetricStream,
 ) => string;
 
 export interface IMetricLegendProps {
@@ -51,7 +51,7 @@ const MetricLegend = (props: IMetricLegendProps) => {
                   <Menu.Item
                     className={cs(
                       LegendItemStyle,
-                      deselected.includes(legend.id) && "deselected"
+                      deselected.includes(legend.id) && "deselected",
                     )}
                     key={legend.id}
                     onClick={() => onClick(legend.id)}
@@ -64,7 +64,7 @@ const MetricLegend = (props: IMetricLegendProps) => {
             </Menu>
           }
         >
-          <DoubleRightOutlined rotate={90} />
+          <ArrowChevronDown16BoldSecondaryIcon rotate={90} />
         </AntdDropdown>
       )}
       els={legends.map((legend) => {
@@ -72,7 +72,7 @@ const MetricLegend = (props: IMetricLegendProps) => {
           <div
             className={cs(
               LegendItemStyle,
-              deselected.includes(legend.id) && "deselected"
+              deselected.includes(legend.id) && "deselected",
             )}
             key={legend.id}
             onClick={() => onClick(legend.id)}

@@ -1,6 +1,10 @@
-import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
+import {
+  EntityFilterIgnoreGradient16GrayIcon,
+  ViewEye16GrayIcon,
+} from "@cloudtower/icons-react";
 import React, { useEffect, useState } from "react";
 
+import Icon from "../../Icon";
 import Input from "../../Input";
 import { ColumnBodyCellProps, ColumnHeaderCellProps } from "../types";
 
@@ -33,14 +37,16 @@ const InputPassword: React.FC<
       type={inputType}
       suffix={
         showPassword ? (
-          <EyeOutlined
-            className="ant-input-password-icon"
+          <Icon
+            src={ViewEye16GrayIcon}
             onClick={toggleShowPassword}
+            className="ant-input-password-icon"
           />
         ) : (
-          <EyeInvisibleOutlined
-            className="ant-input-password-icon"
+          <Icon
+            src={EntityFilterIgnoreGradient16GrayIcon}
             onClick={toggleShowPassword}
+            className="ant-input-password-icon"
           />
         )
       }

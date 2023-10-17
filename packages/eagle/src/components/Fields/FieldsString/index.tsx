@@ -50,7 +50,12 @@ const FieldsString = ({
           </Overflow>
         </div>
         <span className="input-tag-suffix">
-          {allowClear && <CloseCircleFilled onClick={onTagsAllowClearClick} />}
+          {allowClear && (
+            <Icon
+              src={XmarkClearFill24SecondaryIcon}
+              onClick={onTagsAllowClearClick}
+            />
+          )}
         </span>
       </div>
     );

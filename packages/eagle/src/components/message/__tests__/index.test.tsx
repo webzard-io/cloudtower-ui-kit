@@ -1,5 +1,5 @@
 /* eslint-disable testing-library/no-node-access */
-import { SmileOutlined } from "@ant-design/icons";
+import { Placeholder16Icon } from "@cloudtower/icons-react";
 import { render } from "@testing-library/react";
 import React from "react";
 import { vi } from "vitest";
@@ -78,11 +78,11 @@ describe("message", () => {
   it("should allow custom icon", () => {
     message.open({
       content: "Message",
-      icon: <SmileOutlined />,
+      icon: <Placeholder16Icon className="placeholder-icon" />,
       duration: 0.1,
       type: "info",
     });
-    expect(document.querySelectorAll(".anticon-smile").length).toBe(1);
+    expect(document.querySelectorAll(".placeholder-icon").length).toBe(1);
   });
 
   it("should have no icon", () => {
