@@ -104,7 +104,7 @@ const Modal: React.FC<ModalProps> = (props) => {
         onCancel?.(e);
         transitionClass.current = fullscreen ? "" : "modal-zoom";
       }}
-      closeIcon={<XmarkClearFill24SecondaryIcon />}
+      closeIcon={<XmarkCloseFill24PrimaryIcon />}
       destroyOnClose
       focusTriggerAfterClose={false}
       transitionName={transitionClass.current}

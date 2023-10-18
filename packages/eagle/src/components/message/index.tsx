@@ -1,9 +1,9 @@
 import {
-  CheckmarkAddedCircleFill16SecondaryIcon,
-  InfoICircle16GradientBlueIcon,
-  InfoICircle16GradientGrayIcon,
-  LoadingGrayIcon,
-  XmarkClearFill24SecondaryIcon,
+  CheckmarkDoneSuccessCircleFill16BoldGreenIcon,
+  InfoICircleFill16BlueIcon,
+  Loading16GradientBlueIcon,
+  NoticeAttention16YellowIcon,
+  XmarkFailedSeriousWarningFill16BoldRedIcon,
 } from "@cloudtower/icons-react";
 import RCNotification from "@cloudtower/rc-notification";
 import ConfigProvider, { globalConfig } from "antd/lib/config-provider";
@@ -15,6 +15,9 @@ import {
   NotificationInstance as RCNotificationInstance,
 } from "rc-notification/lib/Notification";
 import * as React from "react";
+
+import Icon from "../Icon";
+
 export type {
   MessageApi,
   MessageInstance,
@@ -141,11 +144,24 @@ export interface ThenableArgument {
 }
 
 const typeToIcon = {
-  info: InfoICircle16GradientBlueIcon,
-  success: CheckmarkAddedCircleFill16SecondaryIcon,
-  error: XmarkClearFill24SecondaryIcon,
-  warning: InfoICircle16GradientGrayIcon,
-  loading: LoadingGrayIcon,
+  info: () => <InfoICircleFill16BlueIcon className="anticon" />,
+  success: () => (
+    <CheckmarkDoneSuccessCircleFill16BoldGreenIcon className="anticon" />
+  ),
+  error: () => (
+    <XmarkFailedSeriousWarningFill16BoldRedIcon className="anticon" />
+  ),
+  warning: () => <NoticeAttention16YellowIcon className="anticon" />,
+  loading: () => (
+    <Icon
+      src={Loading16GradientBlueIcon}
+      style={{
+        verticalAlign: undefined,
+      }}
+      isRotate
+      className="anticon"
+    />
+  ),
 };
 
 export const typeList = Object.keys(typeToIcon) as NoticeType[];

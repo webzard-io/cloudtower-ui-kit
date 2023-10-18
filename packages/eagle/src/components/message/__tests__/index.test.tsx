@@ -96,13 +96,6 @@ describe("message", () => {
       document.querySelectorAll(".ant-message-notice .anticon").length,
     ).toBe(0);
   });
-  it("should have no icon when not pass icon props", () => {
-    message.open({ content: "Message", duration: 3, type: "info" });
-
-    expect(
-      document.querySelectorAll(".ant-message-notice .anticon").length,
-    ).toBe(0);
-  });
 
   // https://github.com/ant-design/ant-design/issues/8201
   it("should destroy messages correctly", () => {

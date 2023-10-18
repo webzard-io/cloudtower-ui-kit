@@ -91,28 +91,35 @@ const TestMessage = () => {
           UIKit.message.info(parrotI18n.t("common.error_message") + i++);
         }}
       >
-        click here
+        show info
       </Button>
       <Button
         onClick={() => {
           UIKit.message.warning(parrotI18n.t("common.error_message") + i++);
         }}
       >
-        click here
+        show warning
       </Button>
       <Button
         onClick={() => {
           UIKit.message.success(parrotI18n.t("common.error_message") + i++);
         }}
       >
-        click here
+        show success
+      </Button>
+      <Button
+        onClick={() => {
+          UIKit.message.loading(parrotI18n.t("common.error_message") + i++);
+        }}
+      >
+        show loading
       </Button>
       <Button
         onClick={() => {
           UIKit.message.error(parrotI18n.t("common.error_message") + i++);
         }}
       >
-        click here
+        click error
       </Button>
       <Button
         onClick={() => {
