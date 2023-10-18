@@ -533,6 +533,8 @@ describe("Table h5_css", () => {
             >
               <div>
                 <div
+                  aria-busy=true
+                  aria-live=polite
                   class=ant-spin,ant-spin-spinning
                 >
                   <div

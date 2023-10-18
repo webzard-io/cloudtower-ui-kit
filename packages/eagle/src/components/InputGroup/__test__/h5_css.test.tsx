@@ -28,7 +28,7 @@ describe("InputGroup h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <span
-          class=ant-input-group,ant-input-group-sm,
+          class=ant-input-group,ant-input-group-sm,mocked-styled-20,
         &.ant-input-group.ant-input-group-compact {
           display: flex;
         }
@@ -181,7 +181,6 @@ describe("InputGroup h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=down
                   fill=currentColor
                   focusable=false

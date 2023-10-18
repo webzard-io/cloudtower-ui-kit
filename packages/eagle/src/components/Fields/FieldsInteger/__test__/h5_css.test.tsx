@@ -271,75 +271,13 @@ describe("FieldsInteger h5_css", () => {
           style=--at4ovwe-0:,none;,--at4ovwe-1:,"";,--at4ovwe-2:,none;,--at4ovwe-3:,"";,--at4ovwe-4:,none;
         >
           <div
-            class=ant-input-number-handler-wrap
-          >
-            <span
-              aria-label=Increase,Value
-              class=ant-input-number-handler,ant-input-number-handler-up
-              role=button
-              unselectable=on
-            >
-              <span
-                aria-label=up
-                class=anticon,anticon-up,ant-input-number-handler-up-inner
-                role=img
-              >
-                <svg
-                  aria-hidden=true
-                  class=
-                  data-icon=up
-                  fill=currentColor
-                  focusable=false
-                  height=1em
-                  viewBox=64,64,896,896
-                  width=1em
-                >
-                  <path
-                    d=M890.5,755.3L537.9,269.2c-12.8-17.6-39-17.6-51.7,0L133.5,755.3A8,8,0,00140,768h75c5.1,0,9.9-2.5,12.9-6.6L512,369.8l284.1,391.6c3,4.1,7.8,6.6,12.9,6.6h75c6.5,0,10.3-7.4,6.5-12.7z
-                  />
-                </svg>
-              </span>
-            </span>
-            <span
-              aria-label=Decrease,Value
-              class=ant-input-number-handler,ant-input-number-handler-down
-              role=button
-              unselectable=on
-            >
-              <span
-                aria-label=down
-                class=anticon,anticon-down,ant-input-number-handler-down-inner
-                role=img
-              >
-                <svg
-                  aria-hidden=true
-                  class=
-                  data-icon=down
-                  fill=currentColor
-                  focusable=false
-                  height=1em
-                  viewBox=64,64,896,896
-                  width=1em
-                >
-                  <path
-                    d=M884,256h-75c-5.1,0-9.9,2.5-12.9,6.6L512,654.2,227.9,262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5,0-10.3,7.4-6.5,12.7l352.6,486.1c12.8,17.6,39,17.6,51.7,0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z
-                  />
-                </svg>
-              </span>
-            </span>
-          </div>
-          <div
             class=ant-input-number-input-wrap
           >
             <input
-              aria-valuemax=9007199254740991
-              aria-valuemin=-9007199254740991
               aria-valuenow=20
               autocomplete=off
               class=ant-input-number-input
               data-test=inputName1
-              max=9007199254740991
-              min=-9007199254740991
               name=inputName1
               role=spinbutton
               step=1
@@ -618,75 +556,13 @@ describe("FieldsInteger h5_css", () => {
           style=--at4ovwe-0:,none;,--at4ovwe-1:,"";,--at4ovwe-2:,none;,--at4ovwe-3:,"";,--at4ovwe-4:,none;
         >
           <div
-            class=ant-input-number-handler-wrap
-          >
-            <span
-              aria-label=Increase,Value
-              class=ant-input-number-handler,ant-input-number-handler-up
-              role=button
-              unselectable=on
-            >
-              <span
-                aria-label=up
-                class=anticon,anticon-up,ant-input-number-handler-up-inner
-                role=img
-              >
-                <svg
-                  aria-hidden=true
-                  class=
-                  data-icon=up
-                  fill=currentColor
-                  focusable=false
-                  height=1em
-                  viewBox=64,64,896,896
-                  width=1em
-                >
-                  <path
-                    d=M890.5,755.3L537.9,269.2c-12.8-17.6-39-17.6-51.7,0L133.5,755.3A8,8,0,00140,768h75c5.1,0,9.9-2.5,12.9-6.6L512,369.8l284.1,391.6c3,4.1,7.8,6.6,12.9,6.6h75c6.5,0,10.3-7.4,6.5-12.7z
-                  />
-                </svg>
-              </span>
-            </span>
-            <span
-              aria-label=Decrease,Value
-              class=ant-input-number-handler,ant-input-number-handler-down
-              role=button
-              unselectable=on
-            >
-              <span
-                aria-label=down
-                class=anticon,anticon-down,ant-input-number-handler-down-inner
-                role=img
-              >
-                <svg
-                  aria-hidden=true
-                  class=
-                  data-icon=down
-                  fill=currentColor
-                  focusable=false
-                  height=1em
-                  viewBox=64,64,896,896
-                  width=1em
-                >
-                  <path
-                    d=M884,256h-75c-5.1,0-9.9,2.5-12.9,6.6L512,654.2,227.9,262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5,0-10.3,7.4-6.5,12.7l352.6,486.1c12.8,17.6,39,17.6,51.7,0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z
-                  />
-                </svg>
-              </span>
-            </span>
-          </div>
-          <div
             class=ant-input-number-input-wrap
           >
             <input
-              aria-valuemax=9007199254740991
-              aria-valuemin=-9007199254740991
               aria-valuenow=20.1
               autocomplete=off
               class=ant-input-number-input
               data-test=inputName1
-              max=9007199254740991
-              min=-9007199254740991
               name=inputName1
               role=spinbutton
               step=1
@@ -964,75 +840,13 @@ describe("FieldsInteger h5_css", () => {
           style=--at4ovwe-0:,none;,--at4ovwe-1:,"";,--at4ovwe-2:,none;,--at4ovwe-3:,"";,--at4ovwe-4:,none;
         >
           <div
-            class=ant-input-number-handler-wrap
-          >
-            <span
-              aria-label=Increase,Value
-              class=ant-input-number-handler,ant-input-number-handler-up
-              role=button
-              unselectable=on
-            >
-              <span
-                aria-label=up
-                class=anticon,anticon-up,ant-input-number-handler-up-inner
-                role=img
-              >
-                <svg
-                  aria-hidden=true
-                  class=
-                  data-icon=up
-                  fill=currentColor
-                  focusable=false
-                  height=1em
-                  viewBox=64,64,896,896
-                  width=1em
-                >
-                  <path
-                    d=M890.5,755.3L537.9,269.2c-12.8-17.6-39-17.6-51.7,0L133.5,755.3A8,8,0,00140,768h75c5.1,0,9.9-2.5,12.9-6.6L512,369.8l284.1,391.6c3,4.1,7.8,6.6,12.9,6.6h75c6.5,0,10.3-7.4,6.5-12.7z
-                  />
-                </svg>
-              </span>
-            </span>
-            <span
-              aria-label=Decrease,Value
-              class=ant-input-number-handler,ant-input-number-handler-down
-              role=button
-              unselectable=on
-            >
-              <span
-                aria-label=down
-                class=anticon,anticon-down,ant-input-number-handler-down-inner
-                role=img
-              >
-                <svg
-                  aria-hidden=true
-                  class=
-                  data-icon=down
-                  fill=currentColor
-                  focusable=false
-                  height=1em
-                  viewBox=64,64,896,896
-                  width=1em
-                >
-                  <path
-                    d=M884,256h-75c-5.1,0-9.9,2.5-12.9,6.6L512,654.2,227.9,262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5,0-10.3,7.4-6.5,12.7l352.6,486.1c12.8,17.6,39,17.6,51.7,0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z
-                  />
-                </svg>
-              </span>
-            </span>
-          </div>
-          <div
             class=ant-input-number-input-wrap
           >
             <input
-              aria-valuemax=9007199254740991
-              aria-valuemin=-9007199254740991
               aria-valuenow=20
               autocomplete=off
               class=ant-input-number-input
               data-test=inputName1
-              max=9007199254740991
-              min=-9007199254740991
               name=inputName1
               role=spinbutton
               step=1
@@ -1311,75 +1125,13 @@ describe("FieldsInteger h5_css", () => {
           style=--at4ovwe-0:,none;,--at4ovwe-1:,"";,--at4ovwe-2:,none;,--at4ovwe-3:,"";,--at4ovwe-4:,none;
         >
           <div
-            class=ant-input-number-handler-wrap
-          >
-            <span
-              aria-label=Increase,Value
-              class=ant-input-number-handler,ant-input-number-handler-up
-              role=button
-              unselectable=on
-            >
-              <span
-                aria-label=up
-                class=anticon,anticon-up,ant-input-number-handler-up-inner
-                role=img
-              >
-                <svg
-                  aria-hidden=true
-                  class=
-                  data-icon=up
-                  fill=currentColor
-                  focusable=false
-                  height=1em
-                  viewBox=64,64,896,896
-                  width=1em
-                >
-                  <path
-                    d=M890.5,755.3L537.9,269.2c-12.8-17.6-39-17.6-51.7,0L133.5,755.3A8,8,0,00140,768h75c5.1,0,9.9-2.5,12.9-6.6L512,369.8l284.1,391.6c3,4.1,7.8,6.6,12.9,6.6h75c6.5,0,10.3-7.4,6.5-12.7z
-                  />
-                </svg>
-              </span>
-            </span>
-            <span
-              aria-label=Decrease,Value
-              class=ant-input-number-handler,ant-input-number-handler-down
-              role=button
-              unselectable=on
-            >
-              <span
-                aria-label=down
-                class=anticon,anticon-down,ant-input-number-handler-down-inner
-                role=img
-              >
-                <svg
-                  aria-hidden=true
-                  class=
-                  data-icon=down
-                  fill=currentColor
-                  focusable=false
-                  height=1em
-                  viewBox=64,64,896,896
-                  width=1em
-                >
-                  <path
-                    d=M884,256h-75c-5.1,0-9.9,2.5-12.9,6.6L512,654.2,227.9,262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5,0-10.3,7.4-6.5,12.7l352.6,486.1c12.8,17.6,39,17.6,51.7,0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z
-                  />
-                </svg>
-              </span>
-            </span>
-          </div>
-          <div
             class=ant-input-number-input-wrap
           >
             <input
-              aria-valuemax=9007199254740991
-              aria-valuemin=-9007199254740991
               aria-valuenow=20.1
               autocomplete=off
               class=ant-input-number-input
               data-test=inputName1
-              max=9007199254740991
-              min=-9007199254740991
               name=inputName1
               role=spinbutton
               step=1
@@ -1653,85 +1405,20 @@ describe("FieldsInteger h5_css", () => {
           height: auto;
           font-size: inherit;
         }
-
+      ,ant-input-number-not-a-number
           style=--at4ovwe-0:,none;,--at4ovwe-1:,"";,--at4ovwe-2:,none;,--at4ovwe-3:,"";,--at4ovwe-4:,none;
         >
-          <div
-            class=ant-input-number-handler-wrap
-          >
-            <span
-              aria-disabled=true
-              aria-label=Increase,Value
-              class=ant-input-number-handler,ant-input-number-handler-up,ant-input-number-handler-up-disabled
-              role=button
-              unselectable=on
-            >
-              <span
-                aria-label=up
-                class=anticon,anticon-up,ant-input-number-handler-up-inner
-                role=img
-              >
-                <svg
-                  aria-hidden=true
-                  class=
-                  data-icon=up
-                  fill=currentColor
-                  focusable=false
-                  height=1em
-                  viewBox=64,64,896,896
-                  width=1em
-                >
-                  <path
-                    d=M890.5,755.3L537.9,269.2c-12.8-17.6-39-17.6-51.7,0L133.5,755.3A8,8,0,00140,768h75c5.1,0,9.9-2.5,12.9-6.6L512,369.8l284.1,391.6c3,4.1,7.8,6.6,12.9,6.6h75c6.5,0,10.3-7.4,6.5-12.7z
-                  />
-                </svg>
-              </span>
-            </span>
-            <span
-              aria-disabled=true
-              aria-label=Decrease,Value
-              class=ant-input-number-handler,ant-input-number-handler-down,ant-input-number-handler-down-disabled
-              role=button
-              unselectable=on
-            >
-              <span
-                aria-label=down
-                class=anticon,anticon-down,ant-input-number-handler-down-inner
-                role=img
-              >
-                <svg
-                  aria-hidden=true
-                  class=
-                  data-icon=down
-                  fill=currentColor
-                  focusable=false
-                  height=1em
-                  viewBox=64,64,896,896
-                  width=1em
-                >
-                  <path
-                    d=M884,256h-75c-5.1,0-9.9,2.5-12.9,6.6L512,654.2,227.9,262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5,0-10.3,7.4-6.5,12.7l352.6,486.1c12.8,17.6,39,17.6,51.7,0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z
-                  />
-                </svg>
-              </span>
-            </span>
-          </div>
           <div
             class=ant-input-number-input-wrap
           >
             <input
-              aria-valuemax=9007199254740991
-              aria-valuemin=-9007199254740991
-              aria-valuenow=abc
               autocomplete=off
               class=ant-input-number-input
               data-test=inputName1
-              max=9007199254740991
-              min=-9007199254740991
               name=inputName1
               role=spinbutton
               step=1
-              value=
+              value=abc
             />
           </div>
         </div>

@@ -12,7 +12,7 @@ describe("Checkbox h5_css", () => {
     const { container } = render(
       <Checkbox>
         <div data-testid={childrenTestId}>test children</div>
-      </Checkbox>
+      </Checkbox>,
     );
 
     expect(screen.getByTestId(childrenTestId)).toBeInTheDocument();
@@ -23,7 +23,7 @@ describe("Checkbox h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <label
-          class=
+          class=ant-checkbox-wrapper,
         color: $text-primary-light;
         line-height: 22px;
         display: inline-flex;
@@ -103,7 +103,7 @@ describe("Checkbox h5_css", () => {
             }
           }
         }
-      ,ant-checkbox-wrapper
+
         >
           <span
             class=ant-checkbox
@@ -111,7 +111,6 @@ describe("Checkbox h5_css", () => {
             <input
               class=ant-checkbox-input
               type=checkbox
-              value=
             />
             <span
               class=ant-checkbox-inner
@@ -148,7 +147,7 @@ describe("Checkbox h5_css", () => {
         }
       >
         <div data-testid={childrenTestId}>test children</div>
-      </Checkbox>
+      </Checkbox>,
     );
 
     expect({
@@ -157,7 +156,7 @@ describe("Checkbox h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <label
-          class=
+          class=ant-checkbox-wrapper,
         color: $text-primary-light;
         line-height: 22px;
         display: inline-flex;
@@ -237,7 +236,7 @@ describe("Checkbox h5_css", () => {
             }
           }
         }
-      ,ant-checkbox-wrapper
+
         >
           <span
             class=ant-checkbox
@@ -245,7 +244,6 @@ describe("Checkbox h5_css", () => {
             <input
               class=ant-checkbox-input
               type=checkbox
-              value=
             />
             <span
               class=ant-checkbox-inner
@@ -293,7 +291,7 @@ describe("Checkbox h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <label
-          class=
+          class=ant-checkbox-wrapper,
         color: $text-primary-light;
         line-height: 22px;
         display: inline-flex;
@@ -373,7 +371,7 @@ describe("Checkbox h5_css", () => {
             }
           }
         }
-      ,ant-checkbox-wrapper
+
         >
           <span
             class=ant-checkbox
@@ -381,7 +379,6 @@ describe("Checkbox h5_css", () => {
             <input
               class=ant-checkbox-input
               type=checkbox
-              value=
             />
             <span
               class=ant-checkbox-inner
@@ -400,7 +397,7 @@ describe("Checkbox h5_css", () => {
         description={
           <div data-testid={descriptionTestId}>test description</div>
         }
-      />
+      />,
     );
 
     expect(screen.queryByTestId(descriptionTestId)).not.toBeInTheDocument();
@@ -411,7 +408,7 @@ describe("Checkbox h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <label
-          class=
+          class=ant-checkbox-wrapper,
         color: $text-primary-light;
         line-height: 22px;
         display: inline-flex;
@@ -491,7 +488,7 @@ describe("Checkbox h5_css", () => {
             }
           }
         }
-      ,ant-checkbox-wrapper
+
         >
           <span
             class=ant-checkbox
@@ -499,7 +496,6 @@ describe("Checkbox h5_css", () => {
             <input
               class=ant-checkbox-input
               type=checkbox
-              value=
             />
             <span
               class=ant-checkbox-inner

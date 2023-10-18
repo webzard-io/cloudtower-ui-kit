@@ -37,7 +37,7 @@ describe("Radio h5_css", () => {
             style=margin-bottom:,8px;
           >
             <label
-              class=
+              class=ant-radio-wrapper,
         &.ant-radio-wrapper {
           display: inline-flex;
           align-items: baseline;
@@ -107,7 +107,7 @@ describe("Radio h5_css", () => {
             padding-left: 8px;
           }
         }
-      ,ant-radio-wrapper
+
             >
               <span
                 class=ant-radio
@@ -116,7 +116,6 @@ describe("Radio h5_css", () => {
                   class=ant-radio-input
                   data-test=undefined
                   type=radio
-                  value=
                 />
                 <span
                   class=ant-radio-inner
@@ -132,7 +131,7 @@ describe("Radio h5_css", () => {
             style=margin-bottom:,8px;
           >
             <label
-              class=
+              class=ant-radio-wrapper,ant-radio-wrapper-checked,
         &.ant-radio-wrapper {
           display: inline-flex;
           align-items: baseline;
@@ -202,7 +201,7 @@ describe("Radio h5_css", () => {
             padding-left: 8px;
           }
         }
-      ,ant-radio-wrapper,ant-radio-wrapper-checked
+
             >
               <span
                 class=ant-radio,ant-radio-checked
@@ -211,8 +210,8 @@ describe("Radio h5_css", () => {
                   checked=
                   class=ant-radio-input
                   data-test=undefined
+                  description=Detail,description,paragraph,here.
                   type=radio
-                  value=
                 />
                 <span
                   class=ant-radio-inner
@@ -237,7 +236,7 @@ describe("Radio h5_css", () => {
             style=margin-bottom:,8px;
           >
             <label
-              class=
+              class=ant-radio-wrapper,ant-radio-wrapper-disabled,
         &.ant-radio-wrapper {
           display: inline-flex;
           align-items: baseline;
@@ -307,7 +306,7 @@ describe("Radio h5_css", () => {
             padding-left: 8px;
           }
         }
-      ,ant-radio-wrapper,ant-radio-wrapper-disabled
+
             >
               <span
                 class=ant-radio,ant-radio-disabled
@@ -317,7 +316,6 @@ describe("Radio h5_css", () => {
                   data-test=undefined
                   disabled=
                   type=radio
-                  value=
                 />
                 <span
                   class=ant-radio-inner
@@ -332,7 +330,7 @@ describe("Radio h5_css", () => {
             class=ant-space-item
           >
             <label
-              class=
+              class=ant-radio-wrapper,ant-radio-wrapper-checked,ant-radio-wrapper-disabled,
         &.ant-radio-wrapper {
           display: inline-flex;
           align-items: baseline;
@@ -402,7 +400,7 @@ describe("Radio h5_css", () => {
             padding-left: 8px;
           }
         }
-      ,ant-radio-wrapper,ant-radio-wrapper-checked,ant-radio-wrapper-disabled
+
             >
               <span
                 class=ant-radio,ant-radio-checked,ant-radio-disabled
@@ -411,9 +409,9 @@ describe("Radio h5_css", () => {
                   checked=
                   class=ant-radio-input
                   data-test=undefined
+                  description=Detail,description,paragraph,here.
                   disabled=
                   type=radio
-                  value=
                 />
                 <span
                   class=ant-radio-inner
@@ -471,7 +469,7 @@ describe("Radio h5_css", () => {
 
             >
               <label
-                class=
+                class=ant-radio-button-wrapper,ant-radio-button-wrapper-checked,
         color: $text-light-primary;
         border-color: $strokes-light-opaque-3;
 
@@ -568,7 +566,7 @@ describe("Radio h5_css", () => {
           padding: 0;
           width: 36px;
         }
-      ,ant-radio-button-wrapper,ant-radio-button-wrapper-checked
+
               >
                 <span
                   class=ant-radio-button,ant-radio-button-checked
@@ -588,7 +586,7 @@ describe("Radio h5_css", () => {
                 </span>
               </label>
               <label
-                class=
+                class=ant-radio-button-wrapper,
         color: $text-light-primary;
         border-color: $strokes-light-opaque-3;
 
@@ -685,7 +683,7 @@ describe("Radio h5_css", () => {
           padding: 0;
           width: 36px;
         }
-      ,ant-radio-button-wrapper
+
               >
                 <span
                   class=ant-radio-button
@@ -704,7 +702,7 @@ describe("Radio h5_css", () => {
                 </span>
               </label>
               <label
-                class=
+                class=ant-radio-button-wrapper,
         color: $text-light-primary;
         border-color: $strokes-light-opaque-3;
 
@@ -801,7 +799,7 @@ describe("Radio h5_css", () => {
           padding: 0;
           width: 36px;
         }
-      ,ant-radio-button-wrapper
+
               >
                 <span
                   class=ant-radio-button
