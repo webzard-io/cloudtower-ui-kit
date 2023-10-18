@@ -13,6 +13,7 @@ import {
   LegendStyle,
 } from "./styled";
 import { ILegend, IMetricData, IMetricStream } from "./type";
+import Icon from "../Icon";
 
 export const ColorBlock: React.FC<{
   background?: string;
@@ -64,7 +65,9 @@ const MetricLegend = (props: IMetricLegendProps) => {
             </Menu>
           }
         >
-          <ArrowChevronDown16BoldSecondaryIcon rotate={90} />
+          <Icon
+            src={() => <ArrowChevronDown16BoldSecondaryIcon rotate={90} />}
+          />
         </AntdDropdown>
       )}
       els={legends.map((legend) => {

@@ -52,7 +52,9 @@ const FieldsString = ({
         <span className="input-tag-suffix">
           {allowClear && (
             <Icon
-              src={XmarkClearFill24SecondaryIcon}
+              src={XmarkClearFill24TertiaryIcon}
+              iconWidth={24}
+              iconHeight={24}
               onClick={onTagsAllowClearClick}
             />
           )}

@@ -20,6 +20,10 @@ WithoutTags.args = {
   onClick: () => {},
   focusIndicator: true,
   tags: [],
+  allowClear: true,
+  onTagsAllowClearClick: () => {
+    console.log("clear all");
+  },
   input: {
     name: "inputName",
     onBlur: () => {
@@ -40,6 +44,10 @@ export const WithOneTag = Template.bind({});
 
 WithOneTag.args = {
   tags: ["story tag"],
+  allowClear: true,
+  onTagsAllowClearClick: () => {
+    console.log("clear all");
+  },
   input: {
     name: "inputName",
     onBlur: () => {
@@ -60,6 +68,10 @@ export const WithTags = Template.bind({});
 
 WithTags.args = {
   tags: ["story tag", "story tag2"],
+  allowClear: true,
+  onTagsAllowClearClick: () => {
+    console.log("clear all");
+  },
   input: {
     name: "inputName",
     onBlur: () => {
