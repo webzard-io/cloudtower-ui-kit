@@ -155,7 +155,6 @@ describe("FieldsEnum h5_css", () => {
                 aria-owns=rc_select_TEST_OR_SSR_list
                 autocomplete=off
                 class=ant-select-selection-search-input
-                data-test=test,value,1
                 id=rc_select_TEST_OR_SSR
                 readonly=
                 role=combobox
@@ -185,7 +184,6 @@ describe("FieldsEnum h5_css", () => {
             >
               <svg
                 aria-hidden=true
-                class=
                 data-icon=down
                 fill=currentColor
                 focusable=false
@@ -354,7 +352,6 @@ describe("FieldsEnum h5_css", () => {
                 aria-owns=rc_select_TEST_OR_SSR_list
                 autocomplete=off
                 class=ant-select-selection-search-input
-                data-test=test,value,1
                 id=rc_select_TEST_OR_SSR
                 readonly=
                 role=combobox
@@ -384,7 +381,6 @@ describe("FieldsEnum h5_css", () => {
             >
               <svg
                 aria-hidden=true
-                class=
                 data-icon=down
                 fill=currentColor
                 focusable=false
@@ -553,7 +549,6 @@ describe("FieldsEnum h5_css", () => {
                 aria-owns=rc_select_TEST_OR_SSR_list
                 autocomplete=off
                 class=ant-select-selection-search-input
-                data-test=test,value,1
                 id=rc_select_TEST_OR_SSR
                 readonly=
                 role=combobox
@@ -583,7 +578,6 @@ describe("FieldsEnum h5_css", () => {
             >
               <svg
                 aria-hidden=true
-                class=
                 data-icon=down
                 fill=currentColor
                 focusable=false

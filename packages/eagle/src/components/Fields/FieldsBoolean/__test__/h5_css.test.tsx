@@ -30,7 +30,7 @@ describe("FieldsBoolean h5_css", () => {
         meta={{}}
       >
         <div data-testid={childrenTestId}>test children</div>
-      </FieldsBoolean>
+      </FieldsBoolean>,
     );
 
     expect(screen.getByTestId(childrenTestId)).toBeInTheDocument();
@@ -42,7 +42,7 @@ describe("FieldsBoolean h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <label
-          class=
+          class=ant-checkbox-wrapper,ant-checkbox-wrapper-checked,
         color: $text-primary-light;
         line-height: 22px;
         display: inline-flex;
@@ -122,7 +122,7 @@ describe("FieldsBoolean h5_css", () => {
             }
           }
         }
-      ,ant-checkbox-wrapper,ant-checkbox-wrapper-checked
+
         >
           <span
             class=ant-checkbox,ant-checkbox-checked
@@ -130,8 +130,8 @@ describe("FieldsBoolean h5_css", () => {
             <input
               checked=
               class=ant-checkbox-input
+              meta=[object,Object]
               type=checkbox
-              value=
             />
             <span
               class=ant-checkbox-inner

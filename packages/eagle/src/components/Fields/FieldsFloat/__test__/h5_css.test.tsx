@@ -246,6 +246,7 @@ describe("FieldsFloat h5_css", () => {
             class=ant-input-number-handler-wrap
           >
             <span
+              aria-disabled=false
               aria-label=Increase,Value
               class=ant-input-number-handler,ant-input-number-handler-up
               role=button
@@ -258,7 +259,6 @@ describe("FieldsFloat h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=up
                   fill=currentColor
                   focusable=false
@@ -273,6 +273,7 @@ describe("FieldsFloat h5_css", () => {
               </span>
             </span>
             <span
+              aria-disabled=false
               aria-label=Decrease,Value
               class=ant-input-number-handler,ant-input-number-handler-down
               role=button
@@ -285,7 +286,6 @@ describe("FieldsFloat h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=down
                   fill=currentColor
                   focusable=false
@@ -304,17 +304,14 @@ describe("FieldsFloat h5_css", () => {
             class=ant-input-number-input-wrap
           >
             <input
-              aria-valuemax=9007199254740991
-              aria-valuemin=-9007199254740991
               aria-valuenow=1.1
               autocomplete=off
               class=ant-input-number-input
               data-test=inputName1
-              max=9007199254740991
-              min=-9007199254740991
               name=inputName1
               role=spinbutton
               step=1
+              suffix=
               value=1.1
             />
           </div>

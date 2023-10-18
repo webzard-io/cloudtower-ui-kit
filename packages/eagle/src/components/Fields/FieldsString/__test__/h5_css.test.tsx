@@ -393,7 +393,7 @@ describe("Input h5_css", () => {
                 class=tags-overflow-auto
               >
                 <span
-                  class=
+                  class=mocked-styled-20,
         height: 18px;
         line-height: 18px;
         padding: 0 4px;
@@ -528,7 +528,7 @@ describe("Input h5_css", () => {
                 class=tags-overflow-auto
               >
                 <span
-                  class=
+                  class=mocked-styled-20,
         height: 18px;
         line-height: 18px;
         padding: 0 4px;
@@ -544,7 +544,7 @@ describe("Input h5_css", () => {
                   test_tag
                 </span>
                 <span
-                  class=
+                  class=mocked-styled-20,
         height: 18px;
         line-height: 18px;
         padding: 0 4px;

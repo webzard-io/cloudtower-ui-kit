@@ -15,7 +15,7 @@ describe("SearchInput h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <span
-          class=
+          class=ant-input-affix-wrapper,
         &.ant-input {
           padding: 5px 12px;
           line-height: 20px;
@@ -190,32 +190,26 @@ describe("SearchInput h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
-      ,ant-input-affix-wrapper
+
           style=width:,276px;
         >
           <span
             class=ant-input-prefix
           >
-            <span
-              aria-label=search
-              class=anticon,anticon-search
-              role=img
+            <svg
+              fill=none
+              height=16
+              width=16
+              xmlns=http://www.w3.org/2000/svg
             >
-              <svg
-                aria-hidden=true
-                class=
-                data-icon=search
-                fill=currentColor
-                focusable=false
-                height=1em
-                viewBox=64,64,896,896
-                width=1em
-              >
-                <path
-                  d=M909.6,854.5L649.9,594.8C690.2,542.7,712,479,712,412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5,31.3-212.1,87.9C143.2,256.5,112,331.8,112,412c0,80.1,31.3,155.5,87.9,212.1C256.5,680.8,331.8,712,412,712c67,0,130.6-21.8,182.7-62l259.7,259.6a8.2,8.2,0,0011.6,0l43.6-43.5a8.2,8.2,0,000-11.6zM570.4,570.4C528,612.7,471.8,636,412,636s-116-23.3-158.4-65.6C211.3,528,188,471.8,188,412s23.3-116.1,65.6-158.4C296,211.3,352.2,188,412,188s116.1,23.2,158.4,65.6S636,352.2,636,412s-23.3,116.1-65.6,158.4z
-                />
-              </svg>
-            </span>
+              <path
+                clip-rule=evenodd
+                d=M10.214,10.83a5,5,0,11.616-.615,1,1,0,011.036.237l2.66,2.66a1,1,0,01-1.414,1.414l-2.66-2.66a1,1,0,01-.238-1.036zM11,7a4,4,0,11-8,0,4,4,0,018,0z
+                fill=#2C3852
+                fill-opacity=0.6
+                fill-rule=evenodd
+              />
+            </svg>
           </span>
           <input
             class=ant-input
@@ -237,7 +231,7 @@ describe("SearchInput h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <span
-          class=
+          class=ant-input-affix-wrapper,
         &.ant-input {
           padding: 5px 12px;
           line-height: 20px;
@@ -412,32 +406,26 @@ describe("SearchInput h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
-      ,ant-input-affix-wrapper
+
           style=width:,276px;
         >
           <span
             class=ant-input-prefix
           >
-            <span
-              aria-label=search
-              class=anticon,anticon-search
-              role=img
+            <svg
+              fill=none
+              height=16
+              width=16
+              xmlns=http://www.w3.org/2000/svg
             >
-              <svg
-                aria-hidden=true
-                class=
-                data-icon=search
-                fill=currentColor
-                focusable=false
-                height=1em
-                viewBox=64,64,896,896
-                width=1em
-              >
-                <path
-                  d=M909.6,854.5L649.9,594.8C690.2,542.7,712,479,712,412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5,31.3-212.1,87.9C143.2,256.5,112,331.8,112,412c0,80.1,31.3,155.5,87.9,212.1C256.5,680.8,331.8,712,412,712c67,0,130.6-21.8,182.7-62l259.7,259.6a8.2,8.2,0,0011.6,0l43.6-43.5a8.2,8.2,0,000-11.6zM570.4,570.4C528,612.7,471.8,636,412,636s-116-23.3-158.4-65.6C211.3,528,188,471.8,188,412s23.3-116.1,65.6-158.4C296,211.3,352.2,188,412,188s116.1,23.2,158.4,65.6S636,352.2,636,412s-23.3,116.1-65.6,158.4z
-                />
-              </svg>
-            </span>
+              <path
+                clip-rule=evenodd
+                d=M10.214,10.83a5,5,0,11.616-.615,1,1,0,011.036.237l2.66,2.66a1,1,0,01-1.414,1.414l-2.66-2.66a1,1,0,01-.238-1.036zM11,7a4,4,0,11-8,0,4,4,0,018,0z
+                fill=#2C3852
+                fill-opacity=0.6
+                fill-rule=evenodd
+              />
+            </svg>
           </span>
           <input
             class=ant-input
@@ -459,7 +447,7 @@ describe("SearchInput h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <span
-          class=
+          class=ant-input-affix-wrapper,
         &.ant-input {
           padding: 5px 12px;
           line-height: 20px;
@@ -634,32 +622,26 @@ describe("SearchInput h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
-      ,ant-input-affix-wrapper
+
           style=width:,276px;
         >
           <span
             class=ant-input-prefix
           >
-            <span
-              aria-label=search
-              class=anticon,anticon-search
-              role=img
+            <svg
+              fill=none
+              height=16
+              width=16
+              xmlns=http://www.w3.org/2000/svg
             >
-              <svg
-                aria-hidden=true
-                class=
-                data-icon=search
-                fill=currentColor
-                focusable=false
-                height=1em
-                viewBox=64,64,896,896
-                width=1em
-              >
-                <path
-                  d=M909.6,854.5L649.9,594.8C690.2,542.7,712,479,712,412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5,31.3-212.1,87.9C143.2,256.5,112,331.8,112,412c0,80.1,31.3,155.5,87.9,212.1C256.5,680.8,331.8,712,412,712c67,0,130.6-21.8,182.7-62l259.7,259.6a8.2,8.2,0,0011.6,0l43.6-43.5a8.2,8.2,0,000-11.6zM570.4,570.4C528,612.7,471.8,636,412,636s-116-23.3-158.4-65.6C211.3,528,188,471.8,188,412s23.3-116.1,65.6-158.4C296,211.3,352.2,188,412,188s116.1,23.2,158.4,65.6S636,352.2,636,412s-23.3,116.1-65.6,158.4z
-                />
-              </svg>
-            </span>
+              <path
+                clip-rule=evenodd
+                d=M10.214,10.83a5,5,0,11.616-.615,1,1,0,011.036.237l2.66,2.66a1,1,0,01-1.414,1.414l-2.66-2.66a1,1,0,01-.238-1.036zM11,7a4,4,0,11-8,0,4,4,0,018,0z
+                fill=#2C3852
+                fill-opacity=0.6
+                fill-rule=evenodd
+              />
+            </svg>
           </span>
           <input
             class=ant-input

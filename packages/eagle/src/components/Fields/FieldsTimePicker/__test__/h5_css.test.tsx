@@ -33,7 +33,7 @@ describe("FieldsTimePicker h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-picker,
+          class=ant-picker,ant-picker-small,
         &.ant-input {
           padding: 5px 12px;
           line-height: 20px;
@@ -208,7 +208,7 @@ describe("FieldsTimePicker h5_css", () => {
         @include Inter();
         font-size: 12px;
         line-height: 18px;
-      ,ant-picker-small
+
         >
           <div
             class=ant-picker-input
@@ -234,7 +234,6 @@ describe("FieldsTimePicker h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=clock-circle
                   fill=currentColor
                   focusable=false
@@ -253,6 +252,7 @@ describe("FieldsTimePicker h5_css", () => {
             </span>
             <span
               class=ant-picker-clear
+              role=button
             >
               <span
                 aria-label=close-circle
@@ -261,16 +261,16 @@ describe("FieldsTimePicker h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=close-circle
                   fill=currentColor
+                  fill-rule=evenodd
                   focusable=false
                   height=1em
                   viewBox=64,64,896,896
                   width=1em
                 >
                   <path
-                    d=M512,64C264.6,64,64,264.6,64,512s200.6,448,448,448,448-200.6,448-448S759.4,64,512,64zm165.4,618.2l-66-.3L512,563.4l-99.3,118.4-66.1.3c-4.4,0-8-3.5-8-8,0-1.9.7-3.7,1.9-5.2l130.1-155L340.5,359a8.32,8.32,0,01-1.9-5.2c0-4.4,3.6-8,8-8l66.1.3L512,464.6l99.3-118.4,66-.3c4.4,0,8,3.5,8,8,0,1.9-.7,3.7-1.9,5.2L553.5,514l130,155c1.2,1.5,1.9,3.3,1.9,5.2,0,4.4-3.6,8-8,8z
+                    d=M512,64c247.4,0,448,200.6,448,448S759.4,960,512,960,64,759.4,64,512,264.6,64,512,64zm127.98,274.82h-.04l-.08.06L512,466.75,384.14,338.88c-.04-.05-.06-.06-.08-.06a.12.12,0,00-.07,0c-.03,0-.05.01-.09.05l-45.02,45.02a.2.2,0,00-.05.09.12.12,0,000,.07v.02a.27.27,0,00.06.06L466.75,512,338.88,639.86c-.05.04-.06.06-.06.08a.12.12,0,000,.07c0,.03.01.05.05.09l45.02,45.02a.2.2,0,00.09.05.12.12,0,00.07,0c.02,0,.04-.01.08-.05L512,557.25l127.86,127.87c.04.04.06.05.08.05a.12.12,0,00.07,0c.03,0,.05-.01.09-.05l45.02-45.02a.2.2,0,00.05-.09.12.12,0,000-.07v-.02a.27.27,0,00-.05-.06L557.25,512l127.87-127.86c.04-.04.05-.06.05-.08a.12.12,0,000-.07c0-.03-.01-.05-.05-.09l-45.02-45.02a.2.2,0,00-.09-.05.12.12,0,00-.07,0z
                   />
                 </svg>
               </span>
@@ -308,7 +308,7 @@ describe("FieldsTimePicker h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-picker,
+          class=ant-picker,ant-picker-middle,
         &.ant-input {
           padding: 5px 12px;
           line-height: 20px;
@@ -483,7 +483,7 @@ describe("FieldsTimePicker h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
-      ,ant-picker-middle
+
         >
           <div
             class=ant-picker-input
@@ -509,7 +509,6 @@ describe("FieldsTimePicker h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=clock-circle
                   fill=currentColor
                   focusable=false
@@ -528,6 +527,7 @@ describe("FieldsTimePicker h5_css", () => {
             </span>
             <span
               class=ant-picker-clear
+              role=button
             >
               <span
                 aria-label=close-circle
@@ -536,16 +536,16 @@ describe("FieldsTimePicker h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=close-circle
                   fill=currentColor
+                  fill-rule=evenodd
                   focusable=false
                   height=1em
                   viewBox=64,64,896,896
                   width=1em
                 >
                   <path
-                    d=M512,64C264.6,64,64,264.6,64,512s200.6,448,448,448,448-200.6,448-448S759.4,64,512,64zm165.4,618.2l-66-.3L512,563.4l-99.3,118.4-66.1.3c-4.4,0-8-3.5-8-8,0-1.9.7-3.7,1.9-5.2l130.1-155L340.5,359a8.32,8.32,0,01-1.9-5.2c0-4.4,3.6-8,8-8l66.1.3L512,464.6l99.3-118.4,66-.3c4.4,0,8,3.5,8,8,0,1.9-.7,3.7-1.9,5.2L553.5,514l130,155c1.2,1.5,1.9,3.3,1.9,5.2,0,4.4-3.6,8-8,8z
+                    d=M512,64c247.4,0,448,200.6,448,448S759.4,960,512,960,64,759.4,64,512,264.6,64,512,64zm127.98,274.82h-.04l-.08.06L512,466.75,384.14,338.88c-.04-.05-.06-.06-.08-.06a.12.12,0,00-.07,0c-.03,0-.05.01-.09.05l-45.02,45.02a.2.2,0,00-.05.09.12.12,0,000,.07v.02a.27.27,0,00.06.06L466.75,512,338.88,639.86c-.05.04-.06.06-.06.08a.12.12,0,000,.07c0,.03.01.05.05.09l45.02,45.02a.2.2,0,00.09.05.12.12,0,00.07,0c.02,0,.04-.01.08-.05L512,557.25l127.86,127.87c.04.04.06.05.08.05a.12.12,0,00.07,0c.03,0,.05-.01.09-.05l45.02-45.02a.2.2,0,00.05-.09.12.12,0,000-.07v-.02a.27.27,0,00-.05-.06L557.25,512l127.87-127.86c.04-.04.05-.06.05-.08a.12.12,0,000-.07c0-.03-.01-.05-.05-.09l-45.02-45.02a.2.2,0,00-.09-.05.12.12,0,00-.07,0z
                   />
                 </svg>
               </span>
@@ -583,7 +583,7 @@ describe("FieldsTimePicker h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-picker,
+          class=ant-picker,ant-picker-large,
         &.ant-input {
           padding: 5px 12px;
           line-height: 20px;
@@ -758,7 +758,7 @@ describe("FieldsTimePicker h5_css", () => {
         @include Inter();
         font-size: 14px;
         line-height: 22px;
-      ,ant-picker-large
+
         >
           <div
             class=ant-picker-input
@@ -784,7 +784,6 @@ describe("FieldsTimePicker h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=clock-circle
                   fill=currentColor
                   focusable=false
@@ -803,6 +802,7 @@ describe("FieldsTimePicker h5_css", () => {
             </span>
             <span
               class=ant-picker-clear
+              role=button
             >
               <span
                 aria-label=close-circle
@@ -811,16 +811,16 @@ describe("FieldsTimePicker h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=close-circle
                   fill=currentColor
+                  fill-rule=evenodd
                   focusable=false
                   height=1em
                   viewBox=64,64,896,896
                   width=1em
                 >
                   <path
-                    d=M512,64C264.6,64,64,264.6,64,512s200.6,448,448,448,448-200.6,448-448S759.4,64,512,64zm165.4,618.2l-66-.3L512,563.4l-99.3,118.4-66.1.3c-4.4,0-8-3.5-8-8,0-1.9.7-3.7,1.9-5.2l130.1-155L340.5,359a8.32,8.32,0,01-1.9-5.2c0-4.4,3.6-8,8-8l66.1.3L512,464.6l99.3-118.4,66-.3c4.4,0,8,3.5,8,8,0,1.9-.7,3.7-1.9,5.2L553.5,514l130,155c1.2,1.5,1.9,3.3,1.9,5.2,0,4.4-3.6,8-8,8z
+                    d=M512,64c247.4,0,448,200.6,448,448S759.4,960,512,960,64,759.4,64,512,264.6,64,512,64zm127.98,274.82h-.04l-.08.06L512,466.75,384.14,338.88c-.04-.05-.06-.06-.08-.06a.12.12,0,00-.07,0c-.03,0-.05.01-.09.05l-45.02,45.02a.2.2,0,00-.05.09.12.12,0,000,.07v.02a.27.27,0,00.06.06L466.75,512,338.88,639.86c-.05.04-.06.06-.06.08a.12.12,0,000,.07c0,.03.01.05.05.09l45.02,45.02a.2.2,0,00.09.05.12.12,0,00.07,0c.02,0,.04-.01.08-.05L512,557.25l127.86,127.87c.04.04.06.05.08.05a.12.12,0,00.07,0c.03,0,.05-.01.09-.05l45.02-45.02a.2.2,0,00.05-.09.12.12,0,000-.07v-.02a.27.27,0,00-.05-.06L557.25,512l127.87-127.86c.04-.04.05-.06.05-.08a.12.12,0,000-.07c0-.03-.01-.05-.05-.09l-45.02-45.02a.2.2,0,00-.09-.05.12.12,0,00-.07,0z
                   />
                 </svg>
               </span>

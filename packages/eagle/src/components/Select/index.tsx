@@ -2,8 +2,7 @@ import { css } from "@linaria/core";
 import { Select as AntdSelect } from "antd";
 import cs from "classnames";
 import _ from "lodash";
-import React, { useEffect, useMemo, useRef } from "react";
-import { findDOMNode } from "react-dom";
+import React, { useMemo } from "react";
 import { isElement } from "react-is";
 
 import { SelectComponentType } from "../../spec";
@@ -147,33 +146,9 @@ const Select: SelectComponentType<any, HTMLElement> = ({
     return meta?.touched && meta.invalid;
   }, [danger, meta]);
 
-  const selectRef = useRef(null);
-  // recommended by antd https://github.com/ant-design/ant-design/issues/26269#issuecomment-675818652
-  useEffect(() => {
-    if (!selectRef.current) {
-      return;
-    }
-    const realDom = findDOMNode(selectRef.current);
-    if (realDom) {
-      const inputDom = (realDom as HTMLDivElement).getElementsByClassName(
-        "ant-select-selection-search-input",
-      )[0];
-      const item = (realDom as HTMLDivElement).getElementsByClassName(
-        "ant-select-selection-item",
-      )[0];
-      inputDom &&
-        (placeholder || item) &&
-        inputDom.setAttribute(
-          "data-test",
-          String(placeholder || item.textContent),
-        );
-    }
-  }, [selectRef, placeholder]);
-
   return (
     <AntdSelect
       {...input}
-      ref={selectRef}
       size={size}
       value={multiple ? input.value || [] : input.value || undefined}
       onChange={(e: string | string[], option) => {
