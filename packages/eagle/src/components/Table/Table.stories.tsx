@@ -2,6 +2,7 @@ import {
   MoreEllipsis316BoldBlueIcon,
   SettingsGear16GradientGrayIcon,
 } from "@cloudtower/icons-react";
+import { css } from "@linaria/core";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { useState } from "react";
 
@@ -21,6 +22,10 @@ interface DataType {
   age: number;
   address: string;
 }
+
+const actionStyle = css`
+  vertical-align: middle;
+`;
 
 const columns = [
   {
@@ -42,7 +47,9 @@ const columns = [
   {
     key: "Action",
     dataIndex: "id",
-    title: () => <Icon src={SettingsGear16GradientGrayIcon} />,
+    title: () => (
+      <Icon className={actionStyle} src={SettingsGear16GradientGrayIcon} />
+    ),
     render: () => (
       <Button
         size="small"
