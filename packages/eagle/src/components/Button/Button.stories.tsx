@@ -325,19 +325,45 @@ export const RoundedIcon = () => {
         <span style={{ width: "110px", display: "inline-block" }}>
           only prefixIcon:
         </span>
-        <Button
-          prefixIcon={<Icon src={ArrowBoldDown16WhiteIcon} />}
-          type="primary"
-        />
+        <Space>
+          <Button
+            size="large"
+            prefixIcon={<Icon src={ArrowBoldDown16WhiteIcon} />}
+            type="primary"
+          />
+          <Button
+            size="middle"
+            prefixIcon={<Icon src={ArrowBoldDown16WhiteIcon} />}
+            type="primary"
+          />
+          <Button
+            size="small"
+            prefixIcon={<Icon src={ArrowBoldDown16WhiteIcon} />}
+            type="primary"
+          />
+        </Space>
       </div>
       <div>
         <span style={{ width: "110px", display: "inline-block" }}>
           only suffixIcon:
         </span>
-        <Button
-          suffixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
-          type="primary"
-        />
+        <Space>
+          <Button
+            size="large"
+            suffixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
+            type="primary"
+          />
+          <Button
+            size="middle"
+            suffixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
+            type="primary"
+          />
+          <Button
+            size="small"
+            suffixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
+            type="primary"
+          />
+        </Space>
       </div>
     </>
   );

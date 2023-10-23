@@ -1,4 +1,4 @@
-import { PlusAddCreateNew16GrayIcon } from "@cloudtower/icons-react";
+import { PlusAddCreateNew16SecondaryIcon } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
 import React, { useMemo } from "react";
 
@@ -62,7 +62,7 @@ const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
         type={restButtonProps.type || "ordinary"}
         size={restButtonProps.size || "small"}
         prefixIcon={
-          restButtonProps.prefixIcon || <PlusAddCreateNew16GrayIcon />
+          restButtonProps.prefixIcon || <PlusAddCreateNew16SecondaryIcon />
         }
         className={cx(Typo.Label.l3_regular, restButtonProps.className)}
         onClick={(e) => {
