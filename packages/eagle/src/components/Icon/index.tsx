@@ -27,7 +27,6 @@ export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
 const IconWrapper = css`
   display: inline-flex;
   align-items: center;
-  vertical-align: middle;
 
   .icon-inner {
     display: inline-flex;

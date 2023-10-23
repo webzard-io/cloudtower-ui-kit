@@ -9,7 +9,14 @@ import { Typo } from "../Typo";
 import HoverableElement from "./HoverableElement";
 
 const ButtonStyle = css`
+  &.ant-btn-icon-only {
+    justify-content: center;
+  }
+  &.ant-btn.ant-btn-link {
+    padding: 0;
+  }
   &.ant-btn {
+    padding: 5px 12px;
     height: 32px;
     border-radius: 6px;
     line-height: 22px;
@@ -22,9 +29,11 @@ const ButtonStyle = css`
     &.ant-btn-lg {
       height: 40px;
       line-height: 24px;
+      padding: 8px 16px;
     }
 
     &.ant-btn-sm {
+      padding: 2px 8px;
       height: 24px;
       line-height: 20px;
     }
@@ -334,14 +343,15 @@ const ButtonStyle = css`
   &.has-icon {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
   }
 
   .button-prefix-icon {
-    margin-right: 4px;
+    margin-right: 8px;
     display: inline-flex;
   }
   .button-suffix-icon {
-    margin-left: 4px;
+    margin-left: 8px;
     display: inline-flex;
   }
   .icon-wrapper {
@@ -379,6 +389,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const [status, setStatus] = useState<"normal" | "hover">("normal");
     const hasIcon = prefixIcon || suffixIcon;
     const hasHoverIcon = hoverPrefixIcon || hoverSuffixIcon;
+    const onlyIcon = !children && (prefixIcon || suffixIcon);
     return (
       <AntdButton
         ref={ref}
@@ -391,7 +402,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           size === "middle" && Typo.Label.l2_regular_title,
           size === "small" && Typo.Label.l3_regular_title,
           type && `ant-btn-${type}`,
-          !children && children !== 0 && restProps.icon && "ant-btn-icon-only",
+          onlyIcon && "ant-btn-icon-only",
         )}
         type={isAntdButtonTypes(type) ? type : undefined}
         onMouseEnter={(e) => {
@@ -414,7 +425,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             icon={prefixIcon}
             hoverEle={hoverPrefixIcon}
             hover={status === "hover"}
-            className={"button-prefix-icon"}
+            className={!onlyIcon ? "button-prefix-icon" : ""}
           />
         )}
         {children}
@@ -423,7 +434,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             icon={suffixIcon}
             hoverEle={hoverSuffixIcon}
             hover={status === "hover"}
-            className={"button-suffix-icon"}
+            className={!onlyIcon ? "button-suffix-icon" : ""}
           />
         )}
       </AntdButton>

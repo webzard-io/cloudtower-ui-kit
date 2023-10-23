@@ -408,7 +408,7 @@ export type ButtonProps = {
     | "ordinary"
     | "ordinary-onTint"
     | "quiet";
-} & Omit<AntdButtonProps, "type">;
+} & Omit<AntdButtonProps, "type" | "icon">;
 
 export type SwitchProps = Omit<AntdSwitchProps, "size"> & {
   size?: "small" | "default" | "large";
