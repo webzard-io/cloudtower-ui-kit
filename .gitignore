@@ -14,3 +14,4 @@ linaria-temp-map.json
 .vercel
 package-lock.json
 .history
+.DS_Store

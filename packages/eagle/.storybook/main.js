@@ -22,7 +22,7 @@ module.exports = {
       name:  '@storybook/addon-storysource',
       options: {
         rule: {
-          // test: [/\.stories\.@(js|jsx|ts|tsx)?$/], //This is default
+          test: [/\.stories\.@(js|jsx|ts|tsx)?$/], //This is default
           include: [path.resolve(__dirname, '../src')], // You can specify directories
         },
         loaderOptions: {
