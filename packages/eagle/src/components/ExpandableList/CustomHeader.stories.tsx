@@ -45,7 +45,7 @@ export const CustomHeader: StoryFn = () => (
 
 const meta: Meta<typeof CustomHeader> = {
   title: "Expandable/CustomHeader",
-  component: CustomHeader,
+  render: CustomHeader,
 };
 
 export default meta;

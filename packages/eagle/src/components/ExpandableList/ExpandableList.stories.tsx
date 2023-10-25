@@ -31,7 +31,7 @@ export const Template: StoryFn<typeof ExpandableContainer> = (args) => {
 
 const meta: Meta<typeof ExpandableContainer> = {
   title: "Expandable/List",
-  component: Template,
+  render: Template,
 };
 
 export default meta;

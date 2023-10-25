@@ -19,7 +19,7 @@ export const Template: StoryFn<typeof ExpandableItem> = (args) => {
 
 const meta: Meta<typeof ExpandableItem> = {
   title: "Expandable/Item",
-  component: Template,
+  render: Template,
   parameters: {
     design: {
       type: "figma",
@@ -32,27 +32,27 @@ export default meta;
 
 type Story = StoryObj<typeof ExpandableItem>;
 
-export const OrderedOneExpand: Story = Template.bind({
+export const OrderedOneExpand: Story = {
   args: {
     order: 1,
   },
-});
+};
 
-export const OrderedElevenExpand: Story = Template.bind({
+export const OrderedElevenExpand: Story = {
   args: {
     order: 11,
   },
-});
+};
 
-export const DisableExpand: Story = Template.bind({
+export const DisableExpand: Story = {
   args: {
     disableExpand: true,
   },
-});
+};
 
-export const ActivedDisableExpand: Story = Template.bind({
+export const ActivedDisableExpand: Story = {
   args: {
     disableExpand: true,
     defaultActive: true,
   },
-});
+};
