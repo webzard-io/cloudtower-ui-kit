@@ -44,7 +44,7 @@ const Truncate: React.FC<TruncatePropTypes> = (props) => {
   let _backLen = Math.min(
     backLen,
     text.length - ellipse.length,
-    len - ellipse.length
+    len - ellipse.length,
   );
 
   const _frontLen =
@@ -56,15 +56,18 @@ const Truncate: React.FC<TruncatePropTypes> = (props) => {
     _backLen = len - _frontLen - ellipse.length;
   }
 
-  const truncated =
-    text.length <= len
-      ? text
-      : text.slice(0, _frontLen) + ellipse + text.slice(text.length - _backLen);
+  const shouldTruncate =
+    text.length > len ||
+    (text.length === len && (frontLen !== undefined || backLen !== undefined));
+
+  const truncated = !shouldTruncate
+    ? text
+    : text.slice(0, _frontLen) + ellipse + text.slice(text.length - _backLen);
 
   const Text = (
     <div className={cs([className, inline && Inline])}>{truncated}</div>
   );
-  if (!hoverShowFullText || text.length <= len) {
+  if (!hoverShowFullText || !shouldTruncate) {
     return Text;
   }
   return <Tooltip title={text}>{Text}</Tooltip>;

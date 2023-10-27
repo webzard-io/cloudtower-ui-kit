@@ -109,7 +109,7 @@ $gray-a60-4: rgba(#c0cbe0, 0.6);
 $gray-a60-5: rgba(#acbad3, 0.6);
 $gray-a60-6: rgba(#6b80a7, 0.6);
 $gray-a60-7: rgba(#0a2555, 0.6);
-$gray-a60-8: rgba(#2c3852, 0.6);
+$gray-a60-8: rgba(#2c3852, 0.75);
 $gray-a80-9: rgba(23, 38, 64, 0.8);
 
 /* blue */
@@ -370,6 +370,7 @@ $text-light-notice: $yellow-60;
 $text-light-positive: $green-60;
 
 $text-light-storage: rgba(126, 65, 255, 1);
+$text-colorful-outstanding: $blue-60;
 
 /*  link   */
 $link-light-primary: $blue-60;

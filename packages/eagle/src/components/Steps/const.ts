@@ -1,0 +1,48 @@
+// 非 current Step 最小宽度
+const STEP_ITEM_CONTAINER_MIN_WIDTH = 60;
+// 第一个 Step 左间距或最后一个 Step 右边距
+const SIDE_STEP_ITEM_PADDING = 8;
+
+// prefix 与文字区域的间距
+const PREFIX_GAP = 4;
+
+// Step 之间的间距
+const STEP_SPACE = 4;
+
+// 非第一个 Step 和最后一个 Step 外的 Step 左右内边距
+const STEP_ITEM_PADDING = 4;
+
+// 凹陷区域宽度
+const BEFORE_BORDER_WIDTH = 8;
+
+// prefix container 宽度
+const STEP_PREFIX_WIDTH = 18;
+
+const PREFIX_WIDTH = STEP_PREFIX_WIDTH + PREFIX_GAP;
+
+// 文字区域以外的宽度(两侧，非两侧在 step 中通过补充或者扣除计算)
+const NON_TEXT_WIDTH =
+  STEP_PREFIX_WIDTH + SIDE_STEP_ITEM_PADDING + STEP_ITEM_PADDING + PREFIX_GAP;
+
+// 极端情况下，没有 prefix 时文字区域最大可用宽度
+const FIRST_STEP_WITH_ICON_MAX_TEXT_WIDTH =
+  STEP_ITEM_CONTAINER_MIN_WIDTH -
+  STEP_ITEM_PADDING -
+  SIDE_STEP_ITEM_PADDING -
+  PREFIX_WIDTH;
+
+const MAX_TRUNCATE_LEN = 9999;
+
+export {
+  BEFORE_BORDER_WIDTH,
+  FIRST_STEP_WITH_ICON_MAX_TEXT_WIDTH,
+  MAX_TRUNCATE_LEN,
+  NON_TEXT_WIDTH,
+  PREFIX_GAP,
+  PREFIX_WIDTH,
+  SIDE_STEP_ITEM_PADDING,
+  STEP_ITEM_CONTAINER_MIN_WIDTH,
+  STEP_ITEM_PADDING,
+  STEP_PREFIX_WIDTH,
+  STEP_SPACE,
+};
