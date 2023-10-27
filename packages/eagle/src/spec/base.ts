@@ -58,6 +58,7 @@ import { DraggerProps, UploadProps } from "antd/lib/upload";
 import type { Moment } from "moment";
 import React, {
   ForwardRefExoticComponent,
+  PropsWithChildren,
   PropsWithoutRef,
   ReactNode,
   RefAttributes,
@@ -445,6 +446,13 @@ export interface ISimplePaginationProps {
 
 export type AntdInputComponentType = Input;
 
+export interface IExpandableItemProps {
+  header?: React.ReactNode;
+  order?: number;
+  disableExpand?: boolean;
+  defaultActive?: boolean;
+}
+
 export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   // general UI
   loading: LoadingComponentType;
@@ -591,6 +599,10 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   card: ForwardRefExoticComponent<
     PropsWithoutRef<ICardProps> & RefAttributes<HTMLDivElement>
   >;
+  expandableList: {
+    ExpandableContainer: React.FC<PropsWithChildren<{}>>;
+    ExpandableItem: React.FC<PropsWithChildren<IExpandableItemProps>>;
+  };
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
