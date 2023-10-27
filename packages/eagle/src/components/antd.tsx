@@ -38,7 +38,6 @@ import React from "react";
 
 import { Kit, OptionComponentType } from "../spec";
 import Alert from "./Alert";
-import Truncate from "./Truncate";
 import Arch from "./Arch";
 import Badge from "./Badge";
 import Bit from "./Bit";
@@ -50,6 +49,8 @@ import Byte from "./Byte";
 import Card from "./Card";
 import Checkbox from "./Checkbox";
 import Empty from "./Empty";
+import ExpandableContainer from "./ExpandableList/ExpandableContainer";
+import ExpandableItem from "./ExpandableList/ExpandableItem";
 import fields from "./Fields";
 import Form from "./Form";
 import Frequency from "./Frequency";
@@ -77,6 +78,7 @@ import TextArea from "./TextArea";
 import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
+import Truncate from "./Truncate";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -170,6 +172,10 @@ export function getAntdKit(): Kit {
     antdSteps: AntdSteps,
     card: Card,
     truncate: Truncate,
+    expandableList: {
+      ExpandableContainer: ExpandableContainer,
+      ExpandableItem: ExpandableItem,
+    },
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
