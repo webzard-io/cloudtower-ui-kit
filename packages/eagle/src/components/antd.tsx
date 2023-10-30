@@ -79,6 +79,7 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
+import Time from "./Time";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -176,6 +177,7 @@ export function getAntdKit(): Kit {
       ExpandableContainer: ExpandableContainer,
       ExpandableItem: ExpandableItem,
     },
+    time: Time,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
