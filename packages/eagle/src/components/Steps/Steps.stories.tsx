@@ -239,3 +239,55 @@ export const Default: StoryObj<IStepsProps> = () => {
   );
 };
 Default.args = {};
+
+export const Horizontal: StoryObj<IStepsProps> = () => {
+  const [current, setCurrent] = useState(0);
+
+  return (
+    <>
+      <div
+        className={css`
+          margin: 10px 0;
+        `}
+      >
+        纵向步骤条为定宽，省略触发条件根据单个 step 所容纳字数决定。省略会触发
+        Tooltips 进行 全部信息展示。
+      </div>
+      <div>
+        <Steps
+          className={css`
+            margin: 10px 0;
+          `}
+          direction="vertical"
+          onChange={(current) => {
+            setCurrent(current);
+          }}
+          stepsConfig={[commonTitle, commonTitle, titleLong, commonTitle]}
+          current={current}
+        />
+        <Button
+          onClick={() => {
+            setCurrent(current - 1);
+          }}
+        >
+          prev
+        </Button>
+        <span
+          className={css`
+            margin: 0px 8px;
+          `}
+        >
+          current: {current}
+        </span>
+        <Button
+          onClick={() => {
+            setCurrent(current + 1);
+          }}
+        >
+          next
+        </Button>
+      </div>
+    </>
+  );
+};
+Horizontal.args = {};
