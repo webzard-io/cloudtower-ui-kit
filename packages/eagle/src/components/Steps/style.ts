@@ -88,8 +88,11 @@ export const HorizontalStyle = css`
       &:not(&:last-child) {
         &::after {
           @include rightTriangle();
-          right: -21px;
           z-index: 2;
+          position: relative;
+          top: -50%;
+          right: -100%;
+          display: inline-block;
         }
       }
       &:not(:first-child):not(:last-child) {
@@ -114,9 +117,11 @@ export const HorizontalStyle = css`
     }
     .#{$item}-finish {
       cursor: pointer;
+      min-width: 60px;
     }
     .#{$item}-wait,
     .#{$item}-finish {
+      min-width: 60px;
       .#{$item}-container {
         background-color: $fills-light-trans-1;
       }
@@ -173,6 +178,11 @@ export const HorizontalStepContentStyle = css`
   }
   .step-item-text {
     display: inline-block;
+  }
+  .step-item-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 `;
 

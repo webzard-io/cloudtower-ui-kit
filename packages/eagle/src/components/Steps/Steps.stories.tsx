@@ -40,10 +40,13 @@ const Title: React.FC = ({ children }) => (
 export const Basic = () => {
   const stepsConfig: IStepsProps["stepsConfig"] = new Array(3)
     .fill(0)
-    .map((_) => ({ title: "Label" }));
+    .map((_) => ({
+      title:
+        "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel",
+    }));
 
   return (
-    <div style={{ padding: "20px", paddingBottom: "200px" }}>
+    <div style={{ padding: "20px", paddingBottom: "200px", width: "800px" }}>
       <Title>Normal</Title>
       <Space>
         <Steps stepsConfig={stepsConfig} current={0} />

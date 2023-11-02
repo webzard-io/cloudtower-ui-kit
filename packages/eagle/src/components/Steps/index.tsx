@@ -36,7 +36,7 @@ const StepTitle: React.FC<StepContentProps> = (props) => {
           index + 1
         )}
       </span>
-      {step.title}
+      <span className="step-item-title">{step.title}</span>
     </div>
   );
 };
