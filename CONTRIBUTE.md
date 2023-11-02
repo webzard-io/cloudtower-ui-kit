@@ -23,6 +23,9 @@
 
 ### 如何新增 icon
 
+1. 在 slack 中调用 @hubot sync-icon -d "your pr description" 即可
+2. repo 中提交
+
 - 将需要新增的 svg 图片放到 pacakge/icons/src 下面即可。
 - 提交 pr 前可以切换到 packages/icons-react 执行 `yarn build`，执行成功，即表示 SVG 构建成功。然后切换至 packages/ealge 执行 `yarn storybook` 可以在 react-icons 下看到对应的 icon 效果。
 - 提交名称注意名称合法性，目前是会将 `x-y-z` 转换为 `XZY` 格式的组件。注意名称中不要以数字开头和带上 `-` 之外的标点符号。

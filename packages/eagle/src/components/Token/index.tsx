@@ -1,4 +1,4 @@
-import { XmarkRemoveSmall16RegularInheritIcon } from "@cloudtower/icons-react";
+import { XmarkRemoveOn16PrimaryRegularIcon } from "@cloudtower/icons-react";
 import { css, LinariaClassName } from "@linaria/core";
 import { Tag as AntdTag } from "antd";
 import cs from "classnames";
@@ -123,7 +123,7 @@ const Token: TokenComponentType = ({
       closeIcon={
         <Icon
           className="selected-icon"
-          src={XmarkRemoveSmall16RegularInheritIcon}
+          src={XmarkRemoveOn16PrimaryRegularIcon}
           iconHeight={16}
           iconWidth={16}
         />

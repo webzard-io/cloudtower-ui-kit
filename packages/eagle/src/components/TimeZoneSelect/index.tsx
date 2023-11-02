@@ -1,4 +1,4 @@
-import { CheckmarkDoneSuccessCorrect16BlueIcon } from "@cloudtower/icons-react";
+import { CheckmarkDoneSuccessCorrect16BlueRegularIcon } from "@cloudtower/icons-react";
 import { css, cx } from "@linaria/core";
 import { Select as AntdSelect, Tag } from "antd";
 import { groupBy, sortBy, toPairs, uniqBy } from "lodash";
@@ -306,7 +306,7 @@ const TimeZoneOption: React.FC<OptionProps> = ({ timeZone, customLabel }) => {
         </span>
         <Icon
           className="selected-icon"
-          src={CheckmarkDoneSuccessCorrect16BlueIcon}
+          src={CheckmarkDoneSuccessCorrect16BlueRegularIcon}
           iconHeight={16}
           iconWidth={16}
         />

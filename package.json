@@ -13,7 +13,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "eslint \"**/*.{tsx,ts}\" --fix",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "sync-icon": "figma-export use-config"
   },
   "lint-staged": {
     "**/*.{ts,tsx,md}": [
@@ -22,6 +23,8 @@
     ]
   },
   "devDependencies": {
+    "@figma-export/cli": "^4.7.0",
+    "@figma-export/output-components-as-svg": "^4.7.0",
     "@types/ejs": "^3.1.1",
     "eslint": "^8.25.0",
     "eslint-config-react-app": "^7.0.1",
@@ -63,5 +66,8 @@
         "maxSize": "120 kB"
       }
     ]
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
   }
 }

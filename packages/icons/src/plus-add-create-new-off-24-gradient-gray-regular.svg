@@ -1,0 +1,11 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Size=24, Small Caps=Off, Weight=Regular, Fill=Gradient - Gray">
+<path id="Vector" d="M12 4C11.6825 4 11.425 4.25744 11.425 4.575V11.4252H4.575C4.25744 11.4252 4 11.6826 4 12.0002C4 12.3178 4.25744 12.5752 4.575 12.5752H11.425V19.425C11.425 19.7426 11.6825 20 12 20C12.3176 20 12.575 19.7426 12.575 19.425V12.5752H19.425C19.7426 12.5752 20 12.3178 20 12.0002C20 11.6826 19.7426 11.4252 19.425 11.4252H12.575V4.575C12.575 4.25744 12.3176 4 12 4Z" fill="url(#paint0_radial_878_23872)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_878_23872" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(4 20) rotate(-45) scale(22.6274)">
+<stop stop-color="#CCD4E3"/>
+<stop offset="1" stop-color="#6B7D99"/>
+</radialGradient>
+</defs>
+</svg>

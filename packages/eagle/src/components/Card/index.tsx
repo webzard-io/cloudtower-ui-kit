@@ -1,4 +1,4 @@
-import { ArrowRightGrayIcon } from "@cloudtower/icons-react";
+import { ChevronRightOn16TertiaryBoldIcon } from "@cloudtower/icons-react";
 import cs from "classnames";
 import React, { PropsWithChildren, useState } from "react";
 
@@ -48,7 +48,10 @@ const Card = React.forwardRef<HTMLDivElement, PropsWithChildren<ICardProps>>(
               }}
             >
               {collapsible && (
-                <Icon className="collapse-arrow" src={ArrowRightGrayIcon} />
+                <Icon
+                  className="collapse-arrow"
+                  src={ChevronRightOn16TertiaryBoldIcon}
+                />
               )}
               {title}
             </div>

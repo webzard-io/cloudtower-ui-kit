@@ -1,8 +1,8 @@
 import {
   HandlePoint816BlueIcon,
   HandlePoint816SecondaryIcon,
-  XmarkRemove16RegularRedIcon,
-  XmarkRemove16SecondaryIcon,
+  XmarkRemoveOn16RedRegularIcon,
+  XmarkRemoveOn16SecondaryRegularIcon,
 } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
 import { List as AntdList } from "antd";
@@ -58,8 +58,8 @@ const TableFormRowDeleteAction: React.FC<
     <Icon
       data-testid="eagle-table-form-row-action"
       className={cx("delete-row-icon", isRowDeleteDisabled && "disabled")}
-      src={XmarkRemove16SecondaryIcon}
-      hoverSrc={isRowDeleteDisabled ? undefined : XmarkRemove16RegularRedIcon}
+      src={XmarkRemoveOn16SecondaryRegularIcon}
+      hoverSrc={isRowDeleteDisabled ? undefined : XmarkRemoveOn16RedRegularIcon}
       onClick={() => {
         if (isRowDeleteDisabled) return;
         const newData = [...data];

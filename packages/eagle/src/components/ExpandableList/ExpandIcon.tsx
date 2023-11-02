@@ -1,6 +1,6 @@
 import {
-  ArrowChevronDown16SecondaryIcon,
-  ArrowChevronUp16SecondaryIcon,
+  ChevronDownOn16TertiaryRegularIcon,
+  ChevronUpOn16TertiaryRegularIcon,
 } from "@cloudtower/icons-react";
 import React from "react";
 
@@ -18,9 +18,9 @@ interface IProps {
 const ExpandIcon = (props: IProps) => {
   const { isActive } = props;
   return isActive ? (
-    <ArrowChevronUp16SecondaryIcon />
+    <ChevronUpOn16TertiaryRegularIcon />
   ) : (
-    <ArrowChevronDown16SecondaryIcon />
+    <ChevronDownOn16TertiaryRegularIcon />
   );
 };
 
