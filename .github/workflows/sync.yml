@@ -23,9 +23,7 @@ jobs:
       - name: Clear Icons
         run: rm -rf packages/icons/src
       - name: Sync Icons
-        env:
-          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
-        run: yarn sync-icon
+        run: FIGMA_TOKEN=${{ secrets.FIGMA_TOKEN }} yarn sync-icon
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
