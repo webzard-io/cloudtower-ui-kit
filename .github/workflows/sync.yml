@@ -37,6 +37,7 @@ jobs:
           branch-suffix: short-commit-hash
           title: '[SYNC-ICON]: update icons'
           labels: feat
+          body: ${{ inputs.description }}
       - name: Check outputs
         if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
