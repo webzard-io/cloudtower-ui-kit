@@ -1,4 +1,4 @@
-import { CheckmarkDoneSuccessCorrect16SecondaryIcon } from "@cloudtower/icons-react";
+import { CheckmarkDoneSuccessCorrect16SecondaryRegularIcon } from "@cloudtower/icons-react";
 import { Steps as AntdSteps } from "antd";
 import { StepProps } from "antd/lib/steps";
 import cs from "classnames";
@@ -31,7 +31,7 @@ const StepTitle: React.FC<StepContentProps> = (props) => {
     >
       <span className="step-item-prefix-container">
         {index < current ? (
-          <CheckmarkDoneSuccessCorrect16SecondaryIcon />
+          <CheckmarkDoneSuccessCorrect16SecondaryRegularIcon />
         ) : (
           index + 1
         )}

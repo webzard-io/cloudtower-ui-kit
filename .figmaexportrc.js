@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 function addIIfStartsWithNumber(inputString) {
     // 使用正则表达式检查字符串是否以数字开头
     if (/^\d/.test(inputString)) {
