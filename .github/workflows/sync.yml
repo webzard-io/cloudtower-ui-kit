@@ -6,6 +6,7 @@ on:
       description:
         description: 'Description for the sync action'
         required: true
+  pull_request: -- Add this here
 
 jobs:
   sync-icon:
