@@ -1,0 +1,78 @@
+name: Sync Icons
+
+on:
+  # 手动触发
+  workflow_dispatch:
+    inputs:
+      description:
+        description: 'Description for the sync action'
+        required: false
+      slack_user:
+        description: 'Slack user ID to notify (e.g., U123456)'
+        required: false
+  # 外部 dispatch 触发
+  repository_dispatch:
+    types: [sync-icons]
+  # 定时执行：每天 UTC 时间 0:00（北京时间 8:00）
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  sync-icon:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: "yarn"
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+      - name: Sync Icons
+        run: FIGMA_TOKEN=${{ secrets.FIGMA_TOKEN }} yarn sync-icons
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: '[SYNC-ICON]: update icons'
+          committer: netweng <xiaojun@smartx.com>
+          author: netweng <xiaojun@smartx.com>
+          delete-branch: true
+          branch-suffix: short-commit-hash
+          title: '[SYNC-ICON]: update icons'
+          labels: feat
+          body: |
+            Sync Icons from figma
+            - ${{ inputs.description || github.event.client_payload.description || 'Scheduled sync' }}
+            - @netweng @chenenpei @tanboweng PTAL
+      - name: Check outputs
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+      - name: Set Slack User
+        id: set_slack_user
+        run: |
+          SLACK_USER="${{ inputs.slack_user || github.event.client_payload.slack_user || '' }}"
+          if [ -n "$SLACK_USER" ]; then
+            echo "slack_user_mention=<@$SLACK_USER>" >> $GITHUB_OUTPUT
+          else
+            echo "slack_user_mention=" >> $GITHUB_OUTPUT
+          fi
+      - name: Send to Slack
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          link_names: 1
+          payload: |
+            {
+              "text": "🎨 Icons Synced! New PR created: <${{ steps.cpr.outputs.pull-request-url }}|#${{ steps.cpr.outputs.pull-request-number }}>\n${{ inputs.description || github.event.client_payload.description || 'Scheduled sync' }} ${{ steps.set_slack_user.outputs.slack_user_mention }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
