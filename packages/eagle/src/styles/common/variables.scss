@@ -102,6 +102,7 @@ $gray-100: #0d1b36;
 $gray-110: #0a1833;
 $gray-120: #00122e;
 
+$gray-a30-10:rgba(#001540,0.3);
 $gray-a60-1: rgba(#edf1fa, 0.6);
 $gray-a60-2: rgba(#e1e6f1, 0.6);
 $gray-a60-3: rgba(#d3daeb, 0.6);
@@ -109,7 +110,8 @@ $gray-a60-4: rgba(#c0cbe0, 0.6);
 $gray-a60-5: rgba(#acbad3, 0.6);
 $gray-a60-6: rgba(#6b80a7, 0.6);
 $gray-a60-7: rgba(#0a2555, 0.6);
-$gray-a60-8: rgba(#2c3852, 0.6);
+$gray-a60-8: rgba(#2c3852, 0.6);;
+$gray-a75-8: rgba(#2c3852, 0.75);
 $gray-a80-9: rgba(23, 38, 64, 0.8);
 
 /* blue */
@@ -370,7 +372,9 @@ $text-light-notice: $yellow-60;
 $text-light-positive: $green-60;
 
 $text-light-storage: rgba(126, 65, 255, 1);
-
+$text-colorful-outstanding: $blue-60;
+$text-neutral-tertiary: $gray-a60-8;
+$text-neutral-primary: $gray-120;
 /*  link   */
 $link-light-primary: $blue-60;
 $link-light-secondary: #2c3852;

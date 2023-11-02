@@ -38,7 +38,7 @@ import { RowProps } from "antd/lib/row";
 import { SelectProps as AntdSelectProps, SelectProps } from "antd/lib/select";
 import { SkeletonProps as AntdSkeletonProps } from "antd/lib/skeleton";
 import { SkeletonButtonProps } from "antd/lib/skeleton/Button";
-import Steps, { StepProps, StepsProps } from "antd/lib/steps";
+import Steps from "antd/lib/steps";
 import { SwitchProps as AntdSwitchProps } from "antd/lib/switch";
 import {
   ColumnsType,
@@ -430,10 +430,22 @@ export type RadioButtonProps = AntdRadioButtonProps & {
   onInputChange?: (val: number | string | undefined) => void;
 };
 
-export type IStepsProps = StepsProps & {
-  stepsConfig?: Array<StepProps>;
+export type StepProps = {
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLElement>;
+  title: string;
+  style?: React.CSSProperties;
+};
+
+export type IStepsProps = {
+  className?: string;
+  current?: number;
+  direction?: "horizontal" | "vertical";
+  style?: React.CSSProperties;
+  onChange?: (current: number) => void;
+  stepsConfig: Array<StepProps>;
   containerClassname?: string;
-  showStepCount?: boolean;
+  disabled?: boolean;
 };
 
 export interface ISimplePaginationProps {
