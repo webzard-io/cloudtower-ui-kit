@@ -1,0 +1,44 @@
+name: Sync Icons
+
+on:
+  workflow_dispatch:
+    inputs:
+      description:
+        description: 'Description for the sync action'
+        required: true
+
+jobs:
+  sync-icon:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: "yarn"
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+      - name: Clear Icons
+        run: rm -rf packages/icons/src
+      - name: Sync Icons
+        env:
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+        run: yarn sync-icon
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: '[SYNC-ICON]: update icons'
+          committer: netweng <xiaojun@smartx.com>
+          author: netweng <xiaojun@smartx.com>
+          delete-branch: true
+          branch-suffix: short-commit-hash
+          title: '[SYNC-ICON]: update icons'
+          labels: feat
+      - name: Check outputs
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
