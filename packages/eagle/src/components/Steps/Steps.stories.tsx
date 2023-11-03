@@ -198,9 +198,15 @@ export const Horizontal: StoryObj<IStepsProps> = () => {
             setCurrent(current);
           }}
           stepsConfig={[
+            {
+              title:
+                "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabellabellabel",
+            },
             { title: "Label" },
-            { title: "Label" },
-            { title: "Label" },
+            {
+              title:
+                "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabellabellabel",
+            },
             { title: "Label" },
           ]}
           current={current}
