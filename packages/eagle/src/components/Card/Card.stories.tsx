@@ -1,35 +1,47 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 
 import Card from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta = {
   title: "Card",
-  component: Card,
-} as ComponentMeta<typeof Card>;
+  render: Card,
+};
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Card> = (args) => {
+export default meta;
+
+export const Shadow = (args) => {
   return (
-    <div style={{ padding: "20px", backgroundColor: "beige" }}>
-      <Card {...args}>Hello World</Card>
+    <div style={{ padding: "20px", backgroundColor: "#EDF0F7" }}>
+      <Card title={"hello"} collapsible={true} shadow={true} {...args}>
+        Hello World
+      </Card>
     </div>
   );
 };
 
-export const Shadow = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Shadow.args = {
-  title: "hello",
-  collapsible: true,
-  shadow: true,
+export const NoShadow = (args) => {
+  return (
+    <div style={{ padding: "20px", backgroundColor: "#EDF0F7" }}>
+      <Card title={"hello"} collapsible={true} shadow={false} {...args}>
+        Hello World
+      </Card>
+    </div>
+  );
 };
 
-export const NoShadow = Template.bind({});
-
-NoShadow.args = {
-  title: "hello",
-  collapsible: true,
-  shadow: false,
+export const Hoverable = (args) => {
+  return (
+    <div style={{ padding: "20px", backgroundColor: "#EDF0F7" }}>
+      <Card
+        title={"hello"}
+        collapsible={true}
+        shadow={true}
+        hoverable={true}
+        {...args}
+      >
+        Hello World
+      </Card>
+    </div>
+  );
 };

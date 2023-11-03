@@ -2,7 +2,13 @@ import "./styles/index.scss";
 
 import { initParrotI18n } from "@cloudtower/parrot";
 
-export type { DateRange, GraphType, IconProps, IDataPoint } from "./components";
+export type {
+  DateRange,
+  GraphType,
+  CardProps,
+  IconProps,
+  IDataPoint,
+} from "./components";
 export {
   antdKit,
   BaseIcon,
@@ -17,11 +23,11 @@ export {
   ModalStack,
   tableStyleCover,
   tickFormatter,
+  Truncate,
   Typo,
   useKitDispatch,
   useKitSelector,
   WizardBody,
-  Truncate,
 } from "./components";
 export * from "./components/TableForm/types";
 export { useElementsSize } from "./hooks";
@@ -44,10 +50,10 @@ export type {
   SorterOrder,
   StringProps,
   TableProps,
+  TagColor,
   TextAreaProps,
   TooltipProps,
   WizardSteps,
-  TagColor,
 } from "./spec";
 export * from "./spec/type";
 export type {
