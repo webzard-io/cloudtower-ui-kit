@@ -79,7 +79,7 @@ import {
 } from "./type";
 
 export type AntdTableComponentType = <RecordType extends object = any>(
-  props: AntdTableProps<RecordType>
+  props: AntdTableProps<RecordType>,
 ) => JSX.Element;
 
 export type AntdTreeSelectComponentType<T> = TreeSelect<T>;
@@ -114,7 +114,7 @@ interface LooseFieldRenderProps<V, T extends HTMLElement> {
     onBlur?: FieldRenderProps<V, T>["input"]["onBlur"];
     onChange?: (
       value: string | string[],
-      option: { object: V } | Array<{ object: V }>
+      option: { object: V } | Array<{ object: V }>,
     ) => void;
     onFocus?: FieldRenderProps<V, T>["input"]["onFocus"];
     type?: FieldRenderProps<V, T>["input"]["type"];
@@ -214,7 +214,7 @@ export interface TableProps<T extends { id: string }> {
   onRowClick?: (
     record: T,
     index: number,
-    evt: React.MouseEvent<HTMLElement, MouseEvent>
+    evt: React.MouseEvent<HTMLElement, MouseEvent>,
   ) => void;
   rowClassName?: (record: T, index: number) => string;
   scroll?: { x?: number | string | true; y?: number | string };
@@ -252,7 +252,7 @@ export interface TableProps<T extends { id: string }> {
 interface TableComponent {
   <TData extends IdObject>(
     props: React.PropsWithChildren<TableProps<TData>>,
-    context?: unknown
+    context?: unknown,
   ): React.ReactElement | null;
 }
 export interface BaseEnumProps {
@@ -294,7 +294,7 @@ export interface IntProps {
   size?: InputSize;
   onBlur?: (
     input: FieldBaseProps<number, HTMLInputElement>["input"],
-    event?: React.FocusEvent<HTMLInputElement>
+    event?: React.FocusEvent<HTMLInputElement>,
   ) => void;
 }
 export interface FloatProps {
@@ -303,7 +303,7 @@ export interface FloatProps {
   size?: InputSize;
   onBlur?: (
     input: FieldBaseProps<number, HTMLInputElement>["input"],
-    event?: React.FocusEvent<HTMLInputElement>
+    event?: React.FocusEvent<HTMLInputElement>,
   ) => void;
 }
 export type TooltipProps = AntdTooltipProps & {
@@ -311,7 +311,7 @@ export type TooltipProps = AntdTooltipProps & {
 };
 export type FieldBaseProps<
   V = any,
-  T extends HTMLElement = HTMLElement
+  T extends HTMLElement = HTMLElement,
 > = FieldRenderProps<V, T> & {
   disabled?: boolean;
   className?: string;
@@ -354,7 +354,7 @@ export type DateTimeRangeProps = DatePickerProps;
 export type IntFieldProps<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   V = any,
-  T extends HTMLElement = HTMLElement
+  T extends HTMLElement = HTMLElement,
 > = FieldBaseProps<V, T> &
   IntProps & {
     onChange?: FieldBaseProps<V, T>["input"]["onChange"];
@@ -379,7 +379,7 @@ export type ButtonGroupType = {
 
 export type IntegerFieldProps<
   V = any,
-  T extends HTMLElement = HTMLElement
+  T extends HTMLElement = HTMLElement,
 > = FieldBaseProps<V, T> &
   InputNumberProps & {
     onChange?: FieldBaseProps<V, T>["input"]["onChange"];
@@ -389,13 +389,13 @@ export type IntegerFieldProps<
     size?: InputSize;
     onBlur?: (
       input: FieldBaseProps<number, HTMLInputElement>["input"],
-      event?: React.FocusEvent<HTMLInputElement>
+      event?: React.FocusEvent<HTMLInputElement>,
     ) => void;
   };
 
 export type FloatFieldProps<
   V = any,
-  T extends HTMLElement = HTMLElement
+  T extends HTMLElement = HTMLElement,
 > = FieldBaseProps<V, T> &
   FloatProps & {
     onChange?: FieldBaseProps<V, T>["input"]["onChange"];
@@ -627,7 +627,7 @@ export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
 
 export type SelectComponentType<
   V = any,
-  T extends HTMLElement = HTMLElement
+  T extends HTMLElement = HTMLElement,
 > = React.FunctionComponent<LooseFieldRenderProps<V, T> & KitSelectProps>;
 
 export type OptionComponentType = React.FC<OptionProps> & {
@@ -702,10 +702,12 @@ export type SplitTagComponentType = React.FC<
 >;
 
 export type TokenColor = "red" | "yellow" | "green" | "blue" | "gray";
-export type TokenComponentType = React.FC<
-  Omit<TagProps, "closeIcon"> & {
-    color?: TokenColor;
-    size?: "small" | "medium" | "large";
-    checked?: boolean;
-  }
->;
+export type TokenType = Omit<TagProps, "closeIcon"> & {
+  color?: TokenColor;
+  size?: "small" | "medium" | "large";
+  checked?: boolean;
+  tooltipConfig?: {
+    title: string;
+  };
+};
+export type TokenComponentType = React.FC<TokenType>;

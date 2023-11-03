@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from "@storybook/react";
 import { Placeholder16Icon } from "@cloudtower/icons-react";
+import { Meta, StoryObj } from "@storybook/react";
 import { Space } from "antd";
 import React from "react";
 
@@ -258,4 +258,29 @@ Truncate.args = {
   size: "small",
   closable: true,
   len: 10,
+};
+
+export const Tooltip: StoryObj<{
+  content: string;
+  tooltipConfig: {
+    title: string;
+  };
+}> = ({ content, ...props }) => {
+  return (
+    <>
+      <div>可以通过传递 tooltipConfig 使 closeIcon hover 时显示 tooltip</div>
+      <div style={{ marginTop: "50px" }}>
+        <Token closable {...props}>
+          {content}
+        </Token>
+      </div>
+    </>
+  );
+};
+
+Tooltip.args = {
+  content: "longlonglonglong",
+  tooltipConfig: {
+    title: "remove token",
+  },
 };
