@@ -48,17 +48,58 @@ export const Basic = () => {
   return (
     <div style={{ padding: "20px", paddingBottom: "200px", width: "800px" }}>
       <Title>Normal</Title>
+      简单显示
       <Space>
-        <Steps stepsConfig={stepsConfig} current={0} />
+        <Steps
+          stepsConfig={[
+            { title: "Lable" },
+            { title: "Label" },
+            { title: "Label " },
+          ]}
+          current={0}
+        />
       </Space>
+      当 current 步骤较长时
       <Space>
-        <Steps stepsConfig={stepsConfig} current={1} />
+        <Steps
+          stepsConfig={[
+            { title: "Label" },
+            {
+              title:
+                "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel",
+            },
+            { title: "Label" },
+          ]}
+          current={1}
+        />
       </Space>
+      当非 current 步骤较长时
       <Space>
-        <Steps stepsConfig={stepsConfig} current={2} />
+        <Steps
+          stepsConfig={[
+            { title: "Label" },
+            {
+              title:
+                "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel",
+            },
+            { title: "Label" },
+          ]}
+          current={2}
+        />
       </Space>
+      当 current 步骤超长时
       <Space>
-        <Steps stepsConfig={stepsConfig} current={3} />
+        <Steps
+          stepsConfig={[
+            { title: "Label" },
+            { title: "Label" },
+            {
+              title:
+                "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel",
+            },
+          ]}
+          current={2}
+        />
       </Space>
       <Title>Disabled</Title>
       <Space>

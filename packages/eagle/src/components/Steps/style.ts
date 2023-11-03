@@ -5,7 +5,7 @@ export const StepsStyle = css`
   .#{$item} {
     &-tail,
     &-icon {
-      display: none;
+      display: none !important;
     }
   }
   .#{$item}.#{$item}-active {
@@ -108,6 +108,7 @@ export const HorizontalStyle = css`
       }
     }
     .#{$item}-active {
+      max-width: calc(100% - 120px);
       .#{$item}-container {
         background-color: $fills-light-general-general-light;
       }
