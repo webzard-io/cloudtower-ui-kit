@@ -4,10 +4,11 @@ import { Tag as AntdTag } from "antd";
 import cs from "classnames";
 import React from "react";
 
-import { TokenColor, TokenComponentType } from "../../spec";
-import { IconStyle } from "./style";
+import { TokenColor, TokenType } from "../../spec";
 import Icon from "../Icon";
+import Tooltip from "../Tooltip";
 import { Typo } from "../Typo";
+import { IconStyle } from "./style";
 
 export const PresetColors: TokenColor[] = [
   "blue",
@@ -96,44 +97,59 @@ const TokenStyle = css`
   }
 `;
 
-const Token: TokenComponentType = ({
-  size = "small",
-  color = "gray",
-  className,
-  icon,
-  checked,
-  children,
-  ...props
-}) => {
-  return (
-    <AntdTag
-      {...props}
-      className={cs(
-        className,
-        Size[size],
-        TokenStyle,
-        {
-          [Typo.Label.l4_regular]: size === "small" || size === "medium",
-          [Typo.Label.l3_regular]: size === "large",
-          [`ant-tag-${color}`]: PresetColors.includes(color),
-        },
-        "ui-kit-token",
-        checked && "ui-kit-token-checked",
-      )}
-      closeIcon={
-        <Icon
-          className="selected-icon"
-          src={XmarkRemoveSmall16RegularInheritIcon}
-          iconHeight={16}
-          iconWidth={16}
-        />
-      }
-      color={color === "gray" ? undefined : color}
-    >
-      {icon && <span className={cs("ui-kit-tag-icon", IconStyle)}>{icon}</span>}
-      {children}
-    </AntdTag>
-  );
-};
-
+const Token = React.forwardRef<HTMLDivElement, TokenType>(
+  (
+    {
+      size = "small",
+      color = "gray",
+      className,
+      icon,
+      checked,
+      children,
+      tooltipConfig,
+      ...props
+    },
+    ref,
+  ) => {
+    return (
+      <AntdTag
+        {...props}
+        ref={ref}
+        className={cs(
+          className,
+          Size[size],
+          TokenStyle,
+          {
+            [Typo.Label.l4_regular]: size === "small" || size === "medium",
+            [Typo.Label.l3_regular]: size === "large",
+            [`ant-tag-${color}`]: PresetColors.includes(color),
+          },
+          "ui-kit-token",
+          checked && "ui-kit-token-checked",
+        )}
+        closeIcon={
+          <Tooltip
+            title={tooltipConfig?.title}
+            {...(!tooltipConfig?.title && {
+              visible: false,
+            })}
+          >
+            <Icon
+              className="selected-icon"
+              src={XmarkRemoveSmall16RegularInheritIcon}
+              iconHeight={16}
+              iconWidth={16}
+            />
+          </Tooltip>
+        }
+        color={color === "gray" ? undefined : color}
+      >
+        {icon && (
+          <span className={cs("ui-kit-tag-icon", IconStyle)}>{icon}</span>
+        )}
+        {children}
+      </AntdTag>
+    );
+  },
+);
 export default Token;
