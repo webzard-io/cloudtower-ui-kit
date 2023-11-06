@@ -2,14 +2,18 @@ import { css } from "@linaria/core";
 
 export const StepsStyle = css`
   $item: ant-steps-item;
+  --item-min-width: 60px;
   .#{$item} {
     &-tail,
     &-icon {
-      display: none;
+      display: none !important;
     }
   }
   .#{$item}.#{$item}-active {
     flex-shrink: 0 !important;
+    .step-item-prefix-container {
+      color: $text-colorful-outstanding;
+    }
     .#{$item}-container .#{$item}-content .#{$item}-title {
       color: $text-colorful-outstanding;
       font-weight: normal;
@@ -26,6 +30,14 @@ export const StepsStyle = css`
       color: $text-neutral-primary;
     }
   }
+  .step-item-text {
+    display: inline-block;
+  }
+  .step-item-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 `;
 
 export const HorizontalStyle = css`
@@ -40,7 +52,7 @@ export const HorizontalStyle = css`
     border-left: 8px solid $color;
   }
   .#{$item}-container {
-    min-width: 60px;
+    min-width: var(--item-min-width);
   }
   .#{$item}-disabled {
     cursor: not-allowed !important;
@@ -88,8 +100,11 @@ export const HorizontalStyle = css`
       &:not(&:last-child) {
         &::after {
           @include rightTriangle();
-          right: -21px;
           z-index: 2;
+          position: relative;
+          top: -50%;
+          right: -100%;
+          display: inline-block;
         }
       }
       &:not(:first-child):not(:last-child) {
@@ -105,6 +120,7 @@ export const HorizontalStyle = css`
       }
     }
     .#{$item}-active {
+      max-width: calc(100% - var(--item-min-width) * 2);
       .#{$item}-container {
         background-color: $fills-light-general-general-light;
       }
@@ -114,9 +130,11 @@ export const HorizontalStyle = css`
     }
     .#{$item}-finish {
       cursor: pointer;
+      min-width: var(--item-min-width);
     }
     .#{$item}-wait,
     .#{$item}-finish {
+      min-width: var(--item-min-width);
       .#{$item}-container {
         background-color: $fills-light-trans-1;
       }
@@ -147,6 +165,7 @@ export const VerticalStyle = css`
         & .ant-steps-item-title {
           font-size: 13px;
           line-height: 20px;
+          max-width: 100%;
         }
       }
     }
@@ -169,10 +188,8 @@ export const HorizontalStepContentStyle = css`
     align-items: center;
     width: 18px;
     height: 18px;
+    color: $gray-a75-8;
     justify-content: center;
-  }
-  .step-item-text {
-    display: inline-block;
   }
 `;
 
@@ -186,11 +203,9 @@ export const VerticalStepContentStyle = css`
   .step-item-prefix-container {
     display: inline-flex;
     align-items: center;
-    width: 20px;
-    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    color: $gray-a75-8;
     justify-content: center;
-  }
-  .step-item-text {
-    display: inline-block;
   }
 `;

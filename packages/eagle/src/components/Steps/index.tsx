@@ -2,7 +2,8 @@ import { CheckmarkDoneSuccessCorrect16SecondaryIcon } from "@cloudtower/icons-re
 import { Steps as AntdSteps } from "antd";
 import { StepProps } from "antd/lib/steps";
 import cs from "classnames";
-import React from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
+import Tooltip from "../Tooltip";
 
 import { IStepsProps } from "../../spec";
 import {
@@ -22,22 +23,39 @@ type StepContentProps = {
 
 const StepTitle: React.FC<StepContentProps> = (props) => {
   const { current, step, index, isVerticalMode } = props;
+  const textRef = useRef<HTMLSpanElement>(null);
+  const [tooltipEnable, setTooltipEnable] = useState<{ visible?: boolean }>({
+    visible: false,
+  });
+
+  useLayoutEffect(() => {
+    if (
+      textRef.current &&
+      textRef.current.offsetWidth < textRef.current.scrollWidth
+    ) {
+      setTooltipEnable({});
+    }
+  }, [textRef]);
 
   return (
-    <div
-      className={
-        isVerticalMode ? VerticalStepContentStyle : HorizontalStepContentStyle
-      }
-    >
-      <span className="step-item-prefix-container">
-        {index < current ? (
-          <CheckmarkDoneSuccessCorrect16SecondaryIcon />
-        ) : (
-          index + 1
-        )}
-      </span>
-      {step.title}
-    </div>
+    <Tooltip {...tooltipEnable} title={step.title}>
+      <div
+        className={
+          isVerticalMode ? VerticalStepContentStyle : HorizontalStepContentStyle
+        }
+      >
+        <span className="step-item-prefix-container">
+          {index < current ? (
+            <CheckmarkDoneSuccessCorrect16SecondaryIcon />
+          ) : (
+            index + 1
+          )}
+        </span>
+        <span ref={textRef} className="step-item-title">
+          <span className="step-item-title">{step.title}</span>
+        </span>
+      </div>
+    </Tooltip>
   );
 };
 
