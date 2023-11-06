@@ -7,17 +7,18 @@ import CardBody from "./CardBody";
 import CardTitle from "./CardTitle";
 import CardWrapper from "./CardWrapper";
 
-export interface ICardProps {
+export type CardProps = {
   collapsible?: boolean;
   defaultOpen?: boolean;
   title?: React.ReactNode | string;
   subInfo?: React.ReactNode;
   className?: string;
+  hoverable?: boolean;
   // default to true
   shadow?: boolean;
-}
+} & React.DOMAttributes<HTMLDivElement>;
 
-const Card = React.forwardRef<HTMLDivElement, PropsWithChildren<ICardProps>>(
+const Card = React.forwardRef<HTMLDivElement, PropsWithChildren<CardProps>>(
   (props, ref) => {
     const {
       collapsible = false,
@@ -25,6 +26,7 @@ const Card = React.forwardRef<HTMLDivElement, PropsWithChildren<ICardProps>>(
       subInfo,
       className,
       defaultOpen = false,
+      hoverable,
       shadow = true,
       ...domProps
     } = props;
@@ -33,7 +35,7 @@ const Card = React.forwardRef<HTMLDivElement, PropsWithChildren<ICardProps>>(
     return (
       <CardWrapper
         ref={ref}
-        className={cs(["card-wrapper", className])}
+        className={cs(["card-wrapper", className, hoverable && "hoverable"])}
         {...domProps}
         shadow={shadow}
       >
@@ -60,7 +62,7 @@ const Card = React.forwardRef<HTMLDivElement, PropsWithChildren<ICardProps>>(
         )}
       </CardWrapper>
     );
-  },
+  }
 );
 
 export default Card;

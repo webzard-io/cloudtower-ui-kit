@@ -75,11 +75,11 @@ import Table from "./Table";
 import TableForm from "./TableForm";
 import Tag from "./Tag";
 import TextArea from "./TextArea";
+import Time from "./Time";
 import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
-import Time from "./Time";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {

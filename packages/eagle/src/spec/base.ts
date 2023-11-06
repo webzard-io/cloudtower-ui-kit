@@ -64,7 +64,7 @@ import React, {
   RefAttributes,
 } from "react";
 
-import { ICardProps } from "../components/Card";
+import { CardProps } from "../components/Card";
 import { IEmptyProps } from "../components/Empty";
 import { MessageApi } from "../components/message";
 import { TableFormHandle, TableFormProps } from "../components/TableForm/types";
@@ -614,7 +614,8 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   antdDrawer: React.FC<DrawerProps>;
   truncate: React.FC<TruncatePropTypes>;
   card: ForwardRefExoticComponent<
-    PropsWithoutRef<ICardProps> & RefAttributes<HTMLDivElement>
+    PropsWithoutRef<PropsWithChildren<CardProps>> &
+      RefAttributes<HTMLDivElement>
   >;
   expandableList: {
     ExpandableContainer: React.FC<PropsWithChildren<{}>>;

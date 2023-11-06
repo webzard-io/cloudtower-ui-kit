@@ -4,6 +4,7 @@ export * from "./BaseIcon";
 export * from "./Button";
 export { default as Button } from "./Button";
 export * from "./ButtonGroup";
+export type * from "./Card";
 export { default as ErrorBoundary } from "./ErrorBoundary";
 export { default as FailedLoad } from "./FailedLoad";
 export type { IconProps } from "./Icon";
