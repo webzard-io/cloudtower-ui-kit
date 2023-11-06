@@ -711,4 +711,6 @@ export type TokenType = Omit<TagProps, "closeIcon"> & {
     title: string;
   };
 };
-export type TokenComponentType = React.FC<TokenType>;
+export type TokenComponentType = React.ForwardRefExoticComponent<
+  TokenType & React.RefAttributes<HTMLDivElement>
+>;
