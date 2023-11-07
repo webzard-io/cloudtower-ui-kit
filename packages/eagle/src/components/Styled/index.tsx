@@ -48,76 +48,6 @@ export const WizardBody = styled.div`
       }
     }
   }
-
-  .ant-steps-vertical .ant-steps-item {
-    flex: initial;
-  }
-
-  .ant-steps-item + .ant-steps-item {
-    margin-top: 4px;
-  }
-
-  .ant-steps-item-icon,
-  .ant-steps-item-tail {
-    display: none !important;
-  }
-
-  .ant-steps-item-container {
-    padding: 0 15px;
-    border-radius: 4px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-
-    .ant-steps-item-content {
-      min-height: auto;
-      white-space: nowrap;
-    }
-  }
-
-  .ant-steps-item-description {
-    padding-bottom: 0px;
-  }
-
-  .ant-steps-item-title {
-    font-size: 13px !important;
-    line-height: 20px !important;
-    .step-index {
-      display: inline-block;
-      text-align: center;
-      width: 13px;
-      margin-right: 12px;
-    }
-  }
-
-  .ant-steps-item-active {
-    .ant-steps-item-container {
-      background: rgba($blue-60, 0.1);
-      .ant-steps-item-content .ant-steps-item-title {
-        color: $blue-80;
-      }
-    }
-  }
-
-  .ant-steps-item-finish {
-    .ant-steps-item-container {
-      background: $gray-a60-1;
-      .ant-steps-item-content .ant-steps-item-title {
-        color: $text-terdiary-light !important;
-      }
-    }
-  }
-
-  .ant-steps-item-disabled {
-    cursor: not-allowed;
-
-    .ant-steps-item-container {
-      background: $gray-a60-1;
-      .ant-steps-item-content .ant-steps-item-title {
-        color: $gray-80;
-      }
-    }
-  }
 `;
 
 export const HorizontalWizardModalCompactStyle = css`
@@ -529,7 +459,9 @@ export const InputStyle = css`
     color: $text-primary-light;
     border-radius: 6px;
     border-color: $strokes-light-trans-3;
-    transition: height 240ms ease 8ms, border 160ms ease 8ms,
+    transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
       box-shadow 160ms ease 8ms;
   }
 
@@ -596,7 +528,9 @@ export const InputStyle = css`
     border-color: $strokes-light-trans-3;
     line-height: 20px;
     color: $text-primary-light;
-    transition: height 240ms ease 8ms, border 160ms ease 8ms,
+    transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
       box-shadow 160ms ease 8ms;
 
     .ant-input-suffix,
