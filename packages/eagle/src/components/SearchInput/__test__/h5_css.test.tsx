@@ -22,7 +22,9 @@ describe("SearchInput h5_css", () => {
           color: $text-primary-light;
           border-radius: 6px;
           border-color: $strokes-light-trans-3;
-          transition: height 240ms ease 8ms, border 160ms ease 8ms,
+          transition:
+            height 240ms ease 8ms,
+            border 160ms ease 8ms,
             box-shadow 160ms ease 8ms;
         }
 
@@ -89,7 +91,9 @@ describe("SearchInput h5_css", () => {
           border-color: $strokes-light-trans-3;
           line-height: 20px;
           color: $text-primary-light;
-          transition: height 240ms ease 8ms, border 160ms ease 8ms,
+          transition:
+            height 240ms ease 8ms,
+            border 160ms ease 8ms,
             box-shadow 160ms ease 8ms;
 
           .ant-input-suffix,
@@ -238,7 +242,9 @@ describe("SearchInput h5_css", () => {
           color: $text-primary-light;
           border-radius: 6px;
           border-color: $strokes-light-trans-3;
-          transition: height 240ms ease 8ms, border 160ms ease 8ms,
+          transition:
+            height 240ms ease 8ms,
+            border 160ms ease 8ms,
             box-shadow 160ms ease 8ms;
         }
 
@@ -305,7 +311,9 @@ describe("SearchInput h5_css", () => {
           border-color: $strokes-light-trans-3;
           line-height: 20px;
           color: $text-primary-light;
-          transition: height 240ms ease 8ms, border 160ms ease 8ms,
+          transition:
+            height 240ms ease 8ms,
+            border 160ms ease 8ms,
             box-shadow 160ms ease 8ms;
 
           .ant-input-suffix,
@@ -454,7 +462,9 @@ describe("SearchInput h5_css", () => {
           color: $text-primary-light;
           border-radius: 6px;
           border-color: $strokes-light-trans-3;
-          transition: height 240ms ease 8ms, border 160ms ease 8ms,
+          transition:
+            height 240ms ease 8ms,
+            border 160ms ease 8ms,
             box-shadow 160ms ease 8ms;
         }
 
@@ -521,7 +531,9 @@ describe("SearchInput h5_css", () => {
           border-color: $strokes-light-trans-3;
           line-height: 20px;
           color: $text-primary-light;
-          transition: height 240ms ease 8ms, border 160ms ease 8ms,
+          transition:
+            height 240ms ease 8ms,
+            border 160ms ease 8ms,
             box-shadow 160ms ease 8ms;
 
           .ant-input-suffix,
