@@ -21,7 +21,7 @@ describe("FieldsFloat h5_css", () => {
           value: "1.1",
         }}
         meta={{}}
-      />
+      />,
     );
 
     expect({

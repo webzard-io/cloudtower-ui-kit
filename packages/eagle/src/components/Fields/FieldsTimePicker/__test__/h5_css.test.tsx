@@ -24,7 +24,7 @@ describe("FieldsTimePicker h5_css", () => {
           value: dayjs("12:08:23", "HH:mm:ss"),
         }}
         meta={{}}
-      />
+      />,
     );
 
     expect({
@@ -293,7 +293,7 @@ describe("FieldsTimePicker h5_css", () => {
           value: dayjs("12:08:23", "HH:mm:ss"),
         }}
         meta={{}}
-      />
+      />,
     );
 
     expect({
@@ -562,7 +562,7 @@ describe("FieldsTimePicker h5_css", () => {
           value: dayjs("12:08:23", "HH:mm:ss"),
         }}
         meta={{}}
-      />
+      />,
     );
 
     expect({

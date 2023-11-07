@@ -21,7 +21,7 @@ describe("FieldsInteger h5_css", () => {
           value: 20,
         }}
         meta={{}}
-      />
+      />,
     );
 
     expect({
@@ -357,7 +357,7 @@ describe("FieldsInteger h5_css", () => {
           value: 20.1,
         }}
         meta={{}}
-      />
+      />,
     );
 
     expect({
@@ -692,7 +692,7 @@ describe("FieldsInteger h5_css", () => {
           value: "20",
         }}
         meta={{}}
-      />
+      />,
     );
 
     expect({
@@ -1028,7 +1028,7 @@ describe("FieldsInteger h5_css", () => {
           value: "20.1",
         }}
         meta={{}}
-      />
+      />,
     );
 
     expect({
@@ -1363,7 +1363,7 @@ describe("FieldsInteger h5_css", () => {
           value: "abc",
         }}
         meta={{}}
-      />
+      />,
     );
 
     expect({

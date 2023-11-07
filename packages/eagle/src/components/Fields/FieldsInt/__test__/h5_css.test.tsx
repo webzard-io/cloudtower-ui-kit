@@ -22,7 +22,7 @@ describe("Input h5_css", () => {
           value: 1,
         }}
         meta={{}}
-      />
+      />,
     );
 
     expect({
@@ -237,7 +237,7 @@ describe("Input h5_css", () => {
           value: value,
         }}
         meta={{}}
-      />
+      />,
     );
 
     const input = screen.getByDisplayValue<HTMLInputElement>(value);
@@ -467,7 +467,7 @@ describe("Input h5_css", () => {
           value: value,
         }}
         meta={{}}
-      />
+      />,
     );
 
     const input = screen.getByDisplayValue<HTMLInputElement>(value);
