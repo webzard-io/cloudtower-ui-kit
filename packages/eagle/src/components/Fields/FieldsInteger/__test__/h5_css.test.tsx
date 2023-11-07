@@ -59,6 +59,7 @@ describe("FieldsInteger h5_css", () => {
           &.__pseudo-states-hover {
             border-color: $strokes-light-trans-4;
             box-shadow: $shadow-light-hover;
+            z-index: 1;
           }
 
           &:active,
@@ -232,6 +233,10 @@ describe("FieldsInteger h5_css", () => {
           margin-right: 4px;
           cursor: auto;
           color: rgba(44, 56, 82, 0.6);
+        }
+
+        .ant-input-group.ant-input-group-compact > & {
+          border-radius: 0;
         }
 
         &.ant-input-number {
@@ -399,6 +404,7 @@ describe("FieldsInteger h5_css", () => {
           &.__pseudo-states-hover {
             border-color: $strokes-light-trans-4;
             box-shadow: $shadow-light-hover;
+            z-index: 1;
           }
 
           &:active,
@@ -572,6 +578,10 @@ describe("FieldsInteger h5_css", () => {
           margin-right: 4px;
           cursor: auto;
           color: rgba(44, 56, 82, 0.6);
+        }
+
+        .ant-input-group.ant-input-group-compact > & {
+          border-radius: 0;
         }
 
         &.ant-input-number {
@@ -738,6 +748,7 @@ describe("FieldsInteger h5_css", () => {
           &.__pseudo-states-hover {
             border-color: $strokes-light-trans-4;
             box-shadow: $shadow-light-hover;
+            z-index: 1;
           }
 
           &:active,
@@ -911,6 +922,10 @@ describe("FieldsInteger h5_css", () => {
           margin-right: 4px;
           cursor: auto;
           color: rgba(44, 56, 82, 0.6);
+        }
+
+        .ant-input-group.ant-input-group-compact > & {
+          border-radius: 0;
         }
 
         &.ant-input-number {
@@ -1078,6 +1093,7 @@ describe("FieldsInteger h5_css", () => {
           &.__pseudo-states-hover {
             border-color: $strokes-light-trans-4;
             box-shadow: $shadow-light-hover;
+            z-index: 1;
           }
 
           &:active,
@@ -1251,6 +1267,10 @@ describe("FieldsInteger h5_css", () => {
           margin-right: 4px;
           cursor: auto;
           color: rgba(44, 56, 82, 0.6);
+        }
+
+        .ant-input-group.ant-input-group-compact > & {
+          border-radius: 0;
         }
 
         &.ant-input-number {
@@ -1417,6 +1437,7 @@ describe("FieldsInteger h5_css", () => {
           &.__pseudo-states-hover {
             border-color: $strokes-light-trans-4;
             box-shadow: $shadow-light-hover;
+            z-index: 1;
           }
 
           &:active,
@@ -1590,6 +1611,10 @@ describe("FieldsInteger h5_css", () => {
           margin-right: 4px;
           cursor: auto;
           color: rgba(44, 56, 82, 0.6);
+        }
+
+        .ant-input-group.ant-input-group-compact > & {
+          border-radius: 0;
         }
 
         &.ant-input-number {
