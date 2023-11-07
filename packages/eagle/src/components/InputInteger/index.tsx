@@ -44,6 +44,10 @@ export const AntdIntStyled = styled(AntdInputNumber)<{
     color: rgba(44, 56, 82, 0.6);
   }
 
+  .ant-input-group.ant-input-group-compact > & {
+    border-radius: 0;
+  }
+
   &.ant-input-number {
     width: 100%;
     border-radius: 6px;
