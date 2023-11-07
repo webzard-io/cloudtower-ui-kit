@@ -104,7 +104,6 @@ export const HorizontalStyle = css`
           position: relative;
           top: -50%;
           right: -100%;
-          display: inline-block;
         }
       }
       &:not(:first-child):not(:last-child) {
