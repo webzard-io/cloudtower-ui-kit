@@ -103,7 +103,7 @@ export const tableStyleCover = css`
 
     .ant-table-header {
       position: relative;
-      z-index: 3;
+      z-index: $table-header-index;
       border-bottom: 1px solid $strokes-light-trans-2;
       margin-bottom: -1px;
     }

@@ -67,7 +67,7 @@ export const TableFormWrapper = styled.div`
     .eagle-table-form-header {
       position: sticky;
       top: 0;
-      z-index: 2;
+      z-index: $eagle-table-form-header-index;
       display: flex;
       padding: 8px;
       & {
