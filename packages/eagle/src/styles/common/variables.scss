@@ -141,6 +141,12 @@ $red-80: #c73d31;
 $red-60: #f0483e;
 $red-40: #ff5252;
 
+/* purple */
+$purple-50:#7E41FF;
+$purple-a20-50:rgba($purple-50,20%);
+$purple-a16-50:rgba($purple-50,16%);
+$purple-a10-50:rgba($purple-50,10%);
+
 $fills-opaque-primary-light: $white;
 $fills-opaque-secondary-light: $gray-20;
 $fills-opaque-terdiary-light: $gray-30;
@@ -378,6 +384,8 @@ $text-light-storage: rgba(126, 65, 255, 1);
 $text-colorful-outstanding: $blue-60;
 $text-neutral-tertiary: $gray-a60-8;
 $text-neutral-primary: $gray-120;
+
+$text-colorful-purple: $purple-50;
 /*  link   */
 $link-light-primary: $blue-60;
 $link-light-secondary: #2c3852;
@@ -451,6 +459,8 @@ $fill-notice-light-hover:$yellow-a16;
 $fill-positive-light-hover:$green-a16;
 $fill-neutral-trans-3-trans-2-hover:$gray-a60-3;
 
+$fill-purple-base:$purple-50;
+$fill-purple-light:$purple-a10-50;
 /*  fill  element  */
 
 $fills-element-light-container-general: rgba(#e1e6f1, 0.6);

@@ -16,6 +16,7 @@ export const PresetColors: TokenColor[] = [
   "yellow",
   "green",
   "gray",
+  "purple",
 ];
 
 const Size: Record<"small" | "medium" | "large", LinariaClassName> = {
@@ -75,6 +76,10 @@ const TokenStyle = css`
       color: $text-light-super;
       background-color: $fills-element-light-container-general;
     }
+    &.ant-tag-purple {
+      color: $text-colorful-purple;
+      background-color: $fill-purple-light;
+    }
 
     &.ui-kit-token-checked {
       color: $text-light-on-tint;
@@ -92,6 +97,9 @@ const TokenStyle = css`
       }
       &.ant-tag-gray {
         background-color: $gray-70;
+      }
+      &.ant-tag-purple {
+        background-color: $fill-purple-base;
       }
     }
   }
