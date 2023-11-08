@@ -5,6 +5,7 @@ import cs from "classnames";
 import React, { useState } from "react";
 
 import { ButtonProps } from "../../spec";
+import { isFragment } from "../../utils";
 import { Typo } from "../Typo";
 import HoverableElement from "./HoverableElement";
 
@@ -390,6 +391,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const hasIcon = prefixIcon || suffixIcon;
     const hasHoverIcon = hoverPrefixIcon || hoverSuffixIcon;
     const onlyIcon = !children && (prefixIcon || suffixIcon);
+    const child = isFragment(children) ? <span>{children}</span> : children;
     return (
       <AntdButton
         ref={ref}
@@ -428,7 +430,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             className={!onlyIcon ? "button-prefix-icon" : ""}
           />
         )}
-        {children}
+        {child}
         {suffixIcon && (
           <HoverableElement
             icon={suffixIcon}
