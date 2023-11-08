@@ -132,6 +132,9 @@ $yellow-80: #e07f00;
 $yellow-60: #fea008;
 $yellow-40: #feba33;
 
+
+$yellow-a10-50:rgba($yellow-60,0.1);
+
 /* red */
 $red-100: #7d2126;
 $red-80: #c73d31;
@@ -432,6 +435,22 @@ $fills-light-positive-positive-light: rgba(#1ec97f, 0.1);
 $fills-light-positive-positive-thin: rgba(#1ec97f, 0.04);
 $fills-light-interaction-purple-hover:rgba(126, 65, 255, 0.16);
 $fill-light-element-container-outstanding: rgba(0, 136, 255, 0.10);
+$fill-outstanding-light:$blue-a10;
+$fill-serious-light:$red-a10;
+$fill-notice-light:$yellow-a10-50;
+$fill-positive-light:$green-a10;
+$fill-neutral-trans-2:$gray-a60-2;
+$fill-neutral-trans-1:$gray-a60-1;
+$fill-outstanding-base:$blue-60;
+$fill-serious-base:$red-60;
+$fill-notice-base:$yellow-60;
+$fill-positive-base:$green-60;
+$fill-outstanding-light-hover:$blue-a16;
+$fill-serious-light-hover:$red-a16;
+$fill-notice-light-hover:$yellow-a16;
+$fill-positive-light-hover:$green-a16;
+$fill-neutral-trans-3-trans-2-hover:$gray-a60-3;
+
 /*  fill  element  */
 
 $fills-element-light-container-general: rgba(#e1e6f1, 0.6);

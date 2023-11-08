@@ -573,6 +573,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   form: Form;
   antdSteps: typeof Steps;
   simplePagination: React.FC<ISimplePaginationProps>;
+  statusCapsule: StatusCapsuleComponentType;
   space: React.FC<ISpaceProps>;
   timeZoneSelect: React.FC<ITimeZoneSelectProps>;
   col: React.FC<ColProps>;
@@ -692,6 +693,26 @@ export type TagComponentType = React.FC<
 > & {
   SplitTag: SplitTagComponentType;
 };
+
+export type StatusCapsuleColor =
+  | "red"
+  | "yellow"
+  | "green"
+  | "blue"
+  | "gray"
+  | "success"
+  | "danger"
+  | "warning";
+
+export type StatusCapsuleComponentType = React.FC<
+  Omit<TagProps, "closable" | "closeIcon" | "onClose" | "icon" | "size"> & {
+    color?: StatusCapsuleColor;
+    loading?: boolean;
+    hoverable?: boolean;
+    offWhiteMode?: boolean;
+    number?: number;
+  }
+>;
 
 export type SplitTagComponentType = React.FC<
   Omit<TagProps, "closable" | "closeIcon" | "onClose" | "visible"> & {
