@@ -69,6 +69,7 @@ import Select from "./Select";
 import SimplePagination from "./SimplePagination";
 import Space from "./Space";
 import Speed from "./Speed";
+import StatusCapsule from "./StatusCapsule";
 import Steps from "./Steps";
 import Switch from "./Switch";
 import Table from "./Table";
@@ -150,6 +151,7 @@ export function getAntdKit(): Kit {
     datePickerRangePicker: DatePicker.RangePicker,
     tableForm: TableForm,
     token: Token,
+    statusCapsule: StatusCapsule,
     uploadDragger: Upload.Dragger,
     calendar: Calendar,
     timePicker: TimePicker,

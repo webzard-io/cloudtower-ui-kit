@@ -573,6 +573,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   form: Form;
   antdSteps: typeof Steps;
   simplePagination: React.FC<ISimplePaginationProps>;
+  statusCapsule: StatusCapsuleComponentType;
   space: React.FC<ISpaceProps>;
   timeZoneSelect: React.FC<ITimeZoneSelectProps>;
   col: React.FC<ColProps>;
