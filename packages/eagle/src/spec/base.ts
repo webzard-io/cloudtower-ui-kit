@@ -589,6 +589,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     TableFormProps & React.RefAttributes<TableFormHandle>
   >;
   token: TokenComponentType;
+  overflowTooltip: React.FC<OverflowTooltipProps>;
   uploadDragger: React.ComponentType<DraggerProps>;
   calendar: React.FC<CalendarProps<Moment>>;
   timePicker: React.FC<TimePickerProps>;
@@ -735,3 +736,11 @@ export type TokenType = Omit<TagProps, "closeIcon"> & {
 export type TokenComponentType = React.ForwardRefExoticComponent<
   TokenType & React.RefAttributes<HTMLDivElement>
 >;
+
+export type OverflowTooltipProps = {
+  content: React.ReactNode;
+  tooltip?: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+  isMultiLine?: boolean;
+};
