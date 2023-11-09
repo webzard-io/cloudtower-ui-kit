@@ -1,5 +1,5 @@
-import { CheckOutlined, CloseCircleFilled } from "@ant-design/icons";
-import { Modal as AntdModal, Steps } from "antd";
+import { CloseCircleFilled } from "@ant-design/icons";
+import { Modal as AntdModal } from "antd";
 import cs from "classnames";
 import React, { useMemo, useRef } from "react";
 
@@ -8,6 +8,7 @@ import { ModalProps } from "../../spec";
 import { KitRootState, ModalActions } from "../../store";
 import Button from "../Button";
 import { useKitDispatch, useKitSelector } from "../KitStoreProvider";
+import Steps from "../Steps";
 import { WizardBody } from "../Styled";
 
 const Modal: React.FC<ModalProps> = (props) => {
@@ -36,10 +37,10 @@ const Modal: React.FC<ModalProps> = (props) => {
   } = props;
 
   const stack = useKitSelector<KitRootState["modal"]["stack"]>(
-    (state) => state.modal.stack
+    (state) => state.modal.stack,
   );
   const id = useKitSelector<KitRootState["modal"]["closeId"]>(
-    (state) => state.modal.closeId
+    (state) => state.modal.closeId,
   );
   const dispatch = useKitDispatch();
 
@@ -94,7 +95,7 @@ const Modal: React.FC<ModalProps> = (props) => {
         className,
         fullscreen && "fullscreen",
         fullscreen && wizard && "wizard",
-        !fullscreen && normal && "normal-modal"
+        !fullscreen && normal && "normal-modal",
       )}
       width={fullscreen ? "calc(100vw - 16px)" : width || (normal ? 460 : "")}
       onCancel={(e) => {
@@ -183,32 +184,14 @@ const Modal: React.FC<ModalProps> = (props) => {
         <WizardBody>
           <div className="left">
             <Steps
-              style={{ minWidth: 192 }}
               current={wizard.step}
               onChange={(value) => wizard.onStepChange?.(value)}
               direction="vertical"
-            >
-              {wizard.steps.map((s, idx) => (
-                <Steps.Step
-                  key={idx}
-                  title={
-                    <>
-                      {idx >= wizard.step ? (
-                        <span className="step-index">{idx + 1}</span>
-                      ) : (
-                        <CheckOutlined className="step-index" />
-                      )}
-                      {s.title}
-                    </>
-                  }
-                  disabled={
-                    s.disabled ||
-                    idx > wizard.step ||
-                    (wizard.disablePrevStep && idx !== wizard.step)
-                  }
-                />
-              ))}
-            </Steps>
+              stepsConfig={wizard.steps.map((s) => ({
+                title: s.title,
+                disabled: s.disabled,
+              }))}
+            />
           </div>
           <div className="middle">
             {restProps.children}
