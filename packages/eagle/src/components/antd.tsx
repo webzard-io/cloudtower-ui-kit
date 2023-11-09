@@ -81,6 +81,7 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
+import OverflowTooltip from "./OverflowTooltip";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -174,6 +175,7 @@ export function getAntdKit(): Kit {
     antdDrawer: AntdDrawer,
     antdSteps: AntdSteps,
     card: Card,
+    overflowTooltip: OverflowTooltip,
     truncate: Truncate,
     expandableList: {
       ExpandableContainer: ExpandableContainer,
