@@ -723,7 +723,13 @@ export type SplitTagComponentType = React.FC<
   }
 >;
 
-export type TokenColor = "red" | "yellow" | "green" | "blue" | "gray";
+export type TokenColor =
+  | "red"
+  | "yellow"
+  | "green"
+  | "blue"
+  | "gray"
+  | "purple";
 export type TokenType = Omit<TagProps, "closeIcon"> & {
   color?: TokenColor;
   size?: "small" | "medium" | "large";
