@@ -13,7 +13,7 @@ exports[`table form render > default data is undefiend 1`] = `
     .eagle-table-form-header {
       position: sticky;
       top: 0;
-      z-index: 2;
+      z-index: $eagle-table-form-header-index;
       display: flex;
       padding: 8px;
       & {
@@ -317,7 +317,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,
@@ -553,7 +553,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,
@@ -789,7 +789,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,
@@ -1471,7 +1471,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,
@@ -1692,7 +1692,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,
@@ -1914,7 +1914,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,
@@ -2306,7 +2306,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,
@@ -2706,7 +2706,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,
@@ -2927,7 +2927,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,
@@ -3149,7 +3149,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,
@@ -3541,7 +3541,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,
@@ -3941,7 +3941,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,
@@ -4162,7 +4162,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,
@@ -4384,7 +4384,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,
@@ -4776,7 +4776,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,

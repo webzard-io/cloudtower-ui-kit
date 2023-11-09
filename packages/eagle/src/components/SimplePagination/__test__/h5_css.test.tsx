@@ -119,7 +119,7 @@ describe("SimplePagination h5_css", () => {
           &.__pseudo-states-hover {
             border-color: $strokes-light-trans-4;
             box-shadow: $shadow-light-hover;
-            z-index: 1;
+            z-index: $input-hover-index;
           }
 
           &:active,
@@ -1321,7 +1321,7 @@ describe("SimplePagination h5_css", () => {
           &.__pseudo-states-hover {
             border-color: $strokes-light-trans-4;
             box-shadow: $shadow-light-hover;
-            z-index: 1;
+            z-index: $input-hover-index;
           }
 
           &:active,
@@ -2130,7 +2130,7 @@ describe("SimplePagination h5_css", () => {
           &.__pseudo-states-hover {
             border-color: $strokes-light-trans-4;
             box-shadow: $shadow-light-hover;
-            z-index: 1;
+            z-index: $input-hover-index;
           }
 
           &:active,

@@ -481,7 +481,7 @@ export const InputStyle = css`
     &.__pseudo-states-hover {
       border-color: $strokes-light-trans-4;
       box-shadow: $shadow-light-hover;
-      z-index: 1;
+      z-index: $input-hover-index;
     }
 
     &:active,
