@@ -2,7 +2,7 @@ import { styled } from "@linaria/react";
 
 const CardTitle = styled.div`
   color: $text-primary-light;
-  padding: 12px 16px 10px 16px;
+  padding: 7px 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;

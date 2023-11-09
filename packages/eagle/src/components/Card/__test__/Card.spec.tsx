@@ -24,7 +24,8 @@ describe("ui unit test - card", () => {
       <div>
         <div
           class=
-        box-shadow: 0px 0.119595px 0.438513px rgba(129, 138, 153, 0.14),
+        box-shadow:
+          0px 0.119595px 0.438513px rgba(129, 138, 153, 0.14),
           0px 0.271728px 0.996336px rgba(129, 138, 153, 0.106447),
           0px 0.472931px 1.73408px rgba(129, 138, 153, 0.0912224),
           0px 0.751293px 2.75474px rgba(129, 138, 153, 0.0799253),
@@ -33,14 +34,15 @@ describe("ui unit test - card", () => {
           0px 3.00293px 11.0107px rgba(129, 138, 153, 0.0487776),
           0px 6px 22px rgba(129, 138, 153, 0.0335534);
       ,card-wrapper,class-string,
-        border-radius: 4px;
+        border-radius: 8px;
         background-color: white;
         &.hoverable {
           cursor: pointer;
 
           &:hover {
             transition: all 200ms ease;
-            box-shadow: 0px 9px 22px rgb(107 125 153 / 23%),
+            box-shadow:
+              0px 9px 22px rgb(107 125 153 / 23%),
               0px 1.12694px 2.75474px rgb(107 125 153 / 12%);
             transform: translateY(-4px);
           }
@@ -50,7 +52,7 @@ describe("ui unit test - card", () => {
           <div
             class=card-title,
         color: $text-primary-light;
-        padding: 12px 16px 10px 16px;
+        padding: 7px 12px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -108,7 +110,7 @@ describe("ui unit test - card", () => {
           </div>
           <div
             class=card-body,
-        padding: 0 16px 14px 16px;
+        padding: 0 12px 14px 12px;
 
           >
             body-string
@@ -127,7 +129,7 @@ describe("ui unit test - card", () => {
     render(
       <Card {...defaultProps} collapsible={true}>
         {bodyContent}
-      </Card>
+      </Card>,
     );
     fireEvent.click(screen.getByText(defaultProps.title as string));
     expect(screen.getByText(bodyContent)).not.toBeNull();

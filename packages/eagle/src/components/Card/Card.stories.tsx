@@ -6,14 +6,33 @@ import Card from ".";
 const meta = {
   title: "Card",
   render: Card,
+  args: {},
 };
 
 export default meta;
 
-export const Shadow = (args) => {
+export const DefaultCard = (args) => {
   return (
     <div style={{ padding: "20px", backgroundColor: "#EDF0F7" }}>
-      <Card title={"hello"} collapsible={true} shadow={true} {...args}>
+      <Card {...args}>Hello World</Card>
+    </div>
+  );
+};
+
+export const WithTitle = (args) => {
+  return (
+    <div style={{ padding: "20px", backgroundColor: "#EDF0F7" }}>
+      <Card title={"hello"} {...args}>
+        Hello World
+      </Card>
+    </div>
+  );
+};
+
+export const Collapsible = (args) => {
+  return (
+    <div style={{ padding: "20px", backgroundColor: "#EDF0F7" }}>
+      <Card title={"hello"} collapsible={true} {...args}>
         Hello World
       </Card>
     </div>
@@ -23,7 +42,7 @@ export const Shadow = (args) => {
 export const NoShadow = (args) => {
   return (
     <div style={{ padding: "20px", backgroundColor: "#EDF0F7" }}>
-      <Card title={"hello"} collapsible={true} shadow={false} {...args}>
+      <Card shadow={false} {...args}>
         Hello World
       </Card>
     </div>
@@ -34,11 +53,11 @@ export const Hoverable = (args) => {
   return (
     <div style={{ padding: "20px", backgroundColor: "#EDF0F7" }}>
       <Card
-        title={"hello"}
-        collapsible={true}
-        shadow={true}
         hoverable={true}
         {...args}
+        onClick={() => {
+          alert("card click");
+        }}
       >
         Hello World
       </Card>
