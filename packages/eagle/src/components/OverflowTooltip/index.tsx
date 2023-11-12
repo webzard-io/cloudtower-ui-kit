@@ -1,6 +1,8 @@
-import { useUIKit } from "@cloudtower/eagle";
 import { css, cx } from "@linaria/core";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
+import { OverflowTooltipProps } from "../../spec";
+import Tooltip from "../Tooltip";
 
 const OverflowText = css`
   overflow: hidden;
@@ -11,52 +13,48 @@ const NoWrap = css`
   white-space: nowrap;
 `;
 
-const OverflowTooltip: React.FC<{
-  content: React.ReactNode;
-  tooltip?: React.ReactNode;
-  className?: string;
-  onClick?: () => void;
-  isMultiLine?: boolean;
-}> = (props) => {
+const OverflowTooltip: React.FC<OverflowTooltipProps> = (props) => {
   const { content, className, onClick, isMultiLine } = props;
   const tooltip: React.ReactNode = props.tooltip || content;
-  const [isEllipsis, setIsEllipsis] = useState(false);
-  const UIKit = useUIKit();
+  const [ellipsis, setEllipsis] = useState(false);
+  const textRef = useRef<HTMLDivElement>(null);
 
-  const renderDivEl = (node?: HTMLDivElement | null) => {
-    if (!node) return;
-    if (isMultiLine) {
-      setIsEllipsis(node?.scrollHeight > node?.offsetHeight);
-    } else {
-      setIsEllipsis(node?.scrollWidth > node?.offsetWidth);
+  useEffect(() => {
+    const ele = textRef.current;
+
+    let observer: ResizeObserver;
+    if (ele) {
+      observer = new ResizeObserver(() => {
+        if (isMultiLine) {
+          setEllipsis(ele.scrollHeight > ele.offsetHeight);
+        } else {
+          setEllipsis(ele.scrollWidth > ele.offsetWidth);
+        }
+      });
+      observer.observe(ele);
     }
-  };
+    return () => {
+      observer?.disconnect();
+    };
+  });
 
-  if (isEllipsis) {
-    return (
-      <UIKit.tooltip title={tooltip}>
-        <div
-          ref={renderDivEl}
-          className={cx(OverflowText, !isMultiLine && NoWrap, className)}
-          onClick={() => {
-            onClick && onClick();
-          }}
-        >
-          <span>{content}</span>
-        </div>
-      </UIKit.tooltip>
-    );
-  }
   return (
-    <div
-      ref={renderDivEl}
-      className={cx(OverflowText, !isMultiLine && NoWrap, className)}
-      onClick={() => {
-        onClick && onClick();
-      }}
+    <Tooltip
+      {...(!ellipsis && {
+        visible: false,
+      })}
+      title={tooltip}
     >
-      {content}
-    </div>
+      <div
+        ref={textRef}
+        className={cx(OverflowText, !isMultiLine && NoWrap, className)}
+        onClick={() => {
+          onClick && onClick();
+        }}
+      >
+        <span>{content}</span>
+      </div>
+    </Tooltip>
   );
 };
 
