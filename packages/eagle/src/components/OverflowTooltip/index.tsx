@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { OverflowTooltipProps } from "../../spec";
 import Tooltip from "../Tooltip";
+import { debounce } from "lodash";
 
 const OverflowText = css`
   overflow: hidden;
@@ -24,13 +25,14 @@ const OverflowTooltip: React.FC<OverflowTooltipProps> = (props) => {
 
     let observer: ResizeObserver;
     if (ele) {
-      observer = new ResizeObserver(() => {
+      const handleResize = debounce(() => {
         if (isMultiLine) {
           setEllipsis(ele.scrollHeight > ele.offsetHeight);
         } else {
           setEllipsis(ele.scrollWidth > ele.offsetWidth);
         }
-      });
+      }, 200);
+      observer = new ResizeObserver(handleResize);
       observer.observe(ele);
     }
     return () => {
