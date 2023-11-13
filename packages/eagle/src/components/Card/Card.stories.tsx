@@ -1,6 +1,7 @@
 import React from "react";
 
 import Card from ".";
+import LoadingShimmer from "./LoadingShimmer";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
@@ -58,6 +59,72 @@ export const Hoverable = (args) => {
         onClick={() => {
           alert("card click");
         }}
+      >
+        Hello World
+      </Card>
+    </div>
+  );
+};
+
+export const LoadingCard = (args) => {
+  return (
+    <div style={{ padding: "20px", backgroundColor: "#EDF0F7" }}>
+      <Card
+        loading={{
+          shimmerStyle: {
+            height: "50px",
+            animationDuration: "2100ms",
+          },
+        }}
+        {...args}
+      >
+        Hello World
+      </Card>
+    </div>
+  );
+};
+
+export const SmallLoadingCard = (args) => {
+  return (
+    <div
+      style={{
+        width: "300px",
+        padding: "20px",
+        backgroundColor: "#EDF0F7",
+      }}
+    >
+      <Card
+        loading={{
+          shimmerStyle: {
+            height: "200px",
+            animationDuration: "2100ms",
+          },
+        }}
+        {...args}
+      >
+        Hello World
+      </Card>
+    </div>
+  );
+};
+
+export const FastLoadingCard = (args) => {
+  return (
+    <div
+      style={{
+        width: "300px",
+        padding: "20px",
+        backgroundColor: "#EDF0F7",
+      }}
+    >
+      <Card
+        loading={{
+          shimmerStyle: {
+            height: "200px",
+            animationDuration: "1100ms",
+          },
+        }}
+        {...args}
       >
         Hello World
       </Card>

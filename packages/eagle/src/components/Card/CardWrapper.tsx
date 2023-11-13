@@ -27,7 +27,10 @@ const Wrapper = forwardRef<
 >((props) => {
   const { children, className, shadow, ...otherProps } = props;
   return (
-    <div className={cs({ [boxShadow]: shadow }, className)} {...otherProps}>
+    <div
+      className={cs("card-wrapper", { [boxShadow]: shadow }, className)}
+      {...otherProps}
+    >
       {children}
     </div>
   );
