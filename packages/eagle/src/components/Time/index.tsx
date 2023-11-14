@@ -23,10 +23,10 @@ const Time = (props: ITimeProps) => {
   return (
     <span className={`time-wrapper ${className || ""}`}>
       {dateTemplate !== null && (
-        <span className="date"> {time.format(dateTemplate)}</span>
+        <span className="date">{time.format(dateTemplate)}</span>
       )}
       {timeTemplate !== null && (
-        <span className="time"> {time.format(timeTemplate)}</span>
+        <span className="time">{time.format(timeTemplate)}</span>
       )}
     </span>
   );
