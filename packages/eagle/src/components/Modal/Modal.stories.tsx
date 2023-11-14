@@ -45,21 +45,65 @@ ImmersiveDialog.args = {
   },
 };
 
-export const WithAside = (args) => {
+export const WithAside = () => {
   return (
-    <Button type="primary" {...args}>
-      open modal
-    </Button>
+    <div>
+      <div>
+        <Button
+          type="primary"
+          onClick={() => {
+            pushModal({
+              // @ts-ignore
+              // TODO: Refine the type of pushModal
+              component: AsideModal,
+              props: {
+                name: "AsideModal",
+                steps: [
+                  {
+                    title: "step1",
+                    render: <div>step1 area</div>,
+                  },
+                  {
+                    title: "step2",
+                    render: <div>step2 area</div>,
+                  },
+                  {
+                    title: "step3",
+                    render: <div>step3 area</div>,
+                  },
+                ],
+              },
+            });
+          }}
+        >
+          open modal
+        </Button>
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        <Button
+          type="primary"
+          onClick={() => {
+            pushModal({
+              // @ts-ignore
+              // TODO: Refine the type of pushModal
+              component: AsideModal,
+              props: {
+                name: "AsideModal",
+                steps: [
+                  {
+                    title: "step1",
+                    render: <div>步骤1：只有一步时，不显示左侧 steps</div>,
+                  },
+                ],
+              },
+            });
+          }}
+        >
+          one step
+        </Button>
+      </div>
+    </div>
   );
 };
 
-WithAside.args = {
-  onClick: () => {
-    pushModal({
-      component: AsideModal,
-      props: {
-        name: "AsideModal",
-      },
-    });
-  },
-};
+WithAside.args = {};

@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 
+import { WizardSteps } from "../../spec";
 import { ModalWrapper } from "../Styled";
 import Modal from ".";
 
-const AsideModel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
+const AsideModel: React.FC<{ onClose: () => void; steps: WizardSteps }> = ({
+  onClose,
+  steps,
+}) => {
   const [current, setCurrent] = useState(0);
   return (
     <Modal
@@ -14,9 +18,10 @@ const AsideModel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       cancelText=""
       onCancel={onClose}
       onOk={() => {
-        if (current < 2) {
-          setCurrent(current + 1);
+        if (steps.length === 1 || current >= 2) {
+          return;
         }
+        setCurrent(current + 1);
       }}
       wizard={{
         destroyOtherStep: true,
@@ -24,20 +29,7 @@ const AsideModel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         onStepChange: (step) => {
           setCurrent(step);
         },
-        steps: [
-          {
-            title: "step1",
-            render: <div>step1 area</div>,
-          },
-          {
-            title: "step2",
-            render: <div>step2 area</div>,
-          },
-          {
-            title: "step3",
-            render: <div>step3 area</div>,
-          },
-        ],
+        steps: steps,
         right: <div>right</div>,
       }}
     >
