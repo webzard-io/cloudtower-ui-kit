@@ -424,6 +424,9 @@ describe("SimplePagination h5_css", () => {
           padding: 0;
         }
         &.ant-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
           padding: 5px 12px;
           height: 32px;
           border-radius: 6px;
@@ -748,12 +751,6 @@ describe("SimplePagination h5_css", () => {
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
         }
 
-        &.has-icon {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-
         .button-prefix-icon {
           margin-right: 8px;
           display: inline-flex;
@@ -766,7 +763,7 @@ describe("SimplePagination h5_css", () => {
           display: flex;
           justify-content: center;
         }
-      ,has-icon,
+      ,
         @include Inter();
         font-size: 13px;
         line-height: 20px;
@@ -899,6 +896,9 @@ describe("SimplePagination h5_css", () => {
           padding: 0;
         }
         &.ant-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
           padding: 5px 12px;
           height: 32px;
           border-radius: 6px;
@@ -1223,12 +1223,6 @@ describe("SimplePagination h5_css", () => {
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
         }
 
-        &.has-icon {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-
         .button-prefix-icon {
           margin-right: 8px;
           display: inline-flex;
@@ -1241,7 +1235,7 @@ describe("SimplePagination h5_css", () => {
           display: flex;
           justify-content: center;
         }
-      ,has-icon,
+      ,
         @include Inter();
         font-size: 13px;
         line-height: 20px;
@@ -1708,6 +1702,9 @@ describe("SimplePagination h5_css", () => {
           padding: 0;
         }
         &.ant-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
           padding: 5px 12px;
           height: 32px;
           border-radius: 6px;
@@ -2032,12 +2029,6 @@ describe("SimplePagination h5_css", () => {
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
         }
 
-        &.has-icon {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-
         .button-prefix-icon {
           margin-right: 8px;
           display: inline-flex;
@@ -2050,7 +2041,7 @@ describe("SimplePagination h5_css", () => {
           display: flex;
           justify-content: center;
         }
-      ,has-icon,
+      ,
         @include Inter();
         font-size: 13px;
         line-height: 20px;

@@ -16,6 +16,9 @@ const ButtonStyle = css`
     padding: 0;
   }
   &.ant-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 5px 12px;
     height: 32px;
     border-radius: 6px;
@@ -340,12 +343,6 @@ const ButtonStyle = css`
     --box-shadow-color-focus: #{$strokes-light-outstanding-light};
   }
 
-  &.has-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   .button-prefix-icon {
     margin-right: 8px;
     display: inline-flex;
@@ -397,7 +394,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           className,
           ButtonStyle,
           type === "link" && NoPadding,
-          (prefixIcon || suffixIcon) && "has-icon",
           size === "large" && Typo.Label.l1_regular_title,
           size === "middle" && Typo.Label.l2_regular_title,
           size === "small" && Typo.Label.l3_regular_title,

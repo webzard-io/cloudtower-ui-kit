@@ -3,6 +3,7 @@ import {
   MoreEllipsis316BoldOntintIcon,
   PlusAddCreateNew16BoldOntintIcon,
 } from "@cloudtower/icons-react";
+import { css } from "@linaria/core";
 import { Space } from "antd";
 import cs from "classnames";
 import _ from "lodash";
@@ -363,6 +364,46 @@ export const RoundedIcon = () => {
             suffixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
             type="primary"
           />
+        </Space>
+      </div>
+    </>
+  );
+};
+
+export const CustomChildren = () => {
+  return (
+    <>
+      <Title>
+        children 结构稍微复杂的情况，比如在 children 组合使用 Icon +
+        text，需要使用者自己保证 Icon 和文字的间距
+      </Title>
+      <div style={{ marginTop: "20px" }}>
+        <Space>
+          <Button
+            size="middle"
+            type="primary"
+            className={css`
+              column-gap: 8px;
+            `}
+          >
+            <Icon src={PlusAddCreateNew16BoldOntintIcon} />
+            text
+          </Button>
+        </Space>
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        <Space>
+          <Button
+            size="middle"
+            type="primary"
+            className={css`
+              column-gap: 8px;
+              width: 200px;
+            `}
+          >
+            <Icon src={PlusAddCreateNew16BoldOntintIcon} />
+            text
+          </Button>
         </Space>
       </div>
     </>
