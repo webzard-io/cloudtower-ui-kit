@@ -79,6 +79,7 @@ const Modal: React.FC<ModalProps> = (props) => {
   }, [t, wizard]);
 
   const stepsRef = useRef<React.ReactNode[]>([]);
+
   if (
     wizard &&
     typeof wizard === "object" &&
@@ -183,15 +184,17 @@ const Modal: React.FC<ModalProps> = (props) => {
       {wizard && typeof wizard === "object" ? (
         <WizardBody>
           <div className="left">
-            <Steps
-              current={wizard.step}
-              onChange={(value) => wizard.onStepChange?.(value)}
-              direction="vertical"
-              stepsConfig={wizard.steps.map((s) => ({
-                title: s.title,
-                disabled: s.disabled,
-              }))}
-            />
+            {wizard.hideLeft ? null : (
+              <Steps
+                current={wizard.step}
+                onChange={(value) => wizard.onStepChange?.(value)}
+                direction="vertical"
+                stepsConfig={wizard.steps.map((s) => ({
+                  title: s.title,
+                  disabled: s.disabled,
+                }))}
+              />
+            )}
           </div>
           <div className="middle">
             {restProps.children}
