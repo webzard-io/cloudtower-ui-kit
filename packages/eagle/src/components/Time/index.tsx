@@ -26,7 +26,7 @@ const Time = (props: ITimeProps) => {
         <span className="date">{time.format(dateTemplate)}</span>
       )}
       {timeTemplate !== null && (
-        <span className="time">{time.format(timeTemplate)}</span>
+        <span className="time"> {time.format(timeTemplate)}</span>
       )}
     </span>
   );
