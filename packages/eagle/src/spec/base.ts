@@ -590,6 +590,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   >;
   token: TokenComponentType;
   overflowTooltip: React.FC<OverflowTooltipProps>;
+  I18nNameTag: React.FC<any>;
   uploadDragger: React.ComponentType<DraggerProps>;
   calendar: React.FC<CalendarProps<Moment>>;
   timePicker: React.FC<TimePickerProps>;

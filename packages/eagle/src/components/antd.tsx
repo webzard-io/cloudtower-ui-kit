@@ -82,6 +82,7 @@ import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
 import OverflowTooltip from "./OverflowTooltip";
+import I18nNameTag from "./I18nNameTag";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -176,6 +177,7 @@ export function getAntdKit(): Kit {
     antdSteps: AntdSteps,
     card: Card,
     overflowTooltip: OverflowTooltip,
+    I18nNameTag: I18nNameTag,
     truncate: Truncate,
     expandableList: {
       ExpandableContainer: ExpandableContainer,
