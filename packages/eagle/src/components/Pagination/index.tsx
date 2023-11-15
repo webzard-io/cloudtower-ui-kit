@@ -169,7 +169,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
         PaginationStyle,
         "pagination-wrapper",
         className,
-        selectorVisible && "has-selector"
+        selectorVisible && "has-selector",
       )}
     >
       {renderLeft()}
@@ -197,7 +197,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             className="next-btn"
             type="quiet"
             size="small"
-            prefixIcon={
+            suffixIcon={
               <Icon
                 alt={"arrowChevronLeftSmall16BoldBlue"}
                 src={arrowChevronLeftSmall16BoldBlue}
