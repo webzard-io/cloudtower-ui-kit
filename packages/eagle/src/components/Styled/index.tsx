@@ -490,6 +490,7 @@ export const InputStyle = css`
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 

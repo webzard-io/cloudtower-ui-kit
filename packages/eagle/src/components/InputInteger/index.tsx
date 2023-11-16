@@ -58,6 +58,7 @@ export const AntdIntStyled = styled(AntdInputNumber)<{
     &.ant-input-number-focused {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
   &.ant-input-number.error:not([disabled]) {
