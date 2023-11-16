@@ -108,7 +108,7 @@ export const tableStyleCover = css`
       margin-bottom: -1px;
     }
 
-    .time-wrapper .data,
+    .time-wrapper .date,
     .value {
       color: $text-primary-light;
     }
