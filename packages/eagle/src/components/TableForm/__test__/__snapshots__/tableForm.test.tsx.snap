@@ -326,6 +326,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 
@@ -562,6 +563,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 
@@ -798,6 +800,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 
@@ -1480,6 +1483,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 
@@ -1701,6 +1705,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 
@@ -1923,6 +1928,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 
@@ -2315,6 +2321,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 
@@ -2715,6 +2722,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 
@@ -2936,6 +2944,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 
@@ -3158,6 +3167,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 
@@ -3550,6 +3560,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 
@@ -3950,6 +3961,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 
@@ -4171,6 +4183,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 
@@ -4393,6 +4406,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 
@@ -4785,6 +4799,7 @@ exports[`table form render > default data is undefiend 1`] = `
     &.__pseudo-states-focus {
       border-color: $blue;
       box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
     }
   }
 

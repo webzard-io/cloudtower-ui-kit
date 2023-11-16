@@ -138,6 +138,7 @@ describe("Input h5_css", () => {
           &.__pseudo-states-focus {
             border-color: $blue;
             box-shadow: $shadow-light-active;
+            z-index: $input-hover-index;
           }
         }
 
@@ -719,6 +720,7 @@ describe("Input h5_css", () => {
           &.__pseudo-states-focus {
             border-color: $blue;
             box-shadow: $shadow-light-active;
+            z-index: $input-hover-index;
           }
         }
 

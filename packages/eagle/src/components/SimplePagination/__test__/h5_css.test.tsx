@@ -128,6 +128,7 @@ describe("SimplePagination h5_css", () => {
           &.__pseudo-states-focus {
             border-color: $blue;
             box-shadow: $shadow-light-active;
+            z-index: $input-hover-index;
           }
         }
 
@@ -309,6 +310,7 @@ describe("SimplePagination h5_css", () => {
           &.ant-input-number-focused {
             border-color: $blue;
             box-shadow: $shadow-light-active;
+            z-index: $input-hover-index;
           }
         }
         &.ant-input-number.error:not([disabled]) {
@@ -1324,6 +1326,7 @@ describe("SimplePagination h5_css", () => {
           &.__pseudo-states-focus {
             border-color: $blue;
             box-shadow: $shadow-light-active;
+            z-index: $input-hover-index;
           }
         }
 
@@ -1505,6 +1508,7 @@ describe("SimplePagination h5_css", () => {
           &.ant-input-number-focused {
             border-color: $blue;
             box-shadow: $shadow-light-active;
+            z-index: $input-hover-index;
           }
         }
         &.ant-input-number.error:not([disabled]) {
@@ -2130,6 +2134,7 @@ describe("SimplePagination h5_css", () => {
           &.__pseudo-states-focus {
             border-color: $blue;
             box-shadow: $shadow-light-active;
+            z-index: $input-hover-index;
           }
         }
 
@@ -2311,6 +2316,7 @@ describe("SimplePagination h5_css", () => {
           &.ant-input-number-focused {
             border-color: $blue;
             box-shadow: $shadow-light-active;
+            z-index: $input-hover-index;
           }
         }
         &.ant-input-number.error:not([disabled]) {
