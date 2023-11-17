@@ -32,7 +32,7 @@ expect.addSnapshotSerializer({
     indentation,
     depth,
     refs,
-    printer
+    printer,
   ) {
     if (val.linaria) {
       return format(val.dom, {
@@ -42,7 +42,7 @@ expect.addSnapshotSerializer({
             serialize(val, config, indentation, depth, refs, printer) {
               const classNames = val.split(" ");
               const styles = JSON.parse(
-                fs.readFileSync(styleMapFileName).toString()
+                fs.readFileSync(styleMapFileName).toString(),
               );
               return classNames
                 .map((classname) => {
@@ -71,17 +71,13 @@ expect.addSnapshotSerializer({
 initParrotI18n({
   resources: {
     "en-US": {
-      translation: {
-        test: {
-          error_message_batch: "Batch Error Message {count}",
-        },
+      test: {
+        error_message_batch: "Batch Error Message {count}",
       },
     },
     "zh-CN": {
-      translation: {
-        test: {
-          error_message_batch: "聚合错误信息 {count}",
-        },
+      test: {
+        error_message_batch: "聚合错误信息 {count}",
       },
     },
   },

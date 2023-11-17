@@ -3,25 +3,24 @@ import merge from "lodash.merge";
 
 import locales from "./locales";
 
-const defaultOptions = {
-  lng: "zh-CN",
-  fallbackLng: "en-US",
+enum ParrotLngs {
+  zh = "zh-CN",
+  en = "en-US",
+}
+
+const defaultOptions: InitOptions = {
+  lng: ParrotLngs.zh,
+  fallbackLng: [ParrotLngs.zh, ParrotLngs.en],
   interpolation: {
     prefix: "{",
     suffix: "}",
   },
   resources: {
-    "en-US": {
-      translation: {
-        ...locales["en-US"],
-      },
-    },
-    "zh-CN": {
-      translation: {
-        ...locales["zh-CN"],
-      },
-    },
+    [ParrotLngs.en]: locales["en-US"],
+    [ParrotLngs.zh]: locales["zh-CN"],
   },
+  nsSeparator: ".",
+  ns: Object.keys(locales["zh-CN"]),
   react: {
     useSuspense: false,
   },
@@ -33,9 +32,19 @@ export default parrotI18n;
 
 export const initParrotI18n = (
   options?: InitOptions,
-  callback?: Callback | undefined
+  callback?: Callback | undefined,
 ) => {
+  const finalResources =
+    merge(defaultOptions.resources, options?.resources) || {};
+  const finalNameSpaces = Object.keys(finalResources[ParrotLngs.zh]);
   if (!parrotI18n.isInitialized) {
-    parrotI18n.init(merge(defaultOptions, options), callback);
+    parrotI18n.init(
+      {
+        ...merge(defaultOptions, options),
+        resources: finalResources,
+        ns: finalNameSpaces,
+      },
+      callback,
+    );
   }
 };

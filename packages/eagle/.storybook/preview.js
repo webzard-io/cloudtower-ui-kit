@@ -6,17 +6,13 @@ import { initParrotI18n } from "@cloudtower/parrot";
 initParrotI18n({
   resources: {
     "en-US": {
-      translation: {
-        test: {
-          error_message_batch: "Batch Error Message {count}",
-        },
+      test: {
+        error_message_batch: "Batch Error Message {count}",
       },
     },
     "zh-CN": {
-      translation: {
-        test: {
-          error_message_batch: "错误信息 {count}",
-        },
+      test: {
+        error_message_batch: "错误信息 {count}",
       },
     },
   },
