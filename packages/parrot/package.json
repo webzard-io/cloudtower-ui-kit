@@ -27,7 +27,7 @@
     "lint": "eslint src --ext .ts --quiet"
   },
   "dependencies": {
-    "i18next": "^21.10.0",
+    "i18next": "^23.2.3",
     "lodash.merge": "^4.6.2"
   },
   "devDependencies": {
