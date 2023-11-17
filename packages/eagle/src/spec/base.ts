@@ -337,6 +337,7 @@ export type ModalProps = Omit<AntdModalProps, "okType"> & {
         step: number;
         onStepChange?: (step: number) => void;
         steps: WizardSteps;
+        hideLeft?: boolean;
         right?: React.ReactNode;
         destroyOtherStep?: boolean;
         disablePrevStep?: boolean;
