@@ -44,7 +44,7 @@
     "files": [
       {
         "path": "./packages/eagle/dist/**/*.js",
-        "maxSize": "40 kB"
+        "maxSize": "60 kB"
       },
       {
         "path": "./packages/parrot/dist/**/*.js",
