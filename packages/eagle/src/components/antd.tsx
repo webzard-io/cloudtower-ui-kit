@@ -82,6 +82,7 @@ import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
 import OverflowTooltip from "./OverflowTooltip";
+import DropdownMenu from "../core/DropdownMenu";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -182,6 +183,7 @@ export function getAntdKit(): Kit {
       ExpandableItem: ExpandableItem,
     },
     time: Time,
+    DropdownMenu: DropdownMenu,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19

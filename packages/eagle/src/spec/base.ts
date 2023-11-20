@@ -73,6 +73,7 @@ import { SerializableObject } from "../utils/tower";
 import { FieldRenderProps } from "./react-final-form";
 import {
   Architecture,
+  IDropdownMenuProps,
   ISpaceProps,
   ITimeProps,
   ITimeZoneSelectProps,
@@ -625,6 +626,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     ExpandableItem: React.FC<PropsWithChildren<IExpandableItemProps>>;
   };
   time: React.FC<ITimeProps>;
+  DropdownMenu: React.FC<IDropdownMenuProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
