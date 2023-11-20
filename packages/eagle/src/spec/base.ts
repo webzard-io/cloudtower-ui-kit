@@ -69,10 +69,13 @@ import { IEmptyProps } from "../components/Empty";
 import { MessageApi } from "../components/message";
 import { TableFormHandle, TableFormProps } from "../components/TableForm/types";
 import { TruncatePropTypes } from "../components/Truncate";
+import type { CloseButtonProps } from "../core/AccordionCard";
 import { SerializableObject } from "../utils/tower";
 import { FieldRenderProps } from "./react-final-form";
 import {
   Architecture,
+  DropdownTransitionProps,
+  IAccordionCardProps,
   ISpaceProps,
   ITimeProps,
   ITimeZoneSelectProps,
@@ -625,6 +628,10 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     ExpandableItem: React.FC<PropsWithChildren<IExpandableItemProps>>;
   };
   time: React.FC<ITimeProps>;
+  DropdownTransition: React.FC<DropdownTransitionProps>;
+  AccordionCard: React.FC<IAccordionCardProps> & {
+    CloseButton: React.FC<CloseButtonProps>;
+  };
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;

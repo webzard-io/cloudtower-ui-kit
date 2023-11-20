@@ -1,3 +1,5 @@
+import { CSSTransitionProps } from "react-transition-group/CSSTransition";
+
 export enum Architecture {
   Aarch64 = "AARCH64",
   X86_64 = "X86_64",
@@ -37,4 +39,17 @@ export interface ITimeProps {
   dateTemplate?: string | null;
   timeTemplate?: string | null;
   plainText?: boolean;
+}
+
+export type DropdownTransitionProps = {
+  visible: boolean;
+} & CSSTransitionProps;
+
+export interface IAccordionCardProps {
+  header: React.ReactNode | ((active: boolean) => React.ReactNode);
+  expand: React.ReactNode;
+  className?: string;
+  defaultExpand?: boolean;
+  mountOnEnter?: boolean;
+  unmountOnExit?: boolean;
 }
