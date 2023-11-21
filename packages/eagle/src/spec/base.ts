@@ -57,6 +57,7 @@ import { TextProps } from "antd/lib/typography/Text";
 import { DraggerProps, UploadProps } from "antd/lib/upload";
 import type { Moment } from "moment";
 import React, {
+  AnchorHTMLAttributes,
   ForwardRefExoticComponent,
   PropsWithChildren,
   PropsWithoutRef,
@@ -625,6 +626,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     ExpandableItem: React.FC<PropsWithChildren<IExpandableItemProps>>;
   };
   time: React.FC<ITimeProps>;
+  Link: LinkComponentType;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
@@ -751,3 +753,17 @@ export type OverflowTooltipProps = {
   onClick?: () => void;
   isMultiLine?: boolean;
 };
+
+export interface LinkProps
+  extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "className"> {
+  className?: string | string[];
+  style?: React.CSSProperties;
+  prefixIcon?: ReactNode;
+  suffixIcon?: ReactNode;
+  disabled?: boolean;
+  type?: "default" | "subtle";
+}
+
+export type LinkComponentType = React.ForwardRefExoticComponent<
+  PropsWithChildren<LinkProps> & React.RefAttributes<HTMLAnchorElement>
+>;
