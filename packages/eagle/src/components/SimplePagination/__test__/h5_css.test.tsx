@@ -422,14 +422,10 @@ describe("SimplePagination h5_css", () => {
         &.ant-btn-icon-only {
           justify-content: center;
         }
-        &.ant-btn.ant-btn-link {
-          padding: 0;
-        }
         &.ant-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          padding: 5px 12px;
           height: 32px;
           border-radius: 6px;
           line-height: 22px;
@@ -442,11 +438,9 @@ describe("SimplePagination h5_css", () => {
           &.ant-btn-lg {
             height: 40px;
             line-height: 24px;
-            padding: 8px 16px;
           }
 
           &.ant-btn-sm {
-            padding: 2px 8px;
             height: 24px;
             line-height: 20px;
           }
@@ -894,14 +888,10 @@ describe("SimplePagination h5_css", () => {
         &.ant-btn-icon-only {
           justify-content: center;
         }
-        &.ant-btn.ant-btn-link {
-          padding: 0;
-        }
         &.ant-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          padding: 5px 12px;
           height: 32px;
           border-radius: 6px;
           line-height: 22px;
@@ -914,11 +904,9 @@ describe("SimplePagination h5_css", () => {
           &.ant-btn-lg {
             height: 40px;
             line-height: 24px;
-            padding: 8px 16px;
           }
 
           &.ant-btn-sm {
-            padding: 2px 8px;
             height: 24px;
             line-height: 20px;
           }
@@ -1702,14 +1690,10 @@ describe("SimplePagination h5_css", () => {
         &.ant-btn-icon-only {
           justify-content: center;
         }
-        &.ant-btn.ant-btn-link {
-          padding: 0;
-        }
         &.ant-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          padding: 5px 12px;
           height: 32px;
           border-radius: 6px;
           line-height: 22px;
@@ -1722,11 +1706,9 @@ describe("SimplePagination h5_css", () => {
           &.ant-btn-lg {
             height: 40px;
             line-height: 24px;
-            padding: 8px 16px;
           }
 
           &.ant-btn-sm {
-            padding: 2px 8px;
             height: 24px;
             line-height: 20px;
           }
