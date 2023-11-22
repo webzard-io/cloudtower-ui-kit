@@ -410,6 +410,24 @@ export const CustomChildren = () => {
   );
 };
 
+export const Link = () => {
+  return (
+    <>
+      <div>
+        <p>当 type 传入 'link'时，会呈现为超链接文本的形式</p>
+        <p>
+          不建议通过 type='link' 的形式使用 button 来实现超链接的效果，应该使用
+          Link 组件
+        </p>
+        <p>这里仅对已有的用法进行展示</p>
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        <Button type="link">text</Button>
+      </div>
+    </>
+  );
+};
+
 Basic.story = {
   name: "Basic",
   parameters: {
