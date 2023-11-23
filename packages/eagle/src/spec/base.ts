@@ -76,6 +76,7 @@ import {
   Architecture,
   DropdownTransitionProps,
   IAccordionCardProps,
+  IDetailCardProps,
   ISpaceProps,
   ITimeProps,
   ITimeZoneSelectProps,
@@ -633,6 +634,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   AccordionCard: React.FC<IAccordionCardProps> & {
     CloseButton: React.FC<CloseButtonProps>;
   };
+  DetailCard: React.FC<IDetailCardProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;

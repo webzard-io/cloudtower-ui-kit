@@ -53,3 +53,7 @@ export interface IAccordionCardProps {
   mountOnEnter?: boolean;
   unmountOnExit?: boolean;
 }
+
+export interface IDetailCardProps {
+  title?: React.ReactNode;
+}

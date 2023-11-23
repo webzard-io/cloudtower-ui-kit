@@ -38,6 +38,7 @@ import React from "react";
 
 import AccordionCard from "../core/AccordionCard";
 import DropdownTransition from "../coreX/DropdownTransition";
+import DetailCard from "../core/DetailCard";
 import { Kit, OptionComponentType } from "../spec";
 import Alert from "./Alert";
 import Arch from "./Arch";
@@ -188,6 +189,7 @@ export function getAntdKit(): Kit {
     time: Time,
     DropdownTransition: DropdownTransition,
     AccordionCard: AccordionCard,
+    DetailCard: DetailCard,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
