@@ -1,11 +1,9 @@
 import "./styles/index.scss";
 
-import { initParrotI18n } from "@cloudtower/parrot";
-
 export type {
+  CardProps,
   DateRange,
   GraphType,
-  CardProps,
   IconProps,
   IDataPoint,
 } from "./components";
