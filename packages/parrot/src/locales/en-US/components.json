@@ -17,5 +17,10 @@
   "browser_time_zone": "Browser Time Zone",
   "coorddinated_universal_time": "Coorddinated Universal Time",
   "Architecture_AARCH64": "AArch64",
-  "Architecture_X86_64": "x86_64"
+  "Architecture_X86_64": "x86_64",
+  "maximum_row_count_desc": "At most {count} items.",
+  "remove": "Remove",
+  "add": "Add",
+  "prefix": "Prefix",
+  "suffix": "Suffix"
 }

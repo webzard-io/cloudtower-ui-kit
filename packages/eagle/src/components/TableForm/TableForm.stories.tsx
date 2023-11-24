@@ -1,3 +1,4 @@
+import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { Checkbox, Form, Input, Select, Space } from "antd";
@@ -103,7 +104,7 @@ const selectOptions = [
 ];
 
 const getColumnsForValidation = (
-  type: ValidateTriggerType,
+  type: ValidateTriggerType
 ): TableFormColumn[] => [
   {
     title: "这是一个专门做校验的 tableForm",
@@ -255,7 +256,7 @@ export const Basic = () => {
         return false;
       },
     }),
-    [],
+    []
   );
 
   const rowValidationForValidationForm: TableFormProps["rowValidator"] =
@@ -279,10 +280,25 @@ export const Basic = () => {
       //     ? "this is a special desc for the first row"
       //     : null,
     }),
-    [rowValidationForValidationForm],
+    [rowValidationForValidationForm]
   );
   return (
     <div style={{ padding: "20px" }}>
+      change lng
+      <Button
+        onClick={() => {
+          parrotI18n.changeLanguage("zh-CN");
+        }}
+      >
+        中文
+      </Button>
+      <Button
+        onClick={() => {
+          parrotI18n.changeLanguage("en-US");
+        }}
+      >
+        english
+      </Button>
       <Space direction="vertical">
         <Title>Batch input TableForm</Title>
         <ContentWrapper>
