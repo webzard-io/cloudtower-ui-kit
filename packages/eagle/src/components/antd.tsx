@@ -36,6 +36,8 @@ import {
 } from "antd";
 import React from "react";
 
+import AccordionCard from "../core/AccordionCard";
+import DropdownTransition from "../coreX/DropdownTransition";
 import { Kit, OptionComponentType } from "../spec";
 import Alert from "./Alert";
 import Arch from "./Arch";
@@ -54,11 +56,13 @@ import ExpandableItem from "./ExpandableList/ExpandableItem";
 import fields from "./Fields";
 import Form from "./Form";
 import Frequency from "./Frequency";
+import I18nNameTag from "./I18nNameTag";
 import Input from "./Input";
 import InputGroup from "./InputGroup";
 import Loading from "./Loading";
 import message from "./message";
 import Modal from "./Modal";
+import OverflowTooltip from "./OverflowTooltip";
 import Pagination from "./Pagination";
 import Percent from "./Percent";
 import Progress from "./Progress";
@@ -81,8 +85,6 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
-import OverflowTooltip from "./OverflowTooltip";
-import I18nNameTag from "./I18nNameTag";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -184,6 +186,8 @@ export function getAntdKit(): Kit {
       ExpandableItem: ExpandableItem,
     },
     time: Time,
+    DropdownTransition: DropdownTransition,
+    AccordionCard: AccordionCard,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
