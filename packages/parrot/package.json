@@ -20,6 +20,8 @@
     "url": "https://github.com/webzard-io/cloudtower-ui-kit.git"
   },
   "scripts": {
+    "test": "vitest",
+    "test:ci": "vitest run",
     "prebuild": "rm -rf dist",
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
     "typings": "tsc -v && tsc --emitDeclarationOnly",
@@ -33,11 +35,14 @@
   "devDependencies": {
     "@rollup/plugin-json": "^6.0.0",
     "@types/lodash.merge": "^4.6.7",
+    "@types/lodash.xor": "^4.5.9",
     "ejs": "^3.1.8",
+    "lodash.xor": "^4.5.0",
     "rollup": "^3.12.1",
     "rollup-plugin-esbuild": "5.0.0",
     "rollup-plugin-polyfill-node": "^0.12.0",
     "rollup-plugin-visualizer": "5.9.0",
-    "typescript": "5.0.2"
+    "typescript": "5.0.2",
+    "vitest": "^0.24.1"
   }
 }

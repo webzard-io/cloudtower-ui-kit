@@ -2,7 +2,7 @@ name: "CI Check"
 
 on:
   pull_request:
-    branches: ["main", "v3.2", "v3.3", "v3.5"]
+    branches: ["main", "v4.1"]
 
 jobs:
   test:
@@ -23,8 +23,10 @@ jobs:
         timeout-minutes: 3
       - name: Build
         run: yarn build
-      - name: Test
-        run: cd packages/eagle && yarn run test:ci
+      - name: Test parrot
+        run: yarn workspace @cloudtower/parrot run test:ci
+      - name: Test eagle
+        run: yarn workspace @cloudtower/eagle run test:ci
 
   size-report:
     name: Size Report
