@@ -718,4 +718,37 @@ describe("Tokenm h5_css", () => {
           </div>
         `);
   });
+
+  it("render NameTag correctly", ({ expect }) => {
+    const { container } = render(<Tag.NameTag>NameTag</Tag.NameTag>);
+
+    expect({
+      linaria: true,
+      dom: container,
+    }).toMatchInlineSnapshot(`
+      <div>
+        <span
+          class=ant-tag,
+        &.ant-tag.ant-tag-gray {
+          font-weight: 700;
+          color: $text-neutral-primary;
+          background-color: $fill-neutral-trans-1;
+          border: 1px solid $stroke-neutral-trans-2;
+        }
+      ,
+          padding: 0 8px;
+          height: 18px;
+        ,
+        margin: 0;
+      ,
+        @include Inter();
+        font-size: 12px;
+        line-height: 18px;
+      ,ant-tag-gray
+        >
+          NameTag
+        </span>
+      </div>
+    `);
+  });
 });
