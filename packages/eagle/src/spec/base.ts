@@ -697,6 +697,21 @@ export type TagColor =
   | "default"
   | "success";
 
+export type SplitTagComponentType = React.FC<
+  Omit<TagProps, "closable" | "closeIcon" | "onClose" | "visible"> & {
+    color?: "red" | "yellow" | "green" | "blue" | "purple" | "gray";
+    size?: "small" | "medium";
+    primaryContent: React.ReactNode;
+    secondaryContent: React.ReactNode;
+  }
+>;
+
+export interface NameTagType
+  extends Omit<React.HTMLAttributes<HTMLSpanElement>, "color"> {
+  className?: string;
+  style?: React.CSSProperties;
+}
+
 export type TagComponentType = React.FC<
   Omit<TagProps, "closable" | "closeIcon" | "onClose"> & {
     color?: TagColor;
@@ -705,6 +720,7 @@ export type TagComponentType = React.FC<
   }
 > & {
   SplitTag: SplitTagComponentType;
+  NameTag: React.FC<NameTagType>;
 };
 
 export type StatusCapsuleColor =
@@ -724,15 +740,6 @@ export type StatusCapsuleComponentType = React.FC<
     hoverable?: boolean;
     offWhiteMode?: boolean;
     number?: number;
-  }
->;
-
-export type SplitTagComponentType = React.FC<
-  Omit<TagProps, "closable" | "closeIcon" | "onClose" | "visible"> & {
-    color?: "red" | "yellow" | "green" | "blue" | "purple" | "gray";
-    size?: "small" | "medium";
-    primaryContent: React.ReactNode;
-    secondaryContent: React.ReactNode;
   }
 >;
 

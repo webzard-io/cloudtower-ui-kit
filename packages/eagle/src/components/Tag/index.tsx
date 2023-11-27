@@ -2,11 +2,11 @@ import { Tag as AntdTag } from "antd";
 import cs from "classnames";
 import React from "react";
 
-import { TagColor, TagComponentType } from "../../spec";
+import { NameTagType, TagColor, TagComponentType } from "../../spec";
 import { Typo } from "../Typo";
 import { PresetColors as BasePresetColors } from "./const";
 import SplitTag from "./SplitTag";
-import { IconStyle, Size, TagStyle } from "./style";
+import { IconStyle, NameTagStyle, Size, TagStyle } from "./style";
 
 export const PresetColors: TagColor[] = [
   ...BasePresetColors,
@@ -48,6 +48,11 @@ const Tag: TagComponentType = ({
   );
 };
 
+const NameTag: React.FC<NameTagType> = ({ className, ...props }) => {
+  return <Tag className={cs(NameTagStyle, className)} {...props} />;
+};
+
 Tag.SplitTag = SplitTag;
+Tag.NameTag = NameTag;
 
 export default Tag;
