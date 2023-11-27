@@ -18,3 +18,12 @@ export const IconStyle = css`
   margin-right: 4px;
   height: 16px;
 `;
+
+export const NameTagStyle = css`
+  &.ant-tag.ant-tag-gray {
+    font-weight: 700;
+    color: $text-neutral-primary;
+    background-color: $fill-neutral-trans-1;
+    border: 1px solid $stroke-neutral-trans-2;
+  }
+`;
