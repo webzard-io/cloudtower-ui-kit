@@ -41,7 +41,10 @@ import Breadcrumb from "../core/Breadcrumb";
 import DetailCard from "../core/DetailCard";
 import { CircleProgress } from "../core/StepProgress";
 import Counting from "../coreX/Counting";
+import CronPlan from "../coreX/CronPlan";
 import DropdownTransition from "../coreX/DropdownTransition";
+import NamesTooltip from "../coreX/NamesTooltip";
+import SwitchWithText from "../coreX/SwitchWithText";
 import TruncatedTextWithTooltip from "../coreX/TruncatedTextWithTooltip";
 import { Kit, OptionComponentType } from "../spec";
 import Alert from "./Alert";
@@ -90,8 +93,6 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
-import SwitchWithText from "../coreX/SwitchWithText";
-import CronPlan from "../coreX/CronPlan";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -189,6 +190,7 @@ export function getAntdKit(): Kit {
     I18nNameTag: I18nNameTag,
     SwitchWithText: SwitchWithText,
     CronPlan: CronPlan,
+    NamesTooltip: NamesTooltip,
     truncate: Truncate,
     expandableList: {
       ExpandableContainer: ExpandableContainer,
