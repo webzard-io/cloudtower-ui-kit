@@ -32,17 +32,25 @@ describe("I18nNameTag", () => {
       <div>
         这是一条会高亮传入 
         <span
-          class=
-        font-size: 90%;
-        font-weight: bold;
-        background-color: rgba(240, 243, 247, 0.6);
-        padding: 1px 4px 1px;
-        margin-left: 2px;
-        margin-right: 2px;
-        border: 1px solid rgba(213, 219, 227, 0.6);
-        border-radius: 4px;
-        word-break: break-all;
-
+          class=ant-tag,
+        &.ant-tag.ant-tag-gray {
+          font-weight: 700;
+          color: $text-neutral-primary;
+          background-color: $fill-neutral-trans-1;
+          border: 1px solid $stroke-neutral-trans-2;
+        }
+      ,
+        margin: 0 2px;
+      ,
+          padding: 0 8px;
+          height: 18px;
+        ,
+        margin: 0;
+      ,
+        @include Inter();
+        font-size: 12px;
+        line-height: 18px;
+      ,ant-tag-gray
         >
           label
         </span>
