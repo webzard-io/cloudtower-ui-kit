@@ -644,6 +644,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   Breadcrumb: React.FC<IBreadcrumbProps>;
   CircleProgress: React.FC<ICircleProgressProps>;
   CronPlan: React.FC<CronPlanProps>;
+  NamesTooltip: React.FC<NamesTooltipType>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
@@ -788,4 +789,7 @@ export type CronPlanProps = {
   value: CronPlanState;
   onChange: (value: CronPlanState) => unknown;
   onRemove?: () => void;
+};
+export type NamesTooltipType = {
+  names: { id: string; name?: string }[];
 };
