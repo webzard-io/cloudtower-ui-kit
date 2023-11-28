@@ -10,7 +10,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 import { SplitTagComponentType, TagColor, TagComponentType } from "../../spec";
-import { Stack, Title } from "../../stories";
+import { Container, Stack, Title } from "../../stories";
 import BaseTruncate from "../Truncate";
 import Tag, { PresetColors as TagPresetColors } from ".";
 import { PresetColors } from "./const";
@@ -28,146 +28,189 @@ const story: Meta<TagComponentType> = {
 
 const modes = ["Default", "Hover", "Default", "Hover"];
 
-export const Basic: StoryObj<TagComponentType> = {
-  render: () => {
-    return (
-      <div style={{ padding: "20px" }}>
-        <Title>Small</Title>
-        <Stack direction="vertical">
-          <Stack>
-            <span style={{ width: "90px" }} />
-            {modes.map((mode) => (
-              <div style={{ width: "90px" }}>{mode}</div>
-            ))}
-          </Stack>
-          {TagPresetColors.map((color) => (
-            <Stack
-              className={css`
-                & > .box {
-                  width: 90px;
-                }
-              `}
-            >
-              <span style={{ width: "90px" }}>{color}</span>
-              <div className="box">
-                <Tag size="small" color={color}>
-                  Label
-                </Tag>
-              </div>
-              <div className="box">
-                {color.includes("ontint") ? (
-                  <span />
-                ) : (
-                  <Tag
-                    className="__pseudo-states-hover"
-                    size="small"
-                    color={color}
-                  >
-                    Label
-                  </Tag>
-                )}
-              </div>
-              <div className="box">
-                <Tag icon={<Placeholder16Icon />} size="small" color={color}>
-                  Label
-                </Tag>
-              </div>
-              <div className="box">
-                {color.includes("ontint") ? (
-                  <span />
-                ) : (
-                  <Tag
-                    className="__pseudo-states-hover"
-                    icon={<Placeholder16Icon />}
-                    size="small"
-                    color={color}
-                  >
-                    Label
-                  </Tag>
-                )}
-              </div>
-            </Stack>
-          ))}
-        </Stack>
-        <Title>Medium</Title>
-        <Stack direction="vertical">
-          {TagPresetColors.map((color) => (
-            <Stack
-              className={css`
-                & > .box {
-                  width: 90px;
-                }
-              `}
-            >
-              <span style={{ width: "90px" }}>{color}</span>
-              <div className="box">
-                <Tag size="medium" color={color}>
-                  Label
-                </Tag>
-              </div>
-              <div className="box">
-                {color.includes("ontint") ? (
-                  <span />
-                ) : (
-                  <Tag
-                    className="__pseudo-states-hover"
-                    size="medium"
-                    color={color}
-                  >
-                    Label
-                  </Tag>
-                )}
-              </div>
-              <div className="box">
-                <Tag icon={<Placeholder16Icon />} size="medium" color={color}>
-                  Label
-                </Tag>
-              </div>
-              <div className="box">
-                {color.includes("ontint") ? (
-                  <span />
-                ) : (
-                  <Tag
-                    className="__pseudo-states-hover"
-                    icon={<Placeholder16Icon />}
-                    size="medium"
-                    color={color}
-                  >
-                    Label
-                  </Tag>
-                )}
-              </div>
-            </Stack>
-          ))}
-        </Stack>
-      </div>
-    );
-  },
-};
-
-export const Default: StoryObj<{
+export const Basic: StoryObj<{
   content: string;
   color: TagColor;
   size: "small" | "medium";
   hoverable: boolean;
 }> = {
-  render: ({ content, ...props }) => {
-    return <Tag {...props}>{content}</Tag>;
+  render: () => {
+    return (
+      <>
+        <div>
+          <Title>类型</Title>
+          <Container>
+            <Stack spacing={50}>
+              <Stack direction="vertical">
+                <Title size="small">Basic Tag</Title>
+                <div className="component">
+                  <Tag color="blue">Label</Tag>
+                </div>
+              </Stack>
+              <Stack direction="vertical">
+                <Title size="small">Tag with Icon</Title>
+                <div className="component">
+                  <Tag color="blue" icon={<Placeholder16Icon />}>
+                    Label
+                  </Tag>
+                </div>
+              </Stack>
+              <Stack direction="vertical">
+                <Title size="small">Split Tag</Title>
+                <div className="component">
+                  <Tag.SplitTag
+                    color="blue"
+                    primaryContent="Label"
+                    secondaryContent="Label"
+                  >
+                    Label
+                  </Tag.SplitTag>
+                </div>
+              </Stack>
+              <Stack direction="vertical">
+                <Title size="small">Split Tag with Icon</Title>
+                <div className="component">
+                  <Tag.SplitTag
+                    color="blue"
+                    icon={<Placeholder16Icon />}
+                    primaryContent="Label"
+                    secondaryContent="Label"
+                  >
+                    Label
+                  </Tag.SplitTag>
+                </div>
+              </Stack>
+              <Stack direction="vertical">
+                <Title size="small">Name Tag</Title>
+                <div className="component">
+                  <Tag.NameTag>Label</Tag.NameTag>
+                </div>
+              </Stack>
+            </Stack>
+          </Container>
+        </div>
+      </>
+    );
   },
-  args: {
-    content: "label",
-    size: undefined,
-    color: undefined,
-  },
-  argTypes: {
-    size: {
-      control: "radio",
-      options: ["small", "medium"],
-    },
-    color: {
-      control: "radio",
-      options: ["blue", "red", "yellow", "green", "gray"],
-    },
+};
+
+export const Variants: StoryObj<TagComponentType> = {
+  render: () => {
+    return (
+      <>
+        <Title>所有变体</Title>
+        <div style={{ padding: "20px" }}>
+          <Title>Small</Title>
+          <Stack direction="vertical">
+            <Stack>
+              <span style={{ width: "90px" }} />
+              {modes.map((mode) => (
+                <div style={{ width: "90px" }}>{mode}</div>
+              ))}
+            </Stack>
+            {TagPresetColors.map((color) => (
+              <Stack
+                className={css`
+                  & > .box {
+                    width: 90px;
+                  }
+                `}
+              >
+                <span style={{ width: "90px" }}>{color}</span>
+                <div className="box">
+                  <Tag size="small" color={color}>
+                    Label
+                  </Tag>
+                </div>
+                <div className="box">
+                  {color.includes("ontint") ? (
+                    <span />
+                  ) : (
+                    <Tag
+                      className="__pseudo-states-hover"
+                      size="small"
+                      color={color}
+                    >
+                      Label
+                    </Tag>
+                  )}
+                </div>
+                <div className="box">
+                  <Tag icon={<Placeholder16Icon />} size="small" color={color}>
+                    Label
+                  </Tag>
+                </div>
+                <div className="box">
+                  {color.includes("ontint") ? (
+                    <span />
+                  ) : (
+                    <Tag
+                      className="__pseudo-states-hover"
+                      icon={<Placeholder16Icon />}
+                      size="small"
+                      color={color}
+                    >
+                      Label
+                    </Tag>
+                  )}
+                </div>
+              </Stack>
+            ))}
+          </Stack>
+          <Title>Medium</Title>
+          <Stack direction="vertical">
+            {TagPresetColors.map((color) => (
+              <Stack
+                className={css`
+                  & > .box {
+                    width: 90px;
+                  }
+                `}
+              >
+                <span style={{ width: "90px" }}>{color}</span>
+                <div className="box">
+                  <Tag size="medium" color={color}>
+                    Label
+                  </Tag>
+                </div>
+                <div className="box">
+                  {color.includes("ontint") ? (
+                    <span />
+                  ) : (
+                    <Tag
+                      className="__pseudo-states-hover"
+                      size="medium"
+                      color={color}
+                    >
+                      Label
+                    </Tag>
+                  )}
+                </div>
+                <div className="box">
+                  <Tag icon={<Placeholder16Icon />} size="medium" color={color}>
+                    Label
+                  </Tag>
+                </div>
+                <div className="box">
+                  {color.includes("ontint") ? (
+                    <span />
+                  ) : (
+                    <Tag
+                      className="__pseudo-states-hover"
+                      icon={<Placeholder16Icon />}
+                      size="medium"
+                      color={color}
+                    >
+                      Label
+                    </Tag>
+                  )}
+                </div>
+              </Stack>
+            ))}
+          </Stack>
+        </div>
+      </>
+    );
   },
 };
 
@@ -181,15 +224,19 @@ export const Custom: StoryObj<{
     return <Tag {...props}>{content}</Tag>;
   },
   args: {
-    color: "blue",
-    hoverable: true,
     content: "label",
-    size: "small",
+    size: undefined,
+    color: undefined,
+    hoverable: false,
   },
   argTypes: {
     size: {
-      control: "select",
+      control: "radio",
       options: ["small", "medium"],
+    },
+    color: {
+      control: "radio",
+      options: ["blue", "red", "yellow", "green", "gray"],
     },
   },
 };
