@@ -646,6 +646,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   CircleProgress: React.FC<ICircleProgressProps>;
   SwitchWithText: React.FC<SwitchWithTextProps>;
   CronPlan: React.FC<CronPlanProps>;
+  NamesTooltip: React.FC<NamesTooltipType>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
@@ -802,6 +803,9 @@ export type CronPlanProps = {
   value: CronPlanState;
   onChange: (value: CronPlanState) => unknown;
   onRemove?: () => void;
+}
+export type NamesTooltipType = {
+  names: { id: string; name?: string }[];
 };
 export type SwitchWithTextProps =
   //TODO: use SwitchProps directly
