@@ -1,24 +1,35 @@
 import { css, cx } from "@linaria/core";
+import { styled } from "@linaria/react";
+import { debounce } from "lodash";
 import React, { useEffect, useRef, useState } from "react";
 
 import { OverflowTooltipProps } from "../../spec";
 import Tooltip from "../Tooltip";
-import { debounce } from "lodash";
 
 const OverflowText = css`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
 
-const NoWrap = css`
+const SingleLineStyle = css`
   white-space: nowrap;
 `;
 
+const MultipleLine = styled.div<{
+  lineClamp?: number;
+}>`
+  display: -webkit-box;
+  -webkit-line-clamp: ${({ lineClamp = 2 }) => lineClamp};
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+`;
+
 const OverflowTooltip: React.FC<OverflowTooltipProps> = (props) => {
-  const { content, className, onClick, isMultiLine } = props;
+  const { content, className, onClick, multiLines } = props;
   const tooltip: React.ReactNode = props.tooltip || content;
   const [ellipsis, setEllipsis] = useState(false);
   const textRef = useRef<HTMLDivElement>(null);
+  const isMultiLine = multiLines && multiLines > 1;
 
   useEffect(() => {
     const ele = textRef.current;
@@ -47,15 +58,28 @@ const OverflowTooltip: React.FC<OverflowTooltipProps> = (props) => {
       })}
       title={tooltip}
     >
-      <div
-        ref={textRef}
-        className={cx(OverflowText, !isMultiLine && NoWrap, className)}
-        onClick={() => {
-          onClick && onClick();
-        }}
-      >
-        <span>{content}</span>
-      </div>
+      {isMultiLine ? (
+        <MultipleLine
+          ref={textRef}
+          className={cx(OverflowText, className)}
+          lineClamp={multiLines}
+          onClick={() => {
+            onClick && onClick();
+          }}
+        >
+          <span>{content}</span>
+        </MultipleLine>
+      ) : (
+        <div
+          ref={textRef}
+          className={cx(OverflowText, SingleLineStyle, className)}
+          onClick={() => {
+            onClick && onClick();
+          }}
+        >
+          <span>{content}</span>
+        </div>
+      )}
     </Tooltip>
   );
 };

@@ -1,42 +1,53 @@
-import { css } from "@linaria/core";
-import { Meta } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
+import { OverflowTooltipProps } from "../../spec";
 import OverflowTooltip from ".";
-const story: Meta<any> = {
+const story: Meta<React.FC<OverflowTooltipProps>> = {
   title: "OverflowTooltip",
   component: OverflowTooltip,
 };
 export default story;
 
-const MultipleLineEllipseStyle = css`
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  word-break: break-all;
-`;
-
-export const Default = (
-  ...{ width, content, isMultiLine }: Parameters<typeof OverflowTooltip> & {
-    width: string;
-    content: string;
-    isMultiLine: boolean;
-  }
-) => {
-  return (
-    <>
-      <div style={{ width }}>
-        <OverflowTooltip
-          className={isMultiLine ? MultipleLineEllipseStyle : ""}
-          isMultiLine={isMultiLine}
-          content={content}
-        />
-      </div>
-    </>
-  );
+export const Default: StoryObj<{
+  width: string;
+  multiLines: number;
+  content: string;
+}> = {
+  render: ({ width, content, ...rest }) => {
+    return (
+      <>
+        <div style={{ width }}>
+          <OverflowTooltip content={content} {...rest} />
+        </div>
+      </>
+    );
+  },
+  args: {
+    width: "300px",
+    multiLines: 0,
+    content: "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel",
+  },
 };
-Default.args = {
-  width: "300px",
-  isMultiLine: false,
-  content: "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel",
+
+export const MultipleLine: StoryObj<{
+  width: string;
+  multiLines: number;
+  content: string;
+}> = {
+  render: ({ width, content, ...rest }) => {
+    return (
+      <>
+        <p>通过指定 multiLines 大于1，可以实现多行溢出</p>
+        <div style={{ width, marginTop: "30px" }}>
+          <OverflowTooltip content={content} {...rest} />
+        </div>
+      </>
+    );
+  },
+  args: {
+    width: "200px",
+    multiLines: 2,
+    content: "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel",
+  },
 };
