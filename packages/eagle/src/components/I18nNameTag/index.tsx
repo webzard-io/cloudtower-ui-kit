@@ -2,6 +2,7 @@ import { css } from "@linaria/core";
 import React from "react";
 
 import { ParrotTrans } from "../../core/ParrotTrans";
+import { I18nNameTagType } from "../../spec";
 import Tag from "../Tag";
 
 const tagStyle = css`
@@ -9,11 +10,7 @@ const tagStyle = css`
 `;
 
 // TODO: strict i18nKey type
-const I18nNameTag: React.FC<{
-  name: string;
-  i18nKey: string;
-  [key: string]: unknown;
-}> = (props) => {
+const I18nNameTag: React.FC<I18nNameTagType> = (props) => {
   const { name, i18nKey, ...otherOption } = props;
   return (
     <ParrotTrans i18nKey={i18nKey} tOptions={otherOption}>
