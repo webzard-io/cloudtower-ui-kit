@@ -595,7 +595,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   >;
   token: TokenComponentType;
   overflowTooltip: React.FC<OverflowTooltipProps>;
-  I18nNameTag: React.FC<any>;
+  I18nNameTag: React.FC<I18nNameTagType>;
   uploadDragger: React.ComponentType<DraggerProps>;
   calendar: React.FC<CalendarProps<Moment>>;
   timePicker: React.FC<TimePickerProps>;
@@ -774,3 +774,9 @@ export type TruncateTextWithTooltipType = {
   text: string;
   textWrapperCls?: string;
 } & Omit<TooltipProps, "title">;
+
+export type I18nNameTagType = {
+  name: string;
+  i18nKey: string;
+  [key: string]: unknown;
+};
