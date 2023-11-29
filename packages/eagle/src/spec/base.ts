@@ -635,6 +635,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     CloseButton: React.FC<CloseButtonProps>;
   };
   DetailCard: React.FC<IDetailCardProps>;
+  TruncatedTextWithTooltip: React.FC<TruncateTextWithTooltipType>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
@@ -761,3 +762,8 @@ export type OverflowTooltipProps = {
   onClick?: () => void;
   isMultiLine?: boolean;
 };
+
+export type TruncateTextWithTooltipType = {
+  text: string;
+  textWrapperCls?: string;
+} & Omit<TooltipProps, "title">;
