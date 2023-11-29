@@ -804,7 +804,7 @@ export type OverflowTooltipProps = {
   tooltip?: React.ReactNode;
   className?: string;
   onClick?: () => void;
-  isMultiLine?: boolean;
+  multiLines?: number;
 };
 
 export type TruncateTextWithTooltipType = {
