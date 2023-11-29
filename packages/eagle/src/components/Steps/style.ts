@@ -150,7 +150,7 @@ export const HorizontalStyle = css`
 export const VerticalStyle = css`
   $item: ant-steps-item;
   .ant-steps.ant-steps-vertical {
-    width: 138px;
+    width: 192px;
     row-gap: 2px;
     .#{$item}-container {
       padding: 0 8px;
@@ -165,6 +165,7 @@ export const VerticalStyle = css`
           font-size: 13px;
           line-height: 20px;
           max-width: 100%;
+          padding-right: 0;
         }
       }
     }
