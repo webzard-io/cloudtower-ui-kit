@@ -1,3 +1,4 @@
+import { ArrowChevronUp16BoldSecondaryIcon } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import cs from "classnames";
 import _ from "lodash";
@@ -5,7 +6,6 @@ import React, { createContext } from "react";
 
 import { useElementsSize } from "../../hooks";
 import Icon from "../Icon";
-import { arrowChevronUp16BoldSecondary } from "../images";
 
 const TableLoadingStyle = css`
   height: 100%;
@@ -44,7 +44,7 @@ const TableLoadingStyle = css`
 export const TableLoading: React.FC = () => {
   const sizes = useElementsSize(
     { loading: ".ant-table-wrapper .ant-spin" },
-    {}
+    {},
   );
   const rowLength = Math.floor(sizes.loading.height + 8 / 40) || 20;
   const rows = Array.from({ length: rowLength }, (r, i) => i);
@@ -78,7 +78,7 @@ export const ColumnTitle: React.FC<{
         <Icon
           alt={"arrowChevronUp16BoldSecondary"}
           className={cs("order-icon", sortOrder)}
-          src={arrowChevronUp16BoldSecondary}
+          src={ArrowChevronUp16BoldSecondaryIcon}
         />
       }
     </>
