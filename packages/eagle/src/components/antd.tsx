@@ -37,6 +37,7 @@ import {
 import React from "react";
 
 import AccordionCard from "../core/AccordionCard";
+import Breadcrumb from "../core/Breadcrumb";
 import DetailCard from "../core/DetailCard";
 import Counting from "../coreX/Counting";
 import DropdownTransition from "../coreX/DropdownTransition";
@@ -194,6 +195,7 @@ export function getAntdKit(): Kit {
     DetailCard: DetailCard,
     TruncatedTextWithTooltip: TruncatedTextWithTooltip,
     Counting: Counting,
+    Breadcrumb: Breadcrumb,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
