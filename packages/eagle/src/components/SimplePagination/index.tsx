@@ -1,3 +1,4 @@
+import { ArrowChevronLeftSmall16BoldBlueIcon } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import cs from "classnames";
 import React, { useCallback } from "react";
@@ -6,7 +7,6 @@ import useParrotTranslation from "../../hooks/useParrotTranslation";
 import { ISimplePaginationProps } from "../../spec";
 import Button from "../Button";
 import Icon from "../Icon";
-import { arrowChevronLeftSmall16BoldBlue } from "../images";
 import InputInteger from "../InputInteger";
 import { PaginationStyle } from "../Pagination";
 import { Typo } from "../Typo";
@@ -57,7 +57,7 @@ const SimplePagination = (props: ISimplePaginationProps) => {
             prefixIcon={
               <Icon
                 alt={"arrowChevronLeftSmall16BoldBlue"}
-                src={arrowChevronLeftSmall16BoldBlue}
+                src={ArrowChevronLeftSmall16BoldBlueIcon}
               />
             }
             onClick={() => {
@@ -97,7 +97,7 @@ const SimplePagination = (props: ISimplePaginationProps) => {
             prefixIcon={
               <Icon
                 alt={"arrowChevronLeftSmall16BoldBlue"}
-                src={arrowChevronLeftSmall16BoldBlue}
+                src={ArrowChevronLeftSmall16BoldBlueIcon}
               />
             }
             onClick={() => {

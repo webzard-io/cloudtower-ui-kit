@@ -1,10 +1,10 @@
 import { CloseCircleFilled } from "@ant-design/icons";
+import { FocusIndicator16BlueIcon } from "@cloudtower/icons-react";
 import cs from "classnames";
 import React from "react";
 
 import { FieldBaseProps, StringProps } from "../../../spec";
 import Icon from "../../Icon";
-import { focusIndicator16Blue } from "../../images";
 import Input from "../../Input";
 import InputTagItem from "../../InputTagItem";
 import Overflow from "../../Overflow";
@@ -36,7 +36,7 @@ const FieldsString = ({
           className,
           KitInputStyle,
           "input-tags",
-          allowClear && "kit-input-suffix-wrapper"
+          allowClear && "kit-input-suffix-wrapper",
         )}
         onClick={onClick}
       >
@@ -61,7 +61,7 @@ const FieldsString = ({
         className={cs(
           className,
           KitInputStyle,
-          focusIndicator && "has-focus-indicator"
+          focusIndicator && "has-focus-indicator",
         )}
         {...input}
         autoComplete={props.type === "password" ? "new-password" : autoComplete}
@@ -70,7 +70,7 @@ const FieldsString = ({
         onClick={onClick}
         prefix={
           focusIndicator ? (
-            <Icon alt={"focusIndicator16Blue"} src={focusIndicator16Blue} />
+            <Icon alt={"focusIndicator16Blue"} src={FocusIndicator16BlueIcon} />
           ) : undefined
         }
         error={

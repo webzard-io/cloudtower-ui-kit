@@ -23,7 +23,6 @@
     "test:ci": "vitest run",
     "coverage": "vitest run --coverage",
     "typings": "tsc -v && tsc --emitDeclarationOnly --paths null",
-    "generate:images": "node --loader ts-node/esm tools/index.mts",
     "prestorybook": "cd ../.. && yarn turbo run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"

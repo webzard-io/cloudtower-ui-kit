@@ -10,8 +10,9 @@ import { Row } from "antd";
 import _ from "lodash";
 import React from "react";
 
-import { arrowChevronDownSmall16Blue, loading24GradientBlue } from "../images";
 import Icon from ".";
+import arrowChevronDownSmall16Blue from "./images/arrowChevronDownSmall16Blue.svg";
+import loading24GradientBlue from "./images/loading24GradientBlue.svg";
 
 const IconStories = (props: any) => {
   return (
