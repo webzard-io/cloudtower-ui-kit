@@ -6,3 +6,73 @@
     transform: rotate(360deg);
   }
 }
+
+// loading
+@keyframes loading-indicator1 {
+  0% {
+      height: 48px;
+      left: 9.33px;
+      top: 40.5px;
+  }
+  50% {
+      height: 5px;
+      left: 9.33px;
+      top: 40.5px;
+  }
+  51% {
+      height: 5px;
+      left: 43.2px;
+      top: 14.02px;
+}
+100%{
+      height: 48px;
+      left: 9.33px;
+      top: 40.5px;
+}
+}
+
+@keyframes loading-indicator2 {
+  0% {
+      height: 48px;
+      left: 40.8px;
+      top: 8.4px;
+  }
+  50% {
+    height: 5px;
+    left: 40.8px;
+    top: 8.4px;
+  }
+  51% {
+      height: 5px;
+      left: 46.8px;
+      top: 51px;
+  }
+  100%{
+    height: 48px;
+    left: 40.8px;
+    top: 8.4px;
+  }
+}
+
+@keyframes loading-indicator3 {
+  0% {
+      height: 48px;
+      left: 52.9px;
+      top: 51.8px;
+  }
+  50% {
+      height: 5px;
+      left: 52.9px;
+      top: 51.8px;
+  }
+  51%{
+    height: 5px;
+    left: 13px;
+    top: 35.7px;
+  }
+    100%{
+      height: 48px;
+      left: 52.9px;
+      top: 51.8px;
+  }
+}
