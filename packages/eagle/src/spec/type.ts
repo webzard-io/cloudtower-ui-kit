@@ -57,3 +57,9 @@ export interface IAccordionCardProps {
 export interface IDetailCardProps {
   title?: React.ReactNode;
 }
+
+export interface ICountingProps {
+  stop?: boolean;
+  interval?: number;
+  render: () => React.ReactNode;
+}
