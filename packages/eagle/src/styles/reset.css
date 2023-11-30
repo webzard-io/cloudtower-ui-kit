@@ -163,3 +163,17 @@ input[type='submit'] {
   -webkit-appearance: button;
   cursor: pointer;
 }
+
+/* move from override.csss */
+body {
+  font-feature-settings: normal;
+  -webkit-font-feature-settings: normal;
+  font-variant: normal;
+  min-width: 1280px;
+  overflow: hidden;
+}
+
+#root {
+  width: 100vw;
+  overflow-x: auto;
+}
