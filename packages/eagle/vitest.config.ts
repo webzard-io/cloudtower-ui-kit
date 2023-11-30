@@ -21,7 +21,7 @@ export default defineConfig({
         try {
           readline.cursorTo(process.stdout, 0);
           process.stdout.write(
-            `[custom preprocessor]: writing css...${selector}`
+            `[custom preprocessor]: writing css...${selector}`,
           );
 
           fs.writeFileSync(
@@ -29,7 +29,7 @@ export default defineConfig({
             JSON.stringify({
               ...JSON.parse(value),
               [selector]: cssText,
-            })
+            }),
           );
         } catch (error) {
           console.error(error);
@@ -49,6 +49,7 @@ export default defineConfig({
     coverage: {
       reporter: ["text", "json", "html"],
     },
+    include: ["**/**.test.ts?(x)"],
     setupFiles: [path.resolve(__dirname, "__test__/setup.ts")],
   },
   resolve: {

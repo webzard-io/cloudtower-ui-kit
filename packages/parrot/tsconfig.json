@@ -7,5 +7,5 @@
     "skipLibCheck": true
   },
   "include": ["src", "src/**/*.json"],
-  "exclude": ["node_modules", "src/tools"]
+  "exclude": ["node_modules"]
 }
