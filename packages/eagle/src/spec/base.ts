@@ -76,6 +76,7 @@ import {
   Architecture,
   DropdownTransitionProps,
   IAccordionCardProps,
+  ICountingProps,
   IDetailCardProps,
   ISpaceProps,
   ITimeProps,
@@ -636,6 +637,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   };
   DetailCard: React.FC<IDetailCardProps>;
   TruncatedTextWithTooltip: React.FC<TruncateTextWithTooltipType>;
+  Counting: React.FC<ICountingProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;

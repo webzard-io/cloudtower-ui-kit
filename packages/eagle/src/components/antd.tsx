@@ -37,8 +37,10 @@ import {
 import React from "react";
 
 import AccordionCard from "../core/AccordionCard";
-import DropdownTransition from "../coreX/DropdownTransition";
 import DetailCard from "../core/DetailCard";
+import Counting from "../coreX/Counting";
+import DropdownTransition from "../coreX/DropdownTransition";
+import TruncatedTextWithTooltip from "../coreX/TruncatedTextWithTooltip";
 import { Kit, OptionComponentType } from "../spec";
 import Alert from "./Alert";
 import Arch from "./Arch";
@@ -86,7 +88,6 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
-import TruncatedTextWithTooltip from "../coreX/TruncatedTextWithTooltip";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -192,6 +193,7 @@ export function getAntdKit(): Kit {
     AccordionCard: AccordionCard,
     DetailCard: DetailCard,
     TruncatedTextWithTooltip: TruncatedTextWithTooltip,
+    Counting: Counting,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
