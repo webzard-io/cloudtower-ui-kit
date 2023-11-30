@@ -14,10 +14,11 @@ const Template: ComponentStory<typeof FieldsString> = (args) => (
   <FieldsString {...args} />
 );
 
-export const WithOutTags = Template.bind({});
+export const WithoutTags = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-WithOutTags.args = {
+WithoutTags.args = {
   onClick: () => {},
+  focusIndicator: true,
   tags: [],
   input: {
     name: "inputName",
@@ -30,7 +31,7 @@ WithOutTags.args = {
     onFocus: () => {
       console.log("onFocus");
     },
-    value: "WithOutTags",
+    value: "WithoutTags",
   },
   meta: {},
 };
