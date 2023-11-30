@@ -1,8 +1,11 @@
+import {
+  ArrowChevronDownSmall16BlueIcon,
+  FocusIndicator16BlueIcon,
+} from "@cloudtower/icons-react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 
 import BaseIcon from "../BaseIcon";
-import { arrowChevronDownSmall16Blue, focusIndicator16Blue } from "../images";
 import HoverableElement from "./HoverableElement";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -23,7 +26,7 @@ const Template: ComponentStory<typeof HoverableElement> = (args) => (
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  icon: <BaseIcon src={arrowChevronDownSmall16Blue} />,
-  hoverEle: <BaseIcon src={focusIndicator16Blue} />,
+  icon: <BaseIcon src={ArrowChevronDownSmall16BlueIcon} />,
+  hoverEle: <BaseIcon src={FocusIndicator16BlueIcon} />,
   hover: false,
 };
