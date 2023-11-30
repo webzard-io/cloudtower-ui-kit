@@ -1,22 +1,4 @@
-@import './component/menu.scss';
-
-body {
-  font-feature-settings: normal;
-  -webkit-font-feature-settings: normal;
-  font-variant: normal;
-  min-width: 1280px;
-  overflow: hidden;
-}
-
-p {
-  margin: 0;
-}
-
-#root {
-  width: 100vw;
-  overflow-x: auto;
-}
-
+// FIXME: remove later should be in tower/ui only
 .disable-select {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -26,10 +8,12 @@ p {
   user-select: none;
 }
 
+// FIXME: remove later should be in tower/ui only
 .relative {
   position: relative;
 }
 
+// FIXME: remove later should be in tower/ui only
 .drag {
   position: absolute;
   right: -4px;
@@ -40,6 +24,7 @@ p {
   cursor: col-resize;
 }
 
+// FIXME: remove later should be in tower/ui only
 .table-wrapper {
   position: relative;
   &.table-sticky-header {
@@ -62,6 +47,7 @@ p {
   }
 }
 
+// FIXME: remove later should be in tower/ui only
 .table-wrapper.dragging .ant-table-column-has-sorters {
   pointer-events: none;
 }
@@ -387,6 +373,7 @@ $footer-height: 64px;
   vertical-align: middle;
 }
 
+// FIXME: remove later should be in tower/ui only
 .dashed-border-bottom {
   border-bottom: 1px dashed $strokes-translucent-2-light;
 }
@@ -538,6 +525,7 @@ $footer-height: 64px;
   }
 }
 
+// FIXME: remove later should be in tower/ui only
 .topo-dropdown-enter {
   transition: height 150ms ease;
   height: 0;
@@ -595,7 +583,7 @@ $footer-height: 64px;
     opacity: 0.5;
   }
 }
-
+// FIXME: remove later should be in tower/ui only
 .display-none {
   display: none;
 }
@@ -642,6 +630,8 @@ td .ant-btn-link {
   font-size: 12px;
 }
 
+
+// FIXME: remove later should be in tower/ui only
 .none-animation {
   transition: none;
   animation: none;
@@ -655,6 +645,7 @@ td .ant-btn-link {
   }
 }
 
+// FIXME: what's this ??
 .menu-shadow-box {
   box-shadow: rgba(45, 58, 86, 0.3) 0px 25px 80px 0px,
     rgba(107, 125, 153, 0.18) 0px 0px 20px 0px;
@@ -819,6 +810,7 @@ td .ant-btn-link {
 }
 
 
+// FIXME: remove later should be in tower/ui only
 @media screen and (min-width: 1280px) {
   .cluster-topo-wrapper .panel-content > .rack-topo-wrapper,
   .cluster-topo-wrapper .panel-content > .brick-topo-wrapper {
