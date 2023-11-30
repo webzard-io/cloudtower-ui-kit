@@ -89,15 +89,15 @@ describe("unit test: increaseLastNumber", () => {
   it("test str not end with number", () => {
     expect(increaseLastNumber("", 0)).toBe("");
     expect(increaseLastNumber("str-not-end-with-number", 0)).toBe(
-      "str-not-end-with-number"
+      "str-not-end-with-number",
     );
   });
   it("test str end with number", () => {
     expect(increaseLastNumber("str-end-with-number-0", 0)).toBe(
-      "str-end-with-number-0"
+      "str-end-with-number-0",
     );
     expect(increaseLastNumber("str-end-with-number-3", 2)).toBe(
-      "str-end-with-number-5"
+      "str-end-with-number-5",
     );
     expect(increaseLastNumber("88", 5)).toBe("93");
   });
