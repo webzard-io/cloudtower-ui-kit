@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`check missing locales > check missing locales > common.json 1`] = `[]`;
+
+exports[`check missing locales > check missing locales > components.json 1`] = `[]`;
+
+exports[`check missing locales > check missing locales > metric.json 1`] = `[]`;
