@@ -22,7 +22,7 @@ type StackProps = {
   className?: string;
 };
 
-const Stack: React.FC<StackProps> = ({
+export const Stack: React.FC<StackProps> = ({
   align = "auto",
   direction = "horizontal",
   spacing = 12,
@@ -47,5 +47,3 @@ const Stack: React.FC<StackProps> = ({
     </div>
   );
 };
-
-export default Stack;

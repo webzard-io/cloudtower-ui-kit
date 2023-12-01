@@ -9,18 +9,11 @@ import { css } from "@linaria/core";
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
-import { SplitTagComponentType, TagComponentType, TagColor } from "../../spec";
-import Stack from "../Stack";
+import { SplitTagComponentType, TagColor, TagComponentType } from "../../spec";
+import { Stack, Title } from "../../stories";
 import BaseTruncate from "../Truncate";
-import { Typo } from "../Typo";
 import Tag, { PresetColors as TagPresetColors } from ".";
 import { PresetColors } from "./const";
-
-const Title: React.FC = ({ children }) => (
-  <div style={{ marginTop: "16px" }} className={Typo.Display.d2_bold_title}>
-    {children}
-  </div>
-);
 
 const story: Meta<TagComponentType> = {
   title: "Tag",
