@@ -5,12 +5,26 @@ on:
     branches: ["main", "v4.1"]
 
 jobs:
+  label-check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16]
+    name: Check PR Label
+    steps:
+      - uses: jesusvasquez333/verify-pr-label-action@v1.4.0
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          valid-labels: "feat, fix, chore"
+          pull-request-number: "${{ github.event.pull_request.number }}"
+
+
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [16]
-    name: Test on Node ${{ matrix.node }}
+    name: Run Test on Node ${{ matrix.node }}
     steps:
       - uses: actions/checkout@v3
       - name: Setup node
@@ -23,19 +37,18 @@ jobs:
         timeout-minutes: 3
       - name: Build
         run: yarn build
+      - name: Bundle Watch
+        uses: jackyef/bundlewatch-gh-action@master
+        with:
+          bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
       - name: Test parrot
         run: yarn workspace @cloudtower/parrot run test:ci
       - name: Test eagle
         run: yarn workspace @cloudtower/eagle run test:ci
-      - name: Build
-        run: yarn build
-      - name: Size Report
-        uses: jackyef/bundlewatch-gh-action@master
-        with:
-          bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+
 
   storybook-staging:
-    name: Storybook Staging
+    name: Setup Storybook Staging
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
