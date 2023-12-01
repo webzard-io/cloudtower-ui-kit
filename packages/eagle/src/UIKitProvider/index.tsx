@@ -15,7 +15,7 @@ import { antdKit } from "../components/antd";
 import _message from "../components/message";
 import { Kit } from "../spec";
 
-interface IProps {
+export interface IProps {
   kit?: Kit;
   message?: {
     batch?: BatchHelper;

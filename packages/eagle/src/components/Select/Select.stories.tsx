@@ -1,5 +1,5 @@
 import { styled } from "@linaria/react";
-import { ComponentMeta } from "@storybook/react";
+import { ComponentMeta, Meta } from "@storybook/react";
 import { Space as AntdSpace } from "antd";
 import { Select as AntdSelect } from "antd";
 import cs from "classnames";
@@ -98,9 +98,11 @@ const Row: React.FC<RowProps> = ({ state }) => {
   );
 };
 
-export default {
+const meta: Meta = {
   title: "Select",
-} as ComponentMeta<typeof antdKit.select>;
+};
+
+export default meta;
 
 export const Basic = () => {
   return (

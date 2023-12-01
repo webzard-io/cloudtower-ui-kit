@@ -1,13 +1,18 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import {
+  ComponentMeta,
+  ComponentStory,
+  Meta,
+  StoryObj,
+} from "@storybook/react";
 import React, { useState } from "react";
 
 import FieldsInteger from ".";
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta = {
   title: "FieldsInteger",
   component: FieldsInteger,
-} as ComponentMeta<typeof FieldsInteger>;
+};
+export default meta;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof FieldsInteger> = (args) => {
@@ -27,45 +32,47 @@ const Template: ComponentStory<typeof FieldsInteger> = (args) => {
   );
 };
 
-export const ValidInteger = Template.bind({});
-let value = 20;
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-ValidInteger.args = {
-  onClick: () => {},
-  tags: [],
-  input: {
-    name: "inputName",
-    onBlur: () => {
-      console.log("onBlur");
+type Story = StoryObj<typeof FieldsInteger>;
+export const ValidInteger: Story = {
+  render: Template,
+  args: {
+    onClick: () => {},
+    tags: [],
+    input: {
+      name: "inputName",
+      onBlur: () => {
+        console.log("onBlur");
+      },
+      onChange: (v) => {
+        console.log("onChange");
+      },
+      onFocus: () => {
+        console.log("onFocus");
+      },
+      value: 20,
     },
-    onChange: (v) => {
-      console.log("onChange");
-    },
-    onFocus: () => {
-      console.log("onFocus");
-    },
-    value: value,
+    meta: {},
   },
-  meta: {},
 };
 
-export const InvalidInteger = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-InvalidInteger.args = {
-  onClick: () => {},
-  tags: [],
-  input: {
-    name: "inputName",
-    onBlur: () => {
-      console.log("onBlur");
+export const InvalidInteger: Story = {
+  render: Template,
+  args: {
+    onClick: () => {},
+    tags: [],
+    input: {
+      name: "inputName",
+      onBlur: () => {
+        console.log("onBlur");
+      },
+      onChange: () => {
+        console.log("onChange");
+      },
+      onFocus: () => {
+        console.log("onFocus");
+      },
+      value: 20.1,
     },
-    onChange: () => {
-      console.log("onChange");
-    },
-    onFocus: () => {
-      console.log("onFocus");
-    },
-    value: 20.1,
+    meta: {},
   },
-  meta: {},
 };

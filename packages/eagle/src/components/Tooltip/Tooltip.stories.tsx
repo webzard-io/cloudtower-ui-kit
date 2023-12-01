@@ -12,7 +12,9 @@ export default {
 } as ComponentMeta<typeof Tooltip>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Tooltip> = (args) => (
+const Template: ComponentStory<typeof Tooltip> = (
+  ...args: Parameters<typeof Tooltip>
+) => (
   <Tooltip {...args} title={<div>hello tooltip</div>}>
     <button style={{ margin: "200px" }}>hello</button>
   </Tooltip>
