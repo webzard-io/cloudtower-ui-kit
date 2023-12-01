@@ -5,10 +5,10 @@ import React from "react";
 
 import { FieldBaseProps } from "../../../spec";
 
-const FieldsDateTimeRange = ({
+const FieldsDateTimeRange: React.FC<FieldBaseProps & DatePickerProps> = ({
   input,
   ...props
-}: FieldBaseProps & DatePickerProps) => (
+}) => (
   <div className="datatime-range">
     <DatePicker.RangePicker
       onFocus={() => input.onFocus?.()}
