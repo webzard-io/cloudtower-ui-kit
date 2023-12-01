@@ -22,7 +22,9 @@ const batchHelper = {
   getBatchKey: (content: ReactNode) => {
     let batchKey: string | undefined;
     for (const key of Object.keys(patterMap)) {
+      // @ts-ignore
       if (patterMap[key]?.patterns.some((p) => p.test(String(content)))) {
+        // @ts-ignore
         batchKey = patterMap[key]?.batchKey;
         break;
       }

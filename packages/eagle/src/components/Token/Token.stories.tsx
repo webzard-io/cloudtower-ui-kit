@@ -239,7 +239,12 @@ export const Truncate: StoryObj<{
   color: string;
   size: "small" | "medium" | "large";
   closable: boolean;
-}> = ({ content, len, ...props }) => {
+}> = (
+  ...{ content, len, ...props }: Parameters<typeof Token> & {
+    content: string;
+    len: number;
+  }
+) => {
   return (
     <>
       <div>配合 Truncate 组件使用</div>
@@ -265,7 +270,9 @@ export const Tooltip: StoryObj<{
   tooltipConfig: {
     title: string;
   };
-}> = ({ content, ...props }) => {
+}> = (
+  ...{ content, ...props }: Parameters<typeof Token> & { content: string }
+) => {
   return (
     <>
       <div>可以通过传递 tooltipConfig 使 closeIcon hover 时显示 tooltip</div>
