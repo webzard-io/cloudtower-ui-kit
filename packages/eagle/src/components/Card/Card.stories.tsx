@@ -1,6 +1,5 @@
 import React from "react";
-
-import Card from ".";
+import Card, { CardProps } from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
@@ -11,7 +10,7 @@ const meta = {
 
 export default meta;
 
-export const DefaultCard = (args) => {
+export const DefaultCard = (args: CardProps) => {
   return (
     <div style={{ padding: "20px", backgroundColor: "#EDF0F7" }}>
       <Card {...args}>Hello World</Card>
@@ -19,7 +18,7 @@ export const DefaultCard = (args) => {
   );
 };
 
-export const WithTitle = (args) => {
+export const WithTitle = (args: CardProps) => {
   return (
     <div style={{ padding: "20px", backgroundColor: "#EDF0F7" }}>
       <Card title={"hello"} {...args}>
@@ -29,7 +28,7 @@ export const WithTitle = (args) => {
   );
 };
 
-export const Collapsible = (args) => {
+export const Collapsible = (args: CardProps) => {
   return (
     <div style={{ padding: "20px", backgroundColor: "#EDF0F7" }}>
       <Card title={"hello"} collapsible={true} {...args}>
@@ -39,7 +38,7 @@ export const Collapsible = (args) => {
   );
 };
 
-export const NoShadow = (args) => {
+export const NoShadow = (args: CardProps) => {
   return (
     <div style={{ padding: "20px", backgroundColor: "#EDF0F7" }}>
       <Card shadow={false} {...args}>
@@ -49,7 +48,7 @@ export const NoShadow = (args) => {
   );
 };
 
-export const Hoverable = (args) => {
+export const Hoverable = (args: CardProps) => {
   return (
     <div style={{ padding: "20px", backgroundColor: "#EDF0F7" }}>
       <Card

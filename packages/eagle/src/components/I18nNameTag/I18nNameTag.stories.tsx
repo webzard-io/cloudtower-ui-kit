@@ -19,7 +19,7 @@ initParrotI18n({
   },
 });
 
-export const Default = ({ name }) => {
+export const Default = ({ name }: { name: string }) => {
   return <I18nNameTag name={name} i18nKey="test.highlight" />;
 };
 Default.args = {
