@@ -16,7 +16,13 @@ const MultipleLineEllipseStyle = css`
   word-break: break-all;
 `;
 
-export const Default = ({ width, content, isMultiLine }) => {
+export const Default = (
+  ...{ width, content, isMultiLine }: Parameters<typeof OverflowTooltip> & {
+    width: string;
+    content: string;
+    isMultiLine: boolean;
+  }
+) => {
   return (
     <>
       <div style={{ width }}>

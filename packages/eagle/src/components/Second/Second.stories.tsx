@@ -24,7 +24,7 @@ export const Abbreviation = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Abbreviation.args = {
   rawValue: 1000,
-  abbreviation: true,
+  abbreviate: true,
 };
 
 export const Empty = Template.bind({});
