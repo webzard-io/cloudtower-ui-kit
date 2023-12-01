@@ -76,7 +76,7 @@ const story: Meta<ModalProps> = {
 
 export default story;
 
-export const ImmersiveDialog = (args) => {
+export const ImmersiveDialog = (args: Parameters<typeof Button>) => {
   return (
     <Button type="primary" {...args}>
       open modal

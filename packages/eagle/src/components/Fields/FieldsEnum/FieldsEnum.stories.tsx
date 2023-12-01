@@ -1,89 +1,78 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import React, { useState } from "react";
-
 import FieldsEnum from ".";
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const story: Meta<typeof FieldsEnum> = {
   title: "FieldsEnum",
   component: FieldsEnum,
-} as ComponentMeta<typeof FieldsEnum>;
-
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof FieldsEnum> = (args) => {
-  const [value, setValue] = useState(args.input.value);
-
-  return (
-    <FieldsEnum
-      {...args}
-      input={{
-        ...args.input,
-        onChange: (v) => {
-          args.input?.onChange?.(v);
-          setValue(v);
-        },
-        value,
-      }}
-    />
-  );
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/ZE1a32eYk89k4cfGEEOph2/Tag-%26-Token-%7C-%E6%A0%87%E7%AD%BE%E5%92%8C%E5%8F%AF%E7%BC%96%E8%BE%91%E6%A0%87%E7%AD%BE?type=design&node-id=1-41&mode=design&t=nnkSC0vipHqxIYf7-0",
+    },
+  },
 };
 
-export const NoneEnumValues = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-NoneEnumValues.args = {
-  input: {
-    name: "inputName1",
-    onBlur: () => {
-      console.log("onBlur");
+export default story;
+
+export const NoneEnumValues: StoryObj<typeof FieldsEnum> = {
+  render: FieldsEnum,
+  args: {
+    input: {
+      name: "inputName1",
+      onBlur: () => {
+        console.log("onBlur");
+      },
+      onChange: () => {
+        console.log("onChange");
+      },
+      onFocus: () => {
+        console.log("onFocus");
+      },
+      value: "test value 1",
     },
-    onChange: () => {
-      console.log("onChange");
-    },
-    onFocus: () => {
-      console.log("onFocus");
-    },
-    value: "test value 1",
+    meta: {},
+    enumValues: [],
   },
-  meta: {},
-  enumValues: [],
+};
+export const WithEnumValuesString: StoryObj<typeof FieldsEnum> = {
+  render: FieldsEnum,
+  args: {
+    input: {
+      name: "inputName1",
+      onBlur: () => {
+        console.log("onBlur");
+      },
+      onChange: () => {
+        console.log("onChange");
+      },
+      onFocus: () => {
+        console.log("onFocus");
+      },
+      value: "test value 2",
+    },
+    meta: {},
+    enumValues: ["test enum string"],
+  },
 };
 
-export const WithEnumValuesString = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-WithEnumValuesString.args = {
-  input: {
-    name: "inputName1",
-    onBlur: () => {
-      console.log("onBlur");
+export const WithEnumValuesObject: StoryObj<typeof FieldsEnum> = {
+  render: FieldsEnum,
+  args: {
+    input: {
+      name: "inputName1",
+      onBlur: () => {
+        console.log("onBlur");
+      },
+      onChange: () => {
+        console.log("onChange");
+      },
+      onFocus: () => {
+        console.log("onFocus");
+      },
+      value: "test value 3",
     },
-    onChange: () => {
-      console.log("onChange");
-    },
-    onFocus: () => {
-      console.log("onFocus");
-    },
-    value: "test value 2",
+    meta: {},
+    enumValues: [{ value: "test_enum", text: "test enum object" }],
   },
-  meta: {},
-  enumValues: ["test enum string"],
-};
-
-export const WithEnumValuesObject = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-WithEnumValuesObject.args = {
-  input: {
-    name: "inputName1",
-    onBlur: () => {
-      console.log("onBlur");
-    },
-    onChange: () => {
-      console.log("onChange");
-    },
-    onFocus: () => {
-      console.log("onFocus");
-    },
-    value: "test value 3",
-  },
-  meta: {},
-  enumValues: [{ value: "test_enum", text: "test enum object" }],
 };

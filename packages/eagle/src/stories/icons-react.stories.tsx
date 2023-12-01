@@ -60,7 +60,7 @@ const IconStories = (props: any) => {
   const [filter, setFilter] = useState<string>("");
   const filteredIcons = useMemo(() => {
     const keys = Object.keys(Icons).filter((k) =>
-      k.toLocaleLowerCase().includes(filter.trim().toLocaleLowerCase())
+      k.toLocaleLowerCase().includes(filter.trim().toLocaleLowerCase()),
     );
     return _.pick(Icons, keys);
   }, [filter]);
@@ -86,6 +86,7 @@ const IconStories = (props: any) => {
       <div></div>
       <Body>
         {Object.keys(filteredIcons).map((k) => {
+          // @ts-ignore
           const I = filteredIcons[k];
           return (
             <Wrapper key={k}>
