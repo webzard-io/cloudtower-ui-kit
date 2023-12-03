@@ -152,6 +152,19 @@ export const VerticalStyle = css`
   .ant-steps.ant-steps-vertical {
     width: 192px;
     row-gap: 2px;
+
+    .preview-mode:not(.#{$item}-active) .#{$item}-container {
+      &:hover {
+        background-color: $fill-neutral-trans-2;
+      }
+      .#{$item}-title {
+        color: $text-neutral-primary !important;
+      }
+    }
+    .#{$item}:not(.#{$item}-active):not(.#{$item}-disabled)
+      .#{$item}-container:hover {
+      background-color: $fill-neutral-trans-2;
+    }
     .#{$item}-container {
       padding: 0 8px;
       border-radius: 4px;
