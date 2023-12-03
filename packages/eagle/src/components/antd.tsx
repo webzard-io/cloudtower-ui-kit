@@ -90,6 +90,7 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
+import SwitchWithText from "../coreX/SwitchWithText";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -185,6 +186,7 @@ export function getAntdKit(): Kit {
     card: Card,
     overflowTooltip: OverflowTooltip,
     I18nNameTag: I18nNameTag,
+    SwitchWithText: SwitchWithText,
     truncate: Truncate,
     expandableList: {
       ExpandableContainer: ExpandableContainer,
