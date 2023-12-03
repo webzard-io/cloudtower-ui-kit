@@ -84,6 +84,7 @@ import {
   ISpaceProps,
   ITimeProps,
   ITimeZoneSelectProps,
+  PropsFrom,
 } from "./type";
 
 export type AntdTableComponentType = <RecordType extends object = any>(
@@ -644,6 +645,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   Breadcrumb: React.FC<IBreadcrumbProps>;
   CircleProgress: React.FC<ICircleProgressProps>;
   CronPlan: React.FC<CronPlanProps>;
+  SwitchWithText: React.FC<SwitchWithTextProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
@@ -789,3 +791,11 @@ export type CronPlanProps = {
   onChange: (value: CronPlanState) => unknown;
   onRemove?: () => void;
 };
+export type SwitchWithTextProps =
+  //TODO: use SwitchProps directly
+  PropsFrom<Kit["switch"]> & {
+    text?: {
+      checked: React.ReactNode;
+      unchecked: React.ReactNode;
+    };
+  };
