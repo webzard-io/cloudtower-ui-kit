@@ -259,7 +259,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
       <AntdSelect.Option value="UTC" className={OptionWrapperStyle}>
         <TimeZoneOption
           key="utc"
-          customLabel={t("components.coorddinated_universal_time")}
+          customLabel={t("components.coordinated_universal_time")}
           timeZone={{
             value: "UTC",
             text: "UTC",

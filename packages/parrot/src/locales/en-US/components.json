@@ -15,7 +15,7 @@
   "to": "to",
   "time_zone_select_placeholder": "Enter city or time zone",
   "browser_time_zone": "Browser Time Zone",
-  "coorddinated_universal_time": "Coorddinated Universal Time",
+  "coordinated_universal_time": "Coordinated Universal Time",
   "Architecture_AARCH64": "AArch64",
   "Architecture_X86_64": "x86_64",
   "maximum_row_count_desc": "At most {count} items.",
