@@ -792,12 +792,17 @@ describe("SimplePagination h5_css", () => {
                 <span
                   class=icon-inner
                 >
-                  <img
-                    alt=arrowChevronLeftSmall16BoldBlue
+                  <svg
+                    fill=none
                     height=16
-                    src=/src/components/images/arrow-chevron-left-small-16-bold-blue.svg
                     width=16
-                  />
+                    xmlns=http://www.w3.org/2000/svg
+                  >
+                    <path
+                      d=M9.06,3.757a1,1,0,011.415,1.414L7.646,8l2.829,2.828a1,1,0,01-1.414,1.415L5.949,9.13c-.396-.396-.594-.594-.668-.822a1,1,0,010-.618c.074-.228.272-.426.668-.822l3.112-3.112z
+                      fill=#0080FF
+                    />
+                  </svg>
                 </span>
               </span>
             </button>
@@ -1258,12 +1263,17 @@ describe("SimplePagination h5_css", () => {
                 <span
                   class=icon-inner
                 >
-                  <img
-                    alt=arrowChevronLeftSmall16BoldBlue
+                  <svg
+                    fill=none
                     height=16
-                    src=/src/components/images/arrow-chevron-left-small-16-bold-blue.svg
                     width=16
-                  />
+                    xmlns=http://www.w3.org/2000/svg
+                  >
+                    <path
+                      d=M9.06,3.757a1,1,0,011.415,1.414L7.646,8l2.829,2.828a1,1,0,01-1.414,1.415L5.949,9.13c-.396-.396-.594-.594-.668-.822a1,1,0,010-.618c.074-.228.272-.426.668-.822l3.112-3.112z
+                      fill=#0080FF
+                    />
+                  </svg>
                 </span>
               </span>
             </button>
@@ -2060,12 +2070,17 @@ describe("SimplePagination h5_css", () => {
                 <span
                   class=icon-inner
                 >
-                  <img
-                    alt=arrowChevronLeftSmall16BoldBlue
+                  <svg
+                    fill=none
                     height=16
-                    src=/src/components/images/arrow-chevron-left-small-16-bold-blue.svg
                     width=16
-                  />
+                    xmlns=http://www.w3.org/2000/svg
+                  >
+                    <path
+                      d=M9.06,3.757a1,1,0,011.415,1.414L7.646,8l2.829,2.828a1,1,0,01-1.414,1.415L5.949,9.13c-.396-.396-.594-.594-.668-.822a1,1,0,010-.618c.074-.228.272-.426.668-.822l3.112-3.112z
+                      fill=#0080FF
+                    />
+                  </svg>
                 </span>
               </span>
             </button>
