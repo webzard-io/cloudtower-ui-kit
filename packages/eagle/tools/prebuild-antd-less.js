@@ -26,7 +26,7 @@ const compileAntd = async () => {
         },
     };
     const result  = await less.render(antd, options)
-    fs.writeFileSync(path.resolve(__dirname, '../src/styles/libs/antd.css'), result.css)
+    fs.writeFileSync(path.resolve(__dirname, '../src/styles/antd.css'), result.css)
     
 };
 
