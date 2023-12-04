@@ -52,15 +52,15 @@
       },
       {
         "path": "./packages/eagle/dist/components.css",
-        "maxSize": "120 kB"
+        "maxSize": "80 kB"
       },
       {
         "path": "./packages/eagle/dist/font.css",
-        "maxSize": "3 kB"
+        "maxSize": "1 kB"
       },
       {
         "path": "./packages/eagle/dist/style.css",
-        "maxSize": "120 kB"
+        "maxSize": "80 kB"
       }
     ]
   }
