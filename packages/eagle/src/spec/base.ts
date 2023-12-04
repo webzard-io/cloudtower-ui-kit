@@ -55,6 +55,7 @@ import { TreeProps as AntdTreeProps } from "antd/lib/tree";
 import type TreeSelect from "antd/lib/tree-select";
 import { TextProps } from "antd/lib/typography/Text";
 import { DraggerProps, UploadProps } from "antd/lib/upload";
+import type { Dayjs } from "dayjs";
 import type { Moment } from "moment";
 import React, {
   ForwardRefExoticComponent,
@@ -644,6 +645,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   Breadcrumb: React.FC<IBreadcrumbProps>;
   CircleProgress: React.FC<ICircleProgressProps>;
   SwitchWithText: React.FC<SwitchWithTextProps>;
+  CronPlan: React.FC<CronPlanProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
@@ -787,6 +789,19 @@ export type I18nNameTagType = {
   name: string;
   i18nKey: string;
   [key: string]: unknown;
+}
+export type CronPlanState = {
+  expression: string;
+  retain: number;
+  startAt: Dayjs;
+  enabled: boolean;
+  empty: boolean;
+};
+
+export type CronPlanProps = {
+  value: CronPlanState;
+  onChange: (value: CronPlanState) => unknown;
+  onRemove?: () => void;
 };
 export type SwitchWithTextProps =
   //TODO: use SwitchProps directly
