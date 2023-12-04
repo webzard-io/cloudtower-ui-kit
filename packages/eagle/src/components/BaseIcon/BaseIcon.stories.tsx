@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
+import { ArrowChevronDownSmall16BlueIcon } from "@cloudtower/icons-react";
 
-import { arrowChevronDownSmall16Blue } from "../images";
 import BaseIcon from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -22,5 +22,5 @@ const Template: ComponentStory<typeof BaseIcon> = (args) => (
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  src: arrowChevronDownSmall16Blue,
+  src: ArrowChevronDownSmall16BlueIcon,
 };

@@ -1,3 +1,8 @@
+import {
+  ArrowChevronDownSmall16BlueIcon,
+  ArrowChevronDownSmall16SecondaryIcon,
+  ArrowChevronLeftSmall16BoldBlueIcon,
+} from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import { Menu } from "antd";
 import { Dropdown as AntdDropdown } from "antd";
@@ -8,11 +13,6 @@ import useParrotTranslation from "../../hooks/useParrotTranslation";
 import { PaginationProps } from "../../spec";
 import Button from "../Button";
 import Icon from "../Icon";
-import {
-  arrowChevronDownSmall16Blue,
-  arrowChevronDownSmall16Secondary,
-  arrowChevronLeftSmall16BoldBlue,
-} from "../images";
 
 export const PaginationStyle = css`
   display: flex;
@@ -148,8 +148,8 @@ const Pagination: React.FC<PaginationProps> = (props) => {
           <Icon
             alt={"arrowChevronDownSmall16Secondary"}
             className="pagination-left dropdown-trigger"
-            src={arrowChevronDownSmall16Secondary}
-            hoverSrc={arrowChevronDownSmall16Blue}
+            src={ArrowChevronDownSmall16SecondaryIcon}
+            hoverSrc={ArrowChevronDownSmall16BlueIcon}
             prefix={content}
           />
         </AntdDropdown>
@@ -182,7 +182,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             prefixIcon={
               <Icon
                 alt={"arrowChevronLeftSmall16BoldBlue"}
-                src={arrowChevronLeftSmall16BoldBlue}
+                src={ArrowChevronLeftSmall16BoldBlueIcon}
               />
             }
             onClick={() => {
@@ -200,7 +200,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             suffixIcon={
               <Icon
                 alt={"arrowChevronLeftSmall16BoldBlue"}
-                src={arrowChevronLeftSmall16BoldBlue}
+                src={ArrowChevronLeftSmall16BoldBlueIcon}
               />
             }
             onClick={() => {

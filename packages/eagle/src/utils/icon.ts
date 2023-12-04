@@ -1,26 +1,26 @@
 import {
-  checkmarkDoneSuccessCircleFill16Green,
-  infoICircleFill16Blue,
-  infoICircleFill16Secondary,
-  noticeAttention16Yellow,
-  xmarkFailedSeriousWarningFill16Red,
-} from "../components/images";
+  CheckmarkDoneSuccessCircleFill16GreenIcon,
+  InfoICircleFill16BlueIcon,
+  InfoICircleFill16SecondaryIcon,
+  NoticeAttention16YellowIcon,
+  XmarkFailedSeriousWarningFill16RedIcon,
+} from "@cloudtower/icons-react";
 
 export function getAlertIcon(
-  type: "success" | "info" | "warning" | "error" | "normal" | undefined
+  type: "success" | "info" | "warning" | "error" | "normal" | undefined,
 ) {
   switch (type) {
     case "success":
-      return checkmarkDoneSuccessCircleFill16Green;
+      return CheckmarkDoneSuccessCircleFill16GreenIcon;
     case "info":
-      return infoICircleFill16Blue;
+      return InfoICircleFill16BlueIcon;
     case "warning":
-      return noticeAttention16Yellow;
+      return NoticeAttention16YellowIcon;
     case "error":
-      return xmarkFailedSeriousWarningFill16Red;
+      return XmarkFailedSeriousWarningFill16RedIcon;
     case "normal":
-      return infoICircleFill16Secondary;
+      return InfoICircleFill16SecondaryIcon;
     default:
-      return infoICircleFill16Secondary;
+      return InfoICircleFill16SecondaryIcon;
   }
 }
