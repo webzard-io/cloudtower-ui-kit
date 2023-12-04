@@ -77,3 +77,9 @@ export interface BreadcrumbLink {
 export interface IBreadcrumbProps {
   items: BreadcrumbLink[];
 }
+
+export interface ICircleProgressProps {
+  percent: number;
+  color?: string;
+  className?: string;
+}
