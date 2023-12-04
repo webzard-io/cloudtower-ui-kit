@@ -77,6 +77,7 @@ import {
   DropdownTransitionProps,
   IAccordionCardProps,
   IBreadcrumbProps,
+  ICircleProgressProps,
   ICountingProps,
   IDetailCardProps,
   ISpaceProps,
@@ -640,6 +641,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   TruncatedTextWithTooltip: React.FC<TruncateTextWithTooltipType>;
   Counting: React.FC<ICountingProps>;
   Breadcrumb: React.FC<IBreadcrumbProps>;
+  CircleProgress: React.FC<ICircleProgressProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
