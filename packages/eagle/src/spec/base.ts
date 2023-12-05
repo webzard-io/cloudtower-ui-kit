@@ -76,6 +76,7 @@ import {
   Architecture,
   DropdownTransitionProps,
   IAccordionCardProps,
+  IBarChartProps,
   IBreadcrumbProps,
   ICircleProgressProps,
   ICountingProps,
@@ -644,6 +645,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   Breadcrumb: React.FC<IBreadcrumbProps>;
   CircleProgress: React.FC<ICircleProgressProps>;
   SwitchWithText: React.FC<SwitchWithTextProps>;
+  BarChart: React.FC<IBarChartProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;

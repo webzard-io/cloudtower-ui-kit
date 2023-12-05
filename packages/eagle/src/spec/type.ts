@@ -88,3 +88,11 @@ export type PropsFrom<TComponent> = TComponent extends React.FC<infer Props>
   : TComponent extends React.Component<infer Props>
   ? Props
   : never;
+
+export interface IBarChartProps {
+  data: Array<{
+    value: number;
+    color: string;
+  }>;
+  total: number;
+}
