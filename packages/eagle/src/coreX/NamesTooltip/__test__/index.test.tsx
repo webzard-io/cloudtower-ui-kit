@@ -1,21 +1,8 @@
-import { initParrotI18n } from "@cloudtower/parrot";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import React from "react";
 import { describe, it } from "vitest";
 
-import { ParrotTrans } from "../../../core/ParrotTrans";
 import NamesTooltip from "..";
-beforeAll(() => {
-  initParrotI18n({
-    resources: {
-      "zh-CN": {
-        test: {
-          highlight: "<0>line</0>",
-        },
-      },
-    },
-  });
-});
 
 describe("NamesTooltip", () => {
   it("render item correctly", async ({ expect }) => {
@@ -30,33 +17,89 @@ describe("NamesTooltip", () => {
       },
     ];
 
-    const { container } = render(
-      <ParrotTrans i18nKey="test.highlight">
-        <NamesTooltip names={names} />
-      </ParrotTrans>,
-    );
+    render(<NamesTooltip names={names}>hover me</NamesTooltip>);
 
-    const children = screen.getByText("line");
+    const children = screen.getByText("hover me");
     expect(children.tagName).toBe("SPAN");
     fireEvent.mouseEnter(children);
     await waitFor(() => {
-      const tooltip = screen.getByText("line 1");
-      expect(tooltip).toBeInTheDocument();
+      expect(screen.getByText("line 1")).toBeInTheDocument();
     });
+    expect(screen.getByText("line 2")).toBeInTheDocument();
 
     expect({
       linaria: true,
-      dom: container,
+      dom: document.body,
     }).toMatchInlineSnapshot(`
-      <div>
-        <span
-          class=dashed-border-bottom,ant-tooltip-open,
+      <body>
+        <div>
+          <span
+            class=dashed-border-bottom,ant-tooltip-open,
         margin: 0 3px;
 
+          >
+            hover me
+          </span>
+        </div>
+        <div
+          style=position:,absolute;,top:,0px;,left:,0px;,width:,100%;
         >
-          line
-        </span>
-      </div>
+          <div>
+            <div
+              class=ant-tooltip,
+        max-height: 400px;
+        overflow: "auto";
+
+              style=opacity:,0;,pointer-events:,none;
+            >
+              <div
+                class=ant-tooltip-content
+              >
+                <div
+                  class=ant-tooltip-arrow
+                >
+                  <span
+                    class=ant-tooltip-arrow-content
+                  />
+                </div>
+                <div
+                  class=ant-tooltip-inner
+                  role=tooltip
+                >
+                  <div
+                    class=
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        line-height: 18px;
+
+        &:not(:last-child) {
+          margin-bottom: 4px;
+        }
+
+                  >
+                    line 1
+                  </div>
+                  <div
+                    class=
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        line-height: 18px;
+
+        &:not(:last-child) {
+          margin-bottom: 4px;
+        }
+
+                  >
+                    line 2
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </body>
     `);
   });
 });
