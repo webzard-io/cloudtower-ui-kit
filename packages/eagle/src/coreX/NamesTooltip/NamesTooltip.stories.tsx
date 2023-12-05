@@ -5,6 +5,7 @@ import React from "react";
 import { ParrotTrans } from "../../core/ParrotTrans";
 import { NamesTooltipType } from "../../spec";
 import NamesTooltip from ".";
+import { Stack, Title } from "../../stories";
 
 type NamesTooltipComponentType = React.FC<NamesTooltipType>;
 
@@ -37,8 +38,21 @@ export const Basic = () => {
     },
   ];
   return (
-    <ParrotTrans i18nKey={"test.highlight"}>
-      <NamesTooltip names={names} />
-    </ParrotTrans>
+    <Stack direction="vertical">
+      <Title>Basic</Title>
+      <div>
+        <NamesTooltip names={names}>hover me</NamesTooltip>
+      </div>
+      <Title>Variant</Title>
+      <p>
+        一种常见的用法是配合 react-i18next 的 <b>Trans Component</b>{" "}
+        给某个单词添加 tooltip 提示
+      </p>
+      <div>
+        <ParrotTrans i18nKey={"test.highlight"}>
+          <NamesTooltip names={names} />
+        </ParrotTrans>
+      </div>
+    </Stack>
   );
 };
