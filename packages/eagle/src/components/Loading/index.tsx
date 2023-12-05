@@ -13,7 +13,7 @@ const Loading: LoadingComponentType = ({ fullView = true }) => {
   const Wrapper = fullView ? FullView : Fragment;
   const props = fullView ? { className: "loading-full-view" } : {};
   return (
-    <Wrapper {...props}>
+    <Wrapper {...props} data-testid="loading">
       <div className={LoadingWrapper}>
         <div className={LoadingLine1}></div>
         <div className={LoadingLine2}></div>
