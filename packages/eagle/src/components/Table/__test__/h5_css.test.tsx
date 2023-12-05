@@ -543,6 +543,7 @@ describe("Table h5_css", () => {
         align-items: center;
         justify-content: center;
 
+                    data-testid=loading
                   >
                     <div
                       class=
