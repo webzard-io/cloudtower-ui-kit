@@ -108,6 +108,5 @@
     "typescript": "5.0.2",
     "vite": "^3.1.7",
     "vitest": "^0.24.1"
-  },
-  "gitHead": "43aae2e4b3fe1d526871feb6e9d217250cbe47a1"
+  }
 }
