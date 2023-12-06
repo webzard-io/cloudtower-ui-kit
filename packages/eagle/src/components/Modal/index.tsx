@@ -1,4 +1,4 @@
-import { CloseCircleFilled } from "@ant-design/icons";
+import { XmarkCloseFill24PrimaryIcon } from "@cloudtower/icons-react";
 import { Modal as AntdModal } from "antd";
 import cs from "classnames";
 import React, { useMemo, useRef } from "react";
@@ -7,7 +7,6 @@ import useParrotTranslation from "../../hooks/useParrotTranslation";
 import { ModalProps } from "../../spec";
 import { KitRootState, ModalActions } from "../../store";
 import Button from "../Button";
-import Icon from "../Icon";
 import { useKitDispatch, useKitSelector } from "../KitStoreProvider";
 import Steps from "../Steps";
 import { WizardBody } from "../Styled";

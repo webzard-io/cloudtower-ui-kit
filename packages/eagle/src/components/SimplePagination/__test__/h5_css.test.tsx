@@ -356,7 +356,7 @@ describe("SimplePagination h5_css", () => {
               / 6000
             </span>
             <button
-              class=ant-btn,next-btn,
+              class=ant-btn,ant-btn-default,ant-btn-sm,next-btn,
         &.ant-btn-icon-only {
           justify-content: center;
         }
@@ -701,7 +701,7 @@ describe("SimplePagination h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
-      ,ant-btn-quiet,ant-btn-icon-only,ant-btn-sm
+      ,ant-btn-quiet,ant-btn-icon-only
               style=margin-left:,8px;
               type=button
             >
@@ -827,7 +827,7 @@ describe("SimplePagination h5_css", () => {
             class=pagination-right
           >
             <button
-              class=ant-btn,prev-btn,
+              class=ant-btn,ant-btn-default,ant-btn-sm,prev-btn,
         &.ant-btn-icon-only {
           justify-content: center;
         }
@@ -1172,7 +1172,7 @@ describe("SimplePagination h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
-      ,ant-btn-quiet,ant-btn-icon-only,ant-btn-sm
+      ,ant-btn-quiet,ant-btn-icon-only
               style=margin-right:,8px;
               type=button
             >
@@ -1572,7 +1572,7 @@ describe("SimplePagination h5_css", () => {
             class=pagination-right
           >
             <button
-              class=ant-btn,prev-btn,
+              class=ant-btn,ant-btn-default,ant-btn-sm,prev-btn,
         &.ant-btn-icon-only {
           justify-content: center;
         }
@@ -1917,7 +1917,7 @@ describe("SimplePagination h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
-      ,ant-btn-quiet,ant-btn-icon-only,ant-btn-sm
+      ,ant-btn-quiet,ant-btn-icon-only
               style=margin-right:,8px;
               type=button
             >

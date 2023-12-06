@@ -547,7 +547,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   progress: ProgressComponentType;
   divider: React.FC<AntdDividerProps>;
   skeleton: React.FC<AntdSkeletonProps>;
-  skeletonButton: typeof Skeleton.Button;
+  skeletonButton: React.FC<SkeletonButtonProps>;
   menu: React.ComponentType<MenuProps> & {
     Divider: React.FC<import("rc-menu/lib/Divider").DividerProps>;
     Item: React.ComponentType<MenuItemProps>;
@@ -784,7 +784,7 @@ export type I18nNameTagType = {
   name: string;
   i18nKey: string;
   [key: string]: unknown;
-}
+};
 export type CronPlanState = {
   expression: string;
   retain: number;
