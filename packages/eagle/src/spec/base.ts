@@ -656,6 +656,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   DonutChart: React.FC<IDonutChartProps>;
   UnitWithChart: React.FC<IUnitWithChartProps>;
   GoBackButton: React.FC<GoBackButtonType>;
+  CronCalendar: React.FC<CronCalendarProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
@@ -816,6 +817,15 @@ export type CronPlanProps = {
 export type NamesTooltipType = {
   names: { id: string; name?: string }[];
 };
+
+export type CronCalendarProps = {
+  plans: {
+    expression: string;
+    startAt: Dayjs;
+    empty: boolean;
+  }[];
+};
+
 export type SwitchWithTextProps =
   //TODO: use SwitchProps directly
   PropsFrom<Kit["switch"]> & {
