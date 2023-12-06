@@ -52,7 +52,7 @@ export const THz = 1000 * GHz;
 
 export function formatFrequency(
   frequency: number,
-  decimals = 2,
+  decimals = 2
 ): FormattedResult {
   if (frequency <= 0 || frequency === MAGIC_METRIC_NULL) {
     return {
@@ -124,7 +124,7 @@ export const Tbps = 1000 * Gbps;
 
 export function formatBitPerSecond(
   input: number,
-  decimals = 1,
+  decimals = 1
 ): FormattedResult {
   if (input <= 0 || input === MAGIC_METRIC_NULL) {
     return {
@@ -185,9 +185,10 @@ export function formatBytes(bytes: number, decimals = 2): FormattedResult {
 export function formatPercent(
   input: number,
   decimals = 2,
-  saturated = true,
+  saturated = true
 ): {
   value: string;
+  numberValue: number;
   unit: string;
 } {
   if (input === MAGIC_METRIC_NULL) {
@@ -209,16 +210,19 @@ export function formatPercent(
     if (decimals >= 1) {
       return {
         value: `0.${"0".repeat(decimals - 1)}1`,
+        numberValue: parseFloat(`0.${"0".repeat(decimals - 1)}1`),
         unit: "%",
       };
     }
     return {
       value: "1",
+      numberValue: 1,
       unit: "%",
     };
   }
   return {
     value: value,
+    numberValue: parseFloat(input.toFixed(decimals)),
     unit: "%",
   };
 }

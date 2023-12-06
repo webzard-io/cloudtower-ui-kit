@@ -40,9 +40,13 @@ import AccordionCard from "../core/AccordionCard";
 import Breadcrumb from "../core/Breadcrumb";
 import DetailCard from "../core/DetailCard";
 import { CircleProgress } from "../core/StepProgress";
+import ChartWithTooltip, { ChartWithUnit } from "../coreX/ChartWithTooltip";
 import Counting from "../coreX/Counting";
+import DonutChart from "../coreX/DonutChart";
 import DropdownTransition from "../coreX/DropdownTransition";
+import SwitchWithText from "../coreX/SwitchWithText";
 import TruncatedTextWithTooltip from "../coreX/TruncatedTextWithTooltip";
+import UnitWithChart from "../coreX/UnitWithChart";
 import { Kit, OptionComponentType } from "../spec";
 import Alert from "./Alert";
 import Arch from "./Arch";
@@ -90,7 +94,6 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
-import SwitchWithText from "../coreX/SwitchWithText";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -200,6 +203,10 @@ export function getAntdKit(): Kit {
     Counting: Counting,
     Breadcrumb: Breadcrumb,
     CircleProgress: CircleProgress,
+    ChartWithTooltip: ChartWithTooltip,
+    ChartWithUnit: ChartWithUnit,
+    DonutChart: DonutChart,
+    UnitWithChart: UnitWithChart,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
