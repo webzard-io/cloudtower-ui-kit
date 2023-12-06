@@ -1,4 +1,5 @@
 import { ClockIcon, CloseIcon } from "@cloudtower/icons-react";
+import { ParrotLngs } from "@cloudtower/parrot";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
 import { i18n as Ii18n } from "i18next";
@@ -27,11 +28,6 @@ import {
   toMonthlyString,
   toWeeklyString,
 } from "../../utils";
-
-enum SupportLanguage {
-  zh = "zh-CN",
-  en = "en-US",
-}
 
 const CronPlanWrapper = css`
   width: 648px;
@@ -203,7 +199,7 @@ export const stringifyPlan = (
   monthly: MonthlyState,
   i18n: Ii18n,
 ) => {
-  const isEn = i18n.language === SupportLanguage.en;
+  const isEn = i18n.language === ParrotLngs.en;
   const mark = isEn ? " , " : "、";
   const days_map = isEn ? EN_WEEK_DAYS_MAP(i18n.t) : WEEK_DAYS_MAP(i18n.t);
   if (mode === "day") {
@@ -402,7 +398,7 @@ const Weekly: React.FC<{
               className={cx(
                 "week-day-option",
                 active && "active",
-                i18n.language === SupportLanguage.en && "en-text",
+                i18n.language === ParrotLngs.en && "en-text",
               )}
               type="default"
               key={d.value}
@@ -445,7 +441,7 @@ const Monthly: React.FC<{
 }> = ({ monthly, setMonthly }) => {
   const mayNotExistDays = _.intersection(monthly.days, [29, 30, 31]);
   const { t, i18n } = useParrotTranslation();
-  const mark = i18n.language === SupportLanguage.en ? " , " : "、";
+  const mark = i18n.language === ParrotLngs.en ? " , " : "、";
   return (
     <div className={Wrapper}>
       {t("components.per_day_1")}
