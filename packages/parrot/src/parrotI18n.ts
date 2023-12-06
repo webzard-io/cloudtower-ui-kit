@@ -3,7 +3,7 @@ import merge from "lodash.merge";
 
 import locales from "./locales";
 
-enum ParrotLngs {
+export enum ParrotLngs {
   zh = "zh-CN",
   en = "en-US",
 }
