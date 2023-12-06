@@ -646,6 +646,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   CircleProgress: React.FC<ICircleProgressProps>;
   SwitchWithText: React.FC<SwitchWithTextProps>;
   CronPlan: React.FC<CronPlanProps>;
+  CronCalendar: React.FC<CronCalendarProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
@@ -803,6 +804,15 @@ export type CronPlanProps = {
   onChange: (value: CronPlanState) => unknown;
   onRemove?: () => void;
 };
+
+export type CronCalendarProps = {
+  plans: {
+    expression: string;
+    startAt: Dayjs;
+    empty: boolean;
+  }[];
+};
+
 export type SwitchWithTextProps =
   //TODO: use SwitchProps directly
   PropsFrom<Kit["switch"]> & {

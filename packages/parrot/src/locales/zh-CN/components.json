@@ -48,5 +48,9 @@
   "every_month_with_time": "每月的 {time}",
   "every_month_with_day_and_time": "每月的 {day} 号 {time}",
   "every_months_with_count_and_time": "每 {count} 月的 {time}",
-  "every_months_with_count_and_day_and_time": "每 {count} 月的 {day} 号 {time}"
+  "every_months_with_count_and_day_and_time": "每 {count} 月的 {day} 号 {time}",
+  "generate_date_preview": "生成日期预览",
+  "date_with_year_and_month": "{year} 年 {month}",
+  "will_generate_one_reporte_with_date_and_time": "{ date } 将在 {time } 生成 1 份报表",
+  "will_generate_report_will_date_and_count": "{date} 将在如下时间生成 {count} 份报表："
 }
