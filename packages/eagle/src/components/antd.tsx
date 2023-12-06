@@ -91,6 +91,7 @@ import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
 import SwitchWithText from "../coreX/SwitchWithText";
+import CronPlan from "../coreX/CronPlan";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -187,6 +188,7 @@ export function getAntdKit(): Kit {
     overflowTooltip: OverflowTooltip,
     I18nNameTag: I18nNameTag,
     SwitchWithText: SwitchWithText,
+    CronPlan: CronPlan,
     truncate: Truncate,
     expandableList: {
       ExpandableContainer: ExpandableContainer,
