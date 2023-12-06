@@ -2,7 +2,6 @@ import {
   AutoComplete,
   Badge as AntdBadge,
   Button as AntdButton,
-  Calendar,
   Cascader,
   Checkbox as AntdCheckbox,
   Col,
@@ -60,6 +59,7 @@ import Bps from "./Bps";
 import Button from "./Button";
 import ButtonGroup from "./ButtonGroup";
 import Byte from "./Byte";
+import Calendar from "./Calendar";
 import Card from "./Card";
 import Checkbox from "./Checkbox";
 import Empty from "./Empty";
