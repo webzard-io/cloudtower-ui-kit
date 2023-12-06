@@ -28,6 +28,7 @@ export {
   WizardBody,
 } from "./components";
 export * from "./components/TableForm/types";
+export * from "./coreX";
 export { useElementsSize } from "./hooks";
 export type {
   AntdInputComponentType,
