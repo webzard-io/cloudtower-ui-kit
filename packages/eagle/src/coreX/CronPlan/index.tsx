@@ -658,6 +658,7 @@ const CronPlan: React.FC<CronPlanProps> = (props) => {
                 clearIcon={null}
               />
               <div className={cx("help", Typo.Footnote.f2_regular)}>
+                {/* TODO pass the description via props and remove this */}
                 {t("components.next_generate_with_date", {
                   date: sendAtDate.format("YYYY/M/DD HH:mm"),
                   interpolation: {
@@ -688,6 +689,7 @@ const CronPlan: React.FC<CronPlanProps> = (props) => {
                 }}
               />
               <div className={cx("help", Typo.Footnote.f2_regular)}>
+                {/* TODO pass the description via props and remove this */}
                 {t("components.will_save_one_to_thirty_report")}
               </div>
             </div>
