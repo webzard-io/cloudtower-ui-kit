@@ -52,7 +52,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
 
   const triggerValidate = useCallback(
     (currentValue?: unknown) => {
-      const value = currentValue || data[rowIndex][column.key];
+      const value = currentValue ?? data[rowIndex][column.key];
       const rowData = { ...data[rowIndex], [column.key]: value };
       const rowValidateRes = getRowValidateResult(rowData);
       if (rowValidateRes) {
