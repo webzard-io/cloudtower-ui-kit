@@ -606,7 +606,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   overflowTooltip: React.FC<OverflowTooltipProps>;
   I18nNameTag: React.FC<I18nNameTagType>;
   uploadDragger: React.ComponentType<DraggerProps>;
-  calendar: React.FC<CalendarProps<Moment>>;
+  calendar: CalendarComponentType;
   timePicker: React.FC<TimePickerProps>;
   datePicker: React.ComponentType<DatePickerProps>;
   tabs: React.FC<TabsProps>;
@@ -832,3 +832,4 @@ export type GoBackButtonType = {
   path?: string;
   index?: number;
 };
+export type CalendarComponentType = React.FC<CalendarProps<Moment>>;
