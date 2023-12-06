@@ -552,7 +552,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   progress: ProgressComponentType;
   divider: React.FC<AntdDividerProps>;
   skeleton: React.FC<AntdSkeletonProps>;
-  skeletonButton: typeof Skeleton.Button;
+  skeletonButton: React.FC<SkeletonButtonProps>;
   menu: React.ComponentType<MenuProps> & {
     Divider: React.FC<import("rc-menu/lib/Divider").DividerProps>;
     Item: React.ComponentType<MenuItemProps>;

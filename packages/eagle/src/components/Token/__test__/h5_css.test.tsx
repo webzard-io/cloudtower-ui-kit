@@ -600,7 +600,7 @@ describe("Tokenm h5_css", () => {
       ,ant-tag-blue,ui-kit-token
           >
             Label
-            <div
+            <span
               class=ant-tag-close-icon
             >
               <span
@@ -640,7 +640,7 @@ describe("Tokenm h5_css", () => {
                   </svg>
                 </span>
               </span>
-            </div>
+            </span>
           </span>
           <span
             class=ant-tag,ant-tag-red,
@@ -721,7 +721,7 @@ describe("Tokenm h5_css", () => {
       ,ant-tag-red,ui-kit-token
           >
             Label
-            <div
+            <span
               class=ant-tag-close-icon
             >
               <span
@@ -761,7 +761,7 @@ describe("Tokenm h5_css", () => {
                   </svg>
                 </span>
               </span>
-            </div>
+            </span>
           </span>
           <span
             class=ant-tag,ant-tag-yellow,
@@ -842,7 +842,7 @@ describe("Tokenm h5_css", () => {
       ,ant-tag-yellow,ui-kit-token
           >
             Label
-            <div
+            <span
               class=ant-tag-close-icon
             >
               <span
@@ -882,7 +882,7 @@ describe("Tokenm h5_css", () => {
                   </svg>
                 </span>
               </span>
-            </div>
+            </span>
           </span>
           <span
             class=ant-tag,ant-tag-green,
@@ -963,7 +963,7 @@ describe("Tokenm h5_css", () => {
       ,ant-tag-green,ui-kit-token
           >
             Label
-            <div
+            <span
               class=ant-tag-close-icon
             >
               <span
@@ -1003,7 +1003,7 @@ describe("Tokenm h5_css", () => {
                   </svg>
                 </span>
               </span>
-            </div>
+            </span>
           </span>
           <span
             class=ant-tag,
@@ -1084,7 +1084,7 @@ describe("Tokenm h5_css", () => {
       ,ant-tag-gray,ui-kit-token
           >
             Label
-            <div
+            <span
               class=ant-tag-close-icon
             >
               <span
@@ -1124,7 +1124,7 @@ describe("Tokenm h5_css", () => {
                   </svg>
                 </span>
               </span>
-            </div>
+            </span>
           </span>
           <span
             class=ant-tag,ant-tag-purple,
@@ -1205,7 +1205,7 @@ describe("Tokenm h5_css", () => {
       ,ant-tag-purple,ui-kit-token
           >
             Label
-            <div
+            <span
               class=ant-tag-close-icon
             >
               <span
@@ -1245,7 +1245,7 @@ describe("Tokenm h5_css", () => {
                   </svg>
                 </span>
               </span>
-            </div>
+            </span>
           </span>
         </div>
       </div>

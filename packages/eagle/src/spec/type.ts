@@ -1,4 +1,5 @@
 import type { History, Location as HistoryLocation } from "history";
+import { SpaceProps } from "antd";
 import { CSSTransitionProps } from "react-transition-group/CSSTransition";
 
 export enum Architecture {
@@ -14,14 +15,7 @@ export interface AdditionOptions {
 
 export type SizeType = "small" | "middle" | "large";
 
-export interface ISpaceProps {
-  prefixCls?: string | null;
-  className?: string;
-  style?: React.CSSProperties;
-  size?: SizeType | number;
-  direction?: "horizontal" | "vertical";
-  align?: "start" | "end" | "center" | "baseline";
-}
+export type ISpaceProps = SpaceProps;
 
 export interface ITimeZoneSelectProps {
   value: string | undefined;

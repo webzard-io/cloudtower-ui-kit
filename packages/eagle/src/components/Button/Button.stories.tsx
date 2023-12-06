@@ -12,6 +12,7 @@ import React from "react";
 import { ButtonProps } from "../../spec";
 import Icon from "../Icon";
 import { Typo } from "../Typo";
+import Tooltip from "../Tooltip";
 import Button from ".";
 
 const Title: React.FC = ({ children }) => (

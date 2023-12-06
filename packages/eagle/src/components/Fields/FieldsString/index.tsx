@@ -1,5 +1,7 @@
-import { CloseCircleFilled } from "@ant-design/icons";
-import { FocusIndicator16BlueIcon } from "@cloudtower/icons-react";
+import {
+  FocusIndicator16BlueIcon,
+  XmarkClearFill24TertiaryIcon,
+} from "@cloudtower/icons-react";
 import cs from "classnames";
 import React from "react";
 

@@ -20,7 +20,7 @@ describe("ExpandableList h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,
+          class=ant-collapse,ant-collapse-icon-position-end,ant-collapse-borderless,
         .ant-collapse-item {
           border: 0px;
           background-color: $fills-light-white;
@@ -46,26 +46,34 @@ describe("ExpandableList h5_css", () => {
             class=ant-collapse-item
           >
             <div
+              aria-disabled=false
               aria-expanded=false
               class=ant-collapse-header
               role=button
               tabindex=0
             >
-              <svg
-                class=ant-collapse-arrow
-                fill=none
-                height=16
-                width=16
-                xmlns=http://www.w3.org/2000/svg
-              >
-                <path
-                  d=M3.05,6.159a.5.5,0,11.707-.707L8,9.695l4.243-4.243a.5.5,0,11.707.707l-3.89,3.89c-.349.348-.537.527-.751.597a1,1,0,01-.618,0c-.214-.07-.402-.249-.752-.598L3.05,6.159z
-                  fill=#2C3852
-                  fill-opacity=0.6
-                />
-              </svg>
               <div
-                class=
+                class=ant-collapse-expand-icon
+              >
+                <svg
+                  class=ant-collapse-arrow
+                  fill=none
+                  height=16
+                  width=16
+                  xmlns=http://www.w3.org/2000/svg
+                >
+                  <path
+                    d=M3.05,6.159a.5.5,0,11.707-.707L8,9.695l4.243-4.243a.5.5,0,11.707.707l-3.89,3.89c-.349.348-.537.527-.751.597a1,1,0,01-.618,0c-.214-.07-.402-.249-.752-.598L3.05,6.159z
+                    fill=#2C3852
+                    fill-opacity=0.6
+                  />
+                </svg>
+              </div>
+              <span
+                class=ant-collapse-header-text
+              >
+                <div
+                  class=
         display: flex;
         align-items: center;
         .order {
@@ -80,11 +88,12 @@ describe("ExpandableList h5_css", () => {
           margin-right: 6px;
         }
 
-              >
-                <div>
-                  header
+                >
+                  <div>
+                    header
+                  </div>
                 </div>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -101,7 +110,7 @@ describe("ExpandableList h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,
+          class=ant-collapse,ant-collapse-icon-position-end,ant-collapse-borderless,
         .ant-collapse-item {
           border: 0px;
           background-color: $fills-light-white;
@@ -127,26 +136,34 @@ describe("ExpandableList h5_css", () => {
             class=ant-collapse-item
           >
             <div
+              aria-disabled=false
               aria-expanded=false
               class=ant-collapse-header
               role=button
               tabindex=0
             >
-              <svg
-                class=ant-collapse-arrow
-                fill=none
-                height=16
-                width=16
-                xmlns=http://www.w3.org/2000/svg
-              >
-                <path
-                  d=M3.05,6.159a.5.5,0,11.707-.707L8,9.695l4.243-4.243a.5.5,0,11.707.707l-3.89,3.89c-.349.348-.537.527-.751.597a1,1,0,01-.618,0c-.214-.07-.402-.249-.752-.598L3.05,6.159z
-                  fill=#2C3852
-                  fill-opacity=0.6
-                />
-              </svg>
               <div
-                class=
+                class=ant-collapse-expand-icon
+              >
+                <svg
+                  class=ant-collapse-arrow
+                  fill=none
+                  height=16
+                  width=16
+                  xmlns=http://www.w3.org/2000/svg
+                >
+                  <path
+                    d=M3.05,6.159a.5.5,0,11.707-.707L8,9.695l4.243-4.243a.5.5,0,11.707.707l-3.89,3.89c-.349.348-.537.527-.751.597a1,1,0,01-.618,0c-.214-.07-.402-.249-.752-.598L3.05,6.159z
+                    fill=#2C3852
+                    fill-opacity=0.6
+                  />
+                </svg>
+              </div>
+              <span
+                class=ant-collapse-header-text
+              >
+                <div
+                  class=
         display: flex;
         align-items: center;
         .order {
@@ -161,24 +178,25 @@ describe("ExpandableList h5_css", () => {
           margin-right: 6px;
         }
 
-              >
-                <span
-                  class=order
                 >
                   <span
-                    class=
+                    class=order
+                  >
+                    <span
+                      class=
         @include Inter(bold);
         font-size: 14px;
         line-height: 22px;
 
-                  >
-                    1
+                    >
+                      1
+                    </span>
                   </span>
-                </span>
-                <div>
-                  header
+                  <div>
+                    header
+                  </div>
                 </div>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -195,7 +213,7 @@ describe("ExpandableList h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,
+          class=ant-collapse,ant-collapse-icon-position-end,ant-collapse-borderless,
         .ant-collapse-item {
           border: 0px;
           background-color: $fills-light-white;
@@ -221,26 +239,34 @@ describe("ExpandableList h5_css", () => {
             class=ant-collapse-item
           >
             <div
+              aria-disabled=false
               aria-expanded=false
               class=ant-collapse-header
               role=button
               tabindex=0
             >
-              <svg
-                class=ant-collapse-arrow
-                fill=none
-                height=16
-                width=16
-                xmlns=http://www.w3.org/2000/svg
-              >
-                <path
-                  d=M3.05,6.159a.5.5,0,11.707-.707L8,9.695l4.243-4.243a.5.5,0,11.707.707l-3.89,3.89c-.349.348-.537.527-.751.597a1,1,0,01-.618,0c-.214-.07-.402-.249-.752-.598L3.05,6.159z
-                  fill=#2C3852
-                  fill-opacity=0.6
-                />
-              </svg>
               <div
-                class=
+                class=ant-collapse-expand-icon
+              >
+                <svg
+                  class=ant-collapse-arrow
+                  fill=none
+                  height=16
+                  width=16
+                  xmlns=http://www.w3.org/2000/svg
+                >
+                  <path
+                    d=M3.05,6.159a.5.5,0,11.707-.707L8,9.695l4.243-4.243a.5.5,0,11.707.707l-3.89,3.89c-.349.348-.537.527-.751.597a1,1,0,01-.618,0c-.214-.07-.402-.249-.752-.598L3.05,6.159z
+                    fill=#2C3852
+                    fill-opacity=0.6
+                  />
+                </svg>
+              </div>
+              <span
+                class=ant-collapse-header-text
+              >
+                <div
+                  class=
         display: flex;
         align-items: center;
         .order {
@@ -255,24 +281,25 @@ describe("ExpandableList h5_css", () => {
           margin-right: 6px;
         }
 
-              >
-                <span
-                  class=order
                 >
                   <span
-                    class=
+                    class=order
+                  >
+                    <span
+                      class=
         @include Inter(bold);
         font-size: 14px;
         line-height: 22px;
 
-                  >
-                    11
+                    >
+                      11
+                    </span>
                   </span>
-                </span>
-                <div>
-                  header
+                  <div>
+                    header
+                  </div>
                 </div>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -289,7 +316,7 @@ describe("ExpandableList h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,
+          class=ant-collapse,ant-collapse-icon-position-end,ant-collapse-borderless,
         .ant-collapse-item {
           border: 0px;
           background-color: $fills-light-white;
@@ -322,13 +349,17 @@ describe("ExpandableList h5_css", () => {
             class=ant-collapse-item,ant-collapse-no-arrow
           >
             <div
+              aria-disabled=false
               aria-expanded=false
               class=ant-collapse-header
               role=button
               tabindex=0
             >
-              <div
-                class=
+              <span
+                class=ant-collapse-header-text
+              >
+                <div
+                  class=
         display: flex;
         align-items: center;
         .order {
@@ -343,11 +374,12 @@ describe("ExpandableList h5_css", () => {
           margin-right: 6px;
         }
 
-              >
-                <div>
-                  header
+                >
+                  <div>
+                    header
+                  </div>
                 </div>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -366,7 +398,7 @@ describe("ExpandableList h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,
+          class=ant-collapse,ant-collapse-icon-position-end,ant-collapse-borderless,
         .ant-collapse-item {
           border: 0px;
           background-color: $fills-light-white;
@@ -399,13 +431,17 @@ describe("ExpandableList h5_css", () => {
             class=ant-collapse-item,ant-collapse-item-active,ant-collapse-no-arrow
           >
             <div
+              aria-disabled=false
               aria-expanded=true
               class=ant-collapse-header
               role=button
               tabindex=0
             >
-              <div
-                class=
+              <span
+                class=ant-collapse-header-text
+              >
+                <div
+                  class=
         display: flex;
         align-items: center;
         .order {
@@ -420,11 +456,12 @@ describe("ExpandableList h5_css", () => {
           margin-right: 6px;
         }
 
-              >
-                <div>
-                  header
+                >
+                  <div>
+                    header
+                  </div>
                 </div>
-              </div>
+              </span>
             </div>
             <div
               class=ant-collapse-content,ant-collapse-content-active
