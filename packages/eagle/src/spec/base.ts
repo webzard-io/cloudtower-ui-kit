@@ -602,7 +602,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   overflowTooltip: React.FC<OverflowTooltipProps>;
   I18nNameTag: React.FC<I18nNameTagType>;
   uploadDragger: React.ComponentType<DraggerProps>;
-  calendar: React.FC<CalendarProps<Moment>>;
+  calendar: CalendarComponentType;
   timePicker: React.FC<TimePickerProps>;
   datePicker: React.ComponentType<DatePickerProps>;
   tabs: React.FC<TabsProps>;
@@ -789,7 +789,7 @@ export type I18nNameTagType = {
   name: string;
   i18nKey: string;
   [key: string]: unknown;
-}
+};
 export type CronPlanState = {
   expression: string;
   retain: number;
@@ -811,3 +811,5 @@ export type SwitchWithTextProps =
       unchecked: React.ReactNode;
     };
   };
+
+export type CalendarComponentType = React.FC<CalendarProps<Moment>>;

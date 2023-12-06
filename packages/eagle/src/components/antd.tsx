@@ -2,7 +2,6 @@ import {
   AutoComplete,
   Badge as AntdBadge,
   Button as AntdButton,
-  Calendar,
   Cascader,
   Checkbox as AntdCheckbox,
   Col,
@@ -41,7 +40,9 @@ import Breadcrumb from "../core/Breadcrumb";
 import DetailCard from "../core/DetailCard";
 import { CircleProgress } from "../core/StepProgress";
 import Counting from "../coreX/Counting";
+import CronPlan from "../coreX/CronPlan";
 import DropdownTransition from "../coreX/DropdownTransition";
+import SwitchWithText from "../coreX/SwitchWithText";
 import TruncatedTextWithTooltip from "../coreX/TruncatedTextWithTooltip";
 import { Kit, OptionComponentType } from "../spec";
 import Alert from "./Alert";
@@ -53,6 +54,7 @@ import Bps from "./Bps";
 import Button from "./Button";
 import ButtonGroup from "./ButtonGroup";
 import Byte from "./Byte";
+import Calendar from "./Calendar";
 import Card from "./Card";
 import Checkbox from "./Checkbox";
 import Empty from "./Empty";
@@ -90,8 +92,6 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
-import SwitchWithText from "../coreX/SwitchWithText";
-import CronPlan from "../coreX/CronPlan";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
