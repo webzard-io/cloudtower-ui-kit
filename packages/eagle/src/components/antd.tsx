@@ -97,6 +97,7 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
+import CronCalendar from "../coreX/CronCalendar";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -195,6 +196,7 @@ export function getAntdKit(): Kit {
     SwitchWithText: SwitchWithText,
     CronPlan: CronPlan,
     NamesTooltip: NamesTooltip,
+    CronCalendar: CronCalendar,
     truncate: Truncate,
     expandableList: {
       ExpandableContainer: ExpandableContainer,
