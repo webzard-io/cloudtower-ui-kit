@@ -738,3 +738,78 @@ export const RightEndSelectStyle = css`
     border-bottom-left-radius: 0;
   }
 `;
+
+export const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  .select-wrapper {
+    margin-top: 12px;
+
+    .select {
+      width: 100%;
+    }
+  }
+
+  .radio-wrapper {
+    margin-top: 24px;
+  }
+
+  .form-item {
+    width: 100%;
+  }
+`;
+
+export const Desc = styled.div`
+  font-size: 14px;
+  font-weight: 500;
+  color: #3e4652;
+  line-height: 18px;
+
+  & + & {
+    margin-top: 16px;
+  }
+
+  & + * {
+    margin-top: 16px;
+  }
+`;
+
+export const LightDesc = styled(Desc)`
+  font-size: 12px;
+  color: $gray-a60-8;
+  margin-top: 12px;
+`;
+
+export const RadioDesc = styled(LightDesc)`
+  line-height: 18px;
+  font-weight: 500;
+  margin-top: 0;
+  white-space: initial;
+`;
+
+export const radioStyle = css`
+  display: block;
+
+  span {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 32px;
+    color: #3e4652;
+  }
+`;
+
+export const CannotOperationInfo = css`
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  background: $fills-element-light-container-general;
+  color: $text-light-secondary;
+  font-size: 12px;
+  div {
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    word-break: break-all;
+  }
+`;
