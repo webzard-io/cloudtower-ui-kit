@@ -45,6 +45,7 @@ import Counting from "../coreX/Counting";
 import CronPlan from "../coreX/CronPlan";
 import DonutChart from "../coreX/DonutChart";
 import DropdownTransition from "../coreX/DropdownTransition";
+import GoBackButton from "../coreX/GoBackButton";
 import NamesTooltip from "../coreX/NamesTooltip";
 import SwitchWithText from "../coreX/SwitchWithText";
 import TruncatedTextWithTooltip from "../coreX/TruncatedTextWithTooltip";
@@ -211,6 +212,7 @@ export function getAntdKit(): Kit {
     ChartWithUnit: ChartWithUnit,
     DonutChart: DonutChart,
     UnitWithChart: UnitWithChart,
+    GoBackButton: GoBackButton,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19

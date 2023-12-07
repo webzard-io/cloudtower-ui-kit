@@ -56,6 +56,7 @@ import type TreeSelect from "antd/lib/tree-select";
 import { TextProps } from "antd/lib/typography/Text";
 import { DraggerProps, UploadProps } from "antd/lib/upload";
 import type { Dayjs } from "dayjs";
+import type { History } from "history";
 import type { Moment } from "moment";
 import React, {
   ForwardRefExoticComponent,
@@ -654,6 +655,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   ChartWithUnit: React.FC<IChartWithUnitProps>;
   DonutChart: React.FC<IDonutChartProps>;
   UnitWithChart: React.FC<IUnitWithChartProps>;
+  GoBackButton: React.FC<GoBackButtonType>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
@@ -822,3 +824,11 @@ export type SwitchWithTextProps =
       unchecked: React.ReactNode;
     };
   };
+
+export type GoBackButtonType = {
+  history: History;
+  title?: string;
+  onClick?: () => void;
+  path?: string;
+  index?: number;
+};
