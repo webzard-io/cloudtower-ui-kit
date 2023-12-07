@@ -71,6 +71,9 @@ import { MessageApi } from "../components/message";
 import { TableFormHandle, TableFormProps } from "../components/TableForm/types";
 import { TruncatePropTypes } from "../components/Truncate";
 import type { CloseButtonProps } from "../core/AccordionCard";
+import { IChartWithUnitProps, ICWTProps } from "../coreX/ChartWithTooltip";
+import { IDonutChartProps } from "../coreX/DonutChart";
+import { IUnitWithChartProps } from "../coreX/UnitWithChart";
 import { SerializableObject } from "../utils/tower";
 import { FieldRenderProps } from "./react-final-form";
 import {
@@ -647,6 +650,10 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   SwitchWithText: React.FC<SwitchWithTextProps>;
   CronPlan: React.FC<CronPlanProps>;
   NamesTooltip: React.FC<NamesTooltipType>;
+  ChartWithTooltip: React.FC<ICWTProps>;
+  ChartWithUnit: React.FC<IChartWithUnitProps>;
+  DonutChart: React.FC<IDonutChartProps>;
+  UnitWithChart: React.FC<IUnitWithChartProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
@@ -790,7 +797,7 @@ export type I18nNameTagType = {
   name: string;
   i18nKey: string;
   [key: string]: unknown;
-}
+};
 export type CronPlanState = {
   expression: string;
   retain: number;
@@ -803,7 +810,7 @@ export type CronPlanProps = {
   value: CronPlanState;
   onChange: (value: CronPlanState) => unknown;
   onRemove?: () => void;
-}
+};
 export type NamesTooltipType = {
   names: { id: string; name?: string }[];
 };
