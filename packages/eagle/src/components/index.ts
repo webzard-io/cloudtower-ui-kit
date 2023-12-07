@@ -1,3 +1,12 @@
+import Bit from "./Bit";
+import BitPerSecond from "./BitPerSecond";
+import Bps from "./Bps";
+import Byte from "./Byte";
+import Frequency from "./Frequency";
+import Percent from "./Percent";
+import Second from "./Second";
+import Speed from "./Speed";
+
 export * from "./antd";
 export { default as BaseIcon } from "./BaseIcon";
 export * from "./BaseIcon";
@@ -29,3 +38,14 @@ export * from "./TimeZoneSelect";
 export * from "./Tooltip";
 export { default as Truncate } from "./Truncate";
 export * from "./Typo";
+
+export const units = {
+  Percent,
+  Byte,
+  Frequency,
+  Speed,
+  Bps,
+  BitPerSecond,
+  Bit,
+  Second,
+};
