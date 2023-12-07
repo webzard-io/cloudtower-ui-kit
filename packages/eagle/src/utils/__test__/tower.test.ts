@@ -318,6 +318,8 @@ describe("format percent", () => {
   it("should format data to correct percent", () => {
     expect(formatPercent(0.8540000000000001)).toEqual({
       value: "0.85",
+      numberValue: 0.85,
+
       unit: "%",
     });
   });
@@ -325,6 +327,7 @@ describe("format percent", () => {
   it("has a default decimal of 2", () => {
     expect(formatPercent(100)).toEqual({
       value: "100.00",
+      numberValue: 100,
       unit: "%",
     });
   });
@@ -332,6 +335,7 @@ describe("format percent", () => {
   it("should handle fallback null", () => {
     expect(formatPercent(MAGIC_METRIC_NULL)).toEqual({
       value: "0.00",
+      numberValue: 0,
       unit: "%",
     });
   });
@@ -339,6 +343,7 @@ describe("format percent", () => {
   it("should handle fallback more than 100", () => {
     expect(formatPercent(203)).toEqual({
       value: "100.00",
+      numberValue: 100,
       unit: "%",
     });
   });
@@ -346,6 +351,7 @@ describe("format percent", () => {
   it("should handle fallback less then 1", () => {
     expect(formatPercent(0.00003)).toEqual({
       value: "0.01",
+      numberValue: 0.01,
       unit: "%",
     });
   });
@@ -353,6 +359,7 @@ describe("format percent", () => {
   it("should handle fallback less then 1 & decimal of 4", () => {
     expect(formatPercent(0.000009, 4)).toEqual({
       value: "0.0001",
+      numberValue: 0.0001,
       unit: "%",
     });
   });
@@ -360,6 +367,7 @@ describe("format percent", () => {
   it("should handle fallback less then 1 & decimal of 1", () => {
     expect(formatPercent(0.000009, 1)).toEqual({
       value: "0.1",
+      numberValue: 0.1,
       unit: "%",
     });
   });
@@ -367,6 +375,7 @@ describe("format percent", () => {
   it("should handle fallback less then 1 & decimal of 0", () => {
     expect(formatPercent(0.000009, 0)).toEqual({
       value: "1",
+      numberValue: 1,
       unit: "%",
     });
   });
@@ -374,6 +383,7 @@ describe("format percent", () => {
   it("should not be saturated and get original value 131.4", () => {
     expect(formatPercent(131.4, 1, false)).toEqual({
       value: "131.4",
+      numberValue: 131.4,
       unit: "%",
     });
   });
@@ -381,6 +391,7 @@ describe("format percent", () => {
   it("should not be saturated and get original value -10.7", () => {
     expect(formatPercent(-10.7, 1, false)).toEqual({
       value: "-10.7",
+      numberValue: -10.7,
       unit: "%",
     });
   });

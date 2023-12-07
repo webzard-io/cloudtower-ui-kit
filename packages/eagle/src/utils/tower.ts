@@ -188,6 +188,7 @@ export function formatPercent(
   saturated = true,
 ): {
   value: string;
+  numberValue: number;
   unit: string;
 } {
   if (input === MAGIC_METRIC_NULL) {
@@ -209,16 +210,19 @@ export function formatPercent(
     if (decimals >= 1) {
       return {
         value: `0.${"0".repeat(decimals - 1)}1`,
+        numberValue: parseFloat(`0.${"0".repeat(decimals - 1)}1`),
         unit: "%",
       };
     }
     return {
       value: "1",
+      numberValue: 1,
       unit: "%",
     };
   }
   return {
     value: value,
+    numberValue: parseFloat(input.toFixed(decimals)),
     unit: "%",
   };
 }
