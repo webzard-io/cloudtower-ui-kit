@@ -29,3 +29,4 @@ export * from "./TimeZoneSelect";
 export * from "./Tooltip";
 export { default as Truncate } from "./Truncate";
 export * from "./Typo";
+export * from "./TableForm/types";
