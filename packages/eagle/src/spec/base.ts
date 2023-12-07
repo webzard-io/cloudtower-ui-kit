@@ -601,6 +601,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   token: TokenComponentType;
   overflowTooltip: React.FC<OverflowTooltipProps>;
   I18nNameTag: React.FC<I18nNameTagType>;
+  GoBackButton: React.FC<any>;
   uploadDragger: React.ComponentType<DraggerProps>;
   calendar: React.FC<CalendarProps<Moment>>;
   timePicker: React.FC<TimePickerProps>;
@@ -790,7 +791,7 @@ export type I18nNameTagType = {
   name: string;
   i18nKey: string;
   [key: string]: unknown;
-}
+};
 export type CronPlanState = {
   expression: string;
   retain: number;
@@ -803,7 +804,7 @@ export type CronPlanProps = {
   value: CronPlanState;
   onChange: (value: CronPlanState) => unknown;
   onRemove?: () => void;
-}
+};
 export type NamesTooltipType = {
   names: { id: string; name?: string }[];
 };

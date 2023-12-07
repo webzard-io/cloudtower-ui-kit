@@ -93,6 +93,7 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
+import GoBackButton from "../coreX/GoBackButton";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -188,6 +189,7 @@ export function getAntdKit(): Kit {
     card: Card,
     overflowTooltip: OverflowTooltip,
     I18nNameTag: I18nNameTag,
+    GoBackButton: GoBackButton,
     SwitchWithText: SwitchWithText,
     CronPlan: CronPlan,
     NamesTooltip: NamesTooltip,
