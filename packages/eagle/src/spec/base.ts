@@ -606,7 +606,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   overflowTooltip: React.FC<OverflowTooltipProps>;
   I18nNameTag: React.FC<I18nNameTagType>;
   uploadDragger: React.ComponentType<DraggerProps>;
-  calendar: React.FC<CalendarProps<Moment>>;
+  calendar: CalendarComponentType;
   timePicker: React.FC<TimePickerProps>;
   datePicker: React.ComponentType<DatePickerProps>;
   tabs: React.FC<TabsProps>;
@@ -656,6 +656,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   DonutChart: React.FC<IDonutChartProps>;
   UnitWithChart: React.FC<IUnitWithChartProps>;
   GoBackButton: React.FC<GoBackButtonType>;
+  CronCalendar: React.FC<CronCalendarProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
@@ -816,6 +817,15 @@ export type CronPlanProps = {
 export type NamesTooltipType = {
   names: { id: string; name?: string }[];
 };
+
+export type CronCalendarProps = {
+  plans: {
+    expression: string;
+    startAt: Dayjs;
+    empty: boolean;
+  }[];
+};
+
 export type SwitchWithTextProps =
   //TODO: use SwitchProps directly
   PropsFrom<Kit["switch"]> & {
@@ -832,3 +842,4 @@ export type GoBackButtonType = {
   path?: string;
   index?: number;
 };
+export type CalendarComponentType = React.FC<CalendarProps<Moment>>;

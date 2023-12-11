@@ -2,7 +2,6 @@ import {
   AutoComplete,
   Badge as AntdBadge,
   Button as AntdButton,
-  Calendar,
   Cascader,
   Checkbox as AntdCheckbox,
   Col,
@@ -60,6 +59,7 @@ import Bps from "./Bps";
 import Button from "./Button";
 import ButtonGroup from "./ButtonGroup";
 import Byte from "./Byte";
+import Calendar from "./Calendar";
 import Card from "./Card";
 import Checkbox from "./Checkbox";
 import Empty from "./Empty";
@@ -97,6 +97,7 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
+import CronCalendar from "../coreX/CronCalendar";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -195,6 +196,7 @@ export function getAntdKit(): Kit {
     SwitchWithText: SwitchWithText,
     CronPlan: CronPlan,
     NamesTooltip: NamesTooltip,
+    CronCalendar: CronCalendar,
     truncate: Truncate,
     expandableList: {
       ExpandableContainer: ExpandableContainer,

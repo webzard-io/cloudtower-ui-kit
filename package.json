@@ -44,7 +44,7 @@
     "files": [
       {
         "path": "./packages/eagle/dist/**/*.js",
-        "maxSize": "50 kB"
+        "maxSize": "55 kB"
       },
       {
         "path": "./packages/parrot/dist/**/*.js",
@@ -52,7 +52,7 @@
       },
       {
         "path": "./packages/eagle/dist/components.css",
-        "maxSize": "80 kB"
+        "maxSize": "82 kB"
       },
       {
         "path": "./packages/eagle/dist/font.css",
