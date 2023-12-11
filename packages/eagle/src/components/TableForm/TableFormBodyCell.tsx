@@ -40,33 +40,42 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
   const isCellErrorStyle = Boolean(validateResult?.isError || isRowError);
 
   useEffect(() => {
-    setValidateResult(
-      error
-        ? {
-            msg: error,
-            isError: true,
-          }
-        : undefined,
-    );
+    // re-render the cell level error from props when it has been changed
+    if (isTouched.current)
+      setValidateResult(
+        error
+          ? {
+              msg: error,
+              isError: true,
+            }
+          : undefined,
+      );
   }, [error]);
 
   const triggerValidate = useCallback(
     (currentValue?: unknown) => {
       const value = currentValue ?? data[rowIndex][column.key];
       const rowData = { ...data[rowIndex], [column.key]: value };
+
+      // check the row level error
       const rowValidateRes = getRowValidateResult(rowData);
       if (rowValidateRes) {
         return;
       }
-      const result = column.validator?.({
-        value,
-        rowIndex,
-        rowData: data[rowIndex],
-      });
-      const isError = result ? typeof result === "string" : false;
-      setValidateResult({ msg: result || "", isError });
+
+      // check the cell level error caused by custom validator
+      if (column.validator) {
+        const result = column.validator?.({
+          value,
+          rowIndex,
+          rowData: data[rowIndex],
+        });
+        const isError = result ? typeof result === "string" : false;
+        setValidateResult({ msg: result || "", isError });
+        return;
+      }
     },
-    [data, column, rowIndex, getRowValidateResult],
+    [data, rowIndex, column, getRowValidateResult],
   );
 
   useEffect(() => {
