@@ -80,6 +80,7 @@ import { FieldRenderProps } from "./react-final-form";
 import {
   Architecture,
   DropdownTransitionProps,
+  HistoryType,
   IAccordionCardProps,
   IBreadcrumbProps,
   ICircleProgressProps,
@@ -836,7 +837,7 @@ export type SwitchWithTextProps =
   };
 
 export type GoBackButtonType = {
-  history: History;
+  history: History | HistoryType;
   title?: string;
   onClick?: () => void;
   path?: string;
