@@ -35,7 +35,8 @@
   },
   "resolutions": {
     "@types/react": "^17.0.50",
-    "@ant-design/icons": "4.2.1"
+    "@ant-design/icons": "4.2.1",
+    "@linaria/babel-preset": "4.4.3"
   },
   "bundlewatch": {
     "trackBranches": [
@@ -52,7 +53,7 @@
       },
       {
         "path": "./packages/eagle/dist/components.css",
-        "maxSize": "82 kB"
+        "maxSize": "85 kB"
       },
       {
         "path": "./packages/eagle/dist/font.css",

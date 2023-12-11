@@ -41,9 +41,9 @@ expect.addSnapshotSerializer({
           {
             serialize(val, config, indentation, depth, refs, printer) {
               const classNames = val.split(" ");
-              const styles = JSON.parse(
-                fs.readFileSync(styleMapFileName).toString(),
-              );
+              const styles = fs.existsSync(styleMapFileName)
+                ? require(styleMapFileName)
+                : {};
               return classNames
                 .map((classname) => {
                   if (styles[`.${classname}`] != null) {

@@ -6,10 +6,7 @@ on:
 
 jobs:
   label-check:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [16]
+    runs-on: [self-hosted, linux]
     name: Check PR Label
     steps:
       - uses: jesusvasquez333/verify-pr-label-action@v1.4.0
@@ -20,7 +17,7 @@ jobs:
 
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
     strategy:
       matrix:
         node: [16]
@@ -31,7 +28,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-          cache: "yarn"
+      - name: Setup yarn
+        run: npm install -g yarn
+      - name: Setup Nodejs with yarn caching
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: yarn
       - name: Install deps
         run: yarn install --frozen-lockfile
         timeout-minutes: 3
@@ -49,9 +52,16 @@ jobs:
 
   storybook-staging:
     name: Setup Storybook Staging
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
+    strategy:
+      matrix:
+        node: [16]
     steps:
       - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
       - name: Set Up Storybook Staging
         uses: amondnet/vercel-action@v20
         id: vercel-action-staging
