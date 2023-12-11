@@ -1,3 +1,4 @@
+import type { History, Location as HistoryLocation } from "history";
 import { CSSTransitionProps } from "react-transition-group/CSSTransition";
 
 export enum Architecture {
@@ -88,3 +89,17 @@ export type PropsFrom<TComponent> = TComponent extends React.FC<infer Props>
   : TComponent extends React.Component<infer Props>
   ? Props
   : never;
+
+export type HistoryType = Omit<
+  History,
+  "push" | "replace" | "location" | "length"
+> & {
+  push: {
+    (path: string, state?: HistoryLocation["state"]): void;
+    (location: Location): void;
+  };
+  replace: {
+    (path: string, state?: HistoryLocation["state"]): void;
+    (location: Location): void;
+  };
+};
