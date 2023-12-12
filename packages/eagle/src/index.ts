@@ -59,6 +59,7 @@ export type {
   TextAreaProps,
   TooltipProps,
   WizardSteps,
+  SummaryTableItem,
 } from "./spec";
 export * from "./spec/type";
 export type {
