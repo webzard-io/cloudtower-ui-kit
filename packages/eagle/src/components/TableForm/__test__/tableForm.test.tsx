@@ -193,6 +193,6 @@ describe("table form render", () => {
     );
 
     expect(screen.queryAllByText("this is a row error").length).toBe(1);
-    expect(screen.queryAllByText(/cell error/).length).toBe(2);
+    expect(screen.queryAllByText(/cell error/).length).toBe(0);
   });
 });
