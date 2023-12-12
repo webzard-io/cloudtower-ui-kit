@@ -9,7 +9,8 @@ jobs:
     name: Storybook Production
     runs-on: [self-hosted, linux]
     steps:
-      - uses: actions/checkout@v3
+      - name: check out
+        uses: actions/checkout@v4
       - name: Set Up Storybook Production
         uses: amondnet/vercel-action@v20
         id: vercel-action-production
