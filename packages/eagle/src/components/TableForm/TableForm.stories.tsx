@@ -17,6 +17,7 @@ import {
   DataType,
   DeletableConfigurations,
   TableFormColumn,
+  TableFormErrorsType,
   TableFormHandle,
   TableFormProps,
   TableFormRowConfiguration,
@@ -231,12 +232,15 @@ const commonTableFormProps: TableFormProps = {
     }
   },
 };
+const defaultAsyncErrors = [null];
 
 export const Basic = () => {
   const [formHandle, setFormHandle] = useState<TableFormHandle>();
   const [tableForm2DataLength, setTableForm2DataLength] = useState<number>();
   const ref1 = useRef<TableFormHandle>(null);
   const ref2 = useRef<TableFormHandle>(null);
+  const [asyncErrors, setAsyncErrors] =
+    useState<TableFormErrorsType>(defaultAsyncErrors);
 
   useEffect(() => {
     if (ref2.current !== null) {
@@ -441,10 +445,44 @@ export const Basic = () => {
             errors={[
               "this is a row error",
               {
-                address: "this is address cell error",
+                address:
+                  "this is address cell error, will be replaced by column's validator",
                 password: "this is password cell error",
               },
             ]}
+          />
+        </ContentWrapper>
+      </Space>
+      <Space direction="vertical">
+        <Title>
+          Use new "errors" configuration TableForm - "errors" is updated
+          asynchronously
+        </Title>
+        <ContentWrapper>
+          <TableForm
+            {...commonTableFormProps}
+            disableBatchFilling
+            rowValidator={undefined}
+            defaultData={[
+              {
+                address: "address-1",
+                password: "password-1",
+                checkbox: false,
+              },
+            ]}
+            errors={asyncErrors}
+            onBodyChange={(data) => {
+              const password = data[0]?.password;
+              if (password === "invalid") {
+                setTimeout(() => {
+                  setAsyncErrors([
+                    { password: "the password is invalid - set by setTimeout" },
+                  ]);
+                }, 500);
+              } else {
+                setAsyncErrors(defaultAsyncErrors);
+              }
+            }}
           />
         </ContentWrapper>
       </Space>
