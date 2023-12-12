@@ -41,11 +41,13 @@ import DetailCard from "../core/DetailCard";
 import { CircleProgress } from "../core/StepProgress";
 import ChartWithTooltip, { ChartWithUnit } from "../coreX/ChartWithTooltip";
 import Counting from "../coreX/Counting";
+import CronCalendar from "../coreX/CronCalendar";
 import CronPlan from "../coreX/CronPlan";
 import DonutChart from "../coreX/DonutChart";
 import DropdownTransition from "../coreX/DropdownTransition";
 import GoBackButton from "../coreX/GoBackButton";
 import NamesTooltip from "../coreX/NamesTooltip";
+import SummaryTable from "../coreX/SummaryTable";
 import SwitchWithText from "../coreX/SwitchWithText";
 import TruncatedTextWithTooltip from "../coreX/TruncatedTextWithTooltip";
 import UnitWithChart from "../coreX/UnitWithChart";
@@ -97,7 +99,6 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
-import CronCalendar from "../coreX/CronCalendar";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -215,6 +216,7 @@ export function getAntdKit(): Kit {
     DonutChart: DonutChart,
     UnitWithChart: UnitWithChart,
     GoBackButton: GoBackButton,
+    SummaryTable: SummaryTable,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
