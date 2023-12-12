@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "postbuild": "turbo run typings",
+    "postbuild": "turbo run typings && bundlewatch",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "eslint \"**/*.{tsx,ts}\" --fix",
@@ -31,7 +31,8 @@
     "lerna-update-wizard": "^1.1.2",
     "lint-staged": "^13.0.3",
     "prettier": "^3.0.1",
-    "turbo": "^1.6.3"
+    "turbo": "^1.6.3",
+    "bundlewatch": "^0.3.3"
   },
   "resolutions": {
     "@types/react": "^17.0.50",
@@ -39,9 +40,6 @@
     "@linaria/babel-preset": "4.4.3"
   },
   "bundlewatch": {
-    "trackBranches": [
-      "master"
-    ],
     "files": [
       {
         "path": "./packages/eagle/dist/**/*.js",

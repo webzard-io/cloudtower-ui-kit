@@ -4,6 +4,11 @@ on:
   pull_request:
     branches: ["main", "v4.1"]
 
+# Cancel prev CI if new commit come
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   label-check:
     runs-on: [self-hosted, linux]
@@ -23,27 +28,19 @@ jobs:
         node: [16]
     name: Run Test on Node ${{ matrix.node }}
     steps:
-      - uses: actions/checkout@v3
+      - name: checkout
+        uses: actions/checkout@v4
       - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
       - name: Setup yarn
         run: npm install -g yarn
-      - name: Setup Nodejs with yarn caching
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-          cache: yarn
       - name: Install deps
         run: yarn install --frozen-lockfile
         timeout-minutes: 3
       - name: Build
         run: yarn build
-      - name: Bundle Watch
-        uses: jackyef/bundlewatch-gh-action@master
-        with:
-          bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
       - name: Test parrot
         run: yarn workspace @cloudtower/parrot run test:ci
       - name: Test eagle
@@ -57,7 +54,9 @@ jobs:
       matrix:
         node: [16]
     steps:
-      - uses: actions/checkout@v3
+      - name: checkout
+        uses: actions/checkout@v4
+        
       - name: Setup node
         uses: actions/setup-node@v3
         with:
