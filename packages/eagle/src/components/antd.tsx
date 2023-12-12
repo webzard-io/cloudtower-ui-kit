@@ -41,6 +41,7 @@ import DetailCard from "../core/DetailCard";
 import { CircleProgress } from "../core/StepProgress";
 import ChartWithTooltip, { ChartWithUnit } from "../coreX/ChartWithTooltip";
 import Counting from "../coreX/Counting";
+import CronCalendar from "../coreX/CronCalendar";
 import CronPlan from "../coreX/CronPlan";
 import DonutChart from "../coreX/DonutChart";
 import DropdownTransition from "../coreX/DropdownTransition";
@@ -97,7 +98,6 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
-import CronCalendar from "../coreX/CronCalendar";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {

@@ -329,3 +329,4 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 
 export { RadioButton, RadioGroup };
 export default Radio;
+export * from "./styles";
