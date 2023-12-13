@@ -6,39 +6,41 @@ import { LinkComponentType } from "../../spec";
 import Button from "../Button";
 
 const LinkStyle = css`
-  &.ui-kit-link {
-    color: $link-outstanding-normal;
-
-    .button-prefix-icon {
-      margin-right: 4px;
-    }
-    .button-suffix-icon {
-      margin-left: 4px;
-    }
-
-    &:hover,
-    &.__pseudo-states-hover {
-      color: $link-outstanding-hover;
-    }
-
-    &:active,
-    &.__pseudo-states-active {
-      color: $link-outstanding-active;
-    }
-    &.ui-kit-link-disabled {
+  @at-root {
+    button#{&} {
       color: $link-outstanding-normal;
-    }
-    &.ui-kit-link-subtle {
-      color: $text-neutral-primary;
+
+      .button-prefix-icon {
+        margin-right: 4px;
+      }
+      .button-suffix-icon {
+        margin-left: 4px;
+      }
 
       &:hover,
-      &.__pseudo-states-hover,
+      &.__pseudo-states-hover {
+        color: $link-outstanding-hover;
+      }
+
       &:active,
       &.__pseudo-states-active {
-        color: $link-outstanding-normal;
+        color: $link-outstanding-active;
       }
       &.ui-kit-link-disabled {
+        color: $link-outstanding-normal;
+      }
+      &.ui-kit-link-subtle {
         color: $text-neutral-primary;
+
+        &:hover,
+        &.__pseudo-states-hover,
+        &:active,
+        &.__pseudo-states-active {
+          color: $link-outstanding-normal;
+        }
+        &.ui-kit-link-disabled {
+          color: $text-neutral-primary;
+        }
       }
     }
   }
@@ -50,7 +52,7 @@ const Link: LinkComponentType = React.forwardRef(
         {...props}
         ref={ref}
         disabled={disabled}
-        className={cs("ui-kit-link", LinkStyle, className, {
+        className={cs(LinkStyle, className, {
           "ui-kit-link-disabled": disabled,
           "ui-kit-link-subtle": type === "subtle",
         })}
