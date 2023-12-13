@@ -65,6 +65,7 @@ import React, {
   ReactNode,
   RefAttributes,
 } from "react";
+import { Draggable } from "react-beautiful-dnd";
 
 import { CardProps } from "../components/Card";
 import { IEmptyProps } from "../components/Empty";
@@ -659,6 +660,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   GoBackButton: React.FC<GoBackButtonType>;
   CronCalendar: React.FC<CronCalendarProps>;
   SummaryTable: SummaryTableComponentType;
+  SortableList: SortableListComponentType;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
@@ -886,3 +888,7 @@ export type SummaryTableContentComponentType = <T>(
 export type SummaryTableComponentType = <T = unknown>(
   props: SummaryTableProps<T> | SummaryTableCustomRenderProps,
 ) => JSX.Element;
+
+export type SortableListComponentType = React.FC<{
+  moveItem: (from: number, to: number) => void;
+}> & { Item: typeof Draggable };
