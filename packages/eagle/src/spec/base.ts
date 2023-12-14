@@ -661,6 +661,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   CronCalendar: React.FC<CronCalendarProps>;
   SummaryTable: SummaryTableComponentType;
   SortableList: SortableListComponentType;
+  SidebarSubtitle: SidebarSubtitleComponentType;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
@@ -892,3 +893,7 @@ export type SummaryTableComponentType = <T = unknown>(
 export type SortableListComponentType = React.FC<{
   moveItem: (from: number, to: number) => void;
 }> & { Item: typeof Draggable };
+export type SidebarSubtitleComponentType = React.FC<{
+  title: string;
+  className?: string;
+}>;
