@@ -1,8 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "yarn turbo run build && cd packages/eagle && yarn run build-storybook",
+  "buildCommand": "",
   "devCommand": "yarn turbo run build && cd packages/eagle && yarn run storybook",
-  "installCommand": "yum install rsync && yarn install",
+  "installCommand": "",
   "framework": null,
   "outputDirectory": "./packages/eagle/storybook-static"
 }
