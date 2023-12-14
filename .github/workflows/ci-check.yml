@@ -22,7 +22,7 @@ jobs:
 
 
   test:
-    runs-on: [self-hosted, linux]
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [16]
@@ -50,7 +50,7 @@ jobs:
 
   storybook-staging:
     name: Setup Storybook Staging
-    runs-on: [self-hosted, linux]
+    runs-on: ubuntu-latest
     env:
       BUILD_STORYBOOK: true
     strategy:
