@@ -47,6 +47,7 @@ import DonutChart from "../coreX/DonutChart";
 import DropdownTransition from "../coreX/DropdownTransition";
 import GoBackButton from "../coreX/GoBackButton";
 import NamesTooltip from "../coreX/NamesTooltip";
+import SortableList from "../coreX/SortableList";
 import SummaryTable from "../coreX/SummaryTable";
 import SwitchWithText from "../coreX/SwitchWithText";
 import TruncatedTextWithTooltip from "../coreX/TruncatedTextWithTooltip";
@@ -217,6 +218,7 @@ export function getAntdKit(): Kit {
     UnitWithChart: UnitWithChart,
     GoBackButton: GoBackButton,
     SummaryTable: SummaryTable,
+    SortableList: SortableList,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
