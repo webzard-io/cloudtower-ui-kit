@@ -72,13 +72,14 @@ jobs:
         timeout-minutes: 3
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
-      - name: Build Storybook
-        run: |
-          yarn build
-          yarn workspace @cloudtower/eagle build-storybook
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
       - name: Build Project Artifacts
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        run: |
+          yarn build
+          yarn workspace @cloudtower/eagle build-storybook
+          vercel build --token=${{ secrets.VERCEL_TOKEN }}
+          rm -rf .vercel/output/static
+          mv packages/eagle/storybook-static .vercel/output/static
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
