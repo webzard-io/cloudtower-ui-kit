@@ -2,7 +2,6 @@ import {
   AutoComplete,
   Badge as AntdBadge,
   Button as AntdButton,
-  Cascader,
   Checkbox as AntdCheckbox,
   Col,
   Collapse as AntdCollapse,
@@ -33,6 +32,7 @@ import {
   Typography,
   Upload,
 } from "antd";
+import { Cascader } from "antd5";
 import React from "react";
 
 import AccordionCard from "../core/AccordionCard";

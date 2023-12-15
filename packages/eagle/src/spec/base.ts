@@ -5,7 +5,7 @@ import { AutoCompleteProps } from "antd/lib/auto-complete";
 import { BadgeProps } from "antd/lib/badge";
 import { ButtonProps as AntdButtonProps, ButtonType } from "antd/lib/button";
 import { CalendarProps } from "antd/lib/calendar/generateCalendar";
-import { CascaderProps } from "antd/lib/cascader";
+import { CascaderProps } from "antd5/lib/cascader";
 import { CheckboxGroupProps, CheckboxProps } from "antd/lib/checkbox";
 import { ColProps } from "antd/lib/col";
 import { CollapsePanelProps, CollapseProps } from "antd/lib/collapse";
