@@ -100,6 +100,7 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
+import SidebarSubtitle from "../coreX/SidebarSubtitle";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -219,6 +220,7 @@ export function getAntdKit(): Kit {
     GoBackButton: GoBackButton,
     SummaryTable: SummaryTable,
     SortableList: SortableList,
+    SidebarSubtitle: SidebarSubtitle,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
