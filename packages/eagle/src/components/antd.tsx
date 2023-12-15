@@ -2,7 +2,6 @@ import {
   AutoComplete,
   Badge as AntdBadge,
   Button as AntdButton,
-  Cascader,
   Checkbox as AntdCheckbox,
   Col,
   Collapse as AntdCollapse,
@@ -102,6 +101,7 @@ import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
 import SidebarSubtitle from "../coreX/SidebarSubtitle";
 import Link from "./Link";
+import Cascader from "./Cascader";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {

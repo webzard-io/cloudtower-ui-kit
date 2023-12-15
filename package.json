@@ -35,9 +35,7 @@
     "bundlewatch": "^0.3.3"
   },
   "resolutions": {
-    "@types/react": "^17.0.50",
-    "@ant-design/icons": "4.2.1",
-    "@linaria/babel-preset": "4.4.3"
+    "@types/react": "^17.0.50"
   },
   "bundlewatch": {
     "files": [
