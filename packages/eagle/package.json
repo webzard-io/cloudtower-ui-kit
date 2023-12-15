@@ -18,14 +18,14 @@
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
     "copyVariables": "cp src/styles/common/variables.scss dist/variables.scss",
     "prebuild": "node tools/prebuild-antd-less.js",
-    "postbuild": "yarn copyVariables",
+    "postbuild": "yarn copyVariables && yarn build-storybook",
     "test": "vitest",
     "test:ci": "vitest run",
     "coverage": "vitest run --coverage",
     "typings": "tsc -v && tsc --emitDeclarationOnly --paths null",
     "prestorybook": "cd ../.. && yarn turbo run build",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "if [ \"$BUILD_STORYBOOK\" = \"true\" ]; then npx storybook build; else echo done; fi"
   },
   "dependencies": {
     "@cloudtower/icons-react": "0.27.15",

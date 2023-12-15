@@ -34,6 +34,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
+          cache: 'yarn'
       - name: Setup yarn
         run: npm install -g yarn
       - name: Install deps
@@ -50,6 +51,8 @@ jobs:
   storybook-staging:
     name: Setup Storybook Staging
     runs-on: [self-hosted, linux]
+    env:
+      BUILD_STORYBOOK: true
     strategy:
       matrix:
         node: [16]
@@ -61,11 +64,22 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-      - name: Set Up Storybook Staging
-        uses: amondnet/vercel-action@v20
-        id: vercel-action-staging
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          cache: 'yarn'
+      - name: Setup yarn
+        run: npm install -g yarn
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+        timeout-minutes: 3
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts
+        run: |
+          yarn build
+          yarn workspace @cloudtower/eagle build-storybook
+          vercel build --token=${{ secrets.VERCEL_TOKEN }}
+          rm -rf .vercel/output/static
+          mv packages/eagle/storybook-static .vercel/output/static
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
