@@ -47,7 +47,7 @@ const BarChartWrapper = css`
 `;
 
 export const UnitWrapper = css`
-  width: 40px;
+  min-width: 40px;
 
   .unit {
     color: $text-light-primary !important;
