@@ -1,7 +1,7 @@
 {
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "0.27.15",
+  "version": "0.0.0-antd5-rc-0",
   "command": {
     "version": {
       "message": "chore(release):publish %s"
