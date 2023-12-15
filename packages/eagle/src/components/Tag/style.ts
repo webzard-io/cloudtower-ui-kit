@@ -25,5 +25,8 @@ export const NameTagStyle = css`
     color: $text-neutral-primary;
     background-color: $fill-neutral-trans-1;
     border: 1px solid $stroke-neutral-trans-2;
+    word-break: break-all;
+    display: inline;
+    white-space: normal;
   }
 `;
