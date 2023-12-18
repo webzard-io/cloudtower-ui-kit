@@ -37,6 +37,7 @@ import React from "react";
 import AccordionCard from "../core/AccordionCard";
 import Breadcrumb from "../core/Breadcrumb";
 import DetailCard from "../core/DetailCard";
+import DropdownMenu from "../core/DropdownMenu";
 import { CircleProgress } from "../core/StepProgress";
 import ChartWithTooltip, { ChartWithUnit } from "../coreX/ChartWithTooltip";
 import Counting from "../coreX/Counting";
@@ -46,6 +47,7 @@ import DonutChart from "../coreX/DonutChart";
 import DropdownTransition from "../coreX/DropdownTransition";
 import GoBackButton from "../coreX/GoBackButton";
 import NamesTooltip from "../coreX/NamesTooltip";
+import SidebarSubtitle from "../coreX/SidebarSubtitle";
 import SortableList from "../coreX/SortableList";
 import SummaryTable from "../coreX/SummaryTable";
 import SwitchWithText from "../coreX/SwitchWithText";
@@ -63,6 +65,7 @@ import ButtonGroup from "./ButtonGroup";
 import Byte from "./Byte";
 import Calendar from "./Calendar";
 import Card from "./Card";
+import Cascader from "./Cascader";
 import Checkbox from "./Checkbox";
 import Empty from "./Empty";
 import ExpandableContainer from "./ExpandableList/ExpandableContainer";
@@ -73,6 +76,7 @@ import Frequency from "./Frequency";
 import I18nNameTag from "./I18nNameTag";
 import Input from "./Input";
 import InputGroup from "./InputGroup";
+import Link from "./Link";
 import Loading from "./Loading";
 import message from "./message";
 import Modal from "./Modal";
@@ -99,9 +103,6 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
-import SidebarSubtitle from "../coreX/SidebarSubtitle";
-import Link from "./Link";
-import Cascader from "./Cascader";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -223,6 +224,7 @@ export function getAntdKit(): Kit {
     SortableList: SortableList,
     SidebarSubtitle: SidebarSubtitle,
     Link: Link,
+    DropdownMenu: DropdownMenu,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19

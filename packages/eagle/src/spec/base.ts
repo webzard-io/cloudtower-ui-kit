@@ -87,6 +87,7 @@ import {
   ICircleProgressProps,
   ICountingProps,
   IDetailCardProps,
+  IDropdownMenuProps,
   ISpaceProps,
   ITimeProps,
   ITimeZoneSelectProps,
@@ -663,6 +664,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   SortableList: SortableListComponentType;
   SidebarSubtitle: SidebarSubtitleComponentType;
   Link: LinkComponentType;
+  DropdownMenu: React.FC<IDropdownMenuProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
