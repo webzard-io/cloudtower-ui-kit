@@ -1,11 +1,5 @@
 import { cx } from "@linaria/core";
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import { Typo } from "../Typo";
 import { ColumnBodyImpls } from "./Columns";
@@ -32,7 +26,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
     msg: string;
     isError: boolean;
   }>();
-  const isTouched = useRef(false);
+  const [isTouched, setIsTouched] = useState(false);
 
   const width =
     typeof column.width === "number" ? column.width + "px" : column.width;
@@ -41,7 +35,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
 
   useEffect(() => {
     // re-render the cell level error from props when it has been changed
-    if (isTouched.current)
+    if (isTouched)
       setValidateResult(
         error
           ? {
@@ -50,7 +44,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
             }
           : undefined,
       );
-  }, [error]);
+  }, [error, isTouched]);
 
   const triggerValidate = useCallback(
     (currentValue?: unknown) => {
@@ -80,10 +74,10 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
 
   useEffect(() => {
     if (validateAll) {
-      isTouched.current = true;
+      setIsTouched(true);
       triggerValidate();
     }
-  }, [validateAll, triggerValidate]);
+  }, [validateAll, triggerValidate, setIsTouched]);
 
   const _onChange = (value: unknown, data: DataType[]) => {
     const newData = data.map((row, i) =>
@@ -91,8 +85,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
     );
     onChange?.(newData, rowIndex, column.key);
     if (
-      (validateTriggerType === ValidateTriggerType.Normal &&
-        isTouched.current) ||
+      (validateTriggerType === ValidateTriggerType.Normal && isTouched) ||
       validateTriggerType === ValidateTriggerType.Aggressive
     ) {
       triggerValidate(value);
@@ -100,10 +93,10 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
   };
 
   const _onBlur = useCallback(() => {
-    isTouched.current = true;
+    setIsTouched(true);
     triggerValidate();
     onBlur?.(data, rowIndex, column.key);
-  }, [rowIndex, column, onBlur, data, triggerValidate]);
+  }, [rowIndex, column, onBlur, data, triggerValidate, setIsTouched]);
 
   const renderDefaultComponent = () => {
     if (!column.type) return null;
