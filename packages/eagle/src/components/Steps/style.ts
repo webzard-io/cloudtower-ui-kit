@@ -165,6 +165,7 @@ export const VerticalStyle = css`
           font-size: 13px;
           line-height: 20px;
           max-width: 100%;
+          padding-right: 0;
         }
       }
     }
