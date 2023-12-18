@@ -755,7 +755,7 @@ export const ContentWrapper = styled.div`
     margin-top: 24px;
   }
 
-  .form-item {
+  div.form-item {
     width: 100%;
   }
 `;
