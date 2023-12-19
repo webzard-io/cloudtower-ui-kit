@@ -662,6 +662,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   SummaryTable: SummaryTableComponentType;
   SortableList: SortableListComponentType;
   SidebarSubtitle: SidebarSubtitleComponentType;
+  Link: LinkComponentType;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
@@ -898,3 +899,10 @@ export type SidebarSubtitleComponentType = React.FC<{
   title: string;
   className?: string;
 }>;
+type LinkProps = Omit<ButtonProps, "type"> & {
+  type?: "default" | "subtle";
+};
+
+export type LinkComponentType = React.ForwardRefExoticComponent<
+  PropsWithChildren<LinkProps> & React.RefAttributes<HTMLButtonElement>
+>;
