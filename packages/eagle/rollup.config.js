@@ -93,6 +93,7 @@ const config = defineConfig([
       linaria.default({
         sourceMap: false,
         preprocessor: "none",
+        classNameSlug: (hash, title) => `E_${hash}`
       }),
       scss({
         include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],

@@ -12,7 +12,7 @@ describe("check missing locales", () => {
           locales["en-US"][key as keyof (typeof locales)["en-US"]] || {},
         ),
       );
-      expect(diff).toMatchSnapshot(`${key}.json`);
+      expect(diff).toEqual([]);
     });
   });
 });

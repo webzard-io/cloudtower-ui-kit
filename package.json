@@ -11,6 +11,7 @@
     "prepare": "husky install",
     "postbuild": "turbo run typings && bundlewatch",
     "build": "turbo run build",
+    "test:ci": "turbo run test:ci",
     "dev": "turbo run dev --parallel",
     "lint": "eslint \"**/*.{tsx,ts}\" --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
