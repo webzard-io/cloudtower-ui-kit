@@ -33,11 +33,15 @@ const LinkStyle = css`
         color: $text-neutral-primary;
 
         &:hover,
-        &.__pseudo-states-hover,
-        &:active,
-        &.__pseudo-states-active {
+        &.__pseudo-states-hover {
           color: $link-outstanding-normal;
         }
+
+        &:active,
+        &.__pseudo-states-active {
+          color: $link-outstanding-active;
+        }
+
         &.ui-kit-link-disabled {
           color: $text-neutral-primary;
         }
