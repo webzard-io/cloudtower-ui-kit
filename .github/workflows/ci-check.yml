@@ -41,10 +41,8 @@ jobs:
         timeout-minutes: 15
       - name: Build
         run: yarn build
-      - name: Test parrot
-        run: yarn workspace @cloudtower/parrot run test:ci
-      - name: Test eagle
-        run: yarn workspace @cloudtower/eagle run test:ci
+      - name: Test
+        run: yarn test:ci
   storybook-staging:
     name: Setup Storybook Staging
     runs-on: [self-hosted, linux]

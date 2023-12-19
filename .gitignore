@@ -6,7 +6,6 @@ coverage
 .turbo
 lib
 .vscode
-generated
 .tsc
 typings
 storybook-static
@@ -15,3 +14,4 @@ linaria-temp-map.json
 package-lock.json
 .history
 .DS_Store
+.ci
