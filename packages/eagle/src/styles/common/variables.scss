@@ -118,6 +118,7 @@ $gray-a80-9: rgba(23, 38, 64, 0.8);
 $blue-100: #1d326c;
 $blue-80: #005ed1;
 $blue-60: #0080ff;
+$blue-50: #0080FF;
 $blue-40: #009dff;
 
 /* green */
@@ -390,7 +391,9 @@ $text-colorful-purple: $purple-50;
 $link-light-primary: $blue-60;
 $link-light-secondary: #2c3852;
 $link-light-serious: $red-60;
-
+$link-outstanding-normal:$blue-50;
+$link-outstanding-hover:$blue-40;
+$link-outstanding-active:$blue-80;
 /*  fill   */
 $fills-light-trans-1: rgba(#edf1fa, 0.6);
 $fills-light-trans-2: rgba(#e1e6f1, 0.6);
