@@ -101,6 +101,7 @@ import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
 import SidebarSubtitle from "../coreX/SidebarSubtitle";
+import Link from "./Link";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -221,6 +222,7 @@ export function getAntdKit(): Kit {
     SummaryTable: SummaryTable,
     SortableList: SortableList,
     SidebarSubtitle: SidebarSubtitle,
+    Link: Link,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19
