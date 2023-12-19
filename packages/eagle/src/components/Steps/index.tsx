@@ -3,9 +3,9 @@ import { Steps as AntdSteps } from "antd";
 import { StepProps } from "antd/lib/steps";
 import cs from "classnames";
 import React, { useLayoutEffect, useRef, useState } from "react";
-import Tooltip from "../Tooltip";
 
 import { IStepsProps } from "../../spec";
+import Tooltip from "../Tooltip";
 import {
   HorizontalStepContentStyle,
   HorizontalStyle,
@@ -19,14 +19,16 @@ type StepContentProps = {
   step: StepProps;
   index: number;
   isVerticalMode: boolean;
+  preview: boolean;
 };
 
 const StepTitle: React.FC<StepContentProps> = (props) => {
-  const { current, step, index, isVerticalMode } = props;
+  const { current, step, index, isVerticalMode, preview } = props;
   const textRef = useRef<HTMLSpanElement>(null);
   const [tooltipEnable, setTooltipEnable] = useState<{ visible?: boolean }>({
     visible: false,
   });
+  const showCompletedIcon = !preview && index < current;
 
   useLayoutEffect(() => {
     if (
@@ -45,7 +47,7 @@ const StepTitle: React.FC<StepContentProps> = (props) => {
         }
       >
         <span className="step-item-prefix-container">
-          {index < current ? (
+          {showCompletedIcon ? (
             <CheckmarkDoneSuccessCorrect16SecondaryIcon />
           ) : (
             index + 1
@@ -66,9 +68,11 @@ const Steps: React.FC<IStepsProps> = (props) => {
     containerClassname,
     current = 0,
     disabled,
+    preview = false,
     ...stepsProps
   } = props;
   const isVerticalMode = direction === "vertical";
+  const isPreviewMode = isVerticalMode && preview;
 
   return (
     <div
@@ -89,13 +93,18 @@ const Steps: React.FC<IStepsProps> = (props) => {
               <AntdSteps.Step
                 key={index}
                 {...step}
-                disabled={disabled || index > current}
+                disabled={isPreviewMode ? false : disabled ?? index > current}
+                className={cs(
+                  step.className,
+                  isPreviewMode ? "preview-mode" : "",
+                )}
                 title={
                   <StepTitle
                     index={index}
                     step={step}
                     current={current}
                     isVerticalMode={isVerticalMode}
+                    preview={isPreviewMode}
                   />
                 }
               />
