@@ -11,7 +11,8 @@ export const Container: React.FC = (props) => {
         border: 1px solid #ccd4e3;
         background: #fff;
         margin-top: 16px;
-        height: 160px;
+        margin-bottom: 32px;
+        padding: 40px 100px;
         width: 900px;
         display: flex;
         align-items: center;

@@ -467,6 +467,7 @@ export type IStepsProps = {
   stepsConfig: Array<StepProps>;
   containerClassname?: string;
   disabled?: boolean;
+  preview?: boolean;
 };
 
 export interface ISimplePaginationProps {

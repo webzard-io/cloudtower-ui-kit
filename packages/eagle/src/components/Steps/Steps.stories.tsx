@@ -5,13 +5,26 @@ import { Space as AntdSpace } from "antd";
 import React, { useState } from "react";
 
 import { IStepsProps } from "../../spec";
+import { Container, Title } from "../../stories";
 import Button from "../Button";
-import { Typo } from "../Typo";
 import Steps from "./";
 
 const story: Meta<IStepsProps> = {
   title: "Steps",
   component: Steps,
+  decorators: [
+    (Story) => {
+      return (
+        <div
+          className={css`
+            padding-bottom: 40px;
+          `}
+        >
+          <Story />
+        </div>
+      );
+    },
+  ],
   parameters: {
     design: {
       type: "figma",
@@ -30,12 +43,6 @@ const Space = styled(AntdSpace)`
     width: 100%;
   }
 `;
-
-const Title: React.FC = ({ children }) => (
-  <div style={{ marginTop: "16px" }} className={Typo.Display.d2_bold_title}>
-    {children}
-  </div>
-);
 
 export const Basic = () => {
   const stepsConfig: IStepsProps["stepsConfig"] = new Array(3)
@@ -177,9 +184,11 @@ Default.args = {};
 
 export const Horizontal: StoryObj<IStepsProps> = () => {
   const [current, setCurrent] = useState(0);
+  const [current1, setCurrent1] = useState(0);
 
   return (
     <>
+      <Title>纵向步骤条</Title>
       <div
         className={css`
           margin: 10px 0;
@@ -188,51 +197,86 @@ export const Horizontal: StoryObj<IStepsProps> = () => {
         纵向步骤条为定宽，省略触发条件根据单个 step 所容纳字数决定。省略会触发
         Tooltips 进行 全部信息展示。
       </div>
+      <Container>
+        <div>
+          <Steps
+            className={css`
+              margin: 10px 0;
+            `}
+            direction="vertical"
+            onChange={(current) => {
+              setCurrent(current);
+            }}
+            stepsConfig={[
+              {
+                title:
+                  "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabellabellabel",
+              },
+              { title: "Label" },
+              {
+                title:
+                  "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabellabellabel",
+              },
+              { title: "Label" },
+            ]}
+            current={current}
+          />
+          <Button
+            onClick={() => {
+              setCurrent(current - 1);
+            }}
+          >
+            prev
+          </Button>
+          <span
+            className={css`
+              margin: 0px 8px;
+            `}
+          >
+            current: {current}
+          </span>
+          <Button
+            onClick={() => {
+              setCurrent(current + 1);
+            }}
+          >
+            next
+          </Button>
+        </div>
+      </Container>
+      <Title>纵向步骤条变体（浏览型）</Title>
       <div>
-        <Steps
-          className={css`
-            margin: 10px 0;
-          `}
-          direction="vertical"
-          onChange={(current) => {
-            setCurrent(current);
-          }}
-          stepsConfig={[
-            {
-              title:
-                "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabellabellabel",
-            },
-            { title: "Label" },
-            {
-              title:
-                "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabellabellabel",
-            },
-            { title: "Label" },
-          ]}
-          current={current}
-        />
-        <Button
-          onClick={() => {
-            setCurrent(current - 1);
-          }}
-        >
-          prev
-        </Button>
-        <span
-          className={css`
-            margin: 0px 8px;
-          `}
-        >
-          current: {current}
-        </span>
-        <Button
-          onClick={() => {
-            setCurrent(current + 1);
-          }}
-        >
-          next
-        </Button>
+        <p>通过传递 preview 属性，可以将纵向步骤条变为浏览型</p>
+        <p>不在限制 Steps 只能切换为至前置步骤，可自由切换为任意步骤；</p>
+        <p>
+          用于多步骤页面预览的场景，Steps 仅需表现标题顺序，无须在展示完成状态；
+        </p>
       </div>
+      <Container>
+        <div>
+          <Steps
+            className={css`
+              margin: 10px 0;
+            `}
+            direction="vertical"
+            preview
+            current={current1}
+            onChange={(current) => {
+              setCurrent1(current);
+            }}
+            stepsConfig={[
+              {
+                title: "Label",
+              },
+              { title: "Label" },
+              {
+                title: "Label",
+              },
+              { title: "Label" },
+            ]}
+          />
+        </div>
+      </Container>
     </>
   );
 };
