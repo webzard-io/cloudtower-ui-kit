@@ -8,9 +8,16 @@ jobs:
   storybook-production:
     name: Storybook Production
     runs-on: [self-hosted, linux]
+    strategy:
+      matrix:
+        node: [16]
     steps:
       - name: check out
         uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
       - name: Set Up Storybook Production
         uses: amondnet/vercel-action@v20
         id: vercel-action-production
@@ -20,3 +27,11 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-args: "--prod"
+      - name: Retry Set Up Storybook
+        if: failure()  # 仅在上一步失败时执行
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 10  # 设置超时时间
+          max_attempts: 3  # 设置最大重试次数
+          command: |
+

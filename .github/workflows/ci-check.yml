@@ -38,15 +38,13 @@ jobs:
         run: npm install -g yarn
       - name: Install deps
         run: yarn install --frozen-lockfile
-        timeout-minutes: 3
+        timeout-minutes: 15
       - name: Build
         run: yarn build
       - name: Test parrot
         run: yarn workspace @cloudtower/parrot run test:ci
       - name: Test eagle
         run: yarn workspace @cloudtower/eagle run test:ci
-
-
   storybook-staging:
     name: Setup Storybook Staging
     runs-on: [self-hosted, linux]
@@ -56,7 +54,6 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
-        
       - name: Setup node
         uses: actions/setup-node@v3
         with:
@@ -69,3 +66,11 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+      - name: Retry Set Up Storybook
+        if: failure()  # 仅在上一步失败时执行
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 10  # 设置超时时间
+          max_attempts: 3  # 设置最大重试次数
+          command: |
+
