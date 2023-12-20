@@ -24,7 +24,7 @@ jobs:
         run: npm install -g yarn
       - name: Install deps
         run: yarn install --frozen-lockfile
-        timeout_minutes: 15
+        timeout-minutes: 15
       - name: Build
         run: yarn build
       - name: Copy Readme
