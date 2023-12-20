@@ -52,5 +52,6 @@
   "generate_date_preview": "Generate Date Preview",
   "date_with_year_and_month": "{month} {year}",
   "will_generate_one_reporte_with_date_and_time": "One report will be generated at {date} {time}",
-  "will_generate_report_will_date_and_count": "{count} reports will be generated at {date}"
+  "will_generate_report_will_date_and_count": "{count} reports will be generated at {date}",
+  "selected_item_with_count": "{count} items selected"
 }
