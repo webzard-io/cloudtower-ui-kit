@@ -83,6 +83,7 @@ import {
   DropdownTransitionProps,
   HistoryType,
   IAccordionCardProps,
+  IBatchOperation,
   IBreadcrumbProps,
   ICircleProgressProps,
   ICountingProps,
@@ -666,6 +667,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   SidebarSubtitle: SidebarSubtitleComponentType;
   Link: LinkComponentType;
   DropdownMenu: React.FC<IDropdownMenuProps>;
+  BatchOperation: React.FC<IBatchOperation>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
