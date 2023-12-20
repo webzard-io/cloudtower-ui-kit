@@ -3696,7 +3696,7 @@
     npmlog "^4.1.2"
     write-file-atomic "^3.0.3"
 
-"@linaria/babel-preset@^4.4.1", "@linaria/babel-preset@^4.4.3":
+"@linaria/babel-preset@4.4.3", "@linaria/babel-preset@^4.4.1", "@linaria/babel-preset@^4.4.3":
   version "4.4.3"
   resolved "https://registry.npmjs.org/@linaria/babel-preset/-/babel-preset-4.4.3.tgz"
   integrity sha512-6t8fO5DNjIERQ7sMmgUzyaBAJfAu6Foz1ecmmD9/Uq7J/nVedsQnN3X65S5/3/KM/kGXiReV91m+HhRUdWMCKg==
