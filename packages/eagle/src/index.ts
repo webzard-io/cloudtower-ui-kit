@@ -34,6 +34,8 @@ export {
   WizardBody,
 } from "./components";
 export * from "./components/TableForm/types";
+export { RenderMenuItem } from "./core/DropdownMenu";
+export { default as DropdownMenu } from "./core/DropdownMenu";
 export * from "./coreX";
 export { useElementsSize } from "./hooks";
 export type {
