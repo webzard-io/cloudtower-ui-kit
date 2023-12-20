@@ -38,7 +38,7 @@ jobs:
         run: npm install -g yarn
       - name: Install deps
         run: yarn install --frozen-lockfile
-        timeout-minutes: 15
+        timeout_minutes: 15
       - name: Build
         run: yarn build
       - name: Test parrot
