@@ -52,5 +52,6 @@
   "generate_date_preview": "生成日期预览",
   "date_with_year_and_month": "{year} 年 {month}",
   "will_generate_one_reporte_with_date_and_time": "{ date } 将在 {time } 生成 1 份报表",
-  "will_generate_report_will_date_and_count": "{date} 将在如下时间生成 {count} 份报表："
+  "will_generate_report_will_date_and_count": "{date} 将在如下时间生成 {count} 份报表：",
+  "selected_item_with_count": "已选中 {count} 项目"
 }
