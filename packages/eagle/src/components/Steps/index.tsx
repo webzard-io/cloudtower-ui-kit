@@ -93,7 +93,11 @@ const Steps: React.FC<IStepsProps> = (props) => {
               <AntdSteps.Step
                 key={index}
                 {...step}
-                disabled={isPreviewMode ? false : disabled ?? index > current}
+                disabled={
+                  isPreviewMode
+                    ? false
+                    : disabled ?? step?.disabled ?? index > current
+                }
                 className={cs(
                   step.className,
                   isPreviewMode ? "preview-mode" : "",

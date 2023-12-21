@@ -458,6 +458,7 @@ export type StepProps = {
   onClick?: React.MouseEventHandler<HTMLElement>;
   title: string;
   style?: React.CSSProperties;
+  disabled?: boolean;
 };
 
 export type IStepsProps = {
