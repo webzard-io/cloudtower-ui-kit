@@ -52,6 +52,14 @@ export const Basic = () => {
         "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel",
     }));
 
+  const evenStepsDisabledConfig: IStepsProps["stepsConfig"] = new Array(3)
+    .fill(0)
+    .map((_, index) => ({
+      disabled: index % 2 === 0,
+      title:
+        "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel",
+    }));
+
   return (
     <div style={{ padding: "20px", paddingBottom: "200px", width: "800px" }}>
       <Title>Normal</Title>
@@ -108,9 +116,13 @@ export const Basic = () => {
           current={2}
         />
       </Space>
-      <Title>Disabled</Title>
+      <Title>All Disabled</Title>
       <Space>
         <Steps stepsConfig={stepsConfig} disabled current={2} />
+      </Space>
+      <Title>Step Disabled</Title>
+      <Space>
+        <Steps stepsConfig={evenStepsDisabledConfig} current={2} />
       </Space>
     </div>
   );
