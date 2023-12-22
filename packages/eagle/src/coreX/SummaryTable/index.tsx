@@ -151,7 +151,6 @@ const SummaryTableContent: SummaryTableContentComponentType = (props) => {
   return (
     <>
       {items.map((item) => {
-        console.log("item", item);
         // TODO: update me
         if (item.dataIndex === "[__typename]") {
           return null;
