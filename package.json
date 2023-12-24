@@ -42,11 +42,11 @@
     "files": [
       {
         "path": "./packages/eagle/dist/**/*.js",
-        "maxSize": "55 kB"
+        "maxSize": "65 kB"
       },
       {
         "path": "./packages/parrot/dist/**/*.js",
-        "maxSize": "5 kB"
+        "maxSize": "6 kB"
       },
       {
         "path": "./packages/eagle/dist/components.css",

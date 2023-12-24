@@ -1,4 +1,4 @@
-import { cx } from "linaria";
+import { cx } from "@linaria/core";
 import React from "react";
 
 import { Typo } from "../../components/Typo";

@@ -1,4 +1,4 @@
-import { styled } from "linaria/react";
+import { styled } from "@linaria/react";
 import React, { useLayoutEffect, useRef, useState } from "react";
 
 import Tooltip from "../../components/Tooltip";

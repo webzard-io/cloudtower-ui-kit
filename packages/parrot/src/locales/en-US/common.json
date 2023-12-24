@@ -42,5 +42,6 @@
   "friday": "Friday",
   "saturday": "Saturday",
   "sunday": "Sunday",
-  "month": "Month"
+  "month": "Month",
+  "year": "Year"
 }

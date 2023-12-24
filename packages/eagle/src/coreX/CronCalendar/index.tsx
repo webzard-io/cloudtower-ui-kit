@@ -1,6 +1,6 @@
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
-import { css, cx } from "linaria";
+import { css, cx } from "@linaria/core";
 import moment from "moment";
 import React, { useMemo, useState } from "react";
 
