@@ -5,7 +5,6 @@ import { AutoCompleteProps } from "antd/lib/auto-complete";
 import { BadgeProps } from "antd/lib/badge";
 import { ButtonProps as AntdButtonProps, ButtonType } from "antd/lib/button";
 import { CalendarProps } from "antd/lib/calendar/generateCalendar";
-import { CascaderProps } from "antd5/lib/cascader";
 import { CheckboxGroupProps, CheckboxProps } from "antd/lib/checkbox";
 import { ColProps } from "antd/lib/col";
 import { CollapsePanelProps, CollapseProps } from "antd/lib/collapse";
@@ -55,6 +54,7 @@ import { TreeProps as AntdTreeProps } from "antd/lib/tree";
 import type TreeSelect from "antd/lib/tree-select";
 import { TextProps } from "antd/lib/typography/Text";
 import { DraggerProps, UploadProps } from "antd/lib/upload";
+import { CascaderProps } from "antd5/lib/cascader";
 import type { Dayjs } from "dayjs";
 import type { History } from "history";
 import type { Moment } from "moment";
@@ -74,6 +74,7 @@ import { TableFormHandle, TableFormProps } from "../components/TableForm/types";
 import { TruncatePropTypes } from "../components/Truncate";
 import type { CloseButtonProps } from "../core/AccordionCard";
 import { IChartWithUnitProps, ICWTProps } from "../coreX/ChartWithTooltip";
+import { DateRangePickerProps } from "../coreX/DateRangePicker/common";
 import { IDonutChartProps } from "../coreX/DonutChart";
 import { IUnitWithChartProps } from "../coreX/UnitWithChart";
 import { SerializableObject } from "../utils/tower";
@@ -669,6 +670,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   Link: LinkComponentType;
   DropdownMenu: React.FC<IDropdownMenuProps>;
   BatchOperation: React.FC<IBatchOperation>;
+  DateRangePicker: React.FC<DateRangePickerProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;

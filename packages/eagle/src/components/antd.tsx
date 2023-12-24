@@ -39,6 +39,8 @@ import Breadcrumb from "../core/Breadcrumb";
 import DetailCard from "../core/DetailCard";
 import DropdownMenu from "../core/DropdownMenu";
 import { CircleProgress } from "../core/StepProgress";
+import { DateRangePicker } from "../coreX";
+import BatchOperation from "../coreX/BatchOperation";
 import ChartWithTooltip, { ChartWithUnit } from "../coreX/ChartWithTooltip";
 import Counting from "../coreX/Counting";
 import CronCalendar from "../coreX/CronCalendar";
@@ -103,7 +105,6 @@ import TimeZoneSelect from "./TimeZoneSelect";
 import Token from "./Token";
 import Tooltip from "./Tooltip";
 import Truncate from "./Truncate";
-import BatchOperation from "../coreX/BatchOperation";
 
 export function getAntdKit(): Kit {
   const kit: Kit = {
@@ -227,6 +228,7 @@ export function getAntdKit(): Kit {
     Link: Link,
     DropdownMenu: DropdownMenu,
     BatchOperation: BatchOperation,
+    DateRangePicker: DateRangePicker,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19

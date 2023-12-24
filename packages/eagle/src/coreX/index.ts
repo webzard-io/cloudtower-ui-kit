@@ -3,3 +3,5 @@ export {
   renderBatchOperationMenuItem,
 } from "./BatchOperation";
 export { stringifyPlan } from "./CronPlan";
+export * from "./DateRangePicker";
+export { default as DateRangePicker } from "./DateRangePicker";

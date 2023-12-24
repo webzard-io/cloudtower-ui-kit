@@ -1,4 +1,4 @@
-import { styled } from "linaria/react";
+import { styled } from "@linaria/react";
 import React from "react";
 
 import Switch from "../../components/Switch";
