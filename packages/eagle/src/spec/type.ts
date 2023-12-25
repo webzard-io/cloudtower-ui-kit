@@ -173,3 +173,9 @@ export interface IBatchOperation {
   onClearSelection: () => void;
   actions: Action[];
 }
+
+export type PastTime = {
+  unit: "h" | "m" | "d";
+  value: number;
+  disabled?: boolean;
+};

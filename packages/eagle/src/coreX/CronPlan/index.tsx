@@ -3,7 +3,7 @@ import { ParrotLngs } from "@cloudtower/parrot";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
 import { i18n as Ii18n } from "i18next";
-import { css, cx } from "linaria";
+import { css, cx } from "@linaria/core";
 import _ from "lodash";
 import moment from "moment";
 import React, { useEffect, useMemo, useState } from "react";
