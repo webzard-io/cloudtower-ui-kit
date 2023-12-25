@@ -361,5 +361,6 @@ export default DateRangePicker;
 
 export { default as AbsoluteDate } from "./AbsoluteDate";
 export { default as Calendar } from "./Calendar";
+export type { DateRange as PickerDateRange } from "./common";
 export { default as InputTime } from "./InputTime";
 export { default as RelativeTime } from "./RelativeTime";
