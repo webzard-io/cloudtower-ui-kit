@@ -1,3 +1,4 @@
+import { SegmentedProps as AntdSegmentedProps } from "antd5";
 import type { History, Location as HistoryLocation } from "history";
 import { CSSTransitionProps } from "react-transition-group/CSSTransition";
 
@@ -179,3 +180,8 @@ export type PastTime = {
   value: number;
   disabled?: boolean;
 };
+
+export interface ISegmentedControlProps
+  extends Omit<AntdSegmentedProps, "ref"> {
+  size?: "small" | "middle";
+}
