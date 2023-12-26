@@ -38,6 +38,7 @@ import AccordionCard from "../core/AccordionCard";
 import Breadcrumb from "../core/Breadcrumb";
 import DetailCard from "../core/DetailCard";
 import DropdownMenu from "../core/DropdownMenu";
+import SegmentControl from "../core/SegmentControl";
 import { CircleProgress } from "../core/StepProgress";
 import { DateRangePicker } from "../coreX";
 import BatchOperation from "../coreX/BatchOperation";
@@ -229,6 +230,7 @@ export function getAntdKit(): Kit {
     DropdownMenu: DropdownMenu,
     BatchOperation: BatchOperation,
     DateRangePicker: DateRangePicker,
+    SegmentedControl: SegmentControl,
   };
 
   // https://github.com/react-component/select/blob/master/src/Option.tsx#L19

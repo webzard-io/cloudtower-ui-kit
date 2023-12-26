@@ -90,6 +90,7 @@ import {
   ICountingProps,
   IDetailCardProps,
   IDropdownMenuProps,
+  ISegmentedControlProps,
   ISpaceProps,
   ITimeProps,
   ITimeZoneSelectProps,
@@ -671,6 +672,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   DropdownMenu: React.FC<IDropdownMenuProps>;
   BatchOperation: React.FC<IBatchOperation>;
   DateRangePicker: React.FC<DateRangePickerProps>;
+  SegmentedControl: React.FC<ISegmentedControlProps>;
 }
 
 export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
