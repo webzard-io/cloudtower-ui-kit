@@ -3735,11 +3735,6 @@
     "@linaria/tags" "^4.3.3"
     "@linaria/utils" "^4.3.2"
 
-"@linaria/extractor@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/@linaria/extractor/-/extractor-4.0.0.tgz"
-  integrity sha512-+KKv95bRzGC6F98JSlxS+WWy4xceDdfEciQxA/tcIjTDdvi0F2n0efCibeVV3c3frWlRP8c5Qhn76aBPilohyA==
-
 "@linaria/logger@^4.0.0":
   version "4.0.0"
   resolved "https://registry.npmjs.org/@linaria/logger/-/logger-4.0.0.tgz"
@@ -3748,7 +3743,7 @@
     debug "^4.1.1"
     picocolors "^1.0.0"
 
-"@linaria/react@^4.3.0", "@linaria/react@^4.3.4":
+"@linaria/react@^4.3.0":
   version "4.3.4"
   resolved "https://registry.npmjs.org/@linaria/react/-/react-4.3.4.tgz"
   integrity sha512-GZbXfD5jJyyTGotlskgsMjcm+Guh0riVDuSv5puxATXe96gG/lnRppR+MNG3iZp0pbsAOBjXOoveui6ldc2ZVg==
@@ -3760,7 +3755,7 @@
     react-html-attributes "^1.4.6"
     ts-invariant "^0.10.3"
 
-"@linaria/rollup@^4.1.5", "@linaria/rollup@^4.3.4":
+"@linaria/rollup@^4.1.5":
   version "4.3.4"
   resolved "https://registry.npmjs.org/@linaria/rollup/-/rollup-4.3.4.tgz"
   integrity sha512-iAChxfj5PYgKyo+PtzGE69WfAzACaNRLp81ZfTjOPMr6H6bWLcKLOHScXUCC/PcFlYNMsdm+SqG4E3WaodKk3g==
@@ -3770,29 +3765,6 @@
     "@linaria/utils" "^4.3.1"
     "@linaria/vite" "^4.2.7"
     "@rollup/pluginutils" "^4.1.0"
-
-"@linaria/server@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.npmjs.org/@linaria/server/-/server-4.1.0.tgz"
-  integrity sha512-Ai2fXi4gyt79/nlqX8rys2iqfQJGHVmmEdNAIYtG4guWnIGgiCA0igetRvgTZqUhWUN/MYGT2/TsDM/LSskqMQ==
-  dependencies:
-    postcss "^8.3.11"
-
-"@linaria/shaker@^4.2.8":
-  version "4.2.8"
-  resolved "https://registry.npmjs.org/@linaria/shaker/-/shaker-4.2.8.tgz"
-  integrity sha512-+0ZZNNcNxLPiMFy/lEj9lkfyUMDnnP+A81PiqLXS2B8rJXfzgjuQDYVFRQ7Eh/ltw2+vLzUKEq+29jcFQq2AjQ==
-  dependencies:
-    "@babel/core" "^7.20.2"
-    "@babel/generator" "^7.20.4"
-    "@babel/plugin-transform-modules-commonjs" "^7.19.6"
-    "@babel/plugin-transform-runtime" "^7.19.6"
-    "@babel/plugin-transform-template-literals" "^7.18.9"
-    "@babel/preset-env" "^7.20.2"
-    "@linaria/logger" "^4.0.0"
-    "@linaria/utils" "^4.3.1"
-    babel-plugin-transform-react-remove-prop-types "^0.4.24"
-    ts-invariant "^0.10.3"
 
 "@linaria/shaker@^4.2.9":
   version "4.2.9"
@@ -3809,15 +3781,6 @@
     "@linaria/utils" "^4.3.2"
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
     ts-invariant "^0.10.3"
-
-"@linaria/stylelint@^4.1.13":
-  version "4.1.13"
-  resolved "https://registry.npmjs.org/@linaria/stylelint/-/stylelint-4.1.13.tgz"
-  integrity sha512-kap5WUb0hOTo47+Huvft6nKeou+Caxtm0vEHPXluBlcThfLQFPeOB2WQDIG/Gas4y0lAQwiCHopQWFSpVgomKg==
-  dependencies:
-    "@linaria/babel-preset" "^4.4.1"
-    "@linaria/utils" "^4.3.1"
-    strip-ansi "^5.2.0"
 
 "@linaria/tags@^4.3.1":
   version "4.3.1"
@@ -3882,17 +3845,6 @@
   dependencies:
     "@linaria/webpack4-loader" "^4.1.15"
     "@linaria/webpack5-loader" "^4.1.15"
-
-"@linaria/webpack4-loader@^4.1.13":
-  version "4.1.13"
-  resolved "https://registry.npmjs.org/@linaria/webpack4-loader/-/webpack4-loader-4.1.13.tgz"
-  integrity sha512-vKiJYD3BodRERLzc5gSjZ1b7oMC+hw7FSMjwtEfNIsAIiikgxF4PfGQ7TTo+LZKdy2yrdyX4MaEVSs0zmPZrPQ==
-  dependencies:
-    "@linaria/babel-preset" "^4.4.1"
-    "@linaria/logger" "^4.0.0"
-    enhanced-resolve "^4.1.0"
-    loader-utils "^1.2.3"
-    mkdirp "^0.5.1"
 
 "@linaria/webpack4-loader@^4.1.15":
   version "4.1.15"
@@ -6894,11 +6846,6 @@ ansi-regex@^2.0.0:
   version "2.1.1"
   resolved "https://registry.npmjs.org/ansi-regex/-/ansi-regex-2.1.1.tgz"
   integrity sha512-TIGnTpdo+E3+pCyAluZvtED5p5wCqLdezCyhPZzKPcxvFplEt4i+W7OONCKgeZFT3+y5NZZfOOS/Bdcanm1MYA==
-
-ansi-regex@^4.1.0:
-  version "4.1.1"
-  resolved "https://registry.npmjs.org/ansi-regex/-/ansi-regex-4.1.1.tgz"
-  integrity sha512-ILlv4k/3f6vfQ4OoP2AGvirOktlQ98ZEL1k9FaQjxa3L1abBgbuTDAdPOpvbGncC0BTVQrl+OM8xZGK6tWXt7g==
 
 ansi-regex@^5.0.1:
   version "5.0.1"
@@ -13167,21 +13114,6 @@ lilconfig@2.0.6, lilconfig@^2.0.3, lilconfig@^2.0.5, lilconfig@^2.0.6:
   resolved "https://registry.npmjs.org/lilconfig/-/lilconfig-2.0.6.tgz"
   integrity sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==
 
-linaria@^4.1.13:
-  version "4.1.13"
-  resolved "https://registry.npmjs.org/linaria/-/linaria-4.1.13.tgz"
-  integrity sha512-rEGHa/YYHVITETapwsoVnbHKJl8W92jwoZKOmC0daKATVp3zMy1sttKSXwlezG+Gat0KMG7tZMAlUV+Q1KZqsg==
-  dependencies:
-    "@linaria/babel-preset" "^4.4.1"
-    "@linaria/core" "^4.2.6"
-    "@linaria/extractor" "^4.0.0"
-    "@linaria/react" "^4.3.4"
-    "@linaria/rollup" "^4.3.4"
-    "@linaria/server" "^4.1.0"
-    "@linaria/shaker" "^4.2.8"
-    "@linaria/stylelint" "^4.1.13"
-    "@linaria/webpack4-loader" "^4.1.13"
-
 lines-and-columns@^1.1.6:
   version "1.2.4"
   resolved "https://registry.npmjs.org/lines-and-columns/-/lines-and-columns-1.2.4.tgz"
@@ -15604,7 +15536,7 @@ postcss@^7.0.35:
     picocolors "^0.2.1"
     source-map "^0.6.1"
 
-postcss@^8.0.9, postcss@^8.3.11, postcss@^8.3.5, postcss@^8.4.18, postcss@^8.4.19, postcss@^8.4.20, postcss@^8.4.4:
+postcss@^8.0.9, postcss@^8.3.5, postcss@^8.4.18, postcss@^8.4.19, postcss@^8.4.20, postcss@^8.4.4:
   version "8.4.21"
   resolved "https://registry.npmjs.org/postcss/-/postcss-8.4.21.tgz"
   integrity sha512-tP7u/Sn/dVxK2NnruI4H9BG+x+Wxz6oeZ1cJ8P6G/PZY0IKk4k/63TDsQf2kQq3+qoJeLm2kIBUNlZe3zgb4Zg==
@@ -18484,13 +18416,6 @@ strip-ansi@^3.0.0, strip-ansi@^3.0.1:
   integrity sha512-VhumSSbBqDTP8p2ZLKj40UjBCV4+v8bUSEpUb4KjRgWk9pbqGF4REFj6KEagidb2f/M6AzC0EmFyDNGaw9OCzg==
   dependencies:
     ansi-regex "^2.0.0"
-
-strip-ansi@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.npmjs.org/strip-ansi/-/strip-ansi-5.2.0.tgz"
-  integrity sha512-DuRs1gKbBqsMKIZlrffwlug8MHkcnpjs5VPmL1PAh+mA30U0DTotfDZ0d2UUsXpPmPmMMJ6W773MaA3J+lbiWA==
-  dependencies:
-    ansi-regex "^4.1.0"
 
 strip-ansi@^6.0.0, strip-ansi@^6.0.1:
   version "6.0.1"

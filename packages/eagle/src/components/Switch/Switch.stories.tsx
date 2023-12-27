@@ -1,5 +1,5 @@
+import { css } from "@linaria/core";
 import { Space } from "antd";
-import { css } from "linaria";
 import React, { useState } from "react";
 
 import Switch from "./";
