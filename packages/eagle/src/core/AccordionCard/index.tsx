@@ -1,6 +1,6 @@
 import { XmarkRemove24SecondaryIcon } from "@cloudtower/icons-react";
+import { styled } from "@linaria/react";
 import cs from "classnames";
-import { styled } from "linaria/react";
 import React, { useState } from "react";
 
 import Icon from "../../components/Icon";
