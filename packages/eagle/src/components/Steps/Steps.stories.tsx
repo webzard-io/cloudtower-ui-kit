@@ -5,7 +5,7 @@ import { Space as AntdSpace } from "antd";
 import React, { useState } from "react";
 
 import { IStepsProps } from "../../spec";
-import { Container, Title } from "../../stories";
+import { Container, Title } from "../../../stories/components";
 import Button from "../Button";
 import Steps from "./";
 

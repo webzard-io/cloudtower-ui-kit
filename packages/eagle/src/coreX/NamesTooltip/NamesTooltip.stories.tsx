@@ -5,7 +5,7 @@ import React from "react";
 import { ParrotTrans } from "../../core/ParrotTrans";
 import { NamesTooltipType } from "../../spec";
 import NamesTooltip from ".";
-import { Stack, Title } from "../../stories";
+import { Stack, Title } from "../../../stories/components";
 
 type NamesTooltipComponentType = React.FC<NamesTooltipType>;
 
