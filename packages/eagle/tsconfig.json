@@ -8,9 +8,11 @@
     "downlevelIteration": true,
     "disableSizeLimit": true,
     "paths": {
-      "@cloudtower/parrot": ["../parrot/src/index.ts"]
+      "@cloudtower/parrot": ["../parrot/src/index.ts"],
+      "@src/*": ["./src/*"],
+      "@stories/*": ["./stories/*"]
     }
   },
-  "include": ["src", "images.d.ts"],
+  "include": ["src", "images.d.ts", "stories"],
   "exclude": ["node_modules"]
 }

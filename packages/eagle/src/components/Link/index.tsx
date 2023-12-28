@@ -9,7 +9,7 @@ const LinkStyle = css`
   @at-root {
     button#{&} {
       color: $link-outstanding-normal;
-
+      height: unset;
       .button-prefix-icon {
         margin-right: 4px;
       }

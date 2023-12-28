@@ -8,7 +8,7 @@ import cs from "classnames";
 import React from "react";
 
 import { LinkComponentType } from "../../spec";
-import { Stack } from "../../stories";
+import { Stack } from "../../../stories/components";
 import { Typo } from "../Typo";
 import Link from ".";
 

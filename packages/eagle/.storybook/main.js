@@ -13,11 +13,14 @@ const AnimationPath = path.resolve(__dirname,
 )
 
 module.exports = {
-  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: [
+    "../src/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+    "../stories/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+  ],
 
   addons: [
-    getAbsolutePath("@storybook/addon-essentials"),
-    getAbsolutePath("@storybook/addon-designs"),
+    "@storybook/addon-essentials",
+    "@storybook/addon-designs",
     {
       name:  '@storybook/addon-storysource',
       options: {
@@ -35,10 +38,6 @@ module.exports = {
   framework: {
     name: getAbsolutePath("@storybook/react-webpack5"),
     options: {}
-  },
-
-  typescript: {
-    reactDocgen: "react-docgen-typescript-plugin",
   },
 
   webpackFinal: async (config, { configType }) => {
@@ -93,6 +92,7 @@ module.exports = {
           loader: require.resolve("@linaria/webpack-loader"),
           options: {
             preprocessor: "none",
+            classNameSlug: (hash, title) => `${title}_${hash}`
           },
         },
         {
@@ -110,6 +110,14 @@ module.exports = {
       "@cloudtower/parrot": path.resolve(
         __dirname,
         "../../parrot/src/index.ts"
+      ),
+      "@src": path.resolve(
+        __dirname,
+        "../src/"
+      ),
+      "@stories": path.resolve(
+        __dirname,
+        "../stories/"
       ),
     };
 

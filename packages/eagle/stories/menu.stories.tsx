@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown, Menu } from "antd";
 import { css, cx } from "@linaria/core";
-import { Typo } from "../components/Typo";
+import { Typo } from "@src/components/Typo";
 
 export default {
   title: "Menu",

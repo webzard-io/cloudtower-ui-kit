@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import Button from "../../components/Button";
 import { CronPlanProps, CronPlanState } from "../../spec";
-import { Stack } from "../../stories";
+import { Stack } from "../../../stories/components";
 import { makeUUID } from "../../utils";
 import CronPlan from ".";
 

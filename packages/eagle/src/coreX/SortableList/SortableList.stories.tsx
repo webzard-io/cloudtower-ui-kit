@@ -3,7 +3,7 @@ import { useState } from "react";
 import React from "react";
 
 import { SortableListComponentType } from "../../spec/base";
-import { Container } from "../../stories";
+import { Container } from "../../../stories/components";
 import SortableList from ".";
 
 const meta: Meta<SortableListComponentType> = {
