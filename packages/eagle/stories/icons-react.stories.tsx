@@ -6,8 +6,8 @@ import Copy from "copy-to-clipboard";
 import _ from "lodash";
 import React, { useCallback, useMemo, useState } from "react";
 
-import Button from "../components/Button";
-import Input from "../components/Input";
+import Button from "@src/components/Button";
+import Input from "@src/components/Input";
 
 const IconWrapper = styled.div`
   border-radius: 0.75em;

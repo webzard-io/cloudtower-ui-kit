@@ -10,7 +10,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 import { SplitTagComponentType, TagColor, TagComponentType } from "../../spec";
-import { Container, Stack, Title } from "../../stories";
+import { Container, Stack, Title } from "../../../stories/components";
 import BaseTruncate from "../Truncate";
 import Tag, { PresetColors as TagPresetColors } from ".";
 import { PresetColors } from "./const";

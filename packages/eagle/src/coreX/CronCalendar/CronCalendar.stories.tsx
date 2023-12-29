@@ -10,7 +10,7 @@ import React from "react";
 
 import Button from "../../components/Button";
 import { CronCalendarProps, CronPlanState } from "../../spec";
-import { Stack } from "../../stories";
+import { Stack } from "../../../stories/components";
 import { makeUUID } from "../../utils";
 import CronPlan from "../CronPlan";
 import CronCalendar from ".";

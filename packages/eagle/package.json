@@ -22,7 +22,7 @@
     "test": "vitest",
     "test:ci": "vitest run",
     "coverage": "vitest run --coverage",
-    "typings": "tsc -v && tsc --emitDeclarationOnly --paths null",
+    "typings": "tsc --emitDeclarationOnly",
     "prestorybook": "cd ../.. && yarn turbo run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -106,7 +106,6 @@
     "sass": "^1.55.0",
     "specificity": "^1.0.0",
     "storybook": "^7.4.1",
-    "storybook-addon-designs": "^6.3.1",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.4.2",
     "ts-node": "^10.9.1",

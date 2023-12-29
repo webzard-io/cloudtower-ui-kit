@@ -7,7 +7,7 @@ import { GoBackButtonType } from "../../spec";
 import GoBackButton from ".";
 
 const meta: Meta<React.FC<GoBackButtonType>> = {
-  title: "coreX/GoBackButton",
+  title: "CoreX/GoBackButton",
   component: GoBackButton,
   parameters: {
     docs: {

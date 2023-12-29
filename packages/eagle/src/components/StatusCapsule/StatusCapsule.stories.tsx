@@ -4,7 +4,7 @@ import cs from "classnames";
 import React from "react";
 
 import { StatusCapsuleColor, StatusCapsuleComponentType } from "../../spec";
-import { Stack } from "../../stories";
+import { Stack } from "../../../stories/components";
 import { Typo } from "../Typo";
 import StatusCapsule from ".";
 import { PresetColors } from "./";
