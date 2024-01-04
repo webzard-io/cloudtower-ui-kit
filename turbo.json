@@ -2,8 +2,8 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build": {
-      "outputs": ["dist/**", "antd/**"],
-      "dependsOn": ["^prebuild"]
+      "outputs": ["dist/**"],
+      "dependsOn": ["^prebuild", "^build"]
     },
     "typings": {
       "outputs": ["dist/**"],
