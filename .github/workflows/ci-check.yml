@@ -2,7 +2,7 @@ name: "CI Check"
 
 on:
   pull_request:
-    branches: ["main", "v4.1"]
+    branches: ["main", "v4.1", "v4.0"]
 
 jobs:
   test:
@@ -60,3 +60,5 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          alias-domains: | #Optional
+            v400-cloudtower-ui-kit.vercel.app
