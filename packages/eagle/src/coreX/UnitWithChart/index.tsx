@@ -10,7 +10,7 @@ import Percent from "@src/core/Percent";
 import Second from "@src/core/Second";
 import Speed from "@src/core/Speed";
 import BarChart from "@src/coreX/BarChart";
-import DonutChart from "@src/coreX/DonutChart";
+import DeprecatedDonutChart from "@src/coreX/DeprecatedDonutChart";
 import React from "react";
 
 const units = {
@@ -131,7 +131,7 @@ const UnitWithChart: React.FC<IUnitWithChartProps> = ({
         )}
       </span>
       {chartType === "donutChart" && (
-        <DonutChart
+        <DeprecatedDonutChart
           data={[
             {
               used: rawValue / total,

@@ -37,6 +37,7 @@ import React from "react";
 import AccordionCard from "../core/AccordionCard";
 import Breadcrumb from "../core/Breadcrumb";
 import DetailCard from "../core/DetailCard";
+import DonutChart from "../core/DonutChart";
 import DropdownMenu from "../core/DropdownMenu";
 import SegmentControl from "../core/SegmentControl";
 import { CircleProgress } from "../core/StepProgress";
@@ -46,7 +47,7 @@ import ChartWithTooltip, { ChartWithUnit } from "../coreX/ChartWithTooltip";
 import Counting from "../coreX/Counting";
 import CronCalendar from "../coreX/CronCalendar";
 import CronPlan from "../coreX/CronPlan";
-import DonutChart from "../coreX/DonutChart";
+import DeprecatedDonutChart from "../coreX/DeprecatedDonutChart";
 import DropdownTransition from "../coreX/DropdownTransition";
 import GoBackButton from "../coreX/GoBackButton";
 import I18nNameTag from "../coreX/I18nNameTag";
@@ -221,6 +222,7 @@ export function getAntdKit(): Kit {
     ChartWithTooltip: ChartWithTooltip,
     ChartWithUnit: ChartWithUnit,
     DonutChart: DonutChart,
+    DeprecatedDonutChart: DeprecatedDonutChart,
     UnitWithChart: UnitWithChart,
     GoBackButton: GoBackButton,
     SummaryTable: SummaryTable,

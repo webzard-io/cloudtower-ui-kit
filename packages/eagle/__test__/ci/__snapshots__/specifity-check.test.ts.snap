@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`css selectos score should not greater than 12 > pure eagle style score should below 13 > danger ealge class name 1`] = `
+exports[`css selectos score should not greater than 12 > pure eagle style score should below 13 > danger eagle class name 1`] = `
 {
   "13": [
     ".E_d1tc7lgk ul li + li",
@@ -32,13 +32,17 @@ exports[`css selectos score should not greater than 12 > pure eagle style score 
     ".E_berrcjl .breadcrumb-link",
     ".E_bsub5bw.with-description",
     ".E_c156wh19 .close",
+    ".E_c156wh19 .left",
     ".E_c156wh19 .retain",
     ".E_c156wh19 .reverse",
+    ".E_c156wh19 .right",
     ".E_c156wh19 .title",
     ".E_c167wnad .anticon",
     ".E_c18bcrac .recharts-wrapper",
     ".E_c18gxmrl:hover",
     ".E_c18gxmrl + .E_c18gxmrl",
+    ".E_c198s9j3 .ant-checkbox",
+    ".E_c198s9j3.ant-checkbox-wrapper-disabled",
     ".E_c1bus5hc .circle-child",
     ".E_c1bus5hc .circle-content",
     ".E_c1bus5hc .circle-inner",

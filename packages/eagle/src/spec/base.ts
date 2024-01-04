@@ -73,9 +73,10 @@ import React, {
 import { Draggable } from "react-beautiful-dnd";
 
 import type { CloseButtonProps } from "../core/AccordionCard";
+import { IDonutChartProps } from "../core/DonutChart";
 import { IChartWithUnitProps, ICWTProps } from "../coreX/ChartWithTooltip";
 import { DateRangePickerProps } from "../coreX/DateRangePicker/common";
-import { IDonutChartProps } from "../coreX/DonutChart";
+import { DeprecatedIDonutChartProps } from "../coreX/DeprecatedDonutChart";
 import { IUnitWithChartProps } from "../coreX/UnitWithChart";
 import { SerializableObject } from "../utils/tower";
 import { FieldRenderProps } from "./react-final-form";
@@ -662,6 +663,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   ChartWithTooltip: React.FC<ICWTProps>;
   ChartWithUnit: React.FC<IChartWithUnitProps>;
   DonutChart: React.FC<IDonutChartProps>;
+  DeprecatedDonutChart: React.FC<DeprecatedIDonutChartProps>;
   UnitWithChart: React.FC<IUnitWithChartProps>;
   GoBackButton: React.FC<GoBackButtonType>;
   CronCalendar: React.FC<CronCalendarProps>;
