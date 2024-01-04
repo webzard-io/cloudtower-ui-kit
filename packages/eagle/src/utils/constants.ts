@@ -7,3 +7,5 @@ export const DAYJS_I18N_MAP: Record<string, string> = {
   "zh-CN": "zh-cn",
   "en-US": "en",
 };
+
+export const Antd5PrefixCls = "antd5";

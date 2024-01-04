@@ -71,5 +71,7 @@
   "absolute_time": "Absolute Time",
   "empty_search_history": "No search history ",
   "date_range_picker_history_title": "Recent Search",
-  "search_relative_time_placeholder": "Search relative time"
+  "search_relative_time_placeholder": "Search relative time",
+  "select_all": "Select All",
+  "unselect_all": "Clear"
 }
