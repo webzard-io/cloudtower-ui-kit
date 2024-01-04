@@ -27,7 +27,6 @@ const Cascader: React.FC<CascaderProps> = (props) => {
   } = props;
 
   return (
-    //@ts-ignore
     <Antd5Cascader
       size={size}
       prefixCls={Antd5PrefixCls}

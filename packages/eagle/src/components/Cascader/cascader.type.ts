@@ -24,11 +24,11 @@ export type CascaderProps = Antd5CascaderProps & {
    */
   dropdownRender?: Antd5CascaderProps["dropdownRender"];
   /**
-   * 自定义空白状态时的显示内容, 默认水平垂直居中。如果需要自定义样式，可以使用 notFoundContent
+   * 新增 props： 自定义空白状态时的显示内容, 默认水平垂直居中。如果需要自定义样式，可以使用 notFoundContent
    */
   NotData?: string | React.ReactNode;
   /**
-   * 透传参数给预设的级联下拉菜单内容
+   * 新增 props： 透传参数给预设的级联下拉菜单内容
    */
   presetCascaderRenderProps?: Omit<PresetCascaderRenderProps, "menus">;
 };
