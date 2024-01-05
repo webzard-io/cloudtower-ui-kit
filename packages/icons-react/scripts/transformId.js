@@ -10,7 +10,7 @@ const transformId = (api, opts) => {
       JSXAttribute(path) {
         const valuePath = path.get("value")
         const namePath = path.get("name")
-        const names = ["id", "fill"]
+        const names = ["id", "fill", "stroke"];
 
         if (names.includes(namePath.node.name) && valuePath.node.value?.includes(RADIAL)) {
           const newValue = valuePath.node.value.replace(RADIAL, `${RADIAL}_${componentName}`);
