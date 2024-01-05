@@ -8,7 +8,6 @@
     "downlevelIteration": true,
     "disableSizeLimit": true,
     "paths": {
-      "@cloudtower/parrot": ["../parrot/src/index.ts"],
       "@src/*": ["./src/*"],
       "@stories/*": ["./stories/*"]
     }
