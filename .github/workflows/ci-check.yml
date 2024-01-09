@@ -64,6 +64,9 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          alias-domains: | #Optional
+            next-cloudtower-ui-kit.vercel.app
+
       - name: Retry Set Up Storybook
         if: failure()  # 仅在上一步失败时执行
         uses: nick-fields/retry@v2
