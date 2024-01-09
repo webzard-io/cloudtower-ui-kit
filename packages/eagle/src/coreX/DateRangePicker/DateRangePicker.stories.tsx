@@ -18,7 +18,7 @@ const Template = (props: Parameters<typeof DateRangePicker>[0]) => {
 };
 
 const meta: Meta<typeof DateRangePicker> = {
-  title: "Corex/DateRangePicker",
+  title: "CoreX/DateRangePicker",
   component: Template,
   parameters: {
     docs: {

@@ -65,7 +65,7 @@ GroupButton.story = {
 };
 
 const meta = {
-  title: "RadioGroup/Radio",
+  title: "Core/RadioGroup",
 };
 
 export default meta;

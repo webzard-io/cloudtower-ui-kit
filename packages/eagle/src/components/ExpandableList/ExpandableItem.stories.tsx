@@ -18,7 +18,7 @@ export const Template: StoryFn<typeof ExpandableItem> = (args) => {
 };
 
 const meta: Meta<typeof ExpandableItem> = {
-  title: "Expandable/Item",
+  title: "Core/Expandable List | 可展开收起列表/Item",
   render: Template,
   parameters: {
     design: {

@@ -30,7 +30,7 @@ export const Template: StoryFn<typeof ExpandableContainer> = (args) => {
 };
 
 const meta: Meta<typeof ExpandableContainer> = {
-  title: "Expandable/List",
+  title: "Core/Expandable List | 可展开收起列表",
   render: Template,
 };
 
