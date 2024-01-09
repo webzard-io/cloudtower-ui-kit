@@ -2,6 +2,7 @@ import {
   ArrowChevronDown16SecondaryIcon,
   ArrowChevronUp16SecondaryIcon,
 } from "@cloudtower/icons-react";
+import { css } from "@linaria/core";
 import React from "react";
 
 interface IProps {
@@ -15,12 +16,31 @@ interface IProps {
   extra?: React.ReactNode;
 }
 
+const Style = css`
+  height: 24px;
+  width: 24px;
+  border-radius: 6px;
+  padding: 4px;
+  &:hover {
+    background-color: $fill-outstanding-light;
+    svg {
+      path {
+        fill: blue;
+      }
+    }
+  }
+`;
+
 const ExpandIcon = (props: IProps) => {
   const { isActive } = props;
-  return isActive ? (
-    <ArrowChevronUp16SecondaryIcon />
-  ) : (
-    <ArrowChevronDown16SecondaryIcon />
+  return (
+    <div className={Style}>
+      {isActive ? (
+        <ArrowChevronUp16SecondaryIcon />
+      ) : (
+        <ArrowChevronDown16SecondaryIcon />
+      )}
+    </div>
   );
 };
 

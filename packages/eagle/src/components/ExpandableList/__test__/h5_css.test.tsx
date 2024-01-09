@@ -51,19 +51,35 @@ describe("ExpandableList h5_css", () => {
               role=button
               tabindex=0
             >
-              <svg
-                class=ant-collapse-arrow
-                fill=none
-                height=16
-                width=16
-                xmlns=http://www.w3.org/2000/svg
+              <div
+                class=
+        height: 24px;
+        width: 24px;
+        border-radius: 6px;
+        padding: 4px;
+        &:hover {
+          background-color: $fill-outstanding-light;
+          svg {
+            path {
+              fill: blue;
+            }
+          }
+        }
+      ,ant-collapse-arrow
               >
-                <path
-                  d=M3.05,6.159a.5.5,0,11.707-.707L8,9.695l4.243-4.243a.5.5,0,11.707.707l-3.89,3.89c-.349.348-.537.527-.751.597a1,1,0,01-.618,0c-.214-.07-.402-.249-.752-.598L3.05,6.159z
-                  fill=#2C3852
-                  fill-opacity=0.6
-                />
-              </svg>
+                <svg
+                  fill=none
+                  height=16
+                  width=16
+                  xmlns=http://www.w3.org/2000/svg
+                >
+                  <path
+                    d=M3.05,6.159a.5.5,0,11.707-.707L8,9.695l4.243-4.243a.5.5,0,11.707.707l-3.89,3.89c-.349.348-.537.527-.751.597a1,1,0,01-.618,0c-.214-.07-.402-.249-.752-.598L3.05,6.159z
+                    fill=#2C3852
+                    fill-opacity=0.6
+                  />
+                </svg>
+              </div>
               <div
                 class=
         display: flex;
@@ -132,19 +148,35 @@ describe("ExpandableList h5_css", () => {
               role=button
               tabindex=0
             >
-              <svg
-                class=ant-collapse-arrow
-                fill=none
-                height=16
-                width=16
-                xmlns=http://www.w3.org/2000/svg
+              <div
+                class=
+        height: 24px;
+        width: 24px;
+        border-radius: 6px;
+        padding: 4px;
+        &:hover {
+          background-color: $fill-outstanding-light;
+          svg {
+            path {
+              fill: blue;
+            }
+          }
+        }
+      ,ant-collapse-arrow
               >
-                <path
-                  d=M3.05,6.159a.5.5,0,11.707-.707L8,9.695l4.243-4.243a.5.5,0,11.707.707l-3.89,3.89c-.349.348-.537.527-.751.597a1,1,0,01-.618,0c-.214-.07-.402-.249-.752-.598L3.05,6.159z
-                  fill=#2C3852
-                  fill-opacity=0.6
-                />
-              </svg>
+                <svg
+                  fill=none
+                  height=16
+                  width=16
+                  xmlns=http://www.w3.org/2000/svg
+                >
+                  <path
+                    d=M3.05,6.159a.5.5,0,11.707-.707L8,9.695l4.243-4.243a.5.5,0,11.707.707l-3.89,3.89c-.349.348-.537.527-.751.597a1,1,0,01-.618,0c-.214-.07-.402-.249-.752-.598L3.05,6.159z
+                    fill=#2C3852
+                    fill-opacity=0.6
+                  />
+                </svg>
+              </div>
               <div
                 class=
         display: flex;
@@ -226,19 +258,35 @@ describe("ExpandableList h5_css", () => {
               role=button
               tabindex=0
             >
-              <svg
-                class=ant-collapse-arrow
-                fill=none
-                height=16
-                width=16
-                xmlns=http://www.w3.org/2000/svg
+              <div
+                class=
+        height: 24px;
+        width: 24px;
+        border-radius: 6px;
+        padding: 4px;
+        &:hover {
+          background-color: $fill-outstanding-light;
+          svg {
+            path {
+              fill: blue;
+            }
+          }
+        }
+      ,ant-collapse-arrow
               >
-                <path
-                  d=M3.05,6.159a.5.5,0,11.707-.707L8,9.695l4.243-4.243a.5.5,0,11.707.707l-3.89,3.89c-.349.348-.537.527-.751.597a1,1,0,01-.618,0c-.214-.07-.402-.249-.752-.598L3.05,6.159z
-                  fill=#2C3852
-                  fill-opacity=0.6
-                />
-              </svg>
+                <svg
+                  fill=none
+                  height=16
+                  width=16
+                  xmlns=http://www.w3.org/2000/svg
+                >
+                  <path
+                    d=M3.05,6.159a.5.5,0,11.707-.707L8,9.695l4.243-4.243a.5.5,0,11.707.707l-3.89,3.89c-.349.348-.537.527-.751.597a1,1,0,01-.618,0c-.214-.07-.402-.249-.752-.598L3.05,6.159z
+                    fill=#2C3852
+                    fill-opacity=0.6
+                  />
+                </svg>
+              </div>
               <div
                 class=
         display: flex;
