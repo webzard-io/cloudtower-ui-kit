@@ -44,7 +44,7 @@ export const CustomHeader: StoryFn = () => (
 );
 
 const meta: Meta<typeof CustomHeader> = {
-  title: "Expandable/CustomHeader",
+  title: "Core/Expandable List | 可展开收起列表/CustomHeader",
   render: CustomHeader,
 };
 

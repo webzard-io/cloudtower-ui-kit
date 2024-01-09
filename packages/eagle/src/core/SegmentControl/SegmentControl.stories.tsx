@@ -6,7 +6,7 @@ import { Icon } from "../../components";
 import SegmentControl from "./";
 
 const meta: Meta<typeof SegmentControl> = {
-  title: "core/SegmentControl | 分段控件",
+  title: "Core/SegmentControl | 分段控件",
   component: SegmentControl,
   parameters: {
     docs: {
