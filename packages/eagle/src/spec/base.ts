@@ -364,7 +364,7 @@ export type ModalProps = Omit<AntdModalProps, "okType"> & {
     | boolean;
 };
 
-type SearchInputProps = Omit<InputProps, "onChange"> & {
+export type SearchInputProps = Omit<InputProps, "onChange"> & {
   onChange: (value: string) => void;
   debounceWait?: number;
 };

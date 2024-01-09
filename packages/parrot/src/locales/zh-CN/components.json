@@ -71,5 +71,7 @@
   "absolute_time": "绝对时间",
   "empty_search_history": "无历史查询",
   "date_range_picker_history_title": "最近查询",
-  "search_relative_time_placeholder": "搜索相对时间"
+  "search_relative_time_placeholder": "搜索相对时间",
+  "select_all": "全选",
+  "unselect_all": "取消全选"
 }

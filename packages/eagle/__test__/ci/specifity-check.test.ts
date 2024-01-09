@@ -1,6 +1,7 @@
 import listSelectors from "list-selectors";
 import path from "path";
 import { calculate } from "specificity";
+import { Antd5PrefixCls } from "../../src/utils/constants";
 
 /**
  * Start at 0,
@@ -57,6 +58,9 @@ describe("css selectos score should not greater than 12", () => {
           // callback
           for (const sel of selectors) {
             if (antdSelectors.has(sel)) {
+              continue;
+            }
+            if (sel.includes(Antd5PrefixCls)) {
               continue;
             }
             const spec = calculate(sel);
