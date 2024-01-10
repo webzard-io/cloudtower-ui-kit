@@ -86,7 +86,7 @@ const CronPlanHeader = css`
     color: rgba(129, 138, 153, 0.6);
   }
 
-  .left {
+  div.left {
     flex: 1;
     display: flex;
     overflow: hidden;
@@ -101,7 +101,7 @@ const CronPlanHeader = css`
     }
   }
 
-  .right {
+  div.right {
     display: flex;
     align-items: center;
   }
