@@ -78,6 +78,7 @@ export {
   pushModal,
   UIKitStore,
 } from "./store";
+export * from "./styles/token";
 export * from "./UIKitProvider";
 export { default as UIKitProvider } from "./UIKitProvider";
 export * from "@cloudtower/parrot";
