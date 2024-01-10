@@ -1,5 +1,7 @@
 import linaria from "@linaria/rollup";
+import alias from "@rollup/plugin-alias";
 import image from "@rollup/plugin-image";
+import resolve from "@rollup/plugin-node-resolve";
 import path from "path";
 import postcss from "postcss";
 import url from "postcss-url";
@@ -9,11 +11,25 @@ import nodePolyfills from "rollup-plugin-polyfill-node";
 import scss from "rollup-plugin-scss";
 import { visualizer } from "rollup-plugin-visualizer";
 
+const projectRootDir = path.resolve(__dirname);
+
 const config = defineConfig([
   {
     input: ["src/index.ts"],
     plugins: [
       nodePolyfills(),
+      alias({
+        customResolver: resolve({ extensions: [".tsx", ".ts"] }),
+        entries: Object.entries({
+          "@src/*": ["./src/*"],
+        }).map(([alias, value]) => ({
+          find: new RegExp(`${alias.replace("/*", "")}`),
+          replacement: path.resolve(
+            projectRootDir,
+            `${value[0].replace("/*", "")}`
+          ),
+        })),
+      }),
       esbuild.default({
         include: /\.[jt]sx?$/,
         exclude: /node_modules/,
@@ -74,6 +90,18 @@ const config = defineConfig([
     input: ["src/index.ts"],
     plugins: [
       nodePolyfills(),
+      alias({
+        customResolver: resolve({ extensions: [".tsx", ".ts"] }),
+        entries: Object.entries({
+          "@src/*": ["./src/*"],
+        }).map(([alias, value]) => ({
+          find: new RegExp(`${alias.replace("/*", "")}`),
+          replacement: path.resolve(
+            projectRootDir,
+            `${value[0].replace("/*", "")}`
+          ),
+        })),
+      }),
       esbuild.default({
         include: /\.[jt]sx?$/,
         exclude: /node_modules/,
@@ -93,7 +121,7 @@ const config = defineConfig([
       linaria.default({
         sourceMap: false,
         preprocessor: "none",
-        classNameSlug: (hash, title) => `E_${hash}`
+        classNameSlug: (hash, title) => `E_${hash}`,
       }),
       scss({
         include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
