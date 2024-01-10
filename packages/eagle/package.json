@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/eagle",
-  "version": "0.27.37-dry",
+  "version": "0.27.37-dry-1",
   "main": "dist/umd/index.js",
   "module": "./dist/esm/index.js",
   "types": "dist/src/index.d.ts",
@@ -28,8 +28,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@cloudtower/icons-react": "0.27.37-dry",
-    "@cloudtower/parrot": "0.27.37-dry",
+    "@cloudtower/icons-react": "0.27.37-dry-1",
+    "@cloudtower/parrot": "0.27.37-dry-1",
     "@cloudtower/rc-notification": "^4.6.1",
     "@linaria/core": "^4.2.2",
     "@linaria/react": "^4.3.0",
@@ -52,7 +52,7 @@
     "@babel/preset-env": "^7.22.15",
     "@babel/preset-react": "^7.22.15",
     "@babel/preset-typescript": "^7.22.15",
-    "@cloudtower/icons": "0.27.37-dry",
+    "@cloudtower/icons": "0.27.37-dry-1",
     "@linaria/babel-preset": "4.4.3",
     "@linaria/rollup": "^4.1.5",
     "@linaria/vite": "^4.2.5",
