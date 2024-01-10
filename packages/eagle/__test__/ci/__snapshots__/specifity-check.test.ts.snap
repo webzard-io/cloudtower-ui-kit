@@ -171,6 +171,7 @@ exports[`css selectos score should not greater than 12 > pure eagle style score 
     ".E_s34f1qb.ant-switch-checked",
     ".E_s34f1qb.ant-switch-large",
     ".E_s34f1qb.ant-switch-small",
+    ".E_s6rjqv7:hover",
     ".E_sa410aw.danger",
     ".E_sa410aw.error",
     ".E_sa410aw.info",
@@ -259,6 +260,7 @@ exports[`css selectos score should not greater than 12 > pure eagle style score 
     ".E_ipbxcfl .input-time input::placeholder",
     ".E_r1f0aqcc.ant-radio-button-wrapper > span + span",
     ".E_r5hl59d .past-time-list li + li",
+    ".E_s6rjqv7:hover svg path",
   ],
   "30": [
     ".E_a15s9m0d .time-input-main .time-input-container",
