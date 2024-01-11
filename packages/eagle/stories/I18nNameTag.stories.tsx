@@ -1,13 +1,12 @@
 import { initParrotI18n } from "@cloudtower/parrot";
+import I18nNameTag from "@src/coreX/I18nNameTag";
 import { Meta } from "@storybook/react";
 import React from "react";
-
-import I18nNameTag from "../src/coreX/I18nNameTag";
-const story: Meta<typeof I18nNameTag> = {
+const meta: Meta<typeof I18nNameTag> = {
   title: "coreX/I18nNameTag",
   component: I18nNameTag,
 };
-export default story;
+export default meta;
 
 initParrotI18n({
   resources: {
@@ -20,19 +19,26 @@ initParrotI18n({
   },
 });
 
-export const Default = ({ name }: { name: string }) => {
-  return (
-    <>
-      <I18nNameTag name={name} i18nKey="test.highlight" />
-      <div style={{ width: "230px" }}>
-        <I18nNameTag
-          name="longlonglonglonglonglonglonglonglonglonglong"
-          i18nKey="test.longHighlightText"
-        />
-      </div>
-    </>
-  );
+export const Default = {
+  name: "基本用例",
+  render: ({ name }: { name: string }) => {
+    return <I18nNameTag name={name} i18nKey="test.highlight" />;
+  },
+  args: {
+    name: "Label",
+  },
 };
-Default.args = {
-  name: "Label",
+
+export const LongText = {
+  name: "高亮文字过长",
+  render: ({ name }: { name: string }) => {
+    return (
+      <div style={{ width: "230px" }}>
+        <I18nNameTag name={name} i18nKey="test.longHighlightText" />
+      </div>
+    );
+  },
+  args: {
+    name: "longlonglonglonglonglonglonglonglonglonglong",
+  },
 };

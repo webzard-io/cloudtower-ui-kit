@@ -1,9 +1,8 @@
 import { css } from "@linaria/core";
+import Tag from "@src/components/Tag";
+import { ParrotTrans } from "@src/core/ParrotTrans";
+import { I18nNameTagType } from "@src/spec";
 import React from "react";
-
-import { ParrotTrans } from "../../core/ParrotTrans";
-import { I18nNameTagType } from "../../spec";
-import Tag from "../../components/Tag";
 
 const tagStyle = css`
   margin: 0 2px;
