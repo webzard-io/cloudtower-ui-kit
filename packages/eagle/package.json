@@ -16,16 +16,15 @@
   },
   "scripts": {
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
-    "copyVariables": "cp src/styles/common/variables.scss dist/variables.scss",
     "prebuild": "node tools/prebuild-antd-less.js",
-    "postbuild": "yarn copyVariables",
     "test": "vitest",
     "test:ci": "vitest run",
     "coverage": "vitest run --coverage",
     "typings": "tsc --emitDeclarationOnly",
     "prestorybook": "cd ../.. && yarn turbo run build",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "sync:color": "node tools/fetch-figma-color.js"
   },
   "dependencies": {
     "@cloudtower/icons-react": "0.27.38",
@@ -101,6 +100,7 @@
     "readline": "^1.3.0",
     "resize-observer-polyfill": "^1.5.1",
     "rollup": "^3.12.1",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-esbuild": "5.0.0",
     "rollup-plugin-polyfill-node": "^0.12.0",
     "rollup-plugin-scss": "^3.0.0",

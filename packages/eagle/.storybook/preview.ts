@@ -28,7 +28,9 @@ const preview: Preview = {
       },
     },
     docs: {
-      toc: true,
+      toc: {
+        headingSelector: "h2, h3",
+      },
     },
     controls: {
       matchers: {

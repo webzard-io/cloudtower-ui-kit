@@ -28,6 +28,32 @@
 - 提交名称注意名称合法性，目前是会将 `x-y-z` 转换为 `XZY` 格式的组件。注意名称中不要以数字开头和带上 `-` 之外的标点符号。
 - 目前 icon 只支持 SVG 格式，非 SVG 格式的 icon 目前需要在自己的 repo 中通过 `require('demo.png')` 的方式进行使用
 
+### 如何新增组件
+
+请阅读 [公共组件指南](https://docs.google.com/document/d/1RbsiPYzOi7JJ-quMrgGpIX61hn31xxNws0hrgrBl094/edit#heading=h.wfhi0u4x2tzo), 明确一下相关组件的划分位置。
+
+### 如何补充组件的 storybook
+
+TBD
+
+目前可参考 SegmentControl / Cascader 等实现。 建议请先阅读 storybook 官方文档， 参考好的例子实现。
+
+### 如何新增相关 token 变量
+
+可以参考 color 处理。增加相关 token 后，请提供相关的 storybook 示例
+
+#### 新增 ts 变量
+
+在 src/styles/token 文件夹下，新增相关的 ts 变量文件， 并且在 src/styles/index.ts 中进行 export
+
+#### 新增 css 变量
+
+在 src/styles/token 文件夹下， 新增相关 css 变量文件，并且在 src/styles/token.ts 中进行 export
+
+#### 新增 scss 变量
+
+在 src/styles/token 文件夹下。新增相关的 scss 变量文件，并且修改 rollup.config.js 文件， 查找到 color.scss 一行，按照 color 的处理，追加新增的 scss 变量内容。
+
 ## 建议的 VSCode 配置
 
 **.vscode/extensions.json**
@@ -68,117 +94,3 @@ husky 被用于格式化代码和检查 eslint 错误。
 然而，更推荐使用 vscode configuration，避免存在失效的情况。
 
 如果正在使用 windows 可以参考这片文章 https://typicode.github.io/husky/#/?id=yarn-on-windows
-
-## 包目录预览
-
-```
-└── packages
-    ├── eagle
-    │   ├── __test__
-    │   ├── src
-    │   │   ├── UIKitProvider
-    │   │   ├── components
-    │   │   │   ├── Alert
-    │   │   │   ├── Arch
-    │   │   │   ├── Badge
-    │   │   │   ├── BaseIcon
-    │   │   │   ├── Bit
-    │   │   │   ├── BitPerSecond
-    │   │   │   ├── Bps
-    │   │   │   ├── Button
-    │   │   │   ├── ButtonGroup
-    │   │   │   ├── Byte
-    │   │   │   ├── Checkbox
-    │   │   │   │   └── __test__
-    │   │   │   ├── Empty
-    │   │   │   ├── ErrorBoundary
-    │   │   │   ├── FailedLoad
-    │   │   │   ├── Fields
-    │   │   │   │   ├── FieldsBoolean
-    │   │   │   │   │   └── __test__
-    │   │   │   │   ├── FieldsDateTime
-    │   │   │   │   ├── FieldsDateTimeRange
-    │   │   │   │   │   └── __test__
-    │   │   │   │   ├── FieldsEnum
-    │   │   │   │   │   └── __test__
-    │   │   │   │   ├── FieldsFloat
-    │   │   │   │   │   └── __test__
-    │   │   │   │   ├── FieldsInt
-    │   │   │   │   │   └── __test__
-    │   │   │   │   ├── FieldsInteger
-    │   │   │   │   │   └── __test__
-    │   │   │   │   ├── FieldsString
-    │   │   │   │   │   └── __test__
-    │   │   │   │   ├── FieldsTextArea
-    │   │   │   │   └── FieldsTimePicker
-    │   │   │   │       └── __test__
-    │   │   │   ├── Frequency
-    │   │   │   ├── Icon
-    │   │   │   ├── Input
-    │   │   │   │   └── __test__
-    │   │   │   ├── InputGroup
-    │   │   │   │   └── __test__
-    │   │   │   ├── InputInteger
-    │   │   │   │   └── __test__
-    │   │   │   ├── InputNumber
-    │   │   │   ├── InputTagItem
-    │   │   │   ├── KitStoreProvider
-    │   │   │   ├── Loading
-    │   │   │   ├── Metric
-    │   │   │   ├── Modal
-    │   │   │   ├── ModalStack
-    │   │   │   ├── Overflow
-    │   │   │   ├── Pagination
-    │   │   │   ├── Percent
-    │   │   │   ├── Progress
-    │   │   │   ├── Radio
-    │   │   │   ├── SearchInput
-    │   │   │   │   └── __test__
-    │   │   │   ├── Second
-    │   │   │   ├── Select
-    │   │   │   ├── SimplePagination
-    │   │   │   │   └── __test__
-    │   │   │   ├── Space
-    │   │   │   ├── Speed
-    │   │   │   ├── Steps
-    │   │   │   ├── Styled
-    │   │   │   ├── Switch
-    │   │   │   ├── Table
-    │   │   │   │   └── __test__
-    │   │   │   ├── TextArea
-    │   │   │   ├── TimePicker
-    │   │   │   ├── TimeZoneSelect
-    │   │   │   ├── Tooltip
-    │   │   │   ├── Truncate
-    │   │   │   ├── Typo
-    │   │   │   └── images
-    │   │   ├── hooks
-    │   │   ├── spec
-    │   │   ├── store
-    │   │   ├── stories
-    │   │   ├── styles
-    │   │   │   ├── common
-    │   │   │   ├── component
-    │   │   │   └── fonts
-    │   │   └── utils
-    │   │       └── __test__
-    │   └── tools
-    │       └── templates
-    ├── icons
-    │   ├── src
-    ├── icons-react
-    │   ├── dist
-    └── parrot
-        ├── src
-        │   └── locales
-        │       ├── en-US
-        │       └── zh-CN
-        └── tools
-            └── templates
-```
-
-- 生成树指令
-
-  ```
-  tree -d -I "node_modules|dist"
-  ```
