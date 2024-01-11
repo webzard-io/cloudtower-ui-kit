@@ -76,7 +76,7 @@ import ExpandableItem from "./ExpandableList/ExpandableItem";
 import fields from "./Fields";
 import Form from "./Form";
 import Frequency from "./Frequency";
-import I18nNameTag from "./I18nNameTag";
+import I18nNameTag from "../coreX/I18nNameTag";
 import Input from "./Input";
 import InputGroup from "./InputGroup";
 import Link from "./Link";

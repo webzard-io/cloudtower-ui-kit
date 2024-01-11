@@ -55,6 +55,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@cloudtower/parrot": path.resolve(__dirname, "../parrot/src/index.ts"),
+      "@src": path.resolve(__dirname, "./src"),
     },
   },
 });
