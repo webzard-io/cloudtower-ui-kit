@@ -3,7 +3,7 @@ import React from "react";
 
 import { ParrotTrans } from "../../core/ParrotTrans";
 import { I18nNameTagType } from "../../spec";
-import Tag from "../Tag";
+import Tag from "../../components/Tag";
 
 const tagStyle = css`
   margin: 0 2px;

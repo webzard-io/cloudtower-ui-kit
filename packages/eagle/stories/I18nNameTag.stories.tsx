@@ -2,9 +2,9 @@ import { initParrotI18n } from "@cloudtower/parrot";
 import { Meta } from "@storybook/react";
 import React from "react";
 
-import I18nNameTag from ".";
+import I18nNameTag from "../src/coreX/I18nNameTag";
 const story: Meta<typeof I18nNameTag> = {
-  title: "I18nNameTag",
+  title: "coreX/I18nNameTag",
   component: I18nNameTag,
 };
 export default story;
