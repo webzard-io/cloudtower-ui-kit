@@ -77,7 +77,7 @@ const config = defineConfig([
       copy({
         targets: [
           {
-            src: "demo.scss",
+            src: "src/styles/common/variables.scss",
             dest: "dist",
             transform: async (content) => {
               const variablesContent = [

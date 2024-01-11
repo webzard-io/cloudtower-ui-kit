@@ -1,0 +1,85 @@
+import { Meta, ColorPalette, ColorItem, Guidelines } from '@storybook/blocks';
+import { Color } from '@src/styles/token';
+import { get } from "lodash";
+
+
+<Meta title="Tokens / Colors | 颜色变量" />
+
+## 如何使用
+
+### scss variables
+eagle 内部调整了打包配置，会将新的同步过来的 token 和原来的 variables 进行合并，如果使用 scss 变量的话，可以继续沿用之前的 scss 方式，在代码中使用变量即可。
+
+```typescript
+// 在你的打包配置中，加载好 variables.scss, 具体可以参考 island 的 craco 配置文件
+// 配置好了之后
+
+const customStyle = css`
+  background: $chart-blue-blue-1;
+`
+```
+
+### ts
+提供了 ts 常量，方便在 css-in-js 中使用
+```typescript
+import { Color } from "@cloudtower/eagle"
+import { css } from "@linaria/css"
+
+const customStyle = css`
+  background: ${Color.red["red-1"]}
+`
+
+```
+
+### css variables
+提供了 css variables， 加载相关文件即可使用
+```typescript
+// in your src/index.tsx file
+
+import "@cloudtower/eagle/dist/token.css"
+
+const customStyle = css`
+  background: var(--text-neutral-primary);
+`
+```
+
+## 颜色变量
+### Basic Color 基本颜色
+<ColorPalette>
+  {
+    ['white', 'gray', 'blue', 'yellow', 'green', 'purple'].map(color => (
+        <ColorItem
+        title={`Color.${color}`}
+        colors={get(Color, color)}
+      />
+    )
+    )
+  }
+</ColorPalette>
+
+### Text Color 文本颜色
+<ColorPalette>
+  {
+    ['text.neutral', 'text.colorful', 'fill.neutral', 'fill.purple', 'fill.outstanding', 'fill.notice','fill.positive', 'fill.neutral', 'stroke.neutral', 'stroke.outstanding', 'pagebackground', 'dim', 'link'
+    ].map(color => (
+        <ColorItem
+        title={`Color.${color}`}
+        colors={get(Color, color)}
+      />
+    )
+    )
+  }
+</ColorPalette>
+
+### Chart Color 图表颜色
+<ColorPalette>
+  {
+    ["blue", "green", "purple", "red", "yellow"].map(color => (
+        <ColorItem
+        title={`Color.chart.${color}`}
+        colors={get(Color, ['chart', color])}
+      />
+
+    ))
+  }
+</ColorPalette>
