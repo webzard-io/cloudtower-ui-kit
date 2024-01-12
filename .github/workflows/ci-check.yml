@@ -57,14 +57,10 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - name: Set Up Storybook Staging
-        uses: Wandalen/wretry.action@master
+        uses: amondnet/vercel-action@v20
         id: vercel-action-staging
         with:
-          action: amondnet/vercel-action@v20
-          attempt_limit: 3
-          with: |
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            vercel-token: ${{ secrets.VERCEL_TOKEN }}
-            vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-            vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
