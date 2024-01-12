@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/parrot",
-  "version": "0.27.38",
+  "version": "0.27.40-dry",
   "description": "i18n modules for cloudtower sparrow and eagle",
   "keywords": [
     "i18n",
