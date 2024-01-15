@@ -19,7 +19,7 @@
   right: -4px;
   top: 0;
   width: 8px;
-  z-index: 9;
+  z-index: $table-drag-index;
   height: 100%;
   cursor: col-resize;
 }
@@ -32,6 +32,7 @@
     .no-scroll-bar {
       th.cell__action_ {
         right: 0 !important;
+        z-index: $table-action-column-index;
       }
       th.ant-table-cell-scrollbar {
         display: none;
