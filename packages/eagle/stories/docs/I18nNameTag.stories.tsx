@@ -3,7 +3,7 @@ import I18nNameTag from "@src/coreX/I18nNameTag";
 import { Meta } from "@storybook/react";
 import React from "react";
 const meta: Meta<typeof I18nNameTag> = {
-  title: "coreX/I18nNameTag",
+  title: "CoreX/I18nNameTag",
   component: I18nNameTag,
 };
 export default meta;

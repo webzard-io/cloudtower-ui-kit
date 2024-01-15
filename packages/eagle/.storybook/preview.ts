@@ -24,7 +24,7 @@ const preview: Preview = {
     actions: { argTypesRegex: "^on[A-Z].*" },
     options: {
       storySort: {
-        order: ["Core", "CoreX", "@cloudtower", "*"],
+        order: ["Core", "CoreX", "Tokens", "@cloudtower", "*"],
       },
     },
     docs: {
