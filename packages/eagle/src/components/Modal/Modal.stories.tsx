@@ -1,13 +1,12 @@
+import Button from "@src/components/Button";
+import KitStoreProvider from "@src/components/KitStoreProvider";
+import Modal from "@src/components/Modal";
+import ModalStack from "@src/components/ModalStack";
+import { ModalWrapper } from "@src/components/Styled";
+import { ModalProps, WizardSteps } from "@src/spec";
+import { pushModal } from "@src/store";
 import { Meta } from "@storybook/react";
 import React, { useState } from "react";
-
-import { ModalProps, WizardSteps } from "../../spec";
-import { pushModal } from "../../store";
-import Button from "../Button";
-import KitStoreProvider from "../KitStoreProvider";
-import ModalStack from "../ModalStack";
-import { ModalWrapper } from "../Styled";
-import Modal from ".";
 
 const ImmersiveModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   return (

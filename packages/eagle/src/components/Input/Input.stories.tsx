@@ -1,12 +1,11 @@
+import Checkbox from "@src/components/Checkbox";
+import Input from "@src/components/Input";
+import { LeftEndInputStyle, RightEndInputStyle } from "@src/components/Styled";
+import TextArea from "@src/components/TextArea";
+import { Typo } from "@src/components/Typo";
 import { Col, Row as AntdRow } from "antd";
 import cs from "classnames";
 import React, { Fragment } from "react";
-
-import Checkbox from "../Checkbox";
-import { LeftEndInputStyle, RightEndInputStyle } from "../Styled";
-import TextArea from "../TextArea";
-import { Typo } from "../Typo";
-import Input from ".";
 
 const Info: React.FC = ({ children }) => (
   <div

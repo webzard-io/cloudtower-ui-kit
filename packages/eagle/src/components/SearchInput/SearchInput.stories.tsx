@@ -1,7 +1,6 @@
+import SearchInput from "@src/components/SearchInput";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { useState } from "react";
-
-import SearchInput from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import React, { useState } from "react";
+
 import FieldsEnum from ".";
 
 const story: Meta<typeof FieldsEnum> = {

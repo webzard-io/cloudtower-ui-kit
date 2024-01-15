@@ -1,9 +1,9 @@
 import { ClockIcon, CloseIcon } from "@cloudtower/icons-react";
 import { ParrotLngs } from "@cloudtower/parrot";
+import { css, cx } from "@linaria/core";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
 import { i18n as Ii18n } from "i18next";
-import { css, cx } from "@linaria/core";
 import _ from "lodash";
 import moment from "moment";
 import React, { useEffect, useMemo, useState } from "react";
@@ -197,7 +197,7 @@ export const stringifyPlan = (
   daily: DailyState,
   weekly: WeeklyState,
   monthly: MonthlyState,
-  i18n: Ii18n,
+  i18n: Ii18n
 ) => {
   const isEn = i18n.language === ParrotLngs.en;
   const mark = isEn ? " , " : "、";
@@ -337,7 +337,7 @@ type WeeklyState = {
   time: moment.Moment;
 };
 const WEEK_DAYS = (
-  t: UseTranslationResponse<"translation", undefined>["t"],
+  t: UseTranslationResponse<"translation", undefined>["t"]
 ) => [
   { value: 1, text: t("common.monday") },
   { value: 2, text: t("common.tuesday") },
@@ -350,7 +350,7 @@ const WEEK_DAYS = (
 
 // 每周一，二，三，四，五
 const WEEK_DAYS_MAP = (
-  t: UseTranslationResponse<"translation", undefined>["t"],
+  t: UseTranslationResponse<"translation", undefined>["t"]
 ) =>
   WEEK_DAYS(t).reduce<Record<number, string>>((prev, cur) => {
     prev[cur.value] = cur.text[1];
@@ -358,7 +358,7 @@ const WEEK_DAYS_MAP = (
   }, {});
 // every monday, tuesday, wednesday, thursday
 const EN_WEEK_DAYS_MAP = (
-  t: UseTranslationResponse<"translation", undefined>["t"],
+  t: UseTranslationResponse<"translation", undefined>["t"]
 ) =>
   WEEK_DAYS(t).reduce<Record<number, string>>((prev, cur) => {
     prev[cur.value] = cur.text;
@@ -398,7 +398,7 @@ const Weekly: React.FC<{
               className={cx(
                 "week-day-option",
                 active && "active",
-                i18n.language === ParrotLngs.en && "en-text",
+                i18n.language === ParrotLngs.en && "en-text"
               )}
               type="default"
               key={d.value}
@@ -525,7 +525,7 @@ const CronPlan: React.FC<CronPlanProps> = (props) => {
   };
 
   const [mode, setMode] = useState<CronMode>(
-    getMode(cronTime["source"] as string),
+    getMode(cronTime["source"] as string)
   );
 
   const source = cronTime["source"] as string;
@@ -564,7 +564,7 @@ const CronPlan: React.FC<CronPlanProps> = (props) => {
         newExpression = toWeeklyString(
           weekly.step,
           dayjs(weekly.time.format()),
-          weekly.days,
+          weekly.days
         );
         if (weekly.days.length === 0) {
           empty = true;
@@ -574,7 +574,7 @@ const CronPlan: React.FC<CronPlanProps> = (props) => {
         newExpression = toMonthlyString(
           monthly.step,
           dayjs(monthly.time.format()),
-          monthly.days,
+          monthly.days
         );
         if (monthly.days.length === 0) {
           empty = true;

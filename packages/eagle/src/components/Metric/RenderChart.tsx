@@ -1,3 +1,12 @@
+import { useKitDispatch } from "@src/components/KitStoreProvider";
+import { convertDataStruct } from "@src/components/Metric/metric";
+import MetricActions from "@src/components/Metric/MetricActions";
+import MetricLegend from "@src/components/Metric/MetricLegend";
+import { MetricLegendTabStyle } from "@src/components/Metric/styled";
+import TooltipFormatter from "@src/components/Metric/TooltipFormatter";
+import { GraphType, IMetric } from "@src/components/Metric/type";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { ChartActions } from "@src/store";
 import cs from "classnames";
 import dayjs from "dayjs";
 import React, { useCallback, useMemo, useState } from "react";
@@ -17,16 +26,6 @@ import {
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent";
 import { AxisDomain } from "recharts/types/util/types";
-
-import useParrotTranslation from "../../hooks/useParrotTranslation";
-import { ChartActions } from "../../store";
-import { useKitDispatch } from "../KitStoreProvider";
-import { convertDataStruct } from "./metric";
-import MetricActions from "./MetricActions";
-import MetricLegend from "./MetricLegend";
-import { MetricLegendTabStyle } from "./styled";
-import TooltipFormatter from "./TooltipFormatter";
-import { GraphType, IMetric } from "./type";
 
 export interface IChartProps<
   TValue extends ValueType = string,

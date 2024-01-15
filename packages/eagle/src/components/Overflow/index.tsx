@@ -1,8 +1,7 @@
 import { css } from "@linaria/core";
+import { useElementResize } from "@src/hooks";
 import cs from "classnames";
 import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
-
-import { useElementResize } from "../../hooks";
 
 const OverflowWrapper = css`
   display: inline-block;

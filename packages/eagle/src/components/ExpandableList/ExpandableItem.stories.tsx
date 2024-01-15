@@ -1,10 +1,8 @@
+import { CustomHeader } from "@src/components/ExpandableList/CustomHeader.stories";
+import ExpandableContainer from "@src/components/ExpandableList/ExpandableContainer";
+import ExpandableItem from "@src/components/ExpandableList/ExpandableItem";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import React from "react";
-
-import { CustomHeader } from "./CustomHeader.stories";
-import ExpandableContainer from "./ExpandableContainer";
-import ExpandableItem from "./ExpandableItem";
-
 export const Template: StoryFn<typeof ExpandableItem> = (args) => {
   return (
     <div style={{ padding: "20px", background: "#EDF0F7" }}>

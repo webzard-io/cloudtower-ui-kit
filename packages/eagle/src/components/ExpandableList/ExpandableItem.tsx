@@ -1,10 +1,9 @@
 import { css } from "@linaria/core";
+import ExpandIcon from "@src/components/ExpandableList/ExpandIcon";
+import RoundedOrder from "@src/components/ExpandableList/RoundOrder";
 import { Collapse } from "antd";
 import classNames from "classnames";
 import React, { PropsWithChildren, useMemo, useState } from "react";
-
-import ExpandIcon from "./ExpandIcon";
-import RoundedOrder from "./RoundOrder";
 
 const CollapseStyle = css`
   .ant-collapse-item {
@@ -58,7 +57,7 @@ const ExpandableItem = (props: PropsWithChildren<IProps>) => {
   }, [defaultActive, disableExpand]);
 
   const [activeKey, setActiveKey] = useState<string[] | string>(
-    showExpandOnDisable ? ["expandPanelKey"] : [],
+    showExpandOnDisable ? ["expandPanelKey"] : []
   );
 
   return (

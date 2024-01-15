@@ -1,9 +1,7 @@
 import { css } from "@linaria/core";
+import Switch from "@src/components/Switch";
 import { Space } from "antd";
 import React, { useState } from "react";
-
-import Switch from "./";
-
 const Page = css`
   padding: 20px;
 `;

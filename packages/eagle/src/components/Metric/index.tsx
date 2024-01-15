@@ -1,12 +1,11 @@
 import { parrotI18n } from "@cloudtower/parrot";
+import ErrorBoundary from "@src/components/ErrorBoundary";
+import Pointer from "@src/components/Metric/Pointer";
+import RenderChart, { IChartProps } from "@src/components/Metric/RenderChart";
+import { MetricWrapper } from "@src/components/Metric/styled";
+import { TimeUnit } from "@src/components/Metric/type";
 import cs from "classnames";
 import React, { useEffect, useRef, useState } from "react";
-
-import ErrorBoundary from "../ErrorBoundary";
-import Pointer from "./Pointer";
-import RenderChart, { IChartProps } from "./RenderChart";
-import { MetricWrapper } from "./styled";
-import { TimeUnit } from "./type";
 
 export type MetricProps = {
   height?: number;

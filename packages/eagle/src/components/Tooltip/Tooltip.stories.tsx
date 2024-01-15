@@ -1,8 +1,6 @@
+import Tooltip from "@src/components/Tooltip";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-
-import Tooltip from ".";
-
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Tooltip",

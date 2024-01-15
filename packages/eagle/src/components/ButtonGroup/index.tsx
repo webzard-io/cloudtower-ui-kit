@@ -1,11 +1,9 @@
 import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
+import BaseButton from "@src/components/Button";
+import Tooltip from "@src/components/Tooltip";
+import { ButtonGroupType } from "@src/spec";
 import React from "react";
-
-import { ButtonGroupType } from "../../spec";
-import BaseButton from "../Button";
-import Tooltip from "../Tooltip";
-
 export const ButtonStyle = css`
   padding: 4px 11px;
 `;

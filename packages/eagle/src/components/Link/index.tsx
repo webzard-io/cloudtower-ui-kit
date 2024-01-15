@@ -1,9 +1,8 @@
 import { css } from "@linaria/core";
+import Button from "@src/components/Button";
+import { LinkComponentType } from "@src/spec";
 import cs from "classnames";
 import React from "react";
-
-import { LinkComponentType } from "../../spec";
-import Button from "../Button";
 
 const LinkStyle = css`
   @at-root {
@@ -63,7 +62,7 @@ const Link: LinkComponentType = React.forwardRef(
         type="link"
       />
     );
-  },
+  }
 );
 
 export default Link;

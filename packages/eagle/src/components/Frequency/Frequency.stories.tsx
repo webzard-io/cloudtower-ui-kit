@@ -1,8 +1,6 @@
+import Frequency from "@src/components/Frequency";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-
-import Frequency from ".";
-
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Frequency",

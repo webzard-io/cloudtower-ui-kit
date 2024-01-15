@@ -1,18 +1,17 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import dayjs from "dayjs";
-import React from "react";
-import { Payload } from "recharts/types/component/DefaultTooltipContent";
-
-import Metric from ".";
+import Metric from "@src/components/Metric";
 import {
   filterOverlappingMetric,
   getXAxisDomain,
   tickFormatter,
   xaxisCal,
-} from "./metric";
-import mockMetric from "./mockMetric";
-import mockMetric2 from "./mockMetric2";
-import { DateRange, GraphType } from "./type";
+} from "@src/components/Metric/metric";
+import mockMetric from "@src/components/Metric/mockMetric";
+import mockMetric2 from "@src/components/Metric/mockMetric2";
+import { DateRange, GraphType } from "@src/components/Metric/type";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import dayjs from "dayjs";
+import React from "react";
+import { Payload } from "recharts/types/component/DefaultTooltipContent";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

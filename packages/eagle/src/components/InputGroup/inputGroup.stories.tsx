@@ -1,7 +1,7 @@
+import InputGroup from "@src/components/InputGroup";
+import InputInteger from "@src/components/InputInteger";
+import Select from "@src/components/Select";
 import React from "react";
-import InputGroup from "./";
-import InputInteger from "../InputInteger";
-import Select from "../Select";
 
 export const Simple = () => {
   return (

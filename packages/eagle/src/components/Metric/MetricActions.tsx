@@ -1,6 +1,5 @@
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import React from "react";
-
-import useParrotTranslation from "../../hooks/useParrotTranslation";
 
 const MetricActions: React.FC<{
   info: { current: string; max: string };

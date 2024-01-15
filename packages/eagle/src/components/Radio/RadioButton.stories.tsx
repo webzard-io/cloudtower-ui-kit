@@ -1,7 +1,6 @@
+import { RadioButton, RadioGroup } from "@src/components/Radio";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import React from "react";
-
-import { RadioButton, RadioGroup } from "./";
 
 const Template: StoryFn<typeof RadioGroup> = (args) => {
   return (

@@ -1,9 +1,8 @@
 import { parrotI18n } from "@cloudtower/parrot";
+import UIKitProvider, { useUIKit } from "@src/UIKitProvider";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Button } from "antd";
 import React, { ReactNode } from "react";
-
-import UIKitProvider, { useUIKit } from "../../UIKitProvider";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -78,7 +77,7 @@ const TestMessage = () => {
               .fill(undefined)
               .forEach((v, index) => {
                 UIKit.message.info(
-                  parrotI18n.t("common.error_message") + index,
+                  parrotI18n.t("common.error_message") + index
                 );
               });
           }, 100);

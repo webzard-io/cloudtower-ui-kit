@@ -1,6 +1,5 @@
+import Time from "@src/components/Time";
 import React from "react";
-import Time from "./";
-
 export const Simple = () => {
   return <Time date={new Date("2023-10-1")} />;
 };

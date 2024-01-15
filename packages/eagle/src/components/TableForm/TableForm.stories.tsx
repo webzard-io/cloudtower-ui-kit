@@ -1,18 +1,8 @@
 import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
-import { Checkbox, Form, Input, Select, Space } from "antd";
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-
-import Button from "../Button";
-import { Typo } from "../Typo";
-import TableForm from ".";
+import Button from "@src/components/Button";
+import TableForm from "@src/components/TableForm";
 import {
   DataType,
   DeletableConfigurations,
@@ -22,8 +12,16 @@ import {
   TableFormProps,
   TableFormRowConfiguration,
   ValidateTriggerType,
-} from "./types";
-
+} from "@src/components/TableForm/types";
+import { Typo } from "@src/components/Typo";
+import { Checkbox, Form, Input, Select, Space } from "antd";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 const Title: React.FC = ({ children }) => (
   <div style={{ marginTop: "16px" }} className={Typo.Display.d2_bold_title}>
     {children}
@@ -106,7 +104,7 @@ const selectOptions = [
 ];
 
 const getColumnsForValidation = (
-  type: ValidateTriggerType,
+  type: ValidateTriggerType
 ): TableFormColumn[] => [
   {
     title: "这是一个专门做校验的 tableForm",
@@ -261,7 +259,7 @@ export const Basic = () => {
         return false;
       },
     }),
-    [],
+    []
   );
 
   const rowValidationForValidationForm: TableFormProps["rowValidator"] =
@@ -285,7 +283,7 @@ export const Basic = () => {
       //     ? "this is a special desc for the first row"
       //     : null,
     }),
-    [rowValidationForValidationForm],
+    [rowValidationForValidationForm]
   );
   return (
     <div style={{ padding: "20px" }}>

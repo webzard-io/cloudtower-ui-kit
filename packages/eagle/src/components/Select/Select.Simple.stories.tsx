@@ -1,8 +1,7 @@
+import Select from "@src/components/Select";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { Select as AntdSelect } from "antd";
 import React from "react";
-
-import Select from ".";
 
 const options = [
   { key: "a11", value: "a11a" },

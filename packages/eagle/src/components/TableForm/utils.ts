@@ -1,5 +1,4 @@
-import { TableFormColumn } from "./types";
-
+import { TableFormColumn } from "@src/components/TableForm/types";
 export function increaseLastNumber(str: string, num: number): string {
   const lastNumberMatch = str.match(/(\d+)$/);
 

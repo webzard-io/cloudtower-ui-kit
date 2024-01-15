@@ -1,13 +1,12 @@
-import React, { Fragment } from "react";
-
-import { LoadingComponentType } from "../../spec";
-import { FullView } from "../Styled";
 import {
   LoadingLine1,
   LoadingLine2,
   LoadingLine3,
   LoadingWrapper,
-} from "./style";
+} from "@src/components/Loading/style";
+import { FullView } from "@src/components/Styled";
+import { LoadingComponentType } from "@src/spec";
+import React, { Fragment } from "react";
 
 const Loading: LoadingComponentType = ({ fullView = true }) => {
   const Wrapper = fullView ? FullView : Fragment;

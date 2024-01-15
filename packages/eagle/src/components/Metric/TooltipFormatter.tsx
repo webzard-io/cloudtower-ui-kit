@@ -1,10 +1,9 @@
+import { ColorBlock } from "@src/components/Metric/MetricLegend";
+import { TooltipColumn, TooltipWrapper } from "@src/components/Metric/styled";
+import { ILegend } from "@src/components/Metric/type";
 import React from "react";
 import { TooltipProps } from "recharts";
 import { Payload } from "recharts/types/component/DefaultTooltipContent";
-
-import { ColorBlock } from "./MetricLegend";
-import { TooltipColumn, TooltipWrapper } from "./styled";
-import { ILegend } from "./type";
 
 const TooltipFormatter: React.FC<
   TooltipProps<number, string> & {

@@ -1,9 +1,8 @@
 import { css } from "@linaria/core";
+import BaseIcon, { SrcType } from "@src/components/BaseIcon";
 import cs from "classnames";
 import _ from "lodash";
 import React, { useMemo, useState } from "react";
-
-import BaseIcon, { SrcType } from "../BaseIcon";
 
 export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
   src: SrcType;
@@ -98,7 +97,7 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
         IconWrapper,
         "icon-wrapper",
         className,
-        isRotate && "is-rotate",
+        isRotate && "is-rotate"
       )}
       suffixIconSrc={suffixIconSrc}
       height={iconHeight}

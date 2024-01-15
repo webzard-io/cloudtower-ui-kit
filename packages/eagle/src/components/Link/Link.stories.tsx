@@ -3,14 +3,13 @@ import {
   Placeholder16Icon,
 } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
+import Link from "@src/components/Link";
+import { Typo } from "@src/components/Typo";
+import { LinkComponentType } from "@src/spec";
+import { Stack } from "@stories/components";
 import { Meta, StoryObj } from "@storybook/react";
 import cs from "classnames";
 import React from "react";
-
-import { LinkComponentType } from "../../spec";
-import { Stack } from "../../../stories/components";
-import { Typo } from "../Typo";
-import Link from ".";
 
 const Title: React.FC<{ className?: string }> = ({ children, className }) => (
   <div
@@ -28,7 +27,7 @@ const Description: React.FC = ({ children }) => (
       Typo.Label.l2_regular,
       css`
         color: $text-light-secondary;
-      `,
+      `
     )}
   >
     {children}

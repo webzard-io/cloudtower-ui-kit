@@ -1,7 +1,6 @@
+import { MessageApi } from "@src/components/message";
 import { ArgsProps, ConfigOnClose, MessageType } from "antd/lib/message";
 import { ReactNode } from "react";
-
-import { MessageApi } from "../message";
 
 export function makeUUID(length = 25) {
   let result = "";

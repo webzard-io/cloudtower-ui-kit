@@ -1,9 +1,7 @@
 import { css } from "@linaria/core";
+import Tooltip from "@src/components/Tooltip";
 import cs from "classnames";
 import React from "react";
-
-import Tooltip from "../Tooltip";
-
 const Inline = css`
   display: inline-block;
 `;

@@ -1,7 +1,6 @@
+import SimplePagination from "@src/components/SimplePagination";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import React, { useState } from "react";
-
-import SimplePagination from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 

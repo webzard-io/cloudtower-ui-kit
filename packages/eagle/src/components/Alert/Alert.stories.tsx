@@ -1,10 +1,8 @@
 import { css } from "@linaria/core";
+import Alert from "@src/components/Alert";
+import { Typo } from "@src/components/Typo";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-
-import { Typo } from "../Typo";
-import Alert from ".";
-
 export default {
   title: "Alert",
   component: Alert,

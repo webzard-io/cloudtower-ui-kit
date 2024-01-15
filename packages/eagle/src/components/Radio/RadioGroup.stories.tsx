@@ -1,8 +1,7 @@
 import { css } from "@linaria/core";
+import Radio, { RadioButton, RadioGroup } from "@src/components/Radio";
 import { Space } from "antd";
 import React from "react";
-
-import Radio, { RadioButton, RadioGroup } from "./";
 
 const Page = css`
   padding: 20px;

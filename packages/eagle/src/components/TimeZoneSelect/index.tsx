@@ -1,16 +1,14 @@
 import { CheckmarkDoneSuccessCorrect16BlueIcon } from "@cloudtower/icons-react";
 import { css, cx } from "@linaria/core";
+import Icon from "@src/components/Icon";
+import Select from "@src/components/Select";
+import { Typo } from "@src/components/Typo";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { ITimeZoneSelectProps } from "@src/spec/type";
 import { Select as AntdSelect, Tag } from "antd";
 import { groupBy, sortBy, toPairs, uniqBy } from "lodash";
 import React, { useCallback, useEffect, useState } from "react";
 import TimeZones from "timezones.json";
-
-import useParrotTranslation from "../../hooks/useParrotTranslation";
-import { ITimeZoneSelectProps } from "../../spec/type";
-import Icon from "../Icon";
-import Select from "../Select";
-import { Typo } from "../Typo";
-
 type TimeZoneType = {
   value: string;
   abbr: string;
@@ -30,13 +28,13 @@ const allTimeZones = uniqBy(
     });
     return sum.concat(utcZones);
   }, [] as TimeZoneType[]),
-  "value",
+  "value"
 );
 
 const timeZoneGroups: [string, TimeZoneType[]][] = (() => {
   const groupedTimeZones = groupBy(
     allTimeZones,
-    (tz) => tz.value.split("/")[0],
+    (tz) => tz.value.split("/")[0]
   );
   delete groupedTimeZones["CST6CDT"];
   delete groupedTimeZones["MST7MDT"];
@@ -46,7 +44,7 @@ const timeZoneGroups: [string, TimeZoneType[]][] = (() => {
     toPairs(groupedTimeZones).map(([key, tzs]) => {
       return [key, sortBy(tzs, "value")];
     }),
-    "0",
+    "0"
   );
 })();
 
@@ -103,7 +101,7 @@ const OptionWrapperStyle = cx(
       }
     }
   `,
-  Typo.Label.l3_regular,
+  Typo.Label.l3_regular
 );
 
 const OptionFirstLineStyle = cx(
@@ -119,7 +117,7 @@ const OptionFirstLineStyle = cx(
       text-overflow: ellipsis;
     }
   `,
-  Typo.Label.l3_regular,
+  Typo.Label.l3_regular
 );
 
 const OptionSecondLineStyle = cx(
@@ -131,7 +129,7 @@ const OptionSecondLineStyle = cx(
     line-height: 18px;
     margin-top: 2px;
   `,
-  Typo.Label.l4_regular,
+  Typo.Label.l4_regular
 );
 
 const TagStyle = css`
@@ -176,7 +174,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
         onChange(val);
       }
     },
-    [onChange],
+    [onChange]
   );
 
   useEffect(() => {
@@ -230,7 +228,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
         // Always show placeholder no matter search what
         // and hide placeholder when no timezone is matched
         const hasSome = allTimeZones.some((tz) =>
-          tz.value.toLowerCase().includes(keyword.toLowerCase()),
+          tz.value.toLowerCase().includes(keyword.toLowerCase())
         );
         if (!hasSome) return false;
         if (option?.value === "_placeholder_") {
@@ -246,7 +244,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
       <AntdSelect.Option
         value={BrowserTimeValue}
         label={`${t("components.browser_time_zone")} (${getUTCOffsetText(
-          browserTz.offset,
+          browserTz.offset
         )})`}
         className={OptionWrapperStyle}
       >

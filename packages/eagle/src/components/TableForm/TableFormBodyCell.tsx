@@ -1,11 +1,13 @@
 import { cx } from "@linaria/core";
+import { ColumnBodyImpls } from "@src/components/TableForm/Columns";
+import { FormItem } from "@src/components/TableForm/Columns/FormItem";
+import {
+  ColumnBodyCellProps,
+  DataType,
+  ValidateTriggerType,
+} from "@src/components/TableForm/types";
+import { Typo } from "@src/components/Typo";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-
-import { Typo } from "../Typo";
-import { ColumnBodyImpls } from "./Columns";
-import { FormItem } from "./Columns/FormItem";
-import { ColumnBodyCellProps, DataType, ValidateTriggerType } from "./types";
-
 export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
   const {
     column,
@@ -42,7 +44,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
               msg: error,
               isError: true,
             }
-          : undefined,
+          : undefined
       );
   }, [error, isTouched]);
 
@@ -69,7 +71,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
         return;
       }
     },
-    [data, rowIndex, column, getRowValidateResult],
+    [data, rowIndex, column, getRowValidateResult]
   );
 
   useEffect(() => {
@@ -81,7 +83,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
 
   const _onChange = (value: unknown, data: DataType[]) => {
     const newData = data.map((row, i) =>
-      i === rowIndex ? { ...row, [column.key]: value } : row,
+      i === rowIndex ? { ...row, [column.key]: value } : row
     );
     onChange?.(newData, rowIndex, column.key);
     if (

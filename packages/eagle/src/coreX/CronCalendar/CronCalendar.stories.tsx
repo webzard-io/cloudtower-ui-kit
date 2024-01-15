@@ -1,6 +1,7 @@
 import "moment/locale/zh-cn";
 
 import { css } from "@linaria/core";
+import { Stack } from "@stories/components";
 import type { Meta } from "@storybook/react";
 import { ConfigProvider } from "antd";
 import locale from "antd/es/locale/zh_CN";
@@ -10,7 +11,6 @@ import React from "react";
 
 import Button from "../../components/Button";
 import { CronCalendarProps, CronPlanState } from "../../spec";
-import { Stack } from "../../../stories/components";
 import { makeUUID } from "../../utils";
 import CronPlan from "../CronPlan";
 import CronCalendar from ".";

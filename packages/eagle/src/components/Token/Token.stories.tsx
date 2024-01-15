@@ -1,13 +1,11 @@
 import { Placeholder16Icon } from "@cloudtower/icons-react";
+import Token, { PresetColors } from "@src/components/Token";
+import BaseTruncate from "@src/components/Truncate";
+import { Typo } from "@src/components/Typo";
+import { TokenColor, TokenComponentType } from "@src/spec";
 import { Meta, StoryObj } from "@storybook/react";
 import { Space } from "antd";
 import React from "react";
-
-import { TokenColor, TokenComponentType } from "../../spec";
-import BaseTruncate from "../Truncate";
-import { Typo } from "../Typo";
-import Token, { PresetColors } from ".";
-
 const story: Meta<TokenComponentType> = {
   title: "Token",
   component: Token,

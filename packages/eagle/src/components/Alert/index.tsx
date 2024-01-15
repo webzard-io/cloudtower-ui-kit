@@ -1,12 +1,10 @@
 import { css } from "@linaria/core";
+import Icon from "@src/components/Icon";
+import { AlertComponentType } from "@src/spec";
+import { getAlertIcon } from "@src/utils";
 import { Alert as AntdAlert } from "antd";
 import cs from "classnames";
 import React from "react";
-
-import { AlertComponentType } from "../../spec";
-import { getAlertIcon } from "../../utils";
-import Icon from "../Icon";
-
 const MessageWrapperStyle = css`
   display: flex;
   justify-content: space-between;

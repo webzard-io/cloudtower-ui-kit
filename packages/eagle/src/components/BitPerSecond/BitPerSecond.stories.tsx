@@ -1,8 +1,6 @@
+import BitPerSecond from "@src/components/BitPerSecond";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-
-import BitPerSecond from ".";
-
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "BitPerSecond",

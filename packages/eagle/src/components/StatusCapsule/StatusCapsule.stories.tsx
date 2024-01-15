@@ -1,13 +1,13 @@
 import { css } from "@linaria/core";
+import StatusCapsule from "@src/components/StatusCapsule";
+import { PresetColors } from "@src/components/StatusCapsule";
+import { Typo } from "@src/components/Typo";
+import { StatusCapsuleColor, StatusCapsuleComponentType } from "@src/spec";
+import { Stack } from "@stories/components";
 import { Meta, StoryObj } from "@storybook/react";
 import cs from "classnames";
 import React from "react";
 
-import { StatusCapsuleColor, StatusCapsuleComponentType } from "../../spec";
-import { Stack } from "../../../stories/components";
-import { Typo } from "../Typo";
-import StatusCapsule from ".";
-import { PresetColors } from "./";
 const Title: React.FC<{ classNames?: string }> = ({ children, classNames }) => (
   <div
     style={{ marginTop: "16px", marginBottom: "16px" }}

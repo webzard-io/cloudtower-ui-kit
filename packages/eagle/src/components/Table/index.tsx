@@ -1,13 +1,11 @@
 import { css, cx } from "@linaria/core";
+import Loading from "@src/components/Loading";
+import { useTableBodyHasScrollBar } from "@src/components/Table/common";
+import { ColumnTitle, TableLoading } from "@src/components/Table/TableWidget";
+import { TableProps } from "@src/spec";
 import { Table as BaseTable } from "antd";
 import cs from "classnames";
 import React, { useMemo, useRef } from "react";
-
-import { TableProps } from "../../spec";
-import Loading from "../Loading";
-import { useTableBodyHasScrollBar } from "./common";
-import { ColumnTitle, TableLoading } from "./TableWidget";
-
 const TableContainerStyle = css`
   height: 100%;
 `;
@@ -479,7 +477,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
         }
         return _column;
       }),
-    [columns],
+    [columns]
   );
 
   return (
@@ -487,7 +485,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
       className={cx(
         TableContainerStyle,
         "table-container",
-        !hasScrollBard && "no-scroll-bar",
+        !hasScrollBard && "no-scroll-bar"
       )}
     >
       <BaseTable
@@ -495,7 +493,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
           tableStyleCover,
           !dataSource?.length && "empty-table",
           initLoading && "table-init-loading",
-          rowSelection && "has-selection",
+          rowSelection && "has-selection"
         )}
         bordered={bordered}
         loading={{

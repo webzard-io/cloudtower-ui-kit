@@ -1,7 +1,6 @@
+import Second from "@src/components/Second";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-
-import Second from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

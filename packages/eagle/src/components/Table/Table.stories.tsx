@@ -4,13 +4,11 @@ import {
   SettingsGear16GradientGrayIcon,
 } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
+import Button from "@src/components/Button";
+import Icon from "@src/components/Icon";
+import Table, { ColumnTitle } from "@src/components/Table";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { useState } from "react";
-
-import Button from "../Button";
-import Icon from "../Icon";
-import Table, { ColumnTitle } from ".";
-
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Table",
@@ -92,7 +90,7 @@ const data: DataType[] = [
 const Template: ComponentStory<typeof Table<DataType>> = (args) => {
   const { columns, dataSource } = args;
   const [selectionType, setSelectionType] = useState<"checkbox" | "radio">(
-    "checkbox",
+    "checkbox"
   );
 
   return (
@@ -104,7 +102,7 @@ const Template: ComponentStory<typeof Table<DataType>> = (args) => {
           console.log(
             `selectedRowKeys: ${selectedRowKeys}`,
             "selectedRows: ",
-            selectedRows,
+            selectedRows
           );
         },
         getCheckboxProps: (record) => {
@@ -159,7 +157,7 @@ SortCustomTitle.args = {
 };
 
 export const OnRowPropCustom: ComponentStory<typeof Table<DataType>> = (
-  args,
+  args
 ) => {
   const {
     onRow = (record: DataType, index?: number) => {

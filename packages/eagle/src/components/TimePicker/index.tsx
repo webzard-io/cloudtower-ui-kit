@@ -1,11 +1,9 @@
+import { InputStyle } from "@src/components/Styled";
+import { Typo } from "@src/components/Typo";
 import { TimePicker as AntdTimePicker } from "antd";
 import { TimePickerProps } from "antd/lib/time-picker";
 import cs from "classnames";
 import React from "react";
-
-import { InputStyle } from "../Styled";
-import { Typo } from "../Typo";
-
 const TimePicker: React.FC<TimePickerProps & { error?: boolean }> = ({
   className,
   error,

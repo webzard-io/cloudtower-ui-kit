@@ -5,14 +5,12 @@ import {
   PlusAddCreateNew24GradientGrayIcon,
   VmIcon24BlueIcon,
 } from "@cloudtower/icons-react";
+import Icon from "@src/components/Icon";
+import arrowChevronDownSmall16Blue from "@src/components/Icon/images/arrowChevronDownSmall16Blue.svg";
+import loading24GradientBlue from "@src/components/Icon/images/loading24GradientBlue.svg";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Row } from "antd";
-import _ from "lodash";
 import React from "react";
-
-import Icon from ".";
-import arrowChevronDownSmall16Blue from "./images/arrowChevronDownSmall16Blue.svg";
-import loading24GradientBlue from "./images/loading24GradientBlue.svg";
 
 const IconStories = (props: any) => {
   return (

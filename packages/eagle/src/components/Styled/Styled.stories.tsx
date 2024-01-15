@@ -1,4 +1,4 @@
-import React from "react";
+import Radio from "@src/components/Radio";
 import {
   CannotOperationInfo,
   ContentWrapper,
@@ -6,9 +6,8 @@ import {
   LightDesc,
   RadioDesc,
   radioStyle,
-} from ".";
-import Radio from "../Radio";
-
+} from "@src/components/Styled";
+import React from "react";
 const meta = {
   title: "Styled",
 };

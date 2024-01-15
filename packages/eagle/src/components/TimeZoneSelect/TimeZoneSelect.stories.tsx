@@ -1,8 +1,6 @@
+import TimeZoneSelect from "@src/components/TimeZoneSelect";
 import { Divider, Space } from "antd";
 import React, { useState } from "react";
-
-import TimeZoneSelect from ".";
-
 export const TimeZoneSelectStory = () => {
   const [value, setValue] = useState<string>();
   const [value2, setValue2] = useState<string>();

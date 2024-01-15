@@ -1,10 +1,9 @@
+import { CheckboxStyle } from "@src/components/Checkbox/checkbox.style";
+import { Typo } from "@src/components/Typo";
 import { Checkbox as AntdCheckbox } from "antd";
 import { CheckboxProps } from "antd/lib/checkbox";
 import cs from "classnames";
 import React, { ReactNode } from "react";
-import { CheckboxStyle } from "./checkbox.style";
-import { Typo } from "../Typo";
-
 const Checkbox: React.FC<
   CheckboxProps & {
     description?: ReactNode;

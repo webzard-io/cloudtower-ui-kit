@@ -1,14 +1,13 @@
-import FieldsBoolean from "./FieldsBoolean";
-import FieldsDateTime from "./FieldsDateTime";
-import FieldsDateTimeRange from "./FieldsDateTimeRange";
-import FieldsEnum from "./FieldsEnum";
-import FieldsFloat from "./FieldsFloat";
-import FieldsInt from "./FieldsInt";
-import FieldsInteger from "./FieldsInteger";
-import FieldsString from "./FieldsString";
-import FieldsTextArea from "./FieldsTextArea";
-import FieldsTimePicker from "./FieldsTimePicker";
-
+import FieldsBoolean from "@src/components/Fields/FieldsBoolean";
+import FieldsDateTime from "@src/components/Fields/FieldsDateTime";
+import FieldsDateTimeRange from "@src/components/Fields/FieldsDateTimeRange";
+import FieldsEnum from "@src/components/Fields/FieldsEnum";
+import FieldsFloat from "@src/components/Fields/FieldsFloat";
+import FieldsInt from "@src/components/Fields/FieldsInt";
+import FieldsInteger from "@src/components/Fields/FieldsInteger";
+import FieldsString from "@src/components/Fields/FieldsString";
+import FieldsTextArea from "@src/components/Fields/FieldsTextArea";
+import FieldsTimePicker from "@src/components/Fields/FieldsTimePicker";
 const fields = {
   Int: FieldsInt,
   Integer: FieldsInteger,
@@ -21,5 +20,4 @@ const fields = {
   TextArea: FieldsTextArea,
   DateTimeRange: FieldsDateTimeRange,
 };
-
 export default fields;

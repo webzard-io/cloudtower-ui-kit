@@ -1,22 +1,21 @@
 import { HierarchyTriangleRight16PrimaryIcon } from "@cloudtower/icons-react";
-import { Cascader as Antd5Cascader } from "antd5";
-import cls from "classnames";
-import React from "react";
-import { Antd5PrefixCls } from "@src/utils/constants";
-import Icon from "../Icon";
 import {
   CascaderDropdown,
   CascaderInputStyle,
   CascaderLargeDropdown,
   CascaderSmallDropdown,
-} from "./cascader.style";
-import { CascaderProps } from "./cascader.type";
+} from "@src/components/Cascader/cascader.style";
+import { CascaderProps } from "@src/components/Cascader/cascader.type";
 import {
+  defaultTagRender,
   NotDataContent,
   PresetCascaderRender,
-  defaultTagRender,
-} from "./cascader.widget";
-
+} from "@src/components/Cascader/cascader.widget";
+import Icon from "@src/components/Icon";
+import { Antd5PrefixCls } from "@src/utils/constants";
+import { Cascader as Antd5Cascader } from "antd5";
+import cls from "classnames";
+import React from "react";
 const Cascader: React.FC<CascaderProps> = (props) => {
   const {
     size = "middle",
@@ -37,7 +36,7 @@ const Cascader: React.FC<CascaderProps> = (props) => {
           [CascaderSmallDropdown]: size === "small",
         },
         dropdownClassName,
-        CascaderDropdown,
+        CascaderDropdown
       )}
       dropdownRender={(menus) => (
         <PresetCascaderRender menus={menus} {...presetCascaderRenderProps} />

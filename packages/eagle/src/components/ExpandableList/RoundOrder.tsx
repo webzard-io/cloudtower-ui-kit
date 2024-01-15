@@ -1,8 +1,6 @@
 import { css } from "@linaria/core";
-import classNames from "classnames";
+import { Typo } from "@src/components/Typo";
 import React, { PropsWithChildren } from "react";
-import { Typo } from "../Typo";
-
 const RoundedOrderStyle = css`
   display: flex;
   align-items: center;

@@ -1,6 +1,7 @@
+import Pagination from "@src/components/Pagination";
 import { useState } from "react";
-import Pagination from "./";
 import React from "react";
+
 const meta = {
   title: "Pagination",
 };

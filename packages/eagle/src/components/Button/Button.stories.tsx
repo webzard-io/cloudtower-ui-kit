@@ -4,16 +4,14 @@ import {
   PlusAddCreateNew16BoldOntintIcon,
 } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
+import Button from "@src/components/Button";
+import Icon from "@src/components/Icon";
+import { Typo } from "@src/components/Typo";
+import { ButtonProps } from "@src/spec";
 import { Space } from "antd";
 import cs from "classnames";
 import _ from "lodash";
 import React from "react";
-
-import { ButtonProps } from "../../spec";
-import Icon from "../Icon";
-import { Typo } from "../Typo";
-import Button from ".";
-
 const Title: React.FC = ({ children }) => (
   <div style={{ marginTop: "16px" }} className={Typo.Display.d2_bold_title}>
     {children}

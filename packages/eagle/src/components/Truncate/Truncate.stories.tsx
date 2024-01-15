@@ -1,8 +1,6 @@
+import Truncate from "@src/components/Truncate";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-
-import Truncate from ".";
-
 export default {
   title: "Truncate",
   component: Truncate,

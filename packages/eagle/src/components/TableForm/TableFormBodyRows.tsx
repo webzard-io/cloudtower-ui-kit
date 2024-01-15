@@ -5,6 +5,19 @@ import {
   XmarkRemove16SecondaryIcon,
 } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
+import Icon from "@src/components/Icon";
+import { DraggableHandleWrapper } from "@src/components/TableForm/style";
+import { TableFormBodyCell } from "@src/components/TableForm/TableFormBodyCell";
+import {
+  DataType,
+  TableFormProps,
+  TableFormRowsProps,
+  ValidateTriggerType,
+} from "@src/components/TableForm/types";
+import { moveItemInArray } from "@src/components/TableForm/utils";
+import Tooltip from "@src/components/Tooltip";
+import { Typo } from "@src/components/Typo";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { List as AntdList } from "antd";
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import {
@@ -15,20 +28,6 @@ import {
   Droppable,
   OnDragEndResponder,
 } from "react-beautiful-dnd";
-
-import useParrotTranslation from "../../hooks/useParrotTranslation";
-import Icon from "../Icon";
-import Tooltip from "../Tooltip";
-import { Typo } from "../Typo";
-import { DraggableHandleWrapper } from "./style";
-import { TableFormBodyCell } from "./TableFormBodyCell";
-import {
-  DataType,
-  TableFormProps,
-  TableFormRowsProps,
-  ValidateTriggerType,
-} from "./types";
-import { moveItemInArray } from "./utils";
 
 const TableFormRowDeleteAction: React.FC<
   Pick<TableFormProps, "deleteConfig" | "row"> & {
@@ -130,7 +129,7 @@ const TableFormRow: React.FC<
       setRowError(result);
       return result;
     },
-    [rowValidator, rowIndex, rowLevelError],
+    [rowValidator, rowIndex, rowLevelError]
   );
 
   const Cells = columns.map((col) => {
@@ -165,7 +164,7 @@ const TableFormRow: React.FC<
           />
         </DraggableHandleWrapper>
       ) : null,
-    [draggable, provided],
+    [draggable, provided]
   );
 
   const RowDescription = useMemo(() => {
@@ -195,7 +194,7 @@ const TableFormRow: React.FC<
       data-testid="eagle-table-form-row-for-test"
       className={cx(
         "eagle-table-form-row",
-        snapshot?.isDragging && "isDragging",
+        snapshot?.isDragging && "isDragging"
       )}
       actions={
         rowDeletable
@@ -234,7 +233,7 @@ const TableFormBodyRows: React.FC<TableFormRowsProps> = memo((props) => {
       const newData = moveItemInArray(data, fromIndex, toIndex);
       updateData(newData);
     },
-    [data, updateData],
+    [data, updateData]
   );
 
   return draggable ? (

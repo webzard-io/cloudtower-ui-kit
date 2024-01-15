@@ -1,12 +1,10 @@
 import { ArrowRightGrayIcon } from "@cloudtower/icons-react";
+import CardBody from "@src/components/Card/CardBody";
+import CardTitle from "@src/components/Card/CardTitle";
+import CardWrapper from "@src/components/Card/CardWrapper";
+import Icon from "@src/components/Icon";
 import cs from "classnames";
 import React, { PropsWithChildren, useState } from "react";
-
-import Icon from "../Icon";
-import CardBody from "./CardBody";
-import CardTitle from "./CardTitle";
-import CardWrapper from "./CardWrapper";
-
 export type CardProps = {
   collapsible?: boolean;
   defaultOpen?: boolean;

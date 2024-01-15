@@ -1,13 +1,16 @@
+import { PresetColors as BasePresetColors } from "@src/components/Tag/const";
+import SplitTag from "@src/components/Tag/SplitTag";
+import {
+  IconStyle,
+  NameTagStyle,
+  Size,
+  TagStyle,
+} from "@src/components/Tag/style";
+import { Typo } from "@src/components/Typo";
+import { NameTagType, TagColor, TagComponentType } from "@src/spec";
 import { Tag as AntdTag } from "antd";
 import cs from "classnames";
 import React from "react";
-
-import { NameTagType, TagColor, TagComponentType } from "../../spec";
-import { Typo } from "../Typo";
-import { PresetColors as BasePresetColors } from "./const";
-import SplitTag from "./SplitTag";
-import { IconStyle, NameTagStyle, Size, TagStyle } from "./style";
-
 export const PresetColors: TagColor[] = [
   ...BasePresetColors,
   "red-ontint",

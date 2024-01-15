@@ -1,14 +1,12 @@
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
+import Button from "@src/components/Button";
+import Steps from "@src/components/Steps";
+import { IStepsProps } from "@src/spec";
+import { Container, Title } from "@stories/components";
 import { Meta, StoryObj } from "@storybook/react";
 import { Space as AntdSpace } from "antd";
 import React, { useState } from "react";
-
-import { IStepsProps } from "../../spec";
-import { Container, Title } from "../../../stories/components";
-import Button from "../Button";
-import Steps from "./";
-
 const story: Meta<IStepsProps> = {
   title: "Steps",
   component: Steps,

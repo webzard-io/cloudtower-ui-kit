@@ -1,11 +1,9 @@
+import { InputStyle } from "@src/components/Styled";
+import { Typo } from "@src/components/Typo";
+import { TextAreaProps } from "@src/spec";
 import { Input as AntdInput } from "antd";
 import cs from "classnames";
 import React from "react";
-
-import { TextAreaProps } from "../../spec";
-import { InputStyle } from "../Styled";
-import { Typo } from "../Typo";
-
 const TextArea: React.FC<TextAreaProps> = ({
   className,
   error,

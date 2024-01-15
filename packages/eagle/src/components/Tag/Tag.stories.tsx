@@ -6,15 +6,13 @@ import {
   Placeholder16Icon,
 } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
+import Tag, { PresetColors as TagPresetColors } from "@src/components/Tag";
+import { PresetColors } from "@src/components/Tag/const";
+import BaseTruncate from "@src/components/Truncate";
+import { SplitTagComponentType, TagColor, TagComponentType } from "@src/spec";
+import { Container, Stack, Title } from "@stories/components";
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-
-import { SplitTagComponentType, TagColor, TagComponentType } from "../../spec";
-import { Container, Stack, Title } from "../../../stories/components";
-import BaseTruncate from "../Truncate";
-import Tag, { PresetColors as TagPresetColors } from ".";
-import { PresetColors } from "./const";
-
 const story: Meta<TagComponentType> = {
   title: "Tag",
   component: Tag,

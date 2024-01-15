@@ -1,11 +1,9 @@
-import React from "react";
 import { cx } from "@linaria/core";
-
-import { UnitFn } from "../../spec";
-import isEmpty from "../../utils/isEmpty";
-import { formatBits } from "../../utils/tower";
-import Empty from "../Empty";
-
+import Empty from "@src/components/Empty";
+import { UnitFn } from "@src/spec";
+import isEmpty from "@src/utils/isEmpty";
+import { formatBits } from "@src/utils/tower";
+import React from "react";
 const Bit: UnitFn = ({
   rawValue,
   decimals,

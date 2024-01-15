@@ -1,18 +1,21 @@
 import { DoubleRightOutlined } from "@ant-design/icons";
-import { Menu } from "antd";
-import { Dropdown as AntdDropdown } from "antd";
-import cs from "classnames";
-import React from "react";
-
-import { ExtraOverflow } from "../Overflow";
-import Truncate from "../Truncate";
 import {
   ColorBlockStyle,
   ExtraResource,
   LegendItemStyle,
   LegendStyle,
-} from "./styled";
-import { ILegend, IMetricData, IMetricStream } from "./type";
+} from "@src/components/Metric/styled";
+import {
+  ILegend,
+  IMetricData,
+  IMetricStream,
+} from "@src/components/Metric/type";
+import { ExtraOverflow } from "@src/components/Overflow";
+import Truncate from "@src/components/Truncate";
+import { Menu } from "antd";
+import { Dropdown as AntdDropdown } from "antd";
+import cs from "classnames";
+import React from "react";
 
 export const ColorBlock: React.FC<{
   background?: string;

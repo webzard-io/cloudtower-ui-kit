@@ -1,13 +1,12 @@
 import { Loading8GradientBlueIcon } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
+import Icon from "@src/components/Icon";
+import { Typo } from "@src/components/Typo";
+import { StatusCapsuleColor, StatusCapsuleComponentType } from "@src/spec";
 import { Tag as AntdTag } from "antd";
 import cs from "classnames";
 import React from "react";
-
-import { StatusCapsuleColor, StatusCapsuleComponentType } from "../../spec";
-import Icon from "../Icon";
-import { Typo } from "../Typo";
 
 export const PresetColors: StatusCapsuleColor[] = [
   "blue",
@@ -145,7 +144,7 @@ const StatusCapsule: StatusCapsuleComponentType = ({
           [`ant-tag-${computedColor}`]: PresetColors.includes(computedColor),
           "tag-hover": hoverable,
           "off-white": offWhiteMode,
-        },
+        }
       )}
       closable={false}
       color={computedColor === "gray" ? undefined : computedColor}

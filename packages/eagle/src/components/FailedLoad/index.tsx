@@ -1,9 +1,8 @@
 import { css } from "@linaria/core";
+import Button from "@src/components/Button";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import cs from "classnames";
 import React from "react";
-
-import useParrotTranslation from "../../hooks/useParrotTranslation";
-import Button from "../Button";
 
 const FailedLoadStyle = css`
   width: 100%;

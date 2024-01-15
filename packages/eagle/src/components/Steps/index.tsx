@@ -1,19 +1,17 @@
 import { CheckmarkDoneSuccessCorrect16SecondaryIcon } from "@cloudtower/icons-react";
-import { Steps as AntdSteps } from "antd";
-import { StepProps } from "antd/lib/steps";
-import cs from "classnames";
-import React, { useLayoutEffect, useRef, useState } from "react";
-
-import { IStepsProps } from "../../spec";
-import Tooltip from "../Tooltip";
 import {
   HorizontalStepContentStyle,
   HorizontalStyle,
   StepsStyle,
   VerticalStepContentStyle,
   VerticalStyle,
-} from "./style";
-
+} from "@src/components/Steps/style";
+import Tooltip from "@src/components/Tooltip";
+import { IStepsProps } from "@src/spec";
+import { Steps as AntdSteps } from "antd";
+import { StepProps } from "antd/lib/steps";
+import cs from "classnames";
+import React, { useLayoutEffect, useRef, useState } from "react";
 type StepContentProps = {
   current: number;
   step: StepProps;
@@ -79,7 +77,7 @@ const Steps: React.FC<IStepsProps> = (props) => {
       className={cs(
         containerClassname,
         StepsStyle,
-        isVerticalMode ? VerticalStyle : HorizontalStyle,
+        isVerticalMode ? VerticalStyle : HorizontalStyle
       )}
     >
       <AntdSteps
@@ -100,7 +98,7 @@ const Steps: React.FC<IStepsProps> = (props) => {
                 }
                 className={cs(
                   step.className,
-                  isPreviewMode ? "preview-mode" : "",
+                  isPreviewMode ? "preview-mode" : ""
                 )}
                 title={
                   <StepTitle

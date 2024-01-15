@@ -1,9 +1,9 @@
 import { render } from "@testing-library/react";
+import { Space } from "antd";
 import React from "react";
 import { describe, it } from "vitest";
 
 import Radio, { RadioButton, RadioGroup } from "..";
-import { Space } from "antd";
 
 describe("Radio h5_css", () => {
   it("Radio", ({ expect }) => {
@@ -21,7 +21,7 @@ describe("Radio h5_css", () => {
         >
           Button Title
         </Radio>
-      </Space>,
+      </Space>
     );
 
     expect({
@@ -446,7 +446,7 @@ describe("Radio h5_css", () => {
           <RadioButton value={2}>Label</RadioButton>
           <RadioButton value={3}>Label</RadioButton>
         </RadioGroup>
-      </Space>,
+      </Space>
     );
 
     expect({

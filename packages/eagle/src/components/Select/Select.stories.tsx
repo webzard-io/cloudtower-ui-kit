@@ -1,14 +1,14 @@
 import { styled } from "@linaria/react";
-import { ComponentMeta, Meta } from "@storybook/react";
-import { Space as AntdSpace } from "antd";
-import { Select as AntdSelect } from "antd";
+import Select from "@src/components/Select";
+import {
+  LeftEndSelectStyle,
+  RightEndSelectStyle,
+} from "@src/components/Styled";
+import { Typo } from "@src/components/Typo";
+import { Meta } from "@storybook/react";
+import { Select as AntdSelect, Space as AntdSpace } from "antd";
 import cs from "classnames";
 import React from "react";
-
-import { antdKit } from "../antd";
-import { LeftEndSelectStyle, RightEndSelectStyle } from "../Styled";
-import { Typo } from "../Typo";
-import Select from ".";
 
 const Title: React.FC = ({ children }) => (
   <div style={{ marginTop: "16px" }} className={Typo.Display.d2_bold_title}>

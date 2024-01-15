@@ -1,15 +1,13 @@
 import { XmarkRemoveSmall16RegularInheritIcon } from "@cloudtower/icons-react";
 import { css, LinariaClassName } from "@linaria/core";
+import Icon from "@src/components/Icon";
+import { IconStyle } from "@src/components/Token/style";
+import Tooltip from "@src/components/Tooltip";
+import { Typo } from "@src/components/Typo";
+import { TokenColor, TokenType } from "@src/spec";
 import { Tag as AntdTag } from "antd";
 import cs from "classnames";
 import React from "react";
-
-import { TokenColor, TokenType } from "../../spec";
-import Icon from "../Icon";
-import Tooltip from "../Tooltip";
-import { Typo } from "../Typo";
-import { IconStyle } from "./style";
-
 export const PresetColors: TokenColor[] = [
   "blue",
   "red",
@@ -18,7 +16,6 @@ export const PresetColors: TokenColor[] = [
   "gray",
   "purple",
 ];
-
 const Size: Record<"small" | "medium" | "large", LinariaClassName> = {
   small: css`
     padding: 0 8px;
@@ -33,7 +30,6 @@ const Size: Record<"small" | "medium" | "large", LinariaClassName> = {
     border-radius: 2px;
   `,
 };
-
 // TODO: remove margin-right after token field
 const TokenStyle = css`
   &.ant-tag:hover {
@@ -117,7 +113,7 @@ const Token = React.forwardRef<HTMLDivElement, TokenType>(
       tooltipConfig,
       ...props
     },
-    ref,
+    ref
   ) => {
     return (
       <AntdTag
@@ -133,7 +129,7 @@ const Token = React.forwardRef<HTMLDivElement, TokenType>(
             [`ant-tag-${color}`]: PresetColors.includes(color),
           },
           "ui-kit-token",
-          checked && "ui-kit-token-checked",
+          checked && "ui-kit-token-checked"
         )}
         closeIcon={
           <Tooltip
@@ -158,6 +154,6 @@ const Token = React.forwardRef<HTMLDivElement, TokenType>(
         {children}
       </AntdTag>
     );
-  },
+  }
 );
 export default Token;

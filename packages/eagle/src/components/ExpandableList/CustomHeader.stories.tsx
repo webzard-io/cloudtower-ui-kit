@@ -1,10 +1,8 @@
 import { Nic24GradientBlueIcon } from "@cloudtower/icons-react";
+import Icon from "@src/components/Icon";
+import { Typo } from "@src/components/Typo";
 import { Meta, StoryFn } from "@storybook/react";
 import React from "react";
-
-import Icon from "../Icon";
-import { Typo } from "../Typo";
-
 export const CustomHeader: StoryFn = () => (
   <div
     style={{

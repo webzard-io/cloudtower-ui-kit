@@ -1,4 +1,4 @@
-import { IMetric } from "./type";
+import { IMetric } from "@src/components/Metric/type";
 
 const mockMetric: IMetric = {
   sample_streams: [

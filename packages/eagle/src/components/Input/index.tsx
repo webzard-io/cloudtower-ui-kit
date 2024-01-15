@@ -1,10 +1,9 @@
+import { InputStyle } from "@src/components/Styled";
+import { Typo } from "@src/components/Typo";
 import { Input as AntdInput } from "antd";
 import { InputProps } from "antd/lib/input";
 import cs from "classnames";
 import React from "react";
-
-import { InputStyle } from "../Styled";
-import { Typo } from "../Typo";
 
 const Input: React.FC<InputProps & { error?: boolean }> = ({
   className,

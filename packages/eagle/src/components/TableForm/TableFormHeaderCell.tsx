@@ -1,13 +1,11 @@
 import { cx } from "@linaria/core";
+import { ColumnHeaderImpls } from "@src/components/TableForm/Columns";
+import { FormItem } from "@src/components/TableForm/Columns/FormItem";
+import { TitleStyle } from "@src/components/TableForm/style";
+import { ColumnHeaderCellProps } from "@src/components/TableForm/types";
+import { increaseLastNumber } from "@src/components/TableForm/utils";
+import { Typo } from "@src/components/Typo";
 import React, { useCallback, useState } from "react";
-
-import { Typo } from "../Typo";
-import { ColumnHeaderImpls } from "./Columns";
-import { FormItem } from "./Columns/FormItem";
-import { TitleStyle } from "./style";
-import { ColumnHeaderCellProps } from "./types";
-import { increaseLastNumber } from "./utils";
-
 export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
   props
 ) => {

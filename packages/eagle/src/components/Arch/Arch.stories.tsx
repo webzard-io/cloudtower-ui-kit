@@ -1,9 +1,7 @@
+import Arch from "@src/components/Arch";
+import { Architecture } from "@src/spec";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-
-import { Architecture } from "../../spec";
-import Arch from ".";
-
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Arch",

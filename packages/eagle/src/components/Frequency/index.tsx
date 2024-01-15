@@ -1,10 +1,9 @@
-import React from "react";
 import { cx } from "@linaria/core";
-
-import { UnitFn } from "../../spec";
-import isEmpty from "../../utils/isEmpty";
-import { formatFrequency } from "../../utils/tower";
-import Empty from "../Empty";
+import Empty from "@src/components/Empty";
+import { UnitFn } from "@src/spec";
+import isEmpty from "@src/utils/isEmpty";
+import { formatFrequency } from "@src/utils/tower";
+import React from "react";
 
 const Frequency: UnitFn = ({
   rawValue,

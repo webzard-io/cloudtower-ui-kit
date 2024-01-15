@@ -1,7 +1,6 @@
+import Percent from "@src/components/Percent";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-
-import Percent from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

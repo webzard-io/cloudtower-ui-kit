@@ -1,9 +1,7 @@
+import Fields from "@src/components/Fields";
+import Form from "@src/components/Form";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-
-import Fields from "../Fields";
-import Form from "../Form";
-
 const FormItemStories = (props: any) => {
   return (
     <div>

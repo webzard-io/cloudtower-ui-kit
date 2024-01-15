@@ -2,12 +2,10 @@ import {
   ArrowChevronDownSmall16BlueIcon,
   FocusIndicator16BlueIcon,
 } from "@cloudtower/icons-react";
+import BaseIcon from "@src/components/BaseIcon";
+import HoverableElement from "@src/components/Button/HoverableElement";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-
-import BaseIcon from "../BaseIcon";
-import HoverableElement from "./HoverableElement";
-
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "HoverableElement",

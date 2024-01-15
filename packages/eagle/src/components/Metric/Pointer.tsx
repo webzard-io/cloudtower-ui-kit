@@ -1,8 +1,7 @@
+import { useKitSelector } from "@src/components/KitStoreProvider";
+import { ChartState } from "@src/store";
 import _ from "lodash";
 import React from "react";
-
-import { ChartState } from "../../store";
-import { useKitSelector } from "../KitStoreProvider";
 
 const Pointer: React.FC<{
   metricWidth: number | undefined;

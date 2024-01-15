@@ -1,9 +1,8 @@
-import React from "react";
-import dayjs from "dayjs";
-import { ITimeProps } from "../../spec";
 import { css } from "@linaria/core";
+import { ITimeProps } from "@src/spec";
 import classNames from "classnames";
-
+import dayjs from "dayjs";
+import React from "react";
 const timeWrapper = css`
   .date {
     margin-right: 4px;
@@ -29,7 +28,7 @@ const Time = (props: ITimeProps) => {
     );
   }
   return (
-    <span className={classNames(`time-wrapper`, timeWrapper, className)}>
+    <span className={classNames("time-wrapper", timeWrapper, className)}>
       {dateTemplate !== null && (
         <span className="date">{time.format(dateTemplate)}</span>
       )}

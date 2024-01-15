@@ -4,15 +4,14 @@ import {
   ArrowChevronLeftSmall16BoldBlueIcon,
 } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
+import Button from "@src/components/Button";
+import Icon from "@src/components/Icon";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { PaginationProps } from "@src/spec";
 import { Menu } from "antd";
 import { Dropdown as AntdDropdown } from "antd";
 import cs from "classnames";
 import React, { useEffect, useMemo, useRef } from "react";
-
-import useParrotTranslation from "../../hooks/useParrotTranslation";
-import { PaginationProps } from "../../spec";
-import Button from "../Button";
-import Icon from "../Icon";
 
 export const PaginationStyle = css`
   display: flex;
@@ -169,7 +168,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
         PaginationStyle,
         "pagination-wrapper",
         className,
-        selectorVisible && "has-selector",
+        selectorVisible && "has-selector"
       )}
     >
       {renderLeft()}

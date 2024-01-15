@@ -1,13 +1,11 @@
 import { css } from "@linaria/core";
+import HoverableElement from "@src/components/Button/HoverableElement";
+import { Typo } from "@src/components/Typo";
+import { ButtonProps } from "@src/spec";
 import { Button as AntdButton } from "antd";
 import { ButtonType as AntdButtonType } from "antd/lib/button";
 import cs from "classnames";
 import React, { useState } from "react";
-
-import { ButtonProps } from "../../spec";
-import { Typo } from "../Typo";
-import HoverableElement from "./HoverableElement";
-
 const ButtonStyle = css`
   &.ant-btn-icon-only {
     justify-content: center;
@@ -19,10 +17,7 @@ const ButtonStyle = css`
     height: 32px;
     border-radius: 6px;
     line-height: 22px;
-    transition:
-      transform 160ms ease,
-      background 160ms ease,
-      opacity 160ms ease;
+    transition: transform 160ms ease, background 160ms ease, opacity 160ms ease;
     transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
 
     &.ant-btn-lg {
@@ -358,7 +353,7 @@ const NoPadding = css`
 const isAntdButtonTypes = (type?: string): type is AntdButtonType => {
   return Boolean(
     type &&
-      ["default", "primary", "ghost", "dashed", "link", "text"].includes(type),
+      ["default", "primary", "ghost", "dashed", "link", "text"].includes(type)
   );
 };
 
@@ -392,7 +387,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           size === "middle" && Typo.Label.l2_regular_title,
           size === "small" && Typo.Label.l3_regular_title,
           type && `ant-btn-${type}`,
-          onlyIcon && "ant-btn-icon-only",
+          onlyIcon && "ant-btn-icon-only"
         )}
         type={isAntdButtonTypes(type) ? type : undefined}
         onMouseEnter={(e) => {
@@ -429,7 +424,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
       </AntdButton>
     );
-  },
+  }
 );
 
 export default Button;
