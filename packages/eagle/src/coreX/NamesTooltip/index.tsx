@@ -1,8 +1,8 @@
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
+import Tooltip from "@src/core/Tooltip";
 import React from "react";
 
-import Tooltip from "../../components/Tooltip";
 import { NamesTooltipType } from "../../spec";
 
 const NameItem = styled.div`

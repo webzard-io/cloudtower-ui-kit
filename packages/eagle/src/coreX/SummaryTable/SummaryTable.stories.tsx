@@ -1,8 +1,8 @@
 import { css } from "@linaria/core";
+import Button from "@src/core/Button";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
-import Button from "../../components/Button";
 import { SummaryTableComponentType, SummaryTableItem } from "../../spec";
 import SummaryTable from ".";
 

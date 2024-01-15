@@ -1,9 +1,9 @@
 import { XmarkRemove24SecondaryIcon } from "@cloudtower/icons-react";
 import { styled } from "@linaria/react";
+import Icon from "@src/core/Icon";
 import cs from "classnames";
 import React, { useState } from "react";
 
-import Icon from "../../components/Icon";
 import DropdownTransition from "../../coreX/DropdownTransition";
 
 const Card = styled.div`

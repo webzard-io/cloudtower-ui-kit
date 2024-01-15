@@ -1,7 +1,7 @@
 import { styled } from "@linaria/react";
+import Tooltip from "@src/core/Tooltip";
 import React, { useLayoutEffect, useRef, useState } from "react";
 
-import Tooltip from "../../components/Tooltip";
 import { TruncateTextWithTooltipType } from "../../spec/base";
 
 // This style is set to make sure tooltip placement is right

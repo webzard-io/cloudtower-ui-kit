@@ -1,12 +1,12 @@
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import dayjs from "dayjs";
 import { css, cx } from "@linaria/core";
+import Calendar from "@src/core/Calendar";
+import Tooltip from "@src/core/Tooltip";
+import { Typo } from "@src/core/Typo";
+import dayjs from "dayjs";
 import moment from "moment";
 import React, { useMemo, useState } from "react";
 
-import Calendar from "../../components/Calendar";
-import Tooltip from "../../components/Tooltip";
-import { Typo } from "../../components/Typo";
 import useParrotTranslation from "../../hooks/useParrotTranslation";
 import { CronCalendarProps } from "../../spec";
 import { CronTime } from "../../utils/cron-time";

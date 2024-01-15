@@ -1,10 +1,10 @@
+import Button from "@src/core/Button";
+import { Stack } from "@stories/components";
 import { Meta } from "@storybook/react";
 import dayjs from "dayjs";
 import React, { useState } from "react";
 
-import Button from "../../components/Button";
 import { CronPlanProps, CronPlanState } from "../../spec";
-import { Stack } from "../../../stories/components";
 import { makeUUID } from "../../utils";
 import CronPlan from ".";
 

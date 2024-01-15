@@ -1,8 +1,8 @@
 import { Tag16GradientBlueIcon } from "@cloudtower/icons-react";
+import { Icon } from "@src/core";
 import { Meta } from "@storybook/react";
 import React from "react";
 
-import { Icon } from "../../components";
 import SegmentControl from "./";
 
 const meta: Meta<typeof SegmentControl> = {

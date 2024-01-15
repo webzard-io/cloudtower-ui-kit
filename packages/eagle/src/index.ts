@@ -6,7 +6,7 @@ export type {
   GraphType,
   IconProps,
   IDataPoint,
-} from "./components";
+} from "./core";
 export {
   antdKit,
   BaseIcon,
@@ -32,10 +32,12 @@ export {
   useKitDispatch,
   useKitSelector,
   WizardBody,
-} from "./components";
-export * from "./components/TableForm/types";
+} from "./core";
+export * from "./core/Cascader/cascader.style";
+export * from "./core/Cascader/cascader.widget";
 export { RenderMenuItem } from "./core/DropdownMenu";
 export { default as DropdownMenu } from "./core/DropdownMenu";
+export * from "./core/TableForm/types";
 export * from "./coreX";
 export { useElementsSize } from "./hooks";
 export type {
@@ -116,6 +118,3 @@ export type {
   UploadProps as AntdUploadProps,
 } from "antd/lib/upload";
 export type { CustomTagProps as AntdCustomTagProps } from "rc-select/lib/interface/generator";
-
-export * from "./components/Cascader/cascader.widget";
-export * from "./components/Cascader/cascader.style";

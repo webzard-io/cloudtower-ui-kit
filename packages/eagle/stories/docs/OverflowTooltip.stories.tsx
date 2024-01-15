@@ -1,8 +1,7 @@
+import OverflowTooltip from "@src/coreX/OverflowTooltip";
+import { OverflowTooltipProps } from "@src/spec";
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-
-import OverflowTooltip from "@src/components/OverflowTooltip";
-import { OverflowTooltipProps } from "@src/spec";
 
 const meta: Meta<React.FC<OverflowTooltipProps>> = {
   title: "CoreX/OverflowTooltip",

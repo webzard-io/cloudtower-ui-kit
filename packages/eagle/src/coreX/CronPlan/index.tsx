@@ -1,6 +1,14 @@
 import { ClockIcon, CloseIcon } from "@cloudtower/icons-react";
 import { ParrotLngs } from "@cloudtower/parrot";
 import { css, cx } from "@linaria/core";
+import Button from "@src/core/Button";
+import Fields from "@src/core/Fields";
+import Switch from "@src/core/Switch";
+import TimePicker from "@src/core/TimePicker";
+import { Typo } from "@src/core/Typo";
+import AccordionCard from "@src/core/AccordionCard";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { CronPlanProps, CronPlanState } from "@src/spec";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
 import { i18n as Ii18n } from "i18next";
@@ -9,14 +17,6 @@ import moment from "moment";
 import React, { useEffect, useMemo, useState } from "react";
 import { UseTranslationResponse } from "react-i18next";
 
-import Button from "../../components/Button";
-import Fields from "../../components/Fields";
-import Switch from "../../components/Switch";
-import TimePicker from "../../components/TimePicker";
-import { Typo } from "../../components/Typo";
-import AccordionCard from "../../core/AccordionCard";
-import useParrotTranslation from "../../hooks/useParrotTranslation";
-import { CronPlanProps, CronPlanState } from "../../spec";
 import {
   CronTime,
   getDaily,

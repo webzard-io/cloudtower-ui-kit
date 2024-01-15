@@ -1,9 +1,8 @@
 import { css, cx } from "@linaria/core";
+import Tooltip from "@src/core/Tooltip";
 import { Dropdown as AntdDropdown, Menu as AntdMenu } from "antd";
 import type { DropDownProps as AntdDropDownProps } from "antd/lib/dropdown";
 import React from "react";
-
-import Tooltip from "../../components/Tooltip";
 
 const DropdownOverlayStyle = css`
   .ant-dropdown-menu-item-group {

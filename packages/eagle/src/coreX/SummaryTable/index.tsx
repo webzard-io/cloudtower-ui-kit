@@ -1,10 +1,10 @@
 import { FormOutlined } from "@ant-design/icons";
 import { styled } from "@linaria/react";
+import Empty from "@src/core/Empty";
 import cs from "classnames";
 import _ from "lodash";
 import React, { ReactNode } from "react";
 
-import Empty from "../../components/Empty";
 import {
   SummaryTableComponentType,
   SummaryTableContentComponentType,

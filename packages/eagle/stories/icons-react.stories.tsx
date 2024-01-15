@@ -1,7 +1,7 @@
 import * as Icons from "@cloudtower/icons-react";
 import { styled } from "@linaria/react";
-import Button from "@src/components/Button";
-import Input from "@src/components/Input";
+import Button from "@src/core/Button";
+import Input from "@src/core/Input";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Divider, message } from "antd";
 import Copy from "copy-to-clipboard";

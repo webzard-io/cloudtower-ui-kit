@@ -1,9 +1,9 @@
 import { parrotI18n } from "@cloudtower/parrot";
+import Byte from "@src/core/Byte";
+import TimeZoneSelect from "@src/core/TimeZoneSelect";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 
-import Byte from "../src/components/Byte";
-import TimeZoneSelect from "../src/components/TimeZoneSelect";
 import UIKitProvider from "../src/UIKitProvider";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

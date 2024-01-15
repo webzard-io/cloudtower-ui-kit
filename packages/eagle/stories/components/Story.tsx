@@ -1,7 +1,6 @@
 import { css } from "@linaria/core";
+import { Typo } from "@src/core/Typo";
 import React from "react";
-
-import { Typo } from "../../src/components/Typo";
 
 export const Container: React.FC = (props) => {
   return (

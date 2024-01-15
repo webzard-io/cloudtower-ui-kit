@@ -1,7 +1,7 @@
 import { styled } from "@linaria/react";
+import Switch from "@src/core/Switch";
 import React from "react";
 
-import Switch from "../../components/Switch";
 import useParrotTranslation from "../../hooks/useParrotTranslation";
 import { SwitchWithTextProps } from "../../spec";
 

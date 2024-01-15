@@ -1,4 +1,6 @@
 import { cx } from "@linaria/core";
+import Button from "@src/core/Button";
+import { Typo } from "@src/core/Typo";
 import dayjs, { Dayjs } from "dayjs";
 import { TFunction } from "i18next";
 import { isEqual } from "lodash";
@@ -10,8 +12,6 @@ import React, {
   useState,
 } from "react";
 
-import Button from "../../components/Button";
-import { Typo } from "../../components/Typo";
 import useParrotTranslation from "../../hooks/useParrotTranslation";
 import Calendar from "./Calendar";
 import {

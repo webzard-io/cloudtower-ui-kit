@@ -1,16 +1,16 @@
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
+import Bit from "@src/core/Bit";
+import BitPerSecond from "@src/core/BitPerSecond";
+import Bps from "@src/core/Bps";
+import Byte from "@src/core/Byte";
+import Empty from "@src/core/Empty";
+import Frequency from "@src/core/Frequency";
+import Percent from "@src/core/Percent";
+import Second from "@src/core/Second";
+import Speed from "@src/core/Speed";
 import React from "react";
 
-import Bit from "../../components/Bit";
-import BitPerSecond from "../../components/BitPerSecond";
-import Bps from "../../components/Bps";
-import Byte from "../../components/Byte";
-import Empty from "../../components/Empty";
-import Frequency from "../../components/Frequency";
-import Percent from "../../components/Percent";
-import Second from "../../components/Second";
-import Speed from "../../components/Speed";
 import BarChart from "../BarChart";
 import DonutChart from "../DonutChart";
 

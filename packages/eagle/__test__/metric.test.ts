@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { describe, expect, it } from "vitest";
 
-import { DateRange, IMetricStream } from "../src/components";
+import { DateRange, IMetricStream } from "../src/core";
 import {
   convertDataStruct,
   filterDataOverlapping,
@@ -12,7 +12,7 @@ import {
   getXAxisDomain,
   tickFormatter,
   xaxisCal,
-} from "../src/components/Metric/metric";
+} from "../src/core/Metric/metric";
 import { DAY, MINUTE, SECOND } from "../src/utils/tower";
 import mockMetric from "./mockMetric";
 
@@ -1046,7 +1046,7 @@ describe("filterDataOverlapping", () => {
       startDate.valueOf(),
       range / stream.step,
       stream.step,
-      stream.tolerance
+      stream.tolerance,
     );
     expect(result.length).toBe(6);
     expect(result).toMatchInlineSnapshot(`
@@ -1103,7 +1103,7 @@ describe("filterDataOverlapping", () => {
       startDate.valueOf(),
       3.01,
       10,
-      10
+      10,
     );
 
     expect(result.length).toBe(3);

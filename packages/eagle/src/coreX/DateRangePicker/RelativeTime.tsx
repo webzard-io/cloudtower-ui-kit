@@ -1,9 +1,9 @@
 import { css, cx } from "@linaria/core";
+import Input from "@src/core/Input";
+import { Typo } from "@src/core/Typo";
 import React, { useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
 
-import Input from "../../components/Input";
-import { Typo } from "../../components/Typo";
 import useParrotTranslation from "../../hooks/useParrotTranslation";
 import { PastTime } from "../../spec/type";
 import {
