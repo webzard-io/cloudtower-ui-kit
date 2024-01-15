@@ -116,3 +116,6 @@ export type {
   UploadProps as AntdUploadProps,
 } from "antd/lib/upload";
 export type { CustomTagProps as AntdCustomTagProps } from "rc-select/lib/interface/generator";
+
+export * from "./components/Cascader/cascader.widget";
+export * from "./components/Cascader/cascader.style";
