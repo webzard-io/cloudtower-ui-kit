@@ -1,8 +1,7 @@
+import FieldsTimePicker from "@src/core/Fields/FieldsTimePicker";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import dayjs from "dayjs";
 import React, { useState } from "react";
-
-import FieldsTimePicker from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

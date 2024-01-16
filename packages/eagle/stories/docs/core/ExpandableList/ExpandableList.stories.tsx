@@ -1,9 +1,11 @@
-import { CustomHeader } from "@src/core/ExpandableList/CustomHeader.stories";
 import ExpandableContainer from "@src/core/ExpandableList/ExpandableContainer";
 import ExpandableItem from "@src/core/ExpandableList/ExpandableItem";
 import { Meta, StoryFn } from "@storybook/react";
 import { Divider } from "antd";
 import React, { Fragment } from "react";
+
+import { CustomHeader } from "./CustomHeader.stories";
+
 const values = [1, 2, 3, 4];
 
 export const Template: StoryFn<typeof ExpandableContainer> = (args) => {

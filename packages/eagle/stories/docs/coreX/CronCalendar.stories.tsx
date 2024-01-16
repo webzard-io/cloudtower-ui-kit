@@ -13,8 +13,9 @@ import locale from "antd/es/locale/zh_CN";
 import dayjs from "dayjs";
 import { useState } from "react";
 import React from "react";
+
 const story: Meta<React.FC<CronCalendarProps>> = {
-  title: "CronCalendar",
+  title: "CoreX/CronCalendar",
   component: CronCalendar,
 };
 

@@ -1,6 +1,5 @@
+import FieldsDateTimeRange from "@src/core/Fields/FieldsDateTimeRange";
 import { Meta, StoryObj } from "@storybook/react";
-
-import FieldsDateTimeRange from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

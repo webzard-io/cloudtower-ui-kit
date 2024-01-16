@@ -1,8 +1,7 @@
 import { Failback24BlueIcon } from "@cloudtower/icons-react";
+import DropDownMenu from "@src/core/DropdownMenu";
 import Icon from "@src/core/Icon";
 import React from "react";
-
-import DropDownMenu from ".";
 
 const meta = {
   title: "Core/DropdownMenu",

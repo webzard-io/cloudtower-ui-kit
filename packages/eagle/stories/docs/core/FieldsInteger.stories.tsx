@@ -1,3 +1,4 @@
+import FieldsInteger from "@src/core/Fields/FieldsInteger";
 import {
   ComponentMeta,
   ComponentStory,
@@ -5,8 +6,6 @@ import {
   StoryObj,
 } from "@storybook/react";
 import React, { useState } from "react";
-
-import FieldsInteger from ".";
 
 const meta: Meta = {
   title: "Core/FieldsInteger",

@@ -1,7 +1,6 @@
+import AccordionCard from "@src/core/AccordionCard";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-
-import AccordionCard from ".";
 
 const meta: Meta<typeof AccordionCard> = {
   title: "Core/AccordionCard",

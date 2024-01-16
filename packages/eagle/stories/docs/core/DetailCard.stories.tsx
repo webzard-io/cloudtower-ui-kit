@@ -1,7 +1,6 @@
+import DetailCard from "@src/core/DetailCard";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-
-import DetailCard from ".";
 
 const meta: Meta<typeof DetailCard> = {
   title: "Core/DetailCard",

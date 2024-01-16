@@ -1,6 +1,5 @@
+import FieldsEnum from "@src/core/Fields/FieldsEnum";
 import { Meta, StoryObj } from "@storybook/react";
-
-import FieldsEnum from ".";
 
 const story: Meta<typeof FieldsEnum> = {
   title: "Core/FieldsEnum",

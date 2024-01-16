@@ -1,10 +1,10 @@
-import React from "react";
-import { Dropdown, Menu } from "antd";
 import { css, cx } from "@linaria/core";
 import { Typo } from "@src/core/Typo";
+import { Dropdown, Menu } from "antd";
+import React from "react";
 
 export default {
-  title: "Menu",
+  title: "Core/Menu",
 };
 
 const Page = css`

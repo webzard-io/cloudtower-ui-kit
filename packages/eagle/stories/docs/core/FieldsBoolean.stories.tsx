@@ -1,7 +1,6 @@
+import FieldsBoolean from "@src/core/Fields/FieldsBoolean";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
-
-import FieldsBoolean from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
