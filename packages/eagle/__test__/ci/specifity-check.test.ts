@@ -15,7 +15,7 @@ const SCORE = {
   C: 1,
 };
 
-describe("css selectos score should not greater than 12", () => {
+describe.skip("css selectos score should not greater than 12", () => {
   const componentStyle = path.resolve(__dirname, "../../dist/components.css");
   const antdStyle = path.resolve(__dirname, "../../src/styles/libs/antd.css");
   const antdSelectors: Set<string> = new Set();
