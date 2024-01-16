@@ -796,7 +796,7 @@ export const radioStyle = css`
 `;
 
 export const CannotOperationInfo = css`
-  margin-top: 8px;
+  margin-top: 16px;
   padding: 8px;
   border-radius: 6px;
   background: $fills-element-light-container-general;
@@ -807,5 +807,11 @@ export const CannotOperationInfo = css`
     display: flex;
     align-items: center;
     word-break: break-all;
+  }
+
+  .title {
+    font-weight: 700;
+    line-height: 18px;
+    margin: 4px 0;
   }
 `;
