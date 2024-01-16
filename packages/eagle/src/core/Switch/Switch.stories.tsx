@@ -41,5 +41,5 @@ Basic.story = {
 };
 
 export default {
-  title: "Switch",
+  title: "Core/Switch",
 };

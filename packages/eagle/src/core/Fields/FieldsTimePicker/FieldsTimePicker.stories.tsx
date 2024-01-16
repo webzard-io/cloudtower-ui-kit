@@ -6,7 +6,7 @@ import FieldsTimePicker from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "FieldsTimePicker",
+  title: "Core/FieldsTimePicker",
   component: FieldsTimePicker,
 } as ComponentMeta<typeof FieldsTimePicker>;
 

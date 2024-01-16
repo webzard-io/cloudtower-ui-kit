@@ -6,7 +6,7 @@ import React, { ReactNode } from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Message",
+  title: "Core/Message",
   component: UIKitProvider,
 } as ComponentMeta<typeof UIKitProvider>;
 
@@ -77,7 +77,7 @@ const TestMessage = () => {
               .fill(undefined)
               .forEach((v, index) => {
                 UIKit.message.info(
-                  parrotI18n.t("common.error_message") + index
+                  parrotI18n.t("common.error_message") + index,
                 );
               });
           }, 100);

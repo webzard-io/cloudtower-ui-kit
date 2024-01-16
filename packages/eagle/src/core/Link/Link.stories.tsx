@@ -27,7 +27,7 @@ const Description: React.FC = ({ children }) => (
       Typo.Label.l2_regular,
       css`
         color: $text-light-secondary;
-      `
+      `,
     )}
   >
     {children}
@@ -35,7 +35,7 @@ const Description: React.FC = ({ children }) => (
 );
 
 const story: Meta<LinkComponentType> = {
-  title: "Link",
+  title: "Core/Link",
   component: Link,
   parameters: {
     docs: {

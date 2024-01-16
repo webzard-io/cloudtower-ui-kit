@@ -225,7 +225,7 @@ CheckboxStory.story = {
 };
 
 const story = {
-  title: "Input",
+  title: "Core/Input",
 };
 
 export default story;

@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import FieldsEnum from ".";
 
 const story: Meta<typeof FieldsEnum> = {
-  title: "FieldsEnum",
+  title: "Core/FieldsEnum",
   component: FieldsEnum,
   parameters: {
     design: {

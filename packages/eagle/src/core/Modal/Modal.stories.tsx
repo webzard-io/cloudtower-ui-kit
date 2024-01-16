@@ -59,7 +59,7 @@ const AsideModal: React.FC<{ onClose: () => void; steps: WizardSteps }> = ({
 };
 
 const story: Meta<ModalProps> = {
-  title: "Modal",
+  title: "Core/Modal",
   component: Modal,
   decorators: [
     (Story) => {

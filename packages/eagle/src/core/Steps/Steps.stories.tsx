@@ -8,7 +8,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { Space as AntdSpace } from "antd";
 import React, { useState } from "react";
 const story: Meta<IStepsProps> = {
-  title: "Steps",
+  title: "Core/Steps",
   component: Steps,
   decorators: [
     (Story) => {

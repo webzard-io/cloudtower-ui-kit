@@ -96,7 +96,7 @@ const Row: React.FC<RowProps> = ({ state }) => {
 };
 
 const meta: Meta = {
-  title: "Select",
+  title: "Core/Select",
 };
 
 export default meta;

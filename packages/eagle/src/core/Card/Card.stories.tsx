@@ -2,7 +2,7 @@ import Card, { CardProps } from "@src/core/Card";
 import React from "react";
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: "Card",
+  title: "Core/Card",
   render: Card,
   args: {},
 };

@@ -7,7 +7,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { Space } from "antd";
 import React from "react";
 const story: Meta<TokenComponentType> = {
-  title: "Token",
+  title: "Core/Token",
   component: Token,
   parameters: {
     design: {

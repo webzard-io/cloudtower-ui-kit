@@ -14,7 +14,7 @@ import { Container, Stack, Title } from "@stories/components";
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 const story: Meta<TagComponentType> = {
-  title: "Tag",
+  title: "Core/Tag",
   component: Tag,
   parameters: {
     design: {

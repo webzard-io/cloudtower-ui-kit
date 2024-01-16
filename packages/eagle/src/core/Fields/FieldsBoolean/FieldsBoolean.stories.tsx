@@ -5,7 +5,7 @@ import FieldsBoolean from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "FieldsBoolean",
+  title: "Core/FieldsBoolean",
   component: FieldsBoolean,
 } as ComponentMeta<typeof FieldsBoolean>;
 

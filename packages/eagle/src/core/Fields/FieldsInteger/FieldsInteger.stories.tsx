@@ -9,7 +9,7 @@ import React, { useState } from "react";
 import FieldsInteger from ".";
 
 const meta: Meta = {
-  title: "FieldsInteger",
+  title: "Core/FieldsInteger",
   component: FieldsInteger,
 };
 export default meta;

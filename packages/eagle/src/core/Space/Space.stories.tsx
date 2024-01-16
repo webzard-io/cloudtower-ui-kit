@@ -4,7 +4,7 @@ import React, { Fragment } from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Space",
+  title: "Core/Space",
   component: Space,
 } as ComponentMeta<typeof Space>;
 

@@ -3,7 +3,7 @@ import { useState } from "react";
 import React from "react";
 
 const meta = {
-  title: "Pagination",
+  title: "Core/Pagination",
 };
 
 export default meta;

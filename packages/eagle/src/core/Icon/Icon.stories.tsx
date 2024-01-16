@@ -50,7 +50,7 @@ const IconStories = (props: any) => {
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Icon",
+  title: "Core/Icon",
   component: IconStories,
 } as ComponentMeta<typeof Icon>;
 

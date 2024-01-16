@@ -5,7 +5,7 @@ export const Simple = () => {
 };
 
 const meta = {
-  title: "Time",
+  title: "Core/Time",
 };
 
 export default meta;

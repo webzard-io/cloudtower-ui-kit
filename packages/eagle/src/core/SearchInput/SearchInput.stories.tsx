@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "SearchInput",
+  title: "Core/SearchInput",
   component: SearchInput,
 } as ComponentMeta<typeof SearchInput>;
 

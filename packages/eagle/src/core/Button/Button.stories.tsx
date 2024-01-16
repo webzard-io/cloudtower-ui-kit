@@ -437,7 +437,7 @@ Basic.story = {
 };
 
 const story = {
-  title: "Button",
+  title: "Core/Button",
 };
 
 export default story;

@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Byte",
+  title: "Core/Byte",
   component: Byte,
 } as ComponentMeta<typeof Byte>;
 

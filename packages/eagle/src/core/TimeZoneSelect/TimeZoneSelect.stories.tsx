@@ -65,7 +65,7 @@ TimeZoneSelectStory.story = {
 };
 
 const Story = {
-  title: "TimeZoneSelect",
+  title: "Core/TimeZoneSelect",
 };
 
 export default Story;

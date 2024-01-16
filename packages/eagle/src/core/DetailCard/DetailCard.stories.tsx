@@ -4,7 +4,7 @@ import React from "react";
 import DetailCard from ".";
 
 const meta: Meta<typeof DetailCard> = {
-  title: "DetailCard",
+  title: "Core/DetailCard",
   component: DetailCard,
   parameters: {
     docs: {
@@ -28,7 +28,7 @@ export const StringTitleAndChildren: Story = {
     },
   },
   args: {
-    title: "Hello DetailCard",
+    title: "Core/Hello DetailCard",
     children: "Show Details Here",
   },
 };

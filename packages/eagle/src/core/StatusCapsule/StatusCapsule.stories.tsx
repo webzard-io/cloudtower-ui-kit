@@ -18,7 +18,7 @@ const Title: React.FC<{ classNames?: string }> = ({ children, classNames }) => (
 );
 
 const story: Meta<StatusCapsuleComponentType> = {
-  title: "StatusCapsule",
+  title: "Core/StatusCapsule",
   component: StatusCapsule,
   parameters: {
     design: {

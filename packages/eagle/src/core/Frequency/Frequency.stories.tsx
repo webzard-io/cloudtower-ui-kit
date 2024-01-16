@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Frequency",
+  title: "Core/Frequency",
   component: Frequency,
 } as ComponentMeta<typeof Frequency>;
 

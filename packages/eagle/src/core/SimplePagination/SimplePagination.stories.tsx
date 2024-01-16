@@ -21,7 +21,7 @@ const Template: StoryFn<typeof SimplePagination> = (args) => {
 };
 
 const meta: Meta<typeof SimplePagination> = {
-  title: "SimplePagination",
+  title: "Core/SimplePagination",
   component: Template,
 };
 

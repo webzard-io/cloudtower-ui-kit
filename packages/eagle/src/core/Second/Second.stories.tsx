@@ -4,7 +4,7 @@ import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Second",
+  title: "Core/Second",
   component: Second,
 } as ComponentMeta<typeof Second>;
 

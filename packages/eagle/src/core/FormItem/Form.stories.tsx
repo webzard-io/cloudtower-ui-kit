@@ -125,7 +125,7 @@ const FormItemStories = (props: any) => {
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "FormItem",
+  title: "Core/FormItem",
   component: FormItemStories,
 } as ComponentMeta<typeof Form.Item>;
 

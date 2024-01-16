@@ -15,7 +15,7 @@ import { Payload } from "recharts/types/component/DefaultTooltipContent";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Metric",
+  title: "Core/Metric",
   component: Metric,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},

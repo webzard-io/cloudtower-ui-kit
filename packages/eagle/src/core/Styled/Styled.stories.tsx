@@ -9,7 +9,7 @@ import {
 } from "@src/core/Styled";
 import React from "react";
 const meta = {
-  title: "Styled",
+  title: "Core/Styled",
 };
 
 export default meta;

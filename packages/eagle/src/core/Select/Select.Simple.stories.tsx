@@ -31,7 +31,7 @@ const Template: StoryFn<typeof Select> = (args) => {
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Select> = {
-  title: "Select/Simple",
+  title: "Core/Select/Simple",
   component: Template,
 };
 

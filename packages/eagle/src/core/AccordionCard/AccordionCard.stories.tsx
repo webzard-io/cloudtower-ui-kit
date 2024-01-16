@@ -4,7 +4,7 @@ import React from "react";
 import AccordionCard from ".";
 
 const meta: Meta<typeof AccordionCard> = {
-  title: "AccordionCard",
+  title: "Core/AccordionCard",
   component: AccordionCard,
   parameters: {
     docs: {

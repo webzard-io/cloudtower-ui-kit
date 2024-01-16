@@ -5,7 +5,7 @@ import React from "react";
 import DropDownMenu from ".";
 
 const meta = {
-  title: "DropdownMenu",
+  title: "Core/DropdownMenu",
 };
 
 export default meta;

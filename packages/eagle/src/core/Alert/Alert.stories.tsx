@@ -4,7 +4,7 @@ import { Typo } from "@src/core/Typo";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 export default {
-  title: "Alert",
+  title: "Core/Alert",
   component: Alert,
   parameters: {
     design: {

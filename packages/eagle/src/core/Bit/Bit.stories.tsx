@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Bit",
+  title: "Core/Bit",
   component: Bit,
 } as ComponentMeta<typeof Bit>;
 

@@ -12,7 +12,7 @@ const Template: StoryFn<typeof RadioGroup> = (args) => {
 };
 
 const meta: Meta<typeof RadioGroup> = {
-  title: "RadioButton",
+  title: "Core/RadioButton",
   component: Template,
 };
 

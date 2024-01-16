@@ -15,7 +15,7 @@ export const Simple = () => {
 };
 
 const meta = {
-  title: "InputGroup",
+  title: "Core/InputGroup",
 };
 
 export default meta;

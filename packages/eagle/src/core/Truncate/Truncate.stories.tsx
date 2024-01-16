@@ -2,7 +2,7 @@ import Truncate from "@src/core/Truncate";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 export default {
-  title: "Truncate",
+  title: "Core/Truncate",
   component: Truncate,
   parameters: {
     design: {

@@ -93,7 +93,7 @@ const BatchInputForm: React.FC<{
 };
 
 const story = {
-  title: "TableForm",
+  title: "Core/TableForm",
 };
 
 const selectOptions = [
@@ -104,7 +104,7 @@ const selectOptions = [
 ];
 
 const getColumnsForValidation = (
-  type: ValidateTriggerType
+  type: ValidateTriggerType,
 ): TableFormColumn[] => [
   {
     title: "这是一个专门做校验的 tableForm",
@@ -259,7 +259,7 @@ export const Basic = () => {
         return false;
       },
     }),
-    []
+    [],
   );
 
   const rowValidationForValidationForm: TableFormProps["rowValidator"] =
@@ -283,7 +283,7 @@ export const Basic = () => {
       //     ? "this is a special desc for the first row"
       //     : null,
     }),
-    [rowValidationForValidationForm]
+    [rowValidationForValidationForm],
   );
   return (
     <div style={{ padding: "20px" }}>

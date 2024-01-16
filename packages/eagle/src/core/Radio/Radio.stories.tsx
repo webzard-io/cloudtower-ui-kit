@@ -75,5 +75,5 @@ Compact.story = {
 };
 
 export default {
-  title: "Radio",
+  title: "Core/Radio",
 };
