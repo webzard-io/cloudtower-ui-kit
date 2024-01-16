@@ -10,12 +10,11 @@ import Icon from "@src/core/Icon";
 import { ExtraOverflow } from "@src/core/Overflow";
 import Tooltip from "@src/core/Tooltip";
 import { Typo } from "@src/core/Typo";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { Action } from "@src/spec/type";
 import { Dropdown as AntdDropdown, Menu as AntdMenu } from "antd";
 import cs from "classnames";
 import React, { useCallback, useMemo } from "react";
-
-import useParrotTranslation from "../../hooks/useParrotTranslation";
-import { Action } from "../../spec/type";
 
 const SelectToolbar = css`
   display: flex;

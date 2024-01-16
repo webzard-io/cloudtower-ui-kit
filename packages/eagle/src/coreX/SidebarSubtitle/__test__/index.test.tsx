@@ -1,8 +1,7 @@
+import SidebarSubtitle from "@src/coreX/SidebarSubtitle";
 import { render } from "@testing-library/react";
 import React from "react";
 import { describe, it } from "vitest";
-
-import SidebarSubtitle from "..";
 
 describe("SidebarSubtitle", () => {
   it("render item correctly", ({ expect }) => {

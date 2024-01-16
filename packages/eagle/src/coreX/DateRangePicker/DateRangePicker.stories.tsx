@@ -1,8 +1,7 @@
+import DateRangePicker from "@src/coreX/DateRangePicker";
 import type { Meta, StoryObj } from "@storybook/react";
 import dayjs from "dayjs";
 import React from "react";
-
-import DateRangePicker from ".";
 
 const Template = (props: Parameters<typeof DateRangePicker>[0]) => {
   return (

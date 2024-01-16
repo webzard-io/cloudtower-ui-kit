@@ -1,10 +1,9 @@
+import GoBackButton from "@src/coreX/GoBackButton";
+import { GoBackButtonType } from "@src/spec";
 import type { Meta } from "@storybook/react";
 import { message } from "antd";
 import { createHashHistory } from "history";
 import React from "react";
-
-import { GoBackButtonType } from "../../spec";
-import GoBackButton from ".";
 
 const meta: Meta<React.FC<GoBackButtonType>> = {
   title: "CoreX/GoBackButton",

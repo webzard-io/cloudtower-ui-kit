@@ -1,16 +1,15 @@
 import { initParrotI18n } from "@cloudtower/parrot";
 import { ParrotTrans } from "@src/core/ParrotTrans";
+import NamesTooltip from "@src/coreX/NamesTooltip";
 import { NamesTooltipType } from "@src/spec";
 import { Stack, Title } from "@stories/components";
 import { Meta } from "@storybook/react";
 import React from "react";
 
-import NamesTooltip from ".";
-
 type NamesTooltipComponentType = React.FC<NamesTooltipType>;
 
 const story: Meta<NamesTooltipComponentType> = {
-  title: "NamesTooltip",
+  title: "CoreX/NamesTooltip",
   component: NamesTooltip,
 };
 

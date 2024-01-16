@@ -1,6 +1,5 @@
+import UnitWithChart from "@src/coreX/UnitWithChart";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import UnitWithChart from ".";
 
 const meta: Meta<typeof UnitWithChart> = {
   title: "CoreX/UnitWithChart",

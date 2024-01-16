@@ -1,9 +1,12 @@
 import { cx } from "@linaria/core";
 import { Typo } from "@src/core/Typo";
+import {
+  InputTimeProps,
+  InputTimeValue,
+  time2stringByUnit,
+} from "@src/coreX/DateRangePicker/common";
+import { InputTimeStyle } from "@src/coreX/DateRangePicker/DateRangePicker.style";
 import React, { useRef, useState } from "react";
-
-import { InputTimeProps, InputTimeValue, time2stringByUnit } from "./common";
-import { InputTimeStyle } from "./DateRangePicker.style";
 
 const InputTime: React.FC<InputTimeProps> = (props) => {
   const { className, value, danger, error, onChange, onBlur } = props;

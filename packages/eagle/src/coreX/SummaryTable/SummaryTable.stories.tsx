@@ -1,10 +1,9 @@
 import { css } from "@linaria/core";
 import Button from "@src/core/Button";
+import SummaryTable from "@src/coreX/SummaryTable";
+import { SummaryTableComponentType, SummaryTableItem } from "@src/spec";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-
-import { SummaryTableComponentType, SummaryTableItem } from "../../spec";
-import SummaryTable from ".";
 
 const meta: Meta<SummaryTableComponentType> = {
   title: "CoreX/SummaryTable",

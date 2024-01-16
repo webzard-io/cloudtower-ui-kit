@@ -1,10 +1,9 @@
 import { cx } from "@linaria/core";
 import { Typo } from "@src/core/Typo";
+import { PastTime } from "@src/spec/type";
 import dayjs, { Dayjs } from "dayjs";
 import { TFunction } from "i18next";
 import React from "react";
-
-import { PastTime } from "../../spec/type";
 
 export type MonthAndDate = {
   month: number;

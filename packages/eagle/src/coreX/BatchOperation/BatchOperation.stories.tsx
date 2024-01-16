@@ -1,9 +1,8 @@
 import { Tag16GradientBlueIcon } from "@cloudtower/icons-react";
 import { Icon } from "@src/core";
+import BatchOperation from "@src/coreX/BatchOperation";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-
-import BatchOperation from ".";
 
 const Template = (props: Parameters<typeof BatchOperation>[0]) => {
   return (

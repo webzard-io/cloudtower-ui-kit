@@ -1,11 +1,10 @@
+import SwitchWithText from "@src/coreX/SwitchWithText";
+import { SwitchWithTextProps } from "@src/spec";
 import { Meta } from "@storybook/react";
 import React, { useState } from "react";
 
-import { SwitchWithTextProps } from "../../spec";
-import SwitchWithText from "./";
-
 const story: Meta<SwitchWithTextProps> = {
-  title: "SwitchWithText",
+  title: "CoreX/SwitchWithText",
   component: SwitchWithText,
 };
 

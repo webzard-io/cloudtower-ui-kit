@@ -2,6 +2,10 @@ import "moment/locale/zh-cn";
 
 import { css } from "@linaria/core";
 import Button from "@src/core/Button";
+import CronCalendar from "@src/coreX/CronCalendar";
+import CronPlan from "@src/coreX/CronPlan";
+import { CronCalendarProps, CronPlanState } from "@src/spec";
+import { makeUUID } from "@src/utils";
 import { Stack } from "@stories/components";
 import type { Meta } from "@storybook/react";
 import { ConfigProvider } from "antd";
@@ -9,12 +13,6 @@ import locale from "antd/es/locale/zh_CN";
 import dayjs from "dayjs";
 import { useState } from "react";
 import React from "react";
-
-import { CronCalendarProps, CronPlanState } from "../../spec";
-import { makeUUID } from "../../utils";
-import CronPlan from "../CronPlan";
-import CronCalendar from ".";
-
 const story: Meta<React.FC<CronCalendarProps>> = {
   title: "CronCalendar",
   component: CronCalendar,

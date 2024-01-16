@@ -1,6 +1,5 @@
+import DonutChart from "@src/coreX/DonutChart";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import DonutChart from ".";
 
 const meta: Meta<typeof DonutChart> = {
   title: "CoreX/DonutChart",

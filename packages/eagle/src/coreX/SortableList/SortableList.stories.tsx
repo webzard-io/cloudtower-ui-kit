@@ -1,10 +1,9 @@
+import SortableList from "@src/coreX/SortableList";
+import { SortableListComponentType } from "@src/spec/base";
 import { Container } from "@stories/components";
 import type { Meta } from "@storybook/react";
 import { useState } from "react";
 import React from "react";
-
-import { SortableListComponentType } from "../../spec/base";
-import SortableList from ".";
 
 const meta: Meta<SortableListComponentType> = {
   title: "CoreX/SortableList",

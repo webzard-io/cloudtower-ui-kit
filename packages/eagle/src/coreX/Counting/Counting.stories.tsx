@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-
-import Counting from ".";
+import Counting from "@src/coreX/Counting";
+import type { Meta } from "@storybook/react";
 
 const meta: Meta<typeof Counting> = {
   title: "CoreX/Counting",

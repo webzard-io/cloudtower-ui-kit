@@ -1,15 +1,14 @@
 import Button from "@src/core/Button";
+import CronPlan from "@src/coreX/CronPlan";
+import { CronPlanProps, CronPlanState } from "@src/spec";
+import { makeUUID } from "@src/utils";
 import { Stack } from "@stories/components";
 import { Meta } from "@storybook/react";
 import dayjs from "dayjs";
 import React, { useState } from "react";
 
-import { CronPlanProps, CronPlanState } from "../../spec";
-import { makeUUID } from "../../utils";
-import CronPlan from ".";
-
 const story: Meta<React.FC<CronPlanProps>> = {
-  title: "CronPlan",
+  title: "CoreX/CronPlan",
   component: CronPlan,
 };
 

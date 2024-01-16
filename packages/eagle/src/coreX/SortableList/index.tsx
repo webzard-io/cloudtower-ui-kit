@@ -1,3 +1,4 @@
+import { SortableListComponentType } from "@src/spec";
 import React from "react";
 import {
   DragDropContext,
@@ -5,8 +6,6 @@ import {
   Droppable,
   OnDragEndResponder,
 } from "react-beautiful-dnd";
-
-import { SortableListComponentType } from "../../spec";
 
 const SortableList: SortableListComponentType = ({ moveItem, children }) => {
   const onDragEnd: OnDragEndResponder = (result) => {

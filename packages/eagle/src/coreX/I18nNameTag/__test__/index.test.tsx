@@ -1,9 +1,9 @@
 import { initParrotI18n } from "@cloudtower/parrot";
+import I18nNameTag from "@src/coreX/I18nNameTag";
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import { describe, it } from "vitest";
 
-import I18nNameTag from "..";
 beforeAll(() => {
   initParrotI18n({
     resources: {

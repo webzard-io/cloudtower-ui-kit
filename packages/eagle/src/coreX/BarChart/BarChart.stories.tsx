@@ -1,6 +1,5 @@
+import BarChart from "@src/coreX/BarChart";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import BarChart from ".";
 
 const meta: Meta<typeof BarChart> = {
   title: "CoreX/BarChart",

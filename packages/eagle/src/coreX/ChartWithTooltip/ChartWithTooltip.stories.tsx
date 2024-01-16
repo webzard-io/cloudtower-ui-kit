@@ -1,6 +1,5 @@
+import ChartWithTooltip from "@src/coreX/ChartWithTooltip";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import ChartWithTooltip from "./";
 
 const meta: Meta<typeof ChartWithTooltip> = {
   title: "CoreX/ChartWithTooltip",

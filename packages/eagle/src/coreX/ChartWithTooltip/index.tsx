@@ -9,15 +9,14 @@ import Second from "@src/core/Second";
 import Speed from "@src/core/Speed";
 import { TertiaryText } from "@src/core/Styled";
 import Tooltip from "@src/core/Tooltip";
-import _ from "lodash";
-import React from "react";
-
-import { formatPercent } from "../../utils/tower";
 import UnitWithChart, {
   ChartType,
   IUnitWithChartProps,
   UnitWrapper,
-} from "../UnitWithChart";
+} from "@src/coreX/UnitWithChart";
+import { formatPercent } from "@src/utils/tower";
+import _ from "lodash";
+import React from "react";
 
 const units = {
   Percent,

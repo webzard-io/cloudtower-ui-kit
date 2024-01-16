@@ -9,10 +9,9 @@ import Frequency from "@src/core/Frequency";
 import Percent from "@src/core/Percent";
 import Second from "@src/core/Second";
 import Speed from "@src/core/Speed";
+import BarChart from "@src/coreX/BarChart";
+import DonutChart from "@src/coreX/DonutChart";
 import React from "react";
-
-import BarChart from "../BarChart";
-import DonutChart from "../DonutChart";
 
 const units = {
   Percent,

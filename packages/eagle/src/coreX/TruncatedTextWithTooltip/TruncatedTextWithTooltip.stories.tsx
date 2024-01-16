@@ -1,15 +1,14 @@
 import { css } from "@linaria/core";
+import TruncatedTextWithTooltip from "@src/coreX/TruncatedTextWithTooltip";
+import { TruncateTextWithTooltipType } from "@src/spec";
 import { Meta } from "@storybook/react";
 import React from "react";
-
-import { TruncateTextWithTooltipType } from "../../spec";
-import TruncatedTextWithTooltip from ".";
 
 type TruncatedTextWithTooltipComponentType =
   React.FC<TruncateTextWithTooltipType>;
 
 const story: Meta<TruncatedTextWithTooltipComponentType> = {
-  title: "TruncatedTextWithTooltip",
+  title: "CoreX/TruncatedTextWithTooltip",
   component: TruncatedTextWithTooltip,
 };
 
