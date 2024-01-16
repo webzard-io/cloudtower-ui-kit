@@ -3,14 +3,10 @@ import {
   ArrowChevronUp16BoldBlueIcon,
 } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
-import dayjs, { Dayjs } from "dayjs";
-import React, { useEffect, useRef, useState } from "react";
-
-import Button from "../../components/Button";
-import Icon from "../../components/Icon";
-import Input from "../../components/Input";
-import { Typo } from "../../components/Typo";
-import useParrotTranslation from "../../hooks/useParrotTranslation";
+import Button from "@src/core/Button";
+import Icon from "@src/core/Icon";
+import Input from "@src/core/Input";
+import { Typo } from "@src/core/Typo";
 import {
   CalendarProps,
   checkDateNotInRange,
@@ -19,9 +15,12 @@ import {
   getDiffMonthAndDate,
   getTime,
   MonthAndDate,
-} from "./common";
-import { CalendarStyle } from "./DateRangePicker.style";
-import useElementIntersectionRatio from "./hooks/useElementIntersectionRatio";
+} from "@src/coreX/DateRangePicker/common";
+import { CalendarStyle } from "@src/coreX/DateRangePicker/DateRangePicker.style";
+import useElementIntersectionRatio from "@src/hooks/useElementIntersectionRatio";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import dayjs, { Dayjs } from "dayjs";
+import React, { useEffect, useRef, useState } from "react";
 
 const Year: React.FC<{
   year: number;

@@ -1,8 +1,7 @@
 import { cx } from "@linaria/core";
+import { Typo } from "@src/core/Typo";
+import { SidebarSubtitleComponentType } from "@src/spec/base";
 import React from "react";
-
-import { Typo } from "../../components/Typo";
-import { SidebarSubtitleComponentType } from "../../spec/base";
 
 const SidebarSubtitle: SidebarSubtitleComponentType = (props) => {
   const { title, className } = props;

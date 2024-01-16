@@ -1,4 +1,18 @@
 import { cx } from "@linaria/core";
+import Button from "@src/core/Button";
+import { Typo } from "@src/core/Typo";
+import Calendar from "@src/coreX/DateRangePicker/Calendar";
+import {
+  AbsoluteTimeProps,
+  copyDay,
+  DateRange,
+  InputTimeValue,
+  time2string,
+} from "@src/coreX/DateRangePicker/common";
+import { AbsoluteTimeStyle } from "@src/coreX/DateRangePicker/DateRangePicker.style";
+import InputTime from "@src/coreX/DateRangePicker/InputTime";
+import useMemoCompare from "@src/hooks/useMemoCompare";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import dayjs, { Dayjs } from "dayjs";
 import { TFunction } from "i18next";
 import { isEqual } from "lodash";
@@ -9,21 +23,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-
-import Button from "../../components/Button";
-import { Typo } from "../../components/Typo";
-import useParrotTranslation from "../../hooks/useParrotTranslation";
-import Calendar from "./Calendar";
-import {
-  AbsoluteTimeProps,
-  copyDay,
-  DateRange,
-  InputTimeValue,
-  time2string,
-} from "./common";
-import { AbsoluteTimeStyle } from "./DateRangePicker.style";
-import useMemoCompare from "./hooks/useMemoCompare";
-import InputTime from "./InputTime";
 
 type TimeProps = {
   range: DateRange;

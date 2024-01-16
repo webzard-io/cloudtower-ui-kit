@@ -1,4 +1,9 @@
 import { StyledMeta } from "@linaria/react";
+import { CardProps } from "@src/core/Card";
+import { IEmptyProps } from "@src/core/Empty";
+import { MessageApi } from "@src/core/message";
+import { TableFormHandle, TableFormProps } from "@src/core/TableForm/types";
+import { TruncatePropTypes } from "@src/core/Truncate";
 import { SizeType } from "antd/es/config-provider/SizeContext";
 import { AlertProps } from "antd/lib/alert";
 import { AutoCompleteProps } from "antd/lib/auto-complete";
@@ -67,11 +72,6 @@ import React, {
 } from "react";
 import { Draggable } from "react-beautiful-dnd";
 
-import { CardProps } from "../components/Card";
-import { IEmptyProps } from "../components/Empty";
-import { MessageApi } from "../components/message";
-import { TableFormHandle, TableFormProps } from "../components/TableForm/types";
-import { TruncatePropTypes } from "../components/Truncate";
 import type { CloseButtonProps } from "../core/AccordionCard";
 import { IChartWithUnitProps, ICWTProps } from "../coreX/ChartWithTooltip";
 import { DateRangePickerProps } from "../coreX/DateRangePicker/common";

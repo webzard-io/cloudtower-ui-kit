@@ -1,23 +1,22 @@
 import { styled } from "@linaria/react";
-import _ from "lodash";
-import React from "react";
-
-import Bit from "../../components/Bit";
-import BitPerSecond from "../../components/BitPerSecond";
-import Bps from "../../components/Bps";
-import Byte from "../../components/Byte";
-import Frequency from "../../components/Frequency";
-import Percent from "../../components/Percent";
-import Second from "../../components/Second";
-import Speed from "../../components/Speed";
-import { TertiaryText } from "../../components/Styled";
-import Tooltip from "../../components/Tooltip";
-import { formatPercent } from "../../utils/tower";
+import Bit from "@src/core/Bit";
+import BitPerSecond from "@src/core/BitPerSecond";
+import Bps from "@src/core/Bps";
+import Byte from "@src/core/Byte";
+import Frequency from "@src/core/Frequency";
+import Percent from "@src/core/Percent";
+import Second from "@src/core/Second";
+import Speed from "@src/core/Speed";
+import { TertiaryText } from "@src/core/Styled";
+import Tooltip from "@src/core/Tooltip";
 import UnitWithChart, {
   ChartType,
   IUnitWithChartProps,
   UnitWrapper,
-} from "../UnitWithChart";
+} from "@src/coreX/UnitWithChart";
+import { formatPercent } from "@src/utils/tower";
+import _ from "lodash";
+import React from "react";
 
 const units = {
   Percent,

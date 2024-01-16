@@ -4,30 +4,29 @@ import {
   CalendarTimeRecord16Icon,
 } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
-import { Popover as AntdPopover } from "antd";
-import dayjs, { Dayjs } from "dayjs";
-import React, { useEffect, useRef, useState } from "react";
-
-import Icon from "../../components/Icon";
-import Input from "../../components/Input";
-import Tooltip from "../../components/Tooltip";
-import { Typo } from "../../components/Typo";
-import useParrotTranslation from "../../hooks/useParrotTranslation";
-import { PastTime } from "../../spec/type";
-import TabMenu, { TabMenuTab } from "../TabMenu";
-import AbsoluteDate from "./AbsoluteDate";
+import Icon from "@src/core/Icon";
+import Input from "@src/core/Input";
+import Tooltip from "@src/core/Tooltip";
+import { Typo } from "@src/core/Typo";
+import AbsoluteDate from "@src/coreX/DateRangePicker/AbsoluteDate";
 import {
   DateRange,
   DateRangeHistory,
   DateRangePickerProps,
   DateRangePickerValue,
   getDateText,
-} from "./common";
+} from "@src/coreX/DateRangePicker/common";
 import {
   DateRangePickerStyle,
   ResetPopoverStyle,
-} from "./DateRangePicker.style";
-import RelativeTime from "./RelativeTime";
+} from "@src/coreX/DateRangePicker/DateRangePicker.style";
+import RelativeTime from "@src/coreX/DateRangePicker/RelativeTime";
+import TabMenu, { TabMenuTab } from "@src/coreX/TabMenu";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { PastTime } from "@src/spec/type";
+import { Popover as AntdPopover } from "antd";
+import dayjs, { Dayjs } from "dayjs";
+import React, { useEffect, useRef, useState } from "react";
 
 const TimeRange: React.FC<{
   visible?: boolean;

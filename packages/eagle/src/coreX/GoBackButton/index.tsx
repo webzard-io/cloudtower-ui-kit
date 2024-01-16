@@ -3,11 +3,10 @@ import {
   ArrowChevronLeft16BoldTertiaryIcon,
 } from "@cloudtower/icons-react";
 import { css, cx } from "@linaria/core";
+import Icon from "@src/core/Icon";
+import { Typo } from "@src/core/Typo";
+import { GoBackButtonType } from "@src/spec";
 import React from "react";
-
-import Icon from "../../components/Icon";
-import { Typo } from "../../components/Typo";
-import { GoBackButtonType } from "../../spec";
 
 const GobackButtonStyle = css`
   cursor: pointer;

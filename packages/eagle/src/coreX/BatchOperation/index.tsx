@@ -5,17 +5,16 @@ import {
   XmarkRemove16SecondaryIcon,
 } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
+import Button from "@src/core/Button";
+import Icon from "@src/core/Icon";
+import { ExtraOverflow } from "@src/core/Overflow";
+import Tooltip from "@src/core/Tooltip";
+import { Typo } from "@src/core/Typo";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { Action } from "@src/spec/type";
 import { Dropdown as AntdDropdown, Menu as AntdMenu } from "antd";
 import cs from "classnames";
 import React, { useCallback, useMemo } from "react";
-
-import Button from "../../components/Button";
-import Icon from "../../components/Icon";
-import { ExtraOverflow } from "../../components/Overflow";
-import Tooltip from "../../components/Tooltip";
-import { Typo } from "../../components/Typo";
-import useParrotTranslation from "../../hooks/useParrotTranslation";
-import { Action } from "../../spec/type";
 
 const SelectToolbar = css`
   display: flex;

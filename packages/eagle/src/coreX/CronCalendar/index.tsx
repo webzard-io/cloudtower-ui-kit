@@ -1,16 +1,15 @@
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import dayjs from "dayjs";
 import { css, cx } from "@linaria/core";
+import Calendar from "@src/core/Calendar";
+import Tooltip from "@src/core/Tooltip";
+import { Typo } from "@src/core/Typo";
+import { getCalendarTitle } from "@src/coreX/common/getCalendarTitle";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { CronCalendarProps } from "@src/spec";
+import { CronTime } from "@src/utils/cron-time";
+import dayjs from "dayjs";
 import moment from "moment";
 import React, { useMemo, useState } from "react";
-
-import Calendar from "../../components/Calendar";
-import Tooltip from "../../components/Tooltip";
-import { Typo } from "../../components/Typo";
-import useParrotTranslation from "../../hooks/useParrotTranslation";
-import { CronCalendarProps } from "../../spec";
-import { CronTime } from "../../utils/cron-time";
-import { getCalendarTitle } from "../common/getCalendarTitle";
 
 const CronCalendarWrapper = css`
   width: 192px;

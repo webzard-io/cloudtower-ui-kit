@@ -5,11 +5,10 @@ import {
   ArrowChevronDownSmall16BoldBlueIcon as ArrowDownSmallBold,
 } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
+import { Typo } from "@src/core/Typo";
 import { Dropdown as AntdDropdown, Menu as AntdMenu } from "antd";
 import cs from "classnames";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-
-import { Typo } from "../../components/Typo";
 
 const TabMenuStyle = css`
   display: flex;

@@ -1,17 +1,16 @@
 import { css, cx } from "@linaria/core";
-import React, { useRef, useState } from "react";
-import Highlighter from "react-highlight-words";
-
-import Input from "../../components/Input";
-import { Typo } from "../../components/Typo";
-import useParrotTranslation from "../../hooks/useParrotTranslation";
-import { PastTime } from "../../spec/type";
+import Input from "@src/core/Input";
+import { Typo } from "@src/core/Typo";
 import {
   BASIC_RELATIVE_TIME_CONFIG,
   getDateText,
   RelativeTimeProps,
-} from "./common";
-import { RelativeTimeStyle } from "./DateRangePicker.style";
+} from "@src/coreX/DateRangePicker/common";
+import { RelativeTimeStyle } from "@src/coreX/DateRangePicker/DateRangePicker.style";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { PastTime } from "@src/spec/type";
+import React, { useRef, useState } from "react";
+import Highlighter from "react-highlight-words";
 
 const HighlightKeywordStyle = css`
   font-weight: bold;

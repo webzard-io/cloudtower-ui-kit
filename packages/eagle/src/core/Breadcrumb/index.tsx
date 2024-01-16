@@ -1,8 +1,7 @@
 import { styled } from "@linaria/react";
+import { Typo } from "@src/core/Typo";
+import { IBreadcrumbProps } from "@src/spec";
 import React from "react";
-
-import { Typo } from "../../components/Typo";
-import { IBreadcrumbProps } from "../../spec";
 
 export const BreadWrapper = styled.div`
   color: $text-terdiary-light;

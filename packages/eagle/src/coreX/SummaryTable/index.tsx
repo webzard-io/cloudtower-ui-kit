@@ -1,14 +1,13 @@
 import { FormOutlined } from "@ant-design/icons";
 import { styled } from "@linaria/react";
-import cs from "classnames";
-import _ from "lodash";
-import React, { ReactNode } from "react";
-
-import Empty from "../../components/Empty";
+import Empty from "@src/core/Empty";
 import {
   SummaryTableComponentType,
   SummaryTableContentComponentType,
-} from "../../spec";
+} from "@src/spec";
+import cs from "classnames";
+import _ from "lodash";
+import React, { ReactNode } from "react";
 
 const Table = styled.div`
   background: white;

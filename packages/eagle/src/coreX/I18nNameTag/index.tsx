@@ -1,5 +1,5 @@
 import { css } from "@linaria/core";
-import Tag from "@src/components/Tag";
+import Tag from "@src/core/Tag";
 import { ParrotTrans } from "@src/core/ParrotTrans";
 import { I18nNameTagType } from "@src/spec";
 import React from "react";
