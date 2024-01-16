@@ -1,7 +1,7 @@
 import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
 import Tooltip from "@src/core/Tooltip";
-import { OverflowTooltipProps } from "@src/spec";
+import type { OverflowTooltipProps } from "@src/coreX/OverflowTooltip/overflowTooltip.type";
 import { debounce } from "lodash";
 import React, { useEffect, useRef, useState } from "react";
 
