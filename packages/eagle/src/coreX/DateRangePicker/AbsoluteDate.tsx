@@ -10,8 +10,8 @@ import {
   time2string,
 } from "@src/coreX/DateRangePicker/common";
 import { AbsoluteTimeStyle } from "@src/coreX/DateRangePicker/DateRangePicker.style";
-import useMemoCompare from "@src/coreX/DateRangePicker/hooks/useMemoCompare";
 import InputTime from "@src/coreX/DateRangePicker/InputTime";
+import useMemoCompare from "@src/hooks/useMemoCompare";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import dayjs, { Dayjs } from "dayjs";
 import { TFunction } from "i18next";

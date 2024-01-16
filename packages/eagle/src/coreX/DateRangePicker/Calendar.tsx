@@ -17,7 +17,7 @@ import {
   MonthAndDate,
 } from "@src/coreX/DateRangePicker/common";
 import { CalendarStyle } from "@src/coreX/DateRangePicker/DateRangePicker.style";
-import useElementIntersectionRatio from "@src/coreX/DateRangePicker/hooks/useElementIntersectionRatio";
+import useElementIntersectionRatio from "@src/hooks/useElementIntersectionRatio";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import dayjs, { Dayjs } from "dayjs";
 import React, { useEffect, useRef, useState } from "react";
