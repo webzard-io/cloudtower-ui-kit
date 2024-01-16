@@ -38,7 +38,7 @@ const BarChart: React.FC<{
           style={{
             width: width,
             background: color,
-            display: width === 0 || width === "0%" ? "none" : "inline-block",
+            display: value === 0 || total === 0 ? "none" : "inline-block",
           }}
         />
       );
