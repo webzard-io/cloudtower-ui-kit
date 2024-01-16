@@ -35,5 +35,13 @@ export const RadioStyleStory = () => {
 };
 
 export const CannotOperationInfoStory = () => {
-  return <div className={CannotOperationInfo}>CannotOperationInfoStory</div>;
+  return (
+    <div>
+      desc
+      <div className={CannotOperationInfo}>
+        <div className="title">CannotOperationInfoStory Title</div>
+        <div>content</div>
+      </div>
+    </div>
+  );
 };
