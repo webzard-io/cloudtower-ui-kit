@@ -22,12 +22,12 @@ describe("ui unit test - time", () => {
   });
   it("test time will use props timeTemplate as expected", () => {
     const { container } = render(
-      <Time date={data.date} timeTemplate="HH:mm:ss" />
+      <Time date={data.date} timeTemplate="HH:mm:ss" />,
     );
     expect(container).toMatchInlineSnapshot(`
       <div>
         <span
-          class="time-wrapper t19ustft"
+          class="time-wrapper tju3gfj"
         >
           <span
             class="date"
@@ -45,12 +45,12 @@ describe("ui unit test - time", () => {
   });
   it("test time will use props dateTemplate as expected", () => {
     const { container } = render(
-      <Time date={data.date} dateTemplate="YYYY/MM/DD" />
+      <Time date={data.date} dateTemplate="YYYY/MM/DD" />,
     );
     expect(container).toMatchInlineSnapshot(`
       <div>
         <span
-          class="time-wrapper t19ustft"
+          class="time-wrapper tju3gfj"
         >
           <span
             class="date"

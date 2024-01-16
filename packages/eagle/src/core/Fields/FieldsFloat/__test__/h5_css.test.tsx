@@ -21,7 +21,7 @@ describe("FieldsFloat h5_css", () => {
           value: "1.1",
         }}
         meta={{}}
-      />
+      />,
     );
 
     expect({
@@ -37,9 +37,7 @@ describe("FieldsFloat h5_css", () => {
           color: $text-primary-light;
           border-radius: 6px;
           border-color: $strokes-light-trans-3;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
+          transition: height 240ms ease 8ms, border 160ms ease 8ms,
             box-shadow 160ms ease 8ms;
         }
 
@@ -108,9 +106,7 @@ describe("FieldsFloat h5_css", () => {
           border-color: $strokes-light-trans-3;
           line-height: 20px;
           color: $text-primary-light;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
+          transition: height 240ms ease 8ms, border 160ms ease 8ms,
             box-shadow 160ms ease 8ms;
 
           .ant-input-suffix,
@@ -207,7 +203,7 @@ describe("FieldsFloat h5_css", () => {
         line-height: 20px;
       ,
         .ant-input-number-handler-wrap {
-          display: var(--a6dbbkm-0);
+          display: var(--a1wfy30z-0);
         }
         .ant-input-number-input-wrap {
           padding: 4px 11px;
@@ -217,16 +213,16 @@ describe("FieldsFloat h5_css", () => {
         }
 
         .ant-input-number-input-wrap::after {
-          content: var(--a6dbbkm-1);
-          display: var(--a6dbbkm-2);
+          content: var(--a1wfy30z-1);
+          display: var(--a1wfy30z-2);
           flex: none;
           align-items: center;
           margin-left: 4px;
         }
 
         .ant-input-number-input-wrap::before {
-          content: var(--a6dbbkm-3);
-          display: var(--a6dbbkm-4);
+          content: var(--a1wfy30z-3);
+          display: var(--a1wfy30z-4);
           flex: none;
           align-items: center;
           margin-right: 4px;
@@ -240,7 +236,7 @@ describe("FieldsFloat h5_css", () => {
           font-size: inherit;
         }
 
-          style=--a6dbbkm-0:,initial;,--a6dbbkm-1:,"";,--a6dbbkm-2:,none;,--a6dbbkm-3:,"";,--a6dbbkm-4:,none;
+          style=--a1wfy30z-0:,initial;,--a1wfy30z-1:,"";,--a1wfy30z-2:,none;,--a1wfy30z-3:,"";,--a1wfy30z-4:,none;
         >
           <div
             class=ant-input-number-handler-wrap

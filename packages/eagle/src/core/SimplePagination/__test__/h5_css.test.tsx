@@ -7,7 +7,7 @@ import SimplePagination from "..";
 describe("SimplePagination h5_css", () => {
   it("h5_css first page", ({ expect }) => {
     const { container } = render(
-      <SimplePagination current={1} count={300000} size={50} />
+      <SimplePagination current={1} count={300000} size={50} />,
     );
 
     expect({
@@ -97,9 +97,7 @@ describe("SimplePagination h5_css", () => {
           color: $text-primary-light;
           border-radius: 6px;
           border-color: $strokes-light-trans-3;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
+          transition: height 240ms ease 8ms, border 160ms ease 8ms,
             box-shadow 160ms ease 8ms;
         }
 
@@ -168,9 +166,7 @@ describe("SimplePagination h5_css", () => {
           border-color: $strokes-light-trans-3;
           line-height: 20px;
           color: $text-primary-light;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
+          transition: height 240ms ease 8ms, border 160ms ease 8ms,
             box-shadow 160ms ease 8ms;
 
           .ant-input-suffix,
@@ -267,7 +263,7 @@ describe("SimplePagination h5_css", () => {
         line-height: 18px;
       ,
         .ant-input-number-handler-wrap {
-          display: var(--at4ovwe-0);
+          display: var(--ai7qkf2-0);
         }
         .ant-input-number-input-wrap {
           padding: 5px 12px;
@@ -278,8 +274,8 @@ describe("SimplePagination h5_css", () => {
         }
 
         .ant-input-number-input-wrap::after {
-          content: var(--at4ovwe-1);
-          display: var(--at4ovwe-2);
+          content: var(--ai7qkf2-1);
+          display: var(--ai7qkf2-2);
           flex: none;
           align-items: center;
           margin-left: 4px;
@@ -287,8 +283,8 @@ describe("SimplePagination h5_css", () => {
         }
 
         .ant-input-number-input-wrap::before {
-          content: var(--at4ovwe-3);
-          display: var(--at4ovwe-4);
+          content: var(--ai7qkf2-3);
+          display: var(--ai7qkf2-4);
           flex: none;
           align-items: center;
           margin-right: 4px;
@@ -328,7 +324,7 @@ describe("SimplePagination h5_css", () => {
           font-size: inherit;
         }
 
-              style=--at4ovwe-0:,none;,--at4ovwe-1:,"";,--at4ovwe-2:,none;,--at4ovwe-3:,"";,--at4ovwe-4:,none;
+              style=--ai7qkf2-0:,none;,--ai7qkf2-1:,"";,--ai7qkf2-2:,none;,--ai7qkf2-3:,"";,--ai7qkf2-4:,none;
             >
               <div
                 class=ant-input-number-handler-wrap
@@ -429,10 +425,7 @@ describe("SimplePagination h5_css", () => {
           height: 32px;
           border-radius: 6px;
           line-height: 22px;
-          transition:
-            transform 160ms ease,
-            background 160ms ease,
-            opacity 160ms ease;
+          transition: transform 160ms ease, background 160ms ease, opacity 160ms ease;
           transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
 
           &.ant-btn-lg {
@@ -814,7 +807,7 @@ describe("SimplePagination h5_css", () => {
 
   it("h5_css middle page", ({ expect }) => {
     const { container } = render(
-      <SimplePagination current={6000} count={300000} size={50} />
+      <SimplePagination current={6000} count={300000} size={50} />,
     );
 
     expect({
@@ -900,10 +893,7 @@ describe("SimplePagination h5_css", () => {
           height: 32px;
           border-radius: 6px;
           line-height: 22px;
-          transition:
-            transform 160ms ease,
-            background 160ms ease,
-            opacity 160ms ease;
+          transition: transform 160ms ease, background 160ms ease, opacity 160ms ease;
           transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
 
           &.ant-btn-lg {
@@ -1293,9 +1283,7 @@ describe("SimplePagination h5_css", () => {
           color: $text-primary-light;
           border-radius: 6px;
           border-color: $strokes-light-trans-3;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
+          transition: height 240ms ease 8ms, border 160ms ease 8ms,
             box-shadow 160ms ease 8ms;
         }
 
@@ -1364,9 +1352,7 @@ describe("SimplePagination h5_css", () => {
           border-color: $strokes-light-trans-3;
           line-height: 20px;
           color: $text-primary-light;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
+          transition: height 240ms ease 8ms, border 160ms ease 8ms,
             box-shadow 160ms ease 8ms;
 
           .ant-input-suffix,
@@ -1463,7 +1449,7 @@ describe("SimplePagination h5_css", () => {
         line-height: 18px;
       ,
         .ant-input-number-handler-wrap {
-          display: var(--at4ovwe-0);
+          display: var(--ai7qkf2-0);
         }
         .ant-input-number-input-wrap {
           padding: 5px 12px;
@@ -1474,8 +1460,8 @@ describe("SimplePagination h5_css", () => {
         }
 
         .ant-input-number-input-wrap::after {
-          content: var(--at4ovwe-1);
-          display: var(--at4ovwe-2);
+          content: var(--ai7qkf2-1);
+          display: var(--ai7qkf2-2);
           flex: none;
           align-items: center;
           margin-left: 4px;
@@ -1483,8 +1469,8 @@ describe("SimplePagination h5_css", () => {
         }
 
         .ant-input-number-input-wrap::before {
-          content: var(--at4ovwe-3);
-          display: var(--at4ovwe-4);
+          content: var(--ai7qkf2-3);
+          display: var(--ai7qkf2-4);
           flex: none;
           align-items: center;
           margin-right: 4px;
@@ -1524,7 +1510,7 @@ describe("SimplePagination h5_css", () => {
           font-size: inherit;
         }
 
-              style=--at4ovwe-0:,none;,--at4ovwe-1:,"";,--at4ovwe-2:,none;,--at4ovwe-3:,"";,--at4ovwe-4:,none;
+              style=--ai7qkf2-0:,none;,--ai7qkf2-1:,"";,--ai7qkf2-2:,none;,--ai7qkf2-3:,"";,--ai7qkf2-4:,none;
             >
               <div
                 class=ant-input-number-handler-wrap
@@ -1621,7 +1607,7 @@ describe("SimplePagination h5_css", () => {
 
   it("h5_css last page", ({ expect }) => {
     const { container } = render(
-      <SimplePagination current={6000} count={300000} size={50} />
+      <SimplePagination current={6000} count={300000} size={50} />,
     );
 
     expect({
@@ -1707,10 +1693,7 @@ describe("SimplePagination h5_css", () => {
           height: 32px;
           border-radius: 6px;
           line-height: 22px;
-          transition:
-            transform 160ms ease,
-            background 160ms ease,
-            opacity 160ms ease;
+          transition: transform 160ms ease, background 160ms ease, opacity 160ms ease;
           transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
 
           &.ant-btn-lg {
@@ -2100,9 +2083,7 @@ describe("SimplePagination h5_css", () => {
           color: $text-primary-light;
           border-radius: 6px;
           border-color: $strokes-light-trans-3;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
+          transition: height 240ms ease 8ms, border 160ms ease 8ms,
             box-shadow 160ms ease 8ms;
         }
 
@@ -2171,9 +2152,7 @@ describe("SimplePagination h5_css", () => {
           border-color: $strokes-light-trans-3;
           line-height: 20px;
           color: $text-primary-light;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
+          transition: height 240ms ease 8ms, border 160ms ease 8ms,
             box-shadow 160ms ease 8ms;
 
           .ant-input-suffix,
@@ -2270,7 +2249,7 @@ describe("SimplePagination h5_css", () => {
         line-height: 18px;
       ,
         .ant-input-number-handler-wrap {
-          display: var(--at4ovwe-0);
+          display: var(--ai7qkf2-0);
         }
         .ant-input-number-input-wrap {
           padding: 5px 12px;
@@ -2281,8 +2260,8 @@ describe("SimplePagination h5_css", () => {
         }
 
         .ant-input-number-input-wrap::after {
-          content: var(--at4ovwe-1);
-          display: var(--at4ovwe-2);
+          content: var(--ai7qkf2-1);
+          display: var(--ai7qkf2-2);
           flex: none;
           align-items: center;
           margin-left: 4px;
@@ -2290,8 +2269,8 @@ describe("SimplePagination h5_css", () => {
         }
 
         .ant-input-number-input-wrap::before {
-          content: var(--at4ovwe-3);
-          display: var(--at4ovwe-4);
+          content: var(--ai7qkf2-3);
+          display: var(--ai7qkf2-4);
           flex: none;
           align-items: center;
           margin-right: 4px;
@@ -2331,7 +2310,7 @@ describe("SimplePagination h5_css", () => {
           font-size: inherit;
         }
 
-              style=--at4ovwe-0:,none;,--at4ovwe-1:,"";,--at4ovwe-2:,none;,--at4ovwe-3:,"";,--at4ovwe-4:,none;
+              style=--ai7qkf2-0:,none;,--ai7qkf2-1:,"";,--ai7qkf2-2:,none;,--ai7qkf2-3:,"";,--ai7qkf2-4:,none;
             >
               <div
                 class=ant-input-number-handler-wrap
