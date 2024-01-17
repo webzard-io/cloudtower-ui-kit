@@ -1,7 +1,12 @@
 import OverflowTooltip from "@src/coreX/OverflowTooltip";
 import type { OverflowTooltipProps } from "@src/coreX/OverflowTooltip/overflowTooltip.type";
 import { Meta, StoryObj } from "@storybook/react";
+import { loremIpsum } from "lorem-ipsum";
 import React from "react";
+const exampleContent = loremIpsum({
+  count: 2,
+  units: "paragraphs",
+});
 
 /**
  *
@@ -22,15 +27,10 @@ export default meta;
 export const Default: StoryObj<OverflowTooltipProps> = {
   name: "基本用例",
   render: (props) => {
-    return (
-      <div style={{ width: "200px" }}>
-        <OverflowTooltip {...props} />
-      </div>
-    );
+    return <OverflowTooltip {...props} />;
   },
   args: {
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto adipisci necessitatibus magnam, natus alias voluptatum officiis at, et dolore quod, esse eveniet? Aperiam saepe sunt, odio dignissimos perspiciatis unde labore!",
+    content: exampleContent,
     multiLines: 0,
     tooltip: "",
   },
@@ -46,15 +46,13 @@ export const Default: StoryObj<OverflowTooltipProps> = {
 export const MultipleLine: StoryObj<OverflowTooltipProps> = {
   name: "多行溢出",
   render: (props) => {
-    return (
-      <div style={{ marginTop: "30px", width: "200px" }}>
-        <OverflowTooltip {...props} />
-      </div>
-    );
+    return <OverflowTooltip {...props} />;
   },
   args: {
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto adipisci necessitatibus magnam, natus alias voluptatum officiis at, et dolore quod, esse eveniet? Aperiam saepe sunt, odio dignissimos perspiciatis unde labore!",
+    content: loremIpsum({
+      count: 5,
+      units: "paragraphs",
+    }),
     multiLines: 2,
     tooltip: "",
   },
@@ -68,16 +66,11 @@ export const MultipleLine: StoryObj<OverflowTooltipProps> = {
 export const Tooltip: StoryObj<OverflowTooltipProps> = {
   name: "自定义 tooltip",
   render: (props) => {
-    return (
-      <div style={{ width: "200px" }}>
-        <OverflowTooltip {...props} />
-      </div>
-    );
+    return <OverflowTooltip {...props} />;
   },
   args: {
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto adipisci necessitatibus magnam, natus alias voluptatum officiis at, et dolore quod, esse eveniet? Aperiam saepe sunt, odio dignissimos perspiciatis unde labore!",
+    content: exampleContent,
     multiLines: 0,
-    tooltip: "tooltip",
+    tooltip: loremIpsum(),
   },
 };
