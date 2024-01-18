@@ -34,6 +34,7 @@ export {
   WizardBody,
 } from "./core";
 export * from "./core/Cascader/cascader.style";
+export * from "./core/Cascader/cascader.type";
 export * from "./core/Cascader/cascader.widget";
 export { RenderMenuItem } from "./core/DropdownMenu";
 export { default as DropdownMenu } from "./core/DropdownMenu";
