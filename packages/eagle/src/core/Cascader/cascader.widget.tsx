@@ -1,11 +1,13 @@
+import { cx } from "@linaria/core";
 import Link from "@src/core/Link";
-import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import Token from "@src/core/Token";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { Flex } from "antd5";
 import cls from "classnames";
 import React, { useState } from "react";
 
 import SearchInput from "../SearchInput";
+import { Typo } from "../Typo";
 import {
   CascaderDefaultHeader,
   CascaderDefaultHeaderContainer,
@@ -14,8 +16,7 @@ import {
   CascaderNotData,
   DoubleRowOptionStyleWrapper,
 } from "./cascader.style";
-import { PresetCascaderRenderProps, CascaderProps } from "./cascader.type";
-import { Typo } from "../Typo";
+import { CascaderProps, PresetCascaderRenderProps } from "./cascader.type";
 
 export const NotDataContent: React.FC<{
   content: React.ReactNode | string;
@@ -81,15 +82,22 @@ export const CascaderDoubleRowOption: React.FC<{
   leftBottom?: React.ReactNode;
   rightTop?: React.ReactNode;
   rightBottom?: React.ReactNode;
-}> = ({ leftTop, leftBottom, rightTop, rightBottom }) => {
+  rootClassName?: string;
+}> = ({ leftTop, leftBottom, rightTop, rightBottom, rootClassName }) => {
   return (
-    <Flex vertical className={DoubleRowOptionStyleWrapper} gap={6}>
+    <Flex
+      vertical
+      className={cx(DoubleRowOptionStyleWrapper, rootClassName)}
+      gap={6}
+    >
       <Flex justify="space-between">
         <div className={Typo.Label.l2_medium}>{leftTop}</div>
         <div>{rightTop}</div>
       </Flex>
       <Flex justify="space-between" className={Typo.Label.l4_regular}>
-        <div className={cls(Typo.Label.l4_regular, "bottom")}>{leftBottom}</div>
+        <div className={cls(Typo.Label.l4_regular, "bottom", "left")}>
+          {leftBottom}
+        </div>
         <div className={cls(Typo.Label.l4_regular, "bottom")}>
           {rightBottom}
         </div>

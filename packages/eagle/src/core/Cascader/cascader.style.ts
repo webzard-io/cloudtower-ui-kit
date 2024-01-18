@@ -1,12 +1,13 @@
 import { css } from "@linaria/core";
-import { Typo } from "@src/core/Typo";
 import { CheckboxStyleContent } from "../Checkbox/checkbox.style";
 import { Antd5PrefixCls } from "../../utils";
 
 export const DoubleRowOptionStyleWrapper = css`
-  width: 400px;
   .bottom {
     color: $text-neutral-secondary;
+  }
+  .left.bottom {
+    min-width: 0;
   }
 `;
 
@@ -130,6 +131,10 @@ export const CascaderDropdown = css`
   }
 
   ${CheckboxStyleContent.replaceAll("ant-", `${Antd5PrefixCls}-`)}
+
+  .${DoubleRowOptionStyleWrapper} {
+    width: 400px;
+  }
 `;
 
 export const CascaderSmallDropdown = css`

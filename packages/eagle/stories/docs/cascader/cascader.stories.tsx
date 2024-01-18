@@ -7,6 +7,7 @@ import { CascaderDoubleRowOption } from "@src/core/Cascader/cascader.widget";
 import SearchInput from "@src/core/SearchInput";
 import Tag from "@src/core/Tag";
 import Token from "@src/core/Token";
+import OverflowTooltip from "@src/coreX/OverflowTooltip";
 import { CoreMeta } from "@stories/types";
 import type { StoryObj } from "@storybook/react";
 import React, { useState } from "react";
@@ -201,6 +202,12 @@ export const DoubleRow: Story = {
               <CascaderDoubleRowOption
                 data-label-text={"node 2"}
                 leftTop={"node2"}
+                leftBottom={
+                  <OverflowTooltip
+                    tooltip={"x".repeat(200)}
+                    content={"x".repeat(200)}
+                  />
+                }
               />
             ),
           },
