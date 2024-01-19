@@ -1,4 +1,4 @@
-import { MAGIC_METRIC_NULL } from "./tower";
+import { MAGIC_METRIC_NULL } from "./format";
 
 function isEmpty(rawValue?: number | null): rawValue is null | undefined {
   if (

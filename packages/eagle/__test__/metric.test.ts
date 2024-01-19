@@ -13,7 +13,7 @@ import {
   tickFormatter,
   xaxisCal,
 } from "../src/core/Metric/metric";
-import { DAY, MINUTE, SECOND } from "../src/utils/tower";
+import { DAY, MINUTE, SECOND } from "../src/utils/format";
 import mockMetric from "./mockMetric";
 
 describe("getMs", () => {

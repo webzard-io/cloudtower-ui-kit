@@ -3,7 +3,7 @@ import Empty from "@src/core/Empty";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { UnitFn } from "@src/spec";
 import isEmpty from "@src/utils/isEmpty";
-import { formatBytes } from "@src/utils/tower";
+import { formatBytes } from "@src/utils/format";
 import React from "react";
 const Byte: UnitFn = ({
   rawValue,

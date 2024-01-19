@@ -43,7 +43,7 @@ import {
   THz,
   TiB,
   WEEK,
-} from "../tower";
+} from "../format";
 
 describe("formatBytes", () => {
   it("should handle the case of zero byte", () => {

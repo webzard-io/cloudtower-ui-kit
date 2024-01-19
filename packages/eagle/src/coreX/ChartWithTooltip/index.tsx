@@ -14,7 +14,7 @@ import UnitWithChart, {
   IUnitWithChartProps,
   UnitWrapper,
 } from "@src/coreX/UnitWithChart";
-import { formatPercent } from "@src/utils/tower";
+import { formatPercent } from "@src/utils/format";
 import _ from "lodash";
 import React from "react";
 

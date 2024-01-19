@@ -1,5 +1,5 @@
 import { css } from "@linaria/core";
-import { formatPercent } from "@src/utils/tower";
+import { formatPercent } from "@src/utils/format";
 import React from "react";
 
 const StackBar = css`

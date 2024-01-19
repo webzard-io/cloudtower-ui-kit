@@ -1,4 +1,4 @@
-import { GiB, KiB } from "./tower";
+import { GiB, KiB } from "./format";
 
 export type FormatUnit = "GiB" | "KiB";
 

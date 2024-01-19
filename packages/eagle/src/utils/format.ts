@@ -27,6 +27,12 @@ export const Gb = 1000 * Mb;
 export const Tb = 1000 * Gb;
 export const Pb = 1000 * Tb;
 
+/**
+ *
+ * @param bits 原始数值，以 bit 为单位。如果为 0 或者 null，则返回 0 b
+ * @param decimals 保留小数位，默认保留两位
+ * @returns
+ */
 export function formatBits(bits: number, decimals = 2): FormattedResult {
   if (bits <= 0 || bits === MAGIC_METRIC_NULL) {
     return {
@@ -50,6 +56,12 @@ export const MHz = 1000 * KHz;
 export const GHz = 1000 * MHz;
 export const THz = 1000 * GHz;
 
+/**
+ *
+ * @param frequency 原始数值，以 Hz 为单位。如果为 0 或者 null，则返回 0 Hz
+ * @param decimals 保留小数位，默认保留两位
+ * @returns
+ */
 export function formatFrequency(
   frequency: number,
   decimals = 2,
@@ -76,6 +88,12 @@ export const HOUR = 60 * MINUTE;
 export const DAY = 24 * HOUR;
 export const WEEK = 7 * DAY;
 
+/**
+ *
+ * @param seconds 原始数值，以秒为单位。如果为 0 或者 null，则返回 0 秒
+ * @param decimals 保留小数位，默认不保留
+ * @returns
+ */
 export function formatSeconds(seconds: number, decimals = 0): FormattedResult {
   if (seconds <= MAGIC_METRIC_NULL) {
     seconds = 0;
@@ -122,6 +140,12 @@ export const Mbps = 1000 * Kbps;
 export const Gbps = 1000 * Mbps;
 export const Tbps = 1000 * Gbps;
 
+/**
+ *
+ * @param input 原始数值，以 bps 为单位。如果为 0 或者 null，则返回 0 bps
+ * @param decimals 保留小数位，默认保留一位
+ * @returns
+ */
 export function formatBitPerSecond(
   input: number,
   decimals = 1,
@@ -148,6 +172,12 @@ export const MBps = 1000 * KBps;
 export const GBps = 1000 * MBps;
 export const TBps = 1000 * GBps;
 
+/**
+ *
+ * @param input 原始数值，以 Bps 为单位。如果为 0 或者 null，则返回 0 Bps
+ * @param decimals 保留小数位，默认保留一位
+ * @returns
+ */
 export function formatBps(input: number, decimals = 1): FormattedResult {
   if (input <= 0 || input === MAGIC_METRIC_NULL) {
     return {
@@ -165,6 +195,12 @@ export function formatBps(input: number, decimals = 1): FormattedResult {
   };
 }
 
+/**
+ *
+ * @param bytes 原始数值，以 B 为单位。如果为 0 或者 null，则返回 0 B
+ * @param decimals 保留小数位，默认保留两位
+ * @returns
+ */
 export function formatBytes(bytes: number, decimals = 2): FormattedResult {
   if (bytes <= 0 || bytes === MAGIC_METRIC_NULL) {
     return {
@@ -182,6 +218,13 @@ export function formatBytes(bytes: number, decimals = 2): FormattedResult {
   };
 }
 
+/**
+ *
+ * @param input 原始数值，以 B 为单位。如果为 0 或者 null，则返回 0 B
+ * @param decimals 保留小数位，默认保留两位
+ * @param saturated  是否饱和，如果为 true，则小于 0 的数值会被转换为 0，大于 100 的数值会被转换为 100
+ * @returns
+ */
 export function formatPercent(
   input: number,
   decimals = 2,
@@ -232,6 +275,12 @@ export const MbE = 1000 * KbE;
 export const GbE = 1000 * MbE;
 export const TbE = 1000 * GbE;
 
+/**
+ *
+ * @param input 原始数值，以 bps 为单位。如果为 0 或者 null，则返回 0 bps
+ * @param decimals 保留小数位，默认不保留
+ * @returns
+ */
 export function formatSpeed(input: number, decimals = 0) {
   input /= 1000;
   if (input < 1) return { value: "-", unit: "" };

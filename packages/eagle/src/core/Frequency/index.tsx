@@ -2,7 +2,7 @@ import { cx } from "@linaria/core";
 import Empty from "@src/core/Empty";
 import { UnitFn } from "@src/spec";
 import isEmpty from "@src/utils/isEmpty";
-import { formatFrequency } from "@src/utils/tower";
+import { formatFrequency } from "@src/utils/format";
 import React from "react";
 
 const Frequency: UnitFn = ({

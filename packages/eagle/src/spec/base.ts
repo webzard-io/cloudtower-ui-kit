@@ -77,7 +77,7 @@ import { IChartWithUnitProps, ICWTProps } from "../coreX/ChartWithTooltip";
 import { DateRangePickerProps } from "../coreX/DateRangePicker/common";
 import { IDonutChartProps } from "../coreX/DonutChart";
 import { IUnitWithChartProps } from "../coreX/UnitWithChart";
-import { SerializableObject } from "../utils/tower";
+import { SerializableObject } from "../utils/format";
 import { FieldRenderProps } from "./react-final-form";
 import {
   Architecture,
