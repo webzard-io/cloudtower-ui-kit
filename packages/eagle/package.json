@@ -23,6 +23,7 @@
     "typings": "tsc --emitDeclarationOnly && tsc-alias",
     "prestorybook": "cd ../.. && yarn turbo run build",
     "storybook": "storybook dev -p 6006",
+    "doc:gen": "typedoc --options stories/config/typedoc.json",
     "build-storybook": "storybook build",
     "sync:color": "node tools/fetch-figma-color.js"
   },
@@ -112,6 +113,8 @@
     "ts-loader": "^9.4.2",
     "ts-node": "^10.9.1",
     "tsc-alias": "^1.8.8",
+    "typedoc": "^0.25.7",
+    "typedoc-plugin-markdown": "^3.17.1",
     "typescript": "5.0.2",
     "vite": "^3.1.7",
     "vitest": "^0.24.1"

@@ -6901,6 +6901,11 @@ ansi-regex@^6.0.1:
   resolved "https://registry.npmjs.org/ansi-regex/-/ansi-regex-6.0.1.tgz"
   integrity sha512-n5M855fKb2SsfMIiFFoVrABHJC8QtHwVx+mHWP3QcEqBHYienj5dHSgjbxtC0WEZXYt4wcD6zrQElDPhFuZgfA==
 
+ansi-sequence-parser@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ansi-sequence-parser/-/ansi-sequence-parser-1.1.1.tgz#e0aa1cdcbc8f8bb0b5bca625aac41f5f056973cf"
+  integrity sha512-vJXt3yiaUL4UU546s3rPXlsry/RnM730G1+HkpKE012AN0sx1eOrxSu95oKDIonskeLTijMgqWZ3uDEe3NFvyg==
+
 ansi-styles@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-2.2.1.tgz#b432dd3358b634cf75e1e4664368240533c1ddbe"
@@ -13520,6 +13525,11 @@ lru-cache@^6.0.0:
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-10.0.1.tgz#0a3be479df549cca0e5d693ac402ff19537a6b7a"
   integrity sha512-IJ4uwUTi2qCccrioU6g9g/5rvvVl13bsdczUUcqbciD9iLr095yj8DQKdObriEvuNSx325N1rV1O0sJFszx75g==
 
+lunr@^2.3.9:
+  version "2.3.9"
+  resolved "https://registry.yarnpkg.com/lunr/-/lunr-2.3.9.tgz#18b123142832337dd6e964df1a5a7707b25d35e1"
+  integrity sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==
+
 lz-string@^1.4.4:
   version "1.4.4"
   resolved "https://registry.npmjs.org/lz-string/-/lz-string-1.4.4.tgz"
@@ -13640,6 +13650,11 @@ markdown-to-jsx@^7.1.8:
   version "7.3.2"
   resolved "https://registry.yarnpkg.com/markdown-to-jsx/-/markdown-to-jsx-7.3.2.tgz#f286b4d112dad3028acc1e77dfe1f653b347e131"
   integrity sha512-B+28F5ucp83aQm+OxNrPkS8z0tMKaeHiy0lHJs3LqCyDQFtWuenaIrkaVTgAm1pf1AU85LXltva86hlaT17i8Q==
+
+marked@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-4.3.0.tgz#796362821b019f734054582038b116481b456cf3"
+  integrity sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A==
 
 mdast-util-definitions@^4.0.0:
   version "4.0.0"
@@ -13856,7 +13871,7 @@ minimatch@^5.0.1:
   dependencies:
     brace-expansion "^2.0.1"
 
-minimatch@^9.0.1:
+minimatch@^9.0.1, minimatch@^9.0.3:
   version "9.0.3"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-9.0.3.tgz#a6e00c3de44c3a542bfaae70abfc22420a6da825"
   integrity sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==
@@ -18066,6 +18081,16 @@ shell-quote@^1.7.3:
   resolved "https://registry.npmjs.org/shell-quote/-/shell-quote-1.8.0.tgz"
   integrity sha512-QHsz8GgQIGKlRi24yFc6a6lN69Idnx634w49ay6+jA5yFh7a1UY+4Rp6HPx/L/1zcEDPEij8cIsiqR6bQsE5VQ==
 
+shiki@^0.14.7:
+  version "0.14.7"
+  resolved "https://registry.yarnpkg.com/shiki/-/shiki-0.14.7.tgz#c3c9e1853e9737845f1d2ef81b31bcfb07056d4e"
+  integrity sha512-dNPAPrxSc87ua2sKJ3H5dQ/6ZaY8RNnaAqK+t0eG7p0Soi2ydiqbGOTaZCqaYvA/uZYfS1LJnemt3Q+mSfcPCg==
+  dependencies:
+    ansi-sequence-parser "^1.1.0"
+    jsonc-parser "^3.2.0"
+    vscode-oniguruma "^1.7.0"
+    vscode-textmate "^8.0.0"
+
 side-channel@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npmjs.org/side-channel/-/side-channel-1.0.4.tgz"
@@ -19345,6 +19370,23 @@ typedarray@^0.0.6:
   resolved "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
+typedoc-plugin-markdown@^3.17.1:
+  version "3.17.1"
+  resolved "https://registry.yarnpkg.com/typedoc-plugin-markdown/-/typedoc-plugin-markdown-3.17.1.tgz#c33f42363c185adf842f4699166015f7fe0ed02b"
+  integrity sha512-QzdU3fj0Kzw2XSdoL15ExLASt2WPqD7FbLeaqwT70+XjKyTshBnUlQA5nNREO1C2P8Uen0CDjsBLMsCQ+zd0lw==
+  dependencies:
+    handlebars "^4.7.7"
+
+typedoc@^0.25.7:
+  version "0.25.7"
+  resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.25.7.tgz#11e3f527ca80ca3c029cb8e15f362e6d9f715e25"
+  integrity sha512-m6A6JjQRg39p2ZVRIN3NKXgrN8vzlHhOS+r9ymUYtcUP/TIQPvWSq7YgE5ZjASfv5Vd5BW5xrir6Gm2XNNcOow==
+  dependencies:
+    lunr "^2.3.9"
+    marked "^4.3.0"
+    minimatch "^9.0.3"
+    shiki "^0.14.7"
+
 typescript@5.0.2:
   version "5.0.2"
   resolved "https://registry.npmjs.org/typescript/-/typescript-5.0.2.tgz"
@@ -19735,6 +19777,16 @@ void-elements@3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/void-elements/-/void-elements-3.1.0.tgz"
   integrity sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==
+
+vscode-oniguruma@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/vscode-oniguruma/-/vscode-oniguruma-1.7.0.tgz#439bfad8fe71abd7798338d1cd3dc53a8beea94b"
+  integrity sha512-L9WMGRfrjOhgHSdOYgCt/yRMsXzLDJSL7BPrOZt73gU0iWO4mpqzqQzOz5srxqTvMBaR0XZTSrVWo4j55Rc6cA==
+
+vscode-textmate@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/vscode-textmate/-/vscode-textmate-8.0.0.tgz#2c7a3b1163ef0441097e0b5d6389cd5504b59e5d"
+  integrity sha512-AFbieoL7a5LMqcnOF04ji+rpXadgOXnZsxQr//r83kLPr7biP7am3g9zbaZIaBGwBRWeSvoMD4mgPdX3e4NWBg==
 
 w3c-hr-time@^1.0.2:
   version "1.0.2"

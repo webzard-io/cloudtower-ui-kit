@@ -43,6 +43,13 @@ jobs:
         run: yarn build
       - name: Test
         run: yarn test:ci
+      - name: Create the docs directory locally in CI
+        run: yarn lerna run doc:gen --scope=@cloudtower/eagle
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: packages/eagle/stories/typedoc
   storybook-staging:
     name: Setup Storybook Staging
     runs-on: [self-hosted, linux]
