@@ -84,6 +84,6 @@ describe.skip("css selectos score should not greater than 12", () => {
     });
 
     expect(notEagleStyleCls).toMatchSnapshot("not eagle class name");
-    expect(highScoreEagleStyleCls).toMatchSnapshot("danger ealge class name");
+    expect(highScoreEagleStyleCls).toMatchSnapshot("danger eagle class name");
   });
 });

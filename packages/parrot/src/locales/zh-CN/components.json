@@ -73,5 +73,6 @@
   "date_range_picker_history_title": "最近查询",
   "search_relative_time_placeholder": "搜索相对时间",
   "select_all": "全选",
-  "unselect_all": "取消全选"
+  "unselect_all": "取消全选",
+  "other": "其他"
 }

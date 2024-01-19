@@ -1,7 +1,7 @@
 import React from "react";
 import { PolarAngleAxis, RadialBar, RadialBarChart } from "recharts";
 
-export interface IDonutChartProps {
+export interface DeprecatedIDonutChartProps {
   data: Array<object>;
   dataKey: string;
   width: number;
@@ -11,7 +11,7 @@ export interface IDonutChartProps {
   outerRadius: number;
 }
 
-const DonutChart: React.FC<IDonutChartProps> = ({
+const DeprecatedDonutChart: React.FC<DeprecatedIDonutChartProps> = ({
   data,
   dataKey,
   width,
@@ -40,4 +40,4 @@ const DonutChart: React.FC<IDonutChartProps> = ({
   </RadialBarChart>
 );
 
-export default DonutChart;
+export default DeprecatedDonutChart;

@@ -1,9 +1,9 @@
-import DonutChart from "@src/coreX/DonutChart";
+import DeprecatedDonutChart from "@src/coreX/DeprecatedDonutChart";
 import type { Meta, StoryObj } from "@storybook/react";
 
-const meta: Meta<typeof DonutChart> = {
-  title: "CoreX/DonutChart",
-  component: DonutChart,
+const meta: Meta<typeof DeprecatedDonutChart> = {
+  title: "CoreX/DeprecatedDonutChart",
+  component: DeprecatedDonutChart,
   parameters: {
     docs: {
       description: {
@@ -16,7 +16,7 @@ const meta: Meta<typeof DonutChart> = {
 
 export default meta;
 
-type Story = StoryObj<typeof DonutChart>;
+type Story = StoryObj<typeof DeprecatedDonutChart>;
 
 export const Demo: Story = {
   parameters: {

@@ -73,5 +73,6 @@
   "date_range_picker_history_title": "Recent Search",
   "search_relative_time_placeholder": "Search relative time",
   "select_all": "Select All",
-  "unselect_all": "Clear"
+  "unselect_all": "Clear",
+  "other": "Other"
 }

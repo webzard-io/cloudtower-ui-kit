@@ -1,8 +1,19 @@
+import { css } from "@linaria/core";
 import { TooltipProps } from "@src/spec";
 import { Tooltip as AntdTooltip } from "antd";
 import cs from "classnames";
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
 let componentId = 0;
+const TooltipDefaultClass = css`
+  .ant-tooltip-arrow {
+    display: none;
+  }
+  .ant-tooltip-inner {
+    background: $gray-a80-9;
+    border-radius: 4px;
+  }
+`;
+
 const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
   const {
     followMouse,
@@ -40,13 +51,13 @@ const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
       popup.style.left = event.pageX + "px";
       popup.style.top = event.pageY + "px";
     },
-    [uniquePopupClass]
+    [uniquePopupClass],
   );
 
   useEffect(() => {
     if (followMouse) {
       const container = document.querySelector<HTMLElement>(
-        `.${uniqueContainerClass}`
+        `.${uniqueContainerClass}`,
       );
       container?.addEventListener("mousemove", onmousemove);
       return () => {
@@ -58,17 +69,19 @@ const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
   return (
     <AntdTooltip
       {...restProps}
-      overlayClassName={
-        followMouse ? cs(overlayClassName, uniquePopupClass) : overlayClassName
-      }
+      overlayClassName={cs({
+        uniquePopupClass: followMouse,
+        TooltipDefaultClass,
+        overlayClassName,
+      })}
       children={_children}
       overlayStyle={
         followMouse
           ? {
-              transform: "translate(-50%, -100%)",
-              pointerEvents: "none",
-              ...overlayStyle,
-            }
+            transform: "translate(-50%, -100%)",
+            pointerEvents: "none",
+            ...overlayStyle,
+          }
           : overlayStyle
       }
     />
