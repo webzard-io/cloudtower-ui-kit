@@ -4,6 +4,7 @@ import { IEmptyProps } from "@src/core/Empty";
 import { MessageApi } from "@src/core/message";
 import { TableFormHandle, TableFormProps } from "@src/core/TableForm/types";
 import { TruncatePropTypes } from "@src/core/Truncate";
+import type { OverflowTooltipProps } from "@src/coreX/OverflowTooltip/overflowTooltip.type";
 import { SizeType } from "antd/es/config-provider/SizeContext";
 import { AlertProps } from "antd/lib/alert";
 import { AutoCompleteProps } from "antd/lib/auto-complete";
@@ -800,14 +801,6 @@ export type TokenType = Omit<TagProps, "closeIcon"> & {
 export type TokenComponentType = React.ForwardRefExoticComponent<
   TokenType & React.RefAttributes<HTMLDivElement>
 >;
-
-export type OverflowTooltipProps = {
-  content: React.ReactNode;
-  tooltip?: React.ReactNode;
-  className?: string;
-  onClick?: () => void;
-  multiLines?: number;
-};
 
 export type TruncateTextWithTooltipType = {
   text: string;

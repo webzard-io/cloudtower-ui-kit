@@ -1,53 +1,76 @@
 import OverflowTooltip from "@src/coreX/OverflowTooltip";
-import { OverflowTooltipProps } from "@src/spec";
+import type { OverflowTooltipProps } from "@src/coreX/OverflowTooltip/overflowTooltip.type";
 import { Meta, StoryObj } from "@storybook/react";
+import { loremIpsum } from "lorem-ipsum";
 import React from "react";
+const exampleContent = loremIpsum({
+  count: 2,
+  units: "paragraphs",
+});
 
+/**
+ *
+ * OverflowTooltip 组件用于处理文本溢出时的省略和提示，支持单行和多行文本溢出并展示 tooltip。
+ *
+ */
 const meta: Meta<React.FC<OverflowTooltipProps>> = {
-  title: "CoreX/OverflowTooltip",
+  title: "CoreX/OverflowTooltip | 文本溢出提示",
   component: OverflowTooltip,
 };
 export default meta;
 
-export const Default: StoryObj<{
-  width: string;
-  multiLines: number;
-  content: string;
-}> = {
-  render: ({ width, content, ...rest }) => {
-    return (
-      <>
-        <div style={{ width }}>
-          <OverflowTooltip content={content} {...rest} />
-        </div>
-      </>
-    );
+/**
+ *
+ * OverflowTooltip 组件内部会动态判断文本是否已经溢出，如果溢出会展示给定的 tooltip 内容，如果不指定 tooltip，则会展示完整的文本内容。
+ *
+ */
+export const Default: StoryObj<OverflowTooltipProps> = {
+  name: "基本用例",
+  render: (props) => {
+    return <OverflowTooltip {...props} />;
   },
   args: {
-    width: "300px",
+    content: exampleContent,
     multiLines: 0,
-    content: "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel",
+    tooltip: "",
   },
 };
 
-export const MultipleLine: StoryObj<{
-  width: string;
-  multiLines: number;
-  content: string;
-}> = {
-  render: ({ width, content, ...rest }) => {
-    return (
-      <>
-        <p>通过指定 multiLines 大于1，可以实现多行溢出</p>
-        <div style={{ width, marginTop: "30px" }}>
-          <OverflowTooltip content={content} {...rest} />
-        </div>
-      </>
-    );
+/**
+ *
+ * 通过指定 multiLines 大于 1 可以实现多行省略溢出。
+ *
+ * 比如在 multiLines 为 2 时，文字部分会在内容超过两行时省略溢出并展示 tooltip 内容。
+ *
+ */
+export const MultipleLine: StoryObj<OverflowTooltipProps> = {
+  name: "多行溢出",
+  render: (props) => {
+    return <OverflowTooltip {...props} />;
   },
   args: {
-    width: "200px",
+    content: loremIpsum({
+      count: 5,
+      units: "paragraphs",
+    }),
     multiLines: 2,
-    content: "LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel",
+    tooltip: "",
+  },
+};
+
+/**
+ *
+ * 可以指定文本省略时要展示的 tooltip 内容，如不指定，会默认展示完整的文本内容(content)。
+ *
+ */
+export const Tooltip: StoryObj<OverflowTooltipProps> = {
+  name: "自定义 tooltip",
+  render: (props) => {
+    return <OverflowTooltip {...props} />;
+  },
+  args: {
+    content: exampleContent,
+    multiLines: 0,
+    tooltip: loremIpsum(),
   },
 };
