@@ -21,13 +21,15 @@ export function getWidth(input: number) {
   return value + unit;
 }
 
-const BarChart: React.FC<{
+export interface IBarChartProps {
   data: Array<{
     value: number;
     color: string;
   }>;
   total: number;
-}> = ({ data, total }) => (
+}
+
+const BarChart: React.FC<IBarChartProps> = ({ data, total }) => (
   <div className={StackBar}>
     {(data || []).map((item) => {
       const { value, color } = item;
