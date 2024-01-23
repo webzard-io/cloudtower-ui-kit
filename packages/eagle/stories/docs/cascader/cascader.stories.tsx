@@ -1,7 +1,7 @@
 import { Filter16BlueSolidIcon } from "@cloudtower/icons-react";
 import { Icon, Typo } from "@src/core";
 import Button from "@src/core/Button";
-import Cascader from "@src/core/Cascader";
+import { Cascader } from "@src/core/Cascader";
 import { CascaderProps } from "@src/core/Cascader/cascader.type";
 import { CascaderDoubleRowOption } from "@src/core/Cascader/cascader.widget";
 import SearchInput from "@src/core/SearchInput";

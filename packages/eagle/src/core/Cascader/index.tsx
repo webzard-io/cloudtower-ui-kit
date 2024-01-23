@@ -16,7 +16,8 @@ import { Antd5PrefixCls } from "@src/utils/constants";
 import { Cascader as Antd5Cascader } from "antd5";
 import cls from "classnames";
 import React from "react";
-const Cascader: React.FC<CascaderProps> = (props) => {
+
+export const Cascader: React.FC<CascaderProps> = (props) => {
   const {
     size = "middle",
     NotData = "No Data",
@@ -36,7 +37,7 @@ const Cascader: React.FC<CascaderProps> = (props) => {
           [CascaderSmallDropdown]: size === "small",
         },
         dropdownClassName,
-        CascaderDropdown
+        CascaderDropdown,
       )}
       dropdownRender={(menus) => (
         <PresetCascaderRender menus={menus} {...presetCascaderRenderProps} />
@@ -48,5 +49,3 @@ const Cascader: React.FC<CascaderProps> = (props) => {
     />
   );
 };
-
-export default Cascader;

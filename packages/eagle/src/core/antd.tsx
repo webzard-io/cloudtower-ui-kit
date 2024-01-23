@@ -71,7 +71,6 @@ import ButtonGroup from "./ButtonGroup";
 import Byte from "./Byte";
 import Calendar from "./Calendar";
 import Card from "./Card";
-import Cascader from "./Cascader";
 import Checkbox from "./Checkbox";
 import Empty from "./Empty";
 import ExpandableContainer from "./ExpandableList/ExpandableContainer";
@@ -172,7 +171,6 @@ export function getAntdKit(): Kit {
     timelineItem: Timeline.Item,
     checkboxGroup: AntdCheckbox.Group,
     typographyText: Typography.Text,
-    cascader: Cascader,
     upload: Upload,
     datePickerRangePicker: DatePicker.RangePicker,
     tableForm: TableForm,
