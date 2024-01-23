@@ -33,6 +33,7 @@ export {
   useKitSelector,
   WizardBody,
 } from "./core";
+export { Cascader } from "./core/Cascader";
 export * from "./core/Cascader/cascader.style";
 export * from "./core/Cascader/cascader.type";
 export * from "./core/Cascader/cascader.widget";

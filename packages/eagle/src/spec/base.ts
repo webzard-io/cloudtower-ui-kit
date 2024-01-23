@@ -60,7 +60,6 @@ import { TreeProps as AntdTreeProps } from "antd/lib/tree";
 import type TreeSelect from "antd/lib/tree-select";
 import { TextProps } from "antd/lib/typography/Text";
 import { DraggerProps, UploadProps } from "antd/lib/upload";
-import { CascaderProps } from "antd5/lib/cascader";
 import type { Dayjs } from "dayjs";
 import type { History } from "history";
 import type { Moment } from "moment";
@@ -604,7 +603,6 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   row: React.FC<RowProps>;
   timeline: React.FC<TimelineProps>;
   timelineItem: React.FC<TimeLineItemProps>;
-  cascader: React.ComponentType<CascaderProps>;
   checkboxGroup: React.ComponentType<CheckboxGroupProps>;
   typographyText: React.FC<TextProps>;
   upload: React.ComponentType<UploadProps>;
