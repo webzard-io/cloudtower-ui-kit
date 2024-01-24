@@ -2,6 +2,7 @@ import { StyledMeta } from "@linaria/react";
 import { CardProps } from "@src/core/Card";
 import { IEmptyProps } from "@src/core/Empty";
 import { MessageApi } from "@src/core/message";
+import { ProgressProps } from "@src/core/Progress/progress.type";
 import { TableFormHandle, TableFormProps } from "@src/core/TableForm/types";
 import { TooltipProps } from "@src/core/Tooltip/tooltip.type";
 import { TruncatePropTypes } from "@src/core/Truncate";
@@ -34,7 +35,6 @@ import { MenuItemProps } from "antd/lib/menu/MenuItem";
 import { SubMenuProps } from "antd/lib/menu/SubMenu";
 import { ModalProps as AntdModalProps } from "antd/lib/modal";
 import { PopoverProps } from "antd/lib/popover";
-import { ProgressProps } from "antd/lib/progress";
 import {
   RadioGroupProps as AntdRadioGroupProps,
   RadioProps as AntdRadioProps,
@@ -53,7 +53,7 @@ import {
 } from "antd/lib/table";
 import { TableRowSelection } from "antd/lib/table/interface";
 import { TabPaneProps, TabsProps } from "antd/lib/tabs";
-import { TagProps } from "antd/lib/tag";
+import { TagProps as AntdTagProps } from "antd/lib/tag";
 import { TimePickerProps } from "antd/lib/time-picker";
 import { TimeLineItemProps, TimelineProps } from "antd/lib/timeline";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
@@ -555,7 +555,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   radioGroup: React.FC<AntdRadioGroupProps>;
   radioButton: React.FC<RadioButtonProps>;
   tree: React.FC<AntdTreeProps>;
-  progress: ProgressComponentType;
+  progress: React.FC<ProgressProps>;
   divider: React.FC<AntdDividerProps>;
   skeleton: React.FC<AntdSkeletonProps>;
   skeletonButton: {
@@ -689,8 +689,6 @@ export type BadgeComponentType = React.FC<
   BadgeProps & { type?: BadgeTypeProps }
 >;
 
-export type ProgressComponentType = React.FC<ProgressProps>;
-
 export type InputGroupComponentType = StyledMeta & React.FC<GroupProps>;
 
 export type AlertComponentType = React.FunctionComponent<
@@ -734,7 +732,7 @@ export type TagColor =
   | "success";
 
 export type SplitTagComponentType = React.FC<
-  Omit<TagProps, "closable" | "closeIcon" | "onClose" | "visible"> & {
+  Omit<AntdTagProps, "closable" | "closeIcon" | "onClose" | "visible"> & {
     color?: "red" | "yellow" | "green" | "blue" | "purple" | "gray";
     size?: "small" | "medium";
     primaryContent: React.ReactNode;
@@ -748,13 +746,16 @@ export interface NameTagType
   style?: React.CSSProperties;
 }
 
-export type TagComponentType = React.FC<
-  Omit<TagProps, "closable" | "closeIcon" | "onClose"> & {
-    color?: TagColor;
-    size?: "small" | "medium";
-    hoverable?: boolean;
-  }
+export type TagProps = Omit<
+  AntdTagProps,
+  "closable" | "closeIcon" | "onClose"
 > & {
+  color?: TagColor;
+  size?: "small" | "medium";
+  hoverable?: boolean;
+};
+
+export type TagComponentType = React.FC<TagProps> & {
   SplitTag: SplitTagComponentType;
   NameTag: React.FC<NameTagType>;
 };
@@ -770,7 +771,7 @@ export type StatusCapsuleColor =
   | "warning";
 
 export type StatusCapsuleComponentType = React.FC<
-  Omit<TagProps, "closable" | "closeIcon" | "onClose" | "icon" | "size"> & {
+  Omit<AntdTagProps, "closable" | "closeIcon" | "onClose" | "icon" | "size"> & {
     color?: StatusCapsuleColor;
     loading?: boolean;
     hoverable?: boolean;
@@ -786,7 +787,7 @@ export type TokenColor =
   | "blue"
   | "gray"
   | "purple";
-export type TokenType = Omit<TagProps, "closeIcon"> & {
+export type TokenType = Omit<AntdTagProps, "closeIcon"> & {
   color?: TokenColor;
   size?: "small" | "medium" | "large";
   checked?: boolean;
