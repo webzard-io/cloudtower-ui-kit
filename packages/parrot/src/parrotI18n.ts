@@ -24,6 +24,7 @@ const defaultOptions: InitOptions = {
   react: {
     useSuspense: false,
   },
+  overloadTranslationOptionHandler: () => ({}),
 };
 
 const parrotI18n = i18next.createInstance(defaultOptions);
