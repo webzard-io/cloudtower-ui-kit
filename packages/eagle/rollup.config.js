@@ -29,7 +29,7 @@ const config = defineConfig([
           find: new RegExp(`${alias.replace("/*", "")}`),
           replacement: path.resolve(
             projectRootDir,
-            `${value[0].replace("/*", "")}`
+            `${value[0].replace("/*", "")}`,
           ),
         })),
       }),
@@ -95,15 +95,18 @@ const config = defineConfig([
     ],
     output: [
       {
-        dir: "dist/umd",
+        dir: "dist/cjs",
         name: "index",
-        format: "umd",
-        interop: "auto",
+        format: "cjs",
+        preserveModules: true,
+        preserveModulesRoot: "src",
       },
       {
         dir: "dist/esm",
         name: "index",
         format: "esm",
+        preserveModules: true,
+        preserveModulesRoot: "src",
       },
     ],
   },
@@ -119,7 +122,7 @@ const config = defineConfig([
           find: new RegExp(`${alias.replace("/*", "")}`),
           replacement: path.resolve(
             projectRootDir,
-            `${value[0].replace("/*", "")}`
+            `${value[0].replace("/*", "")}`,
           ),
         })),
       }),
@@ -198,9 +201,9 @@ const config = defineConfig([
       esbuild.default(),
       scss({
         output: "dist/token.css",
-        exclude: ["*.ts", "*.scss"]
+        exclude: ["*.ts", "*.scss"],
       }),
-    ]
+    ],
   },
 ]);
 
