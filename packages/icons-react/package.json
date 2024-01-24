@@ -2,6 +2,14 @@
   "name": "@cloudtower/icons-react",
   "license": "MIT",
   "version": "0.27.53",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "description": "",
   "keywords": [],
   "homepage": "https://github.com/webzard-io/cloudtower-ui-kit#readme",
