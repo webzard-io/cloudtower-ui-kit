@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 
 function canScroll(el: Element, direction = "vertical"): boolean {
   const overflow = window.getComputedStyle(el).getPropertyValue("overflow");
+  console.log("useTableBodyHasScrollBar canScroll", direction);
 
   if (overflow === "hidden") return false;
 
@@ -16,10 +17,11 @@ function canScroll(el: Element, direction = "vertical"): boolean {
 
 export const useTableBodyHasScrollBar = (
   tableBodyEl?: React.MutableRefObject<HTMLDivElement | null>,
-  data?: unknown
+  data?: unknown,
 ): boolean => {
   const [hasScrollBar, setHasScrollBar] = useState<boolean>(false);
   const antTableBodyRef = useRef<Element>();
+  console.log("useTableBodyHasScrollBar");
   const observeTableBodyResize = useMemo(
     () =>
       new ResizeObserver((entries) => {
@@ -28,7 +30,7 @@ export const useTableBodyHasScrollBar = (
           setHasScrollBar(canScroll(target));
         }
       }),
-    []
+    [],
   );
   useEffect(() => {
     const tableWrapper = tableBodyEl?.current?.querySelector(".ant-table-body");
