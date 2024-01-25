@@ -8,18 +8,16 @@ export type ComponentType =
   | "link"
   | "iconField";
 
-export type TitleProps = {
-  content?: string;
-};
-
-export type DescriptionProps = {
-  content?: string;
+export type InfoProps = {
+  children?: React.ReactNode;
+  type: "title" | "description";
+  multiLines: number;
 };
 
 export type IconFieldProps = {
   status?: "success" | "failed" | "paused" | "active";
   src: SrcType;
-  content: string;
+  children: React.ReactNode;
 };
 
 export type Items = ({
@@ -28,8 +26,8 @@ export type Items = ({
 
 export type ComponentPropsMap = {
   tag: TagProps;
-  title: TitleProps;
-  description: DescriptionProps;
+  title: InfoProps;
+  description: InfoProps;
   iconField: IconFieldProps;
   link: LinkProps;
 };
@@ -41,8 +39,7 @@ export type ProgressProps = {
   className?: string;
   rootClassName?: string;
   percent: number;
-  title?: React.ReactNode;
-  stepName?: string;
+  info?: React.ReactNode;
   description?: string[];
   statusText?: React.ReactNode;
   operation?: React.ReactNode;

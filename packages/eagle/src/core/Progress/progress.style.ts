@@ -6,18 +6,15 @@ export const DescriptionStyle = css`
   font-size: 12px;
 `;
 
-export const ProgressStyle = css`
-  display: flex;
-  flex-direction: column;
-  row-gap: 6px;
-
-  .ant-progress-line {
-    height: 8px;
-    line-height: 8px;
-  }
+export const FlexFullContentStyle = css`
+  min-width: 0;
+  flex: 1;
 `;
 
 export const BaseProgressStyle = css`
+  &.ant-progress {
+    width: 220px;
+  }
   &.ant-progress.ant-progress-status-active .ant-progress-bg::before {
     content: "";
     display: block;

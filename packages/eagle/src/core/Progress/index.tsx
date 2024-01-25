@@ -5,7 +5,7 @@ import { StatusColorMap } from "@src/core/Progress/progress.const";
 import {
   BaseProgressStyle,
   DescriptionStyle,
-  ProgressStyle,
+  FlexFullContentStyle,
 } from "@src/core/Progress/progress.style";
 import { ProgressProps } from "@src/core/Progress/progress.type";
 import { Typo } from "@src/core/Typo";
@@ -17,17 +17,29 @@ const Row = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  column-gap: 6px;
+`;
+
+const ProgressContainer = styled.div<{ type: "simple" | "rich" }>`
+  display: flex;
+  flex-direction: column;
+  row-gap: ${({ type }) => (type === "simple" ? "4px" : "6px")};
+
+  .ant-progress-line {
+    font-size: 0;
+  }
 `;
 
 const Progress: React.FC<ProgressProps> = ({
   type = "simple",
   status,
   size = "small",
-  title,
+  info,
   statusText,
   description,
   operation,
   percent,
+  className,
   ...props
 }) => {
   const finalStatus =
@@ -36,7 +48,7 @@ const Progress: React.FC<ProgressProps> = ({
   if (type === "base") {
     return (
       <AntdProgress
-        className={BaseProgressStyle}
+        className={cx(className, BaseProgressStyle)}
         strokeWidth={storkeWidth}
         showInfo={false}
         status={finalStatus === "active" ? "active" : undefined}
@@ -46,30 +58,32 @@ const Progress: React.FC<ProgressProps> = ({
     );
   }
   let titleNode;
-  let operationNode;
+  let operationNode = operation;
   let statusTextNode;
 
   if (type === "simple") {
-    operationNode =
-      operation && isArray(operation) ? (
+    if (operation && isArray(operation)) {
+      operationNode = (
         <Area
           items={operation
             .concat(`${percent}%`)
-            .map((desc) => ({ type: "description", content: desc }))}
+            .map((desc) => ({ type: "description", children: desc }))}
           gap={2}
           split="dot"
         />
-      ) : null;
+      );
+    }
+
     titleNode =
-      typeof title === "string" ? (
+      typeof info === "string" ? (
         <Area
-          classname={css`
+          className={css`
             width: 100%;
           `}
-          items={[{ type: "description", content: title }]}
+          items={[{ type: "description", children: info }]}
         />
       ) : (
-        title
+        info
       );
   } else {
     statusTextNode =
@@ -81,17 +95,15 @@ const Progress: React.FC<ProgressProps> = ({
         statusText
       );
     titleNode =
-      typeof title === "string" ? (
-        <span className={cx("progress-title", Typo.Label.l2_bold)}>
-          {title}
-        </span>
+      typeof info === "string" ? (
+        <span className={cx("progress-info", Typo.Label.l2_bold)}>{info}</span>
       ) : (
-        title
+        info
       );
   }
 
   return (
-    <div className={ProgressStyle}>
+    <ProgressContainer type={type} className={className}>
       <Row>
         {titleNode}
         {statusTextNode}
@@ -106,9 +118,11 @@ const Progress: React.FC<ProgressProps> = ({
       <Row>
         {description ? (
           <Area
+            className={FlexFullContentStyle}
             items={description.map((desc) => ({
               type: "description",
-              content: desc,
+              children: desc,
+              multiLines: !operation ? 2 : 1,
             }))}
             gap={2}
             split="dot"
@@ -116,7 +130,7 @@ const Progress: React.FC<ProgressProps> = ({
         ) : null}
         {operationNode}
       </Row>
-    </div>
+    </ProgressContainer>
   );
 };
 
