@@ -2,16 +2,15 @@ import { DotIntervalSeparation16TertiaryIcon } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import Link from "@src/core/Link";
-import { Description, IconField, Title } from "@src/core/Progress/components";
+import { IconField, Info } from "@src/core/Progress/components";
 import {
   ComponentType,
-  DescriptionProps,
   IconFieldProps,
+  InfoProps,
   Items,
 } from "@src/core/Progress/progress.type";
 import Tag from "@src/core/Tag";
 import { LinkProps, TagProps } from "@src/spec";
-import { TitleProps } from "antd/lib/typography/Title";
 import React from "react";
 
 const splitMap: Record<string, React.ReactElement> = {
@@ -19,44 +18,45 @@ const splitMap: Record<string, React.ReactElement> = {
 };
 
 const titleAreaStyle = css`
-  width: 100%;
+  min-width: 0;
+  flex: 1;
   .tag {
     flex: 0 0 auto;
   }
   .progress-title {
     flex: 2;
-    flex-basis: calc(2 / 3 * 100%);
+    max-width: fit-content;
   }
-  .progress-description {
+  .progress-desc {
     flex: 1;
-    flex-basis: calc(1 / 3 * 100%);
+    max-width: fit-content;
   }
 `;
 
-export const TitleArea: React.FC<{
+export const InfoArea: React.FC<{
   title: string;
   tag?: TagProps;
   subtitle?: string;
 }> = ({ title, tag, subtitle }) => {
   const items: Items = [];
   if (tag) {
-    items[0] = {
+    items.push({
       type: "tag",
       ...tag,
-    };
+    });
   }
   items.push({
     type: "title",
-    content: title,
+    children: title,
   });
   if (subtitle) {
     items.push({
       type: "description",
-      content: subtitle,
+      children: subtitle,
     });
   }
 
-  return <Area classname={titleAreaStyle} items={items} />;
+  return <Area className={titleAreaStyle} items={items} />;
 };
 
 const AreaWrapper = styled.div<{ gap: number }>`
@@ -67,19 +67,21 @@ const AreaWrapper = styled.div<{ gap: number }>`
 
 export const Area: React.FC<{
   gap?: number;
-  split?: string;
-  classname?: string;
+  split?: React.ReactNode;
+  className?: string;
   items: Items;
-}> = ({ items, gap = 6, split, classname }) => {
+}> = ({ items, gap = 6, split, className }) => {
+  const splitNode =
+    typeof split === "string" ? splitMap[split] || split : split;
   return (
-    <AreaWrapper className={classname} gap={gap}>
+    <AreaWrapper className={className} gap={gap}>
       {items.map((item, idx) => {
         const { type, ...props } = item;
 
         return (
           <React.Fragment key={idx}>
             {getComponent(type, props)}
-            {split && idx < items.length - 1 && splitMap[split]}
+            {split && idx < items.length - 1 && splitNode}
           </React.Fragment>
         );
       })}
@@ -90,14 +92,14 @@ export const Area: React.FC<{
 function getComponent(type: ComponentType, props: unknown): React.ReactElement {
   switch (type) {
     case "description":
-      return <Description {...(props as DescriptionProps)} />;
     case "title":
-      return <Title {...(props as TitleProps)} />;
+      return <Info {...(props as InfoProps)} type={type} />;
     case "iconField":
       return <IconField {...(props as IconFieldProps)} />;
     case "link":
       return <Link {...(props as LinkProps)} />;
     case "tag":
-      return <Tag {...(props as TagProps)} />;
+      const { color, ...restProps } = props as TagProps;
+      return <Tag {...restProps} color={color || "blue"} />;
   }
 }

@@ -4,19 +4,20 @@ import {
 } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import Progress from "@src/core/Progress";
-import { Area, TitleArea } from "@src/core/Progress/Area";
+import { Area, InfoArea } from "@src/core/Progress/Area";
 import type { ProgressProps } from "@src/core/Progress/progress.type";
+import { Title } from "@stories/components";
 import { Meta, StoryObj } from "@storybook/react";
-import { Progress as AProgress } from "antd5";
 import { loremIpsum } from "lorem-ipsum";
 import React from "react";
+
 const exampleContent = loremIpsum({
   count: 2,
   units: "paragraphs",
 });
 
 const meta: Meta<React.FC<ProgressProps>> = {
-  title: "Core/Progress",
+  title: "Core/Progress | 进度条",
   component: Progress,
   decorators: [
     (Story) => {
@@ -27,6 +28,7 @@ const meta: Meta<React.FC<ProgressProps>> = {
             display: flex;
             row-gap: 20px;
             flex-direction: column;
+            padding-bottom: 40px;
           `}
         >
           {<Story />}
@@ -42,34 +44,83 @@ const meta: Meta<React.FC<ProgressProps>> = {
   },
 };
 
-export const Basic: StoryObj<{}> = {
+/**
+ * 基础进度条，表明事物正在加载的状态与进度
+ *
+ * 进度条宽度默认为 220px，处于 active 时会有动效，参考：[加载状态](https://www.figma.com/file/xfGf2oCgsi1s2EvFPNyJd8/Pattern%EF%BC%9A%E5%8A%A0%E8%BD%BD%E7%8A%B6%E6%80%81?node-id=788%3A22232&mode=dev)
+ */
+export const Base: StoryObj<{}> = {
+  name: "Base | 基础进度条",
   render: () => {
     return (
       <>
-        {(["success", "failed", "paused", "active"] as const).map((status) => {
-          return (
-            <div>
-              <div>
-                <Progress type="base" percent={100} status={status} />
-                <Progress
-                  type="base"
-                  size="large"
-                  percent={100}
-                  status={status}
-                />
-              </div>
-              <div>
-                <Progress type="base" percent={50} status={status} />
-                <Progress
-                  type="base"
-                  size="large"
-                  percent={50}
-                  status={status}
-                />
-              </div>
-            </div>
-          );
-        })}
+        <div
+          className={css`
+            width: 350px;
+            > div {
+              display: flex;
+              span {
+                flex: 1;
+              }
+            }
+          `}
+        >
+          <Title>Small</Title>
+          <div>
+            <span>In Progress</span>
+            <Progress type="base" percent={50} status="active" />
+          </div>
+          <div>
+            <span>Success</span>
+            <Progress type="base" percent={100} status="success" />
+          </div>
+          <div>
+            <span>Failed</span>
+            <Progress type="base" percent={50} status="failed" />
+          </div>
+          <div>
+            <span>Notice / Paused</span>
+            <Progress type="base" percent={50} status="paused" />
+          </div>
+          <div>
+            <span>Not Start</span>
+            <Progress type="base" percent={0} status="active" />
+          </div>
+        </div>
+
+        <div
+          className={css`
+            width: 350px;
+            > div {
+              display: flex;
+              span {
+                flex: 1;
+              }
+            }
+          `}
+        >
+          <Title>Large</Title>
+          <div>
+            <span>In Progress</span>
+            <Progress size="large" type="base" percent={50} status="active" />
+          </div>
+          <div>
+            <span>Success</span>
+            <Progress size="large" type="base" percent={100} status="success" />
+          </div>
+          <div>
+            <span>Failed</span>
+            <Progress size="large" type="base" percent={50} status="failed" />
+          </div>
+          <div>
+            <span>Notice / Paused</span>
+            <Progress size="large" type="base" percent={50} status="paused" />
+          </div>
+          <div>
+            <span>Not Start</span>
+            <Progress size="large" type="base" percent={0} status="active" />
+          </div>
+        </div>
       </>
     );
   },
@@ -85,16 +136,15 @@ export const Simple: StoryObj<{}> = {
   render: () => {
     return (
       <>
-        <AProgress percent={100} />
         <Progress
-          title="3.35 GiB / 5.36 GiB"
+          info="3.35 GiB / 5.36 GiB"
           operation={[]}
           description={["1.21 MiB/s", "剩余 25 分钟"]}
           percent={12}
           status="active"
         />
         <Progress
-          title="3.35 GiB / 5.36 GiB"
+          info="3.35 GiB / 5.36 GiB"
           operation={[]}
           description={["已暂停"]}
           percent={12}
@@ -115,21 +165,21 @@ export const Simple: StoryObj<{}> = {
         />
 
         <Progress
-          title="step name"
+          info="step name"
           operation={[]}
           description={["1.21 MiB/s", "剩余 25 分钟"]}
           percent={12}
           status="active"
         />
         <Progress
-          title="step name"
+          info="step name"
           operation={["3.35 GiB / 5.36 GiB"]}
           description={["1.21 MiB/s", "剩余 25 分钟"]}
           percent={12}
           status="active"
         />
         <Progress
-          title={exampleContent}
+          info={exampleContent}
           operation={[]}
           description={["1.21 MiB/s", "剩余 25 分钟"]}
           percent={12}
@@ -150,10 +200,9 @@ export const Rich: StoryObj<{}> = {
   render: () => {
     return (
       <>
-        <AProgress percent={100} />
         <Progress
           type="rich"
-          title="Label"
+          info="Label"
           description={["label"]}
           statusText={"Not Start"}
           percent={0}
@@ -161,7 +210,7 @@ export const Rich: StoryObj<{}> = {
         />
         <Progress
           type="rich"
-          title="Label"
+          info="Label"
           description={["label", "label"]}
           statusText={
             <Area
@@ -169,7 +218,7 @@ export const Rich: StoryObj<{}> = {
                 {
                   status: "active",
                   type: "iconField",
-                  content: "Loading",
+                  children: "Loading",
                 },
               ]}
             />
@@ -179,12 +228,12 @@ export const Rich: StoryObj<{}> = {
               items={[
                 {
                   type: "iconField",
-                  content: "停止",
+                  children: "停止",
                   src: PoweroffShutdownStop16GradientGrayIcon,
                 },
                 {
                   type: "iconField",
-                  content: "查看日志",
+                  children: "查看日志",
                   src: LogCollection16GrayIcon,
                 },
               ]}
@@ -195,7 +244,7 @@ export const Rich: StoryObj<{}> = {
         />
         <Progress
           type="rich"
-          title="Label"
+          info="Label"
           description={["label", "label"]}
           statusText={
             <Area
@@ -203,7 +252,7 @@ export const Rich: StoryObj<{}> = {
                 {
                   status: "success",
                   type: "iconField",
-                  content: "Succeeded",
+                  children: "Succeeded",
                 },
               ]}
             />
@@ -213,7 +262,7 @@ export const Rich: StoryObj<{}> = {
         />
         <Progress
           type="rich"
-          title="Label"
+          info="Label"
           description={["label", "label"]}
           statusText={
             <Area
@@ -221,7 +270,7 @@ export const Rich: StoryObj<{}> = {
                 {
                   status: "failed",
                   type: "iconField",
-                  content: "Failed",
+                  children: "Failed",
                 },
               ]}
             />
@@ -231,7 +280,7 @@ export const Rich: StoryObj<{}> = {
         />
         <Progress
           type="rich"
-          title="Label"
+          info="Label"
           description={["label", "label"]}
           statusText={
             <Area
@@ -239,7 +288,7 @@ export const Rich: StoryObj<{}> = {
                 {
                   status: "paused",
                   type: "iconField",
-                  content: "Paused",
+                  children: "Paused",
                 },
                 {
                   type: "link",
@@ -254,7 +303,7 @@ export const Rich: StoryObj<{}> = {
 
         <Progress
           type="rich"
-          title="Label"
+          info="Label"
           description={["label"]}
           statusText={"active"}
           percent={50}
@@ -262,7 +311,7 @@ export const Rich: StoryObj<{}> = {
         />
         <Progress
           type="rich"
-          title="Label"
+          info="Label"
           description={["label"]}
           statusText={"active"}
           percent={100}
@@ -270,9 +319,9 @@ export const Rich: StoryObj<{}> = {
         />
         <Progress
           type="rich"
-          title={
-            <TitleArea
-              tag={{ children: "Tag", color: "blue" }}
+          info={
+            <InfoArea
+              tag={{ children: "Tag" }}
               subtitle="Subtitle"
               title="Label"
             />
@@ -284,9 +333,9 @@ export const Rich: StoryObj<{}> = {
         />
         <Progress
           type="rich"
-          title={
-            <TitleArea
-              tag={{ children: "Tag", color: "blue" }}
+          info={
+            <InfoArea
+              tag={{ children: "Tag" }}
               subtitle={exampleContent}
               title={exampleContent}
             />
@@ -296,10 +345,53 @@ export const Rich: StoryObj<{}> = {
           percent={50}
           status="active"
         />
-
-        {/* <Progress type='rich' title='Label' statusText='Succeeded' percent={100} status='Success' />
-            <Progress type='rich' title='Label' statusText='Failed' percent={50} status='Failed' />
-            <Progress type='rich' title='Label' statusText='Paused' percent={100} status='Paused' /> */}
+        <Progress
+          type="rich"
+          info={
+            <InfoArea
+              tag={{ children: "Tag" }}
+              subtitle="Subtitle"
+              title="Title"
+            />
+          }
+          description={[exampleContent]}
+          statusText="In Progress"
+          percent={50}
+          status="active"
+        />
+        <Progress
+          type="rich"
+          info={
+            <InfoArea
+              tag={{ children: "Tag" }}
+              subtitle="Subtitle"
+              title="Title"
+            />
+          }
+          operation={
+            <Area
+              items={[
+                {
+                  type: "iconField",
+                  children: "停止",
+                  src: PoweroffShutdownStop16GradientGrayIcon,
+                },
+                {
+                  type: "iconField",
+                  children: "查看日志",
+                  src: LogCollection16GrayIcon,
+                },
+              ]}
+            />
+          }
+          description={[exampleContent]}
+          statusText="In Progress"
+          percent={50}
+          status="active"
+        />
+        {/* <Progress type='rich' info='Label' statusText='Succeeded' percent={100} status='Success' />
+            <Progress type='rich' info='Label' statusText='Failed' percent={50} status='Failed' />
+            <Progress type='rich' info='Label' statusText='Paused' percent={100} status='Paused' /> */}
       </>
     );
   },
