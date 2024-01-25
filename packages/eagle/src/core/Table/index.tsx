@@ -3,6 +3,7 @@ import Loading from "@src/core/Loading";
 import { useTableBodyHasScrollBar } from "@src/core/Table/common";
 import { ColumnTitle, TableLoading } from "@src/core/Table/TableWidget";
 import { TableProps } from "@src/spec";
+import { zIndices } from "@src/styles/token";
 import { Table as BaseTable } from "antd";
 import cs from "classnames";
 import React, { useMemo, useRef } from "react";
@@ -411,6 +412,10 @@ export const tableStyleCover = css`
         color: $text-terdiary-light;
       }
     }
+    th.ant-table-cell-scrollbar,
+    th.cell__action_ {
+      z-index: ${zIndices.tableActionColumn};
+    }
     td.cell__action_ {
       padding: 0 !important;
       position: relative;
@@ -477,7 +482,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
         }
         return _column;
       }),
-    [columns]
+    [columns],
   );
 
   return (
@@ -485,7 +490,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
       className={cx(
         TableContainerStyle,
         "table-container",
-        !hasScrollBard && "no-scroll-bar"
+        !hasScrollBard && "no-scroll-bar",
       )}
     >
       <BaseTable
@@ -493,7 +498,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
           tableStyleCover,
           !dataSource?.length && "empty-table",
           initLoading && "table-init-loading",
-          rowSelection && "has-selection"
+          rowSelection && "has-selection",
         )}
         bordered={bordered}
         loading={{
