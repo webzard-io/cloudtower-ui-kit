@@ -1,5 +1,3 @@
-import "./styles/index.scss";
-
 export type {
   CardProps,
   DateRange,
