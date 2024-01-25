@@ -29,7 +29,7 @@ const config = defineConfig([
           find: new RegExp(`${alias.replace("/*", "")}`),
           replacement: path.resolve(
             projectRootDir,
-            `${value[0].replace("/*", "")}`
+            `${value[0].replace("/*", "")}`,
           ),
         })),
       }),
@@ -52,6 +52,7 @@ const config = defineConfig([
       linaria.default({
         sourceMap: false,
         preprocessor: "none",
+        classNameSlug: (hash, title) => `E_${hash}`,
       }),
       scss({
         include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
@@ -119,7 +120,7 @@ const config = defineConfig([
           find: new RegExp(`${alias.replace("/*", "")}`),
           replacement: path.resolve(
             projectRootDir,
-            `${value[0].replace("/*", "")}`
+            `${value[0].replace("/*", "")}`,
           ),
         })),
       }),
@@ -198,9 +199,9 @@ const config = defineConfig([
       esbuild.default(),
       scss({
         output: "dist/token.css",
-        exclude: ["*.ts", "*.scss"]
+        exclude: ["*.ts", "*.scss"],
       }),
-    ]
+    ],
   },
 ]);
 
