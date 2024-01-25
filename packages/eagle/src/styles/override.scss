@@ -32,10 +32,12 @@
     .no-scroll-bar {
       th.cell__action_ {
         right: 0 !important;
-        z-index: $table-action-column-index;
       }
       th.ant-table-cell-scrollbar {
         display: none;
+      }
+      th.cell__action_,th.ant-table-cell-scrollbar{
+        z-index: $table-action-column-index;
       }
     }
     .ant-table-header {
