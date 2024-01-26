@@ -2,13 +2,13 @@ import { DotIntervalSeparation16TertiaryIcon } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import Link from "@src/core/Link";
-import { IconField, Info } from "@src/core/Progress/components";
 import {
   ComponentType,
   IconFieldProps,
   InfoProps,
   Items,
 } from "@src/core/Progress/progress.type";
+import { IconField, Info } from "@src/core/Progress/progress.widgets";
 import Tag from "@src/core/Tag";
 import { LinkProps, TagProps } from "@src/spec";
 import React from "react";
@@ -33,7 +33,7 @@ const titleAreaStyle = css`
   }
 `;
 
-export const InfoArea: React.FC<{
+export const TitleArea: React.FC<{
   title: string;
   tag?: TagProps;
   subtitle?: string;
@@ -56,7 +56,7 @@ export const InfoArea: React.FC<{
     });
   }
 
-  return <Area className={titleAreaStyle} items={items} />;
+  return <Area gap={6} className={titleAreaStyle} items={items} />;
 };
 
 const AreaWrapper = styled.div<{ gap: number }>`

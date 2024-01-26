@@ -15,6 +15,7 @@ export type InfoProps = {
 };
 
 export type IconFieldProps = {
+  className?: string;
   status?: "success" | "failed" | "paused" | "active";
   src: SrcType;
   children: React.ReactNode;
@@ -34,15 +35,15 @@ export type ComponentPropsMap = {
 
 export type ProgressProps = {
   type?: "base" | "simple" | "rich";
-  status: "success" | "failed" | "paused" | "active";
+  status?: "success" | "failed" | "paused" | "active";
+  indeterminate?: boolean;
   prefixCls?: string;
   className?: string;
-  rootClassName?: string;
-  percent: number;
-  info?: React.ReactNode;
-  description?: string[];
-  statusText?: React.ReactNode;
-  operation?: React.ReactNode;
+  percent?: number;
+  leftTop?: React.ReactNode;
+  leftBottom?: React.ReactNode;
+  rightTop?: React.ReactNode;
+  rightBottom?: React.ReactNode;
   size?: "small" | "large";
   style?: React.CSSProperties;
 };

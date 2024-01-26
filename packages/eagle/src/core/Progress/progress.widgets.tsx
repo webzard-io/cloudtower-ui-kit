@@ -39,12 +39,18 @@ export const IconField: React.FC<IconFieldProps> = ({
   src,
   children,
   status,
+  className,
+  ...restProps
 }) => {
   const iconNode = status ? StatusIconMap[status] : <Icon src={src} />;
-  const color = status ? StatusColorMap[status] : undefined;
+  const color =
+    status && status !== "active" ? StatusColorMap[status] : undefined;
 
   return (
-    <IconFieldWrapper className={cx("progress-status-field")}>
+    <IconFieldWrapper
+      {...restProps}
+      className={cx("progress-status-field", className)}
+    >
       {iconNode}
       <IconFieldText color={color}>{children}</IconFieldText>
     </IconFieldWrapper>

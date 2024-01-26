@@ -1,16 +1,15 @@
-import { css, cx } from "@linaria/core";
+import { cx } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { Area } from "@src/core/Progress/Area";
 import { StatusColorMap } from "@src/core/Progress/progress.const";
 import {
   BaseProgressStyle,
-  DescriptionStyle,
   FlexFullContentStyle,
+  ProgressStyle,
 } from "@src/core/Progress/progress.style";
-import { ProgressProps } from "@src/core/Progress/progress.type";
-import { Typo } from "@src/core/Typo";
+import { ComponentType, ProgressProps } from "@src/core/Progress/progress.type";
+import { isStringArray } from "@src/utils/isStringArr";
 import { Progress as AntdProgress } from "antd5";
-import { isArray } from "lodash";
 import React from "react";
 
 const Row = styled.div`
@@ -20,116 +19,136 @@ const Row = styled.div`
   column-gap: 6px;
 `;
 
-const ProgressContainer = styled.div<{ type: "simple" | "rich" }>`
+const ProgressContainer = styled.div<{ type: ProgressProps["type"] }>`
   display: flex;
   flex-direction: column;
-  row-gap: ${({ type }) => (type === "simple" ? "4px" : "6px")};
+  justify-content: center;
+  row-gap: ${({ type }) => (type === "rich" ? "6px" : "4px")};
 
   .ant-progress-line {
     font-size: 0;
   }
 `;
 
+const getStatus = (
+  status: ProgressProps["status"],
+  percent: ProgressProps["percent"],
+  indeterminate?: boolean,
+) => {
+  if (indeterminate) return "active";
+  if (!status && percent! >= 100) return "success";
+  return status || "active";
+};
+
+const createAreaNode = (
+  content: React.ReactNode,
+  className: string,
+  type: ComponentType,
+  gap: number = 6,
+): React.ReactNode => {
+  return typeof content === "string" ? (
+    <Area
+      className={className}
+      items={[{ type, children: content }]}
+      gap={gap}
+    />
+  ) : (
+    content
+  );
+};
+
 const Progress: React.FC<ProgressProps> = ({
   type = "simple",
   status,
   size = "small",
-  info,
-  statusText,
-  description,
-  operation,
-  percent,
+  leftTop,
+  rightTop,
+  leftBottom,
+  rightBottom,
+  percent = 0,
   className,
+  indeterminate,
   ...props
 }) => {
-  const finalStatus =
-    status === "active" && percent >= 100 ? "success" : status;
+  const finalStatus = getStatus(status, percent, indeterminate);
   const storkeWidth = size === "small" ? 4 : 8;
-  if (type === "base") {
-    return (
-      <AntdProgress
-        className={cx(className, BaseProgressStyle)}
-        strokeWidth={storkeWidth}
-        showInfo={false}
-        status={finalStatus === "active" ? "active" : undefined}
-        percent={percent}
-        strokeColor={StatusColorMap[finalStatus]}
-      />
-    );
-  }
-  let titleNode;
-  let operationNode = operation;
-  let statusTextNode;
+  const isBaseProgress = type === "base";
+  const isRichProgress = type === "rich";
+
+  let titleNode: React.ReactNode;
+  let actionNode = rightBottom;
+  let statusTextNode: React.ReactNode;
 
   if (type === "simple") {
-    if (operation && isArray(operation)) {
-      operationNode = (
+    let items;
+    if (!rightBottom) {
+      items = [`${percent}%`];
+    } else if (isStringArray(rightBottom)) {
+      items = [...rightBottom, `${percent}%`];
+    }
+
+    if (items) {
+      actionNode = (
         <Area
-          items={operation
-            .concat(`${percent}%`)
-            .map((desc) => ({ type: "description", children: desc }))}
-          gap={2}
+          items={items.map((desc) => ({
+            type: "description",
+            children: desc,
+          }))}
           split="dot"
         />
       );
     }
-
-    titleNode =
-      typeof info === "string" ? (
-        <Area
-          className={css`
-            width: 100%;
-          `}
-          items={[{ type: "description", children: info }]}
-        />
-      ) : (
-        info
-      );
+    titleNode = createAreaNode(
+      leftTop,
+      cx(FlexFullContentStyle, "progress-leftTop"),
+      "description",
+    );
   } else {
-    statusTextNode =
-      typeof statusText === "string" ? (
-        <span className={cx("progress-status", DescriptionStyle)}>
-          {statusText}
-        </span>
-      ) : (
-        statusText
-      );
-    titleNode =
-      typeof info === "string" ? (
-        <span className={cx("progress-info", Typo.Label.l2_bold)}>{info}</span>
-      ) : (
-        info
-      );
+    statusTextNode = createAreaNode(
+      rightTop,
+      "progress-status",
+      "description",
+      2,
+    );
+    titleNode = createAreaNode(leftTop, "progress-leftTop", "title");
   }
 
   return (
-    <ProgressContainer type={type} className={className}>
-      <Row>
-        {titleNode}
-        {statusTextNode}
-      </Row>
+    <ProgressContainer type={type} className={cx(className, ProgressStyle)}>
+      {titleNode ? (
+        <Row>
+          {titleNode}
+          {statusTextNode}
+        </Row>
+      ) : null}
       <AntdProgress
+        className={isBaseProgress ? BaseProgressStyle : ""}
         strokeWidth={storkeWidth}
         showInfo={false}
         {...props}
-        percent={percent}
+        status={finalStatus === "active" ? "active" : undefined}
+        percent={indeterminate ? 100 : percent}
         strokeColor={StatusColorMap[finalStatus]}
       />
-      <Row>
-        {description ? (
-          <Area
-            className={FlexFullContentStyle}
-            items={description.map((desc) => ({
-              type: "description",
-              children: desc,
-              multiLines: !operation ? 2 : 1,
-            }))}
-            gap={2}
-            split="dot"
-          />
-        ) : null}
-        {operationNode}
-      </Row>
+      {leftBottom || actionNode ? (
+        <Row>
+          {isStringArray(leftBottom) ? (
+            <Area
+              className={FlexFullContentStyle}
+              items={leftBottom.map((desc) => ({
+                type: "description",
+                children: desc,
+                multiLines: !rightBottom ? 2 : 1,
+              }))}
+              gap={isRichProgress ? 2 : 0}
+              split="dot"
+            />
+          ) : (
+            leftBottom
+          )}
+          {actionNode}
+        </Row>
+      ) : null}
     </ProgressContainer>
   );
 };

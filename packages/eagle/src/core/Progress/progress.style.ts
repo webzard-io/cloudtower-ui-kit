@@ -15,10 +15,12 @@ export const BaseProgressStyle = css`
   &.ant-progress {
     width: 220px;
   }
-  &.ant-progress.ant-progress-status-active .ant-progress-bg::before {
+`;
+
+export const ProgressStyle = css`
+  .ant-progress.ant-progress-status-active .ant-progress-bg::before {
     content: "";
     display: block;
-    width: 220px;
     height: 8px;
     background: linear-gradient(90deg, #0080ff 0%, #9ecfff 50%, #0080ff 100%);
     animation: loading 1600ms ease-out infinite;
@@ -27,10 +29,10 @@ export const BaseProgressStyle = css`
 
   @keyframes loading {
     from {
-      transform: translateX(-220px);
+      transform: translateX(-100%);
     }
     to {
-      transform: translateX(220px);
+      transform: translateX(100%);
     }
   }
 `;
