@@ -96,10 +96,9 @@ const config = defineConfig([
     ],
     output: [
       {
-        dir: "dist/umd",
+        dir: "dist/cjs",
         name: "index",
-        format: "umd",
-        interop: "auto",
+        format: "cjs",
       },
       {
         dir: "dist/esm",
