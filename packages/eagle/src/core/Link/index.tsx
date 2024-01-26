@@ -6,6 +6,11 @@ import React from "react";
 
 const LinkStyle = css`
   @at-root {
+    button#{&}.ant-btn {
+      font-size: 12px;
+      line-height: 18px;
+      height: 18px;
+    }
     button#{&} {
       color: $link-outstanding-normal;
       height: unset;
@@ -62,7 +67,7 @@ const Link: LinkComponentType = React.forwardRef(
         type="link"
       />
     );
-  }
+  },
 );
 
 export default Link;
