@@ -2,7 +2,7 @@
   "extends": ["react-app", "react-app/jest"],
   "plugins": ["simple-import-sort"],
   "rules": {
-    "quotes": "warn",
+    "quotes": ["warn", "double", { "avoidEscape": true }],
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",
     "react-hooks/exhaustive-deps": [
@@ -25,12 +25,11 @@
           {
             "name": "react-i18next",
             "importNames": ["Trans", "useTranslation"],
-            "message":
-              "Please use UseUIComponents or UIComponentTrans from ./i18n.tsx instead",
-          },
-        ],
-      },
-    ],
+            "message": "Please use UseUIComponents or UIComponentTrans from ./i18n.tsx instead"
+          }
+        ]
+      }
+    ]
   },
   "ignorePatterns": ["node_modules", "**/*.md", "generated"]
 }
