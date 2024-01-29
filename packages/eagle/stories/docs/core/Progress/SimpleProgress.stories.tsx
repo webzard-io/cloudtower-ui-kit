@@ -34,6 +34,7 @@ const meta: Meta<React.FC<ProgressProps>> = {
     },
   ],
   parameters: {
+    controls: { include: ["status", "percent", "size"] },
     design: {
       type: "figma",
       url: "https://www.figma.com/file/7k3VQ5bzWqn4TCbZR5MgmV/Progress-Bar%E4%B8%A8%E8%BF%9B%E5%BA%A6%E6%9D%A1?node-id=4011%3A7869&mode=dev",
@@ -48,23 +49,26 @@ export default meta;
  */
 export const Basic: Story = {
   name: "Basic | 布局",
-  render: () => {
+  render: (props) => {
     return (
       <>
         <Progress
           leftTop="3.35 GiB / 5.36 GiB"
           leftBottom={["1.21 MiB/s", "剩余 25 分钟"]}
-          percent={12}
-          status="active"
+          {...props}
         />
         <Progress
           rightBottom={["3.35 GiB / 5.36 GiB"]}
           leftBottom={["1.21 MiB/s", "剩余 25 分钟"]}
-          percent={12}
-          status="active"
+          {...props}
         />
       </>
     );
+  },
+  args: {
+    status: "active",
+    percent: 12,
+    size: "small",
   },
 };
 
@@ -85,60 +89,67 @@ export const Simple: Story = {
 
 export const Variants: Story = {
   name: "Variants | 变体",
-  render: () => {
+  render: (props) => {
     return (
       <>
         <Title>Single Row</Title>
         <Progress
+          {...props}
           leftBottom={["1.21 MiB/s", "剩余 25 分钟"]}
           rightBottom={["3.35 GiB / 5.36 GiB"]}
-          percent={12}
           status="active"
         />
         <Progress
+          {...props}
           leftBottom={["已暂停"]}
           rightBottom={["3.35 GiB / 5.36 GiB"]}
-          percent={12}
           status="paused"
         />
         <Title>Double Rows</Title>
         <Progress
+          {...props}
           leftTop="3.35 GiB / 5.36 GiB"
           leftBottom={["1.21 MiB/s", "剩余 25 分钟"]}
-          percent={12}
           status="active"
         />
         <Progress
+          {...props}
           leftTop="3.35 GiB / 5.36 GiB"
           leftBottom={["已暂停"]}
-          percent={12}
           status="paused"
         />
         <Progress
+          {...props}
           leftTop="step name"
           leftBottom={["1.21 MiB/s", "剩余 25 分钟"]}
-          percent={12}
           status="active"
         />
         <Progress
+          {...props}
           leftTop="step name"
           leftBottom={["已暂停"]}
-          percent={12}
           status="paused"
         />
         <Progress
+          {...props}
           leftTop="step name"
           leftBottom={["1.21 MiB/s", "剩余 25 分钟"]}
-          percent={12}
           status="active"
         />
         <Progress
+          {...props}
           leftTop="step name"
           leftBottom={["1.21 MiB/s", "剩余 25 分钟"]}
-          percent={12}
           status="paused"
         />
       </>
     );
+  },
+  parameters: {
+    controls: { include: ["percent", "size"] },
+  },
+  args: {
+    percent: 12,
+    size: "small",
   },
 };

@@ -1,6 +1,5 @@
 import { cx } from "@linaria/core";
 import { styled } from "@linaria/react";
-import { Area } from "@src/core/Progress/Area";
 import { StatusColorMap } from "@src/core/Progress/progress.const";
 import {
   BaseProgressStyle,
@@ -8,6 +7,7 @@ import {
   ProgressStyle,
 } from "@src/core/Progress/progress.style";
 import { ComponentType, ProgressProps } from "@src/core/Progress/progress.type";
+import { Area } from "@src/core/Progress/progress.widgets";
 import { isStringArray } from "@src/utils/isStringArr";
 import { Progress as AntdProgress } from "antd5";
 import React from "react";

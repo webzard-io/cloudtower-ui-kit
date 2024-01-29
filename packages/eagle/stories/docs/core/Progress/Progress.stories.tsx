@@ -32,7 +32,9 @@ const meta: Meta<React.FC<ProgressProps>> = {
       );
     },
   ],
+
   parameters: {
+    controls: { include: ["status", "indeterminate", "percent", "size"] },
     design: {
       type: "figma",
       url: "https://www.figma.com/file/7k3VQ5bzWqn4TCbZR5MgmV/Progress-Bar%E4%B8%A8%E8%BF%9B%E5%BA%A6%E6%9D%A1?node-id=4011%3A8292&mode=dev",
@@ -42,7 +44,7 @@ const meta: Meta<React.FC<ProgressProps>> = {
 
 export const Base: Story = {
   name: "Variants | 变体",
-  render: () => {
+  render: (props) => {
     return (
       <>
         <div
@@ -130,12 +132,16 @@ export const Base: Story = {
     );
   },
   args: {},
-  argTypes: {},
+  parameters: {
+    controls: { include: [] },
+  },
 };
 
 /**
  *
  * 当指定 indeterminate 为 true 时，表示进度不明确，此时没有具体进度，仅表示事物正在加载
+ *
+ * 设置 indeterminate 后，status、percent 等参数均会失效
  *
  * 参考[Loading Progress Indicator](https://www.figma.com/file/xfGf2oCgsi1s2EvFPNyJd8/Pattern%EF%BC%9A%E5%8A%A0%E8%BD%BD%E7%8A%B6%E6%80%81?node-id=788%3A22232&mode=dev)
  */

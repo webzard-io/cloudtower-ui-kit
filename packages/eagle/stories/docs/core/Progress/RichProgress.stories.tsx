@@ -1,15 +1,11 @@
-import {
-  LogCollection16GrayIcon,
-  Placeholder16Icon,
-  PoweroffShutdownStop16GradientGrayIcon,
-} from "@cloudtower/icons-react";
+import { Placeholder16Icon } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import Progress from "@src/core/Progress";
-import { Area, TitleArea } from "@src/core/Progress/Area";
 import type { ProgressProps } from "@src/core/Progress/progress.type";
+import { Area, TitleArea } from "@src/core/Progress/progress.widgets";
 import { Meta, StoryObj } from "@storybook/react";
 import { loremIpsum } from "lorem-ipsum";
-import React, { useState } from "react";
+import React from "react";
 
 type Story = StoryObj<React.FC<ProgressProps>>;
 
@@ -39,6 +35,9 @@ const meta: Meta<React.FC<ProgressProps>> = {
     },
   ],
   parameters: {
+    controls: { include: ["status", "percent", "size"] },
+    // https://github.com/storybookjs/storybook/issues/19575
+    docs: { source: { type: "code" } },
     design: {
       type: "figma",
       url: "https://www.figma.com/file/7k3VQ5bzWqn4TCbZR5MgmV/Progress-Bar%E4%B8%A8%E8%BF%9B%E5%BA%A6%E6%9D%A1?node-id=4011%3A7968&mode=dev",
@@ -52,6 +51,7 @@ export const Basic: Story = {
   name: "Basic | 构成",
   args: {
     type: "rich",
+    size: "small",
     leftTop: (
       <TitleArea tag={{ children: "Label" }} subtitle="Label" title="Label" />
     ),
@@ -75,14 +75,14 @@ export const Basic: Story = {
       <Area
         items={[
           {
-            type: "iconField",
+            type: "link",
             children: "Label",
-            src: Placeholder16Icon,
+            prefixIcon: <Placeholder16Icon />,
           },
           {
-            type: "iconField",
+            type: "link",
             children: "Label",
-            src: Placeholder16Icon,
+            prefixIcon: <Placeholder16Icon />,
           },
           {
             type: "link",
@@ -101,7 +101,7 @@ export const Basic: Story = {
  *
  * Hover 被截断的对象，在 Tooltip 内显示完整文案。
  */
-export const TruncateTitle: StoryObj<{}> = {
+export const TruncateTitle: Story = {
   name: "Truncate | Title 溢出截断",
   args: {
     type: "rich",
@@ -134,14 +134,14 @@ export const TruncateTitle: StoryObj<{}> = {
       <Area
         items={[
           {
-            type: "iconField",
+            type: "link",
             children: "Label",
-            src: Placeholder16Icon,
+            prefixIcon: <Placeholder16Icon />,
           },
           {
-            type: "iconField",
+            type: "link",
             children: "Label",
-            src: Placeholder16Icon,
+            prefixIcon: <Placeholder16Icon />,
           },
           {
             type: "link",
@@ -156,12 +156,13 @@ export const TruncateTitle: StoryObj<{}> = {
 /**
  * 空间不足时，leftBottom 区域也会进行溢出截断，如果 rightBottom 有内容，则超出一行溢出，如果 rightBottom 无内容，则超出两行溢出
  */
-export const TruncateDescription: StoryObj<{}> = {
+export const TruncateDescription: Story = {
   name: "Truncate | Description 溢出截断",
-  render: () => {
+  render: (props) => {
     return (
       <>
         <Progress
+          {...props}
           type="rich"
           leftTop={
             <TitleArea
@@ -191,10 +192,9 @@ export const TruncateDescription: StoryObj<{}> = {
               ]}
             />
           }
-          percent={50}
-          status="active"
         />
         <Progress
+          {...props}
           type="rich"
           leftTop={
             <TitleArea
@@ -207,14 +207,14 @@ export const TruncateDescription: StoryObj<{}> = {
             <Area
               items={[
                 {
-                  type: "iconField",
+                  type: "link",
                   children: "Label",
-                  src: Placeholder16Icon,
+                  prefixIcon: <Placeholder16Icon />,
                 },
                 {
-                  type: "iconField",
+                  type: "link",
                   children: "Label",
-                  src: Placeholder16Icon,
+                  prefixIcon: <Placeholder16Icon />,
                 },
                 {
                   type: "link",
@@ -239,72 +239,27 @@ export const TruncateDescription: StoryObj<{}> = {
               ]}
             />
           }
-          percent={50}
-          status="active"
         />
       </>
     );
+  },
+  args: {
+    size: "small",
+    percent: 50,
+    status: "active",
   },
 };
 
 /**
  * 各变体内部，均支持上述 optional 的构成元素。以下列出常见情况：
  */
-export const Variants: StoryObj<{}> = {
+export const Variants: Story = {
   name: "Variants | 变体",
-  render: () => {
-    const OperationProgress = () => {
-      const [status, setStatus] = useState<ProgressProps["status"]>("active");
-
-      return (
-        <Progress
-          type="rich"
-          leftTop="Label"
-          leftBottom={["Label", "Label"]}
-          rightTop={
-            <Area
-              items={[
-                {
-                  status,
-                  type: "iconField",
-                  children: status,
-                },
-              ]}
-            />
-          }
-          rightBottom={
-            <Area
-              items={[
-                {
-                  type: "iconField",
-                  children: "停止",
-                  src: PoweroffShutdownStop16GradientGrayIcon,
-                  className: css`
-                    &:hover {
-                      cursor: pointer;
-                    }
-                  `,
-                  onClick: () => {
-                    setStatus("failed");
-                  },
-                },
-                {
-                  type: "iconField",
-                  children: "查看日志",
-                  src: LogCollection16GrayIcon,
-                },
-              ]}
-            />
-          }
-          percent={50}
-          status={status}
-        />
-      );
-    };
-
+  render: (props) => {
     return (
       <>
         <Progress
+          {...props}
           type="rich"
           leftTop="Label"
           leftBottom={["Label"]}
@@ -313,6 +268,7 @@ export const Variants: StoryObj<{}> = {
           status="active"
         />
         <Progress
+          {...props}
           type="rich"
           leftTop="Label"
           leftBottom={["Label", "Label"]}
@@ -320,9 +276,9 @@ export const Variants: StoryObj<{}> = {
             <Area
               items={[
                 {
-                  type: "iconField",
+                  type: "link",
                   children: "Label",
-                  src: Placeholder16Icon,
+                  prefixIcon: <Placeholder16Icon />,
                 },
               ]}
             />
@@ -342,6 +298,7 @@ export const Variants: StoryObj<{}> = {
           status="active"
         />
         <Progress
+          {...props}
           type="rich"
           leftTop="Label"
           leftBottom={["Label", "Label"]}
@@ -360,6 +317,7 @@ export const Variants: StoryObj<{}> = {
           status="success"
         />
         <Progress
+          {...props}
           type="rich"
           leftTop="Label"
           leftBottom={["Label", "Label"]}
@@ -378,6 +336,7 @@ export const Variants: StoryObj<{}> = {
           status="failed"
         />
         <Progress
+          {...props}
           type="rich"
           leftTop="Label"
           leftBottom={["Label", "Label"]}
@@ -402,6 +361,10 @@ export const Variants: StoryObj<{}> = {
       </>
     );
   },
-  args: {},
-  argTypes: {},
+  parameters: {
+    controls: { include: ["size"] },
+  },
+  args: {
+    size: "small",
+  },
 };
