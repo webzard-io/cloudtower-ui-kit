@@ -502,6 +502,10 @@ describe("Table h5_css", () => {
               color: $text-terdiary-light;
             }
           }
+          th.ant-table-cell-scrollbar,
+          th.cell__action_ {
+            z-index: 10;
+          }
           td.cell__action_ {
             padding: 0 !important;
             position: relative;
