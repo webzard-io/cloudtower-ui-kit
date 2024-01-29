@@ -1,0 +1,18 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Size=16, Fill=Gradient - Blue, Outline=Off">
+<g id="IP">
+<path d="M4.35498 2.90527H2.20068V13.0947H4.35498V2.90527Z" fill="url(#paint0_radial_8514_57828)"/>
+<path d="M6.12743 13.0947H8.28172V9.79107H10.0927C12.4361 9.79107 13.7993 8.39301 13.7993 6.35812C13.7993 4.33318 12.461 2.90527 10.1475 2.90527H6.12743V13.0947ZM8.28172 8.06464V4.66652H9.73451C10.9783 4.66652 11.5803 5.34316 11.5803 6.35812C11.5803 7.3681 10.9783 8.06464 9.74446 8.06464H8.28172Z" fill="url(#paint1_radial_8514_57828)"/>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial_8514_57828" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(2.20068 13.0947) rotate(-41.2993) scale(15.4386 15.31)">
+<stop stop-color="#5BCAFF"/>
+<stop offset="1" stop-color="#0066FF"/>
+</radialGradient>
+<radialGradient id="paint1_radial_8514_57828" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(2.20068 13.0947) rotate(-41.2993) scale(15.4386 15.31)">
+<stop stop-color="#5BCAFF"/>
+<stop offset="1" stop-color="#0066FF"/>
+</radialGradient>
+</defs>
+</svg>
