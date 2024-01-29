@@ -3,6 +3,9 @@
   "license": "MIT",
   "version": "0.27.59",
   "types": "./dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "typings": "dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/cjs/index.js",
@@ -42,8 +45,5 @@
     "@svgr/core": "^5.0.0",
     "camelcase": "^6.0.0"
   },
-  "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "typings": "dist/index.d.ts",
   "gitHead": "43aae2e4b3fe1d526871feb6e9d217250cbe47a1"
 }
