@@ -913,8 +913,8 @@ export type SidebarSubtitleComponentType = React.FC<{
   title: string;
   className?: string;
 }>;
-type LinkProps = Omit<ButtonProps, "type"> & {
-  type?: "default" | "subtle";
+export type LinkProps = Omit<ButtonProps, "type"> & {
+  type?: "default" | "primary" | "secondary";
 };
 
 export type LinkComponentType = React.ForwardRefExoticComponent<

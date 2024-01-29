@@ -1,6 +1,7 @@
 import { css } from "@linaria/core";
 import Button from "@src/core/Button";
 import { LinkComponentType } from "@src/spec";
+import { Color } from "@src/styles/token";
 import cs from "classnames";
 import React from "react";
 
@@ -12,7 +13,7 @@ const LinkStyle = css`
       height: 18px;
     }
     button#{&} {
-      color: $link-outstanding-normal;
+      color: ${Color.link.outstandingnormal};
       height: unset;
       .button-prefix-icon {
         margin-right: 4px;
@@ -23,38 +24,56 @@ const LinkStyle = css`
 
       &:hover,
       &.__pseudo-states-hover {
-        color: $link-outstanding-hover;
+        color: ${Color.link.outstandinghover};
       }
 
       &:active,
       &.__pseudo-states-active {
-        color: $link-outstanding-active;
+        color: ${Color.link.outstandingactive};
       }
       &.ui-kit-link-disabled {
-        color: $link-outstanding-normal;
+        color: ${Color.link.outstandingnormal};
       }
-      &.ui-kit-link-subtle {
-        color: $text-neutral-primary;
+      &.ui-kit-link-primary {
+        color: ${Color.text.neutral.primary};
 
         &:hover,
         &.__pseudo-states-hover {
-          color: $link-outstanding-normal;
+          color: ${Color.link.outstandingnormal};
         }
 
         &:active,
         &.__pseudo-states-active {
-          color: $link-outstanding-active;
+          color: ${Color.link.outstandingactive};
         }
 
         &.ui-kit-link-disabled {
-          color: $text-neutral-primary;
+          color: ${Color.text.neutral.primary};
+        }
+      }
+
+      &.ui-kit-link-secondary {
+        color: ${Color.text.neutral.secondary};
+
+        &:hover,
+        &.__pseudo-states-hover {
+          color: ${Color.link.outstandingnormal};
+        }
+
+        &:active,
+        &.__pseudo-states-active {
+          color: ${Color.link.outstandingactive};
+        }
+
+        &.ui-kit-link-disabled {
+          color: ${Color.text.neutral.secondary};
         }
       }
     }
   }
 `;
 const Link: LinkComponentType = React.forwardRef(
-  ({ className, disabled, type, ...props }, ref) => {
+  ({ className, disabled, type = "default", ...props }, ref) => {
     return (
       <Button
         {...props}
@@ -62,7 +81,8 @@ const Link: LinkComponentType = React.forwardRef(
         disabled={disabled}
         className={cs(LinkStyle, className, {
           "ui-kit-link-disabled": disabled,
-          "ui-kit-link-subtle": type === "subtle",
+          "ui-kit-link-primary": type === "primary",
+          "ui-kit-link-secondary": type === "secondary",
         })}
         type="link"
       />
