@@ -1,2 +1,0 @@
-// css
-import "./color.css";
