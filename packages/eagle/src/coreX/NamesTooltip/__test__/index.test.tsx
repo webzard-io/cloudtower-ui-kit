@@ -45,7 +45,18 @@ describe("NamesTooltip", () => {
         >
           <div>
             <div
-              class=ant-tooltip,TooltipDefaultClass,overlayClassName
+              class=ant-tooltip,
+        .ant-tooltip-arrow {
+          display: none;
+        }
+        .ant-tooltip-inner {
+          background: $gray-a80-9;
+          border-radius: 4px;
+        }
+      ,
+        max-height: 400px;
+        overflow: "auto";
+
               style=opacity:,0;,pointer-events:,none;
             >
               <div

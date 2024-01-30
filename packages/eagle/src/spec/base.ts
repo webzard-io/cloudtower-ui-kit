@@ -3,6 +3,7 @@ import { CardProps } from "@src/core/Card";
 import { IEmptyProps } from "@src/core/Empty";
 import { MessageApi } from "@src/core/message";
 import { TableFormHandle, TableFormProps } from "@src/core/TableForm/types";
+import { TooltipProps } from "@src/core/Tooltip/tooltip.type";
 import { TruncatePropTypes } from "@src/core/Truncate";
 import type { OverflowTooltipProps } from "@src/coreX/OverflowTooltip/overflowTooltip.type";
 import { SizeType } from "antd/es/config-provider/SizeContext";
@@ -55,7 +56,6 @@ import { TabPaneProps, TabsProps } from "antd/lib/tabs";
 import { TagProps } from "antd/lib/tag";
 import { TimePickerProps } from "antd/lib/time-picker";
 import { TimeLineItemProps, TimelineProps } from "antd/lib/timeline";
-import { TooltipProps as AntdTooltipProps } from "antd/lib/tooltip";
 import { TreeProps as AntdTreeProps } from "antd/lib/tree";
 import type TreeSelect from "antd/lib/tree-select";
 import { TextProps } from "antd/lib/typography/Text";
@@ -326,9 +326,7 @@ export interface FloatProps {
     event?: React.FocusEvent<HTMLInputElement>,
   ) => void;
 }
-export type TooltipProps = AntdTooltipProps & {
-  followMouse?: boolean;
-};
+
 export type FieldBaseProps<
   V = any,
   T extends HTMLElement = HTMLElement,

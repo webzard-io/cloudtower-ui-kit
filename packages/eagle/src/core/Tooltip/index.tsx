@@ -1,8 +1,10 @@
 import { css } from "@linaria/core";
-import { TooltipProps } from "@src/spec";
 import { Tooltip as AntdTooltip } from "antd";
 import cs from "classnames";
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
+
+import { TooltipProps } from "./tooltip.type";
+
 let componentId = 0;
 const TooltipDefaultClass = css`
   .ant-tooltip-arrow {
@@ -69,19 +71,21 @@ const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
   return (
     <AntdTooltip
       {...restProps}
-      overlayClassName={cs({
-        uniquePopupClass: followMouse,
+      overlayClassName={cs(
+        {
+          [uniquePopupClass]: followMouse,
+        },
         TooltipDefaultClass,
         overlayClassName,
-      })}
+      )}
       children={_children}
       overlayStyle={
         followMouse
           ? {
-            transform: "translate(-50%, -100%)",
-            pointerEvents: "none",
-            ...overlayStyle,
-          }
+              transform: "translate(-50%, -100%)",
+              pointerEvents: "none",
+              ...overlayStyle,
+            }
           : overlayStyle
       }
     />
