@@ -12,6 +12,9 @@ const exampleContent = loremIpsum({
   units: "paragraphs",
 });
 
+/**
+ * Progress 提供了两种小部件，用于传递给 Progress 的上下左右四个可定制区域
+ */
 const meta: Meta<typeof Area> = {
   title: "Core/Progress | 进度条/Widgets | 小部件",
   component: Area,
@@ -58,11 +61,14 @@ export const TitleAreaWidget: StoryObj<typeof TitleArea> = {
 };
 
 /**
- * Area 可以通过配置拼接对应的组件，用于展示 Progress 的其它区域
+ * Area 可以通过配置拼接对应类型的组件，用于展示 Progress 的其它区域
  *
  * Area 提供五种类型的组件分别是 "tag"、"title"、"description"、"link"、"iconField"
  *
+ * 需要注意 link 和 iconField 的区别，前者对应 [Link](http://localhost:6006/?path=/docs/core-link-%E6%96%87%E6%9C%AC%E9%93%BE%E6%8E%A5--docs) 组件，行为与 Link 组件一致。后者 text 是只读文本，无 hover 样式
+ *
  * 其中 iconFiled 类型的组件内置了四种预置的效果与 progress 状态匹配，直接传递相应的 status 即可。也可以通过 src 来实现自定义的 icon
+ *
  */
 export const AreaWidget: StoryObj<typeof Area> = {
   name: "Area",

@@ -14,6 +14,9 @@ const exampleContent = loremIpsum({
   units: "paragraphs",
 });
 
+/**
+ * 富格式进度条支持四个可定制的区域，用于描述更丰富的进度信息
+ */
 const meta: Meta<React.FC<ProgressProps>> = {
   title: "Core/Progress | 进度条/RichProgress | 富格式进度条",
   component: Progress,
@@ -47,6 +50,19 @@ const meta: Meta<React.FC<ProgressProps>> = {
 
 export default meta;
 
+/**
+ * Rich Progress 由 Base Progress 和上下左右四个可定制部分组成，它们分别是：
+ *
+ * - leftTop：展示 Title 相关的内容，Title 是必须的，如果需要 Tag+Title+Subtitle 的组合，可以使用 TitleArea 组件，参考 Widgets 部分
+ *
+ * - rightTop：展示 Status 相关的内容，表明状态的 status 部分是必须的，由 icon + text 组成，如果不需要 icon，可以直接传递 string 给 rightTop，如果需要配置 icon 请使用 Widgets 提供的 iconFiled
+ *
+ * - leftBottom：通常用于展示一些描述信息，直接传递字符串数组会通过 「·」 进行连接，可以满足大部分场景。也支持通过 Area 或者自己定制
+ *
+ * - rightBottom：通常展示一些操作相关的内容，支持通过 Area 或者自己定制
+ *
+ * 需要特别注意设计稿上 Icon 后跟的是 Link 文本(有 hover 样式)还是只读文本，前者对应 Widgets 中的 Link 组件，后者对应 IconField 组件
+ */
 export const Basic: Story = {
   name: "Basic | 构成",
   args: {
