@@ -38,6 +38,7 @@ export * from "./core/Cascader/cascader.widget";
 export { RenderMenuItem } from "./core/DropdownMenu";
 export { default as DropdownMenu } from "./core/DropdownMenu";
 export * from "./core/TableForm/types";
+export * from "./core/Tooltip/tooltip.type";
 export * from "./coreX";
 export { useElementsSize } from "./hooks";
 export type {
@@ -62,7 +63,6 @@ export type {
   TableProps,
   TagColor,
   TextAreaProps,
-  TooltipProps,
   WizardSteps,
 } from "./spec";
 export * from "./spec/type";
