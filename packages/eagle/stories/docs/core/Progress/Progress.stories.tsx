@@ -1,5 +1,5 @@
 import { css } from "@linaria/core";
-import Progress from "@src/core/Progress";
+import { Progress } from "@src/core/Progress";
 import type { ProgressProps } from "@src/core/Progress/progress.type";
 import { Title } from "@stories/components";
 import { Meta, StoryObj } from "@storybook/react";
@@ -8,12 +8,14 @@ import React from "react";
 type Story = StoryObj<React.FC<ProgressProps>>;
 
 /**
- * 基础进度条，表明事物正在加载的状态与进度，用于渲染或加载数据时间较长的场景。
+ * 进度条，表明事物正在加载的状态与进度，用于渲染或加载数据时间较长的场景。
  *
- * 基础进度条宽度默认为 220px
+ * 基础(type='base')进度条宽度默认为 220px
+ *
+ * 简单进度条和富格式进度条宽度随容器宽度变化
  */
 const meta: Meta<React.FC<ProgressProps>> = {
-  title: "Core/Progress | 进度条/BaseProgress | 基础进度条",
+  title: "Core/Progress | 进度条",
   component: Progress,
   decorators: [
     (Story) => {
@@ -42,7 +44,40 @@ const meta: Meta<React.FC<ProgressProps>> = {
   },
 };
 
-export const Base: Story = {
+export default meta;
+
+export const Basic: Story = {
+  name: "样式",
+  parameters: {
+    controls: {
+      include: ["status", "indeterminate", "percent", "size", "type"],
+    },
+  },
+  render: (props) => <Progress {...props} />,
+  args: {
+    indeterminate: false,
+    type: "base",
+    percent: 50,
+    size: "small",
+  },
+};
+
+/**
+ *
+ * 当指定 indeterminate 为 true 时，表示进度不明确，此时没有具体进度，仅表示事物正在加载
+ *
+ * 设置 indeterminate 后，status、percent 等参数均会失效
+ *
+ * 参考[Loading Progress Indicator](https://www.figma.com/file/xfGf2oCgsi1s2EvFPNyJd8/Pattern%EF%BC%9A%E5%8A%A0%E8%BD%BD%E7%8A%B6%E6%80%81?node-id=788%3A22232&mode=dev)
+ */
+export const Indeterminate: Story = {
+  args: {
+    indeterminate: true,
+    type: "base",
+  },
+};
+
+export const Variants: Story = {
   name: "Variants | 变体",
   render: (props) => {
     return (
@@ -136,20 +171,3 @@ export const Base: Story = {
     controls: { include: [] },
   },
 };
-
-/**
- *
- * 当指定 indeterminate 为 true 时，表示进度不明确，此时没有具体进度，仅表示事物正在加载
- *
- * 设置 indeterminate 后，status、percent 等参数均会失效
- *
- * 参考[Loading Progress Indicator](https://www.figma.com/file/xfGf2oCgsi1s2EvFPNyJd8/Pattern%EF%BC%9A%E5%8A%A0%E8%BD%BD%E7%8A%B6%E6%80%81?node-id=788%3A22232&mode=dev)
- */
-export const Indeterminate: Story = {
-  args: {
-    indeterminate: true,
-    type: "base",
-  },
-};
-
-export default meta;

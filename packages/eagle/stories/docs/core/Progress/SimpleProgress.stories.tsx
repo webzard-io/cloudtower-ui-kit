@@ -1,5 +1,5 @@
 import { css } from "@linaria/core";
-import Progress from "@src/core/Progress";
+import { Progress } from "@src/core/Progress";
 import type { ProgressProps } from "@src/core/Progress/progress.type";
 import { Title } from "@stories/components";
 import { Meta, StoryObj } from "@storybook/react";

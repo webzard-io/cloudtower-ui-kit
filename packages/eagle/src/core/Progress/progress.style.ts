@@ -1,4 +1,5 @@
 import { css } from "@linaria/core";
+import { Animation } from "@src/styles/token";
 import { Color } from "@src/styles/token/color";
 
 export const DescriptionStyle = css`
@@ -22,8 +23,8 @@ export const ProgressStyle = css`
     content: "";
     display: block;
     height: 8px;
-    background: linear-gradient(90deg, #0080ff 0%, #9ecfff 50%, #0080ff 100%);
-    animation: loading 1600ms ease-out infinite;
+    background: ${Color.gradient.loading};
+    animation: ${Animation.loading};
     opacity: 1;
   }
 

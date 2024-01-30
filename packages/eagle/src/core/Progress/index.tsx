@@ -57,7 +57,7 @@ const createAreaNode = (
   );
 };
 
-const Progress: React.FC<ProgressProps> = ({
+export const Progress: React.FC<ProgressProps> = ({
   type = "simple",
   status,
   size = "small",
@@ -152,5 +152,3 @@ const Progress: React.FC<ProgressProps> = ({
     </ProgressContainer>
   );
 };
-
-export default Progress;

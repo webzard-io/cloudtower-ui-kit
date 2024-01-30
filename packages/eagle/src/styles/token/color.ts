@@ -266,4 +266,7 @@ export const Color = {
     "purple-a16-50": "#7E41FF29",
     "purple-a10-50": "#7E41FF1A",
   },
+  gradient: {
+    loading: "linear-gradient(90deg, #0080ff 0%, #9ecfff 50%, #0080ff 100%)",
+  },
 } as const;

@@ -1,6 +1,6 @@
 import { Placeholder16Icon } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
-import Progress from "@src/core/Progress";
+import { Progress } from "@src/core/Progress";
 import type { ProgressProps } from "@src/core/Progress/progress.type";
 import { Area, TitleArea } from "@src/core/Progress/progress.widgets";
 import { Meta, StoryObj } from "@storybook/react";
@@ -65,6 +65,7 @@ export default meta;
  */
 export const Basic: Story = {
   name: "Basic | 构成",
+  render: (props) => <Progress {...props} />,
   args: {
     type: "rich",
     size: "small",

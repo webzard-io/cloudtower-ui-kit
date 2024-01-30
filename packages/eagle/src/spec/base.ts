@@ -2,7 +2,6 @@ import { StyledMeta } from "@linaria/react";
 import { CardProps } from "@src/core/Card";
 import { IEmptyProps } from "@src/core/Empty";
 import { MessageApi } from "@src/core/message";
-import { ProgressProps } from "@src/core/Progress/progress.type";
 import { TableFormHandle, TableFormProps } from "@src/core/TableForm/types";
 import { TooltipProps } from "@src/core/Tooltip/tooltip.type";
 import { TruncatePropTypes } from "@src/core/Truncate";
@@ -35,6 +34,7 @@ import { MenuItemProps } from "antd/lib/menu/MenuItem";
 import { SubMenuProps } from "antd/lib/menu/SubMenu";
 import { ModalProps as AntdModalProps } from "antd/lib/modal";
 import { PopoverProps } from "antd/lib/popover";
+import { ProgressProps as AntdProgressProps } from "antd/lib/progress";
 import {
   RadioGroupProps as AntdRadioGroupProps,
   RadioProps as AntdRadioProps,
@@ -555,7 +555,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   radioGroup: React.FC<AntdRadioGroupProps>;
   radioButton: React.FC<RadioButtonProps>;
   tree: React.FC<AntdTreeProps>;
-  progress: React.FC<ProgressProps>;
+  DeprecatedProgress: React.FC<AntdProgressProps>;
   divider: React.FC<AntdDividerProps>;
   skeleton: React.FC<AntdSkeletonProps>;
   skeletonButton: {
