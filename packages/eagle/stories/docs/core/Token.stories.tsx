@@ -2,14 +2,18 @@ import { Placeholder16Icon } from "@cloudtower/icons-react";
 import Token, { PresetColors } from "@src/core/Token";
 import BaseTruncate from "@src/core/Truncate";
 import { Typo } from "@src/core/Typo";
-import { TokenColor, TokenComponentType } from "@src/spec";
+import { TokenComponentType } from "@src/spec";
 import { Meta, StoryObj } from "@storybook/react";
 import { Space } from "antd";
 import React from "react";
+
+type Story = StoryObj<TokenComponentType>;
+
 const story: Meta<TokenComponentType> = {
-  title: "Core/Token",
+  title: "Core/Token | 可编辑标签",
   component: Token,
   parameters: {
+    expanded: false,
     design: {
       type: "figma",
       url: "https://www.figma.com/file/ZE1a32eYk89k4cfGEEOph2/Tag-%26-Token-%7C-%E6%A0%87%E7%AD%BE%E5%92%8C%E5%8F%AF%E7%BC%96%E8%BE%91%E6%A0%87%E7%AD%BE?type=design&node-id=1-41&mode=design&t=nnkSC0vipHqxIYf7-0",
@@ -24,8 +28,132 @@ const Title: React.FC = ({ children }) => (
   </div>
 );
 
-export const Basic: StoryObj<TokenComponentType> = {
-  render: () => {
+export const Basic: Story = {
+  name: "基础样式",
+  parameters: {
+    controls: {
+      exclude: ["checked"],
+    },
+    expanded: false,
+  },
+  args: {
+    size: "small",
+    color: "blue",
+    closable: true,
+    children: "Label",
+    icon: <Placeholder16Icon />,
+    tooltipConfig: {
+      title: "Label",
+    },
+  },
+  argTypes: {
+    color: {
+      control: "radio",
+      options: ["blue", "red", "yellow", "green", "gray"],
+    },
+  },
+};
+
+/**
+ * 设置 closable 会使 Token 处于可编辑状态，此时会展示移除按钮
+ *
+ * 移除按钮的不透明度默认为 60%，hover 时，不透明度为 100%
+ */
+export const Editable: Story = {
+  name: "可编辑",
+  parameters: {
+    controls: {
+      include: ["size", "children", "color"],
+    },
+  },
+  args: {
+    size: "small",
+    color: "blue",
+    closable: true,
+    children: "Label",
+  },
+  argTypes: {
+    color: {
+      control: "radio",
+      options: ["blue", "red", "yellow", "green", "gray"],
+    },
+  },
+};
+
+/**
+ * Token 默认不可编辑，不展示移除按钮
+ *
+ * Token 可以是任意颜色，但是在不可编辑的语义下通常是灰色（默认颜色)
+ *
+ * 根据业务场景，有时候会对不可编辑的项提供 Hover Tooltip，说明不可编辑的原因。
+ */
+export const NonEditable: Story = {
+  name: "不可编辑",
+  parameters: {
+    controls: {
+      include: ["size", "children", "color"],
+    },
+  },
+  args: {
+    size: "small",
+    children: "Label",
+  },
+  argTypes: {
+    color: {
+      control: "radio",
+      options: ["blue", "red", "yellow", "green", "gray"],
+    },
+  },
+};
+
+/**
+ *
+ * 配合 Truncate 组件使用
+ */
+export const Truncate: Story = {
+  parameters: {
+    controls: {
+      include: ["size", "color"],
+    },
+  },
+  args: {
+    children: <BaseTruncate backLen={0} text="longlonglonglong" len={10} />,
+  },
+  argTypes: {
+    color: {
+      control: "radio",
+      options: ["blue", "red", "yellow", "green", "gray"],
+    },
+  },
+};
+
+/**
+ * 可以通过 tooltipConfig 来配置移除按钮要提示的 tooltip 内容
+ */
+export const TooltipConfig: Story = {
+  name: "移除按钮 Tooltip",
+  parameters: {
+    controls: {
+      include: ["tooltipConfig"],
+    },
+  },
+  args: {
+    tooltipConfig: {
+      title: "Label",
+    },
+    closable: true,
+    children: "Label",
+  },
+};
+
+export const Variants: Story = {
+  name: "所有变体",
+  parameters: {
+    controls: {
+      include: [],
+    },
+  },
+  render: (props) => {
     return (
       <>
         <Title>Basic</Title>
@@ -192,103 +320,5 @@ export const Basic: StoryObj<TokenComponentType> = {
         </Space>
       </>
     );
-  },
-};
-
-export const Default: StoryObj<{
-  content: string;
-  color: TokenColor;
-  size: "small" | "medium" | "large";
-  closable: boolean;
-}> = {
-  render: ({ content, ...props }) => {
-    return (
-      <>
-        <Token {...props}>{content}</Token>
-      </>
-    );
-  },
-};
-
-Default.args = {
-  content: "label",
-  closable: undefined,
-  size: undefined,
-  color: undefined,
-};
-
-Default.argTypes = {
-  size: {
-    control: "radio",
-    options: ["small", "medium", "large"],
-  },
-  color: {
-    control: "radio",
-    options: ["blue", "red", "yellow", "green", "gray"],
-  },
-  closable: {
-    control: "boolean",
-  },
-};
-
-export const Truncate: StoryObj<{
-  content: string;
-  len: number;
-  color: string;
-  size: "small" | "medium" | "large";
-  closable: boolean;
-}> = ({
-  content,
-  len,
-  ...props
-}: Parameters<typeof Token> & {
-  content: string;
-  len: number;
-}) => {
-  return (
-    <>
-      <div>配合 Truncate 组件使用</div>
-      <div style={{ marginTop: "50px" }}>
-        <Token {...props}>
-          <BaseTruncate backLen={0} text={content} len={len} />
-        </Token>
-      </div>
-    </>
-  );
-};
-
-Truncate.args = {
-  content: "longlonglonglong",
-  color: "magenta",
-  size: "small",
-  closable: true,
-  len: 10,
-};
-
-export const Tooltip: StoryObj<{
-  content: string;
-  tooltipConfig: {
-    title: string;
-  };
-}> = ({
-  content,
-  ...props
-}: Parameters<typeof Token> & { content: string }) => {
-  return (
-    <>
-      <div>可以通过传递 tooltipConfig 使 closeIcon hover 时显示 tooltip</div>
-      <div style={{ marginTop: "50px" }}>
-        <Token closable {...props}>
-          {content}
-        </Token>
-      </div>
-    </>
-  );
-};
-
-Tooltip.args = {
-  content: "longlonglonglong",
-  tooltipConfig: {
-    title: "remove token",
   },
 };
