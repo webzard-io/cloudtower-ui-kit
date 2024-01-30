@@ -103,6 +103,7 @@ const config = defineConfig([
         format: "cjs",
         preserveModules: true,
         preserveModulesRoot: "src",
+        interop:"auto"
       },
       {
         dir: "dist/esm",
