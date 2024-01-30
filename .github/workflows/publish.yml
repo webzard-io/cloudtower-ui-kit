@@ -42,6 +42,19 @@ jobs:
           max_attempts: 3  # 设置最大重试次数
           command: |
             yarn lerna publish from-git --no-verify-access --yes
+      - name: sync cnpm
+        run: curl --location --request PUT 'http://192.168.26.29:7002/sync/@cloudtower/eagle?sync_upstream=true'
+      - name: Send to Slack
+        id: slack
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          # This data can be any valid JSON from a previous step in the GitHub Action
+          payload: |
+            {
+              "text": "Get New Version At ${{github.ref_name}} <http://192.168.26.29:7002/package/@cloudtower/eagle|${{github.ref_name}}>"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: Build Changelog
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v3
@@ -76,19 +89,6 @@ jobs:
           body: ${{steps.github_release.outputs.changelog}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: sync cnpm
-        run: curl --location --request PUT 'http://192.168.26.29:7002/sync/@cloudtower/eagle?sync_upstream=true'
-      - name: Send to Slack
-        id: slack
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          # This data can be any valid JSON from a previous step in the GitHub Action
-          payload: |
-            {
-              "text": "Get New Version At ${{github.ref_name}} <http://192.168.26.29:7002/package/@cloudtower/eagle|${{github.ref_name}}>"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: Clean .npmrc
         if: always()
         run: rm ~/.npmrc
