@@ -8,12 +8,7 @@
     "dist",
     "antd"
   ],
-  "sideEffects": [
-    "*.css",
-    "*.scss",
-    "*.less",
-    "*.sass"
-  ],
+  "sideEffects": false,
   "license": "MIT",
   "homepage": "https://github.com/webzard-io/cloudtower-ui-kit#readme",
   "repository": {
