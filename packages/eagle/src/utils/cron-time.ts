@@ -494,10 +494,10 @@ export class CronTime {
       }
 
       if (
-        !(date.month() - 1 in this.unitMap.month) &&
+        !(date.month() in this.unitMap.month) &&
         Object.keys(this.unitMap.month).length !== 12
       ) {
-        date = date.add(1, "month").day(1).hour(0).minute(0).second(0);
+        date = date.add(1, "month").date(1).hour(0).minute(0).second(0);
         continue;
       }
 
