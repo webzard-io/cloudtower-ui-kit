@@ -17,7 +17,6 @@ export const AntdIntStyled = styled(AntdInputNumber)<{
     display: ${(props) => (props.controls ? "initial" : "none")};
   }
   .ant-input-number-input-wrap {
-    padding: 5px 12px;
     display: inline-flex;
     line-height: 1.5715;
     height: 100%;
@@ -69,10 +68,22 @@ export const AntdIntStyled = styled(AntdInputNumber)<{
   }
 
   .ant-input-number-input {
-    padding: 0;
-    margin: 0;
-    height: auto;
+    height: 30px;
+    border: 1px;
+    padding: 5px 12px;
     font-size: inherit;
+  }
+
+  &.ant-input-number-lg input {
+    height: 38px;
+    border: 1px;
+    padding: 8px 16px;
+  }
+
+  &.ant-input-number-sm input {
+    height: 22px;
+    border: 1px;
+    padding: 2px 8px;
   }
 `;
 
