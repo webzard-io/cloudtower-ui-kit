@@ -72,6 +72,7 @@ import Byte from "./Byte";
 import Calendar from "./Calendar";
 import Card from "./Card";
 import Checkbox from "./Checkbox";
+import DeprecatedProgress from "./DeprecatedProgress";
 import Empty from "./Empty";
 import ExpandableContainer from "./ExpandableList/ExpandableContainer";
 import ExpandableItem from "./ExpandableList/ExpandableItem";
@@ -86,7 +87,6 @@ import message from "./message";
 import Modal from "./Modal";
 import Pagination from "./Pagination";
 import Percent from "./Percent";
-import Progress from "./Progress";
 import Radio, { RadioButton, RadioGroup } from "./Radio";
 import SearchInput from "./SearchInput";
 import Second from "./Second";
@@ -146,7 +146,7 @@ export function getAntdKit(): Kit {
     radioGroup: RadioGroup,
     radioButton: RadioButton,
     tree: Tree,
-    progress: Progress,
+    DeprecatedProgress: DeprecatedProgress,
     divider: Divider,
     skeleton: Skeleton,
     skeletonButton: Skeleton.Button,
