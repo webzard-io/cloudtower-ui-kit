@@ -1,6 +1,6 @@
 import { parrotI18n, ParrotI18nSupportLng } from "@cloudtower/parrot";
+import { antdKit } from "@src/antd";
 import { BatchHelper, createBatchMessageMethods } from "@src/core";
-import { antdKit } from "@src/core/antd";
 import _message from "@src/core/message";
 import { ConfigProvider } from "antd";
 import enUS from "antd/lib/locale/en_US";
