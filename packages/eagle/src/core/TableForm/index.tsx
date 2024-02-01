@@ -57,14 +57,14 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
         setData(value);
         onBodyChange?.(value, rowIndex, columnKey);
       },
-      [onBodyChange]
+      [onBodyChange],
     );
 
     useLayoutEffect(() => {
       // While default data is not defined in first render, generate 3 records
       if (!defaultData) {
         updateData(
-          [...Array(DEFAULT_ROW_COUNT)].map(() => genEmptyRow(columns))
+          [...Array(DEFAULT_ROW_COUNT)].map(() => genEmptyRow(columns)),
         );
       }
     }, []);
@@ -78,7 +78,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
           onBodyChange?.(newData, undefined, columnKey);
         }
       },
-      [onHeaderChange, onBodyChange]
+      [onHeaderChange, onBodyChange],
     );
 
     const handleBatchBlur = useCallback(
@@ -100,7 +100,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
           onHeaderBlur?.(latestData);
         }
       },
-      [latestData, onHeaderBlur, onBodyChange]
+      [latestData, onHeaderBlur, onBodyChange],
     );
 
     useImperativeHandle(
@@ -113,7 +113,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
           setValidateAll(true);
         },
       }),
-      [updateData]
+      [updateData],
     );
 
     const headerCells = columns.map((col) => {
@@ -140,7 +140,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
                 typeof maxHeight === "number" ? maxHeight + "px" : maxHeight,
             }
           : undefined,
-      []
+      [],
     );
 
     return (
@@ -189,7 +189,9 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
         ) : null}
       </div>
     );
-  }
+  },
 );
 
 export default TableForm;
+
+export * from "./types";
