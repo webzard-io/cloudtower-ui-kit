@@ -152,3 +152,6 @@ export const Progress: React.FC<ProgressProps> = ({
     </ProgressContainer>
   );
 };
+
+export * from "./progress.type";
+export * from "./progress.widgets";

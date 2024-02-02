@@ -2,16 +2,16 @@ import { render } from "@testing-library/react";
 import { Placeholder16Icon } from "@cloudtower/icons-react";
 import React from "react";
 import { describe, it } from "vitest";
-import Tag, { PresetColors } from "..";
+import Tag, { TagPresetColors } from "..";
 
 describe("Tokenm h5_css", () => {
   it("h5_css color ", ({ expect }) => {
     const { container } = render(
       <div>
-        {PresetColors.map((color) => (
+        {TagPresetColors.map((color) => (
           <Tag color={color}>Label</Tag>
         ))}
-      </div>
+      </div>,
     );
 
     expect({
@@ -140,12 +140,12 @@ describe("Tokenm h5_css", () => {
   it("h5_css tags with icon", ({ expect }) => {
     const { container } = render(
       <div>
-        {PresetColors.map((color) => (
+        {TagPresetColors.map((color) => (
           <Tag color={color} icon={<Placeholder16Icon />}>
             Label
           </Tag>
         ))}
-      </div>
+      </div>,
     );
 
     expect({
@@ -458,7 +458,7 @@ describe("Tokenm h5_css", () => {
           secondaryContent="version"
           color={"yellow"}
         />
-      </div>
+      </div>,
     );
     expect({
       linaria: true,
