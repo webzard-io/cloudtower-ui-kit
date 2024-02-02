@@ -2,16 +2,16 @@ import { render } from "@testing-library/react";
 import React from "react";
 import { describe, it } from "vitest";
 
-import StatusCapsule, { PresetColors } from "..";
+import StatusCapsule, { StatusPresetColors } from "..";
 
 describe("StatusCapsule h5_css", () => {
   it("h5_css color", ({ expect }) => {
     const { container } = render(
       <div>
-        {PresetColors.map((color) => (
+        {StatusPresetColors.map((color) => (
           <StatusCapsule color={color}>Label</StatusCapsule>
         ))}
-      </div>
+      </div>,
     );
 
     expect({
@@ -473,12 +473,12 @@ describe("StatusCapsule h5_css", () => {
   it("h5_css tags with number", ({ expect }) => {
     const { container } = render(
       <div>
-        {PresetColors.map((color) => (
+        {StatusPresetColors.map((color) => (
           <StatusCapsule color={color} number={1}>
             Label
           </StatusCapsule>
         ))}
-      </div>
+      </div>,
     );
 
     expect({
@@ -965,12 +965,12 @@ describe("StatusCapsule h5_css", () => {
   it("h5_css off-white background", ({ expect }) => {
     const { container } = render(
       <div>
-        {PresetColors.map((color) => (
+        {StatusPresetColors.map((color) => (
           <StatusCapsule offWhiteMode color={color} number={1}>
             Label
           </StatusCapsule>
         ))}
-      </div>
+      </div>,
     );
     expect({
       linaria: true,
@@ -1456,12 +1456,12 @@ describe("StatusCapsule h5_css", () => {
   it("h5_css loading", ({ expect }) => {
     const { container } = render(
       <div>
-        {PresetColors.map((color) => (
+        {StatusPresetColors.map((color) => (
           <StatusCapsule loading color={color} number={1}>
             Label
           </StatusCapsule>
         ))}
-      </div>
+      </div>,
     );
     expect({
       linaria: true,
@@ -2217,7 +2217,7 @@ describe("StatusCapsule h5_css", () => {
             Label
           </StatusCapsule>
         ))}
-      </div>
+      </div>,
     );
     expect({
       linaria: true,

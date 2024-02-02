@@ -8,7 +8,7 @@ import { Tag as AntdTag } from "antd";
 import cs from "classnames";
 import React from "react";
 
-export const PresetColors: StatusCapsuleColor[] = [
+export const StatusPresetColors: StatusCapsuleColor[] = [
   "blue",
   "red",
   "yellow",
@@ -141,10 +141,11 @@ const StatusCapsule: StatusCapsuleComponentType = ({
         Typo.Label.l4_regular,
         "ui-kit-status-capsule",
         {
-          [`ant-tag-${computedColor}`]: PresetColors.includes(computedColor),
+          [`ant-tag-${computedColor}`]:
+            StatusPresetColors.includes(computedColor),
           "tag-hover": hoverable,
           "off-white": offWhiteMode,
-        }
+        },
       )}
       closable={false}
       color={computedColor === "gray" ? undefined : computedColor}

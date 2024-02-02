@@ -1,4 +1,4 @@
-export const PresetColors = [
+export const TagBasePresetColors = [
   "blue",
   "red",
   "yellow",
