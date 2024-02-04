@@ -30,6 +30,7 @@ export { default as ModalStack } from "./ModalStack";
 export * from "./Overflow";
 export * from "./Pagination";
 export * from "./Radio";
+export * from "./SidebarMenu";
 export * from "./Steps";
 export * from "./Styled";
 export * from "./Switch";
