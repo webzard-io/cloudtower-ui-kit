@@ -4,11 +4,12 @@ import Icon from "@src/core/Icon";
 import { IconStyle } from "@src/core/Token/style";
 import Tooltip from "@src/core/Tooltip";
 import { Typo } from "@src/core/Typo";
-import { TokenColor, TokenType } from "@src/spec";
 import { Tag as AntdTag } from "antd";
 import cs from "classnames";
 import React from "react";
-export const PresetColors: TokenColor[] = [
+
+import { TokenColor, TokenType } from "./token.type";
+export const TokenPresetColors: TokenColor[] = [
   "blue",
   "red",
   "yellow",
@@ -113,7 +114,7 @@ const Token = React.forwardRef<HTMLDivElement, TokenType>(
       tooltipConfig,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <AntdTag
@@ -126,10 +127,10 @@ const Token = React.forwardRef<HTMLDivElement, TokenType>(
           {
             [Typo.Label.l4_regular]: size === "small" || size === "medium",
             [Typo.Label.l3_regular]: size === "large",
-            [`ant-tag-${color}`]: PresetColors.includes(color),
+            [`ant-tag-${color}`]: TokenPresetColors.includes(color),
           },
           "ui-kit-token",
-          checked && "ui-kit-token-checked"
+          checked && "ui-kit-token-checked",
         )}
         closeIcon={
           <Tooltip
@@ -154,6 +155,8 @@ const Token = React.forwardRef<HTMLDivElement, TokenType>(
         {children}
       </AntdTag>
     );
-  }
+  },
 );
 export default Token;
+
+export * from "./token.type";

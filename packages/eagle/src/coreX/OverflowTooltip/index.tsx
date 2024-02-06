@@ -84,3 +84,5 @@ const OverflowTooltip: React.FC<OverflowTooltipProps> = (props) => {
 };
 
 export default OverflowTooltip;
+
+export * from "./overflowTooltip.type";

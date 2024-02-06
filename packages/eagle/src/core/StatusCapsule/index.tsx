@@ -3,12 +3,16 @@ import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import Icon from "@src/core/Icon";
 import { Typo } from "@src/core/Typo";
-import { StatusCapsuleColor, StatusCapsuleComponentType } from "@src/spec";
 import { Tag as AntdTag } from "antd";
 import cs from "classnames";
 import React from "react";
 
-export const PresetColors: StatusCapsuleColor[] = [
+import {
+  StatusCapsuleColor,
+  StatusCapsuleComponentType,
+} from "./statusCapsule.type";
+
+export const StatusPresetColors: StatusCapsuleColor[] = [
   "blue",
   "red",
   "yellow",
@@ -141,10 +145,11 @@ const StatusCapsule: StatusCapsuleComponentType = ({
         Typo.Label.l4_regular,
         "ui-kit-status-capsule",
         {
-          [`ant-tag-${computedColor}`]: PresetColors.includes(computedColor),
+          [`ant-tag-${computedColor}`]:
+            StatusPresetColors.includes(computedColor),
           "tag-hover": hoverable,
           "off-white": offWhiteMode,
-        }
+        },
       )}
       closable={false}
       color={computedColor === "gray" ? undefined : computedColor}
@@ -159,3 +164,5 @@ const StatusCapsule: StatusCapsuleComponentType = ({
 };
 
 export default StatusCapsule;
+
+export * from "./statusCapsule.type";

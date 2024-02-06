@@ -2,11 +2,13 @@ import { css, cx } from "@linaria/core";
 import Loading from "@src/core/Loading";
 import { useTableBodyHasScrollBar } from "@src/core/Table/common";
 import { ColumnTitle, TableLoading } from "@src/core/Table/TableWidget";
-import { TableProps } from "@src/spec";
 import { zIndices } from "@src/styles/token";
 import { Table as BaseTable } from "antd";
 import cs from "classnames";
 import React, { useMemo, useRef } from "react";
+
+import { TableProps } from "./table.type";
+
 const TableContainerStyle = css`
   height: 100%;
 `;
@@ -539,4 +541,5 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
 export default Table;
 
 export * from "./common";
+export * from "./table.type";
 export * from "./TableWidget";

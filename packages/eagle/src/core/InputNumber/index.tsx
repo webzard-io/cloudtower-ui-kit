@@ -1,11 +1,12 @@
 import { styled } from "@linaria/react";
 import { InputStyle } from "@src/core/Styled";
 import { Typo } from "@src/core/Typo";
-import { AdditionOptions } from "@src/spec";
 import { InputNumber as AntdInputNumber } from "antd";
 import { InputNumberProps } from "antd/lib/input-number";
 import cs from "classnames";
 import React from "react";
+
+import { AdditionOptions } from "../Input/input.type";
 
 export const AntdInputNumberStyled = styled(AntdInputNumber)<{
   controls: boolean;

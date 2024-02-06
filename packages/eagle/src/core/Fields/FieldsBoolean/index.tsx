@@ -1,7 +1,7 @@
 import React from "react";
 
-import { FieldBaseProps } from "../../../spec";
 import Checkbox from "../../Checkbox";
+import { FieldBaseProps } from "../fields.type";
 
 // FIXME
 // onBlur onFocus in input is not needed.

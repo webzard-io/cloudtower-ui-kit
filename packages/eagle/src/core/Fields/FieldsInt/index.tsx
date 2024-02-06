@@ -1,7 +1,7 @@
 import React from "react";
 
-import { IntFieldProps } from "../../../spec";
 import Input from "../../Input";
+import { IntFieldProps } from "./fieldsInt.type";
 
 const FieldsInt = ({
   input,
@@ -42,3 +42,5 @@ const FieldsInt = ({
 );
 
 export default FieldsInt;
+
+export * from "./fieldsInt.type";

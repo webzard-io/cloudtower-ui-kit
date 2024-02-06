@@ -1,6 +1,6 @@
 import { css } from "@linaria/core";
 import TruncatedTextWithTooltip from "@src/coreX/TruncatedTextWithTooltip";
-import { TruncateTextWithTooltipType } from "@src/spec";
+import { TruncateTextWithTooltipType } from "@src/coreX/TruncatedTextWithTooltip/truncatedTextWithTooltip.type";
 import { Meta } from "@storybook/react";
 import React from "react";
 

@@ -1,9 +1,8 @@
 import Button from "@src/core/Button";
 import KitStoreProvider from "@src/core/KitStoreProvider";
-import Modal from "@src/core/Modal";
+import Modal, { ModalProps, WizardSteps } from "@src/core/Modal";
 import ModalStack from "@src/core/ModalStack";
 import { ModalWrapper } from "@src/core/Styled";
-import { ModalProps, WizardSteps } from "@src/spec";
 import { pushModal } from "@src/store";
 import { Meta } from "@storybook/react";
 import React, { useState } from "react";

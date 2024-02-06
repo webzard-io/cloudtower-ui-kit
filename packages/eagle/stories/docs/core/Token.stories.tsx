@@ -1,11 +1,12 @@
 import { Placeholder16Icon } from "@cloudtower/icons-react";
-import Token, { PresetColors } from "@src/core/Token";
+import Token, { TokenPresetColors } from "@src/core/Token";
+import { TokenColor, TokenComponentType } from "@src/core/Token/token.type";
 import BaseTruncate from "@src/core/Truncate";
 import { Typo } from "@src/core/Typo";
-import { TokenColor, TokenComponentType } from "@src/spec";
 import { Meta, StoryObj } from "@storybook/react";
 import { Space } from "antd";
 import React from "react";
+
 const story: Meta<TokenComponentType> = {
   title: "Core/Token",
   component: Token,
@@ -33,7 +34,7 @@ export const Basic: StoryObj<TokenComponentType> = {
           <div className="large-size">
             <div>Large</div>
             <Space>
-              {PresetColors.map((color) => (
+              {TokenPresetColors.map((color) => (
                 <Space direction="vertical">
                   <Token closable size="large" color={color}>
                     Label
@@ -86,7 +87,7 @@ export const Basic: StoryObj<TokenComponentType> = {
           <div className="medium-size">
             <div>Medium</div>
             <Space>
-              {PresetColors.map((color) => (
+              {TokenPresetColors.map((color) => (
                 <Space direction="vertical">
                   <Token closable size="medium" color={color}>
                     Label
@@ -139,7 +140,7 @@ export const Basic: StoryObj<TokenComponentType> = {
           <div className="small-size">
             <div>Small</div>
             <Space>
-              {PresetColors.map((color) => (
+              {TokenPresetColors.map((color) => (
                 <Space direction="vertical">
                   <Token closable size="small" color={color}>
                     Label

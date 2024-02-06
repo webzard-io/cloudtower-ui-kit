@@ -1,9 +1,11 @@
 import { InputStyle } from "@src/core/Styled";
 import { Typo } from "@src/core/Typo";
-import { TextAreaProps } from "@src/spec";
 import { Input as AntdInput } from "antd";
 import cs from "classnames";
 import React from "react";
+
+import { TextAreaProps } from "./textArea.type";
+
 const TextArea: React.FC<TextAreaProps> = ({
   className,
   error,
@@ -25,10 +27,12 @@ const TextArea: React.FC<TextAreaProps> = ({
         error && "error",
         !props.autoSize && !props.onFocusChangeHeight && `textarea-${size}`,
         size === "large" && "ant-input-lg",
-        size === "small" && "ant-input-sm"
+        size === "small" && "ant-input-sm",
       )}
     />
   );
 };
 
 export default TextArea;
+
+export * from "./textArea.type";

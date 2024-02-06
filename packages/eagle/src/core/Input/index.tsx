@@ -27,3 +27,5 @@ const Input: React.FC<InputProps & { error?: boolean }> = ({
 };
 
 export default Input;
+
+export * from "./input.type";

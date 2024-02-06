@@ -1,7 +1,7 @@
 import { DotIntervalSeparation16TertiaryIcon } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
-import Link from "@src/core/Link";
+import Link, { LinkProps } from "@src/core/Link";
 import { IconField, Info } from "@src/core/Progress/components";
 import {
   AreaProps,
@@ -13,8 +13,9 @@ import {
   TitleAreaProps,
 } from "@src/core/Progress/progress.type";
 import Tag from "@src/core/Tag";
-import { LinkProps, TagProps } from "@src/spec";
 import React from "react";
+
+import { TagProps } from "../Tag/tag.type";
 
 const splitMap: Record<string, React.ReactElement> = {
   dot: <DotIntervalSeparation16TertiaryIcon />,

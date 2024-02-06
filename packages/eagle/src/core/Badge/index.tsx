@@ -1,7 +1,9 @@
 import { cx } from "@linaria/core";
-import { BadgeComponentType } from "@src/spec";
 import { Badge as AntdBadge } from "antd";
 import React from "react";
+
+import { BadgeComponentType } from "./badge.type";
+
 const Badge: BadgeComponentType = ({ type = "error", className, ...props }) => (
   <AntdBadge
     className={cx(`badge-${type}`, className)}
@@ -11,3 +13,5 @@ const Badge: BadgeComponentType = ({ type = "error", className, ...props }) => (
 );
 
 export default Badge;
+
+export * from "./badge.type";

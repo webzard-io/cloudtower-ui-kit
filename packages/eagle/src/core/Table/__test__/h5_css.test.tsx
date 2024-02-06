@@ -2,10 +2,10 @@ import { render } from "@testing-library/react";
 import React, { PropsWithChildren } from "react";
 import { describe, it } from "vitest";
 
-import { RequiredColumnProps } from "../../../spec";
 import KitStoreProvider from "../../KitStoreProvider";
 import ModalStack from "../../ModalStack";
 import Table from "..";
+import { RequiredColumnProps } from "../table.type";
 
 const AllTheProviders = ({ children }: PropsWithChildren<{}>) => {
   return (

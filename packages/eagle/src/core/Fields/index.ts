@@ -1,13 +1,14 @@
-import FieldsBoolean from "@src/core/Fields/FieldsBoolean";
-import FieldsDateTime from "@src/core/Fields/FieldsDateTime";
-import FieldsDateTimeRange from "@src/core/Fields/FieldsDateTimeRange";
-import FieldsEnum from "@src/core/Fields/FieldsEnum";
-import FieldsFloat from "@src/core/Fields/FieldsFloat";
-import FieldsInt from "@src/core/Fields/FieldsInt";
-import FieldsInteger from "@src/core/Fields/FieldsInteger";
-import FieldsString from "@src/core/Fields/FieldsString";
-import FieldsTextArea from "@src/core/Fields/FieldsTextArea";
-import FieldsTimePicker from "@src/core/Fields/FieldsTimePicker";
+import FieldsBoolean from "./FieldsBoolean";
+import FieldsDateTime from "./FieldsDateTime";
+import FieldsDateTimeRange from "./FieldsDateTimeRange";
+import FieldsEnum from "./FieldsEnum";
+import FieldsFloat from "./FieldsFloat";
+import FieldsInt from "./FieldsInt";
+import FieldsInteger from "./FieldsInteger";
+import FieldsString from "./FieldsString";
+import FieldsTextArea from "./FieldsTextArea";
+import FieldsTimePicker from "./FieldsTimePicker";
+
 const fields = {
   Int: FieldsInt,
   Integer: FieldsInteger,
@@ -20,4 +21,17 @@ const fields = {
   TextArea: FieldsTextArea,
   DateTimeRange: FieldsDateTimeRange,
 };
+
 export default fields;
+
+export * from "./fields.type";
+export * from "./FieldsBoolean";
+export * from "./FieldsDateTime";
+export * from "./FieldsDateTimeRange";
+export * from "./FieldsEnum";
+export * from "./FieldsFloat";
+export * from "./FieldsInt";
+export * from "./FieldsInteger";
+export * from "./FieldsString";
+export * from "./FieldsTextArea";
+export * from "./FieldsTimePicker";

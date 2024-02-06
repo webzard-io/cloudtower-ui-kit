@@ -1,8 +1,8 @@
 import { Select as AntdSelect } from "antd";
 import React from "react";
 
-import { EnumProps } from "../../../spec";
 import Select from "../../Select";
+import { EnumProps } from "./fieldsEnum.type";
 
 const FieldsEnum = ({
   meta: __,
@@ -32,4 +32,7 @@ const FieldsEnum = ({
     </>
   );
 };
+
 export default FieldsEnum;
+
+export * from "./fieldsEnum.type";

@@ -1,8 +1,9 @@
 import { css, cx } from "@linaria/core";
 import Tooltip from "@src/core/Tooltip";
 import { Dropdown as AntdDropdown, Menu as AntdMenu } from "antd";
-import type { DropDownProps as AntdDropDownProps } from "antd/lib/dropdown";
 import React from "react";
+
+import { IDropdownMenuProps } from "./dropdownMenu.type";
 
 const DropdownOverlayStyle = css`
   .ant-dropdown-menu-item-group {
@@ -31,24 +32,6 @@ interface IItem {
   onClick?: () => void;
   danger?: boolean;
   tooltip?: string;
-}
-
-interface IProps {
-  items: Array<
-    IItem & {
-      title?: string;
-      children?: Array<IItem>;
-    }
-  >;
-  disabled?: boolean;
-  placement?: AntdDropDownProps["placement"];
-  trigger?: AntdDropDownProps["trigger"];
-  customStyle?: {
-    content: string;
-  };
-  slotsElements: {
-    trigger?: (args: object) => string | React.ReactNode;
-  };
 }
 
 export const RenderMenuItem = (
@@ -100,7 +83,7 @@ export const RenderMenuItem = (
   );
 };
 
-const DropdownMenu: React.FC<IProps> = ({
+const DropdownMenu: React.FC<IDropdownMenuProps> = ({
   items,
   disabled,
   placement,
@@ -130,3 +113,5 @@ const DropdownMenu: React.FC<IProps> = ({
 };
 
 export default DropdownMenu;
+
+export * from "./dropdownMenu.type";

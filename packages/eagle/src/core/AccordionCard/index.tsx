@@ -5,6 +5,7 @@ import cs from "classnames";
 import React, { useState } from "react";
 
 import DropdownTransition from "../../coreX/DropdownTransition";
+import { IAccordionCardProps } from "./accordionCard.type";
 
 const Card = styled.div`
   border: 1px solid $gray-40;
@@ -54,14 +55,9 @@ const CloseButton: React.FC<CloseButtonProps> = (props) => {
   );
 };
 
-const AccordionCard: React.FC<{
-  header: React.ReactNode | ((active: boolean) => React.ReactNode);
-  expand: React.ReactNode;
-  className?: string;
-  defaultExpand?: boolean;
-  mountOnEnter?: boolean;
-  unmountOnExit?: boolean;
-}> & { CloseButton: React.FC<CloseButtonProps> } = (props) => {
+const AccordionCard: React.FC<IAccordionCardProps> & {
+  CloseButton: React.FC<CloseButtonProps>;
+} = (props) => {
   const {
     header,
     expand,
@@ -94,3 +90,5 @@ const AccordionCard: React.FC<{
 AccordionCard.CloseButton = CloseButton;
 
 export default AccordionCard;
+
+export * from "./accordionCard.type";

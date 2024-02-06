@@ -436,7 +436,10 @@ describe("SimplePagination h5_css", () => {
           height: 32px;
           border-radius: 6px;
           line-height: 22px;
-          transition: transform 160ms ease, background 160ms ease, opacity 160ms ease;
+          transition:
+            transform 160ms ease,
+            background 160ms ease,
+            opacity 160ms ease;
           transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
 
           &.ant-btn-lg {
@@ -904,7 +907,10 @@ describe("SimplePagination h5_css", () => {
           height: 32px;
           border-radius: 6px;
           line-height: 22px;
-          transition: transform 160ms ease, background 160ms ease, opacity 160ms ease;
+          transition:
+            transform 160ms ease,
+            background 160ms ease,
+            opacity 160ms ease;
           transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
 
           &.ant-btn-lg {
@@ -1715,7 +1721,10 @@ describe("SimplePagination h5_css", () => {
           height: 32px;
           border-radius: 6px;
           line-height: 22px;
-          transition: transform 160ms ease, background 160ms ease, opacity 160ms ease;
+          transition:
+            transform 160ms ease,
+            background 160ms ease,
+            opacity 160ms ease;
           transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
 
           &.ant-btn-lg {

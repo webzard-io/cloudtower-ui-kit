@@ -7,11 +7,13 @@ import {
   VerticalStyle,
 } from "@src/core/Steps/style";
 import Tooltip from "@src/core/Tooltip";
-import { IStepsProps } from "@src/spec";
 import { Steps as AntdSteps } from "antd";
 import { StepProps } from "antd/lib/steps";
 import cs from "classnames";
 import React, { useLayoutEffect, useRef, useState } from "react";
+
+import { IStepsProps } from "./steps.type";
+
 type StepContentProps = {
   current: number;
   step: StepProps;
@@ -77,7 +79,7 @@ const Steps: React.FC<IStepsProps> = (props) => {
       className={cs(
         containerClassname,
         StepsStyle,
-        isVerticalMode ? VerticalStyle : HorizontalStyle
+        isVerticalMode ? VerticalStyle : HorizontalStyle,
       )}
     >
       <AntdSteps
@@ -98,7 +100,7 @@ const Steps: React.FC<IStepsProps> = (props) => {
                 }
                 className={cs(
                   step.className,
-                  isPreviewMode ? "preview-mode" : ""
+                  isPreviewMode ? "preview-mode" : "",
                 )}
                 title={
                   <StepTitle
@@ -118,3 +120,5 @@ const Steps: React.FC<IStepsProps> = (props) => {
 };
 
 export default Steps;
+
+export * from "./steps.type";

@@ -1,8 +1,9 @@
 import { styled } from "@linaria/react";
 import Switch from "@src/core/Switch";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
-import { SwitchWithTextProps } from "@src/spec";
 import React from "react";
+
+import { SwitchWithTextProps } from "./switchWithText.type";
 
 const SwitchWrapper = styled.span`
   .enabled-switch {
@@ -35,3 +36,5 @@ const SwitchWithText: React.FC<SwitchWithTextProps> = (props) => {
 };
 
 export default SwitchWithText;
+
+export * from "./switchWithText.type";

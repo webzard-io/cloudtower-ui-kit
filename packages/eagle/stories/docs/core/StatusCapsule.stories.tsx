@@ -1,8 +1,11 @@
 import { css } from "@linaria/core";
 import StatusCapsule from "@src/core/StatusCapsule";
-import { PresetColors } from "@src/core/StatusCapsule";
+import { StatusPresetColors } from "@src/core/StatusCapsule";
+import {
+  StatusCapsuleColor,
+  StatusCapsuleComponentType,
+} from "@src/core/StatusCapsule/statusCapsule.type";
 import { Typo } from "@src/core/Typo";
-import { StatusCapsuleColor, StatusCapsuleComponentType } from "@src/spec";
 import { Stack } from "@stories/components";
 import { Meta, StoryObj } from "@storybook/react";
 import cs from "classnames";
@@ -48,7 +51,7 @@ export const Basic: StoryObj<StatusCapsuleComponentType> = {
                 <div style={{ width: "90px" }}>{mode}</div>
               ))}
             </Stack>
-            {PresetColors.map((color) => (
+            {StatusPresetColors.map((color) => (
               <Stack
                 className={css`
                   & > .box {
@@ -125,7 +128,7 @@ export const Basic: StoryObj<StatusCapsuleComponentType> = {
                 <div style={{ width: "90px" }}>{mode}</div>
               ))}
             </Stack>
-            {PresetColors.map((color) => (
+            {StatusPresetColors.map((color) => (
               <Stack
                 className={css`
                   & > .box {

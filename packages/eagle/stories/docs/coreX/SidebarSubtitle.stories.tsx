@@ -1,5 +1,5 @@
 import SidebarSubtitle from "@src/coreX/SidebarSubtitle";
-import { SidebarSubtitleComponentType } from "@src/spec/base";
+import { SidebarSubtitleComponentType } from "@src/coreX/SidebarSubtitle/sidebarSubtitle.type";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 

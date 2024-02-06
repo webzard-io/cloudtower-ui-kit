@@ -1,5 +1,6 @@
-import { SearchInputProps } from "@src/spec/base";
 import type { CascaderProps as Antd5CascaderProps } from "antd5/lib/cascader";
+
+import { SearchInputProps } from "../SearchInput/searchInput.type";
 
 export type { Antd5SizeType } from "@src/utils/type";
 

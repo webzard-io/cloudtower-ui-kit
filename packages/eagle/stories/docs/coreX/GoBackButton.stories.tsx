@@ -1,5 +1,4 @@
-import GoBackButton from "@src/coreX/GoBackButton";
-import { GoBackButtonType } from "@src/spec";
+import GoBackButton, { GoBackButtonType } from "@src/coreX/GoBackButton";
 import type { Meta } from "@storybook/react";
 import { message } from "antd";
 import { createHashHistory } from "history";

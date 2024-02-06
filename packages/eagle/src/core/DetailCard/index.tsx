@@ -1,7 +1,7 @@
 import { styled } from "@linaria/react";
 import React from "react";
 
-import { IDetailCardProps } from "../../spec/type";
+import { IDetailCardProps } from "./detailCard.type";
 
 const CardWrapper = styled.div`
   margin-bottom: 16px;
@@ -39,3 +39,5 @@ const DetailCard: React.FC<IDetailCardProps> = (props) => {
 };
 
 export default DetailCard;
+
+export * from "./detailCard.type";

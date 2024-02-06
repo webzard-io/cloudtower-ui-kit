@@ -1,8 +1,9 @@
 import { SearchOutlined } from "@ant-design/icons";
 import Input from "@src/core/Input";
-import { SearchInputComponentType } from "@src/spec";
 import _ from "lodash";
 import React from "react";
+
+import { SearchInputComponentType } from "./searchInput.type";
 
 const SearchInput: SearchInputComponentType = (props) => {
   const { onChange, debounceWait = 300, ...restProps } = props;
@@ -18,3 +19,5 @@ const SearchInput: SearchInputComponentType = (props) => {
 };
 
 export default SearchInput;
+
+export * from "./searchInput.type";

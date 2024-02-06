@@ -1,9 +1,10 @@
 import { cx } from "@linaria/core";
 import Empty from "@src/core/Empty";
-import { PercentFn } from "@src/spec";
 import isEmpty from "@src/utils/isEmpty";
 import { formatPercent } from "@src/utils/tower";
 import React from "react";
+
+import { PercentFn } from "../Units/units.type";
 
 const Percent: PercentFn = ({
   rawValue,

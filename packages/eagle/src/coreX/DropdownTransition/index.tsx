@@ -41,3 +41,5 @@ const DropdownTransition: React.FC<
 };
 
 export default DropdownTransition;
+
+export * from "./dropdownTransition.type";

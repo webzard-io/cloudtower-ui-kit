@@ -4,11 +4,12 @@ import { useKitDispatch, useKitSelector } from "@src/core/KitStoreProvider";
 import Steps from "@src/core/Steps";
 import { WizardBody } from "@src/core/Styled";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
-import { ModalProps } from "@src/spec";
 import { KitRootState, ModalActions } from "@src/store";
 import { Modal as AntdModal } from "antd";
 import cs from "classnames";
 import React, { useMemo, useRef } from "react";
+
+import { ModalProps } from "./modal.type";
 
 const Modal: React.FC<ModalProps> = (props) => {
   const { t } = useParrotTranslation();
@@ -36,10 +37,10 @@ const Modal: React.FC<ModalProps> = (props) => {
   } = props;
 
   const stack = useKitSelector<KitRootState["modal"]["stack"]>(
-    (state) => state.modal.stack
+    (state) => state.modal.stack,
   );
   const id = useKitSelector<KitRootState["modal"]["closeId"]>(
-    (state) => state.modal.closeId
+    (state) => state.modal.closeId,
   );
   const dispatch = useKitDispatch();
 
@@ -95,7 +96,7 @@ const Modal: React.FC<ModalProps> = (props) => {
         className,
         fullscreen && "fullscreen",
         fullscreen && wizard && "wizard",
-        !fullscreen && normal && "normal-modal"
+        !fullscreen && normal && "normal-modal",
       )}
       width={fullscreen ? "calc(100vw - 16px)" : width || (normal ? 460 : "")}
       onCancel={(e) => {
@@ -220,3 +221,5 @@ const Modal: React.FC<ModalProps> = (props) => {
 };
 
 export default Modal;
+
+export * from "./modal.type";

@@ -5,8 +5,9 @@ import {
 import { css, cx } from "@linaria/core";
 import Icon from "@src/core/Icon";
 import { Typo } from "@src/core/Typo";
-import { GoBackButtonType } from "@src/spec";
 import React from "react";
+
+import { GoBackButtonType } from "./goBackButton.type";
 
 const GobackButtonStyle = css`
   cursor: pointer;
@@ -53,3 +54,5 @@ const GobackButton: React.FC<GoBackButtonType> = (props) => {
 };
 
 export default GobackButton;
+
+export * from "./goBackButton.type";

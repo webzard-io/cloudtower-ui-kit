@@ -6,10 +6,14 @@ import {
   Placeholder16Icon,
 } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
-import Tag, { PresetColors as TagPresetColors } from "@src/core/Tag";
-import { PresetColors } from "@src/core/Tag/const";
+import Tag, { TagPresetColors } from "@src/core/Tag";
+import { TagBasePresetColors } from "@src/core/Tag/const";
+import {
+  SplitTagComponentType,
+  TagColor,
+  TagComponentType,
+} from "@src/core/Tag/tag.type";
 import BaseTruncate from "@src/core/Truncate";
-import { SplitTagComponentType, TagColor, TagComponentType } from "@src/spec";
 import { Container, Stack, Title } from "@stories/components";
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
@@ -246,7 +250,7 @@ export const SplitTag: StoryObj<SplitTagComponentType> = {
         <div>Tag.SplitTag</div>
         <Title>Small</Title>
         <Stack direction="vertical">
-          {PresetColors.map((color) => (
+          {TagBasePresetColors.map((color) => (
             <Stack>
               <span style={{ display: "inline-block", width: "90px" }}>
                 {color}
@@ -269,7 +273,7 @@ export const SplitTag: StoryObj<SplitTagComponentType> = {
         </Stack>
         <Title>Medium</Title>
         <Stack direction="vertical">
-          {PresetColors.map((color) => (
+          {TagBasePresetColors.map((color) => (
             <Stack>
               <span style={{ display: "inline-block", width: "90px" }}>
                 {color}

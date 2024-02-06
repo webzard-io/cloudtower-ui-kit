@@ -1,7 +1,7 @@
 import { Placeholder16Icon } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import { Area, TitleArea } from "@src/core/Progress/progress.widgets";
-import { TagProps } from "@src/spec";
+import { TagProps } from "@src/core/Tag/tag.type";
 import { Title } from "@stories/components";
 import { Meta, StoryObj } from "@storybook/react";
 import { loremIpsum } from "lorem-ipsum";

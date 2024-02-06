@@ -52,7 +52,9 @@ describe("FieldsEnum h5_css", () => {
             }
             color: $text-primary-light;
             border-color: $strokes-light-trans-2;
-            transition: border 160ms ease 8ms, box-shadow 160ms ease 8ms;
+            transition:
+              border 160ms ease 8ms,
+              box-shadow 160ms ease 8ms;
             font-size: 13px;
 
             &.ant-select-lg {
@@ -249,7 +251,9 @@ describe("FieldsEnum h5_css", () => {
             }
             color: $text-primary-light;
             border-color: $strokes-light-trans-2;
-            transition: border 160ms ease 8ms, box-shadow 160ms ease 8ms;
+            transition:
+              border 160ms ease 8ms,
+              box-shadow 160ms ease 8ms;
             font-size: 13px;
 
             &.ant-select-lg {
@@ -446,7 +450,9 @@ describe("FieldsEnum h5_css", () => {
             }
             color: $text-primary-light;
             border-color: $strokes-light-trans-2;
-            transition: border 160ms ease 8ms, box-shadow 160ms ease 8ms;
+            transition:
+              border 160ms ease 8ms,
+              box-shadow 160ms ease 8ms;
             font-size: 13px;
 
             &.ant-select-lg {
