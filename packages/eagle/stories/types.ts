@@ -1,4 +1,4 @@
-import type { Meta, Args } from "@storybook/react";
+import type { Args, Meta } from "@storybook/react";
 
 // Core
 type CoreTitle = `Core/${string} | ${string}`;

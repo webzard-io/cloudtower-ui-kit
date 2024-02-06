@@ -1,6 +1,9 @@
 import Button from "@src/core/Button";
 import CronPlan from "@src/coreX/CronPlan";
-import { CronPlanProps, CronPlanState } from "@src/spec";
+import {
+  CronPlanProps,
+  CronPlanState,
+} from "@src/coreX/CronPlan/cronPlan.type";
 import { makeUUID } from "@src/utils";
 import { Stack } from "@stories/components";
 import { Meta } from "@storybook/react";

@@ -3,9 +3,8 @@ import {
   Placeholder16Icon,
 } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
-import Link from "@src/core/Link";
+import Link, { LinkComponentType, LinkProps } from "@src/core/Link";
 import { Typo } from "@src/core/Typo";
-import { LinkComponentType, LinkProps } from "@src/spec";
 import { Stack, Title } from "@stories/components";
 import { Meta, StoryObj } from "@storybook/react";
 import cs from "classnames";

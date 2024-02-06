@@ -1,5 +1,6 @@
-import { ICountingProps } from "@src/spec";
 import React, { useEffect, useState } from "react";
+
+import { ICountingProps } from "./counting.type";
 
 const Counting: React.FC<ICountingProps> = (props) => {
   const { stop, interval = 1000, render } = props;
@@ -19,3 +20,5 @@ const Counting: React.FC<ICountingProps> = (props) => {
 };
 
 export default Counting;
+
+export * from "./counting.type";

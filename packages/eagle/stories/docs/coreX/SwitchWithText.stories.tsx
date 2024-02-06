@@ -1,5 +1,5 @@
 import SwitchWithText from "@src/coreX/SwitchWithText";
-import { SwitchWithTextProps } from "@src/spec";
+import { SwitchWithTextProps } from "@src/coreX/SwitchWithText/switchWithText.type";
 import { Meta } from "@storybook/react";
 import React, { useState } from "react";
 

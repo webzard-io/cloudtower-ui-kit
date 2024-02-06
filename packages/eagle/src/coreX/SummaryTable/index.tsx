@@ -1,13 +1,14 @@
 import { FormOutlined } from "@ant-design/icons";
 import { styled } from "@linaria/react";
 import Empty from "@src/core/Empty";
-import {
-  SummaryTableComponentType,
-  SummaryTableContentComponentType,
-} from "@src/spec";
 import cs from "classnames";
 import _ from "lodash";
 import React, { ReactNode } from "react";
+
+import {
+  SummaryTableComponentType,
+  SummaryTableContentComponentType,
+} from "./summaryTable.type";
 
 const Table = styled.div`
   background: white;
@@ -227,3 +228,5 @@ const SummaryTable: SummaryTableComponentType = (props) => {
 };
 
 export default SummaryTable;
+
+export * from "./summaryTable.type";

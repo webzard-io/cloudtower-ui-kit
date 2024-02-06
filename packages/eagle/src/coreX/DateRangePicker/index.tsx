@@ -10,36 +10,37 @@ import Tooltip from "@src/core/Tooltip";
 import { Typo } from "@src/core/Typo";
 import AbsoluteDate from "@src/coreX/DateRangePicker/AbsoluteDate";
 import {
-  DateRange,
-  DateRangeHistory,
-  DateRangePickerProps,
-  DateRangePickerValue,
-  getDateText,
-} from "@src/coreX/DateRangePicker/common";
-import {
   DateRangePickerStyle,
   ResetPopoverStyle,
 } from "@src/coreX/DateRangePicker/DateRangePicker.style";
 import RelativeTime from "@src/coreX/DateRangePicker/RelativeTime";
 import TabMenu, { TabMenuTab } from "@src/coreX/TabMenu";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
-import { PastTime } from "@src/spec/type";
 import { Popover as AntdPopover } from "antd";
 import dayjs, { Dayjs } from "dayjs";
 import React, { useEffect, useRef, useState } from "react";
 
+import { getDateText } from "./common";
+import {
+  DateRangeHistory,
+  DateRangePickerProps,
+  DateRangePickerValue,
+  PastTime,
+  PickerDateRange,
+} from "./dateRangePicker.type";
+
 const TimeRange: React.FC<{
   visible?: boolean;
   type: string;
-  range?: DateRange;
+  range?: PickerDateRange;
   relativeTime?: PastTime;
   mode: NonNullable<DateRangePickerProps["mode"]>;
   minDate?: string | Dayjs | undefined;
   maxDate?: string | Dayjs | undefined;
   onTypeChange: (type: string) => void;
   onRelativeTimeChange?: (time: PastTime) => void;
-  onAbsoluteTimeOk?: (range: DateRange) => void;
-  onAbsoluteTimeChange?: (range: DateRange) => void;
+  onAbsoluteTimeOk?: (range: PickerDateRange) => void;
+  onAbsoluteTimeChange?: (range: PickerDateRange) => void;
 }> = (props) => {
   const {
     visible,
@@ -123,7 +124,7 @@ const TimeRange: React.FC<{
 
 const TimePickerHistory: React.FC<{
   history: DateRangeHistory;
-  onSelect: (value: PastTime | DateRange) => void;
+  onSelect: (value: PastTime | PickerDateRange) => void;
 }> = (props) => {
   const { history, onSelect } = props;
   const { t } = useParrotTranslation();
@@ -143,7 +144,7 @@ const TimePickerHistory: React.FC<{
           : getDateText(item.value, t);
 
         const obj = Array.isArray(item.value)
-          ? ([dayjs(item.value[0]), dayjs(item.value[1])] as DateRange)
+          ? ([dayjs(item.value[0]), dayjs(item.value[1])] as PickerDateRange)
           : item.value;
 
         return (
@@ -182,7 +183,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
 
   const [datePickerVisible, setDatePickerVisible] = useState(false);
   const [type, setType] = useState<string>("relative");
-  const [range, setRange] = useState<DateRange | undefined>(
+  const [range, setRange] = useState<PickerDateRange | undefined>(
     Array.isArray(value) ? value : undefined,
   );
 
@@ -260,10 +261,10 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
     }
   }
 
-  function handleSelectHistory(value: PastTime | DateRange) {
+  function handleSelectHistory(value: PastTime | PickerDateRange) {
     const type = Array.isArray(value) ? "absolute" : "relative";
     if (type === "absolute" && Array.isArray(value)) {
-      const _value: DateRange = [...value];
+      const _value: PickerDateRange = [...value];
       const [start, end] = _value;
       if (minDate && start) {
         const _minDate = dayjs(minDate);
@@ -359,7 +360,8 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
 export default DateRangePicker;
 
 export { default as AbsoluteDate } from "./AbsoluteDate";
-export { default as Calendar } from "./Calendar";
-export type { DateRange as PickerDateRange } from "./common";
+export { default as DateRangePickerCalendar } from "./Calendar";
+export * from "./dateRangePicker.type";
+export * from "./dateRangePicker.type";
 export { default as InputTime } from "./InputTime";
 export { default as RelativeTime } from "./RelativeTime";

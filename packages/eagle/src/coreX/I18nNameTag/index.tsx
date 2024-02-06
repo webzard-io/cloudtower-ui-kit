@@ -1,8 +1,9 @@
 import { css } from "@linaria/core";
-import Tag from "@src/core/Tag";
 import { ParrotTrans } from "@src/core/ParrotTrans";
-import { I18nNameTagType } from "@src/spec";
+import Tag from "@src/core/Tag";
 import React from "react";
+
+import { I18nNameTagType } from "./i18nNameTag.type";
 
 const tagStyle = css`
   margin: 0 2px;
@@ -19,3 +20,5 @@ const I18nNameTag: React.FC<I18nNameTagType> = (props) => {
 };
 
 export default I18nNameTag;
+
+export * from "./i18nNameTag.type";

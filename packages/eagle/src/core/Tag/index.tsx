@@ -1,13 +1,14 @@
-import { PresetColors as BasePresetColors } from "@src/core/Tag/const";
+import { TagBasePresetColors } from "@src/core/Tag/const";
 import SplitTag from "@src/core/Tag/SplitTag";
 import { IconStyle, NameTagStyle, Size, TagStyle } from "@src/core/Tag/style";
 import { Typo } from "@src/core/Typo";
-import { NameTagType, TagColor, TagComponentType } from "@src/spec";
 import { Tag as AntdTag } from "antd";
 import cs from "classnames";
 import React from "react";
-export const PresetColors: TagColor[] = [
-  ...BasePresetColors,
+
+import { NameTagType, TagColor, TagComponentType } from "./tag.type";
+export const TagPresetColors: TagColor[] = [
+  ...TagBasePresetColors,
   "red-ontint",
   "green-ontint",
 ];
@@ -34,7 +35,7 @@ const Tag: TagComponentType = ({
     <AntdTag
       {...props}
       className={cs(className, Size[size], TagStyle, Typo.Label.l4_regular, {
-        [`ant-tag-${computedColor}`]: PresetColors.includes(computedColor),
+        [`ant-tag-${computedColor}`]: TagPresetColors.includes(computedColor),
         "tag-hover": hoverable,
       })}
       closable={false}
@@ -54,3 +55,5 @@ Tag.SplitTag = SplitTag;
 Tag.NameTag = NameTag;
 
 export default Tag;
+
+export * from "./tag.type";

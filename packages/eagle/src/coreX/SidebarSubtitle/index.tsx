@@ -1,7 +1,8 @@
 import { cx } from "@linaria/core";
 import { Typo } from "@src/core/Typo";
-import { SidebarSubtitleComponentType } from "@src/spec/base";
 import React from "react";
+
+import { SidebarSubtitleComponentType } from "./sidebarSubtitle.type";
 
 const SidebarSubtitle: SidebarSubtitleComponentType = (props) => {
   const { title, className } = props;
@@ -14,3 +15,5 @@ const SidebarSubtitle: SidebarSubtitleComponentType = (props) => {
 };
 
 export default SidebarSubtitle;
+
+export * from "./sidebarSubtitle.type";

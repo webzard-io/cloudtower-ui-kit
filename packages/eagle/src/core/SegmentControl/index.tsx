@@ -3,7 +3,7 @@ import { Segmented as AntdSegmented } from "antd5";
 import classNames from "classnames";
 import React from "react";
 
-import { ISegmentedControlProps } from "../../spec/type";
+import { ISegmentedControlProps } from "./segmentControl.type";
 
 const Segment = css`
   .ant-segmented-item:not(:last-child) {
@@ -83,3 +83,5 @@ const SegmentControl = (props: ISegmentedControlProps) => {
 };
 
 export default SegmentControl;
+
+export * from "./segmentControl.type";

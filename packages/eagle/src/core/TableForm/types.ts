@@ -1,5 +1,7 @@
 import { ColumnBodyImpls } from "@src/core/TableForm/Columns";
-import { ButtonProps } from "@src/spec";
+
+import { ButtonProps } from "../Button";
+
 export type ErrorInfo = Record<
   string,
   {
@@ -64,7 +66,7 @@ export interface ColumnHeaderCellProps {
   onChange?: (
     newData: DataType[],
     columnKey: string,
-    shouldUpdateData: boolean
+    shouldUpdateData: boolean,
   ) => void;
   onBlur?: (key: string, error?: string) => void;
   // Used to control whether the body password input is show or hide
@@ -84,7 +86,7 @@ export interface ColumnBodyCellProps {
   onChange?: (
     newData: DataType[],
     rowIndex?: number,
-    columnKey?: string
+    columnKey?: string,
   ) => void;
   onBlur?: (newData: DataType[], rowIndex?: number, columnKey?: string) => void;
   customData?: any;
@@ -161,12 +163,12 @@ export type TableFormRowConfiguration = {
     | TableFormRowActions[]
     | ((
         rowIndex: number,
-        allData: DataType[]
+        allData: DataType[],
       ) => TableFormRowActions[] | undefined);
   validator?: (rowIndex: number, rowData: DataType) => string | undefined;
   // Customize description for single row by call this function
   customizedDescription?: (
-    props: RenderRowDescriptionProps
+    props: RenderRowDescriptionProps,
   ) => React.ReactNode | string;
 };
 
@@ -213,7 +215,7 @@ export type TableFormProps = {
   onBodyChange?: (
     value: DataType[],
     rowIndex?: number,
-    columnKey?: string
+    columnKey?: string,
   ) => void;
   onBodyBlur?: (value: DataType, rowIndex?: number, columnKey?: string) => void;
 };

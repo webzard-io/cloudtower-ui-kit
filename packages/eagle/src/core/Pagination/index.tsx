@@ -7,11 +7,12 @@ import { css } from "@linaria/core";
 import Button from "@src/core/Button";
 import Icon from "@src/core/Icon";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
-import { PaginationProps } from "@src/spec";
 import { Menu } from "antd";
 import { Dropdown as AntdDropdown } from "antd";
 import cs from "classnames";
 import React, { useEffect, useMemo, useRef } from "react";
+
+import { PaginationProps } from "./pagination.type";
 
 export const PaginationStyle = css`
   display: flex;
@@ -168,7 +169,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
         PaginationStyle,
         "pagination-wrapper",
         className,
-        selectorVisible && "has-selector"
+        selectorVisible && "has-selector",
       )}
     >
       {renderLeft()}
@@ -215,3 +216,5 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 };
 
 export default Pagination;
+
+export * from "./pagination.type";

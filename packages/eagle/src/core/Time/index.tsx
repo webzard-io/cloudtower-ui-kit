@@ -1,8 +1,10 @@
 import { css } from "@linaria/core";
-import { ITimeProps } from "@src/spec";
 import classNames from "classnames";
 import dayjs from "dayjs";
 import React from "react";
+
+import { ITimeProps } from "./time.type";
+
 const timeWrapper = css`
   .date {
     margin-right: 4px;
@@ -40,3 +42,5 @@ const Time = (props: ITimeProps) => {
 };
 
 export default Time;
+
+export * from "./time.type";

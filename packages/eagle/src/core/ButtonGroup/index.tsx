@@ -1,8 +1,7 @@
 import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
-import BaseButton from "@src/core/Button";
+import BaseButton, { ButtonGroupType } from "@src/core/Button";
 import Tooltip from "@src/core/Tooltip";
-import { ButtonGroupType } from "@src/spec";
 import React from "react";
 export const ButtonStyle = css`
   padding: 4px 11px;
@@ -115,7 +114,7 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupType>(
         })}
       </ButtonGroupContainer>
     );
-  }
+  },
 );
 
 export default ButtonGroup;

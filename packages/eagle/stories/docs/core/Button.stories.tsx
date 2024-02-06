@@ -4,10 +4,9 @@ import {
   PlusAddCreateNew16BoldOntintIcon,
 } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
-import Button from "@src/core/Button";
+import Button, { ButtonProps } from "@src/core/Button";
 import Icon from "@src/core/Icon";
 import { Typo } from "@src/core/Typo";
-import { ButtonProps } from "@src/spec";
 import { Space } from "antd";
 import cs from "classnames";
 import _ from "lodash";

@@ -2,14 +2,6 @@ import { cx } from "@linaria/core";
 import Button from "@src/core/Button";
 import { Typo } from "@src/core/Typo";
 import Calendar from "@src/coreX/DateRangePicker/Calendar";
-import {
-  AbsoluteTimeProps,
-  copyDay,
-  DateRange,
-  InputTimeValue,
-  time2string,
-} from "@src/coreX/DateRangePicker/common";
-import { AbsoluteTimeStyle } from "@src/coreX/DateRangePicker/DateRangePicker.style";
 import InputTime from "@src/coreX/DateRangePicker/InputTime";
 import useMemoCompare from "@src/hooks/useMemoCompare";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
@@ -24,8 +16,16 @@ import React, {
   useState,
 } from "react";
 
+import { copyDay, time2string } from "./common";
+import { AbsoluteTimeStyle } from "./DateRangePicker.style";
+import {
+  AbsoluteTimeProps,
+  PickerDateRange,
+  InputTimeValue,
+} from "./dateRangePicker.type";
+
 type TimeProps = {
-  range: DateRange;
+  range: PickerDateRange;
   minDate?: string | Dayjs | undefined;
   maxDate?: string | Dayjs | undefined;
   onOk: (range: [InputTimeValue, InputTimeValue]) => void;
@@ -78,7 +78,7 @@ function updateDate(
 
 function checkMinAndMaxTimeRange(
   t: TFunction,
-  range: DateRange,
+  range: PickerDateRange,
   timeRange: [InputTimeValue, InputTimeValue],
   minDate?: string | Dayjs | undefined,
   maxDate?: string | Dayjs | undefined,

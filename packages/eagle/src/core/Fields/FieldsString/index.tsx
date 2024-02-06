@@ -3,12 +3,13 @@ import { FocusIndicator16BlueIcon } from "@cloudtower/icons-react";
 import cs from "classnames";
 import React from "react";
 
-import { FieldBaseProps, StringProps } from "../../../spec";
 import Icon from "../../Icon";
 import Input from "../../Input";
 import InputTagItem from "../../InputTagItem";
 import Overflow from "../../Overflow";
 import { KitInputStyle } from "../../Styled";
+import { FieldBaseProps } from "../fields.type";
+import { StringProps } from "./fieldsString.type";
 
 // FIXME
 // No Needed Property onBlur onFocus in input field
@@ -36,7 +37,7 @@ const FieldsString = ({
           className,
           KitInputStyle,
           "input-tags",
-          allowClear && "kit-input-suffix-wrapper"
+          allowClear && "kit-input-suffix-wrapper",
         )}
         onClick={onClick}
       >
@@ -61,7 +62,7 @@ const FieldsString = ({
         className={cs(
           className,
           KitInputStyle,
-          focusIndicator && "has-focus-indicator"
+          focusIndicator && "has-focus-indicator",
         )}
         {...input}
         autoComplete={props.type === "password" ? "new-password" : autoComplete}
@@ -90,3 +91,5 @@ const FieldsString = ({
 };
 
 export default FieldsString;
+
+export * from "./fieldsString.type";

@@ -1,42 +1,9 @@
 import { cx } from "@linaria/core";
 import { Typo } from "@src/core/Typo";
-import { PastTime } from "@src/spec/type";
 import dayjs, { Dayjs } from "dayjs";
 import { TFunction } from "i18next";
-import React from "react";
 
-export type MonthAndDate = {
-  month: number;
-  dates: number[];
-  firstDateOfDay: number;
-};
-
-export type DateRange = [Dayjs | null, Dayjs | null];
-export type InputTimeValue = [string, string, string];
-
-export type CalendarProps = {
-  range?: DateRange;
-  minDate?: string | Dayjs | undefined;
-  maxDate?: string | Dayjs | undefined;
-  onChange?: (range: DateRange) => void;
-};
-
-export type InputTimeProps = {
-  className?: string;
-  value?: InputTimeValue;
-  danger?: boolean;
-  error?: React.ReactNode;
-  onChange?: (time: InputTimeValue) => void;
-  onBlur?: (time: InputTimeValue) => void;
-};
-
-export type AbsoluteTimeProps = {
-  range: DateRange;
-  minDate?: string | Dayjs | undefined;
-  maxDate?: string | Dayjs | undefined;
-  onChange: (range: DateRange) => void;
-  onOk: (range: DateRange) => void;
-};
+import { PickerDateRange, PastTime } from "./dateRangePicker.type";
 
 export const BASIC_RELATIVE_TIME_CONFIG: PastTime[] = [
   {
@@ -89,47 +56,6 @@ export const BASIC_RELATIVE_TIME_CONFIG: PastTime[] = [
   },
 ];
 
-export type RelativeTimeProps = {
-  config?: PastTime[];
-  value?: PastTime;
-  search?: boolean;
-  onChange: (config: PastTime) => void;
-};
-
-export type DateRangePickerValue = Omit<PastTime, "disabled"> | DateRange;
-
-export type SetValue<T> = (obj: T | ((val: T) => T)) => void;
-
-export type DateRangeHistory = {
-  type: "relative" | "absolute";
-  timestamp: number;
-  value: PastTime | string[];
-}[];
-
-export type DateRangeHistories = {
-  [key: string]: DateRangeHistory | null | undefined;
-};
-
-export type DateRangePickerProps = {
-  size?: "large" | "medium";
-  value?: Omit<PastTime, "disabled"> | DateRange;
-  history?: {
-    scope: string;
-    dateRangeHistories: DateRangeHistories;
-    setDateRangeHistory: SetValue<DateRangeHistories>;
-  };
-  mode?: ("relative" | "absolute")[] | "relative" | "absolute" | undefined;
-  // only support if type is absolute
-  minDate?: string | Dayjs | undefined;
-  maxDate?: string | Dayjs | undefined;
-
-  onChange?: (
-    type: "relative" | "absolute",
-    time: DateRangePickerValue,
-    range: DateRange,
-  ) => void;
-};
-
 export function getTime(year: number, month: number, date: number): Dayjs {
   return dayjs(`${year}-${month}-${date}`, "YYYY-M-D");
 }
@@ -143,7 +69,7 @@ export function isSameDate(first: Dayjs, second: Dayjs) {
 }
 
 export function getClassNameForDateBlock(
-  range: DateRange,
+  range: PickerDateRange,
   date: Dayjs,
   mapOfHighlightDay: Map<string, number>,
   disabled: boolean,

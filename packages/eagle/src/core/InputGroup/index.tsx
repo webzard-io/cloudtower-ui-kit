@@ -8,3 +8,5 @@ const InputGroup = styled(AntdInput.Group)`
 `;
 
 export default InputGroup;
+
+export * from "./inputGroup.type";

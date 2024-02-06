@@ -5,8 +5,9 @@ import {
   LoadingWrapper,
 } from "@src/core/Loading/style";
 import { FullView } from "@src/core/Styled";
-import { LoadingComponentType } from "@src/spec";
 import React, { Fragment } from "react";
+
+import { LoadingComponentType } from "./loading.type";
 
 const Loading: LoadingComponentType = ({ fullView = true }) => {
   const Wrapper = fullView ? FullView : Fragment;
@@ -23,3 +24,5 @@ const Loading: LoadingComponentType = ({ fullView = true }) => {
 };
 
 export default Loading;
+
+export * from "./loading.type";

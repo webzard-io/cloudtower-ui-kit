@@ -1,18 +1,9 @@
+export type InputSize = "large" | "middle" | "small";
+
 interface AnyObject {
   [key: string]: any;
 }
 
-interface FieldInputProps<FieldValue, T extends HTMLElement = HTMLElement>
-  extends AnyObject {
-  name: string;
-  onBlur: (event?: React.FocusEvent<T>) => void;
-  onChange: (event: React.ChangeEvent<T> | any) => void;
-  onFocus: (event?: React.FocusEvent<T>) => void;
-  type?: string;
-  value: FieldValue;
-  checked?: boolean;
-  multiple?: boolean;
-}
 export interface FieldState<FieldValue> {
   active?: boolean;
   blur: () => void;
@@ -47,11 +38,31 @@ export type FieldMetaState<FieldValue> = Pick<
   >
 >;
 
+interface FieldInputProps<FieldValue, T extends HTMLElement = HTMLElement>
+  extends AnyObject {
+  name: string;
+  onBlur: (event?: React.FocusEvent<T>) => void;
+  onChange: (event: React.ChangeEvent<T> | any) => void;
+  onFocus: (event?: React.FocusEvent<T>) => void;
+  type?: string;
+  value: FieldValue;
+  checked?: boolean;
+  multiple?: boolean;
+}
+
 export interface FieldRenderProps<
   FieldValue,
-  T extends HTMLElement = HTMLElement
+  T extends HTMLElement = HTMLElement,
 > {
   input: FieldInputProps<FieldValue, T>;
   meta: FieldMetaState<FieldValue>;
   [otherProp: string]: any;
 }
+
+export type FieldBaseProps<
+  V = any,
+  T extends HTMLElement = HTMLElement,
+> = FieldRenderProps<V, T> & {
+  disabled?: boolean;
+  className?: string;
+};

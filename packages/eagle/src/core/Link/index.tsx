@@ -1,9 +1,10 @@
 import { css } from "@linaria/core";
 import Button from "@src/core/Button";
-import { LinkComponentType } from "@src/spec";
 import { Color } from "@src/styles/token";
 import cs from "classnames";
 import React from "react";
+
+import { LinkComponentType } from "./link.type";
 
 const LinkStyle = css`
   @at-root {
@@ -91,3 +92,5 @@ const Link: LinkComponentType = React.forwardRef(
 );
 
 export default Link;
+
+export * from "./link.type";

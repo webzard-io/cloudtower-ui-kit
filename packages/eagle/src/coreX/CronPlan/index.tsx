@@ -8,7 +8,6 @@ import Switch from "@src/core/Switch";
 import TimePicker from "@src/core/TimePicker";
 import { Typo } from "@src/core/Typo";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
-import { CronPlanProps, CronPlanState } from "@src/spec";
 import {
   CronTime,
   getDaily,
@@ -27,6 +26,8 @@ import _ from "lodash";
 import moment from "moment";
 import React, { useEffect, useMemo, useState } from "react";
 import { UseTranslationResponse } from "react-i18next";
+
+import { CronPlanProps, CronPlanState } from "./cronPlan.type";
 
 const CronPlanWrapper = css`
   width: 648px;
@@ -696,3 +697,5 @@ const CronPlan: React.FC<CronPlanProps> = (props) => {
 };
 
 export default CronPlan;
+
+export * from "./cronPlan.type";

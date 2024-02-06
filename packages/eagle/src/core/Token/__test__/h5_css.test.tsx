@@ -1,16 +1,17 @@
 import { render } from "@testing-library/react";
 import React from "react";
 import { describe, it, vi } from "vitest";
-import Token, { PresetColors } from "..";
+
+import Token, { TokenPresetColors } from "..";
 
 describe("Tokenm h5_css", () => {
-  it("h5_css color ", ({ expect }) => {
+  it("h5_css color", ({ expect }) => {
     const { container } = render(
       <div>
-        {PresetColors.map((color) => (
+        {TokenPresetColors.map((color) => (
           <Token color={color}>Label</Token>
         ))}
-      </div>
+      </div>,
     );
 
     expect({
@@ -504,15 +505,15 @@ describe("Tokenm h5_css", () => {
     `);
   });
 
-  it("h5_css color with closable ", ({ expect }) => {
+  it("h5_css color with closable", ({ expect }) => {
     const { container } = render(
       <div>
-        {PresetColors.map((color) => (
+        {TokenPresetColors.map((color) => (
           <Token color={color} closable>
             Label
           </Token>
         ))}
-      </div>
+      </div>,
     );
 
     expect({

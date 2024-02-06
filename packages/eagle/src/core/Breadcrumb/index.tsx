@@ -1,7 +1,8 @@
 import { styled } from "@linaria/react";
 import { Typo } from "@src/core/Typo";
-import { IBreadcrumbProps } from "@src/spec";
 import React from "react";
+
+import { IBreadcrumbProps } from "./breadcrumb.type";
 
 export const BreadWrapper = styled.div`
   color: $text-terdiary-light;
@@ -73,3 +74,5 @@ const Breadcrumb: React.FunctionComponent<IBreadcrumbProps> = (props) => {
 };
 
 export default Breadcrumb;
+
+export * from "./breadcrumb.type";

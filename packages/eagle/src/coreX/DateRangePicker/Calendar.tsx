@@ -7,20 +7,23 @@ import Button from "@src/core/Button";
 import Icon from "@src/core/Icon";
 import Input from "@src/core/Input";
 import { Typo } from "@src/core/Typo";
-import {
-  CalendarProps,
-  checkDateNotInRange,
-  DateRange,
-  getClassNameForDateBlock,
-  getDiffMonthAndDate,
-  getTime,
-  MonthAndDate,
-} from "@src/coreX/DateRangePicker/common";
-import { CalendarStyle } from "@src/coreX/DateRangePicker/DateRangePicker.style";
 import useElementIntersectionRatio from "@src/hooks/useElementIntersectionRatio";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import dayjs, { Dayjs } from "dayjs";
 import React, { useEffect, useRef, useState } from "react";
+
+import {
+  checkDateNotInRange,
+  getClassNameForDateBlock,
+  getDiffMonthAndDate,
+  getTime,
+} from "./common";
+import { CalendarStyle } from "./DateRangePicker.style";
+import {
+  CalendarProps,
+  PickerDateRange,
+  MonthAndDate,
+} from "./dateRangePicker.type";
 
 const Year: React.FC<{
   year: number;
@@ -94,12 +97,12 @@ const Year: React.FC<{
 const MonthItem: React.FC<{
   year: number;
   month: MonthAndDate;
-  range: DateRange;
+  range: PickerDateRange;
   highlightDay: string[];
   minDate?: string | Dayjs | undefined;
   maxDate?: string | Dayjs | undefined;
   parentElement?: React.MutableRefObject<HTMLDivElement | null>;
-  onRangeChange: (range: DateRange) => void;
+  onRangeChange: (range: PickerDateRange) => void;
   onMouseEnter: (date: Dayjs | null) => void;
 }> = (props) => {
   const {
@@ -157,7 +160,7 @@ const MonthItem: React.FC<{
   }, []);
 
   function clickDate(date: number) {
-    let _range = [...range] as DateRange;
+    let _range = [...range] as PickerDateRange;
     const month = initMonth.month;
     if (!rangeStart && !rangeEnd) {
       _range = [getTime(initYear, month, date), null];
@@ -265,10 +268,10 @@ const MonthItem: React.FC<{
 
 const Month: React.FC<{
   year: number;
-  range: DateRange;
+  range: PickerDateRange;
   minDate?: string | Dayjs | undefined;
   maxDate?: string | Dayjs | undefined;
-  onRangeChange: (range: DateRange) => void;
+  onRangeChange: (range: PickerDateRange) => void;
 }> = (props) => {
   const { year, range, minDate, maxDate, onRangeChange } = props;
   const monthContainerRef = useRef<HTMLDivElement | null>(null);
@@ -380,13 +383,15 @@ const Week: React.FC = () => {
 const Calendar: React.FC<CalendarProps> = (props) => {
   const { range: initRange, minDate, maxDate, onChange } = props;
   const [year, setYear] = useState(dayjs().year());
-  const [range, setRange] = useState<DateRange>(initRange || [null, null]);
+  const [range, setRange] = useState<PickerDateRange>(
+    initRange || [null, null],
+  );
 
   useEffect(() => {
     setRange(initRange || [null, null]);
   }, [initRange]);
 
-  function handleRangeChange(newRange: DateRange) {
+  function handleRangeChange(newRange: PickerDateRange) {
     setRange(newRange);
     onChange?.(newRange);
   }

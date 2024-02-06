@@ -1,6 +1,8 @@
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
-import { ArchComponentType } from "@src/spec";
 import React from "react";
+
+import { ArchComponentType } from "./arch.type";
+
 const Arch: ArchComponentType = (props) => {
   const { t } = useParrotTranslation();
   const { architecture } = props;
@@ -12,3 +14,5 @@ const Arch: ArchComponentType = (props) => {
 };
 
 export default Arch;
+
+export * from "./arch.type";

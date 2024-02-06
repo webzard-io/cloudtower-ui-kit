@@ -1,6 +1,7 @@
 import { css } from "@linaria/core";
-import { CheckboxStyleContent } from "../Checkbox/checkbox.style";
+
 import { Antd5PrefixCls } from "../../utils";
+import { CheckboxStyleContent } from "../Checkbox/checkbox.style";
 
 export const DoubleRowOptionStyleWrapper = css`
   .bottom {

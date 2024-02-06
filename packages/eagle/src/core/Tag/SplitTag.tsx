@@ -1,11 +1,13 @@
 import { css } from "@linaria/core";
-import { PresetColors } from "@src/core/Tag/const";
+import { TagBasePresetColors } from "@src/core/Tag/const";
 import { IconStyle, Size, TagStyle } from "@src/core/Tag/style";
 import { Typo } from "@src/core/Typo";
-import { SplitTagComponentType } from "@src/spec";
 import { Tag as AntdTag } from "antd";
 import cs from "classnames";
 import React from "react";
+
+import { SplitTagComponentType } from "./tag.type";
+
 const WrapperStyle = css`
   &.outside-tag {
     padding-left: 0;
@@ -35,9 +37,9 @@ const SplitTag: SplitTagComponentType = ({
       WrapperStyle,
       Typo.Label.l4_regular,
       {
-        [`ant-tag-${color}`]: PresetColors.includes(color),
+        [`ant-tag-${color}`]: TagBasePresetColors.includes(color),
       },
-      "outside-tag"
+      "outside-tag",
     )}
   >
     <AntdTag
@@ -46,9 +48,9 @@ const SplitTag: SplitTagComponentType = ({
         TagStyle,
         Typo.Label.l4_regular,
         {
-          [`ant-tag-${color}`]: PresetColors.includes(color),
+          [`ant-tag-${color}`]: TagBasePresetColors.includes(color),
         },
-        "inside-tag"
+        "inside-tag",
       )}
     >
       {icon && <span className={cs("ui-kit-tag-icon", IconStyle)}>{icon}</span>}

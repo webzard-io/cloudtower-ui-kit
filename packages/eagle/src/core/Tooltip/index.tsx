@@ -93,3 +93,5 @@ const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
 };
 
 export default Tooltip;
+
+export * from "./tooltip.type";

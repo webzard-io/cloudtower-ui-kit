@@ -1,5 +1,7 @@
 import type { SrcType } from "@src/core/BaseIcon";
-import type { LinkProps, TagProps } from "@src/spec";
+
+import { LinkProps } from "../Link/link.type";
+import { TagProps } from "../Tag/tag.type";
 
 export type ComponentType =
   | "tag"

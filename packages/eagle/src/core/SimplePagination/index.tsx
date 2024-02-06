@@ -6,9 +6,10 @@ import InputInteger from "@src/core/InputInteger";
 import { PaginationStyle } from "@src/core/Pagination";
 import { Typo } from "@src/core/Typo";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
-import { ISimplePaginationProps } from "@src/spec";
 import cs from "classnames";
 import React, { useCallback } from "react";
+
+import { ISimplePaginationProps } from "./simplePagination.type";
 
 const inputStyle = css`
   height: 24px;
@@ -33,7 +34,7 @@ const SimplePagination = (props: ISimplePaginationProps) => {
         onPageChange?.(1);
       }
     },
-    [onPageChange, pageLength]
+    [onPageChange, pageLength],
   );
 
   return (
@@ -82,7 +83,7 @@ const SimplePagination = (props: ISimplePaginationProps) => {
             css`
               color: $text-secondary-light;
             `,
-            Typo.Label.l3_regular_upper
+            Typo.Label.l3_regular_upper,
           )}
         >{`/ ${pageLength}`}</span>
         {showNext && (
@@ -110,3 +111,5 @@ const SimplePagination = (props: ISimplePaginationProps) => {
 };
 
 export default SimplePagination;
+
+export * from "./simplePagination.type";

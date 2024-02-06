@@ -1,7 +1,7 @@
 import { initParrotI18n } from "@cloudtower/parrot";
 import { ParrotTrans } from "@src/core/ParrotTrans";
 import NamesTooltip from "@src/coreX/NamesTooltip";
-import { NamesTooltipType } from "@src/spec";
+import { NamesTooltipType } from "@src/coreX/NamesTooltip/namesTooltip.type";
 import { Stack, Title } from "@stories/components";
 import { Meta } from "@storybook/react";
 import React from "react";

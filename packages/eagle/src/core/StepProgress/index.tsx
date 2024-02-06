@@ -2,7 +2,7 @@ import { css } from "@linaria/core";
 import cs from "classnames";
 import React, { useLayoutEffect, useRef } from "react";
 
-import { ICircleProgressProps } from "../../spec";
+import { ICircleProgressProps } from "./stepProgress.type";
 
 const CircleProgressStyle = css`
   --color: white;
@@ -80,3 +80,5 @@ export const CircleProgress: React.FC<ICircleProgressProps> = (props) => {
     </div>
   );
 };
+
+export * from "./stepProgress.type";

@@ -1,5 +1,5 @@
 import SortableList from "@src/coreX/SortableList";
-import { SortableListComponentType } from "@src/spec/base";
+import { SortableListComponentType } from "@src/coreX/SortableList/sortableList.type";
 import { Container } from "@stories/components";
 import type { Meta } from "@storybook/react";
 import { useState } from "react";

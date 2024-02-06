@@ -1,11 +1,12 @@
 import { css, cx } from "@linaria/core";
 import { Typo } from "@src/core/Typo";
-import { RadioButtonProps, RadioProps } from "@src/spec";
 import { EMPTY_FUNCTION } from "@src/utils";
 import { Input, InputNumber, Radio as AntdRadio } from "antd";
 import { RadioGroupProps as AntdRadioGroupProps } from "antd/lib/radio";
 import _ from "lodash";
 import React, { useState } from "react";
+
+import { RadioButtonProps, RadioProps } from "./radio.type";
 
 const RadioStyle = css`
   &.ant-radio-wrapper {
@@ -261,7 +262,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
     initialValue,
   } = props;
   const [inputValue, setInputValue] = useState<string | number | undefined>(
-    initialValue
+    initialValue,
   );
   const radioButtonValue =
     type === "input" || type === "input-number" ? inputValue : props.value;
@@ -328,3 +329,4 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 
 export { RadioButton, RadioGroup };
 export default Radio;
+export * from "./radio.type";
