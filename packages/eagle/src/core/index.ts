@@ -33,7 +33,6 @@ export * from "./DropdownMenu";
 export * from "./Empty";
 export * from "./ErrorBoundary";
 export * from "./ExpandableList";
-export * from "./ExpandableList";
 export * from "./FailedLoad";
 export * from "./Fields";
 export * from "./Form";
@@ -92,7 +91,6 @@ export * from "./Tooltip";
 export * from "./Truncate";
 export * from "./Typo";
 export * from "./Units";
-
 export const units = {
   Percent,
   Byte,
