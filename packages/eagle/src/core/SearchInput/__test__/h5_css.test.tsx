@@ -199,7 +199,6 @@ describe("SearchInput h5_css", () => {
             >
               <svg
                 aria-hidden=true
-                class=
                 data-icon=search
                 fill=currentColor
                 focusable=false
@@ -417,7 +416,6 @@ describe("SearchInput h5_css", () => {
             >
               <svg
                 aria-hidden=true
-                class=
                 data-icon=search
                 fill=currentColor
                 focusable=false
@@ -635,7 +633,6 @@ describe("SearchInput h5_css", () => {
             >
               <svg
                 aria-hidden=true
-                class=
                 data-icon=search
                 fill=currentColor
                 focusable=false

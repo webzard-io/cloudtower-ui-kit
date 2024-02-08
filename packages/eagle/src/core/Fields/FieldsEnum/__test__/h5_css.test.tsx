@@ -185,7 +185,6 @@ describe("FieldsEnum h5_css", () => {
             >
               <svg
                 aria-hidden=true
-                class=
                 data-icon=down
                 fill=currentColor
                 focusable=false
@@ -384,7 +383,6 @@ describe("FieldsEnum h5_css", () => {
             >
               <svg
                 aria-hidden=true
-                class=
                 data-icon=down
                 fill=currentColor
                 focusable=false
@@ -583,7 +581,6 @@ describe("FieldsEnum h5_css", () => {
             >
               <svg
                 aria-hidden=true
-                class=
                 data-icon=down
                 fill=currentColor
                 focusable=false

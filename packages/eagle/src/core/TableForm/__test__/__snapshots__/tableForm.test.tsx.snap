@@ -951,7 +951,6 @@ exports[`table form render > default data is undefiend 1`] = `
                             >
                               <svg
                                 aria-hidden=true
-                                class=
                                 data-icon=eye-invisible
                                 fill=currentColor
                                 focusable=false
@@ -1238,7 +1237,6 @@ exports[`table form render > default data is undefiend 1`] = `
                             >
                               <svg
                                 aria-hidden=true
-                                class=
                                 data-icon=down
                                 fill=currentColor
                                 focusable=false
@@ -1303,7 +1301,7 @@ exports[`table form render > default data is undefiend 1`] = `
                         class=ant-form-item-control-input-content
                       >
                         <div
-                          class=
+                          class=mocked-styled-0,
   &.with-description {
     height: 24px;
     flex: 1;
@@ -2006,7 +2004,6 @@ exports[`table form render > default data is undefiend 1`] = `
                             >
                               <svg
                                 aria-hidden=true
-                                class=
                                 data-icon=eye-invisible
                                 fill=currentColor
                                 focusable=false
@@ -2400,7 +2397,6 @@ exports[`table form render > default data is undefiend 1`] = `
                             >
                               <svg
                                 aria-hidden=true
-                                class=
                                 data-icon=down
                                 fill=currentColor
                                 focusable=false
@@ -2465,7 +2461,7 @@ exports[`table form render > default data is undefiend 1`] = `
                         class=ant-form-item-control-input-content
                       >
                         <div
-                          class=
+                          class=mocked-styled-0,
   &.with-description {
     height: 24px;
     flex: 1;
@@ -3168,7 +3164,6 @@ exports[`table form render > default data is undefiend 1`] = `
                             >
                               <svg
                                 aria-hidden=true
-                                class=
                                 data-icon=eye-invisible
                                 fill=currentColor
                                 focusable=false
@@ -3562,7 +3557,6 @@ exports[`table form render > default data is undefiend 1`] = `
                             >
                               <svg
                                 aria-hidden=true
-                                class=
                                 data-icon=down
                                 fill=currentColor
                                 focusable=false
@@ -3627,7 +3621,7 @@ exports[`table form render > default data is undefiend 1`] = `
                         class=ant-form-item-control-input-content
                       >
                         <div
-                          class=
+                          class=mocked-styled-0,
   &.with-description {
     height: 24px;
     flex: 1;
@@ -4330,7 +4324,6 @@ exports[`table form render > default data is undefiend 1`] = `
                             >
                               <svg
                                 aria-hidden=true
-                                class=
                                 data-icon=eye-invisible
                                 fill=currentColor
                                 focusable=false
@@ -4724,7 +4717,6 @@ exports[`table form render > default data is undefiend 1`] = `
                             >
                               <svg
                                 aria-hidden=true
-                                class=
                                 data-icon=down
                                 fill=currentColor
                                 focusable=false
