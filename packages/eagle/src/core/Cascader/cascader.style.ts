@@ -131,7 +131,7 @@ export const CascaderDropdown = css`
     }
   }
 
-  ${CheckboxStyleContent.replaceAll("ant-", `${Antd5PrefixCls}-`)}
+  ${(CheckboxStyleContent || "").replaceAll("ant-", `${Antd5PrefixCls}-`)}
 
   .${DoubleRowOptionStyleWrapper} {
     width: 400px;

@@ -293,7 +293,6 @@ describe("FieldsInteger h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=up
                   fill=currentColor
                   focusable=false
@@ -320,7 +319,6 @@ describe("FieldsInteger h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=down
                   fill=currentColor
                   focusable=false
@@ -647,7 +645,6 @@ describe("FieldsInteger h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=up
                   fill=currentColor
                   focusable=false
@@ -674,7 +671,6 @@ describe("FieldsInteger h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=down
                   fill=currentColor
                   focusable=false
@@ -1000,7 +996,6 @@ describe("FieldsInteger h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=up
                   fill=currentColor
                   focusable=false
@@ -1027,7 +1022,6 @@ describe("FieldsInteger h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=down
                   fill=currentColor
                   focusable=false
@@ -1354,7 +1348,6 @@ describe("FieldsInteger h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=up
                   fill=currentColor
                   focusable=false
@@ -1381,7 +1374,6 @@ describe("FieldsInteger h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=down
                   fill=currentColor
                   focusable=false
@@ -1708,7 +1700,6 @@ describe("FieldsInteger h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=up
                   fill=currentColor
                   focusable=false
@@ -1736,7 +1727,6 @@ describe("FieldsInteger h5_css", () => {
               >
                 <svg
                   aria-hidden=true
-                  class=
                   data-icon=down
                   fill=currentColor
                   focusable=false

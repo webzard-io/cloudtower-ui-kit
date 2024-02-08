@@ -1,5 +1,5 @@
 import { Preview } from "@storybook/react";
-import "../dist/components.css";
+import "@src/styles/index.scss";
 import "./overrideRoot.css";
 
 import { initParrotI18n } from "@cloudtower/parrot";

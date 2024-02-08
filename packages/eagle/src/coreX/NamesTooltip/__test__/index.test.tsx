@@ -74,7 +74,7 @@ describe("NamesTooltip", () => {
                   role=tooltip
                 >
                   <div
-                    class=
+                    class=mocked-styled-0,
         display: flex;
         align-items: center;
         font-size: 12px;
@@ -88,7 +88,7 @@ describe("NamesTooltip", () => {
                     line 1
                   </div>
                   <div
-                    class=
+                    class=mocked-styled-0,
         display: flex;
         align-items: center;
         font-size: 12px;
