@@ -1,6 +1,6 @@
 import { parrotI18n, ParrotI18nSupportLng } from "@cloudtower/parrot";
 import { BatchHelper, createBatchMessageMethods } from "@src/core";
-import _message from "@src/core/message";
+import _message, { MessageApi } from "@src/core/message";
 import { antdKit } from "@src/legacy-antd";
 import { ConfigProvider } from "antd";
 import enUS from "antd/lib/locale/en_US";
@@ -27,6 +27,8 @@ export interface IProps {
 
 export const kitContext = createContext<Kit>(antdKit);
 
+export const MessageContext = createContext<MessageApi>(_message);
+
 const UIKitProvider = (props: PropsWithChildren<IProps>) => {
   const {
     children,
@@ -36,15 +38,18 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
     getPopupContainer,
   } = props;
 
-  const _kit = useMemo(() => {
+  const batchMessage = useMemo(() => {
     if (message?.batch != null) {
-      return {
-        ...kit,
-        message: createBatchMessageMethods(_message, message.batch),
-      };
+      return createBatchMessageMethods(_message, message.batch);
     }
-    return kit;
-  }, [kit, message?.batch]);
+  }, [message?.batch]);
+
+  const _kit = useMemo(() => {
+    return {
+      ...kit,
+      message: batchMessage ?? _message,
+    };
+  }, [batchMessage, kit]);
 
   useEffect(() => {
     _message.config({
@@ -60,19 +65,28 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
 
   return (
     <kitContext.Provider value={_kit}>
-      <ConfigProvider
-        autoInsertSpaceInButton={false}
-        locale={lng === "zh-CN" ? zhCN : enUS}
-        getPopupContainer={getPopupContainer}
-      >
-        {children}
-      </ConfigProvider>
+      <MessageContext.Provider value={batchMessage ?? _message}>
+        <ConfigProvider
+          autoInsertSpaceInButton={false}
+          locale={lng === "zh-CN" ? zhCN : enUS}
+          getPopupContainer={getPopupContainer}
+        >
+          {children}
+        </ConfigProvider>
+      </MessageContext.Provider>
     </kitContext.Provider>
   );
 };
 
 export default UIKitProvider;
 
+/**
+ * @deprecated 由于 useUIKit 会使 Treeshake 失效。不再推荐使用
+ */
 export const useUIKit = () => {
   return useContext(kitContext);
+};
+
+export const useMessage = () => {
+  return useContext(MessageContext);
 };
