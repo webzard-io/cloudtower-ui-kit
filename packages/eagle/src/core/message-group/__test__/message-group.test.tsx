@@ -1,5 +1,8 @@
 import { initParrotI18n, parrotI18n } from "@cloudtower/parrot";
+import UIKitProvider, { useMessage } from "@src/UIKitProvider";
+import { render, screen } from "@testing-library/react";
 import { ReactNode } from "react";
+import React from "react";
 import { describe, it, vi } from "vitest";
 
 import _message from "../../message";
@@ -30,14 +33,22 @@ vi.mock("../../message", async () => {
   const error = (content: unknown) => {};
 
   const warning = (content: unknown) => {
-    // @ts-ignore
-    warningMsg = content.content;
+    if (typeof content === "object") {
+      // @ts-ignore
+      warningMsg = content.content;
+    } else {
+      // @ts-ignore
+      warningMsg = content;
+    }
+
     warningCount++;
   };
 
   const warn = (content: unknown) => {};
 
   const loading = (content: unknown) => {};
+  const config = () => {};
+
   return {
     default: {
       info,
@@ -46,6 +57,7 @@ vi.mock("../../message", async () => {
       warning,
       warn,
       loading,
+      config,
     },
     info,
     success,
@@ -53,6 +65,7 @@ vi.mock("../../message", async () => {
     warning,
     warn,
     loading,
+    config,
   };
 });
 
@@ -184,5 +197,71 @@ describe("patchMessageMethods", () => {
     vi.advanceTimersToNextTimer();
     expect(warningCount).toBe(1);
     expect(warningMsg).toMatchInlineSnapshot('"聚合错误信息 3"');
+  });
+});
+
+const TestComponent = () => {
+  const message = useMessage();
+  return (
+    <button
+      data-testid={"message-group-button"}
+      onClick={() => {
+        message.warning(parrotI18n.t("common.error_message"));
+      }}
+    >
+      Test Component
+    </button>
+  );
+};
+
+describe("useMessage hook", () => {
+  it("has no provider", () => {
+    render(<TestComponent />);
+    const button = screen.getByTestId("message-group-button");
+    button.click();
+    button.click();
+    button.click();
+    expect(warningMsg).toMatchInlineSnapshot('"错误信息"');
+    expect(warningCount).toBe(3);
+  });
+  it("has provider with batch", () => {
+    render(
+      <UIKitProvider
+        lng="zh-CN"
+        message={{
+          batch: batchHelper,
+          maxCount: 3,
+        }}
+      >
+        <TestComponent />
+      </UIKitProvider>,
+    );
+    const button = screen.getByTestId("message-group-button");
+    button.click();
+    button.click();
+    button.click();
+    expect(warningMsg).toMatchInlineSnapshot('"聚合错误信息 3"');
+    expect(warningCount).toBe(1);
+  });
+  it("has provider without batch", () => {
+    render(
+      <UIKitProvider
+        lng="zh-CN"
+        message={{
+          batch: batchHelper,
+          maxCount: 3,
+        }}
+      >
+        <TestComponent />
+      </UIKitProvider>,
+    );
+    const button = screen.getByTestId("message-group-button");
+    button.click();
+    button.click();
+
+    vi.advanceTimersToNextTimer();
+    vi.advanceTimersToNextTimer();
+    expect(warningMsg).toMatchInlineSnapshot('"错误信息"');
+    expect(warningCount).toBe(2);
   });
 });
