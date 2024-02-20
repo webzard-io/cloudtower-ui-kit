@@ -4,6 +4,7 @@ import { css, cx } from "@linaria/core";
 import AccordionCard from "@src/core/AccordionCard";
 import Button from "@src/core/Button";
 import Fields from "@src/core/Fields";
+import { ParrotTrans } from "@src/core/ParrotTrans";
 import Switch from "@src/core/Switch";
 import TimePicker from "@src/core/TimePicker";
 import { Typo } from "@src/core/Typo";
@@ -294,39 +295,37 @@ const Daily: React.FC<{
   daily: DailyState;
   setDaily: React.Dispatch<React.SetStateAction<DailyState>>;
 }> = ({ daily, setDaily }) => {
-  const { t } = useParrotTranslation();
   return (
     <div className={Wrapper}>
-      {t("components.per_day_1")}
-      <Fields.Int
-        meta={{}}
-        input={{
-          value: daily.step,
-          onChange: (value) => {
-            setDaily({
-              ...daily,
-              step: value,
-            });
-          },
-          name: "daily-step",
-          onBlur() {},
-          onFocus() {},
-          maxLength: 3,
-        }}
-      />
-      {t("components.per_day_2")}
-      <TimePicker
-        format="HH:mm"
-        value={daily.time}
-        onChange={(value) => {
-          if (value) {
-            setDaily({ ...daily, time: value });
-          }
-        }}
-        clearIcon={null}
-        suffixIcon={null}
-      />
-      {t("components.per_day_3")}
+      <ParrotTrans i18nKey={"components.day_execute_task"} count={daily.step}>
+        <Fields.Int
+          meta={{}}
+          input={{
+            value: daily.step,
+            onChange: (value) => {
+              setDaily({
+                ...daily,
+                step: value,
+              });
+            },
+            name: "daily-step",
+            onBlur() {},
+            onFocus() {},
+            maxLength: 3,
+          }}
+        />
+        <TimePicker
+          format="HH:mm"
+          value={daily.time}
+          onChange={(value) => {
+            if (value) {
+              setDaily({ ...daily, time: value });
+            }
+          }}
+          clearIcon={null}
+          suffixIcon={null}
+        />
+      </ParrotTrans>
     </div>
   );
 };
@@ -370,26 +369,33 @@ const Weekly: React.FC<{
 }> = ({ weekly, setWeekly }) => {
   const { t, i18n } = useParrotTranslation();
   const week_days = useMemo(() => WEEK_DAYS(t), [t]);
+
   return (
     <div className={Wrapper}>
-      {t("components.per_day_1")}
-      <Fields.Int
-        meta={{}}
-        input={{
-          value: weekly.step,
-          onChange: (value) => {
-            setWeekly({
-              ...weekly,
-              step: value,
-            });
-          },
-          name: "weekly-step",
-          onBlur() {},
-          onFocus() {},
-          maxLength: 3,
+      <ParrotTrans
+        i18nKey={"components.week_with_below_date"}
+        count={weekly.step}
+        values={{
+          day: t("components.day_date", { count: weekly.days.length }),
         }}
-      />
-      {t("components.week_with_below_date")}
+      >
+        <Fields.Int
+          meta={{}}
+          input={{
+            value: weekly.step,
+            onChange: (value) => {
+              setWeekly({
+                ...weekly,
+                step: value,
+              });
+            },
+            name: "weekly-step",
+            onBlur() {},
+            onFocus() {},
+            maxLength: 3,
+          }}
+        />
+      </ParrotTrans>
       <div className="options">
         {week_days.map((d) => {
           const active = weekly.days.includes(d.value);
@@ -444,24 +450,30 @@ const Monthly: React.FC<{
   const mark = i18n.language === ParrotLngs.en ? " , " : "、";
   return (
     <div className={Wrapper}>
-      {t("components.per_day_1")}
-      <Fields.Int
-        meta={{}}
-        input={{
-          value: monthly.step,
-          onChange: (value) => {
-            setMonthly({
-              ...monthly,
-              step: value,
-            });
-          },
-          name: "monthly-step",
-          onBlur() {},
-          onFocus() {},
-          maxLength: 3,
+      <ParrotTrans
+        i18nKey={"components.month_with_below_date"}
+        count={monthly.step}
+        values={{
+          day: t("components.day_date", { count: monthly.days.length }),
         }}
-      />
-      {t("components.month_with_below_date")}
+      >
+        <Fields.Int
+          meta={{}}
+          input={{
+            value: monthly.step,
+            onChange: (value) => {
+              setMonthly({
+                ...monthly,
+                step: value,
+              });
+            },
+            name: "monthly-step",
+            onBlur() {},
+            onFocus() {},
+            maxLength: 3,
+          }}
+        />
+      </ParrotTrans>
       <div className="options">
         {MONTH_DAYS.map((d) => {
           const active = monthly.days.includes(d);
