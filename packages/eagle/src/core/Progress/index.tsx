@@ -8,6 +8,7 @@ import {
 } from "@src/core/Progress/progress.style";
 import { ComponentType, ProgressProps } from "@src/core/Progress/progress.type";
 import { Area } from "@src/core/Progress/progress.widgets";
+import { Antd5PrefixCls } from "@src/utils";
 import { isStringArray } from "@src/utils/isStringArr";
 import { Progress as AntdProgress } from "antd5";
 import React from "react";
@@ -25,7 +26,7 @@ const ProgressContainer = styled.div<{ type: ProgressProps["type"] }>`
   justify-content: center;
   row-gap: ${({ type }) => (type === "rich" ? "6px" : "4px")};
 
-  .ant-progress-line {
+  .${Antd5PrefixCls}-progress-line {
     font-size: 0;
   }
 `;
@@ -126,6 +127,7 @@ export const Progress: React.FC<ProgressProps> = ({
         strokeWidth={storkeWidth}
         showInfo={false}
         {...props}
+        prefixCls={`${Antd5PrefixCls}-progress`}
         status={finalStatus === "active" ? "active" : undefined}
         percent={indeterminate ? 100 : percent}
         strokeColor={StatusColorMap[finalStatus]}

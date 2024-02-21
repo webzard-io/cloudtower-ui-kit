@@ -28,17 +28,23 @@
 - 提交名称注意名称合法性，目前是会将 `x-y-z` 转换为 `XZY` 格式的组件。注意名称中不要以数字开头和带上 `-` 之外的标点符号。
 - 目前 icon 只支持 SVG 格式，非 SVG 格式的 icon 目前需要在自己的 repo 中通过 `require('demo.png')` 的方式进行使用
 
-### 如何新增组件
+### 新增组件
 
 请阅读 [公共组件指南](https://docs.google.com/document/d/1RbsiPYzOi7JJ-quMrgGpIX61hn31xxNws0hrgrBl094/edit#heading=h.wfhi0u4x2tzo), 明确一下相关组件的划分位置。
 
-### 如何补充组件的 storybook
+#### 新增 antd5 组件
+
+从 Cascader(级联组件) 开始，为了满足一些新组件的实现，eagle 加入了 antd5 组件库，需要基于 antd5 组件进行开发的情况下，或者 export 一个 antd5 组件的话，需要注意，加上 `prefixCls={Antd5PrefixCls}` 的 props， 来做好样式隔离，以防与 antd4.5 样式定义产生冲突。
+
+详见： https://ant.design/docs/react/migration-v5-cn#%E9%80%9A%E8%BF%87%E5%88%AB%E5%90%8D%E5%AE%89%E8%A3%85-v5
+
+### 补充组件的 storybook
 
 TBD
 
 目前可参考 SegmentControl / Cascader 等实现。 建议请先阅读 storybook 官方文档， 参考好的例子实现。
 
-### 如何新增相关 token 变量
+### 新增相关 token 变量
 
 可以参考 color 处理。增加相关 token 后，请提供相关的 storybook 示例
 

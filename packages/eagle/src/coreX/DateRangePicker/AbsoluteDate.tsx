@@ -20,8 +20,8 @@ import { copyDay, time2string } from "./common";
 import { AbsoluteTimeStyle } from "./DateRangePicker.style";
 import {
   AbsoluteTimeProps,
-  PickerDateRange,
   InputTimeValue,
+  PickerDateRange,
 } from "./dateRangePicker.type";
 
 type TimeProps = {
