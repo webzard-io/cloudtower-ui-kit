@@ -29,6 +29,22 @@ export type IDonutChartProps = {
    */
   className?: string;
   /**
+   * 支持自定义图形宽度
+   */
+  width?: number;
+  /**
+   * 支持自定义图形的内半径
+   */
+  innerRadius?: number;
+  /**
+   * 支持自定义图形的外半径
+   */
+  outerRadius?: number;
+  /**
+   * 支持自定义图形高度
+   */
+  height?: number;
+  /**
    * 支持自定义 tooltip 样式
    */
   overlayClassName?: string;
@@ -71,19 +87,31 @@ export type IDonutChartProps = {
    * 当 data 数据合并时展示的文案
    */
   collapseText?: string;
+  /**
+   * 是否展示间隔, 当组件作为二元组件时传入false
+   */
+  widthPadding?: boolean;
+  /**
+   * 是否展示legend
+   */
+  showLegend?: boolean;
 };
 
-const DonutChartWrapper = styled.div`
+interface DonutChartWrapperProps {
+  width: number;
+}
+
+const DonutChartWrapper = styled.div<DonutChartWrapperProps>`
   position: relative;
   max-width: 388px;
-  min-width: 245px;
+  min-width: 285px;
   .center {
     position: absolute;
     font-size: 12px;
     width: 80px;
-    height: 92px;
-    top: 12px;
-    left: 39px;
+    height: 100px;
+    top: 0;
+    left: 35px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -99,13 +127,16 @@ const DonutChartWrapper = styled.div`
       padding: 0 5px;
       font-size: 12px;
       width: inherit;
+      text-align: center;
     }
   }
   .recharts-wrapper {
     display: flex;
     .recharts-legend-wrapper {
       position: relative !important;
-      width: calc(100% - 148px) !important;
+      min-width: calc(
+        100% - ${(props: DonutChartWrapperProps) => `${props.width}`}px
+      ) !important;
       left: 0 !important;
       bottom: 0 !important;
       display: flex;
@@ -122,6 +153,7 @@ const DonutChartWrapper = styled.div`
         }
         & > .recharts-legend-item-text {
           min-width: 75px;
+          max-width: 198px;
           width: calc(100% - 20px);
           margin-left: 2px;
           color: $text-light-primary !important;
@@ -276,8 +308,13 @@ const DonutChart: React.FC<IDonutChartProps> = ({
   color,
   otherData,
   collapseText,
+  width = 148,
+  height = 100,
+  innerRadius = 45,
+  outerRadius = 50,
+  widthPadding = true,
+  showLegend = true,
 }) => {
-  // TODO: not include duality donut chart, only for pluralism
   const initColorMap = color ? ColorMap[color] : [];
   const { t } = useParrotTranslation();
   const formatData = useMemo(() => {
@@ -285,21 +322,23 @@ const DonutChart: React.FC<IDonutChartProps> = ({
   }, [data, otherData, t, collapseText]);
 
   return (
-    <DonutChartWrapper>
+    <DonutChartWrapper width={width}>
       <PieChart
-        width={148}
-        height={116}
+        width={width}
+        height={height}
         style={{ width: "100%" }}
         className={className}
+        margin={{ left: 0, top: 0, right: 0, bottom: 0 }}
       >
         <Pie
           dataKey="value"
           data={formatData}
-          innerRadius={45}
-          outerRadius={50}
-          cx={74}
-          cy={53}
-          paddingAngle={4}
+          innerRadius={innerRadius}
+          outerRadius={outerRadius ?? height / 2}
+          cx={width / 2}
+          cy={height / 2}
+          paddingAngle={widthPadding ? 4 : 0}
+          blendStroke={!widthPadding}
           startAngle={90}
           endAngle={-270}
           stroke="none"
@@ -311,67 +350,69 @@ const DonutChart: React.FC<IDonutChartProps> = ({
             />
           ))}
         </Pie>
-        <Legend
-          iconSize={8}
-          iconType="square"
-          layout="vertical"
-          formatter={(name, _, index) => {
-            const legendData = formatData[index];
-            return legendData?.tooltip ? (
-              <>
-                <Tooltip
-                  overlayClassName={cs(TooltipDefaultClass, overlayClassName)}
-                  title={
-                    Array.isArray(legendData.tooltip) ? (
-                      <>
-                        <div className={Typo.Label.l4_bold}>
-                          {legendData.name}
-                        </div>
-                        {legendData.tooltip.map((item) => (
-                          <div className="item">
-                            <span className="name">{item.name}</span>
-                            <span className={Typo.Label.l4_bold}>
-                              {item.value}
-                            </span>
+        {showLegend && (
+          <Legend
+            iconSize={8}
+            iconType="square"
+            layout="vertical"
+            formatter={(name, _, index) => {
+              const legendData = formatData[index];
+              return legendData?.tooltip ? (
+                <>
+                  <Tooltip
+                    overlayClassName={cs(TooltipDefaultClass, overlayClassName)}
+                    title={
+                      Array.isArray(legendData.tooltip) ? (
+                        <>
+                          <div className={Typo.Label.l4_bold}>
+                            {legendData.name}
                           </div>
-                        ))}
-                      </>
-                    ) : (
-                      legendData.tooltip
-                    )
-                  }
-                >
-                  <div className="tooltip-text">{legendData.name}</div>
-                </Tooltip>
-                <span className={cs(Typo.Label.l4_regular, "value")}>
-                  {legendData.value}
-                </span>
-              </>
-            ) : (
-              <>
-                <OverflowTooltip
-                  content={legendData.name}
-                  onClick={() => {
-                    if ("onClick" in legendData) {
-                      legendData.onClick?.(legendData.name);
+                          {legendData.tooltip.map((item) => (
+                            <div className="item">
+                              <span className="name">{item.name}</span>
+                              <span className={Typo.Label.l4_bold}>
+                                {item.value}
+                              </span>
+                            </div>
+                          ))}
+                        </>
+                      ) : (
+                        legendData.tooltip
+                      )
                     }
-                  }}
-                />
-                <span className={cs(Typo.Label.l4_regular, "value")}>
-                  {legendData.value}
-                </span>
-              </>
-            );
-          }}
-        />
+                  >
+                    <div className="tooltip-text">{legendData.name}</div>
+                  </Tooltip>
+                  <span className={cs(Typo.Label.l4_regular, "value")}>
+                    {legendData.value}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <OverflowTooltip
+                    content={legendData.name}
+                    onClick={() => {
+                      if ("onClick" in legendData) {
+                        legendData.onClick?.(legendData.name);
+                      }
+                    }}
+                  />
+                  <span className={cs(Typo.Label.l4_regular, "value")}>
+                    {legendData.value}
+                  </span>
+                </>
+              );
+            }}
+          />
+        )}
       </PieChart>
       {!!centerRender && (
-        <div className="center">
+        <div>
           {"text" in centerRender ? (
-            <>
+            <div className="center">
               <div className="number">{centerRender.number}</div>
               <OverflowTooltip className="text" content={centerRender.text} />
-            </>
+            </div>
           ) : (
             centerRender
           )}
