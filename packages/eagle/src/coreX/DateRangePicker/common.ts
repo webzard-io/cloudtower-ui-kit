@@ -3,7 +3,7 @@ import { Typo } from "@src/core/Typo";
 import dayjs, { Dayjs } from "dayjs";
 import { TFunction } from "i18next";
 
-import { PickerDateRange, PastTime } from "./dateRangePicker.type";
+import { PastTime, PickerDateRange } from "./dateRangePicker.type";
 
 export const BASIC_RELATIVE_TIME_CONFIG: PastTime[] = [
   {

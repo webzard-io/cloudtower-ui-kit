@@ -31,12 +31,13 @@ export interface IBarChartProps {
 
 const BarChart: React.FC<IBarChartProps> = ({ data, total }) => (
   <div className={StackBar}>
-    {(data || []).map((item) => {
+    {(data || []).map((item, index) => {
       const { value, color } = item;
       const width = total === 0 ? 0 : getWidth((100 * value) / total);
       return (
         <div
           className="stack-bar-item"
+          key={index}
           style={{
             width: width,
             background: color,
