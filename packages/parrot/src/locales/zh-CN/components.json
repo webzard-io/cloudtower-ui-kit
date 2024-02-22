@@ -25,7 +25,7 @@
   "suffix": "后缀",
   "as_day": "按天",
   "count": "份",
-  "day_execute_task": "每 <0></0> 天 <1></1> 生成",
+  "day_execute_task": "每 <0></0> 天， <1></1> 生成。",
   "execution_time": "生成时间：",
   "as_week": "按周",
   "as_month": "按月",

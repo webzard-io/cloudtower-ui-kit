@@ -10,7 +10,7 @@ describe("check missing locales", () => {
         Object.keys(value),
         Object.keys(
           locales["en-US"][key as keyof (typeof locales)["en-US"]] || {},
-        ),
+        ).filter((key) => !key.endsWith("_plural")),
       );
       expect(diff).toEqual([]);
     });
