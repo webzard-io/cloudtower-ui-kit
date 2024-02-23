@@ -22,7 +22,7 @@ const TooltipText = styled.span`
 
 const ToolTipStyle = css`
   max-height: 400px;
-  overflow: "auto";
+  overflow: auto;
 `;
 
 const NamesTooltip: React.FC<NamesTooltipType> = (props) => {
