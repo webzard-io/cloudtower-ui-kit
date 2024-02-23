@@ -44,6 +44,19 @@ const preview: Preview = {
         order: ["Core", "CoreX", "Tokens", "@cloudtower", "*"],
       },
     },
+    backgrounds: {
+      default: "light",
+      values: [
+        {
+          name: "light",
+          value: "#ffffff",
+        },
+        {
+          name: "dark",
+          value: "#1e1e1e",
+        },
+      ],
+    },
     docs: {
       toc: {
         headingSelector: "h2, h3",
