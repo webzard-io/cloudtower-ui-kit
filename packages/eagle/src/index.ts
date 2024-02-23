@@ -20,5 +20,5 @@ export * from "@cloudtower/parrot";
 // antd type reexport
 export * from "./antd";
 
-// legacy kit export
-export * from "./legacy-antd";
+// // legacy kit export
+// export * from "./legacy-antd";
