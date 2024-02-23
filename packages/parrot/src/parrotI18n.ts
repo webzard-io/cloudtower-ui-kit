@@ -10,6 +10,7 @@ export enum ParrotLngs {
 
 const defaultOptions: InitOptions = {
   lng: ParrotLngs.zh,
+  compatibilityJSON: "v3",
   fallbackLng: [ParrotLngs.zh, ParrotLngs.en],
   interpolation: {
     prefix: "{",
