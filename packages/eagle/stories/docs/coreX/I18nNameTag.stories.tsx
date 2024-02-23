@@ -1,4 +1,3 @@
-import { initParrotI18n } from "@cloudtower/parrot";
 import I18nNameTag from "@src/coreX/I18nNameTag";
 import { Meta } from "@storybook/react";
 import React from "react";
@@ -7,17 +6,6 @@ const meta: Meta<typeof I18nNameTag> = {
   component: I18nNameTag,
 };
 export default meta;
-
-initParrotI18n({
-  resources: {
-    "zh-CN": {
-      test: {
-        highlight: "这是一条会高亮传入 <1>{name}</1> 的词条",
-        longHighlightText: "高亮内容 <1>{name}</1> 过长时，会自动换行",
-      },
-    },
-  },
-});
 
 export const Default = {
   name: "基本用例",

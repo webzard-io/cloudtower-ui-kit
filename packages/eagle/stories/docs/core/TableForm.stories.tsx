@@ -1,4 +1,3 @@
-import { parrotI18n } from "@cloudtower/parrot";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import Button from "@src/core/Button";
@@ -287,21 +286,6 @@ export const Basic = () => {
   );
   return (
     <div style={{ padding: "20px" }}>
-      change lng
-      <Button
-        onClick={() => {
-          parrotI18n.changeLanguage("zh-CN");
-        }}
-      >
-        中文
-      </Button>
-      <Button
-        onClick={() => {
-          parrotI18n.changeLanguage("en-US");
-        }}
-      >
-        english
-      </Button>
       <Space direction="vertical">
         <Title>Batch input TableForm</Title>
         <ContentWrapper>

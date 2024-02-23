@@ -1,4 +1,3 @@
-import { initParrotI18n } from "@cloudtower/parrot";
 import { ParrotTrans } from "@src/core/ParrotTrans";
 import NamesTooltip from "@src/coreX/NamesTooltip";
 import { NamesTooltipType } from "@src/coreX/NamesTooltip/namesTooltip.type";
@@ -14,16 +13,6 @@ const story: Meta<NamesTooltipComponentType> = {
 };
 
 export default story;
-
-initParrotI18n({
-  resources: {
-    "zh-CN": {
-      test: {
-        highlight: "<0>line</0>",
-      },
-    },
-  },
-});
 
 export const Basic = () => {
   const names = [
@@ -48,7 +37,7 @@ export const Basic = () => {
         给某个单词添加 tooltip 提示
       </p>
       <div>
-        <ParrotTrans i18nKey={"test.highlight"}>
+        <ParrotTrans i18nKey={"test.line"}>
           <NamesTooltip names={names} />
         </ParrotTrans>
       </div>
