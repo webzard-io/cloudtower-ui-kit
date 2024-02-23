@@ -55,7 +55,7 @@ describe("NamesTooltip", () => {
         }
       ,
         max-height: 400px;
-        overflow: "auto";
+        overflow: auto;
 
               style=opacity:,0;,pointer-events:,none;
             >
