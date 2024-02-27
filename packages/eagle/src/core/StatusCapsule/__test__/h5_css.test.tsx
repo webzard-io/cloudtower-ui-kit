@@ -27,6 +27,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -40,7 +41,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -116,6 +118,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -129,7 +132,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -205,6 +209,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -218,7 +223,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -294,6 +300,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -307,7 +314,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -383,6 +391,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -396,7 +405,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -494,6 +504,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -507,7 +518,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -588,6 +600,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -601,7 +614,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -682,6 +696,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -695,7 +710,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -776,6 +792,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -789,7 +806,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -870,6 +888,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -883,7 +902,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -985,6 +1005,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -998,7 +1019,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1079,6 +1101,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -1092,7 +1115,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1173,6 +1197,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -1186,7 +1211,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1267,6 +1293,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -1280,7 +1307,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1361,6 +1389,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -1374,7 +1403,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1476,6 +1506,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -1489,7 +1520,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1623,6 +1655,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -1636,7 +1669,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1770,6 +1804,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -1783,7 +1818,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1917,6 +1953,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -1930,7 +1967,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -2064,6 +2102,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -2077,7 +2116,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -2232,6 +2272,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -2245,7 +2286,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -2379,6 +2421,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -2392,7 +2435,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -2526,6 +2570,7 @@ describe("StatusCapsule h5_css", () => {
         border-radius: 20px;
         padding: 2px 10px;
         height: 22px;
+
         &.ant-tag.#{$prefix}.off-white {
           background-color: $fill-neutral-trans-1 !important;
           &.tag-hover:hover,
@@ -2539,7 +2584,8 @@ describe("StatusCapsule h5_css", () => {
             margin-right: 6px;
           }
           .#{$prefix}-number {
-            margin-left: 4px;
+            margin-left: 8px;
+            color: #2C385299;
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;

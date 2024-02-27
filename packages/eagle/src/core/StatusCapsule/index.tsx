@@ -3,6 +3,7 @@ import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import Icon from "@src/core/Icon";
 import { Typo } from "@src/core/Typo";
+import { Color } from "@src/styles/token";
 import { Tag as AntdTag } from "antd";
 import cs from "classnames";
 import React from "react";
@@ -26,6 +27,7 @@ const StatusCapsuleStyle = css`
   border-radius: 20px;
   padding: 2px 10px;
   height: 22px;
+
   &.ant-tag.#{$prefix}.off-white {
     background-color: $fill-neutral-trans-1 !important;
     &.tag-hover:hover,
@@ -39,7 +41,8 @@ const StatusCapsuleStyle = css`
       margin-right: 6px;
     }
     .#{$prefix}-number {
-      margin-left: 4px;
+      margin-left: 8px;
+      color: ${Color.text.neutral.tertiary};
     }
     &.ant-tag-blue {
       background-color: $fill-outstanding-light;
