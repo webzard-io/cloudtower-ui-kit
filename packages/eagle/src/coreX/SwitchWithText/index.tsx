@@ -19,7 +19,7 @@ const SwitchWrapper = styled.span`
 const SwitchWithText: React.FC<SwitchWithTextProps> = (props) => {
   const { t } = useParrotTranslation();
   const {
-    text = { checked: t("common.enable"), unchecked: t("common.disable") },
+    text = { checked: t("common.enabled"), unchecked: t("common.disabled") },
     ..._props
   } = props;
   return (
