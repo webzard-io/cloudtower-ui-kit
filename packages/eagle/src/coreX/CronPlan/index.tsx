@@ -231,8 +231,8 @@ export const stringifyPlan = (
             time,
           })
       : repeat_day
-      ? i18n.t("components.every_week_with_day_and_time", { time, day })
-      : i18n.t("components.every_week_with_time", { time });
+        ? i18n.t("components.every_week_with_day_and_time", { time, day })
+        : i18n.t("components.every_week_with_time", { time });
   }
   if (mode === "month") {
     const time = monthly.time.format("HH:mm");
@@ -248,8 +248,8 @@ export const stringifyPlan = (
           })
         : i18n.t("components.every_months_with_count_and_time", { count, time })
       : repeat_day
-      ? i18n.t("components.every_month_with_day_and_time", { day, time })
-      : i18n.t("components.every_month_with_time", { time });
+        ? i18n.t("components.every_month_with_day_and_time", { day, time })
+        : i18n.t("components.every_month_with_time", { time });
   }
 };
 
@@ -447,7 +447,15 @@ const Monthly: React.FC<{
 }> = ({ monthly, setMonthly }) => {
   const mayNotExistDays = _.intersection(monthly.days, [29, 30, 31]);
   const { t, i18n } = useParrotTranslation();
-  const mark = i18n.language === ParrotLngs.en ? " , " : "、";
+
+  // FIXME Add templates to handle complex entries
+  let date;
+  if (i18n.language === ParrotLngs.en && mayNotExistDays.length === 3) {
+    date = `${mayNotExistDays[0]}, ${mayNotExistDays[1]}, or ${mayNotExistDays[2]}`;
+  } else {
+    date = mayNotExistDays.join(i18n.t("components.date_mark"));
+  }
+
   return (
     <div className={Wrapper}>
       <ParrotTrans
@@ -498,7 +506,7 @@ const Monthly: React.FC<{
         {mayNotExistDays.length > 0 && (
           <span className={cx("help", Typo.Label.l4_regular)}>
             {t("components.will_excute_at_last_day_with_date", {
-              date: `${mayNotExistDays.join(mark)}  `,
+              date,
             })}
           </span>
         )}
@@ -630,7 +638,7 @@ const CronPlan: React.FC<CronPlanProps> = (props) => {
                   })
                 }
               >
-                {value.enabled ? t("common.enable") : t("common.disable")}
+                {value.enabled ? t("common.enabled") : t("common.disabled")}
               </Switch>
             </span>
             <span className="close" onClick={onRemove}>

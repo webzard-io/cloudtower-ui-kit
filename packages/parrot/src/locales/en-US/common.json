@@ -9,6 +9,8 @@
   "confirm": "Confirm",
   "empty": "No ",
   "enable": "Enable",
+  "enabled":"Enabled",
+  "disabled": "Disabled",
   "disable": "Disable",
   "error": "Error",
   "next_step": "Next",
