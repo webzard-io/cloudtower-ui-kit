@@ -278,6 +278,7 @@ describe("SimplePagination h5_css", () => {
           flex: none;
           align-items: center;
           margin-left: 4px;
+          padding: 5px 12px 5px 0;
           color: rgba(44, 56, 82, 0.6);
         }
 
@@ -1479,6 +1480,7 @@ describe("SimplePagination h5_css", () => {
           flex: none;
           align-items: center;
           margin-left: 4px;
+          padding: 5px 12px 5px 0;
           color: rgba(44, 56, 82, 0.6);
         }
 
@@ -2291,6 +2293,7 @@ describe("SimplePagination h5_css", () => {
           flex: none;
           align-items: center;
           margin-left: 4px;
+          padding: 5px 12px 5px 0;
           color: rgba(44, 56, 82, 0.6);
         }
 
