@@ -29,7 +29,7 @@ export const Cascader: React.FC<CascaderProps> = (props) => {
   return (
     <Antd5Cascader
       size={size}
-      prefixCls={Antd5PrefixCls}
+      prefixCls={`${Antd5PrefixCls}-cascader`}
       expandIcon={<Icon src={HierarchyTriangleRight16PrimaryIcon} />}
       popupClassName={cls(
         {

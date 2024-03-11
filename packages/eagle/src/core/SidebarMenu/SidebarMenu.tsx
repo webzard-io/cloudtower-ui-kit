@@ -5,5 +5,5 @@ import React from "react";
 import { SidebarMenuProps } from "./SidebarMenu.type";
 
 export const SidebarMenu: React.FC<SidebarMenuProps> = (props) => {
-  return <Menu {...props} prefixCls={Antd5PrefixCls} mode="inline" />;
+  return <Menu {...props} prefixCls={`${Antd5PrefixCls}-menu`} mode="inline" />;
 };
