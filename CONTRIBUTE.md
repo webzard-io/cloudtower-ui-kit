@@ -34,7 +34,7 @@
 
 #### 新增 antd5 组件
 
-从 Cascader(级联组件) 开始，为了满足一些新组件的实现，eagle 加入了 antd5 组件库，需要基于 antd5 组件进行开发的情况下，或者 export 一个 antd5 组件的话，需要注意，加上 `prefixCls={Antd5PrefixCls}` 的 props， 来做好样式隔离，以防与 antd4.5 样式定义产生冲突。
+从 Cascader(级联组件) 开始，为了满足一些新组件的实现，eagle 加入了 antd5 组件库，需要基于 antd5 组件进行开发的情况下，或者 export 一个 antd5 组件的话，需要注意，加上 `prefixCls={${Antd5PrefixCls}-xxx}` 的 props， 来做好样式隔离，以防与 antd4.5 样式定义产生冲突。
 
 详见： https://ant.design/docs/react/migration-v5-cn#%E9%80%9A%E8%BF%87%E5%88%AB%E5%90%8D%E5%AE%89%E8%A3%85-v5
 

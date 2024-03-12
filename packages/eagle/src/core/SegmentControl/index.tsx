@@ -78,7 +78,7 @@ const SegmentControl = (props: ISegmentedControlProps) => {
         ColorSegment,
       )}
       size={size}
-      prefixCls={Antd5PrefixCls}
+      prefixCls={`${Antd5PrefixCls}-segmented`}
       {...props}
     />
   );
