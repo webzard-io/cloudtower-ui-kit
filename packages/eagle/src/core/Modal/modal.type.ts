@@ -3,7 +3,15 @@ import { ModalProps as AntdModalProps } from "antd/lib/modal";
 export type WizardSteps = {
   title: string;
   render: React.ReactNode;
+  /**
+   * custom prev button text
+   */
   prevText?: string | React.ReactNode;
+  /**
+   * custom prev button event handler
+   * @returns void
+   */
+  onPrev?: () => void;
   okText?: string | React.ReactNode;
   onOk?: (e: React.MouseEvent<HTMLElement>) => void;
   disabled?: boolean;

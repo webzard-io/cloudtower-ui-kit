@@ -115,10 +115,15 @@ export const WithAside = () => {
                   {
                     title: "step2",
                     render: <div>step2 area</div>,
+                    prevText: "turn back",
                   },
                   {
                     title: "step3",
                     render: <div>step3 area</div>,
+                    prevText: "custom",
+                    onPrev: () => {
+                      console.log("prev");
+                    },
                   },
                 ],
               },
