@@ -124,7 +124,16 @@ const Modal: React.FC<ModalProps> = (props) => {
                   wizard.step !== 0 && (
                     <span
                       className="prev-step"
-                      onClick={() => wizard.onStepChange?.(wizard.step - 1)}
+                      onClick={() => {
+                        if (
+                          typeof wizard === "object" &&
+                          wizard.steps[wizard.step]?.onPrev
+                        ) {
+                          wizard.steps[wizard.step].onPrev?.();
+                          return;
+                        }
+                        wizard.onStepChange?.(wizard.step - 1);
+                      }}
                     >
                       {prevText}
                     </span>
