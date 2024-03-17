@@ -84,7 +84,13 @@ export const OtherDisplay: StoryObj<IDonutChartStoryProps> = ({
       <DonutChart
         centerRender={<div className={defaultCenterStyle}>test</div>}
         color={color}
-        data={defaultData}
+        data={[
+          ...defaultData,
+          {
+            name: "test5",
+            value: 2,
+          },
+        ]}
         otherData={[
           {
             name: "text",
