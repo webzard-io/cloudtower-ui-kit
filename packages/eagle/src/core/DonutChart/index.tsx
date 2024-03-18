@@ -278,7 +278,7 @@ export const formatChartData = ({
       {
         name: t("components.other"),
         value: formatCollapse(otherData)?.value,
-        color: null,
+        color: Color.gray["gray-40"],
         tooltip: formatCollapse(otherData)?.tooltip,
       },
     ];
