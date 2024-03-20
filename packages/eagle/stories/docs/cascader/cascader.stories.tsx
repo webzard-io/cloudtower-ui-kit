@@ -163,6 +163,7 @@ export const DoubleRow: Story = {
   args: {
     size: "large",
     multiple: true,
+    open: true,
     tagRender: ({ label }) => {
       if (Array.isArray(label) && React.isValidElement(label[0])) {
         return (
@@ -201,7 +202,35 @@ export const DoubleRow: Story = {
             label: (
               <CascaderDoubleRowOption
                 data-label-text={"node 2"}
-                leftTop={"node2"}
+                rightTop={<Tag color="blue">Label</Tag>}
+                rightBottom={"Label"}
+                leftTop={
+                  <OverflowTooltip
+                    tooltip={"l".repeat(200)}
+                    content={"l".repeat(200)}
+                  />
+                }
+                leftBottom={
+                  <OverflowTooltip
+                    tooltip={"x".repeat(200)}
+                    content={"x".repeat(200)}
+                  />
+                }
+              />
+            ),
+          },
+          {
+            value: "v2",
+            key: "node 4",
+            label: (
+              <CascaderDoubleRowOption
+                data-label-text={"node 2"}
+                leftTop={
+                  <OverflowTooltip
+                    tooltip={"l".repeat(200)}
+                    content={"l".repeat(200)}
+                  />
+                }
                 leftBottom={
                   <OverflowTooltip
                     tooltip={"x".repeat(200)}
