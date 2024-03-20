@@ -90,11 +90,13 @@ export const CascaderDoubleRowOption: React.FC<{
       className={cx(DoubleRowOptionStyleWrapper, rootClassName)}
       gap={6}
     >
-      <Flex justify="space-between">
-        <div className={Typo.Label.l2_medium}>{leftTop}</div>
+      <Flex justify="space-between" gap={8}>
+        <div className={cls(Typo.Label.l2_medium, "top", "left")}>
+          {leftTop}
+        </div>
         <div>{rightTop}</div>
       </Flex>
-      <Flex justify="space-between" className={Typo.Label.l4_regular}>
+      <Flex justify="space-between" className={Typo.Label.l4_regular} gap={8}>
         <div className={cls(Typo.Label.l4_regular, "bottom", "left")}>
           {leftBottom}
         </div>

@@ -7,7 +7,7 @@ export const DoubleRowOptionStyleWrapper = css`
   .bottom {
     color: $text-neutral-secondary;
   }
-  .left.bottom {
+  .left {
     min-width: 0;
   }
 `;
