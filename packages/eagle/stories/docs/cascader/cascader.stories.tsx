@@ -163,7 +163,6 @@ export const DoubleRow: Story = {
   args: {
     size: "large",
     multiple: true,
-    open: true,
     tagRender: ({ label }) => {
       if (Array.isArray(label) && React.isValidElement(label[0])) {
         return (
@@ -220,7 +219,7 @@ export const DoubleRow: Story = {
             ),
           },
           {
-            value: "v2",
+            value: "v3",
             key: "node 4",
             label: (
               <CascaderDoubleRowOption
@@ -241,7 +240,7 @@ export const DoubleRow: Story = {
             ),
           },
           {
-            value: "v3",
+            value: "v4",
             key: "node 3",
             label: (
               <CascaderDoubleRowOption
