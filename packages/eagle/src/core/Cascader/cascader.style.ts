@@ -41,18 +41,18 @@ export const CascaderDefaultHeaderSearch = css`
 `;
 
 export const CascaderInputStyle = css`
-  &.${Antd5PrefixCls} .${Antd5PrefixCls}-selector {
+  &.${Antd5PrefixCls}-cascader .${Antd5PrefixCls}-cascader-selector {
     padding: 4px;
     &:after {
       line-height: normal;
     }
-    .${Antd5PrefixCls}-selection-search-input {
+    .${Antd5PrefixCls}-cascader-selection-search-input {
       height: 22px;
     }
-    .${Antd5PrefixCls}-selection-overflow {
+    .${Antd5PrefixCls}-cascader-selection-overflow {
       row-gap: 2px;
     }
-    .${Antd5PrefixCls}-selection-overflow-item {
+    .${Antd5PrefixCls}-cascader-selection-overflow-item {
       line-height: normal;
     }
   }
@@ -81,7 +81,7 @@ export const CascaderDropdown = css`
   border-radius: 8px;
   padding: 0px;
 
-  ul.${Antd5PrefixCls}-menu {
+  ul.${Antd5PrefixCls}-cascader-menu {
     padding: 6px;
     height: 240px;
   }
@@ -131,7 +131,10 @@ export const CascaderDropdown = css`
     }
   }
 
-  ${(CheckboxStyleContent || "").replaceAll("ant-", `${Antd5PrefixCls}-`)}
+  ${(CheckboxStyleContent || "").replaceAll(
+    "ant-",
+    `${Antd5PrefixCls}-cascader-`,
+  )}
 
   .${DoubleRowOptionStyleWrapper} {
     width: 400px;
@@ -139,7 +142,7 @@ export const CascaderDropdown = css`
 `;
 
 export const CascaderSmallDropdown = css`
-  ul.${Antd5PrefixCls}-menu {
+  ul.${Antd5PrefixCls}-cascader-menu {
     padding: 4px;
     height: 158px;
   }
@@ -160,7 +163,7 @@ export const CascaderSmallDropdown = css`
 `;
 
 export const CascaderLargeDropdown = css`
-  ul.${Antd5PrefixCls}-menu {
+  ul.${Antd5PrefixCls}-cascader-menu {
     padding: 8px;
     height: 320px;
   }
