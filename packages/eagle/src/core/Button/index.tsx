@@ -352,7 +352,11 @@ const ButtonStyle = css`
 `;
 
 const NoPadding = css`
-  padding: 0;
+  @at-root {
+    button#{&} {
+      padding: 0;
+    }
+  }
 `;
 
 const isAntdButtonTypes = (type?: string): type is AntdButtonType => {
