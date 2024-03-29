@@ -186,6 +186,10 @@ describe("SearchInput h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
+      ,
+        .ant-input-sm {
+          line-height: 18px;
+        }
       ,ant-input-affix-wrapper
           style=width:,276px;
         >
@@ -403,6 +407,10 @@ describe("SearchInput h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
+      ,
+        .ant-input-sm {
+          line-height: 18px;
+        }
       ,ant-input-affix-wrapper
           style=width:,276px;
         >
@@ -620,6 +628,10 @@ describe("SearchInput h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
+      ,
+        .ant-input-sm {
+          line-height: 18px;
+        }
       ,ant-input-affix-wrapper
           style=width:,276px;
         >

@@ -185,6 +185,10 @@ describe("Input h5_css", () => {
         @include Inter();
         font-size: 12px;
         line-height: 18px;
+      ,
+        .ant-input-sm {
+          line-height: 18px;
+        }
 
           id=1
           type=text
@@ -374,6 +378,10 @@ describe("Input h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
+      ,
+        .ant-input-sm {
+          line-height: 18px;
+        }
 
           id=2
           type=text
@@ -563,6 +571,10 @@ describe("Input h5_css", () => {
         @include Inter();
         font-size: 14px;
         line-height: 22px;
+      ,
+        .ant-input-sm {
+          line-height: 18px;
+        }
 
           id=3
           type=text

@@ -463,6 +463,10 @@ exports[`table form render > default data is undefiend 1`] = `
   @include Inter();
   font-size: 12px;
   line-height: 18px;
+,
+  .ant-input-sm {
+    line-height: 18px;
+  }
 
                           type=input
                           value=
@@ -698,6 +702,10 @@ exports[`table form render > default data is undefiend 1`] = `
   @include Inter();
   font-size: 12px;
   line-height: 18px;
+,
+  .ant-input-sm {
+    line-height: 18px;
+  }
 
                           type=input
                           value=
@@ -933,6 +941,10 @@ exports[`table form render > default data is undefiend 1`] = `
   @include Inter();
   font-size: 12px;
   line-height: 18px;
+,
+  .ant-input-sm {
+    line-height: 18px;
+  }
 ,ant-input-affix-wrapper,ant-input-affix-wrapper-sm
                         >
                           <input
@@ -1545,6 +1557,10 @@ exports[`table form render > default data is undefiend 1`] = `
   @include Inter();
   font-size: 12px;
   line-height: 18px;
+,
+  .ant-input-sm {
+    line-height: 18px;
+  }
 
                           type=input
                           value=
@@ -1765,6 +1781,10 @@ exports[`table form render > default data is undefiend 1`] = `
   @include Inter();
   font-size: 12px;
   line-height: 18px;
+,
+  .ant-input-sm {
+    line-height: 18px;
+  }
 
                           placeholder=must,end,with,number,like:,value0
                           type=input
@@ -1986,6 +2006,10 @@ exports[`table form render > default data is undefiend 1`] = `
   @include Inter();
   font-size: 12px;
   line-height: 18px;
+,
+  .ant-input-sm {
+    line-height: 18px;
+  }
 ,ant-input-affix-wrapper,ant-input-affix-wrapper-sm
                         >
                           <input
@@ -2303,6 +2327,10 @@ exports[`table form render > default data is undefiend 1`] = `
   @include Inter();
   font-size: 12px;
   line-height: 18px;
+,
+  .ant-input-sm {
+    line-height: 18px;
+  }
 
                           type=affix
                           value=
@@ -2705,6 +2733,10 @@ exports[`table form render > default data is undefiend 1`] = `
   @include Inter();
   font-size: 12px;
   line-height: 18px;
+,
+  .ant-input-sm {
+    line-height: 18px;
+  }
 
                           type=input
                           value=
@@ -2925,6 +2957,10 @@ exports[`table form render > default data is undefiend 1`] = `
   @include Inter();
   font-size: 12px;
   line-height: 18px;
+,
+  .ant-input-sm {
+    line-height: 18px;
+  }
 
                           placeholder=must,end,with,number,like:,value0
                           type=input
@@ -3146,6 +3182,10 @@ exports[`table form render > default data is undefiend 1`] = `
   @include Inter();
   font-size: 12px;
   line-height: 18px;
+,
+  .ant-input-sm {
+    line-height: 18px;
+  }
 ,ant-input-affix-wrapper,ant-input-affix-wrapper-sm
                         >
                           <input
@@ -3463,6 +3503,10 @@ exports[`table form render > default data is undefiend 1`] = `
   @include Inter();
   font-size: 12px;
   line-height: 18px;
+,
+  .ant-input-sm {
+    line-height: 18px;
+  }
 
                           type=affix
                           value=
@@ -3865,6 +3909,10 @@ exports[`table form render > default data is undefiend 1`] = `
   @include Inter();
   font-size: 12px;
   line-height: 18px;
+,
+  .ant-input-sm {
+    line-height: 18px;
+  }
 
                           type=input
                           value=
@@ -4085,6 +4133,10 @@ exports[`table form render > default data is undefiend 1`] = `
   @include Inter();
   font-size: 12px;
   line-height: 18px;
+,
+  .ant-input-sm {
+    line-height: 18px;
+  }
 
                           placeholder=must,end,with,number,like:,value0
                           type=input
@@ -4306,6 +4358,10 @@ exports[`table form render > default data is undefiend 1`] = `
   @include Inter();
   font-size: 12px;
   line-height: 18px;
+,
+  .ant-input-sm {
+    line-height: 18px;
+  }
 ,ant-input-affix-wrapper,ant-input-affix-wrapper-sm
                         >
                           <input
@@ -4623,6 +4679,10 @@ exports[`table form render > default data is undefiend 1`] = `
   @include Inter();
   font-size: 12px;
   line-height: 18px;
+,
+  .ant-input-sm {
+    line-height: 18px;
+  }
 
                           type=affix
                           value=

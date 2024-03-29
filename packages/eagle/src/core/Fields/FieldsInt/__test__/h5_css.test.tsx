@@ -203,6 +203,10 @@ describe("Input h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
+      ,
+        .ant-input-sm {
+          line-height: 18px;
+        }
 
           data-test=inputName1
           name=inputName1
@@ -432,6 +436,10 @@ describe("Input h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
+      ,
+        .ant-input-sm {
+          line-height: 18px;
+        }
 
           data-test=inputName1
           name=inputName1
@@ -664,6 +672,10 @@ describe("Input h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
+      ,
+        .ant-input-sm {
+          line-height: 18px;
+        }
 
           data-test=inputName1
           name=inputName1
