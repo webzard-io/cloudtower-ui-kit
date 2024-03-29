@@ -271,6 +271,10 @@ describe("Input h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
+      ,
+        .ant-input-sm {
+          line-height: 18px;
+        }
 
           data-test=inputName1
           name=inputName1
@@ -389,7 +393,7 @@ describe("Input h5_css", () => {
                 class=tags-overflow-auto
               >
                 <span
-                  class=mocked-styled-24,
+                  class=mocked-styled-25,
         height: 18px;
         line-height: 18px;
         padding: 0 4px;
@@ -524,7 +528,7 @@ describe("Input h5_css", () => {
                 class=tags-overflow-auto
               >
                 <span
-                  class=mocked-styled-24,
+                  class=mocked-styled-25,
         height: 18px;
         line-height: 18px;
         padding: 0 4px;
@@ -540,7 +544,7 @@ describe("Input h5_css", () => {
                   test_tag
                 </span>
                 <span
-                  class=mocked-styled-24,
+                  class=mocked-styled-25,
         height: 18px;
         line-height: 18px;
         padding: 0 4px;
@@ -849,6 +853,10 @@ describe("Input h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
+      ,
+        .ant-input-sm {
+          line-height: 18px;
+        }
 
           data-test=inputName1
           name=inputName1

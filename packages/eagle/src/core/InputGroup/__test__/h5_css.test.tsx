@@ -28,7 +28,7 @@ describe("InputGroup h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <span
-          class=ant-input-group,ant-input-group-sm,mocked-styled-24,
+          class=ant-input-group,ant-input-group-sm,mocked-styled-25,
         &.ant-input-group.ant-input-group-compact {
           display: flex;
         }
@@ -367,6 +367,10 @@ describe("InputGroup h5_css", () => {
         @include Inter();
         font-size: 13px;
         line-height: 20px;
+      ,
+        .ant-input-sm {
+          line-height: 18px;
+        }
 
             style=width:,50%;
             type=text
