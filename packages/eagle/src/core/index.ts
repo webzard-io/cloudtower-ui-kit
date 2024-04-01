@@ -91,8 +91,6 @@ export * from "./Tooltip";
 export * from "./Truncate";
 export * from "./Typo";
 export * from "./Units";
-export * from "./Avatar";
-export * from "./Nav";
 
 export const units = {
   Percent,
@@ -171,3 +169,5 @@ export { default as TimeZoneSelect } from "./TimeZoneSelect";
 export { default as Token } from "./Token";
 export { default as Tooltip } from "./Tooltip";
 export { default as Truncate } from "./Truncate";
+export { default as Avator } from "./Avatar";
+export { default as Nav } from "./Nav";
