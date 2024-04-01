@@ -91,6 +91,9 @@ export * from "./Tooltip";
 export * from "./Truncate";
 export * from "./Typo";
 export * from "./Units";
+export * from "./Avatar";
+export * from "./Nav";
+
 export const units = {
   Percent,
   Byte,
