@@ -25,6 +25,7 @@ export type ModalProps = Omit<AntdModalProps, "okType"> & {
   children?: React.ReactNode;
   showCancel?: boolean;
   showOk?: boolean;
+  closeIcon?: React.ReactNode;
   wizard?:
     | {
         step: number;

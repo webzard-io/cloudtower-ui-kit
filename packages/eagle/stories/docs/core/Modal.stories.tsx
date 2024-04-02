@@ -1,8 +1,10 @@
+import { CloseCircleFilled } from "@ant-design/icons";
 import Button from "@src/core/Button";
 import KitStoreProvider from "@src/core/KitStoreProvider";
 import Modal, { ModalProps, WizardSteps } from "@src/core/Modal";
 import ModalStack from "@src/core/ModalStack";
 import { ModalWrapper } from "@src/core/Styled";
+import Tooltip from "@src/core/Tooltip";
 import { pushModal } from "@src/store";
 import { Meta } from "@storybook/react";
 import React, { useState } from "react";
@@ -41,6 +43,11 @@ const AsideModal: React.FC<{ onClose: () => void; steps: WizardSteps }> = ({
         }
         setCurrent(current + 1);
       }}
+      closeIcon={
+        <Tooltip overlay="tooltip">
+          <CloseCircleFilled />
+        </Tooltip>
+      }
       wizard={{
         destroyOtherStep: true,
         hideLeft: steps.length === 1,
