@@ -15,6 +15,7 @@ const defaultOptions: InitOptions = {
   interpolation: {
     prefix: "{",
     suffix: "}",
+    escapeValue: false,
   },
   resources: {
     [ParrotLngs.en]: locales["en-US"],
