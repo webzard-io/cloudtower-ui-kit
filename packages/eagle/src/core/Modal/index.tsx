@@ -33,6 +33,7 @@ const Modal: React.FC<ModalProps> = (props) => {
     showCancel = true,
     showOk = true,
     afterClose,
+    closeIcon,
     ...restProps
   } = props;
 
@@ -103,7 +104,7 @@ const Modal: React.FC<ModalProps> = (props) => {
         onCancel?.(e);
         transitionClass.current = fullscreen ? "" : "modal-zoom";
       }}
-      closeIcon={<CloseCircleFilled />}
+      closeIcon={closeIcon ?? <CloseCircleFilled />}
       destroyOnClose
       focusTriggerAfterClose={false}
       transitionName={transitionClass.current}
