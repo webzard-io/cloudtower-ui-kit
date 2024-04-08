@@ -1,4 +1,5 @@
 import { ArrowRightGrayIcon } from "@cloudtower/icons-react";
+import { css } from "@linaria/core";
 import CardBody from "@src/core/Card/CardBody";
 import CardTitle from "@src/core/Card/CardTitle";
 import CardWrapper from "@src/core/Card/CardWrapper";
@@ -16,6 +17,22 @@ export type CardProps = {
   shadow?: boolean;
 } & React.DOMAttributes<HTMLDivElement>;
 
+const CardBasic = css`
+  height: 100%;
+`;
+
+const HoverableStyle = css`
+  cursor: pointer;
+
+  &:hover > div {
+    transition: all 200ms ease;
+    box-shadow:
+      0px 9px 22px rgb(107 125 153 / 23%),
+      0px 1.12694px 2.75474px rgb(107 125 153 / 12%);
+    transform: translateY(-4px);
+  }
+`;
+
 const Card = React.forwardRef<HTMLDivElement, PropsWithChildren<CardProps>>(
   (props, ref) => {
     const {
@@ -31,36 +48,45 @@ const Card = React.forwardRef<HTMLDivElement, PropsWithChildren<CardProps>>(
     const [open, setOpen] = useState(defaultOpen);
 
     return (
-      <CardWrapper
-        ref={ref}
-        className={cs(["card-wrapper", className, hoverable && "hoverable"])}
-        {...domProps}
-        shadow={shadow}
+      <div
+        className={cs(
+          {
+            [HoverableStyle]: hoverable,
+          },
+          CardBasic,
+        )}
       >
-        {title && (
-          <CardTitle
-            className={cs(["card-title", collapsible ? "has-arrow" : ""])}
-          >
-            <div
-              className={cs(["title-wrapper", open ? "is-open" : ""])}
-              onClick={() => {
-                collapsible && setOpen(!open);
-              }}
+        <CardWrapper
+          ref={ref}
+          className={cs(["card-wrapper", className])}
+          {...domProps}
+          shadow={shadow}
+        >
+          {title && (
+            <CardTitle
+              className={cs(["card-title", collapsible ? "has-arrow" : ""])}
             >
-              {collapsible && (
-                <Icon className="collapse-arrow" src={ArrowRightGrayIcon} />
-              )}
-              {title}
-            </div>
-            {subInfo && <div className="sub-info">{subInfo}</div>}
-          </CardTitle>
-        )}
-        {(!collapsible || open) && (
-          <CardBody className="card-body">{props.children}</CardBody>
-        )}
-      </CardWrapper>
+              <div
+                className={cs(["title-wrapper", open ? "is-open" : ""])}
+                onClick={() => {
+                  collapsible && setOpen(!open);
+                }}
+              >
+                {collapsible && (
+                  <Icon className="collapse-arrow" src={ArrowRightGrayIcon} />
+                )}
+                {title}
+              </div>
+              {subInfo && <div className="sub-info">{subInfo}</div>}
+            </CardTitle>
+          )}
+          {(!collapsible || open) && (
+            <CardBody className="card-body">{props.children}</CardBody>
+          )}
+        </CardWrapper>
+      </div>
     );
-  }
+  },
 );
 
 export default Card;

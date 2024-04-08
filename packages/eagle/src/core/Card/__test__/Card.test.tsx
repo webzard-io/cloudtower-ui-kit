@@ -24,7 +24,13 @@ describe("ui unit test - card", () => {
       <div>
         <div
           class=
-        box-shadow: 0px 0.119595px 0.438513px rgba(129, 138, 153, 0.14),
+        height: 100%;
+
+        >
+          <div
+            class=
+        box-shadow:
+          0px 0.119595px 0.438513px rgba(129, 138, 153, 0.14),
           0px 0.271728px 0.996336px rgba(129, 138, 153, 0.106447),
           0px 0.472931px 1.73408px rgba(129, 138, 153, 0.0912224),
           0px 0.751293px 2.75474px rgba(129, 138, 153, 0.0799253),
@@ -35,20 +41,10 @@ describe("ui unit test - card", () => {
       ,card-wrapper,class-string,
         border-radius: 8px;
         background-color: white;
-        &.hoverable {
-          cursor: pointer;
 
-          &:hover {
-            transition: all 200ms ease;
-            box-shadow: 0px 9px 22px rgb(107 125 153 / 23%),
-              0px 1.12694px 2.75474px rgb(107 125 153 / 12%);
-            transform: translateY(-4px);
-          }
-        }
-
-        >
-          <div
-            class=card-title,
+          >
+            <div
+              class=card-title,
         color: $text-primary-light;
         padding: 7px 12px;
         display: flex;
@@ -94,24 +90,25 @@ describe("ui unit test - card", () => {
           margin-right: 2px;
         }
 
-          >
-            <div
-              class=title-wrapper
             >
-              title-string
+              <div
+                class=title-wrapper
+              >
+                title-string
+              </div>
+              <div
+                class=sub-info
+              >
+                subinfo-string
+              </div>
             </div>
             <div
-              class=sub-info
-            >
-              subinfo-string
-            </div>
-          </div>
-          <div
-            class=card-body,
+              class=card-body,
         padding: 0 12px 14px 12px;
 
-          >
-            body-string
+            >
+              body-string
+            </div>
           </div>
         </div>
       </div>
