@@ -93,6 +93,7 @@ export * from "./Typo";
 export * from "./Units";
 export * from "./Avatar";
 export * from "./Nav";
+export * from "./Antd5Dropdown";
 
 export const units = {
   Percent,
