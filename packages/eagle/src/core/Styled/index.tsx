@@ -158,13 +158,6 @@ export const ErrorSpan = styled.span`
   margin-right: 10px;
 `;
 
-export const Divider = styled.div`
-  width: 100%;
-  height: 1px;
-  background: rgba(213, 219, 227, 0.6);
-  margin: 24px 0;
-`;
-
 export const LoadingWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -459,7 +452,9 @@ export const InputStyle = css`
     color: $text-primary-light;
     border-radius: 6px;
     border-color: $strokes-light-trans-3;
-    transition: height 240ms ease 8ms, border 160ms ease 8ms,
+    transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
       box-shadow 160ms ease 8ms;
   }
 
@@ -528,7 +523,9 @@ export const InputStyle = css`
     border-color: $strokes-light-trans-3;
     line-height: 20px;
     color: $text-primary-light;
-    transition: height 240ms ease 8ms, border 160ms ease 8ms,
+    transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
       box-shadow 160ms ease 8ms;
 
     .ant-input-suffix,
