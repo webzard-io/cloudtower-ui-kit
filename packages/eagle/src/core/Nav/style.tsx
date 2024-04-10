@@ -76,27 +76,7 @@ export const Header = styled.header`
       > *:not(:first-child) {
         margin-left: 4px;
       }
-
-      .user-icon {
-        .user-icon-inner {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          color: $white;
-          font-weight: bold;
-          font-size: 12px;
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          background: linear-gradient(
-            180deg,
-            rgba(0, 136, 255, 0.2) 0%,
-            rgba(0, 136, 255, 0.6) 100%
-          );
-        }
-      }
     }
-
     .create-menu-and-export {
       height: 48px;
       overflow: hidden;

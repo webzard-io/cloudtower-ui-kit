@@ -32,7 +32,7 @@ const DemoNav = () => {
           />,
         ]}
         center={["smartx"]}
-        right={[<Avatar username="R" />]}
+        right={[<Avatar username="R" background="dark-blue" />]}
       />
     </div>
   );
