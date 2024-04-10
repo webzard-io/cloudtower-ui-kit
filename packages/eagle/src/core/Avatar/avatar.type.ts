@@ -5,4 +5,9 @@ export type AvatarProps = {
   username: string;
 
   className?: string;
+
+  /**
+   * 背景色
+   */
+  background?: "light-blue" | "dark-blue";
 };

@@ -1,10 +1,13 @@
 import { cx } from "@linaria/core";
 import { styled } from "@linaria/react";
+import { Color } from "@src/index";
 import React from "react";
 
 import { AvatarProps } from "./avatar.type";
 
-const AvatarWrapper = styled.span`
+const AvatarWrapper = styled.span<{
+  background: string;
+}>`
   .user-icon-inner {
     display: inline-flex;
     align-items: center;
@@ -15,11 +18,7 @@ const AvatarWrapper = styled.span`
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 136, 255, 0.2) 0%,
-      rgba(0, 136, 255, 0.6) 100%
-    );
+    background: ${({ background }) => background};
   }
   &.btn-item {
     transition: all 160ms ease;
@@ -44,9 +43,16 @@ const AvatarWrapper = styled.span`
   }
 `;
 
-const Avatar: React.FC<AvatarProps> = ({ username, className }) => {
+const Avatar: React.FC<AvatarProps> = ({
+  username,
+  className,
+  background = "light-blue",
+}) => {
   return (
-    <AvatarWrapper className={cx(className, "user-icon btn-item")}>
+    <AvatarWrapper
+      background={Color.gradient[background] || background}
+      className={cx(className, "user-icon btn-item")}
+    >
       <span className="user-icon-inner">{username.substring(0, 1)}</span>
     </AvatarWrapper>
   );
