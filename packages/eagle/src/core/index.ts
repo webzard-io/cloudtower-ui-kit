@@ -9,6 +9,7 @@ import Speed from "./Speed";
 
 export * from "./AccordionCard";
 export * from "./Alert";
+export * from "./Antd5Dropdown";
 export * from "./Arch";
 export * from "./Badge";
 export * from "./BaseIcon";
@@ -92,9 +93,6 @@ export * from "./Tooltip";
 export * from "./Truncate";
 export * from "./Typo";
 export * from "./Units";
-export * from "./Avatar";
-export * from "./Nav";
-export * from "./Antd5Dropdown";
 
 export const units = {
   Percent,
@@ -112,6 +110,7 @@ export { units as Units };
 export { default as AccordionCard } from "./AccordionCard";
 export { default as Alert } from "./Alert";
 export { default as Arch } from "./Arch";
+export { default as Avatar } from "./Avatar";
 export { default as Badge } from "./Badge";
 export { default as BaseIcon } from "./BaseIcon";
 export { default as Bit } from "./Bit";
@@ -150,6 +149,7 @@ export { default as message } from "./message";
 export { default as Metric } from "./Metric";
 export { default as Modal } from "./Modal";
 export { default as ModalStack } from "./ModalStack";
+export { default as Nav } from "./Nav";
 export { default as Overflow } from "./Overflow";
 export { default as Pagination } from "./Pagination";
 export { default as Percent } from "./Percent";
