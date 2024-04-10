@@ -268,5 +268,9 @@ export const Color = {
   },
   gradient: {
     loading: "linear-gradient(90deg, #0080ff 0%, #9ecfff 50%, #0080ff 100%)",
+    "light-blue":
+      "linear-gradient(180deg,rgba(0, 136, 255, 0.2) 0%,rgba(0, 136, 255, 0.6) 100%)",
+    "dark-blue":
+      "radial-gradient(133.15% 133.15% at 4.69% 7.03%, #5BCAFF 0%, #06F 100%)",
   },
 } as const;
