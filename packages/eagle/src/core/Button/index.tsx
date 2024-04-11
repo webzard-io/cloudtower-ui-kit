@@ -41,6 +41,11 @@ const ButtonStyle = css`
     }
   }
 
+  .ant-btn-loading-icon span.anticon {
+    margin-right: 8px;
+    padding-right: 0px;
+  }
+
   &.ant-btn.ant-btn-primary,
   &.ant-btn.ant-btn-secondary,
   &.ant-btn.ant-btn-tertiary,
