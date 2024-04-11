@@ -25,8 +25,13 @@ const FormItemStyle = css`
     }
   }
 
-  &.ant-form-item-has-error .ant-input {
-    border-color: #ff4d4f !important;
+  &.ant-form-item-has-error {
+    .ant-input {
+      border-color: #ff4d4f !important;
+    }
+    .ant-input-password {
+      border-color: #ff4d4f !important;
+    }
   }
 
   .ant-form-item-explain {
@@ -43,7 +48,7 @@ const FormItemStyle = css`
 `;
 
 const FormItem: (
-  props: React.PropsWithChildren<FormItemProps>
+  props: React.PropsWithChildren<FormItemProps>,
 ) => React.ReactElement = (props) => {
   return (
     <AntdFormItem {...props} className={cs(FormItemStyle, props.className)} />
