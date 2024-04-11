@@ -457,6 +457,11 @@ describe("SimplePagination h5_css", () => {
           }
         }
 
+        .ant-btn-loading-icon span.anticon {
+          margin-right: 8px;
+          padding-right: 0px;
+        }
+
         &.ant-btn.ant-btn-primary,
         &.ant-btn.ant-btn-secondary,
         &.ant-btn.ant-btn-tertiary,
@@ -926,6 +931,11 @@ describe("SimplePagination h5_css", () => {
           &.ant-btn-circle-outline {
             border-radius: 50%;
           }
+        }
+
+        .ant-btn-loading-icon span.anticon {
+          margin-right: 8px;
+          padding-right: 0px;
         }
 
         &.ant-btn.ant-btn-primary,
@@ -1739,6 +1749,11 @@ describe("SimplePagination h5_css", () => {
           &.ant-btn-circle-outline {
             border-radius: 50%;
           }
+        }
+
+        .ant-btn-loading-icon span.anticon {
+          margin-right: 8px;
+          padding-right: 0px;
         }
 
         &.ant-btn.ant-btn-primary,
