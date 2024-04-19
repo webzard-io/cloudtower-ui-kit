@@ -11,7 +11,7 @@ import React, {
   createContext,
   PropsWithChildren,
   useCallback,
-  useRef,
+  useState,
 } from "react";
 import {
   createDispatchHook,
@@ -31,10 +31,10 @@ interface IProps {}
 const KitStoreProvider = (props: PropsWithChildren<IProps>) => {
   const { children } = props;
 
-  const storeRef = useRef(createStore(rootReducer));
+  const [store] = useState(createStore(rootReducer));
 
   return (
-    <Provider context={ctx} store={storeRef.current}>
+    <Provider context={ctx} store={store}>
       {children}
     </Provider>
   );
