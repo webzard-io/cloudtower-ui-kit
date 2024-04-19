@@ -104,6 +104,7 @@ export const Size: Story = {
   args: {
     size: "small",
     multiple: true,
+    placeholder: "placeholder",
     options: [
       {
         value: "c1",

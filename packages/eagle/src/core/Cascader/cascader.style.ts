@@ -55,6 +55,10 @@ export const CascaderInputStyle = css`
     .${Antd5PrefixCls}-cascader-selection-overflow-item {
       line-height: normal;
     }
+    .${Antd5PrefixCls}-cascader-selection-placeholder {
+      font-size: 13px;
+      line-height: 20px;
+    }
   }
 `;
 
