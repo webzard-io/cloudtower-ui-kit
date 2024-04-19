@@ -38,7 +38,7 @@ export type Actions =
     };
 export const rootReducer = (
   state: KitRootState | undefined,
-  action: Actions
+  action: Actions,
 ) => {
   if (action.type === "RESET_UI_KIT_STORE") {
     state = {
@@ -51,8 +51,12 @@ export const rootReducer = (
 
 export const UIKitStore = createStore(rootReducer);
 
+/**
+ *
+ * @deprecated
+ */
 export function pushModal<K extends keyof IModalProps>(
-  modal: ModalType<IModalProps[K]>
+  modal: ModalType<IModalProps[K]>,
 ) {
   UIKitStore.dispatch({
     type: ModalActions.PUSH_MODAL,
@@ -60,12 +64,20 @@ export function pushModal<K extends keyof IModalProps>(
   });
 }
 
+/**
+ *
+ * @deprecated
+ */
 export function popModal() {
   UIKitStore.dispatch({
     type: ModalActions.POP_MODAL,
   });
 }
 
+/**
+ *
+ * @deprecated
+ */
 export function closeModal(id: number) {
   UIKitStore.dispatch({
     type: ModalActions.CLOSE_MODAL,
