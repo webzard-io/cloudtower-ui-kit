@@ -1,25 +1,11 @@
-import {
-  Actions,
-  IModalProps,
-  KitRootState,
-  ModalActions,
-  ModalType,
-  rootReducer,
-  UIKitStore,
-} from "@src/store";
-import React, {
-  createContext,
-  PropsWithChildren,
-  useCallback,
-  useState,
-} from "react";
+import { Actions, KitRootState, UIKitStore } from "@src/store";
+import React, { createContext, PropsWithChildren } from "react";
 import {
   createDispatchHook,
   createSelectorHook,
   Provider,
   ReactReduxContextValue,
 } from "react-redux";
-import { createStore } from "redux";
 
 const ctx = createContext<ReactReduxContextValue<KitRootState, Actions>>({
   store: UIKitStore,
@@ -31,10 +17,8 @@ interface IProps {}
 const KitStoreProvider = (props: PropsWithChildren<IProps>) => {
   const { children } = props;
 
-  const [store] = useState(createStore(rootReducer));
-
   return (
-    <Provider context={ctx} store={store}>
+    <Provider context={ctx} store={UIKitStore}>
       {children}
     </Provider>
   );
@@ -44,40 +28,3 @@ export default KitStoreProvider;
 
 export const useKitDispatch = createDispatchHook<KitRootState, Actions>(ctx);
 export const useKitSelector = createSelectorHook<KitRootState, Actions>(ctx);
-export const usePushModal = () => {
-  const dispatch = useKitDispatch();
-  const pushModal = useCallback(
-    <K extends keyof IModalProps>(modal: ModalType<IModalProps[K]>) => {
-      dispatch({
-        type: ModalActions.PUSH_MODAL,
-        payload: modal,
-      });
-    },
-    [dispatch],
-  );
-  return pushModal;
-};
-
-export const useCloseModal = () => {
-  const dispatch = useKitDispatch();
-  const closeModal = useCallback(
-    (id: number) => {
-      dispatch({
-        type: ModalActions.CLOSE_MODAL,
-        id,
-      });
-    },
-    [dispatch],
-  );
-  return closeModal;
-};
-
-export const usePopModal = () => {
-  const dispatch = useKitDispatch();
-  const popModal = useCallback(() => {
-    dispatch({
-      type: ModalActions.POP_MODAL,
-    });
-  }, [dispatch]);
-  return popModal;
-};

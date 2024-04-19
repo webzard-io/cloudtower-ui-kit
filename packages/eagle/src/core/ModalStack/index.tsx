@@ -1,13 +1,11 @@
-import { useCloseModal, useKitSelector } from "@src/core/KitStoreProvider";
-import { KitRootState } from "@src/store";
+import { useKitSelector } from "@src/core/KitStoreProvider";
+import { closeModal, KitRootState } from "@src/store";
 import React from "react";
 
 const ModalStack: React.FC = () => {
   const stack = useKitSelector<KitRootState["modal"]["stack"]>(
-    (state) => state.modal.stack,
+    (state) => state.modal.stack
   );
-  const closeModal = useCloseModal();
-
   return (
     <>
       {stack.map((modal) => (
