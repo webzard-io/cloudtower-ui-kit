@@ -4,6 +4,7 @@ import Token from "@src/core/Token";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { Flex } from "antd5";
 import cls from "classnames";
+import cs from "classnames";
 import React, { useState } from "react";
 
 import SearchInput from "../SearchInput";
@@ -15,6 +16,7 @@ import {
   CascaderDefaultOptionLabel,
   CascaderNotData,
   DoubleRowOptionStyleWrapper,
+  Hide,
 } from "./cascader.style";
 import { CascaderProps, PresetCascaderRenderProps } from "./cascader.type";
 
@@ -90,13 +92,23 @@ export const CascaderDoubleRowOption: React.FC<{
       className={cx(DoubleRowOptionStyleWrapper, rootClassName)}
       gap={6}
     >
-      <Flex justify="space-between" gap={8}>
+      <Flex
+        justify="space-between"
+        className={!leftTop && !rightTop ? Hide : ""}
+        gap={8}
+      >
         <div className={cls(Typo.Label.l2_medium, "top", "left")}>
           {leftTop}
         </div>
         <div>{rightTop}</div>
       </Flex>
-      <Flex justify="space-between" className={Typo.Label.l4_regular} gap={8}>
+      <Flex
+        justify="space-between"
+        className={cs(Typo.Label.l4_regular, {
+          [Hide]: !leftBottom && !rightBottom,
+        })}
+        gap={8}
+      >
         <div className={cls(Typo.Label.l4_regular, "bottom", "left")}>
           {leftBottom}
         </div>

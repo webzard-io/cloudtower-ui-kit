@@ -249,6 +249,17 @@ export const DoubleRow: Story = {
               />
             ),
           },
+          {
+            value: "v5",
+            key: "node 5",
+            label: (
+              <CascaderDoubleRowOption
+                data-label-text={"node 5"}
+                leftTop="Label"
+                rightTop={<Tag color="blue">Label</Tag>}
+              />
+            ),
+          },
         ],
       },
     ],

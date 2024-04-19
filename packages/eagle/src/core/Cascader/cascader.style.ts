@@ -3,6 +3,10 @@ import { css } from "@linaria/core";
 import { Antd5PrefixCls } from "../../utils";
 import { CheckboxStyleContent } from "../Checkbox/checkbox.style";
 
+export const Hide = css`
+  display: none;
+`;
+
 export const DoubleRowOptionStyleWrapper = css`
   .bottom {
     color: $text-neutral-secondary;
