@@ -1,6 +1,6 @@
 import {
   CheckmarkDoneSuccessCorrect16GreenIcon,
-  LoadingBlue16Icon,
+  Loading16GradientBlueIcon,
   NoticeTriangleFill16YellowIcon,
   XmarkFailed16RedIcon,
 } from "@cloudtower/icons-react";
@@ -24,7 +24,7 @@ export const StatusIconMap = {
   success: <CheckmarkDoneSuccessCorrect16GreenIcon />,
   failed: <XmarkFailed16RedIcon />,
   paused: <NoticeTriangleFill16YellowIcon />,
-  active: <Icon src={LoadingBlue16Icon} isRotate />,
+  active: <Icon src={Loading16GradientBlueIcon} isRotate />,
 };
 
 const IconFieldWrapper = styled.div`
