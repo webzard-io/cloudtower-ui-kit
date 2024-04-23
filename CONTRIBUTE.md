@@ -1,11 +1,5 @@
 ## 快速开始
 
-- 调整编辑器使用 typescript5.0
-
-  以 vscode 为例
-
-  打开一个 \*.ts 文件，输入 `ctrl + shift + p`, 在弹出框中输入 `select typescript version`
-
 - 安装依赖
 
   项目根目录，执行
@@ -23,7 +17,7 @@
 
 ### 如何新增 icon
 
-- 将需要新增的 svg 图片放到 pacakge/icons/src 下面即可。
+- 将需要新增的 svg 图片放到 pacakge/icons/src 下。
 - 提交 pr 前可以切换到 packages/icons-react 执行 `yarn build`，执行成功，即表示 SVG 构建成功。然后切换至 packages/ealge 执行 `yarn storybook` 可以在 react-icons 下看到对应的 icon 效果。
 - 提交名称注意名称合法性，目前是会将 `x-y-z` 转换为 `XZY` 格式的组件。注意名称中不要以数字开头和带上 `-` 之外的标点符号。
 - 目前 icon 只支持 SVG 格式，非 SVG 格式的 icon 目前需要在自己的 repo 中通过 `require('demo.png')` 的方式进行使用
