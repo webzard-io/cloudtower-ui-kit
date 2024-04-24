@@ -43,7 +43,11 @@ describe("I18nNameTag", () => {
           white-space: normal;
         }
       ,
-        margin: 0 2px;
+        @at-root {
+          span#{&} {
+            margin: 0 2px;
+          }
+        }
       ,
           padding: 0 8px;
           height: 18px;
