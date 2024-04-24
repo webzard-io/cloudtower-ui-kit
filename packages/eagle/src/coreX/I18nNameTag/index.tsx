@@ -6,7 +6,11 @@ import React from "react";
 import { I18nNameTagType } from "./i18nNameTag.type";
 
 const tagStyle = css`
-  margin: 0 2px;
+  @at-root {
+    span#{&} {
+      margin: 0 2px;
+    }
+  }
 `;
 
 // TODO: strict i18nKey type
