@@ -92,7 +92,7 @@ export const tableStyleCover = css`
     }
   }
 
-  .ant-table {
+  div.ant-table {
     $columnAlignRightPaddingRight: 25px;
     border-radius: 0px;
     border-left: none;
