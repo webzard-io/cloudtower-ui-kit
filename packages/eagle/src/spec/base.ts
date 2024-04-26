@@ -67,7 +67,6 @@ import type {
   SortableListComponentType,
   SummaryTableComponentType,
   SwitchWithTextProps,
-  TruncateTextWithTooltipType,
 } from "@src/coreX";
 import { AutoCompleteProps } from "antd/lib/auto-complete";
 import { BadgeProps } from "antd/lib/badge";
