@@ -363,7 +363,6 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     CloseButton: React.FC<CloseButtonProps>;
   };
   DetailCard: React.FC<IDetailCardProps>;
-  TruncatedTextWithTooltip: React.FC<TruncateTextWithTooltipType>;
   Counting: React.FC<ICountingProps>;
   Breadcrumb: React.FC<IBreadcrumbProps>;
   CircleProgress: React.FC<ICircleProgressProps>;

@@ -104,7 +104,6 @@ import SidebarSubtitle from "./coreX/SidebarSubtitle";
 import SortableList from "./coreX/SortableList";
 import SummaryTable from "./coreX/SummaryTable";
 import SwitchWithText from "./coreX/SwitchWithText";
-import TruncatedTextWithTooltip from "./coreX/TruncatedTextWithTooltip";
 import UnitWithChart from "./coreX/UnitWithChart";
 import { Kit, OptionComponentType } from "./spec";
 
@@ -214,7 +213,6 @@ export function getAntdKit(): Kit {
     DropdownTransition: DropdownTransition,
     AccordionCard: AccordionCard,
     DetailCard: DetailCard,
-    TruncatedTextWithTooltip: TruncatedTextWithTooltip,
     Counting: Counting,
     Breadcrumb: Breadcrumb,
     CircleProgress: CircleProgress,
