@@ -67,7 +67,6 @@ import type {
   SortableListComponentType,
   SummaryTableComponentType,
   SwitchWithTextProps,
-  TruncateTextWithTooltipType,
 } from "@src/coreX";
 import { AutoCompleteProps } from "antd/lib/auto-complete";
 import { BadgeProps } from "antd/lib/badge";
@@ -363,7 +362,6 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
     CloseButton: React.FC<CloseButtonProps>;
   };
   DetailCard: React.FC<IDetailCardProps>;
-  TruncatedTextWithTooltip: React.FC<TruncateTextWithTooltipType>;
   Counting: React.FC<ICountingProps>;
   Breadcrumb: React.FC<IBreadcrumbProps>;
   CircleProgress: React.FC<ICircleProgressProps>;

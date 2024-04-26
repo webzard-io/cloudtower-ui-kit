@@ -17,7 +17,6 @@ export * from "./SortableList";
 export * from "./SummaryTable";
 export * from "./SwitchWithText";
 export * from "./TabMenu";
-export * from "./TruncatedTextWithTooltip";
 export * from "./UnitWithChart";
 
 // rename default export
@@ -39,5 +38,4 @@ export { default as SortableList } from "./SortableList";
 export { default as SummaryTable } from "./SummaryTable";
 export { default as SwitchWithText } from "./SwitchWithText";
 export { default as TabMenu } from "./TabMenu";
-export { default as TruncatedTextWithTooltip } from "./TruncatedTextWithTooltip";
 export { default as UnitWithChart } from "./UnitWithChart";
