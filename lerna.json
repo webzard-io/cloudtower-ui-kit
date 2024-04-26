@@ -1,7 +1,7 @@
 {
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "0.28.2",
+  "version": "0.28.3-TOWER-11037",
   "command": {
     "version": {
       "message": "chore(release):publish %s"
