@@ -25,32 +25,28 @@ initParrotI18n();
 // Set Up Providers
 ReactDOM.render(
   <React.StrictMode>
-    <KitStoreProvider>
-      <UIKitProvider>
-        <App />
-      <UIKitProvider>
-    </KitStoreProvider>
+    <UIKitProvider>
+      <App />
+    <UIKitProvider>
   </React.StrictMode>,
   document.getElementById("root") as HTMLElement
 );
 ```
 
 ```tsx
-import { useUIKit } from "@cloudtower/eagle";
+import { Button } from "@cloudtower/eagle";
 import React, { useContext } from "react";
 
 const App = () => {
-  // Use Component
-  const kit = useUIKit();
   return (
     <div>
-      <kit.button
+      <Button
         onClick={() => {
           alert("hello");
         }}
       >
         say hello
-      </kit.button>
+      </Button>
     </div>
   );
 };
