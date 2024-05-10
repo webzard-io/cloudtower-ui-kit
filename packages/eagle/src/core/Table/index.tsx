@@ -5,6 +5,7 @@ import { ColumnTitle, TableLoading } from "@src/core/Table/TableWidget";
 import { zIndices } from "@src/styles/token";
 import { Table as BaseTable } from "antd";
 import cs from "classnames";
+import { isNil } from "lodash";
 import React, { useMemo, useRef } from "react";
 
 import { TableProps } from "./table.type";
@@ -446,9 +447,9 @@ export const tableStyleCover = css`
 
 const Table = <T extends { id: string }>(props: TableProps<T>) => {
   const {
-    loading,
+    loading = false,
     error,
-    dataSource,
+    dataSource: _dataSource,
     columns,
     onSorterChange,
     onRowClick,
@@ -466,7 +467,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
     onRow,
   } = props;
   const orderRef = useRef<"descend" | "ascend" | undefined | null>(null);
-  const hasScrollBard = useTableBodyHasScrollBar(wrapper, dataSource);
+  const hasScrollBard = useTableBodyHasScrollBar(wrapper, _dataSource);
 
   const _columns = useMemo(
     () =>
@@ -486,6 +487,25 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
       }),
     [columns],
   );
+
+  // The priority of displaying data is
+  // loading error data
+  const dataSource = useMemo(() => {
+    if (!isNil(error) || loading) {
+      return [];
+    }
+    return _dataSource ?? [];
+  }, [_dataSource, error, loading]);
+
+  const emptyText = useMemo(() => {
+    if (loading) {
+      return "";
+    }
+    if (!isNil(error)) {
+      return error;
+    }
+    return empty;
+  }, [empty, error, loading]);
 
   return (
     <div
@@ -508,9 +528,9 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
           indicator: initLoading ? <TableLoading /> : <Loading />,
         }}
         locale={{
-          emptyText: error || <>{loading ? "" : empty}</>,
+          emptyText,
         }}
-        dataSource={dataSource || []}
+        dataSource={dataSource}
         pagination={pagination || false}
         columns={_columns}
         components={components}
