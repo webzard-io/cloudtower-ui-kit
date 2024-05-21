@@ -37,6 +37,11 @@ const SimplePagination = (props: ISimplePaginationProps) => {
     [onPageChange, pageLength],
   );
 
+  if (count === 0) {
+    // do not render when count is 0
+    return null;
+  }
+
   return (
     <div className={cs(PaginationStyle, "pagination-wrapper", className)}>
       <span className={Typo.Label.l3_regular_title}>
