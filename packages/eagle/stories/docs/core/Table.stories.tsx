@@ -49,6 +49,78 @@ const data: DataType[] = [
     age: 99,
     address: "Sidney No. 1 Lake Park",
   },
+  {
+    id: "4",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "5",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "6",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "7",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "8",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "9",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "10",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "11",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "12",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "13",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "14",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "15",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
 ];
 
 const actionStyle = css`
@@ -94,10 +166,28 @@ const columns = [
  * 显示表格数据
  */
 export const ShowData: Story = {
-  name: "显示表格数据",
+  name: "有数据 无 loading 无 error",
   args: {
     columns,
     dataSource: data,
+  },
+};
+
+/**
+ * 自定义骨架屏表头，表身高度
+ */
+
+export const CustomHeight: Story = {
+  name: "自定义骨架屏高度",
+  args: {
+    columns,
+    dataSource: data,
+    loading: true,
+    skeletonProps: {
+      itemHeight: 30,
+      headerHeight: 60,
+      rows: 20,
+    },
   },
 };
 
@@ -107,11 +197,14 @@ export const ShowData: Story = {
  * 显示 loading
  */
 export const ShowLoadingWithDataAndError: Story = {
-  name: "显示 Loading",
+  name: "有数据 有 loading 有 error",
   args: {
     columns,
     loading: true,
     dataSource: data,
+    scroll: {
+      y: 100,
+    },
     error: <div>some error</div>,
   },
 };
@@ -122,7 +215,7 @@ export const ShowLoadingWithDataAndError: Story = {
  * 显示 error
  */
 export const ShowError: Story = {
-  name: "显示 Error",
+  name: "有数据 无 loading 无 error",
   args: {
     columns,
     dataSource: data,
@@ -137,7 +230,7 @@ export const ShowError: Story = {
  */
 
 export const ShowLoadingWithData: Story = {
-  name: "显示 Loading",
+  name: "有数据 有 loading 无 error",
   args: {
     columns,
     loading: true,
@@ -152,7 +245,7 @@ export const ShowLoadingWithData: Story = {
  */
 
 export const ShowEmpty: Story = {
-  name: "显示空表格数据",
+  name: "无数据 无 loading 无 error",
   args: {
     columns,
   },
@@ -165,7 +258,7 @@ export const ShowEmpty: Story = {
  */
 
 export const ShowLoadingWithEmpty: Story = {
-  name: "显示 Loading",
+  name: "无数据 有loading 无 error",
   args: {
     loading: true,
     columns,

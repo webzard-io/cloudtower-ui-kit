@@ -1,7 +1,6 @@
 import { css, cx } from "@linaria/core";
-import Loading from "@src/core/Loading";
 import { useTableBodyHasScrollBar } from "@src/core/Table/common";
-import { ColumnTitle, TableLoading } from "@src/core/Table/TableWidget";
+import { ColumnTitle } from "@src/core/Table/TableWidget";
 import { zIndices } from "@src/styles/token";
 import { Table as BaseTable } from "antd";
 import cs from "classnames";
@@ -9,6 +8,7 @@ import { isNil } from "lodash";
 import React, { useMemo, useRef } from "react";
 
 import { TableProps } from "./table.type";
+import { TableSkeleton } from "./TableSkeleton";
 
 const TableContainerStyle = css`
   height: 100%;
@@ -16,6 +16,11 @@ const TableContainerStyle = css`
 
 export const tableStyleCover = css`
   height: 100%;
+
+  .ant-table.ant-table-small .ant-table-tbody > tr > td {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
 
   &.empty-table .ant-table-content {
     overflow: visible !important;
@@ -296,7 +301,8 @@ export const tableStyleCover = css`
         border-bottom: none;
         color: $gray-120;
         transition: none;
-        padding: 15px 8px 15px 8px;
+        padding: 14px 8px 14px 8px;
+        line-height: 20px;
 
         &:not(:last-child):after {
           content: "";
@@ -465,6 +471,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
     wrapper,
     pagination,
     onRow,
+    skeletonProps,
   } = props;
   const orderRef = useRef<"descend" | "ascend" | undefined | null>(null);
   const hasScrollBard = useTableBodyHasScrollBar(wrapper, _dataSource);
@@ -488,10 +495,11 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
     [columns],
   );
 
-  // The priority of displaying data is
-  // loading error data
   const dataSource = useMemo(() => {
-    if (!isNil(error) || loading) {
+    if (loading) {
+      return _dataSource;
+    }
+    if (!isNil(error)) {
       return [];
     }
     return _dataSource ?? [];
@@ -525,7 +533,9 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
         bordered={bordered}
         loading={{
           spinning: loading,
-          indicator: initLoading ? <TableLoading /> : <Loading />,
+          indicator: (
+            <TableSkeleton scrollY={!!props.scroll?.y} {...skeletonProps} />
+          ),
         }}
         locale={{
           emptyText,
@@ -562,4 +572,5 @@ export default Table;
 
 export * from "./common";
 export * from "./table.type";
+export * from "./TableSkeleton";
 export * from "./TableWidget";
