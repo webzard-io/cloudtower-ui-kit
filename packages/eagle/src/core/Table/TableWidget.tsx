@@ -3,8 +3,8 @@ import { css } from "@linaria/core";
 import Icon from "@src/core/Icon";
 import { useElementsSize } from "@src/hooks";
 import cs from "classnames";
-import _ from "lodash";
 import React, { createContext } from "react";
+
 const TableLoadingStyle = css`
   height: 100%;
   .table-loading-item {
@@ -39,10 +39,14 @@ const TableLoadingStyle = css`
   }
 `;
 
+/**
+ * @deprecated
+ * use TableSkeleton instead
+ */
 export const TableLoading: React.FC = () => {
   const sizes = useElementsSize(
     { loading: ".ant-table-wrapper .ant-spin" },
-    {}
+    {},
   );
   const rowLength = Math.floor(sizes.loading.height + 8 / 40) || 20;
   const rows = Array.from({ length: rowLength }, (r, i) => i);
