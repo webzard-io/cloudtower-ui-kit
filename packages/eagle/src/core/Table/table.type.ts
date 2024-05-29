@@ -4,6 +4,7 @@ import {
   TableProps as AntdTableProps,
 } from "antd/lib/table";
 import { TableRowSelection } from "antd/lib/table/interface";
+import { ITableSkeletonProps } from "./TableSkeleton";
 
 interface IdObject {
   id: string;
@@ -86,4 +87,5 @@ export interface TableProps<T extends { id: string }> {
     pageSize: number;
   };
   onRow?: AntdTableProps<T>["onRow"];
+  skeletonProps?: Omit<ITableSkeletonProps, "scrollY">;
 }

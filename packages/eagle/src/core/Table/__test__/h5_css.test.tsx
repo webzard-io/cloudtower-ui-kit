@@ -104,6 +104,11 @@ describe("Table h5_css", () => {
             class=ant-table-wrapper,
         height: 100%;
 
+        .ant-table.ant-table-small .ant-table-tbody > tr > td {
+          padding-top: 6px;
+          padding-bottom: 6px;
+        }
+
         &.empty-table .ant-table-content {
           overflow: visible !important;
           height: 100%;
@@ -383,7 +388,8 @@ describe("Table h5_css", () => {
               border-bottom: none;
               color: $gray-120;
               transition: none;
-              padding: 15px 8px 15px 8px;
+              padding: 14px 8px 14px 8px;
+              line-height: 20px;
 
               &:not(:last-child):after {
                 content: "";
