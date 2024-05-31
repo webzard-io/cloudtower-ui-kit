@@ -62,13 +62,6 @@ export const tableStyleCover = css`
     }
   }
 
-  &.table-init-loading .ant-spin-blur {
-    thead,
-    tbody {
-      display: none;
-    }
-  }
-
   td.ant-table-column-sort {
     background: transparent;
   }
@@ -466,7 +459,8 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
     rowSelection,
     empty,
     tableLayout = "fixed",
-    initLoading,
+    // FIXME Should be removed at 0.30.x
+    initLoading = false,
     rowKey,
     wrapper,
     pagination,
@@ -527,12 +521,11 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
         className={cs(
           tableStyleCover,
           !dataSource?.length && "empty-table",
-          initLoading && "table-init-loading",
           rowSelection && "has-selection",
         )}
         bordered={bordered}
         loading={{
-          spinning: loading,
+          spinning: loading || initLoading,
           indicator: (
             <TableSkeleton scrollY={!!props.scroll?.y} {...skeletonProps} />
           ),

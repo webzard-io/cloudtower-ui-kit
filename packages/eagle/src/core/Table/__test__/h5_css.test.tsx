@@ -149,13 +149,6 @@ describe("Table h5_css", () => {
           }
         }
 
-        &.table-init-loading .ant-spin-blur {
-          thead,
-          tbody {
-            display: none;
-          }
-        }
-
         td.ant-table-column-sort {
           background: transparent;
         }
