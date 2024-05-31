@@ -109,27 +109,6 @@ describe("Table h5_css", () => {
           padding-bottom: 6px;
         }
 
-        &.empty-table .ant-table-content {
-          overflow: visible !important;
-          height: 100%;
-
-          .ant-table-tbody .ant-table-placeholder td {
-            height: 100%;
-          }
-
-          table {
-            width: 100% !important;
-            height: 100%;
-            .ant-table-placeholder .ant-table-expanded-row-fixed {
-              padding: 15px 0;
-            }
-          }
-
-          table thead.ant-table-thead {
-            display: none;
-          }
-        }
-
         .active-row td:nth-child(1) {
           font-weight: 700;
         }
