@@ -192,6 +192,18 @@ export const CustomHeight: Story = {
 };
 
 /**
+ * 初始化 loading
+ */
+
+export const InitLoading: Story = {
+  name: "初始化 Loading（弃用）",
+  args: {
+    columns,
+    initLoading: true,
+  },
+};
+
+/**
  * 在 loading error dataSource 存在值的情况下
  *
  * 显示 loading
@@ -215,7 +227,7 @@ export const ShowLoadingWithDataAndError: Story = {
  * 显示 error
  */
 export const ShowError: Story = {
-  name: "有数据 无 loading 无 error",
+  name: "有数据 无 loading 有 error",
   args: {
     columns,
     dataSource: data,
