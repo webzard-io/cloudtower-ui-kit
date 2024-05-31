@@ -186,7 +186,7 @@ export const CustomHeight: Story = {
     skeletonProps: {
       itemHeight: 30,
       headerHeight: 60,
-      rows: 20,
+      rowsCount: 20,
     },
   },
 };
@@ -200,6 +200,22 @@ export const InitLoading: Story = {
   args: {
     columns,
     initLoading: true,
+  },
+};
+
+/**
+ * 使用分页作为骨架数量 loading
+ */
+
+export const LoadingSkeletonWithPageSize: Story = {
+  name: "使用分页作为骨架数量 loading",
+  args: {
+    columns,
+    loading: true,
+    pagination: {
+      current: 1,
+      pageSize: 50,
+    },
   },
 };
 
