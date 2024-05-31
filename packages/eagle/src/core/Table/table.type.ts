@@ -4,6 +4,7 @@ import {
   TableProps as AntdTableProps,
 } from "antd/lib/table";
 import { TableRowSelection } from "antd/lib/table/interface";
+
 import { ITableSkeletonProps } from "./TableSkeleton";
 
 interface IdObject {
@@ -79,6 +80,9 @@ export interface TableProps<T extends { id: string }> {
   rowSelection?: TableRowSelection<T>;
   empty?: string | React.ReactNode;
   tableLayout?: "fixed" | "auto";
+  /**
+   * @deprecated use loading instead
+   */
   initLoading?: boolean;
   rowKey?: AntdTableProps<T>["rowKey"];
   wrapper?: React.MutableRefObject<HTMLDivElement | null>;
