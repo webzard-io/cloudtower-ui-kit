@@ -1,14 +1,15 @@
 import { css } from "@linaria/core";
 import { useElementsSize } from "@src/hooks";
 import { Color } from "@src/styles/token/color";
-import React from "react";
+import React, { useMemo } from "react";
 
-export interface ITableSkeletonProps {
+export interface IDynamicTableSkeletonProps {
   /**
-   * rows 默认为 undefined，此情况下组件会根据表格的高度和单项高度计算列数量。
-   * 在自动计算的 row 不符合需求时，可以自定义骨架屏 rows 的数量。
+   * rowsCount 默认为 undefined，此情况下组件会根据表格的高度和单项高度计算列数量。
+   * 在自动计算的 row 不符合需求时，可以自定义骨架屏列的数量。
    */
-  rows?: number;
+  rowsCount?: number;
+
   /**
    * 在表格加入了 scrollY 属性以后，表格的结构会发生变化。
    * 获取表格高度的选择器有所区别，需要外部将此信息传入。
@@ -28,68 +29,56 @@ export interface ITableSkeletonProps {
   itemHeight?: number;
 }
 
-export const TableSkeleton = (props: ITableSkeletonProps) => {
+export const DynamicTableSkeleton = (props: IDynamicTableSkeletonProps) => {
   const {
-    rows: _rowLength,
+    rowsCount: _rowsCount,
     scrollY = false,
     headerHeight = 48,
     itemHeight: _itemHeight,
   } = props;
   const sizes = useElementsSize(
     {
-      loading: ".ant-table-container .ant-table-content .ant-table-tbody",
-      scrollYLoading: ".ant-table-container .ant-table-tbody",
+      loading:
+        ".ant-table-container .ant-table-content .ant-table-tbody:not(:has(.ant-empty))",
+      scrollYLoading:
+        ".ant-table-container .ant-table-tbody:not(:has(.ant-empty))",
     },
     {},
   );
+
+  // if empty container height is 0
+  const containerHeight =
+    sizes[scrollY ? "scrollYLoading" : "loading"].height ?? 0;
 
   const itemSizes = useElementsSize(
     {
       loading:
-        ".ant-table-container .ant-table-content .ant-table-tbody > tr:not(:first-child)",
+        ".ant-table-container .ant-table-content .ant-table-tbody > tr:not(:first-child):not(:has(.ant-empty))",
       scrollYLoading:
-        ".ant-table-container .ant-table-tbody > tr:not(:first-child)",
+        ".ant-table-container .ant-table-tbody > tr:not(:first-child):not(:has(.ant-empty))",
     },
     {},
   );
 
-  const itemHeight =
-    (_itemHeight ?? itemSizes[scrollY ? "scrollYLoading" : "loading"].height) ||
-    40;
+  const dynamicItemHeight =
+    itemSizes[scrollY ? "scrollYLoading" : "loading"].height;
 
-  const rowLength =
-    (_rowLength ??
-      Math.ceil(
-        sizes[scrollY ? "scrollYLoading" : "loading"].height / itemHeight,
-      )) ||
-    20;
+  const defaultItemHeight = 40;
 
-  const rows = Array.from({ length: rowLength }, (r, i) => i);
+  // use user input _itemHeight first
+  // then dynamicItemHeight
+  // defaultItemHeight is Avoid division by 0
+  const itemHeight = (_itemHeight ?? dynamicItemHeight) || defaultItemHeight;
+
+  const rowsCount =
+    (_rowsCount ?? Math.ceil(containerHeight / itemHeight)) || 50;
 
   return (
-    <div className={`${TableLoadingStyle} table-loading`}>
-      <div
-        className="table-loading-header table-loading-item"
-        style={{ height: headerHeight }}
-      >
-        <div className="checkbox-loading"></div>
-        <div className="td-loading"></div>
-        <div className="td-loading"></div>
-        <div className="td-loading"></div>
-      </div>
-      {rows.map((i) => (
-        <div
-          key={i}
-          className="table-loading-item"
-          style={{ height: itemHeight }}
-        >
-          <div className="checkbox-loading"></div>
-          <div className="td-loading"></div>
-          <div className="td-loading"></div>
-          <div className="td-loading"></div>
-        </div>
-      ))}
-    </div>
+    <TableSkeleton
+      rowsCount={rowsCount}
+      itemHeight={itemHeight}
+      headerHeight={headerHeight}
+    />
   );
 };
 
@@ -123,3 +112,44 @@ const TableLoadingStyle = css`
     }
   }
 `;
+
+export interface ITableSkeletonProps {
+  rowsCount?: number;
+  headerHeight?: number;
+  itemHeight?: number;
+}
+
+export const TableSkeleton = (props: ITableSkeletonProps) => {
+  const { rowsCount = 50, headerHeight = 48, itemHeight } = props;
+
+  const rows = useMemo(
+    () => Array.from({ length: rowsCount }, (r, i) => i),
+    [rowsCount],
+  );
+
+  return (
+    <div className={`${TableLoadingStyle} table-loading`}>
+      <div
+        className="table-loading-header table-loading-item"
+        style={{ height: headerHeight }}
+      >
+        <div className="checkbox-loading"></div>
+        <div className="td-loading"></div>
+        <div className="td-loading"></div>
+        <div className="td-loading"></div>
+      </div>
+      {rows.map((i) => (
+        <div
+          key={i}
+          className="table-loading-item"
+          style={{ height: itemHeight }}
+        >
+          <div className="checkbox-loading"></div>
+          <div className="td-loading"></div>
+          <div className="td-loading"></div>
+          <div className="td-loading"></div>
+        </div>
+      ))}
+    </div>
+  );
+};
