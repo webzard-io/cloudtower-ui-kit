@@ -9,6 +9,7 @@ import Speed from "./Speed";
 
 export * from "./AccordionCard";
 export * from "./Alert";
+export * from "./Antd5Anchor";
 export * from "./Antd5Dropdown";
 export * from "./Arch";
 export * from "./Badge";
@@ -109,6 +110,7 @@ export { units as Units };
 // rename default export
 export { default as AccordionCard } from "./AccordionCard";
 export { default as Alert } from "./Alert";
+export { default as Antd5Anchor } from "./Antd5Anchor";
 export { default as Arch } from "./Arch";
 export { default as Avatar } from "./Avatar";
 export { default as Badge } from "./Badge";
