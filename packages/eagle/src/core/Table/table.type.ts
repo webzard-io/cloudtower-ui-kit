@@ -91,5 +91,5 @@ export interface TableProps<T extends { id: string }> {
     pageSize: number;
   };
   onRow?: AntdTableProps<T>["onRow"];
-  skeletonProps?: Omit<ITableSkeletonProps, "scrollY">;
+  skeletonProps?: ITableSkeletonProps;
 }

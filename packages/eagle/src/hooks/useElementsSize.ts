@@ -7,7 +7,7 @@ type Size<K extends string> = Record<K, { width: number; height: number }>;
 function getAllSize<K extends string>(classMap: Record<K, string>) {
   return Object.keys(classMap).reduce((prev: Size<K>, cur) => {
     prev[cur as K] = getSize(
-      document.querySelector<HTMLElement>(classMap[cur as K])
+      document.querySelector<HTMLElement>(classMap[cur as K]),
     );
     return prev;
   }, {} as Size<K>);
@@ -24,9 +24,12 @@ const elementsSizes: Record<
   >
 > = {};
 
+/**
+ * @deprecated
+ */
 export default function useElementsSize<K extends string>(
   classMap: Record<K, string>,
-  config: { prevent?: boolean; key?: string; dependencyList?: unknown[] }
+  config: { prevent?: boolean; key?: string; dependencyList?: unknown[] },
 ) {
   const { prevent, key, dependencyList } = config;
   const preSizes = useRef<Record<K, { width: number; height: number }>>();
@@ -56,7 +59,7 @@ export default function useElementsSize<K extends string>(
         // FIXME: antd 4.0 table thead will be delay render
         !_.isEqual(
           _.omit(elementsSizes[key], "thead"),
-          _.omit(nextSizes, "thead")
+          _.omit(nextSizes, "thead"),
         )
       ) {
         elementsSizes[key] = nextSizes;

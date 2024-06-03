@@ -8,7 +8,7 @@ import { isNil } from "lodash";
 import React, { useMemo, useRef } from "react";
 
 import { TableProps } from "./table.type";
-import { DynamicTableSkeleton } from "./TableSkeleton";
+import { TableSkeleton } from "./TableSkeleton";
 
 const TableContainerStyle = css`
   height: 100%;
@@ -528,12 +528,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
         bordered={bordered}
         loading={{
           spinning: loading || initLoading,
-          indicator: (
-            <DynamicTableSkeleton
-              scrollY={!!props.scroll?.y}
-              {...skeletonProps}
-            />
-          ),
+          indicator: <TableSkeleton {...skeletonProps} />,
         }}
         locale={{
           emptyText,
