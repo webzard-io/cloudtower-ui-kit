@@ -45,6 +45,9 @@ export type SorterOrder = "descend" | "ascend" | undefined;
 export interface TableProps<T extends { id: string }> {
   bordered?: boolean;
   loading?: boolean;
+  /**
+   *  This means errorEl.
+   */
   error?: React.ReactNode | string;
   dataSource: T[] | undefined;
   columns: RequiredColumnProps<T>[];

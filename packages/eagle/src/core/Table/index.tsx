@@ -495,7 +495,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
     if (loading) {
       return _dataSource;
     }
-    if (!isNil(error)) {
+    if (!!error) {
       return [];
     }
     return _dataSource ?? [];
@@ -505,7 +505,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
     if (loading) {
       return "";
     }
-    if (!isNil(error)) {
+    if (!!error) {
       return error;
     }
     return empty;
