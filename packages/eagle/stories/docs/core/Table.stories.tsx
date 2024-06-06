@@ -292,3 +292,18 @@ export const ShowLoadingWithEmpty: Story = {
     columns,
   },
 };
+
+/**
+ * 在 error false 的情况
+ *
+ * 显示 data
+ */
+
+export const ErrorFalse: Story = {
+  name: "error 传入 false",
+  args: {
+    columns,
+    dataSource: data,
+    error: false,
+  },
+};
