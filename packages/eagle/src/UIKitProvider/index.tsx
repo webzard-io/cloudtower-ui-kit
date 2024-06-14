@@ -3,6 +3,7 @@ import { BatchHelper, createBatchMessageMethods } from "@src/core";
 import _message, { MessageApi } from "@src/core/message";
 import { antdKit } from "@src/legacy-antd";
 import { ConfigProvider } from "antd";
+import { ConfigProviderProps } from "antd/lib/config-provider";
 import enUS from "antd/lib/locale/en_US";
 import zhCN from "antd/lib/locale/zh_CN";
 import React, {
@@ -22,7 +23,7 @@ export interface IProps {
     maxCount?: number;
   };
   lng?: ParrotI18nSupportLng;
-  getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement;
+  antdProviderConfig?: ConfigProviderProps;
 }
 
 export const kitContext = createContext<Kit>(antdKit);
@@ -35,7 +36,7 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
     kit = antdKit,
     message,
     lng = "en-US",
-    getPopupContainer,
+    antdProviderConfig,
   } = props;
 
   const batchMessage = useMemo(() => {
@@ -69,7 +70,7 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
         <ConfigProvider
           autoInsertSpaceInButton={false}
           locale={lng === "zh-CN" ? zhCN : enUS}
-          getPopupContainer={getPopupContainer}
+          {...antdProviderConfig}
         >
           {children}
         </ConfigProvider>
