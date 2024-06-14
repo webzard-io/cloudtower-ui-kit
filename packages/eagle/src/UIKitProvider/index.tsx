@@ -15,6 +15,7 @@ import React, {
 } from "react";
 
 import { Kit } from "../spec";
+import { AntdConfigProvider } from "../core/AntdConfigProvider";
 
 export interface IProps {
   kit?: Kit;
@@ -67,13 +68,13 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
   return (
     <kitContext.Provider value={_kit}>
       <MessageContext.Provider value={batchMessage ?? _message}>
-        <ConfigProvider
+        <AntdConfigProvider
           autoInsertSpaceInButton={false}
           locale={lng === "zh-CN" ? zhCN : enUS}
           {...antdProviderConfig}
         >
           {children}
-        </ConfigProvider>
+        </AntdConfigProvider>
       </MessageContext.Provider>
     </kitContext.Provider>
   );

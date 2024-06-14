@@ -1,8 +1,8 @@
 import { css } from "@linaria/core";
 import { Antd5Dropdown, Antd5DropdownProps } from "@src/core";
 import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 import { Space, Typography } from "antd5";
+import React from "react";
 
 type Story = StoryObj<React.FC<Antd5DropdownProps>>;
 

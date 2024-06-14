@@ -3,8 +3,8 @@ import { Pagination } from "antd";
 import { Calendar } from "antd";
 import React from "react";
 
-import UIKitProvider, { IProps } from ".";
 import { Select } from "..";
+import UIKitProvider, { IProps } from ".";
 
 const meta: Meta<typeof UIKitProvider> = {
   component: UIKitProvider,
