@@ -4,7 +4,6 @@ import { ColumnTitle } from "@src/core/Table/TableWidget";
 import { zIndices } from "@src/styles/token";
 import { Table as BaseTable } from "antd";
 import cs from "classnames";
-import { isNil } from "lodash";
 import React, { useMemo, useRef } from "react";
 
 import { TableProps } from "./table.type";
@@ -14,8 +13,15 @@ const TableContainerStyle = css`
   height: 100%;
 `;
 
-export const emptyTableStyle = css`
-  .ant-table-content {
+export const tableStyleCover = css`
+  height: 100%;
+
+  .ant-table.ant-table-small .ant-table-tbody > tr > td {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  &.empty-table .ant-table-content {
     overflow: visible !important;
     height: 100%;
 
@@ -34,15 +40,6 @@ export const emptyTableStyle = css`
     table thead.ant-table-thead {
       display: none;
     }
-  }
-`;
-
-export const tableStyleCover = css`
-  height: 100%;
-
-  .ant-table.ant-table-small .ant-table-tbody > tr > td {
-    padding-top: 6px;
-    padding-bottom: 6px;
   }
 
   .active-row td:nth-child(1) {
@@ -522,7 +519,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
       <BaseTable
         className={cs(
           tableStyleCover,
-          !dataSource?.length && emptyTableStyle,
+          !dataSource?.length && "empty-table",
           rowSelection && "has-selection",
         )}
         bordered={bordered}
