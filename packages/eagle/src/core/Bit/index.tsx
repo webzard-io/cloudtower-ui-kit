@@ -1,7 +1,7 @@
 import { cx } from "@linaria/core";
 import Empty from "@src/core/Empty";
 import isEmpty from "@src/utils/isEmpty";
-import { formatBits } from "@src/utils/tower";
+import { formatBits } from "@tower/utils";
 import React from "react";
 
 import { UnitFn } from "../Units/units.type";

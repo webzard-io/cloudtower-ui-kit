@@ -1,29 +1,25 @@
 import Byte from "@src/core/Byte";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import React from "react";
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+import { Meta, StoryObj } from "@storybook/react";
+
 export default {
-  title: "Core/Byte",
+  title: "Core/Byte | 内存和存储容量",
   component: Byte,
-} as ComponentMeta<typeof Byte>;
+} as Meta<typeof Byte>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Byte> = (args) => {
-  return <Byte {...args} />;
+type Story = StoryObj<typeof Byte>;
+
+export const Simple: Story = {
+  args: {
+    rawValue: 1000,
+  },
 };
 
-export const Simple = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Simple.args = {
-  rawValue: 1000,
-};
-
-export const Empty = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Empty.args = {
-  emptyProps: {
-    style: {
-      color: "red",
+export const Empty: Story = {
+  args: {
+    emptyProps: {
+      style: {
+        color: "red",
+      },
     },
   },
 };

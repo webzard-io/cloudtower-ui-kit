@@ -116,7 +116,7 @@ import React, {
   RefAttributes,
 } from "react";
 
-import { SerializableObject } from "../utils/tower";
+import { SerializableObject } from "@tower/utils";
 
 export type AntdTableComponentType = <RecordType extends object = any>(
   props: AntdTableProps<RecordType>,

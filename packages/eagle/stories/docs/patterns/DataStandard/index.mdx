@@ -1,0 +1,55 @@
+import { Meta,Story, Canvas, Controls } from '@storybook/blocks';
+import { ArgsTable } from "@storybook/addon-docs";
+import * as SecondStories from "../../core/Second.stories";
+import * as BitStories from "../../core/Bit.stories"
+import * as BpsStories from "../../core/Bps.stories";
+import * as ByteStories from "../../core/Byte.stories"
+import * as FrequencyStories from "../../core/Frequency.stories";
+import * as BitPerSecondStories from "../../core/BitPerSecond.stories";
+import * as SpeedStories from "../../core/Speed.stories";
+
+<Meta title="Patterns / Data | 数值规范" />
+
+# 数值规范
+> 详细可见： [figma](https://www.figma.com/design/GFNvuGkWoKec365FOMKftV/%E6%95%B0%E5%80%BC%E5%B1%95%E7%A4%BA?node-id=1-21&t=i7X1H626pI4WVYOM-0)
+## 组件
+
+
+### Bit | 发送/接收数据量
+
+<Canvas of={BitStories.Simple}/>
+<Controls of={BitStories.Simple}/>
+
+### Byte | 内存和存储容量
+
+<Canvas of={ByteStories.Simple} />
+<Controls of={ByteStories.Simple}/>
+
+### BitPerSecond | 数据传输速率, 存储带宽
+
+<Canvas of={BitPerSecondStories.Simple}/>
+<Controls of={BitPerSecondStories.Simple}/>
+
+
+### Bps | 网络流量带宽
+
+<Canvas of={BpsStories.Simple}/>
+<Controls of={BpsStories.Simple}/>
+
+### Frequency | CPU 频率
+
+<Canvas of={FrequencyStories.Simple}/>
+<Controls of={FrequencyStories.Simple}/>
+
+
+### Second | 延时
+
+<Canvas of={SecondStories.Simple} />
+<Controls of={SecondStories.Simple} />
+
+### Speed | 网口速率
+
+<Canvas of={SpeedStories.Simple} />
+<Controls of={SpeedStories.Simple}/>
+
+## 函数

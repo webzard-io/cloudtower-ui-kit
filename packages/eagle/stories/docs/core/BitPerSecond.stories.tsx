@@ -1,29 +1,25 @@
 import BitPerSecond from "@src/core/BitPerSecond";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import React from "react";
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+import { Meta, StoryObj } from "@storybook/react";
+
 export default {
-  title: "Core/BitPerSecond",
+  title: "Core/BitPerSecond ｜ 存储带宽，数据传输速率",
   component: BitPerSecond,
-} as ComponentMeta<typeof BitPerSecond>;
+} as Meta<typeof BitPerSecond>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof BitPerSecond> = (args) => {
-  return <BitPerSecond {...args} />;
+type Story = StoryObj<typeof BitPerSecond>;
+
+export const Simple: Story = {
+  args: {
+    rawValue: 1000,
+  },
 };
 
-export const Simple = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Simple.args = {
-  rawValue: 1000,
-};
-
-export const Empty = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Empty.args = {
-  emptyProps: {
-    style: {
-      color: "red",
+export const Empty: Story = {
+  args: {
+    emptyProps: {
+      style: {
+        color: "red",
+      },
     },
   },
 };

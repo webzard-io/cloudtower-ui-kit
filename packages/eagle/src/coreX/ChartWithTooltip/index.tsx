@@ -14,7 +14,7 @@ import UnitWithChart, {
   IUnitWithChartProps,
   UnitWrapper,
 } from "@src/coreX/UnitWithChart";
-import { formatPercent } from "@src/utils/tower";
+import { formatPercent } from "@tower/utils";
 import _ from "lodash";
 import React from "react";
 
@@ -146,7 +146,7 @@ export const ChartWithUnit: React.FC<IChartWithUnitProps> = (props) => {
           unit={finalTableUnit}
           rawValue={
             chartType === "barChart"
-              ? formatPercent((rawValue / total) * 100, 1).numberValue
+              ? formatPercent((rawValue / total) * 100, 1).value
               : rawValue
           }
           total={total}
@@ -226,7 +226,7 @@ const ChartWithTooltip: React.FunctionComponent<ICWTProps> = (props) => {
                       (rawValue / total) * 100,
                       1,
                       saturated ?? true,
-                    ).numberValue
+                    ).value
                   : rawValue
               }
               total={total}

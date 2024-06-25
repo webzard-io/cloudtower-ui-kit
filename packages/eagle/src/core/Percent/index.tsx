@@ -1,7 +1,7 @@
 import { cx } from "@linaria/core";
 import Empty from "@src/core/Empty";
 import isEmpty from "@src/utils/isEmpty";
-import { formatPercent } from "@src/utils/tower";
+import { formatPercent } from "@tower/utils";
 import React from "react";
 
 import { PercentFn } from "../Units/units.type";

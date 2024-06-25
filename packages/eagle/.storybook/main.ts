@@ -19,6 +19,7 @@ const config: StorybookConfig = {
   stories: [
     "../src/**/*.stories.@(js|jsx|ts|tsx|mdx)",
     "../stories/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+    "../stories/**/*.mdx",
   ],
   addons: [
     "@storybook/addon-essentials",

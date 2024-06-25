@@ -2,7 +2,7 @@ import { cx } from "@linaria/core";
 import Empty from "@src/core/Empty";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import isEmpty from "@src/utils/isEmpty";
-import { formatSeconds } from "@src/utils/tower";
+import { formatSeconds } from "@tower/utils";
 import React from "react";
 
 import { UnitFn } from "../Units/units.type";

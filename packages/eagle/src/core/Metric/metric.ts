@@ -1,11 +1,11 @@
 import { DateRange, IDataPoint, IMetric } from "@src/core/Metric/type";
-import { DAY, HOUR, MINUTE, SECOND } from "@src/utils/tower";
+import { DAY, HOUR, MINUTE, SECOND } from "@tower/utils";
 import dayjs from "dayjs";
 import _ from "lodash";
 
 export function filterPointsByDateRange(
   points: IDataPoint[],
-  dateRange: DateRange
+  dateRange: DateRange,
 ): IDataPoint[] {
   const [startDate, endDate] = dateRange;
 
@@ -61,7 +61,7 @@ export const tickFormatter = (tick: number, dateRange: DateRange) => {
 
 export function getXAxisDomain(
   dateRange: DateRange,
-  xaxisLastTime?: number
+  xaxisLastTime?: number,
 ): [number, number] {
   const [startDate, endDate] = dateRange;
 
@@ -99,13 +99,13 @@ export const filterDataOverlapping = <
   } = {
     t: number;
     v?: number;
-  }
+  },
 >(
   data: Data[],
   startTimestamp: number,
   length: number,
   step: number,
-  tolerance: number
+  tolerance: number,
 ) => {
   const points = [...new Array(Math.round(length))]
     .map((_, index) => {
@@ -118,7 +118,7 @@ export const filterDataOverlapping = <
         }),
         (value) => {
           return Math.abs(value.t - timestamp);
-        }
+        },
       );
       if (closestPoint == null) {
         return {
@@ -166,7 +166,7 @@ export const convertDataStruct = (streams: IDataPoint[][]) => {
 
 export const filterOverlappingMetric = (
   metric: IMetric,
-  dateRange: DateRange
+  dateRange: DateRange,
 ) => {
   const range = getMs(dateRange);
   return {
@@ -178,7 +178,7 @@ export const filterOverlappingMetric = (
         dateRange[0].valueOf(),
         range / stream.step,
         stream.step,
-        stream.tolerance
+        stream.tolerance,
       ),
     })),
   };

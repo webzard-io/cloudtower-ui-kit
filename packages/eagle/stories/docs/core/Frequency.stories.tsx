@@ -1,30 +1,25 @@
 import Frequency from "@src/core/Frequency";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import React from "react";
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+import { Meta, StoryObj } from "@storybook/react";
+
 export default {
-  title: "Core/Frequency",
+  title: "Core/Frequency | CPU 频率",
   component: Frequency,
-} as ComponentMeta<typeof Frequency>;
+} as Meta<typeof Frequency>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Frequency> = (args) => {
-  return <Frequency {...args} />;
+type Story = StoryObj<typeof Frequency>;
+
+export const Simple: Story = {
+  args: {
+    rawValue: 1000,
+  },
 };
 
-export const Simple = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Simple.args = {
-  rawValue: 1000,
-  decimals: 1,
-};
-
-export const Empty = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Empty.args = {
-  emptyProps: {
-    style: {
-      color: "red",
+export const Empty: Story = {
+  args: {
+    emptyProps: {
+      style: {
+        color: "red",
+      },
     },
   },
 };

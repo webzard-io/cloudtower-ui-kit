@@ -1,29 +1,24 @@
 import Bit from "@src/core/Bit";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import React from "react";
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+import { Meta, StoryObj } from "@storybook/react";
+
 export default {
-  title: "Core/Bit",
+  title: "Core/Bit | 发送，接收数据量（网络流量）",
   component: Bit,
-} as ComponentMeta<typeof Bit>;
+} as Meta<typeof Bit>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Bit> = (args) => {
-  return <Bit {...args} />;
+type Story = StoryObj<typeof Bit>;
+
+export const Simple: Story = {
+  args: {
+    rawValue: 1000,
+    abbreviate: true,
+  },
 };
 
-export const Simple = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Simple.args = {
-  rawValue: 1000,
-};
-
-export const Empty = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Empty.args = {
-  emptyProps: {
-    style: {
-      color: "red",
+export const Empty: Story = {
+  args: {
+    emptyProps: {
+      style: { color: "red" },
     },
   },
 };
