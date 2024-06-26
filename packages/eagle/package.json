@@ -17,7 +17,7 @@
   },
   "scripts": {
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
-    "prebuild": "node tools/prebuild-antd-less.js",
+    "prebuild": "node tools/prebuild-antd-less.js && node tools/prebuild-antd5-style.js",
     "test": "vitest",
     "test:ci": "vitest run",
     "coverage": "vitest run --coverage",
@@ -47,6 +47,7 @@
     "timezones.json": "^1.6.1"
   },
   "devDependencies": {
+    "@ant-design/static-style-extract": "^1.0.2",
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.22.15",
     "@babel/preset-react": "^7.22.15",
