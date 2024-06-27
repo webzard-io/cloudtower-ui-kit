@@ -12,7 +12,7 @@ import {
   PresetCascaderRender,
 } from "@src/core/Cascader/cascader.widget";
 import Icon from "@src/core/Icon";
-import { Antd5PrefixCls } from "@src/utils/constants";
+import { Antd5ComponentPrefixCls } from "@src/utils/constants";
 import { Cascader as Antd5Cascader } from "antd5";
 import cls from "classnames";
 import React from "react";
@@ -29,7 +29,7 @@ export const Cascader: React.FC<CascaderProps> = (props) => {
   return (
     <Antd5Cascader
       size={size}
-      prefixCls={`${Antd5PrefixCls}-cascader`}
+      prefixCls={Antd5ComponentPrefixCls["Cascader"]}
       expandIcon={<Icon src={HierarchyTriangleRight16PrimaryIcon} />}
       popupClassName={cls(
         {

@@ -8,7 +8,7 @@ import {
 } from "@src/core/Progress/progress.style";
 import { ComponentType, ProgressProps } from "@src/core/Progress/progress.type";
 import { Area } from "@src/core/Progress/progress.widgets";
-import { Antd5PrefixCls } from "@src/utils";
+import { Antd5ComponentPrefixCls, Antd5PrefixCls } from "@src/utils";
 import { isStringArray } from "@src/utils/isStringArr";
 import { Progress as AntdProgress } from "antd5";
 import React from "react";
@@ -127,7 +127,7 @@ export const Progress: React.FC<ProgressProps> = ({
         strokeWidth={storkeWidth}
         showInfo={false}
         {...props}
-        prefixCls={`${Antd5PrefixCls}-progress`}
+        prefixCls={Antd5ComponentPrefixCls["Progress"]}
         status={finalStatus === "active" ? "active" : undefined}
         percent={indeterminate ? 100 : percent}
         strokeColor={StatusColorMap[finalStatus]}
