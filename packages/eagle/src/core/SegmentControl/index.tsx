@@ -1,5 +1,5 @@
 import { css } from "@linaria/core";
-import { Antd5PrefixCls } from "@src/utils";
+import { Antd5ComponentPrefixCls, Antd5PrefixCls } from "@src/utils";
 import { Segmented as AntdSegmented } from "antd5";
 import classNames from "classnames";
 import React from "react";
@@ -78,7 +78,7 @@ const SegmentControl = (props: ISegmentedControlProps) => {
         ColorSegment,
       )}
       size={size}
-      prefixCls={`${Antd5PrefixCls}-segmented`}
+      prefixCls={Antd5ComponentPrefixCls["Segmented"]}
       {...props}
     />
   );
