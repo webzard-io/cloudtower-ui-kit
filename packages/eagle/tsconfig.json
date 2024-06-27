@@ -12,6 +12,11 @@
       "@stories/*": ["./stories/*"]
     }
   },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
   "include": ["src", "images.d.ts", "stories"],
   "exclude": ["node_modules"]
 }
