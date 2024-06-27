@@ -1,3 +1,4 @@
+//@ts-nocheck
 const fs = require("fs");
 const path = require("path");
 const React = require("react");
@@ -7,9 +8,7 @@ const {
   extractStyle: extStyle,
 } = require("@ant-design/cssinjs");
 const antd5 = require("antd5");
-// const { ConfigProvider } = require("antd5");
 const { renderToString } = require("react-dom/server");
-// const { Antd5ComponentPrefixCls } = require("../src/utils");
 
 const outputPath = path.resolve(__dirname, "../src/styles/libs/antd5.css");
 const blackList = [
@@ -40,7 +39,6 @@ const defaultNode = () => (
           !blackList.includes(name) && name[0] === name[0].toUpperCase(),
       )
       .map((compName) => {
-        // @ts-ignore
         const Comp = antd5[compName];
         if (compName === "Dropdown") {
           return (
