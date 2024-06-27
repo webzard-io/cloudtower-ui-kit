@@ -8,6 +8,7 @@ const {
   extractStyle: extStyle,
 } = require("@ant-design/cssinjs");
 const antd5 = require("antd5");
+const { ConfigProvider } = require("antd5");
 const { renderToString } = require("react-dom/server");
 
 const outputPath = path.resolve(__dirname, "../src/styles/libs/antd5.css");
@@ -68,6 +69,10 @@ const extractStyle = (customTheme?: CustomRender) => {
   return styleText;
 };
 
-const css = extractStyle();
+const css = extractStyle((node) => (
+  <ConfigProvider prefixCls={Antd5PrefixCls} theme={{ hashed: false }}>
+    {node}
+  </ConfigProvider>
+));
 
 fs.writeFileSync(outputPath, css);

@@ -17,7 +17,7 @@
   },
   "scripts": {
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
-    "prebuild": "node tools/prebuild-antd-less.js && npx ts-node tools/prebuild-antd5-style.tsx",
+    "prebuild": "node tools/prebuild-antd-less.js && NODE_ENV=production npx ts-node tools/prebuild-antd5-style.tsx",
     "test": "vitest",
     "test:ci": "vitest run",
     "coverage": "vitest run --coverage",
@@ -33,7 +33,7 @@
     "@linaria/core": "^4.2.2",
     "@linaria/react": "^4.3.0",
     "antd": "4.5.0",
-    "antd5": "npm:antd@^5.12.2",
+    "antd5": "npm:antd@5.14.0",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.10",
     "react-beautiful-dnd": "^13.0.0",
@@ -47,7 +47,6 @@
     "timezones.json": "^1.6.1"
   },
   "devDependencies": {
-    "@ant-design/static-style-extract": "^1.0.2",
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.22.15",
     "@babel/preset-react": "^7.22.15",
