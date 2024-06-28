@@ -36,6 +36,7 @@
     "antd": "4.5.0",
     "antd5": "npm:antd@^5.12.2",
     "classnames": "^2.3.2",
+    "crypto-js": "^4.2.0",
     "dayjs": "^1.11.10",
     "react-beautiful-dnd": "^13.0.0",
     "react-highlight-words": "^0.17.0",
@@ -112,9 +113,6 @@
     "typescript": "5.0.2",
     "vite": "^4.5.1",
     "vitest": "^0.24.1"
-  },
-  "peerDependencies": {
-    "crypto-js": "^4.2.0"
   },
   "gitHead": "43aae2e4b3fe1d526871feb6e9d217250cbe47a1"
 }
