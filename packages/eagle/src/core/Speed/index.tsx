@@ -4,6 +4,7 @@ import isEmpty from "@src/utils/isEmpty";
 import { formatSpeed } from "@src/utils/tower";
 import React from "react";
 
+import { UnitStyle } from "../Styled";
 import { UnitFn } from "../Units/units.type";
 
 const Speed: UnitFn = ({
@@ -20,7 +21,7 @@ const Speed: UnitFn = ({
   return (
     <span>
       <span className={cx("value", valueClassName)}>{value}</span>
-      <span className={cx("unit", unitClassName)}>{` ${unit}`}</span>
+      <span className={cx("unit", UnitStyle, unitClassName)}>{` ${unit}`}</span>
     </span>
   );
 };

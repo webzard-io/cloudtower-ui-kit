@@ -5,6 +5,7 @@ import isEmpty from "@src/utils/isEmpty";
 import { formatSeconds } from "@src/utils/tower";
 import React from "react";
 
+import { UnitStyle } from "../Styled";
 import { UnitFn } from "../Units/units.type";
 
 const Second: UnitFn = ({
@@ -24,7 +25,7 @@ const Second: UnitFn = ({
   return (
     <span>
       <span className={cx("value", valueClassName)}>{value} </span>
-      <span className={cx("unit", unitClassName)}>
+      <span className={cx("unit", UnitStyle, unitClassName)}>
         {t(`common.${abbreviate ? `${unit}_abbreviation` : unit}`)}
       </span>
     </span>
