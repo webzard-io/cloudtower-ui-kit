@@ -1,5 +1,6 @@
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
+import { Color } from "../../styles/token";
 
 export const CommonContent = styled.div`
   display: flex;
@@ -459,7 +460,9 @@ export const InputStyle = css`
     color: $text-primary-light;
     border-radius: 6px;
     border-color: $strokes-light-trans-3;
-    transition: height 240ms ease 8ms, border 160ms ease 8ms,
+    transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
       box-shadow 160ms ease 8ms;
   }
 
@@ -528,7 +531,9 @@ export const InputStyle = css`
     border-color: $strokes-light-trans-3;
     line-height: 20px;
     color: $text-primary-light;
-    transition: height 240ms ease 8ms, border 160ms ease 8ms,
+    transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
       box-shadow 160ms ease 8ms;
 
     .ant-input-suffix,
@@ -814,4 +819,8 @@ export const CannotOperationInfo = css`
     line-height: 18px;
     margin: 4px 0;
   }
+`;
+
+export const UnitStyle = css`
+  color: ${Color.text.neutral.secondary};
 `;
