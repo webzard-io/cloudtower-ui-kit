@@ -2,7 +2,7 @@ name: "CI Check"
 
 on:
   pull_request:
-    branches: ["main", "v4.1"]
+    branches: ["next"]
 
 # Cancel prev CI if new commit come
 concurrency:
@@ -19,7 +19,6 @@ jobs:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           valid-labels: "feat, fix, chore, breaking change, refactor, enhancement, doc, storybook"
           pull-request-number: "${{ github.event.pull_request.number }}"
-
 
   test:
     runs-on: [self-hosted, linux]
@@ -64,3 +63,5 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          alias-domains: | #Optional
+            next-cloudtower-ui-kit.vercel.app

@@ -104,25 +104,9 @@ describe("Table h5_css", () => {
             class=ant-table-wrapper,
         height: 100%;
 
-        &.empty-table .ant-table-content {
-          overflow: visible !important;
-          height: 100%;
-
-          .ant-table-tbody .ant-table-placeholder td {
-            height: 100%;
-          }
-
-          table {
-            width: 100% !important;
-            height: 100%;
-            .ant-table-placeholder .ant-table-expanded-row-fixed {
-              padding: 15px 0;
-            }
-          }
-
-          table thead.ant-table-thead {
-            display: none;
-          }
+        .ant-table.ant-table-small .ant-table-tbody > tr > td {
+          padding-top: 6px;
+          padding-bottom: 6px;
         }
 
         .active-row td:nth-child(1) {
@@ -141,13 +125,6 @@ describe("Table h5_css", () => {
           }
           .ant-spin {
             max-height: none;
-          }
-        }
-
-        &.table-init-loading .ant-spin-blur {
-          thead,
-          tbody {
-            display: none;
           }
         }
 
@@ -383,7 +360,8 @@ describe("Table h5_css", () => {
               border-bottom: none;
               color: $gray-120;
               transition: none;
-              padding: 15px 8px 15px 8px;
+              padding: 14px 8px 14px 8px;
+              line-height: 20px;
 
               &:not(:last-child):after {
                 content: "";
@@ -535,85 +513,8 @@ describe("Table h5_css", () => {
             <div
               class=ant-spin-nested-loading
             >
-              <div>
-                <div
-                  class=ant-spin,ant-spin-spinning
-                >
-                  <div
-                    class=loading-full-view,
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-                    data-testid=loading
-                  >
-                    <div
-                      class=
-        width: 64px;
-        height: 64px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        opacity: 0.2;
-
-                    >
-                      <div
-                        class=
-        position: absolute;
-        width: 5px;
-        height: 48px;
-        left: 9.33px;
-        top: 40.5px;
-
-        background: linear-gradient(180deg, #0080ff 0%, rgba(0, 128, 255, 0.16) 100%);
-        border-radius: 5px;
-        transform: rotate(-128deg);
-        transform-origin: top left;
-
-        animation: loading-indicator1 1100ms ease-out infinite;
-
-                      />
-                      <div
-                        class=
-        position: absolute;
-        width: 5px;
-        height: 48px;
-        left: 40.8px;
-        top: 8.4px;
-
-        background: linear-gradient(180deg, #0080ff 0%, rgba(0, 128, 255, 0.16) 100%);
-        border-radius: 5px;
-        transform: rotate(-8deg);
-        transform-origin: top left;
-
-        animation: loading-indicator2 1100ms ease-out infinite;
-
-                      />
-                      <div
-                        class=
-        position: absolute;
-        width: 5px;
-        height: 48px;
-        left: 52.9px;
-        top: 51.8px;
-
-        background: linear-gradient(180deg, #0080ff 0%, rgba(0, 128, 255, 0.16) 100%);
-        border-radius: 5px;
-        transform: rotate(112deg);
-        transform-origin: top left;
-
-        animation: loading-indicator3 1100ms ease-out infinite;
-
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div
-                class=ant-spin-container,ant-spin-blur
+                class=ant-spin-container
               >
                 <div
                   class=ant-table,ant-table-small,ant-table-layout-fixed

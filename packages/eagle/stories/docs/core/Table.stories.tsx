@@ -1,19 +1,21 @@
-// @ts-nocheck
 import {
   MoreEllipsis316BoldBlueIcon,
   SettingsGear16GradientGrayIcon,
 } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
-import Button from "@src/core/Button";
-import Icon from "@src/core/Icon";
-import Table, { ColumnTitle } from "@src/core/Table";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import React, { useState } from "react";
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
-  title: "Core/Table",
+import { Button, Icon, Table } from "@src/core";
+import { CoreMeta } from "@stories/types";
+import { StoryObj } from "@storybook/react";
+import React from "react";
+
+const meta = {
   component: Table,
-} as ComponentMeta<typeof Table>;
+  title: "Core/Table | 表格组件",
+} satisfies CoreMeta<typeof Table>;
+
+export default meta;
+
+type Story = StoryObj<typeof Table>;
 
 interface DataType {
   id: string;
@@ -21,6 +23,105 @@ interface DataType {
   age: number;
   address: string;
 }
+
+const data: DataType[] = [
+  {
+    id: "1",
+    name: "John Brown",
+    age: 32,
+    address: "New York No. 1 Lake Park",
+  },
+  {
+    id: "2",
+    name: "Jim Green",
+    age: 42,
+    address: "London No. 1 Lake Park",
+  },
+  {
+    id: "3",
+    name: "Joe Black",
+    age: 32,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "4",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "4",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "5",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "6",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "7",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "8",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "9",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "10",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "11",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "12",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "13",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "14",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+  {
+    id: "15",
+    name: "Disabled User",
+    age: 99,
+    address: "Sidney No. 1 Lake Park",
+  },
+];
 
 const actionStyle = css`
   vertical-align: middle;
@@ -31,7 +132,7 @@ const columns = [
     key: "Name",
     title: "Name",
     dataIndex: "name",
-    render: (text: string) => <a>{text}</a>,
+    render: (text: string) => <span>{text}</span>,
   },
   {
     key: "Age",
@@ -59,138 +160,150 @@ const columns = [
   },
 ];
 
-const data: DataType[] = [
-  {
-    id: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park",
+/**
+ * 在 loading error 不存在的情况下
+ *
+ * 显示表格数据
+ */
+export const ShowData: Story = {
+  name: "有数据 无 loading 无 error",
+  args: {
+    columns,
+    dataSource: data,
   },
-  {
-    id: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park",
-  },
-  {
-    id: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park",
-  },
-  {
-    id: "4",
-    name: "Disabled User",
-    age: 99,
-    address: "Sidney No. 1 Lake Park",
-  },
-];
-
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Table<DataType>> = (args) => {
-  const { columns, dataSource } = args;
-  const [selectionType, setSelectionType] = useState<"checkbox" | "radio">(
-    "checkbox",
-  );
-
-  return (
-    <Table<DataType>
-      loading={false}
-      rowSelection={{
-        type: selectionType,
-        onChange: (selectedRowKeys, selectedRows) => {
-          console.log(
-            `selectedRowKeys: ${selectedRowKeys}`,
-            "selectedRows: ",
-            selectedRows,
-          );
-        },
-        getCheckboxProps: (record) => {
-          console.log("test test", record);
-          return {
-            disabled: record.name === "Disabled User", // Column configuration not to be checked
-            name: record.name,
-          };
-        },
-      }}
-      columns={columns}
-      dataSource={dataSource}
-    />
-  );
 };
 
-export const Simple = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Simple.args = {
-  columns: columns,
-  dataSource: data,
-};
+/**
+ * 自定义骨架屏表头，表身高度
+ */
 
-export const SortSimpleTitle = Template.bind({});
-SortSimpleTitle.args = {
-  columns: columns.map((column, index) => ({
-    ...column,
-    sorter: (a, b) => a - b,
-    title: `hello ${index}`,
-  })),
-  dataSource: data,
-};
-
-export const SortCustomTitle = Template.bind({});
-
-SortCustomTitle.args = {
-  columns: columns.map((column, index) => ({
-    ...column,
-    sorter: (a, b) => a - b,
-    title: ({ sortOrder, sortColumn, filters }) => {
-      return (
-        <ColumnTitle
-          title={`hello ${index}`}
-          sortOrder={
-            sortColumn?.dataIndex === column.dataIndex ? sortOrder : undefined
-          }
-        />
-      );
+export const CustomHeight: Story = {
+  name: "自定义骨架屏高度",
+  args: {
+    columns,
+    dataSource: data,
+    loading: true,
+    skeletonProps: {
+      itemHeight: 30,
+      headerHeight: 60,
+      rowsCount: 20,
     },
-  })),
-  dataSource: data,
+  },
 };
 
-export const OnRowPropCustom: ComponentStory<typeof Table<DataType>> = (
-  args,
-) => {
-  const {
-    onRow = (record: DataType, index?: number) => {
-      return {
-        onClick: () => {
-          setBehaveior(`row ${index}:${record.name} click`);
-        },
-        onDoubleClick: () => {
-          setBehaveior(`row ${index}:${record.name} doubleClick`);
-        },
-        onContextMenu: () => {
-          setBehaveior(`row ${index}:${record.name} contextMenu`);
-        },
-        onMouseEnter: () => {
-          setBehaveior(`row ${index}:${record.name} mouseEnter`);
-        },
-        onMouseLeave: () => {
-          setBehaveior(`row ${index}:${record.name} mouseleave`);
-        },
-      };
-    },
-  } = args;
-  const [behavior, setBehaveior] = useState("");
+/**
+ * 初始化 loading
+ */
 
-  return (
-    <>
-      <h1>{behavior}</h1>
-      <Table<DataType>
-        loading={false}
-        columns={columns}
-        dataSource={data}
-        onRow={onRow}
-      />
-    </>
-  );
+export const InitLoading: Story = {
+  name: "初始化 Loading（弃用）",
+  args: {
+    columns,
+    initLoading: true,
+  },
+};
+
+/**
+ * 使用分页作为骨架数量 loading
+ */
+
+export const LoadingSkeletonWithPageSize: Story = {
+  name: "使用分页作为骨架数量 loading",
+  args: {
+    columns,
+    loading: true,
+    pagination: {
+      current: 1,
+      pageSize: 50,
+    },
+  },
+};
+
+/**
+ * 在 loading error dataSource 存在值的情况下
+ *
+ * 显示 loading
+ */
+export const ShowLoadingWithDataAndError: Story = {
+  name: "有数据 有 loading 有 error",
+  args: {
+    columns,
+    loading: true,
+    dataSource: data,
+    scroll: {
+      y: 100,
+    },
+    error: <div>some error</div>,
+  },
+};
+
+/**
+ * 在 error dataSource 存在值的情况下
+ *
+ * 显示 error
+ */
+export const ShowError: Story = {
+  name: "有数据 无 loading 有 error",
+  args: {
+    columns,
+    dataSource: data,
+    error: <div>some error</div>,
+  },
+};
+
+/**
+ * 在 loading dataSource 存在值的情况下
+ *
+ * 显示 loading
+ */
+
+export const ShowLoadingWithData: Story = {
+  name: "有数据 有 loading 无 error",
+  args: {
+    columns,
+    loading: true,
+    dataSource: data,
+  },
+};
+
+/**
+ * 在 error loading dataSource 不存在值的情况下
+ *
+ * 显示空表格
+ */
+
+export const ShowEmpty: Story = {
+  name: "无数据 无 loading 无 error",
+  args: {
+    columns,
+  },
+};
+
+/**
+ * 仅存在 loading 的情况
+ *
+ * 显示 Loading
+ */
+
+export const ShowLoadingWithEmpty: Story = {
+  name: "无数据 有loading 无 error",
+  args: {
+    loading: true,
+    columns,
+  },
+};
+
+/**
+ * 在 error false 的情况
+ *
+ * 显示 data
+ */
+
+export const ErrorFalse: Story = {
+  name: "error 传入 false",
+  args: {
+    columns,
+    dataSource: data,
+    error: false,
+  },
 };

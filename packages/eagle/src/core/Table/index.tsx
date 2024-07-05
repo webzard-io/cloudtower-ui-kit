@@ -1,22 +1,21 @@
 import { css, cx } from "@linaria/core";
-import Loading from "@src/core/Loading";
 import { useTableBodyHasScrollBar } from "@src/core/Table/common";
-import { ColumnTitle, TableLoading } from "@src/core/Table/TableWidget";
+import { ColumnTitle } from "@src/core/Table/TableWidget";
 import { zIndices } from "@src/styles/token";
 import { Table as BaseTable } from "antd";
 import cs from "classnames";
+import { isNil } from "lodash";
 import React, { useMemo, useRef } from "react";
 
 import { TableProps } from "./table.type";
+import { TableSkeleton } from "./TableSkeleton";
 
 const TableContainerStyle = css`
   height: 100%;
 `;
 
-export const tableStyleCover = css`
-  height: 100%;
-
-  &.empty-table .ant-table-content {
+export const emptyTableStyle = css`
+  .ant-table-content {
     overflow: visible !important;
     height: 100%;
 
@@ -36,6 +35,15 @@ export const tableStyleCover = css`
       display: none;
     }
   }
+`;
+
+export const tableStyleCover = css`
+  height: 100%;
+
+  .ant-table.ant-table-small .ant-table-tbody > tr > td {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
 
   .active-row td:nth-child(1) {
     font-weight: 700;
@@ -53,13 +61,6 @@ export const tableStyleCover = css`
     }
     .ant-spin {
       max-height: none;
-    }
-  }
-
-  &.table-init-loading .ant-spin-blur {
-    thead,
-    tbody {
-      display: none;
     }
   }
 
@@ -295,7 +296,8 @@ export const tableStyleCover = css`
         border-bottom: none;
         color: $gray-120;
         transition: none;
-        padding: 15px 8px 15px 8px;
+        padding: 14px 8px 14px 8px;
+        line-height: 20px;
 
         &:not(:last-child):after {
           content: "";
@@ -446,9 +448,9 @@ export const tableStyleCover = css`
 
 const Table = <T extends { id: string }>(props: TableProps<T>) => {
   const {
-    loading,
+    loading = false,
     error,
-    dataSource,
+    dataSource: _dataSource,
     columns,
     onSorterChange,
     onRowClick,
@@ -459,14 +461,16 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
     rowSelection,
     empty,
     tableLayout = "fixed",
-    initLoading,
+    // FIXME Should be removed at 0.30.x
+    initLoading = false,
     rowKey,
     wrapper,
     pagination,
     onRow,
+    skeletonProps,
   } = props;
   const orderRef = useRef<"descend" | "ascend" | undefined | null>(null);
-  const hasScrollBard = useTableBodyHasScrollBar(wrapper, dataSource);
+  const hasScrollBard = useTableBodyHasScrollBar(wrapper, _dataSource);
 
   const _columns = useMemo(
     () =>
@@ -487,6 +491,26 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
     [columns],
   );
 
+  const dataSource = useMemo(() => {
+    if (loading) {
+      return _dataSource;
+    }
+    if (!!error) {
+      return [];
+    }
+    return _dataSource ?? [];
+  }, [_dataSource, error, loading]);
+
+  const emptyText = useMemo(() => {
+    if (loading) {
+      return "";
+    }
+    if (!!error) {
+      return error;
+    }
+    return empty;
+  }, [empty, error, loading]);
+
   return (
     <div
       className={cx(
@@ -498,19 +522,18 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
       <BaseTable
         className={cs(
           tableStyleCover,
-          !dataSource?.length && "empty-table",
-          initLoading && "table-init-loading",
+          !dataSource?.length && emptyTableStyle,
           rowSelection && "has-selection",
         )}
         bordered={bordered}
         loading={{
-          spinning: loading,
-          indicator: initLoading ? <TableLoading /> : <Loading />,
+          spinning: loading || initLoading,
+          indicator: <TableSkeleton {...skeletonProps} />,
         }}
         locale={{
-          emptyText: error || <>{loading ? "" : empty}</>,
+          emptyText,
         }}
-        dataSource={dataSource || []}
+        dataSource={dataSource}
         pagination={pagination || false}
         columns={_columns}
         components={components}
@@ -542,4 +565,5 @@ export default Table;
 
 export * from "./common";
 export * from "./table.type";
+export * from "./TableSkeleton";
 export * from "./TableWidget";

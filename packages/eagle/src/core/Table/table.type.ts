@@ -5,6 +5,8 @@ import {
 } from "antd/lib/table";
 import { TableRowSelection } from "antd/lib/table/interface";
 
+import { ITableSkeletonProps } from "./TableSkeleton";
+
 interface IdObject {
   id: string;
 }
@@ -43,6 +45,9 @@ export type SorterOrder = "descend" | "ascend" | undefined;
 export interface TableProps<T extends { id: string }> {
   bordered?: boolean;
   loading?: boolean;
+  /**
+   *  This means errorEl.
+   */
   error?: React.ReactNode | string;
   dataSource: T[] | undefined;
   columns: RequiredColumnProps<T>[];
@@ -78,6 +83,9 @@ export interface TableProps<T extends { id: string }> {
   rowSelection?: TableRowSelection<T>;
   empty?: string | React.ReactNode;
   tableLayout?: "fixed" | "auto";
+  /**
+   * @deprecated use loading instead
+   */
   initLoading?: boolean;
   rowKey?: AntdTableProps<T>["rowKey"];
   wrapper?: React.MutableRefObject<HTMLDivElement | null>;
@@ -86,4 +94,5 @@ export interface TableProps<T extends { id: string }> {
     pageSize: number;
   };
   onRow?: AntdTableProps<T>["onRow"];
+  skeletonProps?: ITableSkeletonProps;
 }

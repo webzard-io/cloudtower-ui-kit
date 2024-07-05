@@ -2,9 +2,10 @@ import { parrotI18n, ParrotI18nSupportLng } from "@cloudtower/parrot";
 import { BatchHelper, createBatchMessageMethods } from "@src/core";
 import _message, { MessageApi } from "@src/core/message";
 import { antdKit } from "@src/legacy-antd";
-import { ConfigProvider } from "antd";
 import enUS from "antd/lib/locale/en_US";
 import zhCN from "antd/lib/locale/zh_CN";
+import antd5enUS from "antd5/lib/locale/en_US";
+import antd5zhCN from "antd5/lib/locale/zh_CN";
 import React, {
   createContext,
   PropsWithChildren,
@@ -14,6 +15,7 @@ import React, {
 } from "react";
 
 import { Kit } from "../spec";
+import { ConfigProps, ConfigProvider } from "../core/ConfigProvider";
 
 export interface IProps {
   kit?: Kit;
@@ -22,7 +24,7 @@ export interface IProps {
     maxCount?: number;
   };
   lng?: ParrotI18nSupportLng;
-  getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement;
+  config?: ConfigProps;
 }
 
 export const kitContext = createContext<Kit>(antdKit);
@@ -30,13 +32,7 @@ export const kitContext = createContext<Kit>(antdKit);
 export const MessageContext = createContext<MessageApi>(_message);
 
 const UIKitProvider = (props: PropsWithChildren<IProps>) => {
-  const {
-    children,
-    kit = antdKit,
-    message,
-    lng = "en-US",
-    getPopupContainer,
-  } = props;
+  const { children, kit = antdKit, message, lng = "en-US", config } = props;
 
   const batchMessage = useMemo(() => {
     if (message?.batch != null) {
@@ -67,9 +63,16 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
     <kitContext.Provider value={_kit}>
       <MessageContext.Provider value={batchMessage ?? _message}>
         <ConfigProvider
-          autoInsertSpaceInButton={false}
-          locale={lng === "zh-CN" ? zhCN : enUS}
-          getPopupContainer={getPopupContainer}
+          antd4Configs={{
+            autoInsertSpaceInButton: false,
+            locale: lng === "zh-CN" ? zhCN : enUS,
+            ...config?.antd4Configs,
+          }}
+          antd5Configs={{
+            autoInsertSpaceInButton: false,
+            locale: lng === "zh-CN" ? antd5zhCN : antd5enUS,
+            ...config?.antd5Configs,
+          }}
         >
           {children}
         </ConfigProvider>
