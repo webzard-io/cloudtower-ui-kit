@@ -110,7 +110,11 @@ export const Size: Story = {
         value: "c1",
         label: "Cluster",
         children: [
-          { value: "v1", label: "VM-1" },
+          {
+            value: "v1",
+            label:
+              "VM-Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quaerat veniam odit harum, et deserunt corporis ut sed molestiae! Voluptate minima laudantium nam sapiente corrupti magnam quisquam iure optio magni?",
+          },
           { value: "v2", label: "VM-2" },
         ],
       },
