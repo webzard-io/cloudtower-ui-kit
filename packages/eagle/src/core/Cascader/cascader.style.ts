@@ -58,6 +58,9 @@ export const CascaderInputStyle = css`
     }
     .${Antd5PrefixCls}-cascader-selection-overflow-item {
       line-height: normal;
+      span {
+        max-width: 100%;
+      }
     }
     .${Antd5PrefixCls}-cascader-selection-placeholder {
       font-size: 13px;

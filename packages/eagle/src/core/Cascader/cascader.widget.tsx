@@ -1,6 +1,7 @@
 import { cx } from "@linaria/core";
 import Link from "@src/core/Link";
 import Token from "@src/core/Token";
+import OverflowTooltip from "@src/coreX/OverflowTooltip";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { Flex } from "antd5";
 import cls from "classnames";
@@ -144,7 +145,7 @@ export const CascaderOptionWithCount: React.FC<{
 export const defaultTagRender: CascaderProps["tagRender"] = (props) => {
   return (
     <Token size="medium" color="blue" key={props.value} {...props}>
-      {props.label}
+      <OverflowTooltip content={props.label} tooltip={props.label} />
     </Token>
   );
 };
