@@ -1,11 +1,10 @@
 import { CloseCircleFilled } from "@ant-design/icons";
 import Button from "@src/core/Button";
-import KitStoreProvider from "@src/core/KitStoreProvider";
+import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
 import Modal, { ModalProps, WizardSteps } from "@src/core/Modal";
 import ModalStack from "@src/core/ModalStack";
 import { ModalWrapper } from "@src/core/Styled";
 import Tooltip from "@src/core/Tooltip";
-import { pushModal } from "@src/store";
 import { Meta } from "@storybook/react";
 import React, { useState } from "react";
 
@@ -82,25 +81,28 @@ const story: Meta<ModalProps> = {
 export default story;
 
 export const ImmersiveDialog = (args: Parameters<typeof Button>) => {
+  const pushModal = usePushModal();
+
   return (
-    <Button type="primary" {...args}>
+    <Button
+      type="primary"
+      onClick={() =>
+        pushModal({
+          component: ImmersiveModal,
+          props: {
+            name: "ImmersiveModal",
+          },
+        })
+      }
+      {...args}
+    >
       open modal
     </Button>
   );
 };
 
-ImmersiveDialog.args = {
-  onClick: () => {
-    pushModal({
-      component: ImmersiveModal,
-      props: {
-        name: "ImmersiveModal",
-      },
-    });
-  },
-};
-
 export const WithAside = () => {
+  const pushModal = usePushModal();
   return (
     <div>
       <div>
