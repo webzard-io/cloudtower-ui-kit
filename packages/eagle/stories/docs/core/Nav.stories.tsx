@@ -1,4 +1,4 @@
-import { CloudtowerLogo16GradientBlueIcon } from "@cloudtower/icons-react";
+import { OperationCenter16FillGradientBlueIcon } from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import { Icon } from "@src/core";
 import Avatar from "@src/core/Avatar";
@@ -26,7 +26,7 @@ const DemoNav = () => {
       <Nav
         left={[
           <Icon
-            src={CloudtowerLogo16GradientBlueIcon}
+            src={OperationCenter16FillGradientBlueIcon}
             iconWidth={24}
             iconHeight={24}
           />,
