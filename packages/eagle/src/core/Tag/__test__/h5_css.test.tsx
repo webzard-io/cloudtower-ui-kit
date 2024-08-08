@@ -153,275 +153,283 @@ describe("Tokenm h5_css", () => {
       linaria: true,
       dom: container,
     }).toMatchInlineSnapshot(`
-          <div>
-            <div>
-              <span
-                class=ant-tag,ant-tag-blue,
-              padding: 0 8px;
-              height: 18px;
-            ,
-            margin: 0;
-          ,
-            @include Inter();
-            font-size: 12px;
-            line-height: 18px;
-          ,ant-tag-blue
-              >
-                <span
-                  class=
-            margin-right: 4px;
-            height: 16px;
+      <div>
+        <div>
+          <span
+            class=ant-tag,ant-tag-blue,
+          padding: 0 8px;
+          height: 18px;
+        ,
+        margin: 0;
+      ,
+        @include Inter();
+        font-size: 12px;
+        line-height: 18px;
+      ,ant-tag-blue
+          >
+            <span
+              class=
+        margin-right: 4px;
+        height: 16px;
 
-                >
-                  <svg
-                    fill=none
-                    height=16
-                    width=16
-                    xmlns=http://www.w3.org/2000/svg
-                  >
-                    <path
-                      d=M0,0h16v16H0z
-                      fill=#C0CBE0
-                      fill-opacity=0.6
-                    />
-                  </svg>
-                </span>
-                Label
-              </span>
-              <span
-                class=ant-tag,ant-tag-red,
-              padding: 0 8px;
-              height: 18px;
-            ,
-            margin: 0;
-          ,
-            @include Inter();
-            font-size: 12px;
-            line-height: 18px;
-          ,ant-tag-red
+            >
+              <svg
+                data-testid=Placeholder16Icon
+                fill=none
+                height=16
+                width=16
+                xmlns=http://www.w3.org/2000/svg
               >
-                <span
-                  class=
-            margin-right: 4px;
-            height: 16px;
+                <path
+                  d=M0,0h16v16H0z
+                  fill=#C0CBE0
+                  fill-opacity=0.6
+                />
+              </svg>
+            </span>
+            Label
+          </span>
+          <span
+            class=ant-tag,ant-tag-red,
+          padding: 0 8px;
+          height: 18px;
+        ,
+        margin: 0;
+      ,
+        @include Inter();
+        font-size: 12px;
+        line-height: 18px;
+      ,ant-tag-red
+          >
+            <span
+              class=
+        margin-right: 4px;
+        height: 16px;
 
-                >
-                  <svg
-                    fill=none
-                    height=16
-                    width=16
-                    xmlns=http://www.w3.org/2000/svg
-                  >
-                    <path
-                      d=M0,0h16v16H0z
-                      fill=#C0CBE0
-                      fill-opacity=0.6
-                    />
-                  </svg>
-                </span>
-                Label
-              </span>
-              <span
-                class=ant-tag,ant-tag-yellow,
-              padding: 0 8px;
-              height: 18px;
-            ,
-            margin: 0;
-          ,
-            @include Inter();
-            font-size: 12px;
-            line-height: 18px;
-          ,ant-tag-yellow
+            >
+              <svg
+                data-testid=Placeholder16Icon
+                fill=none
+                height=16
+                width=16
+                xmlns=http://www.w3.org/2000/svg
               >
-                <span
-                  class=
-            margin-right: 4px;
-            height: 16px;
+                <path
+                  d=M0,0h16v16H0z
+                  fill=#C0CBE0
+                  fill-opacity=0.6
+                />
+              </svg>
+            </span>
+            Label
+          </span>
+          <span
+            class=ant-tag,ant-tag-yellow,
+          padding: 0 8px;
+          height: 18px;
+        ,
+        margin: 0;
+      ,
+        @include Inter();
+        font-size: 12px;
+        line-height: 18px;
+      ,ant-tag-yellow
+          >
+            <span
+              class=
+        margin-right: 4px;
+        height: 16px;
 
-                >
-                  <svg
-                    fill=none
-                    height=16
-                    width=16
-                    xmlns=http://www.w3.org/2000/svg
-                  >
-                    <path
-                      d=M0,0h16v16H0z
-                      fill=#C0CBE0
-                      fill-opacity=0.6
-                    />
-                  </svg>
-                </span>
-                Label
-              </span>
-              <span
-                class=ant-tag,ant-tag-green,
-              padding: 0 8px;
-              height: 18px;
-            ,
-            margin: 0;
-          ,
-            @include Inter();
-            font-size: 12px;
-            line-height: 18px;
-          ,ant-tag-green
+            >
+              <svg
+                data-testid=Placeholder16Icon
+                fill=none
+                height=16
+                width=16
+                xmlns=http://www.w3.org/2000/svg
               >
-                <span
-                  class=
-            margin-right: 4px;
-            height: 16px;
+                <path
+                  d=M0,0h16v16H0z
+                  fill=#C0CBE0
+                  fill-opacity=0.6
+                />
+              </svg>
+            </span>
+            Label
+          </span>
+          <span
+            class=ant-tag,ant-tag-green,
+          padding: 0 8px;
+          height: 18px;
+        ,
+        margin: 0;
+      ,
+        @include Inter();
+        font-size: 12px;
+        line-height: 18px;
+      ,ant-tag-green
+          >
+            <span
+              class=
+        margin-right: 4px;
+        height: 16px;
 
-                >
-                  <svg
-                    fill=none
-                    height=16
-                    width=16
-                    xmlns=http://www.w3.org/2000/svg
-                  >
-                    <path
-                      d=M0,0h16v16H0z
-                      fill=#C0CBE0
-                      fill-opacity=0.6
-                    />
-                  </svg>
-                </span>
-                Label
-              </span>
-              <span
-                class=ant-tag,
-              padding: 0 8px;
-              height: 18px;
-            ,
-            margin: 0;
-          ,
-            @include Inter();
-            font-size: 12px;
-            line-height: 18px;
-          ,ant-tag-gray
+            >
+              <svg
+                data-testid=Placeholder16Icon
+                fill=none
+                height=16
+                width=16
+                xmlns=http://www.w3.org/2000/svg
               >
-                <span
-                  class=
-            margin-right: 4px;
-            height: 16px;
+                <path
+                  d=M0,0h16v16H0z
+                  fill=#C0CBE0
+                  fill-opacity=0.6
+                />
+              </svg>
+            </span>
+            Label
+          </span>
+          <span
+            class=ant-tag,
+          padding: 0 8px;
+          height: 18px;
+        ,
+        margin: 0;
+      ,
+        @include Inter();
+        font-size: 12px;
+        line-height: 18px;
+      ,ant-tag-gray
+          >
+            <span
+              class=
+        margin-right: 4px;
+        height: 16px;
 
-                >
-                  <svg
-                    fill=none
-                    height=16
-                    width=16
-                    xmlns=http://www.w3.org/2000/svg
-                  >
-                    <path
-                      d=M0,0h16v16H0z
-                      fill=#C0CBE0
-                      fill-opacity=0.6
-                    />
-                  </svg>
-                </span>
-                Label
-              </span>
-              <span
-                class=ant-tag,ant-tag-purple,
-              padding: 0 8px;
-              height: 18px;
-            ,
-            margin: 0;
-          ,
-            @include Inter();
-            font-size: 12px;
-            line-height: 18px;
-          ,ant-tag-purple
+            >
+              <svg
+                data-testid=Placeholder16Icon
+                fill=none
+                height=16
+                width=16
+                xmlns=http://www.w3.org/2000/svg
               >
-                <span
-                  class=
-            margin-right: 4px;
-            height: 16px;
+                <path
+                  d=M0,0h16v16H0z
+                  fill=#C0CBE0
+                  fill-opacity=0.6
+                />
+              </svg>
+            </span>
+            Label
+          </span>
+          <span
+            class=ant-tag,ant-tag-purple,
+          padding: 0 8px;
+          height: 18px;
+        ,
+        margin: 0;
+      ,
+        @include Inter();
+        font-size: 12px;
+        line-height: 18px;
+      ,ant-tag-purple
+          >
+            <span
+              class=
+        margin-right: 4px;
+        height: 16px;
 
-                >
-                  <svg
-                    fill=none
-                    height=16
-                    width=16
-                    xmlns=http://www.w3.org/2000/svg
-                  >
-                    <path
-                      d=M0,0h16v16H0z
-                      fill=#C0CBE0
-                      fill-opacity=0.6
-                    />
-                  </svg>
-                </span>
-                Label
-              </span>
-              <span
-                class=ant-tag,ant-tag-has-color,
-              padding: 0 8px;
-              height: 18px;
-            ,
-            margin: 0;
-          ,
-            @include Inter();
-            font-size: 12px;
-            line-height: 18px;
-          ,ant-tag-red-ontint
+            >
+              <svg
+                data-testid=Placeholder16Icon
+                fill=none
+                height=16
+                width=16
+                xmlns=http://www.w3.org/2000/svg
               >
-                <span
-                  class=
-            margin-right: 4px;
-            height: 16px;
+                <path
+                  d=M0,0h16v16H0z
+                  fill=#C0CBE0
+                  fill-opacity=0.6
+                />
+              </svg>
+            </span>
+            Label
+          </span>
+          <span
+            class=ant-tag,ant-tag-has-color,
+          padding: 0 8px;
+          height: 18px;
+        ,
+        margin: 0;
+      ,
+        @include Inter();
+        font-size: 12px;
+        line-height: 18px;
+      ,ant-tag-red-ontint
+          >
+            <span
+              class=
+        margin-right: 4px;
+        height: 16px;
 
-                >
-                  <svg
-                    fill=none
-                    height=16
-                    width=16
-                    xmlns=http://www.w3.org/2000/svg
-                  >
-                    <path
-                      d=M0,0h16v16H0z
-                      fill=#C0CBE0
-                      fill-opacity=0.6
-                    />
-                  </svg>
-                </span>
-                Label
-              </span>
-              <span
-                class=ant-tag,ant-tag-has-color,
-              padding: 0 8px;
-              height: 18px;
-            ,
-            margin: 0;
-          ,
-            @include Inter();
-            font-size: 12px;
-            line-height: 18px;
-          ,ant-tag-green-ontint
+            >
+              <svg
+                data-testid=Placeholder16Icon
+                fill=none
+                height=16
+                width=16
+                xmlns=http://www.w3.org/2000/svg
               >
-                <span
-                  class=
-            margin-right: 4px;
-            height: 16px;
+                <path
+                  d=M0,0h16v16H0z
+                  fill=#C0CBE0
+                  fill-opacity=0.6
+                />
+              </svg>
+            </span>
+            Label
+          </span>
+          <span
+            class=ant-tag,ant-tag-has-color,
+          padding: 0 8px;
+          height: 18px;
+        ,
+        margin: 0;
+      ,
+        @include Inter();
+        font-size: 12px;
+        line-height: 18px;
+      ,ant-tag-green-ontint
+          >
+            <span
+              class=
+        margin-right: 4px;
+        height: 16px;
 
-                >
-                  <svg
-                    fill=none
-                    height=16
-                    width=16
-                    xmlns=http://www.w3.org/2000/svg
-                  >
-                    <path
-                      d=M0,0h16v16H0z
-                      fill=#C0CBE0
-                      fill-opacity=0.6
-                    />
-                  </svg>
-                </span>
-                Label
-              </span>
-            </div>
-          </div>
-        `);
+            >
+              <svg
+                data-testid=Placeholder16Icon
+                fill=none
+                height=16
+                width=16
+                xmlns=http://www.w3.org/2000/svg
+              >
+                <path
+                  d=M0,0h16v16H0z
+                  fill=#C0CBE0
+                  fill-opacity=0.6
+                />
+              </svg>
+            </span>
+            Label
+          </span>
+        </div>
+      </div>
+    `);
   });
 
   it("h5_css split tags", ({ expect }) => {
