@@ -2,7 +2,8 @@ name: "CI Check"
 
 on:
   pull_request:
-    branches: ["next"]
+    branches: 
+      - '**'
 
 # Cancel prev CI if new commit come
 concurrency:
@@ -55,6 +56,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
+      - name: Set alias-domains variable
+        id: set-alias-domains
+        run: |
+          if [ "${{ github.event.pull_request.base.ref }}" == "next" ]; then
+            echo "alias-domains=next-cloudtower-ui-kit.vercel.app" >> $GITHUB_ENV
+          else
+            echo "alias-domains=" >> $GITHUB_ENV
       - name: Set Up Storybook Staging
         uses: amondnet/vercel-action@v20
         id: vercel-action-staging
@@ -63,5 +71,4 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          alias-domains: | #Optional
-            next-cloudtower-ui-kit.vercel.app
+          alias-domains: ${{ env.alias-domains }}
