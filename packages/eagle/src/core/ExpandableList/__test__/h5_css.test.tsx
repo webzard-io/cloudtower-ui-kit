@@ -68,6 +68,7 @@ describe("ExpandableList h5_css", () => {
       ,ant-collapse-arrow
               >
                 <svg
+                  data-testid=ArrowChevronDown16SecondaryIcon
                   fill=none
                   height=16
                   width=16
@@ -165,6 +166,7 @@ describe("ExpandableList h5_css", () => {
       ,ant-collapse-arrow
               >
                 <svg
+                  data-testid=ArrowChevronDown16SecondaryIcon
                   fill=none
                   height=16
                   width=16
@@ -275,6 +277,7 @@ describe("ExpandableList h5_css", () => {
       ,ant-collapse-arrow
               >
                 <svg
+                  data-testid=ArrowChevronDown16SecondaryIcon
                   fill=none
                   height=16
                   width=16
@@ -405,7 +408,7 @@ describe("ExpandableList h5_css", () => {
 
   it("ActivedDisableExpand", () => {
     const { container } = render(
-      <Template disableExpand={true} defaultActive={true} />
+      <Template disableExpand={true} defaultActive={true} />,
     );
 
     expect({

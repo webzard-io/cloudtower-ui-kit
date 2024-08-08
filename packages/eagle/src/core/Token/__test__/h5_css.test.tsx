@@ -630,6 +630,7 @@ describe("Tokenm h5_css", () => {
                   class=icon-inner
                 >
                   <svg
+                    data-testid=XmarkRemoveSmall16RegularInheritIcon
                     height=16
                     width=16
                     xmlns=http://www.w3.org/2000/svg
@@ -751,6 +752,7 @@ describe("Tokenm h5_css", () => {
                   class=icon-inner
                 >
                   <svg
+                    data-testid=XmarkRemoveSmall16RegularInheritIcon
                     height=16
                     width=16
                     xmlns=http://www.w3.org/2000/svg
@@ -872,6 +874,7 @@ describe("Tokenm h5_css", () => {
                   class=icon-inner
                 >
                   <svg
+                    data-testid=XmarkRemoveSmall16RegularInheritIcon
                     height=16
                     width=16
                     xmlns=http://www.w3.org/2000/svg
@@ -993,6 +996,7 @@ describe("Tokenm h5_css", () => {
                   class=icon-inner
                 >
                   <svg
+                    data-testid=XmarkRemoveSmall16RegularInheritIcon
                     height=16
                     width=16
                     xmlns=http://www.w3.org/2000/svg
@@ -1114,6 +1118,7 @@ describe("Tokenm h5_css", () => {
                   class=icon-inner
                 >
                   <svg
+                    data-testid=XmarkRemoveSmall16RegularInheritIcon
                     height=16
                     width=16
                     xmlns=http://www.w3.org/2000/svg
@@ -1235,6 +1240,7 @@ describe("Tokenm h5_css", () => {
                   class=icon-inner
                 >
                   <svg
+                    data-testid=XmarkRemoveSmall16RegularInheritIcon
                     height=16
                     width=16
                     xmlns=http://www.w3.org/2000/svg

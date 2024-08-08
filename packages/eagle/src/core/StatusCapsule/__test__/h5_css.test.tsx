@@ -1606,6 +1606,7 @@ describe("StatusCapsule h5_css", () => {
                 class=icon-inner
               >
                 <svg
+                  data-testid=Loading8GradientBlueIcon
                   fill=none
                   height=8
                   width=8
@@ -1755,6 +1756,7 @@ describe("StatusCapsule h5_css", () => {
                 class=icon-inner
               >
                 <svg
+                  data-testid=Loading8GradientBlueIcon
                   fill=none
                   height=8
                   width=8
@@ -1904,6 +1906,7 @@ describe("StatusCapsule h5_css", () => {
                 class=icon-inner
               >
                 <svg
+                  data-testid=Loading8GradientBlueIcon
                   fill=none
                   height=8
                   width=8
@@ -2053,6 +2056,7 @@ describe("StatusCapsule h5_css", () => {
                 class=icon-inner
               >
                 <svg
+                  data-testid=Loading8GradientBlueIcon
                   fill=none
                   height=8
                   width=8
@@ -2202,6 +2206,7 @@ describe("StatusCapsule h5_css", () => {
                 class=icon-inner
               >
                 <svg
+                  data-testid=Loading8GradientBlueIcon
                   fill=none
                   height=8
                   width=8
@@ -2372,6 +2377,7 @@ describe("StatusCapsule h5_css", () => {
                 class=icon-inner
               >
                 <svg
+                  data-testid=Loading8GradientBlueIcon
                   fill=none
                   height=8
                   width=8
@@ -2521,6 +2527,7 @@ describe("StatusCapsule h5_css", () => {
                 class=icon-inner
               >
                 <svg
+                  data-testid=Loading8GradientBlueIcon
                   fill=none
                   height=8
                   width=8
@@ -2670,6 +2677,7 @@ describe("StatusCapsule h5_css", () => {
                 class=icon-inner
               >
                 <svg
+                  data-testid=Loading8GradientBlueIcon
                   fill=none
                   height=8
                   width=8

@@ -808,6 +808,7 @@ describe("SimplePagination h5_css", () => {
                   class=icon-inner
                 >
                   <svg
+                    data-testid=ArrowChevronLeftSmall16BoldBlueIcon
                     fill=none
                     height=16
                     width=16
@@ -1284,6 +1285,7 @@ describe("SimplePagination h5_css", () => {
                   class=icon-inner
                 >
                   <svg
+                    data-testid=ArrowChevronLeftSmall16BoldBlueIcon
                     fill=none
                     height=16
                     width=16
@@ -2106,6 +2108,7 @@ describe("SimplePagination h5_css", () => {
                   class=icon-inner
                 >
                   <svg
+                    data-testid=ArrowChevronLeftSmall16BoldBlueIcon
                     fill=none
                     height=16
                     width=16
