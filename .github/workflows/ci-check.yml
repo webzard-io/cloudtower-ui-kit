@@ -61,6 +61,7 @@ jobs:
         run: |
           if [ "${{ github.event.pull_request.base.ref }}" == "next" ]; then
             echo "alias-domains=next-cloudtower-ui-kit.vercel.app" >> $GITHUB_ENV
+          fi
       - name: Set Up Storybook Staging
         uses: amondnet/vercel-action@v20
         id: vercel-action-staging
