@@ -22,6 +22,9 @@ permissions:
 jobs:
   create-release-pr:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16]
     outputs:
       slack_user: ${{ steps.set-slack-user.outputs.slack_user }}
     steps:
