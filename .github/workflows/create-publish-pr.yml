@@ -1,0 +1,64 @@
+name: Create Release PR
+on:
+  workflow_dispatch:
+    inputs:
+      semver:
+        description: 'New Version(semver)'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+      slack_user:
+        required: false
+        description: 'Inform slack user when publish is done'
+        type: string
+        
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create-release-pr:
+    runs-on: ubuntu-latest
+    outputs:
+      slack_user: ${{ steps.set-slack-user.outputs.slack_user }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Update Version
+        run: |
+          git config --global user.email "${GIT_AUTHOR_EMAIL}"
+          git config --global user.name "${GIT_AUTHOR_NAME}"
+          npm run ci:versionup:${SEMVER} --yes
+        env:
+          SEMVER: ${{ github.event.inputs.semver }}
+          GIT_AUTHOR_NAME: ${{ github.actor }}
+          GIT_AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
+      - name: Set PACKAGE_VERSION
+        run: echo "PACKAGE_VERSION=$(cat lerna.json | jq -r .version)" >> $GITHUB_ENV
+      - name: Set slack_user
+        id: set-slack-user
+        run: echo "::set-output name=slack_user::${{ github.event.inputs.slack_user }}"
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(release): v${{ env.PACKAGE_VERSION }}"
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          assignees: ${{ github.actor }}
+          signoff: false
+          branch: release/${{ env.PACKAGE_VERSION }}
+          branch-suffix: timestamp
+          delete-branch: true
+          title: 'v${{ env.PACKAGE_VERSION }}'
+          body: |
+            ${{ steps.release_note.outputs.stdout }}
+          labels: "Type: Release"
+      - name: Check Pull Request
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
