@@ -1,13 +1,16 @@
 name: publish
 
 on:
-  push:
-    tags:
-      - "*"
+  # When Release Pull Request is merged
+  pull_request:
+    branches:
+      - master
+      - next
+    types: [closed]
 
 jobs:
   publish:
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.event.pull_request.merged == true
     runs-on: [self-hosted, linux]
     strategy:
       matrix:
@@ -35,13 +38,41 @@ jobs:
           NPM_TOKEN: ${{ secrets.QINGHUA_CUI_SMARTX_NPM_TOKEN }}
         run: |
           echo //registry.npmjs.org/:_authToken=$NPM_TOKEN > ~/.npmrc
+          # Define ${CURRENT_VERSION}
+      - name: Set Current Version
+        run: |
+          CURRENT_VERSION=$(node -p 'require("./lerna.json").version')
+          echo "CURRENT_VERSION=${CURRENT_VERSION}" >> $GITHUB_ENV
+      - name: Tag Check
+        id: tag_check
+        run: |
+          GET_API_URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/git/ref/tags/v${CURRENT_VERSION}"
+          http_status_code=$(curl -LI $GET_API_URL -o /dev/null -w '%{http_code}\n' -s \
+            -H "Authorization: token ${GITHUB_TOKEN}")
+          if [ "$http_status_code" -ne "404" ] ; then
+            echo "::set-output name=exists_tag::true"
+          else
+            echo "::set-output name=exists_tag::false"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Git Tag
+        if: steps.tag_check.outputs.exists_tag == 'false'
+        uses: pkgdeps/git-tag-action@v2
+        with:
+          version: ${{ env.CURRENT_VERSION }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_repo: ${{ github.repository }}
+          git_commit_sha: ${{ github.sha }}
+          git_tag_prefix: "v"
       - name: Publish
         uses: nick-fields/retry@v2
+        if: steps.tag_check.outputs.exists_tag == 'false'
         with:
           timeout_minutes: 10  # 设置超时时间，单位为分钟
           max_attempts: 3  # 设置最大重试次数
           command: |
-            yarn lerna publish from-git --no-verify-access --yes
+            yarn lerna publish from-package --no-verify-access --yes
       - name: sync cnpm
         run: curl --location --request PUT 'http://192.168.26.29:7002/sync/@cloudtower/eagle?sync_upstream=true'
       - name: Send to Slack
@@ -51,7 +82,7 @@ jobs:
           # This data can be any valid JSON from a previous step in the GitHub Action
           payload: |
             {
-              "text": "Get New Version At ${{github.ref_name}} <http://192.168.26.29:7002/package/@cloudtower/eagle|${{github.ref_name}}>"
+              "text": "Get New Version At ${{github.ref_name}} <http://192.168.26.29:7002/package/@cloudtower/eagle|${{github.ref_name}}> @${{ github.event.workflow_run.outputs.slack_user }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
