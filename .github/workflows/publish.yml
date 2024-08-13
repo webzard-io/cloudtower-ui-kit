@@ -75,6 +75,15 @@ jobs:
       - name: sync cnpm
         if: steps.tag_check.outputs.exists_tag == 'false'
         run: curl --location --request PUT 'http://192.168.26.29:7002/sync/@cloudtower/eagle?sync_upstream=true'
+      - name: Get Output
+        if: steps.tag_check.outputs.exists_tag == 'false'
+        uses: actions/download-artifact@v2
+        with:
+          name: publish-output-v${{ env.CURRENT_VERSION }}
+      - name: Read the output
+        if: steps.tag_check.outputs.exists_tag == 'false'
+        run: |
+          echo "SLACK_USER =$(cat publish-output-v${{ env.CURRENT_VERSION }}/output.txt)" >> $GITHUB_ENV
       - name: Send to Slack
         if: steps.tag_check.outputs.exists_tag == 'false'
         id: slack
@@ -83,7 +92,7 @@ jobs:
           # This data can be any valid JSON from a previous step in the GitHub Action
           payload: |
             {
-              "text": "Get New Version At ${{github.ref_name}} <http://192.168.26.29:7002/package/@cloudtower/eagle|${{github.ref_name}}> @${{ github.event.workflow_run.outputs.slack_user }}"
+              "text": "Get New Version At ${{ env.CURRENT_VERSION }} <http://192.168.26.29:7002/package/@cloudtower/eagle|${{ env.CURRENT_VERSION }}> @${{ env.CURRENT_VERSION }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
