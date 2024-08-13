@@ -22,8 +22,6 @@ permissions:
 jobs:
   create-release-pr:
     runs-on: ubuntu-latest
-    outputs:
-      slack_user: ${{ steps.set-slack-user.outputs.slack_user }}
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -42,7 +40,12 @@ jobs:
         run: echo "PACKAGE_VERSION=$(cat lerna.json | jq -r .version)" >> $GITHUB_ENV
       - name: Set slack_user
         id: set-slack-user
-        run: echo "::set-output name=slack_user::${{ github.event.inputs.slack_user }}"
+        run: echo ${{ github.event.inputs.slack_user }} >> output.txt
+      - name: Upload output as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: publish-output-v${{ env.PACKAGE_VERSION }}
+          path: output.txt
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v4
