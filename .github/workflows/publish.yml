@@ -1,5 +1,4 @@
 name: publish
-
 on:
   # When Release Pull Request is merged
   pull_request:
@@ -77,22 +76,26 @@ jobs:
         run: curl --location --request PUT 'http://192.168.26.29:7002/sync/@cloudtower/eagle?sync_upstream=true'
       - name: Get Output
         if: steps.tag_check.outputs.exists_tag == 'false'
-        uses: actions/download-artifact@v2
+        uses: dawidd6/action-download-artifact@v6
         with:
           name: publish-output-v${{ env.CURRENT_VERSION }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow: create-publish-pr.yml
+          workflow_conclusion: success
       - name: Read the output
         if: steps.tag_check.outputs.exists_tag == 'false'
         run: |
-          echo "SLACK_USER =$(cat publish-output-v${{ env.CURRENT_VERSION }}/output.txt)" >> $GITHUB_ENV
+          echo "SLACK_USER=$(cat output.txt)" >> $GITHUB_ENV
       - name: Send to Slack
         if: steps.tag_check.outputs.exists_tag == 'false'
         id: slack
         uses: slackapi/slack-github-action@v1.24.0
         with:
           # This data can be any valid JSON from a previous step in the GitHub Action
+          link_names: 1
           payload: |
             {
-              "text": "Get New Version At ${{ env.CURRENT_VERSION }} <http://192.168.26.29:7002/package/@cloudtower/eagle|${{ env.CURRENT_VERSION }}> @${{ env.CURRENT_VERSION }}"
+              "text": "Get New Version At ${{ env.CURRENT_VERSION }} <http://192.168.26.29:7002/package/@cloudtower/eagle|${{ env.CURRENT_VERSION }}> <@${{ env.CURRENT_VERSION }}>"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

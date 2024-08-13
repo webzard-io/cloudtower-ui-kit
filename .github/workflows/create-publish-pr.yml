@@ -38,14 +38,6 @@ jobs:
           GIT_AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
       - name: Set PACKAGE_VERSION
         run: echo "PACKAGE_VERSION=$(cat lerna.json | jq -r .version)" >> $GITHUB_ENV
-      - name: Set slack_user
-        id: set-slack-user
-        run: echo ${{ github.event.inputs.slack_user }} >> output.txt
-      - name: Upload output as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: publish-output-v${{ env.PACKAGE_VERSION }}
-          path: output.txt
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v4
@@ -67,3 +59,12 @@ jobs:
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+      - name: Set slack_user
+        id: set-slack-user
+        run: echo ${{ github.event.inputs.slack_user }} >> output.txt
+      - name: Upload output as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: publish-output-v${{ env.PACKAGE_VERSION }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: output.txt
