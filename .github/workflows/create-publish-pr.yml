@@ -61,7 +61,7 @@ jobs:
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
       - name: Set slack_user
         id: set-slack-user
-        run: echo ${{ github.event.inputs.slack_user }} >> output.txt
+        run: echo ${{ github.event.inputs.slack_user }} > output.txt
       - name: Upload output as artifact
         uses: actions/upload-artifact@v4
         with:
