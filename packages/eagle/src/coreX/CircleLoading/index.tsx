@@ -10,30 +10,25 @@ import { Loading64GradientBlueIcon } from "@cloudtower/icons-react";
 const LoadingWrapper = css`
   width: 64px;
   height: 64px;
-  max-width: 64px;
-  max-height: 64px;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   opacity: 0.6;
-  .icon-wrapper {
-    ${Keyframes["rotate"]};
-    animation: ${Animation["circleRotate"]};
-  }
+  ${Keyframes["rotate"]};
+  animation: ${Animation["circleRotate"]};
 `;
 
 const CircleLoading: LoadingComponentType = ({
   fullView = true,
-  className,
-  ...restProps
+  wrapperProps = {},
 }) => {
   const Wrapper = fullView ? FullView : Fragment;
   const props = fullView ? { className: "loading-full-view" } : {};
+  const { className, ...restWrapperProps } = wrapperProps;
   return (
     <Wrapper {...props} data-testid="loading">
-      <div className={cx(LoadingWrapper, className)} {...restProps}>
+      <div className={cx(LoadingWrapper, className)} {...restWrapperProps}>
         <Icon src={Loading64GradientBlueIcon} iconWidth={64} iconHeight={64} />
       </div>
     </Wrapper>
