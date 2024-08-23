@@ -12,14 +12,14 @@ import { LoadingComponentType } from "./loading.type";
 
 const Loading: LoadingComponentType = ({
   fullView = true,
-  wrapperProps = {},
+  className,
+  ...restProps
 }) => {
   const Wrapper = fullView ? FullView : Fragment;
-  const { className, ...restWrapperProps } = wrapperProps;
   const props = fullView ? { className: "loading-full-view" } : {};
   return (
     <Wrapper {...props} data-testid="loading">
-      <div className={cx(LoadingWrapper, className)} {...restWrapperProps}>
+      <div className={cx(LoadingWrapper, className)} {...restProps}>
         <div className={LoadingLine1}></div>
         <div className={LoadingLine2}></div>
         <div className={LoadingLine3}></div>
