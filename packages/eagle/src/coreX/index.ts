@@ -19,6 +19,7 @@ export * from "./SummaryTable";
 export * from "./SwitchWithText";
 export * from "./TabMenu";
 export * from "./UnitWithChart";
+export * from "./CircleLoading";
 
 // rename default export
 export { default as BarChart } from "./BarChart";
@@ -41,3 +42,4 @@ export { default as SummaryTable } from "./SummaryTable";
 export { default as SwitchWithText } from "./SwitchWithText";
 export { default as TabMenu } from "./TabMenu";
 export { default as UnitWithChart } from "./UnitWithChart";
+export { default as CircleLoading } from "./CircleLoading";

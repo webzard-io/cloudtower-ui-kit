@@ -1,0 +1,38 @@
+import { FullView } from "@src/core/Styled";
+import { LoadingComponentType } from "@src/core/Loading/loading.type";
+import Icon from "@src/core/Icon";
+import { css } from "@linaria/core";
+import React, { Fragment } from "react";
+import cx from "classnames";
+import { Keyframes, Animation } from "@src/styles/token";
+import { Loading64GradientBlueIcon } from "@cloudtower/icons-react";
+
+const LoadingWrapper = css`
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  opacity: 0.6;
+  ${Keyframes["rotate"]};
+  animation: ${Animation["circleRotate"]};
+`;
+
+const CircleLoading: LoadingComponentType = ({
+  fullView = true,
+  wrapperProps = {},
+}) => {
+  const Wrapper = fullView ? FullView : Fragment;
+  const props = fullView ? { className: "loading-full-view" } : {};
+  const { className, ...restWrapperProps } = wrapperProps;
+  return (
+    <Wrapper {...props} data-testid="loading">
+      <div className={cx(LoadingWrapper, className)} {...restWrapperProps}>
+        <Icon src={Loading64GradientBlueIcon} iconWidth={64} iconHeight={64} />
+      </div>
+    </Wrapper>
+  );
+};
+
+export default CircleLoading;
