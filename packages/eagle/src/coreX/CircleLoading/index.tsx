@@ -10,13 +10,18 @@ import { Loading64GradientBlueIcon } from "@cloudtower/icons-react";
 const LoadingWrapper = css`
   width: 64px;
   height: 64px;
+  max-width: 64px;
+  max-height: 64px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   opacity: 0.6;
-  ${Keyframes["rotate"]};
-  animation: ${Animation["circleRotate"]};
+  .icon-wrapper {
+    ${Keyframes["rotate"]};
+    animation: ${Animation["circleRotate"]};
+  }
 `;
 
 const CircleLoading: LoadingComponentType = ({
