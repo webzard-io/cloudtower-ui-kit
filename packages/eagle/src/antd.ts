@@ -40,7 +40,7 @@ export {
   Menu,
   Popover,
   Row,
-  Skeleton,
+  Skeleton as AntdSkeleton,
   Tabs,
   Timeline,
   Tree,

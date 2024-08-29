@@ -95,6 +95,7 @@ export * from "./Truncate";
 export * from "./Typo";
 export * from "./Units";
 export * from "./ConfigProvider";
+export * from "./Skeleton";
 
 export const units = {
   Percent,
