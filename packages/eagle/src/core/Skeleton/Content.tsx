@@ -23,9 +23,9 @@ const SkeletonContentStyle = css`
       opacity: 0.8;
       background: linear-gradient(
         90deg,
-        ${Color.white.white} 15%,
+        rgba(255, 255, 255, 0) 15%,
         ${Color.white["white-a60"]} 50%,
-        ${Color.white.white} 85%
+        rgba(255, 255, 255, 0) 85%
       );
 
       animation: ${Animation.shimmer};
