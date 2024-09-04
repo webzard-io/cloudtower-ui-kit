@@ -16,6 +16,13 @@ describe("SearchInput h5_css", () => {
       <div>
         <span
           class=
+        .ant-input-prefix {
+          margin-right: 8px;
+        }
+        .ant-input-suffix {
+          margin-left: 8px;
+        }
+      ,
         &.ant-input {
           padding: 5px 12px;
           line-height: 20px;
@@ -241,6 +248,13 @@ describe("SearchInput h5_css", () => {
       <div>
         <span
           class=
+        .ant-input-prefix {
+          margin-right: 8px;
+        }
+        .ant-input-suffix {
+          margin-left: 8px;
+        }
+      ,
         &.ant-input {
           padding: 5px 12px;
           line-height: 20px;
@@ -466,6 +480,13 @@ describe("SearchInput h5_css", () => {
       <div>
         <span
           class=
+        .ant-input-prefix {
+          margin-right: 8px;
+        }
+        .ant-input-suffix {
+          margin-left: 8px;
+        }
+      ,
         &.ant-input {
           padding: 5px 12px;
           line-height: 20px;

@@ -33,7 +33,7 @@
   "week_with_below_date": "每 <0></0> 周的如下{day}：",
   "month_with_below_date": "每 <0></0> 个月的如下{day}：",
   "will_excute_at_last_day_with_date": "如果当月没有 {date} 号，则会提前至该月最后一天执行。",
-  "date_mark":"、",
+  "date_mark": "、",
   "retain_with_count": "保留 {count} 份",
   "start_date": "开始日期",
   "retain_date": "保留份数",
@@ -74,5 +74,8 @@
   "search_relative_time_placeholder": "搜索相对时间",
   "select_all": "全选",
   "unselect_all": "取消全选",
-  "other": "其他"
+  "other": "其他",
+  "prev": "上一个",
+  "next": "下一个",
+  "clear": "清空"
 }
