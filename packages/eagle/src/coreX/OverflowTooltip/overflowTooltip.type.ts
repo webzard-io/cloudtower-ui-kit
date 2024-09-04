@@ -1,4 +1,6 @@
-export type OverflowTooltipProps = {
+import { AbstractTooltipProps } from "antd/lib/tooltip";
+
+export type OverflowTooltipProps = AbstractTooltipProps & {
   /**
    * 文本内容
    */
