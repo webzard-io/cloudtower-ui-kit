@@ -1,6 +1,13 @@
+import { css } from "@linaria/core";
 import SearchInput from "@src/core/SearchInput";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React, { useState } from "react";
+
+const ContainerStyle = css`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -13,14 +20,24 @@ const Template: ComponentStory<typeof SearchInput> = (args) => {
   const [value, setValue] = useState("");
 
   return (
-    <SearchInput
-      {...args}
-      value={value}
-      onChange={(v) => {
-        console.log(v);
-        setValue(v);
-      }}
-    />
+    <div className={ContainerStyle}>
+      <SearchInput
+        value={value}
+        onChange={(v) => {
+          console.log(v);
+          setValue(v);
+        }}
+      />
+      <SearchInput
+        size="small"
+        total={10}
+        onSearchPrev={() => {}}
+        onSearchNext={() => {}}
+        onChange={(v) => {
+          console.log(v);
+        }}
+      />
+    </div>
   );
 };
 
