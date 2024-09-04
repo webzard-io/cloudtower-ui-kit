@@ -1,3 +1,4 @@
+import { css } from "@linaria/core";
 import OverflowTooltip from "@src/coreX/OverflowTooltip";
 import type { OverflowTooltipProps } from "@src/coreX/OverflowTooltip/overflowTooltip.type";
 import { Meta, StoryObj } from "@storybook/react";
@@ -72,5 +73,26 @@ export const Tooltip: StoryObj<OverflowTooltipProps> = {
     content: exampleContent,
     multiLines: 0,
     tooltip: loremIpsum(),
+  },
+};
+
+/**
+ * 自定义悬浮提示 overlay 部分样式，其余属性请参考 antd-Tooltip
+ * https://ant-design.antgroup.com/components/tooltip-cn#api
+ */
+export const CustomOverlayTooltip: StoryObj<OverflowTooltipProps> = {
+  name: "自定义 Overlay 样式",
+  render: (props) => {
+    return <OverflowTooltip {...props} />;
+  },
+  args: {
+    content: exampleContent,
+    multiLines: 0,
+    tooltip: "",
+    overlayClassName: css`
+      .ant-tooltip-inner {
+        background-color: red;
+      }
+    `,
   },
 };

@@ -23,8 +23,25 @@ const MultipleLine = styled.div<{
   word-break: break-all;
 `;
 
+const TooltipDefaultClass = css`
+  .ant-tooltip-arrow {
+    display: none;
+  }
+  .ant-tooltip-inner {
+    background: $gray-a80-9;
+    border-radius: 4px;
+  }
+`;
+
 const OverflowTooltip: React.FC<OverflowTooltipProps> = (props) => {
-  const { content, className, onClick, multiLines } = props;
+  const {
+    content,
+    className,
+    onClick,
+    multiLines,
+    overlayClassName,
+    ...restProps
+  } = props;
   const tooltip: React.ReactNode = props.tooltip || content;
   const [ellipsis, setEllipsis] = useState(false);
   const textRef = useRef<HTMLDivElement>(null);
@@ -52,10 +69,12 @@ const OverflowTooltip: React.FC<OverflowTooltipProps> = (props) => {
 
   return (
     <Tooltip
+      {...restProps}
       {...(!ellipsis && {
         visible: false,
       })}
       title={tooltip}
+      overlayClassName={cx(TooltipDefaultClass, overlayClassName)}
     >
       {isMultiLine ? (
         <MultipleLine
