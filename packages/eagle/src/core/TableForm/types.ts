@@ -218,6 +218,7 @@ export type TableFormProps = {
     columnKey?: string,
   ) => void;
   onBodyBlur?: (value: DataType, rowIndex?: number, columnKey?: string) => void;
+  hideEmptyTable?: boolean;
 };
 
 export type TableFormHandle = {
