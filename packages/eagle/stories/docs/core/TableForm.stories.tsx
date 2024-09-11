@@ -12,6 +12,7 @@ import {
   TableFormRowConfiguration,
   ValidateTriggerType,
 } from "@src/core/TableForm/types";
+import { genEmptyRow } from "@src/core/TableForm/utils";
 import { Typo } from "@src/core/Typo";
 import { Checkbox, Form, Input, Select, Space } from "antd";
 import React, {
@@ -231,9 +232,16 @@ const commonTableFormProps: TableFormProps = {
 };
 const defaultAsyncErrors = [null];
 
+const DEFAULT_ROW_COUNT = 3;
+const defaultData = [...Array(DEFAULT_ROW_COUNT)].map(() =>
+  genEmptyRow(commonTableFormProps.columns),
+);
+
 export const Basic = () => {
   const [formHandle, setFormHandle] = useState<TableFormHandle>();
-  const [tableForm2DataLength, setTableForm2DataLength] = useState<number>();
+  const [tableForm2DataLength, setTableForm2DataLength] = useState<number>(
+    defaultData.length,
+  );
   const ref1 = useRef<TableFormHandle>(null);
   const ref2 = useRef<TableFormHandle>(null);
   const [asyncErrors, setAsyncErrors] =
@@ -348,6 +356,7 @@ export const Basic = () => {
             onBodyChange={(data) => {
               setTableForm2DataLength(data.length);
             }}
+            defaultData={defaultData}
           />
         </ContentWrapper>
       </Space>
@@ -359,6 +368,7 @@ export const Basic = () => {
             disableBatchFilling
             draggable
             validateTriggerType={ValidateTriggerType.Aggressive}
+            defaultData={defaultData}
           />
         </ContentWrapper>
       </Space>
@@ -369,6 +379,7 @@ export const Basic = () => {
             disableBatchFilling
             columns={getColumnsForValidation(ValidateTriggerType.Normal)}
             rowValidator={rowValidationForValidationForm}
+            defaultData={defaultData}
           />
         </ContentWrapper>
       </Space>
@@ -380,6 +391,7 @@ export const Basic = () => {
             disableBatchFilling
             columns={getColumnsForValidation(ValidateTriggerType.Lazy)}
             rowValidator={rowValidationForValidationForm}
+            defaultData={defaultData}
           />
         </ContentWrapper>
       </Space>
@@ -391,6 +403,7 @@ export const Basic = () => {
             disableBatchFilling
             columns={getColumnsForValidation(ValidateTriggerType.Aggressive)}
             rowValidator={rowValidationForValidationForm}
+            defaultData={defaultData}
           />
         </ContentWrapper>
       </Space>
@@ -402,6 +415,7 @@ export const Basic = () => {
             columns={getColumnsForValidation(ValidateTriggerType.Normal)}
             rowValidator={rowValidationForValidationForm}
             row={tableFormRowConfig}
+            defaultData={defaultData}
           />
         </ContentWrapper>
       </Space>
@@ -464,6 +478,53 @@ export const Basic = () => {
               } else {
                 setAsyncErrors(defaultAsyncErrors);
               }
+            }}
+          />
+        </ContentWrapper>
+      </Space>
+      <Space direction="vertical">
+        <Title>Show table form when there is no data</Title>
+        <ContentWrapper>
+          <TableForm
+            {...commonTableFormProps}
+            columns={[
+              {
+                key: "col-1",
+                title: "This is the first column without data",
+                type: "input",
+              },
+              {
+                key: "col-2",
+                title: "This is the second column without data",
+                type: "input",
+              },
+            ]}
+            disableBatchFilling
+            rowValidator={undefined}
+            errors={asyncErrors}
+            rowAddConfig={{
+              addible: true,
+            }}
+            row={{
+              deletable: true,
+            }}
+          />
+        </ContentWrapper>
+      </Space>
+      <Space direction="vertical">
+        <Title>Hide table form when there is no data</Title>
+        <ContentWrapper>
+          <TableForm
+            {...commonTableFormProps}
+            disableBatchFilling
+            rowValidator={undefined}
+            errors={asyncErrors}
+            hideEmptyTable
+            rowAddConfig={{
+              addible: true,
+            }}
+            row={{
+              deletable: true,
             }}
           />
         </ContentWrapper>

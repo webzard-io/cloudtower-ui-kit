@@ -10,16 +10,13 @@ import {
   TableFormHandle,
   TableFormProps,
 } from "@src/core/TableForm/types";
-import { genEmptyRow } from "@src/core/TableForm/utils";
 import { List as AntdList } from "antd";
 import React, {
   useCallback,
   useImperativeHandle,
-  useLayoutEffect,
   useMemo,
   useState,
 } from "react";
-const DEFAULT_ROW_COUNT = 3;
 
 const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
   (props, ref) => {
@@ -43,6 +40,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       onBodyBlur,
       row,
       errors,
+      hideEmptyTable,
     } = props;
     const [data, setData] = useState<DataType[]>(defaultData || []);
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -59,15 +57,6 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       },
       [onBodyChange],
     );
-
-    useLayoutEffect(() => {
-      // While default data is not defined in first render, generate 3 records
-      if (!defaultData) {
-        updateData(
-          [...Array(DEFAULT_ROW_COUNT)].map(() => genEmptyRow(columns)),
-        );
-      }
-    }, [columns, defaultData, updateData]);
 
     const handleBatchChange = useCallback(
       (newData, columnKey, shouldUpdateData: boolean) => {
@@ -145,40 +134,45 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
 
     return (
       <div className={className}>
-        <TableFormWrapper
-          className={`table-form row-split-by-${rowSplitType}`}
-          style={tableFormWrapperStyle}
-        >
-          <AntdList size={size} className={`size-${size}`}>
-            <AntdList.Item
-              className="eagle-table-form-header"
-              actions={
-                deleteConfig?.deletable || row?.deletable ? [<></>] : undefined
-              }
-            >
-              {draggable ? <DraggableHandleWrapper /> : null}
-              {headerCells}
-            </AntdList.Item>
-            <TableFormBodyRows
-              data={data}
-              latestData={latestData}
-              columns={columns}
-              passwordVisible={passwordVisible}
-              deleteConfig={deleteConfig}
-              disabled={disabled}
-              draggable={draggable}
-              rowSplitType={rowSplitType}
-              validateTriggerType={validateTriggerType}
-              row={row}
-              onBodyBlur={onBodyBlur}
-              updateData={updateData}
-              renderRowDescription={renderRowDescription}
-              rowValidator={rowValidator}
-              validateAll={validateAll}
-              errors={errors}
-            />
-          </AntdList>
-        </TableFormWrapper>
+        {hideEmptyTable && data.length < 1 ? null : (
+          <TableFormWrapper
+            data-testid="eagle-table-form-wrapper"
+            className={`table-form row-split-by-${rowSplitType}`}
+            style={tableFormWrapperStyle}
+          >
+            <AntdList size={size} className={`size-${size}`}>
+              <AntdList.Item
+                className="eagle-table-form-header"
+                actions={
+                  deleteConfig?.deletable || row?.deletable
+                    ? [<></>]
+                    : undefined
+                }
+              >
+                {draggable ? <DraggableHandleWrapper /> : null}
+                {headerCells}
+              </AntdList.Item>
+              <TableFormBodyRows
+                data={data}
+                latestData={latestData}
+                columns={columns}
+                passwordVisible={passwordVisible}
+                deleteConfig={deleteConfig}
+                disabled={disabled}
+                draggable={draggable}
+                rowSplitType={rowSplitType}
+                validateTriggerType={validateTriggerType}
+                row={row}
+                onBodyBlur={onBodyBlur}
+                updateData={updateData}
+                renderRowDescription={renderRowDescription}
+                rowValidator={rowValidator}
+                validateAll={validateAll}
+                errors={errors}
+              />
+            </AntdList>
+          </TableFormWrapper>
+        )}
         {rowAddConfig?.addible ? (
           <AddRowButton
             config={rowAddConfig}
