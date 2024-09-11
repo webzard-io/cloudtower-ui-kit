@@ -91,26 +91,38 @@ const commonTableFormProps: TableFormProps = {
   ],
 };
 describe("table form render", () => {
-  it("default data is undefiend", () => {
+  it("default data is undefined", () => {
     const { container } = render(<TableForm {...commonTableFormProps} />);
     expect({
       linaria: true,
       dom: container,
     }).toMatchSnapshot();
 
-    const allRows = screen.getAllByTestId("eagle-table-form-row-for-test");
-    expect(allRows.length).toBe(3);
+    const allRows = screen.queryAllByTestId("eagle-table-form-row-for-test");
+    expect(allRows.length).toBe(0);
   });
 
-  it("default data is empty", () => {
+  it("default data is empty - without hideEmptyTable", () => {
     render(<TableForm {...commonTableFormProps} defaultData={[]} />);
+
+    const tableFormWrapper = screen.queryByTestId("eagle-table-form-wrapper");
+    expect(tableFormWrapper).toBeInTheDocument();
 
     const allRows = screen.queryAllByTestId("eagle-table-form-row-for-test");
     const deleteActions = screen.queryAllByTestId(
-      "eagle-table-form-row-action"
+      "eagle-table-form-row-action",
     );
     expect(allRows.length).toBe(0);
     expect(deleteActions.length).toBe(0);
+  });
+
+  it("default data is empty - with hideEmptyTable", () => {
+    render(
+      <TableForm {...commonTableFormProps} defaultData={[]} hideEmptyTable />,
+    );
+
+    const tableFormWrapper = screen.queryByTestId("eagle-table-form-wrapper");
+    expect(tableFormWrapper).not.toBeInTheDocument();
   });
 
   it("has row configuration", () => {
@@ -144,17 +156,17 @@ describe("table form render", () => {
             }
           },
         }}
-      />
+      />,
     );
 
     const hasDescEle = screen.getByText(
-      "this is a special desc for the first row"
+      "this is a special desc for the first row",
     );
     const deleteActions = screen.queryAllByTestId(
-      "eagle-table-form-row-action"
+      "eagle-table-form-row-action",
     );
     const zebraMarkingStyleEle = document.querySelectorAll(
-      ".row-split-by-zebraMarking"
+      ".row-split-by-zebraMarking",
     );
     expect(hasDescEle).toBeInTheDocument();
     expect(deleteActions.length).toBe(3);
@@ -189,7 +201,7 @@ describe("table form render", () => {
             password: "this is password cell error",
           },
         ]}
-      />
+      />,
     );
 
     expect(screen.queryAllByText("this is a row error").length).toBe(1);

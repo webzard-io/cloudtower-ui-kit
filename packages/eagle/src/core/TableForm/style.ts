@@ -64,6 +64,9 @@ export const TableFormWrapper = styled.div`
   overflow: auto;
   .ant-list {
     position: relative;
+    .ant-list-item:last-child {
+      border-bottom: none;
+    }
     .eagle-table-form-header {
       position: sticky;
       top: 0;
