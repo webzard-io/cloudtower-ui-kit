@@ -179,28 +179,62 @@ export type TableFormErrorsType = (
 )[];
 
 export type TableFormProps = {
+  /**
+   * 表格默认数据
+   */
   defaultData?: DataType[];
+  /**
+   * 表格列配置
+   */
   columns: TableFormColumn[];
+  /**
+   * 表格是否禁用单元格默认控件
+   */
   disabled?: boolean;
+  /**
+   * 表格行添加配置
+   */
   rowAddConfig?: RowAddConfigurations;
   /**
    * @deprecated use "row" configuration instead
    */
   deleteConfig?: DeletableConfigurations;
+  /**
+   * 表格大小
+   */
   size?: "default" | "large" | "small";
   /**
    * @deprecated use "row" configuration instead
    */
   draggable?: boolean;
+  /**
+   * 表格是否禁用批量填充
+   */
   disableBatchFilling?: boolean;
+  /**
+   * 表格类名
+   */
   className?: string;
   /**
    * @deprecated use "row" configuration instead
    */
   rowSplitType?: TableFormRowSplitType;
+  /**
+   * 表格验证触发类型，使用 ValidateTriggerType 枚举
+   * @enum {number}
+   */
   validateTriggerType?: ValidateTriggerType;
+  /**
+   * 表格最大高度
+   */
   maxHeight?: number | string;
+  /**
+   * 表格行配置
+   */
   row?: TableFormRowConfiguration;
+  /**
+   * 表格行错误信息
+   */
   errors?: TableFormErrorsType;
   /**
    * @deprecated use "row" configuration instead
@@ -210,14 +244,29 @@ export type TableFormProps = {
    * @deprecated use "row" configuration instead
    */
   rowValidator?: (rowIndex: number, rowData: DataType) => string | undefined;
+  /**
+   * 表格头部数据变化的回调
+   */
   onHeaderChange?: (data: any[], columnKey: string) => void;
+  /**
+   * 表格头部数据失去焦点时的回调
+   */
   onHeaderBlur?: (data: any[]) => void;
+  /**
+   * 表格行数据变化的回调
+   */
   onBodyChange?: (
     value: DataType[],
     rowIndex?: number,
     columnKey?: string,
   ) => void;
+  /**
+   * 表格行数据失去焦点时的回调
+   */
   onBodyBlur?: (value: DataType, rowIndex?: number, columnKey?: string) => void;
+  /**
+   * 是否隐藏空表格
+   */
   hideEmptyTable?: boolean;
 };
 

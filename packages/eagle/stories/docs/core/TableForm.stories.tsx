@@ -14,6 +14,7 @@ import {
 } from "@src/core/TableForm/types";
 import { genEmptyRow } from "@src/core/TableForm/utils";
 import { Typo } from "@src/core/Typo";
+import { CoreMeta } from "@stories/types";
 import { Checkbox, Form, Input, Select, Space } from "antd";
 import React, {
   useCallback,
@@ -22,6 +23,20 @@ import React, {
   useRef,
   useState,
 } from "react";
+
+const meta = {
+  component: TableForm,
+  title: "Core/TableForm | 表格表单",
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/sv8N9opZrWCMApiGeq2V6M/Table-Form-%7C-%E8%A1%A8%E6%A0%BC%E8%A1%A8%E5%8D%95?node-id=0-1&node-type=canvas&t=J7VBRAphSq2DIdhA-0",
+    },
+  },
+} satisfies CoreMeta<typeof TableForm>;
+
+export default meta;
+
 const Title: React.FC = ({ children }) => (
   <div style={{ marginTop: "16px" }} className={Typo.Display.d2_bold_title}>
     {children}
@@ -90,10 +105,6 @@ const BatchInputForm: React.FC<{
       </Form.Item>
     </Form>
   );
-};
-
-const story = {
-  title: "Core/TableForm",
 };
 
 const selectOptions = [
@@ -542,5 +553,3 @@ Basic.story = {
     },
   },
 };
-
-export default story;
