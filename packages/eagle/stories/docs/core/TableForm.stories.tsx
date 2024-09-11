@@ -12,7 +12,9 @@ import {
   TableFormRowConfiguration,
   ValidateTriggerType,
 } from "@src/core/TableForm/types";
+import { genEmptyRow } from "@src/core/TableForm/utils";
 import { Typo } from "@src/core/Typo";
+import { CoreMeta } from "@stories/types";
 import { Checkbox, Form, Input, Select, Space } from "antd";
 import React, {
   useCallback,
@@ -21,6 +23,20 @@ import React, {
   useRef,
   useState,
 } from "react";
+
+const meta = {
+  component: TableForm,
+  title: "Core/TableForm | 表格表单",
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/sv8N9opZrWCMApiGeq2V6M/Table-Form-%7C-%E8%A1%A8%E6%A0%BC%E8%A1%A8%E5%8D%95?node-id=0-1&node-type=canvas&t=J7VBRAphSq2DIdhA-0",
+    },
+  },
+} satisfies CoreMeta<typeof TableForm>;
+
+export default meta;
+
 const Title: React.FC = ({ children }) => (
   <div style={{ marginTop: "16px" }} className={Typo.Display.d2_bold_title}>
     {children}
@@ -89,10 +105,6 @@ const BatchInputForm: React.FC<{
       </Form.Item>
     </Form>
   );
-};
-
-const story = {
-  title: "Core/TableForm",
 };
 
 const selectOptions = [
@@ -231,9 +243,16 @@ const commonTableFormProps: TableFormProps = {
 };
 const defaultAsyncErrors = [null];
 
+const DEFAULT_ROW_COUNT = 3;
+const defaultData = [...Array(DEFAULT_ROW_COUNT)].map(() =>
+  genEmptyRow(commonTableFormProps.columns),
+);
+
 export const Basic = () => {
   const [formHandle, setFormHandle] = useState<TableFormHandle>();
-  const [tableForm2DataLength, setTableForm2DataLength] = useState<number>();
+  const [tableForm2DataLength, setTableForm2DataLength] = useState<number>(
+    defaultData.length,
+  );
   const ref1 = useRef<TableFormHandle>(null);
   const ref2 = useRef<TableFormHandle>(null);
   const [asyncErrors, setAsyncErrors] =
@@ -348,6 +367,7 @@ export const Basic = () => {
             onBodyChange={(data) => {
               setTableForm2DataLength(data.length);
             }}
+            defaultData={defaultData}
           />
         </ContentWrapper>
       </Space>
@@ -359,6 +379,7 @@ export const Basic = () => {
             disableBatchFilling
             draggable
             validateTriggerType={ValidateTriggerType.Aggressive}
+            defaultData={defaultData}
           />
         </ContentWrapper>
       </Space>
@@ -369,6 +390,7 @@ export const Basic = () => {
             disableBatchFilling
             columns={getColumnsForValidation(ValidateTriggerType.Normal)}
             rowValidator={rowValidationForValidationForm}
+            defaultData={defaultData}
           />
         </ContentWrapper>
       </Space>
@@ -380,6 +402,7 @@ export const Basic = () => {
             disableBatchFilling
             columns={getColumnsForValidation(ValidateTriggerType.Lazy)}
             rowValidator={rowValidationForValidationForm}
+            defaultData={defaultData}
           />
         </ContentWrapper>
       </Space>
@@ -391,6 +414,7 @@ export const Basic = () => {
             disableBatchFilling
             columns={getColumnsForValidation(ValidateTriggerType.Aggressive)}
             rowValidator={rowValidationForValidationForm}
+            defaultData={defaultData}
           />
         </ContentWrapper>
       </Space>
@@ -402,6 +426,7 @@ export const Basic = () => {
             columns={getColumnsForValidation(ValidateTriggerType.Normal)}
             rowValidator={rowValidationForValidationForm}
             row={tableFormRowConfig}
+            defaultData={defaultData}
           />
         </ContentWrapper>
       </Space>
@@ -468,6 +493,53 @@ export const Basic = () => {
           />
         </ContentWrapper>
       </Space>
+      <Space direction="vertical">
+        <Title>Show table form when there is no data</Title>
+        <ContentWrapper>
+          <TableForm
+            {...commonTableFormProps}
+            columns={[
+              {
+                key: "col-1",
+                title: "This is the first column without data",
+                type: "input",
+              },
+              {
+                key: "col-2",
+                title: "This is the second column without data",
+                type: "input",
+              },
+            ]}
+            disableBatchFilling
+            rowValidator={undefined}
+            errors={asyncErrors}
+            rowAddConfig={{
+              addible: true,
+            }}
+            row={{
+              deletable: true,
+            }}
+          />
+        </ContentWrapper>
+      </Space>
+      <Space direction="vertical">
+        <Title>Hide table form when there is no data</Title>
+        <ContentWrapper>
+          <TableForm
+            {...commonTableFormProps}
+            disableBatchFilling
+            rowValidator={undefined}
+            errors={asyncErrors}
+            hideEmptyTable
+            rowAddConfig={{
+              addible: true,
+            }}
+            row={{
+              deletable: true,
+            }}
+          />
+        </ContentWrapper>
+      </Space>
     </div>
   );
 };
@@ -481,5 +553,3 @@ Basic.story = {
     },
   },
 };
-
-export default story;
