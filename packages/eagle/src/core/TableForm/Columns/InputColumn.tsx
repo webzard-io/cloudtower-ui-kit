@@ -73,6 +73,7 @@ export const InputColumnHeaderCell: React.FC<
 
   return (
     <CustomInput
+      style={{ marginTop: "4px" }}
       type={column.type}
       placeholder={column.placeholder}
       disabled={disabled}

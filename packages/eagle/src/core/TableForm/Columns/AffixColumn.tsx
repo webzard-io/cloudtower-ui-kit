@@ -20,7 +20,7 @@ export const AffixColumnHeaderCell: React.FC<
       setPrefix(newPrefix);
       onChange(newPrefix + suffix);
     },
-    [suffix, onChange]
+    [suffix, onChange],
   );
 
   const onSuffixChange = useCallback(
@@ -29,11 +29,11 @@ export const AffixColumnHeaderCell: React.FC<
       setSuffix(newSuffix);
       onChange(prefix + newSuffix);
     },
-    [prefix, onChange]
+    [prefix, onChange],
   );
 
   return (
-    <Space>
+    <Space style={{ marginTop: "4px" }}>
       {!column.disablePrefix ? (
         <Input
           value={prefix}

@@ -13,10 +13,10 @@ export const CheckboxColumnHeaderCell: React.FC<
     (e: CheckboxChangeEvent) => {
       onChange(e.target.checked, true);
     },
-    [onChange]
+    [onChange],
   );
 
-  return <Checkbox onChange={_onChange} />;
+  return <Checkbox style={{ marginTop: "4px" }} onChange={_onChange} />;
 };
 
 export const CheckboxColumnBodyCell: React.FC<
@@ -33,7 +33,7 @@ export const CheckboxColumnBodyCell: React.FC<
     (e: CheckboxChangeEvent) => {
       onChange(e.target.checked);
     },
-    [onChange]
+    [onChange],
   );
 
   const defaultChecked = column.defaultValue as boolean | undefined;
