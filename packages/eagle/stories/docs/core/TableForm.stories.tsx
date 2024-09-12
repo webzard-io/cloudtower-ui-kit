@@ -1,4 +1,4 @@
-import { css } from "@linaria/core";
+import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
 import Button from "@src/core/Button";
 import TableForm from "@src/core/TableForm";
@@ -13,6 +13,7 @@ import {
   ValidateTriggerType,
 } from "@src/core/TableForm/types";
 import { genEmptyRow } from "@src/core/TableForm/utils";
+import Tooltip from "@src/core/Tooltip";
 import { Typo } from "@src/core/Typo";
 import { CoreMeta } from "@stories/types";
 import { Checkbox, Form, Input, Select, Space } from "antd";
@@ -55,6 +56,14 @@ const formStyles = css`
     width: unset !important;
     flex-flow: unset;
   }
+`;
+
+const OverflowUnderlineStyle = css`
+  border-bottom: 1px dashed;
+  border-color: $strokes-light-trans-4;
+`;
+const CustomSubtitleStyle = css`
+  color: $text-secondary-light;
 `;
 
 const BatchInputForm: React.FC<{
@@ -531,6 +540,84 @@ export const Basic = () => {
             rowValidator={undefined}
             errors={asyncErrors}
             hideEmptyTable
+            rowAddConfig={{
+              addible: true,
+            }}
+            row={{
+              deletable: true,
+            }}
+          />
+        </ContentWrapper>
+      </Space>
+
+      <Space direction="vertical">
+        <Title>Render different title and subTitle for header cell</Title>
+        <ContentWrapper>
+          <TableForm
+            {...commonTableFormProps}
+            columns={[
+              {
+                key: "col-1",
+                title: "This is the string type title, without subTitleRender",
+                type: "input",
+              },
+              {
+                key: "col-2",
+                title: (
+                  <Tooltip title="This is the ReactNode type title">
+                    <span className={OverflowUnderlineStyle}>
+                      This is the ReactNode type
+                    </span>
+                  </Tooltip>
+                ),
+                type: "input",
+                subTitleRender(props) {
+                  return null;
+                },
+              },
+              {
+                key: "col-3",
+                title: "This is the string type title, with subTitleRender",
+                subTitleRender(props) {
+                  return (
+                    <p
+                      className={cx(Typo.Label.l4_regular, CustomSubtitleStyle)}
+                    >
+                      This is the ReactNode type
+                      <Tooltip title="subTitle">
+                        <span className={OverflowUnderlineStyle}>
+                          {" subTitle"}
+                        </span>
+                      </Tooltip>
+                    </p>
+                  );
+                },
+                type: "input",
+              },
+              {
+                key: "col-4",
+                title: (
+                  <Tooltip title="This is the ReactNode type title, with subTitleRender">
+                    <span className={OverflowUnderlineStyle}>
+                      This is the ReactNode type
+                    </span>
+                  </Tooltip>
+                ),
+                subTitleRender(props) {
+                  return (
+                    <p
+                      className={cx(Typo.Label.l4_regular, CustomSubtitleStyle)}
+                    >
+                      This is the ReactNode type subTitle, and it is a long
+                      description
+                    </p>
+                  );
+                },
+                type: "input",
+              },
+            ]}
+            rowValidator={undefined}
+            errors={asyncErrors}
             rowAddConfig={{
               addible: true,
             }}

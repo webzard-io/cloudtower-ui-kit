@@ -28,14 +28,42 @@ export type CustomizedColumnRenderProps = {
 };
 
 export type TableFormColumn = {
+  /**
+   * 列类型，指定后会使用 ColumnBodyImpls 枚举渲染单元格，否则使用 render 函数渲染
+   * @enum {number}
+   */
   type?: keyof typeof ColumnBodyImpls;
-  title?: string;
+  /**
+   * 列标题
+   */
+  title?: string | React.ReactNode;
+  /**
+   * 列唯一标识
+   */
   key: string;
+  /**
+   * 列副标题，只在 `disableBatchFilling` 为 `false`，且 `type` 为 'text' 时生效
+   */
   subTitle?: string;
-
+  /**
+   * 列副标题颜色
+   */
   subTitleColor?: "" | "primary" | "success" | "warning" | "danger";
+  /**
+   * 列副标题渲染函数，优先级高于 `subTitle`，即使 `disableBatchFilling` 为 `true` 也会生效
+   */
+  subTitleRender?: (props: CustomizedColumnRenderProps) => React.ReactNode;
+  /**
+   * 列单元格图标
+   */
   bodyIcon?: any;
+  /**
+   * 列单元格错误图标
+   */
   bodyErrorIcon?: any;
+  /**
+   * 列宽度
+   */
   width?: number | string;
   displayText?: string;
 
@@ -46,9 +74,21 @@ export type TableFormColumn = {
   disablePrefix?: boolean;
   disableSuffix?: boolean;
   customData?: any;
+  /**
+   * 列对齐方式
+   */
   align?: "left" | "right" | "center";
+  /**
+   * 列行描述渲染函数
+   */
   renderDescription?: (props: RenderRowDescriptionProps) => React.ReactNode;
+  /**
+   * 列单元格渲染函数
+   */
   render?: (props: CustomizedColumnRenderProps) => React.ReactNode;
+  /**
+   * 列验证函数
+   */
   validator?: (params: {
     value: any;
     rowIndex?: number;
