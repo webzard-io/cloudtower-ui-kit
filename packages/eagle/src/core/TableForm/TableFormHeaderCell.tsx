@@ -5,9 +5,10 @@ import { TitleStyle } from "@src/core/TableForm/style";
 import { ColumnHeaderCellProps } from "@src/core/TableForm/types";
 import { increaseLastNumber } from "@src/core/TableForm/utils";
 import { Typo } from "@src/core/Typo";
+import { OverflowTooltip } from "@src/coreX";
 import React, { useCallback, useState } from "react";
 export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
-  props
+  props,
 ) => {
   const { column, disabled, data, disableBatchFilling, onBlur, onChange } =
     props;
@@ -35,10 +36,10 @@ export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
       });
       onChange?.(newData, column.key, shouldUpdateData);
     },
-    [onChange, data, column]
+    [onChange, data, column],
   );
 
-  const _onBlur = useCallback(() => {
+  const headerOnBlur = useCallback(() => {
     onBlur?.(column.key, errMsg);
   }, [column.key, onBlur, errMsg]);
 
@@ -50,20 +51,63 @@ export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
         {...props}
         column={column}
         onChange={headerOnChange}
-        onBlur={_onBlur}
+        onBlur={headerOnBlur}
       />
     );
   };
 
-  const renderCell = () =>
-    column.render
-      ? column.render({
-          isHeader: true,
-          disabled,
-          onChange: headerOnChange,
-          onBlur: _onBlur,
-        })
-      : renderDefaultComponent();
+  const renderTitle = () => {
+    const titleContent =
+      typeof column.title === "string" ? (
+        <OverflowTooltip tooltip={column.title} content={column.title} />
+      ) : (
+        column.title
+      );
+
+    return (
+      <p className={cx(Typo.Label.l3_bold_title, TitleStyle)}>{titleContent}</p>
+    );
+  };
+
+  const renderSubTitle = () => {
+    // subTitleRender has the highest priority,
+    // even if the batch filling is disabled
+    if (column.subTitleRender) {
+      return column.subTitleRender({
+        isHeader: true,
+        disabled,
+        onChange: headerOnChange,
+        onBlur: headerOnBlur,
+      });
+    }
+
+    // do not render subTitle if the subTitleRender is not provided
+    // and the batch filling is disabled
+    if (disableBatchFilling) {
+      return null;
+    }
+
+    // render subTitle if the batch filling is enabled
+    return (
+      <FormItem
+        validateStatus={typeof errMsg === "string" && errMsg ? "error" : ""}
+        message={errMsg || undefined}
+      >
+        {
+          // if the render prop is provided, use it to render the subTitle
+          // otherwise, render the default component
+          column.render
+            ? column.render({
+                isHeader: true,
+                disabled,
+                onChange: headerOnChange,
+                onBlur: headerOnBlur,
+              })
+            : renderDefaultComponent()
+        }
+      </FormItem>
+    );
+  };
 
   return (
     <div
@@ -74,15 +118,8 @@ export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
         visibility: column.hidden ? "hidden" : "visible",
       }}
     >
-      <p className={cx(Typo.Label.l3_bold_title, TitleStyle)}>{column.title}</p>
-      {disableBatchFilling ? null : (
-        <FormItem
-          validateStatus={typeof errMsg === "string" && errMsg ? "error" : ""}
-          message={errMsg || undefined}
-        >
-          {renderCell()}
-        </FormItem>
-      )}
+      {renderTitle()}
+      {renderSubTitle()}
     </div>
   );
 };
