@@ -44,18 +44,14 @@ const Title: React.FC = ({ children }) => (
   </div>
 );
 
-const ContentWrapper = styled.div`
-  padding: 20px;
+const Desc = styled.div`
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: $text-light-secondary;
 `;
 
-const formStyles = css`
-  margin-bottom: "10px";
-  max-width: "800px";
-  overflow: hidden;
-  .ant-form .ant-form-item {
-    width: unset !important;
-    flex-flow: unset;
-  }
+const ContentWrapper = styled.div`
+  padding: 20px;
 `;
 
 const OverflowUnderlineStyle = css`
@@ -65,56 +61,6 @@ const OverflowUnderlineStyle = css`
 const CustomSubtitleStyle = css`
   color: $text-secondary-light;
 `;
-
-const BatchInputForm: React.FC<{
-  updateTableForm?: (data: DataType[]) => void;
-  tableForm2DataLength?: number;
-}> = ({ updateTableForm, tableForm2DataLength }) => {
-  //@ts-ignore
-  const onFinish = (values) => {
-    if (tableForm2DataLength) {
-      const newData = [...Array(tableForm2DataLength)].fill({ ...values });
-      updateTableForm?.(newData);
-    }
-  };
-
-  return (
-    <Form
-      name="basic"
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      autoComplete="off"
-      className={formStyles}
-      size="small"
-      layout="inline"
-    >
-      <Form.Item label="起始管理 IP" name="address">
-        <Input />
-      </Form.Item>
-      <Form.Item label="递增 input" name="increase">
-        <Input />
-      </Form.Item>
-      <Form.Item label="密码" name="password">
-        <Input.Password />
-      </Form.Item>
-      <Form.Item label="复选框" name="checkbox" valuePropName="checked">
-        <Checkbox />
-      </Form.Item>
-      <Form.Item label="affix" name="affix">
-        <Input />
-      </Form.Item>
-      <Form.Item label="自定义组件" name="customizedCmpt">
-        <Select options={selectOptions} />
-      </Form.Item>
-
-      <Form.Item style={{ alignSelf: "flex-end" }}>
-        <Button type="quiet" className="quiet-blue" htmlType="submit">
-          批量填充
-        </Button>
-      </Form.Item>
-    </Form>
-  );
-};
 
 const selectOptions = [
   { label: "选项 1", value: "option 1" },
@@ -257,25 +203,66 @@ const defaultData = [...Array(DEFAULT_ROW_COUNT)].map(() =>
   genEmptyRow(commonTableFormProps.columns),
 );
 
-export const Basic = () => {
-  const [formHandle, setFormHandle] = useState<TableFormHandle>();
-  const [tableForm2DataLength, setTableForm2DataLength] = useState<number>(
-    defaultData.length,
-  );
-  const ref1 = useRef<TableFormHandle>(null);
-  const ref2 = useRef<TableFormHandle>(null);
-  const [asyncErrors, setAsyncErrors] =
-    useState<TableFormErrorsType>(defaultAsyncErrors);
+const BatchInputStory = () => {
+  const ref = useRef<TableFormHandle>(null);
 
   useEffect(() => {
-    if (ref2.current !== null) {
-      setFormHandle(ref2.current);
-    }
-    if (ref1.current !== null) {
-      ref1.current.validateWholeFields();
+    if (ref.current !== null) {
+      ref.current.validateWholeFields();
     }
   }, []);
 
+  return (
+    <>
+      <Title>TableForm With Batch Input</Title>
+      <ContentWrapper>
+        <TableForm
+          {...commonTableFormProps}
+          ref={ref}
+          maxHeight={300}
+          defaultData={[
+            {
+              address: "Value",
+              password: "this-is-pwd",
+              checkbox: false,
+            },
+            {
+              address: "row has address",
+              password: "this-is-pwd",
+              checkbox: true,
+            },
+            {
+              address: "row has address",
+              password: "this-is-pwd",
+              checkbox: false,
+            },
+            {
+              address: "Values",
+              password: "this-is-pwd",
+              checkbox: false,
+            },
+            {
+              address: "Values",
+              password: "this-is-pwd",
+              checkbox: false,
+            },
+            {
+              address: "Values",
+              password: "this-is-pwd",
+              checkbox: false,
+            },
+          ]}
+        />
+      </ContentWrapper>
+    </>
+  );
+};
+export const BatchInput = {
+  render: () => <BatchInputStory />,
+};
+
+const DynamicRowsStory = () => {
+  const ref = useRef<TableFormHandle>(null);
   const deleteConfig: DeletableConfigurations = useMemo(
     () => ({
       deletable: true,
@@ -289,6 +276,131 @@ export const Basic = () => {
     [],
   );
 
+  return (
+    <>
+      <Title>Batch input TableForm with dynamic rows</Title>
+      <ContentWrapper>
+        <TableForm
+          ref={ref}
+          {...commonTableFormProps}
+          deleteConfig={deleteConfig}
+          validateTriggerType={ValidateTriggerType.Lazy}
+          rowAddConfig={{
+            addible: true,
+            maximum: 8,
+          }}
+          defaultData={defaultData}
+        />
+      </ContentWrapper>
+    </>
+  );
+};
+export const DynamicRows = {
+  render: () => {
+    return <DynamicRowsStory />;
+  },
+};
+
+export const Draggable = {
+  render: () => {
+    return (
+      <>
+        <Title>Draggable TableForm</Title>
+        <ContentWrapper>
+          <TableForm
+            {...commonTableFormProps}
+            disableBatchFilling
+            draggable
+            validateTriggerType={ValidateTriggerType.Aggressive}
+            defaultData={defaultData}
+          />
+        </ContentWrapper>
+      </>
+    );
+  },
+};
+
+const NormalValidateStory = () => {
+  const rowValidationForValidationForm: TableFormProps["rowValidator"] =
+    useCallback((index, value: { validation?: string }) => {
+      if (index === 1 && value.validation?.includes("Validation")) {
+        return "this is a special row level error for “Validation”!";
+      }
+    }, []);
+
+  return (
+    <>
+      <Title>Normal validate type for TableForm</Title>
+      <ContentWrapper>
+        <TableForm
+          disableBatchFilling
+          columns={getColumnsForValidation(ValidateTriggerType.Normal)}
+          rowValidator={rowValidationForValidationForm}
+          defaultData={defaultData}
+        />
+      </ContentWrapper>
+    </>
+  );
+};
+export const NormalValidate = {
+  render: () => <NormalValidateStory />,
+};
+
+const LazyValidateStory = () => {
+  const rowValidationForValidationForm: TableFormProps["rowValidator"] =
+    useCallback((index, value: { validation?: string }) => {
+      if (index === 1 && value.validation?.includes("Validation")) {
+        return "this is a special row level error for “Validation”!";
+      }
+    }, []);
+
+  return (
+    <>
+      <Title>Lazy validate type for TableForm</Title>
+      <ContentWrapper>
+        <TableForm
+          validateTriggerType={ValidateTriggerType.Lazy}
+          disableBatchFilling
+          columns={getColumnsForValidation(ValidateTriggerType.Lazy)}
+          rowValidator={rowValidationForValidationForm}
+          defaultData={defaultData}
+        />
+      </ContentWrapper>
+    </>
+  );
+};
+export const LazyValidate = {
+  render: () => <LazyValidateStory />,
+};
+
+const AggressiveValidateStory = () => {
+  const rowValidationForValidationForm: TableFormProps["rowValidator"] =
+    useCallback((index, value: { validation?: string }) => {
+      if (index === 1 && value.validation?.includes("Validation")) {
+        return "this is a special row level error for “Validation”!";
+      }
+    }, []);
+
+  return (
+    <>
+      <Title>Aggressive validate type for TableForm</Title>
+      <ContentWrapper>
+        <TableForm
+          validateTriggerType={ValidateTriggerType.Aggressive}
+          disableBatchFilling
+          columns={getColumnsForValidation(ValidateTriggerType.Aggressive)}
+          rowValidator={rowValidationForValidationForm}
+          defaultData={defaultData}
+        />
+      </ContentWrapper>
+    </>
+  );
+};
+export const AggressiveValidate = {
+  render: () => <AggressiveValidateStory />,
+};
+
+const RowConfigStory = () => {
   const rowValidationForValidationForm: TableFormProps["rowValidator"] =
     useCallback((index, value: { validation?: string }) => {
       if (index === 1 && value.validation?.includes("Validation")) {
@@ -312,331 +424,237 @@ export const Basic = () => {
     }),
     [rowValidationForValidationForm],
   );
-  return (
-    <div style={{ padding: "20px" }}>
-      <Space direction="vertical">
-        <Title>Batch input TableForm</Title>
-        <ContentWrapper>
-          <TableForm
-            {...commonTableFormProps}
-            ref={ref1}
-            maxHeight={300}
-            defaultData={[
-              {
-                address: "Value",
-                password: "this-is-pwd",
-                checkbox: false,
-              },
-              {
-                address: "row has address",
-                password: "this-is-pwd",
-                checkbox: true,
-              },
-              {
-                address: "row has address",
-                password: "this-is-pwd",
-                checkbox: false,
-              },
-              {
-                address: "Values",
-                password: "this-is-pwd",
-                checkbox: false,
-              },
-              {
-                address: "Values",
-                password: "this-is-pwd",
-                checkbox: false,
-              },
-              {
-                address: "Values",
-                password: "this-is-pwd",
-                checkbox: false,
-              },
-            ]}
-          />
-        </ContentWrapper>
-      </Space>
-      <Space direction="vertical" style={{ marginTop: "32px", width: "100%" }}>
-        <Title>Batch input TableForm with dynamic rows</Title>
-        <ContentWrapper>
-          <BatchInputForm
-            updateTableForm={formHandle?.setData}
-            tableForm2DataLength={tableForm2DataLength}
-          />
-          <TableForm
-            ref={ref2}
-            {...commonTableFormProps}
-            deleteConfig={deleteConfig}
-            disableBatchFilling
-            validateTriggerType={ValidateTriggerType.Lazy}
-            rowAddConfig={{
-              addible: true,
-              maximum: 8,
-            }}
-            onBodyChange={(data) => {
-              setTableForm2DataLength(data.length);
-            }}
-            defaultData={defaultData}
-          />
-        </ContentWrapper>
-      </Space>
-      <Space direction="vertical" style={{ marginTop: "32px", width: "100%" }}>
-        <Title>Draggable batch input TableForm</Title>
-        <ContentWrapper>
-          <TableForm
-            {...commonTableFormProps}
-            disableBatchFilling
-            draggable
-            validateTriggerType={ValidateTriggerType.Aggressive}
-            defaultData={defaultData}
-          />
-        </ContentWrapper>
-      </Space>
-      <Space direction="vertical" style={{ marginTop: "32px", width: "100%" }}>
-        <Title>Normal validate type for TableForm</Title>
-        <ContentWrapper>
-          <TableForm
-            disableBatchFilling
-            columns={getColumnsForValidation(ValidateTriggerType.Normal)}
-            rowValidator={rowValidationForValidationForm}
-            defaultData={defaultData}
-          />
-        </ContentWrapper>
-      </Space>
-      <Space direction="vertical" style={{ marginTop: "32px", width: "100%" }}>
-        <Title>Lazy validate type for TableForm</Title>
-        <ContentWrapper>
-          <TableForm
-            validateTriggerType={ValidateTriggerType.Lazy}
-            disableBatchFilling
-            columns={getColumnsForValidation(ValidateTriggerType.Lazy)}
-            rowValidator={rowValidationForValidationForm}
-            defaultData={defaultData}
-          />
-        </ContentWrapper>
-      </Space>
-      <Space direction="vertical" style={{ marginTop: "32px", width: "100%" }}>
-        <Title>Aggressive validate type for TableForm</Title>
-        <ContentWrapper>
-          <TableForm
-            validateTriggerType={ValidateTriggerType.Aggressive}
-            disableBatchFilling
-            columns={getColumnsForValidation(ValidateTriggerType.Aggressive)}
-            rowValidator={rowValidationForValidationForm}
-            defaultData={defaultData}
-          />
-        </ContentWrapper>
-      </Space>
-      <Space direction="vertical" style={{ marginTop: "32px", width: "100%" }}>
-        <Title>Use new "row" configuration TableForm</Title>
-        <ContentWrapper>
-          <TableForm
-            disableBatchFilling
-            columns={getColumnsForValidation(ValidateTriggerType.Normal)}
-            rowValidator={rowValidationForValidationForm}
-            row={tableFormRowConfig}
-            defaultData={defaultData}
-          />
-        </ContentWrapper>
-      </Space>
-      <Space direction="vertical">
-        <Title>Use new "errors" configuration TableForm</Title>
-        <ContentWrapper>
-          <TableForm
-            {...commonTableFormProps}
-            disableBatchFilling
-            rowValidator={undefined}
-            defaultData={[
-              {
-                address: "Value",
-                password: "this-is-pwd",
-                checkbox: false,
-              },
-              {
-                address: "row has address",
-                password: "this-is-pwd",
-                checkbox: true,
-              },
-            ]}
-            errors={[
-              "this is a row error",
-              {
-                address:
-                  "this is address cell error, will be replaced by column's validator",
-                password: "this is password cell error",
-              },
-            ]}
-          />
-        </ContentWrapper>
-      </Space>
-      <Space direction="vertical">
-        <Title>
-          Use new "errors" configuration TableForm - "errors" is updated
-          asynchronously
-        </Title>
-        <ContentWrapper>
-          <TableForm
-            {...commonTableFormProps}
-            disableBatchFilling
-            rowValidator={undefined}
-            defaultData={[
-              {
-                address: "address-1",
-                password: "password-1",
-                checkbox: false,
-              },
-            ]}
-            errors={asyncErrors}
-            onBodyChange={(data) => {
-              const password = data[0]?.password;
-              if (password === "invalid") {
-                setTimeout(() => {
-                  setAsyncErrors([
-                    { password: "the password is invalid - set by setTimeout" },
-                  ]);
-                }, 500);
-              } else {
-                setAsyncErrors(defaultAsyncErrors);
-              }
-            }}
-          />
-        </ContentWrapper>
-      </Space>
-      <Space direction="vertical">
-        <Title>Show table form when there is no data</Title>
-        <ContentWrapper>
-          <TableForm
-            {...commonTableFormProps}
-            columns={[
-              {
-                key: "col-1",
-                title: "This is the first column without data",
-                type: "input",
-              },
-              {
-                key: "col-2",
-                title: "This is the second column without data",
-                type: "input",
-              },
-            ]}
-            disableBatchFilling
-            rowValidator={undefined}
-            errors={asyncErrors}
-            rowAddConfig={{
-              addible: true,
-            }}
-            row={{
-              deletable: true,
-            }}
-          />
-        </ContentWrapper>
-      </Space>
-      <Space direction="vertical">
-        <Title>Hide table form when there is no data</Title>
-        <ContentWrapper>
-          <TableForm
-            {...commonTableFormProps}
-            disableBatchFilling
-            rowValidator={undefined}
-            errors={asyncErrors}
-            hideEmptyTable
-            rowAddConfig={{
-              addible: true,
-            }}
-            row={{
-              deletable: true,
-            }}
-          />
-        </ContentWrapper>
-      </Space>
 
-      <Space direction="vertical">
-        <Title>Render different title and subTitle for header cell</Title>
-        <ContentWrapper>
-          <TableForm
-            {...commonTableFormProps}
-            columns={[
-              {
-                key: "col-1",
-                title: "This is the string type title, without subTitleRender",
-                type: "input",
-              },
-              {
-                key: "col-2",
-                title: (
-                  <Tooltip title="This is the ReactNode type title">
-                    <span className={OverflowUnderlineStyle}>
-                      This is the ReactNode type
-                    </span>
-                  </Tooltip>
-                ),
-                type: "input",
-                subTitleRender(props) {
-                  return null;
-                },
-              },
-              {
-                key: "col-3",
-                title: "This is the string type title, with subTitleRender",
-                subTitleRender(props) {
-                  return (
-                    <p
-                      className={cx(Typo.Label.l4_regular, CustomSubtitleStyle)}
-                    >
-                      This is the ReactNode type
-                      <Tooltip title="subTitle">
-                        <span className={OverflowUnderlineStyle}>
-                          {" subTitle"}
-                        </span>
-                      </Tooltip>
-                    </p>
-                  );
-                },
-                type: "input",
-              },
-              {
-                key: "col-4",
-                title: (
-                  <Tooltip title="This is the ReactNode type title, with subTitleRender">
-                    <span className={OverflowUnderlineStyle}>
-                      This is the ReactNode type
-                    </span>
-                  </Tooltip>
-                ),
-                subTitleRender(props) {
-                  return (
-                    <p
-                      className={cx(Typo.Label.l4_regular, CustomSubtitleStyle)}
-                    >
-                      This is the ReactNode type subTitle, and it is a long
-                      description
-                    </p>
-                  );
-                },
-                type: "input",
-              },
-            ]}
-            rowValidator={undefined}
-            errors={asyncErrors}
-            rowAddConfig={{
-              addible: true,
-            }}
-            row={{
-              deletable: true,
-            }}
-          />
-        </ContentWrapper>
-      </Space>
-    </div>
+  return (
+    <>
+      <Title>Use new "row" configuration TableForm</Title>
+      <ContentWrapper>
+        <TableForm
+          disableBatchFilling
+          columns={getColumnsForValidation(ValidateTriggerType.Normal)}
+          rowValidator={rowValidationForValidationForm}
+          row={tableFormRowConfig}
+          defaultData={defaultData}
+        />
+      </ContentWrapper>
+    </>
   );
 };
+export const RowConfig = {
+  render: () => <RowConfigStory />,
+};
 
-Basic.story = {
-  name: "Basic",
-  parameters: {
-    design: {
-      type: "figma",
-      url: "https://www.figma.com/file/sv8N9opZrWCMApiGeq2V6M/Table-Form-%7C-%E8%A1%A8%E6%A0%BC%E8%A1%A8%E5%8D%95?type=design&node-id=1-41&t=3ZbR4MoYkAvXtd0P-0",
-    },
-  },
+export const ErrorsConfig = {
+  render: () => (
+    <>
+      <Title>Use new "errors" configuration TableForm</Title>
+      <ContentWrapper>
+        <TableForm
+          {...commonTableFormProps}
+          disableBatchFilling
+          rowValidator={undefined}
+          defaultData={[
+            {
+              address: "Value",
+              password: "this-is-pwd",
+              checkbox: false,
+            },
+            {
+              address: "row has address",
+              password: "this-is-pwd",
+              checkbox: true,
+            },
+          ]}
+          errors={[
+            "this is a row error",
+            {
+              address:
+                "this is address cell error, will be replaced by column's validator",
+              password: "this is password cell error",
+            },
+          ]}
+        />
+      </ContentWrapper>
+    </>
+  ),
+};
+
+const AsyncErrorsStory = () => {
+  const [asyncErrors, setAsyncErrors] =
+    useState<TableFormErrorsType>(defaultAsyncErrors);
+
+  return (
+    <>
+      <Title>
+        Use new "errors" configuration TableForm - "errors" is updated
+        asynchronously
+      </Title>
+      <Desc>
+        Type "error" in password field, then errors will be updated
+        asynchronously
+      </Desc>
+      <ContentWrapper>
+        <TableForm
+          {...commonTableFormProps}
+          disableBatchFilling
+          rowValidator={undefined}
+          defaultData={[
+            {
+              address: "address-1",
+              password: "password-1",
+              checkbox: false,
+            },
+          ]}
+          errors={asyncErrors}
+          onBodyChange={(data) => {
+            const password = data[0]?.password;
+            if (password === "error") {
+              setTimeout(() => {
+                setAsyncErrors([
+                  { password: "the password is invalid - set by setTimeout" },
+                ]);
+              }, 500);
+            } else {
+              setAsyncErrors(defaultAsyncErrors);
+            }
+          }}
+        />
+      </ContentWrapper>
+    </>
+  );
+};
+export const ErrorsConfigWithAsyncErr = {
+  render: () => <AsyncErrorsStory />,
+};
+
+export const ShowTableFormWhenNoData = {
+  render: () => (
+    <>
+      <Title>Show table form when there is no data</Title>
+      <ContentWrapper>
+        <TableForm
+          {...commonTableFormProps}
+          columns={[
+            {
+              key: "col-1",
+              title: "This is the first column without data",
+              type: "input",
+            },
+            {
+              key: "col-2",
+              title: "This is the second column without data",
+              type: "input",
+            },
+          ]}
+          disableBatchFilling
+          rowValidator={undefined}
+          rowAddConfig={{
+            addible: true,
+          }}
+          row={{
+            deletable: true,
+          }}
+        />
+      </ContentWrapper>
+    </>
+  ),
+};
+
+export const HideTableFormWhenNoData = {
+  render: () => (
+    <>
+      <Title>Hide table form when there is no data</Title>
+      <ContentWrapper>
+        <TableForm
+          {...commonTableFormProps}
+          disableBatchFilling
+          rowValidator={undefined}
+          hideEmptyTable
+          rowAddConfig={{
+            addible: true,
+          }}
+          row={{
+            deletable: true,
+          }}
+        />
+      </ContentWrapper>
+    </>
+  ),
+};
+
+export const TitleAndSubTitle = {
+  render: () => (
+    <>
+      <Title>Render different title and subTitle for header cell</Title>
+      <ContentWrapper>
+        <TableForm
+          {...commonTableFormProps}
+          columns={[
+            {
+              key: "col-1",
+              title: "This is the string type title, without subTitleRender",
+              type: "input",
+            },
+            {
+              key: "col-2",
+              title: (
+                <Tooltip title="This is the ReactNode type title">
+                  <span className={OverflowUnderlineStyle}>
+                    This is the ReactNode type
+                  </span>
+                </Tooltip>
+              ),
+              type: "input",
+              subTitleRender(props) {
+                return null;
+              },
+            },
+            {
+              key: "col-3",
+              title: "This is the string type title, with subTitleRender",
+              subTitleRender(props) {
+                return (
+                  <p className={cx(Typo.Label.l4_regular, CustomSubtitleStyle)}>
+                    This is the ReactNode type
+                    <Tooltip title="subTitle">
+                      <span className={OverflowUnderlineStyle}>
+                        {" subTitle"}
+                      </span>
+                    </Tooltip>
+                  </p>
+                );
+              },
+              type: "input",
+            },
+            {
+              key: "col-4",
+              title: (
+                <Tooltip title="This is the ReactNode type title, with subTitleRender">
+                  <span className={OverflowUnderlineStyle}>
+                    This is the ReactNode type
+                  </span>
+                </Tooltip>
+              ),
+              subTitleRender(props) {
+                return (
+                  <p className={cx(Typo.Label.l4_regular, CustomSubtitleStyle)}>
+                    This is the ReactNode type subTitle, and it is a long
+                    description
+                  </p>
+                );
+              },
+              type: "input",
+            },
+          ]}
+          rowValidator={undefined}
+          rowAddConfig={{
+            addible: true,
+          }}
+          row={{
+            deletable: true,
+          }}
+        />
+      </ContentWrapper>
+    </>
+  ),
 };
