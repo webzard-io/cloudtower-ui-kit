@@ -10,6 +10,9 @@ exports[`table form render > default data is undefined 1`] = `
   overflow: auto;
   .ant-list {
     position: relative;
+    .ant-list-item:last-child {
+      border-bottom: none;
+    }
     .eagle-table-form-header {
       position: sticky;
       top: 0;
@@ -25,6 +28,9 @@ exports[`table form render > default data is undefined 1`] = `
       font-size: 14px;
       color: $text-secondary-light;
       border-bottom: 1px solid $fills-light-trans-2;
+    }
+    .eagle-table-form-header .eagle-table-form-cell > p {
+      margin-bottom: 0;
     }
     .eagle-table-form-row {
       display: flex;
@@ -160,12 +166,20 @@ exports[`table form render > default data is undefined 1`] = `
 ,
   margin-bottom: 4px;
   color: $text-secondary-light;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 
                 >
-                  title
+                  <div
+                    class=
+  overflow: hidden;
+  text-overflow: ellipsis;
+,
+  white-space: nowrap;
+
+                  >
+                    <span>
+                      title
+                    </span>
+                  </div>
                 </p>
                 <div
                   class=ant-row,ant-form-item,
@@ -250,12 +264,20 @@ exports[`table form render > default data is undefined 1`] = `
 ,
   margin-bottom: 4px;
   color: $text-secondary-light;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 
                 >
-                  起始管理 IP
+                  <div
+                    class=
+  overflow: hidden;
+  text-overflow: ellipsis;
+,
+  white-space: nowrap;
+
+                  >
+                    <span>
+                      起始管理 IP
+                    </span>
+                  </div>
                 </p>
                 <div
                   class=ant-row,ant-form-item,
@@ -473,6 +495,7 @@ exports[`table form render > default data is undefined 1`] = `
     line-height: 18px;
   }
 
+                          style=margin-top:,4px;
                           type=input
                           value=
                         />
@@ -493,12 +516,20 @@ exports[`table form render > default data is undefined 1`] = `
 ,
   margin-bottom: 4px;
   color: $text-secondary-light;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 
                 >
-                  递增 input
+                  <div
+                    class=
+  overflow: hidden;
+  text-overflow: ellipsis;
+,
+  white-space: nowrap;
+
+                  >
+                    <span>
+                      递增 input
+                    </span>
+                  </div>
                 </p>
                 <div
                   class=ant-row,ant-form-item,
@@ -716,6 +747,7 @@ exports[`table form render > default data is undefined 1`] = `
     line-height: 18px;
   }
 
+                          style=margin-top:,4px;
                           type=input
                           value=
                         />
@@ -736,12 +768,20 @@ exports[`table form render > default data is undefined 1`] = `
 ,
   margin-bottom: 4px;
   color: $text-secondary-light;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 
                 >
-                  密码
+                  <div
+                    class=
+  overflow: hidden;
+  text-overflow: ellipsis;
+,
+  white-space: nowrap;
+
+                  >
+                    <span>
+                      密码
+                    </span>
+                  </div>
                 </p>
                 <div
                   class=ant-row,ant-form-item,
@@ -959,6 +999,7 @@ exports[`table form render > default data is undefined 1`] = `
     line-height: 18px;
   }
 ,ant-input-affix-wrapper,ant-input-affix-wrapper-sm
+                          style=margin-top:,4px;
                         >
                           <input
                             class=ant-input,ant-input-sm
@@ -1010,12 +1051,20 @@ exports[`table form render > default data is undefined 1`] = `
 ,
   margin-bottom: 4px;
   color: $text-secondary-light;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 
                 >
-                  复选框
+                  <div
+                    class=
+  overflow: hidden;
+  text-overflow: ellipsis;
+,
+  white-space: nowrap;
+
+                  >
+                    <span>
+                      复选框
+                    </span>
+                  </div>
                 </p>
                 <div
                   class=ant-row,ant-form-item,
@@ -1059,6 +1108,7 @@ exports[`table form render > default data is undefined 1`] = `
   display: inline-flex;
   .ant-checkbox {   height: 22px;   display: flex;   align-items: center;   top: 0; } .ant-checkbox-checked::after {   border: none; } &.ant-checkbox-wrapper:hover .ant-checkbox-inner, &.ant-checkbox-wrapper.__pseudo-states-hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner {   border-color: $fills-light-general-general; } .ant-checkbox .ant-checkbox-inner {   border: 1px solid $strokes-light-trans-4; } .ant-checkbox.ant-checkbox-checked, .ant-checkbox.ant-checkbox-indeterminate {   .ant-checkbox-inner {     border: 1px solid $fills-light-general-general;   } } .ant-checkbox.ant-checkbox-indeterminate .ant-checkbox-inner {   background: $fills-light-general-general;   &:after {     background-color: $white;     height: 2px;     width: 10px;     border-radius: 2px;   } } &.ant-checkbox-wrapper-disabled {   opacity: 0.5;   .ant-checkbox-disabled .ant-checkbox-inner {     background: $fills-light-trans-3;     border-color: $strokes-light-trans-4 !important;   }   .ant-checkbox-disabled.ant-checkbox-checked .ant-checkbox-inner:after {     border-color: $text-primary-light;   }   .ant-checkbox-disabled.ant-checkbox-indeterminate     .ant-checkbox-inner:after {     background: $text-primary-light;   } } .ant-checkbox + span, .ant-checkbox-disabled + span {   padding: 0;   .main {     display: inline-block;     margin-left: 12px;     color: $text-primary-light;   }   .sub {     margin-left: 28px;     color: $text-secondary-light;   } } &.compact {   .ant-checkbox + span,   .ant-checkbox-disabled + span {     .main {       margin-left: 8px;     }     .sub {       margin-left: 24px;     }   } }
 ,ant-checkbox-wrapper
+                          style=margin-top:,4px;
                         >
                           <span
                             class=ant-checkbox
@@ -1091,12 +1141,20 @@ exports[`table form render > default data is undefined 1`] = `
 ,
   margin-bottom: 4px;
   color: $text-secondary-light;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 
                 >
-                  affix
+                  <div
+                    class=
+  overflow: hidden;
+  text-overflow: ellipsis;
+,
+  white-space: nowrap;
+
+                  >
+                    <span>
+                      affix
+                    </span>
+                  </div>
                 </p>
                 <div
                   class=ant-row,ant-form-item,
@@ -1135,6 +1193,7 @@ exports[`table form render > default data is undefined 1`] = `
                       >
                         <div
                           class=ant-space,ant-space-horizontal,ant-space-align-center
+                          style=margin-top:,4px;
                         >
                           <div
                             class=ant-space-item
@@ -1175,12 +1234,20 @@ exports[`table form render > default data is undefined 1`] = `
 ,
   margin-bottom: 4px;
   color: $text-secondary-light;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 
                 >
-                  自定义组件
+                  <div
+                    class=
+  overflow: hidden;
+  text-overflow: ellipsis;
+,
+  white-space: nowrap;
+
+                  >
+                    <span>
+                      自定义组件
+                    </span>
+                  </div>
                 </p>
                 <div
                   class=ant-row,ant-form-item,
