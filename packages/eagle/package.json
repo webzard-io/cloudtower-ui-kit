@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/eagle",
-  "version": "0.31.0",
+  "version": "0.32.0",
   "main": "dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "dist/src/index.d.ts",
@@ -27,8 +27,8 @@
     "sync:color": "node tools/fetch-figma-color.js"
   },
   "dependencies": {
-    "@cloudtower/icons-react": "0.31.0",
-    "@cloudtower/parrot": "0.31.0",
+    "@cloudtower/icons-react": "^0.32.0",
+    "@cloudtower/parrot": "^0.32.0",
     "@cloudtower/rc-notification": "^4.6.1",
     "@linaria/core": "^4.2.2",
     "@linaria/react": "^4.3.0",
@@ -56,7 +56,6 @@
     "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-image": "^3.0.2",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-replace": "^6.0.1",
     "@storybook/addon-actions": "^7.4.1",
     "@storybook/addon-designs": "^7.0.5",
     "@storybook/addon-essentials": "^7.4.1",
@@ -70,7 +69,6 @@
     "@testing-library/react": "^12.1.5",
     "@testing-library/react-hooks": "^8.0.1",
     "@types/history": "4.7.3",
-    "@types/moment": "^2.13.0",
     "@types/react": "^17.0.50",
     "@types/react-beautiful-dnd": "^13.1.4",
     "@types/react-highlight-words": "^0.16.7",
