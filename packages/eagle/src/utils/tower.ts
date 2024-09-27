@@ -182,6 +182,26 @@ export function formatBytes(bytes: number, decimals = 2): FormattedResult {
   };
 }
 
+export function formatBytePerSecond(
+  bytes: number,
+  decimals = 2,
+): FormattedResult {
+  if (bytes <= 0 || bytes === MAGIC_METRIC_NULL) {
+    return {
+      value: 0,
+      unit: "B/s",
+    };
+  }
+  const k = 1024;
+  const units = ["B/s", "KiB/s", "MiB/s", "GiB/s", "TiB/s", "PiB/s"];
+  let i = Math.floor(Math.log(bytes) / Math.log(k));
+  i = i < 0 ? 0 : i > units.length - 1 ? units.length - 1 : i;
+  return {
+    value: parseFloat((bytes / Math.pow(k, i)).toFixed(decimals)),
+    unit: units[i],
+  };
+}
+
 export function formatPercent(
   input: number,
   decimals = 2,

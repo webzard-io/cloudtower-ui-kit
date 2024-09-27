@@ -7,6 +7,7 @@ import {
   formatBitPerSecond,
   formatBits,
   formatBps,
+  formatBytePerSecond,
   formatBytes,
   formatFrequency,
   formatPercent,
@@ -498,6 +499,49 @@ describe("formatBits", () => {
     expect(formatBits(MAGIC_METRIC_NULL)).toEqual({
       value: 0,
       unit: "b",
+    });
+  });
+});
+
+describe("formatBytePerSecond", () => {
+  it("should format data to correct B/s", () => {
+    expect(formatBytePerSecond(0)).toEqual({
+      value: 0,
+      unit: "B/s",
+    });
+    expect(formatBytePerSecond(1 * B)).toEqual({
+      value: 1,
+      unit: "B/s",
+    });
+    expect(formatBytePerSecond(10 * KiB)).toEqual({
+      value: 10,
+      unit: "KiB/s",
+    });
+    expect(formatBytePerSecond(10 * MiB)).toEqual({
+      value: 10,
+      unit: "MiB/s",
+    });
+    expect(formatBytePerSecond(10 * GiB)).toEqual({
+      value: 10,
+      unit: "GiB/s",
+    });
+    expect(formatBytePerSecond(10240 * GiB)).toEqual({
+      value: 10,
+      unit: "TiB/s",
+    });
+  });
+
+  it("has a default decimals of 2", () => {
+    expect(formatBytePerSecond(1.222 * KiB)).toEqual({
+      value: 1.22,
+      unit: "KiB/s",
+    });
+  });
+
+  it("should handle fallback null", () => {
+    expect(formatBytePerSecond(MAGIC_METRIC_NULL)).toEqual({
+      value: 0,
+      unit: "B/s",
     });
   });
 });

@@ -3,6 +3,7 @@ import Bit from "@src/core/Bit";
 import BitPerSecond from "@src/core/BitPerSecond";
 import Bps from "@src/core/Bps";
 import Byte from "@src/core/Byte";
+import BytePerSecond from "@src/core/BytePerSecond";
 import Frequency from "@src/core/Frequency";
 import Percent from "@src/core/Percent";
 import Second from "@src/core/Second";
@@ -21,6 +22,7 @@ import React from "react";
 const units = {
   Percent,
   Byte,
+  BytePerSecond,
   Frequency,
   Speed,
   Bps,

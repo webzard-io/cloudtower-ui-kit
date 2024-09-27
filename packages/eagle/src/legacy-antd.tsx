@@ -45,6 +45,7 @@ import Breadcrumb from "./core/Breadcrumb";
 import Button from "./core/Button";
 import ButtonGroup from "./core/ButtonGroup";
 import Byte from "./core/Byte";
+import BytePerSecond from "./core/BytePerSecond";
 import Calendar from "./core/Calendar";
 import Card from "./core/Card";
 import Checkbox from "./core/Checkbox";
@@ -130,6 +131,7 @@ export function getAntdKit(): Kit {
     units: {
       Percent,
       Byte,
+      BytePerSecond,
       Frequency,
       Speed,
       Bps,
