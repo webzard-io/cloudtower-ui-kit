@@ -251,6 +251,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   units: {
     Percent: PercentFn;
     Byte: UnitFn;
+    BytePerSecond: UnitFn;
     Frequency: UnitFn;
     Speed: UnitFn;
     Second: UnitFn;

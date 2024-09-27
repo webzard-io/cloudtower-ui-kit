@@ -2,6 +2,7 @@ import Bit from "./Bit";
 import BitPerSecond from "./BitPerSecond";
 import Bps from "./Bps";
 import Byte from "./Byte";
+import BytePerSecond from "./BytePerSecond";
 import Frequency from "./Frequency";
 import Percent from "./Percent";
 import Second from "./Second";
@@ -24,6 +25,7 @@ export * from "./Button";
 export * from "./ButtonGroup";
 export * from "./ButtonGroup";
 export * from "./Byte";
+export * from "./BytePerSecond";
 export * from "./Calendar";
 export * from "./Card";
 export * from "./Cascader";
@@ -100,6 +102,7 @@ export * from "./Skeleton";
 export const units = {
   Percent,
   Byte,
+  BytePerSecond,
   Frequency,
   Speed,
   Bps,
@@ -124,6 +127,7 @@ export { default as Breadcrumb } from "./Breadcrumb";
 export { default as Button } from "./Button";
 export { default as ButtonGroup } from "./ButtonGroup";
 export { default as Byte } from "./Byte";
+export { default as BytePerSecond } from "./BytePerSecond";
 export { default as Calendar } from "./Calendar";
 export { default as Card } from "./Card";
 export { default as Checkbox } from "./Checkbox";
