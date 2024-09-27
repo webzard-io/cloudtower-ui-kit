@@ -97,4 +97,5 @@ const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
 
 export default Tooltip;
 
+export * from "./EllipsisTooltipContent";
 export * from "./tooltip.type";
