@@ -23,12 +23,12 @@ const Wrapper = styled.div<WrapperProps>`
   }
 `;
 
-const EllipsisTooltipContent = ({
+const EllipsisTooltipContent: React.FC<EllipsisContentType> = ({
   tooltip,
   maxHeight,
   contentWrapperClassName,
   ellipsisTips,
-}: EllipsisContentType) => {
+}) => {
   const overFlowWrapperRef = useRef<HTMLDivElement>(null);
   const [showTips, setShowTips] = useState<boolean | null>(null);
 

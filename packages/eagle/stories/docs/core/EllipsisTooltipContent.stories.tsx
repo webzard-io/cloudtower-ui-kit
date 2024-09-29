@@ -47,7 +47,7 @@ export const ellipsisTooltipsContentInTooltip: Story = {
     return (
       <Tooltip
         destroyTooltipOnHide={true}
-        title={<EllipsisTooltipContent {...args} />}
+        title={<Tooltip.EllipsisContent {...args} />}
       >
         <button style={{ margin: "100px" }}>Hover Here</button>
       </Tooltip>
@@ -71,7 +71,7 @@ export const ellipsisTooltipsContentInOverflowTooltip: Story = {
       <OverflowTooltip
         destroyTooltipOnHide={true}
         content={args.tooltip}
-        tooltip={<EllipsisTooltipContent {...args} />}
+        tooltip={<Tooltip.EllipsisContent {...args} />}
       >
         <button style={{ margin: "100px" }}>Hover Here</button>
       </OverflowTooltip>
@@ -98,7 +98,7 @@ export const ellipsisTooltipsReactNodeContentInTooltip: Story = {
     return (
       <Tooltip
         destroyTooltipOnHide={true}
-        title={<EllipsisTooltipContent {...args} />}
+        title={<Tooltip.EllipsisContent {...args} />}
       >
         <button style={{ margin: "100px" }}>Hover Here</button>
       </Tooltip>
