@@ -3,6 +3,7 @@ import { Tooltip as AntdTooltip } from "antd";
 import cs from "classnames";
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
 
+import EllipsisTooltipContent from "./EllipsisTooltipContent";
 import { TooltipProps } from "./tooltip.type";
 
 let componentId = 0;
@@ -19,7 +20,7 @@ const TooltipDefaultClass = css`
   }
 `;
 
-const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
+const InternalTooltip: React.FunctionComponent<TooltipProps> = (props) => {
   const {
     followMouse,
     overlayClassName,
@@ -95,7 +96,16 @@ const Tooltip: React.FunctionComponent<TooltipProps> = (props) => {
   );
 };
 
+type InterTooltip = typeof InternalTooltip;
+
+type CompoundedTooltip = InterTooltip & {
+  EllipsisContent: typeof EllipsisTooltipContent;
+};
+
+const Tooltip = InternalTooltip as CompoundedTooltip;
+
+Tooltip.EllipsisContent = EllipsisTooltipContent;
+
 export default Tooltip;
 
-export * from "./EllipsisTooltipContent";
 export * from "./tooltip.type";
