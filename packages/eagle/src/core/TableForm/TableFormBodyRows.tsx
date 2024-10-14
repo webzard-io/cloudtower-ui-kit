@@ -100,6 +100,7 @@ const TableFormRow: React.FC<
     onBodyBlur,
     renderRowDescription,
     validateAll,
+    onValidate,
   } = props;
   const rowData = data[rowIndex];
   const errorFromProps = errors[rowIndex];
@@ -116,6 +117,11 @@ const TableFormRow: React.FC<
     setRowError(rowLevelError);
   }, [rowLevelError]);
 
+  // sync error status
+  useEffect(() => {
+    onValidate?.(`table_row_${rowIndex}`, !rowError);
+  }, [onValidate, rowError, rowIndex]);
+
   const rowDeletable =
     typeof row?.deletable === "boolean"
       ? row.deletable
@@ -129,7 +135,7 @@ const TableFormRow: React.FC<
       setRowError(result);
       return result;
     },
-    [rowValidator, rowIndex, rowLevelError]
+    [rowValidator, rowIndex, rowLevelError],
   );
 
   const Cells = columns.map((col) => {
@@ -150,6 +156,7 @@ const TableFormRow: React.FC<
         getRowValidateResult={getRowValidateResult}
         validateAll={validateAll}
         error={cellError}
+        onValidate={onValidate}
       />
     );
   });
@@ -164,7 +171,7 @@ const TableFormRow: React.FC<
           />
         </DraggableHandleWrapper>
       ) : null,
-    [draggable, provided]
+    [draggable, provided],
   );
 
   const RowDescription = useMemo(() => {
@@ -177,8 +184,8 @@ const TableFormRow: React.FC<
       typeof row?.descriptions == "object"
         ? row.descriptions[rowIndex]
         : typeof row?.customizedDescription === "function"
-        ? row.customizedDescription(rowDescFuncParams)
-        : renderRowDescription?.(rowDescFuncParams) || null;
+          ? row.customizedDescription(rowDescFuncParams)
+          : renderRowDescription?.(rowDescFuncParams) || null;
     return typeof DescriptionResult === "string" ? (
       <p className={cx(Typo.Label.l4_regular, "row-description")}>
         {DescriptionResult}
@@ -194,7 +201,7 @@ const TableFormRow: React.FC<
       data-testid="eagle-table-form-row-for-test"
       className={cx(
         "eagle-table-form-row",
-        snapshot?.isDragging && "isDragging"
+        snapshot?.isDragging && "isDragging",
       )}
       actions={
         rowDeletable
@@ -233,7 +240,7 @@ const TableFormBodyRows: React.FC<TableFormRowsProps> = memo((props) => {
       const newData = moveItemInArray(data, fromIndex, toIndex);
       updateData(newData);
     },
-    [data, updateData]
+    [data, updateData],
   );
 
   return draggable ? (

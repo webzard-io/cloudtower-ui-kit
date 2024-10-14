@@ -22,6 +22,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
     onBlur,
     validateAll,
     error,
+    onValidate,
   } = props;
 
   const [validateResult, setValidateResult] = useState<{
@@ -37,15 +38,16 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
 
   useEffect(() => {
     // re-render the cell level error from props when it has been changed
-    if (isTouched)
+    if (isTouched) {
       setValidateResult(
         error
           ? {
               msg: error,
               isError: true,
             }
-          : undefined
+          : undefined,
       );
+    }
   }, [error, isTouched]);
 
   const triggerValidate = useCallback(
@@ -68,10 +70,11 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
         });
         const isError = result ? typeof result === "string" : false;
         setValidateResult({ msg: result || "", isError });
+        onValidate?.(`${column.key}${rowIndex}`, !isError);
         return;
       }
     },
-    [data, rowIndex, column, getRowValidateResult]
+    [data, rowIndex, column, getRowValidateResult, onValidate],
   );
 
   useEffect(() => {
@@ -83,7 +86,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
 
   const _onChange = (value: unknown, data: DataType[]) => {
     const newData = data.map((row, i) =>
-      i === rowIndex ? { ...row, [column.key]: value } : row
+      i === rowIndex ? { ...row, [column.key]: value } : row,
     );
     onChange?.(newData, rowIndex, column.key);
     if (
