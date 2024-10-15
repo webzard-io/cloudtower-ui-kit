@@ -1,6 +1,6 @@
 import {
-  CalendarClockDateTime24GradientBlueIcon,
-  CalendarClockDateTime24GradientGrayIcon,
+  CalendarClockDateTime16SecondaryIcon,
+  CalendarClockDateTime16GradientBlueIcon,
   CalendarTimeRecord16Icon,
 } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
@@ -292,13 +292,13 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
         className="default-calendar-icon"
         iconWidth={16}
         iconHeight={16}
-        src={CalendarClockDateTime24GradientGrayIcon}
+        src={CalendarClockDateTime16SecondaryIcon}
       />
       <Icon
         className="hover-calendar-icon"
         iconWidth={16}
         iconHeight={16}
-        src={CalendarClockDateTime24GradientBlueIcon}
+        src={CalendarClockDateTime16GradientBlueIcon}
       />
       <AntdPopover
         overlayClassName={cx(DateRangePickerStyle.Popover, ResetPopoverStyle)}
