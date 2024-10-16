@@ -1,7 +1,7 @@
 import { Select as AntdSelect } from "antd";
 import React from "react";
 
-import Select from "../../Select";
+import LegacySelect from "../../LegacySelect";
 import { EnumProps } from "./fieldsEnum.type";
 
 const FieldsEnum = ({
@@ -12,7 +12,7 @@ const FieldsEnum = ({
 }: EnumProps) => {
   return (
     <>
-      <Select {...restProps}>
+      <LegacySelect {...restProps}>
         {emptyLabel && (
           <AntdSelect.Option value="">{emptyLabel}</AntdSelect.Option>
         )}
@@ -28,7 +28,7 @@ const FieldsEnum = ({
             </AntdSelect.Option>
           );
         })}
-      </Select>
+      </LegacySelect>
     </>
   );
 };

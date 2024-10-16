@@ -25,6 +25,7 @@ import type {
   IStepsProps,
   ITimeProps,
   ITimeZoneSelectProps,
+  LegacySelectComponentType,
   LinkComponentType,
   LoadingComponentType,
   MessageApi,
@@ -208,6 +209,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   loading: LoadingComponentType;
   error: React.FunctionComponent<{ error: unknown }>;
   pagination: React.FC<PaginationProps>;
+  legacySelect: LegacySelectComponentType<V, T>;
   select: SelectComponentType<V, T>;
   option: OptionComponentType;
   selectOptGroup: import("rc-select/lib/OptGroup").OptionGroupFC;

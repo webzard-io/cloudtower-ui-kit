@@ -1,154 +1,111 @@
-import Loading from "@src/core/Loading";
+import {
+  ArrowChevronDown16BoldBlueIcon,
+  ArrowChevronDown16BoldSecondaryIcon,
+  ArrowChevronDown16BoldTertiaryIcon,
+  ArrowChevronUp16BoldBlueIcon,
+  ArrowChevronUp16BoldSecondaryIcon,
+  Search16BlueIcon,
+  Search16SecondaryIcon,
+} from "@cloudtower/icons-react";
+import Icon from "@src/core/Icon";
+import LegacySelect from "@src/core/LegacySelect";
 import { Typo } from "@src/core/Typo";
-import { Select as AntdSelect } from "antd";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import cs from "classnames";
-import _ from "lodash";
-import React, { useEffect, useMemo, useRef } from "react";
-import { findDOMNode } from "react-dom";
-import { isElement } from "react-is";
+import React from "react";
 
-import { SelectStyle } from "./select.style";
+import {
+  PlaceholderTextStyle,
+  SelectIconStyle,
+  SelectSizeStyle,
+  SelectStyle,
+} from "./select.style";
 import { SelectComponentType } from "./select.type";
 
-const Select: SelectComponentType<any, HTMLElement> = ({
-  input,
-  multiple,
-  className,
-  scrollBottomBuffer = 0,
-  onScrollBottom,
-  onPopupScroll,
-  onSearch,
-  showSearch,
-  filterOption,
-  loading,
-  notFoundContent,
-  children,
-  error,
-  selectLimit,
-  dropdownClassName,
-  danger,
-  size = "middle",
-  meta,
-  placeholder,
-  ...restProps
-}) => {
-  const limitExceeded =
-    multiple && selectLimit && selectLimit <= (input.value?.length || 0);
+const Select: SelectComponentType<any, HTMLElement> = (props) => {
+  const { size = "middle", isLoadingValue } = props;
+  const { t } = useParrotTranslation();
   const typo = {
     large: Typo.Label.l2_regular,
     middle: Typo.Label.l3_regular,
     small: Typo.Label.l4_regular,
   }[size];
-  const _danger = useMemo(() => {
-    if (danger !== undefined) {
-      return danger;
-    }
-    return meta?.touched && meta.invalid;
-  }, [danger, meta]);
-
-  const selectRef = useRef(null);
-  // recommended by antd https://github.com/ant-design/ant-design/issues/26269#issuecomment-675818652
-  useEffect(() => {
-    if (!selectRef.current) {
-      return;
-    }
-    const realDom = findDOMNode(selectRef.current);
-    if (realDom) {
-      const inputDom = (realDom as HTMLDivElement).getElementsByClassName(
-        "ant-select-selection-search-input",
-      )[0];
-      const item = (realDom as HTMLDivElement).getElementsByClassName(
-        "ant-select-selection-item",
-      )[0];
-      inputDom &&
-        (placeholder || item) &&
-        inputDom.setAttribute(
-          "data-test",
-          String(placeholder || item.textContent),
-        );
-    }
-  }, [selectRef, placeholder]);
 
   return (
-    <AntdSelect
-      {...input}
-      ref={selectRef}
-      size={size}
-      value={multiple ? input.value || [] : input.value || undefined}
-      onChange={(e: string | string[], option) => {
-        if (Array.isArray(e) && e.some((v) => v === "")) {
-          // TODO: improve type
-          /* eslint-disable @typescript-eslint/no-explicit-any */
-          input.onChange?.([], option as any);
-        } else {
-          input.onChange?.(e, option as any);
-          /* eslint-enable @typescript-eslint/no-explicit-any */
-        }
-      }}
-      onBlur={() => input.onBlur?.()}
-      mode={multiple ? "multiple" : undefined}
+    <LegacySelect
+      {...props}
       className={cs(
         SelectStyle,
-        "select",
-        className,
-        limitExceeded && "select-event-none",
-        _danger ? "select-error" : "",
-        typo,
+        SelectIconStyle,
+        SelectSizeStyle,
+        isLoadingValue ? "select-loading-value" : "",
+        props.className,
       )}
-      data-size={size}
-      dropdownClassName={cs(dropdownClassName, limitExceeded && "display-none")}
-      showSearch={
-        multiple
-          ? undefined
-          : typeof showSearch === "undefined"
-            ? Boolean(onSearch)
-            : showSearch
+      placeholder={
+        <span className={cs(typo, PlaceholderTextStyle)}>
+          {isLoadingValue ? t("components.loading") : props.placeholder}
+        </span>
       }
-      filterOption={
-        onSearch === undefined
-          ? filterOption === undefined
-            ? (input, option) => {
-                const label = option?.label;
-                if (!label || typeof label !== "string") {
-                  return false;
-                }
-                return label.toLowerCase().includes(input.toLowerCase());
-              }
-            : filterOption
-          : false
+      suffixIcon={
+        props.suffixIcon ||
+        (props.loading ? undefined : (
+          <>
+            <Icon
+              className="select-suffix"
+              src={ArrowChevronDown16BoldTertiaryIcon}
+            />
+            <Icon
+              className="select-hover-suffix"
+              src={ArrowChevronDown16BoldBlueIcon}
+            />
+            <Icon
+              className="select-active-suffix"
+              src={ArrowChevronDown16BoldBlueIcon}
+            />
+            <Icon
+              className="select-expanded-suffix"
+              src={ArrowChevronUp16BoldBlueIcon}
+            />
+            <Icon
+              className="select-expanded-search-suffix"
+              src={Search16BlueIcon}
+            />
+            <Icon
+              className="select-focus-suffix"
+              src={ArrowChevronDown16BoldTertiaryIcon}
+            />
+            <Icon
+              className="select-error-suffix"
+              src={ArrowChevronDown16BoldTertiaryIcon}
+            />
+            <Icon
+              className="select-error-hover-suffix"
+              src={ArrowChevronDown16BoldSecondaryIcon}
+            />
+            <Icon
+              className="select-error-active-suffix"
+              src={ArrowChevronDown16BoldSecondaryIcon}
+            />
+            <Icon
+              className="select-error-expanded-suffix"
+              src={ArrowChevronUp16BoldSecondaryIcon}
+            />
+            <Icon
+              className="select-error-expanded-search-suffix"
+              src={Search16SecondaryIcon}
+            />
+            <Icon
+              className="select-error-focus-suffix"
+              src={ArrowChevronDown16BoldTertiaryIcon}
+            />
+          </>
+        ))
       }
-      onSearch={onSearch && _.debounce(onSearch, 100)}
-      onPopupScroll={(e) => {
-        onPopupScroll?.(e);
-        const el = e.currentTarget;
-        if (
-          el.scrollHeight - el.offsetHeight - el.scrollTop <=
-          scrollBottomBuffer
-        ) {
-          onScrollBottom?.();
-        }
-      }}
-      notFoundContent={loading ? <Loading /> : notFoundContent}
-      dropdownRender={(menu) => <>{error || menu}</>}
-      loading={loading}
-      placeholder={placeholder}
-      {...restProps}
-    >
-      {React.Children.map(children, (child) => {
-        return isElement(child)
-          ? {
-              ...child,
-              props: {
-                ...child.props,
-                "data-test": child.props.value,
-              },
-            }
-          : child;
-      })}
-    </AntdSelect>
+    />
   );
 };
 
 export default Select;
 
 export * from "./select.type";
+export * from "./select.widgets";

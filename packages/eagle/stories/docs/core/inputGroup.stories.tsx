@@ -3,7 +3,7 @@ import { AntdSelect } from "@src/antd";
 import { Fields } from "@src/core";
 import InputGroup from "@src/core/InputGroup";
 import InputInteger from "@src/core/InputInteger";
-import Select from "@src/core/Select";
+import LegacySelect from "@src/core/LegacySelect";
 import { EMPTY_FUNCTION } from "@src/utils";
 import { StoryObj } from "@storybook/react";
 import React from "react";
@@ -23,7 +23,7 @@ export const Simple: Story = {
     return (
       <InputGroup compact={true}>
         <InputInteger />
-        <Select
+        <LegacySelect
           className="type"
           input={{
             value: "LUN",
@@ -37,8 +37,8 @@ export const Simple: Story = {
           <AntdSelect.Option value={"ConsistencyGroup"}>
             ConsistencyGroup
           </AntdSelect.Option>
-        </Select>
-        <Select input={{}} />
+        </LegacySelect>
+        <LegacySelect input={{}} />
         <Fields.String
           size="small"
           className="filter-name-input"
@@ -52,7 +52,7 @@ export const Simple: Story = {
           meta={{}}
         />
         <InputInteger />
-        <Select input={{}} />
+        <LegacySelect input={{}} />
       </InputGroup>
     );
   },
@@ -64,7 +64,7 @@ export const Small: Story = {
     return (
       <InputGroup compact={true}>
         <InputInteger size="small" />
-        <Select
+        <LegacySelect
           size="small"
           className="type"
           input={{
@@ -79,8 +79,8 @@ export const Small: Story = {
           <AntdSelect.Option value={"ConsistencyGroup"}>
             ConsistencyGroup
           </AntdSelect.Option>
-        </Select>
-        <Select input={{}} size="small" />
+        </LegacySelect>
+        <LegacySelect input={{}} size="small" />
         <Fields.String
           size="small"
           className="filter-name-input"
@@ -95,7 +95,7 @@ export const Small: Story = {
           meta={{}}
         />
         <InputInteger size="small" />
-        <Select input={{}} size="small" />
+        <LegacySelect input={{}} size="small" />
       </InputGroup>
     );
   },

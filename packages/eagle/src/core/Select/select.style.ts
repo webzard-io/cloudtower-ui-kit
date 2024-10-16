@@ -1,102 +1,199 @@
 import { css } from "@linaria/core";
 
 export const SelectStyle = css`
-  &.ant-select,
-  &.ant-select .ant-select-selector {
-    border-radius: 6px;
-  }
-
   &.ant-select {
-    &.ant-select-single {
-      width: 100%;
-      &[data-size="small"] {
-      }
-      &[data-size="middle"] {
-        height: 30px;
-      }
-      &[data-size="large"] {
-      }
-      color: $text-primary-light;
-      border-color: $strokes-light-trans-2;
-      transition:
-        border 160ms ease 8ms,
-        box-shadow 160ms ease 8ms;
-      font-size: 13px;
+    .ant-select-selection-placeholder {
+      opacity: 1;
+    }
 
-      &.ant-select-lg {
-        height: 38px;
-        font-size: 13px;
+    &.select-loading-value {
+      pointer-events: none;
+    }
+  }
+`;
+
+export const SelectIconStyle = css`
+  &.ant-select {
+    .select-hover-suffix,
+    .select-active-suffix,
+    .select-expanded-suffix,
+    .select-expanded-search-suffix,
+    .select-focus-suffix,
+    .select-error-suffix,
+    .select-error-hover-suffix,
+    .select-error-active-suffix,
+    .select-error-expanded-suffix,
+    .select-error-expanded-search-suffix,
+    .select-error-focus-suffix {
+      display: none;
+      width: 16px;
+      height: 16px;
+    }
+
+    &.ant-select-disabled {
+      .select-suffix {
+        opacity: 0.5;
       }
+    }
 
-      .ant-select-arrow,
-      .ant-select-arrow .anticon-down {
-        transition: 160ms ease;
-      }
-
-      .ant-select-arrow-loading {
-        color: $fills-light-general-general;
-      }
-
-      &:not(.ant-select-disabled) {
-        &:hover .ant-select-selector,
-        &.__pseudo-states-hover .ant-select-selector {
-          border-color: $strokes-light-trans-4;
-          box-shadow: $shadow-light-hover;
-        }
-
-        &:hover .ant-select-arrow,
-        &.__pseudo-states-hover .ant-select-arrow {
-          color: $fills-light-general-general;
-        }
-
-        &:active,
-        &:focus,
-        &.ant-select-focused,
-        &.ant-select-open,
-        &.__pseudo-states-active,
-        &.__pseudo-states-focus {
-          .ant-select-selector {
-            border-color: $fills-light-general-general;
-            box-shadow: $shadow-light-active;
+    &:not(.ant-select-disabled) {
+      // open, not error
+      &.ant-select-open:not(.select-error) {
+        &.ant-select-show-search {
+          .select-suffix {
+            display: none;
+          }
+          .select-expanded-search-suffix {
+            display: inline;
           }
         }
 
-        &.ant-select-open .ant-select-arrow .anticon-down {
-          transform: rotate(180deg);
+        &:not(.ant-select-show-search) {
+          .select-suffix {
+            display: none;
+          }
+          .select-expanded-suffix {
+            display: inline;
+          }
         }
       }
 
-      &.ant-select-disabled .ant-select-selector {
-        background: $fills-light-trans-3;
-        border-color: $strokes-light-trans-3;
-        cursor: "not-allowed";
-      }
-    }
-    &.select-error:not(.ant-select-disabled) {
-      .ant-select-selector {
-        border-color: $fills-light-serious-serious !important;
-      }
+      // not open, not error
+      &:not(.ant-select-open):not(.select-error) {
+        &:hover {
+          .select-suffix {
+            display: none;
+          }
+          .select-hover-suffix {
+            display: inline;
+          }
+        }
 
-      &:hover .ant-select-arrow,
-      &.__pseudo-states-hover .ant-select-arrow {
-        color: $text-light-super;
-      }
+        &:active {
+          .select-suffix {
+            display: none;
+          }
+          .select-active-suffix {
+            display: inline;
+          }
+        }
 
-      &:active,
-      &:focus,
-      &.ant-select-focused,
-      &.ant-select-open,
-      &.__pseudo-states-focus,
-      &.__pseudo-states-active {
-        .ant-select-selector {
-          border-color: $fills-light-general-general;
-          box-shadow: $shadow-light-error;
+        &:focus {
+          .select-suffix {
+            display: none;
+          }
+          .select-focus-suffix {
+            display: inline;
+          }
         }
       }
 
-      &.ant-select-open .ant-select-arrow .anticon-down {
-        transform: rotate(180deg);
+      // open, error
+      &.select-error.ant-select-open {
+        &.ant-select-show-search {
+          .select-suffix {
+            display: none;
+          }
+          .select-error-expanded-search-suffix {
+            display: inline;
+          }
+        }
+
+        &:not(.ant-select-show-search) {
+          .select-suffix {
+            display: none;
+          }
+          .select-error-expanded-suffix {
+            display: inline;
+          }
+        }
+      }
+
+      // not open, error
+      &.select-error:not(.ant-select-open) {
+        .select-suffix {
+          display: none;
+        }
+        .select-error-suffix {
+          display: inline;
+        }
+
+        &:hover {
+          .select-suffix,
+          .select-error-suffix {
+            display: none;
+          }
+          .select-error-hover-suffix {
+            display: inline;
+          }
+        }
+
+        &:active {
+          .select-suffix,
+          .select-error-suffix {
+            display: none;
+          }
+          .select-error-active-suffix {
+            display: inline;
+          }
+        }
+
+        &:focus {
+          .select-suffix,
+          .select-error-suffix {
+            display: none;
+          }
+          .select-error-focus-suffix {
+            display: inline;
+          }
+        }
       }
     }
   }
+`;
+
+export const SelectSizeStyle = css`
+  &.ant-select {
+    .ant-select-selector {
+      padding: 0 7px 0 12px;
+    }
+
+    .ant-select-arrow {
+      right: 8px;
+      top: 50%;
+      margin-top: -8px;
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    &.ant-select-lg {
+      .ant-select-selector {
+        padding: 0 11px 0 16px;
+      }
+
+      .ant-select-arrow {
+        right: 12px;
+      }
+    }
+
+    &.ant-select-sm {
+      .ant-select-selector {
+        padding: 0 3px 0 8px;
+      }
+
+      .ant-select-arrow {
+        right: 4px;
+      }
+    }
+
+    .ant-select-selection-item {
+      padding-right: 24px;
+    }
+  }
+`;
+
+export const PlaceholderTextStyle = css`
+  color: $gray-a30-10;
 `;

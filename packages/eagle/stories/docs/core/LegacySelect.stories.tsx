@@ -1,13 +1,10 @@
-import {
-  Cluster16BlueIcon,
-  DisconnectedCluster16GrayIcon,
-} from "@cloudtower/icons-react";
+import { DisconnectedCluster16GrayIcon } from "@cloudtower/icons-react";
 import { styled } from "@linaria/react";
-import NewSelect from "@src/core/NewSelect";
+import LegacySelect from "@src/core/LegacySelect";
+import { getOptions } from "@src/core/Select/select.widgets";
 import { LeftEndSelectStyle, RightEndSelectStyle } from "@src/core/Styled";
 import Tooltip from "@src/core/Tooltip";
 import { Typo } from "@src/core/Typo";
-import { getOptions } from "@src/utils";
 import { Meta } from "@storybook/react";
 import { Select as AntdSelect, Space as AntdSpace } from "antd";
 import cs from "classnames";
@@ -41,59 +38,36 @@ type RowProps = {
     | "Focus"
     | "Disabled"
     | "Expanded"
-    | "Loading"
-    | "LoadingValue"
-    | "Search";
+    | "Loading";
 };
 const meta: Meta = {
-  title: "Core/NewSelect",
+  title: "Core/LegacySelect",
 };
 
 export default meta;
 
 export const Basic = () => {
   const options = [
-    <AntdSelect.Option value="jack" label="Jack">
-      Jack
-    </AntdSelect.Option>,
-    <AntdSelect.Option value="lucy" label="Lucy">
-      Lucy
-    </AntdSelect.Option>,
-    <AntdSelect.Option value="disabled" label="Disabled" disabled>
+    <AntdSelect.Option value="jack">Jack</AntdSelect.Option>,
+    <AntdSelect.Option value="lucy">Lucy</AntdSelect.Option>,
+    <AntdSelect.Option value="disabled" disabled>
       Disabled
     </AntdSelect.Option>,
   ];
 
   function OptionsDemo(props: React.PropsWithChildren<{}>) {
     return (
-      <AntdSpace>
-        <NewSelect
-          input={{}}
-          style={{ width: 256 }}
-          placeholder="Label"
-          size="large"
-          {...props}
-        >
+      <Space>
+        <LegacySelect input={{}} placeholder="Label" size="large">
           {props.children}
-        </NewSelect>
-        <NewSelect
-          input={{}}
-          style={{ width: 256 }}
-          placeholder="Label"
-          {...props}
-        >
+        </LegacySelect>
+        <LegacySelect input={{}} placeholder="Label">
           {props.children}
-        </NewSelect>
-        <NewSelect
-          input={{}}
-          style={{ width: 256 }}
-          placeholder="Label"
-          size="small"
-          {...props}
-        >
+        </LegacySelect>
+        <LegacySelect input={{}} placeholder="Label" size="small">
           {props.children}
-        </NewSelect>
-      </AntdSpace>
+        </LegacySelect>
+      </Space>
     );
   }
 
@@ -150,8 +124,8 @@ export const Basic = () => {
   function Truncate() {
     const options = getOptions([
       {
-        value: "looooooooooooooooooooooooooooooooooooooong name",
-        children: "looooooooooooooooooooooooooooooooooooooong name",
+        value: "loooooooooooooong name",
+        children: "loooooooooooooong name",
       },
       {
         value: "site-name-2",
@@ -184,14 +158,6 @@ export const Basic = () => {
         input: {},
         loading: true,
       },
-      LoadingValue: {
-        input: {},
-        isLoadingValue: true,
-      },
-      Search: {
-        input: {},
-        showSearch: true,
-      },
     }[state];
     return (
       <>
@@ -200,26 +166,26 @@ export const Basic = () => {
           size={100}
           style={{ marginBottom: state === "Expanded" ? "100px" : undefined }}
         >
-          <NewSelect placeholder="Label" {...props}>
+          <LegacySelect placeholder="Label" {...props}>
             {options}
-          </NewSelect>
-          <NewSelect
+          </LegacySelect>
+          <LegacySelect
             placeholder="Label"
             {...props}
             className={cs(props.className, LeftEndSelectStyle)}
           >
             {options}
-          </NewSelect>
-          <NewSelect
+          </LegacySelect>
+          <LegacySelect
             placeholder="Label"
             {...props}
             className={cs(props.className, RightEndSelectStyle)}
           >
             {options}
-          </NewSelect>
-          <NewSelect placeholder="Label" danger {...props}>
+          </LegacySelect>
+          <LegacySelect placeholder="Label" danger {...props}>
             {options}
-          </NewSelect>
+          </LegacySelect>
         </Space>
       </>
     );
@@ -229,15 +195,15 @@ export const Basic = () => {
     <div style={{ padding: "20px", paddingBottom: "200px" }}>
       <Title>Size</Title>
       <Space>
-        <NewSelect input={{}} placeholder="Label" size="large">
+        <LegacySelect input={{}} placeholder="Label" size="large">
           {options}
-        </NewSelect>
-        <NewSelect input={{}} placeholder="Label">
+        </LegacySelect>
+        <LegacySelect input={{}} placeholder="Label">
           {options}
-        </NewSelect>
-        <NewSelect input={{}} placeholder="Label" size="small">
+        </LegacySelect>
+        <LegacySelect input={{}} placeholder="Label" size="small">
           {options}
-        </NewSelect>
+        </LegacySelect>
       </Space>
 
       <Title>State</Title>
@@ -248,9 +214,9 @@ export const Basic = () => {
       <Row state="Expanded" />
       <Row state="Disabled" />
       <Row state="Loading" />
-      <Row state="LoadingValue" />
 
-      <Row state="Search" />
+      <Title>Prefix</Title>
+      <Prefix />
 
       <Title>Suffix</Title>
       <Suffix />

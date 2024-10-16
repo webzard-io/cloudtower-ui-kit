@@ -62,6 +62,7 @@ import Form from "./core/Form";
 import Frequency from "./core/Frequency";
 import Input from "./core/Input";
 import InputGroup from "./core/InputGroup";
+import LegacySelect from "./core/LegacySelect";
 import Link from "./core/Link";
 import Loading from "./core/Loading";
 import message from "./core/message";
@@ -113,6 +114,7 @@ export function getAntdKit(): Kit {
     loading: Loading,
     error: Error,
     pagination: Pagination,
+    legacySelect: LegacySelect,
     select: Select,
     option: AntdSelect.Option as OptionComponentType,
     selectOptGroup: AntdSelect.OptGroup,

@@ -1,10 +1,10 @@
 import { DisconnectedCluster16GrayIcon } from "@cloudtower/icons-react";
 import { styled } from "@linaria/react";
 import Select from "@src/core/Select";
+import { getOptions } from "@src/core/Select/select.widgets";
 import { LeftEndSelectStyle, RightEndSelectStyle } from "@src/core/Styled";
 import Tooltip from "@src/core/Tooltip";
 import { Typo } from "@src/core/Typo";
-import { getOptions } from "@src/utils";
 import { Meta } from "@storybook/react";
 import { Select as AntdSelect, Space as AntdSpace } from "antd";
 import cs from "classnames";
@@ -38,7 +38,9 @@ type RowProps = {
     | "Focus"
     | "Disabled"
     | "Expanded"
-    | "Loading";
+    | "Loading"
+    | "LoadingValue"
+    | "Search";
 };
 const meta: Meta = {
   title: "Core/Select",
@@ -48,26 +50,47 @@ export default meta;
 
 export const Basic = () => {
   const options = [
-    <AntdSelect.Option value="jack">Jack</AntdSelect.Option>,
-    <AntdSelect.Option value="lucy">Lucy</AntdSelect.Option>,
-    <AntdSelect.Option value="disabled" disabled>
+    <AntdSelect.Option value="jack" label="Jack">
+      Jack
+    </AntdSelect.Option>,
+    <AntdSelect.Option value="lucy" label="Lucy">
+      Lucy
+    </AntdSelect.Option>,
+    <AntdSelect.Option value="disabled" label="Disabled" disabled>
       Disabled
     </AntdSelect.Option>,
   ];
 
   function OptionsDemo(props: React.PropsWithChildren<{}>) {
     return (
-      <Space>
-        <Select input={{}} placeholder="Label" size="large">
+      <AntdSpace>
+        <Select
+          input={{}}
+          style={{ width: 256 }}
+          placeholder="Label"
+          size="large"
+          {...props}
+        >
           {props.children}
         </Select>
-        <Select input={{}} placeholder="Label">
+        <Select
+          input={{}}
+          style={{ width: 256 }}
+          placeholder="Label"
+          {...props}
+        >
           {props.children}
         </Select>
-        <Select input={{}} placeholder="Label" size="small">
+        <Select
+          input={{}}
+          style={{ width: 256 }}
+          placeholder="Label"
+          size="small"
+          {...props}
+        >
           {props.children}
         </Select>
-      </Space>
+      </AntdSpace>
     );
   }
 
@@ -124,8 +147,8 @@ export const Basic = () => {
   function Truncate() {
     const options = getOptions([
       {
-        value: "loooooooooooooong name",
-        children: "loooooooooooooong name",
+        value: "looooooooooooooooooooooooooooooooooooooong name",
+        children: "looooooooooooooooooooooooooooooooooooooong name",
       },
       {
         value: "site-name-2",
@@ -157,6 +180,14 @@ export const Basic = () => {
       Loading: {
         input: {},
         loading: true,
+      },
+      LoadingValue: {
+        input: {},
+        isLoadingValue: true,
+      },
+      Search: {
+        input: {},
+        showSearch: true,
       },
     }[state];
     return (
@@ -214,9 +245,9 @@ export const Basic = () => {
       <Row state="Expanded" />
       <Row state="Disabled" />
       <Row state="Loading" />
+      <Row state="LoadingValue" />
 
-      <Title>Prefix</Title>
-      <Prefix />
+      <Row state="Search" />
 
       <Title>Suffix</Title>
       <Suffix />
@@ -232,7 +263,7 @@ Basic.story = {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/file/nOhhbt8AO1EscJOfx60rfD/CloudTower-UI-Components?node-id=8651%3A25024",
+      url: "https://www.figma.com/design/vxsox2ppG3aNiD9qGSyFdc/Select%E4%B8%A8%E5%8D%95%E9%A1%B9%E9%80%89%E6%8B%A9%E5%99%A8?node-id=1-41&m=dev",
     },
   },
 };

@@ -1,7 +1,7 @@
 import { CheckmarkDoneSuccessCorrect16BlueIcon } from "@cloudtower/icons-react";
 import { css, cx } from "@linaria/core";
 import Icon from "@src/core/Icon";
-import Select from "@src/core/Select";
+import LegacySelect from "@src/core/LegacySelect";
 import { Typo } from "@src/core/Typo";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { Select as AntdSelect, Tag } from "antd";
@@ -213,7 +213,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
   });
 
   return (
-    <Select
+    <LegacySelect
       className={cx(SelectStyle, className)}
       dropdownClassName={DropdownStyle}
       placeholder={
@@ -272,7 +272,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
       <AntdSelect.Option value="_placeholder_" className={OptionPlaceholder}>
         _placeholder_
       </AntdSelect.Option>
-    </Select>
+    </LegacySelect>
   );
 };
 
