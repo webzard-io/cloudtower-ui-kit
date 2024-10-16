@@ -1,6 +1,9 @@
-import { DisconnectedCluster16GrayIcon } from "@cloudtower/icons-react";
+import {
+  Cluster16BlueIcon,
+  DisconnectedCluster16GrayIcon,
+} from "@cloudtower/icons-react";
 import { styled } from "@linaria/react";
-import Select from "@src/core/Select";
+import NewSelect from "@src/core/NewSelect";
 import { LeftEndSelectStyle, RightEndSelectStyle } from "@src/core/Styled";
 import Tooltip from "@src/core/Tooltip";
 import { Typo } from "@src/core/Typo";
@@ -38,36 +41,59 @@ type RowProps = {
     | "Focus"
     | "Disabled"
     | "Expanded"
-    | "Loading";
+    | "Loading"
+    | "LoadingValue"
+    | "Search";
 };
 const meta: Meta = {
-  title: "Core/Select",
+  title: "Core/NewSelect",
 };
 
 export default meta;
 
 export const Basic = () => {
   const options = [
-    <AntdSelect.Option value="jack">Jack</AntdSelect.Option>,
-    <AntdSelect.Option value="lucy">Lucy</AntdSelect.Option>,
-    <AntdSelect.Option value="disabled" disabled>
+    <AntdSelect.Option value="jack" label="Jack">
+      Jack
+    </AntdSelect.Option>,
+    <AntdSelect.Option value="lucy" label="Lucy">
+      Lucy
+    </AntdSelect.Option>,
+    <AntdSelect.Option value="disabled" label="Disabled" disabled>
       Disabled
     </AntdSelect.Option>,
   ];
 
   function OptionsDemo(props: React.PropsWithChildren<{}>) {
     return (
-      <Space>
-        <Select input={{}} placeholder="Label" size="large">
+      <AntdSpace>
+        <NewSelect
+          input={{}}
+          style={{ width: 256 }}
+          placeholder="Label"
+          size="large"
+          {...props}
+        >
           {props.children}
-        </Select>
-        <Select input={{}} placeholder="Label">
+        </NewSelect>
+        <NewSelect
+          input={{}}
+          style={{ width: 256 }}
+          placeholder="Label"
+          {...props}
+        >
           {props.children}
-        </Select>
-        <Select input={{}} placeholder="Label" size="small">
+        </NewSelect>
+        <NewSelect
+          input={{}}
+          style={{ width: 256 }}
+          placeholder="Label"
+          size="small"
+          {...props}
+        >
           {props.children}
-        </Select>
-      </Space>
+        </NewSelect>
+      </AntdSpace>
     );
   }
 
@@ -124,8 +150,8 @@ export const Basic = () => {
   function Truncate() {
     const options = getOptions([
       {
-        value: "loooooooooooooong name",
-        children: "loooooooooooooong name",
+        value: "looooooooooooooooooooooooooooooooooooooong name",
+        children: "looooooooooooooooooooooooooooooooooooooong name",
       },
       {
         value: "site-name-2",
@@ -158,6 +184,14 @@ export const Basic = () => {
         input: {},
         loading: true,
       },
+      LoadingValue: {
+        input: {},
+        isLoadingValue: true,
+      },
+      Search: {
+        input: {},
+        showSearch: true,
+      },
     }[state];
     return (
       <>
@@ -166,26 +200,26 @@ export const Basic = () => {
           size={100}
           style={{ marginBottom: state === "Expanded" ? "100px" : undefined }}
         >
-          <Select placeholder="Label" {...props}>
+          <NewSelect placeholder="Label" {...props}>
             {options}
-          </Select>
-          <Select
+          </NewSelect>
+          <NewSelect
             placeholder="Label"
             {...props}
             className={cs(props.className, LeftEndSelectStyle)}
           >
             {options}
-          </Select>
-          <Select
+          </NewSelect>
+          <NewSelect
             placeholder="Label"
             {...props}
             className={cs(props.className, RightEndSelectStyle)}
           >
             {options}
-          </Select>
-          <Select placeholder="Label" danger {...props}>
+          </NewSelect>
+          <NewSelect placeholder="Label" danger {...props}>
             {options}
-          </Select>
+          </NewSelect>
         </Space>
       </>
     );
@@ -195,15 +229,15 @@ export const Basic = () => {
     <div style={{ padding: "20px", paddingBottom: "200px" }}>
       <Title>Size</Title>
       <Space>
-        <Select input={{}} placeholder="Label" size="large">
+        <NewSelect input={{}} placeholder="Label" size="large">
           {options}
-        </Select>
-        <Select input={{}} placeholder="Label">
+        </NewSelect>
+        <NewSelect input={{}} placeholder="Label">
           {options}
-        </Select>
-        <Select input={{}} placeholder="Label" size="small">
+        </NewSelect>
+        <NewSelect input={{}} placeholder="Label" size="small">
           {options}
-        </Select>
+        </NewSelect>
       </Space>
 
       <Title>State</Title>
@@ -214,9 +248,9 @@ export const Basic = () => {
       <Row state="Expanded" />
       <Row state="Disabled" />
       <Row state="Loading" />
+      <Row state="LoadingValue" />
 
-      <Title>Prefix</Title>
-      <Prefix />
+      <Row state="Search" />
 
       <Title>Suffix</Title>
       <Suffix />

@@ -5,4 +5,5 @@ export * from "./dom";
 export * from "./formatValue";
 export * from "./icon";
 export * from "./isStringArr";
+export * from "./select";
 export * from "./time";

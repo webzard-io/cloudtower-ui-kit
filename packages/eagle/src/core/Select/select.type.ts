@@ -12,7 +12,7 @@ export type KitSelectProps = {
   selectLimit?: number;
 } & AntdSelectProps<string>;
 
-interface LooseFieldRenderProps<V, T extends HTMLElement> {
+export interface LooseFieldRenderProps<V, T extends HTMLElement> {
   input: {
     name?: FieldRenderProps<V, T>["input"]["name"];
     value?: FieldRenderProps<V, T>["input"]["value"];

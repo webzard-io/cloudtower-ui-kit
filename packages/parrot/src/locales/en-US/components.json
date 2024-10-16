@@ -81,5 +81,6 @@
   "other": "Other",
   "prev": "Previous",
   "next": "Next",
-  "clear": "Clear"
+  "clear": "Clear",
+  "loading": "Loading..."
 }
