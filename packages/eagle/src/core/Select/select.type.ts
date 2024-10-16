@@ -4,7 +4,7 @@ import {
 } from "@src/core/LegacySelect";
 import React from "react";
 
-type KitSelectProps = KitLegacySelectProps & {
+export type KitSelectProps = KitLegacySelectProps & {
   /** 是否正在加载 Select 组件的值 */
   isLoadingValue?: boolean;
 };
