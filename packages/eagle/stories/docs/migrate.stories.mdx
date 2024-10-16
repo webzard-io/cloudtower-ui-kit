@@ -1,0 +1,16 @@
+import { Meta } from '@storybook/blocks';
+
+
+<Meta title="迁移指南" />
+
+本文主要记录了 ui-kit breaking change 以及如何迁移
+## 如何迁移
+
+### 从 0.31.16 迁移到 0.31.17
+> 2024/10/16
+
+从 0.31.17 开始，原 select 组件标记为废弃，新的 select 组件会被引入，新的 select 组件对齐了已有设计稿。
+
+在保持不对旧代码产生 regression 的情况下，旧 select 组件会保留， 并 rename 为了 legacyselect。更新到 0.31.17 之后，需要将项目中已有的 select 组件全局替换为 legacyselect。
+
+PR: https://github.com/webzard-io/cloudtower-ui-kit/pull/766
