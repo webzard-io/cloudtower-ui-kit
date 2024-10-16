@@ -1,4 +1,4 @@
-import Select from "@src/core/Select";
+import LegacySelect from "@src/core/LegacySelect";
 import { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { Select as AntdSelect } from "antd";
 import React from "react";
@@ -10,9 +10,9 @@ const options = [
 ];
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: StoryFn<typeof Select> = (args) => {
+const Template: StoryFn<typeof LegacySelect> = (args) => {
   return (
-    <Select {...args}>
+    <LegacySelect {...args}>
       {options.map((option) => {
         return (
           <AntdSelect.Option
@@ -25,19 +25,19 @@ const Template: StoryFn<typeof Select> = (args) => {
           </AntdSelect.Option>
         );
       })}
-    </Select>
+    </LegacySelect>
   );
 };
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-const meta: Meta<typeof Select> = {
-  title: "Core/Select/Simple",
+const meta: Meta<typeof LegacySelect> = {
+  title: "Core/LegacySelect/Simple",
   component: Template,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Select>;
+type Story = StoryObj<typeof LegacySelect>;
 
 export const Simple: Story = {
   args: {

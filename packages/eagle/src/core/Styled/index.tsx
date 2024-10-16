@@ -1,5 +1,6 @@
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
+
 import { Color } from "../../styles/token";
 
 export const CommonContent = styled.div`
@@ -725,16 +726,16 @@ export const RightEndInputStyle = css`
 `;
 
 export const LeftEndSelectStyle = css`
-  &.ant-select,
-  &.ant-select .ant-select-selector {
+  &.ant-select.select,
+  &.ant-select.select .ant-select-selector {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 `;
 
 export const RightEndSelectStyle = css`
-  &.ant-select,
-  &.ant-select .ant-select-selector {
+  &.ant-select.select,
+  &.ant-select.select .ant-select-selector {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }

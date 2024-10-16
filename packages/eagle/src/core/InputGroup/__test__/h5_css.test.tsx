@@ -4,17 +4,17 @@ import React from "react";
 import { describe, it } from "vitest";
 
 import Input from "../../Input";
-import Select from "../../Select";
+import LegacySelect from "../../LegacySelect";
 import InputGroup from "..";
 
 describe("InputGroup h5_css", () => {
   it("h5_css small", ({ expect }) => {
     const { container } = render(
       <InputGroup size="small">
-        <Select input={{}}>
+        <LegacySelect input={{}}>
           <AntdSelect.Option value="Zhejiang">Zhejiang</AntdSelect.Option>
           <AntdSelect.Option value="Jiangsu">Jiangsu</AntdSelect.Option>
-        </Select>
+        </LegacySelect>
         <Input
           style={{ width: "50%" }}
           defaultValue="Xihu District, Hangzhou"

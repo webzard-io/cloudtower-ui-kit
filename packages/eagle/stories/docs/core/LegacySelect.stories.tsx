@@ -1,6 +1,6 @@
 import { DisconnectedCluster16GrayIcon } from "@cloudtower/icons-react";
 import { styled } from "@linaria/react";
-import Select from "@src/core/Select";
+import LegacySelect from "@src/core/LegacySelect";
 import { getOptions } from "@src/core/Select/select.widgets";
 import { LeftEndSelectStyle, RightEndSelectStyle } from "@src/core/Styled";
 import Tooltip from "@src/core/Tooltip";
@@ -38,59 +38,36 @@ type RowProps = {
     | "Focus"
     | "Disabled"
     | "Expanded"
-    | "Loading"
-    | "LoadingValue"
-    | "Search";
+    | "Loading";
 };
 const meta: Meta = {
-  title: "Core/Select",
+  title: "Core/LegacySelect",
 };
 
 export default meta;
 
 export const Basic = () => {
   const options = [
-    <AntdSelect.Option value="jack" label="Jack">
-      Jack
-    </AntdSelect.Option>,
-    <AntdSelect.Option value="lucy" label="Lucy">
-      Lucy
-    </AntdSelect.Option>,
-    <AntdSelect.Option value="disabled" label="Disabled" disabled>
+    <AntdSelect.Option value="jack">Jack</AntdSelect.Option>,
+    <AntdSelect.Option value="lucy">Lucy</AntdSelect.Option>,
+    <AntdSelect.Option value="disabled" disabled>
       Disabled
     </AntdSelect.Option>,
   ];
 
   function OptionsDemo(props: React.PropsWithChildren<{}>) {
     return (
-      <AntdSpace>
-        <Select
-          input={{}}
-          style={{ width: 256 }}
-          placeholder="Label"
-          size="large"
-          {...props}
-        >
+      <Space>
+        <LegacySelect input={{}} placeholder="Label" size="large">
           {props.children}
-        </Select>
-        <Select
-          input={{}}
-          style={{ width: 256 }}
-          placeholder="Label"
-          {...props}
-        >
+        </LegacySelect>
+        <LegacySelect input={{}} placeholder="Label">
           {props.children}
-        </Select>
-        <Select
-          input={{}}
-          style={{ width: 256 }}
-          placeholder="Label"
-          size="small"
-          {...props}
-        >
+        </LegacySelect>
+        <LegacySelect input={{}} placeholder="Label" size="small">
           {props.children}
-        </Select>
-      </AntdSpace>
+        </LegacySelect>
+      </Space>
     );
   }
 
@@ -147,8 +124,8 @@ export const Basic = () => {
   function Truncate() {
     const options = getOptions([
       {
-        value: "looooooooooooooooooooooooooooooooooooooong name",
-        children: "looooooooooooooooooooooooooooooooooooooong name",
+        value: "loooooooooooooong name",
+        children: "loooooooooooooong name",
       },
       {
         value: "site-name-2",
@@ -181,14 +158,6 @@ export const Basic = () => {
         input: {},
         loading: true,
       },
-      LoadingValue: {
-        input: {},
-        isLoadingValue: true,
-      },
-      Search: {
-        input: {},
-        showSearch: true,
-      },
     }[state];
     return (
       <>
@@ -197,26 +166,26 @@ export const Basic = () => {
           size={100}
           style={{ marginBottom: state === "Expanded" ? "100px" : undefined }}
         >
-          <Select placeholder="Label" {...props}>
+          <LegacySelect placeholder="Label" {...props}>
             {options}
-          </Select>
-          <Select
+          </LegacySelect>
+          <LegacySelect
             placeholder="Label"
             {...props}
             className={cs(props.className, LeftEndSelectStyle)}
           >
             {options}
-          </Select>
-          <Select
+          </LegacySelect>
+          <LegacySelect
             placeholder="Label"
             {...props}
             className={cs(props.className, RightEndSelectStyle)}
           >
             {options}
-          </Select>
-          <Select placeholder="Label" danger {...props}>
+          </LegacySelect>
+          <LegacySelect placeholder="Label" danger {...props}>
             {options}
-          </Select>
+          </LegacySelect>
         </Space>
       </>
     );
@@ -226,15 +195,15 @@ export const Basic = () => {
     <div style={{ padding: "20px", paddingBottom: "200px" }}>
       <Title>Size</Title>
       <Space>
-        <Select input={{}} placeholder="Label" size="large">
+        <LegacySelect input={{}} placeholder="Label" size="large">
           {options}
-        </Select>
-        <Select input={{}} placeholder="Label">
+        </LegacySelect>
+        <LegacySelect input={{}} placeholder="Label">
           {options}
-        </Select>
-        <Select input={{}} placeholder="Label" size="small">
+        </LegacySelect>
+        <LegacySelect input={{}} placeholder="Label" size="small">
           {options}
-        </Select>
+        </LegacySelect>
       </Space>
 
       <Title>State</Title>
@@ -245,9 +214,9 @@ export const Basic = () => {
       <Row state="Expanded" />
       <Row state="Disabled" />
       <Row state="Loading" />
-      <Row state="LoadingValue" />
 
-      <Row state="Search" />
+      <Title>Prefix</Title>
+      <Prefix />
 
       <Title>Suffix</Title>
       <Suffix />
@@ -263,7 +232,7 @@ Basic.story = {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/design/vxsox2ppG3aNiD9qGSyFdc/Select%E4%B8%A8%E5%8D%95%E9%A1%B9%E9%80%89%E6%8B%A9%E5%99%A8?node-id=1-41&m=dev",
+      url: "https://www.figma.com/file/nOhhbt8AO1EscJOfx60rfD/CloudTower-UI-Components?node-id=8651%3A25024",
     },
   },
 };
