@@ -15,6 +15,7 @@ import React, {
   useCallback,
   useImperativeHandle,
   useMemo,
+  useRef,
   useState,
 } from "react";
 
@@ -48,6 +49,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
     const [validateAll, setValidateAll] = useState(false);
     const rowSplitType = row?.splitType || props.rowSplitType || "border";
     const draggable = row?.draggable ?? props.draggable ?? false;
+    const formValidMapRef = useRef<Record<string, boolean>>({});
 
     const updateData = useCallback(
       (value: DataType[], rowIndex?: number, columnKey?: string) => {
@@ -99,11 +101,21 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
           updateData(data);
         },
         validateWholeFields() {
+          formValidMapRef.current = {};
           setValidateAll(true);
+        },
+        isValid() {
+          return Object.values(formValidMapRef.current).every(
+            (v) => v === true,
+          );
         },
       }),
       [updateData],
     );
+
+    const onValidate = (id: string, isValid: boolean) => {
+      formValidMapRef.current[id] = isValid;
+    };
 
     const headerCells = columns.map((col) => {
       return (
@@ -169,6 +181,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
                 rowValidator={rowValidator}
                 validateAll={validateAll}
                 errors={errors}
+                onValidate={onValidate}
               />
             </AntdList>
           </TableFormWrapper>

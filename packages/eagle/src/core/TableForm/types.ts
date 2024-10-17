@@ -138,6 +138,7 @@ export interface ColumnBodyCellProps {
   getRowValidateResult: (rowData: DataType) => string | undefined;
   validateAll: boolean;
   error?: string | null;
+  onValidate?: (id: string, isValid: boolean) => void;
 }
 
 export type AddRowButtonProps = {
@@ -177,6 +178,7 @@ export interface TableFormRowsProps
   validateAll: boolean;
   draggable?: boolean;
   rowSplitType?: TableFormRowSplitType;
+  onValidate?: (id: string, isValid: boolean) => void;
 }
 
 export type RenderRowDescriptionProps = {
@@ -313,4 +315,5 @@ export type TableFormProps = {
 export type TableFormHandle = {
   setData: (data: DataType[]) => void;
   validateWholeFields: () => void;
+  isValid: () => boolean;
 };
