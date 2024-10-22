@@ -2,7 +2,7 @@ import { css } from "@linaria/core";
 
 export const SelectStyle = css`
   &.ant-select,
-  &.ant-select .ant-select-selector {
+  &.ant-select div.ant-select-selector {
     border-radius: 6px;
   }
 
