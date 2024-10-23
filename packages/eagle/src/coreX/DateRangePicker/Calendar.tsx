@@ -11,6 +11,7 @@ import useElementIntersectionRatio from "@src/hooks/useElementIntersectionRatio"
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import dayjs, { Dayjs } from "dayjs";
 import React, { useEffect, useRef, useState } from "react";
+import { getCalendarTitle } from "@src/coreX/common";
 
 import {
   checkDateNotInRange,
@@ -24,6 +25,7 @@ import {
   MonthAndDate,
   PickerDateRange,
 } from "./dateRangePicker.type";
+import { parrotI18n } from "@cloudtower/parrot";
 
 const Year: React.FC<{
   year: number;
@@ -184,8 +186,7 @@ const MonthItem: React.FC<{
         className={cx(Typo.Label.l1_bold, isPinned && "pinned")}
         ref={headerRef}
       >
-        {initMonth.month}
-        {t("common.month")}
+        {getCalendarTitle(initMonth.month.toString(), parrotI18n.t, parrotI18n)}
       </header>
       <div className="dates-in-month" ref={datesContainerRef}>
         {new Array(initMonth.firstDateOfDay).fill(null).map((value, index) => (
