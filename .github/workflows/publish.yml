@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - next
+      - v4.4
     types: [closed]
 
 jobs:
