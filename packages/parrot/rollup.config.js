@@ -3,6 +3,7 @@ import { defineConfig } from "rollup";
 import esbuild from "rollup-plugin-esbuild";
 import nodePolyfills from "rollup-plugin-polyfill-node";
 import { visualizer } from "rollup-plugin-visualizer";
+import replace from "@rollup/plugin-replace";
 
 const config = defineConfig([
   {
@@ -38,6 +39,14 @@ const config = defineConfig([
         dir: "dist/esm",
         name: "index",
         format: "esm",
+        plugins: [
+          replace({
+            preventAssignment: true,
+            values: {
+              "moment/locale": "moment/dist/locale",
+            }
+          })
+        ]
       },
     ],
   },

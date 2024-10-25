@@ -2,10 +2,6 @@ import { parrotI18n, ParrotI18nSupportLng } from "@cloudtower/parrot";
 import { BatchHelper, createBatchMessageMethods } from "@src/core";
 import _message, { MessageApi } from "@src/core/message";
 import { antdKit } from "@src/legacy-antd";
-import enUS from "antd/lib/locale/en_US";
-import zhCN from "antd/lib/locale/zh_CN";
-import antd5enUS from "antd5/lib/locale/en_US";
-import antd5zhCN from "antd5/lib/locale/zh_CN";
 import React, {
   createContext,
   PropsWithChildren,
@@ -64,13 +60,9 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
       <MessageContext.Provider value={batchMessage ?? _message}>
         <ConfigProvider
           antd4Configs={{
-            autoInsertSpaceInButton: false,
-            locale: lng === "zh-CN" ? zhCN : enUS,
             ...config?.antd4Configs,
           }}
           antd5Configs={{
-            autoInsertSpaceInButton: false,
-            locale: lng === "zh-CN" ? antd5zhCN : antd5enUS,
             ...config?.antd5Configs,
           }}
         >
