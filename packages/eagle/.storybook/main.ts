@@ -60,6 +60,7 @@ const config: StorybookConfig = {
           ),
           "@src": path.resolve(__dirname, "../src/"),
           "@stories": path.resolve(__dirname, "../stories/"),
+          "moment/locale": "moment/dist/locale",
         },
       },
       plugins: [
