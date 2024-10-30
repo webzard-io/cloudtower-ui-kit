@@ -126,6 +126,7 @@ export const SummaryTableRow: React.FunctionComponent<{
   title: string | ReactNode;
   hiddenTitle?: boolean;
   hiddenBorder?: boolean;
+  dataKey?: React.Key;
 }> = (props) => {
   const {
     labelWidth = "42%",
@@ -133,10 +134,14 @@ export const SummaryTableRow: React.FunctionComponent<{
     children,
     hiddenTitle = false,
     hiddenBorder = false,
+    dataKey,
   } = props;
 
   return (
-    <TableRow className={cs("table-row", { hiddenBorder: hiddenBorder })}>
+    <TableRow
+      className={cs("table-row", { hiddenBorder: hiddenBorder })}
+      data-key={dataKey}
+    >
       <RowLabel width={labelWidth} className={cs({ hidden: hiddenTitle })}>
         {title}
       </RowLabel>
@@ -164,12 +169,13 @@ const SummaryTableContent: SummaryTableContentComponentType = (props) => {
             hiddenTitle={item?.hiddenTitle}
             hiddenBorder={item?.hiddenBorder}
             title={item.title}
+            dataKey={item.key}
           >
             {item.render
               ? item.render(value, dataSource)
               : _.isNull(value) || _.isUndefined(value) || value === ""
-              ? Empty
-              : value}
+                ? Empty
+                : value}
           </SummaryTableRow>
         );
       })}
