@@ -63,7 +63,7 @@
 }
 
 .ant-picker-cell {
-  vertical-align: middle
+  vertical-align: middle;
 }
 
 .ant-modal {
@@ -72,15 +72,17 @@
   top: 50%;
   transform: translateY(-50%);
 
+  .ant-modal-close {
+    right: 24px;
+    top: 27px;
+  }
+
   .ant-modal-close-x {
     width: 20px;
     height: 20px;
     line-height: 20px;
     font-size: 20px;
     color: #3e4652;
-    position: absolute;
-    right: 24px;
-    top: 27px;
 
     .anticon-close-circle {
       transition: opacity 320ms 80ms;
@@ -222,7 +224,7 @@
 
       &:before,
       &:after {
-        content: '';
+        content: "";
         flex-grow: 0;
         flex-shrink: 0;
         flex-basis: 21%;
@@ -356,7 +358,7 @@ $footer-height: 64px;
   .ant-tabs-tab-active {
     color: $blue-60 !important;
   }
-  &:before{
+  &:before {
     border-bottom: 1px solid rgba(211, 218, 235, 0.6) !important;
   }
 }
@@ -403,7 +405,9 @@ $footer-height: 64px;
   &.modal-zoom-enter,
   &.modal-zoom-appear {
     opacity: 0;
-    transition: transform 200ms ease-out, opacity 100ms;
+    transition:
+      transform 200ms ease-out,
+      opacity 100ms;
     transform: scale(0.9);
   }
 
@@ -411,7 +415,9 @@ $footer-height: 64px;
   &.modal-zoom-leave {
     opacity: 1;
     transform: scale(1) translateY(-50%);
-    transition: transform 200ms ease-out, opacity 100ms;
+    transition:
+      transform 200ms ease-out,
+      opacity 100ms;
   }
 
   // entering
@@ -431,7 +437,9 @@ $footer-height: 64px;
   &.modal-send-leave {
     transform: translateY(0);
     opacity: 1;
-    transition: transform cubic-bezier(0.5, 0, 1, 0) 240ms, opacity 240ms;
+    transition:
+      transform cubic-bezier(0.5, 0, 1, 0) 240ms,
+      opacity 240ms;
   }
 
   &.modal-send-leave.modal-send-leave-active {
@@ -512,7 +520,7 @@ $footer-height: 64px;
   }
 }
 
-.ant-alert-info.action:not(.alert-normal){
+.ant-alert-info.action:not(.alert-normal) {
   .ant-alert-message {
     color: $text-light-primary;
   }
@@ -575,10 +583,10 @@ $footer-height: 64px;
     text-align: center;
   }
 
-  .ant-select-item-option{
+  .ant-select-item-option {
     color: $text-light-primary;
   }
-  .ant-select-item-option-disabled{
+  .ant-select-item-option-disabled {
     background-color: $fills-element-light-container-general;
     opacity: 0.5;
   }
@@ -630,7 +638,6 @@ td .ant-btn-link {
   font-size: 12px;
 }
 
-
 // FIXME: remove later should be in tower/ui only
 .none-animation {
   transition: none;
@@ -647,7 +654,8 @@ td .ant-btn-link {
 
 // FIXME: what's this ??
 .menu-shadow-box {
-  box-shadow: rgba(45, 58, 86, 0.3) 0px 25px 80px 0px,
+  box-shadow:
+    rgba(45, 58, 86, 0.3) 0px 25px 80px 0px,
     rgba(107, 125, 153, 0.18) 0px 0px 20px 0px;
 }
 .menu-shadow-filter {
@@ -655,7 +663,8 @@ td .ant-btn-link {
     drop-shadow(rgba(107, 125, 153, 0.18) 0px 0px 20px);
 }
 .menu-shadow-above-button-box {
-  box-shadow: 0px -12px 40px 0px rgba(45, 58, 86, 0.3),
+  box-shadow:
+    0px -12px 40px 0px rgba(45, 58, 86, 0.3),
     0px 0px 10px 0px rgba(107, 125, 153, 0.18);
 }
 .menu-shadow-above-button-filter {
@@ -664,7 +673,8 @@ td .ant-btn-link {
 }
 
 .panel-shadow-box {
-  box-shadow: rgba(45, 58, 86, 0.3) 0px 25px 80px 0px,
+  box-shadow:
+    rgba(45, 58, 86, 0.3) 0px 25px 80px 0px,
     rgba(107, 125, 153, 0.18) 0px 0px 20px 0px;
 }
 .panel-shadow-filter {
@@ -672,7 +682,8 @@ td .ant-btn-link {
     drop-shadow(rgba(107, 125, 153, 0.18) 0px 0px 20px);
 }
 .panel-shadow-above-button-box {
-  box-shadow: 0px -25px 80px 0px rgba(45, 58, 86, 0.3),
+  box-shadow:
+    0px -25px 80px 0px rgba(45, 58, 86, 0.3),
     0px 0px 20px 0px rgba(107, 125, 153, 0.18);
 }
 .panel-shadow-above-button-filter {
@@ -681,7 +692,8 @@ td .ant-btn-link {
 }
 
 .card-shadow-box {
-  box-shadow: rgba(10, 37, 85, 0.18) 0px 8px 16px 0px,
+  box-shadow:
+    rgba(10, 37, 85, 0.18) 0px 8px 16px 0px,
     rgba(10, 37, 85, 0.18) 0px 0px 4px -2px;
 }
 .card-shadow-filter {
@@ -746,69 +758,74 @@ td .ant-btn-link {
   filter: drop-shadow(0px 0px 0px 4px rgba(255, 74, 74, 0.16));
 }
 
-.ant-tag{
+.ant-tag {
   border: none;
   border-radius: 4px;
   display: inline-flex;
   align-items: center;
-  &:hover{
+  &:hover {
     opacity: unset;
   }
   &.ant-tag-hidden {
     display: none;
   }
   &.ant-tag-red {
-    color:$fills-light-serious-serious;
+    color: $fills-light-serious-serious;
     background-color: $fills-light-serious-serious-light;
-    &.tag-hover:hover,&.__pseudo-states-hover{
-      background-color: $fills-interaction-light-serious-hover
+    &.tag-hover:hover,
+    &.__pseudo-states-hover {
+      background-color: $fills-interaction-light-serious-hover;
     }
   }
   &.ant-tag-red-ontint {
-    color:$fills-light-serious-serious-bright;
+    color: $fills-light-serious-serious-bright;
     background-color: $fills-light-serious-serious-light-active;
   }
   &.ant-tag-yellow {
-    color:$fills-light-notice-notice-dark;
+    color: $fills-light-notice-notice-dark;
     background-color: $fills-light-notice-notice-light;
-    &.tag-hover:hover,&.__pseudo-states-hover{
-      background-color:  $fills-light-notice-notice-light-hover;
+    &.tag-hover:hover,
+    &.__pseudo-states-hover {
+      background-color: $fills-light-notice-notice-light-hover;
     }
   }
   &.ant-tag-green {
-    color:$fills-light-positive-positive-dark;
+    color: $fills-light-positive-positive-dark;
     background-color: $fills-light-positive-positive-light;
-    &.tag-hover:hover,&.__pseudo-states-hover{
-      background-color:  $fills-light-positive-positive-light-hover;
+    &.tag-hover:hover,
+    &.__pseudo-states-hover {
+      background-color: $fills-light-positive-positive-light-hover;
     }
   }
   &.ant-tag-green-ontint {
-    color:$fills-light-positive-positive-bright;
+    color: $fills-light-positive-positive-bright;
     background-color: $fills-light-positive-positive-light-active;
   }
   &.ant-tag-blue {
-    color:$fills-light-general-general;
+    color: $fills-light-general-general;
     background-color: $fills-element-light-container-outstanding;
-    &.tag-hover:hover,&.__pseudo-states-hover{
-      background-color:  $fills-element-light-container-outstanding-hover;
+    &.tag-hover:hover,
+    &.__pseudo-states-hover {
+      background-color: $fills-element-light-container-outstanding-hover;
     }
   }
   &.ant-tag-purple {
-    color:$text-light-storage;
+    color: $text-light-storage;
     background-color: $fills-element-light-container-storage;
-    &.tag-hover:hover,&.__pseudo-states-hover{
+    &.tag-hover:hover,
+    &.__pseudo-states-hover {
       background-color: $fills-light-interaction-purple-hover;
     }
   }
   &.ant-tag-gray {
-    color:$text-light-super;
+    color: $text-light-super;
     background-color: $fills-element-light-container-general;
-    &.tag-hover:hover,&.__pseudo-states-hover{
-      background-color:  $fills-interaction-light-general-hover;
+    &.tag-hover:hover,
+    &.__pseudo-states-hover {
+      background-color: $fills-interaction-light-general-hover;
     }
   }
 }
-
 
 // FIXME: remove later should be in tower/ui only
 @media screen and (min-width: 1280px) {
