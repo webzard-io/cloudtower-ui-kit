@@ -41,7 +41,7 @@ const SimplePagination = (props: ISimplePaginationProps) => {
     <div className={cs(PaginationStyle, "pagination-wrapper", className)}>
       <span className={Typo.Label.l3_regular_title}>
         {t("components.pagination_lots_total", {
-          total: count,
+          count,
         })}
       </span>
 
