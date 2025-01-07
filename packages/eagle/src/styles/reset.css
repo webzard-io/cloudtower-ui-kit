@@ -169,6 +169,7 @@ body {
   font-feature-settings: normal;
   -webkit-font-feature-settings: normal;
   font-variant: normal;
+  font-variant-ligatures: contextual;
   min-width: 1280px;
   overflow: hidden;
 }
