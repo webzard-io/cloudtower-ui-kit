@@ -21,7 +21,7 @@ describe("Radio h5_css", () => {
         >
           Button Title
         </Radio>
-      </Space>
+      </Space>,
     );
 
     expect({
@@ -91,7 +91,7 @@ describe("Radio h5_css", () => {
             & + span {
               display: inline-block;
               padding: 0;
-              padding-left: 12px;
+              padding-left: 10px;
 
               .radio-description {
                 margin-bottom: 0;
@@ -186,7 +186,7 @@ describe("Radio h5_css", () => {
             & + span {
               display: inline-block;
               padding: 0;
-              padding-left: 12px;
+              padding-left: 10px;
 
               .radio-description {
                 margin-bottom: 0;
@@ -291,7 +291,7 @@ describe("Radio h5_css", () => {
             & + span {
               display: inline-block;
               padding: 0;
-              padding-left: 12px;
+              padding-left: 10px;
 
               .radio-description {
                 margin-bottom: 0;
@@ -386,7 +386,7 @@ describe("Radio h5_css", () => {
             & + span {
               display: inline-block;
               padding: 0;
-              padding-left: 12px;
+              padding-left: 10px;
 
               .radio-description {
                 margin-bottom: 0;
@@ -446,7 +446,7 @@ describe("Radio h5_css", () => {
           <RadioButton value={2}>Label</RadioButton>
           <RadioButton value={3}>Label</RadioButton>
         </RadioGroup>
-      </Space>
+      </Space>,
     );
 
     expect({
