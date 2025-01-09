@@ -62,7 +62,7 @@ const RadioStyle = css`
       & + span {
         display: inline-block;
         padding: 0;
-        padding-left: 12px;
+        padding-left: 10px;
 
         .radio-description {
           margin-bottom: 0;
