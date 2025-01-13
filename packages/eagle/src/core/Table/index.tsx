@@ -18,22 +18,22 @@ export const emptyTableStyle = css`
   .ant-table-content {
     overflow: visible !important;
     height: 100%;
+  }
 
-    .ant-table-tbody .ant-table-placeholder td {
-      height: 100%;
-    }
+  .ant-table-tbody .ant-table-placeholder td {
+    height: 100%;
+  }
 
-    table {
-      width: 100% !important;
-      height: 100%;
-      .ant-table-placeholder .ant-table-expanded-row-fixed {
-        padding: 15px 0;
-      }
+  table {
+    width: 100% !important;
+    height: 100%;
+    .ant-table-placeholder .ant-table-expanded-row-fixed {
+      padding: 15px 0;
     }
+  }
 
-    table thead.ant-table-thead {
-      display: none;
-    }
+  table thead.ant-table-thead {
+    display: none;
   }
 `;
 
