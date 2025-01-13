@@ -1,9 +1,10 @@
 import { parrotI18n } from "@cloudtower/parrot";
+import { Switch } from "@src/core";
 import UIKitProvider, { useMessage } from "@src/UIKitProvider";
 import { CoreMeta } from "@stories/types";
 import { StoryObj } from "@storybook/react";
-import { Button } from "antd";
-import React, { ReactNode } from "react";
+import { Button, Space } from "antd";
+import React, { ReactNode, useState } from "react";
 
 /**
  * * 从顶部弹出消息的组件。
@@ -19,6 +20,9 @@ const meta = {
         value: {
           maxCount: {
             name: "boolean",
+          },
+          top: {
+            name: "number",
           },
         },
       },
@@ -108,6 +112,31 @@ export const MaxCount: Story = {
   },
   render: (args) => {
     return <MessageButton {...args} />;
+  },
+};
+
+const CustomTopPositionStory = (args: any) => {
+  const [enable, setEnable] = useState(false);
+  return (
+    <>
+      <Space direction="vertical" size={16}>
+        <Switch checked={enable} onChange={setEnable}>
+          开启自定义高度（58px）
+        </Switch>
+        <UIKitProvider
+          {...args}
+          message={{ ...args.message, top: enable ? 58 : 8 }}
+        >
+          <BasicInfoButton />
+        </UIKitProvider>
+      </Space>
+    </>
+  );
+};
+export const CustomTopPosition: Story = {
+  name: "自定义顶部位置",
+  render: (args) => {
+    return <CustomTopPositionStory {...args} />;
   },
 };
 

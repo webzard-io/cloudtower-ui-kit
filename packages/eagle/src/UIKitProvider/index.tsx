@@ -1,7 +1,11 @@
 import { parrotI18n, ParrotI18nSupportLng } from "@cloudtower/parrot";
 import { BatchHelper, createBatchMessageMethods } from "@src/core";
-import _message, { MessageApi } from "@src/core/message";
+import _message, {
+  ConfigOptions as MessageConfigOptions,
+  MessageApi,
+} from "@src/core/message";
 import { antdKit } from "@src/legacy-antd";
+import { omit } from "lodash";
 import React, {
   createContext,
   PropsWithChildren,
@@ -10,14 +14,14 @@ import React, {
   useMemo,
 } from "react";
 
-import { Kit } from "../spec";
 import { ConfigProps, ConfigProvider } from "../core/ConfigProvider";
+import { Kit } from "../spec";
 
+type MessageConfigOptionsType = MessageConfigOptions;
 export interface IProps {
   kit?: Kit;
-  message?: {
+  message?: MessageConfigOptionsType & {
     batch?: BatchHelper;
-    maxCount?: number;
   };
   lng?: ParrotI18nSupportLng;
   config?: ConfigProps;
@@ -44,10 +48,8 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
   }, [batchMessage, kit]);
 
   useEffect(() => {
-    _message.config({
-      maxCount: message?.maxCount,
-    });
-  }, [message?.maxCount]);
+    _message.config(omit(message, "batch"));
+  }, [message]);
 
   useEffect(() => {
     if (parrotI18n.language !== lng) {
