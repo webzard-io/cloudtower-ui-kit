@@ -20,8 +20,16 @@ const Title: React.FC<{ classNames?: string }> = ({ children, classNames }) => (
   </div>
 );
 
+/**
+ * 状态胶囊，用于展示状态。
+ *
+ * 根据使用场景，可选:
+ *
+ * - 是否带计数
+ * - 背景色是否突出：Colorful 较突出、Off-White 较不突出
+ */
 const story: Meta<StatusCapsuleComponentType> = {
-  title: "Core/StatusCapsule",
+  title: "Core/StatusCapsule | 状态胶囊",
   component: StatusCapsule,
   parameters: {
     design: {
