@@ -1286,6 +1286,7 @@ exports[`table form render > default data is undefined 1`] = `
                       >
                         <div
                           class=ant-select,ant-select-sm,ant-select-single,ant-select-show-arrow
+                          formvalue=
                         >
                           <div
                             class=ant-select-selector

@@ -78,6 +78,7 @@ export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
         disabled,
         onChange: headerOnChange,
         onBlur: headerOnBlur,
+        formValue: data,
       });
     }
 
@@ -102,6 +103,7 @@ export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
                 disabled,
                 onChange: headerOnChange,
                 onBlur: headerOnBlur,
+                formValue: data,
               })
             : renderDefaultComponent()
         }
