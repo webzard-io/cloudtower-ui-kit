@@ -21,7 +21,7 @@
   },
   "scripts": {
     "test": "vitest",
-    "test:ci": "vitest run",
+    "test:ci": "vitest run --silent",
     "prebuild": "rm -rf dist",
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
     "typings": "tsc -v && tsc --emitDeclarationOnly",
