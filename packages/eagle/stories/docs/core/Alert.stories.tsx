@@ -130,6 +130,31 @@ export const Basic: ComponentStory<typeof Alert> = () => {
           }
         `}
       >
+        <Title>Closable</Title>
+        <Alert
+          type="info"
+          message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas et earum neque eum! Magnam, illum iusto aspernatur odit hic, voluptate explicabo soluta eos unde eaque sunt nostrum quo architecto asperiores."
+          onClose={() => console.log("close")}
+        />
+
+        <Title>Closable And custom action</Title>
+
+        <Alert
+          type="info"
+          message=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt sit ea distinctio, cupiditate voluptatum nesciunt aliquam deleniti illum consequatur est numquam nam ratione expedita? Tempore, quis. Autem, animi obcaecati! Iure."
+          closable
+          action={
+            <div
+              className={css`
+                color: $text-light-general;
+                cursor: pointer;
+              `}
+            >
+              Label
+            </div>
+          }
+        />
+
         <Title>Custom message</Title>
         <Alert
           type="error"

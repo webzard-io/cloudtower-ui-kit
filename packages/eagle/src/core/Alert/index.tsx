@@ -1,3 +1,7 @@
+import {
+  XmarkRemove16RegularPrimaryCapsOffIcon,
+  XmarkRemove16RegularTertiaryCapsOffIcon,
+} from "@cloudtower/icons-react";
 import { css } from "@linaria/core";
 import Icon from "@src/core/Icon";
 import { getAlertIcon } from "@src/utils";
@@ -17,6 +21,17 @@ const MessageWrapperStyle = css`
 `;
 
 const AlertStyle = css`
+  width: 100%;
+
+  &.ant-alert-closable {
+    padding-right: 12px;
+
+    .ant-alert-close-icon {
+      height: fit-content;
+      margin-left: 16px;
+    }
+  }
+
   .ant-alert-message {
     width: 100%;
   }
@@ -31,10 +46,13 @@ const Alert: AlertComponentType = ({
   closeText,
   action,
   message,
+  closable,
   ...props
 }) => {
   const _icon = <Icon alt={type} src={getAlertIcon(type)} />;
   const _type = type === "normal" ? "info" : type;
+  const _closable = closable || Boolean(onClose) || Boolean(closeText);
+
   return (
     <AntdAlert
       {...props}
@@ -51,8 +69,16 @@ const Alert: AlertComponentType = ({
       icon={icon || _icon}
       showIcon={showIcon}
       onClose={onClose}
-      closeText={closeText}
-      closable={!!onClose}
+      closeText={
+        closeText ||
+        (_closable && (
+          <Icon
+            src={XmarkRemove16RegularTertiaryCapsOffIcon}
+            hoverSrc={XmarkRemove16RegularPrimaryCapsOffIcon}
+          />
+        ))
+      }
+      closable={_closable}
     />
   );
 };
