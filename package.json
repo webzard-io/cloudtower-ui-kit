@@ -44,8 +44,8 @@
   "bundlewatch": {
     "files": [
       {
-        "path": "./packages/eagle/dist/**/*.js",
-        "maxSize": "70 kB"
+        "path": "./packages/eagle/dist/esm/**/*.js",
+        "maxSize": "5 kB"
       },
       {
         "path": "./packages/parrot/dist/**/*.js",

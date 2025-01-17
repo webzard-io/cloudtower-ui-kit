@@ -16,10 +16,10 @@
     "url": "https://github.com/webzard-io/cloudtower-ui-kit.git"
   },
   "scripts": {
-    "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
+    "build": "rollup --config rollup.config.js --bundleConfigAsCjs --silent",
     "prebuild": "node tools/prebuild-antd-less.js",
     "test": "vitest",
-    "test:ci": "vitest run",
+    "test:ci": "vitest run --silent",
     "coverage": "vitest run --coverage",
     "typings": "tsc --emitDeclarationOnly && tsc-alias",
     "storybook": "storybook dev -p 6006",

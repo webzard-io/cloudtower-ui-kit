@@ -134,6 +134,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           body: ${{steps.github_release.outputs.changelog}}
+          tag_name: 'v${{ env.CURRENT_VERSION }}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Clean .npmrc

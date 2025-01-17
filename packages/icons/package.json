@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "prebuild": "rimraf ./dist",
-    "build-icons": "svgo --config=svgo.yaml -f ./src/ -o ./dist --pretty --indent=2"
+    "build-icons": "svgo --config=svgo.yaml -f ./src/ -o ./dist --pretty --indent=2 --quiet"
   },
   "devDependencies": {
     "rimraf": "^3.0.0",
