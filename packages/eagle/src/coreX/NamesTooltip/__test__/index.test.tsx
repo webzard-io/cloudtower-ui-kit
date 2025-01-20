@@ -33,8 +33,7 @@ describe("NamesTooltip", () => {
       <body>
         <div>
           <span
-            class=dashed-border-bottom,ant-tooltip-open,
-        margin: 0 3px;
+            class=dashed-border-bottom,ant-tooltip-open,margin: 0 3px;
 
           >
             hover me
@@ -45,20 +44,18 @@ describe("NamesTooltip", () => {
         >
           <div>
             <div
-              class=ant-tooltip,
-        .ant-tooltip-arrow {
-          display: none;
-        }
-        .ant-tooltip-inner {
-          background: $gray-a80-9;
-          border-radius: 4px;
-          &:has(.eagle-ellipsis-content) {
-            visibility: hidden;
-          }
-        }
-      ,
-        max-height: 400px;
-        overflow: auto;
+              class=ant-tooltip,.ant-tooltip-arrow {
+      display: none;
+      }
+      .ant-tooltip-inner {
+      background: $gray-a80-9;
+      border-radius: 4px;
+      &:has(.eagle-ellipsis-content) {
+      visibility: hidden;
+      }
+      }
+      ,max-height: 400px;
+      overflow: auto;
 
               style=opacity:,0;,pointer-events:,none;
             >
@@ -77,29 +74,27 @@ describe("NamesTooltip", () => {
                   role=tooltip
                 >
                   <div
-                    class=mocked-styled-1,
-        display: flex;
-        align-items: center;
-        font-size: 12px;
-        line-height: 18px;
+                    class=mocked-styled-1,display: flex;
+      align-items: center;
+      font-size: 12px;
+      line-height: 18px;
 
-        &:not(:last-child) {
-          margin-bottom: 4px;
-        }
+      &:not(:last-child) {
+      margin-bottom: 4px;
+      }
 
                   >
                     line 1
                   </div>
                   <div
-                    class=mocked-styled-1,
-        display: flex;
-        align-items: center;
-        font-size: 12px;
-        line-height: 18px;
+                    class=mocked-styled-1,display: flex;
+      align-items: center;
+      font-size: 12px;
+      line-height: 18px;
 
-        &:not(:last-child) {
-          margin-bottom: 4px;
-        }
+      &:not(:last-child) {
+      margin-bottom: 4px;
+      }
 
                   >
                     line 2

@@ -34,28 +34,27 @@ describe("FieldsEnum h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-select,
-        &.ant-select,
-        &.ant-select div.ant-select-selector {
-          border-radius: 6px;
-        }
+          class=ant-select,&.ant-select,
+      &.ant-select div.ant-select-selector {
+      border-radius: 6px;
+      }
 
-        &.ant-select {
-          &.ant-select-single {
-            width: 100%;
-            &[data-size="small"] {
-            }
-            &[data-size="middle"] {
-              height: 30px;
-            }
-            &[data-size="large"] {
-            }
-            color: $text-primary-light;
-            border-color: $strokes-light-trans-2;
-            transition:
-              border 160ms ease 8ms,
-              box-shadow 160ms ease 8ms;
-            font-size: 13px;
+      &.ant-select {
+      &.ant-select-single {
+      width: 100%;
+      &[data-size="small"] {
+      }
+      &[data-size="middle"] {
+      height: 30px;
+      }
+      &[data-size="large"] {
+      }
+      color: $text-primary-light;
+      border-color: $strokes-light-trans-2;
+      transition:
+      border 160ms ease 8ms,
+      box-shadow 160ms ease 8ms;
+      font-size: 13px;
 
             &.ant-select-lg {
               height: 38px;
@@ -132,11 +131,11 @@ describe("FieldsEnum h5_css", () => {
               transform: rotate(180deg);
             }
           }
-        }
-      ,select,
-        @include Inter();
-        font-size: 13px;
-        line-height: 20px;
+
+      }
+      ,select,@include Inter();
+      font-size: 13px;
+      line-height: 20px;
       ,ant-select-single,ant-select-show-arrow
           data-size=middle
           name=inputName1
@@ -232,28 +231,27 @@ describe("FieldsEnum h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-select,
-        &.ant-select,
-        &.ant-select div.ant-select-selector {
-          border-radius: 6px;
-        }
+          class=ant-select,&.ant-select,
+      &.ant-select div.ant-select-selector {
+      border-radius: 6px;
+      }
 
-        &.ant-select {
-          &.ant-select-single {
-            width: 100%;
-            &[data-size="small"] {
-            }
-            &[data-size="middle"] {
-              height: 30px;
-            }
-            &[data-size="large"] {
-            }
-            color: $text-primary-light;
-            border-color: $strokes-light-trans-2;
-            transition:
-              border 160ms ease 8ms,
-              box-shadow 160ms ease 8ms;
-            font-size: 13px;
+      &.ant-select {
+      &.ant-select-single {
+      width: 100%;
+      &[data-size="small"] {
+      }
+      &[data-size="middle"] {
+      height: 30px;
+      }
+      &[data-size="large"] {
+      }
+      color: $text-primary-light;
+      border-color: $strokes-light-trans-2;
+      transition:
+      border 160ms ease 8ms,
+      box-shadow 160ms ease 8ms;
+      font-size: 13px;
 
             &.ant-select-lg {
               height: 38px;
@@ -330,11 +328,11 @@ describe("FieldsEnum h5_css", () => {
               transform: rotate(180deg);
             }
           }
-        }
-      ,select,
-        @include Inter();
-        font-size: 13px;
-        line-height: 20px;
+
+      }
+      ,select,@include Inter();
+      font-size: 13px;
+      line-height: 20px;
       ,ant-select-single,ant-select-show-arrow
           data-size=middle
           name=inputName1
@@ -430,28 +428,27 @@ describe("FieldsEnum h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-select,
-        &.ant-select,
-        &.ant-select div.ant-select-selector {
-          border-radius: 6px;
-        }
+          class=ant-select,&.ant-select,
+      &.ant-select div.ant-select-selector {
+      border-radius: 6px;
+      }
 
-        &.ant-select {
-          &.ant-select-single {
-            width: 100%;
-            &[data-size="small"] {
-            }
-            &[data-size="middle"] {
-              height: 30px;
-            }
-            &[data-size="large"] {
-            }
-            color: $text-primary-light;
-            border-color: $strokes-light-trans-2;
-            transition:
-              border 160ms ease 8ms,
-              box-shadow 160ms ease 8ms;
-            font-size: 13px;
+      &.ant-select {
+      &.ant-select-single {
+      width: 100%;
+      &[data-size="small"] {
+      }
+      &[data-size="middle"] {
+      height: 30px;
+      }
+      &[data-size="large"] {
+      }
+      color: $text-primary-light;
+      border-color: $strokes-light-trans-2;
+      transition:
+      border 160ms ease 8ms,
+      box-shadow 160ms ease 8ms;
+      font-size: 13px;
 
             &.ant-select-lg {
               height: 38px;
@@ -528,11 +525,11 @@ describe("FieldsEnum h5_css", () => {
               transform: rotate(180deg);
             }
           }
-        }
-      ,select,
-        @include Inter();
-        font-size: 13px;
-        line-height: 20px;
+
+      }
+      ,select,@include Inter();
+      font-size: 13px;
+      line-height: 20px;
       ,ant-select-single,ant-select-show-arrow
           data-size=middle
           name=inputName1

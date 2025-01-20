@@ -4,67 +4,66 @@ exports[`table form render > default data is undefined 1`] = `
 <div>
   <div>
     <div
-      class=table-form,row-split-by-border,
-  border: 1px solid $strokes-light-trans-2;
-  border-radius: 8px;
-  overflow: auto;
-  .ant-list {
-    position: relative;
-    .ant-list-item:last-child {
-      border-bottom: none;
-    }
-    .eagle-table-form-header {
-      position: sticky;
-      top: 0;
-      z-index: $eagle-table-form-header-index;
-      display: flex;
-      padding: 8px;
-      & {
-        align-items: inherit;
-      }
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      background: $fills-light-opaque-1;
-      font-size: 14px;
-      color: $text-secondary-light;
-      border-bottom: 1px solid $fills-light-trans-2;
-    }
-    .eagle-table-form-header .eagle-table-form-cell > p {
-      margin-bottom: 0;
-    }
-    .eagle-table-form-row {
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      padding: 8px;
-      border: none;
-      .row-description {
-        flex-basis: 100%;
-        margin: 12px 0 0;
-        order: 99;
-        color: $text-secondary-light;
-      }
-      .row-error-message {
-        color: $text-light-serious;
-        flex-basis: 100%;
-        order: 98;
-        margin: 12px 0 0;
-      }
-      &:hover {
-        background-color: $fills-light-trans-1;
-      }
-      &.isDragging {
-        background-color: $fills-light-general-general-light;
-      }
-    }
-    .eagle-table-form-cell {
-      flex: 1 0 0;
-      overflow: hidden;
-      .cell-description {
-        color: $text-secondary-light;
-        margin: 0;
-      }
+      class=table-form,row-split-by-border,border: 1px solid $strokes-light-trans-2;
+border-radius: 8px;
+overflow: auto;
+.ant-list {
+position: relative;
+.ant-list-item:last-child {
+border-bottom: none;
+}
+.eagle-table-form-header {
+position: sticky;
+top: 0;
+z-index: $eagle-table-form-header-index;
+display: flex;
+padding: 8px;
+& {
+align-items: inherit;
+}
+flex-wrap: nowrap;
+justify-content: flex-start;
+background: $fills-light-opaque-1;
+font-size: 14px;
+color: $text-secondary-light;
+border-bottom: 1px solid $fills-light-trans-2;
+}
+.eagle-table-form-header .eagle-table-form-cell > p {
+margin-bottom: 0;
+}
+.eagle-table-form-row {
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+flex-wrap: wrap;
+padding: 8px;
+border: none;
+.row-description {
+flex-basis: 100%;
+margin: 12px 0 0;
+order: 99;
+color: $text-secondary-light;
+}
+.row-error-message {
+color: $text-light-serious;
+flex-basis: 100%;
+order: 98;
+margin: 12px 0 0;
+}
+&:hover {
+background-color: $fills-light-trans-1;
+}
+&.isDragging {
+background-color: $fills-light-general-general-light;
+}
+}
+.eagle-table-form-cell {
+flex: 1 0 0;
+overflow: hidden;
+.cell-description {
+color: $text-secondary-light;
+margin: 0;
+}
 
       @mixin text-align-style($align-position) {
         & > * {
@@ -126,19 +125,20 @@ exports[`table form render > default data is undefined 1`] = `
         }
       }
     }
-  }
-  &.row-split-by-border {
-    .eagle-table-form-row {
-      border-bottom: 1px solid $fills-light-trans-2;
-    }
-  }
-  &.row-split-by-zebraMarking {
-    .draggable-container {
-      & > :nth-child(2n) {
-        background-color: $fills-trans-primary-light;
-      }
-    }
-  }
+
+}
+&.row-split-by-border {
+.eagle-table-form-row {
+border-bottom: 1px solid $fills-light-trans-2;
+}
+}
+&.row-split-by-zebraMarking {
+.draggable-container {
+& > :nth-child(2n) {
+background-color: $fills-trans-primary-light;
+}
+}
+}
 
       data-testid=eagle-table-form-wrapper
     >
@@ -159,21 +159,17 @@ exports[`table form render > default data is undefined 1`] = `
                 style=max-width:,100px;,min-width:,100px;,visibility:,visible;
               >
                 <p
-                  class=
-  @include Inter(bold);
-  font-size: 13px;
-  line-height: 20px;
-,
-  margin-bottom: 4px;
-  color: $text-secondary-light;
+                  class=@include Inter(bold);
+font-size: 13px;
+line-height: 20px;
+,margin-bottom: 4px;
+color: $text-secondary-light;
 
                 >
                   <div
-                    class=
-  overflow: hidden;
-  text-overflow: ellipsis;
-,
-  white-space: nowrap;
+                    class=overflow: hidden;
+text-overflow: ellipsis;
+,white-space: nowrap;
 
                   >
                     <span>
@@ -182,29 +178,28 @@ exports[`table form render > default data is undefined 1`] = `
                   </div>
                 </p>
                 <div
-                  class=ant-row,ant-form-item,
-  &.ant-form-item {
-    margin-bottom: 0;
-  }
+                  class=ant-row,ant-form-item,&.ant-form-item {
+margin-bottom: 0;
+}
 
-  .ant-form-item-explain {
-    display: none;
-    min-height: 18px;
-    margin-top: 5px;
-    font-family: "Inter";
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-  }
+.ant-form-item-explain {
+display: none;
+min-height: 18px;
+margin-top: 5px;
+font-family: "Inter";
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+}
 
-  &.ant-form-item[class*="ant-form-item-has"]:not(
-      .ant-form-item-has-error-leave
-    ) {
-    white-space: pre-wrap;
-    .ant-form-item-explain {
-      display: block;
-    }
-  }
+&.ant-form-item[class*="ant-form-item-has"]:not(
+.ant-form-item-has-error-leave
+) {
+white-space: pre-wrap;
+.ant-form-item-explain {
+display: block;
+}
+}
 
                 >
                   <div
@@ -217,32 +212,30 @@ exports[`table form render > default data is undefined 1`] = `
                         class=ant-form-item-control-input-content
                       >
                         <p
-                          class=
-  @include Inter();
-  font-size: 12px;
-  line-height: 18px;
-,
-  color: rgba(44, 56, 82, 0.6);
-  line-height: 32px;
-  height: 32px;
-  margin-bottom: 0;
-  &.primary,
-  &.info {
-    color: $text-light-general;
-  }
-  &.warning {
-    color: #ffa500;
-  }
-  &.success {
-    color: $text-light-positive;
-  }
-  &.danger,
-  &.error {
-    color: $text-light-serious;
-  }
-  &.normal {
-    color: $text-secondary-light;
-  }
+                          class=@include Inter();
+font-size: 12px;
+line-height: 18px;
+,color: rgba(44, 56, 82, 0.6);
+line-height: 32px;
+height: 32px;
+margin-bottom: 0;
+&.primary,
+&.info {
+color: $text-light-general;
+}
+&.warning {
+color: #ffa500;
+}
+&.success {
+color: $text-light-positive;
+}
+&.danger,
+&.error {
+color: $text-light-serious;
+}
+&.normal {
+color: $text-secondary-light;
+}
 
                         >
                           批量填充
@@ -257,21 +250,17 @@ exports[`table form render > default data is undefined 1`] = `
                 style=visibility:,visible;
               >
                 <p
-                  class=
-  @include Inter(bold);
-  font-size: 13px;
-  line-height: 20px;
-,
-  margin-bottom: 4px;
-  color: $text-secondary-light;
+                  class=@include Inter(bold);
+font-size: 13px;
+line-height: 20px;
+,margin-bottom: 4px;
+color: $text-secondary-light;
 
                 >
                   <div
-                    class=
-  overflow: hidden;
-  text-overflow: ellipsis;
-,
-  white-space: nowrap;
+                    class=overflow: hidden;
+text-overflow: ellipsis;
+,white-space: nowrap;
 
                   >
                     <span>
@@ -280,29 +269,28 @@ exports[`table form render > default data is undefined 1`] = `
                   </div>
                 </p>
                 <div
-                  class=ant-row,ant-form-item,
-  &.ant-form-item {
-    margin-bottom: 0;
-  }
+                  class=ant-row,ant-form-item,&.ant-form-item {
+margin-bottom: 0;
+}
 
-  .ant-form-item-explain {
-    display: none;
-    min-height: 18px;
-    margin-top: 5px;
-    font-family: "Inter";
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-  }
+.ant-form-item-explain {
+display: none;
+min-height: 18px;
+margin-top: 5px;
+font-family: "Inter";
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+}
 
-  &.ant-form-item[class*="ant-form-item-has"]:not(
-      .ant-form-item-has-error-leave
-    ) {
-    white-space: pre-wrap;
-    .ant-form-item-explain {
-      display: block;
-    }
-  }
+&.ant-form-item[class*="ant-form-item-has"]:not(
+.ant-form-item-has-error-leave
+) {
+white-space: pre-wrap;
+.ant-form-item-explain {
+display: block;
+}
+}
 
                 >
                   <div
@@ -315,37 +303,36 @@ exports[`table form render > default data is undefined 1`] = `
                         class=ant-form-item-control-input-content
                       >
                         <input
-                          class=ant-input,ant-input-sm,
-  &.ant-input {
-    padding: 5px 12px;
-    line-height: 20px;
-    color: $text-primary-light;
-    border-radius: 6px;
-    border-color: $strokes-light-trans-3;
-    transition:
-      height 240ms ease 8ms,
-      border 160ms ease 8ms,
-      box-shadow 160ms ease 8ms;
-  }
+                          class=ant-input,ant-input-sm,&.ant-input {
+padding: 5px 12px;
+line-height: 20px;
+color: $text-primary-light;
+border-radius: 6px;
+border-color: $strokes-light-trans-3;
+transition:
+height 240ms ease 8ms,
+border 160ms ease 8ms,
+box-shadow 160ms ease 8ms;
+}
 
-  &.ant-input.ant-input-lg {
-    padding: 8px 16px;
-    line-height: 22px;
-  }
+&.ant-input.ant-input-lg {
+padding: 8px 16px;
+line-height: 22px;
+}
 
-  &.ant-input.ant-input-sm {
-    padding: 2px 8px;
-    line-height: 18px;
-  }
+&.ant-input.ant-input-sm {
+padding: 2px 8px;
+line-height: 18px;
+}
 
-  &.ant-input:not([disabled]),
-  &.ant-input-number:not([disabled]) {
-    &:hover,
-    &.__pseudo-states-hover {
-      border-color: $strokes-light-trans-4;
-      box-shadow: $shadow-light-hover;
-      z-index: $input-hover-index;
-    }
+&.ant-input:not([disabled]),
+&.ant-input-number:not([disabled]) {
+&:hover,
+&.\\_\\_pseudo-states-hover {
+border-color: $strokes-light-trans-4;
+box-shadow: $shadow-light-hover;
+z-index: $input-hover-index;
+}
 
     &:active,
     &:focus,
@@ -355,13 +342,14 @@ exports[`table form render > default data is undefined 1`] = `
       box-shadow: $shadow-light-active;
       z-index: $input-hover-index;
     }
-  }
 
-  &.ant-input.error:not([disabled]),
-  &.ant-picker.error:not([disabled]),
-  &.ant-input-number.error:not([disabled]) {
-    border-color: $red;
-    color: $red;
+}
+
+&.ant-input.error:not([disabled]),
+&.ant-picker.error:not([disabled]),
+&.ant-input-number.error:not([disabled]) {
+border-color: $red;
+color: $red;
 
     &:hover,
     &.__pseudo-states-hover {
@@ -376,50 +364,52 @@ exports[`table form render > default data is undefined 1`] = `
       border-color: $red;
       box-shadow: $shadow-light-error;
     }
-  }
 
-  &.ant-input[disabled],
-  &.ant-input.ant-input-disabled,
-  &.ant-input-number[disabled],
-  &.ant-input-number.ant-input-number-disabled {
-    background: $fills-trans-terdiary-light;
-    color: $text-light-tertiary;
-    border-color: $strokes-light-trans-3;
-  }
+}
 
-  &.ant-input-affix-wrapper {
-    padding: 5px 12px;
-    border-radius: 6px;
-    border-color: $strokes-light-trans-3;
-    line-height: 20px;
-    color: $text-primary-light;
-    transition:
-      height 240ms ease 8ms,
-      border 160ms ease 8ms,
-      box-shadow 160ms ease 8ms;
+&.ant-input[disabled],
+&.ant-input.ant-input-disabled,
+&.ant-input-number[disabled],
+&.ant-input-number.ant-input-number-disabled {
+background: $fills-trans-terdiary-light;
+color: $text-light-tertiary;
+border-color: $strokes-light-trans-3;
+}
+
+&.ant-input-affix-wrapper {
+padding: 5px 12px;
+border-radius: 6px;
+border-color: $strokes-light-trans-3;
+line-height: 20px;
+color: $text-primary-light;
+transition:
+height 240ms ease 8ms,
+border 160ms ease 8ms,
+box-shadow 160ms ease 8ms;
 
     .ant-input-suffix,
     .ant-input-prefix {
       color: $text-secondary-light;
     }
-  }
 
-  &.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
-    padding: 8px 16px;
-    line-height: 22px;
-  }
+}
 
-  &.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
-    padding: 2px 8px;
-    line-height: 18px;
-  }
+&.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
+padding: 8px 16px;
+line-height: 22px;
+}
 
-  &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
-    &:hover,
-    &.__pseudo-states-hover {
-      border-color: $strokes-light-trans-4;
-      box-shadow: $shadow-light-hover;
-    }
+&.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
+padding: 2px 8px;
+line-height: 18px;
+}
+
+&.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
+&:hover,
+&.\\_\\_pseudo-states-hover {
+border-color: $strokes-light-trans-4;
+box-shadow: $shadow-light-hover;
+}
 
     &:active,
     &:focus,
@@ -429,13 +419,13 @@ exports[`table form render > default data is undefined 1`] = `
       border-color: $blue;
       box-shadow: $shadow-light-active;
     }
-  }
 
-  &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
-    border-color: $red;
-    > .ant-input {
-      color: $red;
-    }
+}
+
+&.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
+border-color: $red; > .ant-input {
+color: $red;
+}
 
     &:hover,
     &.__pseudo-states-hover {
@@ -451,49 +441,48 @@ exports[`table form render > default data is undefined 1`] = `
       border-color: $red;
       box-shadow: $shadow-light-error;
     }
-  }
 
-  &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
-    background: $fills-trans-terdiary-light;
-    color: $text-light-tertiary;
-    border-color: $strokes-light-trans-3;
-  }
+}
 
-  @at-root {
-    textarea#{&}.ant-input {
-      transition-property: height;
-      transition-delay: 50ms;
-      &.textarea-large {
-        min-height: 40px;
-        height: 40px;
-      }
-      &.textarea-large:focus {
-        height: 80px;
-      }
-      &.textarea-middle {
-        min-height: 32px;
-        height: 32px;
-      }
-      &.textarea-middle:focus {
-        height: 64px;
-      }
-      &.textarea-small {
-        min-height: 24px;
-        height: 24px;
-      }
-      &.textarea-small:focus {
-        height: 40px;
-      }
-    }
-  }
-,
-  @include Inter();
-  font-size: 12px;
-  line-height: 18px;
-,
-  .ant-input-sm {
-    line-height: 18px;
-  }
+&.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
+background: $fills-trans-terdiary-light;
+color: $text-light-tertiary;
+border-color: $strokes-light-trans-3;
+}
+
+@at-root {
+textarea#{&}.ant-input {
+transition-property: height;
+transition-delay: 50ms;
+&.textarea-large {
+min-height: 40px;
+height: 40px;
+}
+&.textarea-large:focus {
+height: 80px;
+}
+&.textarea-middle {
+min-height: 32px;
+height: 32px;
+}
+&.textarea-middle:focus {
+height: 64px;
+}
+&.textarea-small {
+min-height: 24px;
+height: 24px;
+}
+&.textarea-small:focus {
+height: 40px;
+}
+}
+}
+,@include Inter();
+font-size: 12px;
+line-height: 18px;
+,.ant-input-sm {
+line-height: 18px;
+}
 
                           style=margin-top:,4px;
                           type=input
@@ -509,21 +498,17 @@ exports[`table form render > default data is undefined 1`] = `
                 style=visibility:,visible;
               >
                 <p
-                  class=
-  @include Inter(bold);
-  font-size: 13px;
-  line-height: 20px;
-,
-  margin-bottom: 4px;
-  color: $text-secondary-light;
+                  class=@include Inter(bold);
+font-size: 13px;
+line-height: 20px;
+,margin-bottom: 4px;
+color: $text-secondary-light;
 
                 >
                   <div
-                    class=
-  overflow: hidden;
-  text-overflow: ellipsis;
-,
-  white-space: nowrap;
+                    class=overflow: hidden;
+text-overflow: ellipsis;
+,white-space: nowrap;
 
                   >
                     <span>
@@ -532,29 +517,28 @@ exports[`table form render > default data is undefined 1`] = `
                   </div>
                 </p>
                 <div
-                  class=ant-row,ant-form-item,
-  &.ant-form-item {
-    margin-bottom: 0;
-  }
+                  class=ant-row,ant-form-item,&.ant-form-item {
+margin-bottom: 0;
+}
 
-  .ant-form-item-explain {
-    display: none;
-    min-height: 18px;
-    margin-top: 5px;
-    font-family: "Inter";
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-  }
+.ant-form-item-explain {
+display: none;
+min-height: 18px;
+margin-top: 5px;
+font-family: "Inter";
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+}
 
-  &.ant-form-item[class*="ant-form-item-has"]:not(
-      .ant-form-item-has-error-leave
-    ) {
-    white-space: pre-wrap;
-    .ant-form-item-explain {
-      display: block;
-    }
-  }
+&.ant-form-item[class*="ant-form-item-has"]:not(
+.ant-form-item-has-error-leave
+) {
+white-space: pre-wrap;
+.ant-form-item-explain {
+display: block;
+}
+}
 
                 >
                   <div
@@ -567,37 +551,36 @@ exports[`table form render > default data is undefined 1`] = `
                         class=ant-form-item-control-input-content
                       >
                         <input
-                          class=ant-input,ant-input-sm,
-  &.ant-input {
-    padding: 5px 12px;
-    line-height: 20px;
-    color: $text-primary-light;
-    border-radius: 6px;
-    border-color: $strokes-light-trans-3;
-    transition:
-      height 240ms ease 8ms,
-      border 160ms ease 8ms,
-      box-shadow 160ms ease 8ms;
-  }
+                          class=ant-input,ant-input-sm,&.ant-input {
+padding: 5px 12px;
+line-height: 20px;
+color: $text-primary-light;
+border-radius: 6px;
+border-color: $strokes-light-trans-3;
+transition:
+height 240ms ease 8ms,
+border 160ms ease 8ms,
+box-shadow 160ms ease 8ms;
+}
 
-  &.ant-input.ant-input-lg {
-    padding: 8px 16px;
-    line-height: 22px;
-  }
+&.ant-input.ant-input-lg {
+padding: 8px 16px;
+line-height: 22px;
+}
 
-  &.ant-input.ant-input-sm {
-    padding: 2px 8px;
-    line-height: 18px;
-  }
+&.ant-input.ant-input-sm {
+padding: 2px 8px;
+line-height: 18px;
+}
 
-  &.ant-input:not([disabled]),
-  &.ant-input-number:not([disabled]) {
-    &:hover,
-    &.__pseudo-states-hover {
-      border-color: $strokes-light-trans-4;
-      box-shadow: $shadow-light-hover;
-      z-index: $input-hover-index;
-    }
+&.ant-input:not([disabled]),
+&.ant-input-number:not([disabled]) {
+&:hover,
+&.\\_\\_pseudo-states-hover {
+border-color: $strokes-light-trans-4;
+box-shadow: $shadow-light-hover;
+z-index: $input-hover-index;
+}
 
     &:active,
     &:focus,
@@ -607,13 +590,14 @@ exports[`table form render > default data is undefined 1`] = `
       box-shadow: $shadow-light-active;
       z-index: $input-hover-index;
     }
-  }
 
-  &.ant-input.error:not([disabled]),
-  &.ant-picker.error:not([disabled]),
-  &.ant-input-number.error:not([disabled]) {
-    border-color: $red;
-    color: $red;
+}
+
+&.ant-input.error:not([disabled]),
+&.ant-picker.error:not([disabled]),
+&.ant-input-number.error:not([disabled]) {
+border-color: $red;
+color: $red;
 
     &:hover,
     &.__pseudo-states-hover {
@@ -628,50 +612,52 @@ exports[`table form render > default data is undefined 1`] = `
       border-color: $red;
       box-shadow: $shadow-light-error;
     }
-  }
 
-  &.ant-input[disabled],
-  &.ant-input.ant-input-disabled,
-  &.ant-input-number[disabled],
-  &.ant-input-number.ant-input-number-disabled {
-    background: $fills-trans-terdiary-light;
-    color: $text-light-tertiary;
-    border-color: $strokes-light-trans-3;
-  }
+}
 
-  &.ant-input-affix-wrapper {
-    padding: 5px 12px;
-    border-radius: 6px;
-    border-color: $strokes-light-trans-3;
-    line-height: 20px;
-    color: $text-primary-light;
-    transition:
-      height 240ms ease 8ms,
-      border 160ms ease 8ms,
-      box-shadow 160ms ease 8ms;
+&.ant-input[disabled],
+&.ant-input.ant-input-disabled,
+&.ant-input-number[disabled],
+&.ant-input-number.ant-input-number-disabled {
+background: $fills-trans-terdiary-light;
+color: $text-light-tertiary;
+border-color: $strokes-light-trans-3;
+}
+
+&.ant-input-affix-wrapper {
+padding: 5px 12px;
+border-radius: 6px;
+border-color: $strokes-light-trans-3;
+line-height: 20px;
+color: $text-primary-light;
+transition:
+height 240ms ease 8ms,
+border 160ms ease 8ms,
+box-shadow 160ms ease 8ms;
 
     .ant-input-suffix,
     .ant-input-prefix {
       color: $text-secondary-light;
     }
-  }
 
-  &.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
-    padding: 8px 16px;
-    line-height: 22px;
-  }
+}
 
-  &.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
-    padding: 2px 8px;
-    line-height: 18px;
-  }
+&.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
+padding: 8px 16px;
+line-height: 22px;
+}
 
-  &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
-    &:hover,
-    &.__pseudo-states-hover {
-      border-color: $strokes-light-trans-4;
-      box-shadow: $shadow-light-hover;
-    }
+&.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
+padding: 2px 8px;
+line-height: 18px;
+}
+
+&.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
+&:hover,
+&.\\_\\_pseudo-states-hover {
+border-color: $strokes-light-trans-4;
+box-shadow: $shadow-light-hover;
+}
 
     &:active,
     &:focus,
@@ -681,13 +667,13 @@ exports[`table form render > default data is undefined 1`] = `
       border-color: $blue;
       box-shadow: $shadow-light-active;
     }
-  }
 
-  &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
-    border-color: $red;
-    > .ant-input {
-      color: $red;
-    }
+}
+
+&.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
+border-color: $red; > .ant-input {
+color: $red;
+}
 
     &:hover,
     &.__pseudo-states-hover {
@@ -703,49 +689,48 @@ exports[`table form render > default data is undefined 1`] = `
       border-color: $red;
       box-shadow: $shadow-light-error;
     }
-  }
 
-  &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
-    background: $fills-trans-terdiary-light;
-    color: $text-light-tertiary;
-    border-color: $strokes-light-trans-3;
-  }
+}
 
-  @at-root {
-    textarea#{&}.ant-input {
-      transition-property: height;
-      transition-delay: 50ms;
-      &.textarea-large {
-        min-height: 40px;
-        height: 40px;
-      }
-      &.textarea-large:focus {
-        height: 80px;
-      }
-      &.textarea-middle {
-        min-height: 32px;
-        height: 32px;
-      }
-      &.textarea-middle:focus {
-        height: 64px;
-      }
-      &.textarea-small {
-        min-height: 24px;
-        height: 24px;
-      }
-      &.textarea-small:focus {
-        height: 40px;
-      }
-    }
-  }
-,
-  @include Inter();
-  font-size: 12px;
-  line-height: 18px;
-,
-  .ant-input-sm {
-    line-height: 18px;
-  }
+&.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
+background: $fills-trans-terdiary-light;
+color: $text-light-tertiary;
+border-color: $strokes-light-trans-3;
+}
+
+@at-root {
+textarea#{&}.ant-input {
+transition-property: height;
+transition-delay: 50ms;
+&.textarea-large {
+min-height: 40px;
+height: 40px;
+}
+&.textarea-large:focus {
+height: 80px;
+}
+&.textarea-middle {
+min-height: 32px;
+height: 32px;
+}
+&.textarea-middle:focus {
+height: 64px;
+}
+&.textarea-small {
+min-height: 24px;
+height: 24px;
+}
+&.textarea-small:focus {
+height: 40px;
+}
+}
+}
+,@include Inter();
+font-size: 12px;
+line-height: 18px;
+,.ant-input-sm {
+line-height: 18px;
+}
 
                           style=margin-top:,4px;
                           type=input
@@ -761,21 +746,17 @@ exports[`table form render > default data is undefined 1`] = `
                 style=visibility:,visible;
               >
                 <p
-                  class=
-  @include Inter(bold);
-  font-size: 13px;
-  line-height: 20px;
-,
-  margin-bottom: 4px;
-  color: $text-secondary-light;
+                  class=@include Inter(bold);
+font-size: 13px;
+line-height: 20px;
+,margin-bottom: 4px;
+color: $text-secondary-light;
 
                 >
                   <div
-                    class=
-  overflow: hidden;
-  text-overflow: ellipsis;
-,
-  white-space: nowrap;
+                    class=overflow: hidden;
+text-overflow: ellipsis;
+,white-space: nowrap;
 
                   >
                     <span>
@@ -784,29 +765,28 @@ exports[`table form render > default data is undefined 1`] = `
                   </div>
                 </p>
                 <div
-                  class=ant-row,ant-form-item,
-  &.ant-form-item {
-    margin-bottom: 0;
-  }
+                  class=ant-row,ant-form-item,&.ant-form-item {
+margin-bottom: 0;
+}
 
-  .ant-form-item-explain {
-    display: none;
-    min-height: 18px;
-    margin-top: 5px;
-    font-family: "Inter";
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-  }
+.ant-form-item-explain {
+display: none;
+min-height: 18px;
+margin-top: 5px;
+font-family: "Inter";
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+}
 
-  &.ant-form-item[class*="ant-form-item-has"]:not(
-      .ant-form-item-has-error-leave
-    ) {
-    white-space: pre-wrap;
-    .ant-form-item-explain {
-      display: block;
-    }
-  }
+&.ant-form-item[class*="ant-form-item-has"]:not(
+.ant-form-item-has-error-leave
+) {
+white-space: pre-wrap;
+.ant-form-item-explain {
+display: block;
+}
+}
 
                 >
                   <div
@@ -819,37 +799,36 @@ exports[`table form render > default data is undefined 1`] = `
                         class=ant-form-item-control-input-content
                       >
                         <span
-                          class=
-  &.ant-input {
-    padding: 5px 12px;
-    line-height: 20px;
-    color: $text-primary-light;
-    border-radius: 6px;
-    border-color: $strokes-light-trans-3;
-    transition:
-      height 240ms ease 8ms,
-      border 160ms ease 8ms,
-      box-shadow 160ms ease 8ms;
-  }
+                          class=&.ant-input {
+padding: 5px 12px;
+line-height: 20px;
+color: $text-primary-light;
+border-radius: 6px;
+border-color: $strokes-light-trans-3;
+transition:
+height 240ms ease 8ms,
+border 160ms ease 8ms,
+box-shadow 160ms ease 8ms;
+}
 
-  &.ant-input.ant-input-lg {
-    padding: 8px 16px;
-    line-height: 22px;
-  }
+&.ant-input.ant-input-lg {
+padding: 8px 16px;
+line-height: 22px;
+}
 
-  &.ant-input.ant-input-sm {
-    padding: 2px 8px;
-    line-height: 18px;
-  }
+&.ant-input.ant-input-sm {
+padding: 2px 8px;
+line-height: 18px;
+}
 
-  &.ant-input:not([disabled]),
-  &.ant-input-number:not([disabled]) {
-    &:hover,
-    &.__pseudo-states-hover {
-      border-color: $strokes-light-trans-4;
-      box-shadow: $shadow-light-hover;
-      z-index: $input-hover-index;
-    }
+&.ant-input:not([disabled]),
+&.ant-input-number:not([disabled]) {
+&:hover,
+&.\\_\\_pseudo-states-hover {
+border-color: $strokes-light-trans-4;
+box-shadow: $shadow-light-hover;
+z-index: $input-hover-index;
+}
 
     &:active,
     &:focus,
@@ -859,13 +838,14 @@ exports[`table form render > default data is undefined 1`] = `
       box-shadow: $shadow-light-active;
       z-index: $input-hover-index;
     }
-  }
 
-  &.ant-input.error:not([disabled]),
-  &.ant-picker.error:not([disabled]),
-  &.ant-input-number.error:not([disabled]) {
-    border-color: $red;
-    color: $red;
+}
+
+&.ant-input.error:not([disabled]),
+&.ant-picker.error:not([disabled]),
+&.ant-input-number.error:not([disabled]) {
+border-color: $red;
+color: $red;
 
     &:hover,
     &.__pseudo-states-hover {
@@ -880,50 +860,52 @@ exports[`table form render > default data is undefined 1`] = `
       border-color: $red;
       box-shadow: $shadow-light-error;
     }
-  }
 
-  &.ant-input[disabled],
-  &.ant-input.ant-input-disabled,
-  &.ant-input-number[disabled],
-  &.ant-input-number.ant-input-number-disabled {
-    background: $fills-trans-terdiary-light;
-    color: $text-light-tertiary;
-    border-color: $strokes-light-trans-3;
-  }
+}
 
-  &.ant-input-affix-wrapper {
-    padding: 5px 12px;
-    border-radius: 6px;
-    border-color: $strokes-light-trans-3;
-    line-height: 20px;
-    color: $text-primary-light;
-    transition:
-      height 240ms ease 8ms,
-      border 160ms ease 8ms,
-      box-shadow 160ms ease 8ms;
+&.ant-input[disabled],
+&.ant-input.ant-input-disabled,
+&.ant-input-number[disabled],
+&.ant-input-number.ant-input-number-disabled {
+background: $fills-trans-terdiary-light;
+color: $text-light-tertiary;
+border-color: $strokes-light-trans-3;
+}
+
+&.ant-input-affix-wrapper {
+padding: 5px 12px;
+border-radius: 6px;
+border-color: $strokes-light-trans-3;
+line-height: 20px;
+color: $text-primary-light;
+transition:
+height 240ms ease 8ms,
+border 160ms ease 8ms,
+box-shadow 160ms ease 8ms;
 
     .ant-input-suffix,
     .ant-input-prefix {
       color: $text-secondary-light;
     }
-  }
 
-  &.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
-    padding: 8px 16px;
-    line-height: 22px;
-  }
+}
 
-  &.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
-    padding: 2px 8px;
-    line-height: 18px;
-  }
+&.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
+padding: 8px 16px;
+line-height: 22px;
+}
 
-  &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
-    &:hover,
-    &.__pseudo-states-hover {
-      border-color: $strokes-light-trans-4;
-      box-shadow: $shadow-light-hover;
-    }
+&.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
+padding: 2px 8px;
+line-height: 18px;
+}
+
+&.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
+&:hover,
+&.\\_\\_pseudo-states-hover {
+border-color: $strokes-light-trans-4;
+box-shadow: $shadow-light-hover;
+}
 
     &:active,
     &:focus,
@@ -933,13 +915,13 @@ exports[`table form render > default data is undefined 1`] = `
       border-color: $blue;
       box-shadow: $shadow-light-active;
     }
-  }
 
-  &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
-    border-color: $red;
-    > .ant-input {
-      color: $red;
-    }
+}
+
+&.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
+border-color: $red; > .ant-input {
+color: $red;
+}
 
     &:hover,
     &.__pseudo-states-hover {
@@ -955,49 +937,48 @@ exports[`table form render > default data is undefined 1`] = `
       border-color: $red;
       box-shadow: $shadow-light-error;
     }
-  }
 
-  &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
-    background: $fills-trans-terdiary-light;
-    color: $text-light-tertiary;
-    border-color: $strokes-light-trans-3;
-  }
+}
 
-  @at-root {
-    textarea#{&}.ant-input {
-      transition-property: height;
-      transition-delay: 50ms;
-      &.textarea-large {
-        min-height: 40px;
-        height: 40px;
-      }
-      &.textarea-large:focus {
-        height: 80px;
-      }
-      &.textarea-middle {
-        min-height: 32px;
-        height: 32px;
-      }
-      &.textarea-middle:focus {
-        height: 64px;
-      }
-      &.textarea-small {
-        min-height: 24px;
-        height: 24px;
-      }
-      &.textarea-small:focus {
-        height: 40px;
-      }
-    }
-  }
-,
-  @include Inter();
-  font-size: 12px;
-  line-height: 18px;
-,
-  .ant-input-sm {
-    line-height: 18px;
-  }
+&.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
+background: $fills-trans-terdiary-light;
+color: $text-light-tertiary;
+border-color: $strokes-light-trans-3;
+}
+
+@at-root {
+textarea#{&}.ant-input {
+transition-property: height;
+transition-delay: 50ms;
+&.textarea-large {
+min-height: 40px;
+height: 40px;
+}
+&.textarea-large:focus {
+height: 80px;
+}
+&.textarea-middle {
+min-height: 32px;
+height: 32px;
+}
+&.textarea-middle:focus {
+height: 64px;
+}
+&.textarea-small {
+min-height: 24px;
+height: 24px;
+}
+&.textarea-small:focus {
+height: 40px;
+}
+}
+}
+,@include Inter();
+font-size: 12px;
+line-height: 18px;
+,.ant-input-sm {
+line-height: 18px;
+}
 ,ant-input-affix-wrapper,ant-input-affix-wrapper-sm
                           style=margin-top:,4px;
                         >
@@ -1044,21 +1025,17 @@ exports[`table form render > default data is undefined 1`] = `
                 style=visibility:,visible;
               >
                 <p
-                  class=
-  @include Inter(bold);
-  font-size: 13px;
-  line-height: 20px;
-,
-  margin-bottom: 4px;
-  color: $text-secondary-light;
+                  class=@include Inter(bold);
+font-size: 13px;
+line-height: 20px;
+,margin-bottom: 4px;
+color: $text-secondary-light;
 
                 >
                   <div
-                    class=
-  overflow: hidden;
-  text-overflow: ellipsis;
-,
-  white-space: nowrap;
+                    class=overflow: hidden;
+text-overflow: ellipsis;
+,white-space: nowrap;
 
                   >
                     <span>
@@ -1067,29 +1044,28 @@ exports[`table form render > default data is undefined 1`] = `
                   </div>
                 </p>
                 <div
-                  class=ant-row,ant-form-item,
-  &.ant-form-item {
-    margin-bottom: 0;
-  }
+                  class=ant-row,ant-form-item,&.ant-form-item {
+margin-bottom: 0;
+}
 
-  .ant-form-item-explain {
-    display: none;
-    min-height: 18px;
-    margin-top: 5px;
-    font-family: "Inter";
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-  }
+.ant-form-item-explain {
+display: none;
+min-height: 18px;
+margin-top: 5px;
+font-family: "Inter";
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+}
 
-  &.ant-form-item[class*="ant-form-item-has"]:not(
-      .ant-form-item-has-error-leave
-    ) {
-    white-space: pre-wrap;
-    .ant-form-item-explain {
-      display: block;
-    }
-  }
+&.ant-form-item[class*="ant-form-item-has"]:not(
+.ant-form-item-has-error-leave
+) {
+white-space: pre-wrap;
+.ant-form-item-explain {
+display: block;
+}
+}
 
                 >
                   <div
@@ -1102,11 +1078,10 @@ exports[`table form render > default data is undefined 1`] = `
                         class=ant-form-item-control-input-content
                       >
                         <label
-                          class=
-  color: $text-primary-light;
-  line-height: 22px;
-  display: inline-flex;
-  .ant-checkbox {   height: 22px;   display: flex;   align-items: center;   top: 0; } .ant-checkbox-checked::after {   border: none; } &.ant-checkbox-wrapper:hover .ant-checkbox-inner, &.ant-checkbox-wrapper.__pseudo-states-hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner {   border-color: $fills-light-general-general; } .ant-checkbox .ant-checkbox-inner {   border: 1px solid $strokes-light-trans-4; } .ant-checkbox.ant-checkbox-checked, .ant-checkbox.ant-checkbox-indeterminate {   .ant-checkbox-inner {     border: 1px solid $fills-light-general-general;   } } .ant-checkbox.ant-checkbox-indeterminate .ant-checkbox-inner {   background: $fills-light-general-general;   &:after {     background-color: $white;     height: 2px;     width: 10px;     border-radius: 2px;   } } &.ant-checkbox-wrapper-disabled {   opacity: 0.5;   .ant-checkbox-disabled .ant-checkbox-inner {     background: $fills-light-trans-3;     border-color: $strokes-light-trans-4 !important;   }   .ant-checkbox-disabled.ant-checkbox-checked .ant-checkbox-inner:after {     border-color: $text-primary-light;   }   .ant-checkbox-disabled.ant-checkbox-indeterminate     .ant-checkbox-inner:after {     background: $text-primary-light;   } } .ant-checkbox + span, .ant-checkbox-disabled + span {   padding: 0;   .main {     display: inline-block;     margin-left: 12px;     color: $text-primary-light;   }   .sub {     margin-left: 28px;     color: $text-secondary-light;   } } &.compact {   .ant-checkbox + span,   .ant-checkbox-disabled + span {     .main {       margin-left: 8px;     }     .sub {       margin-left: 24px;     }   } }
+                          class=color: $text-primary-light;
+line-height: 22px;
+display: inline-flex;
+.ant-checkbox { height: 22px; display: flex; align-items: center; top: 0; } .ant-checkbox-checked::after { border: none; } &.ant-checkbox-wrapper:hover .ant-checkbox-inner, &.ant-checkbox-wrapper.\\_\\_pseudo-states-hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner { border-color: $fills-light-general-general; } .ant-checkbox .ant-checkbox-inner { border: 1px solid $strokes-light-trans-4; } .ant-checkbox.ant-checkbox-checked, .ant-checkbox.ant-checkbox-indeterminate { .ant-checkbox-inner { border: 1px solid $fills-light-general-general; } } .ant-checkbox.ant-checkbox-indeterminate .ant-checkbox-inner { background: $fills-light-general-general; &:after { background-color: $white; height: 2px; width: 10px; border-radius: 2px; } } &.ant-checkbox-wrapper-disabled { opacity: 0.5; .ant-checkbox-disabled .ant-checkbox-inner { background: $fills-light-trans-3; border-color: $strokes-light-trans-4 !important; } .ant-checkbox-disabled.ant-checkbox-checked .ant-checkbox-inner:after { border-color: $text-primary-light; } .ant-checkbox-disabled.ant-checkbox-indeterminate .ant-checkbox-inner:after { background: $text-primary-light; } } .ant-checkbox + span, .ant-checkbox-disabled + span { padding: 0; .main { display: inline-block; margin-left: 12px; color: $text-primary-light; } .sub { margin-left: 28px; color: $text-secondary-light; } } &.compact { .ant-checkbox + span, .ant-checkbox-disabled + span { .main { margin-left: 8px; } .sub { margin-left: 24px; } } }
 ,ant-checkbox-wrapper
                           style=margin-top:,4px;
                         >
@@ -1134,21 +1109,17 @@ exports[`table form render > default data is undefined 1`] = `
                 style=visibility:,visible;
               >
                 <p
-                  class=
-  @include Inter(bold);
-  font-size: 13px;
-  line-height: 20px;
-,
-  margin-bottom: 4px;
-  color: $text-secondary-light;
+                  class=@include Inter(bold);
+font-size: 13px;
+line-height: 20px;
+,margin-bottom: 4px;
+color: $text-secondary-light;
 
                 >
                   <div
-                    class=
-  overflow: hidden;
-  text-overflow: ellipsis;
-,
-  white-space: nowrap;
+                    class=overflow: hidden;
+text-overflow: ellipsis;
+,white-space: nowrap;
 
                   >
                     <span>
@@ -1157,29 +1128,28 @@ exports[`table form render > default data is undefined 1`] = `
                   </div>
                 </p>
                 <div
-                  class=ant-row,ant-form-item,
-  &.ant-form-item {
-    margin-bottom: 0;
-  }
+                  class=ant-row,ant-form-item,&.ant-form-item {
+margin-bottom: 0;
+}
 
-  .ant-form-item-explain {
-    display: none;
-    min-height: 18px;
-    margin-top: 5px;
-    font-family: "Inter";
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-  }
+.ant-form-item-explain {
+display: none;
+min-height: 18px;
+margin-top: 5px;
+font-family: "Inter";
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+}
 
-  &.ant-form-item[class*="ant-form-item-has"]:not(
-      .ant-form-item-has-error-leave
-    ) {
-    white-space: pre-wrap;
-    .ant-form-item-explain {
-      display: block;
-    }
-  }
+&.ant-form-item[class*="ant-form-item-has"]:not(
+.ant-form-item-has-error-leave
+) {
+white-space: pre-wrap;
+.ant-form-item-explain {
+display: block;
+}
+}
 
                 >
                   <div
@@ -1227,21 +1197,17 @@ exports[`table form render > default data is undefined 1`] = `
                 style=visibility:,visible;
               >
                 <p
-                  class=
-  @include Inter(bold);
-  font-size: 13px;
-  line-height: 20px;
-,
-  margin-bottom: 4px;
-  color: $text-secondary-light;
+                  class=@include Inter(bold);
+font-size: 13px;
+line-height: 20px;
+,margin-bottom: 4px;
+color: $text-secondary-light;
 
                 >
                   <div
-                    class=
-  overflow: hidden;
-  text-overflow: ellipsis;
-,
-  white-space: nowrap;
+                    class=overflow: hidden;
+text-overflow: ellipsis;
+,white-space: nowrap;
 
                   >
                     <span>
@@ -1250,29 +1216,28 @@ exports[`table form render > default data is undefined 1`] = `
                   </div>
                 </p>
                 <div
-                  class=ant-row,ant-form-item,
-  &.ant-form-item {
-    margin-bottom: 0;
-  }
+                  class=ant-row,ant-form-item,&.ant-form-item {
+margin-bottom: 0;
+}
 
-  .ant-form-item-explain {
-    display: none;
-    min-height: 18px;
-    margin-top: 5px;
-    font-family: "Inter";
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-  }
+.ant-form-item-explain {
+display: none;
+min-height: 18px;
+margin-top: 5px;
+font-family: "Inter";
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+}
 
-  &.ant-form-item[class*="ant-form-item-has"]:not(
-      .ant-form-item-has-error-leave
-    ) {
-    white-space: pre-wrap;
-    .ant-form-item-explain {
-      display: block;
-    }
-  }
+&.ant-form-item[class*="ant-form-item-has"]:not(
+.ant-form-item-has-error-leave
+) {
+white-space: pre-wrap;
+.ant-form-item-explain {
+display: block;
+}
+}
 
                 >
                   <div

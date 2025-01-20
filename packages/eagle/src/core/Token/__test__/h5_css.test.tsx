@@ -21,54 +21,52 @@ describe("Tokenm h5_css", () => {
       <div>
         <div>
           <span
-            class=ant-tag,ant-tag-blue,
-          padding: 0 8px;
+            class=ant-tag,ant-tag-blue,    padding: 0 8px;
           border-radius: 4px;
-        ,
-        &.ant-tag:hover {
-          opacity: unset;
-        }
-        &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
-          margin: 0;
-          margin-right: 8px;
-          display: inline-flex;
-          align-items: center;
-          border: none;
-          & .ant-tag-close-icon {
-            width: 16px;
-            height: 16px;
-            color: inherit;
-            margin-left: 4px;
-            opacity: 0.6;
-            display: inline-flex;
-            &:hover {
-              opacity: 1;
-            }
-          }
-          &.ant-tag-blue {
-            color: $fills-light-general-general;
-            background-color: $fills-light-general-general-light;
-          }
-          &.ant-tag-red {
-            color: $fills-light-serious-serious;
-            background-color: $fills-light-serious-serious-light;
-          }
-          &.ant-tag-yellow {
-            color: $fills-light-notice-notice-dark;
-            background-color: $fills-light-notice-notice-light;
-          }
-          &.ant-tag-green {
-            color: $fills-light-positive-positive-dark;
-            background-color: $fills-light-positive-positive-light;
-          }
-          &.ant-tag-gray {
-            color: $text-light-super;
-            background-color: $fills-element-light-container-general;
-          }
-          &.ant-tag-purple {
-            color: $text-colorful-purple;
-            background-color: $fill-purple-light;
-          }
+      ,&.ant-tag:hover {
+      opacity: unset;
+      }
+      &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
+      margin: 0;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      & .ant-tag-close-icon {
+      width: 16px;
+      height: 16px;
+      color: inherit;
+      margin-left: 4px;
+      opacity: 0.6;
+      display: inline-flex;
+      &:hover {
+      opacity: 1;
+      }
+      }
+      &.ant-tag-blue {
+      color: $fills-light-general-general;
+      background-color: $fills-light-general-general-light;
+      }
+      &.ant-tag-red {
+      color: $fills-light-serious-serious;
+      background-color: $fills-light-serious-serious-light;
+      }
+      &.ant-tag-yellow {
+      color: $fills-light-notice-notice-dark;
+      background-color: $fills-light-notice-notice-light;
+      }
+      &.ant-tag-green {
+      color: $fills-light-positive-positive-dark;
+      background-color: $fills-light-positive-positive-light;
+      }
+      &.ant-tag-gray {
+      color: $text-light-super;
+      background-color: $fills-element-light-container-general;
+      }
+      &.ant-tag-purple {
+      color: $text-colorful-purple;
+      background-color: $fill-purple-light;
+      }
 
           &.ui-kit-token-checked {
             color: $text-light-on-tint;
@@ -91,64 +89,62 @@ describe("Tokenm h5_css", () => {
               background-color: $fill-purple-base;
             }
           }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ant-tag-blue,ui-kit-token
           >
             Label
           </span>
           <span
-            class=ant-tag,ant-tag-red,
-          padding: 0 8px;
+            class=ant-tag,ant-tag-red,    padding: 0 8px;
           border-radius: 4px;
-        ,
-        &.ant-tag:hover {
-          opacity: unset;
-        }
-        &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
-          margin: 0;
-          margin-right: 8px;
-          display: inline-flex;
-          align-items: center;
-          border: none;
-          & .ant-tag-close-icon {
-            width: 16px;
-            height: 16px;
-            color: inherit;
-            margin-left: 4px;
-            opacity: 0.6;
-            display: inline-flex;
-            &:hover {
-              opacity: 1;
-            }
-          }
-          &.ant-tag-blue {
-            color: $fills-light-general-general;
-            background-color: $fills-light-general-general-light;
-          }
-          &.ant-tag-red {
-            color: $fills-light-serious-serious;
-            background-color: $fills-light-serious-serious-light;
-          }
-          &.ant-tag-yellow {
-            color: $fills-light-notice-notice-dark;
-            background-color: $fills-light-notice-notice-light;
-          }
-          &.ant-tag-green {
-            color: $fills-light-positive-positive-dark;
-            background-color: $fills-light-positive-positive-light;
-          }
-          &.ant-tag-gray {
-            color: $text-light-super;
-            background-color: $fills-element-light-container-general;
-          }
-          &.ant-tag-purple {
-            color: $text-colorful-purple;
-            background-color: $fill-purple-light;
-          }
+      ,&.ant-tag:hover {
+      opacity: unset;
+      }
+      &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
+      margin: 0;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      & .ant-tag-close-icon {
+      width: 16px;
+      height: 16px;
+      color: inherit;
+      margin-left: 4px;
+      opacity: 0.6;
+      display: inline-flex;
+      &:hover {
+      opacity: 1;
+      }
+      }
+      &.ant-tag-blue {
+      color: $fills-light-general-general;
+      background-color: $fills-light-general-general-light;
+      }
+      &.ant-tag-red {
+      color: $fills-light-serious-serious;
+      background-color: $fills-light-serious-serious-light;
+      }
+      &.ant-tag-yellow {
+      color: $fills-light-notice-notice-dark;
+      background-color: $fills-light-notice-notice-light;
+      }
+      &.ant-tag-green {
+      color: $fills-light-positive-positive-dark;
+      background-color: $fills-light-positive-positive-light;
+      }
+      &.ant-tag-gray {
+      color: $text-light-super;
+      background-color: $fills-element-light-container-general;
+      }
+      &.ant-tag-purple {
+      color: $text-colorful-purple;
+      background-color: $fill-purple-light;
+      }
 
           &.ui-kit-token-checked {
             color: $text-light-on-tint;
@@ -171,64 +167,62 @@ describe("Tokenm h5_css", () => {
               background-color: $fill-purple-base;
             }
           }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ant-tag-red,ui-kit-token
           >
             Label
           </span>
           <span
-            class=ant-tag,ant-tag-yellow,
-          padding: 0 8px;
+            class=ant-tag,ant-tag-yellow,    padding: 0 8px;
           border-radius: 4px;
-        ,
-        &.ant-tag:hover {
-          opacity: unset;
-        }
-        &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
-          margin: 0;
-          margin-right: 8px;
-          display: inline-flex;
-          align-items: center;
-          border: none;
-          & .ant-tag-close-icon {
-            width: 16px;
-            height: 16px;
-            color: inherit;
-            margin-left: 4px;
-            opacity: 0.6;
-            display: inline-flex;
-            &:hover {
-              opacity: 1;
-            }
-          }
-          &.ant-tag-blue {
-            color: $fills-light-general-general;
-            background-color: $fills-light-general-general-light;
-          }
-          &.ant-tag-red {
-            color: $fills-light-serious-serious;
-            background-color: $fills-light-serious-serious-light;
-          }
-          &.ant-tag-yellow {
-            color: $fills-light-notice-notice-dark;
-            background-color: $fills-light-notice-notice-light;
-          }
-          &.ant-tag-green {
-            color: $fills-light-positive-positive-dark;
-            background-color: $fills-light-positive-positive-light;
-          }
-          &.ant-tag-gray {
-            color: $text-light-super;
-            background-color: $fills-element-light-container-general;
-          }
-          &.ant-tag-purple {
-            color: $text-colorful-purple;
-            background-color: $fill-purple-light;
-          }
+      ,&.ant-tag:hover {
+      opacity: unset;
+      }
+      &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
+      margin: 0;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      & .ant-tag-close-icon {
+      width: 16px;
+      height: 16px;
+      color: inherit;
+      margin-left: 4px;
+      opacity: 0.6;
+      display: inline-flex;
+      &:hover {
+      opacity: 1;
+      }
+      }
+      &.ant-tag-blue {
+      color: $fills-light-general-general;
+      background-color: $fills-light-general-general-light;
+      }
+      &.ant-tag-red {
+      color: $fills-light-serious-serious;
+      background-color: $fills-light-serious-serious-light;
+      }
+      &.ant-tag-yellow {
+      color: $fills-light-notice-notice-dark;
+      background-color: $fills-light-notice-notice-light;
+      }
+      &.ant-tag-green {
+      color: $fills-light-positive-positive-dark;
+      background-color: $fills-light-positive-positive-light;
+      }
+      &.ant-tag-gray {
+      color: $text-light-super;
+      background-color: $fills-element-light-container-general;
+      }
+      &.ant-tag-purple {
+      color: $text-colorful-purple;
+      background-color: $fill-purple-light;
+      }
 
           &.ui-kit-token-checked {
             color: $text-light-on-tint;
@@ -251,64 +245,62 @@ describe("Tokenm h5_css", () => {
               background-color: $fill-purple-base;
             }
           }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ant-tag-yellow,ui-kit-token
           >
             Label
           </span>
           <span
-            class=ant-tag,ant-tag-green,
-          padding: 0 8px;
+            class=ant-tag,ant-tag-green,    padding: 0 8px;
           border-radius: 4px;
-        ,
-        &.ant-tag:hover {
-          opacity: unset;
-        }
-        &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
-          margin: 0;
-          margin-right: 8px;
-          display: inline-flex;
-          align-items: center;
-          border: none;
-          & .ant-tag-close-icon {
-            width: 16px;
-            height: 16px;
-            color: inherit;
-            margin-left: 4px;
-            opacity: 0.6;
-            display: inline-flex;
-            &:hover {
-              opacity: 1;
-            }
-          }
-          &.ant-tag-blue {
-            color: $fills-light-general-general;
-            background-color: $fills-light-general-general-light;
-          }
-          &.ant-tag-red {
-            color: $fills-light-serious-serious;
-            background-color: $fills-light-serious-serious-light;
-          }
-          &.ant-tag-yellow {
-            color: $fills-light-notice-notice-dark;
-            background-color: $fills-light-notice-notice-light;
-          }
-          &.ant-tag-green {
-            color: $fills-light-positive-positive-dark;
-            background-color: $fills-light-positive-positive-light;
-          }
-          &.ant-tag-gray {
-            color: $text-light-super;
-            background-color: $fills-element-light-container-general;
-          }
-          &.ant-tag-purple {
-            color: $text-colorful-purple;
-            background-color: $fill-purple-light;
-          }
+      ,&.ant-tag:hover {
+      opacity: unset;
+      }
+      &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
+      margin: 0;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      & .ant-tag-close-icon {
+      width: 16px;
+      height: 16px;
+      color: inherit;
+      margin-left: 4px;
+      opacity: 0.6;
+      display: inline-flex;
+      &:hover {
+      opacity: 1;
+      }
+      }
+      &.ant-tag-blue {
+      color: $fills-light-general-general;
+      background-color: $fills-light-general-general-light;
+      }
+      &.ant-tag-red {
+      color: $fills-light-serious-serious;
+      background-color: $fills-light-serious-serious-light;
+      }
+      &.ant-tag-yellow {
+      color: $fills-light-notice-notice-dark;
+      background-color: $fills-light-notice-notice-light;
+      }
+      &.ant-tag-green {
+      color: $fills-light-positive-positive-dark;
+      background-color: $fills-light-positive-positive-light;
+      }
+      &.ant-tag-gray {
+      color: $text-light-super;
+      background-color: $fills-element-light-container-general;
+      }
+      &.ant-tag-purple {
+      color: $text-colorful-purple;
+      background-color: $fill-purple-light;
+      }
 
           &.ui-kit-token-checked {
             color: $text-light-on-tint;
@@ -331,64 +323,62 @@ describe("Tokenm h5_css", () => {
               background-color: $fill-purple-base;
             }
           }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ant-tag-green,ui-kit-token
           >
             Label
           </span>
           <span
-            class=ant-tag,
-          padding: 0 8px;
+            class=ant-tag,    padding: 0 8px;
           border-radius: 4px;
-        ,
-        &.ant-tag:hover {
-          opacity: unset;
-        }
-        &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
-          margin: 0;
-          margin-right: 8px;
-          display: inline-flex;
-          align-items: center;
-          border: none;
-          & .ant-tag-close-icon {
-            width: 16px;
-            height: 16px;
-            color: inherit;
-            margin-left: 4px;
-            opacity: 0.6;
-            display: inline-flex;
-            &:hover {
-              opacity: 1;
-            }
-          }
-          &.ant-tag-blue {
-            color: $fills-light-general-general;
-            background-color: $fills-light-general-general-light;
-          }
-          &.ant-tag-red {
-            color: $fills-light-serious-serious;
-            background-color: $fills-light-serious-serious-light;
-          }
-          &.ant-tag-yellow {
-            color: $fills-light-notice-notice-dark;
-            background-color: $fills-light-notice-notice-light;
-          }
-          &.ant-tag-green {
-            color: $fills-light-positive-positive-dark;
-            background-color: $fills-light-positive-positive-light;
-          }
-          &.ant-tag-gray {
-            color: $text-light-super;
-            background-color: $fills-element-light-container-general;
-          }
-          &.ant-tag-purple {
-            color: $text-colorful-purple;
-            background-color: $fill-purple-light;
-          }
+      ,&.ant-tag:hover {
+      opacity: unset;
+      }
+      &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
+      margin: 0;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      & .ant-tag-close-icon {
+      width: 16px;
+      height: 16px;
+      color: inherit;
+      margin-left: 4px;
+      opacity: 0.6;
+      display: inline-flex;
+      &:hover {
+      opacity: 1;
+      }
+      }
+      &.ant-tag-blue {
+      color: $fills-light-general-general;
+      background-color: $fills-light-general-general-light;
+      }
+      &.ant-tag-red {
+      color: $fills-light-serious-serious;
+      background-color: $fills-light-serious-serious-light;
+      }
+      &.ant-tag-yellow {
+      color: $fills-light-notice-notice-dark;
+      background-color: $fills-light-notice-notice-light;
+      }
+      &.ant-tag-green {
+      color: $fills-light-positive-positive-dark;
+      background-color: $fills-light-positive-positive-light;
+      }
+      &.ant-tag-gray {
+      color: $text-light-super;
+      background-color: $fills-element-light-container-general;
+      }
+      &.ant-tag-purple {
+      color: $text-colorful-purple;
+      background-color: $fill-purple-light;
+      }
 
           &.ui-kit-token-checked {
             color: $text-light-on-tint;
@@ -411,64 +401,62 @@ describe("Tokenm h5_css", () => {
               background-color: $fill-purple-base;
             }
           }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ant-tag-gray,ui-kit-token
           >
             Label
           </span>
           <span
-            class=ant-tag,ant-tag-purple,
-          padding: 0 8px;
+            class=ant-tag,ant-tag-purple,    padding: 0 8px;
           border-radius: 4px;
-        ,
-        &.ant-tag:hover {
-          opacity: unset;
-        }
-        &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
-          margin: 0;
-          margin-right: 8px;
-          display: inline-flex;
-          align-items: center;
-          border: none;
-          & .ant-tag-close-icon {
-            width: 16px;
-            height: 16px;
-            color: inherit;
-            margin-left: 4px;
-            opacity: 0.6;
-            display: inline-flex;
-            &:hover {
-              opacity: 1;
-            }
-          }
-          &.ant-tag-blue {
-            color: $fills-light-general-general;
-            background-color: $fills-light-general-general-light;
-          }
-          &.ant-tag-red {
-            color: $fills-light-serious-serious;
-            background-color: $fills-light-serious-serious-light;
-          }
-          &.ant-tag-yellow {
-            color: $fills-light-notice-notice-dark;
-            background-color: $fills-light-notice-notice-light;
-          }
-          &.ant-tag-green {
-            color: $fills-light-positive-positive-dark;
-            background-color: $fills-light-positive-positive-light;
-          }
-          &.ant-tag-gray {
-            color: $text-light-super;
-            background-color: $fills-element-light-container-general;
-          }
-          &.ant-tag-purple {
-            color: $text-colorful-purple;
-            background-color: $fill-purple-light;
-          }
+      ,&.ant-tag:hover {
+      opacity: unset;
+      }
+      &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
+      margin: 0;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      & .ant-tag-close-icon {
+      width: 16px;
+      height: 16px;
+      color: inherit;
+      margin-left: 4px;
+      opacity: 0.6;
+      display: inline-flex;
+      &:hover {
+      opacity: 1;
+      }
+      }
+      &.ant-tag-blue {
+      color: $fills-light-general-general;
+      background-color: $fills-light-general-general-light;
+      }
+      &.ant-tag-red {
+      color: $fills-light-serious-serious;
+      background-color: $fills-light-serious-serious-light;
+      }
+      &.ant-tag-yellow {
+      color: $fills-light-notice-notice-dark;
+      background-color: $fills-light-notice-notice-light;
+      }
+      &.ant-tag-green {
+      color: $fills-light-positive-positive-dark;
+      background-color: $fills-light-positive-positive-light;
+      }
+      &.ant-tag-gray {
+      color: $text-light-super;
+      background-color: $fills-element-light-container-general;
+      }
+      &.ant-tag-purple {
+      color: $text-colorful-purple;
+      background-color: $fill-purple-light;
+      }
 
           &.ui-kit-token-checked {
             color: $text-light-on-tint;
@@ -491,11 +479,11 @@ describe("Tokenm h5_css", () => {
               background-color: $fill-purple-base;
             }
           }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ant-tag-purple,ui-kit-token
           >
             Label
@@ -523,54 +511,52 @@ describe("Tokenm h5_css", () => {
       <div>
         <div>
           <span
-            class=ant-tag,ant-tag-blue,
-          padding: 0 8px;
+            class=ant-tag,ant-tag-blue,    padding: 0 8px;
           border-radius: 4px;
-        ,
-        &.ant-tag:hover {
-          opacity: unset;
-        }
-        &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
-          margin: 0;
-          margin-right: 8px;
-          display: inline-flex;
-          align-items: center;
-          border: none;
-          & .ant-tag-close-icon {
-            width: 16px;
-            height: 16px;
-            color: inherit;
-            margin-left: 4px;
-            opacity: 0.6;
-            display: inline-flex;
-            &:hover {
-              opacity: 1;
-            }
-          }
-          &.ant-tag-blue {
-            color: $fills-light-general-general;
-            background-color: $fills-light-general-general-light;
-          }
-          &.ant-tag-red {
-            color: $fills-light-serious-serious;
-            background-color: $fills-light-serious-serious-light;
-          }
-          &.ant-tag-yellow {
-            color: $fills-light-notice-notice-dark;
-            background-color: $fills-light-notice-notice-light;
-          }
-          &.ant-tag-green {
-            color: $fills-light-positive-positive-dark;
-            background-color: $fills-light-positive-positive-light;
-          }
-          &.ant-tag-gray {
-            color: $text-light-super;
-            background-color: $fills-element-light-container-general;
-          }
-          &.ant-tag-purple {
-            color: $text-colorful-purple;
-            background-color: $fill-purple-light;
-          }
+      ,&.ant-tag:hover {
+      opacity: unset;
+      }
+      &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
+      margin: 0;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      & .ant-tag-close-icon {
+      width: 16px;
+      height: 16px;
+      color: inherit;
+      margin-left: 4px;
+      opacity: 0.6;
+      display: inline-flex;
+      &:hover {
+      opacity: 1;
+      }
+      }
+      &.ant-tag-blue {
+      color: $fills-light-general-general;
+      background-color: $fills-light-general-general-light;
+      }
+      &.ant-tag-red {
+      color: $fills-light-serious-serious;
+      background-color: $fills-light-serious-serious-light;
+      }
+      &.ant-tag-yellow {
+      color: $fills-light-notice-notice-dark;
+      background-color: $fills-light-notice-notice-light;
+      }
+      &.ant-tag-green {
+      color: $fills-light-positive-positive-dark;
+      background-color: $fills-light-positive-positive-light;
+      }
+      &.ant-tag-gray {
+      color: $text-light-super;
+      background-color: $fills-element-light-container-general;
+      }
+      &.ant-tag-purple {
+      color: $text-colorful-purple;
+      background-color: $fill-purple-light;
+      }
 
           &.ui-kit-token-checked {
             color: $text-light-on-tint;
@@ -593,11 +579,11 @@ describe("Tokenm h5_css", () => {
               background-color: $fill-purple-base;
             }
           }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ant-tag-blue,ui-kit-token
           >
             Label
@@ -605,25 +591,24 @@ describe("Tokenm h5_css", () => {
               class=ant-tag-close-icon
             >
               <span
-                class=
-        display: inline-flex;
-        align-items: center;
+                class=display: inline-flex;
+      align-items: center;
 
-        .icon-inner {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .icon-inner + span,
-        span + .icon-inner.suffix {
-          margin-left: 4px;
-        }
-        &.is-rotate {
-          img,
-          svg {
-            animation: rotate 680ms linear infinite;
-          }
-        }
+      .icon-inner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      }
+      .icon-inner + span,
+      span + .icon-inner.suffix {
+      margin-left: 4px;
+      }
+      &.is-rotate {
+      img,
+      svg {
+      animation: rotate 680ms linear infinite;
+      }
+      }
       ,icon-wrapper,selected-icon
               >
                 <span
@@ -645,54 +630,52 @@ describe("Tokenm h5_css", () => {
             </div>
           </span>
           <span
-            class=ant-tag,ant-tag-red,
-          padding: 0 8px;
+            class=ant-tag,ant-tag-red,    padding: 0 8px;
           border-radius: 4px;
-        ,
-        &.ant-tag:hover {
-          opacity: unset;
-        }
-        &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
-          margin: 0;
-          margin-right: 8px;
-          display: inline-flex;
-          align-items: center;
-          border: none;
-          & .ant-tag-close-icon {
-            width: 16px;
-            height: 16px;
-            color: inherit;
-            margin-left: 4px;
-            opacity: 0.6;
-            display: inline-flex;
-            &:hover {
-              opacity: 1;
-            }
-          }
-          &.ant-tag-blue {
-            color: $fills-light-general-general;
-            background-color: $fills-light-general-general-light;
-          }
-          &.ant-tag-red {
-            color: $fills-light-serious-serious;
-            background-color: $fills-light-serious-serious-light;
-          }
-          &.ant-tag-yellow {
-            color: $fills-light-notice-notice-dark;
-            background-color: $fills-light-notice-notice-light;
-          }
-          &.ant-tag-green {
-            color: $fills-light-positive-positive-dark;
-            background-color: $fills-light-positive-positive-light;
-          }
-          &.ant-tag-gray {
-            color: $text-light-super;
-            background-color: $fills-element-light-container-general;
-          }
-          &.ant-tag-purple {
-            color: $text-colorful-purple;
-            background-color: $fill-purple-light;
-          }
+      ,&.ant-tag:hover {
+      opacity: unset;
+      }
+      &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
+      margin: 0;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      & .ant-tag-close-icon {
+      width: 16px;
+      height: 16px;
+      color: inherit;
+      margin-left: 4px;
+      opacity: 0.6;
+      display: inline-flex;
+      &:hover {
+      opacity: 1;
+      }
+      }
+      &.ant-tag-blue {
+      color: $fills-light-general-general;
+      background-color: $fills-light-general-general-light;
+      }
+      &.ant-tag-red {
+      color: $fills-light-serious-serious;
+      background-color: $fills-light-serious-serious-light;
+      }
+      &.ant-tag-yellow {
+      color: $fills-light-notice-notice-dark;
+      background-color: $fills-light-notice-notice-light;
+      }
+      &.ant-tag-green {
+      color: $fills-light-positive-positive-dark;
+      background-color: $fills-light-positive-positive-light;
+      }
+      &.ant-tag-gray {
+      color: $text-light-super;
+      background-color: $fills-element-light-container-general;
+      }
+      &.ant-tag-purple {
+      color: $text-colorful-purple;
+      background-color: $fill-purple-light;
+      }
 
           &.ui-kit-token-checked {
             color: $text-light-on-tint;
@@ -715,11 +698,11 @@ describe("Tokenm h5_css", () => {
               background-color: $fill-purple-base;
             }
           }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ant-tag-red,ui-kit-token
           >
             Label
@@ -727,25 +710,24 @@ describe("Tokenm h5_css", () => {
               class=ant-tag-close-icon
             >
               <span
-                class=
-        display: inline-flex;
-        align-items: center;
+                class=display: inline-flex;
+      align-items: center;
 
-        .icon-inner {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .icon-inner + span,
-        span + .icon-inner.suffix {
-          margin-left: 4px;
-        }
-        &.is-rotate {
-          img,
-          svg {
-            animation: rotate 680ms linear infinite;
-          }
-        }
+      .icon-inner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      }
+      .icon-inner + span,
+      span + .icon-inner.suffix {
+      margin-left: 4px;
+      }
+      &.is-rotate {
+      img,
+      svg {
+      animation: rotate 680ms linear infinite;
+      }
+      }
       ,icon-wrapper,selected-icon
               >
                 <span
@@ -767,54 +749,52 @@ describe("Tokenm h5_css", () => {
             </div>
           </span>
           <span
-            class=ant-tag,ant-tag-yellow,
-          padding: 0 8px;
+            class=ant-tag,ant-tag-yellow,    padding: 0 8px;
           border-radius: 4px;
-        ,
-        &.ant-tag:hover {
-          opacity: unset;
-        }
-        &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
-          margin: 0;
-          margin-right: 8px;
-          display: inline-flex;
-          align-items: center;
-          border: none;
-          & .ant-tag-close-icon {
-            width: 16px;
-            height: 16px;
-            color: inherit;
-            margin-left: 4px;
-            opacity: 0.6;
-            display: inline-flex;
-            &:hover {
-              opacity: 1;
-            }
-          }
-          &.ant-tag-blue {
-            color: $fills-light-general-general;
-            background-color: $fills-light-general-general-light;
-          }
-          &.ant-tag-red {
-            color: $fills-light-serious-serious;
-            background-color: $fills-light-serious-serious-light;
-          }
-          &.ant-tag-yellow {
-            color: $fills-light-notice-notice-dark;
-            background-color: $fills-light-notice-notice-light;
-          }
-          &.ant-tag-green {
-            color: $fills-light-positive-positive-dark;
-            background-color: $fills-light-positive-positive-light;
-          }
-          &.ant-tag-gray {
-            color: $text-light-super;
-            background-color: $fills-element-light-container-general;
-          }
-          &.ant-tag-purple {
-            color: $text-colorful-purple;
-            background-color: $fill-purple-light;
-          }
+      ,&.ant-tag:hover {
+      opacity: unset;
+      }
+      &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
+      margin: 0;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      & .ant-tag-close-icon {
+      width: 16px;
+      height: 16px;
+      color: inherit;
+      margin-left: 4px;
+      opacity: 0.6;
+      display: inline-flex;
+      &:hover {
+      opacity: 1;
+      }
+      }
+      &.ant-tag-blue {
+      color: $fills-light-general-general;
+      background-color: $fills-light-general-general-light;
+      }
+      &.ant-tag-red {
+      color: $fills-light-serious-serious;
+      background-color: $fills-light-serious-serious-light;
+      }
+      &.ant-tag-yellow {
+      color: $fills-light-notice-notice-dark;
+      background-color: $fills-light-notice-notice-light;
+      }
+      &.ant-tag-green {
+      color: $fills-light-positive-positive-dark;
+      background-color: $fills-light-positive-positive-light;
+      }
+      &.ant-tag-gray {
+      color: $text-light-super;
+      background-color: $fills-element-light-container-general;
+      }
+      &.ant-tag-purple {
+      color: $text-colorful-purple;
+      background-color: $fill-purple-light;
+      }
 
           &.ui-kit-token-checked {
             color: $text-light-on-tint;
@@ -837,11 +817,11 @@ describe("Tokenm h5_css", () => {
               background-color: $fill-purple-base;
             }
           }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ant-tag-yellow,ui-kit-token
           >
             Label
@@ -849,25 +829,24 @@ describe("Tokenm h5_css", () => {
               class=ant-tag-close-icon
             >
               <span
-                class=
-        display: inline-flex;
-        align-items: center;
+                class=display: inline-flex;
+      align-items: center;
 
-        .icon-inner {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .icon-inner + span,
-        span + .icon-inner.suffix {
-          margin-left: 4px;
-        }
-        &.is-rotate {
-          img,
-          svg {
-            animation: rotate 680ms linear infinite;
-          }
-        }
+      .icon-inner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      }
+      .icon-inner + span,
+      span + .icon-inner.suffix {
+      margin-left: 4px;
+      }
+      &.is-rotate {
+      img,
+      svg {
+      animation: rotate 680ms linear infinite;
+      }
+      }
       ,icon-wrapper,selected-icon
               >
                 <span
@@ -889,54 +868,52 @@ describe("Tokenm h5_css", () => {
             </div>
           </span>
           <span
-            class=ant-tag,ant-tag-green,
-          padding: 0 8px;
+            class=ant-tag,ant-tag-green,    padding: 0 8px;
           border-radius: 4px;
-        ,
-        &.ant-tag:hover {
-          opacity: unset;
-        }
-        &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
-          margin: 0;
-          margin-right: 8px;
-          display: inline-flex;
-          align-items: center;
-          border: none;
-          & .ant-tag-close-icon {
-            width: 16px;
-            height: 16px;
-            color: inherit;
-            margin-left: 4px;
-            opacity: 0.6;
-            display: inline-flex;
-            &:hover {
-              opacity: 1;
-            }
-          }
-          &.ant-tag-blue {
-            color: $fills-light-general-general;
-            background-color: $fills-light-general-general-light;
-          }
-          &.ant-tag-red {
-            color: $fills-light-serious-serious;
-            background-color: $fills-light-serious-serious-light;
-          }
-          &.ant-tag-yellow {
-            color: $fills-light-notice-notice-dark;
-            background-color: $fills-light-notice-notice-light;
-          }
-          &.ant-tag-green {
-            color: $fills-light-positive-positive-dark;
-            background-color: $fills-light-positive-positive-light;
-          }
-          &.ant-tag-gray {
-            color: $text-light-super;
-            background-color: $fills-element-light-container-general;
-          }
-          &.ant-tag-purple {
-            color: $text-colorful-purple;
-            background-color: $fill-purple-light;
-          }
+      ,&.ant-tag:hover {
+      opacity: unset;
+      }
+      &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
+      margin: 0;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      & .ant-tag-close-icon {
+      width: 16px;
+      height: 16px;
+      color: inherit;
+      margin-left: 4px;
+      opacity: 0.6;
+      display: inline-flex;
+      &:hover {
+      opacity: 1;
+      }
+      }
+      &.ant-tag-blue {
+      color: $fills-light-general-general;
+      background-color: $fills-light-general-general-light;
+      }
+      &.ant-tag-red {
+      color: $fills-light-serious-serious;
+      background-color: $fills-light-serious-serious-light;
+      }
+      &.ant-tag-yellow {
+      color: $fills-light-notice-notice-dark;
+      background-color: $fills-light-notice-notice-light;
+      }
+      &.ant-tag-green {
+      color: $fills-light-positive-positive-dark;
+      background-color: $fills-light-positive-positive-light;
+      }
+      &.ant-tag-gray {
+      color: $text-light-super;
+      background-color: $fills-element-light-container-general;
+      }
+      &.ant-tag-purple {
+      color: $text-colorful-purple;
+      background-color: $fill-purple-light;
+      }
 
           &.ui-kit-token-checked {
             color: $text-light-on-tint;
@@ -959,11 +936,11 @@ describe("Tokenm h5_css", () => {
               background-color: $fill-purple-base;
             }
           }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ant-tag-green,ui-kit-token
           >
             Label
@@ -971,25 +948,24 @@ describe("Tokenm h5_css", () => {
               class=ant-tag-close-icon
             >
               <span
-                class=
-        display: inline-flex;
-        align-items: center;
+                class=display: inline-flex;
+      align-items: center;
 
-        .icon-inner {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .icon-inner + span,
-        span + .icon-inner.suffix {
-          margin-left: 4px;
-        }
-        &.is-rotate {
-          img,
-          svg {
-            animation: rotate 680ms linear infinite;
-          }
-        }
+      .icon-inner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      }
+      .icon-inner + span,
+      span + .icon-inner.suffix {
+      margin-left: 4px;
+      }
+      &.is-rotate {
+      img,
+      svg {
+      animation: rotate 680ms linear infinite;
+      }
+      }
       ,icon-wrapper,selected-icon
               >
                 <span
@@ -1011,54 +987,52 @@ describe("Tokenm h5_css", () => {
             </div>
           </span>
           <span
-            class=ant-tag,
-          padding: 0 8px;
+            class=ant-tag,    padding: 0 8px;
           border-radius: 4px;
-        ,
-        &.ant-tag:hover {
-          opacity: unset;
-        }
-        &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
-          margin: 0;
-          margin-right: 8px;
-          display: inline-flex;
-          align-items: center;
-          border: none;
-          & .ant-tag-close-icon {
-            width: 16px;
-            height: 16px;
-            color: inherit;
-            margin-left: 4px;
-            opacity: 0.6;
-            display: inline-flex;
-            &:hover {
-              opacity: 1;
-            }
-          }
-          &.ant-tag-blue {
-            color: $fills-light-general-general;
-            background-color: $fills-light-general-general-light;
-          }
-          &.ant-tag-red {
-            color: $fills-light-serious-serious;
-            background-color: $fills-light-serious-serious-light;
-          }
-          &.ant-tag-yellow {
-            color: $fills-light-notice-notice-dark;
-            background-color: $fills-light-notice-notice-light;
-          }
-          &.ant-tag-green {
-            color: $fills-light-positive-positive-dark;
-            background-color: $fills-light-positive-positive-light;
-          }
-          &.ant-tag-gray {
-            color: $text-light-super;
-            background-color: $fills-element-light-container-general;
-          }
-          &.ant-tag-purple {
-            color: $text-colorful-purple;
-            background-color: $fill-purple-light;
-          }
+      ,&.ant-tag:hover {
+      opacity: unset;
+      }
+      &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
+      margin: 0;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      & .ant-tag-close-icon {
+      width: 16px;
+      height: 16px;
+      color: inherit;
+      margin-left: 4px;
+      opacity: 0.6;
+      display: inline-flex;
+      &:hover {
+      opacity: 1;
+      }
+      }
+      &.ant-tag-blue {
+      color: $fills-light-general-general;
+      background-color: $fills-light-general-general-light;
+      }
+      &.ant-tag-red {
+      color: $fills-light-serious-serious;
+      background-color: $fills-light-serious-serious-light;
+      }
+      &.ant-tag-yellow {
+      color: $fills-light-notice-notice-dark;
+      background-color: $fills-light-notice-notice-light;
+      }
+      &.ant-tag-green {
+      color: $fills-light-positive-positive-dark;
+      background-color: $fills-light-positive-positive-light;
+      }
+      &.ant-tag-gray {
+      color: $text-light-super;
+      background-color: $fills-element-light-container-general;
+      }
+      &.ant-tag-purple {
+      color: $text-colorful-purple;
+      background-color: $fill-purple-light;
+      }
 
           &.ui-kit-token-checked {
             color: $text-light-on-tint;
@@ -1081,11 +1055,11 @@ describe("Tokenm h5_css", () => {
               background-color: $fill-purple-base;
             }
           }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ant-tag-gray,ui-kit-token
           >
             Label
@@ -1093,25 +1067,24 @@ describe("Tokenm h5_css", () => {
               class=ant-tag-close-icon
             >
               <span
-                class=
-        display: inline-flex;
-        align-items: center;
+                class=display: inline-flex;
+      align-items: center;
 
-        .icon-inner {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .icon-inner + span,
-        span + .icon-inner.suffix {
-          margin-left: 4px;
-        }
-        &.is-rotate {
-          img,
-          svg {
-            animation: rotate 680ms linear infinite;
-          }
-        }
+      .icon-inner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      }
+      .icon-inner + span,
+      span + .icon-inner.suffix {
+      margin-left: 4px;
+      }
+      &.is-rotate {
+      img,
+      svg {
+      animation: rotate 680ms linear infinite;
+      }
+      }
       ,icon-wrapper,selected-icon
               >
                 <span
@@ -1133,54 +1106,52 @@ describe("Tokenm h5_css", () => {
             </div>
           </span>
           <span
-            class=ant-tag,ant-tag-purple,
-          padding: 0 8px;
+            class=ant-tag,ant-tag-purple,    padding: 0 8px;
           border-radius: 4px;
-        ,
-        &.ant-tag:hover {
-          opacity: unset;
-        }
-        &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
-          margin: 0;
-          margin-right: 8px;
-          display: inline-flex;
-          align-items: center;
-          border: none;
-          & .ant-tag-close-icon {
-            width: 16px;
-            height: 16px;
-            color: inherit;
-            margin-left: 4px;
-            opacity: 0.6;
-            display: inline-flex;
-            &:hover {
-              opacity: 1;
-            }
-          }
-          &.ant-tag-blue {
-            color: $fills-light-general-general;
-            background-color: $fills-light-general-general-light;
-          }
-          &.ant-tag-red {
-            color: $fills-light-serious-serious;
-            background-color: $fills-light-serious-serious-light;
-          }
-          &.ant-tag-yellow {
-            color: $fills-light-notice-notice-dark;
-            background-color: $fills-light-notice-notice-light;
-          }
-          &.ant-tag-green {
-            color: $fills-light-positive-positive-dark;
-            background-color: $fills-light-positive-positive-light;
-          }
-          &.ant-tag-gray {
-            color: $text-light-super;
-            background-color: $fills-element-light-container-general;
-          }
-          &.ant-tag-purple {
-            color: $text-colorful-purple;
-            background-color: $fill-purple-light;
-          }
+      ,&.ant-tag:hover {
+      opacity: unset;
+      }
+      &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
+      margin: 0;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      & .ant-tag-close-icon {
+      width: 16px;
+      height: 16px;
+      color: inherit;
+      margin-left: 4px;
+      opacity: 0.6;
+      display: inline-flex;
+      &:hover {
+      opacity: 1;
+      }
+      }
+      &.ant-tag-blue {
+      color: $fills-light-general-general;
+      background-color: $fills-light-general-general-light;
+      }
+      &.ant-tag-red {
+      color: $fills-light-serious-serious;
+      background-color: $fills-light-serious-serious-light;
+      }
+      &.ant-tag-yellow {
+      color: $fills-light-notice-notice-dark;
+      background-color: $fills-light-notice-notice-light;
+      }
+      &.ant-tag-green {
+      color: $fills-light-positive-positive-dark;
+      background-color: $fills-light-positive-positive-light;
+      }
+      &.ant-tag-gray {
+      color: $text-light-super;
+      background-color: $fills-element-light-container-general;
+      }
+      &.ant-tag-purple {
+      color: $text-colorful-purple;
+      background-color: $fill-purple-light;
+      }
 
           &.ui-kit-token-checked {
             color: $text-light-on-tint;
@@ -1203,11 +1174,11 @@ describe("Tokenm h5_css", () => {
               background-color: $fill-purple-base;
             }
           }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ant-tag-purple,ui-kit-token
           >
             Label
@@ -1215,25 +1186,24 @@ describe("Tokenm h5_css", () => {
               class=ant-tag-close-icon
             >
               <span
-                class=
-        display: inline-flex;
-        align-items: center;
+                class=display: inline-flex;
+      align-items: center;
 
-        .icon-inner {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .icon-inner + span,
-        span + .icon-inner.suffix {
-          margin-left: 4px;
-        }
-        &.is-rotate {
-          img,
-          svg {
-            animation: rotate 680ms linear infinite;
-          }
-        }
+      .icon-inner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      }
+      .icon-inner + span,
+      span + .icon-inner.suffix {
+      margin-left: 4px;
+      }
+      &.is-rotate {
+      img,
+      svg {
+      animation: rotate 680ms linear infinite;
+      }
+      }
       ,icon-wrapper,selected-icon
               >
                 <span
@@ -1268,54 +1238,52 @@ describe("Tokenm h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <span
-          class=ant-tag,
-          padding: 3px 8px;
+          class=ant-tag,    padding: 3px 8px;
           border-radius: 2px;
-        ,
-        &.ant-tag:hover {
-          opacity: unset;
-        }
-        &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
-          margin: 0;
-          margin-right: 8px;
-          display: inline-flex;
-          align-items: center;
-          border: none;
-          & .ant-tag-close-icon {
-            width: 16px;
-            height: 16px;
-            color: inherit;
-            margin-left: 4px;
-            opacity: 0.6;
-            display: inline-flex;
-            &:hover {
-              opacity: 1;
-            }
-          }
-          &.ant-tag-blue {
-            color: $fills-light-general-general;
-            background-color: $fills-light-general-general-light;
-          }
-          &.ant-tag-red {
-            color: $fills-light-serious-serious;
-            background-color: $fills-light-serious-serious-light;
-          }
-          &.ant-tag-yellow {
-            color: $fills-light-notice-notice-dark;
-            background-color: $fills-light-notice-notice-light;
-          }
-          &.ant-tag-green {
-            color: $fills-light-positive-positive-dark;
-            background-color: $fills-light-positive-positive-light;
-          }
-          &.ant-tag-gray {
-            color: $text-light-super;
-            background-color: $fills-element-light-container-general;
-          }
-          &.ant-tag-purple {
-            color: $text-colorful-purple;
-            background-color: $fill-purple-light;
-          }
+      ,&.ant-tag:hover {
+      opacity: unset;
+      }
+      &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
+      margin: 0;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      & .ant-tag-close-icon {
+      width: 16px;
+      height: 16px;
+      color: inherit;
+      margin-left: 4px;
+      opacity: 0.6;
+      display: inline-flex;
+      &:hover {
+      opacity: 1;
+      }
+      }
+      &.ant-tag-blue {
+      color: $fills-light-general-general;
+      background-color: $fills-light-general-general-light;
+      }
+      &.ant-tag-red {
+      color: $fills-light-serious-serious;
+      background-color: $fills-light-serious-serious-light;
+      }
+      &.ant-tag-yellow {
+      color: $fills-light-notice-notice-dark;
+      background-color: $fills-light-notice-notice-light;
+      }
+      &.ant-tag-green {
+      color: $fills-light-positive-positive-dark;
+      background-color: $fills-light-positive-positive-light;
+      }
+      &.ant-tag-gray {
+      color: $text-light-super;
+      background-color: $fills-element-light-container-general;
+      }
+      &.ant-tag-purple {
+      color: $text-colorful-purple;
+      background-color: $fill-purple-light;
+      }
 
           &.ui-kit-token-checked {
             color: $text-light-on-tint;
@@ -1338,11 +1306,11 @@ describe("Tokenm h5_css", () => {
               background-color: $fill-purple-base;
             }
           }
-        }
-      ,
-        @include Inter();
-        font-size: 13px;
-        line-height: 20px;
+
+      }
+      ,@include Inter();
+      font-size: 13px;
+      line-height: 20px;
       ,ant-tag-gray,ui-kit-token
         >
           Label
@@ -1360,54 +1328,52 @@ describe("Tokenm h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <span
-          class=ant-tag,
-          padding: 2px 8px;
+          class=ant-tag,    padding: 2px 8px;
           border-radius: 3px;
-        ,
-        &.ant-tag:hover {
-          opacity: unset;
-        }
-        &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
-          margin: 0;
-          margin-right: 8px;
-          display: inline-flex;
-          align-items: center;
-          border: none;
-          & .ant-tag-close-icon {
-            width: 16px;
-            height: 16px;
-            color: inherit;
-            margin-left: 4px;
-            opacity: 0.6;
-            display: inline-flex;
-            &:hover {
-              opacity: 1;
-            }
-          }
-          &.ant-tag-blue {
-            color: $fills-light-general-general;
-            background-color: $fills-light-general-general-light;
-          }
-          &.ant-tag-red {
-            color: $fills-light-serious-serious;
-            background-color: $fills-light-serious-serious-light;
-          }
-          &.ant-tag-yellow {
-            color: $fills-light-notice-notice-dark;
-            background-color: $fills-light-notice-notice-light;
-          }
-          &.ant-tag-green {
-            color: $fills-light-positive-positive-dark;
-            background-color: $fills-light-positive-positive-light;
-          }
-          &.ant-tag-gray {
-            color: $text-light-super;
-            background-color: $fills-element-light-container-general;
-          }
-          &.ant-tag-purple {
-            color: $text-colorful-purple;
-            background-color: $fill-purple-light;
-          }
+      ,&.ant-tag:hover {
+      opacity: unset;
+      }
+      &.ant-tag.ui-kit-token:not(.ant-tag-hidden) {
+      margin: 0;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      & .ant-tag-close-icon {
+      width: 16px;
+      height: 16px;
+      color: inherit;
+      margin-left: 4px;
+      opacity: 0.6;
+      display: inline-flex;
+      &:hover {
+      opacity: 1;
+      }
+      }
+      &.ant-tag-blue {
+      color: $fills-light-general-general;
+      background-color: $fills-light-general-general-light;
+      }
+      &.ant-tag-red {
+      color: $fills-light-serious-serious;
+      background-color: $fills-light-serious-serious-light;
+      }
+      &.ant-tag-yellow {
+      color: $fills-light-notice-notice-dark;
+      background-color: $fills-light-notice-notice-light;
+      }
+      &.ant-tag-green {
+      color: $fills-light-positive-positive-dark;
+      background-color: $fills-light-positive-positive-light;
+      }
+      &.ant-tag-gray {
+      color: $text-light-super;
+      background-color: $fills-element-light-container-general;
+      }
+      &.ant-tag-purple {
+      color: $text-colorful-purple;
+      background-color: $fill-purple-light;
+      }
 
           &.ui-kit-token-checked {
             color: $text-light-on-tint;
@@ -1430,11 +1396,11 @@ describe("Tokenm h5_css", () => {
               background-color: $fill-purple-base;
             }
           }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ant-tag-gray,ui-kit-token
         >
           Label

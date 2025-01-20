@@ -31,18 +31,17 @@ describe("Input h5_css", () => {
       <div>
         <input
           autocomplete=off
-          class=ant-input,
-        input,
-        &.input-tags {
-          border: 1px solid rgba(213, 219, 227, 0.6);
-          border-radius: 4px;
-        }
-        &.input-tags {
-          position: relative;
-          padding: 6px;
-          height: 32px;
-          cursor: pointer;
-          transition: border 150ms;
+          class=ant-input,input,
+      &.input-tags {
+      border: 1px solid rgba(213, 219, 227, 0.6);
+      border-radius: 4px;
+      }
+      &.input-tags {
+      position: relative;
+      padding: 6px;
+      height: 32px;
+      cursor: pointer;
+      transition: border 150ms;
 
           &:hover {
             border-color: $blue-60;
@@ -74,10 +73,11 @@ describe("Input h5_css", () => {
               }
             }
           }
-        }
-        &.has-focus-indicator {
-          position: relative;
-          overflow: hidden;
+
+      }
+      &.has-focus-indicator {
+      position: relative;
+      overflow: hidden;
 
           .ant-input-prefix {
             position: absolute;
@@ -99,38 +99,38 @@ describe("Input h5_css", () => {
               margin-left: 16px;
             }
           }
-        }
-      ,
-        &.ant-input {
-          padding: 5px 12px;
-          line-height: 20px;
-          color: $text-primary-light;
-          border-radius: 6px;
-          border-color: $strokes-light-trans-3;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
-            box-shadow 160ms ease 8ms;
-        }
 
-        &.ant-input.ant-input-lg {
-          padding: 8px 16px;
-          line-height: 22px;
-        }
+      }
+      ,&.ant-input {
+      padding: 5px 12px;
+      line-height: 20px;
+      color: $text-primary-light;
+      border-radius: 6px;
+      border-color: $strokes-light-trans-3;
+      transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
+      box-shadow 160ms ease 8ms;
+      }
 
-        &.ant-input.ant-input-sm {
-          padding: 2px 8px;
-          line-height: 18px;
-        }
+      &.ant-input.ant-input-lg {
+      padding: 8px 16px;
+      line-height: 22px;
+      }
 
-        &.ant-input:not([disabled]),
-        &.ant-input-number:not([disabled]) {
-          &:hover,
-          &.__pseudo-states-hover {
-            border-color: $strokes-light-trans-4;
-            box-shadow: $shadow-light-hover;
-            z-index: $input-hover-index;
-          }
+      &.ant-input.ant-input-sm {
+      padding: 2px 8px;
+      line-height: 18px;
+      }
+
+      &.ant-input:not([disabled]),
+      &.ant-input-number:not([disabled]) {
+      &:hover,
+      &.\\_\\_pseudo-states-hover {
+      border-color: $strokes-light-trans-4;
+      box-shadow: $shadow-light-hover;
+      z-index: $input-hover-index;
+      }
 
           &:active,
           &:focus,
@@ -140,13 +140,14 @@ describe("Input h5_css", () => {
             box-shadow: $shadow-light-active;
             z-index: $input-hover-index;
           }
-        }
 
-        &.ant-input.error:not([disabled]),
-        &.ant-picker.error:not([disabled]),
-        &.ant-input-number.error:not([disabled]) {
-          border-color: $red;
-          color: $red;
+      }
+
+      &.ant-input.error:not([disabled]),
+      &.ant-picker.error:not([disabled]),
+      &.ant-input-number.error:not([disabled]) {
+      border-color: $red;
+      color: $red;
 
           &:hover,
           &.__pseudo-states-hover {
@@ -161,50 +162,52 @@ describe("Input h5_css", () => {
             border-color: $red;
             box-shadow: $shadow-light-error;
           }
-        }
 
-        &.ant-input[disabled],
-        &.ant-input.ant-input-disabled,
-        &.ant-input-number[disabled],
-        &.ant-input-number.ant-input-number-disabled {
-          background: $fills-trans-terdiary-light;
-          color: $text-light-tertiary;
-          border-color: $strokes-light-trans-3;
-        }
+      }
 
-        &.ant-input-affix-wrapper {
-          padding: 5px 12px;
-          border-radius: 6px;
-          border-color: $strokes-light-trans-3;
-          line-height: 20px;
-          color: $text-primary-light;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
-            box-shadow 160ms ease 8ms;
+      &.ant-input[disabled],
+      &.ant-input.ant-input-disabled,
+      &.ant-input-number[disabled],
+      &.ant-input-number.ant-input-number-disabled {
+      background: $fills-trans-terdiary-light;
+      color: $text-light-tertiary;
+      border-color: $strokes-light-trans-3;
+      }
+
+      &.ant-input-affix-wrapper {
+      padding: 5px 12px;
+      border-radius: 6px;
+      border-color: $strokes-light-trans-3;
+      line-height: 20px;
+      color: $text-primary-light;
+      transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
+      box-shadow 160ms ease 8ms;
 
           .ant-input-suffix,
           .ant-input-prefix {
             color: $text-secondary-light;
           }
-        }
 
-        &.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
-          padding: 8px 16px;
-          line-height: 22px;
-        }
+      }
 
-        &.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
-          padding: 2px 8px;
-          line-height: 18px;
-        }
+      &.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
+      padding: 8px 16px;
+      line-height: 22px;
+      }
 
-        &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
-          &:hover,
-          &.__pseudo-states-hover {
-            border-color: $strokes-light-trans-4;
-            box-shadow: $shadow-light-hover;
-          }
+      &.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
+      padding: 2px 8px;
+      line-height: 18px;
+      }
+
+      &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
+      &:hover,
+      &.\\_\\_pseudo-states-hover {
+      border-color: $strokes-light-trans-4;
+      box-shadow: $shadow-light-hover;
+      }
 
           &:active,
           &:focus,
@@ -214,13 +217,13 @@ describe("Input h5_css", () => {
             border-color: $blue;
             box-shadow: $shadow-light-active;
           }
-        }
 
-        &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
-          border-color: $red;
-          > .ant-input {
-            color: $red;
-          }
+      }
+
+      &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
+      border-color: $red; > .ant-input {
+      color: $red;
+      }
 
           &:hover,
           &.__pseudo-states-hover {
@@ -236,49 +239,48 @@ describe("Input h5_css", () => {
             border-color: $red;
             box-shadow: $shadow-light-error;
           }
-        }
 
-        &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
-          background: $fills-trans-terdiary-light;
-          color: $text-light-tertiary;
-          border-color: $strokes-light-trans-3;
-        }
+      }
 
-        @at-root {
-          textarea#{&}.ant-input {
-            transition-property: height;
-            transition-delay: 50ms;
-            &.textarea-large {
-              min-height: 40px;
-              height: 40px;
-            }
-            &.textarea-large:focus {
-              height: 80px;
-            }
-            &.textarea-middle {
-              min-height: 32px;
-              height: 32px;
-            }
-            &.textarea-middle:focus {
-              height: 64px;
-            }
-            &.textarea-small {
-              min-height: 24px;
-              height: 24px;
-            }
-            &.textarea-small:focus {
-              height: 40px;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 13px;
-        line-height: 20px;
-      ,
-        .ant-input-sm {
-          line-height: 18px;
-        }
+      &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
+      background: $fills-trans-terdiary-light;
+      color: $text-light-tertiary;
+      border-color: $strokes-light-trans-3;
+      }
+
+      @at-root {
+      textarea#{&}.ant-input {
+      transition-property: height;
+      transition-delay: 50ms;
+      &.textarea-large {
+      min-height: 40px;
+      height: 40px;
+      }
+      &.textarea-large:focus {
+      height: 80px;
+      }
+      &.textarea-middle {
+      min-height: 32px;
+      height: 32px;
+      }
+      &.textarea-middle:focus {
+      height: 64px;
+      }
+      &.textarea-small {
+      min-height: 24px;
+      height: 24px;
+      }
+      &.textarea-small:focus {
+      height: 40px;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 13px;
+      line-height: 20px;
+      ,.ant-input-sm {
+      line-height: 18px;
+      }
 
           data-test=inputName1
           name=inputName1
@@ -314,18 +316,17 @@ describe("Input h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=
-        input,
-        &.input-tags {
-          border: 1px solid rgba(213, 219, 227, 0.6);
-          border-radius: 4px;
-        }
-        &.input-tags {
-          position: relative;
-          padding: 6px;
-          height: 32px;
-          cursor: pointer;
-          transition: border 150ms;
+          class=input,
+      &.input-tags {
+      border: 1px solid rgba(213, 219, 227, 0.6);
+      border-radius: 4px;
+      }
+      &.input-tags {
+      position: relative;
+      padding: 6px;
+      height: 32px;
+      cursor: pointer;
+      transition: border 150ms;
 
           &:hover {
             border-color: $blue-60;
@@ -357,10 +358,11 @@ describe("Input h5_css", () => {
               }
             }
           }
-        }
-        &.has-focus-indicator {
-          position: relative;
-          overflow: hidden;
+
+      }
+      &.has-focus-indicator {
+      position: relative;
+      overflow: hidden;
 
           .ant-input-prefix {
             position: absolute;
@@ -382,32 +384,31 @@ describe("Input h5_css", () => {
               margin-left: 16px;
             }
           }
-        }
+
+      }
       ,input-tags
         >
           <div
             class=input-tags-inner
           >
             <span
-              class=
-        display: inline-block;
+              class=display: inline-block;
 
             >
               <span
                 class=tags-overflow-auto
               >
                 <span
-                  class=mocked-styled-25,
-        height: 18px;
-        line-height: 18px;
-        padding: 0 4px;
-        border-radius: 4px;
-        background: rgba(235, 239, 245, 0.6);
-        border: 1px solid rgba(223, 228, 235, 0.6);
-        display: flex;
-        align-items: center;
-        white-space: nowrap;
-        margin-right: 4px;
+                  class=mocked-styled-25,height: 18px;
+      line-height: 18px;
+      padding: 0 4px;
+      border-radius: 4px;
+      background: rgba(235, 239, 245, 0.6);
+      border: 1px solid rgba(223, 228, 235, 0.6);
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      margin-right: 4px;
 
                 >
                   test_tag
@@ -449,18 +450,17 @@ describe("Input h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=
-        input,
-        &.input-tags {
-          border: 1px solid rgba(213, 219, 227, 0.6);
-          border-radius: 4px;
-        }
-        &.input-tags {
-          position: relative;
-          padding: 6px;
-          height: 32px;
-          cursor: pointer;
-          transition: border 150ms;
+          class=input,
+      &.input-tags {
+      border: 1px solid rgba(213, 219, 227, 0.6);
+      border-radius: 4px;
+      }
+      &.input-tags {
+      position: relative;
+      padding: 6px;
+      height: 32px;
+      cursor: pointer;
+      transition: border 150ms;
 
           &:hover {
             border-color: $blue-60;
@@ -492,10 +492,11 @@ describe("Input h5_css", () => {
               }
             }
           }
-        }
-        &.has-focus-indicator {
-          position: relative;
-          overflow: hidden;
+
+      }
+      &.has-focus-indicator {
+      position: relative;
+      overflow: hidden;
 
           .ant-input-prefix {
             position: absolute;
@@ -517,48 +518,46 @@ describe("Input h5_css", () => {
               margin-left: 16px;
             }
           }
-        }
+
+      }
       ,input-tags
         >
           <div
             class=input-tags-inner
           >
             <span
-              class=
-        display: inline-block;
+              class=display: inline-block;
 
             >
               <span
                 class=tags-overflow-auto
               >
                 <span
-                  class=mocked-styled-25,
-        height: 18px;
-        line-height: 18px;
-        padding: 0 4px;
-        border-radius: 4px;
-        background: rgba(235, 239, 245, 0.6);
-        border: 1px solid rgba(223, 228, 235, 0.6);
-        display: flex;
-        align-items: center;
-        white-space: nowrap;
-        margin-right: 4px;
+                  class=mocked-styled-25,height: 18px;
+      line-height: 18px;
+      padding: 0 4px;
+      border-radius: 4px;
+      background: rgba(235, 239, 245, 0.6);
+      border: 1px solid rgba(223, 228, 235, 0.6);
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      margin-right: 4px;
 
                 >
                   test_tag
                 </span>
                 <span
-                  class=mocked-styled-25,
-        height: 18px;
-        line-height: 18px;
-        padding: 0 4px;
-        border-radius: 4px;
-        background: rgba(235, 239, 245, 0.6);
-        border: 1px solid rgba(223, 228, 235, 0.6);
-        display: flex;
-        align-items: center;
-        white-space: nowrap;
-        margin-right: 4px;
+                  class=mocked-styled-25,height: 18px;
+      line-height: 18px;
+      padding: 0 4px;
+      border-radius: 4px;
+      background: rgba(235, 239, 245, 0.6);
+      border: 1px solid rgba(223, 228, 235, 0.6);
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      margin-right: 4px;
 
                 >
                   test_tag2
@@ -617,18 +616,17 @@ describe("Input h5_css", () => {
       <div>
         <input
           autocomplete=off
-          class=ant-input,
-        input,
-        &.input-tags {
-          border: 1px solid rgba(213, 219, 227, 0.6);
-          border-radius: 4px;
-        }
-        &.input-tags {
-          position: relative;
-          padding: 6px;
-          height: 32px;
-          cursor: pointer;
-          transition: border 150ms;
+          class=ant-input,input,
+      &.input-tags {
+      border: 1px solid rgba(213, 219, 227, 0.6);
+      border-radius: 4px;
+      }
+      &.input-tags {
+      position: relative;
+      padding: 6px;
+      height: 32px;
+      cursor: pointer;
+      transition: border 150ms;
 
           &:hover {
             border-color: $blue-60;
@@ -660,10 +658,11 @@ describe("Input h5_css", () => {
               }
             }
           }
-        }
-        &.has-focus-indicator {
-          position: relative;
-          overflow: hidden;
+
+      }
+      &.has-focus-indicator {
+      position: relative;
+      overflow: hidden;
 
           .ant-input-prefix {
             position: absolute;
@@ -685,38 +684,38 @@ describe("Input h5_css", () => {
               margin-left: 16px;
             }
           }
-        }
-      ,
-        &.ant-input {
-          padding: 5px 12px;
-          line-height: 20px;
-          color: $text-primary-light;
-          border-radius: 6px;
-          border-color: $strokes-light-trans-3;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
-            box-shadow 160ms ease 8ms;
-        }
 
-        &.ant-input.ant-input-lg {
-          padding: 8px 16px;
-          line-height: 22px;
-        }
+      }
+      ,&.ant-input {
+      padding: 5px 12px;
+      line-height: 20px;
+      color: $text-primary-light;
+      border-radius: 6px;
+      border-color: $strokes-light-trans-3;
+      transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
+      box-shadow 160ms ease 8ms;
+      }
 
-        &.ant-input.ant-input-sm {
-          padding: 2px 8px;
-          line-height: 18px;
-        }
+      &.ant-input.ant-input-lg {
+      padding: 8px 16px;
+      line-height: 22px;
+      }
 
-        &.ant-input:not([disabled]),
-        &.ant-input-number:not([disabled]) {
-          &:hover,
-          &.__pseudo-states-hover {
-            border-color: $strokes-light-trans-4;
-            box-shadow: $shadow-light-hover;
-            z-index: $input-hover-index;
-          }
+      &.ant-input.ant-input-sm {
+      padding: 2px 8px;
+      line-height: 18px;
+      }
+
+      &.ant-input:not([disabled]),
+      &.ant-input-number:not([disabled]) {
+      &:hover,
+      &.\\_\\_pseudo-states-hover {
+      border-color: $strokes-light-trans-4;
+      box-shadow: $shadow-light-hover;
+      z-index: $input-hover-index;
+      }
 
           &:active,
           &:focus,
@@ -726,13 +725,14 @@ describe("Input h5_css", () => {
             box-shadow: $shadow-light-active;
             z-index: $input-hover-index;
           }
-        }
 
-        &.ant-input.error:not([disabled]),
-        &.ant-picker.error:not([disabled]),
-        &.ant-input-number.error:not([disabled]) {
-          border-color: $red;
-          color: $red;
+      }
+
+      &.ant-input.error:not([disabled]),
+      &.ant-picker.error:not([disabled]),
+      &.ant-input-number.error:not([disabled]) {
+      border-color: $red;
+      color: $red;
 
           &:hover,
           &.__pseudo-states-hover {
@@ -747,50 +747,52 @@ describe("Input h5_css", () => {
             border-color: $red;
             box-shadow: $shadow-light-error;
           }
-        }
 
-        &.ant-input[disabled],
-        &.ant-input.ant-input-disabled,
-        &.ant-input-number[disabled],
-        &.ant-input-number.ant-input-number-disabled {
-          background: $fills-trans-terdiary-light;
-          color: $text-light-tertiary;
-          border-color: $strokes-light-trans-3;
-        }
+      }
 
-        &.ant-input-affix-wrapper {
-          padding: 5px 12px;
-          border-radius: 6px;
-          border-color: $strokes-light-trans-3;
-          line-height: 20px;
-          color: $text-primary-light;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
-            box-shadow 160ms ease 8ms;
+      &.ant-input[disabled],
+      &.ant-input.ant-input-disabled,
+      &.ant-input-number[disabled],
+      &.ant-input-number.ant-input-number-disabled {
+      background: $fills-trans-terdiary-light;
+      color: $text-light-tertiary;
+      border-color: $strokes-light-trans-3;
+      }
+
+      &.ant-input-affix-wrapper {
+      padding: 5px 12px;
+      border-radius: 6px;
+      border-color: $strokes-light-trans-3;
+      line-height: 20px;
+      color: $text-primary-light;
+      transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
+      box-shadow 160ms ease 8ms;
 
           .ant-input-suffix,
           .ant-input-prefix {
             color: $text-secondary-light;
           }
-        }
 
-        &.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
-          padding: 8px 16px;
-          line-height: 22px;
-        }
+      }
 
-        &.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
-          padding: 2px 8px;
-          line-height: 18px;
-        }
+      &.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
+      padding: 8px 16px;
+      line-height: 22px;
+      }
 
-        &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
-          &:hover,
-          &.__pseudo-states-hover {
-            border-color: $strokes-light-trans-4;
-            box-shadow: $shadow-light-hover;
-          }
+      &.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
+      padding: 2px 8px;
+      line-height: 18px;
+      }
+
+      &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
+      &:hover,
+      &.\\_\\_pseudo-states-hover {
+      border-color: $strokes-light-trans-4;
+      box-shadow: $shadow-light-hover;
+      }
 
           &:active,
           &:focus,
@@ -800,13 +802,13 @@ describe("Input h5_css", () => {
             border-color: $blue;
             box-shadow: $shadow-light-active;
           }
-        }
 
-        &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
-          border-color: $red;
-          > .ant-input {
-            color: $red;
-          }
+      }
+
+      &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
+      border-color: $red; > .ant-input {
+      color: $red;
+      }
 
           &:hover,
           &.__pseudo-states-hover {
@@ -822,49 +824,48 @@ describe("Input h5_css", () => {
             border-color: $red;
             box-shadow: $shadow-light-error;
           }
-        }
 
-        &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
-          background: $fills-trans-terdiary-light;
-          color: $text-light-tertiary;
-          border-color: $strokes-light-trans-3;
-        }
+      }
 
-        @at-root {
-          textarea#{&}.ant-input {
-            transition-property: height;
-            transition-delay: 50ms;
-            &.textarea-large {
-              min-height: 40px;
-              height: 40px;
-            }
-            &.textarea-large:focus {
-              height: 80px;
-            }
-            &.textarea-middle {
-              min-height: 32px;
-              height: 32px;
-            }
-            &.textarea-middle:focus {
-              height: 64px;
-            }
-            &.textarea-small {
-              min-height: 24px;
-              height: 24px;
-            }
-            &.textarea-small:focus {
-              height: 40px;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 13px;
-        line-height: 20px;
-      ,
-        .ant-input-sm {
-          line-height: 18px;
-        }
+      &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
+      background: $fills-trans-terdiary-light;
+      color: $text-light-tertiary;
+      border-color: $strokes-light-trans-3;
+      }
+
+      @at-root {
+      textarea#{&}.ant-input {
+      transition-property: height;
+      transition-delay: 50ms;
+      &.textarea-large {
+      min-height: 40px;
+      height: 40px;
+      }
+      &.textarea-large:focus {
+      height: 80px;
+      }
+      &.textarea-middle {
+      min-height: 32px;
+      height: 32px;
+      }
+      &.textarea-middle:focus {
+      height: 64px;
+      }
+      &.textarea-small {
+      min-height: 24px;
+      height: 24px;
+      }
+      &.textarea-small:focus {
+      height: 40px;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 13px;
+      line-height: 20px;
+      ,.ant-input-sm {
+      line-height: 18px;
+      }
 
           data-test=inputName1
           name=inputName1

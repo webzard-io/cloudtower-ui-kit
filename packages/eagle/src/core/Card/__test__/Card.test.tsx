@@ -23,20 +23,18 @@ describe("ui unit test - card", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=
-        box-shadow: 0px 0.119595px 0.438513px rgba(129, 138, 153, 0.14),
-          0px 0.271728px 0.996336px rgba(129, 138, 153, 0.106447),
-          0px 0.472931px 1.73408px rgba(129, 138, 153, 0.0912224),
-          0px 0.751293px 2.75474px rgba(129, 138, 153, 0.0799253),
-          0px 1.15919px 4.25036px rgba(129, 138, 153, 0.07),
-          0px 1.80882px 6.63236px rgba(129, 138, 153, 0.0600747),
-          0px 3.00293px 11.0107px rgba(129, 138, 153, 0.0487776),
-          0px 6px 22px rgba(129, 138, 153, 0.0335534);
-      ,card-wrapper,class-string,
-        border-radius: 8px;
-        background-color: white;
-        &.hoverable {
-          cursor: pointer;
+          class=box-shadow: 0px 0.119595px 0.438513px rgba(129, 138, 153, 0.14),
+      0px 0.271728px 0.996336px rgba(129, 138, 153, 0.106447),
+      0px 0.472931px 1.73408px rgba(129, 138, 153, 0.0912224),
+      0px 0.751293px 2.75474px rgba(129, 138, 153, 0.0799253),
+      0px 1.15919px 4.25036px rgba(129, 138, 153, 0.07),
+      0px 1.80882px 6.63236px rgba(129, 138, 153, 0.0600747),
+      0px 3.00293px 11.0107px rgba(129, 138, 153, 0.0487776),
+      0px 6px 22px rgba(129, 138, 153, 0.0335534);
+      ,card-wrapper,class-string,border-radius: 8px;
+      background-color: white;
+      &.hoverable {
+      cursor: pointer;
 
           &:hover {
             transition: all 200ms ease;
@@ -44,19 +42,19 @@ describe("ui unit test - card", () => {
               0px 1.12694px 2.75474px rgb(107 125 153 / 12%);
             transform: translateY(-4px);
           }
-        }
+
+      }
 
         >
           <div
-            class=card-title,
-        color: $text-primary-light;
-        padding: 7px 12px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+            class=card-title,color: $text-primary-light;
+      padding: 7px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-        &.has-arrow {
-          padding-left: 10px;
+      &.has-arrow {
+      padding-left: 10px;
 
           .title-wrapper {
             cursor: pointer;
@@ -71,28 +69,29 @@ describe("ui unit test - card", () => {
               }
             }
           }
-        }
 
-        .sub-info {
-          font-size: 12px;
-          line-height: 18px;
-        }
+      }
 
-        .title-wrapper {
-          display: flex;
-          align-items: center;
-          user-select: none;
-          flex-grow: 1;
-          font-size: 12px;
-          line-height: 18px;
-          color: $text-primary-light;
-          font-weight: 700;
-        }
+      .sub-info {
+      font-size: 12px;
+      line-height: 18px;
+      }
 
-        .collapse-arrow {
-          transition: all 50ms ease-out 0ms;
-          margin-right: 2px;
-        }
+      .title-wrapper {
+      display: flex;
+      align-items: center;
+      user-select: none;
+      flex-grow: 1;
+      font-size: 12px;
+      line-height: 18px;
+      color: $text-primary-light;
+      font-weight: 700;
+      }
+
+      .collapse-arrow {
+      transition: all 50ms ease-out 0ms;
+      margin-right: 2px;
+      }
 
           >
             <div
@@ -107,8 +106,7 @@ describe("ui unit test - card", () => {
             </div>
           </div>
           <div
-            class=card-body,
-        padding: 0 12px 14px 12px;
+            class=card-body,padding: 0 12px 14px 12px;
 
           >
             body-string

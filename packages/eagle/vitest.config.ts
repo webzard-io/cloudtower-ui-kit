@@ -7,35 +7,38 @@ import fs from "fs";
 import path from "path";
 import readline from "readline";
 import { defineConfig } from "vitest/config";
+import prettier from "prettier";
 
 const styleMapFileName = path.join(__dirname, "linaria-temp-map.json");
 
 export default defineConfig({
   plugins: [
     linaria({
-      preprocessor: (selector, cssText) => {
+      preprocessor: async (selector, cssText) => {
         let value = "{}";
+        const text = await prettier.format(cssText, {
+          parser: "markdown",
+          tabWidth: 2,
+          endOfLine: "lf",
+          useTabs: false,
+          semi: true,
+        });
         try {
           value = fs.readFileSync(styleMapFileName).toString();
         } catch (error) {}
         try {
           readline.cursorTo(process.stdout, 0);
-          process.stdout.write(
-            `[custom preprocessor]: writing css...${selector}`,
-          );
-
           fs.writeFileSync(
             styleMapFileName,
             JSON.stringify({
               ...JSON.parse(value),
-              [selector]: cssText,
+              [selector]: text,
             }),
           );
         } catch (error) {
           console.error(error);
         }
-
-        return cssText;
+        return text;
       },
       babelOptions: {
         presets: ["react-app"],

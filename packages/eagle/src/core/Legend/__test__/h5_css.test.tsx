@@ -21,89 +21,84 @@ describe("Legend h5_css", () => {
       <div>
         <div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-blue
             color=blue
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
@@ -111,89 +106,84 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-red
             color=red
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
@@ -201,89 +191,84 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-yellow
             color=yellow
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
@@ -291,89 +276,84 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-green
             color=green
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
@@ -381,89 +361,84 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-gray
             color=gray
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
@@ -471,89 +446,84 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-purple
             color=purple
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
@@ -583,96 +553,91 @@ describe("Legend h5_css", () => {
       <div>
         <div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-blue
             color=blue
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number
                 >
                   1
                 </span>
@@ -680,96 +645,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-red
             color=red
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number
                 >
                   1
                 </span>
@@ -777,96 +737,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-yellow
             color=yellow
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number
                 >
                   1
                 </span>
@@ -874,96 +829,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-green
             color=green
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number
                 >
                   1
                 </span>
@@ -971,96 +921,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-gray
             color=gray
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number
                 >
                   1
                 </span>
@@ -1068,96 +1013,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-purple
             color=purple
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number
                 >
                   1
                 </span>
@@ -1186,96 +1126,91 @@ describe("Legend h5_css", () => {
       <div>
         <div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-blue,on-tint
             color=blue
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number,on-tint
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number,on-tint
                 >
                   1
                 </span>
@@ -1283,96 +1218,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-red,on-tint
             color=red
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number,on-tint
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number,on-tint
                 >
                   1
                 </span>
@@ -1380,96 +1310,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-yellow,on-tint
             color=yellow
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number,on-tint
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number,on-tint
                 >
                   1
                 </span>
@@ -1477,96 +1402,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-green,on-tint
             color=green
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number,on-tint
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number,on-tint
                 >
                   1
                 </span>
@@ -1574,96 +1494,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-gray,on-tint
             color=gray
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number,on-tint
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number,on-tint
                 >
                   1
                 </span>
@@ -1671,96 +1586,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-purple,on-tint
             color=purple
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number,on-tint
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number,on-tint
                 >
                   1
                 </span>
@@ -1789,96 +1699,91 @@ describe("Legend h5_css", () => {
       <div>
         <div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-blue,on-tint
             color=blue
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number,on-tint
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number,on-tint
                 >
                   1
                 </span>
@@ -1886,96 +1791,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-red,on-tint
             color=red
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number,on-tint
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number,on-tint
                 >
                   1
                 </span>
@@ -1983,96 +1883,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-yellow,on-tint
             color=yellow
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number,on-tint
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number,on-tint
                 >
                   1
                 </span>
@@ -2080,96 +1975,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-green,on-tint
             color=green
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number,on-tint
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number,on-tint
                 >
                   1
                 </span>
@@ -2177,96 +2067,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-gray,on-tint
             color=gray
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number,on-tint
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number,on-tint
                 >
                   1
                 </span>
@@ -2274,96 +2159,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-purple,on-tint
             color=purple
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number,on-tint
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number,on-tint
                 >
                   1
                 </span>
@@ -2392,96 +2272,91 @@ describe("Legend h5_css", () => {
       <div>
         <div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-green
             color=green
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number
                 >
                   1
                 </span>
@@ -2489,96 +2364,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-yellow
             color=yellow
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number
                 >
                   1
                 </span>
@@ -2586,96 +2456,91 @@ describe("Legend h5_css", () => {
             </div>
           </div>
           <div
-            class=
-        $prefix: ui-kit-status-legend;
-        margin: 0;
-        border-radius: 20px;
-        padding: 2px 10px;
-        height: 22px;
-        display: flex;
-        align-items: center;
+            class=$prefix: ui-kit-status-legend;
+      margin: 0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      height: 22px;
+      display: flex;
+      align-items: center;
 
-        &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
-        }
-        &.tag-hover {
-          cursor: pointer;
-        }
+      &.ui-kit-status-legend.on-tint {
+      color: $text-neutral-ontint;
+      }
+      &.tag-hover {
+      cursor: pointer;
+      }
 
-        &.#{$prefix} {
+      &.#{$prefix} {
           color: $text-neutral-primary;
           .#{$prefix}-icon {
-            margin-right: 6px;
-          }
-          .#{$prefix}-number {
+      margin-right: 6px;
+      }
+      .#{$prefix}-number {
             margin-left: 8px;
             color: #2C385299;
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+      color: $text-neutral-ontint;
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+      background-color: $fill-outstanding-base;
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+      background-color: $fill-serious-base;
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+      background-color: $fill-notice-base;
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+      background-color: $fill-positive-base;
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+      background-color: $gray-70;
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+      background-color: $purple-50;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
       ,ui-kit-status-legend,eagle-legend-red
             color=red
           >
             <i
-              class=ui-kit-status-legend-icon,
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
+              class=ui-kit-status-legend-icon,width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
 
             />
             <div
-              class=
-        overflow: hidden;
-        text-overflow: ellipsis;
-      ,
-        white-space: nowrap;
-      ,
-                flex: 1;
-              
+              class=overflow: hidden;
+      text-overflow: ellipsis;
+      ,white-space: nowrap;
+      ,          flex: 1;
+
+
             >
               <span>
                 Label
                 <span
-                  class=
-                    color: #2C385299;
-                  ,ui-kit-status-legend-number
+                  class=              color: #2C385299;
+
+      ,ui-kit-status-legend-number
                 >
                   1
                 </span>

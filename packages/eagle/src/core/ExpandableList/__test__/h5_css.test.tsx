@@ -20,10 +20,9 @@ describe("ExpandableList h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,
-        .ant-collapse-item {
-          border: 0px;
-          background-color: $fills-light-white;
+          class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,.ant-collapse-item {
+      border: 0px;
+      background-color: $fills-light-white;
 
           .ant-collapse-header {
             padding-top: 0px;
@@ -39,7 +38,8 @@ describe("ExpandableList h5_css", () => {
               padding: 0px;
             }
           }
-        }
+
+      }
 
         >
           <div
@@ -52,19 +52,18 @@ describe("ExpandableList h5_css", () => {
               tabindex=0
             >
               <div
-                class=
-        height: 24px;
-        width: 24px;
-        border-radius: 6px;
-        padding: 4px;
-        &:hover {
-          background-color: $fill-outstanding-light;
-          svg {
-            path {
-              fill: blue;
-            }
-          }
-        }
+                class=height: 24px;
+      width: 24px;
+      border-radius: 6px;
+      padding: 4px;
+      &:hover {
+      background-color: $fill-outstanding-light;
+      svg {
+      path {
+      fill: blue;
+      }
+      }
+      }
       ,ant-collapse-arrow
               >
                 <svg
@@ -82,20 +81,19 @@ describe("ExpandableList h5_css", () => {
                 </svg>
               </div>
               <div
-                class=
-        display: flex;
-        align-items: center;
-        .order {
-          height: 24px;
-          width: 24px;
-          border-radius: 20px;
-          color: $text-light-general;
-          background: $fill-light-element-container-outstanding;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-right: 6px;
-        }
+                class=display: flex;
+      align-items: center;
+      .order {
+      height: 24px;
+      width: 24px;
+      border-radius: 20px;
+      color: $text-light-general;
+      background: $fill-light-element-container-outstanding;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 6px;
+      }
 
               >
                 <div>
@@ -118,10 +116,9 @@ describe("ExpandableList h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,
-        .ant-collapse-item {
-          border: 0px;
-          background-color: $fills-light-white;
+          class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,.ant-collapse-item {
+      border: 0px;
+      background-color: $fills-light-white;
 
           .ant-collapse-header {
             padding-top: 0px;
@@ -137,7 +134,8 @@ describe("ExpandableList h5_css", () => {
               padding: 0px;
             }
           }
-        }
+
+      }
 
         >
           <div
@@ -150,19 +148,18 @@ describe("ExpandableList h5_css", () => {
               tabindex=0
             >
               <div
-                class=
-        height: 24px;
-        width: 24px;
-        border-radius: 6px;
-        padding: 4px;
-        &:hover {
-          background-color: $fill-outstanding-light;
-          svg {
-            path {
-              fill: blue;
-            }
-          }
-        }
+                class=height: 24px;
+      width: 24px;
+      border-radius: 6px;
+      padding: 4px;
+      &:hover {
+      background-color: $fill-outstanding-light;
+      svg {
+      path {
+      fill: blue;
+      }
+      }
+      }
       ,ant-collapse-arrow
               >
                 <svg
@@ -180,30 +177,28 @@ describe("ExpandableList h5_css", () => {
                 </svg>
               </div>
               <div
-                class=
-        display: flex;
-        align-items: center;
-        .order {
-          height: 24px;
-          width: 24px;
-          border-radius: 20px;
-          color: $text-light-general;
-          background: $fill-light-element-container-outstanding;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-right: 6px;
-        }
+                class=display: flex;
+      align-items: center;
+      .order {
+      height: 24px;
+      width: 24px;
+      border-radius: 20px;
+      color: $text-light-general;
+      background: $fill-light-element-container-outstanding;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 6px;
+      }
 
               >
                 <span
                   class=order
                 >
                   <span
-                    class=
-        @include Inter(bold);
-        font-size: 14px;
-        line-height: 22px;
+                    class=@include Inter(bold);
+      font-size: 14px;
+      line-height: 22px;
 
                   >
                     1
@@ -229,10 +224,9 @@ describe("ExpandableList h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,
-        .ant-collapse-item {
-          border: 0px;
-          background-color: $fills-light-white;
+          class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,.ant-collapse-item {
+      border: 0px;
+      background-color: $fills-light-white;
 
           .ant-collapse-header {
             padding-top: 0px;
@@ -248,7 +242,8 @@ describe("ExpandableList h5_css", () => {
               padding: 0px;
             }
           }
-        }
+
+      }
 
         >
           <div
@@ -261,19 +256,18 @@ describe("ExpandableList h5_css", () => {
               tabindex=0
             >
               <div
-                class=
-        height: 24px;
-        width: 24px;
-        border-radius: 6px;
-        padding: 4px;
-        &:hover {
-          background-color: $fill-outstanding-light;
-          svg {
-            path {
-              fill: blue;
-            }
-          }
-        }
+                class=height: 24px;
+      width: 24px;
+      border-radius: 6px;
+      padding: 4px;
+      &:hover {
+      background-color: $fill-outstanding-light;
+      svg {
+      path {
+      fill: blue;
+      }
+      }
+      }
       ,ant-collapse-arrow
               >
                 <svg
@@ -291,30 +285,28 @@ describe("ExpandableList h5_css", () => {
                 </svg>
               </div>
               <div
-                class=
-        display: flex;
-        align-items: center;
-        .order {
-          height: 24px;
-          width: 24px;
-          border-radius: 20px;
-          color: $text-light-general;
-          background: $fill-light-element-container-outstanding;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-right: 6px;
-        }
+                class=display: flex;
+      align-items: center;
+      .order {
+      height: 24px;
+      width: 24px;
+      border-radius: 20px;
+      color: $text-light-general;
+      background: $fill-light-element-container-outstanding;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 6px;
+      }
 
               >
                 <span
                   class=order
                 >
                   <span
-                    class=
-        @include Inter(bold);
-        font-size: 14px;
-        line-height: 22px;
+                    class=@include Inter(bold);
+      font-size: 14px;
+      line-height: 22px;
 
                   >
                     11
@@ -340,10 +332,9 @@ describe("ExpandableList h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,
-        .ant-collapse-item {
-          border: 0px;
-          background-color: $fills-light-white;
+          class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,.ant-collapse-item {
+      border: 0px;
+      background-color: $fills-light-white;
 
           .ant-collapse-header {
             padding-top: 0px;
@@ -359,14 +350,14 @@ describe("ExpandableList h5_css", () => {
               padding: 0px;
             }
           }
-        }
-      ,
-        .ant-collapse-item {
-          .ant-collapse-header {
-            padding-right: 0px;
-            cursor: default;
-          }
-        }
+
+      }
+      ,.ant-collapse-item {
+      .ant-collapse-header {
+      padding-right: 0px;
+      cursor: default;
+      }
+      }
 
         >
           <div
@@ -379,20 +370,19 @@ describe("ExpandableList h5_css", () => {
               tabindex=0
             >
               <div
-                class=
-        display: flex;
-        align-items: center;
-        .order {
-          height: 24px;
-          width: 24px;
-          border-radius: 20px;
-          color: $text-light-general;
-          background: $fill-light-element-container-outstanding;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-right: 6px;
-        }
+                class=display: flex;
+      align-items: center;
+      .order {
+      height: 24px;
+      width: 24px;
+      border-radius: 20px;
+      color: $text-light-general;
+      background: $fill-light-element-container-outstanding;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 6px;
+      }
 
               >
                 <div>
@@ -417,10 +407,9 @@ describe("ExpandableList h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,
-        .ant-collapse-item {
-          border: 0px;
-          background-color: $fills-light-white;
+          class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,.ant-collapse-item {
+      border: 0px;
+      background-color: $fills-light-white;
 
           .ant-collapse-header {
             padding-top: 0px;
@@ -436,14 +425,14 @@ describe("ExpandableList h5_css", () => {
               padding: 0px;
             }
           }
-        }
-      ,
-        .ant-collapse-item {
-          .ant-collapse-header {
-            padding-right: 0px;
-            cursor: default;
-          }
-        }
+
+      }
+      ,.ant-collapse-item {
+      .ant-collapse-header {
+      padding-right: 0px;
+      cursor: default;
+      }
+      }
 
         >
           <div
@@ -456,20 +445,19 @@ describe("ExpandableList h5_css", () => {
               tabindex=0
             >
               <div
-                class=
-        display: flex;
-        align-items: center;
-        .order {
-          height: 24px;
-          width: 24px;
-          border-radius: 20px;
-          color: $text-light-general;
-          background: $fill-light-element-container-outstanding;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-right: 6px;
-        }
+                class=display: flex;
+      align-items: center;
+      .order {
+      height: 24px;
+      width: 24px;
+      border-radius: 20px;
+      color: $text-light-general;
+      background: $fill-light-element-container-outstanding;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 6px;
+      }
 
               >
                 <div>

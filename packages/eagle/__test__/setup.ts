@@ -25,6 +25,13 @@ global.ResizeObserver = ResizeObserver;
 
 const styleMapFileName = path.join(__dirname, "../linaria-temp-map.json");
 
+const safeJsonParse = (text: string) => {
+  try {
+    return JSON.parse(text);
+  } catch {
+    return {};
+  }
+};
 expect.addSnapshotSerializer({
   serialize(
     val: { linaria: true; dom: HTMLElement },
@@ -42,7 +49,7 @@ expect.addSnapshotSerializer({
             serialize(val, config, indentation, depth, refs, printer) {
               const classNames = val.split(" ");
               const styles = fs.existsSync(styleMapFileName)
-                ? require(styleMapFileName)
+                ? safeJsonParse(fs.readFileSync(styleMapFileName, "utf-8"))
                 : {};
               return classNames
                 .map((classname) => {

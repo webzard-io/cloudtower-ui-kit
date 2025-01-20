@@ -37,11 +37,10 @@ describe("Radio h5_css", () => {
             style=margin-bottom:,8px;
           >
             <label
-              class=
-        &.ant-radio-wrapper {
-          display: inline-flex;
-          align-items: baseline;
-          white-space: pre-wrap;
+              class=&.ant-radio-wrapper {
+      display: inline-flex;
+      align-items: baseline;
+      white-space: pre-wrap;
 
           .ant-radio {
             position: relative;
@@ -100,13 +99,14 @@ describe("Radio h5_css", () => {
               }
             }
           }
-        }
 
-        &.ant-radio-wrapper.compact {
-          .ant-radio + span {
-            padding-left: 8px;
-          }
-        }
+      }
+
+      &.ant-radio-wrapper.compact {
+      .ant-radio + span {
+      padding-left: 8px;
+      }
+      }
       ,ant-radio-wrapper
             >
               <span
@@ -132,11 +132,10 @@ describe("Radio h5_css", () => {
             style=margin-bottom:,8px;
           >
             <label
-              class=
-        &.ant-radio-wrapper {
-          display: inline-flex;
-          align-items: baseline;
-          white-space: pre-wrap;
+              class=&.ant-radio-wrapper {
+      display: inline-flex;
+      align-items: baseline;
+      white-space: pre-wrap;
 
           .ant-radio {
             position: relative;
@@ -195,13 +194,14 @@ describe("Radio h5_css", () => {
               }
             }
           }
-        }
 
-        &.ant-radio-wrapper.compact {
-          .ant-radio + span {
-            padding-left: 8px;
-          }
-        }
+      }
+
+      &.ant-radio-wrapper.compact {
+      .ant-radio + span {
+      padding-left: 8px;
+      }
+      }
       ,ant-radio-wrapper,ant-radio-wrapper-checked
             >
               <span
@@ -221,10 +221,9 @@ describe("Radio h5_css", () => {
               <span>
                 Button Title
                 <div
-                  class=radio-description,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+                  class=radio-description,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
 
                 >
                   Detail description paragraph here.
@@ -237,11 +236,10 @@ describe("Radio h5_css", () => {
             style=margin-bottom:,8px;
           >
             <label
-              class=
-        &.ant-radio-wrapper {
-          display: inline-flex;
-          align-items: baseline;
-          white-space: pre-wrap;
+              class=&.ant-radio-wrapper {
+      display: inline-flex;
+      align-items: baseline;
+      white-space: pre-wrap;
 
           .ant-radio {
             position: relative;
@@ -300,13 +298,14 @@ describe("Radio h5_css", () => {
               }
             }
           }
-        }
 
-        &.ant-radio-wrapper.compact {
-          .ant-radio + span {
-            padding-left: 8px;
-          }
-        }
+      }
+
+      &.ant-radio-wrapper.compact {
+      .ant-radio + span {
+      padding-left: 8px;
+      }
+      }
       ,ant-radio-wrapper,ant-radio-wrapper-disabled
             >
               <span
@@ -332,11 +331,10 @@ describe("Radio h5_css", () => {
             class=ant-space-item
           >
             <label
-              class=
-        &.ant-radio-wrapper {
-          display: inline-flex;
-          align-items: baseline;
-          white-space: pre-wrap;
+              class=&.ant-radio-wrapper {
+      display: inline-flex;
+      align-items: baseline;
+      white-space: pre-wrap;
 
           .ant-radio {
             position: relative;
@@ -395,13 +393,14 @@ describe("Radio h5_css", () => {
               }
             }
           }
-        }
 
-        &.ant-radio-wrapper.compact {
-          .ant-radio + span {
-            padding-left: 8px;
-          }
-        }
+      }
+
+      &.ant-radio-wrapper.compact {
+      .ant-radio + span {
+      padding-left: 8px;
+      }
+      }
       ,ant-radio-wrapper,ant-radio-wrapper-checked,ant-radio-wrapper-disabled
             >
               <span
@@ -422,10 +421,9 @@ describe("Radio h5_css", () => {
               <span>
                 Button Title
                 <div
-                  class=radio-description,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
+                  class=radio-description,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
 
                 >
                   Detail description paragraph here.
@@ -461,113 +459,112 @@ describe("Radio h5_css", () => {
             class=ant-space-item
           >
             <div
-              class=ant-radio-group,ant-radio-group-outline,
-        & .ant-radio-button-wrapper:first-child {
-          border-radius: 5px 0 0 5px;
-        }
-        & .ant-radio-button-wrapper:last-child {
-          border-radius: 0 5px 5px 0;
-        }
+              class=ant-radio-group,ant-radio-group-outline,& .ant-radio-button-wrapper:first-child {
+      border-radius: 5px 0 0 5px;
+      }
+      & .ant-radio-button-wrapper:last-child {
+      border-radius: 0 5px 5px 0;
+      }
 
             >
               <label
-                class=
-        color: $text-light-primary;
-        border-color: $strokes-light-opaque-3;
+                class=color: $text-light-primary;
+      border-color: $strokes-light-opaque-3;
 
-        &:first-child {
-          border-color: $strokes-light-opaque-4;
-        }
+      &:first-child {
+      border-color: $strokes-light-opaque-4;
+      }
 
-        &.ant-radio-button-wrapper {
-          padding: 0 12px;
-          line-height: 32px;
-          height: 32px;
+      &.ant-radio-button-wrapper {
+      padding: 0 12px;
+      line-height: 32px;
+      height: 32px;
 
           > span + span {
             white-space: nowrap;
           }
-        }
 
-        .ant-radio-group-small &.ant-radio-button-wrapper {
-          height: 22px;
-          padding: 0 7px;
-          line-height: 20px;
-        }
+      }
 
-        &.ant-radio-button-wrapper:not(:first-child)::before {
-          background: $strokes-light-opaque-3;
-        }
+      .ant-radio-group-small &.ant-radio-button-wrapper {
+      height: 22px;
+      padding: 0 7px;
+      line-height: 20px;
+      }
 
-        &.ant-radio-button-wrapper-checked:not(:first-child)::before {
-          background: $fills-light-general-general;
-        }
+      &.ant-radio-button-wrapper:not(:first-child)::before {
+      background: $strokes-light-opaque-3;
+      }
 
-        &.ant-radio-button-wrapper-disabled:not(:first-child)::before {
-          background: $strokes-light-opaque-3;
-          opacity: 0.5;
-        }
+      &.ant-radio-button-wrapper-checked:not(:first-child)::before {
+      background: $fills-light-general-general;
+      }
 
-        &.ant-radio-button-wrapper-checked:not(
-            [class*=" ant-radio-button-wrapper-disabled"]
-          ).ant-radio-button-wrapper:first-child {
-          border-right-color: $fills-light-general-general;
-        }
+      &.ant-radio-button-wrapper-disabled:not(:first-child)::before {
+      background: $strokes-light-opaque-3;
+      opacity: 0.5;
+      }
 
-        &.ant-radio-button-wrapper-checked:not(
-            .ant-radio-button-wrapper-disabled
-          ):first-child {
-          border-color: $fills-light-general-general;
-        }
+      &.ant-radio-button-wrapper-checked:not(
+      [class*=" ant-radio-button-wrapper-disabled"]
+      ).ant-radio-button-wrapper:first-child {
+      border-right-color: $fills-light-general-general;
+      }
 
-        &.ant-radio-button-wrapper-checked {
-          background: $fills-light-general-general-light;
-        }
+      &.ant-radio-button-wrapper-checked:not(
+      .ant-radio-button-wrapper-disabled
+      ):first-child {
+      border-color: $fills-light-general-general;
+      }
 
-        &.ant-radio-button-wrapper-disabled {
-          background: $fills-light-trans-3;
-          border-color: $strokes-light-opaque-3;
-          opacity: 0.5;
-          &:hover {
-            color: $text-light-primary;
-            border-color: $strokes-light-opaque-3;
-          }
-        }
+      &.ant-radio-button-wrapper-checked {
+      background: $fills-light-general-general-light;
+      }
 
-        &.ant-radio-button-wrapper-disabled.ant-radio-button-wrapper-checked {
-          color: $text-light-primary;
-          border-color: $strokes-light-opaque-3;
-          background: $fills-light-trans-5;
-        }
+      &.ant-radio-button-wrapper-disabled {
+      background: $fills-light-trans-3;
+      border-color: $strokes-light-opaque-3;
+      opacity: 0.5;
+      &:hover {
+      color: $text-light-primary;
+      border-color: $strokes-light-opaque-3;
+      }
+      }
 
-        & .ant-radio-button-input {
-          margin-right: 8px;
-          display: inline;
-          border: none;
-          padding: 0;
-          width: 36px;
-          background: transparent;
-          &:focus {
-            box-shadow: none;
-          }
-        }
-        & .ant-radio-button-input.ant-input-number {
-          margin-right: 0;
-          width: initial;
-          box-shadow: none;
-        }
-        & .ant-radio-button-input .ant-input-number-handler-wrap {
-          display: none;
-        }
-        & .ant-radio-button-input .ant-input-number-input-wrap {
-          display: inline;
-        }
-        & .ant-radio-button-input .ant-input-number-input-wrap input {
-          display: inline;
-          margin-right: 8px;
-          padding: 0;
-          width: 36px;
-        }
+      &.ant-radio-button-wrapper-disabled.ant-radio-button-wrapper-checked {
+      color: $text-light-primary;
+      border-color: $strokes-light-opaque-3;
+      background: $fills-light-trans-5;
+      }
+
+      & .ant-radio-button-input {
+      margin-right: 8px;
+      display: inline;
+      border: none;
+      padding: 0;
+      width: 36px;
+      background: transparent;
+      &:focus {
+      box-shadow: none;
+      }
+      }
+      & .ant-radio-button-input.ant-input-number {
+      margin-right: 0;
+      width: initial;
+      box-shadow: none;
+      }
+      & .ant-radio-button-input .ant-input-number-handler-wrap {
+      display: none;
+      }
+      & .ant-radio-button-input .ant-input-number-input-wrap {
+      display: inline;
+      }
+      & .ant-radio-button-input .ant-input-number-input-wrap input {
+      display: inline;
+      margin-right: 8px;
+      padding: 0;
+      width: 36px;
+      }
       ,ant-radio-button-wrapper,ant-radio-button-wrapper-checked
               >
                 <span
@@ -588,103 +585,103 @@ describe("Radio h5_css", () => {
                 </span>
               </label>
               <label
-                class=
-        color: $text-light-primary;
-        border-color: $strokes-light-opaque-3;
+                class=color: $text-light-primary;
+      border-color: $strokes-light-opaque-3;
 
-        &:first-child {
-          border-color: $strokes-light-opaque-4;
-        }
+      &:first-child {
+      border-color: $strokes-light-opaque-4;
+      }
 
-        &.ant-radio-button-wrapper {
-          padding: 0 12px;
-          line-height: 32px;
-          height: 32px;
+      &.ant-radio-button-wrapper {
+      padding: 0 12px;
+      line-height: 32px;
+      height: 32px;
 
           > span + span {
             white-space: nowrap;
           }
-        }
 
-        .ant-radio-group-small &.ant-radio-button-wrapper {
-          height: 22px;
-          padding: 0 7px;
-          line-height: 20px;
-        }
+      }
 
-        &.ant-radio-button-wrapper:not(:first-child)::before {
-          background: $strokes-light-opaque-3;
-        }
+      .ant-radio-group-small &.ant-radio-button-wrapper {
+      height: 22px;
+      padding: 0 7px;
+      line-height: 20px;
+      }
 
-        &.ant-radio-button-wrapper-checked:not(:first-child)::before {
-          background: $fills-light-general-general;
-        }
+      &.ant-radio-button-wrapper:not(:first-child)::before {
+      background: $strokes-light-opaque-3;
+      }
 
-        &.ant-radio-button-wrapper-disabled:not(:first-child)::before {
-          background: $strokes-light-opaque-3;
-          opacity: 0.5;
-        }
+      &.ant-radio-button-wrapper-checked:not(:first-child)::before {
+      background: $fills-light-general-general;
+      }
 
-        &.ant-radio-button-wrapper-checked:not(
-            [class*=" ant-radio-button-wrapper-disabled"]
-          ).ant-radio-button-wrapper:first-child {
-          border-right-color: $fills-light-general-general;
-        }
+      &.ant-radio-button-wrapper-disabled:not(:first-child)::before {
+      background: $strokes-light-opaque-3;
+      opacity: 0.5;
+      }
 
-        &.ant-radio-button-wrapper-checked:not(
-            .ant-radio-button-wrapper-disabled
-          ):first-child {
-          border-color: $fills-light-general-general;
-        }
+      &.ant-radio-button-wrapper-checked:not(
+      [class*=" ant-radio-button-wrapper-disabled"]
+      ).ant-radio-button-wrapper:first-child {
+      border-right-color: $fills-light-general-general;
+      }
 
-        &.ant-radio-button-wrapper-checked {
-          background: $fills-light-general-general-light;
-        }
+      &.ant-radio-button-wrapper-checked:not(
+      .ant-radio-button-wrapper-disabled
+      ):first-child {
+      border-color: $fills-light-general-general;
+      }
 
-        &.ant-radio-button-wrapper-disabled {
-          background: $fills-light-trans-3;
-          border-color: $strokes-light-opaque-3;
-          opacity: 0.5;
-          &:hover {
-            color: $text-light-primary;
-            border-color: $strokes-light-opaque-3;
-          }
-        }
+      &.ant-radio-button-wrapper-checked {
+      background: $fills-light-general-general-light;
+      }
 
-        &.ant-radio-button-wrapper-disabled.ant-radio-button-wrapper-checked {
-          color: $text-light-primary;
-          border-color: $strokes-light-opaque-3;
-          background: $fills-light-trans-5;
-        }
+      &.ant-radio-button-wrapper-disabled {
+      background: $fills-light-trans-3;
+      border-color: $strokes-light-opaque-3;
+      opacity: 0.5;
+      &:hover {
+      color: $text-light-primary;
+      border-color: $strokes-light-opaque-3;
+      }
+      }
 
-        & .ant-radio-button-input {
-          margin-right: 8px;
-          display: inline;
-          border: none;
-          padding: 0;
-          width: 36px;
-          background: transparent;
-          &:focus {
-            box-shadow: none;
-          }
-        }
-        & .ant-radio-button-input.ant-input-number {
-          margin-right: 0;
-          width: initial;
-          box-shadow: none;
-        }
-        & .ant-radio-button-input .ant-input-number-handler-wrap {
-          display: none;
-        }
-        & .ant-radio-button-input .ant-input-number-input-wrap {
-          display: inline;
-        }
-        & .ant-radio-button-input .ant-input-number-input-wrap input {
-          display: inline;
-          margin-right: 8px;
-          padding: 0;
-          width: 36px;
-        }
+      &.ant-radio-button-wrapper-disabled.ant-radio-button-wrapper-checked {
+      color: $text-light-primary;
+      border-color: $strokes-light-opaque-3;
+      background: $fills-light-trans-5;
+      }
+
+      & .ant-radio-button-input {
+      margin-right: 8px;
+      display: inline;
+      border: none;
+      padding: 0;
+      width: 36px;
+      background: transparent;
+      &:focus {
+      box-shadow: none;
+      }
+      }
+      & .ant-radio-button-input.ant-input-number {
+      margin-right: 0;
+      width: initial;
+      box-shadow: none;
+      }
+      & .ant-radio-button-input .ant-input-number-handler-wrap {
+      display: none;
+      }
+      & .ant-radio-button-input .ant-input-number-input-wrap {
+      display: inline;
+      }
+      & .ant-radio-button-input .ant-input-number-input-wrap input {
+      display: inline;
+      margin-right: 8px;
+      padding: 0;
+      width: 36px;
+      }
       ,ant-radio-button-wrapper
               >
                 <span
@@ -704,103 +701,103 @@ describe("Radio h5_css", () => {
                 </span>
               </label>
               <label
-                class=
-        color: $text-light-primary;
-        border-color: $strokes-light-opaque-3;
+                class=color: $text-light-primary;
+      border-color: $strokes-light-opaque-3;
 
-        &:first-child {
-          border-color: $strokes-light-opaque-4;
-        }
+      &:first-child {
+      border-color: $strokes-light-opaque-4;
+      }
 
-        &.ant-radio-button-wrapper {
-          padding: 0 12px;
-          line-height: 32px;
-          height: 32px;
+      &.ant-radio-button-wrapper {
+      padding: 0 12px;
+      line-height: 32px;
+      height: 32px;
 
           > span + span {
             white-space: nowrap;
           }
-        }
 
-        .ant-radio-group-small &.ant-radio-button-wrapper {
-          height: 22px;
-          padding: 0 7px;
-          line-height: 20px;
-        }
+      }
 
-        &.ant-radio-button-wrapper:not(:first-child)::before {
-          background: $strokes-light-opaque-3;
-        }
+      .ant-radio-group-small &.ant-radio-button-wrapper {
+      height: 22px;
+      padding: 0 7px;
+      line-height: 20px;
+      }
 
-        &.ant-radio-button-wrapper-checked:not(:first-child)::before {
-          background: $fills-light-general-general;
-        }
+      &.ant-radio-button-wrapper:not(:first-child)::before {
+      background: $strokes-light-opaque-3;
+      }
 
-        &.ant-radio-button-wrapper-disabled:not(:first-child)::before {
-          background: $strokes-light-opaque-3;
-          opacity: 0.5;
-        }
+      &.ant-radio-button-wrapper-checked:not(:first-child)::before {
+      background: $fills-light-general-general;
+      }
 
-        &.ant-radio-button-wrapper-checked:not(
-            [class*=" ant-radio-button-wrapper-disabled"]
-          ).ant-radio-button-wrapper:first-child {
-          border-right-color: $fills-light-general-general;
-        }
+      &.ant-radio-button-wrapper-disabled:not(:first-child)::before {
+      background: $strokes-light-opaque-3;
+      opacity: 0.5;
+      }
 
-        &.ant-radio-button-wrapper-checked:not(
-            .ant-radio-button-wrapper-disabled
-          ):first-child {
-          border-color: $fills-light-general-general;
-        }
+      &.ant-radio-button-wrapper-checked:not(
+      [class*=" ant-radio-button-wrapper-disabled"]
+      ).ant-radio-button-wrapper:first-child {
+      border-right-color: $fills-light-general-general;
+      }
 
-        &.ant-radio-button-wrapper-checked {
-          background: $fills-light-general-general-light;
-        }
+      &.ant-radio-button-wrapper-checked:not(
+      .ant-radio-button-wrapper-disabled
+      ):first-child {
+      border-color: $fills-light-general-general;
+      }
 
-        &.ant-radio-button-wrapper-disabled {
-          background: $fills-light-trans-3;
-          border-color: $strokes-light-opaque-3;
-          opacity: 0.5;
-          &:hover {
-            color: $text-light-primary;
-            border-color: $strokes-light-opaque-3;
-          }
-        }
+      &.ant-radio-button-wrapper-checked {
+      background: $fills-light-general-general-light;
+      }
 
-        &.ant-radio-button-wrapper-disabled.ant-radio-button-wrapper-checked {
-          color: $text-light-primary;
-          border-color: $strokes-light-opaque-3;
-          background: $fills-light-trans-5;
-        }
+      &.ant-radio-button-wrapper-disabled {
+      background: $fills-light-trans-3;
+      border-color: $strokes-light-opaque-3;
+      opacity: 0.5;
+      &:hover {
+      color: $text-light-primary;
+      border-color: $strokes-light-opaque-3;
+      }
+      }
 
-        & .ant-radio-button-input {
-          margin-right: 8px;
-          display: inline;
-          border: none;
-          padding: 0;
-          width: 36px;
-          background: transparent;
-          &:focus {
-            box-shadow: none;
-          }
-        }
-        & .ant-radio-button-input.ant-input-number {
-          margin-right: 0;
-          width: initial;
-          box-shadow: none;
-        }
-        & .ant-radio-button-input .ant-input-number-handler-wrap {
-          display: none;
-        }
-        & .ant-radio-button-input .ant-input-number-input-wrap {
-          display: inline;
-        }
-        & .ant-radio-button-input .ant-input-number-input-wrap input {
-          display: inline;
-          margin-right: 8px;
-          padding: 0;
-          width: 36px;
-        }
+      &.ant-radio-button-wrapper-disabled.ant-radio-button-wrapper-checked {
+      color: $text-light-primary;
+      border-color: $strokes-light-opaque-3;
+      background: $fills-light-trans-5;
+      }
+
+      & .ant-radio-button-input {
+      margin-right: 8px;
+      display: inline;
+      border: none;
+      padding: 0;
+      width: 36px;
+      background: transparent;
+      &:focus {
+      box-shadow: none;
+      }
+      }
+      & .ant-radio-button-input.ant-input-number {
+      margin-right: 0;
+      width: initial;
+      box-shadow: none;
+      }
+      & .ant-radio-button-input .ant-input-number-handler-wrap {
+      display: none;
+      }
+      & .ant-radio-button-input .ant-input-number-input-wrap {
+      display: inline;
+      }
+      & .ant-radio-button-input .ant-input-number-input-wrap input {
+      display: inline;
+      margin-right: 8px;
+      padding: 0;
+      width: 36px;
+      }
       ,ant-radio-button-wrapper
               >
                 <span

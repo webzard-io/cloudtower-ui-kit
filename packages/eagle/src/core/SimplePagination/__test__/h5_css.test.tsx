@@ -16,25 +16,24 @@ describe("SimplePagination h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 0;
-        color: $text-light-secondary;
-        font-size: 12px;
-        line-height: 24px;
+          class=display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      color: $text-light-secondary;
+      font-size: 12px;
+      line-height: 24px;
 
-        .pagination-left {
-          padding: 2px 8px;
-        }
+      .pagination-left {
+      padding: 2px 8px;
+      }
 
-        .dropdown-trigger {
-          display: flex;
-          align-items: center;
-          border-radius: 6px;
-          cursor: pointer;
-          transition: all 0.3s ease;
+      .dropdown-trigger {
+      display: flex;
+      align-items: center;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
 
           &:hover {
             background: $fills-interaction-light-general-hover;
@@ -43,37 +42,37 @@ describe("SimplePagination h5_css", () => {
           .icon-inner {
             margin-left: 4px;
           }
-        }
 
-        .pagination-right {
-          display: flex;
-          align-items: center;
-          color: $blue-60;
-          font-weight: bold;
-          .icon-inner {
-            margin-left: 4px;
-          }
-          .prev-btn,
-          .next-btn {
-            padding: 0 8px;
-            > span {
-              color: $text-light-general;
-            }
-          }
+      }
+
+      .pagination-right {
+      display: flex;
+      align-items: center;
+      color: $blue-60;
+      font-weight: bold;
+      .icon-inner {
+      margin-left: 4px;
+      }
+      .prev-btn,
+      .next-btn {
+      padding: 0 8px; > span {
+      color: $text-light-general;
+      }
+      }
 
           .next-btn {
             .icon-inner {
               transform: rotate(180deg);
             }
           }
-        }
+
+      }
       ,pagination-wrapper
         >
           <span
-            class=
-        @include Inter();
-        font-size: 13px;
-        line-height: 20px;
+            class=@include Inter();
+      font-size: 13px;
+      line-height: 20px;
 
           >
             共 300000 项
@@ -82,45 +81,42 @@ describe("SimplePagination h5_css", () => {
             class=pagination-right
           >
             <div
-              class=ant-input-number,ant-input-number-sm,
-        @include Inter();
-        font-size: 13px;
-        line-height: 20px;
-      ,
-        height: 24px;
-        width: 56px !important;
-        margin-right: 4px;
-      ,
-        &.ant-input {
-          padding: 5px 12px;
-          line-height: 20px;
-          color: $text-primary-light;
-          border-radius: 6px;
-          border-color: $strokes-light-trans-3;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
-            box-shadow 160ms ease 8ms;
-        }
+              class=ant-input-number,ant-input-number-sm,@include Inter();
+      font-size: 13px;
+      line-height: 20px;
+      ,height: 24px;
+      width: 56px !important;
+      margin-right: 4px;
+      ,&.ant-input {
+      padding: 5px 12px;
+      line-height: 20px;
+      color: $text-primary-light;
+      border-radius: 6px;
+      border-color: $strokes-light-trans-3;
+      transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
+      box-shadow 160ms ease 8ms;
+      }
 
-        &.ant-input.ant-input-lg {
-          padding: 8px 16px;
-          line-height: 22px;
-        }
+      &.ant-input.ant-input-lg {
+      padding: 8px 16px;
+      line-height: 22px;
+      }
 
-        &.ant-input.ant-input-sm {
-          padding: 2px 8px;
-          line-height: 18px;
-        }
+      &.ant-input.ant-input-sm {
+      padding: 2px 8px;
+      line-height: 18px;
+      }
 
-        &.ant-input:not([disabled]),
-        &.ant-input-number:not([disabled]) {
-          &:hover,
-          &.__pseudo-states-hover {
-            border-color: $strokes-light-trans-4;
-            box-shadow: $shadow-light-hover;
-            z-index: $input-hover-index;
-          }
+      &.ant-input:not([disabled]),
+      &.ant-input-number:not([disabled]) {
+      &:hover,
+      &.\\_\\_pseudo-states-hover {
+      border-color: $strokes-light-trans-4;
+      box-shadow: $shadow-light-hover;
+      z-index: $input-hover-index;
+      }
 
           &:active,
           &:focus,
@@ -130,13 +126,14 @@ describe("SimplePagination h5_css", () => {
             box-shadow: $shadow-light-active;
             z-index: $input-hover-index;
           }
-        }
 
-        &.ant-input.error:not([disabled]),
-        &.ant-picker.error:not([disabled]),
-        &.ant-input-number.error:not([disabled]) {
-          border-color: $red;
-          color: $red;
+      }
+
+      &.ant-input.error:not([disabled]),
+      &.ant-picker.error:not([disabled]),
+      &.ant-input-number.error:not([disabled]) {
+      border-color: $red;
+      color: $red;
 
           &:hover,
           &.__pseudo-states-hover {
@@ -151,50 +148,52 @@ describe("SimplePagination h5_css", () => {
             border-color: $red;
             box-shadow: $shadow-light-error;
           }
-        }
 
-        &.ant-input[disabled],
-        &.ant-input.ant-input-disabled,
-        &.ant-input-number[disabled],
-        &.ant-input-number.ant-input-number-disabled {
-          background: $fills-trans-terdiary-light;
-          color: $text-light-tertiary;
-          border-color: $strokes-light-trans-3;
-        }
+      }
 
-        &.ant-input-affix-wrapper {
-          padding: 5px 12px;
-          border-radius: 6px;
-          border-color: $strokes-light-trans-3;
-          line-height: 20px;
-          color: $text-primary-light;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
-            box-shadow 160ms ease 8ms;
+      &.ant-input[disabled],
+      &.ant-input.ant-input-disabled,
+      &.ant-input-number[disabled],
+      &.ant-input-number.ant-input-number-disabled {
+      background: $fills-trans-terdiary-light;
+      color: $text-light-tertiary;
+      border-color: $strokes-light-trans-3;
+      }
+
+      &.ant-input-affix-wrapper {
+      padding: 5px 12px;
+      border-radius: 6px;
+      border-color: $strokes-light-trans-3;
+      line-height: 20px;
+      color: $text-primary-light;
+      transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
+      box-shadow 160ms ease 8ms;
 
           .ant-input-suffix,
           .ant-input-prefix {
             color: $text-secondary-light;
           }
-        }
 
-        &.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
-          padding: 8px 16px;
-          line-height: 22px;
-        }
+      }
 
-        &.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
-          padding: 2px 8px;
-          line-height: 18px;
-        }
+      &.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
+      padding: 8px 16px;
+      line-height: 22px;
+      }
 
-        &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
-          &:hover,
-          &.__pseudo-states-hover {
-            border-color: $strokes-light-trans-4;
-            box-shadow: $shadow-light-hover;
-          }
+      &.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
+      padding: 2px 8px;
+      line-height: 18px;
+      }
+
+      &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
+      &:hover,
+      &.\\_\\_pseudo-states-hover {
+      border-color: $strokes-light-trans-4;
+      box-shadow: $shadow-light-hover;
+      }
 
           &:active,
           &:focus,
@@ -204,13 +203,13 @@ describe("SimplePagination h5_css", () => {
             border-color: $blue;
             box-shadow: $shadow-light-active;
           }
-        }
 
-        &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
-          border-color: $red;
-          > .ant-input {
-            color: $red;
-          }
+      }
+
+      &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
+      border-color: $red; > .ant-input {
+      color: $red;
+      }
 
           &:hover,
           &.__pseudo-states-hover {
@@ -226,119 +225,118 @@ describe("SimplePagination h5_css", () => {
             border-color: $red;
             box-shadow: $shadow-light-error;
           }
-        }
 
-        &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
-          background: $fills-trans-terdiary-light;
-          color: $text-light-tertiary;
-          border-color: $strokes-light-trans-3;
-        }
+      }
 
-        @at-root {
-          textarea#{&}.ant-input {
-            transition-property: height;
-            transition-delay: 50ms;
-            &.textarea-large {
-              min-height: 40px;
-              height: 40px;
-            }
-            &.textarea-large:focus {
-              height: 80px;
-            }
-            &.textarea-middle {
-              min-height: 32px;
-              height: 32px;
-            }
-            &.textarea-middle:focus {
-              height: 64px;
-            }
-            &.textarea-small {
-              min-height: 24px;
-              height: 24px;
-            }
-            &.textarea-small:focus {
-              height: 40px;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
-      ,
-        .ant-input-number-handler-wrap {
-          display: var(--ai7qkf2-0);
-        }
-        .ant-input-number-input-wrap {
-          display: inline-flex;
-          line-height: 1.5715;
-          height: 100%;
-          width: 100%;
-        }
+      &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
+      background: $fills-trans-terdiary-light;
+      color: $text-light-tertiary;
+      border-color: $strokes-light-trans-3;
+      }
 
-        .ant-input-number-input-wrap::after {
-          content: var(--ai7qkf2-1);
-          display: var(--ai7qkf2-2);
-          flex: none;
-          align-items: center;
-          margin-left: 4px;
-          padding: 5px 12px 5px 0;
-          color: rgba(44, 56, 82, 0.6);
-        }
+      @at-root {
+      textarea#{&}.ant-input {
+      transition-property: height;
+      transition-delay: 50ms;
+      &.textarea-large {
+      min-height: 40px;
+      height: 40px;
+      }
+      &.textarea-large:focus {
+      height: 80px;
+      }
+      &.textarea-middle {
+      min-height: 32px;
+      height: 32px;
+      }
+      &.textarea-middle:focus {
+      height: 64px;
+      }
+      &.textarea-small {
+      min-height: 24px;
+      height: 24px;
+      }
+      &.textarea-small:focus {
+      height: 40px;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
+      ,.ant-input-number-handler-wrap {
+      display: var(--ai7qkf2-0);
+      }
+      .ant-input-number-input-wrap {
+      display: inline-flex;
+      line-height: 1.5715;
+      height: 100%;
+      width: 100%;
+      }
 
-        .ant-input-number-input-wrap::before {
-          content: var(--ai7qkf2-3);
-          display: var(--ai7qkf2-4);
-          flex: none;
-          align-items: center;
-          margin-right: 4px;
-          cursor: auto;
-          color: rgba(44, 56, 82, 0.6);
-        }
+      .ant-input-number-input-wrap::after {
+      content: var(--ai7qkf2-1);
+      display: var(--ai7qkf2-2);
+      flex: none;
+      align-items: center;
+      margin-left: 4px;
+      padding: 5px 12px 5px 0;
+      color: rgba(44, 56, 82, 0.6);
+      }
 
-        .ant-input-group.ant-input-group-compact > & {
-          border-radius: 0;
-        }
+      .ant-input-number-input-wrap::before {
+      content: var(--ai7qkf2-3);
+      display: var(--ai7qkf2-4);
+      flex: none;
+      align-items: center;
+      margin-right: 4px;
+      cursor: auto;
+      color: rgba(44, 56, 82, 0.6);
+      }
 
-        &.ant-input-number {
-          width: 100%;
-          border-radius: 6px;
-        }
-        &.ant-input-number:not([disabled]) {
-          &:focus,
-          &:active,
-          &.ant-input-number-focused {
-            border-color: $blue;
-            box-shadow: $shadow-light-active;
-            z-index: $input-hover-index;
-          }
-        }
-        &.ant-input-number.error:not([disabled]) {
-          &:hover,
-          &.ant-input-number-focused {
-            border-color: $red;
-            box-shadow: $shadow-light-error;
-          }
-        }
+      .ant-input-group.ant-input-group-compact > & {
+      border-radius: 0;
+      }
 
-        .ant-input-number-input {
-          height: 30px;
-          border: 1px;
-          padding: 5px 12px;
-          font-size: inherit;
-        }
+      &.ant-input-number {
+      width: 100%;
+      border-radius: 6px;
+      }
+      &.ant-input-number:not([disabled]) {
+      &:focus,
+      &:active,
+      &.ant-input-number-focused {
+      border-color: $blue;
+      box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
+      }
+      }
+      &.ant-input-number.error:not([disabled]) {
+      &:hover,
+      &.ant-input-number-focused {
+      border-color: $red;
+      box-shadow: $shadow-light-error;
+      }
+      }
 
-        &.ant-input-number-lg input {
-          height: 38px;
-          border: 1px;
-          padding: 8px 16px;
-        }
+      .ant-input-number-input {
+      height: 30px;
+      border: 1px;
+      padding: 5px 12px;
+      font-size: inherit;
+      }
 
-        &.ant-input-number-sm input {
-          height: 22px;
-          border: 1px;
-          padding: 2px 8px;
-        }
+      &.ant-input-number-lg input {
+      height: 38px;
+      border: 1px;
+      padding: 8px 16px;
+      }
+
+      &.ant-input-number-sm input {
+      height: 22px;
+      border: 1px;
+      padding: 2px 8px;
+      }
 
               style=--ai7qkf2-0:,none;,--ai7qkf2-1:,"";,--ai7qkf2-2:,none;,--ai7qkf2-3:,"";,--ai7qkf2-4:,none;
             >
@@ -416,34 +414,32 @@ describe("SimplePagination h5_css", () => {
               </div>
             </div>
             <span
-              class=
-                    color: $text-secondary-light;
-                  ,
-        @include Inter();
-        @include Uppercase();
-        font-size: 13px;
-        line-height: 20px;
+              class=              color: $text-secondary-light;
+
+      ,@include Inter();
+      @include Uppercase();
+      font-size: 13px;
+      line-height: 20px;
 
             >
               / 6000
             </span>
             <button
-              class=ant-btn,next-btn,
-        &.ant-btn-icon-only {
-          justify-content: center;
-        }
-        &.ant-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          height: 32px;
-          border-radius: 6px;
-          line-height: 22px;
-          transition:
-            transform 160ms ease,
-            background 160ms ease,
-            opacity 160ms ease;
-          transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
+              class=ant-btn,next-btn,&.ant-btn-icon-only {
+      justify-content: center;
+      }
+      &.ant-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      border-radius: 6px;
+      line-height: 22px;
+      transition:
+      transform 160ms ease,
+      background 160ms ease,
+      opacity 160ms ease;
+      transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
 
           &.ant-btn-lg {
             height: 40px;
@@ -459,24 +455,25 @@ describe("SimplePagination h5_css", () => {
           &.ant-btn-circle-outline {
             border-radius: 50%;
           }
-        }
 
-        .ant-btn-loading-icon span.anticon {
-          margin-right: 8px;
-          padding-right: 0px;
-        }
+      }
 
-        &.ant-btn.ant-btn-primary,
-        &.ant-btn.ant-btn-secondary,
-        &.ant-btn.ant-btn-tertiary,
-        &.ant-btn.ant-btn-ordinary,
-        &.ant-btn.ant-btn-ordinary-onTint,
-        &.ant-btn.ant-btn-quiet {
-          color: var(--color, #06101f);
-          font-weight: var(--font-weight);
-          background: var(--background-color, #fff);
-          border-width: var(--border-width, 1px);
-          border-color: var(--border-color, #d9d9d9);
+      .ant-btn-loading-icon span.anticon {
+      margin-right: 8px;
+      padding-right: 0px;
+      }
+
+      &.ant-btn.ant-btn-primary,
+      &.ant-btn.ant-btn-secondary,
+      &.ant-btn.ant-btn-tertiary,
+      &.ant-btn.ant-btn-ordinary,
+      &.ant-btn.ant-btn-ordinary-onTint,
+      &.ant-btn.ant-btn-quiet {
+      color: var(--color, #06101f);
+      font-weight: var(--font-weight);
+      background: var(--background-color, #fff);
+      border-width: var(--border-width, 1px);
+      border-color: var(--border-color, #d9d9d9);
 
           &[ant-click-animating-without-extra-node="true"]:after {
             display: none;
@@ -522,76 +519,80 @@ describe("SimplePagination h5_css", () => {
             );
             opacity: 0.5;
           }
-        }
 
-        &.ant-btn-link {
-          &[disabled] {
-            color: $text-light-general;
-            opacity: 0.5;
-          }
-        }
+      }
 
-        &.ant-btn-primary {
-          --color: #{$white};
-          --font-weight: bold;
-          --border-width: 0;
+      &.ant-btn-link {
+      &[disabled] {
+      color: $text-light-general;
+      opacity: 0.5;
+      }
+      }
+
+      &.ant-btn-primary {
+      --color: #{$white};
+      --font-weight: bold;
+      --border-width: 0;
 
           --background-color: #{$fills-light-general-general};
           --background-color-hover: #{$fills-light-general-general-bright};
           --background-color-active: #{$fills-light-general-general-dark};
           --background-color-focus: #{$fills-light-general-general};
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
-        }
 
-        &.ant-btn-primary.ant-btn-dangerous {
-          --background-color: #{$fills-light-serious-serious};
+      }
+
+      &.ant-btn-primary.ant-btn-dangerous {
+      --background-color: #{$fills-light-serious-serious};
           --background-color-hover: #{$fills-light-serious-serious-bright};
-          --background-color-active: #{$fills-light-serious-serious-dark};
+      --background-color-active: #{$fills-light-serious-serious-dark};
           --background-color-focus: #{$fills-light-serious-serious-bright};
-          --box-shadow-color-focus: #{$strokes-light-serious-light};
-        }
+      --box-shadow-color-focus: #{$strokes-light-serious-light};
+      }
 
-        &.ant-btn-primary.btn-primary-orange {
-          --background-color: #{$fills-light-notice-notice};
+      &.ant-btn-primary.btn-primary-orange {
+      --background-color: #{$fills-light-notice-notice};
           --background-color-hover: #{$fills-light-notice-notice-bright};
-          --background-color-active: #{$fills-light-notice-notice-dark};
+      --background-color-active: #{$fills-light-notice-notice-dark};
           --background-color-focus: #{$fills-light-notice-notice};
-        }
+      }
 
-        &.ant-btn-secondary {
-          --color: #{$text-light-general};
-          --font-weight: bold;
-          --border-width: 0;
+      &.ant-btn-secondary {
+      --color: #{$text-light-general};
+      --font-weight: bold;
+      --border-width: 0;
 
           --background-color: #{$fills-light-general-general-light};
           --background-color-hover: #{$fills-interaction-light-outstanding-hover};
           --background-color-active: #{$fills-interaction-light-outstanding-active};
           --background-color-focus: #{$fills-light-general-general-light};
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
-        }
 
-        &.ant-btn-secondary.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+      }
+
+      &.ant-btn-secondary.ant-btn-dangerous {
+      --color: #{$text-light-serious};
 
           --background-color: #{$fills-light-serious-serious-light};
           --background-color-hover: #{$fills-interaction-light-serious-hover};
           --background-color-active: #{$fills-interaction-light-serious-active};
           --background-color-focus: #{$fills-light-serious-serious-light};
           --box-shadow-color-focus: #{$fills-interaction-light-serious-hover};
-        }
 
-        &.ant-btn-secondary.btn-primary-orange {
-          --color: #{$text-light-notice};
+      }
+
+      &.ant-btn-secondary.btn-primary-orange {
+      --color: #{$text-light-notice};
           --background-color: #{$fills-light-notice-notice-light};
-          --background-color-hover: #{$fills-interaction-light-notice-hover};
+      --background-color-hover: #{$fills-interaction-light-notice-hover};
           --background-color-active: #{$fills-interaction-light-notice-active};
-          --background-color-focus: #{$fills-light-notice-notice-light};
-        }
+      --background-color-focus: #{$fills-light-notice-notice-light};
+      }
 
-        &.ant-btn-tertiary {
-          --color: #{$text-light-general};
-          --font-weight: bold;
-          --border-width: 0;
+      &.ant-btn-tertiary {
+      --color: #{$text-light-general};
+      --font-weight: bold;
+      --border-width: 0;
 
           --background-color: #{$white};
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
@@ -607,10 +608,11 @@ describe("SimplePagination h5_css", () => {
               filter: drop-shadow(0px 2px 8px rgba(0, 136, 255, 0.1));
             }
           }
-        }
 
-        &.ant-btn-tertiary.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+      }
+
+      &.ant-btn-tertiary.ant-btn-dangerous {
+      --color: #{$text-light-serious};
 
           --background-color: #{$white};
           --box-shadow-color-focus: #{$fills-interaction-light-serious-hover};
@@ -624,10 +626,11 @@ describe("SimplePagination h5_css", () => {
               filter: drop-shadow(0px 2px 8px rgba(255, 74, 74, 0.1));
             }
           }
-        }
 
-        &.ant-btn-tertiary.btn-primary-orange {
-          --color: #{$text-light-notice};
+      }
+
+      &.ant-btn-tertiary.btn-primary-orange {
+      --color: #{$text-light-notice};
           --background-color: #{$white};
 
           &:not([disabled]),
@@ -639,10 +642,11 @@ describe("SimplePagination h5_css", () => {
               filter: drop-shadow(0px 2px 8px rgba(255, 187, 0, 0.1));
             }
           }
-        }
 
-        &.ant-btn-ordinary {
-          --color: #{$text-light-super};
+      }
+
+      &.ant-btn-ordinary {
+      --color: #{$text-light-super};
           --border-color: #{$strokes-light-opaque-3};
 
           --background-color: #{$white};
@@ -656,10 +660,11 @@ describe("SimplePagination h5_css", () => {
           &.__pseudo-states-focus {
             box-shadow: 0 0 0px 4px var(--box-shadow-color-focus);
           }
-        }
 
-        &.ant-btn-ordinary.ordinary-blue {
-          --color: #{$text-light-general};
+      }
+
+      &.ant-btn-ordinary.ordinary-blue {
+      --color: #{$text-light-general};
           --border-color: #{$fills-light-general-general};
 
           --background-color: #{$white};
@@ -678,10 +683,11 @@ describe("SimplePagination h5_css", () => {
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
 
           box-shadow: 0px 1px 2px -1px rgba(44, 56, 82, 0.18);
-        }
 
-        &.ant-btn-ordinary.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+      }
+
+      &.ant-btn-ordinary.ant-btn-dangerous {
+      --color: #{$text-light-serious};
           --border-color: #{$fills-light-serious-serious};
 
           --background-color: #{$white};
@@ -698,10 +704,11 @@ describe("SimplePagination h5_css", () => {
             ),
             #ffffff;
           --box-shadow-color-focus: #{$strokes-light-serious-light};
-        }
 
-        &.ant-btn-ordinary-onTint {
-          --color: #{$text-light-super};
+      }
+
+      &.ant-btn-ordinary-onTint {
+      --color: #{$text-light-super};
           --border-color: #{$white};
 
           --background-color: #{$white};
@@ -710,10 +717,11 @@ describe("SimplePagination h5_css", () => {
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
 
           box-shadow: none;
-        }
 
-        &.ant-btn-ordinary-onTint.ordinary-blue {
-          --color: #{$text-light-general};
+      }
+
+      &.ant-btn-ordinary-onTint.ordinary-blue {
+      --color: #{$text-light-general};
           --border-color: #{$white};
 
           --background-color: #{$white};
@@ -722,19 +730,21 @@ describe("SimplePagination h5_css", () => {
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
 
           box-shadow: none;
-        }
 
-        &.ant-btn-ordinary-onTint.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+      }
+
+      &.ant-btn-ordinary-onTint.ant-btn-dangerous {
+      --color: #{$text-light-serious};
 
           --background-color-hover: #{$fills-interaction-light-serious-hover};
           --background-color-active: #{$fills-interaction-light-serious-active};
           --box-shadow-color-focus: #{$strokes-light-serious-light};
-        }
 
-        &.ant-btn-quiet {
-          --color: #{$text-light-secondary};
-          --border-width: 0;
+      }
+
+      &.ant-btn-quiet {
+      --color: #{$text-light-secondary};
+      --border-width: 0;
 
           --background-color: transparent;
           --background-color-hover: #{$fills-interaction-light-general-hover};
@@ -742,66 +752,67 @@ describe("SimplePagination h5_css", () => {
           --background-color-focus: #{$white};
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
           box-shadow: none;
-        }
 
-        &.ant-btn-quiet.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+      }
+
+      &.ant-btn-quiet.ant-btn-dangerous {
+      --color: #{$text-light-serious};
 
           --background-color-hover: #{$fills-interaction-light-serious-hover};
           --background-color-active: #{$fills-interaction-light-serious-active};
           --box-shadow-color-focus: #{$strokes-light-serious-light};
-        }
 
-        &.ant-btn-quiet.quiet-blue {
-          --color: #{$text-light-general};
+      }
+
+      &.ant-btn-quiet.quiet-blue {
+      --color: #{$text-light-general};
 
           --background-color: transparent;
           --background-color-hover: #{$fills-interaction-light-outstanding-hover};
           --background-color-active: #{$fills-interaction-light-outstanding-active};
           --background-color-focus: #{$white};
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
-        }
 
-        .button-prefix-icon {
-          margin-right: 8px;
-          display: inline-flex;
-        }
-        .button-suffix-icon {
-          margin-left: 8px;
-          display: inline-flex;
-        }
-        .icon-wrapper {
-          display: flex;
-          justify-content: center;
-        }
-      ,
-        @include Inter();
-        font-size: 13px;
-        line-height: 20px;
+      }
+
+      .button-prefix-icon {
+      margin-right: 8px;
+      display: inline-flex;
+      }
+      .button-suffix-icon {
+      margin-left: 8px;
+      display: inline-flex;
+      }
+      .icon-wrapper {
+      display: flex;
+      justify-content: center;
+      }
+      ,@include Inter();
+      font-size: 13px;
+      line-height: 20px;
       ,ant-btn-quiet,ant-btn-icon-only,ant-btn-sm
               style=margin-left:,8px;
               type=button
             >
               <span
-                class=
-        display: inline-flex;
-        align-items: center;
+                class=display: inline-flex;
+      align-items: center;
 
-        .icon-inner {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .icon-inner + span,
-        span + .icon-inner.suffix {
-          margin-left: 4px;
-        }
-        &.is-rotate {
-          img,
-          svg {
-            animation: rotate 680ms linear infinite;
-          }
-        }
+      .icon-inner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      }
+      .icon-inner + span,
+      span + .icon-inner.suffix {
+      margin-left: 4px;
+      }
+      &.is-rotate {
+      img,
+      svg {
+      animation: rotate 680ms linear infinite;
+      }
+      }
       ,icon-wrapper
               >
                 <span
@@ -839,25 +850,24 @@ describe("SimplePagination h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 0;
-        color: $text-light-secondary;
-        font-size: 12px;
-        line-height: 24px;
+          class=display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      color: $text-light-secondary;
+      font-size: 12px;
+      line-height: 24px;
 
-        .pagination-left {
-          padding: 2px 8px;
-        }
+      .pagination-left {
+      padding: 2px 8px;
+      }
 
-        .dropdown-trigger {
-          display: flex;
-          align-items: center;
-          border-radius: 6px;
-          cursor: pointer;
-          transition: all 0.3s ease;
+      .dropdown-trigger {
+      display: flex;
+      align-items: center;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
 
           &:hover {
             background: $fills-interaction-light-general-hover;
@@ -866,37 +876,37 @@ describe("SimplePagination h5_css", () => {
           .icon-inner {
             margin-left: 4px;
           }
-        }
 
-        .pagination-right {
-          display: flex;
-          align-items: center;
-          color: $blue-60;
-          font-weight: bold;
-          .icon-inner {
-            margin-left: 4px;
-          }
-          .prev-btn,
-          .next-btn {
-            padding: 0 8px;
-            > span {
-              color: $text-light-general;
-            }
-          }
+      }
+
+      .pagination-right {
+      display: flex;
+      align-items: center;
+      color: $blue-60;
+      font-weight: bold;
+      .icon-inner {
+      margin-left: 4px;
+      }
+      .prev-btn,
+      .next-btn {
+      padding: 0 8px; > span {
+      color: $text-light-general;
+      }
+      }
 
           .next-btn {
             .icon-inner {
               transform: rotate(180deg);
             }
           }
-        }
+
+      }
       ,pagination-wrapper
         >
           <span
-            class=
-        @include Inter();
-        font-size: 13px;
-        line-height: 20px;
+            class=@include Inter();
+      font-size: 13px;
+      line-height: 20px;
 
           >
             共 300000 项
@@ -905,22 +915,21 @@ describe("SimplePagination h5_css", () => {
             class=pagination-right
           >
             <button
-              class=ant-btn,prev-btn,
-        &.ant-btn-icon-only {
-          justify-content: center;
-        }
-        &.ant-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          height: 32px;
-          border-radius: 6px;
-          line-height: 22px;
-          transition:
-            transform 160ms ease,
-            background 160ms ease,
-            opacity 160ms ease;
-          transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
+              class=ant-btn,prev-btn,&.ant-btn-icon-only {
+      justify-content: center;
+      }
+      &.ant-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      border-radius: 6px;
+      line-height: 22px;
+      transition:
+      transform 160ms ease,
+      background 160ms ease,
+      opacity 160ms ease;
+      transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
 
           &.ant-btn-lg {
             height: 40px;
@@ -936,24 +945,25 @@ describe("SimplePagination h5_css", () => {
           &.ant-btn-circle-outline {
             border-radius: 50%;
           }
-        }
 
-        .ant-btn-loading-icon span.anticon {
-          margin-right: 8px;
-          padding-right: 0px;
-        }
+      }
 
-        &.ant-btn.ant-btn-primary,
-        &.ant-btn.ant-btn-secondary,
-        &.ant-btn.ant-btn-tertiary,
-        &.ant-btn.ant-btn-ordinary,
-        &.ant-btn.ant-btn-ordinary-onTint,
-        &.ant-btn.ant-btn-quiet {
-          color: var(--color, #06101f);
-          font-weight: var(--font-weight);
-          background: var(--background-color, #fff);
-          border-width: var(--border-width, 1px);
-          border-color: var(--border-color, #d9d9d9);
+      .ant-btn-loading-icon span.anticon {
+      margin-right: 8px;
+      padding-right: 0px;
+      }
+
+      &.ant-btn.ant-btn-primary,
+      &.ant-btn.ant-btn-secondary,
+      &.ant-btn.ant-btn-tertiary,
+      &.ant-btn.ant-btn-ordinary,
+      &.ant-btn.ant-btn-ordinary-onTint,
+      &.ant-btn.ant-btn-quiet {
+      color: var(--color, #06101f);
+      font-weight: var(--font-weight);
+      background: var(--background-color, #fff);
+      border-width: var(--border-width, 1px);
+      border-color: var(--border-color, #d9d9d9);
 
           &[ant-click-animating-without-extra-node="true"]:after {
             display: none;
@@ -999,76 +1009,80 @@ describe("SimplePagination h5_css", () => {
             );
             opacity: 0.5;
           }
-        }
 
-        &.ant-btn-link {
-          &[disabled] {
-            color: $text-light-general;
-            opacity: 0.5;
-          }
-        }
+      }
 
-        &.ant-btn-primary {
-          --color: #{$white};
-          --font-weight: bold;
-          --border-width: 0;
+      &.ant-btn-link {
+      &[disabled] {
+      color: $text-light-general;
+      opacity: 0.5;
+      }
+      }
+
+      &.ant-btn-primary {
+      --color: #{$white};
+      --font-weight: bold;
+      --border-width: 0;
 
           --background-color: #{$fills-light-general-general};
           --background-color-hover: #{$fills-light-general-general-bright};
           --background-color-active: #{$fills-light-general-general-dark};
           --background-color-focus: #{$fills-light-general-general};
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
-        }
 
-        &.ant-btn-primary.ant-btn-dangerous {
-          --background-color: #{$fills-light-serious-serious};
+      }
+
+      &.ant-btn-primary.ant-btn-dangerous {
+      --background-color: #{$fills-light-serious-serious};
           --background-color-hover: #{$fills-light-serious-serious-bright};
-          --background-color-active: #{$fills-light-serious-serious-dark};
+      --background-color-active: #{$fills-light-serious-serious-dark};
           --background-color-focus: #{$fills-light-serious-serious-bright};
-          --box-shadow-color-focus: #{$strokes-light-serious-light};
-        }
+      --box-shadow-color-focus: #{$strokes-light-serious-light};
+      }
 
-        &.ant-btn-primary.btn-primary-orange {
-          --background-color: #{$fills-light-notice-notice};
+      &.ant-btn-primary.btn-primary-orange {
+      --background-color: #{$fills-light-notice-notice};
           --background-color-hover: #{$fills-light-notice-notice-bright};
-          --background-color-active: #{$fills-light-notice-notice-dark};
+      --background-color-active: #{$fills-light-notice-notice-dark};
           --background-color-focus: #{$fills-light-notice-notice};
-        }
+      }
 
-        &.ant-btn-secondary {
-          --color: #{$text-light-general};
-          --font-weight: bold;
-          --border-width: 0;
+      &.ant-btn-secondary {
+      --color: #{$text-light-general};
+      --font-weight: bold;
+      --border-width: 0;
 
           --background-color: #{$fills-light-general-general-light};
           --background-color-hover: #{$fills-interaction-light-outstanding-hover};
           --background-color-active: #{$fills-interaction-light-outstanding-active};
           --background-color-focus: #{$fills-light-general-general-light};
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
-        }
 
-        &.ant-btn-secondary.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+      }
+
+      &.ant-btn-secondary.ant-btn-dangerous {
+      --color: #{$text-light-serious};
 
           --background-color: #{$fills-light-serious-serious-light};
           --background-color-hover: #{$fills-interaction-light-serious-hover};
           --background-color-active: #{$fills-interaction-light-serious-active};
           --background-color-focus: #{$fills-light-serious-serious-light};
           --box-shadow-color-focus: #{$fills-interaction-light-serious-hover};
-        }
 
-        &.ant-btn-secondary.btn-primary-orange {
-          --color: #{$text-light-notice};
+      }
+
+      &.ant-btn-secondary.btn-primary-orange {
+      --color: #{$text-light-notice};
           --background-color: #{$fills-light-notice-notice-light};
-          --background-color-hover: #{$fills-interaction-light-notice-hover};
+      --background-color-hover: #{$fills-interaction-light-notice-hover};
           --background-color-active: #{$fills-interaction-light-notice-active};
-          --background-color-focus: #{$fills-light-notice-notice-light};
-        }
+      --background-color-focus: #{$fills-light-notice-notice-light};
+      }
 
-        &.ant-btn-tertiary {
-          --color: #{$text-light-general};
-          --font-weight: bold;
-          --border-width: 0;
+      &.ant-btn-tertiary {
+      --color: #{$text-light-general};
+      --font-weight: bold;
+      --border-width: 0;
 
           --background-color: #{$white};
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
@@ -1084,10 +1098,11 @@ describe("SimplePagination h5_css", () => {
               filter: drop-shadow(0px 2px 8px rgba(0, 136, 255, 0.1));
             }
           }
-        }
 
-        &.ant-btn-tertiary.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+      }
+
+      &.ant-btn-tertiary.ant-btn-dangerous {
+      --color: #{$text-light-serious};
 
           --background-color: #{$white};
           --box-shadow-color-focus: #{$fills-interaction-light-serious-hover};
@@ -1101,10 +1116,11 @@ describe("SimplePagination h5_css", () => {
               filter: drop-shadow(0px 2px 8px rgba(255, 74, 74, 0.1));
             }
           }
-        }
 
-        &.ant-btn-tertiary.btn-primary-orange {
-          --color: #{$text-light-notice};
+      }
+
+      &.ant-btn-tertiary.btn-primary-orange {
+      --color: #{$text-light-notice};
           --background-color: #{$white};
 
           &:not([disabled]),
@@ -1116,10 +1132,11 @@ describe("SimplePagination h5_css", () => {
               filter: drop-shadow(0px 2px 8px rgba(255, 187, 0, 0.1));
             }
           }
-        }
 
-        &.ant-btn-ordinary {
-          --color: #{$text-light-super};
+      }
+
+      &.ant-btn-ordinary {
+      --color: #{$text-light-super};
           --border-color: #{$strokes-light-opaque-3};
 
           --background-color: #{$white};
@@ -1133,10 +1150,11 @@ describe("SimplePagination h5_css", () => {
           &.__pseudo-states-focus {
             box-shadow: 0 0 0px 4px var(--box-shadow-color-focus);
           }
-        }
 
-        &.ant-btn-ordinary.ordinary-blue {
-          --color: #{$text-light-general};
+      }
+
+      &.ant-btn-ordinary.ordinary-blue {
+      --color: #{$text-light-general};
           --border-color: #{$fills-light-general-general};
 
           --background-color: #{$white};
@@ -1155,10 +1173,11 @@ describe("SimplePagination h5_css", () => {
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
 
           box-shadow: 0px 1px 2px -1px rgba(44, 56, 82, 0.18);
-        }
 
-        &.ant-btn-ordinary.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+      }
+
+      &.ant-btn-ordinary.ant-btn-dangerous {
+      --color: #{$text-light-serious};
           --border-color: #{$fills-light-serious-serious};
 
           --background-color: #{$white};
@@ -1175,10 +1194,11 @@ describe("SimplePagination h5_css", () => {
             ),
             #ffffff;
           --box-shadow-color-focus: #{$strokes-light-serious-light};
-        }
 
-        &.ant-btn-ordinary-onTint {
-          --color: #{$text-light-super};
+      }
+
+      &.ant-btn-ordinary-onTint {
+      --color: #{$text-light-super};
           --border-color: #{$white};
 
           --background-color: #{$white};
@@ -1187,10 +1207,11 @@ describe("SimplePagination h5_css", () => {
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
 
           box-shadow: none;
-        }
 
-        &.ant-btn-ordinary-onTint.ordinary-blue {
-          --color: #{$text-light-general};
+      }
+
+      &.ant-btn-ordinary-onTint.ordinary-blue {
+      --color: #{$text-light-general};
           --border-color: #{$white};
 
           --background-color: #{$white};
@@ -1199,19 +1220,21 @@ describe("SimplePagination h5_css", () => {
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
 
           box-shadow: none;
-        }
 
-        &.ant-btn-ordinary-onTint.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+      }
+
+      &.ant-btn-ordinary-onTint.ant-btn-dangerous {
+      --color: #{$text-light-serious};
 
           --background-color-hover: #{$fills-interaction-light-serious-hover};
           --background-color-active: #{$fills-interaction-light-serious-active};
           --box-shadow-color-focus: #{$strokes-light-serious-light};
-        }
 
-        &.ant-btn-quiet {
-          --color: #{$text-light-secondary};
-          --border-width: 0;
+      }
+
+      &.ant-btn-quiet {
+      --color: #{$text-light-secondary};
+      --border-width: 0;
 
           --background-color: transparent;
           --background-color-hover: #{$fills-interaction-light-general-hover};
@@ -1219,66 +1242,67 @@ describe("SimplePagination h5_css", () => {
           --background-color-focus: #{$white};
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
           box-shadow: none;
-        }
 
-        &.ant-btn-quiet.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+      }
+
+      &.ant-btn-quiet.ant-btn-dangerous {
+      --color: #{$text-light-serious};
 
           --background-color-hover: #{$fills-interaction-light-serious-hover};
           --background-color-active: #{$fills-interaction-light-serious-active};
           --box-shadow-color-focus: #{$strokes-light-serious-light};
-        }
 
-        &.ant-btn-quiet.quiet-blue {
-          --color: #{$text-light-general};
+      }
+
+      &.ant-btn-quiet.quiet-blue {
+      --color: #{$text-light-general};
 
           --background-color: transparent;
           --background-color-hover: #{$fills-interaction-light-outstanding-hover};
           --background-color-active: #{$fills-interaction-light-outstanding-active};
           --background-color-focus: #{$white};
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
-        }
 
-        .button-prefix-icon {
-          margin-right: 8px;
-          display: inline-flex;
-        }
-        .button-suffix-icon {
-          margin-left: 8px;
-          display: inline-flex;
-        }
-        .icon-wrapper {
-          display: flex;
-          justify-content: center;
-        }
-      ,
-        @include Inter();
-        font-size: 13px;
-        line-height: 20px;
+      }
+
+      .button-prefix-icon {
+      margin-right: 8px;
+      display: inline-flex;
+      }
+      .button-suffix-icon {
+      margin-left: 8px;
+      display: inline-flex;
+      }
+      .icon-wrapper {
+      display: flex;
+      justify-content: center;
+      }
+      ,@include Inter();
+      font-size: 13px;
+      line-height: 20px;
       ,ant-btn-quiet,ant-btn-icon-only,ant-btn-sm
               style=margin-right:,8px;
               type=button
             >
               <span
-                class=
-        display: inline-flex;
-        align-items: center;
+                class=display: inline-flex;
+      align-items: center;
 
-        .icon-inner {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .icon-inner + span,
-        span + .icon-inner.suffix {
-          margin-left: 4px;
-        }
-        &.is-rotate {
-          img,
-          svg {
-            animation: rotate 680ms linear infinite;
-          }
-        }
+      .icon-inner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      }
+      .icon-inner + span,
+      span + .icon-inner.suffix {
+      margin-left: 4px;
+      }
+      &.is-rotate {
+      img,
+      svg {
+      animation: rotate 680ms linear infinite;
+      }
+      }
       ,icon-wrapper
               >
                 <span
@@ -1300,45 +1324,42 @@ describe("SimplePagination h5_css", () => {
               </span>
             </button>
             <div
-              class=ant-input-number,ant-input-number-sm,
-        @include Inter();
-        font-size: 13px;
-        line-height: 20px;
-      ,
-        height: 24px;
-        width: 56px !important;
-        margin-right: 4px;
-      ,
-        &.ant-input {
-          padding: 5px 12px;
-          line-height: 20px;
-          color: $text-primary-light;
-          border-radius: 6px;
-          border-color: $strokes-light-trans-3;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
-            box-shadow 160ms ease 8ms;
-        }
+              class=ant-input-number,ant-input-number-sm,@include Inter();
+      font-size: 13px;
+      line-height: 20px;
+      ,height: 24px;
+      width: 56px !important;
+      margin-right: 4px;
+      ,&.ant-input {
+      padding: 5px 12px;
+      line-height: 20px;
+      color: $text-primary-light;
+      border-radius: 6px;
+      border-color: $strokes-light-trans-3;
+      transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
+      box-shadow 160ms ease 8ms;
+      }
 
-        &.ant-input.ant-input-lg {
-          padding: 8px 16px;
-          line-height: 22px;
-        }
+      &.ant-input.ant-input-lg {
+      padding: 8px 16px;
+      line-height: 22px;
+      }
 
-        &.ant-input.ant-input-sm {
-          padding: 2px 8px;
-          line-height: 18px;
-        }
+      &.ant-input.ant-input-sm {
+      padding: 2px 8px;
+      line-height: 18px;
+      }
 
-        &.ant-input:not([disabled]),
-        &.ant-input-number:not([disabled]) {
-          &:hover,
-          &.__pseudo-states-hover {
-            border-color: $strokes-light-trans-4;
-            box-shadow: $shadow-light-hover;
-            z-index: $input-hover-index;
-          }
+      &.ant-input:not([disabled]),
+      &.ant-input-number:not([disabled]) {
+      &:hover,
+      &.\\_\\_pseudo-states-hover {
+      border-color: $strokes-light-trans-4;
+      box-shadow: $shadow-light-hover;
+      z-index: $input-hover-index;
+      }
 
           &:active,
           &:focus,
@@ -1348,13 +1369,14 @@ describe("SimplePagination h5_css", () => {
             box-shadow: $shadow-light-active;
             z-index: $input-hover-index;
           }
-        }
 
-        &.ant-input.error:not([disabled]),
-        &.ant-picker.error:not([disabled]),
-        &.ant-input-number.error:not([disabled]) {
-          border-color: $red;
-          color: $red;
+      }
+
+      &.ant-input.error:not([disabled]),
+      &.ant-picker.error:not([disabled]),
+      &.ant-input-number.error:not([disabled]) {
+      border-color: $red;
+      color: $red;
 
           &:hover,
           &.__pseudo-states-hover {
@@ -1369,50 +1391,52 @@ describe("SimplePagination h5_css", () => {
             border-color: $red;
             box-shadow: $shadow-light-error;
           }
-        }
 
-        &.ant-input[disabled],
-        &.ant-input.ant-input-disabled,
-        &.ant-input-number[disabled],
-        &.ant-input-number.ant-input-number-disabled {
-          background: $fills-trans-terdiary-light;
-          color: $text-light-tertiary;
-          border-color: $strokes-light-trans-3;
-        }
+      }
 
-        &.ant-input-affix-wrapper {
-          padding: 5px 12px;
-          border-radius: 6px;
-          border-color: $strokes-light-trans-3;
-          line-height: 20px;
-          color: $text-primary-light;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
-            box-shadow 160ms ease 8ms;
+      &.ant-input[disabled],
+      &.ant-input.ant-input-disabled,
+      &.ant-input-number[disabled],
+      &.ant-input-number.ant-input-number-disabled {
+      background: $fills-trans-terdiary-light;
+      color: $text-light-tertiary;
+      border-color: $strokes-light-trans-3;
+      }
+
+      &.ant-input-affix-wrapper {
+      padding: 5px 12px;
+      border-radius: 6px;
+      border-color: $strokes-light-trans-3;
+      line-height: 20px;
+      color: $text-primary-light;
+      transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
+      box-shadow 160ms ease 8ms;
 
           .ant-input-suffix,
           .ant-input-prefix {
             color: $text-secondary-light;
           }
-        }
 
-        &.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
-          padding: 8px 16px;
-          line-height: 22px;
-        }
+      }
 
-        &.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
-          padding: 2px 8px;
-          line-height: 18px;
-        }
+      &.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
+      padding: 8px 16px;
+      line-height: 22px;
+      }
 
-        &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
-          &:hover,
-          &.__pseudo-states-hover {
-            border-color: $strokes-light-trans-4;
-            box-shadow: $shadow-light-hover;
-          }
+      &.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
+      padding: 2px 8px;
+      line-height: 18px;
+      }
+
+      &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
+      &:hover,
+      &.\\_\\_pseudo-states-hover {
+      border-color: $strokes-light-trans-4;
+      box-shadow: $shadow-light-hover;
+      }
 
           &:active,
           &:focus,
@@ -1422,13 +1446,13 @@ describe("SimplePagination h5_css", () => {
             border-color: $blue;
             box-shadow: $shadow-light-active;
           }
-        }
 
-        &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
-          border-color: $red;
-          > .ant-input {
-            color: $red;
-          }
+      }
+
+      &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
+      border-color: $red; > .ant-input {
+      color: $red;
+      }
 
           &:hover,
           &.__pseudo-states-hover {
@@ -1444,119 +1468,118 @@ describe("SimplePagination h5_css", () => {
             border-color: $red;
             box-shadow: $shadow-light-error;
           }
-        }
 
-        &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
-          background: $fills-trans-terdiary-light;
-          color: $text-light-tertiary;
-          border-color: $strokes-light-trans-3;
-        }
+      }
 
-        @at-root {
-          textarea#{&}.ant-input {
-            transition-property: height;
-            transition-delay: 50ms;
-            &.textarea-large {
-              min-height: 40px;
-              height: 40px;
-            }
-            &.textarea-large:focus {
-              height: 80px;
-            }
-            &.textarea-middle {
-              min-height: 32px;
-              height: 32px;
-            }
-            &.textarea-middle:focus {
-              height: 64px;
-            }
-            &.textarea-small {
-              min-height: 24px;
-              height: 24px;
-            }
-            &.textarea-small:focus {
-              height: 40px;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
-      ,
-        .ant-input-number-handler-wrap {
-          display: var(--ai7qkf2-0);
-        }
-        .ant-input-number-input-wrap {
-          display: inline-flex;
-          line-height: 1.5715;
-          height: 100%;
-          width: 100%;
-        }
+      &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
+      background: $fills-trans-terdiary-light;
+      color: $text-light-tertiary;
+      border-color: $strokes-light-trans-3;
+      }
 
-        .ant-input-number-input-wrap::after {
-          content: var(--ai7qkf2-1);
-          display: var(--ai7qkf2-2);
-          flex: none;
-          align-items: center;
-          margin-left: 4px;
-          padding: 5px 12px 5px 0;
-          color: rgba(44, 56, 82, 0.6);
-        }
+      @at-root {
+      textarea#{&}.ant-input {
+      transition-property: height;
+      transition-delay: 50ms;
+      &.textarea-large {
+      min-height: 40px;
+      height: 40px;
+      }
+      &.textarea-large:focus {
+      height: 80px;
+      }
+      &.textarea-middle {
+      min-height: 32px;
+      height: 32px;
+      }
+      &.textarea-middle:focus {
+      height: 64px;
+      }
+      &.textarea-small {
+      min-height: 24px;
+      height: 24px;
+      }
+      &.textarea-small:focus {
+      height: 40px;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
+      ,.ant-input-number-handler-wrap {
+      display: var(--ai7qkf2-0);
+      }
+      .ant-input-number-input-wrap {
+      display: inline-flex;
+      line-height: 1.5715;
+      height: 100%;
+      width: 100%;
+      }
 
-        .ant-input-number-input-wrap::before {
-          content: var(--ai7qkf2-3);
-          display: var(--ai7qkf2-4);
-          flex: none;
-          align-items: center;
-          margin-right: 4px;
-          cursor: auto;
-          color: rgba(44, 56, 82, 0.6);
-        }
+      .ant-input-number-input-wrap::after {
+      content: var(--ai7qkf2-1);
+      display: var(--ai7qkf2-2);
+      flex: none;
+      align-items: center;
+      margin-left: 4px;
+      padding: 5px 12px 5px 0;
+      color: rgba(44, 56, 82, 0.6);
+      }
 
-        .ant-input-group.ant-input-group-compact > & {
-          border-radius: 0;
-        }
+      .ant-input-number-input-wrap::before {
+      content: var(--ai7qkf2-3);
+      display: var(--ai7qkf2-4);
+      flex: none;
+      align-items: center;
+      margin-right: 4px;
+      cursor: auto;
+      color: rgba(44, 56, 82, 0.6);
+      }
 
-        &.ant-input-number {
-          width: 100%;
-          border-radius: 6px;
-        }
-        &.ant-input-number:not([disabled]) {
-          &:focus,
-          &:active,
-          &.ant-input-number-focused {
-            border-color: $blue;
-            box-shadow: $shadow-light-active;
-            z-index: $input-hover-index;
-          }
-        }
-        &.ant-input-number.error:not([disabled]) {
-          &:hover,
-          &.ant-input-number-focused {
-            border-color: $red;
-            box-shadow: $shadow-light-error;
-          }
-        }
+      .ant-input-group.ant-input-group-compact > & {
+      border-radius: 0;
+      }
 
-        .ant-input-number-input {
-          height: 30px;
-          border: 1px;
-          padding: 5px 12px;
-          font-size: inherit;
-        }
+      &.ant-input-number {
+      width: 100%;
+      border-radius: 6px;
+      }
+      &.ant-input-number:not([disabled]) {
+      &:focus,
+      &:active,
+      &.ant-input-number-focused {
+      border-color: $blue;
+      box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
+      }
+      }
+      &.ant-input-number.error:not([disabled]) {
+      &:hover,
+      &.ant-input-number-focused {
+      border-color: $red;
+      box-shadow: $shadow-light-error;
+      }
+      }
 
-        &.ant-input-number-lg input {
-          height: 38px;
-          border: 1px;
-          padding: 8px 16px;
-        }
+      .ant-input-number-input {
+      height: 30px;
+      border: 1px;
+      padding: 5px 12px;
+      font-size: inherit;
+      }
 
-        &.ant-input-number-sm input {
-          height: 22px;
-          border: 1px;
-          padding: 2px 8px;
-        }
+      &.ant-input-number-lg input {
+      height: 38px;
+      border: 1px;
+      padding: 8px 16px;
+      }
+
+      &.ant-input-number-sm input {
+      height: 22px;
+      border: 1px;
+      padding: 2px 8px;
+      }
 
               style=--ai7qkf2-0:,none;,--ai7qkf2-1:,"";,--ai7qkf2-2:,none;,--ai7qkf2-3:,"";,--ai7qkf2-4:,none;
             >
@@ -1634,13 +1657,12 @@ describe("SimplePagination h5_css", () => {
               </div>
             </div>
             <span
-              class=
-                    color: $text-secondary-light;
-                  ,
-        @include Inter();
-        @include Uppercase();
-        font-size: 13px;
-        line-height: 20px;
+              class=              color: $text-secondary-light;
+
+      ,@include Inter();
+      @include Uppercase();
+      font-size: 13px;
+      line-height: 20px;
 
             >
               / 6000
@@ -1662,25 +1684,24 @@ describe("SimplePagination h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 0;
-        color: $text-light-secondary;
-        font-size: 12px;
-        line-height: 24px;
+          class=display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      color: $text-light-secondary;
+      font-size: 12px;
+      line-height: 24px;
 
-        .pagination-left {
-          padding: 2px 8px;
-        }
+      .pagination-left {
+      padding: 2px 8px;
+      }
 
-        .dropdown-trigger {
-          display: flex;
-          align-items: center;
-          border-radius: 6px;
-          cursor: pointer;
-          transition: all 0.3s ease;
+      .dropdown-trigger {
+      display: flex;
+      align-items: center;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
 
           &:hover {
             background: $fills-interaction-light-general-hover;
@@ -1689,37 +1710,37 @@ describe("SimplePagination h5_css", () => {
           .icon-inner {
             margin-left: 4px;
           }
-        }
 
-        .pagination-right {
-          display: flex;
-          align-items: center;
-          color: $blue-60;
-          font-weight: bold;
-          .icon-inner {
-            margin-left: 4px;
-          }
-          .prev-btn,
-          .next-btn {
-            padding: 0 8px;
-            > span {
-              color: $text-light-general;
-            }
-          }
+      }
+
+      .pagination-right {
+      display: flex;
+      align-items: center;
+      color: $blue-60;
+      font-weight: bold;
+      .icon-inner {
+      margin-left: 4px;
+      }
+      .prev-btn,
+      .next-btn {
+      padding: 0 8px; > span {
+      color: $text-light-general;
+      }
+      }
 
           .next-btn {
             .icon-inner {
               transform: rotate(180deg);
             }
           }
-        }
+
+      }
       ,pagination-wrapper
         >
           <span
-            class=
-        @include Inter();
-        font-size: 13px;
-        line-height: 20px;
+            class=@include Inter();
+      font-size: 13px;
+      line-height: 20px;
 
           >
             共 300000 项
@@ -1728,22 +1749,21 @@ describe("SimplePagination h5_css", () => {
             class=pagination-right
           >
             <button
-              class=ant-btn,prev-btn,
-        &.ant-btn-icon-only {
-          justify-content: center;
-        }
-        &.ant-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          height: 32px;
-          border-radius: 6px;
-          line-height: 22px;
-          transition:
-            transform 160ms ease,
-            background 160ms ease,
-            opacity 160ms ease;
-          transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
+              class=ant-btn,prev-btn,&.ant-btn-icon-only {
+      justify-content: center;
+      }
+      &.ant-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      border-radius: 6px;
+      line-height: 22px;
+      transition:
+      transform 160ms ease,
+      background 160ms ease,
+      opacity 160ms ease;
+      transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
 
           &.ant-btn-lg {
             height: 40px;
@@ -1759,24 +1779,25 @@ describe("SimplePagination h5_css", () => {
           &.ant-btn-circle-outline {
             border-radius: 50%;
           }
-        }
 
-        .ant-btn-loading-icon span.anticon {
-          margin-right: 8px;
-          padding-right: 0px;
-        }
+      }
 
-        &.ant-btn.ant-btn-primary,
-        &.ant-btn.ant-btn-secondary,
-        &.ant-btn.ant-btn-tertiary,
-        &.ant-btn.ant-btn-ordinary,
-        &.ant-btn.ant-btn-ordinary-onTint,
-        &.ant-btn.ant-btn-quiet {
-          color: var(--color, #06101f);
-          font-weight: var(--font-weight);
-          background: var(--background-color, #fff);
-          border-width: var(--border-width, 1px);
-          border-color: var(--border-color, #d9d9d9);
+      .ant-btn-loading-icon span.anticon {
+      margin-right: 8px;
+      padding-right: 0px;
+      }
+
+      &.ant-btn.ant-btn-primary,
+      &.ant-btn.ant-btn-secondary,
+      &.ant-btn.ant-btn-tertiary,
+      &.ant-btn.ant-btn-ordinary,
+      &.ant-btn.ant-btn-ordinary-onTint,
+      &.ant-btn.ant-btn-quiet {
+      color: var(--color, #06101f);
+      font-weight: var(--font-weight);
+      background: var(--background-color, #fff);
+      border-width: var(--border-width, 1px);
+      border-color: var(--border-color, #d9d9d9);
 
           &[ant-click-animating-without-extra-node="true"]:after {
             display: none;
@@ -1822,76 +1843,80 @@ describe("SimplePagination h5_css", () => {
             );
             opacity: 0.5;
           }
-        }
 
-        &.ant-btn-link {
-          &[disabled] {
-            color: $text-light-general;
-            opacity: 0.5;
-          }
-        }
+      }
 
-        &.ant-btn-primary {
-          --color: #{$white};
-          --font-weight: bold;
-          --border-width: 0;
+      &.ant-btn-link {
+      &[disabled] {
+      color: $text-light-general;
+      opacity: 0.5;
+      }
+      }
+
+      &.ant-btn-primary {
+      --color: #{$white};
+      --font-weight: bold;
+      --border-width: 0;
 
           --background-color: #{$fills-light-general-general};
           --background-color-hover: #{$fills-light-general-general-bright};
           --background-color-active: #{$fills-light-general-general-dark};
           --background-color-focus: #{$fills-light-general-general};
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
-        }
 
-        &.ant-btn-primary.ant-btn-dangerous {
-          --background-color: #{$fills-light-serious-serious};
+      }
+
+      &.ant-btn-primary.ant-btn-dangerous {
+      --background-color: #{$fills-light-serious-serious};
           --background-color-hover: #{$fills-light-serious-serious-bright};
-          --background-color-active: #{$fills-light-serious-serious-dark};
+      --background-color-active: #{$fills-light-serious-serious-dark};
           --background-color-focus: #{$fills-light-serious-serious-bright};
-          --box-shadow-color-focus: #{$strokes-light-serious-light};
-        }
+      --box-shadow-color-focus: #{$strokes-light-serious-light};
+      }
 
-        &.ant-btn-primary.btn-primary-orange {
-          --background-color: #{$fills-light-notice-notice};
+      &.ant-btn-primary.btn-primary-orange {
+      --background-color: #{$fills-light-notice-notice};
           --background-color-hover: #{$fills-light-notice-notice-bright};
-          --background-color-active: #{$fills-light-notice-notice-dark};
+      --background-color-active: #{$fills-light-notice-notice-dark};
           --background-color-focus: #{$fills-light-notice-notice};
-        }
+      }
 
-        &.ant-btn-secondary {
-          --color: #{$text-light-general};
-          --font-weight: bold;
-          --border-width: 0;
+      &.ant-btn-secondary {
+      --color: #{$text-light-general};
+      --font-weight: bold;
+      --border-width: 0;
 
           --background-color: #{$fills-light-general-general-light};
           --background-color-hover: #{$fills-interaction-light-outstanding-hover};
           --background-color-active: #{$fills-interaction-light-outstanding-active};
           --background-color-focus: #{$fills-light-general-general-light};
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
-        }
 
-        &.ant-btn-secondary.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+      }
+
+      &.ant-btn-secondary.ant-btn-dangerous {
+      --color: #{$text-light-serious};
 
           --background-color: #{$fills-light-serious-serious-light};
           --background-color-hover: #{$fills-interaction-light-serious-hover};
           --background-color-active: #{$fills-interaction-light-serious-active};
           --background-color-focus: #{$fills-light-serious-serious-light};
           --box-shadow-color-focus: #{$fills-interaction-light-serious-hover};
-        }
 
-        &.ant-btn-secondary.btn-primary-orange {
-          --color: #{$text-light-notice};
+      }
+
+      &.ant-btn-secondary.btn-primary-orange {
+      --color: #{$text-light-notice};
           --background-color: #{$fills-light-notice-notice-light};
-          --background-color-hover: #{$fills-interaction-light-notice-hover};
+      --background-color-hover: #{$fills-interaction-light-notice-hover};
           --background-color-active: #{$fills-interaction-light-notice-active};
-          --background-color-focus: #{$fills-light-notice-notice-light};
-        }
+      --background-color-focus: #{$fills-light-notice-notice-light};
+      }
 
-        &.ant-btn-tertiary {
-          --color: #{$text-light-general};
-          --font-weight: bold;
-          --border-width: 0;
+      &.ant-btn-tertiary {
+      --color: #{$text-light-general};
+      --font-weight: bold;
+      --border-width: 0;
 
           --background-color: #{$white};
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
@@ -1907,10 +1932,11 @@ describe("SimplePagination h5_css", () => {
               filter: drop-shadow(0px 2px 8px rgba(0, 136, 255, 0.1));
             }
           }
-        }
 
-        &.ant-btn-tertiary.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+      }
+
+      &.ant-btn-tertiary.ant-btn-dangerous {
+      --color: #{$text-light-serious};
 
           --background-color: #{$white};
           --box-shadow-color-focus: #{$fills-interaction-light-serious-hover};
@@ -1924,10 +1950,11 @@ describe("SimplePagination h5_css", () => {
               filter: drop-shadow(0px 2px 8px rgba(255, 74, 74, 0.1));
             }
           }
-        }
 
-        &.ant-btn-tertiary.btn-primary-orange {
-          --color: #{$text-light-notice};
+      }
+
+      &.ant-btn-tertiary.btn-primary-orange {
+      --color: #{$text-light-notice};
           --background-color: #{$white};
 
           &:not([disabled]),
@@ -1939,10 +1966,11 @@ describe("SimplePagination h5_css", () => {
               filter: drop-shadow(0px 2px 8px rgba(255, 187, 0, 0.1));
             }
           }
-        }
 
-        &.ant-btn-ordinary {
-          --color: #{$text-light-super};
+      }
+
+      &.ant-btn-ordinary {
+      --color: #{$text-light-super};
           --border-color: #{$strokes-light-opaque-3};
 
           --background-color: #{$white};
@@ -1956,10 +1984,11 @@ describe("SimplePagination h5_css", () => {
           &.__pseudo-states-focus {
             box-shadow: 0 0 0px 4px var(--box-shadow-color-focus);
           }
-        }
 
-        &.ant-btn-ordinary.ordinary-blue {
-          --color: #{$text-light-general};
+      }
+
+      &.ant-btn-ordinary.ordinary-blue {
+      --color: #{$text-light-general};
           --border-color: #{$fills-light-general-general};
 
           --background-color: #{$white};
@@ -1978,10 +2007,11 @@ describe("SimplePagination h5_css", () => {
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
 
           box-shadow: 0px 1px 2px -1px rgba(44, 56, 82, 0.18);
-        }
 
-        &.ant-btn-ordinary.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+      }
+
+      &.ant-btn-ordinary.ant-btn-dangerous {
+      --color: #{$text-light-serious};
           --border-color: #{$fills-light-serious-serious};
 
           --background-color: #{$white};
@@ -1998,10 +2028,11 @@ describe("SimplePagination h5_css", () => {
             ),
             #ffffff;
           --box-shadow-color-focus: #{$strokes-light-serious-light};
-        }
 
-        &.ant-btn-ordinary-onTint {
-          --color: #{$text-light-super};
+      }
+
+      &.ant-btn-ordinary-onTint {
+      --color: #{$text-light-super};
           --border-color: #{$white};
 
           --background-color: #{$white};
@@ -2010,10 +2041,11 @@ describe("SimplePagination h5_css", () => {
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
 
           box-shadow: none;
-        }
 
-        &.ant-btn-ordinary-onTint.ordinary-blue {
-          --color: #{$text-light-general};
+      }
+
+      &.ant-btn-ordinary-onTint.ordinary-blue {
+      --color: #{$text-light-general};
           --border-color: #{$white};
 
           --background-color: #{$white};
@@ -2022,19 +2054,21 @@ describe("SimplePagination h5_css", () => {
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
 
           box-shadow: none;
-        }
 
-        &.ant-btn-ordinary-onTint.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+      }
+
+      &.ant-btn-ordinary-onTint.ant-btn-dangerous {
+      --color: #{$text-light-serious};
 
           --background-color-hover: #{$fills-interaction-light-serious-hover};
           --background-color-active: #{$fills-interaction-light-serious-active};
           --box-shadow-color-focus: #{$strokes-light-serious-light};
-        }
 
-        &.ant-btn-quiet {
-          --color: #{$text-light-secondary};
-          --border-width: 0;
+      }
+
+      &.ant-btn-quiet {
+      --color: #{$text-light-secondary};
+      --border-width: 0;
 
           --background-color: transparent;
           --background-color-hover: #{$fills-interaction-light-general-hover};
@@ -2042,66 +2076,67 @@ describe("SimplePagination h5_css", () => {
           --background-color-focus: #{$white};
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
           box-shadow: none;
-        }
 
-        &.ant-btn-quiet.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+      }
+
+      &.ant-btn-quiet.ant-btn-dangerous {
+      --color: #{$text-light-serious};
 
           --background-color-hover: #{$fills-interaction-light-serious-hover};
           --background-color-active: #{$fills-interaction-light-serious-active};
           --box-shadow-color-focus: #{$strokes-light-serious-light};
-        }
 
-        &.ant-btn-quiet.quiet-blue {
-          --color: #{$text-light-general};
+      }
+
+      &.ant-btn-quiet.quiet-blue {
+      --color: #{$text-light-general};
 
           --background-color: transparent;
           --background-color-hover: #{$fills-interaction-light-outstanding-hover};
           --background-color-active: #{$fills-interaction-light-outstanding-active};
           --background-color-focus: #{$white};
           --box-shadow-color-focus: #{$strokes-light-outstanding-light};
-        }
 
-        .button-prefix-icon {
-          margin-right: 8px;
-          display: inline-flex;
-        }
-        .button-suffix-icon {
-          margin-left: 8px;
-          display: inline-flex;
-        }
-        .icon-wrapper {
-          display: flex;
-          justify-content: center;
-        }
-      ,
-        @include Inter();
-        font-size: 13px;
-        line-height: 20px;
+      }
+
+      .button-prefix-icon {
+      margin-right: 8px;
+      display: inline-flex;
+      }
+      .button-suffix-icon {
+      margin-left: 8px;
+      display: inline-flex;
+      }
+      .icon-wrapper {
+      display: flex;
+      justify-content: center;
+      }
+      ,@include Inter();
+      font-size: 13px;
+      line-height: 20px;
       ,ant-btn-quiet,ant-btn-icon-only,ant-btn-sm
               style=margin-right:,8px;
               type=button
             >
               <span
-                class=
-        display: inline-flex;
-        align-items: center;
+                class=display: inline-flex;
+      align-items: center;
 
-        .icon-inner {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .icon-inner + span,
-        span + .icon-inner.suffix {
-          margin-left: 4px;
-        }
-        &.is-rotate {
-          img,
-          svg {
-            animation: rotate 680ms linear infinite;
-          }
-        }
+      .icon-inner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      }
+      .icon-inner + span,
+      span + .icon-inner.suffix {
+      margin-left: 4px;
+      }
+      &.is-rotate {
+      img,
+      svg {
+      animation: rotate 680ms linear infinite;
+      }
+      }
       ,icon-wrapper
               >
                 <span
@@ -2123,45 +2158,42 @@ describe("SimplePagination h5_css", () => {
               </span>
             </button>
             <div
-              class=ant-input-number,ant-input-number-sm,
-        @include Inter();
-        font-size: 13px;
-        line-height: 20px;
-      ,
-        height: 24px;
-        width: 56px !important;
-        margin-right: 4px;
-      ,
-        &.ant-input {
-          padding: 5px 12px;
-          line-height: 20px;
-          color: $text-primary-light;
-          border-radius: 6px;
-          border-color: $strokes-light-trans-3;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
-            box-shadow 160ms ease 8ms;
-        }
+              class=ant-input-number,ant-input-number-sm,@include Inter();
+      font-size: 13px;
+      line-height: 20px;
+      ,height: 24px;
+      width: 56px !important;
+      margin-right: 4px;
+      ,&.ant-input {
+      padding: 5px 12px;
+      line-height: 20px;
+      color: $text-primary-light;
+      border-radius: 6px;
+      border-color: $strokes-light-trans-3;
+      transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
+      box-shadow 160ms ease 8ms;
+      }
 
-        &.ant-input.ant-input-lg {
-          padding: 8px 16px;
-          line-height: 22px;
-        }
+      &.ant-input.ant-input-lg {
+      padding: 8px 16px;
+      line-height: 22px;
+      }
 
-        &.ant-input.ant-input-sm {
-          padding: 2px 8px;
-          line-height: 18px;
-        }
+      &.ant-input.ant-input-sm {
+      padding: 2px 8px;
+      line-height: 18px;
+      }
 
-        &.ant-input:not([disabled]),
-        &.ant-input-number:not([disabled]) {
-          &:hover,
-          &.__pseudo-states-hover {
-            border-color: $strokes-light-trans-4;
-            box-shadow: $shadow-light-hover;
-            z-index: $input-hover-index;
-          }
+      &.ant-input:not([disabled]),
+      &.ant-input-number:not([disabled]) {
+      &:hover,
+      &.\\_\\_pseudo-states-hover {
+      border-color: $strokes-light-trans-4;
+      box-shadow: $shadow-light-hover;
+      z-index: $input-hover-index;
+      }
 
           &:active,
           &:focus,
@@ -2171,13 +2203,14 @@ describe("SimplePagination h5_css", () => {
             box-shadow: $shadow-light-active;
             z-index: $input-hover-index;
           }
-        }
 
-        &.ant-input.error:not([disabled]),
-        &.ant-picker.error:not([disabled]),
-        &.ant-input-number.error:not([disabled]) {
-          border-color: $red;
-          color: $red;
+      }
+
+      &.ant-input.error:not([disabled]),
+      &.ant-picker.error:not([disabled]),
+      &.ant-input-number.error:not([disabled]) {
+      border-color: $red;
+      color: $red;
 
           &:hover,
           &.__pseudo-states-hover {
@@ -2192,50 +2225,52 @@ describe("SimplePagination h5_css", () => {
             border-color: $red;
             box-shadow: $shadow-light-error;
           }
-        }
 
-        &.ant-input[disabled],
-        &.ant-input.ant-input-disabled,
-        &.ant-input-number[disabled],
-        &.ant-input-number.ant-input-number-disabled {
-          background: $fills-trans-terdiary-light;
-          color: $text-light-tertiary;
-          border-color: $strokes-light-trans-3;
-        }
+      }
 
-        &.ant-input-affix-wrapper {
-          padding: 5px 12px;
-          border-radius: 6px;
-          border-color: $strokes-light-trans-3;
-          line-height: 20px;
-          color: $text-primary-light;
-          transition:
-            height 240ms ease 8ms,
-            border 160ms ease 8ms,
-            box-shadow 160ms ease 8ms;
+      &.ant-input[disabled],
+      &.ant-input.ant-input-disabled,
+      &.ant-input-number[disabled],
+      &.ant-input-number.ant-input-number-disabled {
+      background: $fills-trans-terdiary-light;
+      color: $text-light-tertiary;
+      border-color: $strokes-light-trans-3;
+      }
+
+      &.ant-input-affix-wrapper {
+      padding: 5px 12px;
+      border-radius: 6px;
+      border-color: $strokes-light-trans-3;
+      line-height: 20px;
+      color: $text-primary-light;
+      transition:
+      height 240ms ease 8ms,
+      border 160ms ease 8ms,
+      box-shadow 160ms ease 8ms;
 
           .ant-input-suffix,
           .ant-input-prefix {
             color: $text-secondary-light;
           }
-        }
 
-        &.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
-          padding: 8px 16px;
-          line-height: 22px;
-        }
+      }
 
-        &.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
-          padding: 2px 8px;
-          line-height: 18px;
-        }
+      &.ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
+      padding: 8px 16px;
+      line-height: 22px;
+      }
 
-        &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
-          &:hover,
-          &.__pseudo-states-hover {
-            border-color: $strokes-light-trans-4;
-            box-shadow: $shadow-light-hover;
-          }
+      &.ant-input-affix-wrapper.ant-input-affix-wrapper-sm {
+      padding: 2px 8px;
+      line-height: 18px;
+      }
+
+      &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
+      &:hover,
+      &.\\_\\_pseudo-states-hover {
+      border-color: $strokes-light-trans-4;
+      box-shadow: $shadow-light-hover;
+      }
 
           &:active,
           &:focus,
@@ -2245,13 +2280,13 @@ describe("SimplePagination h5_css", () => {
             border-color: $blue;
             box-shadow: $shadow-light-active;
           }
-        }
 
-        &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
-          border-color: $red;
-          > .ant-input {
-            color: $red;
-          }
+      }
+
+      &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
+      border-color: $red; > .ant-input {
+      color: $red;
+      }
 
           &:hover,
           &.__pseudo-states-hover {
@@ -2267,119 +2302,118 @@ describe("SimplePagination h5_css", () => {
             border-color: $red;
             box-shadow: $shadow-light-error;
           }
-        }
 
-        &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
-          background: $fills-trans-terdiary-light;
-          color: $text-light-tertiary;
-          border-color: $strokes-light-trans-3;
-        }
+      }
 
-        @at-root {
-          textarea#{&}.ant-input {
-            transition-property: height;
-            transition-delay: 50ms;
-            &.textarea-large {
-              min-height: 40px;
-              height: 40px;
-            }
-            &.textarea-large:focus {
-              height: 80px;
-            }
-            &.textarea-middle {
-              min-height: 32px;
-              height: 32px;
-            }
-            &.textarea-middle:focus {
-              height: 64px;
-            }
-            &.textarea-small {
-              min-height: 24px;
-              height: 24px;
-            }
-            &.textarea-small:focus {
-              height: 40px;
-            }
-          }
-        }
-      ,
-        @include Inter();
-        font-size: 12px;
-        line-height: 18px;
-      ,
-        .ant-input-number-handler-wrap {
-          display: var(--ai7qkf2-0);
-        }
-        .ant-input-number-input-wrap {
-          display: inline-flex;
-          line-height: 1.5715;
-          height: 100%;
-          width: 100%;
-        }
+      &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
+      background: $fills-trans-terdiary-light;
+      color: $text-light-tertiary;
+      border-color: $strokes-light-trans-3;
+      }
 
-        .ant-input-number-input-wrap::after {
-          content: var(--ai7qkf2-1);
-          display: var(--ai7qkf2-2);
-          flex: none;
-          align-items: center;
-          margin-left: 4px;
-          padding: 5px 12px 5px 0;
-          color: rgba(44, 56, 82, 0.6);
-        }
+      @at-root {
+      textarea#{&}.ant-input {
+      transition-property: height;
+      transition-delay: 50ms;
+      &.textarea-large {
+      min-height: 40px;
+      height: 40px;
+      }
+      &.textarea-large:focus {
+      height: 80px;
+      }
+      &.textarea-middle {
+      min-height: 32px;
+      height: 32px;
+      }
+      &.textarea-middle:focus {
+      height: 64px;
+      }
+      &.textarea-small {
+      min-height: 24px;
+      height: 24px;
+      }
+      &.textarea-small:focus {
+      height: 40px;
+      }
+      }
+      }
+      ,@include Inter();
+      font-size: 12px;
+      line-height: 18px;
+      ,.ant-input-number-handler-wrap {
+      display: var(--ai7qkf2-0);
+      }
+      .ant-input-number-input-wrap {
+      display: inline-flex;
+      line-height: 1.5715;
+      height: 100%;
+      width: 100%;
+      }
 
-        .ant-input-number-input-wrap::before {
-          content: var(--ai7qkf2-3);
-          display: var(--ai7qkf2-4);
-          flex: none;
-          align-items: center;
-          margin-right: 4px;
-          cursor: auto;
-          color: rgba(44, 56, 82, 0.6);
-        }
+      .ant-input-number-input-wrap::after {
+      content: var(--ai7qkf2-1);
+      display: var(--ai7qkf2-2);
+      flex: none;
+      align-items: center;
+      margin-left: 4px;
+      padding: 5px 12px 5px 0;
+      color: rgba(44, 56, 82, 0.6);
+      }
 
-        .ant-input-group.ant-input-group-compact > & {
-          border-radius: 0;
-        }
+      .ant-input-number-input-wrap::before {
+      content: var(--ai7qkf2-3);
+      display: var(--ai7qkf2-4);
+      flex: none;
+      align-items: center;
+      margin-right: 4px;
+      cursor: auto;
+      color: rgba(44, 56, 82, 0.6);
+      }
 
-        &.ant-input-number {
-          width: 100%;
-          border-radius: 6px;
-        }
-        &.ant-input-number:not([disabled]) {
-          &:focus,
-          &:active,
-          &.ant-input-number-focused {
-            border-color: $blue;
-            box-shadow: $shadow-light-active;
-            z-index: $input-hover-index;
-          }
-        }
-        &.ant-input-number.error:not([disabled]) {
-          &:hover,
-          &.ant-input-number-focused {
-            border-color: $red;
-            box-shadow: $shadow-light-error;
-          }
-        }
+      .ant-input-group.ant-input-group-compact > & {
+      border-radius: 0;
+      }
 
-        .ant-input-number-input {
-          height: 30px;
-          border: 1px;
-          padding: 5px 12px;
-          font-size: inherit;
-        }
+      &.ant-input-number {
+      width: 100%;
+      border-radius: 6px;
+      }
+      &.ant-input-number:not([disabled]) {
+      &:focus,
+      &:active,
+      &.ant-input-number-focused {
+      border-color: $blue;
+      box-shadow: $shadow-light-active;
+      z-index: $input-hover-index;
+      }
+      }
+      &.ant-input-number.error:not([disabled]) {
+      &:hover,
+      &.ant-input-number-focused {
+      border-color: $red;
+      box-shadow: $shadow-light-error;
+      }
+      }
 
-        &.ant-input-number-lg input {
-          height: 38px;
-          border: 1px;
-          padding: 8px 16px;
-        }
+      .ant-input-number-input {
+      height: 30px;
+      border: 1px;
+      padding: 5px 12px;
+      font-size: inherit;
+      }
 
-        &.ant-input-number-sm input {
-          height: 22px;
-          border: 1px;
-          padding: 2px 8px;
-        }
+      &.ant-input-number-lg input {
+      height: 38px;
+      border: 1px;
+      padding: 8px 16px;
+      }
+
+      &.ant-input-number-sm input {
+      height: 22px;
+      border: 1px;
+      padding: 2px 8px;
+      }
 
               style=--ai7qkf2-0:,none;,--ai7qkf2-1:,"";,--ai7qkf2-2:,none;,--ai7qkf2-3:,"";,--ai7qkf2-4:,none;
             >
@@ -2457,13 +2491,12 @@ describe("SimplePagination h5_css", () => {
               </div>
             </div>
             <span
-              class=
-                    color: $text-secondary-light;
-                  ,
-        @include Inter();
-        @include Uppercase();
-        font-size: 13px;
-        line-height: 20px;
+              class=              color: $text-secondary-light;
+
+      ,@include Inter();
+      @include Uppercase();
+      font-size: 13px;
+      line-height: 20px;
 
             >
               / 6000

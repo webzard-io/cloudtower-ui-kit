@@ -96,28 +96,26 @@ describe("Table h5_css", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <div
-          class=
-        height: 100%;
+          class=height: 100%;
       ,table-container,no-scroll-bar
         >
           <div
-            class=ant-table-wrapper,
-        height: 100%;
+            class=ant-table-wrapper,height: 100%;
 
-        .ant-table.ant-table-small .ant-table-tbody > tr > td {
-          padding-top: 6px;
-          padding-bottom: 6px;
-        }
+      .ant-table.ant-table-small .ant-table-tbody > tr > td {
+      padding-top: 6px;
+      padding-bottom: 6px;
+      }
 
-        .active-row td:nth-child(1) {
-          font-weight: 700;
-        }
-        &.has-selection .active-row td:nth-child(2) {
-          font-weight: 700;
-        }
+      .active-row td:nth-child(1) {
+      font-weight: 700;
+      }
+      &.has-selection .active-row td:nth-child(2) {
+      font-weight: 700;
+      }
 
-        .ant-spin-nested-loading {
-          height: 100%;
+      .ant-spin-nested-loading {
+      height: 100%;
 
           .ant-spin-container {
             height: 100%;
@@ -126,46 +124,46 @@ describe("Table h5_css", () => {
           .ant-spin {
             max-height: none;
           }
-        }
 
-        td.ant-table-column-sort {
-          background: transparent;
-        }
+      }
 
-        td.ant-table-cell-fix-left,
-        td.ant-table-cell-fix-right {
-          background: #fff;
-          padding: 0 !important;
-          .ant-table-cell-content {
-            display: flex;
-            align-items: center;
-            height: 100%;
-            padding: 8px;
-            > span {
-              overflow: hidden;
-              text-overflow: ellipsis;
-              width: 100%;
-            }
-          }
-        }
+      td.ant-table-column-sort {
+      background: transparent;
+      }
 
-        .ant-table-container {
-          height: 100%;
-          &::before,
-          &::after {
-            box-shadow: none !important;
-          }
-        }
+      td.ant-table-cell-fix-left,
+      td.ant-table-cell-fix-right {
+      background: #fff;
+      padding: 0 !important;
+      .ant-table-cell-content {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 8px; > span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      }
+      }
+      }
 
-        div.ant-table {
-          $columnAlignRightPaddingRight: 25px;
-          border-radius: 0px;
-          border-left: none;
-          border-right: none;
-          border-bottom: none;
-          height: 100%;
-          font-size: 12px;
-          background: transparent;
+      .ant-table-container {
+      height: 100%;
+      &::before,
+      &::after {
+      box-shadow: none !important;
+      }
+      }
+
+      div.ant-table {
+      $columnAlignRightPaddingRight: 25px;
+      border-radius: 0px;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      height: 100%;
+      font-size: 12px;
+      background: transparent;
 
           .ant-table-header {
             position: relative;
@@ -507,7 +505,8 @@ describe("Table h5_css", () => {
               }
             }
           }
-        }
+
+      }
 
           >
             <div

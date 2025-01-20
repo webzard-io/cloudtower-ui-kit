@@ -13,11 +13,10 @@ describe("SidebarSubtitle", () => {
     }).toMatchInlineSnapshot(`
       <div>
         <span
-          class=
-        @include Inter();
-        @include Uppercase();
-        font-size: 12px;
-        line-height: 18px;
+          class=@include Inter();
+      @include Uppercase();
+      font-size: 12px;
+      line-height: 18px;
 
         >
           Sidebar
