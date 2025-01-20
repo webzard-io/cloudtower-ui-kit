@@ -25,6 +25,7 @@ export type CustomizedColumnRenderProps = {
   placeholder?: string;
   isHeader: boolean;
   error?: boolean;
+  formValue: any;
 };
 
 export type TableFormColumn = {

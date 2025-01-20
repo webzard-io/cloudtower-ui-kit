@@ -14,7 +14,7 @@ jobs:
     runs-on: [self-hosted, linux]
     strategy:
       matrix:
-        node: [16]
+        node: [20]
     name: Publish on Node ${{ matrix.node }}
     steps:
       - name: checkout

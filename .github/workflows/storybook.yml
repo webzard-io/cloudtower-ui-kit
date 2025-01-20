@@ -10,7 +10,7 @@ jobs:
     runs-on: [self-hosted, linux]
     strategy:
       matrix:
-        node: [16]
+        node: [20]
     steps:
       - name: check out
         uses: actions/checkout@v4
