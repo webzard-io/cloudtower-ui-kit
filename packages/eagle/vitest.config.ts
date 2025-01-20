@@ -13,17 +13,13 @@ const styleMapFileName = path.join(__dirname, "linaria-temp-map.json");
 export default defineConfig({
   plugins: [
     linaria({
-      preprocessor: (selector, cssText) => {
+      preprocessor: async (selector, cssText) => {
         let value = "{}";
         try {
           value = fs.readFileSync(styleMapFileName).toString();
         } catch (error) {}
         try {
           readline.cursorTo(process.stdout, 0);
-          process.stdout.write(
-            `[custom preprocessor]: writing css...${selector}`,
-          );
-
           fs.writeFileSync(
             styleMapFileName,
             JSON.stringify({
