@@ -39,7 +39,7 @@
     "bundlewatch": "^0.3.3"
   },
   "engines": {
-    "node": "^20"
+    "node": ">=20"
   },
   "resolutions": {
     "@types/react": "^17.0.50"
