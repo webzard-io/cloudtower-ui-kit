@@ -13,6 +13,12 @@ next 分支 storybook [next storybook]
 
 v3.x 分支 storybook [v3.x storybook]
 
+## 发版
+
+进入到 [Create Release PR](https://github.com/webzard-io/cloudtower-ui-kit/actions/workflows/create-publish-pr.yml) 的 workflow 界面
+
+详见 RELEASE.md
+
 ## 使用
 
 ```tsx
