@@ -8,7 +8,7 @@
 
 ![Create Relase Pr](statics/image.png)
 
-3. workflow 会自动创建 PR, PR 确认版本正确后，可自行合入
+3. workflow 会自动创建 PR, PR 确认版本正确后，可自行合入。PR 产生大概需要一分钟。
 
 ![PR](statics/image-1.png)
 
