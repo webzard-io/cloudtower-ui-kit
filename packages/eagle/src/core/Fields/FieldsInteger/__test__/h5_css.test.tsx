@@ -248,16 +248,20 @@ describe("FieldsInteger h5_css", () => {
           &:focus,
           &:active,
           &.ant-input-number-focused {
-            border-color: $blue;
-            box-shadow: $shadow-light-active;
-            z-index: $input-hover-index;
+            &.ant-input-number {
+              border-color: $blue;
+              box-shadow: $shadow-light-active;
+              z-index: $input-hover-index;
+            }
           }
-        }
-        &.ant-input-number.error:not([disabled]) {
-          &:hover,
-          &.ant-input-number-focused {
-            border-color: $red;
-            box-shadow: $shadow-light-error;
+          &.error {
+            &:hover,
+            &.ant-input-number-focused {
+              &.ant-input-number {
+                border-color: $red;
+                box-shadow: $shadow-light-error;
+              }
+            }
           }
         }
 
@@ -605,16 +609,20 @@ describe("FieldsInteger h5_css", () => {
           &:focus,
           &:active,
           &.ant-input-number-focused {
-            border-color: $blue;
-            box-shadow: $shadow-light-active;
-            z-index: $input-hover-index;
+            &.ant-input-number {
+              border-color: $blue;
+              box-shadow: $shadow-light-active;
+              z-index: $input-hover-index;
+            }
           }
-        }
-        &.ant-input-number.error:not([disabled]) {
-          &:hover,
-          &.ant-input-number-focused {
-            border-color: $red;
-            box-shadow: $shadow-light-error;
+          &.error {
+            &:hover,
+            &.ant-input-number-focused {
+              &.ant-input-number {
+                border-color: $red;
+                box-shadow: $shadow-light-error;
+              }
+            }
           }
         }
 
@@ -961,16 +969,20 @@ describe("FieldsInteger h5_css", () => {
           &:focus,
           &:active,
           &.ant-input-number-focused {
-            border-color: $blue;
-            box-shadow: $shadow-light-active;
-            z-index: $input-hover-index;
+            &.ant-input-number {
+              border-color: $blue;
+              box-shadow: $shadow-light-active;
+              z-index: $input-hover-index;
+            }
           }
-        }
-        &.ant-input-number.error:not([disabled]) {
-          &:hover,
-          &.ant-input-number-focused {
-            border-color: $red;
-            box-shadow: $shadow-light-error;
+          &.error {
+            &:hover,
+            &.ant-input-number-focused {
+              &.ant-input-number {
+                border-color: $red;
+                box-shadow: $shadow-light-error;
+              }
+            }
           }
         }
 
@@ -1318,16 +1330,20 @@ describe("FieldsInteger h5_css", () => {
           &:focus,
           &:active,
           &.ant-input-number-focused {
-            border-color: $blue;
-            box-shadow: $shadow-light-active;
-            z-index: $input-hover-index;
+            &.ant-input-number {
+              border-color: $blue;
+              box-shadow: $shadow-light-active;
+              z-index: $input-hover-index;
+            }
           }
-        }
-        &.ant-input-number.error:not([disabled]) {
-          &:hover,
-          &.ant-input-number-focused {
-            border-color: $red;
-            box-shadow: $shadow-light-error;
+          &.error {
+            &:hover,
+            &.ant-input-number-focused {
+              &.ant-input-number {
+                border-color: $red;
+                box-shadow: $shadow-light-error;
+              }
+            }
           }
         }
 
@@ -1674,16 +1690,20 @@ describe("FieldsInteger h5_css", () => {
           &:focus,
           &:active,
           &.ant-input-number-focused {
-            border-color: $blue;
-            box-shadow: $shadow-light-active;
-            z-index: $input-hover-index;
+            &.ant-input-number {
+              border-color: $blue;
+              box-shadow: $shadow-light-active;
+              z-index: $input-hover-index;
+            }
           }
-        }
-        &.ant-input-number.error:not([disabled]) {
-          &:hover,
-          &.ant-input-number-focused {
-            border-color: $red;
-            box-shadow: $shadow-light-error;
+          &.error {
+            &:hover,
+            &.ant-input-number-focused {
+              &.ant-input-number {
+                border-color: $red;
+                box-shadow: $shadow-light-error;
+              }
+            }
           }
         }
 
