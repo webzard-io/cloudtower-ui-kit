@@ -15,10 +15,11 @@ jobs:
     runs-on: [self-hosted, linux]
     name: Check PR Label
     steps:
-      - uses: docker://agilepathway/pull-request-label-checker:latest
+      - uses: jesusvasquez333/verify-pr-label-action@v1.4.0
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          any_of: "feat,fix,chore,breaking change,refactor,enhancement,doc,storybook"
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          valid-labels: "feat, fix, chore, breaking change, refactor, enhancement, doc, storybook"
+          pull-request-number: "${{ github.event.pull_request.number }}"
 
   test:
     runs-on: [self-hosted, linux]
