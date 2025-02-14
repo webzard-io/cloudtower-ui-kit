@@ -188,8 +188,10 @@ export const SelectSizeStyle = css`
       }
     }
 
-    .ant-select-selection-item {
-      padding-right: 24px;
+    &.ant-select-single.ant-select-show-arrow {
+      .ant-select-selection-item {
+        padding-right: 24px;
+      }
     }
   }
 `;
