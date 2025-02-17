@@ -21,8 +21,6 @@ const MessageWrapperStyle = css`
 `;
 
 const AlertStyle = css`
-  width: 100%;
-
   &.ant-alert-closable {
     padding-right: 12px;
 
@@ -33,7 +31,7 @@ const AlertStyle = css`
   }
 
   .ant-alert-message {
-    width: 100%;
+    flex: 1;
   }
 `;
 
