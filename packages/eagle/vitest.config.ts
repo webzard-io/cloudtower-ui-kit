@@ -45,6 +45,9 @@ export default defineConfig({
     coverage: {
       reporter: ["text", "json", "html"],
     },
+    snapshotFormat: {
+      escapeString: false,
+    },
     include: ["**/**.test.ts?(x)"],
     setupFiles: [path.resolve(__dirname, "__test__/setup.ts")],
   },
