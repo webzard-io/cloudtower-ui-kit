@@ -26,6 +26,7 @@ Object.defineProperty(document, "hidden", {
 });
 
 vi.mock("../../message", async () => {
+  const DEFAULT_DURATION = 3;
   const info = (content: unknown) => {
     infoCount++;
   };
@@ -50,6 +51,7 @@ vi.mock("../../message", async () => {
   const config = () => {};
 
   return {
+    DEFAULT_DURATION,
     default: {
       info,
       success,
