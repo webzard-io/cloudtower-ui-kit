@@ -5,7 +5,7 @@ import {
   Checkbox as AntdCheckbox,
   Col,
   Collapse as AntdCollapse,
-  DatePicker,
+  DatePicker as AntdDatePicker,
   Divider,
   Drawer as AntdDrawer,
   Dropdown,
@@ -49,6 +49,7 @@ import BytePerSecond from "./core/BytePerSecond";
 import Calendar from "./core/Calendar";
 import Card from "./core/Card";
 import Checkbox from "./core/Checkbox";
+import DatePicker from "./core/DatePicker";
 import DeprecatedProgress from "./core/DeprecatedProgress";
 import DetailCard from "./core/DetailCard";
 import DonutChart from "./core/DonutChart";
@@ -176,7 +177,7 @@ export function getAntdKit(): Kit {
     checkboxGroup: AntdCheckbox.Group,
     typographyText: Typography.Text,
     upload: Upload,
-    datePickerRangePicker: DatePicker.RangePicker,
+    datePickerRangePicker: AntdDatePicker.RangePicker,
     tableForm: TableForm,
     token: Token,
     statusCapsule: StatusCapsule,

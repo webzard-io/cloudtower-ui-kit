@@ -132,6 +132,7 @@ export { default as BytePerSecond } from "./BytePerSecond";
 export { default as Calendar } from "./Calendar";
 export { default as Card } from "./Card";
 export { default as Checkbox } from "./Checkbox";
+export { default as DatePicker } from "./DatePicker";
 export { default as DeprecatedProgress } from "./DeprecatedProgress";
 export { default as DetailCard } from "./DetailCard";
 export { default as DonutChart } from "./DonutChart";

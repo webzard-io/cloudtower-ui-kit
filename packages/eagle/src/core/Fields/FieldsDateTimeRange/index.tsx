@@ -1,4 +1,4 @@
-import { DatePicker } from "antd";
+import { DatePicker as AntdDatePicker } from "antd";
 import { DatePickerProps } from "antd/lib/date-picker";
 import moment from "moment";
 import React from "react";
@@ -10,7 +10,7 @@ const FieldsDateTimeRange: React.FC<FieldBaseProps & DatePickerProps> = ({
   ...props
 }) => (
   <div className="datatime-range">
-    <DatePicker.RangePicker
+    <AntdDatePicker.RangePicker
       onFocus={() => input.onFocus?.()}
       onBlur={() => input.onBlur?.()}
       showTime

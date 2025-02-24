@@ -20,7 +20,7 @@ import {
   toMonthlyString,
   toWeeklyString,
 } from "@src/utils";
-import { DatePicker } from "antd";
+import { DatePicker as AntdDatePicker } from "antd";
 import dayjs from "dayjs";
 import { i18n as Ii18n } from "i18next";
 import _ from "lodash";
@@ -660,7 +660,7 @@ const CronPlan: React.FC<CronPlanProps> = (props) => {
               {t("components.start_date")}
             </label>
             <div className="field">
-              <DatePicker
+              <AntdDatePicker
                 format="YYYY/M/DD"
                 value={moment(value.startAt.toISOString())}
                 onChange={(value) => {
