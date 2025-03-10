@@ -125,7 +125,6 @@
         font-size: 14px;
         font-weight: bold;
         padding: 0 16px;
-        border: none;
 
         &.footer-cancel-button,
         &.ant-btn-ghost {
@@ -135,6 +134,12 @@
           &:hover {
             background: rgba(223, 228, 235, 0.6);
           }
+        }
+      }
+
+      &.no-button-border {
+        button {
+          border: none;
         }
       }
 
