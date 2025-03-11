@@ -34,6 +34,7 @@ const Modal: React.FC<ModalProps> = (props) => {
     showOk = true,
     afterClose,
     closeIcon,
+    hideFooterButtonBorder = true,
     ...restProps
   } = props;
 
@@ -115,7 +116,12 @@ const Modal: React.FC<ModalProps> = (props) => {
       }}
       visible={idRef.current !== id}
       footer={
-        <div className="footer-content">
+        <div
+          className={cs(
+            "footer-content",
+            hideFooterButtonBorder && "no-button-border",
+          )}
+        >
           {footer === undefined ? (
             <>
               <div className="modal-footer-left">
