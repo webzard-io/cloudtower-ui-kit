@@ -8,6 +8,7 @@ export * from "./CronCalendar";
 export * from "./CronPlan";
 export * from "./DateRangePicker";
 export * from "./DeprecatedDonutChart";
+export * from "./Dialogs";
 export * from "./DropdownTransition";
 export * from "./GoBackButton";
 export * from "./I18nNameTag";
