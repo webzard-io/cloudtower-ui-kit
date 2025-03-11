@@ -33,6 +33,7 @@ export * from "./Checkbox";
 export * from "./ConfigProvider";
 export * from "./DeprecatedProgress";
 export * from "./DetailCard";
+export * from "./Dialogs";
 export * from "./DonutChart";
 export * from "./DropdownMenu";
 export * from "./Empty";
