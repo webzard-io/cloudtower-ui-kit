@@ -41,6 +41,7 @@ const TimeRange: React.FC<{
   onRelativeTimeChange?: (time: PastTime) => void;
   onAbsoluteTimeOk?: (range: PickerDateRange) => void;
   onAbsoluteTimeChange?: (range: PickerDateRange) => void;
+  relativeTimeOptionConfig?: PastTime[]
 }> = (props) => {
   const {
     visible,
@@ -54,6 +55,7 @@ const TimeRange: React.FC<{
     onRelativeTimeChange,
     onAbsoluteTimeOk,
     onAbsoluteTimeChange,
+    relativeTimeOptionConfig
   } = props;
   const { t } = useParrotTranslation();
   const absoluteDateRef = useRef<{ reset?: () => void } | null>(null);
@@ -70,6 +72,7 @@ const TimeRange: React.FC<{
         <RelativeTime
           value={relativeTime}
           onChange={(time) => onRelativeTimeChange?.(time)}
+          config={relativeTimeOptionConfig}
         />
       </div>
     );
@@ -96,6 +99,7 @@ const TimeRange: React.FC<{
             <RelativeTime
               value={relativeTime}
               onChange={(time) => onRelativeTimeChange?.(time)}
+              config={relativeTimeOptionConfig}
             />
           </div>
         ),
@@ -178,6 +182,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
     minDate,
     maxDate,
     onChange,
+    relativeTimeOptionConfig
   } = props;
   const { t } = useParrotTranslation();
 
@@ -320,6 +325,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
             onAbsoluteTimeOk={(range) => {
               handleChange("absolute", range);
             }}
+            relativeTimeOptionConfig={relativeTimeOptionConfig}
           />
         }
         placement="bottomLeft"
