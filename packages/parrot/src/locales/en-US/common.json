@@ -45,5 +45,13 @@
   "saturday": "Saturday",
   "sunday": "Sunday",
   "month": "Month",
-  "year": "Year"
+  "year": "Year",
+  "day_count": "{count} day",
+  "day_count_plural": "{count} days",
+  "hour_count": "{count} hour",
+  "hour_count_plural": "{count} hours",
+  "minute_count": "{count} minute",
+  "minute_count_plural": "{count} minutes",
+  "month_count": "{count} month",
+  "month_count_plural": "{count} months"
 }

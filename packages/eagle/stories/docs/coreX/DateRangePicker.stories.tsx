@@ -57,3 +57,33 @@ export const WithRange: Story = {
     maxDate: dayjs("2023-12-01"),
   },
 };
+
+export const WithRelative: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "自定义相对时间选项",
+      },
+    },
+  },
+  args: {
+    mode: ["relative", "absolute"],
+    value: [dayjs("2023-06-01"), dayjs("2023-12-01")],
+    minDate: dayjs("2023-06-01"),
+    maxDate: dayjs("2023-12-01"),
+    relativeTimeSelectOptions: [
+      {
+        unit: "h",
+        value: 1,
+      },
+      {
+        unit: "h",
+        value: 2,
+      },
+      {
+        unit: "M",
+        value: 6,
+      },
+    ],
+  },
+};

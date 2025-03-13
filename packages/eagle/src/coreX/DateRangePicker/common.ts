@@ -171,13 +171,15 @@ export function time2string(time: number): string {
 }
 
 export function getDateText(date: PastTime, t: TFunction) {
-  const unit = {
-    d: t("common.day"),
-    h: t("common.hour"),
-    m: t("common.minute"),
+  const count = date.value;
+  const dateString = {
+    d: t("common.day_count", { count}),
+    h: t("common.hour_count", { count}),
+    m: t("common.minute_count", { count}),
+    M: t("common.month_count", { count}),
   }[date.unit];
 
-  return `${t("components.past")} ${date.value} ${unit}`;
+  return `${t("components.past")} ${dateString}`;
 }
 
 export function checkDateNotInRange(

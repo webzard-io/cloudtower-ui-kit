@@ -31,16 +31,32 @@ import {
 
 const TimeRange: React.FC<{
   visible?: boolean;
+  /**
+   *Selected relative or absolute time type
+   */
   type: string;
+  /**
+   * The absolute time range selected by the user
+   */
   range?: PickerDateRange;
+  /**
+   * Relative time selected by the user
+   */
   relativeTime?: PastTime;
   mode: NonNullable<DateRangePickerProps["mode"]>;
   minDate?: string | Dayjs | undefined;
   maxDate?: string | Dayjs | undefined;
   onTypeChange: (type: string) => void;
   onRelativeTimeChange?: (time: PastTime) => void;
+  /**
+   * Finish the selection time click OK
+   */
   onAbsoluteTimeOk?: (range: PickerDateRange) => void;
   onAbsoluteTimeChange?: (range: PickerDateRange) => void;
+ /**
+   * Customize an array of relative time select options
+   */
+  relativeTimeSelectOptions?: PastTime[];
 }> = (props) => {
   const {
     visible,
@@ -54,6 +70,7 @@ const TimeRange: React.FC<{
     onRelativeTimeChange,
     onAbsoluteTimeOk,
     onAbsoluteTimeChange,
+    relativeTimeSelectOptions
   } = props;
   const { t } = useParrotTranslation();
   const absoluteDateRef = useRef<{ reset?: () => void } | null>(null);
@@ -70,6 +87,7 @@ const TimeRange: React.FC<{
         <RelativeTime
           value={relativeTime}
           onChange={(time) => onRelativeTimeChange?.(time)}
+          config={relativeTimeSelectOptions}
         />
       </div>
     );
@@ -96,6 +114,7 @@ const TimeRange: React.FC<{
             <RelativeTime
               value={relativeTime}
               onChange={(time) => onRelativeTimeChange?.(time)}
+              config={relativeTimeSelectOptions}
             />
           </div>
         ),
@@ -178,6 +197,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
     minDate,
     maxDate,
     onChange,
+    relativeTimeSelectOptions
   } = props;
   const { t } = useParrotTranslation();
 
@@ -320,6 +340,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
             onAbsoluteTimeOk={(range) => {
               handleChange("absolute", range);
             }}
+            relativeTimeSelectOptions={relativeTimeSelectOptions}
           />
         }
         placement="bottomLeft"
