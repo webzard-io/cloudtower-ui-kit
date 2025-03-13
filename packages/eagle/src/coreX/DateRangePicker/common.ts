@@ -175,6 +175,7 @@ export function getDateText(date: PastTime, t: TFunction) {
     d: t("common.day"),
     h: t("common.hour"),
     m: t("common.minute"),
+    M: t("common.month"),
   }[date.unit];
 
   return `${t("components.past")} ${date.value} ${unit}`;

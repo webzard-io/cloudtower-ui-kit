@@ -72,10 +72,11 @@ export type DateRangePickerProps = {
     time: DateRangePickerValue,
     range: PickerDateRange,
   ) => void;
+  relativeTimeOptionConfig?: PastTime[];
 };
 
 export type PastTime = {
-  unit: "h" | "m" | "d";
+  unit: "h" | "m" | "d" | "M";
   value: number;
   disabled?: boolean;
 };
