@@ -53,6 +53,14 @@ const SearchInput: SearchInputComponentType = (props) => {
     total = 0,
     onSearchNext,
     onSearchPrev,
+    prefixHoverIcon,
+    nextHoverIcon,
+    clearHoverIcon,
+    prefixIcon,
+    nextIcon,
+    clearIcon,
+    width,
+    searchIcon,
     ...restProps
   } = props;
   const [current, setCurrent] = useState(0);
@@ -78,7 +86,13 @@ const SearchInput: SearchInputComponentType = (props) => {
     onSearchNext && onSearchPrev && value ? (
       <>
         {typeof total === "number" ? (
-          <span className={cx(Typo.Label.l4_regular, CountTextStyle)}>
+          <span
+            className={cx(
+              Typo.Label.l4_regular,
+              "counter-text",
+              CountTextStyle,
+            )}
+          >
             {current}/{total}
           </span>
         ) : null}
@@ -92,8 +106,8 @@ const SearchInput: SearchInputComponentType = (props) => {
           ) : (
             <Tooltip title={t("components.prev")}>
               <Icon
-                src={ArrowChevronUp16SecondaryIcon}
-                hoverSrc={ArrowChevronUp16BlueIcon}
+                src={prefixIcon ?? ArrowChevronUp16SecondaryIcon}
+                hoverSrc={prefixHoverIcon ?? ArrowChevronUp16BlueIcon}
                 onClick={prev}
               />
             </Tooltip>
@@ -107,16 +121,16 @@ const SearchInput: SearchInputComponentType = (props) => {
           ) : (
             <Tooltip title={t("components.next")}>
               <Icon
-                src={ArrowChevronDown16SecondaryIcon}
-                hoverSrc={ArrowChevronDown16BlueIcon}
+                src={nextIcon ?? ArrowChevronDown16SecondaryIcon}
+                hoverSrc={nextHoverIcon ?? ArrowChevronDown16BlueIcon}
                 onClick={next}
               />
             </Tooltip>
           )}
           <Tooltip title={t("components.clear")}>
             <Icon
-              src={XmarkCloseCircleFill16TertiaryIcon}
-              hoverSrc={XmarkCloseCircleFill16SecondaryIcon}
+              src={clearIcon ?? XmarkCloseCircleFill16TertiaryIcon}
+              hoverSrc={clearHoverIcon ?? XmarkCloseCircleFill16SecondaryIcon}
               onClick={() => {
                 onSearch("");
                 setValue("");
@@ -136,8 +150,8 @@ const SearchInput: SearchInputComponentType = (props) => {
 
   return (
     <Input
-      style={{ width: 276 }}
-      prefix={<SearchOutlined />}
+      style={{ width: width ?? 276 }}
+      prefix={searchIcon ? <Icon src={searchIcon} /> : <SearchOutlined />}
       suffix={suffix}
       onChange={(e) => {
         const newValue = e.target.value;
