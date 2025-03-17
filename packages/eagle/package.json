@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/eagle",
-  "version": "0.32.28",
+  "version": "0.32.28-dialog-0",
   "main": "dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "dist/src/index.d.ts",
