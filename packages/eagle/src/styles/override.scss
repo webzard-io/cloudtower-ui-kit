@@ -833,6 +833,33 @@ td .ant-btn-link {
   }
 }
 
+.ant-message {
+  > div > .ant-message-notice {
+    padding: 4px;
+    &:first-child {
+      margin-top: -4px;
+    }
+
+    &.move-up-leave.move-up-leave-active {
+      animation-name: MessageMoveOut;
+      animation-duration: 0.3s;
+    }
+  }
+
+  @keyframes MessageMoveOut {
+    0% {
+      max-height: 150px;
+      padding: 4px;
+      opacity: 1;
+    }
+    100% {
+      max-height: 0;
+      padding: 0;
+      opacity: 0;
+    }
+  }
+}
+
 // FIXME: remove later should be in tower/ui only
 @media screen and (min-width: 1280px) {
   .cluster-topo-wrapper .panel-content > .rack-topo-wrapper,

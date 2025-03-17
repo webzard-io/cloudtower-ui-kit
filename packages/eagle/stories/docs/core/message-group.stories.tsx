@@ -1,5 +1,5 @@
 import { parrotI18n } from "@cloudtower/parrot";
-import { Switch } from "@src/core";
+import { InputNumber, Switch } from "@src/core";
 import UIKitProvider, { useMessage } from "@src/UIKitProvider";
 import { CoreMeta } from "@stories/types";
 import { StoryObj } from "@storybook/react";
@@ -117,15 +117,32 @@ export const MaxCount: Story = {
 
 const CustomTopPositionStory = (args: any) => {
   const [enable, setEnable] = useState(false);
+  const [duration, setDuration] = useState(3);
+
   return (
     <>
       <Space direction="vertical" size={16}>
-        <Switch checked={enable} onChange={setEnable}>
-          开启自定义高度（58px）
-        </Switch>
+        <Space size={8}>
+          <Switch checked={enable} onChange={setEnable}>
+            开启自定义高度（58px）
+          </Switch>
+          <div>
+            <span style={{ marginRight: 8 }}>消息停留时间</span>
+            <InputNumber
+              value={duration}
+              onChange={(val) => setDuration(Number(val))}
+            />
+            <span>秒</span>
+          </div>
+        </Space>
+
         <UIKitProvider
           {...args}
-          message={{ ...args.message, top: enable ? 58 : 8 }}
+          message={{
+            ...args.message,
+            top: enable ? 58 : 8,
+            duration,
+          }}
         >
           <BasicInfoButton />
         </UIKitProvider>
