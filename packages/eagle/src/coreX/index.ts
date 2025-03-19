@@ -20,6 +20,7 @@ export * from "./SwitchWithText";
 export * from "./TabMenu";
 export * from "./UnitWithChart";
 export * from "./CircleLoading";
+export * from "./Show";
 
 // rename default export
 export { default as BarChart } from "./BarChart";

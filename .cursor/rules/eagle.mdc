@@ -1,0 +1,104 @@
+---
+description: 开发新组件
+globs: *.tsx, *.ts
+alwaysApply: false
+---
+你正在开发一个名为Eagle的UI业务组件库。你要基于 Antd 开发业务组件。你应该按照以下原则开发组件：
+
+# 通用
+- 如果是开发一个新组件，你应该用 antd5。如果是修改旧组件，你应该用 antd4，以保证兼容性。
+- 首先你要仔细分析设计稿，识别出组件由哪些部分组成。设计稿中或许会包含组件的不同变体，你也应该识别出来。然后把组件的组成部分，转换成代码，同时考虑到不同的变体，添加对应的业务逻辑。
+- 实现组件的时候，你需要优先考虑组件的正确实现，其次考虑可读性、可扩展性。
+- 文件中引入模块时，应该按照 eslint-plugin-simple-import-sort 的规则按顺序引入模块。
+- 每个 tsx 文件中，都应该 import React from 'react';
+- export 组件或者变量时，应该总是使用命名导出(export const)，而不是默认导出语法(export default)。
+
+# 样式
+- 要为组件添加样式。样式应该以 @linaria/core 的 css 来添加，不要用 styled。所有的linaria 样式变量名格式应该以Style结尾，例如 ContentStyle。
+- 如果样式中涉及到颜色，应该使用 [color.scss](mdc:packages/eagle/src/styles/token/color.scss) 中定义好的颜色变量。这些变量可以直接作为 SCSS 变量使用，不需要套用js的模板字符串，也不需要套用CSS的 var变量。
+- 你绝对不应该使用没有定义过的变量。
+- 如果样式中涉及字号、粗细，应该使用 [index.ts](mdc:packages/eagle/src/core/Typo/index.ts) 中预先定义好的样式。注意，这些样式都是linaria形式。使用时应该用linaria的cx来和其他样式变量合并。
+
+# 类型定义
+- 组件中的类型定义需要单独放在同级的 xxx.type.ts 文件内，比如 Dialog.type.ts。
+- 包括但不限于组件的Props定义、数据结构定义等等。其中组件的Props定义的名称，应该以组件名+Props的格式，如DialogProps。
+- 所有的类型定义都应该添加符合jsDoc格式注释，来说明字段的用途，包括但不限于，字段的名称、作用、默认值等等。如果可能的话，还应该给出示例。
+- 类型定义中不应该出现写死的字符串，如果需要，应该使用枚举。
+
+# 业务逻辑
+- 如果组件中需要打开弹窗和关闭弹窗。应该使用usePushModal和usePopModal。从这里引入 import { usePushModal } from "@src/core/KitStoreProvider";
+- 如果组件用包含固定的文案，则必须要使用i18n。需要用 useParrotTranslation 来获取i18n实例。新增的词条需要添加到json文件中，分别是 [common.json](mdc:packages/parrot/src/locales/zh-CN/common.json) [common.json](mdc:packages/parrot/src/locales/en-US/common.json) [components.json](mdc:packages/parrot/src/locales/zh-CN/components.json) [components.json](mdc:packages/parrot/src/locales/en-US/components.json)
+- 引入 useParrotTranslation 的方式是 import useParrotTranslation from "@src/hooks/useParrotTranslation";
+- 只有组件内置的文案才需要添加到词条中，如果只是在story用例中使用的文案，不需要添加到词条中，可以直接写在代码里。
+
+
+# 文档和storybook
+- 每次新创建一个组件，或者修改一个组件，你都应该检查组件对应的story是否需要更新，特别是当修改了组件的 Props 以后。
+- 组件的story一般存放在 packages/eagle/stories/docs/core 或者 coreX 目录下面。
+- 组件的story文件中应该包含组件的功能介绍、参数的介绍，以及使用范例。
+- 当你写组件story时，要先简单介绍组件用途。然后介绍组件在各个场景的用例，每个场景应该也需要有中文的名称和描述。
+下面是一个组件的story范例。你也可以参考 [Select.stories.tsx](mdc:packages/eagle/stories/docs/core/Select.stories.tsx) [cascader.stories.tsx](mdc:packages/eagle/stories/docs/cascader/cascader.stories.tsx)
+```
+
+/**
+ * * Tooltip content 组件
+ * * 搭配 Tooltip 与 OverflowTooltip 使用
+ * * 使用时，Tooltip 与 OverflowTooltip 需要配合 destroyTooltipOnHide 为 true 使用
+ * * 自定义 props 已在表格进行说明
+ */
+const meta = {
+  component: EllipsisTooltipContent,
+  title: "Core/EllipsisTooltipContent | Tooltip content 过长省略",
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/B5fC0NEOB0J6wbFW3FEdZe/Tooltip-%7C-%E6%82%AC%E6%B5%AE%E6%8F%90%E7%A4%BA?node-id=1571-12807&node-type=FRAME&t=FhxTWglmH56ZODVz-0",
+    },
+  },
+} satisfies CoreMeta<typeof EllipsisTooltipContent>;
+
+export default meta;
+
+type Story = StoryObj<typeof EllipsisTooltipContent>;
+
+/*
+ * 超长 Tooltips Content 省略
+ */
+export const ellipsisTooltipsContentInTooltip: Story = {
+  name: "Tooltip Content 过长省略 in Tooltip",
+  args: {
+    tooltip: String().padStart(999, "空白"),
+    contentWrapperClassName: DefaultFontSize,
+    maxHeight: 360,
+    ellipsisTips: "超过 20 行，后续省略……",
+  },
+  render: (args) => {
+    return (
+      <Tooltip
+        destroyTooltipOnHide={true}
+        title={<Tooltip.EllipsisContent {...args} />}
+      >
+        <button style={{ margin: "100px" }}>Hover Here</button>
+      </Tooltip>
+    );
+  },
+};
+```
+
+- 要尽可能多的展示组件的场景用例，至少要包括一个最基本的用法，和若干自定义程度高的用法。你需要根据组件的参数和实现，猜测组件可能会使用的场景。不同的场景可能对应不同的变体，对应不同的参数传入方式。
+- 对于每一个组件场景，你需要自己来编造一些文案，这些文案必须合情合理。你可能需要故意编几个特别长的文案，来保证极端场景下的样式仍然正常。
+- 写Story的时候，每个export的函数都是一个Story。你需要保证每个story 函数中的代码，都在这个story函数中，这样才便于阅读。
+
+
+
+# 设计稿
+当你收到一个设计稿图片的时候，你应该按照下面的步骤分析这个设计稿。
+- 首先仔细阅读设计稿中的每一个文案，注意设计稿元素中的颜色、边框、字号等等
+- 然后分析这个设计稿中的组件一共有多少场景和变体。
+- 然后总结抽象出一个最简单的变体，作为这个组件的基础，并且写好组件的类型定义。
+- 实现这个最简单的变体，同时给其他变体预留扩展的空间。
+- 根据其他的变体，改进这个组件。如有必要也可以在这个组件的基础上，把变体封装成一个新组件。
+- 给组件添加上样式。
+
+
+
