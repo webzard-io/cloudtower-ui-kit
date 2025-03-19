@@ -31,5 +31,13 @@
       }
     ]
   },
-  "ignorePatterns": ["node_modules", "**/*.md", "generated"]
+  "ignorePatterns": ["node_modules", "**/*.md", "generated"],
+  "overrides": [
+    {
+      "files": ["**/stories/**/*"],
+      "rules": {
+        "react-hooks/rules-of-hooks": "off"
+      }
+    }
+  ]
 }
