@@ -7,7 +7,7 @@ import React from "react";
 import { UnitStyle } from "../Styled";
 import { UnitFn } from "../Units/units.type";
 
-const BitPerSeconds: UnitFn = ({
+const BitPerSecond: UnitFn = ({
   rawValue,
   decimals,
   valueClassName,
@@ -26,4 +26,4 @@ const BitPerSeconds: UnitFn = ({
   );
 };
 
-export default BitPerSeconds;
+export default BitPerSecond;

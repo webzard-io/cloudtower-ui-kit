@@ -1,6 +1,7 @@
 export * from "./BarChart";
 export * from "./BatchOperation";
 export * from "./ChartWithTooltip";
+export * from "./CircleLoading";
 export * from "./common";
 export * from "./Counting";
 export * from "./CronCalendar";
@@ -10,8 +11,10 @@ export * from "./DeprecatedDonutChart";
 export * from "./DropdownTransition";
 export * from "./GoBackButton";
 export * from "./I18nNameTag";
+export * from "./InfoRowList";
 export * from "./NamesTooltip";
 export * from "./OverflowTooltip";
+export * from "./Show";
 export * from "./SidebarSubtitle";
 export * from "./Sider";
 export * from "./SortableList";
@@ -19,13 +22,12 @@ export * from "./SummaryTable";
 export * from "./SwitchWithText";
 export * from "./TabMenu";
 export * from "./UnitWithChart";
-export * from "./CircleLoading";
-export * from "./Show";
 
 // rename default export
 export { default as BarChart } from "./BarChart";
 export { default as BatchOperation } from "./BatchOperation";
 export { default as ChartWithTooltip } from "./ChartWithTooltip";
+export { default as CircleLoading } from "./CircleLoading";
 export { default as Counting } from "./Counting";
 export { default as CronCalendar } from "./CronCalendar";
 export { default as CronPlan } from "./CronPlan";
@@ -43,4 +45,3 @@ export { default as SummaryTable } from "./SummaryTable";
 export { default as SwitchWithText } from "./SwitchWithText";
 export { default as TabMenu } from "./TabMenu";
 export { default as UnitWithChart } from "./UnitWithChart";
-export { default as CircleLoading } from "./CircleLoading";
