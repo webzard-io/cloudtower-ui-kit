@@ -1,8 +1,7 @@
+import { Button } from "@src/core";
+import { InfoRowList } from "@src/coreX";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-
-import InfoRowList from "../../../src/coreX/InfoRowList/InfoRowList";
-import { Button } from "@src/core";
 
 /**
  * InfoRowList 组件用于展示一组键值对信息，支持自定义操作按钮和加载状态。
