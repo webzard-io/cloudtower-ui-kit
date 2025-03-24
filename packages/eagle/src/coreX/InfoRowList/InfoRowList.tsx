@@ -49,7 +49,7 @@ const NullText = styled.div`
   color: $text-light-tertiary;
 `;
 
-const InfoList = React.forwardRef<HTMLDivElement, InfoListProps>(
+export const InfoRowList = React.forwardRef<HTMLDivElement, InfoListProps>(
   function InfoList(props, ref) {
     const { loading, data, className, rowClassName, compact } = props;
 
@@ -88,5 +88,3 @@ const InfoList = React.forwardRef<HTMLDivElement, InfoListProps>(
     );
   },
 );
-
-export default InfoList;
