@@ -1,8 +1,7 @@
-import { AlertProps } from "antd/lib/alert";
+import { AlertProps as AntdAlertProps } from "antd/lib/alert";
 
-export type AlertComponentType = React.FunctionComponent<
-  Omit<AlertProps, "type"> & {
-    type?: AlertProps["type"] | "normal";
-    action?: React.ReactNode;
-  }
->;
+export type AlertProps = Omit<AntdAlertProps, "type"> & {
+  type?: AntdAlertProps["type"] | "normal";
+  action?: React.ReactNode;
+};
+export type AlertComponentType = React.FunctionComponent<AlertProps>;

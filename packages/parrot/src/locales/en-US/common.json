@@ -53,5 +53,6 @@
   "minute_count": "{count} minute",
   "minute_count_plural": "{count} minutes",
   "month_count": "{count} month",
-  "month_count_plural": "{count} months"
+  "month_count_plural": "{count} months",
+  "show_unpassed": "Show Failed only"
 }

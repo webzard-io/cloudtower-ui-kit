@@ -49,5 +49,6 @@
   "day_count": "{count} 天",
   "hour_count": "{count} 小时",
   "minute_count": "{count} 分钟",
-  "month_count": "{count} 个月"
+  "month_count": "{count} 个月",
+  "show_unpassed": "只看未满足"
 }
