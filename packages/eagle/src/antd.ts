@@ -6,7 +6,7 @@ import {
   Select,
   Skeleton,
   Tabs,
-  Timeline,
+  Timeline as AntdTimeline,
   Typography,
   Upload,
 } from "antd";
@@ -42,7 +42,7 @@ export {
   Row,
   Skeleton as AntdSkeleton,
   Tabs,
-  Timeline,
+  Timeline as AntdTimeline,
   Tree,
   Typography,
   Upload,
@@ -54,7 +54,7 @@ export const MenuItemGroup =
   Menu.ItemGroup as React.ComponentType<MenuItemGroupProps>;
 export const SkeletonButton = Skeleton.Button;
 export const TabsTabPane = Tabs.TabPane;
-export const TimelineItem = Timeline.Item;
+export const AntdTimelineItem = AntdTimeline.Item;
 export const TypographyText = Typography.Text;
 export const UploadDragger = Upload.Dragger;
 export const AntdOption = Select.Option;

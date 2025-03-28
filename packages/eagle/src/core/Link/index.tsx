@@ -8,7 +8,9 @@ import { LinkComponentType } from "./link.type";
 
 const LinkStyle = css`
   @at-root {
-    button#{&}.ant-btn {
+    button#{&}.ant-btn,
+    button#{&}.ant-btn.ant-btn-sm,
+    button#{&}.ant-btn.ant-btn-lg {
       font-size: 12px;
       line-height: 18px;
       height: 18px;

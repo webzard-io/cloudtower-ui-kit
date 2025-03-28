@@ -8,6 +8,7 @@ import Percent from "./Percent";
 import Second from "./Second";
 import Speed from "./Speed";
 
+export * from "./Timeline";
 export * from "./AccordionCard";
 export * from "./Alert";
 export * from "./Antd5Anchor";

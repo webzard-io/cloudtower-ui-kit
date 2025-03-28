@@ -78,5 +78,12 @@
   "prev": "上一个",
   "next": "下一个",
   "clear": "清空",
-  "loading": "正在加载..."
+  "loading": "正在加载...",
+  "upgrade_to_version": "<0>{{text}}</0>升级到<1>{{version}}</1>",
+  "update_to_version": "<0>{{text}}</0>更新到<1>{{version}}</1>",
+  "failed_upgrade_to_version": "<0>{{text}}</0>升级<1>{{version}}</1>失败",
+  "config_updated": "<0>{{text}}</0>更新<1>{{version}}</1>",
+  "db_migrated": "<0>{{text}}</0>迁移到<1>{{version}}</1>",
+  "empty": "暂无历史记录",
+  "view_detail": "查看详情"
 }
