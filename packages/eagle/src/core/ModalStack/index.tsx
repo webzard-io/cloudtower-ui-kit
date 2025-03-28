@@ -1,4 +1,8 @@
-import { useCloseModal, useKitSelector } from "@src/core/KitStoreProvider";
+import {
+  useCloseModal,
+  useKitSelector,
+  useResetModal,
+} from "@src/core/KitStoreProvider";
 import { KitRootState } from "@src/store";
 import React from "react";
 
@@ -7,6 +11,7 @@ const ModalStack: React.FC = () => {
     (state) => state.modal.stack,
   );
   const closeModal = useCloseModal();
+  const resetModal = useResetModal();
 
   return (
     <>
@@ -20,6 +25,7 @@ const ModalStack: React.FC = () => {
             }
             closeModal(modal.id);
           }}
+          closeAllModal={() => resetModal()}
           key={modal.id}
         />
       ))}

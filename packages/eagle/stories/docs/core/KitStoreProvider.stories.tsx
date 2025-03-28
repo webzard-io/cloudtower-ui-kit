@@ -38,7 +38,7 @@ const Demo = (props: { name?: string }) => {
  *
  * ModalStack 会向上查找 KitStoreContext, 如果未查找到，会使用 eagle 提供的默认 store。
  *
- * usePushModal，usePopModal，useCloseModal 与 ModalStack 同理。
+ * usePushModal，usePopModal，useCloseModal, useResetModal 与 ModalStack 同理。
  */
 
 const meta: Meta<typeof Demo> = {

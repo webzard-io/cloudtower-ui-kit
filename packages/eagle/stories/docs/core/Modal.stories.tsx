@@ -6,7 +6,7 @@ import ModalStack from "@src/core/ModalStack";
 import { ModalWrapper } from "@src/core/Styled";
 import Tooltip from "@src/core/Tooltip";
 import { Meta } from "@storybook/react";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 const ImmersiveModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   return (
@@ -179,3 +179,43 @@ export const WithAside = () => {
 };
 
 WithAside.args = {};
+
+/**
+ * 点击弹窗中的 close all modal 按钮，会清理掉页面中的所有弹窗
+ */
+export const CloseAllModal = () => {
+  const pushModal = usePushModal();
+
+  const TestModal: React.FC<{ closeAllModal: () => void }> = useMemo(
+    () =>
+      ({ closeAllModal }) => {
+        return (
+          <Modal
+            title="Test Reset Modal"
+            showOk={false}
+            showCancel={false}
+            closable={false}
+          >
+            <Button type="link" onClick={() => closeAllModal()}>
+              close all modal
+            </Button>
+          </Modal>
+        );
+      },
+    [],
+  );
+
+  return (
+    <Button
+      type="primary"
+      onClick={() => {
+        pushModal({
+          component: TestModal,
+          props: {},
+        });
+      }}
+    >
+      open modal
+    </Button>
+  );
+};
