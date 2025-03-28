@@ -83,5 +83,12 @@
   "prev": "Previous",
   "next": "Next",
   "clear": "Clear",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "upgrade_to_version": "<0>{{text}}</0> upgraded to <1>{{version}}</1>",
+  "update_to_version": "<0>{{text}}</0> updated to <1>{{version}}</1>",
+  "failed_upgrade_to_version": "<0>{{text}}</0> failed to upgrade to <1>{{version}}</1>",
+  "config_updated": "<0>{{text}}</0> updated <1>{{version}}</1>",
+  "db_migrated": "<0>{{text}}</0> migrated to <1>{{version}}</1>",
+  "empty": "No history records",
+  "view_detail": "View Details"
 }
