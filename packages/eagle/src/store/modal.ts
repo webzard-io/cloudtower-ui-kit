@@ -1,6 +1,10 @@
 import React from "react";
 
-export type CloseCb = { onClose: () => void; modalId: number };
+export type CloseCb = {
+  onClose: () => void;
+  closeAllModal: () => void;
+  modalId: number;
+};
 
 export type ModalType<TProps> = TProps extends void
   ? {
