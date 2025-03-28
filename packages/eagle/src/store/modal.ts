@@ -23,6 +23,7 @@ export enum ModalActions {
   POP_MODAL = "POP_MODAL",
   REMOVE_MODAL = "REMOVE_MODAL",
   CLOSE_MODAL = "CLOSE_MODAL",
+  RESET_MODAL = "RESET_MODAL",
 }
 
 type PUSH_MODAL<TProps> = {
@@ -44,11 +45,16 @@ type CLOSE_MODAL = {
   id: number;
 };
 
+type RESET_MODAL = {
+  type: ModalActions.RESET_MODAL;
+};
+
 export type Actions =
   | PUSH_MODAL<unknown>
   | POP_MODAL
   | REMOVE_MODAL
-  | CLOSE_MODAL;
+  | CLOSE_MODAL
+  | RESET_MODAL;
 
 export const initialModalState: ModalState = {
   stack: [],
@@ -59,13 +65,13 @@ let MODAL_ID = 1;
 
 export const modalReducer = (
   state: ModalState = initialModalState,
-  action: Actions
+  action: Actions,
 ) => {
   switch (action.type) {
     case ModalActions.PUSH_MODAL:
       if (
         state.stack.some(
-          (modal) => modal.component === action.payload.component
+          (modal) => modal.component === action.payload.component,
         )
       ) {
         return state;
@@ -93,6 +99,8 @@ export const modalReducer = (
         ...state,
         closeId: action.id,
       };
+    case ModalActions.RESET_MODAL:
+      return initialModalState;
     default:
       return state;
   }

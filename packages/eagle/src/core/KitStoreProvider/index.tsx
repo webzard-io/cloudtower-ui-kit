@@ -81,3 +81,13 @@ export const usePopModal = () => {
   }, [dispatch]);
   return popModal;
 };
+
+export const useResetModal = () => {
+  const dispatch = useKitDispatch();
+  const resetModal = useCallback(() => {
+    dispatch({
+      type: ModalActions.RESET_MODAL,
+    });
+  }, [dispatch]);
+  return resetModal;
+};
