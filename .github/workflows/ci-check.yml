@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   label-check:
-    runs-on: [self-hosted, linux]
+    runs-on: [ui-kit-arc-runner-set]
     name: Check PR Label
     steps:
       - uses: jesusvasquez333/verify-pr-label-action@v1.4.0
@@ -22,7 +22,7 @@ jobs:
           pull-request-number: "${{ github.event.pull_request.number }}"
 
   test:
-    runs-on: [self-hosted, linux]
+    runs-on: [ui-kit-arc-runner-set]
     strategy:
       matrix:
         node: [20]
@@ -45,7 +45,7 @@ jobs:
         run: yarn test:ci
   storybook-staging:
     name: Setup Storybook Staging
-    runs-on: [self-hosted, linux]
+    runs-on: [ui-kit-arc-runner-set]
     strategy:
       matrix:
         node: [20]
