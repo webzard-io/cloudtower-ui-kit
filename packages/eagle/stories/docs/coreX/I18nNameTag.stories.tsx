@@ -7,6 +7,14 @@ const meta: Meta<typeof I18nNameTag> = {
 };
 export default meta;
 
+/**
+ *
+ * 请注意，由于 I18nNameTag 存在 typo， 使用 I18nNameTag 的词条使用的 html tag index 都需要从 1 开始用起
+ *
+ * 例如： "delete_alert_group_policy_desc": "确认要删除通知聚合策略 <1>{name}</1> 吗？",
+ *
+ * slack: https://smartx1.slack.com/archives/GD3UU318A/p1700202217700279
+ */
 export const Default = {
   name: "基本用例",
   render: ({ name }: { name: string }) => {
