@@ -14,6 +14,7 @@ export type ModalType<TProps> = TProps extends void
       component: React.FC<TProps & CloseCb>;
       props: TProps & {
         onClose?: () => void;
+        closeAllModal?: () => void;
       };
     };
 
