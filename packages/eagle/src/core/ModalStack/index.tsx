@@ -25,7 +25,10 @@ const ModalStack: React.FC = () => {
             }
             closeModal(modal.id);
           }}
-          closeAllModal={() => resetModal()}
+          closeAllModal={() => {
+            modal.props.closeAllModal?.();
+            resetModal();
+          }}
           key={modal.id}
         />
       ))}
