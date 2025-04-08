@@ -92,3 +92,49 @@ export const Link: Story = {
     children: "text",
   },
 };
+
+/**
+ * * 禁用按钮示例
+ * * 当 disabled 设置为 true 时，按钮将变为禁用状态
+ * * 禁用状态下按钮不可点击，且样式会有相应变化
+ */
+export const Disabled: Story = {
+  render: () => {
+    return (
+      <Space size={16} direction="vertical">
+        <Space size={10}>
+          <Button type="primary" disabled>
+            禁用主按钮
+          </Button>
+          <Button type="default" disabled>
+            禁用默认按钮
+          </Button>
+          <Button type="dashed" disabled>
+            禁用虚线按钮
+          </Button>
+          <Button type="text" disabled>
+            禁用文本按钮
+          </Button>
+          <Button type="link" disabled>
+            禁用链接按钮
+          </Button>
+        </Space>
+
+        <Space size={10}>
+          <Button
+            type="primary"
+            disabled
+            prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
+          >
+            禁用图标按钮
+          </Button>
+          <Button
+            type="primary"
+            disabled
+            prefixIcon={<Icon src={PlusAddCreateNew16BoldOntintIcon} />}
+          />
+        </Space>
+      </Space>
+    );
+  },
+};
