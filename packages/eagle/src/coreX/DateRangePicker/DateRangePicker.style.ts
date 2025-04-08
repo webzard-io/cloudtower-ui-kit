@@ -433,7 +433,7 @@ const DateRangePickerWrapper = styled.div`
     gap: 8px;
     background: $white;
     border-radius: 5px;
-    border: 1px solid $fills-light-opaque-3;
+    border: 1px solid $strokes-light-trans-3;
     transition: all 0.2s ease-in-out;
 
     .default-calendar-icon {
