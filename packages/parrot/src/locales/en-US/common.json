@@ -52,7 +52,7 @@
   "hour_count_plural": "{count} hours",
   "minute_count": "{count} minute",
   "minute_count_plural": "{count} minutes",
-  "month_count": "{count} month",
-  "month_count_plural": "{count} months",
+  "month_measure_count": "{count} month",
+  "month_measure_count_plural": "{count} months",
   "show_unpassed": "Show Failed only"
 }
