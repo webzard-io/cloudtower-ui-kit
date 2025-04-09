@@ -101,6 +101,7 @@ const ButtonStyle = css`
         var(--border-color, transparent)
       );
       opacity: 0.5;
+      --transY: 0;
     }
   }
 

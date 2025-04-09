@@ -525,6 +525,7 @@ describe("SimplePagination h5_css", () => {
               var(--border-color, transparent)
             );
             opacity: 0.5;
+            --transY: 0;
           }
         }
 
@@ -1002,6 +1003,7 @@ describe("SimplePagination h5_css", () => {
               var(--border-color, transparent)
             );
             opacity: 0.5;
+            --transY: 0;
           }
         }
 
@@ -1829,6 +1831,7 @@ describe("SimplePagination h5_css", () => {
               var(--border-color, transparent)
             );
             opacity: 0.5;
+            --transY: 0;
           }
         }
 
