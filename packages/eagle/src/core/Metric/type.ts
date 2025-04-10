@@ -39,19 +39,6 @@ export enum TimeUnit {
   Month = "MONTH",
 }
 
-// export enum MetricUnit {
-//   Count = "COUNT",
-//   DataRateBit = "DATA_RATE_BIT",
-//   DataRateByte = "DATA_RATE_BYTE",
-//   DataSize = "DATA_SIZE",
-//   Frequency = "FREQUENCY",
-//   Load = "LOAD",
-//   Percent = "PERCENT",
-//   Ratio = "RATIO",
-//   Temperature = "TEMPERATURE",
-//   Time = "TIME",
-// }
-
 export enum GraphType {
   Area = "AREA",
   Stack = "STACK",
