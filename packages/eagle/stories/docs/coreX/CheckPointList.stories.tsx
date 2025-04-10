@@ -1,11 +1,11 @@
-import { type StoryObj } from "@storybook/react";
-import { CheckPointList } from "@src/coreX/CheckPointList";
 import {
   CheckmarkDoneSuccessCircleFill16GreenIcon,
   Loading16GradientBlueIcon,
   NoticeTriangleFill16YellowIcon,
   XmarkFailedSeriousWarningFill16RedIcon,
 } from "@cloudtower/icons-react";
+import { CheckPointList } from "@src/coreX/CheckPointList";
+import { type StoryObj } from "@storybook/react";
 import React from "react";
 
 /**

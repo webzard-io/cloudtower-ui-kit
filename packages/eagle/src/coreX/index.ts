@@ -1,6 +1,7 @@
 export * from "./BarChart";
 export * from "./BatchOperation";
 export * from "./ChartWithTooltip";
+export * from "./CheckPointList";
 export * from "./CircleLoading";
 export * from "./common";
 export * from "./Counting";
@@ -23,7 +24,6 @@ export * from "./SummaryTable";
 export * from "./SwitchWithText";
 export * from "./TabMenu";
 export * from "./UnitWithChart";
-export * from "./CheckPointList";
 
 // rename default export
 export { default as BarChart } from "./BarChart";

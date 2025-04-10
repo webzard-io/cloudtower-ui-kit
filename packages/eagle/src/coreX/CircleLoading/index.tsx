@@ -1,11 +1,11 @@
-import { FullView } from "@src/core/Styled";
-import { LoadingComponentType } from "@src/core/Loading/loading.type";
-import Icon from "@src/core/Icon";
-import { css } from "@linaria/core";
-import React, { Fragment } from "react";
-import cx from "classnames";
-import { Keyframes, Animation } from "@src/styles/token";
 import { Loading64GradientBlueIcon } from "@cloudtower/icons-react";
+import { css } from "@linaria/core";
+import Icon from "@src/core/Icon";
+import { LoadingComponentType } from "@src/core/Loading/loading.type";
+import { FullView } from "@src/core/Styled";
+import { Animation, Keyframes } from "@src/styles/token";
+import cx from "classnames";
+import React, { Fragment } from "react";
 
 const LoadingWrapper = css`
   width: 64px;

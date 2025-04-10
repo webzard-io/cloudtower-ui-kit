@@ -1,23 +1,24 @@
-import React, { useCallback, useState } from "react";
-import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import {
   CheckmarkDoneSuccessCircleFill16GreenIcon,
   Loading16GradientBlueIcon,
   NoticeTriangleFill16YellowIcon,
   XmarkFailedSeriousWarningFill16RedIcon,
 } from "@cloudtower/icons-react";
+import { cx } from "@linaria/core";
 import { Alert, Icon, SrcType, Switch, Tag, Typo } from "@src/core";
 import { Show } from "@src/coreX";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { List } from "antd5";
-import { cx } from "@linaria/core";
+import React, { useCallback, useState } from "react";
+
 import {
-  CheckPointListStyle,
   CheckPointItemStyle,
+  CheckPointListStyle,
   EmptyWrapper,
 } from "./checkpointlist.style";
 import {
-  CheckPointListProps,
   CheckPointItemProps,
+  CheckPointListProps,
 } from "./checkpointlist.type";
 
 export const CheckPointItem: React.FC<CheckPointItemProps> = ({

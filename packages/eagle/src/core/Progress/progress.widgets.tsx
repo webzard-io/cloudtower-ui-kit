@@ -1,7 +1,6 @@
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import Link, { LinkProps } from "@src/core/Link";
-import { splitMap } from "@src/utils/constants";
 import { IconField, Info } from "@src/core/Progress/components";
 import {
   AreaProps,
@@ -13,6 +12,7 @@ import {
   TitleAreaProps,
 } from "@src/core/Progress/progress.type";
 import Tag from "@src/core/Tag";
+import { splitMap } from "@src/utils/constants";
 import React from "react";
 
 import { TagProps } from "../Tag/tag.type";

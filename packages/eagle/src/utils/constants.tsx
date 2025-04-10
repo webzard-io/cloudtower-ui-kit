@@ -1,5 +1,5 @@
-import React from "react";
 import { DotIntervalSeparation16TertiaryIcon } from "@cloudtower/icons-react";
+import React from "react";
 
 export const EMPTY_FUNCTION = () => {};
 export const EMPTY_ARRAY = [];

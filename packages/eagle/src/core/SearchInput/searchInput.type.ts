@@ -1,4 +1,5 @@
 import { InputProps } from "antd/lib/input";
+
 import { SrcType } from "../BaseIcon";
 
 export type SearchInputProps = Omit<InputProps, "onChange"> & {

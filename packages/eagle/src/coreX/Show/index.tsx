@@ -1,4 +1,5 @@
 import React from "react";
+
 import { ShowProps } from "./show.type";
 
 export const Show: React.FC<ShowProps> = ({
