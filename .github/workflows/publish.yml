@@ -35,9 +35,9 @@ jobs:
           cp ./README.md packages/eagle/README.md
       - name: Write .npmrc
         env:
-          NPM_TOKEN: ${{ secrets.QINGHUA_CUI_SMARTX_NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          echo //registry.npmjs.org/:_authToken=$NPM_TOKEN > ~/.npmrc
+          echo //registry.npmjs.org/:_authToken=$NPM_TOKEN >> ~/.npmrc
       - name: Set Current Version
         run: |
           CURRENT_VERSION=$(node -p 'require("./lerna.json").version')
