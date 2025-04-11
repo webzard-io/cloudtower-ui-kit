@@ -67,7 +67,7 @@ jobs:
         id: vercel-action-staging
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-token: ${{ secrets.VERCEL_TOKEN_V2 }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_V2 }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID_V2 }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           alias-domains: ${{ env.alias-domains }}
