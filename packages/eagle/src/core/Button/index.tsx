@@ -25,14 +25,18 @@ const ButtonStyle = css`
       opacity 160ms ease;
     transform: scale(var(--scale)) translateY(var(--transY)) translateZ(0);
 
+    padding: 5px 12px;
+
     &.ant-btn-lg {
       height: 40px;
       line-height: 24px;
+      padding: 8px 16px;
     }
 
     &.ant-btn-sm {
       height: 24px;
       line-height: 20px;
+      padding: 2px 8px;
     }
 
     &.ant-btn-circle,

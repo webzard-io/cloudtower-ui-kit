@@ -138,3 +138,26 @@ export const Disabled: Story = {
     );
   },
 };
+
+/**
+ * 按钮有三种尺寸：large、middle、small
+ * 可以在不同场景下选择合适的按钮尺寸
+ */
+export const ButtonSizes: Story = {
+  name: "按钮尺寸",
+  render: () => {
+    return (
+      <Space size={16}>
+        <Button size="large" type="primary">
+          大号按钮
+        </Button>
+        <Button size="middle" type="primary">
+          中号按钮
+        </Button>
+        <Button size="small" type="primary">
+          小号按钮
+        </Button>
+      </Space>
+    );
+  },
+};

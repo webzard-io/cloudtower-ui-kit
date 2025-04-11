@@ -28,6 +28,8 @@ const ProgressContainer = styled.div<{ type: ProgressProps["type"] }>`
 
   .${Antd5PrefixCls}-progress-line {
     font-size: 0;
+    margin-bottom: unset;
+    margin-inline-end: unset;
   }
 `;
 
