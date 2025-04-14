@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/eagle",
-  "version": "0.33.2",
+  "version": "0.33.3",
   "main": "dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "dist/src/index.d.ts",
@@ -26,8 +26,8 @@
     "sync:color": "node tools/fetch-figma-color.js"
   },
   "dependencies": {
-    "@cloudtower/icons-react": "^0.33.2",
-    "@cloudtower/parrot": "^0.33.2",
+    "@cloudtower/icons-react": "^0.33.3",
+    "@cloudtower/parrot": "^0.33.3",
     "@cloudtower/rc-notification": "^4.6.1",
     "@linaria/core": "^4.2.2",
     "@linaria/react": "^4.3.0",
