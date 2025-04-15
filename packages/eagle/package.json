@@ -77,7 +77,6 @@
     "@types/react-is": "^17.0.3",
     "@types/react-transition-group": "4.2.4",
     "@vitejs/plugin-react": "^4.2.1",
-    "@vitest/coverage-c8": "^0.24.1",
     "copy-to-clipboard": "^3.3.3",
     "history": "^4.9.0",
     "i18next": "^23.2.3",
@@ -112,7 +111,7 @@
     "tsc-alias": "^1.8.8",
     "typescript": "5.0.2",
     "vite": "^4.5.1",
-    "vitest": "^3.0.2"
+    "vitest": "^3.1.1"
   },
   "gitHead": "43aae2e4b3fe1d526871feb6e9d217250cbe47a1"
 }
