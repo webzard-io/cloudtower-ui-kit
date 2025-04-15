@@ -1,15 +1,15 @@
-import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
 import { XmarkFailed16RedIcon } from "@cloudtower/icons-react";
-import { Timeline } from "@src/core/Timeline";
-import { TimelineItemData } from "@src/core/Timeline/Timeline.type";
-import dayjs from "dayjs";
-import duration from "dayjs/plugin/duration";
-import { Color } from "@src/styles/token/color";
-import { Typo } from "@src/core/Typo";
-import Tag from "@src/core/Tag";
 import Button from "@src/core/Button";
 import Link from "@src/core/Link";
+import Tag from "@src/core/Tag";
+import { Timeline } from "@src/core/Timeline";
+import { TimelineItemData } from "@src/core/Timeline/Timeline.type";
+import { Typo } from "@src/core/Typo";
+import { Color } from "@src/styles/token/color";
+import { Meta, StoryObj } from "@storybook/react";
+import dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
+import React from "react";
 
 dayjs.extend(duration);
 

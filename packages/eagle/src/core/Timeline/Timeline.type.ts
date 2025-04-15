@@ -1,7 +1,7 @@
 import { AlertProps } from "@src/core/Alert";
-import { ReactNode } from "react";
-import { TagProps } from "@src/core/Tag";
 import { LinkProps } from "@src/core/Link";
+import { TagProps } from "@src/core/Tag";
+import { ReactNode } from "react";
 
 /**
  * 标签属性，扩展自基础Tag组件属性

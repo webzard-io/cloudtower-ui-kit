@@ -265,3 +265,90 @@ export function formatSpeed(input: number, decimals = 0) {
     unit: units[i],
   };
 }
+
+export const K = 1000;
+export const M = 1000 * K;
+export const G = 1000 * M;
+export const T = 1000 * G;
+export const P = 1000 * T;
+export function formatCount(input: number): FormattedResult {
+  if (input === MAGIC_METRIC_NULL) {
+    input = 0;
+  }
+  const units = ["", "K", "M", "G", "T", "P"];
+  let i = Math.floor(Math.log(input || 1) / Math.log(K));
+  i = i < 0 ? 0 : i > units.length - 1 ? units.length - 1 : i;
+  return {
+    value: parseFloat((input / Math.pow(K, i)).toFixed(2)),
+    unit: units[i],
+  };
+}
+
+export function formatNanoSecond(input: number): FormattedResult {
+  if (input <= 0 || input === MAGIC_METRIC_NULL) {
+    return {
+      value: 0,
+      unit: "",
+    };
+  }
+  const units = ["ns", "μs", "ms", "s", "min", "h", "day"];
+  const divider = [1000, 1000, 1000, 60, 60, 24];
+  let multiplier = 1;
+  for (let i = 0; i < divider.length; i++) {
+    if (input < multiplier * divider[i]) {
+      return {
+        value: parseFloat((input / multiplier).toFixed(2)),
+        unit: units[i],
+      };
+    }
+    multiplier *= divider[i];
+  }
+  return {
+    value: parseFloat((input / multiplier).toFixed(2)),
+    unit: "day",
+  };
+}
+
+export function formatTemperature(
+  input: number,
+  decimals = 2,
+): FormattedResult {
+  if (input === MAGIC_METRIC_NULL) {
+    input = 0;
+  }
+  return {
+    value: parseFloat(input.toFixed(decimals)),
+    unit: "℃",
+  };
+}
+
+export const unitRules = [
+  {
+    divider: [1000, 1000, 1000, 1000, 1000, 1000],
+    unit: ["", "K", "M", "G", "T", "P"],
+  },
+  {
+    divider: [1000, 1000, 1000, 1000, 1000, 1000],
+    unit: ["bps", "Kbps", "Mbps", "Gbps", "Tbps", "Pbps"],
+  },
+  {
+    divider: [1000, 1000, 1000, 1000, 1000, 1000],
+    unit: ["Bps", "KBps", "MBps", "GBps", "TBps", "PBps"],
+  },
+  {
+    divider: [1024, 1024, 1024, 1024, 1024, 1024],
+    unit: ["B", "KiB", "MiB", "GiB", "TiB", "PiB"],
+  },
+  {
+    divider: [1024, 1024, 1024, 1024, 1024, 1024],
+    unit: ["B/s", "KiB/s", "MiB/s", "GiB/s", "TiB/s", "PiB/s"],
+  },
+  {
+    divider: [1000, 1000, 1000, 60, 60, 24],
+    unit: ["ns", "μs", "ms", "s", "min", "h"],
+  },
+  {
+    divider: [1000, 1000, 1000, 1000, 1000],
+    unit: ["Hz", "KHz", "MHz", "GHz", "THz"],
+  },
+];

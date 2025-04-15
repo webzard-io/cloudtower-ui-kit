@@ -1,25 +1,26 @@
-import { SrcType } from "@src/core/BaseIcon";
 import {
   CheckmarkDoneSuccessCorrect16GreenIcon,
-  XmarkFailed16RedIcon,
   Loading16GradientBlueIcon,
-  TimelineNotStart16GrayIcon,
   NoticeTriangleFill16YellowIcon,
+  TimelineNotStart16GrayIcon,
   WaitingBreathingLed16YellowIcon,
+  XmarkFailed16RedIcon,
 } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
+import Alert, { AlertProps } from "@src/core/Alert";
+import { SrcType } from "@src/core/BaseIcon";
+import Icon from "@src/core/Icon";
 import { Flex, Timeline as AntdTimeline } from "antd5";
+import cs from "classnames";
 import _ from "lodash";
 import React, { ReactElement } from "react";
+
 import {
   EmptyWrapper,
   TimelineItemWrapper,
   TimelineWrapper,
 } from "./Timeline.style";
-import { TimelineProps, TimelineItemData } from "./Timeline.type";
-import Alert, { AlertProps } from "@src/core/Alert";
-import Icon from "@src/core/Icon";
-import cs from "classnames";
+import { TimelineItemData, TimelineProps } from "./Timeline.type";
 import { TimelineArea } from "./Timeline.widget";
 /**
  * Timeline 组件：展示时间线

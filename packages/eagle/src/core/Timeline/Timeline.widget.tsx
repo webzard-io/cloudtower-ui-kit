@@ -1,12 +1,14 @@
-import React from "react";
 import { cx } from "@linaria/core";
-import { splitMap } from "@src/utils/constants";
 import Link from "@src/core/Link";
-import { Typo } from "@src/core/Typo";
-import OverflowTooltip from "@src/coreX/OverflowTooltip";
 import Tag from "@src/core/Tag";
+import { Typo } from "@src/core/Typo";
+import { Show } from "@src/coreX";
+import OverflowTooltip from "@src/coreX/OverflowTooltip";
+import { splitMap } from "@src/utils/constants";
 import { Flex } from "antd5";
 import cls from "classnames";
+import React from "react";
+
 import { InfoTextWrapper, SubInfoTextWrapper } from "./Timeline.style";
 import {
   TimelineAreaProps,
@@ -14,7 +16,6 @@ import {
   TimelineLinkProps as LinkProps,
   TimelineTagProps as TagProps,
 } from "./Timeline.type";
-import { Show } from "@src/coreX";
 
 const TimelineBasicText: React.FC<InfoProps> = ({
   children,

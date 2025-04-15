@@ -1,8 +1,8 @@
-import React from "react";
+import { ParrotLngs } from "@cloudtower/parrot";
 import { ConfigProvider, Divider, RadioGroup } from "@src/core";
 import Calendar from "@src/core/Calendar";
-import { ParrotLngs } from "@cloudtower/parrot";
 import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 
 const meta: Meta<typeof Calendar> = {
   title: "Core/Calendar",

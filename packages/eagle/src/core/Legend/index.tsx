@@ -3,11 +3,12 @@ import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import Icon from "@src/core/Icon";
 import { Typo } from "@src/core/Typo";
+import OverflowTooltip from "@src/coreX/OverflowTooltip";
 import { Color } from "@src/styles/token";
 import cs from "classnames";
 import React from "react";
+
 import { LegendColor, LegendComponentType, LegendShapes } from "./legend.type";
-import OverflowTooltip from "@src/coreX/OverflowTooltip";
 
 export const LegendPresetColors: LegendColor[] = [
   "blue",

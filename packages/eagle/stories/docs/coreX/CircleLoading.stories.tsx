@@ -1,5 +1,5 @@
 import CircleLoading from "@src/coreX/CircleLoading";
-import { StoryObj, Meta } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 
 /**
  *

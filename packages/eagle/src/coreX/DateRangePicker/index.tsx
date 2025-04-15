@@ -1,6 +1,6 @@
 import {
-  CalendarClockDateTime16SecondaryIcon,
   CalendarClockDateTime16GradientBlueIcon,
+  CalendarClockDateTime16SecondaryIcon,
   CalendarTimeRecord16Icon,
 } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
@@ -53,7 +53,7 @@ const TimeRange: React.FC<{
    */
   onAbsoluteTimeOk?: (range: PickerDateRange) => void;
   onAbsoluteTimeChange?: (range: PickerDateRange) => void;
- /**
+  /**
    * Customize an array of relative time select options
    */
   relativeTimeSelectOptions?: PastTime[];
@@ -70,7 +70,7 @@ const TimeRange: React.FC<{
     onRelativeTimeChange,
     onAbsoluteTimeOk,
     onAbsoluteTimeChange,
-    relativeTimeSelectOptions
+    relativeTimeSelectOptions,
   } = props;
   const { t } = useParrotTranslation();
   const absoluteDateRef = useRef<{ reset?: () => void } | null>(null);
@@ -197,7 +197,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
     minDate,
     maxDate,
     onChange,
-    relativeTimeSelectOptions
+    relativeTimeSelectOptions,
   } = props;
   const { t } = useParrotTranslation();
 

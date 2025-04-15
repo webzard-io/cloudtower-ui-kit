@@ -5,8 +5,8 @@ import {
   LoadingWrapper,
 } from "@src/core/Loading/style";
 import { FullView } from "@src/core/Styled";
-import React, { Fragment } from "react";
 import cx from "classnames";
+import React, { Fragment } from "react";
 
 import { LoadingComponentType } from "./loading.type";
 
