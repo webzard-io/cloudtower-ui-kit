@@ -17,8 +17,8 @@ import {
 } from "@src/core/LineChart/type";
 import { ExtraOverflow } from "@src/core/Overflow";
 import Truncate from "@src/core/Truncate";
-import { Menu } from "antd";
 import { Antd5Dropdown } from "@src/index";
+import { Menu } from "antd";
 import cs from "classnames";
 import React from "react";
 

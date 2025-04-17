@@ -5,6 +5,7 @@ import RenderChart from "@src/core/LineChart/RenderChart";
 import { LineChartWrapper } from "@src/core/LineChart/styled";
 import cs from "classnames";
 import React, { useEffect, useRef, useState } from "react";
+
 import { LineChartProps } from "./type";
 
 const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
@@ -41,7 +42,7 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
 );
 
 export default LineChart;
-export * from "./type";
-export * from "./utils";
 export { default as LineChartLegend } from "./LineChartLegend";
 export * from "./LineChartLegend";
+export * from "./type";
+export * from "./utils";
