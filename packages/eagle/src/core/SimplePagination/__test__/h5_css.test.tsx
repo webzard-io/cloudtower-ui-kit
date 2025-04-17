@@ -463,6 +463,10 @@ describe("SimplePagination h5_css", () => {
             padding: 2px 8px;
           }
 
+          &.ant-btn-link {
+            padding: 0;
+          }
+
           &.ant-btn-circle,
           &.ant-btn-circle-outline {
             border-radius: 50%;
@@ -943,6 +947,10 @@ describe("SimplePagination h5_css", () => {
             height: 24px;
             line-height: 20px;
             padding: 2px 8px;
+          }
+
+          &.ant-btn-link {
+            padding: 0;
           }
 
           &.ant-btn-circle,
@@ -1775,6 +1783,10 @@ describe("SimplePagination h5_css", () => {
             height: 24px;
             line-height: 20px;
             padding: 2px 8px;
+          }
+
+          &.ant-btn-link {
+            padding: 0;
           }
 
           &.ant-btn-circle,

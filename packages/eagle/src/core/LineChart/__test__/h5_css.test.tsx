@@ -332,6 +332,10 @@ describe("line chart h5_css", () => {
             padding: 2px 8px;
           }
 
+          &.ant-btn-link {
+            padding: 0;
+          }
+
           &.ant-btn-circle,
           &.ant-btn-circle-outline {
             border-radius: 50%;
