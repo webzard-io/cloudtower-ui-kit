@@ -1,7 +1,7 @@
 import {
+  ILineChartDataPoint,
   ILineChartDateRange,
   ILineChartGraphType,
-  ILineChartDataPoint,
   ILineChartMetric,
   ILineChartMetricUnit,
 } from "@src/core/LineChart/type";

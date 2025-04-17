@@ -1,0 +1,19 @@
+{
+    "week_abbreviation": "<0>{count}</0> <1>week</1>",
+    "day_abbreviation": "<0>{count}</0> <1>day</1>",
+    "week_abbreviation_plural": "<0>{count}</0> <1>weeks</1>",
+    "day_abbreviation_plural": "<0>{count}</0> <1>days</1>",
+    "hour_abbreviation": "<0>{count}</0> <1>h</1>",
+    "minute_abbreviation": "<0>{count}</0> <1>min</1>",
+    "second_abbreviation": "<0>{count}</0> <1>sec</1>",
+    "week_plural": "<0>{count}</0> <1>Weeks</1>",
+    "day_plural": "<0>{count}</0> <1>Days</1>",
+    "hour_plural": "<0>{count}</0> <1>Hours</1>",
+    "minute_plural": "<0>{count}</0> <1>Minutes</1>",
+    "second_plural": "<0>{count}</0> <1>Seconds</1>",
+    "week": "<0>{count}</0> <1>Week</1>",
+    "day": "<0>{count}</0> <1>Day</1>",
+    "hour": "<0>{count}</0> <1>Hour</1>",
+    "minute": "<0>{count}</0> <1>Minute</1>",
+    "second": "<0>{count}</0> <1>Second</1>"
+}

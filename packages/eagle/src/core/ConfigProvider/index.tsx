@@ -36,7 +36,7 @@ export const ConfigProvider: React.FC<ConfigProps> = ({
     i18n.on("languageChanged", adjustDateLocale);
     // init
     adjustDateLocale(i18n.language as ParrotLngs);
-  }, []);
+  }, [i18n]);
   return (
     <Antd5ConfigProvider
       autoInsertSpaceInButton={false}

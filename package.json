@@ -52,7 +52,7 @@
       },
       {
         "path": "./packages/parrot/dist/**/*.js",
-        "maxSize": "6 kB"
+        "maxSize": "7 kB"
       },
       {
         "path": "./packages/eagle/dist/components.css",

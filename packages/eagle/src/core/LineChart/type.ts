@@ -1,8 +1,8 @@
+import { IChartProps } from "@src/core/LineChart/RenderChart";
+import { PickerDateRange } from "@src/coreX/DateRangePicker/dateRangePicker.type";
 import { Dayjs } from "dayjs";
 import { TFunction } from "i18next";
 import { ReactElement } from "react";
-import { IChartProps } from "@src/core/LineChart/RenderChart";
-import { PickerDateRange } from "@src/coreX/DateRangePicker/dateRangePicker.type";
 
 export interface ILineChartMetricData {
   id: string;
