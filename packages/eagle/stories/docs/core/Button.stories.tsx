@@ -145,16 +145,30 @@ export const Disabled: Story = {
  */
 export const ButtonSizes: Story = {
   name: "按钮尺寸",
-  render: () => {
+  args: {
+    type: "primary",
+  },
+  argTypes: {
+    type: {
+      control: "select",
+      options: ["primary", "default", "dashed", "text", "link"],
+      description: "按钮类型",
+      table: {
+        type: { summary: "primary | default | dashed | text | link" },
+        defaultValue: { summary: "default" },
+      },
+    },
+  },
+  render: (args) => {
     return (
       <Space size={16}>
-        <Button size="large" type="primary">
+        <Button {...args} size="large">
           大号按钮
         </Button>
-        <Button size="middle" type="primary">
+        <Button {...args} size="middle">
           中号按钮
         </Button>
-        <Button size="small" type="primary">
+        <Button {...args} size="small">
           小号按钮
         </Button>
       </Space>

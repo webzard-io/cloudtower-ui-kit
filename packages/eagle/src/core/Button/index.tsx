@@ -39,6 +39,10 @@ const ButtonStyle = css`
       padding: 2px 8px;
     }
 
+    &.ant-btn-link {
+      padding: 0;
+    }
+
     &.ant-btn-circle,
     &.ant-btn-circle-outline {
       border-radius: 50%;
@@ -361,14 +365,6 @@ const ButtonStyle = css`
   }
 `;
 
-const NoPadding = css`
-  @at-root {
-    button#{&} {
-      padding: 0;
-    }
-  }
-`;
-
 const isAntdButtonTypes = (type?: string): type is AntdButtonType => {
   return Boolean(
     type &&
@@ -401,7 +397,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cs(
           className,
           ButtonStyle,
-          type === "link" && NoPadding,
           size === "large" && Typo.Label.l1_regular_title,
           size === "middle" && Typo.Label.l2_regular_title,
           size === "small" && Typo.Label.l3_regular_title,
