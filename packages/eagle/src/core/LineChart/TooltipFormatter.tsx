@@ -2,11 +2,12 @@ import { styled } from "@linaria/react";
 import { LineChartColorBlock } from "@src/core/LineChart/LineChartLegend";
 import { TooltipColumn, TooltipWrapper } from "@src/core/LineChart/styled";
 import { ILineChartLegend } from "@src/core/LineChart/type";
+import dayjs from "dayjs";
 import React from "react";
 import { TooltipProps } from "recharts";
 import { Payload } from "recharts/types/component/DefaultTooltipContent";
+
 import { Typo } from "../Typo";
-import dayjs from "dayjs";
 
 const TooltipTitle = styled.div`
   color: $text-light-on-tint;

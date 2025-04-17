@@ -1,6 +1,7 @@
+import { parrotI18n } from "@cloudtower/parrot";
 import { cx } from "@linaria/core";
 import Empty from "@src/core/Empty";
-import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { ParrotTrans } from "@src/core/ParrotTrans";
 import isEmpty from "@src/utils/isEmpty";
 import { formatSeconds } from "@src/utils/tower";
 import React from "react";
@@ -16,19 +17,19 @@ const Second: UnitFn = ({
   abbreviate,
   emptyProps,
 }) => {
-  const { t } = useParrotTranslation();
-
   if (isEmpty(rawValue)) {
     return <Empty {...emptyProps} />;
   }
   const { value, unit } = formatSeconds(rawValue, decimals);
   return (
-    <span>
-      <span className={cx("value", valueClassName)}>{value} </span>
-      <span className={cx("unit", UnitStyle, unitClassName)}>
-        {t(`common.${abbreviate ? `${unit}_abbreviation` : unit}`)}
-      </span>
-    </span>
+    <ParrotTrans
+      parent={"span"}
+      i18nKey={`unit.${abbreviate ? `${unit}_abbreviation` : unit}`}
+      count={value}
+    >
+      <span className={cx("value", valueClassName)}></span>
+      <span className={cx("unit", UnitStyle, unitClassName)}></span>
+    </ParrotTrans>
   );
 };
 

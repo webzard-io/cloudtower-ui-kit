@@ -7,12 +7,13 @@ import {
   ILineChartMetricUnit,
 } from "@src/core/LineChart/type";
 import { getLineChartXAxisDomain } from "@src/core/LineChart/utils";
+import { lineChartYaxisTickFormatter } from "@src/core/LineChart/utils";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import type { MenuInfo } from "rc-menu/lib/interface";
 import dayjs from "dayjs";
+import type { MenuInfo } from "rc-menu/lib/interface";
 import React from "react";
 import { Payload } from "recharts/types/component/DefaultTooltipContent";
-import { lineChartYaxisTickFormatter } from "@src/core/LineChart/utils";
+
 import { mockMetric, mockMetric2 } from "../../../__test__/mockLineChart";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

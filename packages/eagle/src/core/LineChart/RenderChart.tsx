@@ -1,19 +1,19 @@
 import { useKitDispatch } from "@src/core/KitStoreProvider";
 import LineChartLegend from "@src/core/LineChart/LineChartLegend";
 import { MetricLegendTabStyle } from "@src/core/LineChart/styled";
+import TooltipFormatter from "@src/core/LineChart/TooltipFormatter";
 import {
   ILineChartDateRange,
   ILineChartGraphType,
   ILineChartMetric,
 } from "@src/core/LineChart/type";
-import { Empty as AntdEmpty } from "antd";
 import {
   convertLineChartDataStruct,
   lineChartYaxisTickFormatter,
 } from "@src/core/LineChart/utils";
-import TooltipFormatter from "@src/core/LineChart/TooltipFormatter";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { ChartActions } from "@src/store";
+import { Empty as AntdEmpty } from "antd";
 import { DropdownProps } from "antd5";
 import cs from "classnames";
 import dayjs from "dayjs";
