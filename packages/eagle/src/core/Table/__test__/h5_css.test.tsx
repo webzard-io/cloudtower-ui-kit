@@ -233,7 +233,7 @@ describe("Table h5_css", () => {
                   border-bottom-color: $fills-light-opaque-1;
                 }
 
-                .ant-btn-link {
+                .ant-btn.ant-btn-link {
                   height: auto;
                   color: $gray-120;
                   font-size: 12px;

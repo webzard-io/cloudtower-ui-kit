@@ -126,7 +126,7 @@ const CronPlanHeader = css`
 `;
 
 const ModeTabs = css`
-  .ant-btn-link {
+  .ant-btn.ant-btn-link {
     padding: 1px 10px;
     color: rgba(62, 70, 82, 0.6);
     border-radius: 4px;
