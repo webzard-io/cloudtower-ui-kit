@@ -59,7 +59,7 @@ const Col = styled.div`
     color: $text-primary-light;
 
     /* make btn link in info row have the same height as normal text */
-    .ant-btn-link {
+    .ant-btn.ant-btn-link {
       height: auto;
     }
   }

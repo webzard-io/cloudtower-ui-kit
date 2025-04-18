@@ -93,7 +93,7 @@ const TableRow = styled.div`
     display: none;
   }
 
-  .ant-btn-link {
+  .ant-btn.ant-btn-link {
     height: auto;
   }
 
