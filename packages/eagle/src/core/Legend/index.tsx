@@ -94,7 +94,7 @@ const StatusCodeSquare = styled.i`
   display: inline-block;
 `;
 
-export const StatusIcon: React.FC<{
+export const LegendIcon: React.FC<{
   shape: LegendShapes;
 }> = ({ shape }) => {
   switch (shape) {
@@ -177,7 +177,7 @@ const Legend: LegendComponentType = ({
         }
       }}
     >
-      <StatusIcon shape={shape} />
+      <LegendIcon shape={shape} />
       <OverflowTooltip
         content={content}
         tooltip={content}
