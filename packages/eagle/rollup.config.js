@@ -13,6 +13,9 @@ import esbuild from "rollup-plugin-esbuild";
 import nodePolyfills from "rollup-plugin-polyfill-node";
 import scss from "rollup-plugin-scss";
 import { visualizer } from "rollup-plugin-visualizer";
+import mergeScss from "./tools/merge-linaria-scss";
+import del from "rollup-plugin-delete";
+import antdLessPlugin from "./tools/rollup-plugin-antd-less";
 
 const projectRootDir = path.resolve(__dirname);
 
@@ -21,6 +24,7 @@ const config = defineConfig([
   {
     input: ["src/index.ts"],
     plugins: [
+      antdLessPlugin(),
       nodePolyfills(),
       alias({
         customResolver: resolve({ extensions: [".tsx", ".ts"] }),
@@ -55,20 +59,9 @@ const config = defineConfig([
         preprocessor: "none",
         classNameSlug: (hash, title) => `E_${hash}`,
       }),
-      scss({
-        include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
-        output: "dist/style.css",
-        processor: () =>
-          postcss([
-            url({
-              url: "copy",
-              basePath: [path.resolve("src/styles/fonts")],
-              assetsPath: "assets",
-              useHash: true,
-            }),
-          ]),
-        failOnError: true,
-        prefix: '@import "./src/styles/index.scss";',
+      mergeScss({
+        include: ["src/**/*.scss", "src/**/*.sass", "src/**/*.css"],
+        output: "dist/linaria.merged.scss",
       }),
       image({
         base64: true,
@@ -103,7 +96,7 @@ const config = defineConfig([
         format: "cjs",
         preserveModules: true,
         preserveModulesRoot: "src",
-        interop:"auto"
+        interop: "auto",
       },
       {
         dir: "dist/esm",
@@ -116,6 +109,26 @@ const config = defineConfig([
     treeshake: {
       moduleSideEffects: false,
     },
+  },
+  {
+    input: ["dist/linaria.merged.scss"],
+    plugins: [
+      scss({
+        include: ["dist/linaria.merged.scss"],
+        output: "dist/style.css",
+        processor: () =>
+          postcss([
+            url({
+              url: "copy",
+              basePath: [path.resolve("src/styles/fonts")],
+              assetsPath: "assets",
+              useHash: true,
+            }),
+          ]),
+        failOnError: true,
+        prefix: '@import "./src/styles/index.scss";',
+      }),
+    ],
   },
   {
     input: ["dist/style.css"],
@@ -139,6 +152,11 @@ const config = defineConfig([
             },
           ]),
         failOnError: true,
+      }),
+      del({
+        targets: "dist/linaria.merged.scss",
+        hook: "closeBundle",
+        verbose: true,
       }),
     ],
   },
