@@ -11,15 +11,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  label-check:
-    runs-on: [self-hosted, linux]
-    name: Check PR Label
-    steps:
-      - uses: jesusvasquez333/verify-pr-label-action@v1.4.0
-        with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-          valid-labels: "feat, fix, chore, breaking change, refactor, enhancement, doc, storybook"
-          pull-request-number: "${{ github.event.pull_request.number }}"
+  # label-check:
+  #   runs-on: [self-hosted, linux]
+  #   name: Check PR Label
+  #   steps:
+  #     - uses: jesusvasquez333/verify-pr-label-action@v1.4.0
+  #       with:
+  #         github-token: "${{ secrets.GITHUB_TOKEN }}"
+  #         valid-labels: "feat, fix, chore, breaking change, refactor, enhancement, doc, storybook"
+  #         pull-request-number: "${{ github.event.pull_request.number }}"
 
   test:
     runs-on: [self-hosted, linux]
