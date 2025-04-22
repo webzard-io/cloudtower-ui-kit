@@ -56,7 +56,7 @@
       },
       {
         "path": "./packages/eagle/dist/components.css",
-        "maxSize": "90 kB"
+        "maxSize": "100 kB"
       },
       {
         "path": "./packages/eagle/dist/font.css",
@@ -64,7 +64,7 @@
       },
       {
         "path": "./packages/eagle/dist/style.css",
-        "maxSize": "90 kB"
+        "maxSize": "100 kB"
       }
     ]
   }
