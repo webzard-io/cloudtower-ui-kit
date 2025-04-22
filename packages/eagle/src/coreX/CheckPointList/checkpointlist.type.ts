@@ -48,6 +48,7 @@ export interface CheckPointItem {
  * @property {string | React.ReactNode} [emptyText] - 列表为空时显示的文本
  * @property {string} [emptyTextClassName] - 空状态文本的自定义类名
  * @property {(emptyText: string | React.ReactNode) => React.ReactNode} [emptyRender] - 自定义渲染空状态的函数
+ * @property {boolean} [defaultChecked] - 开关的默认选中状态，决定是否默认只显示未通过的检查项
  * @example
  * {
  *   title: "系统检查项",
@@ -65,7 +66,8 @@ export interface CheckPointItem {
  *     }
  *   ],
  *   showSwitchControl: true,
- *   switchText: "只显示失败项"
+ *   switchText: "只显示失败项",
+ *   defaultChecked: true
  * }
  * @example
  * {
@@ -81,6 +83,7 @@ export interface CheckPointListProps {
   emptyTextClassName?: string;
   emptyRender?: (emptyText: string | React.ReactNode) => React.ReactNode;
   showSwitchControl?: boolean;
+  defaultChecked?: boolean;
   onClickSwitch?: (checked: boolean) => void;
   title: string | React.ReactNode;
   switchText?: string;

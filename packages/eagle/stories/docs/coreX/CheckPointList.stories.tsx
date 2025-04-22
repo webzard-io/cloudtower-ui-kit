@@ -6,7 +6,7 @@ import {
 } from "@cloudtower/icons-react";
 import { CheckPointList } from "@src/coreX/CheckPointList";
 import { type StoryObj } from "@storybook/react";
-import React from "react";
+import React, { useState } from "react";
 
 /**
  * CheckPointList 组件
@@ -322,5 +322,134 @@ export const ComplexDescription: Story = {
         },
       },
     ],
+  },
+};
+
+/**
+ * 默认开启筛选
+ * 展示如何设置默认只显示未通过的检查项
+ */
+export const DefaultFilterEnabled: Story = {
+  name: "默认开启筛选",
+  args: {
+    title: "默认显示未通过项",
+    defaultChecked: true,
+    items: [
+      {
+        description: "CPU检查",
+        status: "success",
+        tagProps: {
+          color: "green",
+          icon: <CheckmarkDoneSuccessCircleFill16GreenIcon />,
+          children: "通过",
+        },
+      },
+      {
+        description: "内存检查",
+        status: "success",
+        tagProps: {
+          color: "green",
+          icon: <CheckmarkDoneSuccessCircleFill16GreenIcon />,
+          children: "通过",
+        },
+      },
+      {
+        description: "磁盘检查",
+        status: "failed",
+        tagProps: {
+          color: "red",
+          icon: <XmarkFailedSeriousWarningFill16RedIcon />,
+          children: "失败",
+        },
+        alertProps: {
+          message: "磁盘空间不足",
+          type: "error",
+          showIcon: true,
+        },
+      },
+      {
+        description: "网络检查",
+        status: "warning",
+        tagProps: {
+          color: "yellow",
+          icon: <NoticeTriangleFill16YellowIcon />,
+          children: "警告",
+        },
+        alertProps: {
+          message: "网络延迟较高",
+          type: "warning",
+          showIcon: true,
+        },
+      },
+    ],
+  },
+};
+
+/**
+ * 自定义筛选回调函数
+ * 展示如何监听筛选状态变化
+ */
+export const CustomSwitchCallback: Story = {
+  name: "自定义筛选回调函数",
+  render: (args) => {
+    const [lastSwitchState, setLastSwitchState] = useState<string>("尚未切换");
+
+    return (
+      <div>
+        <div
+          style={{
+            marginBottom: "16px",
+            padding: "8px",
+            border: "1px solid #eee",
+            borderRadius: "4px",
+          }}
+        >
+          最后一次切换状态: <b>{lastSwitchState}</b>
+        </div>
+
+        <CheckPointList
+          title="监听筛选状态变化"
+          defaultChecked={false}
+          onClickSwitch={(checked) => {
+            setLastSwitchState(checked ? "只显示未通过项" : "显示全部项");
+            console.log("Switch changed to:", checked);
+          }}
+          items={[
+            {
+              description: "系统检查",
+              status: "success",
+              tagProps: {
+                color: "green",
+                children: "通过",
+              },
+            },
+            {
+              description: "安全检查",
+              status: "failed",
+              tagProps: {
+                color: "red",
+                children: "失败",
+              },
+              alertProps: {
+                message: "存在安全风险",
+                type: "error",
+              },
+            },
+            {
+              description: "性能检查",
+              status: "warning",
+              tagProps: {
+                color: "yellow",
+                children: "警告",
+              },
+              alertProps: {
+                message: "性能可能不佳",
+                type: "warning",
+              },
+            },
+          ]}
+        />
+      </div>
+    );
   },
 };
