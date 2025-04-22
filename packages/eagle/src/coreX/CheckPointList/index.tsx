@@ -71,14 +71,15 @@ export const CheckPointList: React.FC<CheckPointListProps> = ({
   emptyText,
   emptyTextClassName,
   onClickSwitch,
+  defaultChecked = false,
 }) => {
   const { t } = useParrotTranslation();
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(defaultChecked);
 
   const onClickSwitchFn = useCallback(() => {
     const nextChecked = !checked;
     setChecked(nextChecked);
-    onClickSwitch?.(checked);
+    onClickSwitch?.(nextChecked);
   }, [onClickSwitch, checked]);
 
   const isEmpty = !items.length;
