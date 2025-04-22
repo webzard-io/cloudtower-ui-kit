@@ -15,7 +15,8 @@ const TableContainerStyle = css`
 `;
 
 export const emptyTableStyle = css`
-  .ant-table-content {
+  .ant-table-content,
+  .ant-table-body {
     overflow: visible !important;
     height: 100%;
   }

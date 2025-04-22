@@ -307,3 +307,20 @@ export const ErrorFalse: Story = {
     error: false,
   },
 };
+
+/**
+ * 在 error loading dataSource 不存在值的情况下
+ *
+ * 固定表头显示空表格
+ */
+
+export const ShowEmptyForFixd: Story = {
+  name: "无数据 无 loading 无 error 固定表头",
+  args: {
+    columns: columns.map((c) => ({
+      ...c,
+      width: 250,
+    })),
+    scroll: { y: 250 * 4 },
+  },
+};
