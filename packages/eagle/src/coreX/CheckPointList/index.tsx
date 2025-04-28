@@ -72,6 +72,7 @@ export const CheckPointList: React.FC<CheckPointListProps> = ({
   emptyTextClassName,
   onClickSwitch,
   defaultChecked = false,
+  className,
 }) => {
   const { t } = useParrotTranslation();
   const [checked, setChecked] = useState(defaultChecked);
@@ -85,7 +86,7 @@ export const CheckPointList: React.FC<CheckPointListProps> = ({
   const isEmpty = !items.length;
 
   return (
-    <div className={cx(CheckPointListStyle)}>
+    <div className={cx(CheckPointListStyle, className)}>
       <header className={cx(Typo.Label.l4_bold)}>
         {title}
         <Show condition={showSwitchControl}>
