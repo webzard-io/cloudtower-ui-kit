@@ -14,7 +14,6 @@ import nodePolyfills from "rollup-plugin-polyfill-node";
 import scss from "rollup-plugin-scss";
 import { visualizer } from "rollup-plugin-visualizer";
 import mergeScss from "./tools/merge-linaria-scss";
-import del from "rollup-plugin-delete";
 import antdLessPlugin from "./tools/rollup-plugin-antd-less";
 
 const projectRootDir = path.resolve(__dirname);
@@ -131,36 +130,6 @@ const config = defineConfig([
     ],
   },
   {
-    input: ["dist/style.css"],
-    plugins: [
-      scss({
-        include: ["/**/*.css", "/**/*.scss", "/**/*.sass"],
-        output: "dist/components.css",
-        processor: () =>
-          postcss([
-            {
-              postcssPlugin: "removeFontFace",
-              prepare: (result) => {
-                return {
-                  AtRule: {
-                    "font-face": (rule) => {
-                      rule.remove();
-                    },
-                  },
-                };
-              },
-            },
-          ]),
-        failOnError: true,
-      }),
-      del({
-        targets: "dist/linaria.merged.scss",
-        hook: "closeBundle",
-        verbose: true,
-      }),
-    ],
-  },
-  {
     input: ["src/styles/fonts/font.css"],
     plugins: [
       scss({
@@ -191,6 +160,31 @@ const config = defineConfig([
               path: ["src/styles/token"],
             }),
           ]),
+      }),
+    ],
+  },
+  {
+    input: ["dist/style.css"],
+    plugins: [
+      scss({
+        include: ["dist/style.css"],
+        output: "dist/components.css",
+        processor: () =>
+          postcss([
+            {
+              postcssPlugin: "removeFontFace",
+              prepare: (result) => {
+                return {
+                  AtRule: {
+                    "font-face": (rule) => {
+                      rule.remove();
+                    },
+                  },
+                };
+              },
+            },
+          ]),
+        failOnError: true,
       }),
     ],
   },
