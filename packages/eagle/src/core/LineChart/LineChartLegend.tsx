@@ -77,7 +77,7 @@ const LineChartLegend = (props: ILineChartLegendProps) => {
                     onMouseLeave={() => onHover("leave", legend.id)}
                   >
                     <LineChartColorBlock background={legend.color} />
-                    <span>{legend.name}</span>
+                    <span className="legend-name">{legend.name}</span>
                   </Menu.Item>
                 );
               })}
@@ -109,7 +109,7 @@ const LineChartLegend = (props: ILineChartLegendProps) => {
             onClick={() => onClick(legend.id)}
           >
             <LineChartColorBlock background={legend.color} />
-            <span>
+            <span className="legend-name">
               <Truncate text={legend.name} len={50} backLen={20} />
             </span>
           </div>
@@ -125,7 +125,7 @@ const LegendComponent: React.FC<ILineChartILegend> = (props) => {
   return (
     <div className={cs(LegendItemsStyle, "legend-component")}>
       <LineChartColorBlock background={color} />
-      <span>{name}</span>
+      <span className="legend-name">{name}</span>
     </div>
   );
 };

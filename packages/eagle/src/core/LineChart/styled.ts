@@ -97,6 +97,9 @@ export const LegendItemsStyle = css`
   .dropdown-trigger {
     margin-left: 12px;
   }
+  .legend-name {
+    color: $text-light-primary;
+  }
 `;
 
 export const LegendItemsStyleDropdown = css`
@@ -114,6 +117,9 @@ export const LegendItemsStyleDropdown = css`
       background: #b4beca !important;
       border-radius: 2px;
     }
+  }
+  .legend-name {
+    color: $text-light-primary;
   }
   &.hoverering-self {
     opacity: 1;

@@ -293,6 +293,12 @@ const dateRange1: ILineChartDateRange = [
   dayjs("2022-12-13 16:00"),
   dayjs("2022-12-13 18:00"),
 ];
+
+const dateRange2: ILineChartDateRange = [
+  dayjs("2022-12-21T13:35:01.234Z"),
+  dayjs("2022-12-22T13:35:01.234Z"),
+];
+
 const domain1 = getLineChartXAxisDomain(dateRange1, dateRange1[1].valueOf());
 
 const menu: Antd5DropdownProps["menu"] = {
@@ -318,7 +324,6 @@ const menu: Antd5DropdownProps["menu"] = {
 };
 
 Primary.args = {
-  showPointer: true,
   chartProps: {
     syncId: "abc",
     mode: "legend",
@@ -348,7 +353,6 @@ Primary.args = {
 export const PrimaryWithoutRight = Template.bind({});
 
 PrimaryWithoutRight.args = {
-  showPointer: true,
   chartProps: {
     syncId: "abc",
     mode: "legend",
@@ -370,7 +374,6 @@ PrimaryWithoutRight.args = {
 export const PrimaryWithLongLabel = Template.bind({});
 
 PrimaryWithLongLabel.args = {
-  showPointer: true,
   chartProps: {
     syncId: "abc",
     mode: "legend",
@@ -399,7 +402,6 @@ PrimaryWithLongLabel.args = {
 
 export const PrimaryWithSingleYAxis = Template.bind({});
 PrimaryWithSingleYAxis.args = {
-  showPointer: true,
   chartProps: {
     syncId: "abc",
     mode: "legend",
@@ -428,16 +430,15 @@ PrimaryWithSingleYAxis.args = {
 
 export const PrimaryWithXAxisSm = TemplateSm.bind({});
 PrimaryWithXAxisSm.args = {
-  showPointer: true,
   chartProps: {
     syncId: "abc",
     mode: "legend",
     showLegend: true,
     metricName: "hello",
-    metric: mockMetric,
+    metric: mockMetric2,
     height: 180,
     type: ILineChartGraphType.Area,
-    dateRange: dateRange1,
+    dateRange: dateRange2,
     actionsProps: {
       show: true,
       label: "Long Label LongLabel LongLabel LongLabel LongLabel LongLabel",
@@ -457,7 +458,6 @@ PrimaryWithXAxisSm.args = {
 
 export const PrimaryWithXAxisMd = TemplateMd.bind({});
 PrimaryWithXAxisMd.args = {
-  showPointer: true,
   chartProps: {
     syncId: "abc",
     mode: "legend",
@@ -478,7 +478,6 @@ PrimaryWithXAxisMd.args = {
 
 export const PrimaryWithXAxisLg = TemplateLg.bind({});
 PrimaryWithXAxisLg.args = {
-  showPointer: true,
   chartProps: {
     syncId: "abc",
     mode: "legend",
@@ -499,11 +498,6 @@ PrimaryWithXAxisLg.args = {
 
 export const Secondary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-
-const dateRange2: ILineChartDateRange = [
-  dayjs("2022-12-21T13:35:01.234Z"),
-  dayjs("2022-12-22T13:35:01.234Z"),
-];
 
 const domain2 = getLineChartXAxisDomain(dateRange2, dateRange2[1].valueOf());
 
@@ -533,7 +527,6 @@ Secondary.args = {
 
 export const EmptyDefault = Template.bind({});
 EmptyDefault.args = {
-  showPointer: true,
   chartProps: {
     syncId: "empty-default",
     mode: "legend",
@@ -566,7 +559,6 @@ EmptyDefault.parameters = {
 
 export const EmptyWithCustomText = Template.bind({});
 EmptyWithCustomText.args = {
-  showPointer: true,
   chartProps: {
     syncId: "empty-custom",
     mode: "legend",
@@ -901,7 +893,6 @@ const DifferentUnitsTemplate: ComponentStory<typeof LineChart> = (args) => {
 export const DifferentUnits = DifferentUnitsTemplate.bind({});
 
 DifferentUnits.args = {
-  showPointer: true,
   chartProps: {
     syncId: "different-units",
     mode: "legend",
@@ -976,7 +967,6 @@ const zeroDataMetric: ILineChartMetric = {
 };
 
 ZeroDataChart.args = {
-  showPointer: true,
   chartProps: {
     syncId: "zero-data",
     mode: "legend",
@@ -1059,7 +1049,6 @@ const DynamicTimeRangeTemplate: ComponentStory<typeof LineChart> = (args) => {
 export const DynamicTimeRange = DynamicTimeRangeTemplate.bind({});
 
 DynamicTimeRange.args = {
-  showPointer: true,
   chartProps: {
     syncId: "dynamic-time-range",
     mode: "legend",
