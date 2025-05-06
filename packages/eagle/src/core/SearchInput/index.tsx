@@ -61,26 +61,43 @@ const SearchInput: SearchInputComponentType = (props) => {
     clearIcon,
     width,
     searchIcon,
+    current: externalCurrent,
     ...restProps
   } = props;
-  const [current, setCurrent] = useState(0);
+  const [internalCurrent, setInternalCurrent] = useState(0);
   const [value, setValue] = useState((props.value as string) || "");
   const { t } = useParrotTranslation();
   const onSearch = _.debounce(onChange, debounceWait);
   const isNoMatch = total === 0;
 
+  // 使用外部传入的 current 或内部状态
+  const current =
+    externalCurrent !== undefined ? externalCurrent : internalCurrent;
+  // 内部更新 current 的方法
+  const setCurrent = useCallback(
+    (newCurrent: number) => {
+      if (externalCurrent === undefined) {
+        setInternalCurrent(newCurrent);
+      }
+    },
+    [externalCurrent],
+  );
+
   const next = useCallback(() => {
     if (total) {
-      onSearchNext?.(value, current);
-      setCurrent(current + 1 > total ? 1 : current + 1);
+      const nextCurrent = current + 1 > total ? 1 : current + 1;
+      onSearchNext?.(value, nextCurrent);
+      setCurrent(nextCurrent);
     }
-  }, [onSearchNext, current, total, value]);
+  }, [onSearchNext, current, total, value, setCurrent]);
+
   const prev = useCallback(() => {
     if (total) {
-      onSearchPrev?.(value, current);
-      setCurrent(current - 1 < 1 ? total : current - 1);
+      const prevCurrent = current - 1 < 1 ? total : current - 1;
+      onSearchPrev?.(value, prevCurrent);
+      setCurrent(prevCurrent);
     }
-  }, [onSearchPrev, current, total, value]);
+  }, [onSearchPrev, current, total, value, setCurrent]);
 
   const suffix =
     onSearchNext && onSearchPrev && value ? (
@@ -144,9 +161,13 @@ const SearchInput: SearchInputComponentType = (props) => {
   useEffect(() => {
     setValue((props.value as string) || "");
   }, [props.value]);
+
   useEffect(() => {
-    setCurrent(total ? 1 : 0);
-  }, [value, total]);
+    // 只在非受控模式下重置内部 current
+    if (externalCurrent === undefined) {
+      setCurrent(total ? 1 : 0);
+    }
+  }, [value, total, externalCurrent, setCurrent]);
 
   return (
     <Input

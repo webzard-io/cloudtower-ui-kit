@@ -12,6 +12,11 @@ export type SearchInputProps = Omit<InputProps, "onChange"> & {
    */
   total?: number;
   /**
+   * 当前选中的结果索引，可用于外部控制当前位置
+   * 如果不提供，组件将内部管理此状态
+   */
+  current?: number;
+  /**
    * 搜索下一个结果时的回调函数
    */
   onSearchNext?: (value: string, current: number) => void;
