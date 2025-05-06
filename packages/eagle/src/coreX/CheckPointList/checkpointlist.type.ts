@@ -87,6 +87,7 @@ export interface CheckPointListProps {
   onClickSwitch?: (checked: boolean) => void;
   title: string | React.ReactNode;
   switchText?: string;
+  className?: string;
 }
 
 /**
