@@ -16,6 +16,7 @@ const SmallSegment = css`
   &.${Antd5PrefixCls}-segmented-sm .${Antd5PrefixCls}-segmented-item-label {
     padding-left: 8px;
     padding-right: 8px;
+    font-size: 12px;
   }
 
   &.${Antd5PrefixCls}-segmented-sm .${Antd5PrefixCls}-segmented-item-selected {

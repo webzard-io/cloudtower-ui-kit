@@ -172,8 +172,10 @@ const RenderChart = (props: IChartProps & { width: number }) => {
     (method: "enter" | "leave", id: string) => {
       if (method === "enter") {
         if (deselected.length) {
+          // If there are unselected metrics
           setTempDeselected(deselected);
           if (deselected.includes(id)) {
+            // If hovering over an unselected metric, select the currently unselected metric
             setDeselected(
               streams
                 .map((stream) => stream.legend.id)
@@ -195,14 +197,32 @@ const RenderChart = (props: IChartProps & { width: number }) => {
                 .filter((legendId) => legendId === id),
             );
           } else {
-            setDeselected([]);
-            setHovering(
-              streams
-                .map((stream) => stream.legend.id)
-                .filter((legendId) => legendId !== id),
-            );
+            // If more than one metric is selected, hovering does not change the selected metrics, but the hovered metric will be highlighted
+            if (deselected.length === streams.length - 1) {
+              setDeselected([]);
+              setHovering(
+                streams
+                  .map((stream) => stream.legend.id)
+                  .filter((legendId) => legendId !== id),
+              );
+            } else {
+              setHovering(
+                streams
+                  .map((stream) => stream.legend.id)
+                  .filter((legendId) => legendId !== id),
+              );
+              setHoveringSelf(
+                streams
+                  .map((stream) => stream.legend.id)
+                  .filter(
+                    (legendId) =>
+                      legendId !== id && !deselected.includes(legendId),
+                  ),
+              );
+            }
           }
         } else {
+          // If all metrics are selected
           setHovering(
             streams
               .map((stream) => stream.legend.id)
@@ -298,8 +318,8 @@ const RenderChart = (props: IChartProps & { width: number }) => {
           style={{ backgroundColor: "white" }}
           margin={
             showLegend
-              ? { top: 10, left: -20, right: 10, bottom: 0 }
-              : { top: 20, left: -20, right: 10, bottom: 5 }
+              ? { top: 10, left: -20, right: 0, bottom: 0 }
+              : { top: 20, left: -20, right: 0, bottom: 5 }
           }
           data={areaChartData}
           syncId={syncId}
@@ -329,6 +349,7 @@ const RenderChart = (props: IChartProps & { width: number }) => {
             tick={{
               dx: 20,
               dy: 16,
+              fontSize: 12,
             }}
             ticks={[yDomain[1] / 2, yDomain[1]]}
             tickFormatter={(tick) =>
@@ -337,6 +358,7 @@ const RenderChart = (props: IChartProps & { width: number }) => {
             {...yAxisProps}
           />
           <Tooltip
+            wrapperStyle={{ left: 20 }}
             content={
               tooltipProps.format && (
                 <TooltipFormatter
