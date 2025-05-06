@@ -165,6 +165,9 @@ describe("line chart h5_css", () => {
         .dropdown-trigger {
           margin-left: 12px;
         }
+        .legend-name {
+          color: $text-light-primary;
+        }
 
                 >
                   <div
@@ -180,7 +183,9 @@ describe("line chart h5_css", () => {
       ,color-block
                     style=background:,rgb(171,,202,,188);
                   />
-                  <span>
+                  <span
+                    class=legend-name
+                  >
                     <div
                       class=
                     >
@@ -214,6 +219,9 @@ describe("line chart h5_css", () => {
         .dropdown-trigger {
           margin-left: 12px;
         }
+        .legend-name {
+          color: $text-light-primary;
+        }
 
                 >
                   <div
@@ -229,7 +237,9 @@ describe("line chart h5_css", () => {
       ,color-block
                     style=background:,rgb(11,,192,,188);
                   />
-                  <span>
+                  <span
+                    class=legend-name
+                  >
                     <div
                       class=
                     >
@@ -263,6 +273,9 @@ describe("line chart h5_css", () => {
         .dropdown-trigger {
           margin-left: 12px;
         }
+        .legend-name {
+          color: $text-light-primary;
+        }
 
                 >
                   <div
@@ -278,7 +291,9 @@ describe("line chart h5_css", () => {
       ,color-block
                     style=background:,rgb(255,,1,,1);
                   />
-                  <span>
+                  <span
+                    class=legend-name
+                  >
                     <div
                       class=
                     >
