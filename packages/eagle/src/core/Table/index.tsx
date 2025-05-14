@@ -469,6 +469,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
     pagination,
     onRow,
     skeletonProps,
+    expandable,
   } = props;
   const orderRef = useRef<"descend" | "ascend" | undefined | null>(null);
   const hasScrollBard = useTableBodyHasScrollBar(wrapper, _dataSource);
@@ -557,6 +558,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
         scroll={scroll}
         rowSelection={rowSelection && { ...rowSelection, columnWidth: 32 }}
         showSorterTooltip={false}
+        expandable={expandable}
       />
     </div>
   );

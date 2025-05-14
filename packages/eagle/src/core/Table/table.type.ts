@@ -3,7 +3,7 @@ import {
   ColumnType,
   TableProps as AntdTableProps,
 } from "antd/lib/table";
-import { TableRowSelection } from "antd/lib/table/interface";
+import { TableRowSelection, ExpandableConfig } from "antd/lib/table/interface";
 
 import { ITableSkeletonProps } from "./TableSkeleton";
 
@@ -95,4 +95,5 @@ export interface TableProps<T extends { id: string }> {
   };
   onRow?: AntdTableProps<T>["onRow"];
   skeletonProps?: ITableSkeletonProps;
+  expandable?: ExpandableConfig<T>;
 }
