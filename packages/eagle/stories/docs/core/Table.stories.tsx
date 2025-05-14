@@ -324,3 +324,27 @@ export const ShowEmptyForFixd: Story = {
     scroll: { y: 250 * 4 },
   },
 };
+
+/**
+ * 在 loading error 不存在的情况下
+ *
+ * 显示表格数据，表格可以展开
+ */
+export const ShowCanExpandData: Story = {
+  name: "表格数据展开",
+  args: {
+    columns,
+    dataSource: data,
+    expandable: {
+      expandedRowRender: () => {
+        return (
+          <ul>
+            <li>Expand List One</li>
+            <li>Expand List Two</li>
+          </ul>
+        );
+      },
+      rowExpandable: () => true,
+    },
+  },
+};
