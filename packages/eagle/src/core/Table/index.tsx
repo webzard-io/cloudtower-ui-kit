@@ -447,7 +447,11 @@ export const tableStyleCover = css`
   }
 `;
 
-const Table = <T extends { id: string }>(props: TableProps<T>) => {
+type EagleTableProps<T extends { id: string }> = TableProps<T> & {
+  className?: string;
+};
+
+const Table = <T extends { id: string }>(props: EagleTableProps<T>) => {
   const {
     loading = false,
     error,
@@ -469,6 +473,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
     pagination,
     onRow,
     skeletonProps,
+    className,
   } = props;
   const orderRef = useRef<"descend" | "ascend" | undefined | null>(null);
   const hasScrollBard = useTableBodyHasScrollBar(wrapper, _dataSource);
@@ -525,6 +530,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
           tableStyleCover,
           !dataSource?.length && emptyTableStyle,
           rowSelection && "has-selection",
+          className,
         )}
         bordered={bordered}
         loading={{
