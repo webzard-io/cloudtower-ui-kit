@@ -68,7 +68,7 @@
       },
       {
         "path": "./packages/icons/dist/**/*.svg",
-        "maxSize": "6 kB"
+        "maxSize": "3.1 kB"
       }
     ]
   }
