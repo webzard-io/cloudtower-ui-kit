@@ -65,6 +65,10 @@
       {
         "path": "./packages/eagle/dist/style.css",
         "maxSize": "100 kB"
+      },
+      {
+        "path": "./packages/icons/dist/**/*.svg",
+        "maxSize": "6 kB"
       }
     ]
   }
