@@ -306,6 +306,8 @@ const AbsoluteTimeWrapper = styled.div`
 
   .date-range-picker-calendar {
     flex: 1;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
   }
 `;
 
@@ -330,6 +332,7 @@ const AbsoluteTimeSectionWrapper = styled.div`
 
         p {
           margin: 0;
+          margin-bottom: 2px;
         }
       }
 
@@ -381,6 +384,7 @@ const RelativeTimeWrapper = styled.div`
     list-style: none;
     padding: 0;
     margin-top: 12px;
+    margin-bottom: 12px;
 
     li {
       padding: 5px 8px;
@@ -462,12 +466,24 @@ const DateRangePickerWrapper = styled.div`
       height: 40px;
       line-height: 40px;
       padding: 0 12px 0 16px;
+
+      // Used to modify the position of the Popover.
+      // Because the Popover doesn't wrap the entire input field but the internal element, we can change the position of the Popover by changing the style of the internal element so as not to cause too much adjustment of the element structure
+      .date-input-content {
+        padding-left: 40px;
+        transform: translateX(-40px);
+      }
     }
 
     &.medium {
       height: 32px;
       line-height: 32px;
       padding: 0 8px 0 12px;
+
+      .date-input-content {
+        padding-left: 36px;
+        transform: translateX(-36px);
+      }
     }
 
     .date-input-content {
@@ -516,6 +532,10 @@ const DateRangePickerWrapper = styled.div`
 `;
 
 const DateRangePickerPopover = css`
+  .ant-popover-inner {
+    border-radius: 8px;
+  }
+
   .ant-popover-inner-content {
     .tab-menu {
       .tab-bar {
