@@ -25,7 +25,7 @@ export default defineConfig({
             JSON.stringify({
               ...JSON.parse(value),
               [selector]: cssText,
-            }),
+            })
           );
         } catch (error) {
           console.error(error);
@@ -48,7 +48,7 @@ export default defineConfig({
     snapshotFormat: {
       escapeString: false,
     },
-    include: ["**/**.test.ts?(x)"],
+    include: ["**/**.(test|spec).ts?(x)"],
     setupFiles: [path.resolve(__dirname, "__test__/setup.ts")],
   },
   resolve: {
