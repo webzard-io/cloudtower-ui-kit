@@ -137,7 +137,14 @@ const TimeRange: React.FC<{
       },
     ].filter((item) => mode.includes(item.key as "absolute" | "relative"));
 
-    return <TabMenu selectedKey={type} tabs={tabs} onChange={onTypeChange} />;
+    return (
+      <TabMenu
+        selectedKey={type}
+        tabs={tabs}
+        onChange={onTypeChange}
+        size="small"
+      />
+    );
   }
 };
 
