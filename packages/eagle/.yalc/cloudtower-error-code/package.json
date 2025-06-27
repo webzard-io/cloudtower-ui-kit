@@ -1,0 +1,25 @@
+{
+  "name": "cloudtower-error-code",
+  "version": "1.0.0-rc-2",
+  "main": "lib/index.js",
+  "author": "",
+  "license": "ISC",
+  "description": "Common error code for CloudTower",
+  "scripts": {
+    "lint": "eslint src --quiet",
+    "build": "tsc -b .",
+    "copy-json": "copyfiles -u 1 \"src/**/*.json\" lib",
+    "postbuild": "npm run copy-json && npm run generate-precompile",
+    "generate-precompile": "node scripts/generate-hbs-precompile.js",
+    "typings": "tsc --emitDeclarationOnly --declaration"
+  },
+  "files": [
+    "lib"
+  ],
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "keywords": [],
+  "yalcSig": "2e72a15db0b2b80d0260e6ee77e648e6"
+}

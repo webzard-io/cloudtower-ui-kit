@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "packages": {
+    "cloudtower-error-code": {
+      "signature": "2e72a15db0b2b80d0260e6ee77e648e6",
+      "file": true,
+      "replaced": "^1.0.0-rc-2"
+    }
+  }
+}

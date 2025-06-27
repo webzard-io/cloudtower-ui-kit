@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "postbuild": "turbo run typings && bundlewatch",
+    "postbuild": "turbo run typings",
+    "bundlewatch": "bundlewatch",
     "build": "turbo run build",
     "test:ci": "turbo run test:ci",
     "dev": "turbo run dev --parallel",
