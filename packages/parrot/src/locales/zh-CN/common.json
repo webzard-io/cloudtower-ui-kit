@@ -51,5 +51,11 @@
   "hour_count": "{count} 小时",
   "minute_count": "{count} 分钟",
   "month_measure_count": "{count} 个月",
-  "show_unpassed": "只看未满足"
+  "show_unpassed": "只看未满足",
+  "copy": "复制",
+  "download": "下载",
+  "copy_kubeconfig_success": "Kubeconfig 复制成功。",
+  "download_kubeconfig": "下载 Kubeconfig",
+  "download_kubeconfig_tip": "通过使用 Kubeconfig 文件配置当前集群的访问信息。",
+  "obtain_data_error": "获取数据时遇到问题"
 }
