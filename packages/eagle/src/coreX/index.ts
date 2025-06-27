@@ -48,3 +48,4 @@ export { default as SummaryTable } from "./SummaryTable";
 export { default as SwitchWithText } from "./SwitchWithText";
 export { default as TabMenu } from "./TabMenu";
 export { default as UnitWithChart } from "./UnitWithChart";
+export { default as KubeConfigModal } from "./KubeConfigModal";
