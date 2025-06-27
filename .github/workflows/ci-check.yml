@@ -41,6 +41,8 @@ jobs:
         timeout-minutes: 15
       - name: Build
         run: yarn build
+      - name: Bundlewatch
+        run: yarn bundlewatch
       - name: Test
         run: yarn test:ci
   storybook-staging:
