@@ -17,3 +17,5 @@ package-lock.json
 .ci
 .cursor
 .qodo
+.yalc/
+yalc.lock

@@ -7,11 +7,21 @@ import "./overrideRoot.css";
 initParrotI18n({
   resources: {
     "en-US": {
+      CTError: {
+        AXIOS_NETWORK_ERROR: "Network error",
+        INVALID_PARAMETER: "Invalid parameter",
+        INVALID_PARAMETER_DETAIL: "Invalid field: {field}",
+      },
       test: {
         error_message_batch: "Batch Error Message {count}",
       },
     },
     "zh-CN": {
+      CTError: {
+        AXIOS_NETWORK_ERROR: "网络错误",
+        INVALID_PARAMETER: "参数无效，请检查输入",
+        INVALID_PARAMETER_DETAIL: "无效字段: {field}",
+      },
       test: {
         error_message_batch: "错误信息 {count}",
         highlight: "这是一条会高亮传入 <1>{name}</1> 的词条",
