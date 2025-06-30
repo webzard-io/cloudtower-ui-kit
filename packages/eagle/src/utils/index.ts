@@ -6,3 +6,4 @@ export * from "./formatValue";
 export * from "./icon";
 export * from "./isStringArr";
 export * from "./time";
+export * from "./cterror";

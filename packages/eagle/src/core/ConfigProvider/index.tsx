@@ -15,16 +15,30 @@ import antd5enUS from "antd5/lib/locale/en_US";
 import antd5zhCN from "antd5/lib/locale/zh_CN";
 import dayjs from "dayjs";
 import moment from "moment";
-import React, { useEffect } from "react";
+import React, { createContext, useContext, useEffect } from "react";
 
+// 完整的配置类型
 export type ConfigProps = {
   antd4Configs?: ConfigProviderProps;
   antd5Configs?: Antd5ConfigProviderProps;
+  config?: {
+    /** CTError i18n 命名空间 */
+    ctErrorI18nNs?: string;
+  };
 };
 
-export const ConfigProvider: React.FC<ConfigProps> = ({
+// 创建 CTError 配置 Context
+const ConfigProviderContext = createContext<ConfigProps["config"]>({});
+
+// 导出获取 CTError 配置的 hook
+export const useConfig = (): ConfigProps["config"] => {
+  return useContext(ConfigProviderContext);
+};
+
+export const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProps>> = ({
   antd5Configs,
   antd4Configs,
+  config = {},
   children,
 }) => {
   const { i18n } = useParrotTranslation();
@@ -37,19 +51,22 @@ export const ConfigProvider: React.FC<ConfigProps> = ({
     // init
     adjustDateLocale(i18n.language as ParrotLngs);
   }, [i18n]);
+
   return (
-    <Antd5ConfigProvider
-      autoInsertSpaceInButton={false}
-      locale={i18n.language === "zh-CN" ? antd5zhCN : antd5enUS}
-      {...antd5Configs}
-    >
-      <Antd4ConfigProvider
+    <ConfigProviderContext.Provider value={config}>
+      <Antd5ConfigProvider
         autoInsertSpaceInButton={false}
-        locale={i18n.language === "zh-CN" ? zhCN : enUS}
-        {...antd4Configs}
+        locale={i18n.language === "zh-CN" ? antd5zhCN : antd5enUS}
+        {...antd5Configs}
       >
-        {children}
-      </Antd4ConfigProvider>
-    </Antd5ConfigProvider>
+        <Antd4ConfigProvider
+          autoInsertSpaceInButton={false}
+          locale={i18n.language === "zh-CN" ? zhCN : enUS}
+          {...antd4Configs}
+        >
+          {children}
+        </Antd4ConfigProvider>
+      </Antd5ConfigProvider>
+    </ConfigProviderContext.Provider>
   );
 };

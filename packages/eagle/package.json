@@ -68,6 +68,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.5",
     "@testing-library/react-hooks": "^8.0.1",
+    "@types/axios": "^0.14.0",
     "@types/history": "4.7.3",
     "@types/moment": "^2.13.0",
     "@types/react": "^17.0.50",
