@@ -26,6 +26,7 @@ import {
   MonthAndDate,
   PickerDateRange,
 } from "./dateRangePicker.type";
+import { getFirstDateOfMonth } from "./utils";
 
 const Year: React.FC<{
   year: number;
@@ -296,11 +297,10 @@ const Month: React.FC<{
       const dates = new Array(allDateInMonth)
         .fill(1)
         .map((value, index) => index + 1);
-      const firstDateOfDay = time.set("date", dates[0]).day();
       monthAndDate.push({
         month,
         dates,
-        firstDateOfDay: Math.max(firstDateOfDay - 1, 0),
+        firstDateOfDay: getFirstDateOfMonth(time),
       });
     }
 
