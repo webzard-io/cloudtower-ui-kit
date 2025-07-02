@@ -41,6 +41,10 @@ const ChartContent = styled.div`
 
 const ChartTooltipContainer = styled.div`
   padding: 4px;
+
+  .unit {
+    color: white;
+  }
 `;
 
 const ChartTooltipRow = styled.div`
