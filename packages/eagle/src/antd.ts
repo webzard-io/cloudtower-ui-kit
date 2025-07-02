@@ -1,5 +1,5 @@
 import {
-  DatePicker,
+  DatePicker as AntdDatePicker,
   List,
   Menu,
   Modal,
@@ -19,6 +19,7 @@ export {
   Button as AntdButton,
   Checkbox as AntdCheckbox,
   Collapse as AntdCollapse,
+  DatePicker as AntdDatePicker,
   Divider as AntdDivider,
   Drawer as AntdDrawer,
   Empty as AntdEmpty,
@@ -35,7 +36,6 @@ export {
   TreeSelect as AntdTreeSelect,
   AutoComplete,
   Col,
-  DatePicker,
   Dropdown,
   Layout,
   List,
@@ -48,7 +48,7 @@ export {
   Upload,
 } from "antd";
 
-export const DatePickerRangePicker = DatePicker.RangePicker;
+export const DatePickerRangePicker = AntdDatePicker.RangePicker;
 export const ListItem = List.Item;
 export const MenuItemGroup =
   Menu.ItemGroup as React.ComponentType<MenuItemGroupProps>;

@@ -1,16 +1,22 @@
-import { DatePicker } from "antd";
+import { DatePickerProps } from "antd/lib/date-picker";
 import React from "react";
 
+import DatePicker from "../../DatePicker";
 import { FieldBaseProps } from "../fields.type";
 
-const FieldsDateTime = ({ input }: FieldBaseProps) => (
+const FieldsDateTime = ({
+  input,
+  meta,
+  ...props
+}: FieldBaseProps & DatePickerProps) => (
   <>
     <DatePicker
-      onFocus={() => input.onFocus?.()}
-      onBlur={() => input.onBlur?.()}
-      showTime
-      defaultValue={input.value}
-      onOk={input.onChange}
+      {...input}
+      error={
+        meta.touched &&
+        (meta.error || (!meta.dirtySinceLastSubmit && meta.submitError))
+      }
+      {...props}
     />
   </>
 );

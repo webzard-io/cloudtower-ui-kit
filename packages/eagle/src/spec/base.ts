@@ -329,7 +329,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   uploadDragger: React.ComponentType<DraggerProps>;
   calendar: CalendarComponentType;
   timePicker: React.FC<TimePickerProps>;
-  datePicker: React.ComponentType<DatePickerProps>;
+  datePicker: React.FC<DatePickerProps>;
   tabs: React.FC<TabsProps>;
   tabsTabPane: React.FC<TabPaneProps>;
   antdBadge: React.FC<BadgeProps>;
