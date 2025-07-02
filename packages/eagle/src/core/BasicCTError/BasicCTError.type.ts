@@ -25,9 +25,9 @@ export interface ErrorContainerRenderProps {
 }
 
 /**
- * CTModalFooterError 组件的 props
+ * BasicCTError 组件的 props
  */
-export interface CTModalFooterErrorProps {
+export interface BasicCTErrorProps {
   /**
    * 错误对象，支持多种格式的错误
    * - AxiosError: Axios 请求错误

@@ -31,7 +31,7 @@ export * from "./Card";
 export * from "./Cascader";
 export * from "./Checkbox";
 export * from "./ConfigProvider";
-export * from "./CTModalFooterError";
+export * from "./BasicCTError";
 export * from "./DeprecatedProgress";
 export * from "./DetailCard";
 export * from "./DonutChart";

@@ -1,26 +1,22 @@
 import React, { useMemo } from "react";
 import { cx } from "@linaria/core";
-import { CTModalFooterErrorStyle } from "./CTModalFooterError.style";
+import { BasicCTErrorStyle } from "./BasicCTError.style";
 import { Typo } from "../Typo";
 import { useCTErrorMsg } from "@src/hooks/useCTErrorMsg";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
-import { CTModalFooterErrorProps } from "./CTModalFooterError.type";
+import { BasicCTErrorProps } from "./BasicCTError.type";
 
 const defaultErrorContainerRender: React.FC<{ className?: string }> = ({
   children,
   className,
 }) => {
   return (
-    <span
-      className={cx(Typo.Label.l3_regular, CTModalFooterErrorStyle, className)}
-    >
+    <span className={cx(Typo.Label.l3_regular, BasicCTErrorStyle, className)}>
       {children}
     </span>
   );
 };
-export const CTModalFooterError: React.FC<CTModalFooterErrorProps> = (
-  props,
-) => {
+export const BasicCTError: React.FC<BasicCTErrorProps> = (props) => {
   const {
     error,
     className,
