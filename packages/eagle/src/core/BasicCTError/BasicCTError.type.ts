@@ -34,7 +34,7 @@ export interface BasicCTErrorProps {
    * - CloudTowerErrorResponse: 服务端响应错误
    * - 其他类型: 会被转换为字符串显示
    */
-  error: CTError;
+  error: CTError | string;
 
   /**
    * 自定义类名，会应用到错误容器上

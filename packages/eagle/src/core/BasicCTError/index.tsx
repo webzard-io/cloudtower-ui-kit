@@ -5,6 +5,7 @@ import { Typo } from "../Typo";
 import { useCTErrorMsg } from "@src/hooks/useCTErrorMsg";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { BasicCTErrorProps } from "./BasicCTError.type";
+import { CTError } from "@src/utils";
 
 const defaultErrorContainerRender: React.FC<{ className?: string }> = ({
   children,
@@ -24,7 +25,7 @@ export const BasicCTError: React.FC<BasicCTErrorProps> = (props) => {
     ErrorContainerRender,
     errorMsgOptions,
   } = props;
-  const msgs = useCTErrorMsg(error, errorMsgOptions);
+  const msgs = useCTErrorMsg(error as unknown as CTError, errorMsgOptions);
   const { t } = useParrotTranslation();
   const ContainerRender = ErrorContainerRender || defaultErrorContainerRender;
   const child = useMemo(() => {
