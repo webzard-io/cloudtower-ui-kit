@@ -25,16 +25,16 @@ export interface ErrorContainerRenderProps {
 }
 
 /**
- * CTModalFooterError 组件的 props
+ * BasicCTError 组件的 props
  */
-export interface CTModalFooterErrorProps {
+export interface BasicCTErrorProps {
   /**
    * 错误对象，支持多种格式的错误
    * - AxiosError: Axios 请求错误
    * - CloudTowerErrorResponse: 服务端响应错误
    * - 其他类型: 会被转换为字符串显示
    */
-  error: CTError;
+  error: CTError | string;
 
   /**
    * 自定义类名，会应用到错误容器上

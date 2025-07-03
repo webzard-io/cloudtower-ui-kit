@@ -1,23 +1,23 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { css } from "@linaria/core";
-import { CTModalFooterError } from "@src/core/CTModalFooterError";
+import { BasicCTError } from "@src/core/BasicCTError";
 import { ConfigProvider } from "@src/core";
 
 /**
- * CTModalFooterError 组件用于在 Modal 底部显示错误信息，支持多种错误格式和自定义渲染。
+ *  BasicCTError 用于接受 cloudtower 通用错误并解析
  *
  * - 支持多种错误格式（Axios 错误、服务端响应错误等）
  * - 内置 i18n 支持
  * - 支持自定义容器和详情渲染器
  */
-const meta: Meta<typeof CTModalFooterError> = {
-  title: "Core/CTModalFooterError | Modal 底部通用错误显示",
-  component: CTModalFooterError,
+const meta: Meta<typeof BasicCTError> = {
+  title: "Core/BasicCTError | 通用错误显示",
+  component: BasicCTError,
 };
 
 export default meta;
-type Story = StoryObj<typeof CTModalFooterError>;
+type Story = StoryObj<typeof BasicCTError>;
 
 // 自定义容器样式
 const CustomErrorContainer = css`
@@ -205,7 +205,7 @@ export const Intl: Story = {
           ctErrorI18nNs: "common",
         }}
       >
-        <CTModalFooterError {...props} />
+        <BasicCTError {...props} />
       </ConfigProvider>
     );
   },
