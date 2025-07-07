@@ -2,7 +2,7 @@ export type { SizeType as Antd5SizeType } from "antd5/lib/config-provider/SizeCo
 
 // FIXME: SHOULD IMPORT FROM PUBLIC TYPE REPO
 export type CTErrorType = {
-  code?: string;
+  code?: string | number;
   /**
    * @type array | undefined
    */
@@ -18,9 +18,9 @@ export type CTErrorType = {
       [key: string]: any;
     };
     /**
-     * @type string | undefined
+     * @type string | number | undefined
      */
-    reason?: string;
+    reason?: string | number;
   }[];
   /**
    * @type string

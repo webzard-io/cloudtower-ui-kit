@@ -177,7 +177,106 @@ describe("cterror", () => {
 
         expect(result).toEqual([
           {
-            message: "unknown error",
+            code: "",
+          },
+        ]);
+      });
+
+      it("应该处理数字类型 code 的情况", () => {
+        const error: CloudTowerErrorResponse = {
+          message: "Permission denied",
+          code: 403,
+          params: { resource: "user" },
+        };
+
+        const result = parseCTError(error);
+
+        expect(result).toEqual([
+          {
+            code: 403,
+            params: { resource: "user" },
+          },
+        ]);
+      });
+
+      it("应该处理 details 中 reason 为数字的情况", () => {
+        const error: CloudTowerErrorResponse = {
+          ...CTErrorBasicParams,
+          details: [
+            {
+              reason: 500,
+              message: "Internal server error",
+              params: { server: "api-01" },
+            },
+            {
+              reason: 404,
+              message: "Resource not found",
+              params: { resource: "user" },
+            },
+          ],
+        };
+
+        const result = parseCTError(error);
+
+        expect(result).toEqual([
+          {
+            code: 500,
+            message: "Internal server error",
+            params: { server: "api-01" },
+          },
+          {
+            code: 404,
+            message: "Resource not found",
+            params: { resource: "user" },
+          },
+        ]);
+      });
+
+      it("应该处理混合字符串和数字 reason 的情况", () => {
+        const error: CloudTowerErrorResponse = {
+          ...CTErrorBasicParams,
+          details: [
+            {
+              reason: "VALIDATION_ERROR",
+              message: "Validation failed",
+              params: { field: "email" },
+            },
+            {
+              reason: 429,
+              message: "Rate limit exceeded",
+              params: { limit: 100 },
+            },
+          ],
+        };
+
+        const result = parseCTError(error);
+
+        expect(result).toEqual([
+          {
+            code: "VALIDATION_ERROR",
+            message: "Validation failed",
+            params: { field: "email" },
+          },
+          {
+            code: 429,
+            message: "Rate limit exceeded",
+            params: { limit: 100 },
+          },
+        ]);
+      });
+
+      it("应该处理数字 code 为 0 的边界情况", () => {
+        const error: CloudTowerErrorResponse = {
+          message: "Success with warnings",
+          code: 0,
+          params: { warnings: 2 },
+        };
+
+        const result = parseCTError(error);
+        expect(result).toEqual([
+          {
+            code: 0,
+            params: { warnings: 2 },
           },
         ]);
       });

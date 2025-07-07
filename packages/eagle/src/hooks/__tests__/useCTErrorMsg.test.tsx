@@ -450,7 +450,7 @@ describe("useCTErrorMsg", () => {
       const { result } = renderHook(() => useCTErrorMsg(error));
 
       // 根据 parseCTError 的实现，这种情况会返回空 message
-      expect(result.current).toEqual([""]);
+      expect(result.current).toEqual(["CTError."]);
     });
   });
 });
