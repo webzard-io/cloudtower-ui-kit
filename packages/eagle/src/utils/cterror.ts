@@ -1,10 +1,11 @@
 import { CTErrorType as CloudTowerErrorResponse } from "@src/utils/type";
 import { AxiosError } from "axios";
+import { isNil } from "lodash";
 
 // 修复类型定义，支持混合的 code 和 message
 type ParsedCTErrorItem =
   | {
-      code?: string;
+      code?: string | number;
       params?: CloudTowerErrorResponse["params"];
       message?: string;
     }
@@ -40,10 +41,10 @@ export const handleResponseCTError = (
       message: detail.message,
       params: detail.params,
     }));
-  } else if ("code" in error && typeof error.code === "string") {
+  } else if ("code" in error) {
     // 否则，使用 code
     const code = error.code;
-    if (code) {
+    if (!isNil(code)) {
       return [{ code, params: error.params }];
     }
   }
