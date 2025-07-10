@@ -315,6 +315,7 @@ export type TableFormProps = {
 
 export type TableFormHandle = {
   setData: (data: DataType[]) => void;
+  setDataWithoutTriggerChange: (data: DataType[]) => void;
   validateWholeFields: () => void;
   isValid: () => boolean;
 };

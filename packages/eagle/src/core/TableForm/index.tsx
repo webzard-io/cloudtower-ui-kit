@@ -100,6 +100,10 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
         setData: (data: DataType[]) => {
           updateData(data);
         },
+        setDataWithoutTriggerChange: (data: DataType[]) => {
+          setLatestData(data);
+          setData(data);
+        },
         validateWholeFields() {
           formValidMapRef.current = {};
           setValidateAll(true);
