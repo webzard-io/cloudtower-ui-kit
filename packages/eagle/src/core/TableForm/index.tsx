@@ -38,6 +38,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       onHeaderChange,
       onHeaderBlur,
       onBodyChange,
+      onBodyAdd,
       onBodyBlur,
       row,
       errors,
@@ -58,6 +59,17 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
         onBodyChange?.(value, rowIndex, columnKey);
       },
       [onBodyChange],
+    );
+    const addData = useCallback(
+      (value: DataType[]) => {
+        setLatestData(value);
+        setData(value);
+        onBodyChange?.(value);
+
+        const rowIndex = value.length - 1;
+        onBodyAdd?.(value, rowIndex);
+      },
+      [onBodyChange, onBodyAdd],
     );
 
     const handleBatchChange = useCallback(
@@ -193,7 +205,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
         {rowAddConfig?.addible ? (
           <AddRowButton
             config={rowAddConfig}
-            updateData={updateData}
+            addData={addData}
             columns={columns}
             data={data}
           />

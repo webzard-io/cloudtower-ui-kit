@@ -190,6 +190,12 @@ const commonTableFormProps: TableFormProps = {
     console.log("column key: ", columnKey);
     console.groupEnd();
   },
+  onBodyAdd(value, rowIndex) {
+    console.group("onBodyAdd:");
+    console.log("value: ", value);
+    console.log("rowIndex: ", rowIndex);
+    console.groupEnd();
+  },
   rowValidator: (rowIndex, rowData) => {
     if (rowIndex === 2 && rowData["address"]?.includes("row")) {
       return "Row Level Error Msg.";
