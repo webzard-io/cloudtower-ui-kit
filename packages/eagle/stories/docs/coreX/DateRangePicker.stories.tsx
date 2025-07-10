@@ -1,14 +1,19 @@
-import DateRangePicker from "@src/coreX/DateRangePicker";
+import DateRangePicker, { PickerDateRange } from "@src/coreX/DateRangePicker";
 import type { Meta, StoryObj } from "@storybook/react";
 import dayjs from "dayjs";
-import React from "react";
+import React, { useState } from "react";
 
 const Template = (props: Parameters<typeof DateRangePicker>[0]) => {
+  const [value, setValue] = useState<PickerDateRange>([
+    dayjs().month(5).date(1).startOf("day"),
+    dayjs().month(11).date(1).endOf("day"),
+  ]);
+
   return (
     <DateRangePicker
-      value={{
-        unit: "d",
-        value: 100,
+      value={value}
+      onChange={(type, time, range) => {
+        setValue(range);
       }}
       mode="absolute"
       {...props}
@@ -52,9 +57,8 @@ export const WithRange: Story = {
   },
   args: {
     mode: "absolute",
-    value: [dayjs("2023-06-01"), dayjs("2023-12-01")],
-    minDate: dayjs("2023-06-01"),
-    maxDate: dayjs("2023-12-01"),
+    minDate: dayjs().month(5).date(1).startOf("day"),
+    maxDate: dayjs().month(11).date(1).endOf("day"),
   },
 };
 
@@ -68,9 +72,38 @@ export const WithRelative: Story = {
   },
   args: {
     mode: ["relative", "absolute"],
-    value: [dayjs("2023-06-01"), dayjs("2023-12-01")],
-    minDate: dayjs("2023-06-01"),
-    maxDate: dayjs("2023-12-01"),
+    minDate: dayjs().month(5).date(1).startOf("day"),
+    maxDate: dayjs().month(11).date(1).endOf("day"),
+    relativeTimeSelectOptions: [
+      {
+        unit: "h",
+        value: 1,
+      },
+      {
+        unit: "h",
+        value: 2,
+      },
+      {
+        unit: "M",
+        value: 6,
+      },
+    ],
+  },
+};
+
+export const WithMaxRange: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "自定义最大可选范围",
+      },
+    },
+  },
+  args: {
+    mode: ["relative", "absolute"],
+    minDate: dayjs().month(5).date(1).startOf("day"),
+    maxDate: dayjs().month(11).date(1).endOf("day"),
+    maxRange: "31d",
     relativeTimeSelectOptions: [
       {
         unit: "h",
