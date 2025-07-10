@@ -136,3 +136,27 @@ export const DefaultExpanded: Story = {
     },
   },
 };
+
+/**
+ * 使用 TreeNode 组件手动构建树
+ */
+export const TreeNodeUsage: Story = {
+  name: "使用 TreeNode 组件",
+  render: (args) => (
+    <Antd5Tree {...args}>
+      <Antd5Tree.TreeNode title="父节点 1" key="0-0">
+        <Antd5Tree.TreeNode title="子节点 1-1" key="0-0-0" />
+        <Antd5Tree.TreeNode title="子节点 1-2" key="0-0-1" />
+      </Antd5Tree.TreeNode>
+      <Antd5Tree.TreeNode title="父节点 2" key="0-1" />
+    </Antd5Tree>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "通过 Antd5Tree.TreeNode 组件手动构建树结构，适用于需要更灵活控制子节点的场景。",
+      },
+    },
+  },
+};
