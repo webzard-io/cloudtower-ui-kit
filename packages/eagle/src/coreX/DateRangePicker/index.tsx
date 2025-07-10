@@ -46,6 +46,7 @@ const TimeRange: React.FC<{
   mode: NonNullable<DateRangePickerProps["mode"]>;
   minDate?: string | Dayjs | undefined;
   maxDate?: string | Dayjs | undefined;
+  maxRange?: string;
   onTypeChange: (type: string) => void;
   onRelativeTimeChange?: (time: PastTime) => void;
   /**
@@ -66,6 +67,7 @@ const TimeRange: React.FC<{
     mode = ["relative", "absolute"],
     minDate,
     maxDate,
+    maxRange,
     onTypeChange,
     onRelativeTimeChange,
     onAbsoluteTimeOk,
@@ -129,6 +131,7 @@ const TimeRange: React.FC<{
               range={range || [null, null]}
               minDate={minDate}
               maxDate={maxDate}
+              maxRange={maxRange}
               onChange={(range) => onAbsoluteTimeChange?.(range)}
               onOk={(range) => onAbsoluteTimeOk?.(range)}
             />
@@ -203,6 +206,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
     mode = ["relative", "absolute"],
     minDate,
     maxDate,
+    maxRange,
     onChange,
     relativeTimeSelectOptions,
   } = props;
@@ -339,6 +343,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
             mode={mode}
             minDate={minDate}
             maxDate={maxDate}
+            maxRange={maxRange}
             onTypeChange={setType}
             onRelativeTimeChange={(time) => {
               handleChange("relative", time);

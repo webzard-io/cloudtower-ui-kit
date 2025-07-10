@@ -246,7 +246,7 @@ const Time = React.forwardRef<TimeRef, TimeProps>((props, ref) => {
 
 const AbsoluteDate = React.forwardRef<TimeRef, AbsoluteTimeProps>(
   (props, ref) => {
-    const { range, minDate, maxDate, onChange, onOk } = props;
+    const { range, minDate, maxDate, maxRange, onChange, onOk } = props;
 
     const timeRef = useRef<TimeRef | null>(null);
 
@@ -266,6 +266,7 @@ const AbsoluteDate = React.forwardRef<TimeRef, AbsoluteTimeProps>(
           range={range}
           minDate={minDate}
           maxDate={maxDate}
+          maxRange={maxRange}
           onChange={onChange}
         />
         <Time

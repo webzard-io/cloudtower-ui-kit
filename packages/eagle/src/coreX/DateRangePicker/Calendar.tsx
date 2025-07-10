@@ -11,8 +11,9 @@ import { Typo } from "@src/core/Typo";
 import { getCalendarTitle } from "@src/coreX/common";
 import useElementIntersectionRatio from "@src/hooks/useElementIntersectionRatio";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
-import dayjs, { Dayjs } from "dayjs";
-import React, { useEffect, useRef, useState } from "react";
+import { parseNumberAndUnit } from "@src/utils/unit";
+import dayjs, { Dayjs, ManipulateType } from "dayjs";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import {
   checkDateNotInRange,
@@ -104,6 +105,7 @@ const MonthItem: React.FC<{
   highlightDay: string[];
   minDate?: string | Dayjs | undefined;
   maxDate?: string | Dayjs | undefined;
+  maxRange?: string;
   parentElement?: React.MutableRefObject<HTMLDivElement | null>;
   onRangeChange: (range: PickerDateRange) => void;
   onMouseEnter: (date: Dayjs | null) => void;
@@ -115,6 +117,7 @@ const MonthItem: React.FC<{
     highlightDay,
     minDate,
     maxDate,
+    maxRange,
     parentElement,
     onRangeChange,
     onMouseEnter,
@@ -181,6 +184,100 @@ const MonthItem: React.FC<{
     onRangeChange(_range);
   }
 
+  const datesElements = useMemo(() => {
+    return initMonth.dates.map((date) => {
+      const _date = getTime(initYear, initMonth.month, date);
+      const { number: maxRangeNumber, unit: maxRangeUnit } =
+        parseNumberAndUnit(maxRange || "") || {};
+      const dateNotIncludeInRange = checkDateNotInRange(
+        _date,
+        minDate,
+        maxDate,
+      );
+      const isLimitRangeEnd = !!rangeStart && !rangeEnd;
+      const isDateBeforeRangeStart = isLimitRangeEnd
+        ? _date.valueOf() < rangeStart.valueOf()
+        : false;
+      const isDateNotIncludeInMaxRange =
+        isLimitRangeEnd && maxRangeNumber && maxRangeUnit
+          ? rangeStart
+              .add(maxRangeNumber, maxRangeUnit as ManipulateType)
+              .valueOf() <= _date.valueOf()
+          : false;
+      const disabled =
+        Boolean(isDateBeforeRangeStart || isDateNotIncludeInMaxRange) ||
+        !dateNotIncludeInRange;
+      const dateClassName = getClassNameForDateBlock(
+        range,
+        _date,
+        mapOfHighlightDay,
+        disabled,
+      );
+      const highlightIndex = mapOfHighlightDay.get(_date.format("YYYY-MM-DD"));
+
+      const isFirstDayInWeek = _date.day() === 1;
+      // first day of week is monday in tower
+      // first day of week is sunday in dayjs
+      // so treat sunday as last day of week
+      const isLastDayInWeek = _date.day() === 0;
+
+      const isFirstDayInMonth = _date.date() === 1;
+      const isLastDayInMonth = _date.date() === _date.daysInMonth();
+
+      const isLastDayIsSingleDayInWeek = isLastDayInMonth && isFirstDayInWeek;
+
+      const isFirstHighlight =
+        highlightIndex === 0 ||
+        isFirstDayInWeek ||
+        isFirstDayInMonth ||
+        isLastDayIsSingleDayInWeek;
+      const isLastHighlight =
+        highlightIndex === Math.max(mapOfHighlightDay.size - 1, 0) ||
+        isLastDayInWeek ||
+        isLastDayInMonth;
+
+      return (
+        <span
+          key={`date-${date}`}
+          className={cx(
+            "date-block",
+            dateClassName,
+            isFirstHighlight && "first-highlight",
+            isLastHighlight && "last-highlight",
+          )}
+          onClick={() => {
+            if (disabled) {
+              return;
+            }
+            clickDate(date);
+          }}
+          onMouseEnter={() => {
+            if (disabled) {
+              onMouseEnter(null);
+            } else if (rangeStart && !rangeEnd) {
+              onMouseEnter(_date);
+            }
+          }}
+        >
+          <span className={cx("date-text", dateClassName)}>{date}</span>
+        </span>
+      );
+    });
+  }, [
+    initMonth.dates,
+    initMonth.month,
+    initYear,
+    maxRange,
+    minDate,
+    maxDate,
+    rangeStart,
+    rangeEnd,
+    range,
+    mapOfHighlightDay,
+    clickDate,
+    onMouseEnter,
+  ]);
+
   return (
     <li className="month-container" ref={containerRef}>
       <header
@@ -193,76 +290,7 @@ const MonthItem: React.FC<{
         {new Array(initMonth.firstDateOfDay).fill(null).map((value, index) => (
           <span key={`blank-date-${index}`} className="blank" />
         ))}
-        {initMonth.dates.map((date) => {
-          const _date = getTime(initYear, initMonth.month, date);
-          const dateNotIncludeInRange = checkDateNotInRange(
-            _date,
-            minDate,
-            maxDate,
-          );
-          const disabled =
-            Boolean(
-              rangeStart && !rangeEnd && rangeStart.valueOf() > _date.valueOf(),
-            ) || !dateNotIncludeInRange;
-          const dateClassName = getClassNameForDateBlock(
-            range,
-            _date,
-            mapOfHighlightDay,
-            disabled,
-          );
-          const highlightIndex = mapOfHighlightDay.get(
-            _date.format("YYYY-MM-DD"),
-          );
-
-          const isFirstDayInWeek = _date.day() === 1;
-          // first day of week is monday in tower
-          // first day of week is sunday in dayjs
-          // so treat sunday as last day of week
-          const isLastDayInWeek = _date.day() === 0;
-
-          const isFirstDayInMonth = _date.date() === 1;
-          const isLastDayInMonth = _date.date() === _date.daysInMonth();
-
-          const isLastDayIsSingleDayInWeek =
-            isLastDayInMonth && isFirstDayInWeek;
-
-          const isFirstHighlight =
-            highlightIndex === 0 ||
-            isFirstDayInWeek ||
-            isFirstDayInMonth ||
-            isLastDayIsSingleDayInWeek;
-          const isLastHighlight =
-            highlightIndex === Math.max(mapOfHighlightDay.size - 1, 0) ||
-            isLastDayInWeek ||
-            isLastDayInMonth;
-
-          return (
-            <span
-              key={`date-${date}`}
-              className={cx(
-                "date-block",
-                dateClassName,
-                isFirstHighlight && "first-highlight",
-                isLastHighlight && "last-highlight",
-              )}
-              onClick={() => {
-                if (disabled) {
-                  return;
-                }
-                clickDate(date);
-              }}
-              onMouseEnter={() => {
-                if (disabled) {
-                  onMouseEnter(null);
-                } else if (rangeStart && !rangeEnd) {
-                  onMouseEnter(_date);
-                }
-              }}
-            >
-              <span className={cx("date-text", dateClassName)}>{date}</span>
-            </span>
-          );
-        })}
+        {datesElements}
       </div>
     </li>
   );
@@ -273,9 +301,10 @@ const Month: React.FC<{
   range: PickerDateRange;
   minDate?: string | Dayjs | undefined;
   maxDate?: string | Dayjs | undefined;
+  maxRange?: string;
   onRangeChange: (range: PickerDateRange) => void;
 }> = (props) => {
-  const { year, range, minDate, maxDate, onRangeChange } = props;
+  const { year, range, minDate, maxDate, maxRange, onRangeChange } = props;
   const monthContainerRef = useRef<HTMLDivElement | null>(null);
   const [month, setMonth] = useState<MonthAndDate[]>([]);
   const [highlightDay, setHighlightDay] = useState<string[] | null>(() => {
@@ -346,6 +375,7 @@ const Month: React.FC<{
             range={range}
             minDate={minDate}
             maxDate={maxDate}
+            maxRange={maxRange}
             highlightDay={highlightDay || controlHighlightDay || []}
             parentElement={monthContainerRef}
             onRangeChange={onRangeChange}
@@ -382,7 +412,7 @@ const Week: React.FC = () => {
 };
 
 const Calendar: React.FC<CalendarProps> = (props) => {
-  const { range: initRange, minDate, maxDate, onChange } = props;
+  const { range: initRange, minDate, maxDate, maxRange, onChange } = props;
   const [year, setYear] = useState(dayjs().year());
   const [range, setRange] = useState<PickerDateRange>(
     initRange || [null, null],
@@ -406,6 +436,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
         range={range}
         minDate={minDate}
         maxDate={maxDate}
+        maxRange={maxRange}
         onRangeChange={handleRangeChange}
       />
     </CalendarStyle.Wrapper>

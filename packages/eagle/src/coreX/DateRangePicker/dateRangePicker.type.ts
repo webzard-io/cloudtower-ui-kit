@@ -13,6 +13,7 @@ export type CalendarProps = {
   range?: PickerDateRange;
   minDate?: string | Dayjs | undefined;
   maxDate?: string | Dayjs | undefined;
+  maxRange?: string;
   onChange?: (range: PickerDateRange) => void;
 };
 
@@ -29,6 +30,7 @@ export type AbsoluteTimeProps = {
   range: PickerDateRange;
   minDate?: string | Dayjs | undefined;
   maxDate?: string | Dayjs | undefined;
+  maxRange?: string;
   onChange: (range: PickerDateRange) => void;
   onOk: (range: PickerDateRange) => void;
 };
@@ -66,7 +68,12 @@ export type DateRangePickerProps = {
   // only support if type is absolute
   minDate?: string | Dayjs | undefined;
   maxDate?: string | Dayjs | undefined;
-
+  /**
+   * The maximum range of the absolute time range selected by the user
+   * the maxRange only limit the date selection, not the time selection
+   * example: 1d, 1w, 1m, 1y
+   */
+  maxRange?: string;
   onChange?: (
     type: "relative" | "absolute",
     time: DateRangePickerValue,
@@ -74,8 +81,8 @@ export type DateRangePickerProps = {
   ) => void;
   onAbsoluteTimeChange?: (range: PickerDateRange) => void;
   /**
-    * Customize an array of relative time select options
-    */
+   * Customize an array of relative time select options
+   */
   relativeTimeSelectOptions?: PastTime[];
 };
 
