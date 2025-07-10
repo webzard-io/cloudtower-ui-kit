@@ -294,7 +294,7 @@ export type TableFormProps = {
   /**
    * 表格头部数据失去焦点时的回调
    */
-  onHeaderBlur?: (data: any[]) => void;
+  onHeaderBlur?: (data: any[], columnKey: string) => void;
   /**
    * 表格行数据变化的回调
    */

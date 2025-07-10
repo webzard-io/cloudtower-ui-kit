@@ -73,22 +73,22 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
     );
 
     const handleBatchBlur = useCallback(
-      (key, error) => {
+      (columnKey, error) => {
         if (error) {
           // If there is an error, clear the current column body input placeholder
           const newData = latestData.map((cell) => {
             return {
               ...cell,
-              [key]: "",
+              [columnKey]: "",
             };
           });
           setLatestData(newData);
-          onHeaderBlur?.(newData);
+          onHeaderBlur?.(newData, columnKey);
         } else {
           // update current column body input value
           setData(latestData);
-          onBodyChange?.(latestData, undefined, key);
-          onHeaderBlur?.(latestData);
+          onBodyChange?.(latestData, undefined, columnKey);
+          onHeaderBlur?.(latestData, columnKey);
         }
       },
       [latestData, onHeaderBlur, onBodyChange],
