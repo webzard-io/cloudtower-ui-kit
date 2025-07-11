@@ -38,6 +38,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       onHeaderChange,
       onHeaderBlur,
       onBodyChange,
+      onBodyAdd,
       onBodyBlur,
       row,
       errors,
@@ -59,6 +60,17 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       },
       [onBodyChange],
     );
+    const addData = useCallback(
+      (value: DataType[]) => {
+        setLatestData(value);
+        setData(value);
+        onBodyChange?.(value);
+
+        const rowIndex = value.length - 1;
+        onBodyAdd?.(value, rowIndex);
+      },
+      [onBodyChange, onBodyAdd],
+    );
 
     const handleBatchChange = useCallback(
       (newData, columnKey, shouldUpdateData: boolean) => {
@@ -73,22 +85,22 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
     );
 
     const handleBatchBlur = useCallback(
-      (key, error) => {
+      (columnKey, error) => {
         if (error) {
           // If there is an error, clear the current column body input placeholder
           const newData = latestData.map((cell) => {
             return {
               ...cell,
-              [key]: "",
+              [columnKey]: "",
             };
           });
           setLatestData(newData);
-          onHeaderBlur?.(newData);
+          onHeaderBlur?.(newData, columnKey);
         } else {
           // update current column body input value
           setData(latestData);
-          onBodyChange?.(latestData, undefined, key);
-          onHeaderBlur?.(latestData);
+          onBodyChange?.(latestData, undefined, columnKey);
+          onHeaderBlur?.(latestData, columnKey);
         }
       },
       [latestData, onHeaderBlur, onBodyChange],
@@ -99,6 +111,10 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
       () => ({
         setData: (data: DataType[]) => {
           updateData(data);
+        },
+        setDataWithoutTriggerChange: (data: DataType[]) => {
+          setLatestData(data);
+          setData(data);
         },
         validateWholeFields() {
           formValidMapRef.current = {};
@@ -189,7 +205,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
         {rowAddConfig?.addible ? (
           <AddRowButton
             config={rowAddConfig}
-            updateData={updateData}
+            addData={addData}
             columns={columns}
             data={data}
           />

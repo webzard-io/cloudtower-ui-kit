@@ -12,7 +12,7 @@ const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
   const {
     config: { maximum, className, CustomizedButton, buttonProps, text },
     columns,
-    updateData,
+    addData,
     data,
   } = props;
   const { t } = useParrotTranslation();
@@ -30,7 +30,7 @@ const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
     const newData = [...data];
     const newRow = genEmptyRow(columns);
     newData.push(newRow);
-    updateData(newData);
+    addData(newData);
     onClick?.(e);
   };
 

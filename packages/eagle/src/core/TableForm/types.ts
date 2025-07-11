@@ -145,7 +145,7 @@ export interface ColumnBodyCellProps {
 export type AddRowButtonProps = {
   config: RowAddConfigurations;
   columns: TableFormColumn[];
-  updateData: (data: DataType[]) => void;
+  addData: (data: DataType[]) => void;
   data: DataType[];
 };
 
@@ -294,7 +294,7 @@ export type TableFormProps = {
   /**
    * 表格头部数据失去焦点时的回调
    */
-  onHeaderBlur?: (data: any[]) => void;
+  onHeaderBlur?: (data: any[], columnKey: string) => void;
   /**
    * 表格行数据变化的回调
    */
@@ -303,6 +303,10 @@ export type TableFormProps = {
     rowIndex?: number,
     columnKey?: string,
   ) => void;
+  /**
+   * 表格行数据添加的回调
+   */
+  onBodyAdd?: (value: DataType[], rowIndex: number) => void;
   /**
    * 表格行数据失去焦点时的回调
    */
@@ -315,6 +319,7 @@ export type TableFormProps = {
 
 export type TableFormHandle = {
   setData: (data: DataType[]) => void;
+  setDataWithoutTriggerChange: (data: DataType[]) => void;
   validateWholeFields: () => void;
   isValid: () => boolean;
 };
