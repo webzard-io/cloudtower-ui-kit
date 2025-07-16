@@ -13,6 +13,7 @@ export * from "./Alert";
 export * from "./Antd5Anchor";
 export * from "./Antd5Dropdown";
 export * from "./Antd5Tree";
+export * from "./Antd5Flex";
 export * from "./Arch";
 export * from "./Badge";
 export * from "./Banner";
