@@ -19,7 +19,7 @@ export const useCTErrorMsg = (
   const err = parseCTError(error);
 
   // 优先级处理：options > 全局配置 > 默认值
-  const ns = options?.CTErrorI18nNs || globalConfig?.ctErrorI18nNs || "CTError";
+  const ns = options?.CTErrorI18nNs || globalConfig?.CTErrorI18nNs || "CTError";
 
   const errMsg = useMemo(() => {
     return err.map((e) => {

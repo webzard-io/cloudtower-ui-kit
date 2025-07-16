@@ -297,7 +297,7 @@ describe("useCTErrorMsg", () => {
       });
 
       const wrapper = ({ children }: { children: React.ReactNode }) => (
-        <ConfigProvider config={{ ctErrorI18nNs: "GlobalErrors" }}>
+        <ConfigProvider config={{ CTErrorI18nNs: "GlobalErrors" }}>
           {children}
         </ConfigProvider>
       );
@@ -316,7 +316,7 @@ describe("useCTErrorMsg", () => {
       });
 
       const wrapper = ({ children }: { children: React.ReactNode }) => (
-        <ConfigProvider config={{ ctErrorI18nNs: "GlobalErrors" }}>
+        <ConfigProvider config={{ CTErrorI18nNs: "GlobalErrors" }}>
           {children}
         </ConfigProvider>
       );
