@@ -202,7 +202,7 @@ export const Intl: Story = {
     return (
       <ConfigProvider
         config={{
-          ctErrorI18nNs: "common",
+          CTErrorI18nNs: "common",
         }}
       >
         <BasicCTError {...props} />

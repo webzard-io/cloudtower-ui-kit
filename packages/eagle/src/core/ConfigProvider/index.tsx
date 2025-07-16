@@ -23,7 +23,7 @@ export type ConfigProps = {
   antd5Configs?: Antd5ConfigProviderProps;
   config?: {
     /** CTError i18n 命名空间 */
-    ctErrorI18nNs?: string;
+    CTErrorI18nNs?: string;
   };
 };
 
