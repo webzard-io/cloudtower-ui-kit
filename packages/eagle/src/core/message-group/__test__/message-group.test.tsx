@@ -1,11 +1,12 @@
 import { initParrotI18n, parrotI18n } from "@cloudtower/parrot";
-import UIKitProvider, { useMessage } from "@src/UIKitProvider";
+import { useMessage } from "@src/core/message/useMessage";
+import UIKitProvider from "@src/UIKitProvider";
 import { render, screen } from "@testing-library/react";
 import { ReactNode } from "react";
 import React from "react";
 import { describe, it, vi } from "vitest";
 
-import _message from "../../message";
+import _message from "../../message/message";
 import { createBatchMessageMethods } from "..";
 
 let infoCount = 0;
@@ -25,7 +26,7 @@ Object.defineProperty(document, "hidden", {
   },
 });
 
-vi.mock("../../message", async () => {
+vi.mock("../../message/message", async () => {
   const DEFAULT_DURATION = 3;
   const info = (content: unknown) => {
     infoCount++;
