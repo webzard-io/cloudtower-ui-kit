@@ -10,6 +10,7 @@ import {
   NotificationInstance as RCNotificationInstance,
 } from "rc-notification/lib/Notification";
 import * as React from "react";
+import { createContext, useContext } from "react";
 
 type NoticeType = "info" | "success" | "error" | "warning" | "loading";
 

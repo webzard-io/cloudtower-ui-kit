@@ -1,6 +1,6 @@
 import { parrotI18n } from "@cloudtower/parrot";
-import { InputNumber, Switch } from "@src/core";
-import UIKitProvider, { useMessage } from "@src/UIKitProvider";
+import { InputNumber, Switch, useMessage } from "@src/core";
+import UIKitProvider from "@src/UIKitProvider";
 import { CoreMeta } from "@stories/types";
 import { StoryObj } from "@storybook/react";
 import { Button, Space } from "antd";

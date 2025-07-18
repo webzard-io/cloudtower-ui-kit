@@ -1,9 +1,12 @@
 import { parrotI18n, ParrotI18nSupportLng } from "@cloudtower/parrot";
-import { BatchHelper, createBatchMessageMethods } from "@src/core";
+import {
+  BatchHelper,
+  createBatchMessageMethods,
+  MessageContext,
+} from "@src/core";
 import _message, {
   ConfigOptions as MessageConfigOptions,
-  MessageApi,
-} from "@src/core/message";
+} from "@src/core/message/message";
 import { antdKit } from "@src/legacy-antd";
 import { omit } from "lodash";
 import React, {
@@ -28,8 +31,6 @@ export interface IProps {
 }
 
 export const kitContext = createContext<Kit>(antdKit);
-
-export const MessageContext = createContext<MessageApi>(_message);
 
 const UIKitProvider = (props: PropsWithChildren<IProps>) => {
   const { children, kit = antdKit, message, lng = "en-US", config } = props;
@@ -82,8 +83,4 @@ export default UIKitProvider;
  */
 export const useUIKit = () => {
   return useContext(kitContext);
-};
-
-export const useMessage = () => {
-  return useContext(MessageContext);
 };
