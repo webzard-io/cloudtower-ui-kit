@@ -13,6 +13,7 @@ import esbuild from "rollup-plugin-esbuild";
 import nodePolyfills from "rollup-plugin-polyfill-node";
 import scss from "rollup-plugin-scss";
 import { visualizer } from "rollup-plugin-visualizer";
+
 import mergeScss from "./tools/merge-linaria-scss";
 import antdLessPlugin from "./tools/rollup-plugin-antd-less";
 
@@ -60,6 +61,7 @@ const config = defineConfig([
       }),
       mergeScss({
         include: ["src/**/*.scss", "src/**/*.sass", "src/**/*.css"],
+        exclude: ["src/styles/libs/antd.css"],
         output: "dist/linaria.merged.scss",
       }),
       image({
@@ -125,7 +127,7 @@ const config = defineConfig([
             }),
           ]),
         failOnError: true,
-        prefix: '@import "./src/styles/index.scss";',
+        prefix: '@import "./src/styles/libs/antd";@import "./src/styles/index.scss";',
       }),
     ],
   },
@@ -164,13 +166,19 @@ const config = defineConfig([
     ],
   },
   {
-    input: ["dist/style.css"],
+    input: ["dist/linaria.merged.scss"],
     plugins: [
       scss({
-        include: ["dist/style.css"],
+        include: ["dist/linaria.merged.scss"],
         output: "dist/components.css",
         processor: () =>
           postcss([
+            url({
+              url: "copy",
+              basePath: [path.resolve("src/styles/fonts")],
+              assetsPath: "assets",
+              useHash: true,
+            }),
             {
               postcssPlugin: "removeFontFace",
               prepare: (result) => {
@@ -185,6 +193,7 @@ const config = defineConfig([
             },
           ]),
         failOnError: true,
+        prefix: '@import "./src/styles/index.scss";',
       }),
     ],
   },
