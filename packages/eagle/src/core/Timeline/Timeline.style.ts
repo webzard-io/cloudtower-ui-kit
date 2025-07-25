@@ -2,9 +2,9 @@ import { css } from "@linaria/core";
 import { Color } from "@src/styles/token/color";
 
 export const TimelineWrapper = css`
-  background: ${Color.white.white};
-  padding: 24px 32px;
-  border-radius: 8px;
+  padding: 0px;
+  padding-top: 5px;
+  padding-left: 5px;
 
   .ant-timeline-item {
     margin-bottom: 16px;
