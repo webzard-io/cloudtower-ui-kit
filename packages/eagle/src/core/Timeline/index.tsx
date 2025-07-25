@@ -25,6 +25,10 @@ import { TimelineArea } from "./Timeline.widget";
 /**
  * Timeline 组件：展示时间线
  *
+ * 支持多种状态的时间线项目，包括成功、失败、进行中、通知、空闲等状态
+ * 支持自定义渲染和详情信息展示，优先使用 detailMessages 而非 detailMessage
+ * 支持使用 Area 组件灵活自定义辅助信息展示
+ *
  * @param props - 组件属性
  * @returns React 组件
  */
@@ -33,6 +37,7 @@ export const Timeline = ({
   emptyText,
   emptyRender,
   compact,
+  timelineContainerClassName,
   emptyTextClassName,
 }: TimelineProps): ReactElement => {
   if (!items.length) {
@@ -63,7 +68,7 @@ export const Timeline = ({
   };
 
   return (
-    <div className={cx(TimelineWrapper)}>
+    <div className={cx(TimelineWrapper, timelineContainerClassName)}>
       <AntdTimeline>
         {items.map((item, index) => {
           const {
@@ -74,8 +79,12 @@ export const Timeline = ({
             subInfo,
             subInfoRender,
             detailMessage,
+            detailMessages,
             detailMessageRender,
           } = item;
+
+          const finalDetailMessages =
+            detailMessages ?? (detailMessage ? [detailMessage] : []);
 
           return (
             <AntdTimeline.Item
@@ -122,15 +131,19 @@ export const Timeline = ({
                 ) : (
                   <></>
                 )}
-
-                {detailMessageRender ? (
-                  detailMessageRender(detailMessage)
-                ) : detailMessage ? (
-                  <Alert
-                    showIcon={false}
-                    type={alertTypeMap[status]}
-                    {...detailMessage!}
-                  />
+                {finalDetailMessages.length > 0 ? (
+                  finalDetailMessages.map((detailMessage, index) =>
+                    detailMessageRender ? (
+                      detailMessageRender(detailMessage, index)
+                    ) : (
+                      <Alert
+                        key={`detail-message-${index}`}
+                        showIcon={false}
+                        type={alertTypeMap[status]}
+                        {...detailMessage!}
+                      />
+                    ),
+                  )
                 ) : (
                   <></>
                 )}

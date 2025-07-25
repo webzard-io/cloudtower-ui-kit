@@ -663,3 +663,287 @@ export const CustomSubInfoRender: Story = {
     emptyText: "暂无历史记录",
   },
 };
+
+/*
+ * DetailMessages 多个详情信息
+ */
+export const DetailMessages: Story = {
+  name: "多个详情信息",
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "使用 detailMessages 展示多个详情信息，优先级高于 detailMessage。",
+      },
+    },
+  },
+  args: {
+    items: [
+      {
+        status: "failed",
+        detailMessages: [
+          {
+            message: "升级过程中发生错误：无法连接到服务器",
+            type: "error",
+          },
+          {
+            message: "错误详情：网络超时，请检查网络连接",
+            type: "warning",
+          },
+          {
+            message: "建议：稍后重试或联系系统管理员",
+            type: "info",
+          },
+        ],
+        infos: [
+          {
+            items: [
+              {
+                category: "tag",
+                color: "red",
+                children: "失败",
+              },
+              {
+                category: "info",
+                children: "v2.1.0 升级失败",
+              },
+            ],
+          },
+        ],
+        subInfo: {
+          split: "dot",
+          items: [
+            { category: "subinfo_label", children: "2023-08-15 14:30:00 开始" },
+            { category: "subinfo_label", children: "用时30分钟" },
+          ],
+        },
+      },
+      {
+        status: "notice",
+        detailMessages: [
+          {
+            message: "检测到配置文件变更",
+            type: "warning",
+          },
+          {
+            message: "部分配置可能需要重启服务生效",
+            type: "info",
+          },
+        ],
+        infos: [
+          {
+            items: [
+              {
+                category: "tag",
+                color: "yellow",
+                children: "配置",
+              },
+              {
+                category: "info",
+                children: "更新系统配置",
+              },
+            ],
+          },
+        ],
+        subInfo: {
+          split: "dot",
+          items: [
+            { category: "subinfo_label", children: "2023-08-14 09:15:00 完成" },
+          ],
+        },
+      },
+    ],
+    emptyText: "暂无历史记录",
+  },
+};
+
+/*
+ * 自定义DetailMessages渲染
+ */
+export const CustomDetailMessages: Story = {
+  name: "自定义多个详情信息渲染",
+  parameters: {
+    docs: {
+      description: {
+        story: "使用 detailMessageRender 函数自定义每个详情信息的展示。",
+      },
+    },
+  },
+  args: {
+    items: [
+      {
+        status: "failed",
+        detailMessages: [
+          {
+            message: "数据库连接失败",
+            action: <Button size="small">重试连接</Button>,
+          },
+          {
+            message: "缓存服务器不可用",
+            action: <Button size="small">刷新缓存</Button>,
+          },
+          {
+            message: "配置文件格式错误",
+            action: <Button size="small">修复配置</Button>,
+          },
+        ],
+        detailMessageRender: (message, index) => {
+          const safeIndex = index ?? 0;
+          return (
+            <div
+              key={`custom-detail-${safeIndex}`}
+              style={{
+                padding: "12px",
+                background:
+                  safeIndex === 0
+                    ? Color.fill.serious.light
+                    : Color.fill.neutral["opaque-1"],
+                borderLeft: `4px solid ${
+                  safeIndex === 0
+                    ? Color.red["red-50"]
+                    : safeIndex === 1
+                      ? Color.yellow["yellow-50"]
+                      : Color.blue["blue-50"]
+                }`,
+                marginBottom: "8px",
+                borderRadius: "4px",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div>
+                  <div className={Typo.Label.l3_bold}>
+                    错误 {safeIndex + 1}: {message?.message}
+                  </div>
+                  <div
+                    style={{
+                      color: Color.text.neutral.secondary,
+                      fontSize: "12px",
+                      marginTop: "4px",
+                    }}
+                  >
+                    优先级:{" "}
+                    {safeIndex === 0 ? "高" : safeIndex === 1 ? "中" : "低"}
+                  </div>
+                </div>
+                {message?.action}
+              </div>
+            </div>
+          );
+        },
+        infos: [
+          {
+            items: [
+              {
+                category: "tag",
+                color: "red",
+                children: "多重错误",
+              },
+              {
+                category: "info",
+                children: "系统启动失败",
+              },
+            ],
+          },
+        ],
+        subInfo: {
+          split: "dot",
+          items: [
+            { category: "subinfo_label", children: "2023-08-20 16:45:00 开始" },
+            { category: "subinfo_label", children: "用时15分钟" },
+          ],
+        },
+      },
+    ],
+    emptyText: "暂无历史记录",
+  },
+};
+
+/*
+ * DetailMessages与DetailMessage兼容性
+ */
+export const CompatibilityTest: Story = {
+  name: "兼容性测试 - detailMessages优先于detailMessage",
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "测试detailMessages和detailMessage的兼容性，detailMessages优先级更高。",
+      },
+    },
+  },
+  args: {
+    items: [
+      {
+        status: "failed",
+        // 只有 detailMessage
+        detailMessage: {
+          message: "这是一个旧的单个详情信息",
+        },
+        infos: [
+          {
+            items: [
+              {
+                category: "tag",
+                color: "red",
+                children: "兼容",
+              },
+              {
+                category: "info",
+                children: "只有detailMessage",
+              },
+            ],
+          },
+        ],
+        subInfo: {
+          items: [
+            { category: "subinfo_label", children: "2023-08-18 10:00:00" },
+          ],
+        },
+      },
+      {
+        status: "failed",
+        // 同时有 detailMessages 和 detailMessage，detailMessages 优先
+        detailMessages: [
+          {
+            message: "这是新的多个详情信息 - 第1条",
+            type: "error",
+          },
+          {
+            message: "这是新的多个详情信息 - 第2条",
+            type: "warning",
+          },
+        ],
+        detailMessage: {
+          message: "这条信息不会显示，因为detailMessages优先",
+        },
+        infos: [
+          {
+            items: [
+              {
+                category: "tag",
+                color: "red",
+                children: "优先级",
+              },
+              {
+                category: "info",
+                children: "detailMessages优先于detailMessage",
+              },
+            ],
+          },
+        ],
+        subInfo: {
+          items: [
+            { category: "subinfo_label", children: "2023-08-18 11:00:00" },
+          ],
+        },
+      },
+    ],
+    emptyText: "暂无历史记录",
+  },
+};

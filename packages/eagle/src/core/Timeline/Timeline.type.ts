@@ -73,23 +73,43 @@ export interface TimelineItemData {
    *   message: "升级失败，请检查网络连接",
    *   action: <Button>重试</Button>
    * }
+   * @deprecated 推荐优先使用 detailMessages
    */
   detailMessage?: AlertProps;
 
   /**
-   * 自定义详情信息渲染函数，优先级高于detailMessage
-   * 可以完全自定义详情区域的展示内容和样式
-   * @param detailMessage - 默认的详情信息配置
+   * 详情信息列表，通常用于显示错误详情或额外说明
+   * 支持多个详情信息，每个详情信息可以包含不同的样式和内容
+   * 优先级高于 detailMessage
+   * @example
+   * detailMessages: [{
+   *   message: "升级失败，请检查网络连接",
+   *   action: <Button>重试</Button>
+   * }, {
+   *   message: "错误详情：网络超时",
+   *   type: "warning"
+   * }]
+   */
+  detailMessages?: AlertProps[];
+
+  /**
+   * 自定义详情信息渲染函数，作用于每个详情信息
+   * 可以完全自定义每个详情信息的展示内容和样式
+   * @param detailMessage - 单个详情信息配置
+   * @param index - 当前详情信息在列表中的索引
    * @returns 自定义渲染的React节点
    * @example
-   * detailMessageRender: (message) => (
-   *   <div style={{ padding: "8px" }}>
+   * detailMessageRender: (message, index) => (
+   *   <div key={index} style={{ padding: "8px", marginBottom: "4px" }}>
    *     <div>{message?.message}</div>
-   *     <Button>重试</Button>
+   *     {index === 0 && <Button>重试</Button>}
    *   </div>
    * )
    */
-  detailMessageRender?: (detailMessage?: AlertProps) => ReactNode;
+  detailMessageRender?: (
+    detailMessage?: AlertProps,
+    index?: number,
+  ) => ReactNode;
 
   /**
    * 主要信息区域，展示操作标题、版本号等重要信息
@@ -193,6 +213,11 @@ export interface TimelineProps {
    * ]}
    */
   items: TimelineItemData[];
+
+  /**
+   * 时间线容器类名，可用于自定义时间线容器的样式
+   */
+  timelineContainerClassName?: string;
 
   /**
    * 空状态显示文本，当items为空数组时显示
