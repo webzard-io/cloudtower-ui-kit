@@ -2,7 +2,7 @@ import { css, cx } from "@linaria/core";
 import { Typo } from "@src/core/Typo";
 import React from "react";
 
-import { SmallDialog } from "../SmallDialog";
+import { SmallDialog } from "@src/core/SmallDialog/SmallDialog";
 import {
   RejectContent,
   RejectDialogProps,

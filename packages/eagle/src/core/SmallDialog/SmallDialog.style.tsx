@@ -1,0 +1,99 @@
+import { css } from "@linaria/core";
+import { Color } from "@src/styles/token";
+
+export const DialogStyle = css`
+  --footer-height: 80px;
+  --header-height: 56px;
+  --modal-content-width: 492px;
+  --modal-content-min-height: 160px;
+  --modal-content-max-height: calc(
+    100vh - 144px - var(--header-height) - var(--footer-height)
+  );
+  --modal-header-padding: 32px 40px 0;
+  --modal-content-padding-y: 32px;
+  --modal-content-padding-x: 40px;
+  --modal-footer-padding: 0 40px;
+
+  .ant-modal-content {
+    background: $backgrounds-light-primary;
+    border-radius: 16px;
+    max-width: var(--modal-content-width);
+    min-width: var(--modal-content-width);
+  }
+
+  .ant-modal-header {
+    padding: var(--modal-header-padding);
+    height: var(--header-height);
+    border-bottom: none;
+    border-radius: 16px 16px 0 0;
+    .ant-modal-title {
+      color: ${Color.text.neutral.primary};
+    }
+  }
+
+  .ant-modal-close {
+    right: 48px;
+    top: 24px;
+  }
+
+  .ant-modal-body {
+    padding: var(--modal-content-padding-y) var(--modal-content-padding-x);
+    padding-right: calc(var(--modal-content-padding-x) - 6px);
+    min-height: var(--modal-content-min-height);
+    max-height: var(--modal-content-max-height);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: ${Color.stroke.neutral["trans-1"]};
+    }
+    &::-webkit-scrollbar-thumb {
+      background: ${Color.stroke.neutral["trans-3"]};
+      border-radius: 8px;
+    }
+  }
+
+  .ant-modal-footer {
+    height: var(--footer-height);
+    padding: var(--modal-footer-padding);
+    margin-top: 0;
+    border-top: none;
+    box-shadow: 0px 1px 0px 0px #e1e6f199 inset;
+    .ant-btn-quiet {
+      color: ${Color.text.neutral.secondary};
+      font-weight: 700;
+    }
+  }
+`;
+
+export const FooterStyle = css`
+  display: flex;
+  gap: 16px;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  &.has-error {
+    justify-content: space-between;
+  }
+`;
+
+export const ErrorTextStyle = css`
+  color: ${Color.text.colorful.serious};
+  text-align: left;
+  .icon-wrapper {
+    align-self: baseline;
+    padding-top: 2px;
+  }
+`;
+
+export const CloseIconStyle = css`
+  padding: 8px;
+  border-radius: 50%;
+  &:hover {
+    background: ${Color.fill.neutral["trans-2"]};
+    transition: 0.3s ease-out;
+  }
+`;

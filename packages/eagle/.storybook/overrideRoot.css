@@ -5,3 +5,7 @@
 body {
   overflow: auto;
 }
+
+.ant-modal {
+  top: 50%;
+}
