@@ -100,3 +100,42 @@ export const CustomButtonText = () => {
     </Button>
   );
 };
+
+/**
+ * 确认按钮加载状态
+ */
+export const ConfirmLoading = () => {
+  const pushModal = usePushModal();
+
+  return (
+    <Button
+      type="primary"
+      danger
+      onClick={() =>
+        pushModal({
+          props: {
+            name: "LoadingDeleteDialog",
+          },
+          component: () => (
+            <DeleteDialog
+              title="删除集群"
+              description="确定要删除集群吗？这个操作需要一些时间来完成。"
+              secondaryDesc="删除过程中请耐心等待，不要关闭浏览器或刷新页面。"
+              okText="删除"
+              confirmLoading={true}
+              onOk={(popModal) => {
+                // 模拟异步删除操作
+                setTimeout(() => {
+                  console.log("delete operation completed");
+                  popModal();
+                }, 3000);
+              }}
+            />
+          ),
+        })
+      }
+    >
+      删除集群（加载状态）
+    </Button>
+  );
+};

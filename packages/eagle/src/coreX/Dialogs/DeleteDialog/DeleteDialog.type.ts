@@ -15,4 +15,6 @@ export interface DeleteDialogProps {
   onCancel?: (popModal: () => void) => void;
   /** 自定义类名 */
   className?: string;
+  /** 确认按钮加载状态 */
+  confirmLoading?: boolean;
 }

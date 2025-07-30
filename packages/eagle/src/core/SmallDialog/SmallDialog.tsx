@@ -41,6 +41,7 @@ export const SmallDialog: React.FC<SmallDialogProps> = ({
   children,
   showFooterErrorIcon = true,
   error,
+  confirmLoading,
 }) => {
   const popModal = usePopModal();
 
@@ -98,7 +99,12 @@ export const SmallDialog: React.FC<SmallDialogProps> = ({
               {cancelText}
             </Button>
             {showOk && (
-              <Button type="primary" onClick={handleOk} {...okButtonProps}>
+              <Button
+                type="primary"
+                onClick={handleOk}
+                loading={confirmLoading}
+                {...okButtonProps}
+              >
                 {okText}
               </Button>
             )}
