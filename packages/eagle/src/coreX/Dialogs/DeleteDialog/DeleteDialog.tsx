@@ -3,7 +3,7 @@ import { Typo } from "@src/core/Typo";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import React from "react";
 
-import { SmallDialog } from "../SmallDialog";
+import { SmallDialog } from "@src/core/SmallDialog/SmallDialog";
 import { DeleteDialogProps } from "./DeleteDialog.type";
 
 const ContentStyle = css`

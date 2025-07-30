@@ -95,6 +95,8 @@ export * from "./Tooltip";
 export * from "./Truncate";
 export * from "./Typo";
 export * from "./Units";
+export * from "./SmallDialog";
+export * from "./MediumDialog";
 
 export const units = {
   Percent,
