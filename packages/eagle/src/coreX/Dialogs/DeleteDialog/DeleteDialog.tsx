@@ -26,6 +26,7 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = (props) => {
     onOk,
     onCancel,
     className,
+    confirmLoading,
   } = props;
 
   return (
@@ -40,6 +41,7 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = (props) => {
       okButtonProps={{
         danger: true,
       }}
+      confirmLoading={confirmLoading}
     >
       {description && (
         <div className={cx(ContentStyle, Typo.Label.l2_regular)}>
