@@ -193,7 +193,7 @@ const config = defineConfig([
             },
           ]),
         failOnError: true,
-        prefix: '@import "./src/styles/index.scss";',
+        prefix: '@import "./src/styles/libs/antd";@import "./src/styles/index.scss";',
       }),
     ],
   },
