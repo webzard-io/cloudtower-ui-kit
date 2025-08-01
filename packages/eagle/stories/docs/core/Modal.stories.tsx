@@ -8,21 +8,6 @@ import Tooltip from "@src/core/Tooltip";
 import { Meta } from "@storybook/react";
 import React, { useMemo, useState } from "react";
 
-const ImmersiveModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-  return (
-    <Modal
-      title="Label"
-      className={ModalWrapper}
-      fullscreen
-      okText="Button Title"
-      cancelText="Button Title"
-      onCancel={onClose}
-    >
-      <div>Main Area</div>
-    </Modal>
-  );
-};
-
 const AsideModal: React.FC<{ onClose: () => void; steps: WizardSteps }> = ({
   onClose,
   steps,
@@ -79,27 +64,6 @@ const story: Meta<ModalProps> = {
 };
 
 export default story;
-
-export const ImmersiveDialog = (args: Parameters<typeof Button>) => {
-  const pushModal = usePushModal();
-
-  return (
-    <Button
-      type="primary"
-      onClick={() =>
-        pushModal({
-          component: ImmersiveModal,
-          props: {
-            name: "ImmersiveModal",
-          },
-        })
-      }
-      {...args}
-    >
-      open modal
-    </Button>
-  );
-};
 
 export const WithAside = () => {
   const pushModal = usePushModal();

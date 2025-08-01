@@ -43,6 +43,20 @@ export const ImmersiveDialogStyle = css`
     }
   }
 `;
+export const MultiAreaStyle = css`
+  &.ant-modal {
+    .ant-modal-header {
+      padding: 60px 0 40px 0;
+      width: 648px;
+      margin: 0 auto;
+    }
+
+    .ant-modal-footer {
+      width: 648px;
+      margin: 0 auto;
+    }
+  }
+`;
 export const CloseIconStyle = css`
   height: 40px;
   width: 40px;
@@ -58,24 +72,10 @@ export const CloseIconStyle = css`
 export const TitleStyle = css`
   color: $gray-120;
 `;
-export const NormalStyle = css`
+export const FullContentStyle = css`
   &.ant-modal {
     .ant-modal-content {
       padding: 0 40px;
-    }
-  }
-`;
-export const WizardStyle = css`
-  &.ant-modal {
-    .ant-modal-header {
-      padding: 60px 0 40px 0;
-      width: 648px;
-      margin: 0 auto;
-    }
-
-    .ant-modal-footer {
-      width: 648px;
-      margin: 0 auto;
     }
   }
 `;
@@ -87,7 +87,7 @@ export const BodyStyle = css`
     overflow: auto;
   }
 `;
-export const WizardBodyStyle = css`
+export const MultiAreaBodyStyle = css`
   display: flex;
   gap: 60px;
   justify-content: center;
@@ -107,15 +107,12 @@ export const WizardBodyStyle = css`
     overflow: auto;
   }
 `;
-export const StepStyle = css`
-  display: flex;
-  justify-content: flex-end;
-`;
 export const FooterStyle = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+  height: 40px;
 `;
 export const FooterButtonStyle = css`
   display: flex;
@@ -130,4 +127,16 @@ export const ErrorStyle = css`
   color: $red-60;
   display: flex;
   align-items: center;
+  height: 32px;
+`;
+export const ErrorIconStyle = css`
+  margin-right: 4px;
+  flex-shrink: 0;
+`;
+export const ErrorTextStyle = css`
+  align-self: flex-start;
+  margin-top: 5px;
+`;
+export const CancelButtonStyle = css`
+  font-weight: bold;
 `;

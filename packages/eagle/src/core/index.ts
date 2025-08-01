@@ -58,6 +58,7 @@ export * from "./Legend";
 export * from "./LineChart";
 export * from "./Link";
 export * from "./Loading";
+export * from "./MediumDialog";
 export * from "./message";
 export * from "./message-group";
 export * from "./Metric";
@@ -76,6 +77,7 @@ export * from "./Select";
 export * from "./SidebarMenu";
 export * from "./SimplePagination";
 export * from "./Skeleton";
+export * from "./SmallDialog";
 export * from "./Space";
 export * from "./Speed";
 export * from "./StatusCapsule";
@@ -96,8 +98,7 @@ export * from "./Tooltip";
 export * from "./Truncate";
 export * from "./Typo";
 export * from "./Units";
-export * from "./SmallDialog";
-export * from "./MediumDialog";
+export * from "./WizardDialog";
 
 export const units = {
   Percent,
@@ -144,7 +145,6 @@ export { default as Form } from "./Form";
 export { default as FormItem } from "./FormItem";
 export { default as Frequency } from "./Frequency";
 export { default as Icon } from "./Icon";
-export { default as ImmersiveDialog } from "./ImmersiveDialog";
 export { default as Input } from "./Input";
 export { default as InputGroup } from "./InputGroup";
 export { default as InputInteger } from "./InputInteger";
