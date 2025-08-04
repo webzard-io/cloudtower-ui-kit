@@ -34,6 +34,7 @@ describe("Input h5_css", () => {
         >
           <div
             class=ant-picker,ant-picker-range
+            name=inputName1
           >
             <div
               class=ant-picker-input,ant-picker-input-active

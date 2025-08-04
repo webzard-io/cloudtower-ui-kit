@@ -11,9 +11,10 @@ const FieldsDateTimeRange: React.FC<FieldBaseProps & DatePickerProps> = ({
 }) => (
   <div className="datatime-range">
     <DatePicker.RangePicker
+      showTime
+      {...input}
       onFocus={() => input.onFocus?.()}
       onBlur={() => input.onBlur?.()}
-      showTime
       // https://github.com/ant-design/ant-design/issues/22185
       defaultValue={input.value?.map((v?: string) => v && moment(v))}
       onChange={input.onChange}
