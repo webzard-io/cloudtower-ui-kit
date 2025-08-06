@@ -376,7 +376,7 @@ const Month: React.FC<{
             minDate={minDate}
             maxDate={maxDate}
             maxRange={maxRange}
-            highlightDay={highlightDay || controlHighlightDay || []}
+            highlightDay={controlHighlightDay || highlightDay || []}
             parentElement={monthContainerRef}
             onRangeChange={onRangeChange}
             onMouseEnter={handleMouseEnterDate}
