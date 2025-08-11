@@ -1,3 +1,5 @@
+import { InputProps as AntdInputProps } from "antd/lib/input";
+
 export interface AdditionOptions {
   /**
    * 使用变量控制是否显示 error 效果
@@ -12,3 +14,5 @@ export interface AdditionOptions {
    */
   suffix?: string;
 }
+
+export type InputProps = AntdInputProps & { error?: boolean };
