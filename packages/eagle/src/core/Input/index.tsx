@@ -2,9 +2,9 @@ import { styled } from "@linaria/react";
 import { InputStyle } from "@src/core/Styled";
 import { Typo } from "@src/core/Typo";
 import { Input as AntdInput } from "antd";
-import { InputProps } from "antd/lib/input";
 import cs from "classnames";
 import React from "react";
+import { InputProps } from "./input.type";
 
 const StyledAntdInput = styled(AntdInput)`
   .ant-input-sm {
@@ -12,7 +12,7 @@ const StyledAntdInput = styled(AntdInput)`
   }
 `;
 
-const Input: React.FC<InputProps & { error?: boolean }> = ({
+const Input: React.FC<InputProps> = ({
   className,
   error,
   size = "middle",
