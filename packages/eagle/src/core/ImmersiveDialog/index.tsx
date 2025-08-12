@@ -1,11 +1,13 @@
 import {
   ExclamationErrorCircleFill16RedIcon,
-  XmarkClose24BoldSecondaryIcon,
+  XmarkCloseBold24SecondaryIcon,
+  XmarkCloseBold24TertiaryIcon,
 } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
 import Button from "@src/core/Button";
 import { usePopModal } from "@src/core/KitStoreProvider";
 import { Typo } from "@src/core/Typo";
+import { default as Icon } from "@src/core/Icon";
 import OverflowTooltip from "@src/coreX/OverflowTooltip";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { Modal as AntdModal } from "antd";
@@ -37,6 +39,8 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
     footerLeftAction,
     left,
     right,
+    leftClassName,
+    rightClassName,
     closeIcon,
     footer,
     showCancel = true,
@@ -148,9 +152,13 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
       )}
       closeIcon={
         closeIcon ?? (
-          <span className={CloseIconStyle}>
-            <XmarkClose24BoldSecondaryIcon />
-          </span>
+          <Icon
+            src={XmarkCloseBold24TertiaryIcon}
+            className={CloseIconStyle}
+            iconHeight={24}
+            iconWidth={24}
+            hoverSrc={XmarkCloseBold24SecondaryIcon}
+          />
         )
       }
       footer={finalFooter}
@@ -163,9 +171,13 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
       {...restProps}
     >
       <div className={cx(BodyStyle, isContentFull ? "" : MultiAreaBodyStyle)}>
-        {isContentFull ? null : <div className="left">{left}</div>}
+        {isContentFull ? null : (
+          <div className={cx("left", leftClassName)}>{left}</div>
+        )}
         <div className="middle">{children}</div>
-        {isContentFull ? null : <div className="right">{right}</div>}
+        {isContentFull ? null : (
+          <div className={cx("right", rightClassName)}>{right}</div>
+        )}
       </div>
     </AntdModal>
   );

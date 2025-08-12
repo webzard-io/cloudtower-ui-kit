@@ -27,8 +27,12 @@ export type ImmersiveDialogProps = React.PropsWithChildren<
     isContentFull?: boolean;
     /** 左侧自定义内容 */
     left?: React.ReactNode;
+    /** 左侧自定义内容类名 */
+    leftClassName?: string;
     /** 右侧自定义内容 */
     right?: React.ReactNode;
+    /** 右侧自定义内容类名 */
+    rightClassName?: string;
     /** 底部左侧的操作区域 */
     footerLeftAction?: React.ReactNode;
   }

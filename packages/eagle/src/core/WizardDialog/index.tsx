@@ -5,8 +5,14 @@ import Steps from "@src/core/Steps";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import React, { useEffect, useMemo, useState } from "react";
 
-import { PrevIconStyle, StepContentStyle, StepStyle } from "./styles";
+import {
+  PrevIconStyle,
+  RightPanelStyle,
+  StepContentStyle,
+  StepStyle,
+} from "./styles";
 import { WizardDialogProps } from "./type";
+import { cx } from "@linaria/core";
 
 export function WizardDialog(props: WizardDialogProps) {
   const {
@@ -23,6 +29,7 @@ export function WizardDialog(props: WizardDialogProps) {
     onStepChange,
     left,
     right,
+    rightClassName,
     okText,
     onOk,
     ...restProps
@@ -119,6 +126,7 @@ export function WizardDialog(props: WizardDialogProps) {
           onOk?.(e);
         }
       }}
+      rightClassName={cx(RightPanelStyle, rightClassName)}
       {...restProps}
       isContentFull={false}
     >
