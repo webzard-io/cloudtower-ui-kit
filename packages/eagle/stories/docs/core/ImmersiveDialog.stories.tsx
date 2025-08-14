@@ -6,8 +6,9 @@ import KitStoreProvider, {
   usePushModal,
 } from "@src/core/KitStoreProvider";
 import ModalStack from "@src/core/ModalStack";
+import { SwitchWithText } from "@src/coreX";
 import { CoreMeta } from "@stories/types";
-import React from "react";
+import React, { useState } from "react";
 
 const ContentStyle = css`
   display: flex;
@@ -68,6 +69,107 @@ export const FullContentImmersiveDialog = () => {
     >
       Open modal
     </Button>
+  );
+};
+
+const ScrollItemStyle = css`
+  margin-bottom: 16px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #e1e6f1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+`;
+
+export const ScrollableImmersiveDialog = () => {
+  const pushModal = usePushModal();
+  const popModal = usePopModal();
+  const [isFull, setIsFull] = useState(false);
+
+  // 生成大量内容用于演示滚动
+  const generateScrollContent = () => {
+    const items = [];
+    for (let i = 1; i <= 3; i++) {
+      items.push(
+        <div key={i} className={ScrollItemStyle}>
+          <h3>数据项 {i}</h3>
+          <p>
+            这是第 {i}{" "}
+            个数据项的详细描述内容。这个对话框展示了当内容超过可视区域高度时的滚动效果。
+            用户可以通过滚动来查看所有的内容项，确保在全屏对话框中能够舒适地浏览大量数据。
+          </p>
+          <p>
+            额外的描述文本用于增加内容长度：Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.
+          </p>
+        </div>,
+      );
+    }
+    return items;
+  };
+
+  return (
+    <div style={{ display: "flex", gap: 16 }}>
+      <SwitchWithText
+        checked={isFull}
+        onChange={(checked) => setIsFull(checked)}
+        text={{
+          checked: "非常规尺寸",
+          unchecked: "常规尺寸",
+        }}
+      />
+      <Button
+        type="primary"
+        onClick={() =>
+          pushModal({
+            component: ImmersiveDialog,
+            props: {
+              title: "可滚动内容展示 - 全屏对话框",
+              error: "这是一个包含大量数据的示例，展示滚动功能",
+              isContentFull: isFull,
+              children: (
+                <div>
+                  <div
+                    style={{
+                      marginBottom: "20px",
+                      fontSize: "16px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    📋 数据列表 (共50项，支持滚动查看)
+                  </div>
+                  {generateScrollContent()}
+                  <div
+                    style={{
+                      textAlign: "center",
+                      fontSize: "14px",
+                      color: "#666",
+                      borderRadius: "8px",
+                    }}
+                  >
+                    🎉 恭喜！您已滚动到底部
+                  </div>
+                </div>
+              ),
+              okText: "确认处理",
+              cancelText: "取消操作",
+              onOk() {
+                console.log("用户确认处理数据");
+                popModal();
+              },
+              onCancel() {
+                console.log("用户取消操作");
+              },
+            },
+          })
+        }
+      >
+        打开可滚动对话框
+      </Button>
+    </div>
   );
 };
 

@@ -1,6 +1,8 @@
 import { css } from "@linaria/core";
+import { Color } from "@src/styles/token";
 
 export const ImmersiveDialogStyle = css`
+  --modal-header-height: 140px;
   &.ant-modal {
     height: calc(100% - 20px);
     width: calc(100% - 20px);
@@ -28,6 +30,7 @@ export const ImmersiveDialogStyle = css`
 
     .ant-modal-header {
       padding: 60px 0 40px 0;
+      height: var(--modal-header-height);
       border: 0;
     }
 
@@ -35,6 +38,18 @@ export const ImmersiveDialogStyle = css`
       padding: 0;
       flex: 1;
       min-height: 0;
+      overflow-y: auto;
+      scrollbar-gutter: stable;
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+      &::-webkit-scrollbar-track {
+        background: ${Color.stroke.neutral["trans-1"]};
+      }
+      &::-webkit-scrollbar-thumb {
+        background: ${Color.stroke.neutral["trans-3"]};
+        border-radius: 8px;
+      }
     }
 
     .ant-modal-footer {
@@ -67,6 +82,7 @@ export const CloseIconStyle = css`
 
   &:hover {
     background-color: $fill-neutral-trans-2;
+    transition: 0.3s ease-out;
   }
 `;
 export const TitleStyle = css`
@@ -74,37 +90,57 @@ export const TitleStyle = css`
 `;
 export const FullContentStyle = css`
   &.ant-modal {
-    .ant-modal-content {
-      padding: 0 40px;
+    .ant-modal-body {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+    .ant-modal-footer,
+    .ant-modal-header {
+      margin-left: 40px;
+      margin-right: 40px;
     }
   }
 `;
 export const BodyStyle = css`
-  height: calc(100% - 40px);
-
+  position: relative;
   .middle {
     height: 100%;
     overflow: auto;
+    padding-bottom: 40px;
   }
 `;
 export const MultiAreaBodyStyle = css`
-  display: flex;
-  gap: 60px;
-  justify-content: center;
-
+  --left-width: 192px;
+  --right-width: 192px;
+  --content-width: 648px;
+  --content-margin: 60px;
+  --modal-body-padding: calc(
+    (
+        100% - var(--content-width) - var(--left-width) - var(--right-width) - var(
+            --content-margin
+          ) * 2
+      ) / 2
+  );
   .left {
-    width: 192px;
+    width: var(--left-width);
     overflow: auto;
+    position: fixed;
+    left: var(--modal-body-padding);
+    top: var(--modal-header-height);
   }
 
   .middle {
-    width: 648px;
+    width: var(--content-width);
     overflow: auto;
+    margin: auto;
   }
 
   .right {
-    width: 192px;
+    width: var(--right-width);
     overflow: auto;
+    position: fixed;
+    right: var(--modal-body-padding);
+    top: var(--modal-header-height);
   }
 `;
 export const FooterStyle = css`
