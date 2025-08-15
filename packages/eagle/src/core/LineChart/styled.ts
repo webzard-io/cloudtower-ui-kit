@@ -100,6 +100,11 @@ export const LegendItemsStyle = css`
   .legend-name {
     color: $text-light-primary;
   }
+  .icon-suffix-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 4px;
+  }
 `;
 
 export const LegendItemsStyleDropdown = css`
@@ -123,6 +128,11 @@ export const LegendItemsStyleDropdown = css`
   }
   &.hoverering-self {
     opacity: 1;
+  }
+  .icon-suffix-wrapper {
+    margin-left: 4px;
+    display: flex;
+    align-items: center;
   }
 `;
 

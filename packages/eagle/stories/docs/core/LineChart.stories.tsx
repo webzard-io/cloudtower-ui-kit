@@ -15,6 +15,9 @@ import React from "react";
 import { Payload } from "recharts/types/component/DefaultTooltipContent";
 
 import { mockMetric, mockMetric2 } from "../../../__test__/mockLineChart";
+import Icon from "@src/core/Icon";
+import { InfoICircle16GradientGrayIcon } from "@cloudtower/icons-react";
+import Tooltip from "@src/core/Tooltip";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -242,6 +245,7 @@ export default {
 - 提供三种展示模式：简单、图例、单一
 - 支持X轴、Y轴的自定义配置
 - 支持图例显示和交互
+- 支持图例项自定义图标后缀
 - 支持多图表联动
 - 支持自定义提示框格式
 - 支持日期范围选择
@@ -253,6 +257,7 @@ export default {
 - 多指标数据对比
 - 数据堆叠展示
 - 需要联动的多图表展示
+- 需要增强图例可读性的场景
 
 #### TODO
 - 支持 Number stat 看板
@@ -1074,6 +1079,152 @@ DynamicTimeRange.parameters = {
     description: {
       story:
         "展示一个动态更新时间范围的折线图示例。该图表每10秒自动更新一次时间范围，始终显示最近一小时的数据。",
+    },
+  },
+};
+
+export const LegendWithIconSuffix = TemplateLg.bind({});
+
+const metricWithIconSuffix: ILineChartMetric = {
+  sample_streams: [
+    {
+      points: Array.from({ length: 10 }, (_, i) => {
+        const startTime = dateRange1[0].valueOf();
+        const timeStep =
+          (dateRange1[1].valueOf() - dateRange1[0].valueOf()) / 9;
+        return {
+          t: startTime + i * timeStep,
+          v: 50 + Math.sin(i) * 30 + Math.random() * 10,
+        };
+      }),
+      step: Math.floor((dateRange1[1].valueOf() - dateRange1[0].valueOf()) / 9),
+      tolerance: 1700000,
+      legend: {
+        id: "cpu_usage_with_icon",
+        name: "CPU Usage",
+        color: "#1890ff",
+        iconSuffix: (
+          <Icon
+            alt="alert-bell"
+            src={InfoICircle16GradientGrayIcon}
+            style={{ marginLeft: "4px", width: "16px", height: "16px" }}
+          />
+        ),
+      },
+    },
+    {
+      points: Array.from({ length: 10 }, (_, i) => {
+        const startTime = dateRange1[0].valueOf();
+        const timeStep =
+          (dateRange1[1].valueOf() - dateRange1[0].valueOf()) / 9;
+        return {
+          t: startTime + i * timeStep,
+          v: 1024 * 1024 * (5 + Math.sin(i) * 3),
+        };
+      }),
+      step: Math.floor((dateRange1[1].valueOf() - dateRange1[0].valueOf()) / 9),
+      tolerance: 1700000,
+      legend: {
+        id: "memory_usage_with_icon",
+        name: "Memory Usage",
+        color: "#52c41a",
+        iconSuffix: (
+          <Icon
+            alt="backup"
+            src={InfoICircle16GradientGrayIcon}
+            style={{ marginLeft: "4px", width: "16px", height: "16px" }}
+          />
+        ),
+      },
+    },
+    {
+      points: Array.from({ length: 10 }, (_, i) => {
+        const startTime = dateRange1[0].valueOf();
+        const timeStep =
+          (dateRange1[1].valueOf() - dateRange1[0].valueOf()) / 9;
+        return {
+          t: startTime + i * timeStep,
+          v: 1024 * 1024 * 8 * (3 + Math.sin(i) * 2),
+        };
+      }),
+      step: Math.floor((dateRange1[1].valueOf() - dateRange1[0].valueOf()) / 9),
+      tolerance: 1700000,
+      legend: {
+        id: "network_throughput_with_icon",
+        name: "Network Throughput",
+        color: "#722ed1",
+        iconSuffix: (
+          <Tooltip title="Network Throughput">
+            <Icon
+              alt="network-security"
+              src={InfoICircle16GradientGrayIcon}
+              style={{ marginLeft: "4px", width: "16px", height: "16px" }}
+            />
+          </Tooltip>
+        ),
+      },
+    },
+    {
+      points: Array.from({ length: 10 }, (_, i) => {
+        const startTime = dateRange1[0].valueOf();
+        const timeStep =
+          (dateRange1[1].valueOf() - dateRange1[0].valueOf()) / 9;
+        return {
+          t: startTime + i * timeStep,
+          v: 1024 * 1024 * 8 * (3 + Math.sin(i) * 2),
+        };
+      }),
+      step: Math.floor((dateRange1[1].valueOf() - dateRange1[0].valueOf()) / 9),
+      tolerance: 1700000,
+      legend: {
+        id: "network_throughput_with_icon_long_name",
+        name: "Network Throughput long name longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong",
+        color: "#722ed1",
+        iconSuffix: (
+          <Tooltip title="Network Throughput">
+            <Icon
+              alt="network-security"
+              src={InfoICircle16GradientGrayIcon}
+              style={{ marginLeft: "4px", width: "16px", height: "16px" }}
+            />
+          </Tooltip>
+        ),
+      },
+    },
+  ],
+  unit: ILineChartMetricUnit.DataRateBit,
+  dropped: false,
+};
+
+LegendWithIconSuffix.args = {
+  chartProps: {
+    syncId: "legend-with-icon-suffix",
+    mode: "legend",
+    showLegend: true,
+    metricName: "Legend with Icon Suffix Demo",
+    metric: metricWithIconSuffix,
+    height: 180,
+    type: ILineChartGraphType.Area,
+    dateRange: dateRange1,
+    showXAxis: true,
+    xAxisProps: {
+      domain: domain1,
+    },
+    tooltipProps: {
+      format: (val) =>
+        lineChartYaxisTickFormatter(
+          val.value,
+          ILineChartMetricUnit.DataRateBit,
+        ),
+    },
+  },
+};
+
+LegendWithIconSuffix.parameters = {
+  docs: {
+    description: {
+      story:
+        "展示带有图标后缀的图例示例。每个图例项都可以配置自定义的图标后缀，用于增强图例的可读性和视觉效果。",
     },
   },
 };
