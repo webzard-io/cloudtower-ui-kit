@@ -34,19 +34,19 @@ const TooltipFormatter: React.FC<
         </TooltipTitle>
       }
       {payload
-        .map((item, index) => {
+        .map((item) => {
           return {
             ...item,
-            legend: legends[index],
+            legend: legends.find((_legend, index) => `v${index}` === item.name),
           };
         })
         .sort((a, b) => (b.value as number) - (a.value as number))
         .map((item) => {
-          return deselected.includes(item.legend.id) ? null : (
-            <TooltipColumn key={item.legend.id}>
+          return deselected.includes(item.legend?.id || "") ? null : (
+            <TooltipColumn key={item.legend?.id}>
               <div>
-                <LineChartColorBlock background={item.legend.color} borderd />
-                {item.legend.name}
+                <LineChartColorBlock background={item.legend?.color} borderd />
+                {item.legend?.name}
               </div>
               <div className="column-value">{format(item)}</div>
             </TooltipColumn>

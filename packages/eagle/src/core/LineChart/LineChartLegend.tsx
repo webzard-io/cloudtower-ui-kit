@@ -77,7 +77,13 @@ const LineChartLegend = (props: ILineChartLegendProps) => {
                     onMouseLeave={() => onHover("leave", legend.id)}
                   >
                     <LineChartColorBlock background={legend.color} />
-                    <span className="legend-name">{legend.name}</span>
+                    <span className="legend-name">
+                      <Truncate text={legend.name} len={50} backLen={20} />
+                    </span>
+
+                    <div className="icon-suffix-wrapper">
+                      {legend.iconSuffix}
+                    </div>
                   </Menu.Item>
                 );
               })}
@@ -112,6 +118,7 @@ const LineChartLegend = (props: ILineChartLegendProps) => {
             <span className="legend-name">
               <Truncate text={legend.name} len={50} backLen={20} />
             </span>
+            <div className="icon-suffix-wrapper">{legend.iconSuffix}</div>
           </div>
         );
       })}

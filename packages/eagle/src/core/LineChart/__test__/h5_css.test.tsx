@@ -168,6 +168,11 @@ describe("line chart h5_css", () => {
         .legend-name {
           color: $text-light-primary;
         }
+        .icon-suffix-wrapper {
+          display: flex;
+          align-items: center;
+          margin-left: 4px;
+        }
 
                 >
                   <div
@@ -192,6 +197,9 @@ describe("line chart h5_css", () => {
                       loooooooooooooooooooooooooo...oooooooooong_legend1
                     </div>
                   </span>
+                  <div
+                    class=icon-suffix-wrapper
+                  />
                 </div>
                 <div
                   class=
@@ -221,6 +229,11 @@ describe("line chart h5_css", () => {
         }
         .legend-name {
           color: $text-light-primary;
+        }
+        .icon-suffix-wrapper {
+          display: flex;
+          align-items: center;
+          margin-left: 4px;
         }
 
                 >
@@ -246,6 +259,9 @@ describe("line chart h5_css", () => {
                       loooooooooooooooooooooooooo...oooooooooong_legend2
                     </div>
                   </span>
+                  <div
+                    class=icon-suffix-wrapper
+                  />
                 </div>
                 <div
                   class=
@@ -276,6 +292,11 @@ describe("line chart h5_css", () => {
         .legend-name {
           color: $text-light-primary;
         }
+        .icon-suffix-wrapper {
+          display: flex;
+          align-items: center;
+          margin-left: 4px;
+        }
 
                 >
                   <div
@@ -300,6 +321,9 @@ describe("line chart h5_css", () => {
                       loooooooooooooooooooooooooo...oooooooooong_legend3
                     </div>
                   </span>
+                  <div
+                    class=icon-suffix-wrapper
+                  />
                 </div>
               </span>
               <div

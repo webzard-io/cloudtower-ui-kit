@@ -22,6 +22,7 @@ export interface ILineChartILegend {
   color?: string;
   fill?: string;
   stroke?: boolean;
+  iconSuffix?: ReactElement;
 }
 
 export interface ILineChartMetricStream {
