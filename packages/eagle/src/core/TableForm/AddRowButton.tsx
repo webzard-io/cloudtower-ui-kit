@@ -10,7 +10,14 @@ import React, { useMemo } from "react";
 
 const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
   const {
-    config: { maximum, className, CustomizedButton, buttonProps, text },
+    config: {
+      maximum,
+      className,
+      CustomizedButton,
+      buttonProps,
+      text,
+      extraAction,
+    },
     columns,
     addData,
     data,
@@ -70,6 +77,7 @@ const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
       >
         {CustomizedButtonText || t("components.add")}
       </Button>
+      {extraAction}
       {typeof maximum === "number" ? (
         <span
           className={cx(
