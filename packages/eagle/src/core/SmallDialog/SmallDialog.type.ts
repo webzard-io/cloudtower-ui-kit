@@ -35,4 +35,8 @@ export interface SmallDialogProps {
   showFooterErrorIcon?: boolean;
   /** 确认按钮加载状态 */
   confirmLoading?: boolean;
+  /** 初始化状态 */
+  initializing?: boolean;
+  /** 初始化失败 */
+  initializingError?: string | React.ReactNode;
 }

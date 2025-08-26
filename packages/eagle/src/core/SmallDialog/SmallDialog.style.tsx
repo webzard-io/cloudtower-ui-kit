@@ -56,6 +56,15 @@ export const DialogStyle = css`
     }
   }
 
+  &.initializing-error {
+    .ant-modal-body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+  }
+
   .ant-modal-footer {
     height: var(--footer-height);
     padding: var(--modal-footer-padding);
@@ -96,4 +105,28 @@ export const CloseIconStyle = css`
     background: ${Color.fill.neutral["trans-2"]};
     transition: 0.3s ease-out;
   }
+`;
+
+export const InitializingTitleSkeletonStyle = css`
+  width: 100px;
+  height: 24px;
+`;
+
+export const InitializingContentStyle = css`
+  width: 100%;
+  height: 100%;
+  .skeleton-wrapper {
+    width: 100%;
+    height: 32px;
+  }
+`;
+
+export const InitializingErrorStyle = css`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: ${Color.text.neutral.quaternary};
 `;

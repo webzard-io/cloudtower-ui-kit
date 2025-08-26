@@ -90,5 +90,6 @@
   "config_updated": "<0>{{text}}</0> updated <1>{{version}}</1>",
   "db_migrated": "<0>{{text}}</0> migrated to <1>{{version}}</1>",
   "empty": "No history records",
-  "view_detail": "View Details"
+  "view_detail": "View Details",
+  "initializing_failed": "Failed to load the page. Please try again."
 }

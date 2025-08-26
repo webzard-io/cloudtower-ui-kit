@@ -1,10 +1,73 @@
 import React from "react";
-import { Button, Input, Typo } from "@src/core";
+import { Button, Input, Space, Typo } from "@src/core";
 import ModalStack from "@src/core/ModalStack";
 import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
 import { SmallDialog } from "@src/core";
 import { CoreMeta } from "@stories/types";
 import { css } from "@linaria/core";
+
+// 自定义 hook 模拟 React Query 的行为
+const useMockQuery = (options?: {
+  enabled?: boolean;
+  shouldFail?: boolean; // 是否模拟失败
+  failFirstTime?: boolean; // 是否第一次失败
+}) => {
+  const [state, setState] = React.useState<{
+    isLoading: boolean;
+    data: any;
+    error: string | null;
+  }>({
+    isLoading: true,
+    data: null,
+    error: null,
+  });
+
+  const attemptCountRef = React.useRef(0);
+
+  const fetchData = React.useCallback(async () => {
+    setState((prev) => ({ ...prev, isLoading: true, error: null }));
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      if (options?.shouldFail) {
+        throw new Error("模拟网络错误");
+      }
+
+      if (options?.failFirstTime && attemptCountRef.current === 0) {
+        throw new Error("第一次加载失败，请重试");
+      }
+
+      setState((prev) => ({ ...prev, isLoading: false, data: "模拟数据" }));
+    } catch (err) {
+      setState((prev) => ({
+        ...prev,
+        isLoading: false,
+        error: err instanceof Error ? err.message : "数据获取错误",
+      }));
+    }
+
+    // 在 try-catch 之后增加尝试次数
+    attemptCountRef.current += 1;
+  }, [options?.shouldFail, options?.failFirstTime]);
+
+  const retry = React.useCallback(() => {
+    fetchData();
+  }, [fetchData]);
+
+  React.useEffect(() => {
+    if (options?.enabled !== false) {
+      fetchData();
+    }
+  }, [fetchData, options?.enabled]);
+
+  return {
+    ...state,
+    refetch: fetchData,
+    retry,
+    attemptCount: attemptCountRef.current,
+  };
+};
 
 const StoryContainer = css`
   padding: 20px;
@@ -247,5 +310,90 @@ export const LongContent = () => {
     >
       长内容对话框
     </Button>
+  );
+};
+
+/**
+ * 初始化状态
+ */
+export const Initializing = () => {
+  const pushModal = usePushModal();
+
+  return (
+    <Space direction="vertical" size={16}>
+      <Button
+        onClick={() => {
+          pushModal({
+            component: () => <SmallDialog initializing title="持续加载" />,
+            props: {},
+          });
+        }}
+      >
+        持续加载
+      </Button>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => {
+              const { isLoading, data, error, retry } = useMockQuery();
+
+              if (isLoading || error) {
+                return (
+                  <SmallDialog
+                    initializing={isLoading}
+                    initializingError={error}
+                    onOk={retry}
+                    title=""
+                  />
+                );
+              }
+
+              return (
+                <SmallDialog title={"加载完成"}>
+                  <p>这是一个加载完成的对话框。</p>
+                  <p>数据: {data}</p>
+                </SmallDialog>
+              );
+            },
+            props: {},
+          })
+        }
+      >
+        加载完成
+      </Button>
+      <Button
+        onClick={() => {
+          pushModal({
+            component: () => {
+              const { isLoading, data, error, retry, attemptCount } =
+                useMockQuery({
+                  failFirstTime: true,
+                });
+
+              if (isLoading || error) {
+                return (
+                  <SmallDialog
+                    initializing={isLoading}
+                    initializingError={error}
+                    onOk={retry}
+                    title=""
+                  />
+                );
+              }
+
+              return (
+                <SmallDialog title="加载成功">
+                  <p>恭喜！经过 {attemptCount} 次尝试，数据加载成功了。</p>
+                  <p>数据: {data}</p>
+                </SmallDialog>
+              );
+            },
+            props: {},
+          });
+        }}
+      >
+        加载失败
+      </Button>
+    </Space>
   );
 };

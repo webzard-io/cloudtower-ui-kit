@@ -85,5 +85,6 @@
   "config_updated": "<0>{{text}}</0>更新<1>{{version}}</1>",
   "db_migrated": "<0>{{text}}</0>迁移到<1>{{version}}</1>",
   "empty": "暂无历史记录",
-  "view_detail": "查看详情"
+  "view_detail": "查看详情",
+  "initializing_failed": "加载时遇到问题，请重试"
 }
