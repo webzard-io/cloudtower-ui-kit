@@ -155,6 +155,7 @@ export type RowAddConfigurations = {
   buttonProps?: ButtonProps;
   maximum?: number;
   className?: string;
+  extraAction?: React.ReactNode;
   CustomizedButton?: (props: AddRowButtonProps) => React.ReactElement;
 };
 

@@ -664,3 +664,27 @@ export const TitleAndSubTitle = {
     </>
   ),
 };
+
+export const ExtraAction = {
+  render: () => (
+    <>
+      <Title>TableForm With Extra Action</Title>
+      <ContentWrapper>
+        <TableForm
+          {...commonTableFormProps}
+          maxHeight={300}
+          defaultData={defaultData}
+          rowAddConfig={{
+            extraAction: (
+              <Button type="quiet" size="small">
+                自定义操作
+              </Button>
+            ),
+            addible: true,
+            maximum: 3,
+          }}
+        />
+      </ContentWrapper>
+    </>
+  ),
+};
