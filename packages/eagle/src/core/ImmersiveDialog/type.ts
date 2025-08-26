@@ -35,5 +35,9 @@ export type ImmersiveDialogProps = React.PropsWithChildren<
     rightClassName?: string;
     /** 底部左侧的操作区域 */
     footerLeftAction?: React.ReactNode;
+    /** 是否初始化中 */
+    initializing?: boolean;
+    /** 初始化错误内容 */
+    initializingError?: string | React.ReactNode;
   }
 >;

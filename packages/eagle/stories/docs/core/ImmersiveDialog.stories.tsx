@@ -6,8 +6,10 @@ import KitStoreProvider, {
   usePushModal,
 } from "@src/core/KitStoreProvider";
 import ModalStack from "@src/core/ModalStack";
+import Space from "@src/core/Space";
 import { SwitchWithText } from "@src/coreX";
 import { CoreMeta } from "@stories/types";
+import { useMockQuery } from "@stories/utils";
 import React, { useState } from "react";
 
 const ContentStyle = css`
@@ -189,3 +191,97 @@ const story = {
 } satisfies CoreMeta<typeof ImmersiveDialog>;
 
 export default story;
+
+/**
+ * 初始化状态
+ */
+export const Initializing = () => {
+  const pushModal = usePushModal();
+  const popModal = usePopModal();
+
+  return (
+    <Space direction="vertical" size={16}>
+      <Button
+        onClick={() => {
+          pushModal({
+            component: () => <ImmersiveDialog initializing title="持续加载" />,
+            props: {},
+          });
+        }}
+      >
+        持续加载
+      </Button>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => {
+              const { isLoading, data, error, retry } = useMockQuery();
+
+              if (isLoading || error) {
+                return (
+                  <ImmersiveDialog
+                    initializing={isLoading}
+                    initializingError={error}
+                    onOk={retry}
+                    title=""
+                  />
+                );
+              }
+
+              return (
+                <ImmersiveDialog
+                  title={"加载完成"}
+                  isContentFull={false}
+                  onOk={() => popModal()}
+                >
+                  <p>这是一个加载完成的对话框。</p>
+                  <p>数据: {data}</p>
+                </ImmersiveDialog>
+              );
+            },
+            props: {},
+          })
+        }
+      >
+        加载完成
+      </Button>
+      <Button
+        onClick={() => {
+          pushModal({
+            component: () => {
+              const { isLoading, data, error, retry, attemptCount } =
+                useMockQuery({
+                  failFirstTime: true,
+                });
+
+              if (isLoading || error) {
+                return (
+                  <ImmersiveDialog
+                    initializing={isLoading}
+                    initializingError={error}
+                    onOk={retry}
+                    title=""
+                  />
+                );
+              }
+
+              return (
+                <ImmersiveDialog
+                  title="加载成功"
+                  isContentFull={false}
+                  onOk={() => popModal()}
+                >
+                  <p>恭喜！经过 {attemptCount} 次尝试，数据加载成功了。</p>
+                  <p>数据: {data}</p>
+                </ImmersiveDialog>
+              );
+            },
+            props: {},
+          });
+        }}
+      >
+        加载失败
+      </Button>
+    </Space>
+  );
+};

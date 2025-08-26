@@ -40,7 +40,7 @@ export const ModelInitializingError: React.FC<{
       <p className={Typo.Display.d3_bold_title}>
         {t("components.initializing_failed")}
       </p>
-      <p className={Typo.Label.l3_regular}>{error}</p>
+      <div className={Typo.Label.l3_regular}>{error}</div>
     </div>
   );
 };

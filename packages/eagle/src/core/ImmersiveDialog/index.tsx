@@ -11,8 +11,13 @@ import { default as Icon } from "@src/core/Icon";
 import OverflowTooltip from "@src/coreX/OverflowTooltip";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { Modal as AntdModal } from "antd";
+import cls from "classnames";
 import React, { useMemo } from "react";
-
+import {
+  ModelInitializingError,
+  ModelTitleSkeleton,
+  ModelContentSkeleton,
+} from "../SmallDialog/SmallDialog.widget";
 import {
   BodyStyle,
   CancelButtonStyle,
@@ -55,17 +60,36 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
     isContentFull,
     onCancel,
     onOk,
+    initializing,
+    initializingError,
     ...restProps
   } = props;
   const { t } = useParrotTranslation();
   const popModal = usePopModal();
 
-  const _confirmText = useMemo(() => {
-    let text = okText || t("common.confirm");
+  const defaultTitle = initializingError ? t("common.load_failed") : "";
+  const defaultCancelText = showOk ? t("common.cancel") : t("common.close");
+  const defaultOkText = initializingError
+    ? t("common.retry")
+    : t("common.confirm");
+
+  const _cancelText = useMemo(() => {
+    let text = cancelText || defaultCancelText;
 
     return text;
-  }, [okText, t]);
+  }, [cancelText, defaultCancelText]);
+
+  const _confirmText = useMemo(() => {
+    let text = okText || defaultOkText;
+
+    return text;
+  }, [okText, defaultOkText]);
+
   const finalFooter = useMemo(() => {
+    if (initializing) {
+      return null;
+    }
+
     return (
       footer || (
         <div className={FooterStyle}>
@@ -101,7 +125,7 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
                 }}
                 {...cancelButtonProps}
               >
-                {cancelText || t("common.cancel")}
+                {_cancelText}
               </Button>
             ) : null}
             {showOk ? (
@@ -124,7 +148,7 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
     footerLeftAction,
     _confirmText,
     cancelButtonProps,
-    cancelText,
+    _cancelText,
     error,
     footer,
     okButtonProps,
@@ -134,21 +158,28 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
     popModal,
     showCancel,
     showOk,
-    t,
+    initializing,
   ]);
 
   return (
     <AntdModal
       width="calc(100% - 20px)"
       title={
-        <span className={cx(Typo.Display.d1_bold_title, TitleStyle)}>
-          {title}
-        </span>
+        initializing ? (
+          <ModelTitleSkeleton />
+        ) : (
+          <span className={cx(Typo.Display.d1_bold_title, TitleStyle)}>
+            {title || defaultTitle}
+          </span>
+        )
       }
-      className={cx(
+      className={cls(
         ImmersiveDialogStyle,
         isContentFull ? FullContentStyle : MultiAreaStyle,
         className,
+        {
+          "initializing-error": initializingError,
+        },
       )}
       closeIcon={
         closeIcon ?? (
@@ -171,12 +202,26 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
       {...restProps}
     >
       <div className={cx(BodyStyle, isContentFull ? "" : MultiAreaBodyStyle)}>
-        {isContentFull ? null : (
-          <div className={cx("left", leftClassName)}>{left}</div>
-        )}
-        <div className="middle">{children}</div>
-        {isContentFull ? null : (
-          <div className={cx("right", rightClassName)}>{right}</div>
+        {initializing || initializingError ? (
+          <>
+            <div className="middle">
+              {initializing ? (
+                <ModelContentSkeleton num={4} />
+              ) : (
+                <ModelInitializingError error={initializingError} />
+              )}
+            </div>
+          </>
+        ) : (
+          <>
+            {isContentFull ? null : (
+              <div className={cx("left", leftClassName)}>{left}</div>
+            )}
+            <div className="middle">{children}</div>
+            {isContentFull ? null : (
+              <div className={cx("right", rightClassName)}>{right}</div>
+            )}
+          </>
         )}
       </div>
     </AntdModal>

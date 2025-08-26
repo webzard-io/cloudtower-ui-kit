@@ -52,6 +52,19 @@ export const ImmersiveDialogStyle = css`
       }
     }
 
+    &.initializing-error {
+      .ant-modal-body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+    }
+
+    .initializing-title {
+      height: 40px;
+    }
+
     .ant-modal-footer {
       border-top: 1px solid rgba(225, 230, 241, 0.6);
       padding: 24px 0 60px 0;
