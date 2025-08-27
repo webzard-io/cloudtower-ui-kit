@@ -11,15 +11,10 @@ const MediumDialogStyle = css`
   --modal-content-max-height: calc(
     100vh - 136px - var(--header-height) - var(--footer-height)
   );
-  --modal-header-padding: 40px 60px 8px;
-  --modal-content-padding-top: 24px;
-  --modal-content-padding-bottom: 32px;
+  --modal-header-padding: 36px 60px 0;
+  --modal-content-padding-y: 36px;
   --modal-content-padding-x: 60px;
   --modal-footer-padding: 0 60px;
-
-  .initializing-title {
-    height: 32px;
-  }
 `;
 
 export const MediumDialog: React.FC<SmallDialogProps> = ({

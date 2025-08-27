@@ -1,11 +1,10 @@
 import React from "react";
-import { Button, Space } from "@src/core";
+import { Button, Typo } from "@src/core";
 import ModalStack from "@src/core/ModalStack";
 import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
 import { MediumDialog } from "@src/core";
 import { CoreMeta } from "@stories/types";
 import { css } from "@linaria/core";
-import { useMockQuery } from "@stories/utils";
 
 const StoryContainer = css`
   padding: 20px;
@@ -487,90 +486,5 @@ export const WithError = () => {
     >
       带表单的对话框
     </Button>
-  );
-};
-
-/**
- * 初始化状态
- */
-export const Initializing = () => {
-  const pushModal = usePushModal();
-
-  return (
-    <Space direction="vertical" size={16}>
-      <Button
-        onClick={() => {
-          pushModal({
-            component: () => <MediumDialog initializing title="持续加载" />,
-            props: {},
-          });
-        }}
-      >
-        持续加载
-      </Button>
-      <Button
-        onClick={() =>
-          pushModal({
-            component: () => {
-              const { isLoading, data, error, retry } = useMockQuery();
-
-              if (isLoading || error) {
-                return (
-                  <MediumDialog
-                    initializing={isLoading}
-                    initializingError={error}
-                    onOk={retry}
-                    title=""
-                  />
-                );
-              }
-
-              return (
-                <MediumDialog title={"加载完成"}>
-                  <p>这是一个加载完成的对话框。</p>
-                  <p>数据: {data}</p>
-                </MediumDialog>
-              );
-            },
-            props: {},
-          })
-        }
-      >
-        加载完成
-      </Button>
-      <Button
-        onClick={() => {
-          pushModal({
-            component: () => {
-              const { isLoading, data, error, retry, attemptCount } =
-                useMockQuery({
-                  failFirstTime: true,
-                });
-
-              if (isLoading || error) {
-                return (
-                  <MediumDialog
-                    initializing={isLoading}
-                    initializingError={error}
-                    onOk={retry}
-                    title=""
-                  />
-                );
-              }
-
-              return (
-                <MediumDialog title="加载成功">
-                  <p>恭喜！经过 {attemptCount} 次尝试，数据加载成功了。</p>
-                  <p>数据: {data}</p>
-                </MediumDialog>
-              );
-            },
-            props: {},
-          });
-        }}
-      >
-        加载失败
-      </Button>
-    </Space>
   );
 };
