@@ -7,7 +7,7 @@ import { cx } from "@linaria/core";
 import { Antd5Flex, Button, Icon, Skeleton, Typo, Space } from "@src/core";
 import { usePopModal } from "@src/core/KitStoreProvider";
 import { Modal } from "antd";
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React from "react";
 import cls from "classnames";
 import OverflowTooltip from "../../coreX/OverflowTooltip";
 import { Show } from "../../coreX/Show";
@@ -31,64 +31,21 @@ const DefaultTitleRender: React.FC<{ title?: React.ReactNode }> = ({
 
 const InitializingTitle: React.FC = () => {
   return (
-    <div className={cx(InitializingTitleSkeletonStyle, "initializing-title")}>
+    <div className={InitializingTitleSkeletonStyle}>
       <Skeleton.Content />
     </div>
   );
 };
 
-const InitializingContent: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [skeletonCount, setSkeletonCount] = useState(2);
-
-  useLayoutEffect(() => {
-    // Calculate how many skeleton lines to show based on container width
-    const calculateSkeletonCount = () => {
-      if (containerRef.current) {
-        const containerWidth = containerRef.current.offsetWidth;
-
-        let count = 2; // default value
-
-        if (containerWidth <= 492) {
-          count = 2;
-        } else if (containerWidth > 492 && containerWidth <= 720) {
-          count = 3;
-        } else if (containerWidth > 720) {
-          count = 4;
-        }
-
-        setSkeletonCount(count);
-      }
-    };
-
-    calculateSkeletonCount();
-
-    // Listen for window resize events
-    const handleResize = () => {
-      calculateSkeletonCount();
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
+const InitializingContent: React.FC<{ num?: number }> = ({ num = 2 }) => {
   return (
-    <div ref={containerRef}>
-      <Space
-        direction="vertical"
-        size={16}
-        className={InitializingContentStyle}
-      >
-        {Array.from({ length: skeletonCount }).map((_, index) => (
-          <div key={index} className="skeleton-wrapper">
-            <Skeleton.Content />
-          </div>
-        ))}
-      </Space>
-    </div>
+    <Space direction="vertical" size={16} className={InitializingContentStyle}>
+      {Array.from({ length: num }).map((_, index) => (
+        <div key={index} className="skeleton-wrapper">
+          <Skeleton.Content />
+        </div>
+      ))}
+    </Space>
   );
 };
 
@@ -149,7 +106,9 @@ export const SmallDialog: React.FC<SmallDialogProps> = ({
 
   const CustomTitleRender = TitleRender || DefaultTitleRender;
   const defaultTitle = initializingError ? t("common.load_failed") : "";
-  const defaultCancelText = showOk ? t("common.cancel") : t("common.close");
+  const defaultCancelText = initializingError
+    ? t("common.cancel")
+    : t("common.close");
   const defaultOkText = initializingError
     ? t("common.retry")
     : t("common.confirm");

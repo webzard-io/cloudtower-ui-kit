@@ -10,8 +10,7 @@ export const DialogStyle = css`
     100vh - 144px - var(--header-height) - var(--footer-height)
   );
   --modal-header-padding: 32px 40px 0;
-  --modal-content-padding-top: 32px;
-  --modal-content-padding-bottom: 32px;
+  --modal-content-padding-y: 32px;
   --modal-content-padding-x: 40px;
   --modal-footer-padding: 0 40px;
 
@@ -38,11 +37,8 @@ export const DialogStyle = css`
   }
 
   .ant-modal-body {
-    padding: var(--modal-content-padding-top) var(--modal-content-padding-x)
-      var(--modal-content-padding-bottom);
-    padding-right: calc(
-      var(--modal-content-padding-x) - 6px
-    ); // Reserve 6px width for scrollbar
+    padding: var(--modal-content-padding-y) var(--modal-content-padding-x);
+    padding-right: calc(var(--modal-content-padding-x) - 6px);
     min-height: var(--modal-content-min-height);
     max-height: var(--modal-content-max-height);
     overflow-y: auto;
@@ -112,7 +108,7 @@ export const CloseIconStyle = css`
 `;
 
 export const InitializingTitleSkeletonStyle = css`
-  width: 132px;
+  width: 100px;
   height: 24px;
 `;
 
