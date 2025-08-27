@@ -2,6 +2,8 @@ import { ButtonProps } from "@src/core/Button";
 import React from "react";
 
 export interface SmallDialogProps {
+  /** 弹窗宽度 */
+  width?: number | string;
   /** 弹窗标题 */
   title: React.ReactNode;
   /** 自定义标题 */
