@@ -196,13 +196,14 @@ export const AddRowButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-top: 8px;
+  gap: 8px;
+
   button.ant-btn {
     padding: 2px 8px;
     height: 24px;
   }
   & > span.maximum-desc {
     display: none;
-    margin-left: 8px;
     color: $text-secondary-light;
     &.disabled {
       display: inline;
