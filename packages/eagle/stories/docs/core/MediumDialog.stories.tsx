@@ -1,10 +1,12 @@
 import React from "react";
-import { Button, Typo } from "@src/core";
+import { Button, Space } from "@src/core";
 import ModalStack from "@src/core/ModalStack";
 import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
 import { MediumDialog } from "@src/core";
 import { CoreMeta } from "@stories/types";
 import { css } from "@linaria/core";
+import { useMockQuery } from "@stories/utils";
+import { Color } from "@src/index";
 
 const StoryContainer = css`
   padding: 20px;
@@ -485,6 +487,227 @@ export const WithError = () => {
       }
     >
       带表单的对话框
+    </Button>
+  );
+};
+
+/**
+ * 初始化状态
+ */
+export const Initializing = () => {
+  const pushModal = usePushModal();
+
+  return (
+    <Space direction="vertical" size={16}>
+      <Button
+        onClick={() => {
+          pushModal({
+            component: () => <MediumDialog initializing title="持续加载" />,
+            props: {},
+          });
+        }}
+      >
+        持续加载
+      </Button>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => {
+              const { isLoading, data, error, retry } = useMockQuery();
+
+              if (isLoading || error) {
+                return (
+                  <MediumDialog
+                    initializing={isLoading}
+                    initializingError={error}
+                    onOk={retry}
+                    title=""
+                  />
+                );
+              }
+
+              return (
+                <MediumDialog title={"加载完成"}>
+                  <p>这是一个加载完成的对话框。</p>
+                  <p>数据: {data}</p>
+                </MediumDialog>
+              );
+            },
+            props: {},
+          })
+        }
+      >
+        加载完成
+      </Button>
+      <Button
+        onClick={() => {
+          pushModal({
+            component: () => {
+              const { isLoading, data, error, retry, attemptCount } =
+                useMockQuery({
+                  failFirstTime: true,
+                });
+
+              if (isLoading || error) {
+                return (
+                  <MediumDialog
+                    initializing={isLoading}
+                    initializingError={error}
+                    onOk={retry}
+                    title=""
+                  />
+                );
+              }
+
+              return (
+                <MediumDialog title="加载成功">
+                  <p>恭喜！经过 {attemptCount} 次尝试，数据加载成功了。</p>
+                  <p>数据: {data}</p>
+                </MediumDialog>
+              );
+            },
+            props: {},
+          });
+        }}
+      >
+        加载失败
+      </Button>
+    </Space>
+  );
+};
+
+/**
+ * 内容占满视窗
+ */
+export const ContentFull = () => {
+  const pushModal = usePushModal();
+
+  const sampleData = [
+    { id: 1, name: "服务器-01", status: "运行中", cpu: "45%", memory: "67%" },
+    { id: 2, name: "服务器-02", status: "运行中", cpu: "23%", memory: "34%" },
+    { id: 3, name: "服务器-03", status: "停止", cpu: "0%", memory: "0%" },
+    { id: 4, name: "服务器-04", status: "运行中", cpu: "78%", memory: "89%" },
+    { id: 5, name: "服务器-05", status: "维护中", cpu: "12%", memory: "15%" },
+  ];
+
+  return (
+    <Button
+      onClick={() =>
+        pushModal({
+          component: () => (
+            <MediumDialog title="内容占满视窗" isContentFull>
+              <div>
+                <p>当前集群服务器运行状态概览：</p>
+                <table
+                  style={{
+                    width: "100%",
+                    borderCollapse: "collapse",
+                    marginTop: "16px",
+                  }}
+                >
+                  <thead>
+                    <tr style={{ backgroundColor: "#f5f5f5" }}>
+                      <th
+                        style={{
+                          padding: "8px",
+                          border: "1px solid #d9d9d9",
+                          textAlign: "left",
+                        }}
+                      >
+                        服务器名称
+                      </th>
+                      <th
+                        style={{
+                          padding: "8px",
+                          border: "1px solid #d9d9d9",
+                          textAlign: "left",
+                        }}
+                      >
+                        状态
+                      </th>
+                      <th
+                        style={{
+                          padding: "8px",
+                          border: "1px solid #d9d9d9",
+                          textAlign: "left",
+                        }}
+                      >
+                        CPU 使用率
+                      </th>
+                      <th
+                        style={{
+                          padding: "8px",
+                          border: "1px solid #d9d9d9",
+                          textAlign: "left",
+                        }}
+                      >
+                        内存使用率
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sampleData.map((item) => (
+                      <tr key={item.id}>
+                        <td
+                          style={{
+                            padding: "8px",
+                            border: "1px solid #d9d9d9",
+                          }}
+                        >
+                          {item.name}
+                        </td>
+                        <td
+                          style={{
+                            padding: "8px",
+                            border: "1px solid #d9d9d9",
+                          }}
+                        >
+                          <span
+                            style={{
+                              color:
+                                item.status === "运行中"
+                                  ? "#52c41a"
+                                  : item.status === "停止"
+                                    ? "#f5222d"
+                                    : "#1890ff",
+                            }}
+                          >
+                            {item.status}
+                          </span>
+                        </td>
+                        <td
+                          style={{
+                            padding: "8px",
+                            border: "1px solid #d9d9d9",
+                          }}
+                        >
+                          {item.cpu}
+                        </td>
+                        <td
+                          style={{
+                            padding: "8px",
+                            border: "1px solid #d9d9d9",
+                          }}
+                        >
+                          {item.memory}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div
+                  style={{ marginTop: "16px", fontSize: "12px", color: "#666" }}
+                >
+                  数据更新时间: {new Date().toLocaleString()}
+                </div>
+              </div>
+            </MediumDialog>
+          ),
+          props: {},
+        })
+      }
+    >
+      响应式对话框
     </Button>
   );
 };

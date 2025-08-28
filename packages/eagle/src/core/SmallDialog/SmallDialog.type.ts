@@ -2,6 +2,8 @@ import { ButtonProps } from "@src/core/Button";
 import React from "react";
 
 export interface SmallDialogProps {
+  /** 弹窗宽度 */
+  width?: number | string;
   /** 弹窗标题 */
   title: React.ReactNode;
   /** 自定义标题 */
@@ -35,8 +37,10 @@ export interface SmallDialogProps {
   showFooterErrorIcon?: boolean;
   /** 确认按钮加载状态 */
   confirmLoading?: boolean;
-  /** 初始化状态 */
+  /** 是否初始化中 */
   initializing?: boolean;
-  /** 初始化失败 */
+  /** 初始化错误内容 */
   initializingError?: string | React.ReactNode;
+  /** 初始化骨架屏行数 */
+  initializingSkeletonRows?: number;
 }
