@@ -58,12 +58,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-      - name: Set alias-domains variable
-        id: set-alias-domains
-        run: |
-          if [ "${{ github.event.pull_request.base.ref }}" == "next" ]; then
-            echo "alias-domains=next-cloudtower-uikit.vercel.app" >> $GITHUB_ENV
-          fi
       - name: Set Up Storybook Staging
         uses: amondnet/vercel-action@v20
         id: vercel-action-staging
