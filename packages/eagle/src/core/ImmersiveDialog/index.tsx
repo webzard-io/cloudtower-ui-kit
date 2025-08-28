@@ -114,6 +114,7 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
           <div className={FooterButtonRightStyle}>
             {showCancel ? (
               <Button
+                size="large"
                 type="quiet"
                 className={CancelButtonStyle}
                 onMouseDown={(e) => {
@@ -125,11 +126,12 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
                 }}
                 {...cancelButtonProps}
               >
-                {_cancelText}
+                <span className={Typo.Label.l1_bold_title}>{_cancelText}</span>
               </Button>
             ) : null}
             {showOk ? (
               <Button
+                size="large"
                 onClick={(e) => {
                   onOk?.(e);
                 }}
