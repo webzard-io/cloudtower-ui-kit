@@ -17,4 +17,8 @@ export interface DeleteDialogProps {
   className?: string;
   /** 确认按钮加载状态 */
   confirmLoading?: boolean;
+  /** 展示在 modal footer 的错误文案 */
+  error?: React.ReactNode;
+  /** 是否展示在 modal footer 的错误图标, 默认展示 */
+  showFooterErrorIcon?: boolean;
 }
