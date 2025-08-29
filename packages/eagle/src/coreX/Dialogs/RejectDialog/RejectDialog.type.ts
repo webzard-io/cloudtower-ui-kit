@@ -37,6 +37,8 @@ interface MultiAllRejectDialogProps extends BaseRejectDialogProps {
   secondaryDesc?: React.ReactNode;
   /** 多个对象的拒绝原因，格式为 { [对象名]: string[] } */
   content: RejectContent;
+  /** 资源图标 */
+  resourceIcon?: React.ReactNode;
 }
 
 interface MultiPartialRejectDialogProps extends BaseRejectDialogProps {
@@ -45,6 +47,8 @@ interface MultiPartialRejectDialogProps extends BaseRejectDialogProps {
   secondaryDesc?: React.ReactNode;
   /** 多个对象的拒绝原因，格式为 { [对象名]: string[] } */
   content: Record<string, string[]>;
+  /** 资源图标 */
+  resourceIcon?: React.ReactNode;
   /** 部分拒绝时的额外说明 */
   partialDescription: React.ReactNode;
   /** 确认按钮文案 */

@@ -61,5 +61,7 @@
   "copy_kubeconfig_success": "Kubeconfig copied.",
   "download_kubeconfig": "Download Kubeconfig",
   "download_kubeconfig_tip": "You may use the following Kubeconfig file to access this cluster.",
-  "obtain_data_error": "Data retrieval error"
+  "obtain_data_error": "Data retrieval error",
+  "colon_with_space": ": ",
+  "semicolon_with_space": "; "
 }
