@@ -1,3 +1,5 @@
+import type { ButtonProps } from "@src/core/Button";
+
 export type RejectReason = string;
 export type RejectContent = Record<string, RejectReason[]>;
 
@@ -11,12 +13,16 @@ export enum RejectDialogType {
 interface BaseRejectDialogProps {
   /** 弹窗标题 */
   title: React.ReactNode;
+  /** 在描述文本之前的内容 */
+  beforeDescription?: React.ReactNode;
   /** 补充描述文本 */
   description?: React.ReactNode;
   /** 取消按钮文案 */
   cancelText?: string;
   /** 点击取消按钮或关闭弹窗回调 */
   onCancel?: (popModal: () => void) => void;
+  /** 确认按钮属性 */
+  okButtonProps?: ButtonProps;
   /** 弹窗宽度 */
   width?: number;
   /** 自定义类名 */
