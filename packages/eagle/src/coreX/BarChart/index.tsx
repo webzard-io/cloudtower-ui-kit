@@ -1,6 +1,8 @@
 import { css } from "@linaria/core";
 import { formatPercent } from "@src/utils/tower";
 import React, { CSSProperties, useMemo } from "react";
+import cs from "classnames";
+
 const StackBar = css`
   height: 8px;
   box-sizing: border-box;
@@ -50,6 +52,7 @@ export interface IBarChartProps {
     shape?: "stripes" | "fill";
   }>;
   total: number;
+  className?: string;
 }
 
 const BarItem = (props: {
@@ -72,9 +75,9 @@ const BarItem = (props: {
   );
 };
 
-const BarChart: React.FC<IBarChartProps> = ({ data, total }) => {
+const BarChart: React.FC<IBarChartProps> = ({ data, total, className }) => {
   return (
-    <div className={StackBar}>
+    <div className={cs(StackBar, className)}>
       {(data || []).map((item, index) => {
         const { value, color, shape = "fill" } = item;
         const width = total === 0 ? 0 : getWidth((100 * value) / total);
