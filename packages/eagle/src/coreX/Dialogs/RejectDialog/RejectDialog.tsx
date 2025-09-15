@@ -48,6 +48,10 @@ const Description = css`
   margin-bottom: 4px;
 `;
 
+const PartialDescription = css`
+  margin-bottom: 8px;
+`;
+
 const SecondaryDesc = css`
   color: $text-light-secondary;
   margin-bottom: 8px;
@@ -118,7 +122,7 @@ export const RejectDialog: React.FC<RejectDialogProps> = (props) => {
             {props.type === RejectDialogType.Part && (
               <>
                 <div className={Divider} />
-                <div className={cx(Description, Typo.Label.l3_regular)}>
+                <div className={cx(PartialDescription, Typo.Label.l3_regular)}>
                   {props.partialDescription}
                 </div>
               </>
