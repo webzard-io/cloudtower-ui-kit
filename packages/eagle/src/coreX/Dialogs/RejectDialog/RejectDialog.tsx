@@ -1,8 +1,8 @@
 import { css, cx } from "@linaria/core";
+import { SmallDialog } from "@src/core/SmallDialog/SmallDialog";
 import { Typo } from "@src/core/Typo";
 import React from "react";
 
-import { SmallDialog } from "@src/core/SmallDialog/SmallDialog";
 import {
   RejectContent,
   RejectDialogProps,
@@ -104,7 +104,15 @@ const MultiRejectContent: React.FC<{
 };
 
 export const RejectDialog: React.FC<RejectDialogProps> = (props) => {
-  const { title, cancelText, description, className, footerClassName } = props;
+  const {
+    title,
+    cancelText,
+    beforeDescription,
+    description,
+    className,
+    footerClassName,
+    okButtonProps,
+  } = props;
 
   const renderContent = () => {
     switch (props.type) {
@@ -147,11 +155,13 @@ export const RejectDialog: React.FC<RejectDialogProps> = (props) => {
       onOk={props.type === RejectDialogType.Part ? props.onOk : undefined}
       okButtonProps={{
         danger: props.type === RejectDialogType.Part,
+        ...okButtonProps,
       }}
       onCancel={props.onCancel}
       className={className}
       footerClassName={footerClassName}
     >
+      {beforeDescription}
       {description && (
         <div className={cx(Description, Typo.Label.l3_regular)}>
           {description}

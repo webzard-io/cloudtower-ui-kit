@@ -1,7 +1,9 @@
 import { Vm16Icon } from "@cloudtower/icons-react";
+import { css, cx } from "@linaria/core";
 import { Button, Icon, Space } from "@src/core";
 import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
 import ModalStack from "@src/core/ModalStack";
+import { Typo } from "@src/core/Typo";
 import { RejectDialog, RejectDialogType } from "@src/coreX";
 import { CoreXMeta } from "@stories/types";
 import React from "react";
@@ -181,6 +183,14 @@ export const AllReject = () => {
   );
 };
 
+const BeforeDescription = css`
+  background: $fill-neutral-trans-2;
+  padding: 8px;
+  border-radius: 6px;
+  color: $gray-a60-8;
+  margin-bottom: 16px;
+`;
+
 /**
  * 批量部分拒绝
  */
@@ -196,25 +206,27 @@ export const PartialReject = () => {
             component: () => (
               <RejectDialog
                 type={RejectDialogType.Part}
-                title="部分虚拟机无法删除"
+                title="升级虚拟机工具"
                 content={{
-                  "Database-Replica-01": [
-                    "正在执行数据同步（进度：89%），强制删除可能导致数据不一致",
-                    "有5个活跃的只读数据库连接",
-                  ],
-                  "App-Server-03": [
-                    "检测到高CPU使用率（98%），可能正在执行重要计算任务",
-                    "该节点被标记为生产环境核心节点，需要主管审批才能删除",
-                    "存在未完成的日志归档任务，预计剩余15分钟",
-                  ],
+                  vm1: ["无需升级。"],
+                  vm2: ["未安装虚拟机工具。"],
                 }}
-                description="部分虚拟机已经删除成功"
-                partialDescription="其他4个虚拟机将继续执行删除操作"
-                secondaryDesc="可以选择继续删除其他虚拟机，或取消整个操作"
-                okText="继续删除其他虚拟机"
-                cancelText="取消删除"
+                beforeDescription={
+                  <div className={cx(BeforeDescription, Typo.Label.l4_regular)}>
+                    虚拟机工具是安装在客户机操作系统中的一组工具，能为 Web
+                    控制台提供更丰富的虚拟机信息和更强大的虚拟机管理功能。
+                  </div>
+                }
+                description="选中的 3 个虚拟机中，有 1 个可以升级虚拟机工具。"
+                secondaryDesc="虚拟机工具的 ISO 映像将会载入到虚拟机中，并在操作系统内自动执行升级操作。升级完成后，将会自动尝试弹出虚拟机工具映像。"
+                partialDescription="1 个虚拟机无法升级虚拟机工具，继续操作将会跳过这些虚拟机。"
+                okText="部分升级"
+                cancelText="取消"
+                okButtonProps={{
+                  danger: false,
+                }}
                 onOk={(popModal) => {
-                  console.log("继续删除其他虚拟机");
+                  console.log("执行部分升级");
                   popModal();
                 }}
               />
@@ -225,7 +237,7 @@ export const PartialReject = () => {
           })
         }
       >
-        批量删除虚拟机
+        批量升级虚拟机工具
       </Button>
       <Button
         type="primary"
@@ -234,26 +246,28 @@ export const PartialReject = () => {
             component: () => (
               <RejectDialog
                 type={RejectDialogType.Part}
-                title="部分虚拟机无法删除"
+                title="升级虚拟机工具"
                 content={{
-                  "Database-Replica-01": [
-                    "正在执行数据同步（进度：89%），强制删除可能导致数据不一致",
-                    "有5个活跃的只读数据库连接",
-                  ],
-                  "App-Server-03": [
-                    "检测到高CPU使用率（98%），可能正在执行重要计算任务",
-                    "该节点被标记为生产环境核心节点，需要主管审批才能删除",
-                    "存在未完成的日志归档任务，预计剩余15分钟",
-                  ],
+                  vm1: ["无需升级。"],
+                  vm2: ["未安装虚拟机工具。"],
                 }}
                 resourceIcon={<Icon src={Vm16Icon} />}
-                description="部分虚拟机已经删除成功"
-                partialDescription="其他4个虚拟机将继续执行删除操作"
-                secondaryDesc="可以选择继续删除其他虚拟机，或取消整个操作"
-                okText="继续删除其他虚拟机"
-                cancelText="取消删除"
+                beforeDescription={
+                  <div className={cx(BeforeDescription, Typo.Label.l4_regular)}>
+                    虚拟机工具是安装在客户机操作系统中的一组工具，能为 Web
+                    控制台提供更丰富的虚拟机信息和更强大的虚拟机管理功能。
+                  </div>
+                }
+                description="选中的 3 个虚拟机中，有 1 个可以升级虚拟机工具。"
+                secondaryDesc="虚拟机工具的 ISO 映像将会载入到虚拟机中，并在操作系统内自动执行升级操作。升级完成后，将会自动尝试弹出虚拟机工具映像。"
+                partialDescription="1 个虚拟机无法升级虚拟机工具，继续操作将会跳过这些虚拟机。"
+                okText="部分升级"
+                cancelText="取消"
+                okButtonProps={{
+                  danger: false,
+                }}
                 onOk={(popModal) => {
-                  console.log("继续删除其他虚拟机");
+                  console.log("执行部分升级");
                   popModal();
                 }}
               />
@@ -264,7 +278,7 @@ export const PartialReject = () => {
           })
         }
       >
-        批量删除虚拟机（带图标）
+        批量升级虚拟机工具（带图标）
       </Button>
     </Space>
   );
