@@ -6,12 +6,9 @@ import { MediumDialogProps } from "./MediumDialog.type";
 
 const MediumDialogStyle = css`
   --footer-height: 96px;
-  --header-height: 80px;
   --modal-content-width: 720px;
   --modal-content-min-height: 200px;
-  --modal-content-max-height: calc(
-    100vh - 136px - var(--header-height) - var(--footer-height)
-  );
+  --modal-content-max-height: calc(100vh - 136px);
   --modal-header-padding: 40px 60px 8px;
   --modal-content-padding-top: 24px;
   --modal-content-padding-bottom: 32px;
