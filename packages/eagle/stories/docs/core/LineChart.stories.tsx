@@ -1003,6 +1003,16 @@ ZeroDataChart.parameters = {
   },
 };
 
+const networkIconSuffix = (
+  <Tooltip title="Network Throughput">
+    <Icon
+      alt="network-security"
+      src={InfoICircle16GradientGrayIcon}
+      style={{ marginLeft: "4px", width: "16px", height: "16px" }}
+    />
+  </Tooltip>
+);
+
 const DynamicTimeRangeTemplate: ComponentStory<typeof LineChart> = (args) => {
   const [currentDateRange, setCurrentDateRange] =
     React.useState<ILineChartDateRange>([dayjs().subtract(1, "hour"), dayjs()]);
@@ -1015,38 +1025,44 @@ const DynamicTimeRangeTemplate: ComponentStory<typeof LineChart> = (args) => {
     return () => clearInterval(timer);
   }, []);
 
-  const dynamicMetric: ILineChartMetric = {
-    sample_streams: [
-      {
-        points: Array.from({ length: 12 }, (_, i) => {
-          const startTime = currentDateRange[0].valueOf();
-          const timeStep =
-            (currentDateRange[1].valueOf() - currentDateRange[0].valueOf()) /
-            11;
-          return {
+  const dynamicMetric: ILineChartMetric = React.useMemo(() => {
+    const startTime = currentDateRange[0].valueOf();
+    const endTime = currentDateRange[1].valueOf();
+    const timeStep = (endTime - startTime) / 11;
+
+    return {
+      sample_streams: [
+        {
+          points: Array.from({ length: 12 }, (_, i) => ({
             t: startTime + i * timeStep,
-            v: 50 + Math.sin(i * 0.5) * 30 + Math.random() * 10,
-          };
-        }),
-        step: Math.floor(
-          (currentDateRange[1].valueOf() - currentDateRange[0].valueOf()) / 11,
-        ),
-        tolerance: 1700000,
-        legend: {
-          id: "dynamic_data",
-          name: "Dynamic CPU Usage",
-          color: "#1890ff",
+            v:
+              50 +
+              Math.sin(i * 0.5) * 30 +
+              Math.sin(startTime * 0.0001 + i) * 10,
+          })),
+          step: Math.floor(timeStep),
+          tolerance: 1700000,
+          legend: {
+            id: "dynamic_data",
+            name: "Dynamic CPU Usage",
+            color: "#1890ff",
+            iconSuffix: networkIconSuffix,
+          },
         },
-      },
-    ],
-    unit: ILineChartMetricUnit.Percent,
-    dropped: false,
-  };
-  const chartProps = {
-    ...args.chartProps,
-    dateRange: currentDateRange,
-    metric: dynamicMetric,
-  };
+      ],
+      unit: ILineChartMetricUnit.Percent,
+      dropped: false,
+    };
+  }, [currentDateRange]);
+
+  const chartProps = React.useMemo(
+    () => ({
+      ...args.chartProps,
+      dateRange: currentDateRange,
+      metric: dynamicMetric,
+    }),
+    [args.chartProps, currentDateRange, dynamicMetric],
+  );
 
   return <LineChart {...args} chartProps={chartProps} />;
 };

@@ -52,6 +52,32 @@ const LineChartLegend = (props: ILineChartLegendProps) => {
     props;
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 
+  // check if the event is from or involves the icon suffix area
+  const shouldSkipHover = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    const relatedTarget = (e as any).relatedTarget as HTMLElement;
+
+    // check if the event target is in the icon suffix wrapper
+    const isFromIconSuffix = target?.closest(".icon-suffix-wrapper") !== null;
+    const isToIconSuffix =
+      relatedTarget?.closest(".icon-suffix-wrapper") !== null;
+
+    // if the mouse is moving between the icon suffix area and other areas, skip the hover event
+    return isFromIconSuffix || isToIconSuffix;
+  };
+
+  const handleMouseEnter = (legendId: string) => (e: React.MouseEvent) => {
+    if (!shouldSkipHover(e)) {
+      onHover("enter", legendId);
+    }
+  };
+
+  const handleMouseLeave = (legendId: string) => (e: React.MouseEvent) => {
+    if (!shouldSkipHover(e)) {
+      onHover("leave", legendId);
+    }
+  };
+
   return (
     <ExtraOverflow
       className={LegendStyle}
@@ -68,13 +94,13 @@ const LineChartLegend = (props: ILineChartLegendProps) => {
                     className={cs(
                       LegendItemsStyleDropdown,
                       deselected.includes(legend.id) && "deselected",
-                      hovering.includes(legend.id) && "hovering",
+                      hovering?.includes(legend.id) && "hovering",
                       hovereringSelf.includes(legend.id) && "hoverering-self",
                     )}
                     key={legend.id}
                     onClick={() => onClick(legend.id)}
-                    onMouseEnter={() => onHover("enter", legend.id)}
-                    onMouseLeave={() => onHover("leave", legend.id)}
+                    onMouseEnter={() => handleMouseEnter(legend.id)}
+                    onMouseLeave={() => handleMouseLeave(legend.id)}
                   >
                     <LineChartColorBlock background={legend.color} />
                     <span className="legend-name">
@@ -106,12 +132,12 @@ const LineChartLegend = (props: ILineChartLegendProps) => {
             className={cs(
               LegendItemsStyle,
               deselected.includes(legend.id) && "deselected",
-              hovering.includes(legend.id) && "hovering",
+              hovering?.includes(legend.id) && "hovering",
               hovereringSelf.includes(legend.id) && "hoverering-self",
             )}
             key={legend.id}
-            onMouseEnter={() => onHover("enter", legend.id)}
-            onMouseLeave={() => onHover("leave", legend.id)}
+            onMouseEnter={handleMouseEnter(legend.id)}
+            onMouseLeave={handleMouseLeave(legend.id)}
             onClick={() => onClick(legend.id)}
           >
             <LineChartColorBlock background={legend.color} />
