@@ -87,6 +87,7 @@ export const ScrollableImmersiveDialog = () => {
   const pushModal = usePushModal();
   const popModal = usePopModal();
   const [isFull, setIsFull] = useState(false);
+  const [isLongTitle, setIsLongTitle] = useState(false);
 
   // 生成大量内容用于演示滚动
   const generateScrollContent = () => {
@@ -123,13 +124,23 @@ export const ScrollableImmersiveDialog = () => {
           unchecked: "常规尺寸",
         }}
       />
+      <SwitchWithText
+        checked={isLongTitle}
+        onChange={(checked) => setIsLongTitle(checked)}
+        text={{
+          checked: "长标题",
+          unchecked: "短标题",
+        }}
+      />
       <Button
         type="primary"
         onClick={() =>
           pushModal({
             component: ImmersiveDialog,
             props: {
-              title: "可滚动内容展示 - 全屏对话框",
+              title: isLongTitle
+                ? "可滚动内容展示 - 全屏长标题 Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong"
+                : "可滚动内容展示 - 全屏对话框",
               error: "这是一个包含大量数据的示例，展示滚动功能",
               isContentFull: isFull,
               children: (
