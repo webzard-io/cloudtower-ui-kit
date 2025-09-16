@@ -226,28 +226,52 @@ export const LongContent = () => {
   ));
 
   return (
-    <Button
-      onClick={() =>
-        pushModal({
-          component: () => (
-            <SmallDialog
-              title="用户协议"
-              okText="同意并继续"
-              cancelText="不同意"
-            >
-              <h4>服务条款</h4>
-              {longContent}
-              <p style={{ fontWeight: "bold", color: "#1890ff" }}>
-                请仔细阅读以上条款，点击"同意并继续"表示您已阅读并同意所有条款。
-              </p>
-            </SmallDialog>
-          ),
-          props: {},
-        })
-      }
-    >
-      长内容对话框
-    </Button>
+    <Space direction="vertical" size={16}>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <SmallDialog
+                title="这是长标题 Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong"
+                okText="同意并继续"
+                cancelText="不同意"
+              >
+                <h4>服务条款</h4>
+                {longContent}
+                <p style={{ fontWeight: "bold", color: "#1890ff" }}>
+                  请仔细阅读以上条款，点击"同意并继续"表示您已阅读并同意所有条款。
+                </p>
+              </SmallDialog>
+            ),
+            props: {},
+          })
+        }
+      >
+        长标题对话框
+      </Button>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <SmallDialog
+                title="用户协议"
+                okText="同意并继续"
+                cancelText="不同意"
+              >
+                <h4>服务条款</h4>
+                {longContent}
+                <p style={{ fontWeight: "bold", color: "#1890ff" }}>
+                  请仔细阅读以上条款，点击"同意并继续"表示您已阅读并同意所有条款。
+                </p>
+              </SmallDialog>
+            ),
+            props: {},
+          })
+        }
+      >
+        长内容对话框
+      </Button>
+    </Space>
   );
 };
 
