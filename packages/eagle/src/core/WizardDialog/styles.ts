@@ -20,7 +20,11 @@ export const RightPanelStyle = css`
     padding-right: 2px;
     width: calc(192px + 6px + 2px);
     height: fit-content;
-    max-height: calc(100vh - 300px);
+    max-height: calc(
+      100vh - var(--modal-to-viewport-margin) * 2 - var(--side-panel-margin-top) - var(
+          --modal-body-padding-bottom
+        ) - var(--modal-footer-height)
+    );
     scrollbar-gutter: stable;
     &::-webkit-scrollbar {
       width: 6px;

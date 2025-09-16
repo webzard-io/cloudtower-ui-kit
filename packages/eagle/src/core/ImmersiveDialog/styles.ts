@@ -2,10 +2,12 @@ import { css } from "@linaria/core";
 import { Color } from "@src/styles/token";
 
 export const ImmersiveDialogStyle = css`
-  --modal-header-height: 140px;
+  --modal-to-viewport-margin: 10px;
+  --modal-body-padding-bottom: 40px;
+  --modal-footer-height: 124px;
   &.ant-modal {
-    height: calc(100% - 20px);
-    width: calc(100% - 20px);
+    height: calc(100% - var(--modal-to-viewport-margin) * 2);
+    width: calc(100% - var(--modal-to-viewport-margin) * 2);
     padding-bottom: 0;
     margin: 0 auto;
     top: 10px;
@@ -30,14 +32,14 @@ export const ImmersiveDialogStyle = css`
 
     .ant-modal-header {
       padding: 60px 0 40px 0;
-      height: var(--modal-header-height);
       border: 0;
+      flex-shrink: 0; // Prevent header from being compressed
     }
 
     .ant-modal-body {
       padding: 0;
-      flex: 1;
-      min-height: 0;
+      flex: 1; // Take up remaining space
+      min-height: 0; // Allow flex item to shrink below content height
       overflow-y: auto;
       scrollbar-gutter: stable;
       &::-webkit-scrollbar {
@@ -67,6 +69,7 @@ export const ImmersiveDialogStyle = css`
 
     .ant-modal-footer {
       border-top: 1px solid rgba(225, 230, 241, 0.6);
+      height: var(--modal-footer-height);
       padding: 24px 0 60px 0;
     }
   }
@@ -119,7 +122,7 @@ export const BodyStyle = css`
   .middle {
     height: 100%;
     overflow: auto;
-    padding-bottom: 40px;
+    padding-bottom: var(--modal-body-padding-bottom);
   }
 `;
 export const MultiAreaBodyStyle = css`
@@ -134,12 +137,13 @@ export const MultiAreaBodyStyle = css`
           ) * 2
       ) / 2
   );
+  --side-panel-margin-top: 140px;
   .left {
     width: var(--left-width);
     overflow: auto;
     position: fixed;
     left: var(--modal-body-padding);
-    top: var(--modal-header-height);
+    top: calc(var(--modal-to-viewport-margin) + var(--side-panel-margin-top));
   }
 
   .middle {
@@ -153,7 +157,7 @@ export const MultiAreaBodyStyle = css`
     overflow: auto;
     position: fixed;
     right: var(--modal-body-padding);
-    top: var(--modal-header-height);
+    top: calc(var(--modal-to-viewport-margin) + var(--side-panel-margin-top));
   }
 `;
 export const FooterStyle = css`
