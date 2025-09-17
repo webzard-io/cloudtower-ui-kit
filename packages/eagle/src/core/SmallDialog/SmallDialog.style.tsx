@@ -3,30 +3,36 @@ import { Color } from "@src/styles/token";
 
 export const DialogStyle = css`
   --footer-height: 80px;
-  --header-height: 56px;
   --modal-content-width: 492px;
   --modal-content-min-height: 160px;
   --modal-content-max-height: calc(
-    100vh - 144px - var(--header-height) - var(--footer-height)
-  );
+    100vh - 144px
+  ); // Only consider vertical margins, do not subtract header and footer height
   --modal-header-padding: 32px 40px 0;
   --modal-content-padding-top: 32px;
   --modal-content-padding-bottom: 32px;
   --modal-content-padding-x: 40px;
   --modal-footer-padding: 0 40px;
 
+  padding-bottom: 0;
+
   .ant-modal-content {
     background: $backgrounds-light-primary;
     border-radius: 16px;
     max-width: var(--modal-content-width);
     min-width: var(--modal-content-width);
+    max-height: var(
+      --modal-content-max-height
+    ); // Set the max height for the entire modal
+    display: flex;
+    flex-direction: column; // Use flexbox layout
   }
 
   .ant-modal-header {
     padding: var(--modal-header-padding);
-    height: var(--header-height);
     border-bottom: none;
     border-radius: 16px 16px 0 0;
+    flex-shrink: 0; // Prevent header from being compressed
     .ant-modal-title {
       color: ${Color.text.neutral.primary};
     }
@@ -44,7 +50,8 @@ export const DialogStyle = css`
       var(--modal-content-padding-x) - 6px
     ); // Reserve 6px width for scrollbar
     min-height: var(--modal-content-min-height);
-    max-height: var(--modal-content-max-height);
+    flex: 1; // Take up remaining space
+    min-height: 0; // Allow flex item to shrink below content height
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-gutter: stable;
@@ -75,6 +82,7 @@ export const DialogStyle = css`
     margin-top: 0;
     border-top: none;
     box-shadow: 0px 1px 0px 0px #e1e6f199 inset;
+    flex-shrink: 0; // Prevent footer from being compressed
     .ant-btn-quiet {
       color: ${Color.text.neutral.secondary};
       font-weight: 700;

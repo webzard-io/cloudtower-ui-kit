@@ -492,6 +492,70 @@ export const WithError = () => {
 };
 
 /**
+ * 长内容对话框
+ */
+export const LongContent = () => {
+  const pushModal = usePushModal();
+
+  const longContent = Array.from({ length: 2 }, (_, i) => (
+    <p key={i}>
+      这是第 {i + 1}{" "}
+      段内容。在实际使用中，这里可能是用户协议、详细说明、配置信息等较长的文本内容。
+      SmallDialog 会自动处理内容溢出，显示滚动条以确保所有内容都可以被查看。
+    </p>
+  ));
+
+  return (
+    <Space direction="vertical" size={16}>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <MediumDialog
+                title="这是长标题 Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong"
+                okText="同意并继续"
+                cancelText="不同意"
+              >
+                <h4>服务条款</h4>
+                {longContent}
+                <p style={{ fontWeight: "bold", color: "#1890ff" }}>
+                  请仔细阅读以上条款，点击"同意并继续"表示您已阅读并同意所有条款。
+                </p>
+              </MediumDialog>
+            ),
+            props: {},
+          })
+        }
+      >
+        长标题对话框
+      </Button>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <MediumDialog
+                title="用户协议"
+                okText="同意并继续"
+                cancelText="不同意"
+              >
+                <h4>服务条款</h4>
+                {longContent}
+                <p style={{ fontWeight: "bold", color: "#1890ff" }}>
+                  请仔细阅读以上条款，点击"同意并继续"表示您已阅读并同意所有条款。
+                </p>
+              </MediumDialog>
+            ),
+            props: {},
+          })
+        }
+      >
+        长内容对话框
+      </Button>
+    </Space>
+  );
+};
+
+/**
  * 初始化状态
  */
 export const Initializing = () => {
