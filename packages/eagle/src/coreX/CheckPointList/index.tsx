@@ -2,15 +2,25 @@ import {
   CheckmarkDoneSuccessCircleFill16GreenIcon,
   Loading16GradientBlueIcon,
   NoticeTriangleFill16YellowIcon,
+  TimelineNotStart16GrayIcon,
   XmarkFailedSeriousWarningFill16RedIcon,
 } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
-import { Alert, Icon, SrcType, Switch, Tag, Typo } from "@src/core";
+import {
+  Alert,
+  Button,
+  Icon,
+  Link,
+  SrcType,
+  Switch,
+  Tag,
+  Typo,
+} from "@src/core";
 import { Show } from "@src/coreX";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
-import { List } from "antd5";
+import { Flex, List } from "antd5";
 import React, { useCallback, useState } from "react";
-
+import cs from "classnames";
 import {
   CheckPointItemStyle,
   CheckPointListStyle,
@@ -27,12 +37,14 @@ export const CheckPointItem: React.FC<CheckPointItemProps> = ({
   key,
   tagProps,
   alertProps,
+  actions,
 }) => {
   const icon: Record<CheckPointItemProps["status"], SrcType> = {
     failed: XmarkFailedSeriousWarningFill16RedIcon,
     success: CheckmarkDoneSuccessCircleFill16GreenIcon,
     loading: Loading16GradientBlueIcon,
     warning: NoticeTriangleFill16YellowIcon,
+    idle: TimelineNotStart16GrayIcon,
   };
 
   return (
@@ -48,9 +60,24 @@ export const CheckPointItem: React.FC<CheckPointItemProps> = ({
         <span className={cx(Typo.Label.l4_regular, "description")}>
           {description}
         </span>
-        <Show condition={Boolean(tagProps)}>
-          <Tag {...tagProps} />
-        </Show>
+        <Flex gap={8}>
+          <Show condition={Boolean(actions?.length)}>
+            {actions?.map((action) => {
+              if (action.type === "button") {
+                return <Button {...action.props} />;
+              }
+              if (action.type === "link") {
+                return <Link {...action.props} />;
+              }
+              if (action.type === "icon") {
+                return <Icon {...action.props} />;
+              }
+            })}
+          </Show>
+          <Show condition={Boolean(tagProps)}>
+            <Tag {...tagProps} />
+          </Show>
+        </Flex>
       </List.Item>
       <Show condition={Boolean(alertProps)}>
         <Alert showIcon={false} {...alertProps!} />
@@ -73,6 +100,7 @@ export const CheckPointList: React.FC<CheckPointListProps> = ({
   onClickSwitch,
   defaultChecked = false,
   className,
+  border = true,
 }) => {
   const { t } = useParrotTranslation();
   const [checked, setChecked] = useState(defaultChecked);
@@ -86,7 +114,11 @@ export const CheckPointList: React.FC<CheckPointListProps> = ({
   const isEmpty = !items.length;
 
   return (
-    <div className={cx(CheckPointListStyle, className)}>
+    <div
+      className={cs(CheckPointListStyle, className, {
+        border,
+      })}
+    >
       <header className={cx(Typo.Label.l4_bold)}>
         {title}
         <Show condition={showSwitchControl}>
