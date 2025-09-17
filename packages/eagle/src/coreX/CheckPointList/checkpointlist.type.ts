@@ -1,5 +1,8 @@
 import { AlertProps } from "@src/core/Alert";
+import { ButtonProps } from "@src/core/Button";
+import { IconProps } from "@src/core/Icon";
 import { TagProps } from "@src/core/Tag";
+import { LinkProps } from "@src/core/Link";
 import React from "react";
 
 /**
@@ -31,9 +34,24 @@ import React from "react";
  *   }
  * }
  */
+
+export type CheckPointItemAction =
+  | {
+      type: "button";
+      props: ButtonProps;
+    }
+  | {
+      type: "link";
+      props: LinkProps;
+    }
+  | {
+      type: "icon";
+      props: IconProps;
+    };
 export interface CheckPointItem {
   description: React.ReactNode;
-  status: "success" | "failed" | "loading" | "warning";
+  status: "success" | "failed" | "loading" | "warning" | "idle";
+  actions?: CheckPointItemAction[];
   tagProps?: TagProps;
   alertProps?: AlertProps;
 }
@@ -49,6 +67,7 @@ export interface CheckPointItem {
  * @property {string} [emptyTextClassName] - 空状态文本的自定义类名
  * @property {(emptyText: string | React.ReactNode) => React.ReactNode} [emptyRender] - 自定义渲染空状态的函数
  * @property {boolean} [defaultChecked] - 开关的默认选中状态，决定是否默认只显示未通过的检查项
+ * @property {boolean} [border] - 是否显示边框, 默认为显示
  * @example
  * {
  *   title: "系统检查项",
@@ -88,6 +107,7 @@ export interface CheckPointListProps {
   title: string | React.ReactNode;
   switchText?: string;
   className?: string;
+  border?: boolean;
 }
 
 /**

@@ -3,8 +3,8 @@ import { css } from "@linaria/core";
 export const CheckPointListStyle = css`
   background: #fff;
   width: 100%;
-  border-radius: 8px;
-  border: 1px solid rgba(228, 233, 242, 1);
+  border: none;
+  border-radius: 0;
   .ant-list {
     padding: 12px;
   }
@@ -15,7 +15,7 @@ export const CheckPointListStyle = css`
     margin-left: 24px;
   }
   header {
-    background: rgba(225, 230, 241, 0.6);
+    border-bottom: 1px solid rgba(211, 218, 235, 0.6);
     font-size: 12px;
     color: rgba(29, 50, 108, 1);
     font-weight: 700;
@@ -33,6 +33,14 @@ export const CheckPointListStyle = css`
       font-size: 12px;
       font-weight: 400;
       color: rgba(0, 18, 46, 1);
+    }
+  }
+  &.border {
+    border-radius: 8px;
+    border: 1px solid rgba(228, 233, 242, 1);
+    header {
+      border-bottom: none;
+      background: rgba(225, 230, 241, 0.6);
     }
   }
 `;
