@@ -1,6 +1,8 @@
 import {
   CheckmarkDoneSuccessCircleFill16GreenIcon,
   Loading16GradientBlueIcon,
+  LogCollection16GradientBlueIcon,
+  LogCollection16GrayIcon,
   NoticeTriangleFill16YellowIcon,
   XmarkFailedSeriousWarningFill16RedIcon,
 } from "@cloudtower/icons-react";
@@ -14,7 +16,7 @@ import React, { useState } from "react";
  * 适用于各种预检查、健康检查等场景
  *
  * 组件特点：
- * 1. 支持四种状态展示：成功、失败、加载中、警告
+ * 1. 支持五种状态展示：空闲、成功、失败、加载中、警告
  * 2. 可自定义标签样式
  * 3. 可自定义告警样式
  * 4. 支持筛选控制
@@ -43,6 +45,7 @@ export const Basic: Story = {
   name: "基础用法",
   args: {
     title: "系统检查项",
+    border: true,
     items: [
       {
         description: "存储空间检查",
@@ -63,6 +66,21 @@ export const Basic: Story = {
       {
         description: "权限检查",
         status: "failed",
+        actions: [
+          { type: "link", props: { children: "label" } },
+          {
+            type: "icon",
+            props: {
+              iconWidth: 16,
+              iconHeight: 16,
+              src: LogCollection16GrayIcon,
+              hoverSrc: LogCollection16GradientBlueIcon,
+              onClick: () => {
+                console.log("collect!");
+              },
+            },
+          },
+        ],
         tagProps: {
           color: "red",
           children: "失败",
@@ -82,6 +100,14 @@ export const Basic: Story = {
         alertProps: {
           message: "缺少必要依赖: Node.js v16+",
           type: "error",
+        },
+      },
+      {
+        description: "依赖检查",
+        status: "idle",
+        alertProps: {
+          message: "虚拟机失联",
+          type: "normal",
         },
       },
     ],
