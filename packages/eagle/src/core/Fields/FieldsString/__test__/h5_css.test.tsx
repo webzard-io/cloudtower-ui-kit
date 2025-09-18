@@ -32,7 +32,6 @@ describe("Input h5_css", () => {
         <input
           autocomplete=off
           class=ant-input,
-        input,
         &.input-tags {
           border: 1px solid rgba(213, 219, 227, 0.6);
           border-radius: 4px;
@@ -315,7 +314,6 @@ describe("Input h5_css", () => {
       <div>
         <div
           class=
-        input,
         &.input-tags {
           border: 1px solid rgba(213, 219, 227, 0.6);
           border-radius: 4px;
@@ -450,7 +448,6 @@ describe("Input h5_css", () => {
       <div>
         <div
           class=
-        input,
         &.input-tags {
           border: 1px solid rgba(213, 219, 227, 0.6);
           border-radius: 4px;
@@ -618,7 +615,6 @@ describe("Input h5_css", () => {
         <input
           autocomplete=off
           class=ant-input,
-        input,
         &.input-tags {
           border: 1px solid rgba(213, 219, 227, 0.6);
           border-radius: 4px;
