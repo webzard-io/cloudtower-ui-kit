@@ -56,6 +56,7 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
     okText,
     cancelText,
     error,
+    showFooterErrorIcon = true,
     visible = true,
     isContentFull,
     onCancel,
@@ -98,9 +99,11 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
             {error && (
               <>
                 <span className={cx(ErrorStyle, Typo.Label.l2_regular)}>
-                  <ExclamationErrorCircleFill16RedIcon
-                    className={ErrorIconStyle}
-                  />
+                  {showFooterErrorIcon && (
+                    <ExclamationErrorCircleFill16RedIcon
+                      className={ErrorIconStyle}
+                    />
+                  )}
                   <OverflowTooltip
                     className={ErrorTextStyle}
                     multiLines={3}

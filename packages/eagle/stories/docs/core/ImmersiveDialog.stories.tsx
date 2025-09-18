@@ -205,6 +205,58 @@ const story = {
 export default story;
 
 /**
+ * 带错误信息的对话框
+ */
+export const WithError = () => {
+  const pushModal = usePushModal();
+  const popModal = usePopModal();
+
+  return (
+    <Space direction="vertical" size={16}>
+      <Button
+        type="primary"
+        onClick={() =>
+          pushModal({
+            component: ImmersiveDialog,
+            props: {
+              title: "Title",
+              error: "Error text",
+              children: <div className={ContentStyle}>Content area</div>,
+              isContentFull: false,
+              onOk() {
+                popModal();
+              },
+            },
+          })
+        }
+      >
+        带错误 icon
+      </Button>
+      <Button
+        type="primary"
+        onClick={() =>
+          pushModal({
+            component: ImmersiveDialog,
+            props: {
+              title: "Title",
+              error: "Error text",
+              showFooterErrorIcon: false,
+              children: <div className={ContentStyle}>Content area</div>,
+              isContentFull: false,
+              onOk() {
+                popModal();
+              },
+            },
+          })
+        }
+      >
+        不带错误 icon
+      </Button>
+    </Space>
+  );
+};
+
+/**
  * 初始化状态
  */
 export const Initializing = () => {
