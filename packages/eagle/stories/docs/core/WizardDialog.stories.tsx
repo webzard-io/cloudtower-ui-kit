@@ -8,10 +8,11 @@ import KitStoreProvider, {
 import ModalStack from "@src/core/ModalStack";
 import Steps from "@src/core/Steps";
 import { WizardDialog } from "@src/core/WizardDialog";
+import { WizardDialogProps } from "@src/core/WizardDialog/type";
 import { SwitchWithText } from "@src/coreX";
 import { CoreMeta } from "@stories/types";
 import { useMockQuery } from "@stories/utils";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 const WrapperStyle = css`
   display: flex;
@@ -645,76 +646,89 @@ export const InitializingWizardDialog = () => {
               const [step, setStep] = useState(0);
               const [modalError, setModalError] = useState("");
 
-              if (isLoading || error) {
-                return (
-                  <WizardDialog
-                    initializing={isLoading}
-                    initializingError={error}
-                    onOk={retry}
-                    title=""
-                  />
-                );
-              }
+              const modalProps: WizardDialogProps = useMemo(() => {
+                switch (true) {
+                  case isLoading: {
+                    const initializingModalProps = {
+                      title: "",
+                      initializing: isLoading,
+                    };
+                    return initializingModalProps;
+                  }
+                  case Boolean(error): {
+                    const initializeFailedModalProps = {
+                      title: "",
+                      initializingError: error,
+                      onOk: retry,
+                    };
+                    return initializeFailedModalProps;
+                  }
+                  default: {
+                    const idleModalProps: WizardDialogProps = {
+                      title: "加载完成",
+                      error: modalError,
+                      isContentFull: false,
+                      step,
+                      steps: [
+                        {
+                          title: "Step 1",
+                          children: (
+                            <div className={ContentStyle}>
+                              <p>这是一个加载完成的对话框。</p>
+                              <p>数据: {data}</p>
+                            </div>
+                          ),
+                        },
+                        {
+                          title: "Step 2",
+                          children: (
+                            <div
+                              className={ContentStyle}
+                              style={{ height: "2000px" }}
+                            >
+                              Step2 area
+                            </div>
+                          ),
+                        },
+                        {
+                          title: "Step 3",
+                          children: (
+                            <div className={ContentStyle}>Step3 area</div>
+                          ),
+                        },
+                      ],
+                      right: <div>Right area</div>,
+                      onCancel: () => {
+                        console.log("cancel");
+                      },
+                      onOk: () => {
+                        console.log("ok");
+                        popModal();
+                      },
+                      onNextStep: (step) => {
+                        console.log("next step", step);
+                      },
+                      onPrevStep: (step) => {
+                        console.log("prev step", step);
+                      },
+                      onStepChange: (step) => {
+                        console.log("step change", step);
+                        if (step === 2) {
+                          setModalError(
+                            "请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确",
+                          );
+                          return;
+                        }
 
-              return (
-                <WizardDialog
-                  title={"加载完成"}
-                  error={modalError}
-                  isContentFull={false}
-                  step={step}
-                  steps={[
-                    {
-                      title: "Step 1",
-                      children: (
-                        <div className={ContentStyle}>
-                          <p>这是一个加载完成的对话框。</p>
-                          <p>数据: {data}</p>
-                        </div>
-                      ),
-                    },
-                    {
-                      title: "Step 2",
-                      children: (
-                        <div
-                          className={ContentStyle}
-                          style={{ height: "2000px" }}
-                        >
-                          Step2 area
-                        </div>
-                      ),
-                    },
-                    {
-                      title: "Step 3",
-                      children: <div className={ContentStyle}>Step3 area</div>,
-                    },
-                  ]}
-                  right={<div>Right area</div>}
-                  onCancel={() => {
-                    console.log("cancel");
-                  }}
-                  onOk={() => {
-                    console.log("ok");
-                    popModal();
-                  }}
-                  onNextStep={(step) => {
-                    console.log("next step", step);
-                  }}
-                  onPrevStep={(step) => {
-                    console.log("prev step", step);
-                  }}
-                  onStepChange={(step) => {
-                    console.log("step change", step);
-                    if (step === 2) {
-                      setModalError(
-                        "请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确",
-                      );
-                      return;
-                    }
+                        setStep(step);
+                      },
+                    };
+                    return idleModalProps;
+                  }
+                }
+              }, [isLoading, error, retry, modalError, step, data]);
 
-                    setStep(step);
-                  }}
-                />
-              );
+              return <WizardDialog {...modalProps} />;
             },
             props: {},
           })
@@ -732,76 +746,89 @@ export const InitializingWizardDialog = () => {
               const [step, setStep] = useState(0);
               const [modalError, setModalError] = useState("");
 
-              if (isLoading || error) {
-                return (
-                  <WizardDialog
-                    initializing={isLoading}
-                    initializingError={error}
-                    onOk={retry}
-                    title=""
-                  />
-                );
-              }
+              const modalProps: WizardDialogProps = useMemo(() => {
+                switch (true) {
+                  case isLoading: {
+                    const initializingModalProps = {
+                      title: "",
+                      initializing: isLoading,
+                    };
+                    return initializingModalProps;
+                  }
+                  case Boolean(error): {
+                    const initializeFailedModalProps = {
+                      title: "",
+                      initializingError: error,
+                      onOk: retry,
+                    };
+                    return initializeFailedModalProps;
+                  }
+                  default: {
+                    const idleModalProps: WizardDialogProps = {
+                      title: "加载完成",
+                      error: modalError,
+                      isContentFull: false,
+                      step,
+                      steps: [
+                        {
+                          title: "Step 1",
+                          children: (
+                            <div className={ContentStyle}>
+                              <p>这是一个加载完成的对话框。</p>
+                              <p>数据: {data}</p>
+                            </div>
+                          ),
+                        },
+                        {
+                          title: "Step 2",
+                          children: (
+                            <div
+                              className={ContentStyle}
+                              style={{ height: "2000px" }}
+                            >
+                              Step2 area
+                            </div>
+                          ),
+                        },
+                        {
+                          title: "Step 3",
+                          children: (
+                            <div className={ContentStyle}>Step3 area</div>
+                          ),
+                        },
+                      ],
+                      right: <div>Right area</div>,
+                      onCancel: () => {
+                        console.log("cancel");
+                      },
+                      onOk: () => {
+                        console.log("ok");
+                        popModal();
+                      },
+                      onNextStep: (step) => {
+                        console.log("next step", step);
+                      },
+                      onPrevStep: (step) => {
+                        console.log("prev step", step);
+                      },
+                      onStepChange: (step) => {
+                        console.log("step change", step);
+                        if (step === 2) {
+                          setModalError(
+                            "请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确",
+                          );
+                          return;
+                        }
 
-              return (
-                <WizardDialog
-                  title="加载成功"
-                  error={modalError}
-                  isContentFull={false}
-                  step={step}
-                  steps={[
-                    {
-                      title: "Step 1",
-                      children: (
-                        <div className={ContentStyle}>
-                          <p>这是一个加载完成的对话框。</p>
-                          <p>数据: {data}</p>
-                        </div>
-                      ),
-                    },
-                    {
-                      title: "Step 2",
-                      children: (
-                        <div
-                          className={ContentStyle}
-                          style={{ height: "2000px" }}
-                        >
-                          Step2 area
-                        </div>
-                      ),
-                    },
-                    {
-                      title: "Step 3",
-                      children: <div className={ContentStyle}>Step3 area</div>,
-                    },
-                  ]}
-                  right={<div>Right area</div>}
-                  onCancel={() => {
-                    console.log("cancel");
-                  }}
-                  onOk={() => {
-                    console.log("ok");
-                    popModal();
-                  }}
-                  onNextStep={(step) => {
-                    console.log("next step", step);
-                  }}
-                  onPrevStep={(step) => {
-                    console.log("prev step", step);
-                  }}
-                  onStepChange={(step) => {
-                    console.log("step change", step);
-                    if (step === 2) {
-                      setModalError(
-                        "请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确请检查输入信息是否正确",
-                      );
-                      return;
-                    }
+                        setStep(step);
+                      },
+                    };
+                    return idleModalProps;
+                  }
+                }
+              }, [isLoading, error, retry, modalError, step, data]);
 
-                    setStep(step);
-                  }}
-                />
-              );
+              return <WizardDialog {...modalProps} />;
             },
             props: {},
           });
