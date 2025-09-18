@@ -629,7 +629,6 @@ export const InputStyle = css`
 `;
 
 export const KitInputStyle = css`
-  input,
   &.input-tags {
     border: 1px solid rgba(213, 219, 227, 0.6);
     border-radius: 4px;
