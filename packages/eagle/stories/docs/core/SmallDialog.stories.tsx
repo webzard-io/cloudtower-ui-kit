@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Input, Space, Typo } from "@src/core";
+import React, { useMemo } from "react";
+import { Button, Input, SmallDialogProps, Space, Typo } from "@src/core";
 import ModalStack from "@src/core/ModalStack";
 import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
 import { SmallDialog } from "@src/core";
@@ -299,19 +299,34 @@ export const Initializing = () => {
             component: () => {
               const { isLoading, data, error, retry } = useMockQuery();
 
-              if (isLoading || error) {
-                return (
-                  <SmallDialog
-                    initializing={isLoading}
-                    initializingError={error}
-                    onOk={retry}
-                    title=""
-                  />
-                );
-              }
+              const modalProps: SmallDialogProps = useMemo(() => {
+                switch (true) {
+                  case isLoading: {
+                    const initializingModalProps = {
+                      title: "",
+                      initializing: isLoading,
+                    };
+                    return initializingModalProps;
+                  }
+                  case Boolean(error): {
+                    const initializeFailedModalProps = {
+                      title: "",
+                      initializingError: error,
+                      onOk: retry,
+                    };
+                    return initializeFailedModalProps;
+                  }
+                  default: {
+                    const idleModalProps = {
+                      title: "加载完成",
+                    };
+                    return idleModalProps;
+                  }
+                }
+              }, [isLoading, error, retry]);
 
               return (
-                <SmallDialog title={"加载完成"}>
+                <SmallDialog {...modalProps}>
                   <p>这是一个加载完成的对话框。</p>
                   <p>数据: {data}</p>
                 </SmallDialog>
@@ -332,19 +347,34 @@ export const Initializing = () => {
                   failFirstTime: true,
                 });
 
-              if (isLoading || error) {
-                return (
-                  <SmallDialog
-                    initializing={isLoading}
-                    initializingError={error}
-                    onOk={retry}
-                    title=""
-                  />
-                );
-              }
+              const modalProps: SmallDialogProps = useMemo(() => {
+                switch (true) {
+                  case isLoading: {
+                    const initializingModalProps = {
+                      title: "",
+                      initializing: isLoading,
+                    };
+                    return initializingModalProps;
+                  }
+                  case Boolean(error): {
+                    const initializeFailedModalProps = {
+                      title: "",
+                      initializingError: error,
+                      onOk: retry,
+                    };
+                    return initializeFailedModalProps;
+                  }
+                  default: {
+                    const idleModalProps = {
+                      title: "加载成功",
+                    };
+                    return idleModalProps;
+                  }
+                }
+              }, [isLoading, error, retry]);
 
               return (
-                <SmallDialog title="加载成功">
+                <SmallDialog {...modalProps}>
                   <p>恭喜！经过 {attemptCount} 次尝试，数据加载成功了。</p>
                   <p>数据: {data}</p>
                 </SmallDialog>
