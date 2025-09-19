@@ -12,6 +12,7 @@ import useParrotTranslation from "@src/hooks/useParrotTranslation";
 
 const ContentList = css`
   color: $text-light-secondary;
+  padding-inline-start: 12px;
 
   li {
     margin-bottom: 4px;
@@ -65,16 +66,29 @@ const Divider = css`
 
 const SingleRejectContent: React.FC<{
   content: string | string[];
-}> = ({ content }) => {
+  listType?: "ordered" | "unordered";
+}> = ({ content, listType = "ordered" }) => {
   if (Array.isArray(content) && content.length > 1) {
+    if (listType === "ordered") {
+      return (
+        <ol className={cx(ContentList)}>
+          {content.map((reason, index) => (
+            <li className={Typo.Label.l4_regular} key={index}>
+              {reason}
+            </li>
+          ))}
+        </ol>
+      );
+    }
+
     return (
-      <div className={cx(ContentList)}>
+      <ul className={cx(ContentList)}>
         {content.map((reason, index) => (
           <li className={Typo.Label.l4_regular} key={index}>
-            {index + 1}. {reason}
+            {reason}
           </li>
         ))}
-      </div>
+      </ul>
     );
   }
   return (
@@ -117,7 +131,12 @@ export const RejectDialog: React.FC<RejectDialogProps> = (props) => {
   const renderContent = () => {
     switch (props.type) {
       case RejectDialogType.Single:
-        return <SingleRejectContent content={props.content} />;
+        return (
+          <SingleRejectContent
+            content={props.content}
+            listType={props.listType}
+          />
+        );
       case RejectDialogType.All:
       case RejectDialogType.Part:
         return (
