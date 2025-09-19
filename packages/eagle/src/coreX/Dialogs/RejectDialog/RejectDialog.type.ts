@@ -35,6 +35,8 @@ interface SingleRejectDialogProps extends BaseRejectDialogProps {
   type: RejectDialogType.Single;
   /** 拒绝原因，可以是单个字符串或字符串数组 */
   content: string | string[];
+  /** 列表类型 */
+  listType?: "ordered" | "unordered";
 }
 
 interface MultiAllRejectDialogProps extends BaseRejectDialogProps {
