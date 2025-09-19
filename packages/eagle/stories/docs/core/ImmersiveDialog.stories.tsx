@@ -1,6 +1,7 @@
 import { css } from "@linaria/core";
 import Button from "@src/core/Button";
 import { ImmersiveDialog } from "@src/core/ImmersiveDialog";
+import { ImmersiveDialogProps } from "@src/core/ImmersiveDialog/type";
 import KitStoreProvider, {
   usePopModal,
   usePushModal,
@@ -10,7 +11,7 @@ import Space from "@src/core/Space";
 import { SwitchWithText } from "@src/coreX";
 import { CoreMeta } from "@stories/types";
 import { useMockQuery } from "@stories/utils";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 const ContentStyle = css`
   display: flex;
@@ -204,6 +205,58 @@ const story = {
 export default story;
 
 /**
+ * 带错误信息的对话框
+ */
+export const WithError = () => {
+  const pushModal = usePushModal();
+  const popModal = usePopModal();
+
+  return (
+    <Space direction="vertical" size={16}>
+      <Button
+        type="primary"
+        onClick={() =>
+          pushModal({
+            component: ImmersiveDialog,
+            props: {
+              title: "Title",
+              error: "Error text",
+              children: <div className={ContentStyle}>Content area</div>,
+              isContentFull: false,
+              onOk() {
+                popModal();
+              },
+            },
+          })
+        }
+      >
+        带错误 icon
+      </Button>
+      <Button
+        type="primary"
+        onClick={() =>
+          pushModal({
+            component: ImmersiveDialog,
+            props: {
+              title: "Title",
+              error: "Error text",
+              showFooterErrorIcon: false,
+              children: <div className={ContentStyle}>Content area</div>,
+              isContentFull: false,
+              onOk() {
+                popModal();
+              },
+            },
+          })
+        }
+      >
+        不带错误 icon
+      </Button>
+    </Space>
+  );
+};
+
+/**
  * 初始化状态
  */
 export const Initializing = () => {
@@ -228,23 +281,34 @@ export const Initializing = () => {
             component: () => {
               const { isLoading, data, error, retry } = useMockQuery();
 
-              if (isLoading || error) {
-                return (
-                  <ImmersiveDialog
-                    initializing={isLoading}
-                    initializingError={error}
-                    onOk={retry}
-                    title=""
-                  />
-                );
-              }
+              const modalProps: ImmersiveDialogProps = useMemo(() => {
+                switch (true) {
+                  case isLoading: {
+                    const initializingModalProps = {
+                      title: "",
+                      initializing: isLoading,
+                    };
+                    return initializingModalProps;
+                  }
+                  case Boolean(error): {
+                    const initializeFailedModalProps = {
+                      title: "",
+                      initializingError: error,
+                      onOk: retry,
+                    };
+                    return initializeFailedModalProps;
+                  }
+                  default: {
+                    const idleModalProps = {
+                      title: "加载完成",
+                    };
+                    return idleModalProps;
+                  }
+                }
+              }, [isLoading, error, retry]);
 
               return (
-                <ImmersiveDialog
-                  title={"加载完成"}
-                  isContentFull={false}
-                  onOk={() => popModal()}
-                >
+                <ImmersiveDialog {...modalProps}>
                   <p>这是一个加载完成的对话框。</p>
                   <p>数据: {data}</p>
                 </ImmersiveDialog>
@@ -265,23 +329,34 @@ export const Initializing = () => {
                   failFirstTime: true,
                 });
 
-              if (isLoading || error) {
-                return (
-                  <ImmersiveDialog
-                    initializing={isLoading}
-                    initializingError={error}
-                    onOk={retry}
-                    title=""
-                  />
-                );
-              }
+              const modalProps: ImmersiveDialogProps = useMemo(() => {
+                switch (true) {
+                  case isLoading: {
+                    const initializingModalProps = {
+                      title: "",
+                      initializing: isLoading,
+                    };
+                    return initializingModalProps;
+                  }
+                  case Boolean(error): {
+                    const initializeFailedModalProps = {
+                      title: "",
+                      initializingError: error,
+                      onOk: retry,
+                    };
+                    return initializeFailedModalProps;
+                  }
+                  default: {
+                    const idleModalProps = {
+                      title: "加载完成",
+                    };
+                    return idleModalProps;
+                  }
+                }
+              }, [isLoading, error, retry]);
 
               return (
-                <ImmersiveDialog
-                  title="加载成功"
-                  isContentFull={false}
-                  onOk={() => popModal()}
-                >
+                <ImmersiveDialog {...modalProps}>
                   <p>恭喜！经过 {attemptCount} 次尝试，数据加载成功了。</p>
                   <p>数据: {data}</p>
                 </ImmersiveDialog>

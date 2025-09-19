@@ -71,31 +71,59 @@ export const SingleRejectMultiReasons = () => {
   const pushModal = usePushModal();
 
   return (
-    <Button
-      type="primary"
-      onClick={() =>
-        pushModal({
-          component: () => (
-            <RejectDialog
-              type={RejectDialogType.Single}
-              title="无法删除虚拟机"
-              content={[
-                "虚拟机当前状态为运行中，需要先关机才能执行删除操作",
-                "该虚拟机是当前项目的Kubernetes主节点，删除后将导致整个集群不可用。如确需删除，请先迁移集群控制平面到其他节点",
-                "存在未完成的数据备份任务（预计剩余25分钟）",
-                "该虚拟机已被安全策略锁定，原因：检测到异常的网络访问行为，需要管理员审核后才能执行删除操作",
-              ]}
-              description="请解决以上问题后重试"
-            />
-          ),
-          props: {
-            name: "MultiReasonsDialog",
-          },
-        })
-      }
-    >
-      删除虚拟机
-    </Button>
+    <Space direction="vertical" size={16}>
+      <Button
+        type="primary"
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <RejectDialog
+                type={RejectDialogType.Single}
+                title="无法删除虚拟机"
+                content={[
+                  "虚拟机当前状态为运行中，需要先关机才能执行删除操作",
+                  "该虚拟机是当前项目的Kubernetes主节点，删除后将导致整个集群不可用。如确需删除，请先迁移集群控制平面到其他节点",
+                  "存在未完成的数据备份任务（预计剩余25分钟）",
+                  "该虚拟机已被安全策略锁定，原因：检测到异常的网络访问行为，需要管理员审核后才能执行删除操作",
+                ]}
+                description="请解决以上问题后重试"
+              />
+            ),
+            props: {
+              name: "MultiReasonsDialog",
+            },
+          })
+        }
+      >
+        删除虚拟机（有序列表）
+      </Button>
+      <Button
+        type="primary"
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <RejectDialog
+                type={RejectDialogType.Single}
+                title="无法删除虚拟机"
+                content={[
+                  "虚拟机当前状态为运行中，需要先关机才能执行删除操作",
+                  "该虚拟机是当前项目的Kubernetes主节点，删除后将导致整个集群不可用。如确需删除，请先迁移集群控制平面到其他节点",
+                  "存在未完成的数据备份任务（预计剩余25分钟）",
+                  "该虚拟机已被安全策略锁定，原因：检测到异常的网络访问行为，需要管理员审核后才能执行删除操作",
+                ]}
+                listType="unordered"
+                description="请解决以上问题后重试"
+              />
+            ),
+            props: {
+              name: "MultiReasonsDialog",
+            },
+          })
+        }
+      >
+        删除虚拟机（无序列表）
+      </Button>
+    </Space>
   );
 };
 
