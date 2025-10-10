@@ -12,7 +12,9 @@ import useParrotTranslation from "@src/hooks/useParrotTranslation";
 
 const ContentList = css`
   color: $text-light-secondary;
-  padding-inline-start: 12px;
+  &:is(ul, ol) {
+    padding-inline-start: 12px;
+  }
 
   li {
     margin-bottom: 4px;
