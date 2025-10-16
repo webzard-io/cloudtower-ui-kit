@@ -13,6 +13,7 @@ import {
 } from "@src/core/Progress/progress.type";
 import Tag from "@src/core/Tag";
 import { splitMap } from "@src/utils/constants";
+import { Color } from "@src/styles/token";
 import React from "react";
 
 import { TagProps } from "../Tag/tag.type";
@@ -26,6 +27,7 @@ const titleAreaStyle = css`
   .progress-title {
     flex: 2;
     max-width: fit-content;
+    color: ${Color.text.neutral.primary};
   }
   .progress-desc {
     flex: 1;

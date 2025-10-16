@@ -57,5 +57,7 @@
   "copy_kubeconfig_success": "Kubeconfig 复制成功。",
   "download_kubeconfig": "下载 Kubeconfig",
   "download_kubeconfig_tip": "通过使用 Kubeconfig 文件配置当前集群的访问信息。",
-  "obtain_data_error": "获取数据时遇到问题"
+  "obtain_data_error": "获取数据时遇到问题",
+  "colon_with_space": "：",
+  "semicolon_with_space": "；"
 }

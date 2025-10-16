@@ -2,7 +2,7 @@ import { Button, ModalStack } from "@src/core";
 import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
 import { DeleteDialog } from "@src/coreX";
 import { CoreXMeta } from "@stories/types";
-import React from "react";
+import React, { useState } from "react";
 
 /**
  * * 删除确认对话框组件
@@ -136,6 +136,53 @@ export const ConfirmLoading = () => {
       }
     >
       删除集群（加载状态）
+    </Button>
+  );
+};
+
+/**
+ * 删除失败
+ */
+export const Failed = () => {
+  const pushModal = usePushModal();
+
+  return (
+    <Button
+      type="primary"
+      danger
+      onClick={() =>
+        pushModal({
+          component: () => {
+            const [loading, setLoading] = useState(false);
+            const [error, setError] = useState<string | undefined>(undefined);
+
+            return (
+              <DeleteDialog
+                title="删除集群"
+                description="确定要删除集群吗？这个操作需要一些时间来完成。"
+                secondaryDesc="删除过程中请耐心等待，不要关闭浏览器或刷新页面。"
+                okText="删除"
+                confirmLoading={loading}
+                onOk={() => {
+                  setLoading(true);
+                  setError(undefined);
+                  // 模拟异步删除操作
+                  setTimeout(() => {
+                    setLoading(false);
+                    setError("删除失败");
+                  }, 3000);
+                }}
+                error={error}
+              />
+            );
+          },
+          props: {
+            name: "ErrorDeleteDialog",
+          },
+        })
+      }
+    >
+      删除集群（错误）
     </Button>
   );
 };
