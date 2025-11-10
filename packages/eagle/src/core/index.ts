@@ -86,6 +86,7 @@ export * from "./StepProgress";
 export * from "./Steps";
 export * from "./Styled";
 export * from "./Switch";
+export * from "./Tab";
 export * from "./Table";
 export * from "./TableForm";
 export * from "./Tag";
