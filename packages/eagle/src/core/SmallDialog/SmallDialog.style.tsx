@@ -6,8 +6,8 @@ export const DialogStyle = css`
   --modal-content-width: 492px;
   --modal-content-min-height: 160px;
   --modal-content-max-height: calc(
-    100vh - 144px
-  ); // Only consider vertical margins, do not subtract header and footer height
+    100vh - 80px
+  ); // Only consider vertical margins（top 40px, bottom 40px）, do not subtract header and footer height
   --modal-header-padding: 32px 40px 0;
   --modal-content-padding-top: 32px;
   --modal-content-padding-bottom: 32px;
