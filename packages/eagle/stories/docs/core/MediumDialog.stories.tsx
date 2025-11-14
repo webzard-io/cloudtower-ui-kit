@@ -498,7 +498,7 @@ export const WithError = () => {
 export const LongContent = () => {
   const pushModal = usePushModal();
 
-  const longContent = Array.from({ length: 2 }, (_, i) => (
+  const longContent = Array.from({ length: 10 }, (_, i) => (
     <p key={i}>
       这是第 {i + 1}{" "}
       段内容。在实际使用中，这里可能是用户协议、详细说明、配置信息等较长的文本内容。
