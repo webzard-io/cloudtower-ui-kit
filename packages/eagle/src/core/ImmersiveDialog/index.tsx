@@ -50,7 +50,7 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
     footer,
     showCancel = true,
     showOk = true,
-    okLoading,
+    confirmLoading,
     okButtonProps,
     cancelButtonProps,
     okText,
@@ -139,7 +139,7 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
                   onOk?.(e);
                 }}
                 type="primary"
-                loading={okLoading}
+                loading={confirmLoading}
                 {...okButtonProps}
               >
                 {_confirmText}
@@ -150,20 +150,21 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
       )
     );
   }, [
+    initializing,
+    footer,
     footerLeftAction,
-    _confirmText,
+    error,
+    showFooterErrorIcon,
+    showCancel,
     cancelButtonProps,
     _cancelText,
-    error,
-    footer,
+    showOk,
+    confirmLoading,
     okButtonProps,
-    okLoading,
+    _confirmText,
+    popModal,
     onCancel,
     onOk,
-    popModal,
-    showCancel,
-    showOk,
-    initializing,
   ]);
 
   return (

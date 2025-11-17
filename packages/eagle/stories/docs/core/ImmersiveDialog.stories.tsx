@@ -280,6 +280,15 @@ export const Initializing = () => {
           pushModal({
             component: () => {
               const { isLoading, data, error, retry } = useMockQuery();
+              const [submitting, setSubmitting] = useState(false);
+
+              const handleOk = () => {
+                setSubmitting(true);
+                setTimeout(() => {
+                  setSubmitting(false);
+                  popModal();
+                }, 1000);
+              };
 
               const modalProps: ImmersiveDialogProps = useMemo(() => {
                 switch (true) {
@@ -301,11 +310,14 @@ export const Initializing = () => {
                   default: {
                     const idleModalProps = {
                       title: "加载完成",
+                      okText: submitting ? "提交中..." : "提交",
+                      onOk: handleOk,
+                      confirmLoading: submitting,
                     };
                     return idleModalProps;
                   }
                 }
-              }, [isLoading, error, retry]);
+              }, [isLoading, error, retry, submitting]);
 
               return (
                 <ImmersiveDialog {...modalProps}>

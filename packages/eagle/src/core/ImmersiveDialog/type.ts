@@ -15,8 +15,6 @@ export type ImmersiveDialogProps = React.PropsWithChildren<
     showOk?: boolean;
     /** 确定按钮的文本 */
     okText?: string;
-    /** 确定按钮的 loading */
-    okLoading?: boolean;
     /** 确定按钮的属性 */
     okButtonProps?: ButtonProps;
     /** 错误信息 */
