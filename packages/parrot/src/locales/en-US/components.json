@@ -92,5 +92,10 @@
   "empty": "No history records",
   "view_detail": "View Details",
   "initializing_failed": "Failed to load the page. Please try again.",
-  "recent_search": "Recent search"
+  "recent_search": "Recent search",
+  "select_file": "Select File",
+  "reselect_file": "Re-select",
+  "exceed_max_count": "Maximum {count} file allowed",
+  "exceed_max_count_plural": "Maximum {count} files allowed",
+  "upload_file_desc": "Click or drag file to this area to upload"
 }
