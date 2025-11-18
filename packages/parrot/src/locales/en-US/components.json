@@ -91,5 +91,10 @@
   "db_migrated": "<0>{{text}}</0> migrated to <1>{{version}}</1>",
   "empty": "No history records",
   "view_detail": "View Details",
-  "initializing_failed": "Failed to load the page. Please try again."
+  "initializing_failed": "Failed to load the page. Please try again.",
+  "select_file": "Select File",
+  "reselect_file": "Re-select",
+  "exceed_max_count": "Maximum {count} file allowed",
+  "exceed_max_count_plural": "Maximum {count} files allowed",
+  "upload_file_desc": "Click or drag file to this area to upload"
 }
