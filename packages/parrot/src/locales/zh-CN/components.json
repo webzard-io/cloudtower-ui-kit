@@ -87,5 +87,9 @@
   "empty": "暂无历史记录",
   "view_detail": "查看详情",
   "initializing_failed": "加载时遇到问题，请重试",
-  "recent_search": "最近搜索"
+  "recent_search": "最近搜索",
+  "select_file": "选择文件",
+  "reselect_file": "重新选择",
+  "exceed_max_count": "最多只能选择 {count} 个文件",
+  "upload_file_desc": "点击或拖拽文件到此区域上传"
 }
