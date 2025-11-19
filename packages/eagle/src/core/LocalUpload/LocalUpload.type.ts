@@ -4,7 +4,7 @@ import { AntdRcFile, AntdUploadProps } from "@src/antd";
  * 上传文件对象
  * 继承自 Antd 的 RcFile，并添加额外的状态和错误信息
  */
-export interface UploadFile extends AntdRcFile {
+export interface LocalUploadFile extends AntdRcFile {
   /** 文件唯一标识 */
   uid: string;
   /** 文件大小（字节） */
@@ -28,12 +28,12 @@ export interface UploadFile extends AntdRcFile {
  * 文件接受类型
  * 限制只能是以 . 开头的文件扩展名
  */
-export type UploadAccept = `.${string}`;
+export type LocalUploadAccept = `.${string}`;
 
 /**
  * 上传按钮属性
  */
-export type UploadButtonProps = Pick<
+export type LocalUploadButtonProps = Pick<
   AntdUploadProps,
   "accept" | "multiple" | "disabled"
 > & {
@@ -42,9 +42,9 @@ export type UploadButtonProps = Pick<
   /** 是否隐藏图标 */
   hideIcon?: boolean;
   /** 文件列表 */
-  fileList: UploadFile[];
+  fileList: LocalUploadFile[];
   /** 设置文件列表 */
-  setFileList: (files: UploadFile[]) => void;
+  setFileList: (files: LocalUploadFile[]) => void;
   /** 最大文件数量 */
   maxCount?: number;
   /**
@@ -54,24 +54,24 @@ export type UploadButtonProps = Pick<
    * @returns 返回包含错误信息或自定义数据的 Promise
    */
   validate?: (
-    file: UploadFile,
-    files?: UploadFile[],
+    file: LocalUploadFile,
+    files?: LocalUploadFile[],
   ) => Promise<{ error?: string; data?: any }>; // eslint-disable-line @typescript-eslint/no-explicit-any
 };
 
 /**
  * 拖拽上传属性
  */
-export type UploadDraggerProps = Pick<
+export type LocalUploadDraggerProps = Pick<
   AntdUploadProps,
   "accept" | "multiple" | "disabled"
 > & {
   /** 自定义类名 */
   className?: string;
   /** 文件列表 */
-  fileList: UploadFile[];
+  fileList: LocalUploadFile[];
   /** 设置文件列表 */
-  setFileList: (files: UploadFile[]) => void;
+  setFileList: (files: LocalUploadFile[]) => void;
   /** 最大文件数量 */
   maxCount?: number;
   /**
@@ -81,19 +81,19 @@ export type UploadDraggerProps = Pick<
    * @returns 返回包含错误信息或自定义数据的 Promise
    */
   validate?: (
-    file: UploadFile,
-    files?: UploadFile[],
+    file: LocalUploadFile,
+    files?: LocalUploadFile[],
   ) => Promise<{ error?: string; data?: any }>; // eslint-disable-line @typescript-eslint/no-explicit-any
 };
 
 /**
  * 文件列表属性
  */
-export type UploadFileListProps = {
+export type LocalUploadFileListProps = {
   /** 自定义类名 */
   className?: string;
   /** 文件列表 */
-  fileList: UploadFile[];
+  fileList: LocalUploadFile[];
   /** 列表展示类型 */
   type?: "list" | "info";
   /** 移除文件回调 */
@@ -101,13 +101,13 @@ export type UploadFileListProps = {
   /** 是否禁用移除操作 */
   disableRemove?: boolean;
   /** 文件移除事件回调 */
-  onRemove?: (file: UploadFile) => void;
+  onRemove?: (file: LocalUploadFile) => void;
 };
 
 /**
  * 文件信息展示属性
  */
-export type UploadFileInfoProps = {
+export type LocalUploadFileInfoProps = {
   /** 文件对象 */
   file: {
     /** 文件状态 */
@@ -128,13 +128,13 @@ export type UploadFileInfoProps = {
   /** 是否禁用 */
   disabled?: boolean;
   /** 文件移除事件回调 */
-  onRemove?: (file: UploadFile) => void;
+  onRemove?: (file: LocalUploadFile) => void;
 };
 
 /**
  * Upload 组件属性
  */
-export type UploadProps = {
+export type LocalUploadProps = {
   /** 自定义类名 */
   className?: string;
   /** 标签 */
@@ -150,15 +150,15 @@ export type UploadProps = {
   /** 是否支持多选 */
   multiple?: boolean;
   /** 接受的文件类型 */
-  accept?: UploadAccept;
+  accept?: LocalUploadAccept;
   /** 是否禁用 */
   disabled?: boolean;
   /** 最大文件数量 */
   maxCount?: number;
   /** 文件列表 */
-  fileList: UploadFile[];
+  fileList: LocalUploadFile[];
   /** 设置文件列表 */
-  setFileList: (files: UploadFile[]) => void;
+  setFileList: (files: LocalUploadFile[]) => void;
   /** 是否禁用文件列表的移除功能 */
   disableRemoveList?: boolean;
   /**
@@ -169,7 +169,7 @@ export type UploadProps = {
    *
    * @example
    * ```ts
-   * const validate = async (file: UploadFile) => {
+   * const validate = async (file: LocalUploadFile) => {
    *   if (file.size > 5 * 1024 * 1024) {
    *     return { error: "文件大小不能超过 5MB" };
    *   }
@@ -178,11 +178,11 @@ export type UploadProps = {
    * ```
    */
   validate?: (
-    file: UploadFile,
-    files?: UploadFile[],
+    file: LocalUploadFile,
+    files?: LocalUploadFile[],
   ) => Promise<{ error?: string; data?: any }>; // eslint-disable-line @typescript-eslint/no-explicit-any
   /** 按钮属性 */
-  buttonProps?: Pick<UploadButtonProps, "className" | "hideIcon">;
+  buttonProps?: Pick<LocalUploadButtonProps, "className" | "hideIcon">;
   /** 文件移除事件回调 */
-  onRemove?: (file: UploadFile) => void;
+  onRemove?: (file: LocalUploadFile) => void;
 };
