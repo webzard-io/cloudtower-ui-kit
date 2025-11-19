@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 
 import type {
-  UploadButtonProps,
-  UploadDraggerProps,
-  UploadFile,
-} from "./Upload.type";
+  LocalUploadButtonProps,
+  LocalUploadDraggerProps,
+  LocalUploadFile,
+} from "./LocalUpload.type";
 
 /**
  * Custom hook to handle file validation automatically.
@@ -23,14 +23,16 @@ export const useFileValidation = ({
   validate,
   createNewFile = false,
 }: {
-  fileList: UploadFile[];
-  setFileList: (files: UploadFile[]) => void;
-  validate?: UploadDraggerProps["validate"] | UploadButtonProps["validate"];
+  fileList: LocalUploadFile[];
+  setFileList: (files: LocalUploadFile[]) => void;
+  validate?:
+    | LocalUploadDraggerProps["validate"]
+    | LocalUploadButtonProps["validate"];
   createNewFile?: boolean;
 }) => {
   useEffect(() => {
     if (!validate) return;
-    const updateFile = (fileId: string, file: UploadFile) => {
+    const updateFile = (fileId: string, file: LocalUploadFile) => {
       const index = fileList.findIndex((f) => f.uid === fileId);
       if (index !== -1) {
         const newList = [...fileList];
@@ -38,7 +40,7 @@ export const useFileValidation = ({
           ? (() => {
               const newFile = new File([file], file.name, { type: file.type });
               Object.assign(newFile, file);
-              return newFile as UploadFile;
+              return newFile as LocalUploadFile;
             })()
           : file;
         newList.splice(index, 1, fileToUpdate);
@@ -81,7 +83,7 @@ export const useFileCountErrorClear = ({
   maxCount,
   setError,
 }: {
-  fileList: UploadFile[];
+  fileList: LocalUploadFile[];
   maxCount: number;
   setError: (error: string) => void;
 }) => {

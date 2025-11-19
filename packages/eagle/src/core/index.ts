@@ -61,6 +61,7 @@ export * from "./Legend";
 export * from "./LineChart";
 export * from "./Link";
 export * from "./Loading";
+export * from "./LocalUpload";
 export * from "./MediumDialog";
 export * from "./message";
 export * from "./message-group";
@@ -101,7 +102,6 @@ export * from "./Tooltip";
 export * from "./Truncate";
 export * from "./Typo";
 export * from "./Units";
-export * from "./Upload";
 export * from "./WizardDialog";
 
 export const units = {
