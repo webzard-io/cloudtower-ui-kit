@@ -1,3 +1,5 @@
+import React from "react";
+import { ConfigProvider } from "@src/core";
 import FieldsDateTimeRange from "@src/core/Fields/FieldsDateTimeRange";
 import { Meta, StoryObj } from "@storybook/react";
 import { RangePickerProps } from "antd/lib/date-picker";
@@ -8,6 +10,13 @@ import { range } from "lodash";
 export default {
   title: "Core/FieldsDateTimeRange",
   component: FieldsDateTimeRange,
+  decorators: [
+    (Story) => (
+      <ConfigProvider>
+        <Story />
+      </ConfigProvider>
+    ),
+  ],
 } as Meta;
 
 const disabledRangeTime: RangePickerProps["disabledTime"] = (_, type) => {

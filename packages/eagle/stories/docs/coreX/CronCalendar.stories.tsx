@@ -9,8 +9,7 @@ import { CronPlanState } from "@src/coreX/CronPlan/cronPlan.type";
 import { makeUUID } from "@src/utils";
 import { Stack } from "@stories/components";
 import type { Meta } from "@storybook/react";
-import { ConfigProvider } from "antd";
-import locale from "antd/es/locale/zh_CN";
+import { ConfigProvider } from "@src/core/ConfigProvider";
 import dayjs from "dayjs";
 import { useState } from "react";
 import React from "react";
@@ -18,6 +17,13 @@ import React from "react";
 const story: Meta<React.FC<CronCalendarProps>> = {
   title: "CoreX/CronCalendar",
   component: CronCalendar,
+  decorators: [
+    (Story) => (
+      <ConfigProvider>
+        <Story />
+      </ConfigProvider>
+    ),
+  ],
 };
 
 export default story;
@@ -110,17 +116,15 @@ export const Basic = () => {
           )}
         </Stack>
       </Stack>
-      <ConfigProvider locale={locale}>
-        <CronCalendar
-          plans={plans
-            .filter((p) => p.enabled && p.expression)
-            .map((p) => ({
-              expression: p.expression!,
-              startAt: dayjs(p.startAt),
-              empty: p.empty || false,
-            }))}
-        />
-      </ConfigProvider>
+      <CronCalendar
+        plans={plans
+          .filter((p) => p.enabled && p.expression)
+          .map((p) => ({
+            expression: p.expression!,
+            startAt: dayjs(p.startAt),
+            empty: p.empty || false,
+          }))}
+      />
     </Stack>
   );
 };
