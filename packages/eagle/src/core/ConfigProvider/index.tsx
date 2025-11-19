@@ -16,6 +16,7 @@ import antd5zhCN from "antd5/lib/locale/zh_CN";
 import dayjs from "dayjs";
 import moment from "moment";
 import React, { createContext, useContext, useEffect } from "react";
+import { useAntdPatchEnLocales } from "@src/hooks/useAntdPatchEnLocales";
 
 // 完整的配置类型
 export type ConfigProps = {
@@ -52,6 +53,7 @@ export const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProps>> = ({
     adjustDateLocale(i18n.language as ParrotLngs);
   }, [i18n]);
 
+  const patchEnLocale = useAntdPatchEnLocales(enUS);
   return (
     <ConfigProviderContext.Provider value={config}>
       <Antd5ConfigProvider
@@ -61,7 +63,7 @@ export const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProps>> = ({
       >
         <Antd4ConfigProvider
           autoInsertSpaceInButton={false}
-          locale={i18n.language === "zh-CN" ? zhCN : enUS}
+          locale={i18n.language === "zh-CN" ? zhCN : patchEnLocale}
           {...antd4Configs}
         >
           {children}

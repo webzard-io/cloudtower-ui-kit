@@ -218,11 +218,11 @@ describe("FieldsTimePicker h5_css", () => {
               data-test=inputName1
               id=1
               name=inputName1
-              placeholder=Select,time
+              placeholder=请选择时间
               readonly=
               size=10
-              title=Invalid,Date
-              value=Invalid,Date
+              title=12:08:23
+              value=12:08:23
             />
             <span
               class=ant-picker-suffix
@@ -492,11 +492,11 @@ describe("FieldsTimePicker h5_css", () => {
               data-test=inputName2
               id=2
               name=inputName2
-              placeholder=Select,time
+              placeholder=请选择时间
               readonly=
               size=10
-              title=Invalid,Date
-              value=Invalid,Date
+              title=12:08:23
+              value=12:08:23
             />
             <span
               class=ant-picker-suffix
@@ -766,11 +766,11 @@ describe("FieldsTimePicker h5_css", () => {
               data-test=inputName2
               id=3
               name=inputName2
-              placeholder=Select,time
+              placeholder=请选择时间
               readonly=
               size=10
-              title=Invalid,Date
-              value=Invalid,Date
+              title=12:08:23
+              value=12:08:23
             />
             <span
               class=ant-picker-suffix

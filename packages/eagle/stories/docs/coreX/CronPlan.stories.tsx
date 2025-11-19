@@ -1,4 +1,5 @@
 import Button from "@src/core/Button";
+import { ConfigProvider } from "@src/core/ConfigProvider";
 import CronPlan from "@src/coreX/CronPlan";
 import {
   CronPlanProps,
@@ -13,6 +14,13 @@ import React, { useState } from "react";
 const story: Meta<React.FC<CronPlanProps>> = {
   title: "CoreX/CronPlan",
   component: CronPlan,
+  decorators: [
+    (Story) => (
+      <ConfigProvider>
+        <Story />
+      </ConfigProvider>
+    ),
+  ],
 };
 
 export default story;
