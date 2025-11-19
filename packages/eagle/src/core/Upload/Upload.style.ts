@@ -39,10 +39,6 @@ export const UploadWrapper = styled.div`
       text-align: center;
     }
 
-    .ant-upload.ant-upload-btn {
-      padding: 0 !important;
-    }
-
     .ant-upload-drag-container {
       color: $text-light-primary;
     }
@@ -168,11 +164,11 @@ export const FileInfoWrapperStyle = css`
   border-radius: 4px;
   gap: 4px;
   align-items: self-start;
-  color: $text-light-primary !important;
+  color: $text-light-primary;
 
   .file-size,
   .file-size-unit {
-    color: $text-light-secondary !important;
+    color: $text-light-secondary;
   }
   .file-info {
     flex-grow: 1;
@@ -183,7 +179,7 @@ export const FileInfoWrapperStyle = css`
     cursor: pointer;
   }
   .upload-file-error {
-    color: $text-light-serious !important;
+    color: $text-light-serious;
   }
   &.file-error-wrapper {
     background: $fills-element-light-container-serious;
