@@ -5,8 +5,8 @@ import React, {
   RefAttributes,
 } from "react";
 
-import { UploadWrapper } from "./Upload.style";
-import type { UploadProps } from "./Upload.type";
+import { UploadWrapper } from "./LocalUpload.style";
+import type { LocalUploadProps } from "./LocalUpload.type";
 import {
   UploadButton,
   UploadDescription,
@@ -14,7 +14,7 @@ import {
   UploadFileInfo,
   UploadFileList,
   UploadLabel,
-} from "./Upload.widget";
+} from "./LocalUpload.widget";
 
 type UploadComponents = {
   Wrapper: typeof UploadWrapper;
@@ -26,7 +26,7 @@ type UploadComponents = {
   FileInfo: typeof UploadFileInfo;
 };
 
-const UploadComp = React.forwardRef<HTMLDivElement, UploadProps>(
+const UploadComp = React.forwardRef<HTMLDivElement, LocalUploadProps>(
   (
     {
       className,
@@ -109,7 +109,7 @@ const UploadComp = React.forwardRef<HTMLDivElement, UploadProps>(
     );
   },
 ) as ForwardRefExoticComponent<
-  PropsWithoutRef<UploadProps> & RefAttributes<HTMLDivElement>
+  PropsWithoutRef<LocalUploadProps> & RefAttributes<HTMLDivElement>
 > &
   UploadComponents;
 
@@ -121,4 +121,4 @@ UploadComp.Dragger = UploadDragger;
 UploadComp.FileList = UploadFileList;
 UploadComp.FileInfo = UploadFileInfo;
 
-export const Upload = UploadComp;
+export const LocalUpload = UploadComp;
