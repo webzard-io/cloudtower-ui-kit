@@ -1,9 +1,9 @@
-import { Upload, UploadFile } from "@src/core/Upload";
+import { LocalUpload, LocalUploadFile } from "@src/core/LocalUpload";
 import { Meta, StoryObj } from "@storybook/react";
 import React, { useEffect, useState } from "react";
 
 /**
- * Upload 组件用于文件上传，支持按钮上传和拖拽上传两种方式。
+ * LocalUpload 组件用于本地文件上传，支持按钮上传和拖拽上传两种方式。
  *
  * ## 功能特点
  * - 支持单文件和多文件上传
@@ -12,9 +12,9 @@ import React, { useEffect, useState } from "react";
  * - 支持上传进度展示
  * - 支持错误提示
  */
-const meta: Meta<typeof Upload> = {
-  title: "Core/Upload | 文件上传",
-  component: Upload,
+const meta: Meta<typeof LocalUpload> = {
+  title: "Core/LocalUpload | 本地文件上传",
+  component: LocalUpload,
   parameters: {
     design: {
       type: "figma",
@@ -24,17 +24,17 @@ const meta: Meta<typeof Upload> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Upload>;
+type Story = StoryObj<typeof LocalUpload>;
 
 // 辅助函数：创建模拟文件
 const createMockFile = (
   name: string,
   size: number,
-  status: UploadFile["fileStatus"],
-): UploadFile => {
+  status: LocalUploadFile["fileStatus"],
+): LocalUploadFile => {
   const file = new File([], name, {
     type: name.endsWith(".pdf") ? "application/pdf" : "text/plain",
-  }) as UploadFile;
+  }) as LocalUploadFile;
   file.uid = `mock-${Math.random().toString(36).slice(2, 9)}`;
   file.fileStatus = status;
   return file;
@@ -47,10 +47,10 @@ const createMockFile = (
 export const BasicDragger: Story = {
   name: "基础拖拽上传",
   render: () => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
 
     return (
-      <Upload
+      <LocalUpload
         type="dragger"
         fileList={fileList}
         setFileList={setFileList}
@@ -69,10 +69,10 @@ export const BasicDragger: Story = {
 export const SingleFileDragger: Story = {
   name: "单文件拖拽上传",
   render: () => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
 
     return (
-      <Upload
+      <LocalUpload
         type="dragger"
         fileList={fileList}
         setFileList={setFileList}
@@ -91,10 +91,10 @@ export const SingleFileDragger: Story = {
 export const ButtonUpload: Story = {
   name: "按钮上传",
   render: () => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
 
     return (
-      <Upload
+      <LocalUpload
         type="button"
         fileList={fileList}
         setFileList={setFileList}
@@ -113,7 +113,7 @@ export const ButtonUpload: Story = {
 export const MaxCountUpload: Story = {
   name: "限制文件数量",
   render: () => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
 
     useEffect(() => {
       // 初始化预填充文件
@@ -126,7 +126,7 @@ export const MaxCountUpload: Story = {
     }, []);
 
     return (
-      <Upload
+      <LocalUpload
         type="dragger"
         fileList={fileList}
         setFileList={setFileList}
@@ -146,10 +146,10 @@ export const MaxCountUpload: Story = {
 export const AcceptTypeUpload: Story = {
   name: "文件类型限制",
   render: () => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
 
     return (
-      <Upload
+      <LocalUpload
         type="dragger"
         fileList={fileList}
         setFileList={setFileList}
@@ -169,9 +169,9 @@ export const AcceptTypeUpload: Story = {
 export const ValidatedUpload: Story = {
   name: "文件验证",
   render: () => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
 
-    const validate = async (file: UploadFile) => {
+    const validate = async (file: LocalUploadFile) => {
       // 模拟异步验证
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -189,7 +189,7 @@ export const ValidatedUpload: Story = {
     };
 
     return (
-      <Upload
+      <LocalUpload
         type="dragger"
         fileList={fileList}
         setFileList={setFileList}
@@ -209,10 +209,10 @@ export const ValidatedUpload: Story = {
 export const DisabledUpload: Story = {
   name: "禁用状态",
   render: () => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
 
     return (
-      <Upload
+      <LocalUpload
         type="dragger"
         fileList={fileList}
         setFileList={setFileList}
@@ -231,7 +231,7 @@ export const DisabledUpload: Story = {
 export const WithPrefilledFiles: Story = {
   name: "预填充文件",
   render: () => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
 
     useEffect(() => {
       // 初始化预填充文件
@@ -244,7 +244,7 @@ export const WithPrefilledFiles: Story = {
     }, []);
 
     return (
-      <Upload
+      <LocalUpload
         label="预填充文件示例"
         description="包含成功和失败状态的文件"
         multiple
@@ -262,7 +262,7 @@ export const WithPrefilledFiles: Story = {
 export const ListTypeList: Story = {
   name: "List 类型文件列表",
   render: () => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
 
     useEffect(() => {
       // 初始化预填充文件
@@ -275,7 +275,7 @@ export const ListTypeList: Story = {
     }, []);
 
     return (
-      <Upload
+      <LocalUpload
         type="button"
         label="List 类型文件列表"
         description="使用标准列表展示文件"
@@ -295,7 +295,7 @@ export const ListTypeList: Story = {
 export const InfoListType: Story = {
   name: "Info 类型文件列表",
   render: () => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
 
     useEffect(() => {
       // 初始化预填充文件
@@ -308,7 +308,7 @@ export const InfoListType: Story = {
     }, []);
 
     return (
-      <Upload
+      <LocalUpload
         type="dragger"
         fileList={fileList}
         setFileList={setFileList}
@@ -328,10 +328,10 @@ export const InfoListType: Story = {
 export const CustomButtonStyle: Story = {
   name: "自定义按钮样式",
   render: () => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
 
     return (
-      <Upload
+      <LocalUpload
         type="button"
         fileList={fileList}
         setFileList={setFileList}
@@ -353,16 +353,16 @@ export const CustomButtonStyle: Story = {
 export const WithRemoveCallback: Story = {
   name: "文件移除回调",
   render: () => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
     const [removedFiles, setRemovedFiles] = useState<string[]>([]);
 
-    const handleRemove = (file: UploadFile) => {
+    const handleRemove = (file: LocalUploadFile) => {
       setRemovedFiles((prev) => [file.name]);
     };
 
     return (
       <div>
-        <Upload
+        <LocalUpload
           type="dragger"
           fileList={fileList}
           setFileList={setFileList}
