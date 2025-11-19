@@ -24,15 +24,15 @@ import { TFunction } from "i18next";
 import _ from "lodash";
 import React, { useState } from "react";
 
-import { useFileCountErrorClear, useFileValidation } from "./Upload.hooks";
-import { FileInfoWrapperStyle } from "./Upload.style";
+import { useFileCountErrorClear, useFileValidation } from "./LocalUpload.hooks";
+import { FileInfoWrapperStyle } from "./LocalUpload.style";
 import type {
-  UploadButtonProps,
-  UploadDraggerProps,
-  UploadFile,
-  UploadFileInfoProps,
-  UploadFileListProps,
-} from "./Upload.type";
+  LocalUploadButtonProps,
+  LocalUploadDraggerProps,
+  LocalUploadFile,
+  LocalUploadFileInfoProps,
+  LocalUploadFileListProps,
+} from "./LocalUpload.type";
 
 const STATUS_ICON_MAP = {
   error: ExclamationErrorCircleFill16RedIcon,
@@ -58,9 +58,11 @@ const createBeforeUploadHandler = ({
   t,
   checkSingleSelectCount = false,
 }: {
-  fileList: UploadFile[];
-  setFileList: (files: UploadFile[]) => void;
-  validate: UploadDraggerProps["validate"] | UploadButtonProps["validate"];
+  fileList: LocalUploadFile[];
+  setFileList: (files: LocalUploadFile[]) => void;
+  validate:
+    | LocalUploadDraggerProps["validate"]
+    | LocalUploadButtonProps["validate"];
   maxCount: number;
   isSingleSelect: boolean;
   setError: (error: string) => void;
@@ -75,7 +77,7 @@ const createBeforeUploadHandler = ({
       } else {
         setError("");
       }
-      const _file = file as UploadFile;
+      const _file = file as LocalUploadFile;
       _file.fileStatus = validate ? "need-validate" : "success";
       setFileList([_file]);
       return false;
@@ -87,14 +89,14 @@ const createBeforeUploadHandler = ({
       setError("");
     }
 
-    const _file = file as UploadFile;
+    const _file = file as LocalUploadFile;
     _file.fileStatus = validate ? "need-validate" : "success";
     const index = _fileList.findIndex((f) => f.uid === _file.uid);
     if (index !== -1) {
       const newList = _.uniqBy(
         [...fileList, ..._fileList.slice(0, index + 1)],
         "uid",
-      ) as UploadFile[];
+      ) as LocalUploadFile[];
       setFileList(newList);
     }
     return false;
@@ -124,7 +126,7 @@ export const UploadDescription: React.FC<{
 };
 
 export const UploadButton: React.FC<
-  UploadButtonProps & { children?: React.ReactNode }
+  LocalUploadButtonProps & { children?: React.ReactNode }
 > = ({
   children,
   hideIcon = false,
@@ -192,7 +194,7 @@ export const UploadButton: React.FC<
 };
 
 export const UploadDragger: React.FC<
-  UploadDraggerProps & { children?: React.ReactNode }
+  LocalUploadDraggerProps & { children?: React.ReactNode }
 > = ({
   children,
   className,
@@ -264,7 +266,7 @@ export const UploadDragger: React.FC<
     ? fileList[0]?.fileStatus || "success"
     : undefined;
 
-  const FileInfo: React.FC<{ file: UploadFile }> = ({ file }) => {
+  const FileInfo: React.FC<{ file: LocalUploadFile }> = ({ file }) => {
     const fileStatus = file.fileStatus || "success";
     return (
       <>
@@ -328,7 +330,7 @@ export const UploadDragger: React.FC<
   );
 };
 
-export const UploadFileInfo: React.FC<UploadFileInfoProps> = ({
+export const UploadFileInfo: React.FC<LocalUploadFileInfoProps> = ({
   file,
   removeFile,
   disabled,
@@ -338,7 +340,7 @@ export const UploadFileInfo: React.FC<UploadFileInfoProps> = ({
   const handleRemove = () => {
     removeFile(file.uid ?? "");
     if (onRemove && "fileStatus" in file) {
-      onRemove(file as UploadFile);
+      onRemove(file as LocalUploadFile);
     }
   };
 
@@ -385,9 +387,9 @@ export const UploadFileInfo: React.FC<UploadFileInfoProps> = ({
 };
 
 export const FileListItem: React.FC<{
-  file: UploadFile;
+  file: LocalUploadFile;
   removeFile: (id: string) => void;
-  onRemove?: (file: UploadFile) => void;
+  onRemove?: (file: LocalUploadFile) => void;
 }> = ({ file, removeFile, onRemove }) => {
   const fileStatus = file.fileStatus || "success";
   const { t } = useParrotTranslation();
@@ -438,7 +440,7 @@ export const FileListItem: React.FC<{
   );
 };
 
-export const UploadFileList: React.FC<UploadFileListProps> = ({
+export const UploadFileList: React.FC<LocalUploadFileListProps> = ({
   className,
   fileList,
   removeFile,
