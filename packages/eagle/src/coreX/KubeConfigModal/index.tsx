@@ -1,28 +1,28 @@
+import {
+  ClipboardCopy16GradientBlueIcon,
+  ClipboardCopy16GradientGrayIcon,
+} from "@cloudtower/icons-react";
+import { cx } from "@linaria/core";
+import { Button, Icon, Loading, message, Typo, usePopModal } from "@src/core";
+import LegacyModal from "@src/core/LegacyModal";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import React, { useCallback } from "react";
-import { Button, Typo, usePopModal, Loading, message, Icon } from "@src/core";
-import Modal from "@src/core/Modal";
 
 import {
-  ClipboardCopy16GradientGrayIcon,
-  ClipboardCopy16GradientBlueIcon,
-} from "@cloudtower/icons-react";
-import useParrotTranslation from "@src/hooks/useParrotTranslation";
-import { cx } from "@linaria/core";
-import { download, copy } from "./utils";
-import {
-  KubeConfigModalProps,
-  ErrorContentProps,
-} from "./KubeConfigModal.type";
-import {
-  ErrorWrapper,
   ErrorContentWrapper,
-  KubeConfigModalStyle,
-  KubeConfigWrapperStyle,
-  KubeConfigTitleStyle,
-  KubeConfigTipStyle,
+  ErrorWrapper,
   KubeConfigContentStyle,
   KubeConfigFooterStyle,
+  KubeConfigModalStyle,
+  KubeConfigTipStyle,
+  KubeConfigTitleStyle,
+  KubeConfigWrapperStyle,
 } from "./KubeConfigModal.style";
+import {
+  ErrorContentProps,
+  KubeConfigModalProps,
+} from "./KubeConfigModal.type";
+import { copy, download } from "./utils";
 
 const ErrorContent: React.FunctionComponent<ErrorContentProps> = (props) => {
   const { refetch, errorText } = props;
@@ -73,7 +73,7 @@ const KubeConfigModal: React.FC<KubeConfigModalProps> = ({
   }, [data, popModal, downloadName]);
 
   return (
-    <Modal
+    <LegacyModal
       visible
       fullscreen
       className={KubeConfigModalStyle}
@@ -133,7 +133,7 @@ const KubeConfigModal: React.FC<KubeConfigModalProps> = ({
           </>
         )}
       </div>
-    </Modal>
+    </LegacyModal>
   );
 };
 

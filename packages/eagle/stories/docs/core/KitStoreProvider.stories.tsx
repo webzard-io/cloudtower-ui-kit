@@ -1,4 +1,4 @@
-import { Modal } from "@src/core";
+import { LegacyModal } from "@src/core";
 import Button from "@src/core/Button";
 import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
 import ModalStack from "@src/core/ModalStack";
@@ -14,9 +14,9 @@ const Demo = (props: { name?: string }) => {
           //@ts-ignore
           component: (props: { name: string; onClose: () => void }) => {
             return (
-              <Modal onCancel={props.onClose}>
+              <LegacyModal onCancel={props.onClose}>
                 <div>{props.name}</div>
-              </Modal>
+              </LegacyModal>
             );
           },
           props: {

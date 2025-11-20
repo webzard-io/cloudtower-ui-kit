@@ -1,7 +1,10 @@
 import { CloseCircleFilled } from "@ant-design/icons";
 import Button from "@src/core/Button";
 import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
-import Modal, { ModalProps, WizardSteps } from "@src/core/Modal";
+import LegacyModal, {
+  LegacyModalProps,
+  WizardSteps,
+} from "@src/core/LegacyModal";
 import ModalStack from "@src/core/ModalStack";
 import { ModalWrapper } from "@src/core/Styled";
 import Tooltip from "@src/core/Tooltip";
@@ -14,7 +17,7 @@ const AsideModal: React.FC<{ onClose: () => void; steps: WizardSteps }> = ({
 }) => {
   const [current, setCurrent] = useState(0);
   return (
-    <Modal
+    <LegacyModal
       title="StepsModal"
       className={ModalWrapper}
       fullscreen
@@ -44,13 +47,40 @@ const AsideModal: React.FC<{ onClose: () => void; steps: WizardSteps }> = ({
       }}
     >
       <div>common Area</div>
-    </Modal>
+    </LegacyModal>
   );
 };
 
-const story: Meta<ModalProps> = {
-  title: "Core/Modal",
-  component: Modal,
+/**
+ * ⚠️ **此组件已废弃，不再维护**
+ *
+ * LegacyModal 组件已被标记为废弃。请使用以下替代方案：
+ * - 普通对话框：使用 `MediumDialog` 或 `SmallDialog`
+ * - 全屏对话框：使用 `ImmersiveDialog`
+ * - 向导式对话框：使用 `WizardDialog`
+ *
+ * 此组件仅为了保持向后兼容性而保留，不建议在新代码中使用。
+ */
+const story: Meta<LegacyModalProps> = {
+  title: "Core/LegacyModal (Deprecated) | 弹窗（已废弃）",
+  component: LegacyModal,
+  tags: ["deprecated"],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+⚠️ **此组件已废弃，不再维护**
+
+请使用以下替代方案：
+- 普通对话框：\`MediumDialog\` / \`SmallDialog\`
+- 全屏对话框：\`ImmersiveDialog\`
+- 向导式对话框：\`WizardDialog\`
+
+此组件仅为了保持向后兼容性而保留，不建议在新代码中使用。
+        `,
+      },
+    },
+  },
   decorators: [
     (Story) => {
       return (
@@ -154,7 +184,7 @@ export const CloseAllModal = () => {
     () =>
       ({ closeAllModal }) => {
         return (
-          <Modal
+          <LegacyModal
             title="Test Reset Modal"
             showOk={false}
             showCancel={false}
@@ -163,7 +193,7 @@ export const CloseAllModal = () => {
             <Button type="link" onClick={() => closeAllModal()}>
               close all modal
             </Button>
-          </Modal>
+          </LegacyModal>
         );
       },
     [],
