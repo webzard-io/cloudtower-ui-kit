@@ -1,9 +1,9 @@
 import { parrotI18n } from "@cloudtower/parrot";
-import { InputNumber, Switch, useMessage } from "@src/core";
-import UIKitProvider from "@src/UIKitProvider";
+import { BasicCTError, InputNumber, Switch, useMessage } from "@src/core";
+import UIKitProvider, { IProps } from "@src/UIKitProvider";
 import { CoreMeta } from "@stories/types";
 import { StoryObj } from "@storybook/react";
-import { Button, Space } from "antd";
+import { Button, message as AntdMessage, Space } from "antd";
 import React, { ReactNode, useState } from "react";
 
 /**
@@ -35,12 +35,14 @@ export default meta;
 
 type Story = StoryObj<typeof UIKitProvider>;
 
-const BasicInfoButton = () => {
+const BasicInfoButton: React.FC<{
+  infoContent?: Parameters<typeof AntdMessage.info>[0];
+}> = ({ infoContent }) => {
   const message = useMessage();
   return (
     <Button
       onClick={() => {
-        message.info(parrotI18n.t("common.error_message"));
+        message.info(infoContent ?? parrotI18n.t("common.error_message"));
       }}
     >
       Show A Message
@@ -95,10 +97,21 @@ export const BasicError: Story = {
   },
 };
 
-const MessageButton = (args: any) => {
+const MessageButton: React.FC<
+  IProps & {
+    infoContent?: Parameters<typeof AntdMessage.info>[0];
+  }
+> = ({ infoContent, ...args }) => {
   return (
-    <UIKitProvider {...args}>
-      <BasicInfoButton />
+    <UIKitProvider
+      {...args}
+      config={{
+        config: {
+          CTErrorI18nNs: "CustomCTError",
+        },
+      }}
+    >
+      <BasicInfoButton infoContent={infoContent} />
     </UIKitProvider>
   );
 };
@@ -191,5 +204,28 @@ export const BatchMessage: Story = {
   },
   render: (args) => {
     return <MessageButton {...args} />;
+  },
+};
+
+export const CTError: Story = {
+  name: "响应 cloudtower error code",
+  args: {
+    message: {
+      batch: batchHelper,
+    },
+  },
+  render: (args) => {
+    return (
+      <MessageButton
+        {...args}
+        infoContent={
+          <BasicCTError
+            error={{
+              code: "CUSTOM_ERROR",
+            }}
+          />
+        }
+      />
+    );
   },
 };

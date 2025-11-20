@@ -49,8 +49,11 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
   }, [batchMessage, kit]);
 
   useEffect(() => {
-    _message.config(omit(message, "batch"));
-  }, [message]);
+    _message.config({
+      ...omit(message, "batch"),
+      configProviderProps: config,
+    });
+  }, [message, config]);
 
   useEffect(() => {
     if (parrotI18n.language !== lng) {
@@ -60,18 +63,11 @@ const UIKitProvider = (props: PropsWithChildren<IProps>) => {
 
   return (
     <kitContext.Provider value={_kit}>
-      <MessageContext.Provider value={batchMessage ?? _message}>
-        <ConfigProvider
-          antd4Configs={{
-            ...config?.antd4Configs,
-          }}
-          antd5Configs={{
-            ...config?.antd5Configs,
-          }}
-        >
+      <ConfigProvider {...config}>
+        <MessageContext.Provider value={batchMessage ?? _message}>
           {children}
-        </ConfigProvider>
-      </MessageContext.Provider>
+        </MessageContext.Provider>
+      </ConfigProvider>
     </kitContext.Provider>
   );
 };

@@ -13,6 +13,9 @@ initParrotI18n({
         INVALID_PARAMETER: "Invalid parameter",
         INVALID_PARAMETER_DETAIL: "Invalid field: {field}",
       },
+      CustomCTError: {
+        CUSTOM_ERROR: "Custom error",
+      },
       test: {
         error_message_batch: "Batch Error Message {count}",
       },
@@ -22,6 +25,9 @@ initParrotI18n({
         AXIOS_NETWORK_ERROR: "网络错误",
         INVALID_PARAMETER: "参数无效，请检查输入",
         INVALID_PARAMETER_DETAIL: "无效字段: {field}",
+      },
+      CustomCTError: {
+        CUSTOM_ERROR: "自定义错误",
       },
       test: {
         error_message_batch: "错误信息 {count}",

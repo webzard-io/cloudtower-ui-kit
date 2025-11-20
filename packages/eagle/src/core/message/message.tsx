@@ -10,10 +10,19 @@ import {
   NotificationInstance as RCNotificationInstance,
 } from "rc-notification/lib/Notification";
 import * as React from "react";
+import { ConfigProvider, type ConfigProps } from "../ConfigProvider";
 
 type NoticeType = "info" | "success" | "error" | "warning" | "loading";
 
 export const DEFAULT_DURATION = 3;
+
+// ConfigProvider 包裹组件，用于在 message 中传递 context
+const ConfigProviderWrapper: React.FC<React.PropsWithChildren<ConfigProps>> = (
+  props,
+) => {
+  const { children, ...configProps } = props;
+  return <ConfigProvider {...configProps}>{children}</ConfigProvider>;
+};
 
 let messageInstance: RCNotificationInstance | null;
 let defaultDuration = DEFAULT_DURATION;
@@ -24,6 +33,7 @@ let transitionName = "move-up";
 let getContainer: () => HTMLElement;
 let maxCount: number;
 let rtl = false;
+let globalConfigProviderProps: ConfigProps | null = null;
 
 export function getKeyThenIncreaseKey() {
   return key++;
@@ -37,6 +47,10 @@ export interface ConfigOptions {
   transitionName?: string;
   maxCount?: number;
   rtl?: boolean;
+  /**
+   * ConfigProvider 的配置，用于在 message 中传递 context
+   */
+  configProviderProps?: ConfigProps;
 }
 
 function setMessageConfig(options: ConfigOptions) {
@@ -63,6 +77,10 @@ function setMessageConfig(options: ConfigOptions) {
   }
   if (options.rtl !== undefined) {
     rtl = options.rtl;
+  }
+  if (options.configProviderProps !== undefined) {
+    globalConfigProviderProps = options.configProviderProps;
+    messageInstance = null; // delete messageInstance for new configProviderProps
   }
 }
 
@@ -143,17 +161,28 @@ function getRCNoticeProps(args: ArgsProps, prefixCls: string): NoticeContent {
     [`${prefixCls}-${args.type}`]: args.type,
     [`${prefixCls}-rtl`]: rtl === true,
   });
+
+  // 包裹内容，使其能够访问 ConfigProvider 的 context
+  const wrappedContent = globalConfigProviderProps ? (
+    <ConfigProviderWrapper {...globalConfigProviderProps}>
+      <div className={messageClass}>
+        {args.icon || (IconComponent && <IconComponent />)}
+        <span>{args.content}</span>
+      </div>
+    </ConfigProviderWrapper>
+  ) : (
+    <div className={messageClass}>
+      {args.icon || (IconComponent && <IconComponent />)}
+      <span>{args.content}</span>
+    </div>
+  );
+
   return {
     key: args.key,
     duration,
     style: args.style || {},
     className: args.className,
-    content: (
-      <div className={messageClass}>
-        {args.icon || (IconComponent && <IconComponent />)}
-        <span>{args.content}</span>
-      </div>
-    ),
+    content: wrappedContent,
     onClose: args.onClose,
   };
 }
