@@ -1,5 +1,6 @@
 import Loading from "@src/core/Loading";
 import { Typo } from "@src/core/Typo";
+import useLegacyComponentWarning from "@src/hooks/useLegacyComponentWarning";
 import { Select as AntdSelect } from "antd";
 import cs from "classnames";
 import _ from "lodash";
@@ -68,6 +69,10 @@ const LegacySelect: LegacySelectComponentType<any, HTMLElement> = ({
         );
     }
   }, [selectRef, placeholder]);
+
+  useLegacyComponentWarning(
+    "Warning: LegacySelect is deprecated and will be removed in future versions. Please use Select instead.",
+  );
 
   return (
     <AntdSelect

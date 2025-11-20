@@ -3,6 +3,7 @@ import Button from "@src/core/Button";
 import { useKitDispatch, useKitSelector } from "@src/core/KitStoreProvider";
 import Steps from "@src/core/Steps";
 import { WizardBody } from "@src/core/Styled";
+import useLegacyComponentWarning from "@src/hooks/useLegacyComponentWarning";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { KitRootState, ModalActions } from "@src/store";
 import { Modal as AntdModal } from "antd";
@@ -25,15 +26,9 @@ import { LegacyModalProps } from "./LegacyModal.type";
 const LegacyModal: React.FC<LegacyModalProps> = (props) => {
   const { t } = useParrotTranslation();
 
-  // Show deprecation warning in development
-  useEffect(() => {
-    if (process.env.NODE_ENV === "development") {
-      console.warn(
-        "Warning: LegacyModal is deprecated and will be removed in future versions. " +
-          "Please use Dialog/MediumDialog/SmallDialog/ImmersiveDialog/WizardDialog instead.",
-      );
-    }
-  }, []);
+  useLegacyComponentWarning(
+    "Warning: LegacyModal is deprecated and will be removed in future versions. Please use Dialog/MediumDialog/SmallDialog/ImmersiveDialog/WizardDialog instead.",
+  );
 
   const {
     error,
