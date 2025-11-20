@@ -62,11 +62,11 @@ import Form from "./core/Form";
 import Frequency from "./core/Frequency";
 import Input from "./core/Input";
 import InputGroup from "./core/InputGroup";
+import LegacyModal from "./core/LegacyModal";
 import LegacySelect from "./core/LegacySelect";
 import Link from "./core/Link";
 import Loading from "./core/Loading";
 import message from "./core/message";
-import Modal from "./core/Modal";
 import Pagination from "./core/Pagination";
 import Percent from "./core/Percent";
 import Radio, { RadioButton, RadioGroup } from "./core/Radio";
@@ -122,7 +122,7 @@ export function getAntdKit(): Kit {
     row: Row,
     col: Col,
     button: Button,
-    modal: Modal,
+    legacyModal: LegacyModal,
     dropdown: Dropdown,
     switch: Switch,
     tooltip: Tooltip,

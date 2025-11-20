@@ -25,11 +25,11 @@ import type {
   IStepsProps,
   ITimeProps,
   ITimeZoneSelectProps,
+  LegacyModalProps,
   LegacySelectComponentType,
   LinkComponentType,
   LoadingComponentType,
   MessageApi,
-  ModalProps,
   PaginationProps,
   PercentFn,
   RadioButtonProps,
@@ -215,7 +215,7 @@ export interface Kit<V = any, T extends HTMLElement = HTMLElement> {
   selectOptGroup: import("rc-select/lib/OptGroup").OptionGroupFC;
   table: TableComponent;
   button: React.FC<ButtonProps>;
-  modal: React.FC<ModalProps>;
+  legacyModal: React.FC<LegacyModalProps>;
   dropdown: React.FC<DropDownProps>;
   switch: React.FC<SwitchProps>;
   tooltip: React.FC<TooltipProps>;

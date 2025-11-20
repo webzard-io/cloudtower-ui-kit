@@ -22,7 +22,18 @@ export type WizardSteps = {
   disabled?: boolean;
 }[];
 
-export type ModalProps = Omit<AntdModalProps, "okType"> & {
+/**
+ * @deprecated This component is deprecated and will be removed in future versions.
+ * Please use the following alternatives:
+ * - For standard dialogs: use `MediumDialog` or `SmallDialog`
+ * - For fullscreen dialogs: use `ImmersiveDialog`
+ * - For wizard-style dialogs: use `WizardDialog`
+ * @see MediumDialog
+ * @see SmallDialog
+ * @see ImmersiveDialog
+ * @see WizardDialog
+ */
+export type LegacyModalProps = Omit<AntdModalProps, "okType"> & {
   /** 确认按钮加载状态 */
   confirmLoading?: boolean;
   /** 是否全屏显示 */
