@@ -33,6 +33,8 @@ export interface SmallDialogProps {
   children?: React.ReactNode;
   /** 展示在 modal footer 的错误文案 */
   error?: React.ReactNode;
+  /** 是否隐藏 footer */
+  hideFooter?: boolean;
   /** 是否展示在 modal footer 的错误图标, 默认展示 */
   showFooterErrorIcon?: boolean;
   /** 确认按钮加载状态 */

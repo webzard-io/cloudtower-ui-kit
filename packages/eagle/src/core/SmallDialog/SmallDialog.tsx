@@ -6,24 +6,25 @@ import {
 import { cx } from "@linaria/core";
 import { Antd5Flex, Button, Icon, Typo } from "@src/core";
 import { usePopModal } from "@src/core/KitStoreProvider";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { Modal } from "antd";
-import React from "react";
 import cls from "classnames";
+import React from "react";
+
 import OverflowTooltip from "../../coreX/OverflowTooltip";
 import { Show } from "../../coreX/Show";
+import {
+  CloseIconStyle,
+  DialogStyle,
+  ErrorTextStyle,
+  FooterStyle,
+} from "./SmallDialog.style";
 import { SmallDialogProps } from "./SmallDialog.type";
 import {
-  DialogStyle,
-  FooterStyle,
-  ErrorTextStyle,
-  CloseIconStyle,
-} from "./SmallDialog.style";
-import {
-  ModelTitleSkeleton,
   ModelContentSkeleton,
   ModelInitializingError,
+  ModelTitleSkeleton,
 } from "./SmallDialog.widget";
-import useParrotTranslation from "@src/hooks/useParrotTranslation";
 
 const DefaultTitleRender: React.FC<{ title?: React.ReactNode }> = ({
   title,
@@ -47,6 +48,7 @@ export const SmallDialog: React.FC<SmallDialogProps> = ({
   okButtonProps,
   cancelButtonProps,
   children,
+  hideFooter = false,
   showFooterErrorIcon = true,
   error,
   confirmLoading,
@@ -92,7 +94,9 @@ export const SmallDialog: React.FC<SmallDialogProps> = ({
         )
       }
       footer={
-        initializing ? null : (
+        initializing ? null : hideFooter ? (
+          <div></div>
+        ) : (
           <div
             className={cls(FooterStyle, footerClassName, {
               "has-error": !!error,
@@ -146,6 +150,7 @@ export const SmallDialog: React.FC<SmallDialogProps> = ({
       maskClosable={maskClosable}
       className={cls(DialogStyle, className, {
         "initializing-error": initializingError,
+        "no-footer": hideFooter,
       })}
       closeIcon={
         <Icon

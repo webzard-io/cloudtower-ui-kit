@@ -1,13 +1,12 @@
-import React, { useMemo } from "react";
-import { Button, Space } from "@src/core";
-import ModalStack from "@src/core/ModalStack";
-import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
-import { MediumDialog } from "@src/core";
-import { CoreMeta } from "@stories/types";
 import { css } from "@linaria/core";
-import { useMockQuery } from "@stories/utils";
-import { Color } from "@src/index";
+import { Button, Space } from "@src/core";
+import { MediumDialog } from "@src/core";
+import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
 import { MediumDialogProps } from "@src/core/MediumDialog/MediumDialog.type";
+import ModalStack from "@src/core/ModalStack";
+import { CoreMeta } from "@stories/types";
+import { useMockQuery } from "@stories/utils";
+import React, { useMemo } from "react";
 
 const StoryContainer = css`
   padding: 20px;
@@ -804,5 +803,73 @@ export const ContentFull = () => {
     >
       响应式对话框
     </Button>
+  );
+};
+
+/**
+ * 不展示 footer
+ */
+export const NoFooter = () => {
+  const pushModal = usePushModal();
+
+  const getLongContent = (length: number) => {
+    return Array.from({ length }, (_, i) => (
+      <p key={i}>
+        这是第 {i + 1}{" "}
+        段内容。在实际使用中，这里可能是用户协议、详细说明、配置信息等较长的文本内容。
+        SmallDialog 会自动处理内容溢出，显示滚动条以确保所有内容都可以被查看。
+      </p>
+    ));
+  };
+
+  return (
+    <Space direction="vertical" size={16}>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <MediumDialog
+                title="用户协议"
+                okText="同意并继续"
+                cancelText="不同意"
+                hideFooter
+              >
+                <h4>服务条款</h4>
+                {getLongContent(1)}
+                <p style={{ fontWeight: "bold", color: "#1890ff" }}>
+                  请仔细阅读以上条款，点击"同意并继续"表示您已阅读并同意所有条款。
+                </p>
+              </MediumDialog>
+            ),
+            props: {},
+          })
+        }
+      >
+        不展示 footer
+      </Button>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <MediumDialog
+                title="用户协议"
+                okText="同意并继续"
+                cancelText="不同意"
+                hideFooter
+              >
+                <h4>服务条款</h4>
+                {getLongContent(10)}
+                <p style={{ fontWeight: "bold", color: "#1890ff" }}>
+                  请仔细阅读以上条款，点击"同意并继续"表示您已阅读并同意所有条款。
+                </p>
+              </MediumDialog>
+            ),
+            props: {},
+          })
+        }
+      >
+        不展示 footer（长内容）
+      </Button>
+    </Space>
   );
 };

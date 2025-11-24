@@ -5,18 +5,19 @@ import {
 } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
 import Button from "@src/core/Button";
+import { default as Icon } from "@src/core/Icon";
 import { usePopModal } from "@src/core/KitStoreProvider";
 import { Typo } from "@src/core/Typo";
-import { default as Icon } from "@src/core/Icon";
 import OverflowTooltip from "@src/coreX/OverflowTooltip";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { Modal as AntdModal } from "antd";
 import cls from "classnames";
 import React, { useMemo } from "react";
+
 import {
+  ModelContentSkeleton,
   ModelInitializingError,
   ModelTitleSkeleton,
-  ModelContentSkeleton,
 } from "../SmallDialog/SmallDialog.widget";
 import {
   BodyStyle,
@@ -56,6 +57,7 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
     okText,
     cancelText,
     error,
+    hideFooter = false,
     showFooterErrorIcon = true,
     visible = true,
     isContentFull,
@@ -90,6 +92,8 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
     if (initializing) {
       return null;
     }
+
+    if (hideFooter) return <div></div>;
 
     return (
       footer || (
@@ -151,6 +155,7 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
     );
   }, [
     initializing,
+    hideFooter,
     footer,
     footerLeftAction,
     error,
@@ -185,6 +190,7 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
         className,
         {
           "initializing-error": initializingError,
+          "no-footer": hideFooter,
         },
       )}
       closeIcon={
