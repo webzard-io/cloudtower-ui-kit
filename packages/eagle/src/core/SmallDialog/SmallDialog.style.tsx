@@ -13,6 +13,7 @@ export const DialogStyle = css`
   --modal-content-padding-bottom: 32px;
   --modal-content-padding-x: 40px;
   --modal-footer-padding: 0 40px;
+  --modal-empty-footer-height: 32px;
 
   padding-bottom: 0;
 
@@ -86,6 +87,17 @@ export const DialogStyle = css`
     .ant-btn-quiet {
       color: ${Color.text.neutral.secondary};
       font-weight: 700;
+    }
+  }
+
+  &.no-footer {
+    .ant-modal-body {
+      padding-bottom: 0;
+    }
+    .ant-modal-footer {
+      box-shadow: none;
+      height: var(--modal-empty-footer-height);
+      content: "";
     }
   }
 `;

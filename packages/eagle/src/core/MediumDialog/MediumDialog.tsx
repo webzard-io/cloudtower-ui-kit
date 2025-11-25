@@ -1,6 +1,7 @@
-import React from "react";
 import { css, cx } from "@linaria/core";
 import { SmallDialog } from "@src/core/SmallDialog";
+import React from "react";
+
 import { Typo } from "../Typo";
 import { MediumDialogProps } from "./MediumDialog.type";
 

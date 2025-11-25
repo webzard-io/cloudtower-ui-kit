@@ -19,6 +19,8 @@ export type ImmersiveDialogProps = React.PropsWithChildren<
     okButtonProps?: ButtonProps;
     /** 错误信息 */
     error?: React.ReactNode;
+    /** 是否隐藏 footer */
+    hideFooter?: boolean;
     /** 是否展示在 modal footer 的错误图标, 默认展示 */
     showFooterErrorIcon?: boolean;
     /** 确定按钮的回调 */

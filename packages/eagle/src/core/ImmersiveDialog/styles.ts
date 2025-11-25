@@ -5,6 +5,8 @@ export const ImmersiveDialogStyle = css`
   --modal-to-viewport-margin: 10px;
   --modal-body-padding-bottom: 40px;
   --modal-footer-height: 124px;
+  --modal-empty-footer-height: 40px;
+
   &.ant-modal {
     height: calc(100% - var(--modal-to-viewport-margin) * 2);
     width: calc(100% - var(--modal-to-viewport-margin) * 2);
@@ -71,6 +73,21 @@ export const ImmersiveDialogStyle = css`
       border-top: 1px solid rgba(225, 230, 241, 0.6);
       height: var(--modal-footer-height);
       padding: 24px 0 60px 0;
+    }
+
+    &.no-footer {
+      .ant-modal-body {
+        padding-bottom: 0;
+        .middle {
+          padding-bottom: 0;
+        }
+      }
+      .ant-modal-footer {
+        padding: 0;
+        border-top: none;
+        height: var(--modal-empty-footer-height);
+        content: "";
+      }
     }
   }
 `;
