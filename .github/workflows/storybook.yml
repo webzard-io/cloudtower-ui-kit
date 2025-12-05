@@ -2,7 +2,7 @@ name: storybook
 
 on:
   push:
-    branches: ["main", "next"]
+    branches: ["main", "next", "feat/dufs"]
 
 jobs:
   storybook-deploy:
