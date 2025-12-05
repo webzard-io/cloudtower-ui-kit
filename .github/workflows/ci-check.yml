@@ -22,7 +22,7 @@ jobs:
   #         pull-request-number: "${{ github.event.pull_request.number }}"
 
   test:
-    runs-on: [self-hosted, linux]
+    runs-on: ui-kit-minikube-runner
     strategy:
       matrix:
         node: [20]
@@ -47,7 +47,7 @@ jobs:
         run: yarn test:ci
   storybook-staging:
     name: Setup Storybook Staging
-    runs-on: [self-hosted, linux]
+    runs-on: ui-kit-minikube-runner
     strategy:
       matrix:
         node: [20]
