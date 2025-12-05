@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   # label-check:
-  #   runs-on: [self-hosted, linux]
+  #   runs-on: [self-hosted]
   #   name: Check PR Label
   #   steps:
   #     - uses: jesusvasquez333/verify-pr-label-action@v1.4.0
@@ -22,7 +22,7 @@ jobs:
   #         pull-request-number: "${{ github.event.pull_request.number }}"
 
   test:
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted]
     strategy:
       matrix:
         node: [20]
@@ -45,9 +45,9 @@ jobs:
         run: yarn bundlewatch
       - name: Test
         run: yarn test:ci
-  storybook-staging:
-    name: Setup Storybook Staging
-    runs-on: [self-hosted, linux]
+  storybook-deploy:
+    name: Deploy Storybook to dufs
+    runs-on: [self-hosted]
     strategy:
       matrix:
         node: [20]
@@ -58,12 +58,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-      - name: Set Up Storybook Staging
-        uses: amondnet/vercel-action@v20
-        id: vercel-action-staging
+      - name: Deploy Storybook
+        uses: ./.github/actions/deploy-storybook
         with:
+          branch-name: ${{ github.head_ref }}
+          comment-pr: 'true'
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-token: ${{ secrets.VERCEL_TOKEN_V2 }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_V2 }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID_V2 }}
-          alias-domains: ${{ env.alias-domains }}
