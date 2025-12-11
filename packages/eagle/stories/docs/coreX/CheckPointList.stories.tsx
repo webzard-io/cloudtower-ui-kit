@@ -8,6 +8,7 @@ import {
 } from "@cloudtower/icons-react";
 import { CheckPointList } from "@src/coreX/CheckPointList";
 import { type StoryObj } from "@storybook/react";
+import { loremIpsum } from "lorem-ipsum";
 import React, { useState } from "react";
 
 /**
@@ -28,7 +29,7 @@ const meta = {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/file/your-figma-url-here",
+      url: "https://www.figma.com/design/rluK6VNfUWM9RDNPbalJV7/%E6%A3%80%E6%9F%A5%E9%A1%B9%E5%88%97%E8%A1%A8?node-id=6038-9540&t=867kGtbKQJqdRSPF-0",
     },
   },
 };
@@ -477,5 +478,83 @@ export const CustomSwitchCallback: Story = {
         />
       </div>
     );
+  },
+};
+
+/**
+ * Long Text Example
+ * Demonstrates how the component handles long text in descriptions and alert messages
+ */
+export const LongText: Story = {
+  name: "Long Text Example",
+  args: {
+    title: "System Health Check",
+    border: true,
+    items: [
+      {
+        description: loremIpsum({
+          count: 3,
+          units: "sentences",
+        }),
+        status: "success",
+        tagProps: {
+          color: "green",
+          icon: <CheckmarkDoneSuccessCircleFill16GreenIcon />,
+          children: "Passed",
+        },
+      },
+      {
+        description: loremIpsum({
+          count: 2,
+          units: "sentences",
+        }),
+        status: "failed",
+        tagProps: {
+          color: "red",
+          icon: <XmarkFailedSeriousWarningFill16RedIcon />,
+          children: "Failed",
+        },
+        alertProps: {
+          message: loremIpsum({
+            count: 4,
+            units: "sentences",
+          }),
+          type: "error",
+          showIcon: true,
+        },
+      },
+      {
+        description: loremIpsum({
+          count: 5,
+          units: "sentences",
+        }),
+        status: "warning",
+        tagProps: {
+          color: "yellow",
+          icon: <NoticeTriangleFill16YellowIcon />,
+          children: "Warning",
+        },
+        alertProps: {
+          message: loremIpsum({
+            count: 3,
+            units: "sentences",
+          }),
+          type: "warning",
+          showIcon: true,
+        },
+      },
+      {
+        description: loremIpsum({
+          count: 2,
+          units: "sentences",
+        }),
+        status: "loading",
+        tagProps: {
+          color: "blue",
+          icon: <Loading16GradientBlueIcon />,
+          children: "Loading",
+        },
+      },
+    ],
   },
 };
