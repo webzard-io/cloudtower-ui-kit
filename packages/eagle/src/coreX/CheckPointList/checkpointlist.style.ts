@@ -53,7 +53,7 @@ export const CheckPointItemStyle = css`
   }
   .icon-wrapper {
     align-self: flex-start;
-    margin-top: calc((18px - 16px) / 2);
+    margin-top: 1px; /* 1px: (18-16)/2,  18 is the height of the icon, 16 is the height of the icon */
   }
   .description {
     flex: 1 1 0;
@@ -66,7 +66,7 @@ export const CheckPointItemStyle = css`
   .ant-flex {
     flex-shrink: 0;
     align-self: flex-start;
-    margin-top: calc((18px - 18px) / 2);
+    margin-top: 0px; /* 0px: (18-18)/2,  18 is the height of the tag, 18 is the line-height */
   }
 `;
 
