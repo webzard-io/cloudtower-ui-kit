@@ -49,10 +49,24 @@ export const CheckPointItemStyle = css`
   .ant-list-item {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
+  }
+  .icon-wrapper {
+    align-self: flex-start;
+    margin-top: calc((18px - 16px) / 2);
   }
   .description {
-    flex-grow: 1;
+    flex: 1 1 0;
+    min-width: 0;
     margin-left: 8px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .ant-space,
+  .ant-flex {
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: calc((18px - 18px) / 2);
   }
 `;
 
