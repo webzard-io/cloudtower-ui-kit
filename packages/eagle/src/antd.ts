@@ -15,6 +15,7 @@ import { ModalProps as AntdModalProps } from "antd/lib/modal";
 import { FC } from "react";
 
 export {
+  AutoComplete as AntdAutoComplete,
   Badge as AntdBadge,
   Button as AntdButton,
   Checkbox as AntdCheckbox,
@@ -33,7 +34,6 @@ export {
   TimePicker as AntdTimePicker,
   Tooltip as AntdTooltip,
   TreeSelect as AntdTreeSelect,
-  AutoComplete,
   Col,
   DatePicker,
   Dropdown,

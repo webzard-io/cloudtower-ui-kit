@@ -15,6 +15,7 @@ export * from "./Antd5Dropdown";
 export * from "./Antd5Flex";
 export * from "./Antd5Tree";
 export * from "./Arch";
+export * from "./AutoComplete";
 export * from "./Badge";
 export * from "./Banner";
 export * from "./BaseIcon";
