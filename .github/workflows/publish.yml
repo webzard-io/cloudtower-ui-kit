@@ -93,7 +93,7 @@ jobs:
           link_names: 1
           payload: |
             {
-              "text": "Get New Version At ${{ env.CURRENT_VERSION }} <http://192.168.26.29:7002/package/@cloudtower/eagle|${{ env.CURRENT_VERSION }}> <@${{ env.SLACK_USER }}>"
+              "text": "Get New Version At ${{ env.CURRENT_VERSION }} <http://npmjs.com/package/@cloudtower/eagle|${{ env.CURRENT_VERSION }}> <@${{ env.SLACK_USER }}>"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
