@@ -35,25 +35,3 @@ jobs:
         run: yarn bundlewatch
       - name: Test
         run: yarn test:ci
-  storybook-deploy:
-    name: Deploy Storybook
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [20]
-    steps:
-      - name: checkout
-        uses: actions/checkout@v4
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Deploy Storybook
-        uses: ./.github/actions/deploy-storybook
-        with:
-          branch-name: ${{ github.head_ref }}
-          comment-pr: 'true'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
