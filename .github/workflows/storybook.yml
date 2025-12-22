@@ -6,8 +6,8 @@ on:
 
 jobs:
   storybook-deploy:
-    name: Deploy Storybook to dufs
-    runs-on: [self-hosted]
+    name: Deploy Storybook
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [20]
@@ -23,4 +23,7 @@ jobs:
         with:
           branch-name: ${{ github.ref_name }}
           comment-pr: 'false'
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
 

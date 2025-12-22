@@ -1,5 +1,5 @@
-name: 'Deploy Storybook to dufs'
-description: 'Build and deploy Storybook to dufs server'
+name: 'Deploy Storybook to Vercel'
+description: 'Build and deploy Storybook to Vercel'
 
 inputs:
   branch-name:
@@ -12,6 +12,15 @@ inputs:
   github-token:
     description: 'GitHub token for PR comments'
     required: false
+  vercel-token:
+    description: 'Vercel token for deployment'
+    required: true
+  vercel-project-id:
+    description: 'Vercel project ID'
+    required: true
+  vercel-org-id:
+    description: 'Vercel organization ID'
+    required: true
 
 runs:
   using: 'composite'
@@ -34,50 +43,18 @@ runs:
         cd packages/eagle
         yarn build-storybook
 
-    - name: Upload to dufs
-      shell: bash
-      run: |
-        STORYBOOK_DIR="packages/eagle/storybook-static"
-        TARGET_URL="http://file.smtx.io/cloudtower-ui-kit/${{ inputs.branch-name }}/"
-        find $STORYBOOK_DIR -type f | while read file; do
-          curl -T "$file" "${TARGET_URL}${file#$STORYBOOK_DIR/}"
-        done
-
-    - name: Comment PR
-      if: inputs.comment-pr == 'true' && github.event_name == 'pull_request'
-      uses: actions/github-script@v7
+    - name: Deploy to Vercel
+      uses: amondnet/vercel-action@v20
+      id: vercel-deploy
       with:
         github-token: ${{ inputs.github-token || github.token }}
-        script: |
-          const storybookUrl = 'http://file.smtx.io/cloudtower-ui-kit/${{ inputs.branch-name }}/index.html';
-          const body = `📚 Storybook has been deployed!\n\n🔗 Preview URL: ${storybookUrl}\n\nBranch: \`${{ inputs.branch-name }}\``;
-          
-          // Check if comment already exists
-          const comments = await github.rest.issues.listComments({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            issue_number: context.issue.number,
-          });
-          
-          const botComment = comments.data.find(comment => 
-            comment.user.type === 'Bot' && comment.body.includes('Storybook has been deployed')
-          );
-          
-          if (botComment) {
-            // Update existing comment
-            await github.rest.issues.updateComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              comment_id: botComment.id,
-              body: body
-            });
-          } else {
-            // Create new comment
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: body
-            });
-          }
+        vercel-token: ${{ inputs.vercel-token }}
+        vercel-project-id: ${{ inputs.vercel-project-id }}
+        vercel-org-id: ${{ inputs.vercel-org-id }}
+        vercel-args: '--prod'
+        working-directory: packages/eagle/storybook-static
+      env:
+        VERCEL_TOKEN: ${{ inputs.vercel-token }}
+        VERCEL_ORG_ID: ${{ inputs.vercel-org-id }}
+        VERCEL_PROJECT_ID: ${{ inputs.vercel-project-id }}
 
