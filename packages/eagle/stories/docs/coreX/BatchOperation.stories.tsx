@@ -1,4 +1,8 @@
-import { Tag16GradientBlueIcon } from "@cloudtower/icons-react";
+import {
+  Tag16GradientBlueIcon,
+  TrashBinDelete16RedIcon,
+  VmRecycleBinMoveToBin16RedIcon,
+} from "@cloudtower/icons-react";
 import { Icon } from "@src/core";
 import BatchOperation from "@src/coreX/BatchOperation";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -53,6 +57,33 @@ export const Demo: Story = {
         icon: <Icon src={Tag16GradientBlueIcon} />,
         title: "编辑标签",
         onClick() {},
+      },
+      {
+        key: "delete",
+        icon: <Icon src={TrashBinDelete16RedIcon} />,
+        title: "删除",
+        danger: true,
+        disabled: false,
+        children: [
+          {
+            key: "Delete",
+            icon: <Icon src={TrashBinDelete16RedIcon} />,
+            title: "永久删除",
+            danger: true,
+            disabled: false,
+            count: 2,
+            onClick: () => {},
+          },
+          {
+            key: "MoveToRecycleBin",
+            icon: <Icon src={VmRecycleBinMoveToBin16RedIcon} />,
+            title: "移至回收站",
+            danger: true,
+            disabled: false,
+            count: 4,
+            onClick: () => {},
+          },
+        ],
       },
     ],
   },
