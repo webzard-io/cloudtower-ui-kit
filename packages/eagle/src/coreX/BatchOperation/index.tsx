@@ -83,6 +83,12 @@ const SelectToolbar = css`
   }
 `;
 
+const MenuItemInnerStyle = css`
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+`;
+
 export const renderBatchOperationMenuItem = (act: Action, idx = 0) => {
   if (act === "divider") {
     return <AntdMenu.Divider key={`divider-${idx}`} />;
@@ -106,7 +112,7 @@ export const renderBatchOperationMenuItem = (act: Action, idx = 0) => {
   }
   const Inner: React.FC = (props) => {
     return (
-      <span {...props}>
+      <span className={MenuItemInnerStyle} {...props}>
         {act.icon ? React.cloneElement(act.icon, {}, act.title) : null}
         {act?.count && <span>{act.count}</span>}
       </span>
