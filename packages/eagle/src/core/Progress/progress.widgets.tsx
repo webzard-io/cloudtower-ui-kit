@@ -113,5 +113,7 @@ function getComponent(type: ComponentType, props: unknown): React.ReactElement {
     case "tag":
       const { color, ...restTagProps } = props as TagProps;
       return <Tag {...restTagProps} color={color || "blue"} />;
+    default:
+      return <></>;
   }
 }
