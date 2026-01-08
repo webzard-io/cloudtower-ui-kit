@@ -6,6 +6,7 @@ on:
       - main
       - next
       - v4.4
+      - v4.7.2
     types: [closed]
 
 jobs:
