@@ -68,8 +68,22 @@ const Divider = css`
 
 const SingleRejectContent: React.FC<{
   content: string | string[];
-  listType?: "ordered" | "unordered";
-}> = ({ content, listType = "ordered" }) => {
+  listType?: "ordered" | "unordered" | "resource";
+  resourceIcon?: React.ReactNode;
+}> = ({ content, listType = "ordered", resourceIcon }) => {
+  if (listType === "resource" && Array.isArray(content)) {
+    return (
+      <div className={cx(MultiRejectContentList)}>
+        {content.map((name, index) => (
+          <li className={Typo.Label.l4_regular} key={index}>
+            {resourceIcon}
+            <span>{name}</span>
+          </li>
+        ))}
+      </div>
+    );
+  }
+
   if (Array.isArray(content) && content.length > 1) {
     if (listType === "ordered") {
       return (
@@ -134,10 +148,18 @@ export const RejectDialog: React.FC<RejectDialogProps> = (props) => {
     switch (props.type) {
       case RejectDialogType.Single:
         return (
-          <SingleRejectContent
-            content={props.content}
-            listType={props.listType}
-          />
+          <>
+            {props.secondaryDesc && (
+              <div className={cx(SecondaryDesc, Typo.Label.l4_regular)}>
+                {props.secondaryDesc}
+              </div>
+            )}
+            <SingleRejectContent
+              content={props.content}
+              listType={props.listType}
+              resourceIcon={props.resourceIcon}
+            />
+          </>
         );
       case RejectDialogType.All:
       case RejectDialogType.Part:
