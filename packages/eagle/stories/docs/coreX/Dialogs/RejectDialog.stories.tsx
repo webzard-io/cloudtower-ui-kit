@@ -1,4 +1,7 @@
-import { Vm16Icon } from "@cloudtower/icons-react";
+import {
+  EverouteServices16GradientGreyIcon,
+  Vm16Icon,
+} from "@cloudtower/icons-react";
 import { css, cx } from "@linaria/core";
 import { Button, Icon, Space } from "@src/core";
 import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
@@ -122,6 +125,29 @@ export const SingleRejectMultiReasons = () => {
         }
       >
         删除虚拟机（无序列表）
+      </Button>
+      <Button
+        type="primary"
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <RejectDialog
+                type={RejectDialogType.Single}
+                title="无法删除虚拟机"
+                description="无法删除虚拟机 test。"
+                secondaryDesc="已被以下系统服务使用，请全部取消关联后再尝试删除。"
+                content={["ER1", "ER2", "ER3"]}
+                listType="resource"
+                resourceIcon={<Icon src={EverouteServices16GradientGreyIcon} />}
+              />
+            ),
+            props: {
+              name: "ResourceDialog",
+            },
+          })
+        }
+      >
+        删除虚拟机（关联资源）
       </Button>
     </Space>
   );

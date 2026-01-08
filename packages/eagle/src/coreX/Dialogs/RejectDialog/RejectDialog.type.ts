@@ -36,7 +36,11 @@ interface SingleRejectDialogProps extends BaseRejectDialogProps {
   /** 拒绝原因，可以是单个字符串或字符串数组 */
   content: string | string[];
   /** 列表类型 */
-  listType?: "ordered" | "unordered";
+  listType?: "ordered" | "unordered" | "resource";
+  /** 灰色的进一步描述 */
+  secondaryDesc?: React.ReactNode;
+  /** 资源图标 */
+  resourceIcon?: React.ReactNode;
 }
 
 interface MultiAllRejectDialogProps extends BaseRejectDialogProps {
