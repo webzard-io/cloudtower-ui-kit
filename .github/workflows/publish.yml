@@ -12,7 +12,7 @@ on:
 jobs:
   publish:
     if: github.event.pull_request.merged == true
-    runs-on: [self-hosted, linux]
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [20]
@@ -73,9 +73,6 @@ jobs:
           max_attempts: 3  # 设置最大重试次数
           command: |
             yarn lerna publish from-package --no-verify-access --yes
-      - name: sync cnpm
-        if: steps.tag_check.outputs.exists_tag == 'false'
-        run: curl --location --request PUT 'http://192.168.26.29:7002/sync/@cloudtower/eagle?sync_upstream=true'
       - name: Get Output
         if: steps.tag_check.outputs.exists_tag == 'false'
         uses: dawidd6/action-download-artifact@v6
@@ -97,7 +94,7 @@ jobs:
           link_names: 1
           payload: |
             {
-              "text": "Get New Version At ${{ env.CURRENT_VERSION }} <http://192.168.26.29:7002/package/@cloudtower/eagle|${{ env.CURRENT_VERSION }}> <@${{ env.SLACK_USER }}>"
+              "text": "Get New Version At ${{ env.CURRENT_VERSION }} <http://npmjs.com/package/@cloudtower/eagle|${{ env.CURRENT_VERSION }}> <@${{ env.SLACK_USER }}>"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

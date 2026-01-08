@@ -11,18 +11,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # label-check:
-  #   runs-on: [self-hosted, linux]
-  #   name: Check PR Label
-  #   steps:
-  #     - uses: jesusvasquez333/verify-pr-label-action@v1.4.0
-  #       with:
-  #         github-token: "${{ secrets.GITHUB_TOKEN }}"
-  #         valid-labels: "feat, fix, chore, breaking change, refactor, enhancement, doc, storybook"
-  #         pull-request-number: "${{ github.event.pull_request.number }}"
-
   test:
-    runs-on: [self-hosted, linux]
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [20]
@@ -45,31 +35,3 @@ jobs:
         run: yarn bundlewatch
       - name: Test
         run: yarn test:ci
-  storybook-staging:
-    name: Setup Storybook Staging
-    runs-on: [self-hosted, linux]
-    strategy:
-      matrix:
-        node: [20]
-    steps:
-      - name: checkout
-        uses: actions/checkout@v4
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Set alias-domains variable
-        id: set-alias-domains
-        run: |
-          if [ "${{ github.event.pull_request.base.ref }}" == "next" ]; then
-            echo "alias-domains=next-cloudtower-uikit.vercel.app" >> $GITHUB_ENV
-          fi
-      - name: Set Up Storybook Staging
-        uses: amondnet/vercel-action@v20
-        id: vercel-action-staging
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-token: ${{ secrets.VERCEL_TOKEN_V2 }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_V2 }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID_V2 }}
-          alias-domains: ${{ env.alias-domains }}
