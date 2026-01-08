@@ -7083,7 +7083,6 @@ textarea.ant-picker-input > input {
 }
 .ant-dropdown-menu-item .ant-dropdown-menu-submenu-arrow,
 .ant-dropdown-menu-submenu-title .ant-dropdown-menu-submenu-arrow {
-  position: absolute;
   right: 8px;
 }
 .ant-dropdown-menu-item .ant-dropdown-menu-submenu-arrow-icon,
