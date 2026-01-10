@@ -4,7 +4,7 @@ import Button from "@src/core/Button";
 import { Cascader } from "@src/core/Cascader";
 import { CascaderProps } from "@src/core/Cascader/cascader.type";
 import { CascaderDoubleRowOption } from "@src/core/Cascader/cascader.widget";
-import SearchInput from "@src/core/SearchInput";
+import { SearchInput } from "@src/core/SearchInput";
 import Tag from "@src/core/Tag";
 import Token from "@src/core/Token";
 import OverflowTooltip from "@src/coreX/OverflowTooltip";

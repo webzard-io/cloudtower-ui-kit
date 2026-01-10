@@ -170,7 +170,6 @@ export { default as Overflow } from "./Overflow";
 export { default as Pagination } from "./Pagination";
 export { default as Percent } from "./Percent";
 export { default as Radio } from "./Radio";
-export { default as SearchInput } from "./SearchInput";
 export { default as Second } from "./Second";
 export { default as SegmentControl } from "./SegmentControl";
 export { default as Select } from "./Select";
