@@ -70,7 +70,7 @@ import message from "./core/message";
 import Pagination from "./core/Pagination";
 import Percent from "./core/Percent";
 import Radio, { RadioButton, RadioGroup } from "./core/Radio";
-import SearchInput from "./core/SearchInput";
+import { SearchInput } from "./core/SearchInput";
 import Second from "./core/Second";
 import SegmentControl from "./core/SegmentControl";
 import Select from "./core/Select";

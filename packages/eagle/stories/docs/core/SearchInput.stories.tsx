@@ -1,5 +1,5 @@
 import { Button } from "@src/core";
-import SearchInput from "@src/core/SearchInput";
+import { SearchInput } from "@src/core/SearchInput";
 import { CoreMeta } from "@stories/types";
 import type { StoryObj } from "@storybook/react";
 import React, { useState } from "react";
@@ -51,12 +51,16 @@ export const Basic: Story = {
       },
     },
   },
-  render: (args) => {
+  args: {
+    debounceWait: 0,
+  },
+  render: ({ debounceWait, ...restProps }) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [value, setValue] = useState("");
     return (
       <SearchInput
-        {...args}
+        debounceWait={debounceWait ?? 0}
+        {...restProps}
         value={value}
         onChange={(v) => {
           console.log(v);
@@ -120,6 +124,7 @@ export const ExternallyControlled: Story = {
             value={value}
             current={current} // 通过 prop 控制当前索引
             total={total}
+            debounceWait={0}
             onChange={(v) => {
               console.log("搜索:", v);
               setValue(v);
@@ -158,5 +163,26 @@ export const ExternallyControlled: Story = {
         </div>
       </div>
     );
+  },
+};
+
+/**
+ * 带最近搜索的示例
+ * 展示如何使用 enableRecentSearch prop 启用最近搜索功能
+ */
+export const withRecentSearch: Story = {
+  name: "带最近搜索",
+  parameters: {
+    docs: {
+      description: {
+        story: "启用最近搜索功能，显示最近搜索的记录。",
+      },
+    },
+  },
+  args: {
+    debounceWait: 400,
+    enableRecentSearch: true,
+    recentSearchLocalStorageKey: "test-recent-search",
+    maxRecentCount: 5,
   },
 };

@@ -8,7 +8,7 @@ import cls from "classnames";
 import cs from "classnames";
 import React, { useState } from "react";
 
-import SearchInput from "../SearchInput";
+import { SearchInput } from "../SearchInput";
 import { Typo } from "../Typo";
 import {
   CascaderDefaultHeader,

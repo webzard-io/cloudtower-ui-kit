@@ -2,9 +2,13 @@ import { InputProps } from "antd/lib/input";
 
 import { SrcType } from "../BaseIcon";
 
-export type SearchInputProps = Omit<InputProps, "onChange"> & {
+export type SearchInputProps = Omit<InputProps, "value" | "onChange"> & {
   /**
-   * 防抖延迟的时间，单位为毫秒
+   * 配置 value 时，需把 debounceWait 设置为 0 ，否则输入时会有卡顿的问题
+   */
+  value?: InputProps["value"];
+  /**
+   * 防抖延迟的时间，单位为毫秒，默认为 300ms
    */
   debounceWait?: number;
   /**
@@ -64,6 +68,19 @@ export type SearchInputProps = Omit<InputProps, "onChange"> & {
    * 搜索框高度，默认为 276
    */
   width?: number | string;
+
+  /**
+   * 是否开启最近搜索功能
+   */
+  enableRecentSearch?: boolean;
+  /**
+   * 最近搜索的本地存储键
+   */
+  recentSearchLocalStorageKey?: string;
+  /**
+   * 最多展示多少条最新的搜索记录，默认 5 条
+   */
+  maxRecentCount?: number;
 };
 
 export type SearchInputComponentType = React.FC<SearchInputProps>;

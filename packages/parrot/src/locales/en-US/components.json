@@ -91,5 +91,6 @@
   "db_migrated": "<0>{{text}}</0> migrated to <1>{{version}}</1>",
   "empty": "No history records",
   "view_detail": "View Details",
-  "initializing_failed": "Failed to load the page. Please try again."
+  "initializing_failed": "Failed to load the page. Please try again.",
+  "recent_search": "Recent search"
 }

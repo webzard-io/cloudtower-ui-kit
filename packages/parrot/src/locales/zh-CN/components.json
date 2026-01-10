@@ -86,5 +86,6 @@
   "db_migrated": "<0>{{text}}</0>迁移到<1>{{version}}</1>",
   "empty": "暂无历史记录",
   "view_detail": "查看详情",
-  "initializing_failed": "加载时遇到问题，请重试"
+  "initializing_failed": "加载时遇到问题，请重试",
+  "recent_search": "最近搜索"
 }
