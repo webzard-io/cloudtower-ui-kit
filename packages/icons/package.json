@@ -5,11 +5,14 @@
   "private": true,
   "scripts": {
     "prebuild": "rimraf ./dist",
-    "build-icons": "svgo --config=svgo.yaml -f ./src/ -o ./dist --pretty --indent=2 --quiet"
+    "build-icons": "svgo --config=svgo.yaml -f ./src/ -o ./dist --pretty --indent=2 --quiet",
+    "sync-icons": "figma-export use-config .figmaexportrc.mjs"
   },
   "devDependencies": {
     "rimraf": "^3.0.0",
-    "svgo": "^1.0.0"
+    "svgo": "^1.0.0",
+    "@figma-export/cli": "^6.3.0",
+    "@figma-export/types": "^6.2.4"
   },
   "exports": {
     ".": "./dist"
