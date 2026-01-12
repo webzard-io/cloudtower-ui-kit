@@ -1,13 +1,14 @@
 import { css, cx } from "@linaria/core";
+import { SmallDialog } from "@src/core/SmallDialog/SmallDialog";
 import { Typo } from "@src/core/Typo";
 import React from "react";
 
-import { SmallDialog } from "@src/core/SmallDialog/SmallDialog";
 import {
   RejectContent,
   RejectDialogProps,
   RejectDialogType,
 } from "./RejectDialog.type";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
 
 const ContentList = css`
   color: $text-light-secondary;
@@ -27,8 +28,15 @@ const MultiRejectContentList = css`
   border-radius: 6px;
   color: $gray-a60-8;
 
+  .icon-wrapper {
+    margin-top: 1px; // The text line height is 18px, the icon height is 16px, so a 1px offset is needed
+    margin-right: 4px;
+  }
+
   li {
     margin-bottom: 4px;
+    display: flex;
+    align-items: flex-start;
 
     &:last-child {
       margin-bottom: 0;
@@ -38,6 +46,10 @@ const MultiRejectContentList = css`
 
 const Description = css`
   margin-bottom: 4px;
+`;
+
+const PartialDescription = css`
+  margin-bottom: 8px;
 `;
 
 const SecondaryDesc = css`
@@ -72,18 +84,35 @@ const SingleRejectContent: React.FC<{
 
 const MultiRejectContent: React.FC<{
   content: RejectContent;
-}> = ({ content }) => (
-  <div className={cx(MultiRejectContentList)}>
-    {Object.entries(content).map(([name, reasons], index) => (
-      <li className={Typo.Label.l4_regular} key={index}>
-        {name}: {reasons.join("; ")}
-      </li>
-    ))}
-  </div>
-);
+  resourceIcon?: React.ReactNode;
+}> = ({ content, resourceIcon }) => {
+  const { t } = useParrotTranslation();
+  return (
+    <div className={cx(MultiRejectContentList)}>
+      {Object.entries(content).map(([name, reasons], index) => (
+        <li className={Typo.Label.l4_regular} key={index}>
+          {resourceIcon}
+          <span>
+            {name +
+              t("common.colon_with_space") +
+              reasons.join(t("common.semicolon_with_space"))}
+          </span>
+        </li>
+      ))}
+    </div>
+  );
+};
 
 export const RejectDialog: React.FC<RejectDialogProps> = (props) => {
-  const { title, cancelText, description, className, footerClassName } = props;
+  const {
+    title,
+    cancelText,
+    beforeDescription,
+    description,
+    className,
+    footerClassName,
+    okButtonProps,
+  } = props;
 
   const renderContent = () => {
     switch (props.type) {
@@ -101,12 +130,15 @@ export const RejectDialog: React.FC<RejectDialogProps> = (props) => {
             {props.type === RejectDialogType.Part && (
               <>
                 <div className={Divider} />
-                <div className={cx(Description, Typo.Label.l3_regular)}>
+                <div className={cx(PartialDescription, Typo.Label.l3_regular)}>
                   {props.partialDescription}
                 </div>
               </>
             )}
-            <MultiRejectContent content={props.content} />
+            <MultiRejectContent
+              content={props.content}
+              resourceIcon={props.resourceIcon}
+            />
           </>
         );
       case RejectDialogType.Custom:
@@ -123,11 +155,13 @@ export const RejectDialog: React.FC<RejectDialogProps> = (props) => {
       onOk={props.type === RejectDialogType.Part ? props.onOk : undefined}
       okButtonProps={{
         danger: props.type === RejectDialogType.Part,
+        ...okButtonProps,
       }}
       onCancel={props.onCancel}
       className={className}
       footerClassName={footerClassName}
     >
+      {beforeDescription}
       {description && (
         <div className={cx(Description, Typo.Label.l3_regular)}>
           {description}
