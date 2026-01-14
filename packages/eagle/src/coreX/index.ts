@@ -4,6 +4,7 @@ export * from "./ChartWithTooltip";
 export * from "./CheckPointList";
 export * from "./CircleLoading";
 export * from "./common";
+export * from "./Copy";
 export * from "./Counting";
 export * from "./CronCalendar";
 export * from "./CronPlan";
