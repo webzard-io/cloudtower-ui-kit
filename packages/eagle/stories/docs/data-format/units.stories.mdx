@@ -1,0 +1,135 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="数值展示 / Duration | 持续时间展示" />
+
+## 概述
+
+Duration 组件用于格式化并展示持续时间（毫秒），支持多个时间单位的组合展示。该组件提供了统一的 API 和样式，支持国际化、缩写、自定义样式等功能。
+
+## Duration 组件
+
+Duration 组件用于展示持续时间（毫秒），支持多个时间单位的组合展示。
+
+**特性：**
+- 支持多个时间单位组合展示（如：1 小时 30 分钟）
+- 可自定义最大展示单位数量
+- 支持缩写形式
+- 支持自定义最小单位
+- 支持零值隐藏单位
+- 支持自定义渲染函数
+
+**查看完整文档和示例：**
+- [Duration 组件详情](./?path=/docs/core-duration-持续时间展示--docs)
+
+## formatDuration 函数
+
+`formatDuration` 是一个工具函数，用于将毫秒数格式化为多个时间单位的组合。
+
+### 函数签名
+
+```typescript
+function formatDuration(
+  milliseconds: number,
+  options?: {
+    maxDisplayUnits?: number;  // 最大展示单位数量，默认为 2
+    minUnit?: "year" | "month" | "week" | "day" | "hour" | "minute" | "second" | "millisecond";  // 最小展示单位，默认为 "second"（秒）
+  }
+): FormatDurationItem[]
+```
+
+### 参数说明
+
+- `milliseconds`: 需要格式化的毫秒数
+- `options.maxDisplayUnits`: 最大展示单位数量，默认为 2。例如设置为 3 时，可以展示 "1天 1小时 1分钟"
+- `options.minUnit`: 最小展示单位，默认为 `"second"`。小于该单位的时间会被忽略
+
+### 返回值
+
+返回一个 `FormatDurationItem[]` 数组，每个元素包含：
+- `value`: 数值
+- `unit`: 时间单位（`DurationUnit` 枚举值）
+
+### 使用示例
+
+```typescript
+import { formatDuration } from "@cloudtower/eagle";
+
+// 基础使用：默认展示最多 2 个单位
+formatDuration(3661000);
+// 返回: [{ value: 1, unit: "hour" }, { value: 1, unit: "minute" }]
+
+// 展示多个单位
+formatDuration(90061000, { maxDisplayUnits: 3 });
+// 返回: [{ value: 1, unit: "day" }, { value: 1, unit: "hour" }, { value: 1, unit: "minute" }]
+
+// 指定最小单位
+formatDuration(5000);
+// 返回: [{ value: 5, unit: "second" }]
+
+// 忽略小于最小单位的时间（使用字符串字面量，无需导入枚举）
+formatDuration(1500, { minUnit: "second" });
+// 返回: [{ value: 1, unit: "second" }] (500ms 被忽略)
+```
+
+## useFormatDuration Hook
+
+`useFormatDuration` 是一个 React Hook，用于在组件中格式化持续时间。它基于 `formatDuration` 函数，并提供了国际化支持。
+
+### Hook 签名
+
+```typescript
+function useFormatDuration(
+  milliseconds: number,
+  options?: {
+    maxDisplayUnits?: number;      // 最大展示单位数量，默认为 2
+    useAbbreviation?: boolean;      // 是否使用简写表述，默认为 false
+    minUnit?: "year" | "month" | "week" | "day" | "hour" | "minute" | "second" | "millisecond";  // 最小展示单位，默认为 "second"
+  }
+): {
+  parts: FormatDurationPart[];
+}
+```
+
+### 参数说明
+
+- `milliseconds`: 需要格式化的毫秒数
+- `options.maxDisplayUnits`: 最大展示单位数量，默认为 2
+- `options.useAbbreviation`: 是否使用简写表述，默认为 false。注意：当仅展示一个单位时，会自动使用全称（忽略此参数）
+- `options.minUnit`: 最小展示单位，默认为 `"second"`。可以使用字符串字面量，无需导入枚举
+
+### 返回值
+
+返回一个对象，包含：
+- `parts`: `FormatDurationPart[]` 数组，每个元素包含：
+  - `value`: 数值
+  - `unit`: 时间单位
+  - `i18nKey`: 国际化键名，可用于 `ParrotTrans` 组件
+
+### 使用示例
+
+```typescript
+import { useFormatDuration } from "@cloudtower/eagle";
+
+function MyComponent() {
+  const { parts } = useFormatDuration(3661000, {
+    maxDisplayUnits: 2,
+    useAbbreviation: false,
+    minUnit: "second",  // 使用字符串字面量，无需导入枚举
+  });
+  
+  // parts: [
+  //   { value: 1, unit: "hour", i18nKey: "unit.hour" },
+  //   { value: 1, unit: "minute", i18nKey: "unit.minute" }
+  // ]
+  
+  return (
+    <div>
+      {parts.map((part, index) => (
+        <span key={index}>
+          {part.value} {part.i18nKey}
+        </span>
+      ))}
+    </div>
+  );
+}
+```
