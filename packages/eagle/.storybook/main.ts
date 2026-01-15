@@ -64,15 +64,6 @@ const config: StorybookConfig = {
         },
       },
       plugins: [
-        {
-          name: "vite:react-babel",
-          enforce: "pre",
-          config: () => ({
-            esbuild: {
-              jsx: "transform",
-            },
-          }),
-        },
         linaria({
           preprocessor: (selector, cssText) => {
             const compileText = sass
