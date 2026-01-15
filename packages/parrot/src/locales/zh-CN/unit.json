@@ -1,12 +1,18 @@
 {
+    "year_abbreviation": "<0>{count}</0> <1>年</1>",
+    "month_abbreviation": "<0>{count}</0> <1>月</1>",
     "week_abbreviation": "<0>{count}</0> <1>周</1>",
     "day_abbreviation": "<0>{count}</0> <1>天</1>",
     "hour_abbreviation": "<0>{count}</0> <1>小时</1>",
-    "minute_abbreviation": "<0>{count}</0> <1>分钟</1>",
+    "minute_abbreviation": "<0>{count}</0> <1>分</1>",
     "second_abbreviation": "<0>{count}</0> <1>秒</1>",
+    "millisecond_abbreviation": "<0>{count}</0> <1>毫秒</1>",
+    "year": "<0>{count}</0> <1>年</1>",
+    "month": "<0>{count}</0> <1>月</1>",
     "week": "<0>{count}</0> <1>周</1>",
     "day": "<0>{count}</0> <1>天</1>",
     "hour": "<0>{count}</0> <1>小时</1>",
     "minute": "<0>{count}</0> <1>分钟</1>",
-    "second": "<0>{count}</0> <1>秒</1>"
+    "second": "<0>{count}</0> <1>秒</1>",
+    "millisecond": "<0>{count}</0> <1>毫秒</1>"
 }
