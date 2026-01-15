@@ -3,6 +3,7 @@ import BitPerSecond from "./BitPerSecond";
 import Bps from "./Bps";
 import Byte from "./Byte";
 import BytePerSecond from "./BytePerSecond";
+import Duration from "./Duration";
 import Frequency from "./Frequency";
 import Percent from "./Percent";
 import Second from "./Second";
@@ -38,6 +39,7 @@ export * from "./DeprecatedProgress";
 export * from "./DetailCard";
 export * from "./DonutChart";
 export * from "./DropdownMenu";
+export * from "./Duration";
 export * from "./Empty";
 export * from "./ErrorBoundary";
 export * from "./ExpandableList";
@@ -114,6 +116,7 @@ export const units = {
   BitPerSecond,
   Bit,
   Second,
+  Duration,
 };
 export { units as Units };
 
@@ -141,6 +144,7 @@ export { default as DeprecatedProgress } from "./DeprecatedProgress";
 export { default as DetailCard } from "./DetailCard";
 export { default as DonutChart } from "./DonutChart";
 export { default as DropdownMenu } from "./DropdownMenu";
+export { default as Duration } from "./Duration";
 export { default as Empty } from "./Empty";
 export { default as Error } from "./Error";
 export { default as ErrorBoundary } from "./ErrorBoundary";
