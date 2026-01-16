@@ -15,12 +15,22 @@
 
 ## 如何贡献代码
 
-### 如何新增 icon
+### 如何手动新增 icon
 
 - 将需要新增的 svg 图片放到 pacakge/icons/src 下。
 - 提交 pr 前可以切换到 packages/icons-react 执行 `yarn build`，执行成功，即表示 SVG 构建成功。然后切换至 packages/ealge 执行 `yarn storybook` 可以在 react-icons 下看到对应的 icon 效果。
 - 提交名称注意名称合法性，目前是会将 `x-y-z` 转换为 `XZY` 格式的组件。注意名称中不要以数字开头和带上 `-` 之外的标点符号。
 - 目前 icon 只支持 SVG 格式，非 SVG 格式的 icon 目前需要在自己的 repo 中通过 `require('demo.png')` 的方式进行使用
+
+### 如何通过 workflow 新增 ICON
+
+1. 进入到 [Sync Icons](https://github.com/webzard-io/cloudtower-ui-kit/actions/workflows/sync.yml) 的 workflow 界面
+
+2. 触发 workflow，填上 slack 通知用户和 pr 描述， 创建 pr 成功后，会在 slack channel 对应通知用户
+
+### 如何通过 slack 新增 ICON
+
+调用 hubby 执行 `@hubot UI-KIT sync-icon --description new-message --user xxx` 即可。 --description/--user 均为可选项，默认通知当前用户。
 
 ### 新增组件
 
