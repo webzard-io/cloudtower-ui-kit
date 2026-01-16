@@ -34,7 +34,7 @@ jobs:
       - name: Install deps
         run: yarn install --frozen-lockfile
       - name: Sync Icons
-        run: FIGMA_TOKEN=${{ secrets.FIGMA_TOKEN }} yarn sync-icons
+        run: FIGMA_TOKEN=${{ secrets.FIGMA_TOKEN }} yarn workspace @cloudtower/icons sync-icons
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v5

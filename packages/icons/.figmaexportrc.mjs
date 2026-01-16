@@ -212,8 +212,8 @@ const componentsConfig = {
       console.log("\nstyleKeys", styleKeys);
     },
   ],
-  concurrency: 6,
-  retries: 3,
+  concurrency: 3,
+  retries: 1,
 };
 
 export default {
