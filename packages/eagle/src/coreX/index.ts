@@ -33,6 +33,8 @@ export { default as BarChart } from "./BarChart";
 export { default as BatchOperation } from "./BatchOperation";
 export { default as ChartWithTooltip } from "./ChartWithTooltip";
 export { default as CircleLoading } from "./CircleLoading";
+export { default as CopyButton } from "./Copy/CopyButton";
+export { default as CopyTooltip } from "./Copy/CopyTooltip";
 export { default as Counting } from "./Counting";
 export { default as CronCalendar } from "./CronCalendar";
 export { default as CronPlan } from "./CronPlan";
