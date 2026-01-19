@@ -11569,5 +11569,12 @@
     "svgFileName": "vpc-system-network-16-yellow.svg",
     "hash": "7cf2b5e7dc9be1a51d3753816db7b096",
     "lastUpdated": "2026-01-12T08:26:13.433Z"
+  },
+  "10930:59131": {
+    "componentSetName": "Icon / Health Monitors",
+    "name": "Size=24, Fill=Gradient - Blue",
+    "svgFileName": "health-monitors-24-gradient-blue.svg",
+    "hash": "c4393c8ad79b9f80e8f65d1bab3314b4",
+    "lastUpdated": "2026-01-19T05:49:18.510Z"
   }
 }
