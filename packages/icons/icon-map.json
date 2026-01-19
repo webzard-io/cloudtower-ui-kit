@@ -10912,13 +10912,6 @@
     "hash": "1cd902655a2738048e27d19336674120",
     "lastUpdated": "2026-01-12T08:10:24.219Z"
   },
-  "10930:59131": {
-    "componentSetName": "Icon / Health Monitors",
-    "name": "Size=24, Fill=Gradient - Blue",
-    "svgFileName": "health-monitors-24-gradient-blue.svg",
-    "hash": "c4393c8ad79b9f80e8f65d1bab3314b4",
-    "lastUpdated": "2026-01-12T08:10:24.220Z"
-  },
   "10930:59133": {
     "componentSetName": "Icon / Health Monitors",
     "name": "Size=24, Fill=Ontint",
