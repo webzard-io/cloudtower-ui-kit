@@ -4,8 +4,8 @@ on:
   pull_request:
     branches:
       - main
-      - next
-      - v4.4
+      - 'v*-dev'
+      - 'v*-stable'
     types: [closed]
 
 jobs:
