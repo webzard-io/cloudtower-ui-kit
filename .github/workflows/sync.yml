@@ -72,7 +72,7 @@ jobs:
           link_names: 1
           payload: |
             {
-              "text": "🎨 Icons Synced! New PR created: <${{ steps.cpr.outputs.pull-request-url }}|#${{ steps.cpr.outputs.pull-request-number }}>\n${{ inputs.description || github.event.client_payload.description || 'Scheduled sync' }} ${{ steps.set_slack_user.outputs.slack_user_mention }}"
+              "text": "🎨 Icons Synced! New PR created: <${{ steps.cpr.outputs.pull-request-url }}|#${{ steps.cpr.outputs.pull-request-number }}>\n${{ toJSON(inputs.description || github.event.client_payload.description || 'Scheduled sync') }} ${{ steps.set_slack_user.outputs.slack_user_mention }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
