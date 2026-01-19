@@ -65,14 +65,26 @@ jobs:
           else
             echo "slack_user_mention=" >> $GITHUB_OUTPUT
           fi
+      - name: Build Slack Payload
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        id: build_payload
+        run: |
+          DESCRIPTION="${{ inputs.description || github.event.client_payload.description || 'Scheduled sync' }}"
+          PR_URL="${{ steps.cpr.outputs.pull-request-url }}"
+          PR_NUMBER="${{ steps.cpr.outputs.pull-request-number }}"
+          SLACK_USER_MENTION="${{ steps.set_slack_user.outputs.slack_user_mention }}"
+          
+          TEXT="🎨 Icons Synced! New PR created: <${PR_URL}|#${PR_NUMBER}>\n${DESCRIPTION} ${SLACK_USER_MENTION}"
+          
+          PAYLOAD=$(jq -n --arg text "$TEXT" '{text: $text}')
+          echo "payload<<EOF" >> $GITHUB_OUTPUT
+          echo "$PAYLOAD" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
       - name: Send to Slack
         if: ${{ steps.cpr.outputs.pull-request-number }}
         uses: slackapi/slack-github-action@v1.24.0
         with:
           link_names: 1
-          payload: |
-            {
-              "text": "🎨 Icons Synced! New PR created: <${{ steps.cpr.outputs.pull-request-url }}|#${{ steps.cpr.outputs.pull-request-number }}>\n${{ inputs.description || github.event.client_payload.description || 'Scheduled sync' }} ${{ steps.set_slack_user.outputs.slack_user_mention }}"
-            }
+          payload: ${{ steps.build_payload.outputs.payload }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
