@@ -50,29 +50,32 @@ jobs:
           body: |
             Sync Icons from figma
             - ${{ inputs.description || github.event.client_payload.description || 'Scheduled sync' }}
-            - @netweng @chenenpei @tanbowensg PTAL
+            - @netweng @chenenpei @tanboweng PTAL
       - name: Check outputs
         if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
-      - name: Set Slack User
-        id: set_slack_user
+      - name: Build Slack Message
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        id: build_slack_message
         run: |
+          DESCRIPTION="${{ inputs.description || github.event.client_payload.description || 'Scheduled sync' }}"
           SLACK_USER="${{ inputs.slack_user || github.event.client_payload.slack_user || '' }}"
+          PR_URL="${{ steps.cpr.outputs.pull-request-url }}"
+          PR_NUMBER="${{ steps.cpr.outputs.pull-request-number }}"
+          
+          MESSAGE="🎨 Icons Synced! New PR created: <${PR_URL}|#${PR_NUMBER}>\n${DESCRIPTION}"
+          
           if [ -n "$SLACK_USER" ]; then
-            echo "slack_user_mention=<@$SLACK_USER>" >> $GITHUB_OUTPUT
-          else
-            echo "slack_user_mention=" >> $GITHUB_OUTPUT
+            MESSAGE="${MESSAGE} <@${SLACK_USER}>"
           fi
+          
+          echo "message=${MESSAGE}" >> $GITHUB_OUTPUT
       - name: Send to Slack
         if: ${{ steps.cpr.outputs.pull-request-number }}
         uses: slackapi/slack-github-action@v1.24.0
         with:
-          link_names: 1
-          payload: |
-            {
-              "text": "🎨 Icons Synced! New PR created: <${{ steps.cpr.outputs.pull-request-url }}|#${{ steps.cpr.outputs.pull-request-number }}>\n${{ inputs.description || github.event.client_payload.description || 'Scheduled sync' }} ${{ steps.set_slack_user.outputs.slack_user_mention }}"
-            }
+          slack-message: ${{ steps.build_slack_message.outputs.message }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
