@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/icons",
-  "version": "0.34.31",
+  "version": "481.0.0",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -9,10 +9,10 @@
     "sync-icons": "figma-export use-config .figmaexportrc.mjs"
   },
   "devDependencies": {
-    "rimraf": "^3.0.0",
-    "svgo": "^1.0.0",
     "@figma-export/cli": "^6.3.0",
-    "@figma-export/types": "^6.2.4"
+    "@figma-export/types": "^6.2.4",
+    "rimraf": "^3.0.0",
+    "svgo": "^1.0.0"
   },
   "exports": {
     ".": "./dist"
