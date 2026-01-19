@@ -85,6 +85,7 @@ export const CascaderDefaultHeader = css`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid $gray-30;
+  gap: 4px;
 `;
 
 export const CascaderDropdown = css`
