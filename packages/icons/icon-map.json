@@ -11590,5 +11590,19 @@
     "svgFileName": "custom-network-16-gradient-blue.svg",
     "hash": "24e0201eaf2689c6f3980a7df6fed240",
     "lastUpdated": "2026-01-20T01:21:56.115Z"
+  },
+  "19029:26": {
+    "componentSetName": "Icon / custom.network",
+    "name": "Size=16, Fill=Red",
+    "svgFileName": "custom-network-16-red.svg",
+    "hash": "6f373cd5c1856604e0f74491a236869a",
+    "lastUpdated": "2026-01-20T05:47:51.067Z"
+  },
+  "19029:28": {
+    "componentSetName": "Icon / custom.network",
+    "name": "Size=16, Fill=Yellow",
+    "svgFileName": "custom-network-16-yellow.svg",
+    "hash": "28cb93823df0f6902cbc48b1bf11ca36",
+    "lastUpdated": "2026-01-20T05:47:51.067Z"
   }
 }
