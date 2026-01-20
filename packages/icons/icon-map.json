@@ -11576,5 +11576,33 @@
     "svgFileName": "vpc-system-network-16-yellow.svg",
     "hash": "7cf2b5e7dc9be1a51d3753816db7b096",
     "lastUpdated": "2026-01-12T08:26:13.433Z"
+  },
+  "19029:22": {
+    "componentSetName": "Icon / custom.network",
+    "name": "Size=24, Fill=Gradient - Blue",
+    "svgFileName": "custom-network-24-gradient-blue.svg",
+    "hash": "0df580204c42c815c8f3c0439fccce59",
+    "lastUpdated": "2026-01-20T01:21:56.115Z"
+  },
+  "19029:24": {
+    "componentSetName": "Icon / custom.network",
+    "name": "Size=16, Fill=Gradient - Blue",
+    "svgFileName": "custom-network-16-gradient-blue.svg",
+    "hash": "24e0201eaf2689c6f3980a7df6fed240",
+    "lastUpdated": "2026-01-20T01:21:56.115Z"
+  },
+  "19029:26": {
+    "componentSetName": "Icon / custom.network",
+    "name": "Size=16, Fill=Red",
+    "svgFileName": "custom-network-16-red.svg",
+    "hash": "6f373cd5c1856604e0f74491a236869a",
+    "lastUpdated": "2026-01-20T01:21:56.116Z"
+  },
+  "19029:28": {
+    "componentSetName": "Icon / custom.network",
+    "name": "Size=16, Fill=Yellow",
+    "svgFileName": "custom-network-16-yellow.svg",
+    "hash": "28cb93823df0f6902cbc48b1bf11ca36",
+    "lastUpdated": "2026-01-20T01:21:56.116Z"
   }
 }
