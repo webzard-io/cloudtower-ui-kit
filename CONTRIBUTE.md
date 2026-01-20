@@ -30,7 +30,11 @@
 
 ### 如何通过 slack 新增 ICON
 
-调用 hubby 执行 `@hubot UI-KIT sync-icon --description new-message --user xxx` 即可。 --description/--user 均为可选项，默认通知当前用户。
+调用 hubby 执行 `@hubot UI-KIT sync-icon --description new-message --slack-user xxx --ref feat/111` 即可。 --description/--slack-user/--ref 均为可选项，默认通知当前用户和更新到 main 分支上。
+
+### 如何自动 rebase PR
+
+在 PR 的评论中输入 `/rebase` 即可自动 rebase PR。如需启用 autosquash，可使用 `/autosquash` 或 `/rebase-autosquash`。
 
 ### 新增组件
 
