@@ -195,7 +195,6 @@ export const TableFormWrapper = styled.div`
 export const AddRowButtonWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 8px;
   gap: 8px;
 
   button.ant-btn {
