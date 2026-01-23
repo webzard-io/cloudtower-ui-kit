@@ -11604,5 +11604,19 @@
     "svgFileName": "custom-network-16-yellow.svg",
     "hash": "28cb93823df0f6902cbc48b1bf11ca36",
     "lastUpdated": "2026-01-20T01:21:56.116Z"
+  },
+  "19047:43073": {
+    "componentSetName": "Icon / custom.network",
+    "name": "Size=16, Fill=Gradient - Gray",
+    "svgFileName": "custom-network-16-gradient-gray.svg",
+    "hash": "e101c46d3df48d22539a6d268c05840f",
+    "lastUpdated": "2026-01-23T01:23:14.072Z"
+  },
+  "19051:43075": {
+    "componentSetName": "Icon / custom.network",
+    "name": "Size=16, Fill=Ontint",
+    "svgFileName": "custom-network-16-ontint.svg",
+    "hash": "a994de9907bfdb5f552a347373bf8d55",
+    "lastUpdated": "2026-01-23T01:23:14.073Z"
   }
 }
