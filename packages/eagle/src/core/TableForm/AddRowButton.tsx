@@ -18,6 +18,7 @@ const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
       text,
       extraAction,
     },
+    style,
     columns,
     addData,
     data,
@@ -61,7 +62,7 @@ const AddRowButton: React.FC<AddRowButtonProps> = (props) => {
   return CustomizedButton ? (
     <CustomizedButton {...props} />
   ) : (
-    <AddRowButtonWrapper className={className}>
+    <AddRowButtonWrapper className={className} style={style}>
       <Button
         {...restButtonProps}
         type={restButtonProps.type || "ordinary"}
