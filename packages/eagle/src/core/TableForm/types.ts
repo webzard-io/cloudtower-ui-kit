@@ -144,6 +144,7 @@ export interface ColumnBodyCellProps {
 
 export type AddRowButtonProps = {
   config: RowAddConfigurations;
+  style?: React.CSSProperties;
   columns: TableFormColumn[];
   addData: (data: DataType[]) => void;
   data: DataType[];
