@@ -9,7 +9,7 @@ const VariableSassPath = path.resolve(
   __dirname,
   "../src/styles/common/variables.scss",
 );
-
+const ColorSassPath = path.resolve(__dirname, "../src/styles/token/color.scss");
 const AnimationPath = path.resolve(
   __dirname,
   "../src/styles/common/animation.scss",
@@ -45,6 +45,9 @@ const config: StorybookConfig = {
   },
   async viteFinal(config) {
     const varData = fs.readFileSync(VariableSassPath, {
+      encoding: "utf-8",
+    });
+    const colorData = fs.readFileSync(ColorSassPath, {
       encoding: "utf-8",
     });
     const animationData = fs.readFileSync(AnimationPath, {
@@ -83,6 +86,8 @@ const config: StorybookConfig = {
               .renderSync({
                 data: [
                   varData,
+                  `\n`,
+                  colorData,
                   `\n`,
                   animationData,
                   `${selector} { ${cssText} }`,
