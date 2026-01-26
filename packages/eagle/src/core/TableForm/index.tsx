@@ -204,6 +204,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
         )}
         {rowAddConfig?.addible ? (
           <AddRowButton
+            style={{ marginTop: hideEmptyTable && !data.length ? 0 : 8 }}
             config={rowAddConfig}
             addData={addData}
             columns={columns}
