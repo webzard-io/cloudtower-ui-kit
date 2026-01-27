@@ -542,6 +542,15 @@ describe("SimplePagination h5_css", () => {
             color: $text-light-general;
             opacity: 0.5;
           }
+
+          &:hover,
+          &:focus {
+            color: $link-outstandinghover;
+          }
+
+          &:active {
+            color: $link-outstandingactive;
+          }
         }
 
         &.ant-btn-primary {
@@ -1027,6 +1036,15 @@ describe("SimplePagination h5_css", () => {
           &[disabled] {
             color: $text-light-general;
             opacity: 0.5;
+          }
+
+          &:hover,
+          &:focus {
+            color: $link-outstandinghover;
+          }
+
+          &:active {
+            color: $link-outstandingactive;
           }
         }
 
@@ -1863,6 +1881,15 @@ describe("SimplePagination h5_css", () => {
           &[disabled] {
             color: $text-light-general;
             opacity: 0.5;
+          }
+
+          &:hover,
+          &:focus {
+            color: $link-outstandinghover;
+          }
+
+          &:active {
+            color: $link-outstandingactive;
           }
         }
 
