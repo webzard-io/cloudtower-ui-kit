@@ -450,6 +450,15 @@ describe("line chart h5_css", () => {
             color: $text-light-general;
             opacity: 0.5;
           }
+
+          &:hover,
+          &:focus {
+            color: $link-outstandinghover;
+          }
+
+          &:active {
+            color: $link-outstandingactive;
+          }
         }
 
         &.ant-btn-primary {
