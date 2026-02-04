@@ -155,7 +155,7 @@ export const MultiAreaBodyStyle = css`
       ) / 2
   );
   --side-panel-margin-top: 140px;
-  .left {
+  & > .left {
     width: var(--left-width);
     overflow: auto;
     position: fixed;
@@ -163,13 +163,13 @@ export const MultiAreaBodyStyle = css`
     top: calc(var(--modal-to-viewport-margin) + var(--side-panel-margin-top));
   }
 
-  .middle {
+  & > .middle {
     width: var(--content-width);
     overflow: auto;
     margin: auto;
   }
 
-  .right {
+  & > .right {
     width: var(--right-width);
     overflow: auto;
     position: fixed;
