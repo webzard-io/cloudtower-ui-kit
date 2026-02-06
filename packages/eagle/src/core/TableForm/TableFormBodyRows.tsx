@@ -99,7 +99,7 @@ const TableFormRow: React.FC<
     updateData,
     onBodyBlur,
     renderRowDescription,
-    validateAll,
+    validateAllCount,
     onValidate,
   } = props;
   const rowData = data[rowIndex];
@@ -154,7 +154,7 @@ const TableFormRow: React.FC<
         validateTriggerType={validateTriggerType}
         isRowError={!!rowError}
         getRowValidateResult={getRowValidateResult}
-        validateAll={validateAll}
+        validateAllCount={validateAllCount}
         error={cellError}
         onValidate={onValidate}
       />
