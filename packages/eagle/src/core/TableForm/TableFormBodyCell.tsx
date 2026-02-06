@@ -20,7 +20,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
     disabled,
     onChange,
     onBlur,
-    validateAll,
+    validateAllCount,
     error,
     onValidate,
   } = props;
@@ -78,11 +78,11 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
   );
 
   useEffect(() => {
-    if (validateAll) {
+    if (validateAllCount > 0) {
       setIsTouched(true);
       triggerValidate();
     }
-  }, [validateAll, triggerValidate, setIsTouched]);
+  }, [validateAllCount, triggerValidate, setIsTouched]);
 
   const _onChange = (value: unknown, data: DataType[]) => {
     const newData = data.map((row, i) =>
