@@ -137,7 +137,7 @@ export interface ColumnBodyCellProps {
   validateTriggerType: ValidateTriggerType;
   isRowError: boolean;
   getRowValidateResult: (rowData: DataType) => string | undefined;
-  validateAll: boolean;
+  validateAllCount: number;
   error?: string | null;
   onValidate?: (id: string, isValid: boolean) => void;
 }
@@ -178,7 +178,7 @@ export interface TableFormRowsProps
   latestData: DataType[];
   updateData: (data: DataType[]) => void;
   passwordVisible: boolean;
-  validateAll: boolean;
+  validateAllCount: number;
   draggable?: boolean;
   rowSplitType?: TableFormRowSplitType;
   onValidate?: (id: string, isValid: boolean) => void;
