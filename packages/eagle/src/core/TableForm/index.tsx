@@ -47,7 +47,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
     const [data, setData] = useState<DataType[]>(defaultData || []);
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [latestData, setLatestData] = useState<DataType[]>(defaultData || []);
-    const [validateAll, setValidateAll] = useState(false);
+    const [validateAllCount, setValidateAllCount] = useState(0);
     const rowSplitType = row?.splitType || props.rowSplitType || "border";
     const draggable = row?.draggable ?? props.draggable ?? false;
     const formValidMapRef = useRef<Record<string, boolean>>({});
@@ -118,7 +118,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
         },
         validateWholeFields() {
           formValidMapRef.current = {};
-          setValidateAll(true);
+          setValidateAllCount((c) => c + 1);
         },
         isValid() {
           return Object.values(formValidMapRef.current).every(
@@ -195,7 +195,7 @@ const TableForm = React.forwardRef<TableFormHandle, TableFormProps>(
                 updateData={updateData}
                 renderRowDescription={renderRowDescription}
                 rowValidator={rowValidator}
-                validateAll={validateAll}
+                validateAllCount={validateAllCount}
                 errors={errors}
                 onValidate={onValidate}
               />
