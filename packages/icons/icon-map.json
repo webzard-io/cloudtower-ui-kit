@@ -11625,5 +11625,19 @@
     "svgFileName": "shared-virtual-volume-16-ontint.svg",
     "hash": "3c35a0d23f234a1e550b12b623e84466",
     "lastUpdated": "2026-01-28T01:24:16.329Z"
+  },
+  "19186:29": {
+    "componentSetName": "Icon / os.linux.openkylin",
+    "name": "Size=16",
+    "svgFileName": "os-linux-openkylin-16.svg",
+    "hash": "1e08c20b502020bc914c2eee512894d5",
+    "lastUpdated": "2026-02-11T02:00:14.143Z"
+  },
+  "19186:40": {
+    "componentSetName": "Icon / os.linux.NFSChina",
+    "name": "Size=16",
+    "svgFileName": "os-linux-nfschina-16.svg",
+    "hash": "fc528338f4116c708cabf8fcc7126c71",
+    "lastUpdated": "2026-02-11T02:00:14.143Z"
   }
 }
