@@ -136,6 +136,8 @@ export const FullContentStyle = css`
 `;
 export const BodyStyle = css`
   position: relative;
+  height: 100%;
+
   .middle {
     height: 100%;
     overflow: auto;
