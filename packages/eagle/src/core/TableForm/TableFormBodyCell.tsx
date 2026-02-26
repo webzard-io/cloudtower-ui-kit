@@ -20,7 +20,7 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
     disabled,
     onChange,
     onBlur,
-    validateAll,
+    validateAllCount,
     error,
     onValidate,
   } = props;
@@ -34,21 +34,9 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
   const width =
     typeof column.width === "number" ? column.width + "px" : column.width;
 
-  const isCellErrorStyle = Boolean(validateResult?.isError || isRowError);
-
-  useEffect(() => {
-    // re-render the cell level error from props when it has been changed
-    if (isTouched) {
-      setValidateResult(
-        error
-          ? {
-              msg: error,
-              isError: true,
-            }
-          : undefined,
-      );
-    }
-  }, [error, isTouched]);
+  const isCellErrorStyle = Boolean(
+    (isTouched && error) || validateResult?.isError || isRowError,
+  );
 
   const triggerValidate = useCallback(
     (currentValue?: unknown) => {
@@ -78,11 +66,11 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
   );
 
   useEffect(() => {
-    if (validateAll) {
+    if (validateAllCount > 0) {
       setIsTouched(true);
       triggerValidate();
     }
-  }, [validateAll, triggerValidate, setIsTouched]);
+  }, [validateAllCount, triggerValidate, setIsTouched]);
 
   const _onChange = (value: unknown, data: DataType[]) => {
     const newData = data.map((row, i) =>
@@ -165,7 +153,11 @@ export const TableFormBodyCell: React.FC<ColumnBodyCellProps> = (props) => {
     >
       <FormItem
         validateStatus={isCellErrorStyle ? "error" : ""}
-        message={isRowError ? "" : validateResult?.msg}
+        message={
+          isRowError
+            ? ""
+            : (isTouched ? error : undefined) || validateResult?.msg
+        }
       >
         {Cell}
       </FormItem>
