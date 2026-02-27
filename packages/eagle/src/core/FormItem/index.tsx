@@ -12,6 +12,10 @@ const FormItemStyle = css`
   flex-flow: nowrap !important;
   line-break: auto;
 
+  .ant-form-item-control {
+    min-width: 0;
+  }
+
   & > .ant-form-item-label {
     text-align: left !important;
     padding-bottom: 0 !important;
