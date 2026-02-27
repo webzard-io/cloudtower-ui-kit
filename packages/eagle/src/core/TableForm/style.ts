@@ -166,6 +166,22 @@ export const TableFormWrapper = styled.div`
           border-radius: 5px;
           font-size: 12px;
         }
+        .ant-input-group-compact {
+          .ant-input,
+          .ant-select-selector {
+            border-radius: 0;
+          }
+          > :first-child,
+          > :first-child .ant-select-selector {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+          }
+          > :last-child,
+          > :last-child .ant-select-selector {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+          }
+        }
         .ant-input-affix-wrapper {
           font-size: inherit;
         }
