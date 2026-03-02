@@ -1,9 +1,8 @@
-import { css } from "@linaria/core";
+import { css, cx } from "@linaria/core";
 import { Button, SmallDialogProps, Space, Typo } from "@src/core";
 import { SmallDialog } from "@src/core";
 import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
 import ModalStack from "@src/core/ModalStack";
-import { G } from "@src/utils/tower";
 import { CoreMeta } from "@stories/types";
 import { useMockQuery } from "@stories/utils";
 import React, { useMemo } from "react";
@@ -61,6 +60,9 @@ export default meta;
 
 /**
  * 基础用法
+ *
+ * 演示最基本的 SmallDialog 用法：通过 `usePushModal` 打开弹窗，
+ * 在 `onOk`/`onCancel` 回调中调用 `popModal()` 关闭弹窗。
  */
 export const Basic = () => {
   const pushModal = usePushModal();
@@ -94,9 +96,19 @@ export const Basic = () => {
     </Button>
   );
 };
+Basic.storyName = "基础用法";
 
 /**
  * 确认删除对话框
+ *
+ * 演示危险操作确认场景：通过 `okButtonProps={{ danger: true }}` 将确认按钮标红，
+ * 自定义 `okText` 和 `cancelText` 按钮文案。
+ */
+/**
+ * 确认删除
+ *
+ * 演示用 SmallDialog 原始 API 实现删除确认弹窗。
+ * 生产环境中推荐直接使用 DeleteDialog，它已内置 danger 按钮和删除语义。
  */
 export const DeleteConfirmation = () => {
   const pushModal = usePushModal();
@@ -131,9 +143,13 @@ export const DeleteConfirmation = () => {
     </Button>
   );
 };
+DeleteConfirmation.storyName = "确认删除";
 
 /**
  * 只有取消按钮
+ *
+ * 通过 `showOk={false}` 隐藏确认按钮，仅展示关闭按钮。
+ * 适用于纯信息提示场景。取消按钮样式自动从 `quiet` 变为 `ordinary`。
  */
 export const CancelOnly = () => {
   const pushModal = usePushModal();
@@ -156,9 +172,13 @@ export const CancelOnly = () => {
     </Button>
   );
 };
+CancelOnly.storyName = "仅取消按钮";
 
 /**
  * 带错误信息的对话框
+ *
+ * 演示 `error` 属性：在 footer 区域显示错误文案（最多 3 行，超出后 tooltip 展示）。
+ * 首次点击"提交"模拟验证失败并显示错误，再次点击成功关闭。
  */
 export const WithError = () => {
   const pushModal = usePushModal();
@@ -211,9 +231,12 @@ export const WithError = () => {
     </Button>
   );
 };
+WithError.storyName = "错误信息展示";
 
 /**
  * 长内容对话框
+ *
+ * 演示内容溢出时的滚动行为。包含长标题截断和长内容滚动两种场景。
  */
 export const LongContent = () => {
   const pushModal = usePushModal();
@@ -275,9 +298,13 @@ export const LongContent = () => {
     </Space>
   );
 };
+LongContent.storyName = "长内容";
 
 /**
  * 初始化状态
+ *
+ * 演示 `initializing`、`initializingError` 属性的三种场景：
+ * 持续加载（骨架屏）、加载成功、加载失败后重试。
  */
 export const Initializing = () => {
   const pushModal = usePushModal();
@@ -390,9 +417,13 @@ export const Initializing = () => {
     </Space>
   );
 };
+Initializing.storyName = "初始化状态";
 
 /**
  * 不展示 footer
+ *
+ * 通过 `hideFooter` 隐藏底部按钮区域，适用于纯展示内容的场景。
+ * 用户仍可通过右上角关闭按钮或遮罩层关闭弹窗。
  */
 export const NoFooter = () => {
   const pushModal = usePushModal();
@@ -458,3 +489,300 @@ export const NoFooter = () => {
     </Space>
   );
 };
+NoFooter.storyName = "隐藏底部栏";
+
+/**
+ * 自定义标题渲染
+ *
+ * 通过 `TitleRender` 属性完全接管标题区域的渲染逻辑。
+ * 默认标题使用 `Typo.Display.d2_bold_title` 样式，
+ * 自定义时可添加图标、状态标签等额外元素。
+ */
+export const CustomTitle = () => {
+  const pushModal = usePushModal();
+
+  const SnapshotTitleRender: React.FC<{ title?: React.ReactNode }> = ({
+    title,
+  }) => {
+    return (
+      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <span
+          style={{
+            display: "inline-block",
+            width: 8,
+            height: 8,
+            borderRadius: "50%",
+            backgroundColor: "#52c41a",
+          }}
+        />
+        <span className={cx(Typo.Display.d2_bold_title)}>{title}</span>
+        <span
+          className={Typo.Label.l4_regular}
+          style={{
+            color: "#52c41a",
+            border: "1px solid #b7eb8f",
+            borderRadius: 4,
+            padding: "0 6px",
+            fontSize: 12,
+          }}
+        >
+          运行中
+        </span>
+      </div>
+    );
+  };
+
+  return (
+    <Button
+      type="primary"
+      onClick={() =>
+        pushModal({
+          component: () => (
+            <SmallDialog
+              title="虚拟机快照"
+              TitleRender={SnapshotTitleRender}
+              onOk={(popModal) => {
+                console.log("确认创建快照");
+                popModal();
+              }}
+              onCancel={(popModal) => popModal()}
+            >
+              <p>确认为当前虚拟机创建快照？</p>
+              <ul>
+                <li>快照名称：snapshot-20260302</li>
+                <li>虚拟机：web-server-01</li>
+                <li>预计耗时：约 30 秒</li>
+              </ul>
+            </SmallDialog>
+          ),
+          props: {},
+        })
+      }
+    >
+      自定义标题渲染
+    </Button>
+  );
+};
+CustomTitle.storyName = "自定义标题渲染";
+
+/**
+ * 异步提交
+ *
+ * 演示 `confirmLoading` + `onOk` 异步提交的完整流程，
+ * 这是最常见的业务模式：点击确认后显示 loading 状态，
+ * 异步操作完成后关闭弹窗，失败时展示错误信息并保持弹窗打开。
+ */
+export const AsyncSubmit = () => {
+  const pushModal = usePushModal();
+
+  return (
+    <Space direction="vertical" size={16}>
+      <Button
+        type="primary"
+        onClick={() =>
+          pushModal({
+            component: () => {
+              const [submitting, setSubmitting] = React.useState(false);
+              const [submitError, setSubmitError] = React.useState<
+                string | undefined
+              >(undefined);
+
+              return (
+                <SmallDialog
+                  title="创建虚拟机快照"
+                  okText="创建"
+                  confirmLoading={submitting}
+                  error={submitError}
+                  onOk={async (popModal) => {
+                    setSubmitting(true);
+                    setSubmitError(undefined);
+                    try {
+                      // 模拟异步 API 调用
+                      await new Promise((resolve) =>
+                        setTimeout(resolve, 1500)
+                      );
+                      console.log("快照创建成功");
+                      popModal();
+                    } catch {
+                      setSubmitError("快照创建失败，请稍后重试");
+                    } finally {
+                      setSubmitting(false);
+                    }
+                  }}
+                  onCancel={(popModal) => popModal()}
+                >
+                  <p>确认为以下虚拟机创建快照：</p>
+                  <ul>
+                    <li>虚拟机名称：web-server-01</li>
+                    <li>快照描述：日常备份</li>
+                  </ul>
+                </SmallDialog>
+              );
+            },
+            props: {},
+          })
+        }
+      >
+        异步提交（成功）
+      </Button>
+      <Button
+        danger
+        onClick={() =>
+          pushModal({
+            component: () => {
+              const [submitting, setSubmitting] = React.useState(false);
+              const [submitError, setSubmitError] = React.useState<
+                string | undefined
+              >(undefined);
+
+              return (
+                <SmallDialog
+                  title="删除集群节点"
+                  okText="删除"
+                  okButtonProps={{ danger: true }}
+                  confirmLoading={submitting}
+                  error={submitError}
+                  onOk={async (popModal) => {
+                    setSubmitting(true);
+                    setSubmitError(undefined);
+                    try {
+                      // 模拟异步 API 调用失败
+                      await new Promise((_, reject) =>
+                        setTimeout(
+                          () => reject(new Error("节点处于维护模式")),
+                          1500
+                        )
+                      );
+                      popModal();
+                    } catch (err) {
+                      setSubmitError(
+                        `操作失败：${err instanceof Error ? err.message : "未知错误"}，请检查节点状态后重试`
+                      );
+                    } finally {
+                      setSubmitting(false);
+                    }
+                  }}
+                  onCancel={(popModal) => popModal()}
+                >
+                  <p>确认删除以下集群节点？此操作不可恢复。</p>
+                  <ul>
+                    <li>节点名称：node-03</li>
+                    <li>节点 IP：192.168.1.103</li>
+                    <li>当前状态：运行中</li>
+                  </ul>
+                </SmallDialog>
+              );
+            },
+            props: {},
+          })
+        }
+      >
+        异步提交（失败）
+      </Button>
+    </Space>
+  );
+};
+AsyncSubmit.storyName = "异步提交";
+
+/**
+ * 自定义按钮样式
+ *
+ * 通过 `okButtonProps` 和 `cancelButtonProps` 自定义确认和取消按钮的样式，
+ * 包括 `danger`、`disabled`、`type` 等属性。属性会透传给 Button 组件。
+ */
+export const ButtonCustomization = () => {
+  const pushModal = usePushModal();
+
+  return (
+    <Space direction="vertical" size={16}>
+      <Button
+        danger
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <SmallDialog
+                title="危险操作确认"
+                okText="确认删除"
+                okButtonProps={{ danger: true }}
+                cancelButtonProps={{ type: "quiet" }}
+                onOk={(popModal) => {
+                  console.log("执行危险操作");
+                  popModal();
+                }}
+                onCancel={(popModal) => popModal()}
+              >
+                <p>此操作将永久删除选中的虚拟机及其关联数据。</p>
+                <p className={Typo.Label.l3_regular} style={{ color: "#666" }}>
+                  删除后数据无法恢复，请确认已备份重要数据。
+                </p>
+              </SmallDialog>
+            ),
+            props: {},
+          })
+        }
+      >
+        危险按钮样式
+      </Button>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => {
+              const [agreed, setAgreed] = React.useState(false);
+
+              return (
+                <SmallDialog
+                  title="服务协议"
+                  okText="同意并继续"
+                  okButtonProps={{ disabled: !agreed }}
+                  onOk={(popModal) => {
+                    console.log("已同意协议");
+                    popModal();
+                  }}
+                  onCancel={(popModal) => popModal()}
+                >
+                  <p>请阅读并同意以下服务条款：</p>
+                  <div
+                    style={{
+                      padding: "8px 12px",
+                      backgroundColor: "#f5f5f5",
+                      borderRadius: 4,
+                      fontSize: 13,
+                      maxHeight: 120,
+                      overflow: "auto",
+                      marginBottom: 12,
+                    }}
+                  >
+                    <p>1. 用户数据将在集群内加密存储。</p>
+                    <p>2. 管理员有权在维护期间暂停服务。</p>
+                    <p>3. 资源配额受集群容量限制。</p>
+                  </div>
+                  <label
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                      cursor: "pointer",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={agreed}
+                      onChange={(e) => setAgreed(e.target.checked)}
+                    />
+                    <span className={Typo.Label.l3_regular}>
+                      我已阅读并同意以上协议
+                    </span>
+                  </label>
+                </SmallDialog>
+              );
+            },
+            props: {},
+          })
+        }
+      >
+        确认按钮禁用状态
+      </Button>
+    </Space>
+  );
+};
+ButtonCustomization.storyName = "按钮定制";
