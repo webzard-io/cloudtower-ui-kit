@@ -6,7 +6,8 @@
   "types": "dist/src/index.d.ts",
   "files": [
     "dist",
-    "antd"
+    "antd",
+    "docs"
   ],
   "sideEffects": false,
   "license": "MIT",
