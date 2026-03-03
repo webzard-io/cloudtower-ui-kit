@@ -1,5 +1,5 @@
 import { css } from "@linaria/core";
-import { Button, Space } from "@src/core";
+import { Button, SmallDialog, Space } from "@src/core";
 import { MediumDialog } from "@src/core";
 import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
 import { MediumDialogProps } from "@src/core/MediumDialog/MediumDialog.type";
@@ -51,12 +51,17 @@ MediumDialog 是一个预设样式的中型对话框组件，具有以下特点�
 - **响应式设计**: 适配不同屏幕尺寸
 - **错误处理**: 内置错误信息显示功能
 - **功能完整**: 继承 SmallDialog 的所有功能特性
+
+### 选型指南
+| 特性 | SmallDialog (492px) | MediumDialog (720px) |
+|------|-------------------|---------------------|
+| 宽度 | 492px | 720px |
+| 水平内边距 | 40px | 60px |
+| 标题字体 | d2s_bold_title | d1s_bold_title |
+| 适用场景 | 简单确认、删除提示 | 表单填写、数据展示 |
+| 特有功能 | — | isContentFull 近全屏模式 |
         `,
       },
-    },
-    design: {
-      type: "figma",
-      url: "https://www.figma.com/design/YOUR_FIGMA_URL_HERE", // 请替换为实际的设计稿URL
     },
   },
 };
@@ -101,6 +106,7 @@ export const Basic = () => {
     </Button>
   );
 };
+Basic.storyName = "基础用法";
 
 /**
  * 表单配置对话框
@@ -203,6 +209,7 @@ export const FormConfiguration = () => {
     </Button>
   );
 };
+FormConfiguration.storyName = "表单配置对话框";
 
 /**
  * 数据展示对话框
@@ -343,6 +350,7 @@ export const DataDisplay = () => {
     </Button>
   );
 };
+DataDisplay.storyName = "数据展示对话框";
 
 /**
  * 带错误信息的对话框
@@ -490,6 +498,7 @@ export const WithError = () => {
     </Button>
   );
 };
+WithError.storyName = "带错误信息的对话框";
 
 /**
  * 长内容对话框
@@ -554,6 +563,7 @@ export const LongContent = () => {
     </Space>
   );
 };
+LongContent.storyName = "长内容对话框";
 
 /**
  * 初始化状态
@@ -669,6 +679,7 @@ export const Initializing = () => {
     </Space>
   );
 };
+Initializing.storyName = "初始化状态";
 
 /**
  * 内容占满视窗
@@ -805,6 +816,7 @@ export const ContentFull = () => {
     </Button>
   );
 };
+ContentFull.storyName = "内容占满视窗";
 
 /**
  * 不展示 footer
@@ -873,3 +885,137 @@ export const NoFooter = () => {
     </Space>
   );
 };
+NoFooter.storyName = "不展示 Footer";
+
+/**
+ * SmallDialog 与 MediumDialog 的选型对比，帮助开发者在两者间做出正确选择。
+ *
+ * - **SmallDialog (492px)**：适合简单确认、删除提示、信息提示等简短交互
+ * - **MediumDialog (720px)**：适合表单填写、数据展示、多字段配置等需要更多空间的场景
+ */
+export const SizeComparison = () => {
+  const pushModal = usePushModal();
+
+  return (
+    <Space direction="vertical" size={16}>
+      <div>
+        <h4>何时选择 SmallDialog (492px)</h4>
+        <p style={{ color: "#666", fontSize: "13px", margin: "4px 0 12px" }}>
+          内容简短、操作明确的轻量交互，如确认弹窗、删除提示、简单信息展示。
+        </p>
+        <Button
+          onClick={() =>
+            pushModal({
+              component: () => (
+                <SmallDialog
+                  title="删除确认"
+                  okText="删除"
+                  okButtonProps={{ danger: true }}
+                  onOk={(popModal) => popModal()}
+                >
+                  <p>确定要删除该虚拟机吗？此操作不可恢复。</p>
+                </SmallDialog>
+              ),
+              props: {},
+            })
+          }
+        >
+          打开 SmallDialog 示例
+        </Button>
+      </div>
+      <div>
+        <h4>何时选择 MediumDialog (720px)</h4>
+        <p style={{ color: "#666", fontSize: "13px", margin: "4px 0 12px" }}>
+          内容较多、需要表单填写或数据展示的场景，如网络配置、用户信息编辑、状态详情。
+        </p>
+        <Button
+          type="primary"
+          onClick={() =>
+            pushModal({
+              component: () => (
+                <MediumDialog
+                  title="网络配置"
+                  okText="保存"
+                  onOk={(popModal) => popModal()}
+                >
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "16px",
+                    }}
+                  >
+                    <div>
+                      <label style={{ display: "block", marginBottom: "8px" }}>
+                        <strong>IP 地址</strong>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="192.168.1.100"
+                        style={{
+                          width: "100%",
+                          padding: "8px",
+                          border: "1px solid #d9d9d9",
+                          borderRadius: "4px",
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <label style={{ display: "block", marginBottom: "8px" }}>
+                        <strong>子网掩码</strong>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="255.255.255.0"
+                        style={{
+                          width: "100%",
+                          padding: "8px",
+                          border: "1px solid #d9d9d9",
+                          borderRadius: "4px",
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <label style={{ display: "block", marginBottom: "8px" }}>
+                        <strong>网关</strong>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="192.168.1.1"
+                        style={{
+                          width: "100%",
+                          padding: "8px",
+                          border: "1px solid #d9d9d9",
+                          borderRadius: "4px",
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <label style={{ display: "block", marginBottom: "8px" }}>
+                        <strong>DNS 服务器</strong>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="8.8.8.8"
+                        style={{
+                          width: "100%",
+                          padding: "8px",
+                          border: "1px solid #d9d9d9",
+                          borderRadius: "4px",
+                        }}
+                      />
+                    </div>
+                  </div>
+                </MediumDialog>
+              ),
+              props: {},
+            })
+          }
+        >
+          打开 MediumDialog 示例
+        </Button>
+      </div>
+    </Space>
+  );
+};
+SizeComparison.storyName = "选型对比：Small vs Medium";
