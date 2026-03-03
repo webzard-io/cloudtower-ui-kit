@@ -1,5 +1,6 @@
 node_modules/
 dist
+doc/
 yarn-error.log
 lerna-debug.log
 coverage
@@ -15,6 +16,7 @@ package-lock.json
 .history
 .DS_Store
 .ci
+.claude/
 .cursor
 .qodo
 .yalc/
