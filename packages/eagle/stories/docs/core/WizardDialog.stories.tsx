@@ -1,5 +1,5 @@
 import { css } from "@linaria/core";
-import { Space, Typo } from "@src/core";
+import { Alert, Input, Select, Space, Typo } from "@src/core";
 import Button from "@src/core/Button";
 import KitStoreProvider, {
   usePopModal,
@@ -12,7 +12,7 @@ import { WizardDialogProps } from "@src/core/WizardDialog/type";
 import { SwitchWithText } from "@src/coreX";
 import { CoreMeta } from "@stories/types";
 import { useMockQuery } from "@stories/utils";
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
 const WrapperStyle = css`
   display: flex;
@@ -40,6 +40,9 @@ const WideBodyModalStyle = css`
   }
 `;
 
+/**
+ * 基础用法
+ */
 export const StepWizardDialog = () => {
   const pushModal = usePushModal();
 
@@ -116,7 +119,11 @@ export const StepWizardDialog = () => {
     </Button>
   );
 };
+StepWizardDialog.storyName = "基础用法";
 
+/**
+ * 仅左侧面板
+ */
 export const OnlyLeftWizardDialog = () => {
   const pushModal = usePushModal();
 
@@ -192,7 +199,11 @@ export const OnlyLeftWizardDialog = () => {
     </Button>
   );
 };
+OnlyLeftWizardDialog.storyName = "仅左侧面板";
 
+/**
+ * 自定义步骤组件
+ */
 export const CustomStepsWizardDialog = () => {
   const pushModal = usePushModal();
 
@@ -286,6 +297,7 @@ export const CustomStepsWizardDialog = () => {
     </Button>
   );
 };
+CustomStepsWizardDialog.storyName = "自定义步骤组件";
 
 const ScrollableItemStyle = css`
   padding: 16px;
@@ -520,6 +532,9 @@ const generateWizardSteps = (includeConfirmation: boolean = true) => {
   return baseSteps;
 };
 
+/**
+ * 可滚动的多步骤向导
+ */
 export const ScrollableWizardDialog = () => {
   const pushModal = usePushModal();
   const [isLongTitle, setIsLongTitle] = useState(false);
@@ -623,7 +638,11 @@ export const ScrollableWizardDialog = () => {
     </Space>
   );
 };
+ScrollableWizardDialog.storyName = "可滚动的多步骤向导";
 
+/**
+ * 初始化状态
+ */
 export const InitializingWizardDialog = () => {
   const pushModal = usePushModal();
   const popModal = usePopModal();
@@ -843,7 +862,11 @@ export const InitializingWizardDialog = () => {
     </Space>
   );
 };
+InitializingWizardDialog.storyName = "初始化状态";
 
+/**
+ * 隐藏底部操作栏
+ */
 export const NoFooterWizardDialog = () => {
   const pushModal = usePushModal();
   const [isLongTitle, setIsLongTitle] = useState(false);
@@ -948,7 +971,367 @@ export const NoFooterWizardDialog = () => {
     </Space>
   );
 };
+NoFooterWizardDialog.storyName = "隐藏底部操作栏";
 
+const FormSectionStyle = css`
+  padding: 24px;
+  height: 100%;
+  overflow-y: auto;
+`;
+
+const FormLabelStyle = css`
+  margin-bottom: 4px;
+  color: #333;
+  font-weight: 500;
+`;
+
+const RequiredMarkStyle = css`
+  color: #f5222d;
+  margin-right: 4px;
+`;
+
+const ErrorTextStyle = css`
+  color: #f5222d;
+  font-size: 12px;
+  margin-top: 4px;
+`;
+
+const FieldGroupStyle = css`
+  margin-bottom: 16px;
+`;
+
+const SummaryItemStyle = css`
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
+/**
+ * 步骤校验（onNextStep 阻止导航）
+ *
+ * 演示 onNextStep 返回 false 阻止步骤跳转的模式。
+ * 第一步包含必填项，未填写时点击"下一步"会被阻止并显示校验提示。
+ */
+export const StepValidation = () => {
+  const pushModal = usePushModal();
+
+  return (
+    <Button
+      type="primary"
+      onClick={() => {
+        pushModal({
+          component: () => {
+            const [step, setStep] = useState(0);
+            const [error, setError] = useState("");
+
+            const popModal = usePopModal();
+
+            // Step 1: basic info
+            const [vmName, setVmName] = useState("");
+            const [vmNameError, setVmNameError] = useState("");
+            const [cpu, setCpu] = useState<number | undefined>(undefined);
+            const [cpuError, setCpuError] = useState("");
+            const [memory, setMemory] = useState<number | undefined>(undefined);
+            const [memoryError, setMemoryError] = useState("");
+
+            // Step 2: network
+            const [network, setNetwork] = useState<string | undefined>(
+              undefined
+            );
+            const [networkError, setNetworkError] = useState("");
+
+            // Step 3: confirm (no validation needed)
+
+            const validateStep1 = useCallback(() => {
+              let valid = true;
+
+              if (!vmName.trim()) {
+                setVmNameError("请输入虚拟机名称");
+                valid = false;
+              } else if (vmName.length > 64) {
+                setVmNameError("名称不能超过 64 个字符");
+                valid = false;
+              } else {
+                setVmNameError("");
+              }
+
+              if (cpu === undefined || cpu <= 0) {
+                setCpuError("请输入 CPU 核数");
+                valid = false;
+              } else if (cpu > 128) {
+                setCpuError("CPU 核数不能超过 128");
+                valid = false;
+              } else {
+                setCpuError("");
+              }
+
+              if (memory === undefined || memory <= 0) {
+                setMemoryError("请输入内存大小");
+                valid = false;
+              } else if (memory > 1024) {
+                setMemoryError("内存不能超过 1024 GB");
+                valid = false;
+              } else {
+                setMemoryError("");
+              }
+
+              return valid;
+            }, [vmName, cpu, memory]);
+
+            const validateStep2 = useCallback(() => {
+              if (!network) {
+                setNetworkError("请选择网络");
+                return false;
+              }
+              setNetworkError("");
+              return true;
+            }, [network]);
+
+            return (
+              <WizardDialog
+                title="创建虚拟机"
+                error={error}
+                step={step}
+                steps={[
+                  {
+                    title: "基础配置",
+                    children: (
+                      <div className={FormSectionStyle}>
+                        <div className={FieldGroupStyle}>
+                          <div className={FormLabelStyle}>
+                            <span className={RequiredMarkStyle}>*</span>
+                            虚拟机名称
+                          </div>
+                          <Input
+                            placeholder="请输入虚拟机名称"
+                            value={vmName}
+                            onChange={(e) => {
+                              setVmName(e.target.value);
+                              if (vmNameError) setVmNameError("");
+                            }}
+                            error={!!vmNameError}
+                          />
+                          {vmNameError && (
+                            <div className={ErrorTextStyle}>{vmNameError}</div>
+                          )}
+                        </div>
+
+                        <div className={FieldGroupStyle}>
+                          <div className={FormLabelStyle}>
+                            <span className={RequiredMarkStyle}>*</span>
+                            CPU（核）
+                          </div>
+                          <Input
+                            type="number"
+                            placeholder="请输入 CPU 核数"
+                            value={cpu}
+                            onChange={(e) => {
+                              setCpu(
+                                e.target.value
+                                  ? Number(e.target.value)
+                                  : undefined
+                              );
+                              if (cpuError) setCpuError("");
+                            }}
+                            error={!!cpuError}
+                          />
+                          {cpuError && (
+                            <div className={ErrorTextStyle}>{cpuError}</div>
+                          )}
+                        </div>
+
+                        <div className={FieldGroupStyle}>
+                          <div className={FormLabelStyle}>
+                            <span className={RequiredMarkStyle}>*</span>
+                            内存（GB）
+                          </div>
+                          <Input
+                            type="number"
+                            placeholder="请输入内存大小"
+                            value={memory}
+                            onChange={(e) => {
+                              setMemory(
+                                e.target.value
+                                  ? Number(e.target.value)
+                                  : undefined
+                              );
+                              if (memoryError) setMemoryError("");
+                            }}
+                            error={!!memoryError}
+                          />
+                          {memoryError && (
+                            <div className={ErrorTextStyle}>{memoryError}</div>
+                          )}
+                        </div>
+
+                        <Alert
+                          type="info"
+                          message="请填写所有必填项后再进入下一步。点击「下一步」时会触发校验，未通过时将阻止跳转。"
+                          showIcon
+                        />
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "网络配置",
+                    children: (
+                      <div className={FormSectionStyle}>
+                        <div className={FieldGroupStyle}>
+                          <div className={FormLabelStyle}>
+                            <span className={RequiredMarkStyle}>*</span>
+                            网络
+                          </div>
+                          <Select
+                            input={{}}
+                            placeholder="请选择网络"
+                            value={network}
+                            onChange={(value) => {
+                              setNetwork(value as string);
+                              if (networkError) setNetworkError("");
+                            }}
+                            danger={!!networkError}
+                            style={{ width: "100%" }}
+                            options={[
+                              {
+                                label: "管理网络 (10.0.0.0/24)",
+                                value: "management",
+                              },
+                              {
+                                label: "存储网络 (10.0.1.0/24)",
+                                value: "storage",
+                              },
+                              {
+                                label: "业务网络 (192.168.0.0/16)",
+                                value: "business",
+                              },
+                            ]}
+                          />
+                          {networkError && (
+                            <div className={ErrorTextStyle}>
+                              {networkError}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ),
+                  },
+                  {
+                    title: "确认创建",
+                    children: (
+                      <div className={FormSectionStyle}>
+                        <h3 style={{ marginBottom: 16 }}>配置确认</h3>
+                        <div
+                          style={{
+                            padding: 16,
+                            backgroundColor: "#fafafa",
+                            borderRadius: 8,
+                            border: "1px solid #e8e8e8",
+                          }}
+                        >
+                          <div className={SummaryItemStyle}>
+                            <span className={Typo.Label.l3_regular}>
+                              虚拟机名称
+                            </span>
+                            <span className={Typo.Label.l3_bold}>
+                              {vmName || "-"}
+                            </span>
+                          </div>
+                          <div className={SummaryItemStyle}>
+                            <span className={Typo.Label.l3_regular}>CPU</span>
+                            <span className={Typo.Label.l3_bold}>
+                              {cpu ? `${cpu} 核` : "-"}
+                            </span>
+                          </div>
+                          <div className={SummaryItemStyle}>
+                            <span className={Typo.Label.l3_regular}>内存</span>
+                            <span className={Typo.Label.l3_bold}>
+                              {memory ? `${memory} GB` : "-"}
+                            </span>
+                          </div>
+                          <div className={SummaryItemStyle}>
+                            <span className={Typo.Label.l3_regular}>网络</span>
+                            <span className={Typo.Label.l3_bold}>
+                              {network === "management"
+                                ? "管理网络"
+                                : network === "storage"
+                                  ? "存储网络"
+                                  : network === "business"
+                                    ? "业务网络"
+                                    : "-"}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    ),
+                  },
+                ]}
+                onCancel={() => {
+                  popModal();
+                }}
+                onOk={() => {
+                  console.log("创建虚拟机", { vmName, cpu, memory, network });
+                  popModal();
+                }}
+                onNextStep={(nextStep) => {
+                  // Validate current step before allowing navigation
+                  if (step === 0) {
+                    const valid = validateStep1();
+                    if (!valid) {
+                      setError("请完善必填项后再继续");
+                      return false;
+                    }
+                  }
+                  if (step === 1) {
+                    const valid = validateStep2();
+                    if (!valid) {
+                      setError("请完善必填项后再继续");
+                      return false;
+                    }
+                  }
+                  setError("");
+                }}
+                onPrevStep={() => {
+                  setError("");
+                }}
+                onStepChange={(newStep) => {
+                  setStep(newStep);
+                  setError("");
+                }}
+                okText="确认创建"
+                nextText="下一步"
+                prevText="上一步"
+                cancelText="取消"
+              />
+            );
+          },
+          props: {},
+        });
+      }}
+    >
+      创建虚拟机
+    </Button>
+  );
+};
+StepValidation.storyName = "步骤校验";
+
+/**
+ * WizardDialog 组件
+ *
+ * 基于 ImmersiveDialog 扩展的多步骤向导对话框，适用于需要分步引导用户完成复杂操作的场景。
+ *
+ * ### 特性
+ * - 支持通过 steps 配置多个步骤，每个步骤包含标题和内容
+ * - 左侧面板自动渲染步骤指示器，支持点击步骤切换
+ * - 自动管理上一步/下一步按钮，最后一步显示确认按钮
+ * - 支持 onNextStep 返回 false 阻止步骤跳转（表单校验场景）
+ * - 支持自定义左侧、右侧面板内容
+ * - 支持隐藏步骤指示器（hideSteps）以使用自定义步骤组件
+ */
 const story = {
   title: "Core/WizardDialog | 向导弹窗",
   component: WizardDialog,
