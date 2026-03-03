@@ -1,0 +1,169 @@
+# @cloudtower/eagle
+
+> CloudTower 产品的 React UI 组件库，基于 Ant Design 二次封装。
+
+## 安装与初始化
+
+npm 包名：@cloudtower/eagle
+样式引入：import "@cloudtower/eagle/dist/style.css"
+
+使用 UIKitProvider 包裹应用根节点，内部管理 ConfigProvider、i18n、message 等上下文。
+
+## 反馈
+
+- [SmallDialog](components/SmallDialog.md): 小型对话框（492px），用于简单确认和提示
+- [MediumDialog](components/MediumDialog.md): 中型对话框（720px），用于表单和较多内容
+- [ImmersiveDialog](components/ImmersiveDialog.md): 沉浸式全屏对话框，支持左右面板布局
+- [WizardDialog](components/WizardDialog.md): 向导对话框，支持多步骤流程
+- DeleteDialog: 删除确认对话框，基于 SmallDialog 封装，自带 danger 按钮
+- RejectDialog: 操作拒绝反馈对话框，支持单条/批量全部/批量部分/自定义四种模式
+- message: 全局提示，支持 success/error/warning/info/loading 类型
+- message-group: 消息分组，将多条消息合并为一组展示
+- Alert: 警告提示条，支持 success/info/warning/error 类型，可关闭
+- Banner: 全局横幅通知，支持 error/info/warning 类型，固定在页面顶部
+- notification: 通知提醒（继承 antd notification）
+
+## 数据录入
+
+- Form: 表单容器，封装 antd Form，管理表单数据收集和校验
+- FormItem: 表单项，封装 antd Form.Item，提供 label、校验规则等
+- Input: 输入框，封装 antd Input
+- InputNumber: 数字输入框，封装 antd InputNumber
+- InputInteger: 整数输入框，只允许输入整数
+- InputPassword: 密码输入框，支持显示/隐藏切换
+- InputGroup: 输入框组合，将多个输入控件组合为一行
+- InputTagItem: 标签样式的输入项，用于标签化显示
+- TextArea: 多行文本输入框
+- Select: 下拉选择器，封装 antd Select，支持搜索和多选
+- Cascader: 级联选择器，封装 antd Cascader
+- AutoComplete: 自动补全输入框
+- Checkbox: 复选框
+- Radio: 单选框
+- Switch: 开关切换
+- DateRangePicker: 日期范围选择器，支持绝对日期和相对时间两种模式
+- TimePicker: 时间选择器
+- Calendar: 日历面板
+- TimeZoneSelect: 时区选择器，内置全球时区数据
+- SearchInput: 搜索输入框，支持高亮匹配数和上下翻页
+- TableForm: 表格表单，行内编辑的表格，支持新增/删除行和拖拽排序
+- Fields: 表单字段集合，包含 Boolean/DateTime/Enum/Float/Int/String/TextArea 等预设字段
+- CronPlan: 定时计划配置组件，支持按天/周/月设置 cron 表达式
+- CronCalendar: 定时计划日历预览，可视化展示 cron 表达式的执行日期
+- SortableList: 可拖拽排序列表，基于 react-beautiful-dnd
+- SwitchWithText: 带文字标签的开关组件
+
+## 数据展示
+
+- Table: 表格，封装 antd Table
+- Tab: 标签页，封装 antd Tabs
+- Collapse: 折叠面板（继承 antd Collapse）
+- Tag: 标签，支持多种预设颜色
+- Token: 令牌标签，支持颜色、大小和可关闭
+- Badge: 徽标数，封装 antd Badge
+- StatusCapsule: 状态胶囊，圆角标签用于显示状态，支持多种颜色和 loading
+- Legend: 图例标签，用于图表图例展示，支持多种形状和颜色
+- Tooltip: 文字提示气泡
+- Truncate: 文本截断，超长文本省略并 hover 显示完整内容
+- Card: 卡片容器，封装 antd Card
+- AccordionCard: 手风琴卡片，支持展开/收起的卡片容器
+- DetailCard: 详情卡片，带标题的详情展示卡片
+- Avatar: 头像
+- Skeleton: 骨架屏，封装 antd Skeleton
+- Empty: 空状态占位，封装 antd Empty
+- BlankState: 空白状态页，支持 large/medium/small/area 四种尺寸
+- ExpandableList: 可展开列表，包含 ExpandableContainer/ExpandableItem/ExpandIcon/RoundOrder
+- Overflow: 溢出检测组件，内容溢出时显示替代内容
+- OverflowTooltip: 溢出提示，文本溢出时自动显示 Tooltip
+- NamesTooltip: 名称列表提示，hover 显示完整名称列表
+- UnderlineTooltip: 下划线提示，文本带下划线并 hover 显示 Tooltip
+- SummaryTable: 摘要表格，键值对形式的信息展示
+- InfoRowList: 信息行列表，label-content 两列布局的详情信息展示
+- CheckPointList: 检查点列表，展示多步骤检查结果和状态
+- I18nNameTag: 国际化名称标签，在翻译文本中嵌入名称 Tag
+- DonutChart: 环形图，基于 recharts 的饼图组件
+- LineChart: 折线图，支持指标数据时序展示
+- BarChart: 条形图，堆叠式水平条形图
+- Metric: 指标图表组件，集成折线图和图例
+- ChartWithTooltip: 带 Tooltip 的图表，结合单位格式化展示指标数据
+- UnitWithChart: 单位数值与图表组合展示
+- Progress: 进度条，支持线形和区域两种模式
+- StepProgress: 步骤进度，圆形进度指示器
+- Counting: 计数器，按指定间隔自动刷新渲染
+
+## 通用
+
+- Button: 按钮，封装 antd Button
+- ButtonGroup: 按钮组，将多个按钮组合为一组
+- Icon: 图标容器，统一图标尺寸和样式
+- BaseIcon: 基础图标，支持 SVG 图标渲染
+- Link: 链接，封装 antd Typography.Link
+- Typo: 排版样式集合，提供 Display/Heading/Label/Paragraph 等预定义的 Linaria 类名
+- Loading: 加载中动画，三条竖线动画
+- CircleLoading: 圆形加载动画，旋转渐变圆形图标
+- Space: 间距组件，封装 antd Space
+- Antd5Flex: 弹性布局，直接导出 antd5 Flex
+- Show: 条件渲染组件，根据 condition 决定是否渲染 children
+- DropdownTransition: 下拉过渡动画，基于 CSSTransition 的显示/隐藏过渡
+
+## 布局
+
+- Nav: 顶部导航栏，支持左/中/右三区域布局
+- Sider: 侧边栏布局，基于 antd Layout.Sider，含菜单和底部操作区
+- SidebarMenu: 侧边菜单，多级导航菜单
+- SidebarSubtitle: 侧边栏小标题
+- Divider: 分隔线（继承 antd Divider）
+- GoBackButton: 返回按钮，带箭头图标的导航返回按钮
+- TabMenu: 标签菜单，顶部标签切换 + 内容区，支持下拉溢出菜单
+
+## 导航
+
+- Breadcrumb: 面包屑导航
+- Pagination: 分页器，封装 antd Pagination
+- SimplePagination: 简易分页，仅显示页码输入和前后翻页
+- Steps: 步骤条，封装 antd Steps
+- SegmentControl: 分段控制器，封装 antd5 Segmented
+- DropdownMenu: 下拉菜单，封装 antd Dropdown + Menu
+- Antd5Dropdown: 下拉菜单，封装 antd5 Dropdown
+- Antd5Anchor: 锚点导航，封装 antd5 Anchor
+- Antd5Tree: 树形控件，封装 antd5 Tree
+- Timeline: 时间线，封装 antd Timeline
+- BatchOperation: 批量操作工具栏，表格多选后显示的操作栏
+
+## 数据格式化
+
+- Byte: 字节格式化显示（自动转换 KB/MB/GB 等）
+- BytePerSecond: 字节每秒速率格式化
+- Bit: 比特格式化显示
+- BitPerSecond: 比特每秒速率格式化
+- Bps: 每秒传输速率格式化
+- Frequency: 频率格式化显示（Hz/GHz 等）
+- Percent: 百分比格式化显示
+- Second: 秒数格式化显示
+- Speed: 速度格式化显示
+- Time: 时间日期格式化显示
+- Arch: CPU 架构文本显示（x86_64/aarch64 等国际化文本）
+
+## 错误处理
+
+- Error: 简单错误文本显示
+- ErrorBoundary: 错误边界，捕获子组件渲染错误并显示回退 UI
+- BasicCTError: CloudTower 错误信息展示，解析并展示 CT 业务错误
+- FailedLoad: 加载失败组件，展示错误信息和重试按钮
+
+## 基础设施
+
+- ConfigProvider: 全局配置，管理 antd4/antd5 双版本 locale 和主题
+- KitStoreProvider: 组件库 Redux Store Provider，管理弹窗栈等全局状态
+- ModalStack: 弹窗栈渲染器，渲染通过 usePushModal 打开的弹窗
+- ParrotTrans: 国际化文本组件，封装 react-i18next Trans 并注入 parrot i18n 实例
+
+## 废弃组件
+
+- ~~LegacyModal~~: 已废弃，请迁移至 SmallDialog / MediumDialog / ImmersiveDialog / WizardDialog
+- ~~LegacySelect~~: 已废弃，请迁移至 Select
+- ~~DeprecatedProgress~~: 已废弃，请迁移至 Progress
+- ~~DeprecatedDonutChart~~: 已废弃，请迁移至 DonutChart
+- ~~KubeConfigModal~~: 业务专用弹窗，基于 LegacyModal，不建议新代码使用
+- ~~Styled~~: 已废弃的通用样式组件集合（CommonContent, ModalBody, WizardBody 等）
+
+完整迁移指南：[migration.md](migration.md)
