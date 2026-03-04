@@ -11639,5 +11639,89 @@
     "svgFileName": "os-linux-nfschina-16.svg",
     "hash": "fc528338f4116c708cabf8fcc7126c71",
     "lastUpdated": "2026-02-11T02:00:14.143Z"
+  },
+  "19211:22": {
+    "componentSetName": "Icon / virtual.volume.minus.remove",
+    "name": "Size=16, Fill=Gradient - Red",
+    "svgFileName": "virtual-volume-minus-remove-16-gradient-red.svg",
+    "hash": "f50214232f0eaf90487820dad41be75a",
+    "lastUpdated": "2026-03-04T01:45:30.764Z"
+  },
+  "19211:24": {
+    "componentSetName": "Icon / virtual.volume.minus.remove",
+    "name": "Size=16, Fill=Gradient - Gray",
+    "svgFileName": "virtual-volume-minus-remove-16-gradient-gray.svg",
+    "hash": "48c97c14c63371757b1fe5ea7d3e320e",
+    "lastUpdated": "2026-03-04T01:45:30.764Z"
+  },
+  "19211:26": {
+    "componentSetName": "Icon / virtual.volume.minus.remove",
+    "name": "Size=24, Fill=Gradient - Gray",
+    "svgFileName": "virtual-volume-minus-remove-24-gradient-gray.svg",
+    "hash": "69545de23156083f13bf6c045f84d396",
+    "lastUpdated": "2026-03-04T01:45:30.764Z"
+  },
+  "19211:28": {
+    "componentSetName": "Icon / virtual.volume.minus.remove",
+    "name": "Size=24, Fill=Gradient - Red",
+    "svgFileName": "virtual-volume-minus-remove-24-gradient-red.svg",
+    "hash": "56192e5d10a6dd575c2370b1f73a45ce",
+    "lastUpdated": "2026-03-04T01:45:30.764Z"
+  },
+  "19209:37": {
+    "componentSetName": "Icon / vm.add.plus",
+    "name": "Size=16, Fill=Gradient - Blue",
+    "svgFileName": "vm-add-plus-16-gradient-blue.svg",
+    "hash": "58437d2ddf75e6a41590d4f6c14e9412",
+    "lastUpdated": "2026-03-04T01:45:30.766Z"
+  },
+  "19209:39": {
+    "componentSetName": "Icon / vm.add.plus",
+    "name": "Size=16, Fill=Gradient - Gray",
+    "svgFileName": "vm-add-plus-16-gradient-gray.svg",
+    "hash": "e23e2147c9aa353ec2326a271723eb2f",
+    "lastUpdated": "2026-03-04T01:45:30.766Z"
+  },
+  "19209:41": {
+    "componentSetName": "Icon / vm.add.plus",
+    "name": "Size=24, Fill=Gradient - Gray",
+    "svgFileName": "vm-add-plus-24-gradient-gray.svg",
+    "hash": "e40faa132b2dfadc44f5005df82d3667",
+    "lastUpdated": "2026-03-04T01:45:30.766Z"
+  },
+  "19209:43": {
+    "componentSetName": "Icon / vm.add.plus",
+    "name": "Size=24, Fill=Gradient - Blue",
+    "svgFileName": "vm-add-plus-24-gradient-blue.svg",
+    "hash": "965ec0d6e8972af3aa9491ac30ba9bab",
+    "lastUpdated": "2026-03-04T01:45:30.767Z"
+  },
+  "19211:58": {
+    "componentSetName": "Icon / vm.minus.remove",
+    "name": "Size=16, Fill=Gradient - Red",
+    "svgFileName": "vm-minus-remove-16-gradient-red.svg",
+    "hash": "5240a0fed793fca8c6324c5f646a776e",
+    "lastUpdated": "2026-03-04T01:45:30.767Z"
+  },
+  "19211:60": {
+    "componentSetName": "Icon / vm.minus.remove",
+    "name": "Size=16, Fill=Gradient - Gray",
+    "svgFileName": "vm-minus-remove-16-gradient-gray.svg",
+    "hash": "1655af3c664b460e8e6078d79d447161",
+    "lastUpdated": "2026-03-04T01:45:30.767Z"
+  },
+  "19211:62": {
+    "componentSetName": "Icon / vm.minus.remove",
+    "name": "Size=24, Fill=Gradient - Gray",
+    "svgFileName": "vm-minus-remove-24-gradient-gray.svg",
+    "hash": "f341846984ef29262895e95447c4d360",
+    "lastUpdated": "2026-03-04T01:45:30.767Z"
+  },
+  "19211:64": {
+    "componentSetName": "Icon / vm.minus.remove",
+    "name": "Size=24, Fill=Gradient - Red",
+    "svgFileName": "vm-minus-remove-24-gradient-red.svg",
+    "hash": "73de070927210badc3939cf6c61a9df8",
+    "lastUpdated": "2026-03-04T01:45:30.767Z"
   }
 }
