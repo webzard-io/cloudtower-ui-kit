@@ -25,9 +25,8 @@ description: >
 当修改了组件的 Props 类型定义后：
 
 1. 更新对应 type.ts 中的 JSDoc（属性描述、默认值、新增/移除的标注）
-2. 如果存在 `docs/components/<组件名>.md`，同步更新 Props 表
-3. 如果 Storybook 中没有覆盖新 Props 的场景，补充 Story
-4. 运行 `yarn typings` 确认类型无误
+2. 如果 Storybook 中没有覆盖新 Props 的场景，补充 Story
+3. 运行 `yarn typings` 确认类型无误
 
 ### 3. 废弃组件
 

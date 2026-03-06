@@ -81,37 +81,6 @@ const App = () => {
 
 > **注意**：ImmersiveDialog 的 `onOk` 签名是 `(e: React.MouseEvent) => void`，不会自动关闭弹窗。必须通过 `usePopModal()` 获取 `popModal` 函数手动关闭，这一点与 SmallDialog / MediumDialog 的 `(popModal: () => void) => void` 签名不同。
 
-## Props
-
-| Prop | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| title | `React.ReactNode` | -- | 弹窗标题 |
-| children | `React.ReactNode` | -- | 中间内容区的主体内容 |
-| isContentFull | `boolean` | -- | 是否内容占满整个对话框。为 `true` 时不渲染左右面板，内容区占满全宽 |
-| left | `React.ReactNode` | -- | 左侧面板的自定义内容（三栏布局模式下生效） |
-| leftClassName | `string` | -- | 左侧面板的自定义类名 |
-| right | `React.ReactNode` | -- | 右侧面板的自定义内容（三栏布局模式下生效） |
-| rightClassName | `string` | -- | 右侧面板的自定义类名 |
-| closeIcon | `React.ReactNode` | 内置关闭图标 | 自定义关闭图标 |
-| showCancel | `boolean` | `true` | 是否显示取消按钮 |
-| cancelText | `string` | 有确认按钮时 `"取消"`，无确认按钮时 `"关闭"` | 取消按钮的文本 |
-| cancelButtonProps | `ButtonProps` | -- | 取消按钮的额外属性，透传给底层 Button 组件 |
-| showOk | `boolean` | `true` | 是否显示确认按钮 |
-| okText | `string` | `"确认"` / 初始化失败时为 `"重试"` | 确认按钮的文本 |
-| okButtonProps | `ButtonProps` | -- | 确认按钮的额外属性，透传给底层 Button 组件 |
-| onOk | `(e: React.MouseEvent) => void` | -- | 点击确认按钮的回调。**不会自动关闭弹窗**，需要通过 `usePopModal()` 手动关闭 |
-| error | `React.ReactNode` | -- | 展示在 footer 区域的错误信息，非空时自动显示错误区域 |
-| showFooterErrorIcon | `boolean` | `true` | 是否在 footer 错误信息前展示错误图标 |
-| hideFooter | `boolean` | `false` | 是否隐藏 footer（包括确认和取消按钮） |
-| footerLeftAction | `React.ReactNode` | -- | 底部左侧的操作区域，可放置额外按钮或提示信息 |
-| confirmLoading | `boolean` | -- | 确认按钮的加载状态，为 `true` 时确认按钮展示 loading |
-| initializing | `boolean` | -- | 是否处于初始化加载中。为 `true` 时标题和内容区域展示骨架屏，footer 隐藏 |
-| initializingError | `string \| React.ReactNode` | -- | 初始化失败时的错误内容。非空时展示错误提示界面，标题变为"加载失败"，确认按钮变为"重试" |
-| className | `string` | -- | 自定义弹窗容器类名 |
-| visible | `boolean` | `true` | 是否显示弹窗 |
-
-此外，ImmersiveDialog 继承了 antd Modal 的其他属性（如 `onCancel`、`maskClosable`、`closable` 等），会透传给底层 Modal 组件。
-
 ## 常见模式
 
 ### 模式一：三栏布局
