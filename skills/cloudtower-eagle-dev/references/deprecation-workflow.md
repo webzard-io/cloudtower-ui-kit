@@ -8,53 +8,33 @@
 
 ```typescript
 /**
- * @deprecated 请迁移至 <替代组件>。迁移指南见 docs/migration.md
+ * @deprecated 请迁移至 <替代组件>。迁移指南见 docs/<layer>/<ComponentName>/migrate-guide.md
  */
 export type XxxProps = { ... };
 ```
 
 在组件实现文件中同样添加 `@deprecated`。
 
-## Step 2: 更新迁移指南
+## Step 2: 编写迁移指南
 
-编辑 `packages/eagle/docs/migration.md`：
+在 `packages/eagle/docs/<layer>/<ComponentName>/` 目录下创建 `migrate-guide.md`（layer 为 core 或 coreX）。
 
-1. 在"废弃清单速查"表中添加条目
-2. 如果替代方案简单（直接替换），在条目说明中写清楚
-3. 如果替代方案复杂（API 差异大），编写详细迁移指南章节，包含：
-   - Props 映射对照表
-   - 回调签名变化
-   - 迁移前后代码对比
-   - 迁移步骤清单
+如果替代方案简单（直接替换），迁移指南可以很短。如果 API 差异大，需包含：
+- Props 映射对照表
+- 回调签名变化
+- 迁移前后代码对比
+- 迁移步骤清单
 
 ## Step 3: 更新索引
 
 编辑 `packages/eagle/docs/llms.txt`：
 
 - 将组件从原分类移到"废弃组件"分类
-- 使用删除线格式：`- ~~ComponentName~~: 已废弃，请迁移至 <替代组件>`
+- 使用链接+删除线格式：`- [~~ComponentName~~](<layer>/ComponentName/migrate-guide.md): 已废弃，请迁移至 <替代组件>`
 
-## Step 4: 更新消费侧 Skill
+## 验证
 
-编辑 `skills/cloudtower-eagle/SKILL.md`：
-
-- 在废弃清单表中添加条目
-
-同步 `skills/cloudtower-eagle/references/migration-guide.md`：
-
-- 复制 `packages/eagle/docs/migration.md` 的内容
-
-## Step 5: 验证
-
-确认以下位置都已同步更新：
-
-- [ ] 类型定义：`@deprecated` JSDoc
-- [ ] `docs/migration.md`：废弃清单 + 详细指南（如需要）
-- [ ] `docs/llms.txt`：移到废弃分类
-- [ ] `skills/cloudtower-eagle/SKILL.md`：废弃清单
-- [ ] `skills/cloudtower-eagle/references/migration-guide.md`：与 migration.md 同步
-
-运行验证：
+运行以下检查，全部通过后才可提交：
 
 ```bash
 cd packages/eagle && yarn typings

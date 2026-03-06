@@ -1,6 +1,5 @@
 node_modules/
 dist
-doc/
 yarn-error.log
 lerna-debug.log
 coverage
@@ -21,3 +20,5 @@ package-lock.json
 .qodo
 .yalc/
 yalc.lock
+docs/
+skills/**/evals/
