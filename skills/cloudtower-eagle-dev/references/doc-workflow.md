@@ -38,35 +38,28 @@
 
 ## Step 3: 编写 Markdown 文档
 
-输出到：`packages/eagle/docs/components/<ComponentName>.md`
+输出到：`packages/eagle/docs/<layer>/<ComponentName>/guide.md`（layer 与 src 层级一致：core 或 coreX）
 
 按 `references/doc-template.md` 模板编写。内容从 Step 1 的 JSDoc 和 Step 2 的 Storybook 中提取，确保一致性。
 
 **关键要求：**
 
 - 代码示例可直接复制使用（含完整 import）
-- Props 表的类型写具体枚举值，不写笼统的 `string`
 - "何时使用"要包含反面场景（"不要用于 X，请用 Y"）
 - 废弃说明要明确（如果不是废弃组件，写"当前推荐使用"）
+- 不要在 guide.md 中重复 Props 表——Props 信息由 type.ts 的 JSDoc 承载
 
 ## Step 4: 更新索引
 
 编辑 `packages/eagle/docs/llms.txt`：
 
 - 如果是新组件，在对应分类下添加条目
-- 如果有详细 Markdown 文档，使用链接格式：`[ComponentName](components/ComponentName.md): 一句话描述`
+- 如果有详细 Markdown 文档，使用链接格式：`[ComponentName](<layer>/ComponentName/guide.md): 一句话描述`
 - 如果没有详细文档，使用纯文本：`- ComponentName: 一句话描述`
 
 ## Step 5: 按需更新消费侧 Skill
 
-编辑 `skills/cloudtower-eagle/SKILL.md`：
-
-- 如果组件属于高频使用场景，添加到组件选型表
-- 如果是废弃组件的替代品，确认废弃清单已列出
-
-编辑 `skills/cloudtower-eagle/references/usage-patterns.md`：
-
-- 如果组件有容易出错的使用模式，添加代码示例和常见错误
+检查 `skills/cloudtower-eagle/SKILL.md`，确认关键规则和文档路径指引是否需要更新。
 
 ## Step 6: 验证
 

@@ -69,8 +69,8 @@ export default App;
 文档随 npm 包发布，安装后位于 `node_modules/@cloudtower/eagle/docs/`：
 
 - `docs/llms.txt` -- 组件索引，按分类列出所有组件及一句话描述
-- `docs/components/<组件名>.md` -- 组件详细文档（Props、用法示例、常见模式）
-- `docs/migration.md` -- 废弃组件迁移指南
+- `docs/<layer>/<组件名>/guide.md` -- 组件详细文档（Props、用法示例、常见模式）
+- `docs/<layer>/<组件名>/migrate-guide.md` -- 废弃组件迁移指南（在各废弃组件目录下）
 
 ### Agent Skills
 

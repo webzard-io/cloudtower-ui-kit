@@ -47,6 +47,9 @@ import { ModalProps as AntdModalProps } from "antd/lib/modal";
  * </ImmersiveDialog>
  * ```
  *
+ * 除下列自有属性外，还继承了 antd Modal 的全部属性（如 `onCancel`、`maskClosable`、`closable` 等），
+ * 这些属性会直接透传给底层 Modal 组件。
+ *
  * @see WizardDialog — 基于 ImmersiveDialog 的向导变体，支持分步操作
  * @see SmallDialog — 小型弹窗（492px），适用于简单确认或少量内容
  * @see MediumDialog — 中型弹窗（720px），适用于中等复杂度的表单或内容

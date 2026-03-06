@@ -1,42 +1,14 @@
-# 组件迁移指南
+# LegacyModal 迁移指南
 
 > **给 Coding Agent 的说明：**
-> 如果你需要迁移的组件或 API 在本文档中没有找到详细迁移指南：
-> 1. 阅读源码中该组件/API 的 `@deprecated` JSDoc 注释，获取替代方案名称
-> 2. 阅读替代组件的文档（`docs/components/<组件名>.md`）了解新 API
-> 3. 给出迁移建议和代码示例，但标注为"建议方案，请确认后再执行"，等待开发者确认
-> 4. 不要在没有详细指南的情况下直接执行批量迁移
-
-## 废弃清单速查
-
-### 废弃组件
-
-| 废弃组件 | 替代方案 | 详细指南 |
-|----------|----------|----------|
-| LegacyModal | SmallDialog / MediumDialog / ImmersiveDialog / WizardDialog | [见下方](#legacymodal---新-dialog-组件) |
-| LegacySelect | Select | 待补充（API 基本一致，Select 增加 `isLoadingValue`） |
-| DeprecatedProgress | Progress | 待补充（API 不同，需要重写） |
-| DeprecatedDonutChart | DonutChart | 待补充（API 不同，需要重写） |
-
-### 废弃 API
-
-| 废弃 API | 替代方案 | 说明 |
-|----------|----------|------|
-| `pushModal()` / `popModal()` / `closeModal()` 函数 | `usePushModal()` / `usePopModal()` / `useCloseModal()` hooks | 从函数调用改为 hook |
-| `useUIKit()` | 直接 import 各组件 | 会导致 Tree-shaking 失效 |
-| `useElementsSize()` | 自行使用 ResizeObserver | 已废弃 |
-| `Table.initLoading` | `Table.loading` | prop 重命名 |
-| `Tooltip.followMouse` | 移除此 prop | 未使用且有闪烁问题 |
-| `Timeline.detailMessage` | `Timeline.detailMessages` | prop 重命名（单数→复数） |
-| `TableForm.deleteConfig` / `draggable` / `rowSplitType` / `renderRowDescription` / `rowValidator` | `TableForm.row` 配置 | 多个 prop 合并到 `row` 配置对象 |
-
----
-
-## LegacyModal -> 新 Dialog 组件
+> 1. 阅读本文档了解 LegacyModal 到新 Dialog 组件的完整迁移映射
+> 2. 阅读替代组件的文档（如 `../SmallDialog/guide.md`）了解新 API
+> 3. 如果遇到本文档未覆盖的边界情况，标注为"建议方案，请确认后再执行"，等待开发者确认
+> 4. 不要在没有逐个确认的情况下直接执行批量迁移
 
 `LegacyModal` 已被标记为 `@deprecated`，将在未来版本中移除。请根据以下指南将其迁移到对应的新 Dialog 组件。
 
-### 选择替代组件
+## 选择替代组件
 
 | LegacyModal 使用模式 | 替代组件 | 判断条件 |
 |---|---|---|
@@ -44,9 +16,9 @@
 | `fullscreen={true}` | ImmersiveDialog | 需要全屏展示的场景，如大表单、数据编辑 |
 | `wizard={...}` | WizardDialog | 多步骤向导流程，如创建向导、配置引导 |
 
-### Props 映射表
+## Props 映射表
 
-#### 通用 Props 对照
+### 通用 Props 对照
 
 | LegacyModal | SmallDialog / MediumDialog | ImmersiveDialog | WizardDialog | 说明 |
 |---|---|---|---|---|
@@ -68,7 +40,7 @@
 | `normal` | 无 | 无 | 无 | 新组件无需此参数，通过选择不同组件来区分 |
 | `fullscreen` | 无 | 无 | 无 | 新组件无需此参数，使用 ImmersiveDialog 即为全屏 |
 
-#### 新增 Props
+### 新增 Props
 
 | Props | 可用组件 | 说明 |
 |---|---|---|
@@ -83,11 +55,11 @@
 | `TitleRender` | SmallDialog / MediumDialog | 自定义标题渲染组件 |
 | `footerClassName` | SmallDialog / MediumDialog | 自定义 footer 类名 |
 
-### 回调签名变化
+## 回调签名变化
 
 这是迁移中最关键的变化。新 Dialog 组件的 `onOk` 和 `onCancel` 签名与 LegacyModal 不同：
 
-#### LegacyModal（旧）
+### LegacyModal（旧）
 
 ```typescript
 // onOk 和 onCancel 都接收 MouseEvent，弹窗关闭由内部 redux 状态控制
@@ -95,7 +67,7 @@ onOk?: (e: React.MouseEvent<HTMLElement>) => void;
 onCancel?: (e: React.MouseEvent<HTMLElement>) => void;
 ```
 
-#### SmallDialog / MediumDialog（新）
+### SmallDialog / MediumDialog（新）
 
 ```typescript
 // onOk 和 onCancel 都接收 popModal 函数作为参数
@@ -110,7 +82,7 @@ SmallDialog / MediumDialog 内部已调用 `usePopModal()`，并将 `popModal` �
 - 如果不传 `onCancel`，点击取消按钮或关闭图标会自动关闭弹窗
 - 如果传了回调，需要在合适的时机手动调用 `popModal()` 来关闭弹窗
 
-#### ImmersiveDialog / WizardDialog（新）
+### ImmersiveDialog / WizardDialog（新）
 
 ```typescript
 // onOk 接收 MouseEvent，需要手动使用 usePopModal() 关闭弹窗
@@ -124,9 +96,9 @@ ImmersiveDialog / WizardDialog 内部也调用了 `usePopModal()`，但行为不
 - 点击取消按钮或关闭图标时，组件内部会先调用 `popModal()` 再触发 `onCancel`
 - 点击确认按钮时，组件内部不会自动关闭弹窗，需要在 `onOk` 中使用 `usePopModal()` 手动关闭
 
-### 迁移前后代码对比
+## 迁移前后代码对比
 
-#### 场景一：普通弹窗
+### 场景一：普通弹窗
 
 迁移前（LegacyModal）：
 
@@ -195,7 +167,7 @@ function MyPage() {
 }
 ```
 
-#### 场景二：全屏弹窗
+### 场景二：全屏弹窗
 
 迁移前（LegacyModal fullscreen）：
 
@@ -272,7 +244,7 @@ function MyPage() {
 }
 ```
 
-#### 场景三：向导弹窗
+### 场景三：向导弹窗
 
 迁移前（LegacyModal wizard）：
 
@@ -378,9 +350,9 @@ function MyPage() {
 }
 ```
 
-### 关键差异说明
+## 关键差异说明
 
-#### 1. 向导步骤配置
+### 1. 向导步骤配置
 
 | 对比项 | LegacyModal wizard | WizardDialog |
 |---|---|---|
@@ -394,7 +366,7 @@ function MyPage() {
 | 隐藏左侧步骤 | `hideLeft` | `hideSteps` |
 | 禁用上一步 | `disablePrevStep` | 无（由 `onPrevStep` 自行控制） |
 
-#### 2. maskClosable 默认值
+### 2. maskClosable 默认值
 
 | 组件 | 默认值 |
 |---|---|
@@ -406,7 +378,7 @@ function MyPage() {
 
 如果你的业务场景要求点击遮罩层不关闭弹窗，需要显式设置 `maskClosable={false}`。
 
-#### 3. 弹窗关闭机制
+### 3. 弹窗关闭机制
 
 LegacyModal 通过内部 redux 状态（`closeId`）控制关闭动画和移除，开发者只需在回调中执行业务逻辑。
 
@@ -415,7 +387,7 @@ LegacyModal 通过内部 redux 状态（`closeId`）控制关闭动画和移除�
 - **SmallDialog / MediumDialog**：`onOk` 和 `onCancel` 接收 `popModal` 参数，开发者决定何时关闭
 - **ImmersiveDialog / WizardDialog**：取消操作自动关闭，确认操作需通过 `usePopModal()` 手动关闭
 
-### 迁移步骤
+## 迁移步骤
 
 1. **确定 LegacyModal 使用模式** -- 检查是否使用了 `fullscreen`、`wizard` 等 prop，对照上方表格选择替代组件
 
