@@ -49,6 +49,10 @@ import { ImmersiveDialogProps } from "@src/core/ImmersiveDialog/type";
  * />
  * ```
  *
+ * 注意以下继承属性在 WizardDialog 中有特殊行为：
+ * - `footerLeftAction`：WizardDialog 内部使用此属性渲染"上一步"按钮，外部传入会被覆盖。
+ * - `isContentFull`：WizardDialog 内部强制设为 `false`，外部传入无效。
+ *
  * @see ImmersiveDialog 基础全屏对话框组件
  * @see Steps 步骤条组件
  */

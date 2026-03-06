@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-CloudTower UI Kit — 基于 Ant Design 的企业级 React 组件库，采用 Yarn Workspaces + Lerna + Turbo 的 monorepo 架构。当前版本 490.0.5，React 17.0.2，TypeScript 5.0.2，Node 20.x。
+CloudTower UI Kit — 基于 Ant Design 的企业级 React 组件库，采用 Yarn Workspaces + Lerna + Turbo 的 monorepo 架构。
 
 ## Monorepo 结构
 
-- **packages/eagle** — 核心组件库（100+ 基础组件 + 30+ 复合组件），主包
+- **packages/eagle** — 核心组件库（100+ 基础组件 + 30+ 复合组件），React 17 + TypeScript 5 + antd 4/5 + Linaria + Rollup
 - **packages/parrot** — i18n 模块，基于 i18next，支持 zh-CN / en-US
 - **packages/icons** — SVG 图标源文件（从 Figma 同步），私有包
-- **packages/icons-react** — 由 SVG 自动生成的 React 图标组件
+- **packages/icons-react** — 由 SVG 自动生成的 React 图标组件，SVGR + Rollup
 
 ## 常用命令
 

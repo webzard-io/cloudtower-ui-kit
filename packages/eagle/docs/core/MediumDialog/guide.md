@@ -63,43 +63,6 @@ const App = () => {
 };
 ```
 
-## Props
-
-MediumDialog 继承 SmallDialog 的全部属性，并新增以下属性：
-
-### MediumDialog 新增属性
-
-| Prop | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| isContentFull | `boolean` | `false` | 内容是否尽可能占满视窗。开启后弹窗尺寸变为 `width: calc(100vw - 160px)`、`height: calc(100vh - 80px)`，内容区域自动 flex 填充剩余高度 |
-
-### 继承自 SmallDialog 的属性
-
-| Prop | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| title | `React.ReactNode` | -- | 弹窗标题（必填） |
-| width | `number \| string` | `720` | 弹窗宽度。MediumDialog 默认为 720，`isContentFull` 为 true 时变为 `calc(100vw - 160px)` |
-| TitleRender | `React.FC<{ title?: React.ReactNode }>` | 内置 `d1s_bold_title` 渲染 | 自定义标题渲染组件，替换默认标题样式。MediumDialog 默认使用 `Typo.Display.d1s_bold_title` |
-| children | `React.ReactNode` | -- | 弹窗主体内容 |
-| okText | `string` | `"确认"` / 初始化失败时为 `"重试"` | 确认按钮文案 |
-| cancelText | `string` | 有确认按钮时 `"取消"`，无确认按钮时 `"关闭"` | 取消按钮文案 |
-| showOk | `boolean` | `true` | 是否显示确认按钮。设为 `false` 时仅展示取消/关闭按钮 |
-| onOk | `(popModal: () => void) => void` | -- | 点击确认按钮的回调，参数 `popModal` 用于关闭弹窗 |
-| onCancel | `(popModal: () => void) => void` | -- | 点击取消按钮或关闭弹窗的回调，参数 `popModal` 用于关闭弹窗。未传入时默认调用 `popModal()` |
-| maskClosable | `boolean` | `true` | 是否可点击遮罩层关闭弹窗 |
-| closable | `boolean` | `true` | 是否显示右上角关闭按钮 |
-| className | `string` | -- | 自定义弹窗容器类名 |
-| footerClassName | `string` | -- | 自定义 footer 区域类名 |
-| okButtonProps | `ButtonProps` | -- | 确认按钮的额外属性，会透传给底层 Button 组件。`okText` 优先级高于 `okButtonProps.children` |
-| cancelButtonProps | `ButtonProps` | -- | 取消按钮的额外属性，会透传给底层 Button 组件。`cancelText` 优先级高于 `cancelButtonProps.children` |
-| error | `React.ReactNode` | -- | 展示在 footer 区域的错误文案，非空时自动显示错误区域 |
-| showFooterErrorIcon | `boolean` | `true` | 是否在 footer 错误文案前展示错误图标 |
-| hideFooter | `boolean` | `false` | 是否隐藏 footer（包括确认和取消按钮） |
-| confirmLoading | `boolean` | -- | 确认按钮的加载状态，为 `true` 时确认按钮展示 loading |
-| initializing | `boolean` | -- | 是否处于初始化加载中。为 `true` 时标题和内容区域展示骨架屏，footer 隐藏 |
-| initializingError | `string \| React.ReactNode` | -- | 初始化失败时的错误内容。非空时展示错误提示界面，确认按钮变为"重试" |
-| initializingSkeletonRows | `number` | `3` | 初始化骨架屏的行数，用于控制加载占位高度。MediumDialog 默认为 3（SmallDialog 默认为 2） |
-
 ## 常见模式
 
 ### 模式一：表单提交弹窗
