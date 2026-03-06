@@ -72,46 +72,6 @@ const App = () => {
 };
 ```
 
-## Props
-
-WizardDialog 继承了 `ImmersiveDialogProps` 的所有属性，以下仅列出 WizardDialog 自有的属性。
-
-### WizardDialog 自有属性
-
-| Prop | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| step | `number` | `0` | 当前步骤索引（从 0 开始）。传入后组件仍维护内部状态，但会在 `step` 变化时同步 |
-| steps | `{ title: string; children: React.ReactNode }[]` | -- | 步骤配置数组。每一项包含步骤标题和对应的内容渲染节点 |
-| hideSteps | `boolean` | -- | 是否隐藏左侧步骤指示器。设为 `true` 时不渲染步骤条，但步骤导航逻辑仍然生效 |
-| left | `React.ReactNode` | -- | 左侧自定义内容。传入后会替代默认的步骤指示器 |
-| right | `React.ReactNode` | -- | 右侧自定义内容 |
-| destroyOtherStep | `boolean` | -- | 是否销毁非当前步骤的内容。默认所有步骤内容均保留在 DOM 中（通过 `display: none` 隐藏），设为 `true` 时仅渲染当前步骤 |
-| prevText | `string` | `"上一步"` | "上一步"按钮的自定义文案 |
-| onPrevStep | `(step: number) => void` | -- | 点击"上一步"时的回调，参数为切换后的步骤索引 |
-| nextText | `string` | `"下一步"` | "下一步"按钮的自定义文案（即非最后一步时确认按钮的文案） |
-| onNextStep | `(step: number) => void \| boolean` | -- | 点击"下一步"时的回调，参数为即将切换到的步骤索引。返回 `false`（严格等于 `=== false`）时阻止导航到下一步 |
-| onStepChange | `(step: number) => void` | -- | 步骤变化时的回调（包括上一步、下一步、点击步骤条），参数为变化后的步骤索引 |
-
-### 继承自 ImmersiveDialogProps 的常用属性
-
-| Prop | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| title | `React.ReactNode` | -- | 对话框标题 |
-| onOk | `(e: React.MouseEvent) => void` | -- | 最后一步点击确认按钮的回调。需要使用 `usePopModal()` 获取 `popModal` 函数手动关闭弹窗 |
-| okText | `string` | `"确认"` | 最后一步确认按钮的文案 |
-| okButtonProps | `ButtonProps` | -- | 确认按钮的额外属性 |
-| showCancel | `boolean` | -- | 是否显示取消按钮 |
-| cancelText | `string` | -- | 取消按钮的文案 |
-| cancelButtonProps | `ButtonProps` | -- | 取消按钮的额外属性 |
-| error | `React.ReactNode` | -- | 展示在 footer 区域的错误文案 |
-| showFooterErrorIcon | `boolean` | `true` | 是否在 footer 错误文案前展示错误图标 |
-| hideFooter | `boolean` | `false` | 是否隐藏 footer |
-| confirmLoading | `boolean` | -- | 确认按钮的加载状态 |
-| initializing | `boolean` | -- | 是否处于初始化加载中 |
-| initializingError | `string \| React.ReactNode` | -- | 初始化失败时的错误内容 |
-| footerLeftAction | `React.ReactNode` | -- | 底部左侧操作区域。WizardDialog 内部已使用此属性渲染"上一步"按钮，外部传入会被覆盖 |
-| isContentFull | `boolean` | `false` | WizardDialog 内部强制设为 `false` |
-
 ## 常见模式
 
 ### 模式一：基础向导
