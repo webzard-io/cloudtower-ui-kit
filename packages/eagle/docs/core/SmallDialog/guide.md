@@ -215,10 +215,6 @@ const App = () => {
 };
 ```
 
-## 废弃说明
-
-当前推荐使用。SmallDialog 替代了 `LegacyModal` 的普通弹窗场景，新代码应统一使用 SmallDialog。
-
 ## 相关组件
 
 - `MediumDialog` — 中等尺寸对话框（720px），适用于包含表单输入的场景

@@ -45,7 +45,7 @@ npm 包名：@cloudtower/eagle
 - Calendar: 日历面板
 - TimeZoneSelect: 时区选择器，内置全球时区数据
 - SearchInput: 搜索输入框，支持高亮匹配数和上下翻页
-- TableForm: 表格表单，行内编辑的表格，支持新增/删除行和拖拽排序
+- [TableForm](core/TableForm/guide.md): 表格表单，行内编辑的表格，支持批量填充、多种列类型、增删行、拖拽排序和三种校验模式
 - Fields: 表单字段集合，包含 Boolean/DateTime/Enum/Float/Int/String/TextArea 等预设字段
 - CronPlan: 定时计划配置组件，支持按天/周/月设置 cron 表达式
 - CronCalendar: 定时计划日历预览，可视化展示 cron 表达式的执行日期
