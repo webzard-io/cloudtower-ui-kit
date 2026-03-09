@@ -35,6 +35,8 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Sync Icons
         run: FIGMA_TOKEN=${{ secrets.FIGMA_TOKEN }} yarn workspace @cloudtower/icons sync-icons
+      - name: Bundlewatch icons
+        run: yarn workspace @cloudtower/icons build-icons && yarn bundlewatch ./packages/icons/dist/**/*.svg --max-size 6kb
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v5
