@@ -28,18 +28,17 @@ const meta = {
     ),
   ],
   parameters: {
-    design: {
-      type: "figma",
-      url: "YOUR_FIGMA_URL_HERE", // 请替换为实际的设计稿URL
+    docs: {
+      description: {
+        component:
+          "操作拒绝反馈对话框，用于告知用户某个操作无法执行及其原因。支持四种模式：Single（单个对象拒绝）、All（批量全部拒绝）、Part（批量部分拒绝，可继续操作未被拒绝的部分）、Custom（自定义内容）。",
+      },
     },
   },
 } satisfies CoreXMeta<typeof RejectDialog>;
 
 export default meta;
 
-/**
- * 单个对象拒绝 - 单条原因
- */
 export const SingleReject = () => {
   const pushModal = usePushModal();
 
@@ -67,9 +66,8 @@ export const SingleReject = () => {
   );
 };
 
-/**
- * 单个对象拒绝 - 多条原因
- */
+SingleReject.storyName = "单个对象拒绝";
+
 export const SingleRejectMultiReasons = () => {
   const pushModal = usePushModal();
 
@@ -153,9 +151,8 @@ export const SingleRejectMultiReasons = () => {
   );
 };
 
-/**
- * 批量全部拒绝
- */
+SingleRejectMultiReasons.storyName = "单个对象拒绝 - 多条原因";
+
 export const AllReject = () => {
   const pushModal = usePushModal();
 
@@ -245,9 +242,8 @@ const BeforeDescription = css`
   margin-bottom: 16px;
 `;
 
-/**
- * 批量部分拒绝
- */
+AllReject.storyName = "批量全部拒绝";
+
 export const PartialReject = () => {
   const pushModal = usePushModal();
 
@@ -338,9 +334,8 @@ export const PartialReject = () => {
   );
 };
 
-/**
- * 自定义内容
- */
+PartialReject.storyName = "批量部分拒绝";
+
 export const CustomContent = () => {
   const pushModal = usePushModal();
 
@@ -388,3 +383,4 @@ export const CustomContent = () => {
     </Button>
   );
 };
+CustomContent.storyName = "自定义内容";
