@@ -254,10 +254,6 @@ const App = () => {
 | 全屏模式 | 不支持 | 支持（`isContentFull`） |
 | 适用场景 | 简单确认、信息提示 | 表单弹窗、内容较多的确认 |
 
-## 废弃说明
-
-当前推荐使用。MediumDialog 替代了 `LegacyModal` 的中型弹窗场景，新代码中包含表单或内容较多的弹窗应统一使用 MediumDialog。
-
 ## 相关组件
 
 - `SmallDialog` -- 小尺寸对话框（492px），适用于简单确认和信息提示
