@@ -154,10 +154,6 @@ const App = () => {
 };
 ```
 
-## 废弃说明
-
-当前推荐使用。DeleteDialog 是删除确认场景的标准组件，替代了直接使用 SmallDialog 手动配置 danger 按钮的做法。
-
 ## 相关组件
 
 - `SmallDialog`: 底层对话框组件（492px），DeleteDialog 基于其封装
