@@ -313,10 +313,6 @@ const App = () => {
 - **"上一步"按钮**：当步骤索引大于 0 时，底部左侧自动展示"上一步"按钮（带左箭头图标）。第一步时不显示。
 - **footerLeftAction 被占用**：WizardDialog 内部使用 `footerLeftAction` 渲染"上一步"按钮，因此外部传入的 `footerLeftAction` 会被覆盖。
 
-## 废弃说明
-
-当前推荐使用。WizardDialog 是多步骤向导场景的标准组件，新代码应统一使用 WizardDialog。
-
 ## 相关组件
 
 - `ImmersiveDialog` -- 全屏沉浸式对话框，WizardDialog 的基础组件，适用于不需要步骤的全屏操作
