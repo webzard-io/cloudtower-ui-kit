@@ -178,10 +178,6 @@ const App = () => {
 };
 ```
 
-## 废弃说明
-
-当前推荐使用。RejectDialog 是操作拒绝反馈的标准组件，替代了直接使用 SmallDialog 手动组织拒绝信息的做法。
-
 ## 相关组件
 
 - `SmallDialog`: 底层对话框组件（492px），RejectDialog 基于其封装
