@@ -22,18 +22,17 @@ const meta = {
   ],
   args: {},
   parameters: {
-    design: {
-      type: "figma",
-      url: "YOUR_FIGMA_URL_HERE", // 请替换为实际的设计稿URL
+    docs: {
+      description: {
+        component:
+          "删除确认对话框，基于 SmallDialog 封装，确认按钮默认使用危险（红色）样式。适用于需要用户二次确认的删除操作，支持异步删除和错误信息展示。",
+      },
     },
   },
 } satisfies CoreXMeta<typeof DeleteDialog>;
 
 export default meta;
 
-/**
- * 基础用法 - 删除单个项目
- */
 export const Basic = () => {
   const pushModal = usePushModal();
 
@@ -66,9 +65,8 @@ export const Basic = () => {
   );
 };
 
-/**
- * 自定义按钮文案
- */
+Basic.storyName = "基础用法";
+
 export const CustomButtonText = () => {
   const pushModal = usePushModal();
 
@@ -101,9 +99,8 @@ export const CustomButtonText = () => {
   );
 };
 
-/**
- * 确认按钮加载状态
- */
+CustomButtonText.storyName = "自定义按钮文案";
+
 export const ConfirmLoading = () => {
   const pushModal = usePushModal();
 
@@ -140,9 +137,8 @@ export const ConfirmLoading = () => {
   );
 };
 
-/**
- * 删除失败
- */
+ConfirmLoading.storyName = "确认按钮加载状态";
+
 export const Failed = () => {
   const pushModal = usePushModal();
 
@@ -186,3 +182,4 @@ export const Failed = () => {
     </Button>
   );
 };
+Failed.storyName = "删除失败";
