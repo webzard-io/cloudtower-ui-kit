@@ -20,5 +20,5 @@ package-lock.json
 .qodo
 .yalc/
 yalc.lock
-docs/
+/docs/
 skills/**/evals/
