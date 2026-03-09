@@ -11723,5 +11723,33 @@
     "svgFileName": "vm-minus-remove-24-gradient-red.svg",
     "hash": "73de070927210badc3939cf6c61a9df8",
     "lastUpdated": "2026-03-04T01:45:30.767Z"
+  },
+  "19216:22": {
+    "componentSetName": "Icon / sso.general-idp",
+    "name": "Size=16",
+    "svgFileName": "sso-general-idp-16.svg",
+    "hash": "acee2c293b9e425446f168910540f813",
+    "lastUpdated": "2026-03-09T08:03:44.853Z"
+  },
+  "19216:40": {
+    "componentSetName": "Icon / sso.thales",
+    "name": "Size=16",
+    "svgFileName": "sso-thales-16.svg",
+    "hash": "db120819fa60b68cff5a6b18c0d378d6",
+    "lastUpdated": "2026-03-09T08:03:44.854Z"
+  },
+  "19216:48": {
+    "componentSetName": "Icon / sso.okta",
+    "name": "Size=16",
+    "svgFileName": "sso-okta-16.svg",
+    "hash": "c1c90461805ea768261e5c14bc138d36",
+    "lastUpdated": "2026-03-09T08:03:44.854Z"
+  },
+  "19216:53": {
+    "componentSetName": "Icon / sso.duo",
+    "name": "Size=16",
+    "svgFileName": "sso-duo-16.svg",
+    "hash": "84090e528336b6054ca4e385369ad848",
+    "lastUpdated": "2026-03-09T08:03:44.854Z"
   }
 }
