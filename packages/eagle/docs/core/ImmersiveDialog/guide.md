@@ -289,10 +289,6 @@ const MyDialog = () => {
 };
 ```
 
-## 废弃说明
-
-当前推荐使用。ImmersiveDialog 替代了 `LegacyModal` 的全屏弹窗场景，新代码应统一使用 ImmersiveDialog。
-
 ## 相关组件
 
 - `SmallDialog` -- 小型对话框（492px），适用于简单确认和信息提示场景

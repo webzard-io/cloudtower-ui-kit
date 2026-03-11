@@ -15,8 +15,8 @@ npm 包名：@cloudtower/eagle
 - [MediumDialog](core/MediumDialog/guide.md): 中型对话框（720px），用于表单和较多内容
 - [ImmersiveDialog](core/ImmersiveDialog/guide.md): 沉浸式全屏对话框，支持左右面板布局
 - [WizardDialog](core/WizardDialog/guide.md): 向导对话框，支持多步骤流程
-- DeleteDialog: 删除确认对话框，基于 SmallDialog 封装，自带 danger 按钮
-- RejectDialog: 操作拒绝反馈对话框，支持单条/批量全部/批量部分/自定义四种模式
+- [DeleteDialog](coreX/DeleteDialog/guide.md): 删除确认对话框，基于 SmallDialog 封装，自带 danger 按钮，支持异步删除和错误信息展示
+- [RejectDialog](coreX/RejectDialog/guide.md): 操作拒绝反馈对话框，支持 Single/All/Part/Custom 四种模式
 - message: 全局提示，支持 success/error/warning/info/loading 类型
 - message-group: 消息分组，将多条消息合并为一组展示
 - Alert: 警告提示条，支持 success/info/warning/error 类型，可关闭
@@ -45,7 +45,7 @@ npm 包名：@cloudtower/eagle
 - Calendar: 日历面板
 - TimeZoneSelect: 时区选择器，内置全球时区数据
 - SearchInput: 搜索输入框，支持高亮匹配数和上下翻页
-- TableForm: 表格表单，行内编辑的表格，支持新增/删除行和拖拽排序
+- [TableForm](core/TableForm/guide.md): 表格表单，行内编辑的表格，支持批量填充、多种列类型、增删行、拖拽排序和三种校验模式
 - Fields: 表单字段集合，包含 Boolean/DateTime/Enum/Float/Int/String/TextArea 等预设字段
 - CronPlan: 定时计划配置组件，支持按天/周/月设置 cron 表达式
 - CronCalendar: 定时计划日历预览，可视化展示 cron 表达式的执行日期
