@@ -26,7 +26,7 @@
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
     "typings": "tsc -v && tsc --emitDeclarationOnly",
     "generate:reexport": "node --loader ts-node/esm tools/index.mts",
-    "lint": "eslint src --ext .ts --quiet"
+    "lint": "biome lint src/ --diagnostic-level=error "
   },
   "dependencies": {
     "i18next": "^23.2.3",

@@ -17,20 +17,20 @@
     "ci:versionup:patch": "lerna version patch --no-push --no-git-tag-version --yes && npm run commit-version",
     "ci:versionup:minor": "lerna version minor --no-push --no-git-tag-version --yes && npm run commit-version",
     "commit-version": "git add . && git commit -m \"chore(release): v`node -p 'require(\"./lerna.json\").version'`\"",
-    "lint": "eslint \"**/*.{tsx,ts}\" --fix",
+    "lint": "biome lint --diagnostic-level=error ",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "lint-staged": {
     "**/*.{ts,tsx,md}": [
-      "prettier --write",
-      "eslint"
+      "prettier --write"
+    ],
+    "**/*.{ts,tsx}": [
+      "biome check --no-errors-on-unmatched"
     ]
   },
   "devDependencies": {
     "@types/ejs": "^3.1.1",
-    "eslint": "^8.25.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "@biomejs/biome": "^2.4.6",
     "husky": "^8.0.1",
     "lerna": "^4.0.0",
     "lerna-update-wizard": "^1.1.2",

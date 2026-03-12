@@ -1,0 +1,196 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.4.6/schema.json",
+	"vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+	"files": {
+		"ignoreUnknown": false,
+		"includes": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.json"],
+		"experimentalScannerIgnores": ["**/node_modules/**", "**/generated/**", "**/dist/**", "__test__"]
+	},
+	"formatter": { "enabled": false, "indentStyle": "space", "indentWidth": 2 },
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": false,
+			"a11y": {
+				"noAccessKey": "warn",
+				"noAriaUnsupportedElements": "warn",
+				"noDistractingElements": "warn",
+				"noHeaderScope": "warn",
+				"noRedundantAlt": "warn",
+				"noRedundantRoles": "warn",
+				"useAltText": "warn",
+				"useAnchorContent": "warn",
+				"useAriaActivedescendantWithTabindex": "warn",
+				"useAriaPropsForRole": "warn",
+				"useAriaPropsSupportedByRole": "warn",
+				"useHeadingContent": "warn",
+				"useIframeTitle": "warn",
+				"useValidAnchor": "warn",
+				"useValidAriaProps": "warn",
+				"useValidAriaRole": {
+					"level": "warn",
+					"options": { "ignoreNonDom": true }
+				},
+				"useValidAriaValues": "warn"
+			},
+			"complexity": {
+				"noAdjacentSpacesInRegex": "warn",
+				"noCommaOperator": "warn",
+				"noUselessConstructor": "warn",
+				"noUselessEscapeInRegex": "warn",
+				"noUselessLabel": "warn",
+				"noUselessLoneBlockStatements": "warn",
+				"noUselessRename": "warn",
+				"noUselessStringConcat": "warn",
+				"useLiteralKeys": "warn"
+			},
+			"correctness": {
+				"noConstAssign": "warn",
+				"noEmptyCharacterClassInRegex": "warn",
+				"noEmptyPattern": "warn",
+				"noGlobalObjectCalls": "warn",
+				"noInvalidUseBeforeDeclaration": "warn",
+				"noSelfAssign": "warn",
+				"noUnreachable": "warn",
+				"noUnreachableSuper": "warn",
+				"noUnusedLabels": "warn",
+				"noUnusedVariables": "warn",
+				"useExhaustiveDependencies": "warn",
+				"useHookAtTopLevel": "error",
+				"useIsNan": "warn",
+				"useValidTypeof": "warn",
+				"useYield": "warn"
+			},
+			"nursery": {
+				"noMultiStr": "warn",
+				"noScriptUrl": "warn"
+			},
+			"security": {
+				"noBlankTarget": "warn",
+				"noDangerouslySetInnerHtmlWithChildren": "warn",
+				"noGlobalEval": "warn"
+			},
+			"style": {
+				"noRestrictedGlobals": {
+					"level": "error",
+					"options": {
+						"deniedGlobals": {
+							"addEventListener": "Use window.addEventListener instead.",
+							"blur": "Use window.blur instead.",
+							"close": "Use window.close instead.",
+							"closed": "Use window.closed instead.",
+							"confirm": "Use window.confirm instead.",
+							"defaultStatus": "Use window.defaultStatus instead.",
+							"defaultstatus": "Use window.defaultstatus instead.",
+							"event": "Use window.event instead.",
+							"external": "Use window.external instead.",
+							"find": "Use window.find instead.",
+							"focus": "Use window.focus instead.",
+							"frameElement": "Use window.frameElement instead.",
+							"frames": "Use window.frames instead.",
+							"history": "Use window.history instead.",
+							"innerHeight": "Use window.innerHeight instead.",
+							"innerWidth": "Use window.innerWidth instead.",
+							"length": "Use window.length instead.",
+							"location": "Use window.location instead.",
+							"locationbar": "Use window.locationbar instead.",
+							"menubar": "Use window.menubar instead.",
+							"moveBy": "Use window.moveBy instead.",
+							"moveTo": "Use window.moveTo instead.",
+							"name": "Use window.name instead.",
+							"onblur": "Use window.onblur instead.",
+							"onerror": "Use window.onerror instead.",
+							"onfocus": "Use window.onfocus instead.",
+							"onload": "Use window.onload instead.",
+							"onresize": "Use window.onresize instead.",
+							"onunload": "Use window.onunload instead.",
+							"open": "Use window.open instead.",
+							"opener": "Use window.opener instead.",
+							"opera": "Use window.opera instead.",
+							"outerHeight": "Use window.outerHeight instead.",
+							"outerWidth": "Use window.outerWidth instead.",
+							"pageXOffset": "Use window.pageXOffset instead.",
+							"pageYOffset": "Use window.pageYOffset instead.",
+							"parent": "Use window.parent instead.",
+							"print": "Use window.print instead.",
+							"removeEventListener": "Use window.removeEventListener instead.",
+							"resizeBy": "Use window.resizeBy instead.",
+							"resizeTo": "Use window.resizeTo instead.",
+							"screen": "Use window.screen instead.",
+							"screenLeft": "Use window.screenLeft instead.",
+							"screenTop": "Use window.screenTop instead.",
+							"screenX": "Use window.screenX instead.",
+							"screenY": "Use window.screenY instead.",
+							"scroll": "Use window.scroll instead.",
+							"scrollbars": "Use window.scrollbars instead.",
+							"scrollBy": "Use window.scrollBy instead.",
+							"scrollTo": "Use window.scrollTo instead.",
+							"scrollX": "Use window.scrollX instead.",
+							"scrollY": "Use window.scrollY instead.",
+							"self": "Use window.self instead.",
+							"status": "Use window.status instead.",
+							"statusbar": "Use window.statusbar instead.",
+							"stop": "Use window.stop instead.",
+							"toolbar": "Use window.toolbar instead.",
+							"top": "Use window.top instead."
+						}
+					}
+				},
+				"noRestrictedImports": {
+					"level": "error",
+					"options": {
+						"paths": {
+							"react-i18next": {
+								"importNames": ["Trans", "useTranslation"],
+								"message": "Please use UseUIComponents or UIComponentTrans from ./i18n.tsx instead"
+							}
+						}
+					}
+				},
+				"useArrayLiterals": "warn",
+				"useConsistentBuiltinInstantiation": "warn",
+				"useThrowOnlyError": "warn"
+			},
+			"suspicious": {
+				"noAssignInExpressions": "warn",
+				"noCatchAssign": "warn",
+				"noCommentText": "warn",
+				"noConfusingLabels": "warn",
+				"noControlCharactersInRegex": "warn",
+				"noDoubleEquals": "warn",
+				"noDuplicateCase": "warn",
+				"noDuplicateClassMembers": "warn",
+				"noDuplicateJsxProps": "warn",
+				"noDuplicateObjectKeys": "warn",
+				"noDuplicateParameters": "warn",
+				"noFallthroughSwitchClause": "warn",
+				"noFunctionAssign": "warn",
+				"noGlobalAssign": "warn",
+				"noLabelVar": "warn",
+				"noOctalEscape": "warn",
+				"noRedeclare": "warn",
+				"noSelfCompare": "warn",
+				"noShadowRestrictedNames": "warn",
+				"noSparseArray": "warn",
+				"noTemplateCurlyInString": "warn",
+				"noUnsafeNegation": "warn",
+				"noWith": "warn",
+				"useGetterReturn": "warn",
+				"useIterableCallbackReturn": "warn"
+			}
+		}
+	},
+	"javascript": { "formatter": { "quoteStyle": "double" } },
+	"overrides": [
+		{
+			"includes": ["**/stories/**/*"],
+			"linter": {
+				"rules": { "correctness": { "useHookAtTopLevel": "off" } }
+			}
+		}
+	],
+	"assist": {
+		"enabled": true,
+		"actions": { "source": { "organizeImports": "on" } }
+	}
+}
