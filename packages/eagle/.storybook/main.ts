@@ -1,4 +1,4 @@
-import { mergeConfig, transformWithEsbuild } from "vite";
+import { transformWithEsbuild } from "vite";
 import type { StorybookConfig } from "@storybook/react-vite";
 import linaria from "@linaria/vite";
 import sass from "sass";
@@ -54,23 +54,24 @@ const config: StorybookConfig = {
       encoding: "utf-8",
     });
 
-    const finalConfig = mergeConfig(config, {
-      resolve: {
-        alias: {
-          "@cloudtower/parrot": path.resolve(
-            __dirname,
-            "../../parrot/src/index.ts",
-          ),
-          "@src": path.resolve(__dirname, "../src/"),
-          "@stories": path.resolve(__dirname, "../stories/"),
-          "moment/locale": "moment/dist/locale",
-        },
-      },
+    // Remove @vitejs/plugin-react injected by @storybook/react-vite to avoid
+    // JSX transform conflicts with @linaria/vite. When both plugins process
+    // the same .tsx file, @vitejs/plugin-react's Babel transform can
+    // re-generate code from AST that still contains untransformed JSX,
+    // causing intermittent build-import-analysis parse errors on Vercel.
+    // We replace it with a direct esbuild transform below.
+    const filteredPlugins = (config.plugins || [])
+      .flat()
+      .filter((p: any) => !(p && p.name && p.name.startsWith("vite:react")));
+
+    return {
+      ...config,
       plugins: [
+        ...filteredPlugins,
         {
           name: "force-tsx-transform",
-          enforce: "pre",
-          async transform(code, id) {
+          enforce: "pre" as const,
+          async transform(code: string, id: string) {
             if (/\.[jt]sx$/.test(id) && !id.includes("node_modules")) {
               return transformWithEsbuild(code, id, {
                 jsx: "transform",
@@ -99,8 +100,20 @@ const config: StorybookConfig = {
           sourceMap: true,
         }),
       ],
-    });
-    return finalConfig;
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...((config.resolve?.alias as Record<string, string>) || {}),
+          "@cloudtower/parrot": path.resolve(
+            __dirname,
+            "../../parrot/src/index.ts",
+          ),
+          "@src": path.resolve(__dirname, "../src/"),
+          "@stories": path.resolve(__dirname, "../stories/"),
+          "moment/locale": "moment/dist/locale",
+        },
+      },
+    };
   },
 };
 
