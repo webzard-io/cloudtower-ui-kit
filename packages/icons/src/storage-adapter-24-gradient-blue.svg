@@ -1,0 +1,11 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Fill=Gradient - Blue, Size=24">
+<path id="Union" d="M4.5 3C4.77614 3 5 3.22386 5 3.5V5H19.5C20.8807 5 22 6.11929 22 7.5V14.5C22 15.3284 21.3284 16 20.5 16H17.75V17C17.75 17.8284 17.0784 18.5 16.25 18.5H9.75C8.92157 18.5 8.25 17.8284 8.25 17V16H5V20C5 20.2761 4.77614 20.5 4.5 20.5C4.22386 20.5 4 20.2761 4 20V4H2.5C2.22386 4 2 3.77614 2 3.5C2 3.22386 2.22386 3 2.5 3H4.5ZM5 15H8.75C9.02614 15 9.25 15.2239 9.25 15.5V17C9.25 17.2761 9.47386 17.5 9.75 17.5H16.25C16.5261 17.5 16.75 17.2761 16.75 17V15.5C16.75 15.2239 16.9739 15 17.25 15H20.5C20.7761 15 21 14.7761 21 14.5V7.5C21 6.67157 20.3284 6 19.5 6H5V15ZM17.5 14.5H8.5V7.5H17.5V14.5ZM9.5 13.5H16.5V11.5H9.5V13.5ZM9.5 10.5H16.5V8.5H9.5V10.5Z" fill="url(#paint0_radial_19245_225)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_19245_225" cx="0" cy="0" r="1" gradientTransform="matrix(20 -17.5 20 17.5 2 20.5)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5BCAFF"/>
+<stop offset="1" stop-color="#0066FF"/>
+</radialGradient>
+</defs>
+</svg>
