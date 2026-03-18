@@ -8926,10 +8926,10 @@
   },
   "13454:62612": {
     "componentSetName": "network.security",
-    "name": "Size=Icon, Fill=Colorful",
-    "svgFileName": "network-security-icon-colorful.svg",
-    "hash": "cac2cd71bb1e4b7a7f4f03ab4b02472e",
-    "lastUpdated": "2026-01-12T08:10:24.146Z"
+    "name": "Size=32, Fill=Colorful",
+    "svgFileName": "network-security-32-colorful.svg",
+    "hash": "0d190c9ca452c965ec09ed53cd782a24",
+    "lastUpdated": "2026-03-18T01:54:08.513Z"
   },
   "13454:62798": {
     "componentSetName": "report",
@@ -11751,5 +11751,152 @@
     "svgFileName": "sso-duo-16.svg",
     "hash": "84090e528336b6054ca4e385369ad848",
     "lastUpdated": "2026-03-09T08:32:21.144Z"
+  },
+  "19246:21": {
+    "componentSetName": "Icon / minus.unmount.remove.circle",
+    "name": "Size=16, Fill=Gradient - Blue",
+    "svgFileName": "minus-unmount-remove-circle-16-gradient-blue.svg",
+    "hash": "f6963e930a10f6e9f1a60d62678ba408",
+    "lastUpdated": "2026-03-18T01:54:08.506Z"
+  },
+  "19252:1161": {
+    "componentSetName": "Icon / minus.unmount.remove.circle",
+    "name": "Size=24, Fill=Gradient - Blue",
+    "svgFileName": "minus-unmount-remove-circle-24-gradient-blue.svg",
+    "hash": "699dd261060a053172e1daa4179cf802",
+    "lastUpdated": "2026-03-18T01:54:08.506Z"
+  },
+  "19251:21": {
+    "componentSetName": "Icon / plus.add.circle",
+    "name": "Size=24, Fill=Gradient - Blue",
+    "svgFileName": "plus-add-circle-24-gradient-blue.svg",
+    "hash": "d3f7fdb2a1d2349a98826c4099a17a5a",
+    "lastUpdated": "2026-03-18T01:54:08.507Z"
+  },
+  "19241:22": {
+    "componentSetName": "datastore",
+    "name": "Size=32, Fill=Colorful",
+    "svgFileName": "datastore-32-colorful.svg",
+    "hash": "8135afd1d7b71a3e6fb0929b1040eea8",
+    "lastUpdated": "2026-03-18T01:54:08.513Z"
+  },
+  "19245:99": {
+    "componentSetName": "datastore",
+    "name": "Size=24, Fill=gradient-blue",
+    "svgFileName": "datastore-24-gradient-blue.svg",
+    "hash": "e7d6b6f371c98a85518f866b7ef92065",
+    "lastUpdated": "2026-03-18T01:54:08.513Z"
+  },
+  "19245:157": {
+    "componentSetName": "datastore",
+    "name": "Size=16, Fill=gradient-blue",
+    "svgFileName": "datastore-16-gradient-blue.svg",
+    "hash": "84602843875cec88d798a9f0bb0dddbd",
+    "lastUpdated": "2026-03-18T01:54:08.514Z"
+  },
+  "19245:225": {
+    "componentSetName": "storage.adapter",
+    "name": "Fill=Gradient - Blue, Size=24",
+    "svgFileName": "storage-adapter-24-gradient-blue.svg",
+    "hash": "7910214ac7c075964c951cc423644f81",
+    "lastUpdated": "2026-03-18T01:54:08.517Z"
+  },
+  "19247:249": {
+    "componentSetName": "storage.adapter",
+    "name": "Fill=Gradient - Gray, Size=24",
+    "svgFileName": "storage-adapter-24-gradient-gray.svg",
+    "hash": "1c6c7cdd17cfd457ecfa58befcb37f39",
+    "lastUpdated": "2026-03-18T01:54:08.517Z"
+  },
+  "19247:255": {
+    "componentSetName": "storage.adapter",
+    "name": "Fill=Gradient - Gray, Size=16",
+    "svgFileName": "storage-adapter-16-gradient-gray.svg",
+    "hash": "279cfc8c62e690a8072b9b5c558d72bd",
+    "lastUpdated": "2026-03-18T01:54:08.517Z"
+  },
+  "19247:261": {
+    "componentSetName": "storage.adapter",
+    "name": "Fill=Gradient - Blue, Size=16",
+    "svgFileName": "storage-adapter-16-gradient-blue.svg",
+    "hash": "d486b3a561f5accdf717efd94bdcc668",
+    "lastUpdated": "2026-03-18T01:54:08.518Z"
+  },
+  "19247:268": {
+    "componentSetName": "storage.device",
+    "name": "Fill=Gradient - Blue, Size=24",
+    "svgFileName": "storage-device-24-gradient-blue.svg",
+    "hash": "873d3f10fe28d31d507550f2ddfe586d",
+    "lastUpdated": "2026-03-18T01:54:08.518Z"
+  },
+  "19247:274": {
+    "componentSetName": "storage.device",
+    "name": "Fill=Gradient - Gray, Size=24",
+    "svgFileName": "storage-device-24-gradient-gray.svg",
+    "hash": "6d4d6c9daa35b9fdb202fe2d88c34494",
+    "lastUpdated": "2026-03-18T01:54:08.518Z"
+  },
+  "19248:87": {
+    "componentSetName": "storage.device",
+    "name": "Fill=Gradient - Gray, Size=16",
+    "svgFileName": "storage-device-16-gradient-gray.svg",
+    "hash": "95d55eca7511be54b0a5327a2979a074",
+    "lastUpdated": "2026-03-18T01:54:08.518Z"
+  },
+  "19248:100": {
+    "componentSetName": "storage.device",
+    "name": "Fill=Gradient - Blue, Size=16",
+    "svgFileName": "storage-device-16-gradient-blue.svg",
+    "hash": "0d7832de7e30f4ac1486a54c6dea0a3a",
+    "lastUpdated": "2026-03-18T01:54:08.518Z"
+  },
+  "19248:284": {
+    "componentSetName": "expand.capacity",
+    "name": "Fill=Gradient - Blue, Size=16",
+    "svgFileName": "expand-capacity-16-gradient-blue.svg",
+    "hash": "e7e91863ffc3b1853ce00ac825bf4c7d",
+    "lastUpdated": "2026-03-18T01:54:08.518Z"
+  },
+  "19248:346": {
+    "componentSetName": "expand.capacity",
+    "name": "Fill=Gradient - Gray, Size=16",
+    "svgFileName": "expand-capacity-16-gradient-gray.svg",
+    "hash": "ae1dec9947dd0899f55880cfd0e8e1e0",
+    "lastUpdated": "2026-03-18T01:54:08.518Z"
+  },
+  "19248:323": {
+    "componentSetName": "expand.capacity",
+    "name": "Fill=Gradient - Blue, Size=24",
+    "svgFileName": "expand-capacity-24-gradient-blue.svg",
+    "hash": "509eca4d4c19efd05f10d20ec203bc0e",
+    "lastUpdated": "2026-03-18T01:54:08.519Z"
+  },
+  "19248:350": {
+    "componentSetName": "expand.capacity",
+    "name": "Fill=Gradient - Gray, Size=24",
+    "svgFileName": "expand-capacity-24-gradient-gray.svg",
+    "hash": "e544ff5ec01623d4852187020250150c",
+    "lastUpdated": "2026-03-18T01:54:08.519Z"
+  },
+  "19256:1164": {
+    "componentSetName": "rescan",
+    "name": "Fill=Gradient - Blue, Size=16",
+    "svgFileName": "rescan-16-gradient-blue.svg",
+    "hash": "3f057bcb16daa61b996c3cde5812c00b",
+    "lastUpdated": "2026-03-18T01:54:08.519Z"
+  },
+  "19259:21": {
+    "componentSetName": "rescan",
+    "name": "Fill=Gradient - Gray, Size=16",
+    "svgFileName": "rescan-16-gradient-gray.svg",
+    "hash": "03f709c75208cf6d6e21c3d8b1d0b3f8",
+    "lastUpdated": "2026-03-18T01:54:08.519Z"
+  },
+  "19248:368": {
+    "componentSetName": "rescan",
+    "name": "Fill=Gradient - Blue, Size=24",
+    "svgFileName": "rescan-24-gradient-blue.svg",
+    "hash": "3cc3b92d2ab5c7901e5797bca1262451",
+    "lastUpdated": "2026-03-18T01:54:08.519Z"
   }
 }
