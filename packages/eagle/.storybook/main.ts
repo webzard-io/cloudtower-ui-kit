@@ -1,4 +1,4 @@
-import { mergeConfig } from "vite";
+import { mergeConfig, transformWithEsbuild } from "vite";
 import type { StorybookConfig } from "@storybook/react-vite";
 import linaria from "@linaria/vite";
 import sass from "sass";
@@ -65,13 +65,17 @@ const config: StorybookConfig = {
       },
       plugins: [
         {
-          name: "vite:react-babel",
+          name: "force-tsx-transform",
           enforce: "pre",
-          config: () => ({
-            esbuild: {
-              jsx: "transform",
-            },
-          }),
+          async transform(code, id) {
+            if (/\.[jt]sx$/.test(id) && !id.includes("node_modules")) {
+              return transformWithEsbuild(code, id, {
+                jsx: "transform",
+                jsxFactory: "React.createElement",
+                jsxFragment: "React.Fragment",
+              });
+            }
+          },
         },
         linaria({
           preprocessor: (selector, cssText) => {
