@@ -11898,5 +11898,33 @@
     "svgFileName": "rescan-24-gradient-blue.svg",
     "hash": "3cc3b92d2ab5c7901e5797bca1262451",
     "lastUpdated": "2026-03-18T01:54:08.519Z"
+  },
+  "19383:21": {
+    "componentSetName": "Icon / refresh.sync",
+    "name": "Size=24, Fill=Gradient - Blue",
+    "svgFileName": "refresh-sync-24-gradient-blue.svg",
+    "hash": "3f67a68e4dc0e556b8bff7746efbdb1e",
+    "lastUpdated": "2026-03-19T01:55:01.862Z"
+  },
+  "19375:22": {
+    "componentSetName": "sync.replica.plan.state-change.notification",
+    "name": "Size=24, Fill=Gradient - Blue",
+    "svgFileName": "sync-replica-plan-state-change-notification-24-gradient-blue.svg",
+    "hash": "29fbcea5ce0d72c359b1ffc36e7dfa48",
+    "lastUpdated": "2026-03-19T01:55:01.869Z"
+  },
+  "19375:85": {
+    "componentSetName": "sync.replica.plan.state-change.notification",
+    "name": "Size=24, Fill=Gradient - Gray",
+    "svgFileName": "sync-replica-plan-state-change-notification-24-gradient-gray.svg",
+    "hash": "537a225c93cea57861c78b0d37e11fa9",
+    "lastUpdated": "2026-03-19T01:55:01.869Z"
+  },
+  "19375:101": {
+    "componentSetName": "sync.replica.plan.state-change.notification",
+    "name": "Size=24, Fill=Ontint",
+    "svgFileName": "sync-replica-plan-state-change-notification-24-ontint.svg",
+    "hash": "e16c504049814bca776c4d6dd1e6cfcb",
+    "lastUpdated": "2026-03-19T01:55:01.870Z"
   }
 }
