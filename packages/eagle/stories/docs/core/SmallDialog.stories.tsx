@@ -256,7 +256,7 @@ export const LongContent = () => {
           pushModal({
             component: () => (
               <SmallDialog
-                title="这是长标题 Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong"
+                title="这是长标题这是长标题这是长标题这是长标题这是长标题这是长标题这是长标题这是长标题这是长标题"
                 okText="同意并继续"
                 cancelText="不同意"
               >
@@ -598,9 +598,7 @@ export const AsyncSubmit = () => {
                     setSubmitError(undefined);
                     try {
                       // 模拟异步 API 调用
-                      await new Promise((resolve) =>
-                        setTimeout(resolve, 1500)
-                      );
+                      await new Promise((resolve) => setTimeout(resolve, 1500));
                       console.log("快照创建成功");
                       popModal();
                     } catch {
@@ -650,13 +648,13 @@ export const AsyncSubmit = () => {
                       await new Promise((_, reject) =>
                         setTimeout(
                           () => reject(new Error("节点处于维护模式")),
-                          1500
-                        )
+                          1500,
+                        ),
                       );
                       popModal();
                     } catch (err) {
                       setSubmitError(
-                        `操作失败：${err instanceof Error ? err.message : "未知错误"}，请检查节点状态后重试`
+                        `操作失败：${err instanceof Error ? err.message : "未知错误"}，请检查节点状态后重试`,
                       );
                     } finally {
                       setSubmitting(false);

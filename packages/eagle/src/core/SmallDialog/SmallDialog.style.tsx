@@ -36,6 +36,7 @@ export const DialogStyle = css`
     flex-shrink: 0; // Prevent header from being compressed
     .ant-modal-title {
       color: ${Color.text.neutral.primary};
+      margin-right: 28px;
     }
   }
 
