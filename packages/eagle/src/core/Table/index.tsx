@@ -1,4 +1,5 @@
 import { css, cx } from "@linaria/core";
+import { CheckboxStyleContent } from "@src/core/Checkbox/checkbox.style";
 import { useTableBodyHasScrollBar } from "@src/core/Table/common";
 import { ColumnTitle } from "@src/core/Table/TableWidget";
 import { zIndices } from "@src/styles/token";
@@ -390,6 +391,7 @@ export const tableStyleCover = css`
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+        ${CheckboxStyleContent}
       }
       &:after {
         display: none;
