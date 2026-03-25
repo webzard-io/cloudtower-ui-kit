@@ -330,8 +330,15 @@ export const FormItemDiv = styled.div`
   }
 `;
 
+/**
+ * FieldTitle 组件
+ * 使用场景：用于表单字段的标题展示
+ * 使用地方：主要在 Modal 等表单容器中使用
+ * 注意：默认字体大小为 12px，可通过 --field-title-font-size CSS 变量覆盖
+ */
 export const FieldTitle = styled.div`
   color: $gray-80;
+  font-size: var(--field-title-font-size, 12px);
   font-weight: bold;
   padding-bottom: 6px;
   border-bottom: 1px solid rgba(213, 219, 227, 0.6);
