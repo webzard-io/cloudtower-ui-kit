@@ -4,6 +4,7 @@ import { RadioButtonProps as AntdRadioButtonProps } from "antd/lib/radio/radioBu
 export type RadioProps = AntdRadioProps & {
   description?: React.ReactNode;
   compact?: boolean;
+  "data-testid"?: string;
 };
 
 export type RadioButtonProps = AntdRadioButtonProps & {
@@ -14,4 +15,5 @@ export type RadioButtonProps = AntdRadioButtonProps & {
   placeholder?: string;
   initialValue?: string | number;
   onInputChange?: (val: number | string | undefined) => void;
+  "data-testid"?: string;
 };

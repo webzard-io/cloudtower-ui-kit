@@ -30,6 +30,7 @@ const UploadComp = React.forwardRef<HTMLDivElement, LocalUploadProps>(
   (
     {
       className,
+      "data-testid": dataTestId,
       label,
       description,
       type = "dragger",
@@ -62,7 +63,11 @@ const UploadComp = React.forwardRef<HTMLDivElement, LocalUploadProps>(
     const _maxCount = multiple ? maxCount || Infinity : 1;
     const isSingleSelect = _maxCount === 1;
     return (
-      <UploadComp.Wrapper className={className} ref={ref}>
+      <UploadComp.Wrapper
+        className={className}
+        ref={ref}
+        data-testid={dataTestId}
+      >
         {label ? <UploadComp.Label>{label}</UploadComp.Label> : null}
         {description ? (
           <UploadComp.Description>{description}</UploadComp.Description>

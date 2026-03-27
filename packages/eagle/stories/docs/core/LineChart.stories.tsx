@@ -1,4 +1,6 @@
+import { InfoICircle16GradientGrayIcon } from "@cloudtower/icons-react";
 import { Antd5DropdownProps } from "@src/core";
+import Icon from "@src/core/Icon";
 import LineChart from "@src/core/LineChart";
 import {
   ILineChartDateRange,
@@ -8,6 +10,7 @@ import {
 } from "@src/core/LineChart/type";
 import { getLineChartXAxisDomain } from "@src/core/LineChart/utils";
 import { lineChartYaxisTickFormatter } from "@src/core/LineChart/utils";
+import Tooltip from "@src/core/Tooltip";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import dayjs from "dayjs";
 import type { MenuInfo } from "rc-menu/lib/interface";
@@ -15,9 +18,6 @@ import React from "react";
 import { Payload } from "recharts/types/component/DefaultTooltipContent";
 
 import { mockMetric, mockMetric2 } from "../../../__test__/mockLineChart";
-import Icon from "@src/core/Icon";
-import { InfoICircle16GradientGrayIcon } from "@cloudtower/icons-react";
-import Tooltip from "@src/core/Tooltip";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

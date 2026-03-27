@@ -1,4 +1,5 @@
 export interface PaginationProps {
+  "data-testid"?: string;
   current: number;
   count: number;
   size: number;

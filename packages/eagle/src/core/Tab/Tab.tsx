@@ -37,6 +37,7 @@ export const Tab = (props: TabProps) => {
     selectedKey,
     extraSlot,
     size = "medium",
+    "data-testid": dataTestId,
   } = props;
   const tabsRef = useRef<HTMLDivElement>(null);
   const extraSlotRef = useRef<HTMLDivElement>(null);
@@ -81,7 +82,7 @@ export const Tab = (props: TabProps) => {
   }, [allTabs, onChange, selectedKey, tabs]);
 
   return (
-    <TabMenuWrapper className={cx(className, size)}>
+    <TabMenuWrapper data-testid={dataTestId} className={cx(className, size)}>
       <div className="tab-bar">
         <div ref={tabsRef} className="common-tab-bar">
           {
@@ -99,6 +100,7 @@ export const Tab = (props: TabProps) => {
                   ),
                 )}
                 key={tab.key}
+                data-testid={tab["data-testid"]}
                 onClick={() => onChange?.(tab.key)}
               >
                 {typeof tab.title === "function"
@@ -141,6 +143,7 @@ export const Tab = (props: TabProps) => {
                               ),
                             )}
                             key={tab.key}
+                            data-testid={tab["data-testid"]}
                           >
                             {typeof tab.title === "function"
                               ? tab.title({
@@ -163,6 +166,7 @@ export const Tab = (props: TabProps) => {
                         ? Typo.Label.l1_bold_title
                         : Typo.Label.l1_regular,
                     )}
+                    data-testid={dataTestId ? `${dataTestId}-more` : undefined}
                   >
                     <Icon
                       className={IconStyle}

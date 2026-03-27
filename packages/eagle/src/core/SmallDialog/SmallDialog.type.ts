@@ -174,4 +174,9 @@ export interface SmallDialogProps {
    * @default 2
    */
   initializingSkeletonRows?: number;
+  /**
+   * 测试标识符前缀，用于自动化测试定位元素。
+   * 派生子 testid：`${testId}-cancel`（取消按钮）、`${testId}-ok`（确认按钮）、`${testId}-close`（关闭按钮）
+   */
+  "data-testid"?: string;
 }

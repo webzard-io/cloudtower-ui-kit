@@ -13,9 +13,14 @@ import {
 } from "./banner.style";
 import { BannerProps } from "./banner.types";
 
-export const Banner: React.FC<BannerProps> = ({ message, type, btnProps }) => {
+export const Banner: React.FC<BannerProps> = ({
+  message,
+  type,
+  btnProps,
+  "data-testid": dataTestId,
+}) => {
   return (
-    <div id="global-banner">
+    <div data-testid={dataTestId} id="global-banner">
       <div
         className={cls(Typo.Label.l3_bold, BasicBanner, {
           [ErrorBanner]: type === "error",
@@ -26,7 +31,11 @@ export const Banner: React.FC<BannerProps> = ({ message, type, btnProps }) => {
         <Icon src={InfoICircleFill16OntintIcon} />
         <span>{message}</span>
         <Show condition={!btnProps?.hide}>
-          <span className="dashed-btn" onClick={btnProps?.onClick}>
+          <span
+            className="dashed-btn"
+            data-testid={dataTestId ? `${dataTestId}-action` : undefined}
+            onClick={btnProps?.onClick}
+          >
             {btnProps?.text}
           </span>
         </Show>

@@ -7,4 +7,5 @@ export interface ITimeZoneSelectProps {
   placeholder?: string;
   // This it not defaultValue, it just adds a default option.
   defaultOptionValue?: string;
+  "data-testid"?: string;
 }

@@ -15,20 +15,25 @@ const Byte: UnitFn = ({
   valueClassName,
   unitClassName,
   emptyProps,
+  "data-testid": dataTestId,
 }) => {
   const { t } = useParrotTranslation();
   if (isEmpty(rawValue)) {
-    return <Empty {...emptyProps} />;
+    return <Empty data-testid={dataTestId} {...emptyProps} />;
   }
   if (rawValue === -1) {
-    return <span>{t("common.calculation")}</span>;
+    return <span data-testid={dataTestId}>{t("common.calculation")}</span>;
   }
   const { value, unit } = formatBytes(rawValue, decimals);
   if (noUnitOnZero && value === 0) {
-    return <span className="value">{value}</span>;
+    return (
+      <span data-testid={dataTestId} className="value">
+        {value}
+      </span>
+    );
   }
   return (
-    <span>
+    <span data-testid={dataTestId}>
       <span className={cx("value", valueClassName)}>{value}</span>
       <span className={cx("unit", UnitStyle, unitClassName)}>{` ${unit}`}</span>
     </span>

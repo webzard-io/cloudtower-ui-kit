@@ -18,8 +18,17 @@ const inputStyle = css`
 `;
 
 const SimplePagination = (props: ISimplePaginationProps) => {
-  const { className, current, count, size, onPageChange } = props;
+  const {
+    className,
+    current,
+    count,
+    size,
+    onPageChange,
+    "data-testid": dataTestId,
+  } = props;
   const { t } = useParrotTranslation();
+  const sub = (suffix: string) =>
+    dataTestId ? `${dataTestId}-${suffix}` : undefined;
 
   const pageLength = count === 0 ? 1 : Math.ceil(count / size);
   const showPrev = current > 1;
@@ -38,7 +47,10 @@ const SimplePagination = (props: ISimplePaginationProps) => {
   );
 
   return (
-    <div className={cs(PaginationStyle, "pagination-wrapper", className)}>
+    <div
+      data-testid={dataTestId}
+      className={cs(PaginationStyle, "pagination-wrapper", className)}
+    >
       <span className={Typo.Label.l3_regular_title}>
         {t("components.pagination_lots_total", {
           count,
@@ -51,6 +63,7 @@ const SimplePagination = (props: ISimplePaginationProps) => {
             className="prev-btn"
             type="quiet"
             size="small"
+            data-testid={sub("prev")}
             style={{
               marginRight: "8px",
             }}
@@ -69,6 +82,7 @@ const SimplePagination = (props: ISimplePaginationProps) => {
           className={cs(Typo.Label.l3_regular, inputStyle)}
           value={current}
           size={"small"}
+          data-testid={sub("input")}
           onKeyDown={(event) => {
             if (event.key === "Enter") {
               changeValue((event.target as HTMLInputElement).value);
@@ -91,6 +105,7 @@ const SimplePagination = (props: ISimplePaginationProps) => {
             className="next-btn"
             type="quiet"
             size="small"
+            data-testid={sub("next")}
             style={{
               marginLeft: "8px",
             }}

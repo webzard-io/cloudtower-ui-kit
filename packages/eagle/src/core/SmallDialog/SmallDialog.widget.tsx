@@ -1,12 +1,13 @@
 import { cx } from "@linaria/core";
-import { Skeleton, Typo, Space } from "@src/core";
+import { Skeleton, Space, Typo } from "@src/core";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import React from "react";
+
 import {
-  ModelTitleSkeletonStyle,
   ModelContentSkeletonStyle,
   ModelInitializingErrorStyle,
+  ModelTitleSkeletonStyle,
 } from "./SmallDialog.style";
-import useParrotTranslation from "@src/hooks/useParrotTranslation";
 
 export const ModelTitleSkeleton: React.FC = () => {
   return (

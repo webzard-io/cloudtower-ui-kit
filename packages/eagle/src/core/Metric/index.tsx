@@ -20,6 +20,7 @@ export type MetricProps = {
       }
     | string;
   chartProps: Omit<IChartProps, "uuid">;
+  "data-testid"?: string;
 };
 
 const Metric = (props: MetricProps) => {
@@ -29,6 +30,7 @@ const Metric = (props: MetricProps) => {
     showLegend = true,
     showXaxis = false,
     chartProps,
+    "data-testid": dataTestId,
   } = props;
   const [width, setWidth] = useState<number>();
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -40,6 +42,7 @@ const Metric = (props: MetricProps) => {
   return (
     <ErrorBoundary i18n={parrotI18n}>
       <MetricWrapper
+        data-testid={dataTestId}
         className={cs("metric-wrapper", !showXaxis && "hidden-xaxis")}
         ref={wrapperRef}
         style={{ height: showLegend ? height + 30 : height }}

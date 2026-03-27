@@ -162,6 +162,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
     defaultUseBrowserTime,
     className,
     placeholder,
+    "data-testid": dataTestId,
   } = props;
   // innerValue could be BrowserTimeValue
   const [innerValue, setInnerValue] = useState(value);
@@ -214,6 +215,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
 
   return (
     <LegacySelect
+      data-testid={dataTestId}
       className={cx(SelectStyle, className)}
       dropdownClassName={DropdownStyle}
       placeholder={

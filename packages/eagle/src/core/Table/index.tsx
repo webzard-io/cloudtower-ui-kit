@@ -472,6 +472,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
     onRow,
     skeletonProps,
     expandable,
+    "data-testid": dataTestId,
   } = props;
   const orderRef = useRef<"descend" | "ascend" | undefined | null>(null);
   const hasScrollBard = useTableBodyHasScrollBar(wrapper, _dataSource);
@@ -522,6 +523,7 @@ const Table = <T extends { id: string }>(props: TableProps<T>) => {
         "table-container",
         !hasScrollBard && "no-scroll-bar",
       )}
+      data-testid={dataTestId}
     >
       <BaseTable
         className={cs(

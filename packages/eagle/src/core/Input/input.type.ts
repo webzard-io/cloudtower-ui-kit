@@ -13,6 +13,14 @@ export interface AdditionOptions {
    * 开启 control 后，不会显示 suffix
    */
   suffix?: string;
+
+  /**
+   * 数据测试 id
+   */
+  "data-testid"?: string;
 }
 
-export type InputProps = AntdInputProps & { error?: boolean };
+export type InputProps = AntdInputProps & {
+  error?: boolean;
+  "data-testid"?: string;
+};

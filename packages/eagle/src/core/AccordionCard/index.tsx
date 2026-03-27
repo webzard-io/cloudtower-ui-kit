@@ -65,12 +65,20 @@ const AccordionCard: React.FC<IAccordionCardProps> & {
     defaultExpand = true,
     mountOnEnter,
     unmountOnExit,
+    "data-testid": dataTestId,
   } = props;
   const [active, setActive] = useState(defaultExpand);
 
   return (
-    <Card className={cs(active && "active", className)}>
-      <header onClick={() => setActive(!active)} className="show-close">
+    <Card
+      data-testid={dataTestId}
+      className={cs(active && "active", className)}
+    >
+      <header
+        data-testid={dataTestId ? `${dataTestId}-header` : undefined}
+        onClick={() => setActive(!active)}
+        className="show-close"
+      >
         {typeof header === "function" ? header(active) : header}
       </header>
 

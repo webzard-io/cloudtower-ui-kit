@@ -81,6 +81,8 @@ export type WizardDialogProps = ImmersiveDialogProps & {
     title: string;
     /** 步骤内容，通常为表单或信息展示面板 */
     children: React.ReactNode;
+    /** 测试标识，挂在对应的 step item 上 */
+    "data-testid"?: string;
   }[];
   /**
    * 是否隐藏左侧步骤指示器。

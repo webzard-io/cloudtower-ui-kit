@@ -8,12 +8,16 @@ const FieldsTextArea = ({
   input,
   meta,
   onFocusChangeHeight,
+  "data-testid": dataTestId,
   ...props
 }: FieldBaseProps & TextAreaProps) => {
+  const inputWithTestId = dataTestId
+    ? { ...input, "data-testid": dataTestId }
+    : input;
   return (
     <>
       <TextArea
-        {...input}
+        {...inputWithTestId}
         {...props}
         error={
           meta.touched &&

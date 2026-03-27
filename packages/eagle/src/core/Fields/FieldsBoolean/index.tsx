@@ -5,12 +5,18 @@ import { FieldBaseProps } from "../fields.type";
 
 // FIXME
 // onBlur onFocus in input is not needed.
-const FieldsBoolean = ({ input, children, ...props }: FieldBaseProps) => {
+const FieldsBoolean = ({
+  input,
+  children,
+  "data-testid": dataTestId,
+  ...props
+}: FieldBaseProps) => {
   return (
     <>
       <Checkbox
         checked={Boolean(input.value)}
         onChange={(e) => input.onChange(e.target.checked)}
+        data-testid={dataTestId}
         {...props}
       >
         {children}
