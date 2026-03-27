@@ -4,7 +4,8 @@ description: >
   Use when working on @cloudtower/eagle component library:
   enhancing component documentation for agent-friendliness,
   adding new components, updating docs after Props changes,
-  deprecating components, or auditing doc freshness.
+  deprecating components, auditing doc freshness,
+  or adding data-testid support for e2e testing.
   Triggers when editing files under packages/eagle/src/.
 ---
 
@@ -20,7 +21,20 @@ description: >
 
 详细步骤见 `references/doc-workflow.md`，文档模板见 `references/doc-template.md`。
 
-### 2. Props 变更后同步文档
+### 2. 新增/修改组件时添加 data-testid 支持
+
+新增组件或修改已有组件时，必须确保 `data-testid` 能正确透传到 e2e 工具实际交互的 DOM 元素上。
+不同类型的组件需要不同的处理方式（共四层策略）。
+
+详细策略和代码示例见 `references/add-testid.md`。
+
+**关键原则：**
+
+- 仅做透传，不自动生成 testid 值
+- antd 会在原生元素外包裹额外 DOM 层，需要特别处理
+- 改动后编写测试验证 testid 到达了正确的目标元素
+
+### 3. Props 变更后同步文档
 
 当修改了组件的 Props 类型定义后：
 
@@ -28,11 +42,11 @@ description: >
 2. 如果 Storybook 中没有覆盖新 Props 的场景，补充 Story
 3. 运行 `yarn typings` 确认类型无误
 
-### 3. 废弃组件
+### 4. 废弃组件
 
 详细步骤见 `references/deprecation-workflow.md`。
 
-### 4. 检查文档是否过时
+### 5. 检查文档是否过时
 
 对比组件的 type.ts 与其 Markdown 文档，检查是否存在：
 

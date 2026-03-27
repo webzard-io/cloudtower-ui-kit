@@ -1,18 +1,22 @@
-import React, { useMemo } from "react";
 import { cx } from "@linaria/core";
-import { BasicCTErrorStyle } from "./BasicCTError.style";
-import { Typo } from "../Typo";
 import { useCTErrorMsg } from "@src/hooks/useCTErrorMsg";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
-import { BasicCTErrorProps } from "./BasicCTError.type";
 import { CTError } from "@src/utils";
+import React, { useMemo } from "react";
 
-const defaultErrorContainerRender: React.FC<{ className?: string }> = ({
-  children,
-  className,
-}) => {
+import { Typo } from "../Typo";
+import { BasicCTErrorStyle } from "./BasicCTError.style";
+import { BasicCTErrorProps } from "./BasicCTError.type";
+
+const defaultErrorContainerRender: React.FC<{
+  className?: string;
+  "data-testid"?: string;
+}> = ({ children, className, "data-testid": dataTestId }) => {
   return (
-    <span className={cx(Typo.Label.l3_regular, BasicCTErrorStyle, className)}>
+    <span
+      data-testid={dataTestId}
+      className={cx(Typo.Label.l3_regular, BasicCTErrorStyle, className)}
+    >
       {children}
     </span>
   );
@@ -24,6 +28,7 @@ export const BasicCTError: React.FC<BasicCTErrorProps> = (props) => {
     ErrorItemRender,
     ErrorContainerRender,
     errorMsgOptions,
+    "data-testid": dataTestId,
   } = props;
   const msgs = useCTErrorMsg(error as unknown as CTError, errorMsgOptions);
   const { t } = useParrotTranslation();
@@ -35,8 +40,13 @@ export const BasicCTError: React.FC<BasicCTErrorProps> = (props) => {
       ));
     }
     return msgs.join("");
-  }, [msgs, ErrorItemRender, t]);
+  }, [msgs, ErrorItemRender]);
   return (
-    <ContainerRender className={className} errorMsgs={msgs} children={child} />
+    <ContainerRender
+      className={className}
+      errorMsgs={msgs}
+      children={child}
+      data-testid={dataTestId}
+    />
   );
 };

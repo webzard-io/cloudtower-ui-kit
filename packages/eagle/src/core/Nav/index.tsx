@@ -16,9 +16,16 @@ const Nav: React.FC<NavProps> = ({
   center,
   isScrolled,
   navRef,
+  className,
+  "data-testid": dataTestId,
 }) => {
   return (
-    <Header ref={navRef} className={MinWidth} id="global-header">
+    <Header
+      data-testid={dataTestId}
+      ref={navRef}
+      className={cs(MinWidth, className)}
+      id="global-header"
+    >
       <div className="left">{left}</div>
       <div
         className={cs(

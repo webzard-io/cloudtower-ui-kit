@@ -11,14 +11,14 @@ const timeWrapper = css`
   }
 `;
 
-const Time = (props: ITimeProps) => {
-  const {
-    className,
-    date,
-    dateTemplate = "YYYY-MM-DD",
-    timeTemplate = "HH:mm",
-    plainText,
-  } = props;
+const Time = ({
+  className,
+  date,
+  dateTemplate = "YYYY-MM-DD",
+  timeTemplate = "HH:mm",
+  plainText,
+  "data-testid": dataTestId,
+}: ITimeProps) => {
   if (!date) return <>-</>;
   const time = dayjs(date);
   if (plainText) {
@@ -30,7 +30,10 @@ const Time = (props: ITimeProps) => {
     );
   }
   return (
-    <span className={classNames("time-wrapper", timeWrapper, className)}>
+    <span
+      data-testid={dataTestId}
+      className={classNames("time-wrapper", timeWrapper, className)}
+    >
       {dateTemplate !== null && (
         <span className="date">{time.format(dateTemplate)}</span>
       )}

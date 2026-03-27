@@ -28,11 +28,16 @@ const FieldsString = ({
   onClick,
   maxLength,
   focusIndicator,
+  "data-testid": dataTestId,
   ...props
 }: FieldBaseProps & StringProps) => {
+  const inputWithTestId = dataTestId
+    ? { ...input, "data-testid": dataTestId }
+    : input;
   if (tags?.length) {
     return (
       <div
+        data-testid={dataTestId}
         className={cs(
           className,
           KitInputStyle,
@@ -51,7 +56,12 @@ const FieldsString = ({
           </Overflow>
         </div>
         <span className="input-tag-suffix">
-          {allowClear && <CloseCircleFilled onClick={onTagsAllowClearClick} />}
+          {allowClear && (
+            <CloseCircleFilled
+              data-testid={dataTestId ? `${dataTestId}-clear` : undefined}
+              onClick={onTagsAllowClearClick}
+            />
+          )}
         </span>
       </div>
     );
@@ -64,7 +74,7 @@ const FieldsString = ({
           KitInputStyle,
           focusIndicator && "has-focus-indicator",
         )}
-        {...input}
+        {...inputWithTestId}
         autoComplete={props.type === "password" ? "new-password" : autoComplete}
         size={size}
         allowClear={allowClear}

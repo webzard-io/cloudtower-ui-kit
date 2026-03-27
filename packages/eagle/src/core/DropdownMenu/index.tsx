@@ -32,6 +32,7 @@ interface IItem {
   onClick?: () => void;
   danger?: boolean;
   tooltip?: string;
+  "data-testid"?: string;
 }
 
 export const RenderMenuItem = (
@@ -60,6 +61,7 @@ export const RenderMenuItem = (
         key={item.key}
         disabled={item.disabled}
         onClick={item.onClick}
+        data-testid={item["data-testid"]}
       >
         <Tooltip title={item.tooltip}>
           {item.icon ? (
@@ -77,6 +79,7 @@ export const RenderMenuItem = (
       key={item.key}
       disabled={item.disabled}
       onClick={item.onClick}
+      data-testid={item["data-testid"]}
     >
       {item.icon ? React.cloneElement(item.icon, {}, item.text) : item.text}
     </AntdMenu.Item>
@@ -90,6 +93,7 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = ({
   trigger,
   customStyle,
   slotsElements = {},
+  "data-testid": dataTestId,
 }) => {
   const menuItems = items.filter((item) => !item.hidden);
   const menuDisabled = disabled || menuItems.length === 0;
@@ -107,7 +111,9 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = ({
         </AntdMenu>
       }
     >
-      <span>{slotsElements.trigger ? slotsElements.trigger({}) : null}</span>
+      <span data-testid={dataTestId}>
+        {slotsElements.trigger ? slotsElements.trigger({}) : null}
+      </span>
     </AntdDropdown>
   );
 };

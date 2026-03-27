@@ -102,6 +102,11 @@ export interface ILineChartLegend {
  */
 export type LineChartProps = {
   /**
+   * 数据测试 id
+   */
+  "data-testid"?: string;
+
+  /**
    * 图表高度
    * @default 154
    */

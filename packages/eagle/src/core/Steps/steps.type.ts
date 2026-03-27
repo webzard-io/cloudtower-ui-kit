@@ -4,6 +4,7 @@ export type StepProps = {
   title: string;
   style?: React.CSSProperties;
   disabled?: boolean;
+  "data-testid"?: string;
 };
 
 export type IStepsProps = {

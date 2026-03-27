@@ -15,22 +15,45 @@ export const AntdPasswordInputStyled = styled(Input.Password)`
   }
 `;
 
-const InputPassword: React.FC<
-  PasswordProps & {
-    /**
-     * 使用变量控制是否显示 error 效果
-     */
-    error?: boolean;
-  }
-> = ({ size = "small", error, className, ...props }) => {
+export type InputPasswordProps = PasswordProps & {
+  /**
+   * 使用变量控制是否显示 error 效果
+   */
+  error?: boolean;
+  /**
+   * 数据测试 id
+   */
+  "data-testid"?: string;
+};
+
+const InputPassword: React.FC<InputPasswordProps> = ({
+  size = "small",
+  error,
+  className,
+  "data-testid": dataTestId,
+  ...props
+}) => {
   const typo = {
     large: Typo.Label.l2_regular,
     middle: Typo.Label.l3_regular,
     small: Typo.Label.l4_regular,
   }[size];
+  const ref = React.useCallback(
+    (instance: React.ComponentRef<typeof AntdPasswordInputStyled> | null) => {
+      const el = (instance as { input?: HTMLInputElement } | null)?.input;
+      if (!el) return;
+      if (dataTestId) {
+        el.setAttribute("data-testid", dataTestId);
+      } else {
+        el.removeAttribute("data-testid");
+      }
+    },
+    [dataTestId],
+  );
 
   return (
     <AntdPasswordInputStyled
+      ref={ref}
       {...props}
       size={size}
       className={cs(className, InputStyle, typo, error && "error")}

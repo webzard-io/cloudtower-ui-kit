@@ -1,6 +1,6 @@
-import React from "react";
-import { CTError } from "@src/utils/cterror";
 import { UseCTErrorMsgOptions } from "@src/hooks/useCTErrorMsg";
+import { CTError } from "@src/utils/cterror";
+import React from "react";
 
 /**
  * 错误详情渲染器的 props
@@ -22,6 +22,8 @@ export interface ErrorContainerRenderProps {
   children?: React.ReactNode;
   /** 错误信息 */
   errorMsgs: (string | undefined)[];
+  /** 测试标识符 */
+  "data-testid"?: string;
 }
 
 /**
@@ -60,4 +62,9 @@ export interface BasicCTErrorProps {
    * 用于配置国际化命名空间和其他翻译选项
    */
   errorMsgOptions?: UseCTErrorMsgOptions;
+
+  /**
+   * 测试标识符，用于自动化测试定位元素
+   */
+  "data-testid"?: string;
 }

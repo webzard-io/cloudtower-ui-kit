@@ -13,6 +13,8 @@ export type TabItem = {
     | ((props: { isActive: boolean }) => React.ReactNode);
   /** Tab 的内容 */
   children: React.ReactNode;
+  /** 测试标识，挂在 tab 标题的点击目标上 */
+  "data-testid"?: string;
 };
 
 /**
@@ -21,6 +23,8 @@ export type TabItem = {
 export type TabProps = {
   /** 外层容器的类名 */
   className?: string;
+  /** 测试标识 */
+  "data-testid"?: string;
   /** 内容区域的类名 */
   contentClassName?: string;
   /** 当前选中的 Tab 的 key */

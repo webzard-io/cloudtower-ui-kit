@@ -137,6 +137,10 @@ export type LocalUploadFileInfoProps = {
 export type LocalUploadProps = {
   /** 自定义类名 */
   className?: string;
+  /**
+   * 数据测试 id
+   */
+  "data-testid"?: string;
   /** 标签 */
   label?: React.ReactNode;
   /** 描述文本 */

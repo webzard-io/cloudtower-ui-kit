@@ -3,14 +3,16 @@ import React from "react";
 
 import { ArchComponentType } from "./arch.type";
 
-const Arch: ArchComponentType = (props) => {
+const Arch: ArchComponentType = ({
+  architecture,
+  "data-testid": dataTestId,
+}) => {
   const { t } = useParrotTranslation();
-  const { architecture } = props;
   let text = "";
   if (architecture) {
     text = t(`components.Architecture_${architecture}`);
   }
-  return <span>{text}</span>;
+  return <span data-testid={dataTestId}>{text}</span>;
 };
 
 export default Arch;

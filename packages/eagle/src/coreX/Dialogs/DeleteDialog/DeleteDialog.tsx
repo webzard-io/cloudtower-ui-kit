@@ -1,9 +1,9 @@
 import { css, cx } from "@linaria/core";
+import { SmallDialog } from "@src/core/SmallDialog/SmallDialog";
 import { Typo } from "@src/core/Typo";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import React from "react";
 
-import { SmallDialog } from "@src/core/SmallDialog/SmallDialog";
 import { DeleteDialogProps } from "./DeleteDialog.type";
 
 const ContentStyle = css`

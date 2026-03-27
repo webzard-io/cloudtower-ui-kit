@@ -11,6 +11,7 @@ import { LineChartProps } from "./type";
 const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
   (props, ref) => {
     const {
+      "data-testid": dataTestId,
       height = 154,
       showPointer = true,
       showLegend = true,
@@ -29,6 +30,7 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
         <LineChartWrapper
           className={cs("metric-wrapper", !showXaxis && "hidden-xaxis")}
           ref={wrapperRef}
+          data-testid={dataTestId}
           style={{ height: showLegend ? height + 30 : height }}
         >
           <RenderChart {...chartProps} width={width} />

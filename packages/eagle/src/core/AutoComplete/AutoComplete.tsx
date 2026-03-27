@@ -5,7 +5,12 @@ import React from "react";
 import { SelectStyle as LegacySelectStyle } from "../LegacySelect/select.style";
 import { SelectStyle } from "../Select/select.style";
 
-export const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
+export const AutoComplete: React.FC<
+  AutoCompleteProps & {
+    /** Test ID for automated testing */
+    "data-testid"?: string;
+  }
+> = (props) => {
   return (
     <Antd5AutoComplete
       {...props}

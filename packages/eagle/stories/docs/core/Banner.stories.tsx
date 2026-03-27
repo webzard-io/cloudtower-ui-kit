@@ -1,6 +1,6 @@
-import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
 import { Banner } from "@src/core/Banner";
+import { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 
 /**
  * * Banner 组件

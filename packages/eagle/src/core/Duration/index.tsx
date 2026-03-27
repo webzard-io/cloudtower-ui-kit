@@ -1,11 +1,10 @@
-import React from "react";
-
 import { cx } from "@linaria/core";
 import Empty from "@src/core/Empty";
 import { ParrotTrans } from "@src/core/ParrotTrans";
 import { useFormatDuration } from "@src/hooks/useFormatDuration";
-import isEmpty from "@src/utils/isEmpty";
 import { formatDuration } from "@src/utils/formatDuration";
+import isEmpty from "@src/utils/isEmpty";
+import React from "react";
 
 import { UnitStyle } from "../Styled";
 import { DurationProps } from "./duration.type";
@@ -20,6 +19,7 @@ const Duration: React.FC<DurationProps> = ({
   minUnit = "second",
   noUnitOnZero = false,
   contentRender,
+  "data-testid": dataTestId,
 }) => {
   const { parts } = useFormatDuration(rawValue ?? 0, {
     maxDisplayUnits,
@@ -28,12 +28,12 @@ const Duration: React.FC<DurationProps> = ({
   });
 
   if (isEmpty(rawValue)) {
-    return <Empty {...emptyProps} />;
+    return <Empty data-testid={dataTestId} {...emptyProps} />;
   }
 
   // 如果没有任何部分，返回空值
   if (parts.length === 0) {
-    return <Empty {...emptyProps} />;
+    return <Empty data-testid={dataTestId} {...emptyProps} />;
   }
 
   // 如果提供了自定义渲染函数，使用它
@@ -50,7 +50,11 @@ const Duration: React.FC<DurationProps> = ({
 
   // 如果所有值都是0且需要隐藏单位，只显示0
   if (noUnitOnZero && allZero) {
-    return <span className={cx("value", valueClassName)}>0</span>;
+    return (
+      <span data-testid={dataTestId} className={cx("value", valueClassName)}>
+        0
+      </span>
+    );
   }
 
   return (

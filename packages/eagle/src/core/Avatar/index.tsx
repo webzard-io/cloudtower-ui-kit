@@ -47,9 +47,11 @@ const Avatar: React.FC<AvatarProps> = ({
   username,
   className,
   background = "light-blue",
+  "data-testid": dataTestId,
 }) => {
   return (
     <AvatarWrapper
+      data-testid={dataTestId}
       background={Color.gradient[background] || background}
       className={cx(className, "user-icon btn-item")}
     >

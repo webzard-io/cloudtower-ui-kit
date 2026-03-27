@@ -10,4 +10,6 @@ export type AvatarProps = {
    * 背景色
    */
   background?: "light-blue" | "dark-blue";
+
+  "data-testid"?: string;
 };

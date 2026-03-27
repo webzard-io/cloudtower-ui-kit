@@ -1,7 +1,8 @@
 import { CTErrorType as CloudTowerErrorResponse } from "@src/utils/type";
-import { merge, omit } from "lodash";
-import { parseCTError } from "../cterror";
 import { AxiosError } from "axios";
+import { merge, omit } from "lodash";
+
+import { parseCTError } from "../cterror";
 
 const CTErrorBasicParams: Pick<CloudTowerErrorResponse, "code" | "message"> = {
   code: "UNKNOWN",

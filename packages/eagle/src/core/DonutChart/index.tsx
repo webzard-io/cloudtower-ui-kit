@@ -20,6 +20,7 @@ export enum DonutChartColor {
 }
 
 export type IDonutChartProps = {
+  "data-testid"?: string;
   /**
    * 默认支持单色系展示，如果是单色系直接传入颜色类型
    */
@@ -314,6 +315,7 @@ const DonutChart: React.FC<IDonutChartProps> = ({
   outerRadius = 50,
   widthPadding = true,
   showLegend = true,
+  "data-testid": dataTestId,
 }) => {
   const initColorMap = color ? ColorMap[color] : [];
   const { t } = useParrotTranslation();
@@ -322,7 +324,7 @@ const DonutChart: React.FC<IDonutChartProps> = ({
   }, [data, otherData, t, collapseText]);
 
   return (
-    <DonutChartWrapper width={width}>
+    <DonutChartWrapper data-testid={dataTestId} width={width}>
       <PieChart
         width={width}
         height={height}

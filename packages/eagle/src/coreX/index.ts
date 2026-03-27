@@ -25,8 +25,8 @@ export * from "./SortableList";
 export * from "./SummaryTable";
 export * from "./SwitchWithText";
 export * from "./TabMenu";
-export * from "./UnitWithChart";
 export * from "./UnderlineTootip";
+export * from "./UnitWithChart";
 
 // rename default export
 export { default as BarChart } from "./BarChart";

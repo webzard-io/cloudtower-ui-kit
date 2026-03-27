@@ -45,13 +45,22 @@ const ButtonGroupContainer = styled.div`
 
 const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupType>(
   (props, ref) => {
-    const { className, options, size = "middle" } = props;
+    const {
+      className,
+      options,
+      size = "middle",
+      "data-testid": dataTestId,
+    } = props;
     if (!options.length) {
       return null;
     }
 
     return (
-      <ButtonGroupContainer className={className} ref={ref}>
+      <ButtonGroupContainer
+        data-testid={dataTestId}
+        className={className}
+        ref={ref}
+      >
         {options.map((button, index) => {
           const {
             key,

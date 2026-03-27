@@ -1,4 +1,5 @@
 import { ArrowChevronLeft16BoldBlueIcon } from "@cloudtower/icons-react";
+import { cx } from "@linaria/core";
 import Button from "@src/core/Button";
 import { ImmersiveDialog } from "@src/core/ImmersiveDialog";
 import Steps from "@src/core/Steps";
@@ -12,7 +13,6 @@ import {
   StepStyle,
 } from "./styles";
 import { WizardDialogProps } from "./type";
-import { cx } from "@linaria/core";
 
 export function WizardDialog(props: WizardDialogProps) {
   const {
@@ -32,6 +32,7 @@ export function WizardDialog(props: WizardDialogProps) {
     rightClassName,
     okText,
     onOk,
+    "data-testid": dataTestId,
     ...restProps
   } = props;
   const { t } = useParrotTranslation();
@@ -77,10 +78,12 @@ export function WizardDialog(props: WizardDialogProps) {
   return (
     <ImmersiveDialog
       className={className}
+      data-testid={dataTestId}
       footerLeftAction={
         stepVal > 0 ? (
           <Button
             type="link"
+            data-testid={dataTestId ? `${dataTestId}-prev` : undefined}
             onClick={() => {
               const newStep = stepVal - 1;
 
@@ -107,6 +110,7 @@ export function WizardDialog(props: WizardDialogProps) {
             direction="vertical"
             stepsConfig={steps.map((s) => ({
               title: s.title,
+              "data-testid": s["data-testid"],
             }))}
           />
         ) : null)

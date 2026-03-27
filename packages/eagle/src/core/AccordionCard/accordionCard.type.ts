@@ -5,4 +5,5 @@ export interface IAccordionCardProps {
   defaultExpand?: boolean;
   mountOnEnter?: boolean;
   unmountOnExit?: boolean;
+  "data-testid"?: string;
 }

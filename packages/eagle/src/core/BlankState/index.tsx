@@ -34,23 +34,24 @@ const SIZE_FONT_MAP: Record<
   },
 };
 
-const BlankState = (props: IBlankStateProps) => {
-  const {
-    className,
-    style,
-    width,
-    height,
-    title,
-    description,
-    action,
-    backgroundColor,
-    size = "medium",
-  } = props;
+const BlankState = ({
+  className,
+  style,
+  width,
+  height,
+  title,
+  description,
+  action,
+  backgroundColor,
+  size = "medium",
+  "data-testid": dataTestId,
+}: IBlankStateProps) => {
   const fontStyle = SIZE_FONT_MAP[size];
   const buttonSize = size === "large" || size === "medium" ? "middle" : "small";
 
   return (
     <div
+      data-testid={dataTestId}
       className={cx(className, BlankStateWrapper, size, backgroundColor)}
       style={{
         width: typeof width === "number" ? `${width}px` : width,
@@ -67,6 +68,7 @@ const BlankState = (props: IBlankStateProps) => {
           type="ordinary"
           size={buttonSize}
           className={cx("action-button", buttonSize)}
+          data-testid={dataTestId ? `${dataTestId}-action` : undefined}
           onClick={action.onClick}
         >
           {action.label}
