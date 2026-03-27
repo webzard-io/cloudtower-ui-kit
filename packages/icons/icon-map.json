@@ -11926,5 +11926,26 @@
     "svgFileName": "sync-replica-plan-state-change-notification-24-ontint.svg",
     "hash": "e16c504049814bca776c4d6dd1e6cfcb",
     "lastUpdated": "2026-03-19T01:55:01.870Z"
+  },
+  "19445:21": {
+    "componentSetName": "datastore",
+    "name": "Size=16, Fill=Ontint",
+    "svgFileName": "datastore-16-ontint.svg",
+    "hash": "2ec27299d367f056b19b8bcde47f7f8b",
+    "lastUpdated": "2026-03-27T02:00:31.406Z"
+  },
+  "19445:29": {
+    "componentSetName": "datastore",
+    "name": "Size=16, Fill=Gradient-gray",
+    "svgFileName": "datastore-16-gradient-gray.svg",
+    "hash": "17103693ec4094f7bc317a68fb4f5b2a",
+    "lastUpdated": "2026-03-27T02:00:31.406Z"
+  },
+  "19445:45": {
+    "componentSetName": "datastore",
+    "name": "Size=16, Fill=Yellow",
+    "svgFileName": "datastore-16-yellow.svg",
+    "hash": "f7e2710cf3f74c638b4d0599b5a9850d",
+    "lastUpdated": "2026-03-27T02:00:31.406Z"
   }
 }
