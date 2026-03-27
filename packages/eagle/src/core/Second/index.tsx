@@ -16,14 +16,16 @@ const Second: UnitFn = ({
   unitClassName,
   abbreviate,
   emptyProps,
+  "data-testid": dataTestId,
 }) => {
   if (isEmpty(rawValue)) {
-    return <Empty {...emptyProps} />;
+    return <Empty data-testid={dataTestId} {...emptyProps} />;
   }
   const { value, unit } = formatSeconds(rawValue, decimals);
   return (
     <ParrotTrans
       parent={"span"}
+      data-testid={dataTestId}
       i18nKey={`unit.${abbreviate ? `${unit}_abbreviation` : unit}`}
       count={value}
     >

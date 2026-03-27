@@ -19,8 +19,9 @@ import {
 import { Show } from "@src/coreX";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { Flex, List } from "antd5";
-import React, { useCallback, useState } from "react";
 import cs from "classnames";
+import React, { useCallback, useState } from "react";
+
 import {
   CheckPointItemStyle,
   CheckPointListStyle,

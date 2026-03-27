@@ -14,6 +14,10 @@ export type CardProps = {
   hoverable?: boolean;
   // default to true
   shadow?: boolean;
+  /**
+   * 用于测试的标识符，会传递到卡片根容器元素。
+   */
+  "data-testid"?: string;
 } & React.DOMAttributes<HTMLDivElement>;
 
 const Card = React.forwardRef<HTMLDivElement, PropsWithChildren<CardProps>>(
@@ -26,6 +30,7 @@ const Card = React.forwardRef<HTMLDivElement, PropsWithChildren<CardProps>>(
       defaultOpen = false,
       hoverable,
       shadow = true,
+      "data-testid": dataTestId,
       ...domProps
     } = props;
     const [open, setOpen] = useState(defaultOpen);
@@ -36,6 +41,7 @@ const Card = React.forwardRef<HTMLDivElement, PropsWithChildren<CardProps>>(
         className={cs(["card-wrapper", className, hoverable && "hoverable"])}
         {...domProps}
         shadow={shadow}
+        data-testid={dataTestId}
       >
         {title && (
           <CardTitle
@@ -43,6 +49,9 @@ const Card = React.forwardRef<HTMLDivElement, PropsWithChildren<CardProps>>(
           >
             <div
               className={cs(["title-wrapper", open ? "is-open" : ""])}
+              data-testid={
+                dataTestId && collapsible ? `${dataTestId}-header` : undefined
+              }
               onClick={() => {
                 collapsible && setOpen(!open);
               }}
@@ -60,7 +69,7 @@ const Card = React.forwardRef<HTMLDivElement, PropsWithChildren<CardProps>>(
         )}
       </CardWrapper>
     );
-  }
+  },
 );
 
 export default Card;

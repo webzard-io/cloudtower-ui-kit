@@ -20,9 +20,10 @@ import { ButtonProps } from "../Button";
  *   }
  * }
  */
-export type BannerProps = HTMLAttributes<"DIV"> & {
+export type BannerProps = HTMLAttributes<HTMLDivElement> & {
   type: "error" | "info" | "warning";
   message: string;
+  "data-testid"?: string;
   btnProps?: Pick<ButtonProps, "onClick"> & {
     text: string;
     hide?: boolean;

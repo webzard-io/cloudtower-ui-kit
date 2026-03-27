@@ -1,8 +1,8 @@
-import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
 import { css } from "@linaria/core";
-import { BasicCTError } from "@src/core/BasicCTError";
 import { ConfigProvider } from "@src/core";
+import { BasicCTError } from "@src/core/BasicCTError";
+import { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 
 /**
  *  BasicCTError 用于接受 cloudtower 通用错误并解析

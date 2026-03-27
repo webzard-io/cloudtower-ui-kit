@@ -31,6 +31,7 @@ const LegacySelect: LegacySelectComponentType<any, HTMLElement> = ({
   size = "middle",
   meta,
   placeholder,
+  "data-testid": dataTestId,
   ...restProps
 }) => {
   const limitExceeded =
@@ -64,11 +65,22 @@ const LegacySelect: LegacySelectComponentType<any, HTMLElement> = ({
       inputDom &&
         (placeholder || item) &&
         inputDom.setAttribute(
-          "data-test",
+          "data-testid",
           String(placeholder || item.textContent),
         );
     }
   }, [selectRef, placeholder]);
+
+  useEffect(() => {
+    if (!selectRef.current) return;
+    const realDom = findDOMNode(selectRef.current) as HTMLElement | null;
+    if (!realDom) return;
+    if (dataTestId) {
+      realDom.setAttribute("data-testid", dataTestId);
+    } else {
+      realDom.removeAttribute("data-testid");
+    }
+  }, [dataTestId]);
 
   useLegacyComponentWarning(
     "Warning: LegacySelect is deprecated and will be removed in future versions. Please use Select instead.",
@@ -145,7 +157,9 @@ const LegacySelect: LegacySelectComponentType<any, HTMLElement> = ({
               ...child,
               props: {
                 ...child.props,
-                "data-test": child.props.value,
+                "data-testid": dataTestId
+                  ? `${dataTestId}-option-${child.props.value}`
+                  : undefined,
               },
             }
           : child;

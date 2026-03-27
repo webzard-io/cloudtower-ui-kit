@@ -13,13 +13,14 @@ const BitPerSecond: UnitFn = ({
   valueClassName,
   unitClassName,
   emptyProps,
+  "data-testid": dataTestId,
 }) => {
   if (isEmpty(rawValue)) {
-    return <Empty {...emptyProps} />;
+    return <Empty data-testid={dataTestId} {...emptyProps} />;
   }
   const { value, unit } = formatBitPerSecond(rawValue, decimals);
   return (
-    <span>
+    <span data-testid={dataTestId}>
       <span className={cx("value", valueClassName)}>{value}</span>
       <span className={cx("unit", UnitStyle, unitClassName)}>{` ${unit}`}</span>
     </span>

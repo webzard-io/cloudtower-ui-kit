@@ -2,6 +2,7 @@ import "dayjs/locale/zh-cn";
 import "moment/locale/zh-cn";
 
 import { ParrotLngs } from "@cloudtower/parrot";
+import { useAntdPatchEnLocales } from "@src/hooks/useAntdPatchEnLocales";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { ConfigProvider as Antd4ConfigProvider } from "antd";
 import { ConfigProviderProps } from "antd/lib/config-provider";
@@ -16,7 +17,6 @@ import antd5zhCN from "antd5/lib/locale/zh_CN";
 import dayjs from "dayjs";
 import moment from "moment";
 import React, { createContext, useContext, useEffect } from "react";
-import { useAntdPatchEnLocales } from "@src/hooks/useAntdPatchEnLocales";
 
 // 完整的配置类型
 export type ConfigProps = {

@@ -12,7 +12,7 @@ import OverflowTooltip from "@src/coreX/OverflowTooltip";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { Modal as AntdModal } from "antd";
 import cls from "classnames";
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 
 import {
   ModelContentSkeleton,
@@ -65,10 +65,15 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
     onOk,
     initializing,
     initializingError,
+    "data-testid": dataTestId,
     ...restProps
   } = props;
   const { t } = useParrotTranslation();
   const popModal = usePopModal();
+  const sub = useCallback(
+    (suffix: string) => (dataTestId ? `${dataTestId}-${suffix}` : undefined),
+    [dataTestId],
+  );
 
   const defaultTitle = initializingError ? t("common.load_failed") : "";
   const defaultCancelText = showOk ? t("common.cancel") : t("common.close");
@@ -124,6 +129,7 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
                 size="large"
                 type="quiet"
                 className={CancelButtonStyle}
+                data-testid={sub("cancel")}
                 onMouseDown={(e) => {
                   e.preventDefault();
                 }}
@@ -144,6 +150,7 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
                 }}
                 type="primary"
                 loading={confirmLoading}
+                data-testid={sub("ok")}
                 {...okButtonProps}
               >
                 {_confirmText}
@@ -161,6 +168,7 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
     error,
     showFooterErrorIcon,
     showCancel,
+    sub,
     cancelButtonProps,
     _cancelText,
     showOk,
@@ -174,6 +182,7 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
 
   return (
     <AntdModal
+      data-testid={dataTestId}
       width="calc(100% - 20px)"
       title={
         initializing ? (
@@ -201,6 +210,7 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
             iconHeight={24}
             iconWidth={24}
             hoverSrc={XmarkCloseBold24SecondaryIcon}
+            data-testid={sub("close")}
           />
         )
       }

@@ -10,6 +10,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   className,
   error,
   size = "middle",
+  "data-testid": dataTestId,
   ...props
 }) => {
   const typo = {
@@ -17,8 +18,21 @@ const TextArea: React.FC<TextAreaProps> = ({
     middle: Typo.Label.l3_regular,
     small: Typo.Label.l4_regular,
   }[size];
+  const ref = React.useCallback(
+    (instance: InstanceType<typeof AntdInput.TextArea> | null) => {
+      const el = (instance as any)?.resizableTextArea?.textArea;
+      if (!el) return;
+      if (dataTestId) {
+        el.setAttribute("data-testid", dataTestId);
+      } else {
+        el.removeAttribute("data-testid");
+      }
+    },
+    [dataTestId],
+  );
   return (
     <AntdInput.TextArea
+      ref={ref}
       {...props}
       className={cs(
         className,

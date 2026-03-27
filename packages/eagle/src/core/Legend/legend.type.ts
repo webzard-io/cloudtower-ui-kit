@@ -37,4 +37,6 @@ export type LegendComponentType = React.FC<{
     e: React.MouseEvent<HTMLDivElement>,
     key?: string | number,
   ) => void;
+  /** Test ID for automated testing */
+  "data-testid"?: string;
 }>;

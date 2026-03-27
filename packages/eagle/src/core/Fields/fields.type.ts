@@ -38,8 +38,10 @@ export type FieldMetaState<FieldValue> = Pick<
   >
 >;
 
-interface FieldInputProps<FieldValue, T extends HTMLElement = HTMLElement>
-  extends AnyObject {
+export interface FieldInputProps<
+  FieldValue,
+  T extends HTMLElement = HTMLElement,
+> extends AnyObject {
   name: string;
   onBlur: (event?: React.FocusEvent<T>) => void;
   onChange: (event: React.ChangeEvent<T> | any) => void;
@@ -65,4 +67,5 @@ export type FieldBaseProps<
 > = FieldRenderProps<V, T> & {
   disabled?: boolean;
   className?: string;
+  "data-testid"?: string;
 };

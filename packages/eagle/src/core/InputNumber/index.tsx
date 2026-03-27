@@ -55,6 +55,7 @@ const InputNumber: React.FC<InputNumberProps & AdditionOptions> = ({
   suffix,
   prefix,
   controls = true,
+  "data-testid": dataTestId,
   ...props
 }) => {
   const typo = {
@@ -62,8 +63,21 @@ const InputNumber: React.FC<InputNumberProps & AdditionOptions> = ({
     middle: Typo.Label.l3_regular,
     small: Typo.Label.l4_regular,
   }[size];
+  const ref = React.useCallback(
+    (instance: any) => {
+      const el = instance?.input;
+      if (!el) return;
+      if (dataTestId) {
+        el.setAttribute("data-testid", dataTestId);
+      } else {
+        el.removeAttribute("data-testid");
+      }
+    },
+    [dataTestId],
+  );
   return (
     <AntdInputNumberStyled
+      ref={ref}
       {...props}
       size={size}
       controls={controls}

@@ -60,6 +60,10 @@ import { SrcType } from "../BaseIcon";
  */
 export type SearchInputProps = Omit<InputProps, "value" | "onChange"> & {
   /**
+   * 数据测试 id
+   */
+  "data-testid"?: string;
+  /**
    * 输入框的值，用于受控模式。
    * 配置 value 时，需把 debounceWait 设置为 0，否则输入时会有卡顿的问题
    */
