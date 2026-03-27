@@ -48,7 +48,12 @@ const CircleProgressStyle = css`
 `;
 
 export const CircleProgress: React.FC<ICircleProgressProps> = (props) => {
-  const { percent, color = "#0080ff", className } = props;
+  const {
+    percent,
+    color = "#0080ff",
+    className,
+    "data-testid": dataTestId,
+  } = props;
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const childRef = useRef<HTMLDivElement>(null);
@@ -72,7 +77,11 @@ export const CircleProgress: React.FC<ICircleProgressProps> = (props) => {
   }, [percent, color]);
 
   return (
-    <div className={cs(CircleProgressStyle, className)} ref={wrapperRef}>
+    <div
+      data-testid={dataTestId}
+      className={cs(CircleProgressStyle, className)}
+      ref={wrapperRef}
+    >
       <div className="circle-inner">
         <div className="circle-content" />
         <div className="circle-child" ref={childRef} />

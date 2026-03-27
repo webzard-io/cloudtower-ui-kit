@@ -48,4 +48,5 @@ export interface IBlankStateProps {
      */
     onClick: () => void;
   };
+  "data-testid"?: string;
 }

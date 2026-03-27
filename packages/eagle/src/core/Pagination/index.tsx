@@ -90,6 +90,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
     showTotal = true,
     className,
     selectorVisible = true,
+    "data-testid": dataTestId,
   } = props;
   const sizeRef = useRef(size);
   const { t } = useParrotTranslation();
@@ -136,6 +137,11 @@ const Pagination: React.FC<PaginationProps> = (props) => {
                 {selectOptions.map((option) => (
                   <Menu.Item
                     key={option.value}
+                    data-testid={
+                      dataTestId
+                        ? `${dataTestId}-page-${option.value}`
+                        : undefined
+                    }
                     onClick={() => onChange(option.value)}
                   >
                     {option.text}
@@ -148,6 +154,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
           <Icon
             alt={"arrowChevronDownSmall16Secondary"}
             className="pagination-left dropdown-trigger"
+            data-testid={dataTestId ? `${dataTestId}-dropdown` : undefined}
             src={ArrowChevronDownSmall16SecondaryIcon}
             hoverSrc={ArrowChevronDownSmall16BlueIcon}
             prefix={content}
@@ -165,6 +172,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 
   return (
     <div
+      data-testid={dataTestId}
       className={cs(
         PaginationStyle,
         "pagination-wrapper",
@@ -179,6 +187,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             className="prev-btn"
             type="quiet"
             size="small"
+            data-testid={dataTestId ? `${dataTestId}-prev` : undefined}
             prefixIcon={
               <Icon
                 alt={"arrowChevronLeftSmall16BoldBlue"}
@@ -197,6 +206,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             className="next-btn"
             type="quiet"
             size="small"
+            data-testid={dataTestId ? `${dataTestId}-next` : undefined}
             suffixIcon={
               <Icon
                 alt={"arrowChevronLeftSmall16BoldBlue"}

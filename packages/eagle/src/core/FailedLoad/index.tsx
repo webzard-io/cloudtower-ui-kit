@@ -26,13 +26,29 @@ const FailedLoad: React.FC<{
   refetchText?: string;
   className?: string;
   title?: string;
+  "data-testid"?: string;
 }> = (props) => {
-  const { error, refetch, className, title, refetchText } = props;
+  const {
+    error,
+    refetch,
+    className,
+    title,
+    refetchText,
+    "data-testid": dataTestId,
+  } = props;
   const { t } = useParrotTranslation();
   return (
-    <div className={cs(FailedLoadStyle, className)} title={title}>
+    <div
+      data-testid={dataTestId}
+      className={cs(FailedLoadStyle, className)}
+      title={title}
+    >
       <div className="error-text">{String(error)}</div>
-      <Button type="ordinary" onClick={() => refetch()}>
+      <Button
+        type="ordinary"
+        data-testid={dataTestId ? `${dataTestId}-retry` : undefined}
+        onClick={() => refetch()}
+      >
         {refetchText || t("common.retry")}
       </Button>
     </div>

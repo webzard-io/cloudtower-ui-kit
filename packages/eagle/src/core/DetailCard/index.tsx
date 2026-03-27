@@ -28,12 +28,12 @@ const CardWrapper = styled.div`
 `;
 
 const DetailCard: React.FC<IDetailCardProps> = (props) => {
-  const { title } = props;
+  const { title, children, "data-testid": dataTestId } = props;
 
   return (
-    <CardWrapper>
+    <CardWrapper data-testid={dataTestId}>
       {title && <div className="card-title">{title}</div>}
-      <div className="card-body">{props.children}</div>
+      <div className="card-body">{children}</div>
     </CardWrapper>
   );
 };

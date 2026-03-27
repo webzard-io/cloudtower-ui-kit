@@ -3,9 +3,13 @@ import React from "react";
 
 import { FieldBaseProps } from "../fields.type";
 
-const FieldsDateTime = ({ input }: FieldBaseProps) => (
+const FieldsDateTime = ({
+  input,
+  "data-testid": dataTestId,
+}: FieldBaseProps) => (
   <>
     <DatePicker
+      data-testid={dataTestId}
       onFocus={() => input.onFocus?.()}
       onBlur={() => input.onBlur?.()}
       showTime

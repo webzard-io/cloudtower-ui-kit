@@ -12,8 +12,8 @@ import {
   TitleAreaProps,
 } from "@src/core/Progress/progress.type";
 import Tag from "@src/core/Tag";
-import { splitMap } from "@src/utils/constants";
 import { Color } from "@src/styles/token";
+import { splitMap } from "@src/utils/constants";
 import React from "react";
 
 import { TagProps } from "../Tag/tag.type";

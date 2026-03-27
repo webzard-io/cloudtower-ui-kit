@@ -68,6 +68,7 @@ const Switch: React.FC<SwitchProps> = ({
   children,
   className,
   checked,
+  "data-testid": dataTestId,
   ...props
 }) => {
   const Content = styled.span`
@@ -82,6 +83,7 @@ const Switch: React.FC<SwitchProps> = ({
       <AntdSwitch
         className={cx(...classNames)}
         checked={checked || false}
+        data-testid={dataTestId}
         {...props}
         size={props.size as AntdSwitchProps["size"]}
       />

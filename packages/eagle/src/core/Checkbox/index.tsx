@@ -8,13 +8,13 @@ const Checkbox: React.FC<
   CheckboxProps & {
     description?: ReactNode;
     compact?: boolean;
-    "data-test"?: string;
+    "data-testid"?: string;
   }
 > = ({ className, children, description, compact, ...props }) => {
   return (
     <AntdCheckbox
       {...props}
-      data-test={props["data-test"] || props.value}
+      data-testid={props["data-testid"] || props.value}
       className={cs(className, CheckboxStyle, compact && "compact")}
     >
       {children ? (

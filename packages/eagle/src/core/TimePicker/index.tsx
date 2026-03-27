@@ -4,12 +4,13 @@ import { TimePicker as AntdTimePicker } from "antd";
 import { TimePickerProps } from "antd/lib/time-picker";
 import cs from "classnames";
 import React from "react";
-const TimePicker: React.FC<TimePickerProps & { error?: boolean }> = ({
-  className,
-  error,
-  size = "middle",
-  ...props
-}) => {
+const TimePicker: React.FC<
+  TimePickerProps & {
+    error?: boolean;
+    /** Test ID for automated testing */
+    "data-testid"?: string;
+  }
+> = ({ className, error, size = "middle", ...props }) => {
   const typo = {
     large: Typo.Label.l2_regular,
     middle: Typo.Label.l3_regular,

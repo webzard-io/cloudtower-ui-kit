@@ -39,13 +39,19 @@ export const Timeline = ({
   compact,
   timelineContainerClassName,
   emptyTextClassName,
+  "data-testid": dataTestId,
 }: TimelineProps): ReactElement => {
   if (!items.length) {
     if (emptyRender) {
       return <>{emptyRender(emptyText)}</>;
     }
     return (
-      <div className={cx(EmptyWrapper, emptyTextClassName)}>{emptyText}</div>
+      <div
+        data-testid={dataTestId}
+        className={cx(EmptyWrapper, emptyTextClassName)}
+      >
+        {emptyText}
+      </div>
     );
   }
 
@@ -68,7 +74,10 @@ export const Timeline = ({
   };
 
   return (
-    <div className={cx(TimelineWrapper, timelineContainerClassName)}>
+    <div
+      data-testid={dataTestId}
+      className={cx(TimelineWrapper, timelineContainerClassName)}
+    >
       <AntdTimeline>
         {items.map((item, index) => {
           const {

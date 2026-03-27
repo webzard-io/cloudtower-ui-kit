@@ -4,10 +4,12 @@ export interface BreadcrumbLink {
   id?: string;
   resource: string;
   tab?: string;
+  "data-testid"?: string;
 
   onClick: React.MouseEventHandler<HTMLSpanElement>;
 }
 
 export interface IBreadcrumbProps {
   items: BreadcrumbLink[];
+  "data-testid"?: string;
 }

@@ -3,4 +3,7 @@ export enum Architecture {
   X86_64 = "X86_64",
 }
 
-export type ArchComponentType = React.FC<{ architecture?: Architecture }>;
+export type ArchComponentType = React.FC<{
+  architecture?: Architecture;
+  "data-testid"?: string;
+}>;

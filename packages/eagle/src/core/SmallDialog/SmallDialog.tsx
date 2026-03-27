@@ -55,9 +55,12 @@ export const SmallDialog: React.FC<SmallDialogProps> = ({
   initializing,
   initializingError,
   initializingSkeletonRows,
+  "data-testid": dataTestId,
 }) => {
   const { t } = useParrotTranslation();
   const popModal = usePopModal();
+  const sub = (suffix: string) =>
+    dataTestId ? `${dataTestId}-${suffix}` : undefined;
 
   const handleClose = () => {
     if (onCancel) {
@@ -85,6 +88,7 @@ export const SmallDialog: React.FC<SmallDialogProps> = ({
   return (
     <Modal
       visible
+      data-testid={dataTestId}
       width={width}
       title={
         initializing ? (
@@ -127,6 +131,7 @@ export const SmallDialog: React.FC<SmallDialogProps> = ({
                 type={showOk ? "quiet" : "ordinary"}
                 onClick={handleClose}
                 className={Typo.Label.l2_bold_title}
+                data-testid={sub("cancel")}
                 {...cancelButtonProps}
               >
                 {cancelText || defaultCancelText}
@@ -136,6 +141,7 @@ export const SmallDialog: React.FC<SmallDialogProps> = ({
                   type="primary"
                   onClick={handleOk}
                   loading={confirmLoading}
+                  data-testid={sub("ok")}
                   {...okButtonProps}
                 >
                   {okText || defaultOkText}
@@ -159,6 +165,7 @@ export const SmallDialog: React.FC<SmallDialogProps> = ({
           iconHeight={24}
           iconWidth={24}
           hoverSrc={XmarkCloseBold24SecondaryIcon}
+          data-testid={sub("close")}
         />
       }
     >

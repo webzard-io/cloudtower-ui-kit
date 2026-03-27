@@ -149,5 +149,10 @@ export type ImmersiveDialogProps = React.PropsWithChildren<
      * 失败时设 initializing=false 并设置 initializingError。
      */
     initializingError?: string | React.ReactNode;
+    /**
+     * 测试标识符前缀，用于自动化测试定位元素。
+     * 派生子 testid：`${testId}-cancel`、`${testId}-ok`、`${testId}-close`
+     */
+    "data-testid"?: string;
   }
 >;

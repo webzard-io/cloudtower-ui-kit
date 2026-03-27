@@ -7,21 +7,27 @@ import { FieldBaseProps } from "../fields.type";
 
 const FieldsDateTimeRange: React.FC<FieldBaseProps & DatePickerProps> = ({
   input,
+  "data-testid": dataTestId,
   ...props
-}) => (
-  <div className="datatime-range">
-    <DatePicker.RangePicker
-      showTime
-      {...input}
-      onFocus={() => input.onFocus?.()}
-      onBlur={() => input.onBlur?.()}
-      // https://github.com/ant-design/ant-design/issues/22185
-      defaultValue={input.value?.map((v?: string) => v && moment(v))}
-      onChange={input.onChange}
-      value={input.value?.map((v?: string) => v && moment(v))}
-      format={props.format}
-    />
-  </div>
-);
+}) => {
+  const inputWithTestId = dataTestId
+    ? { ...input, "data-testid": dataTestId }
+    : input;
+  return (
+    <div className="datatime-range">
+      <DatePicker.RangePicker
+        showTime
+        {...inputWithTestId}
+        onFocus={() => input.onFocus?.()}
+        onBlur={() => input.onBlur?.()}
+        // https://github.com/ant-design/ant-design/issues/22185
+        defaultValue={input.value?.map((v?: string) => v && moment(v))}
+        onChange={input.onChange}
+        value={input.value?.map((v?: string) => v && moment(v))}
+        format={props.format}
+      />
+    </div>
+  );
+};
 
 export default FieldsDateTimeRange;

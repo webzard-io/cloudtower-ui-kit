@@ -45,6 +45,7 @@ const Alert: AlertComponentType = ({
   action,
   message,
   closable,
+  "data-testid": dataTestId,
   ...props
 }) => {
   const _icon = <Icon alt={type} src={getAlertIcon(type)} />;
@@ -54,6 +55,7 @@ const Alert: AlertComponentType = ({
   return (
     <AntdAlert
       {...props}
+      data-testid={dataTestId}
       className={cs(AlertStyle, type ? `alert-${type}` : "", className, {
         action,
       })}

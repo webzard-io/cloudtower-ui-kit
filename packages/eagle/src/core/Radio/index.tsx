@@ -198,6 +198,7 @@ const Radio: React.FC<RadioProps> = ({
   className,
   checked,
   compact = false,
+  "data-testid": dataTestId,
   ...props
 }) => {
   const { description } = props;
@@ -218,6 +219,7 @@ const Radio: React.FC<RadioProps> = ({
       <AntdRadio
         className={cx(className, RadioStyle, compact && "compact")}
         checked={checked || false}
+        data-testid={dataTestId}
         data-test={
           context.name
             ? `${context.name}-${String(props.value)}`
@@ -231,16 +233,18 @@ const Radio: React.FC<RadioProps> = ({
   );
 };
 
-const RadioGroup: React.FC<AntdRadioGroupProps> = ({
-  children,
-  className,
-  ...props
-}) => {
+const RadioGroup: React.FC<
+  AntdRadioGroupProps & { "data-testid"?: string }
+> = ({ children, className, "data-testid": dataTestId, ...props }) => {
   return (
     <KitRadioGroupContext.Provider
       value={{ disabled: props.disabled, name: props.name }}
     >
-      <AntdRadio.Group className={cx(className, RadioGroupStyle)} {...props}>
+      <AntdRadio.Group
+        data-testid={dataTestId}
+        className={cx(className, RadioGroupStyle)}
+        {...props}
+      >
         {children ? children : null}
       </AntdRadio.Group>
     </KitRadioGroupContext.Provider>
@@ -250,6 +254,7 @@ const RadioGroup: React.FC<AntdRadioGroupProps> = ({
 const RadioButton: React.FC<RadioButtonProps> = ({
   children,
   className,
+  "data-testid": dataTestId,
   ...props
 }) => {
   const {
@@ -277,6 +282,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
           className="ant-radio-button-input"
           placeholder={placeholder}
           disabled={inputDisabled}
+          data-testid={dataTestId ? `${dataTestId}-input-number` : undefined}
           value={!_.isNil(inputValue) ? Number(inputValue) : undefined}
           min={min}
           max={max}
@@ -294,6 +300,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
         className="ant-radio-button-input"
         placeholder={placeholder}
         disabled={inputDisabled}
+        data-testid={dataTestId ? `${dataTestId}-input` : undefined}
         value={inputValue}
         onChange={(e) => {
           setInputValue(e.target.value);
@@ -320,6 +327,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
     <AntdRadio.Button
       className={cx(className, RadioButtonStyle)}
       value={radioButtonValue}
+      data-testid={dataTestId}
       {...props}
     >
       {renderChildren()}

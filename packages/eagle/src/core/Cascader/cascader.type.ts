@@ -19,6 +19,8 @@ export type PresetCascaderRenderProps = {
 };
 
 export type CascaderProps = Antd5CascaderProps & {
+  /** Test ID for automated testing */
+  "data-testid"?: string;
   /**
    * 自定义下拉菜单内容，具体可以参考[antd5](https://ant.design/components/cascader-cn/#API)
    * 注意：如果需要自定义下拉菜单，会覆盖掉已有的 header / footer 表现。

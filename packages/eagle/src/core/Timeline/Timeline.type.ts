@@ -191,6 +191,8 @@ export interface TimelineItemData {
  * 定义Timeline组件接收的所有属性
  */
 export interface TimelineProps {
+  /** 测试标识 */
+  "data-testid"?: string;
   /**
    * 是否启用紧凑模式，启用后时间线项目之间的间距会减小
    * 适合在有限空间内展示更多时间线项目

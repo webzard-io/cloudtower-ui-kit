@@ -1,7 +1,7 @@
 import { css } from "@linaria/core";
 import { formatPercent } from "@src/utils/tower";
-import React, { CSSProperties, useMemo } from "react";
 import cs from "classnames";
+import React, { CSSProperties, useMemo } from "react";
 
 const StackBar = css`
   height: 8px;

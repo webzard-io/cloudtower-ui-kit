@@ -14,6 +14,7 @@ export type TruncatePropTypes = {
   hoverShowFullText?: boolean;
   className?: string;
   inline?: boolean;
+  "data-testid"?: string;
 };
 
 const Truncate: React.FC<TruncatePropTypes> = (props) => {
@@ -25,6 +26,7 @@ const Truncate: React.FC<TruncatePropTypes> = (props) => {
     hoverShowFullText = true,
     className,
     inline,
+    "data-testid": dataTestId,
   } = props;
   if (len <= 0) {
     console.error("[Truncate] prop len can not be 0 or negative number");
@@ -42,7 +44,7 @@ const Truncate: React.FC<TruncatePropTypes> = (props) => {
   let _backLen = Math.min(
     backLen,
     text.length - ellipse.length,
-    len - ellipse.length
+    len - ellipse.length,
   );
 
   const _frontLen =
@@ -60,7 +62,9 @@ const Truncate: React.FC<TruncatePropTypes> = (props) => {
       : text.slice(0, _frontLen) + ellipse + text.slice(text.length - _backLen);
 
   const Text = (
-    <div className={cs([className, inline && Inline])}>{truncated}</div>
+    <div data-testid={dataTestId} className={cs([className, inline && Inline])}>
+      {truncated}
+    </div>
   );
   if (!hoverShowFullText || text.length <= len) {
     return Text;
