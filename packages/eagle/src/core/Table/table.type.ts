@@ -1,10 +1,10 @@
-import React from "react";
 import {
   ColumnsType,
   ColumnType,
   TableProps as AntdTableProps,
 } from "antd/lib/table";
-import { TableRowSelection, ExpandableConfig } from "antd/lib/table/interface";
+import { ExpandableConfig, TableRowSelection } from "antd/lib/table/interface";
+import React from "react";
 
 import { ITableSkeletonProps } from "./TableSkeleton";
 
@@ -249,4 +249,8 @@ export interface TableProps<T extends { id: string }> {
    * @see https://ant.design/components/table-cn#expandable
    */
   expandable?: ExpandableConfig<T>;
+  /**
+   * 用于测试的标识符，会传递到表格根容器元素。
+   */
+  "data-testid"?: string;
 }

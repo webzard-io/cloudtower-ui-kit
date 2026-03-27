@@ -23,10 +23,13 @@ export const BreadWrapper = styled.div`
 `;
 
 const Breadcrumb: React.FunctionComponent<IBreadcrumbProps> = (props) => {
-  const { items } = props;
+  const { items, "data-testid": dataTestId } = props;
 
   return (
-    <BreadWrapper className={Typo.Heading.h3_bold_title}>
+    <BreadWrapper
+      data-testid={dataTestId}
+      className={Typo.Heading.h3_bold_title}
+    >
       {items.map((item, index) => {
         return (
           <span key={index}>
@@ -47,7 +50,11 @@ const Breadcrumb: React.FunctionComponent<IBreadcrumbProps> = (props) => {
               </svg>
             ) : null}
 
-            <span className="breadcrumb-link" onClick={item.onClick}>
+            <span
+              className="breadcrumb-link"
+              data-testid={item["data-testid"]}
+              onClick={item.onClick}
+            >
               {item.name}
             </span>
             {index === items.length - 1 && (

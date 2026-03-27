@@ -71,6 +71,7 @@ export const Progress: React.FC<ProgressProps> = ({
   percent = 0,
   className,
   indeterminate,
+  "data-testid": dataTestId,
   ...props
 }) => {
   const finalStatus = getStatus(status, percent, indeterminate);
@@ -117,7 +118,11 @@ export const Progress: React.FC<ProgressProps> = ({
   }
 
   return (
-    <ProgressContainer type={type} className={cx(className, ProgressStyle)}>
+    <ProgressContainer
+      type={type}
+      className={cx(className, ProgressStyle)}
+      data-testid={dataTestId}
+    >
       {titleNode ? (
         <Row>
           {titleNode}

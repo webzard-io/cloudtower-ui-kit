@@ -1,6 +1,7 @@
 import { css, cx } from "@linaria/core";
 import { SmallDialog } from "@src/core/SmallDialog/SmallDialog";
 import { Typo } from "@src/core/Typo";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import React from "react";
 
 import {
@@ -8,7 +9,6 @@ import {
   RejectDialogProps,
   RejectDialogType,
 } from "./RejectDialog.type";
-import useParrotTranslation from "@src/hooks/useParrotTranslation";
 
 const ContentList = css`
   color: $text-light-secondary;

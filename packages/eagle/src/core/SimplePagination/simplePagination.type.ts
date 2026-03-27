@@ -4,4 +4,5 @@ export interface ISimplePaginationProps {
   count: number;
   size: number;
   onPageChange?: (page: number) => void;
+  "data-testid"?: string;
 }

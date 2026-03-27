@@ -10,7 +10,8 @@ import {
   NotificationInstance as RCNotificationInstance,
 } from "rc-notification/lib/Notification";
 import * as React from "react";
-import { ConfigProvider, type ConfigProps } from "../ConfigProvider";
+
+import { type ConfigProps, ConfigProvider } from "../ConfigProvider";
 
 type NoticeType = "info" | "success" | "error" | "warning" | "loading";
 

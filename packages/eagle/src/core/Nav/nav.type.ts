@@ -13,4 +13,6 @@ export type NavProps = {
   center?: React.ReactNode[];
   isScrolled?: boolean;
   navRef?: React.RefObject<HTMLHeadElement>;
+  className?: string;
+  "data-testid"?: string;
 };

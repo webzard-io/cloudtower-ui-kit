@@ -1,4 +1,3 @@
-import React from "react";
 import {
   MoreEllipsis316BoldBlueIcon,
   SettingsGear16GradientGrayIcon,
@@ -7,6 +6,7 @@ import { css } from "@linaria/core";
 import { Button, Icon, Table } from "@src/core";
 import { CoreMeta } from "@stories/types";
 import { StoryObj } from "@storybook/react";
+import React from "react";
 
 const meta = {
   component: Table,

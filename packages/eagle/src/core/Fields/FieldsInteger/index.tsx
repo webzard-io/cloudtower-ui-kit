@@ -7,13 +7,17 @@ const FieldsInteger = ({
   meta,
   input,
   onBlur,
+  "data-testid": dataTestId,
   ...props
 }: IntegerFieldProps) => {
+  const inputWithTestId = dataTestId
+    ? { ...input, "data-testid": dataTestId }
+    : input;
   return (
     <>
       <InputInteger
         {...props}
-        {...input}
+        {...inputWithTestId}
         onBlur={(e) => (onBlur ? onBlur(input, e) : input.onBlur(e))}
         error={
           meta.touched &&

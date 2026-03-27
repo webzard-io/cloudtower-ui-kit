@@ -71,6 +71,12 @@ export type PercentFn = React.FC<
      * @type {IEmptyProps}
      */
     emptyProps?: IEmptyProps;
+
+    /**
+     * 数据测试 id
+     * @type {string}
+     */
+    "data-testid"?: string;
   }
 >;
 
@@ -85,5 +91,11 @@ export type UnitFn = React.FC<
      * @type {IEmptyProps}
      */
     emptyProps?: IEmptyProps;
+
+    /**
+     * 数据测试 id
+     * @type {string}
+     */
+    "data-testid"?: string;
   }
 >;

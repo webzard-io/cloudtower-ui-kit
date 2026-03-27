@@ -17,6 +17,7 @@ export type ButtonProps = {
 
 export type ButtonGroupType = {
   className?: string;
+  "data-testid"?: string;
   size?: SizeType;
   options: Array<
     Omit<ButtonProps, "shape" | "size" | "icon"> & {

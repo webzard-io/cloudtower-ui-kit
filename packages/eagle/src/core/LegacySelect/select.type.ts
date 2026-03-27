@@ -10,6 +10,7 @@ export type KitLegacySelectProps = {
   scrollBottomBuffer?: number;
   onScrollBottom?: () => void;
   selectLimit?: number;
+  "data-testid"?: string;
 } & AntdSelectProps<string>;
 
 export interface LooseFieldRenderProps<V, T extends HTMLElement> {

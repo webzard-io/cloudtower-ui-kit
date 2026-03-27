@@ -15,4 +15,5 @@ export type EnumProps<V = any, T extends HTMLElement = HTMLElement> = {
   disabled?: boolean;
   className?: string;
   dropdownClassName?: string;
+  "data-testid"?: string;
 } & BaseEnumProps;

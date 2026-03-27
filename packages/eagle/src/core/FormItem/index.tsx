@@ -48,10 +48,14 @@ const FormItemStyle = css`
 `;
 
 const FormItem: (
-  props: React.PropsWithChildren<FormItemProps>,
-) => React.ReactElement = (props) => {
+  props: React.PropsWithChildren<FormItemProps> & { "data-testid"?: string },
+) => React.ReactElement = ({ "data-testid": dataTestId, ...props }) => {
   return (
-    <AntdFormItem {...props} className={cs(FormItemStyle, props.className)} />
+    <AntdFormItem
+      {...props}
+      data-testid={dataTestId}
+      className={cs(FormItemStyle, props.className)}
+    />
   );
 };
 

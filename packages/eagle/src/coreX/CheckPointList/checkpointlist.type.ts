@@ -1,8 +1,8 @@
 import { AlertProps } from "@src/core/Alert";
 import { ButtonProps } from "@src/core/Button";
 import { IconProps } from "@src/core/Icon";
-import { TagProps } from "@src/core/Tag";
 import { LinkProps } from "@src/core/Link";
+import { TagProps } from "@src/core/Tag";
 import React from "react";
 
 /**

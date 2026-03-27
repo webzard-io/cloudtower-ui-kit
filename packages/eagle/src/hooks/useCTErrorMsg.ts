@@ -1,9 +1,10 @@
-import useParrotTranslation from "./useParrotTranslation";
+import { useConfig } from "@src/core/ConfigProvider";
 import { CTError, parseCTError } from "@src/utils/cterror";
-import { useMemo } from "react";
 import { TOptions } from "i18next";
 import { merge } from "lodash";
-import { useConfig } from "@src/core/ConfigProvider";
+import { useMemo } from "react";
+
+import useParrotTranslation from "./useParrotTranslation";
 
 export type UseCTErrorMsgOptions = {
   CTErrorI18nNs?: string;

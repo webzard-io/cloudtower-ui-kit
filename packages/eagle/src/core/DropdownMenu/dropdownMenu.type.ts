@@ -8,6 +8,7 @@ export interface IDropDownMenuItem {
   onClick?: () => void;
   danger?: boolean;
   tooltip?: string;
+  "data-testid"?: string;
 }
 
 export type Placement =
@@ -34,4 +35,5 @@ export interface IDropdownMenuProps {
   slotsElements: {
     trigger?: (args: object) => string | React.ReactNode;
   };
+  "data-testid"?: string;
 }

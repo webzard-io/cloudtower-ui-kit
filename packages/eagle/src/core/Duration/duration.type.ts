@@ -8,6 +8,11 @@ import { RawValue } from "../Units/units.type";
 
 /**
  * Duration 组件的属性类型
+ *
+ * data-testid 在空态（Empty）和 noUnitOnZero 分支生效。
+ * 默认渲染分支（多单位拼接）和 contentRender 分支返回 Fragment，不支持 data-testid。
+ * 需要 data-testid 时，请在 Duration 外层自行包一层 wrapper 并设置 data-testid。
+ * 使用 contentRender 时，也可在 contentRender 返回的根元素上自行设置 data-testid。
  */
 export interface DurationProps extends Omit<RawValue, "decimals"> {
   /**
@@ -30,13 +35,15 @@ export interface DurationProps extends Omit<RawValue, "decimals"> {
   emptyProps?: IEmptyProps;
 
   /**
-   * 自定义返回结果的渲染
-   * 当提供此函数时，将使用自定义渲染函数来渲染持续时间，而不是使用默认的渲染方式
+   * 自定义返回结果的渲染。
+   * 当提供此函数时，将使用自定义渲染函数来渲染持续时间，而不是使用默认的渲染方式。
+   * 注意：使用 contentRender 时，组件不会透传 data-testid，
+   * 调用方需要在返回的根元素上自行设置 data-testid。
    * @param parts 格式化后的持续时间数组，每个元素包含 value 和 unit
    * @returns 自定义的 React 节点
    * @example
    * contentRender={(parts) => (
-   *   <div>
+   *   <div data-testid="my-duration">
    *     {parts.map((part, i) => (
    *       <span key={i}>{part.value} {part.unit}</span>
    *     ))}
@@ -44,4 +51,5 @@ export interface DurationProps extends Omit<RawValue, "decimals"> {
    * )}
    */
   contentRender?: (parts: FormatDurationItem[]) => React.ReactNode;
+  "data-testid"?: string;
 }

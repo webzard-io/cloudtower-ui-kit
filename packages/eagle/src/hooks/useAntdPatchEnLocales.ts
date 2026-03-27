@@ -1,6 +1,6 @@
 import type { Locale } from "antd/lib/locale-provider";
-import { useMemo } from "react";
 import merge from "lodash/merge";
+import { useMemo } from "react";
 
 type DeepPartial<T> = T extends object
   ? {

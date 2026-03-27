@@ -95,4 +95,8 @@ export type ProgressProps = {
   rightBottom?: React.ReactNode;
   size?: "small" | "large";
   style?: React.CSSProperties;
+  /**
+   * 用于测试的标识符，会传递到进度条根容器元素。
+   */
+  "data-testid"?: string;
 };

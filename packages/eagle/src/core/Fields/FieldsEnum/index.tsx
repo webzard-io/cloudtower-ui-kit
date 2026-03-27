@@ -8,11 +8,12 @@ const FieldsEnum = ({
   meta: __,
   enumValues,
   emptyLabel,
+  "data-testid": dataTestId,
   ...restProps
 }: EnumProps) => {
   return (
     <>
-      <LegacySelect {...restProps}>
+      <LegacySelect data-testid={dataTestId} {...restProps}>
         {emptyLabel && (
           <AntdSelect.Option value="">{emptyLabel}</AntdSelect.Option>
         )}
