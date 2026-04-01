@@ -18,7 +18,8 @@
     "ci:versionup:minor": "lerna version minor --no-push --no-git-tag-version --yes && npm run commit-version",
     "commit-version": "git add . && git commit -m \"chore(release): v`node -p 'require(\"./lerna.json\").version'`\"",
     "lint": "eslint \"**/*.{tsx,ts}\" --fix",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "yalc:publish": "yarn build && for pkg in packages/*/; do (cd \"$pkg\" && yalc publish --push); done"
   },
   "lint-staged": {
     "**/*.{ts,tsx,md}": [
