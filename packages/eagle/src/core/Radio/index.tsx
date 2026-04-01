@@ -4,7 +4,7 @@ import { EMPTY_FUNCTION } from "@src/utils";
 import { Input, InputNumber, Radio as AntdRadio } from "antd";
 import { RadioGroupProps as AntdRadioGroupProps } from "antd/lib/radio";
 import _ from "lodash";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import { RadioButtonProps, RadioProps } from "./radio.type";
 
@@ -203,6 +203,23 @@ const Radio: React.FC<RadioProps> = ({
 }) => {
   const { description } = props;
   const context = React.useContext(KitRadioGroupContext);
+
+  // Ant Design Radio 的 change 事件绑在外层 <label> 上，
+  // 但 data-* 属性会透传到内部隐藏的 <input>，导致 E2E 测试中
+  // 通过 data-testid 定位到 input 后 click 无法触发 onChange。
+  // 用 marker ref 将 data-testid 设置到外层 <label> 上。
+  const markerRef = useCallback(
+    (node: HTMLSpanElement | null) => {
+      if (node && dataTestId) {
+        const label = node.closest("label.ant-radio-wrapper");
+        if (label) {
+          label.setAttribute("data-testid", dataTestId);
+        }
+      }
+    },
+    [dataTestId],
+  );
+
   if (description) {
     children = (
       <>
@@ -215,21 +232,19 @@ const Radio: React.FC<RadioProps> = ({
   }
 
   return (
-    <>
-      <AntdRadio
-        className={cx(className, RadioStyle, compact && "compact")}
-        checked={checked || false}
-        data-testid={dataTestId}
-        data-test={
-          context.name
-            ? `${context.name}-${String(props.value)}`
-            : String(props.value)
-        }
-        {...props}
-      >
-        {children ? children : null}
-      </AntdRadio>
-    </>
+    <AntdRadio
+      className={cx(className, RadioStyle, compact && "compact")}
+      checked={checked || false}
+      data-test={
+        context.name
+          ? `${context.name}-${String(props.value)}`
+          : String(props.value)
+      }
+      {...props}
+    >
+      {dataTestId && <span ref={markerRef} style={{ display: "none" }} />}
+      {children ? children : null}
+    </AntdRadio>
   );
 };
 
@@ -272,6 +287,19 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   const radioButtonValue =
     type === "input" || type === "input-number" ? inputValue : props.value;
   const radioGroupContext = React.useContext(KitRadioGroupContext);
+
+  // 同 Radio 组件，将 data-testid 设置到外层 <label> 上
+  const markerRef = useCallback(
+    (node: HTMLSpanElement | null) => {
+      if (node && dataTestId) {
+        const label = node.closest("label.ant-radio-button-wrapper");
+        if (label) {
+          label.setAttribute("data-testid", dataTestId);
+        }
+      }
+    },
+    [dataTestId],
+  );
 
   const renderInput = () => {
     const inputDisabled = props.disabled || radioGroupContext?.disabled;
@@ -327,9 +355,9 @@ const RadioButton: React.FC<RadioButtonProps> = ({
     <AntdRadio.Button
       className={cx(className, RadioButtonStyle)}
       value={radioButtonValue}
-      data-testid={dataTestId}
       {...props}
     >
+      {dataTestId && <span ref={markerRef} style={{ display: "none" }} />}
       {renderChildren()}
     </AntdRadio.Button>
   );
