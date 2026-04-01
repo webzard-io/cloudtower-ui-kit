@@ -2,11 +2,13 @@
 name: cloudtower-eagle-dev
 description: >
   Use when working on @cloudtower/eagle component library:
-  enhancing component documentation for agent-friendliness,
-  adding new components, updating docs after Props changes,
-  deprecating components, auditing doc freshness,
-  or adding data-testid support for e2e testing.
-  Triggers when editing files under packages/eagle/src/.
+  adding or modifying components, writing JSDoc/Storybook/Markdown docs,
+  adding data-testid for e2e testing, deprecating components,
+  updating Props types, or auditing doc freshness.
+  Triggers when editing files under packages/eagle/src/,
+  or when user mentions: 写文档, 加 story, 组件废弃, 加 data-testid,
+  testid 透传, Props 变更, 文档过时, agent 友好化, 写 JSDoc,
+  补充 Storybook, add component, write docs, deprecate.
 ---
 
 # CloudTower Eagle 组件开发指南
@@ -24,9 +26,18 @@ description: >
 ### 2. 新增/修改组件时添加 data-testid 支持
 
 新增组件或修改已有组件时，必须确保 `data-testid` 能正确透传到 e2e 工具实际交互的 DOM 元素上。
-不同类型的组件需要不同的处理方式（共四层策略）。
+不同类型的组件需要不同的处理方式（共四层策略 + 多个补充策略）。
 
-详细策略和代码示例见 `references/add-testid.md`。
+详细策略和代码示例见 `references/add-testid.md`（文件较长，开头有目录可快速定位）。
+
+**速查决策树：**
+
+1. 组件是 Radio / Checkbox 等隐藏 input + label 点击的控件？→ **第一层补充（marker ref 到 label）**
+2. 组件是基础 Input 封装（antd 有 affix-wrapper）？→ **第一层补充（ref 回调到原生 input）**
+3. 组件渲染单一根元素且根元素就是交互目标？→ **第一层（显式透传）**
+4. 组件有 `input` prop 对象（react-final-form Fields）？→ **第二层（注入 input 对象）**
+5. 组件渲染可点击选项列表（菜单、标签页、分段控制器）？→ **第三层（选项级 testid）**
+6. 根组件下有多个独立操作目标（button、dropdown 等）？→ **第四层（前缀 + 子元素后缀）**
 
 **关键原则：**
 
@@ -64,10 +75,11 @@ description: >
 3. 弹窗打开方式：`pushModal({ component: () => (<Component />), props: {} })`
 4. 文档和注释用中文编写
 5. 不要使用 emoji
+6. **组件改动需同步测试**：新增组件、修改 Props 行为、添加 data-testid 时，编写或更新对应的单元测试（`src/<layer>/<Component>/__test__/`），验证新行为符合预期
 
 ## 产出物检查清单
 
-每次文档改动完成后，确认：
+每次改动完成后，确认：
 
 - [ ] `yarn typings` 通过
 - [ ] `yarn test:ci` 通过

@@ -1,6 +1,6 @@
 # 组件文档模板
 
-以下是 `packages/eagle/docs/components/<ComponentName>.md` 的标准模板。用实际内容替换尖括号占位符。
+以下是 `packages/eagle/docs/<layer>/<ComponentName>/guide.md` 的标准模板（layer 为 core 或 coreX，与 src 层级一致）。用实际内容替换尖括号占位符。
 
 ---
 
