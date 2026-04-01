@@ -7,6 +7,23 @@
 1. **仅做透传，不自动生成。** 组件只负责把业务代码传入的 `data-testid` 放到正确的 DOM 元素上，不生成任何默认值。
 2. **不改变 DOM 结构。** 添加 data-testid 支持时，不应为了挂属性而额外包裹 DOM 元素。如果某个分支返回 Fragment 且没有可挂载的根元素，允许该分支不支持 data-testid，并在类型注释中说明。
 
+## 目录
+
+- [为什么需要特别处理](#为什么需要特别处理)
+- [四层策略](#四层策略)
+  - [第一层：简单组件 — 显式透传](#第一层简单组件--显式-data-testid-透传)
+  - [第一层补充：Radio / Checkbox — marker ref 到外层 label](#第一层补充radio--checkbox--marker-ref-到外层-label)
+  - [第一层补充：基础 Input — ref 回调到原生元素](#第一层补充基础-input-组件--ref-回调到原生元素)
+  - [第一层补充：ParrotTrans — additionalProps 透传](#第一层补充parrottrans-组件--additionalprops-透传)
+  - [第一层补充：自定义渲染函数 — 委托给调用方](#第一层补充自定义渲染函数--委托给调用方)
+  - [第二层：表单字段 — 注入到 input 对象](#第二层表单字段--注入到-input-对象)
+  - [第三层：列表/选项组件 — 选项级 testid](#第三层列表选项组件--选项级-testid)
+  - [第四层：复合组件 — 前缀 + 子元素后缀](#第四层复合组件--前缀--子元素后缀)
+- [类型定义：确保 .d.ts 中 data-testid 合法](#类型定义确保-dts-中-data-testid-合法)
+- [如何判断用哪一层](#如何判断用哪一层)
+- [测试](#测试)
+- [常见踩坑](#常见踩坑)
+
 ## 为什么需要特别处理
 
 antd 在原生元素外会包裹额外的 DOM 层。直接 `{...props}` 展开往往把 `data-testid` 放到了外层 wrapper 上，
@@ -115,6 +132,63 @@ const Timeline = ({
 **适用组件：** Banner、AccordionCard、Avatar、BlankState、Breadcrumb、DetailCard、DonutChart、
 Empty、FailedLoad、Metric、Nav、Pagination、SimplePagination、StepProgress、TimeZoneSelect、
 Timeline、Truncate 等单根组件。
+
+---
+
+### 第一层补充：Radio / Checkbox — marker ref 到外层 label
+
+适用于 antd Radio、RadioButton、Checkbox 等基于隐藏 `<input>` + 外层 `<label>` 点击的表单控件。
+
+**问题：** antd 会把 `data-*` 属性透传到内部隐藏的 `<input>` 上，但 change 事件实际绑在外层
+`<label>` 上。E2E 测试中通过 `data-testid` 定位到隐藏 input 后 `click()` 无法触发 onChange。
+
+**做法：** 不将 `data-testid` 传给 antd 组件，改为在 children 中插入一个 `display: none` 的 marker
+`<span>`，通过 callback ref + `closest()` 找到外层 `<label>` 并 `setAttribute`。
+这样不增加可见 DOM 层，不影响 RadioGroup/CheckboxGroup 的 CSS 选择器。
+
+```tsx
+const Radio: React.FC<RadioProps> = ({
+  children,
+  "data-testid": dataTestId,
+  ...props
+}) => {
+  const markerRef = useCallback(
+    (node: HTMLSpanElement | null) => {
+      if (node && dataTestId) {
+        const label = node.closest("label.ant-radio-wrapper");
+        if (label) {
+          label.setAttribute("data-testid", dataTestId);
+        }
+      }
+    },
+    [dataTestId],
+  );
+
+  return (
+    <AntdRadio {...props}>
+      {dataTestId && <span ref={markerRef} style={{ display: "none" }} />}
+      {children}
+    </AntdRadio>
+  );
+};
+```
+
+**不同组件的 `closest()` 选择器：**
+
+| 组件        | 选择器                           |
+| ----------- | -------------------------------- |
+| Radio       | `label.ant-radio-wrapper`        |
+| RadioButton | `label.ant-radio-button-wrapper` |
+| Checkbox    | `label.ant-checkbox-wrapper`     |
+
+**检查项：**
+
+1. 提取 `"data-testid": dataTestId`，**不要**传给 antd 组件
+2. marker `<span>` 必须 `style={{ display: "none" }}`，避免影响布局
+3. 仅在 `dataTestId` 存在时渲染 marker，减少不必要的 DOM
+4. 依赖数组包含 `[dataTestId]`
+
+**适用组件：** Radio、RadioButton、Checkbox。
 
 ---
 
@@ -505,6 +579,7 @@ export interface DurationProps {
 3. **检查 props 展开是否到位** — 渲染组件后检查 DOM
 4. **选择层级：**
    - 单根元素 → 第一层
+   - Radio/Checkbox 等隐藏 input + label 点击的控件 → 第一层补充（marker ref 到 label）
    - 基础 Input 封装（antd 有 wrapper 问题） → 第一层补充（ref 回调）
    - 使用 ParrotTrans 的展示组件 → 第一层补充（additionalProps 透传）
    - 有 contentRender 等自定义渲染函数 → 第一层补充（委托给调用方）
@@ -573,3 +648,4 @@ it("data-testid 透传到分段选项", () => {
 - **antd5 prefixCls**：在 `closest()` 选择器中始终使用 `@src/utils` 的 `Antd5PrefixCls`。
 - **不要自动生成 testid**：只透传业务代码传入的值。自动生成的 ID 对测试编写者没有意义。
 - **ParrotTrans 透传**：Trans 组件会将未识别的 props 通过 `createElement(parent, additionalProps, content)` 传给 parent 元素，可以直接在 `<ParrotTrans>` 上设置 `data-testid`。
+- **antd Radio/Checkbox hidden input**：antd 将 `data-*` 透传到隐藏 `<input>` 上，但 change 事件绑在外层 `<label>`。不要把 `data-testid` 直接传给 antd 组件，用 marker ref + `closest()` 设置到 label 上。
