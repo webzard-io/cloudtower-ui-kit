@@ -11,6 +11,10 @@ export type KitLegacySelectProps = {
   onScrollBottom?: () => void;
   selectLimit?: number;
   "data-testid"?: string;
+  /**
+   * @deprecated 使用 `data-testid` 代替。
+   */
+  "data-test"?: string;
 } & AntdSelectProps<string>;
 
 export interface LooseFieldRenderProps<V, T extends HTMLElement> {
