@@ -11947,5 +11947,12 @@
     "svgFileName": "datastore-16-yellow.svg",
     "hash": "f7e2710cf3f74c638b4d0599b5a9850d",
     "lastUpdated": "2026-03-27T02:00:31.406Z"
+  },
+  "19472:47": {
+    "componentSetName": "Icon / os.linux.alma",
+    "name": "Size=16",
+    "svgFileName": "os-linux-alma-16.svg",
+    "hash": "bbf0197bff9939cbf1f243d7a6be5cf8",
+    "lastUpdated": "2026-04-02T03:02:34.400Z"
   }
 }
