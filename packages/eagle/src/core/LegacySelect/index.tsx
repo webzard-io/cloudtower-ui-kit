@@ -32,6 +32,7 @@ const LegacySelect: LegacySelectComponentType<any, HTMLElement> = ({
   meta,
   placeholder,
   "data-testid": dataTestId,
+  "data-test": dataTest,
   ...restProps
 }) => {
   const limitExceeded =
@@ -66,6 +67,13 @@ const LegacySelect: LegacySelectComponentType<any, HTMLElement> = ({
         (placeholder || item) &&
         inputDom.setAttribute(
           "data-testid",
+          String(placeholder || item.textContent),
+        );
+      // legacy
+      inputDom &&
+        (placeholder || item) &&
+        inputDom.setAttribute(
+          "data-test",
           String(placeholder || item.textContent),
         );
     }
@@ -157,9 +165,11 @@ const LegacySelect: LegacySelectComponentType<any, HTMLElement> = ({
               ...child,
               props: {
                 ...child.props,
-                "data-testid": dataTestId
-                  ? `${dataTestId}-option-${child.props.value}`
-                  : undefined,
+                "data-test": child.props.value,
+                "data-testid":
+                  dataTestId || dataTest
+                    ? `${dataTestId || dataTest}-option-${child.props.value}`
+                    : undefined,
               },
             }
           : child;
