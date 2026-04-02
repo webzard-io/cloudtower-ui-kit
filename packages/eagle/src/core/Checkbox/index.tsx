@@ -9,6 +9,10 @@ const Checkbox: React.FC<
     description?: ReactNode;
     compact?: boolean;
     "data-testid"?: string;
+    /**
+     * @deprecated 使用 `data-testid` 代替。
+     */
+    "data-test"?: string;
   }
 > = ({
   className,
@@ -40,6 +44,7 @@ const Checkbox: React.FC<
   return (
     <AntdCheckbox
       {...props}
+      data-test={props["data-test"] || props.value}
       className={cs(className, CheckboxStyle, compact && "compact")}
     >
       {(dataTestId || props.value) && (
