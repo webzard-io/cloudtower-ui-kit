@@ -4,7 +4,6 @@ import {
   XmarkRemove16RegularPrimaryCapsOffIcon,
   XmarkRemove16RegularTertiaryCapsOffIcon,
 } from "@cloudtower/icons-react";
-import { css } from "@linaria/core";
 import Icon from "@src/core/Icon";
 import Link from "@src/core/Link";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
@@ -13,32 +12,8 @@ import { Alert as AntdAlert } from "antd";
 import cs from "classnames";
 import React, { useCallback, useState } from "react";
 
+import { AlertStyle, MessageWrapperStyle } from "./alert.style";
 import { AlertComponentType } from "./alert.type";
-
-const MessageWrapperStyle = css`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  & .action {
-    margin-left: 16px;
-  }
-`;
-
-const AlertStyle = css`
-  &.ant-alert-closable {
-    padding-right: 12px;
-
-    .ant-alert-close-icon {
-      height: fit-content;
-      margin-left: 16px;
-    }
-  }
-
-  .ant-alert-message {
-    flex: 1;
-  }
-`;
 
 const Alert: AlertComponentType = ({
   type,
@@ -91,7 +66,7 @@ const Alert: AlertComponentType = ({
         />
       }
     >
-      {expanded ? t("components.alert_collapse") : t("components.alert_expand")}
+      {expanded ? t("alert_collapse") : t("alert_expand")}
     </Link>
   ) : null;
 
@@ -135,4 +110,5 @@ const Alert: AlertComponentType = ({
 
 export default Alert;
 
+export * from "./alert.style";
 export * from "./alert.type";

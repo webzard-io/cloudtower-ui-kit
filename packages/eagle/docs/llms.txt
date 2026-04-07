@@ -19,7 +19,7 @@ npm 包名：@cloudtower/eagle
 - [RejectDialog](coreX/RejectDialog/guide.md): 操作拒绝反馈对话框，支持 Single/All/Part/Custom 四种模式
 - message: 全局提示，支持 success/error/warning/info/loading 类型
 - message-group: 消息分组，将多条消息合并为一组展示
-- Alert: 警告提示条，支持 success/info/warning/error 类型，可关闭
+- [Alert](core/Alert/guide.md): 提示框，支持 info/error/warning/success/normal 类型，可关闭，支持展开/收起
 - Banner: 全局横幅通知，支持 error/info/warning 类型，固定在页面顶部
 - notification: 通知提醒（继承 antd notification）
 
