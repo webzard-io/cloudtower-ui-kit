@@ -1,4 +1,6 @@
 {
+  "alert_expand": "Expand",
+  "alert_collapse": "Collapse",
   "contains": "Contains",
   "custom_column": "Customize Columns & Order",
   "in": "belongs to",

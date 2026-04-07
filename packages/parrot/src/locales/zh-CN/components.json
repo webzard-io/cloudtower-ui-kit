@@ -1,4 +1,6 @@
 {
+  "alert_expand": "展开",
+  "alert_collapse": "收起",
   "contains": "包含",
   "custom_column": "自定义列的展示和顺序",
   "in": "属于",
