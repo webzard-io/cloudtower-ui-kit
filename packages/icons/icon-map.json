@@ -11954,5 +11954,33 @@
     "svgFileName": "os-linux-alma-16.svg",
     "hash": "bbf0197bff9939cbf1f243d7a6be5cf8",
     "lastUpdated": "2026-04-02T02:53:20.461Z"
+  },
+  "19476:28": {
+    "componentSetName": "Icon / usage.forecast",
+    "name": "Size=24, Fill=Gradient - Blue",
+    "svgFileName": "usage-forecast-24-gradient-blue.svg",
+    "hash": "fbca524a7a3c207e7004fb20a514d846",
+    "lastUpdated": "2026-04-07T02:02:10.939Z"
+  },
+  "19478:51": {
+    "componentSetName": "Icon / usage.forecast",
+    "name": "Size=16, Fill=Gradient - Blue",
+    "svgFileName": "usage-forecast-16-gradient-blue.svg",
+    "hash": "c8a6241d9e503f906b6146d3c4251423",
+    "lastUpdated": "2026-04-07T02:02:10.939Z"
+  },
+  "19476:33": {
+    "componentSetName": "Icon / usage.forecast",
+    "name": "Size=24, Fill=Ontint",
+    "svgFileName": "usage-forecast-24-ontint.svg",
+    "hash": "2b51c209dd815b132664932bda05b03d",
+    "lastUpdated": "2026-04-07T02:02:10.939Z"
+  },
+  "19476:36": {
+    "componentSetName": "resource.planning",
+    "name": "Size=32, Fill=Colorful",
+    "svgFileName": "resource-planning-32-colorful.svg",
+    "hash": "10926a3753d92a94c34c3480fdb21f35",
+    "lastUpdated": "2026-04-07T02:02:10.947Z"
   }
 }
