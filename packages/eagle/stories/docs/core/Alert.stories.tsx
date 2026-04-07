@@ -41,8 +41,7 @@ const meta = {
     expandConfig: {
       control: false,
       description:
-        "启用展开/收起功能，也可传入 ExpandableConfig 对象配置受控模式",
-      table: { defaultValue: { summary: "false" } },
+        "展开/收起配置（ExpandableConfig），包含 defaultExpanded、expanded、onExpandChange",
     },
     action: {
       control: false,
