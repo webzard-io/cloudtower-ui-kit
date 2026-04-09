@@ -66,7 +66,7 @@ const Alert: AlertComponentType = ({
         />
       }
     >
-      {expanded ? t("alert_collapse") : t("alert_expand")}
+      {expanded ? t("components.alert_collapse") : t("components.alert_expand")}
     </Link>
   ) : null;
 
