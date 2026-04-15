@@ -68,6 +68,38 @@ description: >
 
 列出差异清单，由开发者确认后再修改。
 
+### 6. Typography 和 Color 的维护规则
+
+当修改或新增 Typography、Color 相关内容时，按下面的规则处理。
+
+**Typography**
+
+1. `Typo` 是对外公开的用法，现有 key 不要直接删除，也不要随意改名。
+2. 如果是为了和 Figma 对齐新增字体样式，要同时检查：
+   - `Typo`
+   - `FIGMA_TO_TYPO`
+   - 相关测试
+3. 从 Figma 读取字体时，先看 design context 里的字体 token，再查 `FIGMA_TO_TYPO`。
+4. 如果 Figma 名字和代码名字不完全一样，再按字号、行高、字重、是否大写来判断，不要只靠名字猜。
+
+**Color**
+
+1. `src/styles/token/color.ts` 和 `src/styles/token/color.scss` 是当前和 Figma 对齐的颜色定义。
+2. `src/styles/common/variables.scss` 主要用来兼容旧的 Sass 变量名，不建议继续把新颜色优先加在这里。
+3. 外部项目真正会用到的是 `dist/variables.scss`，所以旧的 Sass 变量名不能轻易删除或改名。
+4. 新颜色如果要补充，优先补到：
+   - `token/color.ts`
+   - `token/color.scss`
+5. 只有在需要兼容旧代码时，才补旧的 Sass 别名。
+6. 从 Figma 读取颜色时，先看 `get_design_context` 结果里的 `var(--...)`，不要先猜旧变量名。
+
+**文档**
+
+1. 不要在多个地方各写一份完整映射表，避免以后不同步。
+2. 如果这次改动会影响 agent 查找 Typography 或 Color 的方式，再同步更新：
+   - `packages/eagle/docs/llms.txt`
+   - `skills/cloudtower-eagle/SKILL.md`
+
 ## 共用规则
 
 1. **始终用 package.json 定义的 script**：`yarn lint`, `yarn format`, `yarn typings`, `yarn test:ci`, `yarn build-storybook`
