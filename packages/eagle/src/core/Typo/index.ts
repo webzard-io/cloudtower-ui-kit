@@ -10,6 +10,11 @@ const d1s_bold_title = css`
   font-size: 24px;
   line-height: 32px;
 `;
+const d1s_regular_title = css`
+  @include Inter();
+  font-size: 24px;
+  line-height: 32px;
+`;
 const d1_regular_title = css`
   @include Inter();
   font-size: 32px;
@@ -123,6 +128,14 @@ const l2_medium = css`
 `;
 const l2_bold = css`
   @include Inter(bold);
+  font-size: 14px;
+  line-height: 22px;
+`;
+const l2_bold_strikethrough = css`
+  @include Inter(bold);
+  text-decoration-line: line-through;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: none;
   font-size: 14px;
   line-height: 22px;
 `;
@@ -308,6 +321,7 @@ export const Typo = {
   Display: {
     d1_bold_title,
     d1s_bold_title,
+    d1s_regular_title,
     d1_regular_title,
     d2_bold_title,
     d2_regular_title,
@@ -332,6 +346,7 @@ export const Typo = {
     l1_regular_title,
     l1_regular_upper,
     l2_bold,
+    l2_bold_strikethrough,
     l2_bold_title,
     l2_bold_upper,
     l2_regular,
@@ -374,3 +389,53 @@ export const Typo = {
     u1,
   },
 } as const;
+
+export const FIGMA_TO_TYPO = {
+  "Display/display1-bold-sc": d1_bold_title,
+  "Display/display1-regular-sc": d1_regular_title,
+  "Display/display1s-bold-sc": d1s_bold_title,
+  "Display/display1s-regular-sc": d1s_regular_title,
+  "Display/display2-bold-sc": d2_bold_title,
+  "Display/display2-regular-sc": d2_regular_title,
+  "Display/display3-bold-sc": d3_bold_title,
+  "Display/display3-regular-sc": d3_regular_title,
+  "Heading/h1-bold-sc": h1_bold_title,
+  "Heading/h1-regular-sc": h1_regular_title,
+  "Heading/h2-bold-sc": h2_bold_title,
+  "Heading/h2-regular-sc": h2_regular_title,
+  "Heading/h3-bold-sc": h3_bold_title,
+  "Heading/h3-regular-sc": h3_regular_title,
+  "Heading/h3-bold-uppercase-sc": h3_bold_upper,
+  "Heading/h3-regular-uppercase-sc": h3_regular_upper,
+  "Label/label1-regular-sc": l1_regular,
+  "Label/label1-bold-sc": l1_bold,
+  "Label/label1-regular-uppercase-sc": l1_regular_upper,
+  "Label/label1-bold-uppercase-sc": l1_bold_upper,
+  "Label/label2-regular-sc": l2_regular,
+  "Label/label2-medium-sc": l2_medium,
+  "Label/label2-bold-sc": l2_bold,
+  "Label/label2-regular-uppercase-sc": l2_regular_upper,
+  "Label/label2-bold-uppercase-sc": l2_bold_upper,
+  "Label/label2-bold-strikethrough-sc": l2_bold_strikethrough,
+  "Label/label3-regular-sc": l3_regular,
+  "Label/label3-semibold-sc": l3_semibold,
+  "Label/label3-bold-sc": l3_bold,
+  "Label/label3-regular-uppercase-sc": l3_regular_upper,
+  "Label/label3-bold-uppercase-sc": l3_bold_upper,
+  "Label/label4-regular-sc": l4_regular,
+  "Label/label4-medium-sc": l4_medium,
+  "Label/label4-bold-sc": l4_bold,
+  "Label/label4-regular-uppercase-sc": l4_regular_upper,
+  "Label/label4-bold-uppercase-sc": l4_bold_upper,
+  "Footnote/footnote1-regular-sc": f1_regular,
+  "Footnote/footnote2-regular-sc": f2_regular,
+  "Tabular Num/tnum1-regular-monospace-sc": t1_regular_mono,
+  "Tabular Num/tnum1-regular-slashed0-sc": t1_regular_slash,
+  "Tabular Num/tnum2-regular-monospace-sc": t2_regular_mono,
+  "Tabular Num/tnum2-medium-monospace-sc": t2_medium_mono,
+  "Tabular Num/tnum2-regular-slashed0-sc": t2_regular_slash,
+  "Tabular Num/tnum2-medium-slashed0-sc": t2_medium_slash,
+  "Tabular Num/tnum16-bold-slashed0-sc": t16_bold_slash,
+} as const;
+
+export type FigmaTypographyName = keyof typeof FIGMA_TO_TYPO;
