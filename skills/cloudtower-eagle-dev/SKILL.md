@@ -72,26 +72,28 @@ description: >
 
 当修改或新增 Typography、Color 相关内容时，按下面的规则处理。
 
-**Typography**
-
-1. `Typo` 是对外公开的用法，现有 key 不要直接删除，也不要随意改名。
-2. 如果是为了和 Figma 对齐新增字体样式，要同时检查：
-   - `Typo`
-   - `FIGMA_TO_TYPO`
-   - 相关测试
-3. 从 Figma 读取字体时，先看 design context 里的字体 token，再查 `FIGMA_TO_TYPO`。
-4. 如果 Figma 名字和代码名字不完全一样，再按字号、行高、字重、是否大写来判断，不要只靠名字猜。
-
 **Color**
 
 1. `src/styles/token/color.ts` 和 `src/styles/token/color.scss` 是当前和 Figma 对齐的颜色定义。
 2. `src/styles/common/variables.scss` 主要用来兼容旧的 Sass 变量名，不建议继续把新颜色优先加在这里。
 3. 外部项目真正会用到的是 `dist/variables.scss`，所以旧的 Sass 变量名不能轻易删除或改名。
-4. 新颜色如果要补充，优先补到：
-   - `token/color.ts`
-   - `token/color.scss`
-5. 只有在需要兼容旧代码时，才补旧的 Sass 别名。
-6. 从 Figma 读取颜色时，先看 `get_design_context` 结果里的 `var(--...)`，不要先猜旧变量名。
+4. 如果任务是“同步 / 对齐 / 更新 Color”，先运行 `yarn check:color`。
+5. 如果 `check:color` 报告有漂移，再运行 `yarn sync:color`，然后查看 diff，再决定是否继续。
+6. 不要在没有先跑 `check:color` 的情况下手写 Color token 对齐改动。
+7. 从 Figma 读取颜色时，先看 `get_design_context` 结果里的 `var(--...)`，不要先猜旧变量名。
+
+**Typography**
+
+1. `Typo` 是对外公开的用法，现有 key 不要直接删除，也不要随意改名。
+2. 如果任务是“同步 / 对齐 / 更新 Typography”，先运行 `yarn check:typography`。
+3. 如果 `check:typography` 报告有漂移，再运行 `yarn sync:typography`，然后查看 diff，再决定是否继续。
+4. 不要在没有先跑 `check:typography` 的情况下手写 Typography 对齐改动。
+5. Typography 同步遵循这条规则：
+   - 上游新增 key：本地新增
+   - 上游同 key 改值：本地同步改值
+   - 上游删除 key：本地不删除，只在报告里提示
+6. 从 Figma 读取字体时，先看 design context 里的字体 token，再查 `FIGMA_TO_TYPO`。
+7. 如果 Figma 名字和代码名字不完全一样，再按字号、行高、字重、是否大写来判断，不要只靠名字猜。
 
 **文档**
 

@@ -24,7 +24,10 @@
     "typings": "tsc --emitDeclarationOnly && tsc-alias",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "sync:color": "node tools/fetch-figma-color.js"
+    "check:color": "node tools/sync-figma-color.js --check",
+    "sync:color": "node tools/sync-figma-color.js --write",
+    "check:typography": "node tools/sync-figma-typography.js --check",
+    "sync:typography": "node tools/sync-figma-typography.js --write"
   },
   "dependencies": {
     "@cloudtower/icons-react": "^490.0.13",
@@ -81,6 +84,7 @@
     "@types/react-transition-group": "4.2.4",
     "@vitejs/plugin-react": "^4.2.1",
     "copy-to-clipboard": "^3.3.3",
+    "dotenv": "^16.4.7",
     "history": "^4.9.0",
     "i18next": "^23.2.3",
     "jsdom": "^20.0.1",

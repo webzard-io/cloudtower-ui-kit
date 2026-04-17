@@ -40,7 +40,6 @@ const d3_regular_title = css`
   font-size: 18px;
   line-height: 22px;
 `;
-
 const h1_bold_title = css`
   @include Inter(bold);
   font-size: 16px;
@@ -83,23 +82,12 @@ const h3_regular_upper = css`
   font-size: 12px;
   line-height: 18px;
 `;
-
 const l1_regular = css`
   @include Inter();
   font-size: 16px;
   line-height: 24px;
 `;
 const l1_bold = css`
-  @include Inter(bold);
-  font-size: 16px;
-  line-height: 24px;
-`;
-const l1_regular_title = css`
-  @include Inter();
-  font-size: 16px;
-  line-height: 24px;
-`;
-const l1_bold_title = css`
   @include Inter(bold);
   font-size: 16px;
   line-height: 24px;
@@ -139,16 +127,6 @@ const l2_bold_strikethrough = css`
   font-size: 14px;
   line-height: 22px;
 `;
-const l2_regular_title = css`
-  @include Inter();
-  font-size: 14px;
-  line-height: 22px;
-`;
-const l2_bold_title = css`
-  @include Inter(bold);
-  font-size: 14px;
-  line-height: 22px;
-`;
 const l2_regular_upper = css`
   @include Inter();
   @include Uppercase();
@@ -172,21 +150,6 @@ const l3_semibold = css`
   line-height: 20px;
 `;
 const l3_bold = css`
-  @include Inter(bold);
-  font-size: 13px;
-  line-height: 20px;
-`;
-const l3_regular_title = css`
-  @include Inter();
-  font-size: 13px;
-  line-height: 20px;
-`;
-const l3_semibold_title = css`
-  @include Inter(600);
-  font-size: 13px;
-  line-height: 20px;
-`;
-const l3_bold_title = css`
   @include Inter(bold);
   font-size: 13px;
   line-height: 20px;
@@ -218,21 +181,6 @@ const l4_bold = css`
   font-size: 12px;
   line-height: 18px;
 `;
-const l4_regular_title = css`
-  @include Inter();
-  font-size: 12px;
-  line-height: 18px;
-`;
-const l4_medium_title = css`
-  @include Inter(500);
-  font-size: 12px;
-  line-height: 18px;
-`;
-const l4_bold_title = css`
-  @include Inter(bold);
-  font-size: 12px;
-  line-height: 18px;
-`;
 const l4_regular_upper = css`
   @include Inter();
   @include Uppercase();
@@ -245,13 +193,7 @@ const l4_bold_upper = css`
   font-size: 12px;
   line-height: 18px;
 `;
-
 const f1_regular = css`
-  @include Inter();
-  font-size: 13px;
-  line-height: 20px;
-`;
-const f1_regular_title = css`
   @include Inter();
   font-size: 13px;
   line-height: 20px;
@@ -261,12 +203,6 @@ const f2_regular = css`
   font-size: 12px;
   line-height: 18px;
 `;
-const f2_regular_title = css`
-  @include Inter();
-  font-size: 12px;
-  line-height: 18px;
-`;
-
 const t1_regular_mono = css`
   @include Inter();
   @include Monospace();
@@ -311,6 +247,66 @@ const t16_bold_slash = css`
 `;
 
 // CLEAR UNKNOWN STYLES
+const l1_regular_title = css`
+  @include Inter();
+  font-size: 16px;
+  line-height: 24px;
+`;
+const l1_bold_title = css`
+  @include Inter(bold);
+  font-size: 16px;
+  line-height: 24px;
+`;
+const l2_regular_title = css`
+  @include Inter();
+  font-size: 14px;
+  line-height: 22px;
+`;
+const l2_bold_title = css`
+  @include Inter(bold);
+  font-size: 14px;
+  line-height: 22px;
+`;
+const l3_regular_title = css`
+  @include Inter();
+  font-size: 13px;
+  line-height: 20px;
+`;
+const l3_semibold_title = css`
+  @include Inter(600);
+  font-size: 13px;
+  line-height: 20px;
+`;
+const l3_bold_title = css`
+  @include Inter(bold);
+  font-size: 13px;
+  line-height: 20px;
+`;
+const l4_regular_title = css`
+  @include Inter();
+  font-size: 12px;
+  line-height: 18px;
+`;
+const l4_medium_title = css`
+  @include Inter(500);
+  font-size: 12px;
+  line-height: 18px;
+`;
+const l4_bold_title = css`
+  @include Inter(bold);
+  font-size: 12px;
+  line-height: 18px;
+`;
+const f1_regular_title = css`
+  @include Inter();
+  font-size: 13px;
+  line-height: 20px;
+`;
+const f2_regular_title = css`
+  @include Inter();
+  font-size: 12px;
+  line-height: 18px;
+`;
 const u1 = css`
   @include Inter();
   font-size: 10px;
@@ -334,8 +330,8 @@ export const Typo = {
     h2_bold_title,
     h2_regular_title,
     h3_bold_title,
-    h3_bold_upper,
     h3_regular_title,
+    h3_bold_upper,
     h3_regular_upper,
   },
   Label: {
@@ -392,9 +388,9 @@ export const Typo = {
 
 export const FIGMA_TO_TYPO = {
   "Display/display1-bold-sc": d1_bold_title,
-  "Display/display1-regular-sc": d1_regular_title,
   "Display/display1s-bold-sc": d1s_bold_title,
   "Display/display1s-regular-sc": d1s_regular_title,
+  "Display/display1-regular-sc": d1_regular_title,
   "Display/display2-bold-sc": d2_bold_title,
   "Display/display2-regular-sc": d2_regular_title,
   "Display/display3-bold-sc": d3_bold_title,
@@ -414,9 +410,9 @@ export const FIGMA_TO_TYPO = {
   "Label/label2-regular-sc": l2_regular,
   "Label/label2-medium-sc": l2_medium,
   "Label/label2-bold-sc": l2_bold,
+  "Label/label2-bold-strikethrough-sc": l2_bold_strikethrough,
   "Label/label2-regular-uppercase-sc": l2_regular_upper,
   "Label/label2-bold-uppercase-sc": l2_bold_upper,
-  "Label/label2-bold-strikethrough-sc": l2_bold_strikethrough,
   "Label/label3-regular-sc": l3_regular,
   "Label/label3-semibold-sc": l3_semibold,
   "Label/label3-bold-sc": l3_bold,
