@@ -97,8 +97,7 @@ npm 包名：@cloudtower/eagle
 - Icon: 图标容器，统一图标尺寸和样式
 - BaseIcon: 基础图标，支持 SVG 图标渲染
 - Link: 链接，封装 antd Typography.Link
-- Typo: 排版样式集合，提供 Display/Heading/Label/Paragraph 等预定义的 Linaria 类名；若需要根据 Figma Typography 名称查找对应样式，请使用公开导出的 `FIGMA_TO_TYPO`
-- Color: 颜色 token；若目标文件已依赖全局 Sass 变量或已有 `$...` 写法，优先使用 `dist/variables.scss` 中的 Sass 变量，否则优先使用公开导出的 `Color.*`
+- Typo: 排版样式集合，提供 Display/Heading/Label/Paragraph 等预定义的 Linaria 类名
 - Loading: 加载中动画，三条竖线动画
 - CircleLoading: 圆形加载动画，旋转渐变圆形图标
 - Space: 间距组件，封装 antd Space
