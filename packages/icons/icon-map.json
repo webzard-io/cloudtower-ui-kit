@@ -11982,5 +11982,12 @@
     "svgFileName": "resource-planning-32-colorful.svg",
     "hash": "10926a3753d92a94c34c3480fdb21f35",
     "lastUpdated": "2026-04-07T02:02:10.947Z"
+  },
+  "19559:21": {
+    "componentSetName": "Icon / Internal.network",
+    "name": "Size=16, Fill=Gradient - Gray",
+    "svgFileName": "internal-network-16-gradient-gray.svg",
+    "hash": "bd5eede4bc0651c45efd4a367163ddc9",
+    "lastUpdated": "2026-04-27T03:13:45.681Z"
   }
 }
