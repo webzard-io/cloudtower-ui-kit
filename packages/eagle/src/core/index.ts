@@ -64,6 +64,7 @@ export * from "./LineChart";
 export * from "./Link";
 export * from "./Loading";
 export * from "./LocalUpload";
+export * from "./LogView";
 export * from "./MediumDialog";
 export * from "./message";
 export * from "./message-group";
