@@ -18,9 +18,15 @@ import mergeScss from "./tools/merge-linaria-scss";
 import antdLessPlugin from "./tools/rollup-plugin-antd-less";
 
 const projectRootDir = path.resolve(__dirname);
+
 const eagleVersionSlug = JSON.parse(
   fs.readFileSync(path.join(__dirname, "package.json"), "utf-8"),
 ).version.replace(/[^a-zA-Z0-9]+/g, "_");
+
+const xtermStyle = fs.readFileSync(
+  path.join(projectRootDir, "../../node_modules/@xterm/xterm/css/xterm.css"),
+  "utf-8",
+);
 
 const config = defineConfig([
   // bundle components & styles
@@ -130,7 +136,12 @@ const config = defineConfig([
             }),
           ]),
         failOnError: true,
-        prefix: '@import "./src/styles/libs/antd";@import "./src/styles/index.scss";@import "./src/styles/reset";',
+        prefix: [
+          '@import "./src/styles/libs/antd";',
+          '@import "./src/styles/index.scss";',
+          '@import "./src/styles/reset";',
+          xtermStyle,
+        ].join("\n"),
       }),
     ],
   },
@@ -196,7 +207,7 @@ const config = defineConfig([
             },
           ]),
         failOnError: true,
-        prefix: '@import "./src/styles/index.scss";',
+        prefix: ['@import "./src/styles/index.scss";', xtermStyle].join("\n"),
       }),
     ],
   },

@@ -55,6 +55,7 @@ npm 包名：@cloudtower/eagle
 ## 数据展示
 
 - [Table](core/Table/guide.md): 表格组件，基于 antd Table 二次封装，支持排序、行选择、展开行、加载/错误状态
+- [LogView](core/LogView/guide.md): 日志查看器，基于 xterm 封装，支持静态日志、EventSource 流式日志、搜索导航和滚动缓冲控制
 - Tab: 标签页，封装 antd Tabs
 - Collapse: 折叠面板（继承 antd Collapse）
 - Tag: 标签，支持多种预设颜色

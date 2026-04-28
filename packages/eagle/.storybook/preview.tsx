@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Preview } from "@storybook/react";
 import "@src/styles/libs/antd.css";
 import "@src/styles/index.scss";
+import "@xterm/xterm/css/xterm.css";
 import { initParrotI18n, parrotI18n } from "@cloudtower/parrot";
 import "./overrideRoot.css";
 

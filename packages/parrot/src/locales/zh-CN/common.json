@@ -63,5 +63,6 @@
   "obtain_data_error": "获取数据时遇到问题",
   "colon_with_space": "：",
   "semicolon_with_space": "；",
-  "remove": "移除"
+  "remove": "移除",
+  "search_log": "搜索日志"
 }

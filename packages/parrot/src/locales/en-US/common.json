@@ -67,5 +67,6 @@
   "obtain_data_error": "Data retrieval error",
   "colon_with_space": ": ",
   "semicolon_with_space": "; ",
-  "remove": "Remove"
+  "remove": "Remove",
+  "search_log": "Search logs..."
 }
