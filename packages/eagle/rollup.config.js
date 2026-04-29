@@ -18,6 +18,9 @@ import mergeScss from "./tools/merge-linaria-scss";
 import antdLessPlugin from "./tools/rollup-plugin-antd-less";
 
 const projectRootDir = path.resolve(__dirname);
+const eagleVersionSlug = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "package.json"), "utf-8"),
+).version.replace(/[^a-zA-Z0-9]+/g, "_");
 
 const config = defineConfig([
   // bundle components & styles
@@ -57,7 +60,7 @@ const config = defineConfig([
       linaria.default({
         sourceMap: false,
         preprocessor: "none",
-        classNameSlug: (hash, title) => `E_${hash}`,
+        classNameSlug: (hash) => `E_${eagleVersionSlug}_${hash}`,
       }),
       mergeScss({
         include: ["src/**/*.scss", "src/**/*.sass", "src/**/*.css"],
