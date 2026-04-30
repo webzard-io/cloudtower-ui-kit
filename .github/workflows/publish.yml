@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [20]
+        node: [24]
     name: Publish on Node ${{ matrix.node }}
     steps:
       - name: checkout
@@ -70,7 +70,7 @@ jobs:
         if: steps.tag_check.outputs.exists_tag == 'false'
         uses: actions/setup-node@v4
         with:
-          node-version: 22.14.0
+          node-version: 24
           registry-url: https://registry.npmjs.org
       - name: Install npm with OIDC support
         if: steps.tag_check.outputs.exists_tag == 'false'

@@ -3,18 +3,18 @@ on:
   workflow_dispatch:
     inputs:
       semver:
-        description: 'New Version(semver)'
+        description: "New Version(semver)"
         required: true
-        default: 'patch'
+        default: "patch"
         type: choice
         options:
           - patch
           - minor
       slack_user:
         required: false
-        description: 'Inform slack user when publish is done'
+        description: "Inform slack user when publish is done"
         type: string
-        
+
 permissions:
   contents: write
   pull-requests: write
@@ -25,6 +25,10 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
       - name: Install Lerna 4.0.0
         run: npm install --global lerna@4.0.0
       - name: Update Version
@@ -51,7 +55,7 @@ jobs:
           branch: release/${{ env.PACKAGE_VERSION }}
           branch-suffix: timestamp
           delete-branch: true
-          title: 'v${{ env.PACKAGE_VERSION }}'
+          title: "v${{ env.PACKAGE_VERSION }}"
           body: |
             ${{ steps.release_note.outputs.stdout }}
           labels: "Type: Release"
