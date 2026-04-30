@@ -51,12 +51,37 @@ jobs:
           http_status_code=$(curl -LI $GET_API_URL -o /dev/null -w '%{http_code}\n' -s \
             -H "Authorization: token ${GITHUB_TOKEN}")
           if [ "$http_status_code" -ne "404" ] ; then
-            echo "::set-output name=exists_tag::true"
+            echo "exists_tag=true" >> "$GITHUB_OUTPUT"
           else
-            echo "::set-output name=exists_tag::false"
+            echo "exists_tag=false" >> "$GITHUB_OUTPUT"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Package Check
+        id: package_check
+        run: |
+          set -eu
+          ./node_modules/.bin/lerna list --toposort --json --loglevel silent > /tmp/publish-packages.json
+          node -e '
+            const fs = require("fs");
+            const path = require("path");
+            const packages = JSON.parse(fs.readFileSync("/tmp/publish-packages.json", "utf8"));
+            for (const pkg of packages) {
+              const manifest = require(path.resolve(pkg.location, "package.json"));
+              if (manifest.private) continue;
+              console.log(`${pkg.location}\t${manifest.name}\t${manifest.version}`);
+            }
+          ' > /tmp/publish-list.tsv
+          has_unpublished_packages=false
+          while IFS="$(printf '\t')" read -r location name version; do
+            if npm view "${name}@${version}" version >/dev/null 2>&1; then
+              echo "Found ${name}@${version}"
+            else
+              echo "Need publish ${name}@${version}"
+              has_unpublished_packages=true
+            fi
+          done < /tmp/publish-list.tsv
+          echo "has_unpublished_packages=${has_unpublished_packages}" >> "$GITHUB_OUTPUT"
       - name: Create Git Tag
         if: steps.tag_check.outputs.exists_tag == 'false'
         uses: pkgdeps/git-tag-action@v2
@@ -67,26 +92,45 @@ jobs:
           git_commit_sha: ${{ github.sha }}
           git_tag_prefix: "v"
       - name: Setup npm trusted publishing
-        if: steps.tag_check.outputs.exists_tag == 'false'
+        if: steps.package_check.outputs.has_unpublished_packages == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org
       - name: Install npm with OIDC support
-        if: steps.tag_check.outputs.exists_tag == 'false'
+        if: steps.package_check.outputs.has_unpublished_packages == 'true'
         run: |
           npm install -g npm@^11.5.1
           npm --version
       - name: Publish
         uses: nick-fields/retry@v2
-        if: steps.tag_check.outputs.exists_tag == 'false'
+        if: steps.package_check.outputs.has_unpublished_packages == 'true'
         with:
           timeout_minutes: 10 # 设置超时时间，单位为分钟
           max_attempts: 3 # 设置最大重试次数
           command: |
-            yarn lerna publish from-package --no-verify-access --yes
+            set -eu
+            ./node_modules/.bin/lerna list --toposort --json --loglevel silent > /tmp/publish-packages.json
+            node -e '
+              const fs = require("fs");
+              const path = require("path");
+              const packages = JSON.parse(fs.readFileSync("/tmp/publish-packages.json", "utf8"));
+              for (const pkg of packages) {
+                const manifest = require(path.resolve(pkg.location, "package.json"));
+                if (manifest.private) continue;
+                console.log(`${pkg.location}\t${manifest.name}\t${manifest.version}`);
+              }
+            ' > /tmp/publish-list.tsv
+            while IFS="$(printf '\t')" read -r location name version; do
+              if npm view "${name}@${version}" version >/dev/null 2>&1; then
+                echo "Skip ${name}@${version}: already published"
+              else
+                echo "Publish ${name}@${version}"
+                npm publish "${location}" --access public
+              fi
+            done < /tmp/publish-list.tsv
       - name: Get Output
-        if: steps.tag_check.outputs.exists_tag == 'false'
+        if: steps.package_check.outputs.has_unpublished_packages == 'true'
         uses: dawidd6/action-download-artifact@v6
         with:
           name: publish-output-v${{ env.CURRENT_VERSION }}
@@ -94,11 +138,11 @@ jobs:
           workflow: create-publish-pr.yml
           workflow_conclusion: success
       - name: Read the output
-        if: steps.tag_check.outputs.exists_tag == 'false'
+        if: steps.package_check.outputs.has_unpublished_packages == 'true'
         run: |
           echo "SLACK_USER=$(cat output.txt)" >> $GITHUB_ENV
       - name: Send to Slack
-        if: steps.tag_check.outputs.exists_tag == 'false'
+        if: steps.package_check.outputs.has_unpublished_packages == 'true'
         id: slack
         uses: slackapi/slack-github-action@v1.24.0
         with:
@@ -112,7 +156,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: Build Changelog
         id: github_release
-        if: steps.tag_check.outputs.exists_tag == 'false'
+        if: steps.package_check.outputs.has_unpublished_packages == 'true'
         uses: mikepenz/release-changelog-builder-action@v3
         with:
           configurationJson: |
@@ -140,7 +184,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Release
-        if: steps.tag_check.outputs.exists_tag == 'false'
+        if: steps.package_check.outputs.has_unpublished_packages == 'true'
         uses: softprops/action-gh-release@v1
         with:
           body: ${{steps.github_release.outputs.changelog}}
