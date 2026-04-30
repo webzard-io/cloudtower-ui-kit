@@ -84,25 +84,7 @@ jobs:
           timeout_minutes: 10 # 设置超时时间，单位为分钟
           max_attempts: 3 # 设置最大重试次数
           command: |
-            set -eu
-            ./node_modules/.bin/lerna list --toposort --json --loglevel silent > /tmp/publish-packages.json
-            node -e '
-              const fs = require("fs");
-              const packages = JSON.parse(fs.readFileSync("/tmp/publish-packages.json", "utf8"));
-              for (const pkg of packages) {
-                const manifest = require(`${process.cwd()}/${pkg.location}/package.json`);
-                if (manifest.private) continue;
-                console.log(`${pkg.location}\t${manifest.name}\t${manifest.version}`);
-              }
-            ' > /tmp/publish-list.tsv
-            while IFS="$(printf '\t')" read -r location name version; do
-              if npm view "${name}@${version}" version >/dev/null 2>&1; then
-                echo "Skip ${name}@${version}: already published"
-              else
-                echo "Publish ${name}@${version}"
-                npm publish "${location}" --access public
-              fi
-            done < /tmp/publish-list.tsv
+            yarn lerna publish from-package --no-verify-access --yes
       - name: Get Output
         if: steps.tag_check.outputs.exists_tag == 'false'
         uses: dawidd6/action-download-artifact@v6
