@@ -5,29 +5,29 @@ on:
   workflow_dispatch:
     inputs:
       description:
-        description: 'Description for the sync action'
+        description: "Description for the sync action"
         required: false
       slack_user:
-        description: 'Slack user ID to notify (e.g., U123456)'
+        description: "Slack user ID to notify (e.g., U123456)"
         required: false
   # 外部 dispatch 触发
   repository_dispatch:
     types: [sync-icons]
   # 定时执行：每天 UTC 时间 0:00（北京时间 8:00）
   schedule:
-    - cron: '0 0 * * *'
+    - cron: "0 0 * * *"
 
 jobs:
   sync-icon:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [20]
+        node: [24]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           cache: "yarn"
@@ -42,12 +42,12 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: '[SYNC-ICON]: update icons'
+          commit-message: "[SYNC-ICON]: update icons"
           committer: netweng <xiaojun@smartx.com>
           author: netweng <xiaojun@smartx.com>
           delete-branch: true
           branch-suffix: short-commit-hash
-          title: '[SYNC-ICON]: update icons'
+          title: "[SYNC-ICON]: update icons"
           labels: feat
           body: |
             Sync Icons from figma
@@ -75,9 +75,9 @@ jobs:
           PR_URL="${{ steps.cpr.outputs.pull-request-url }}"
           PR_NUMBER="${{ steps.cpr.outputs.pull-request-number }}"
           SLACK_USER_MENTION="${{ steps.set_slack_user.outputs.slack_user_mention }}"
-          
+
           TEXT="🎨 Icons Synced! New PR created: <${PR_URL}|#${PR_NUMBER}>\n${DESCRIPTION} ${SLACK_USER_MENTION}"
-          
+
           PAYLOAD=$(jq -n --arg text "$TEXT" '{text: $text}')
           echo "payload<<EOF" >> $GITHUB_OUTPUT
           echo "$PAYLOAD" >> $GITHUB_OUTPUT
