@@ -1,9 +1,13 @@
 import {
+  ILineChartAreaHighlightRange,
+  ILineChartBackgroundRange,
   ILineChartDataPoint,
   ILineChartDateRange,
   ILineChartGraphType,
+  ILineChartILegend,
   ILineChartMetric,
   ILineChartMetricUnit,
+  ILineChartMetricStream,
 } from "@src/core/LineChart/type";
 import {
   DAY,
@@ -22,6 +26,18 @@ import {
 } from "@src/utils/tower";
 import dayjs from "dayjs";
 import _ from "lodash";
+
+export interface ILineChartThresholdIntersectionPoint {
+  timestamp: number;
+  value: number;
+  legend: ILineChartILegend;
+  streamIndex: number;
+}
+
+export interface ILineChartAreaHighlightPoint {
+  t: number;
+  value: number;
+}
 
 export function filterLineChartPointsByDateRange(
   points: ILineChartDataPoint[],
@@ -101,11 +117,250 @@ export function getLineChartXAxisDomain(
   return [startDate.valueOf(), xaxisLastTime ?? endDate.valueOf()];
 }
 
+export const getLineChartBackgroundRanges = (
+  ranges: ILineChartBackgroundRange[] = [],
+  xDomain: [number, number],
+) => {
+  const [domainStart, domainEnd] = xDomain;
+
+  return ranges
+    .map((range) => ({
+      ...range,
+      start: Math.max(range.start, domainStart),
+      end: Math.min(range.end, domainEnd),
+    }))
+    .filter((range) => range.start < range.end);
+};
+
+export const getLineChartAreaHighlightRanges = (
+  ranges: ILineChartAreaHighlightRange[] = [],
+  xDomain: [number, number],
+) => {
+  const [domainStart, domainEnd] = xDomain;
+
+  return ranges
+    .map((range) => ({
+      ...range,
+      start: Math.max(range.start, domainStart),
+      end: Math.min(range.end, domainEnd),
+    }))
+    .filter((range) => range.start < range.end);
+};
+
 export const getLineChartRangeTimestamp = (
   dateRange: ILineChartDateRange,
 ): number => {
   const [startDate, endDate] = dateRange;
   return endDate.valueOf() - startDate.valueOf();
+};
+
+const isValidLineChartValue = (value?: number): value is number => {
+  return _.isNumber(value) && Number.isFinite(value);
+};
+
+const getLineChartInterpolatedValue = (
+  currentPoint: ILineChartDataPoint,
+  nextPoint: ILineChartDataPoint,
+  timestamp: number,
+) => {
+  if (
+    !isValidLineChartValue(currentPoint.v) ||
+    !isValidLineChartValue(nextPoint.v) ||
+    currentPoint.t === nextPoint.t
+  ) {
+    return undefined;
+  }
+
+  if (timestamp === currentPoint.t) {
+    return currentPoint.v;
+  }
+
+  if (timestamp === nextPoint.t) {
+    return nextPoint.v;
+  }
+
+  const ratio = (timestamp - currentPoint.t) / (nextPoint.t - currentPoint.t);
+  return currentPoint.v + (nextPoint.v - currentPoint.v) * ratio;
+};
+
+const isSameAreaHighlightPoint = (
+  prev: ILineChartAreaHighlightPoint | undefined,
+  next: ILineChartAreaHighlightPoint,
+) => {
+  if (!prev) {
+    return false;
+  }
+
+  return Math.abs(prev.t - next.t) < 1e-6 && Math.abs(prev.value - next.value) < 1e-6;
+};
+
+const pushLineChartAreaHighlightPoint = (
+  points: ILineChartAreaHighlightPoint[],
+  next: ILineChartAreaHighlightPoint,
+) => {
+  if (!isSameAreaHighlightPoint(points[points.length - 1], next)) {
+    points.push(next);
+  }
+};
+
+export const getLineChartAreaHighlightData = (
+  points: ILineChartDataPoint[],
+  range: Pick<ILineChartAreaHighlightRange, "start" | "end">,
+) => {
+  const highlightedPoints: ILineChartAreaHighlightPoint[] = [];
+
+  for (let index = 0; index < points.length - 1; index++) {
+    const currentPoint = points[index];
+    const nextPoint = points[index + 1];
+
+    if (
+      !isValidLineChartValue(currentPoint?.v) ||
+      !isValidLineChartValue(nextPoint?.v) ||
+      currentPoint.t === nextPoint.t
+    ) {
+      continue;
+    }
+
+    if (nextPoint.t < range.start || currentPoint.t > range.end) {
+      continue;
+    }
+
+    const segmentStart = Math.max(range.start, currentPoint.t);
+    const segmentEnd = Math.min(range.end, nextPoint.t);
+
+    if (segmentStart > segmentEnd) {
+      continue;
+    }
+
+    const startValue = getLineChartInterpolatedValue(
+      currentPoint,
+      nextPoint,
+      segmentStart,
+    );
+    const endValue = getLineChartInterpolatedValue(
+      currentPoint,
+      nextPoint,
+      segmentEnd,
+    );
+
+    if (!isValidLineChartValue(startValue) || !isValidLineChartValue(endValue)) {
+      continue;
+    }
+
+    pushLineChartAreaHighlightPoint(highlightedPoints, {
+      t: segmentStart,
+      value: startValue,
+    });
+    pushLineChartAreaHighlightPoint(highlightedPoints, {
+      t: segmentEnd,
+      value: endValue,
+    });
+  }
+
+  return highlightedPoints.length >= 2 ? highlightedPoints : [];
+};
+
+const isSameIntersectionPoint = (
+  prev: ILineChartThresholdIntersectionPoint | undefined,
+  next: ILineChartThresholdIntersectionPoint,
+) => {
+  if (!prev) {
+    return false;
+  }
+
+  return (
+    prev.streamIndex === next.streamIndex &&
+    Math.abs(prev.timestamp - next.timestamp) < 1e-6 &&
+    Math.abs(prev.value - next.value) < 1e-6
+  );
+};
+
+const pushLineChartIntersection = (
+  intersections: ILineChartThresholdIntersectionPoint[],
+  next: ILineChartThresholdIntersectionPoint,
+) => {
+  if (!isSameIntersectionPoint(intersections[intersections.length - 1], next)) {
+    intersections.push(next);
+  }
+};
+
+export const getLineChartThresholdIntersections = (
+  streams: ILineChartMetricStream[],
+  thresholdValue: number,
+  xDomain?: [number, number],
+) => {
+  const [domainStart, domainEnd] = xDomain ?? [-Infinity, Infinity];
+
+  return streams.flatMap((stream, streamIndex) => {
+    const intersections: ILineChartThresholdIntersectionPoint[] = [];
+
+    for (let index = 0; index < stream.points.length - 1; index++) {
+      const currentPoint = stream.points[index];
+      const nextPoint = stream.points[index + 1];
+
+      if (
+        !isValidLineChartValue(currentPoint?.v) ||
+        !isValidLineChartValue(nextPoint?.v) ||
+        currentPoint.t === nextPoint.t
+      ) {
+        continue;
+      }
+
+      const currentDiff = currentPoint.v - thresholdValue;
+      const nextDiff = nextPoint.v - thresholdValue;
+
+      if (currentDiff === 0 && nextDiff === 0) {
+        continue;
+      }
+
+      if (
+        currentDiff === 0 &&
+        currentPoint.t >= domainStart &&
+        currentPoint.t <= domainEnd
+      ) {
+        pushLineChartIntersection(intersections, {
+          timestamp: currentPoint.t,
+          value: thresholdValue,
+          legend: stream.legend,
+          streamIndex,
+        });
+      }
+
+      if (currentDiff * nextDiff < 0) {
+        const ratio = currentDiff / (currentDiff - nextDiff);
+        const timestamp =
+          currentPoint.t + (nextPoint.t - currentPoint.t) * ratio;
+
+        if (timestamp >= domainStart && timestamp <= domainEnd) {
+          pushLineChartIntersection(intersections, {
+            timestamp,
+            value: thresholdValue,
+            legend: stream.legend,
+            streamIndex,
+          });
+        }
+      }
+
+      if (
+        nextDiff === 0 &&
+        nextPoint.t >= domainStart &&
+        nextPoint.t <= domainEnd
+      ) {
+        pushLineChartIntersection(intersections, {
+          timestamp: nextPoint.t,
+          value: thresholdValue,
+          legend: stream.legend,
+          streamIndex,
+        });
+      }
+    }
+
+    return intersections.filter(
+      (intersection) =>
+        intersection.timestamp >= domainStart &&
+        intersection.timestamp <= domainEnd,
+    );
+  });
 };
 
 export const getLineChartStep = (dateRange: ILineChartDateRange): number => {
@@ -377,6 +632,7 @@ export const UNIT_FORMATTER = {
 export const getLineChartYDataMax = (
   dataPoints: ILineChartDataPoint[],
   type: ILineChartGraphType,
+  extraValues: number[] = [],
 ) => {
   const values = dataPoints.map((p) => {
     if (_.isNumber(p?.v)) {
@@ -402,7 +658,11 @@ export const getLineChartYDataMax = (
       return max;
     }
   });
-  return Math.max(...values, 0);
+  return Math.max(
+    ...values,
+    0,
+    ...extraValues.filter((value) => Number.isFinite(value)),
+  );
 };
 
 export const getYAxisUpperBound = (max: number, type: ILineChartMetricUnit) => {
@@ -442,8 +702,9 @@ export const getYAxisDomain = (
   dataPoints: ILineChartDataPoint[],
   graphType: ILineChartGraphType,
   unitType: ILineChartMetricUnit,
+  extraValues: number[] = [],
 ): [number, number] => {
-  const max = getLineChartYDataMax(dataPoints, graphType);
+  const max = getLineChartYDataMax(dataPoints, graphType, extraValues);
   if (!max) {
     if (unitType === ILineChartMetricUnit.Ratio) {
       return [0, 1];

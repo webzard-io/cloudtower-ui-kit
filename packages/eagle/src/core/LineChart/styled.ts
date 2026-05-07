@@ -198,6 +198,20 @@ export const LineChartWrapper = styled.div`
   }
 `;
 
+export const ChartContentWrapper = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
+export const ThresholdTooltipOverlay = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, calc(-100% - 12px));
+  pointer-events: none;
+  z-index: 1;
+`;
+
 export const TooltipWrapper = styled.div`
   min-width: 200px;
   background-color: $fill-neutral-trans-8;
