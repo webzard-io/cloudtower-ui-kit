@@ -328,6 +328,187 @@ const menu: Antd5DropdownProps["menu"] = {
   },
 };
 
+export const ThresholdHighlight = Template.bind({});
+export const ThresholdHighlightConditionalLabel = Template.bind({});
+export const AreaSegmentHighlight = Template.bind({});
+
+const thresholdHighlightMetric: ILineChartMetric = {
+  sample_streams: [
+    {
+      points: [
+        {
+          t: dateRange1[0].valueOf(),
+          v: 220 * 1024 ** 4,
+        },
+        {
+          t: dateRange1[0].add(20, "minute").valueOf(),
+          v: 260 * 1024 ** 4,
+        },
+        {
+          t: dateRange1[0].add(40, "minute").valueOf(),
+          v: 275 * 1024 ** 4,
+        },
+        {
+          t: dateRange1[0].add(60, "minute").valueOf(),
+          v: 248 * 1024 ** 4,
+        },
+        {
+          t: dateRange1[0].add(80, "minute").valueOf(),
+          v: 286 * 1024 ** 4,
+        },
+        {
+          t: dateRange1[1].valueOf(),
+          v: 268 * 1024 ** 4,
+        },
+      ],
+      step: 20 * 60 * 1000,
+      tolerance: 1700000,
+      legend: {
+        id: "forecast_usage",
+        name: "Forecast Usage",
+        color: "#8f63ff",
+        fill: "rgba(143, 99, 255, 0.14)",
+      },
+    },
+  ],
+  unit: ILineChartMetricUnit.DataSize,
+  dropped: false,
+};
+
+ThresholdHighlight.args = {
+  chartProps: {
+    syncId: "threshold-highlight",
+    mode: "legend",
+    showLegend: true,
+    metricName: "Threshold Highlight Demo",
+    metric: thresholdHighlightMetric,
+    height: 180,
+    type: ILineChartGraphType.Area,
+    dateRange: dateRange1,
+    showXAxis: true,
+    xAxisProps: {
+      domain: domain1,
+    },
+    backgroundRanges: [
+      {
+        start: dateRange1[0].valueOf(),
+        end: dateRange1[0].add(28, "minute").valueOf(),
+        fill: "#ff7875",
+        fillOpacity: 0.14,
+      },
+      {
+        start: dateRange1[0].add(52, "minute").valueOf(),
+        end: dateRange1[0].add(72, "minute").valueOf(),
+        fill: "#ffd666",
+        fillOpacity: 0.18,
+      },
+    ],
+    thresholdLineProps: {
+      value: 250 * 1024 ** 4,
+      stroke: "#ff4d4f",
+      strokeDasharray: "4 4",
+      intersectionLabelProps: {
+        text: "24 天",
+        color: "#ff4d4f",
+      },
+    },
+    tooltipProps: {
+      format: (val) =>
+        lineChartYaxisTickFormatter(val.value, ILineChartMetricUnit.DataSize),
+    },
+  },
+};
+
+ThresholdHighlight.parameters = {
+  docs: {
+    description: {
+      story:
+        "灞曠ず澶氭鏃堕棿鑼冨洿鑳屾櫙楂樹寒銆佸崟鏉￠槇鍊艰櫄绾垮拰浜ょ偣 tooltip 鐨勭粍鍚堢ず渚嬨€?",
+    },
+  },
+};
+
+ThresholdHighlightConditionalLabel.args = {
+  chartProps: {
+    syncId: "threshold-highlight-conditional-label",
+    mode: "legend",
+    showLegend: true,
+    metricName: "Threshold Conditional Label Demo",
+    metric: thresholdHighlightMetric,
+    height: 180,
+    type: ILineChartGraphType.Area,
+    dateRange: dateRange1,
+    showXAxis: true,
+    xAxisProps: {
+      domain: domain1,
+    },
+    thresholdLineProps: {
+      value: 250 * 1024 ** 4,
+      stroke: "#ff4d4f",
+      strokeDasharray: "4 4",
+      intersectionLabelProps: {
+        text: (info) => dayjs(info.timestamp).format("HH:mm"),
+        color: "#ff4d4f",
+        visible: (info) => {
+          return info.timestamp >= dateRange1[0].add(18, "minute").valueOf();
+        },
+      },
+    },
+    tooltipProps: {
+      format: (val) =>
+        lineChartYaxisTickFormatter(val.value, ILineChartMetricUnit.DataSize),
+    },
+  },
+};
+
+ThresholdHighlightConditionalLabel.parameters = {
+  docs: {
+    description: {
+      story:
+        "Shows how to keep all threshold intersections while only rendering label capsules for intersections that match a timestamp condition.",
+    },
+  },
+};
+
+AreaSegmentHighlight.args = {
+  chartProps: {
+    syncId: "area-segment-highlight",
+    mode: "legend",
+    showLegend: true,
+    metricName: "Area Segment Highlight Demo",
+    metric: thresholdHighlightMetric,
+    height: 180,
+    type: ILineChartGraphType.Area,
+    dateRange: dateRange1,
+    showXAxis: true,
+    xAxisProps: {
+      domain: domain1,
+    },
+    areaHighlightRanges: [
+      {
+        start: dateRange1[0].add(12, "minute").valueOf(),
+        end: dateRange1[0].add(48, "minute").valueOf(),
+        fill: "#ff7875",
+        fillOpacity: 0.2,
+        legendId: "forecast_usage",
+      },
+    ],
+    tooltipProps: {
+      format: (val) =>
+        lineChartYaxisTickFormatter(val.value, ILineChartMetricUnit.DataSize),
+    },
+  },
+};
+
+AreaSegmentHighlight.parameters = {
+  docs: {
+    description: {
+      story:
+        "灞曠ず鍦ㄦ寚瀹氭椂闂存鍐咃紝鍙～鍏呭埌鏇茬嚎 value 浣嶇疆鐨勫眬閮ㄩ珮浜ず渚嬨€?",
+    },
+  },
+};
+
 Primary.args = {
   chartProps: {
     syncId: "abc",
@@ -503,8 +684,6 @@ PrimaryWithXAxisLg.args = {
 
 export const Secondary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-
-const domain2 = getLineChartXAxisDomain(dateRange2, dateRange2[1].valueOf());
 
 Secondary.args = {
   chartProps: {
