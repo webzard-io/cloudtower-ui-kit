@@ -12038,5 +12038,33 @@
     "svgFileName": "datastore-24-gradient-gray.svg",
     "hash": "2744e9d53065b7fe15de20d1a632d66e",
     "lastUpdated": "2026-05-14T02:45:08.005Z"
+  },
+  "19675:48927": {
+    "componentSetName": "Icon / storage-access.network",
+    "name": "Size=24, Fill=Gradient - Blue",
+    "svgFileName": "storage-access-network-24-gradient-blue.svg",
+    "hash": "3b5b9817917ab1f09ec77845b514e876",
+    "lastUpdated": "2026-05-17T02:43:07.502Z"
+  },
+  "19675:48929": {
+    "componentSetName": "Icon / storage-access.network",
+    "name": "Size=16, Fill=Gradient - Blue",
+    "svgFileName": "storage-access-network-16-gradient-blue.svg",
+    "hash": "a204aa07cdd6bef24b3424897a6c520a",
+    "lastUpdated": "2026-05-17T02:43:07.503Z"
+  },
+  "19675:48931": {
+    "componentSetName": "Icon / storage-access.network",
+    "name": "Size=16, Fill=Red",
+    "svgFileName": "storage-access-network-16-red.svg",
+    "hash": "9d110e610ab01529d5f4ff1a73948750",
+    "lastUpdated": "2026-05-17T02:43:07.503Z"
+  },
+  "19675:48933": {
+    "componentSetName": "Icon / storage-access.network",
+    "name": "Size=16, Fill=Yellow",
+    "svgFileName": "storage-access-network-16-yellow.svg",
+    "hash": "030265635306085855bf234574f88ce1",
+    "lastUpdated": "2026-05-17T02:43:07.503Z"
   }
 }
