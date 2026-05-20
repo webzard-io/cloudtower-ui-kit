@@ -1,6 +1,7 @@
 export interface ITimeZoneSelectProps {
   value: string | undefined;
   onChange: (value: string) => void;
+  size?: "small" | "middle" | "large";
   defaultUseBrowserTime?: boolean;
   disabled?: boolean;
   className?: string;

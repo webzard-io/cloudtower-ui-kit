@@ -41,6 +41,14 @@ export const TimeZoneSelectStory = () => {
         />
       </Space>
       <Space direction="vertical">
+        <h1>Large Size</h1>
+        <TimeZoneSelect
+          size="large"
+          value={value}
+          onChange={(val) => setValue(val)}
+        />
+      </Space>
+      <Space direction="vertical">
         <h1>With Default Option</h1>
         <TimeZoneSelect
           value={value3}

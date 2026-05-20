@@ -161,6 +161,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
     disabled,
     defaultUseBrowserTime,
     className,
+    size,
     placeholder,
     "data-testid": dataTestId,
   } = props;
@@ -227,6 +228,7 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
       onChange={_onChange}
       showSearch
       disabled={disabled}
+      size={size}
       filterOption={(keyword, option) => {
         // This is to fix http://jira.smartx.com/browse/SKS-1482
         // Always show placeholder no matter search what
