@@ -5,6 +5,7 @@ import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
 import ModalStack from "@src/core/ModalStack";
 import { CoreMeta } from "@stories/types";
 import { useMockQuery } from "@stories/utils";
+import { SafeReactNode } from "@src/spec";
 import React, { useMemo } from "react";
 
 const StoryContainer = css`
@@ -501,7 +502,7 @@ NoFooter.storyName = "隐藏底部栏";
 export const CustomTitle = () => {
   const pushModal = usePushModal();
 
-  const SnapshotTitleRender: React.FC<{ title?: React.ReactNode }> = ({
+  const SnapshotTitleRender: React.FC<{ title?: SafeReactNode }> = ({
     title,
   }) => {
     return (

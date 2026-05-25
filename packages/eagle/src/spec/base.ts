@@ -113,11 +113,29 @@ import React, {
   ForwardRefExoticComponent,
   PropsWithChildren,
   PropsWithoutRef,
+  ReactChild,
   ReactNode,
+  ReactPortal,
   RefAttributes,
 } from "react";
 
 import { SerializableObject } from "../utils/tower";
+
+/**
+ * 在 React 18 之前，ReactNode 包含 `{}` 类型，导致任意 object 都可以赋值给它，
+ * 存在类型安全漏洞。SafeReactNode 排除了 `{}`，同时保留了 ReactNode 的其他全部能力。
+ *
+ * @see https://github.com/DefinitelyTyped/DefinitelyTyped/pull/56210
+ */
+export interface SafeReactNodeArray extends Array<SafeReactNode> {}
+
+export type SafeReactNode =
+  | ReactChild
+  | SafeReactNodeArray
+  | ReactPortal
+  | boolean
+  | null
+  | undefined;
 
 export type AntdTableComponentType = <RecordType extends object = any>(
   props: AntdTableProps<RecordType>,

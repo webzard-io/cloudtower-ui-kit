@@ -1,4 +1,5 @@
 import { ButtonProps } from "@src/core/Button";
+import { SafeReactNode } from "@src/spec";
 import { ModalProps as AntdModalProps } from "antd/lib/modal";
 
 /**
@@ -148,7 +149,7 @@ export type ImmersiveDialogProps = React.PropsWithChildren<
      * 与 initializing 配合使用：先设 initializing=true 开始加载，
      * 失败时设 initializing=false 并设置 initializingError。
      */
-    initializingError?: string | React.ReactNode;
+    initializingError?: string | SafeReactNode;
     /**
      * 测试标识符前缀，用于自动化测试定位元素。
      * 派生子 testid：`${testId}-cancel`、`${testId}-ok`、`${testId}-close`

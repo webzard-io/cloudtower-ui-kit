@@ -1,6 +1,7 @@
 import { cx } from "@linaria/core";
 import { Skeleton, Space, Typo } from "@src/core";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { SafeReactNode } from "@src/spec";
 import React from "react";
 
 import {
@@ -32,7 +33,7 @@ export const ModelContentSkeleton: React.FC<{
 };
 
 export const ModelInitializingError: React.FC<{
-  error?: string | React.ReactNode;
+  error?: string | SafeReactNode;
 }> = ({ error }) => {
   const { t } = useParrotTranslation();
 

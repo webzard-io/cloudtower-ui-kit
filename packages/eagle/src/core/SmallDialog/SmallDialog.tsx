@@ -9,6 +9,7 @@ import { usePopModal } from "@src/core/KitStoreProvider";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { Modal } from "antd";
 import cls from "classnames";
+import { SafeReactNode } from "@src/spec";
 import React from "react";
 
 import OverflowTooltip from "../../coreX/OverflowTooltip";
@@ -26,9 +27,7 @@ import {
   ModelTitleSkeleton,
 } from "./SmallDialog.widget";
 
-const DefaultTitleRender: React.FC<{ title?: React.ReactNode }> = ({
-  title,
-}) => {
+const DefaultTitleRender: React.FC<{ title?: SafeReactNode }> = ({ title }) => {
   return <span className={cls(Typo.Display.d2_bold_title)}>{title}</span>;
 };
 

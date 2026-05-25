@@ -72,9 +72,11 @@
  * @see SmallDialog 底层对话框组件，DeleteDialog 基于其封装
  * @see RejectDialog 操作被拒绝/不可执行时的反馈对话框
  */
+
+import { SafeReactNode } from "@src/spec";
 export interface DeleteDialogProps {
   /** 弹窗标题 */
-  title: React.ReactNode;
+  title: SafeReactNode;
   /** 主要描述文本，说明删除操作的影响 */
   description?: React.ReactNode;
   /** 辅助说明文本，显示在 description 下方，使用次要颜色 */
@@ -106,7 +108,7 @@ export interface DeleteDialogProps {
    */
   confirmLoading?: boolean;
   /** 展示在 modal footer 的错误文案，用于显示删除操作失败信息 */
-  error?: React.ReactNode;
+  error?: SafeReactNode;
   /**
    * 是否展示 modal footer 的错误图标
    * @default true

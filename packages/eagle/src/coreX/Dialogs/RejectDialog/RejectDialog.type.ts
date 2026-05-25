@@ -1,4 +1,5 @@
 import type { ButtonProps } from "@src/core/Button";
+import { SafeReactNode } from "@src/spec";
 
 /** 拒绝原因，字符串类型 */
 export type RejectReason = string;
@@ -25,7 +26,7 @@ export enum RejectDialogType {
  */
 interface BaseRejectDialogProps {
   /** 弹窗标题 */
-  title: React.ReactNode;
+  title: SafeReactNode;
   /** 在描述文本之前的自定义内容区域，用于展示背景信息 */
   beforeDescription?: React.ReactNode;
   /** 补充描述文本，显示在 beforeDescription 之后、拒绝内容之前 */
