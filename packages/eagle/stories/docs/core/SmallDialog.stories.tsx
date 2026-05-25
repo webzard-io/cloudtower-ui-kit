@@ -785,3 +785,156 @@ export const ButtonCustomization = () => {
   );
 };
 ButtonCustomization.storyName = "按钮定制";
+
+/**
+ * Error 字段类型注入
+ *
+ * 演示 `error` 属性接受不同类型的 `SafeReactNode`：
+ * - `string`：纯文本错误信息
+ * - `ReactElement`：自定义元素（如带图标的多行提示）
+ * - `array`：由多个 SafeReactNode 组成的数组
+ * - `boolean`：布尔值（true/false 均不会渲染可见内容）
+ * - `null`：空值，不显示错误
+ * - `undefined`：未定义，不显示错误
+ */
+export const ErrorTypes = () => {
+  const pushModal = usePushModal();
+
+  return (
+    <Space direction="vertical" size={16}>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <SmallDialog
+                title="字符串错误"
+                okText="重试"
+                error="这是 footer 区域显示的纯文本错误信息。"
+                onOk={(popModal) => popModal()}
+                onCancel={(popModal) => popModal()}
+              >
+                <p>error 传入了一个普通字符串。</p>
+              </SmallDialog>
+            ),
+            props: {},
+          })
+        }
+      >
+        字符串错误
+      </Button>
+      <Button
+        danger
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <SmallDialog
+                title="自定义元素错误"
+                okText="重试"
+                error={
+                  <div
+                    style={{ display: "flex", alignItems: "center", gap: 8 }}
+                  >
+                    <span style={{ color: "#ff4d4f" }}>●</span>
+                    <span>
+                      带图标的自定义错误元素
+                      <br />
+                      错误信息的第二行内容
+                    </span>
+                  </div>
+                }
+                onOk={(popModal) => popModal()}
+                onCancel={(popModal) => popModal()}
+              >
+                <p>error 传入了一个 ReactElement。</p>
+              </SmallDialog>
+            ),
+            props: {},
+          })
+        }
+      >
+        自定义元素错误
+      </Button>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <SmallDialog
+                title="数组错误"
+                okText="重试"
+                error={["第一行错误信息", <br key="br" />, "第二行错误信息"]}
+                onOk={(popModal) => popModal()}
+                onCancel={(popModal) => popModal()}
+              >
+                <p>error 传入了一个 SafeReactNode 数组。</p>
+              </SmallDialog>
+            ),
+            props: {},
+          })
+        }
+      >
+        数组错误
+      </Button>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <SmallDialog
+                title="布尔值错误"
+                okText="确认"
+                error={true}
+                onOk={(popModal) => popModal()}
+                onCancel={(popModal) => popModal()}
+              >
+                <p>error 传入了 boolean true，React 不会渲染任何可见内容。</p>
+              </SmallDialog>
+            ),
+            props: {},
+          })
+        }
+      >
+        布尔值错误
+      </Button>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <SmallDialog
+                title="Null 错误"
+                okText="确认"
+                error={null}
+                onOk={(popModal) => popModal()}
+                onCancel={(popModal) => popModal()}
+              >
+                <p>error 传入了 null，不显示任何错误信息。</p>
+              </SmallDialog>
+            ),
+            props: {},
+          })
+        }
+      >
+        Null 错误
+      </Button>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => (
+              <SmallDialog
+                title="Undefined 错误"
+                okText="确认"
+                error={undefined}
+                onOk={(popModal) => popModal()}
+                onCancel={(popModal) => popModal()}
+              >
+                <p>error 传入了 undefined，不显示任何错误信息。</p>
+              </SmallDialog>
+            ),
+            props: {},
+          })
+        }
+      >
+        Undefined 错误
+      </Button>
+    </Space>
+  );
+};
+ErrorTypes.storyName = "Error 类型注入";
