@@ -1,4 +1,5 @@
 import { ButtonProps } from "@src/core/Button";
+import { SafeReactNode } from "@src/spec";
 import React from "react";
 
 /**
@@ -74,12 +75,12 @@ export interface SmallDialogProps {
    */
   width?: number | string;
   /** 弹窗标题，支持 ReactNode 自定义渲染 */
-  title: React.ReactNode;
+  title: SafeReactNode;
   /**
    * 自定义标题渲染组件，替换默认的标题渲染逻辑。
    * 默认标题使用 `Typo.Display.d2_bold_title` 样式。
    */
-  TitleRender?: React.FC<{ title?: React.ReactNode }>;
+  TitleRender?: React.FC<{ title?: SafeReactNode }>;
   /** 取消按钮文案，默认根据 `showOk` 决定：showOk=true 时为"取消"，showOk=false 时为"关闭" */
   cancelText?: string;
   /** 确认按钮文案，默认为"确认"；当 `initializingError` 有值时默认为"重试" */
@@ -138,9 +139,9 @@ export interface SmallDialogProps {
   /** 取消按钮的额外属性，会透传给 Button 组件。若同时设置了 cancelText，cancelText 优先 */
   cancelButtonProps?: ButtonProps;
   /** 弹窗主体内容，当 `initializing` 为 true 时显示骨架屏，当 `initializingError` 有值时显示错误状态 */
-  children?: React.ReactNode;
+  children?: SafeReactNode;
   /** 展示在 footer 区域的错误文案，支持 ReactNode。最多显示 3 行，超出后 tooltip 展示完整内容 */
-  error?: React.ReactNode;
+  error?: SafeReactNode;
   /**
    * 是否隐藏 footer 区域（包括确认/取消按钮和错误信息）
    * @default false
@@ -168,7 +169,7 @@ export interface SmallDialogProps {
    * 与 `initializing` 配合使用：先设 initializing=true 加载，
    * 失败时设 initializing=false 且 initializingError="错误信息"。
    */
-  initializingError?: string | React.ReactNode;
+  initializingError?: string | SafeReactNode;
   /**
    * 初始化骨架屏行数，仅在 `initializing` 为 true 时生效
    * @default 2

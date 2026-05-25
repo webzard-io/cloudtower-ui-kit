@@ -204,13 +204,15 @@ export const RejectDialog: React.FC<RejectDialogProps> = (props) => {
       className={className}
       footerClassName={footerClassName}
     >
-      {beforeDescription}
-      {description && (
-        <div className={cx(Description, Typo.Label.l3_regular)}>
-          {description}
-        </div>
-      )}
-      {renderContent()}
+      <>
+        {beforeDescription}
+        {description && (
+          <div className={cx(Description, Typo.Label.l3_regular)}>
+            {description}
+          </div>
+        )}
+        {renderContent()}
+      </>
     </SmallDialog>
   );
 };
