@@ -28,9 +28,9 @@ interface BaseRejectDialogProps {
   /** 弹窗标题 */
   title: SafeReactNode;
   /** 在描述文本之前的自定义内容区域，用于展示背景信息 */
-  beforeDescription?: React.ReactNode;
+  beforeDescription?: SafeReactNode;
   /** 补充描述文本，显示在 beforeDescription 之后、拒绝内容之前 */
-  description?: React.ReactNode;
+  description?: SafeReactNode;
   /**
    * 取消按钮文案
    * @default "取消"（i18n: common.cancel）
@@ -65,9 +65,9 @@ interface SingleRejectDialogProps extends BaseRejectDialogProps {
    */
   listType?: "ordered" | "unordered" | "resource";
   /** 灰色的进一步描述，显示在拒绝原因上方 */
-  secondaryDesc?: React.ReactNode;
+  secondaryDesc?: SafeReactNode;
   /** 资源图标，仅当 listType 为 "resource" 时显示在每项前面 */
-  resourceIcon?: React.ReactNode;
+  resourceIcon?: SafeReactNode;
 }
 
 /**
@@ -78,11 +78,11 @@ interface SingleRejectDialogProps extends BaseRejectDialogProps {
 interface MultiAllRejectDialogProps extends BaseRejectDialogProps {
   type: RejectDialogType.All;
   /** 灰色的进一步描述 */
-  secondaryDesc?: React.ReactNode;
+  secondaryDesc?: SafeReactNode;
   /** 多个对象的拒绝原因，格式为 { [对象名]: [原因1, 原因2, ...] } */
   content: RejectContent;
   /** 资源图标，显示在每个对象名称前面 */
-  resourceIcon?: React.ReactNode;
+  resourceIcon?: SafeReactNode;
 }
 
 /**
@@ -93,13 +93,13 @@ interface MultiAllRejectDialogProps extends BaseRejectDialogProps {
 interface MultiPartialRejectDialogProps extends BaseRejectDialogProps {
   type: RejectDialogType.Part;
   /** 灰色的进一步描述 */
-  secondaryDesc?: React.ReactNode;
+  secondaryDesc?: SafeReactNode;
   /** 多个对象的拒绝原因，格式为 { [对象名]: [原因1, 原因2, ...] } */
   content: Record<string, string[]>;
   /** 资源图标，显示在每个对象名称前面 */
-  resourceIcon?: React.ReactNode;
+  resourceIcon?: SafeReactNode;
   /** 部分拒绝时的额外说明，展示在分割线下方，说明将跳过被拒绝的对象 */
-  partialDescription: React.ReactNode;
+  partialDescription: SafeReactNode;
   /** 确认按钮文案，如"部分升级" */
   okText?: string;
   /**
@@ -117,7 +117,7 @@ interface MultiPartialRejectDialogProps extends BaseRejectDialogProps {
 interface CustomRejectDialogProps extends BaseRejectDialogProps {
   type: RejectDialogType.Custom;
   /** 自定义内容区域，替代标准的拒绝原因列表 */
-  customContent: React.ReactNode;
+  customContent: SafeReactNode;
   /** 确认按钮文案 */
   okText?: string;
 }

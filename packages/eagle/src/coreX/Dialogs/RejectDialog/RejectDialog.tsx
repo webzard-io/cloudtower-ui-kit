@@ -2,6 +2,7 @@ import { css, cx } from "@linaria/core";
 import { SmallDialog } from "@src/core/SmallDialog/SmallDialog";
 import { Typo } from "@src/core/Typo";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { SafeReactNode } from "@src/spec";
 import React from "react";
 
 import {
@@ -69,7 +70,7 @@ const Divider = css`
 const SingleRejectContent: React.FC<{
   content: string | string[];
   listType?: "ordered" | "unordered" | "resource";
-  resourceIcon?: React.ReactNode;
+  resourceIcon?: SafeReactNode;
 }> = ({ content, listType = "ordered", resourceIcon }) => {
   if (listType === "resource" && Array.isArray(content)) {
     return (
@@ -114,7 +115,7 @@ const SingleRejectContent: React.FC<{
 
 const MultiRejectContent: React.FC<{
   content: RejectContent;
-  resourceIcon?: React.ReactNode;
+  resourceIcon?: SafeReactNode;
 }> = ({ content, resourceIcon }) => {
   const { t } = useParrotTranslation();
   return (
@@ -204,15 +205,13 @@ export const RejectDialog: React.FC<RejectDialogProps> = (props) => {
       className={className}
       footerClassName={footerClassName}
     >
-      <>
-        {beforeDescription}
-        {description && (
-          <div className={cx(Description, Typo.Label.l3_regular)}>
-            {description}
-          </div>
-        )}
-        {renderContent()}
-      </>
+      {beforeDescription}
+      {description && (
+        <div className={cx(Description, Typo.Label.l3_regular)}>
+          {description}
+        </div>
+      )}
+      {renderContent()}
     </SmallDialog>
   );
 };

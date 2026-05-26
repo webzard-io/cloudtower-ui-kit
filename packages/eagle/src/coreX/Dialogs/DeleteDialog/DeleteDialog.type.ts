@@ -78,9 +78,9 @@ export interface DeleteDialogProps {
   /** 弹窗标题 */
   title: SafeReactNode;
   /** 主要描述文本，说明删除操作的影响 */
-  description?: React.ReactNode;
+  description?: SafeReactNode;
   /** 辅助说明文本，显示在 description 下方，使用次要颜色 */
-  secondaryDesc?: React.ReactNode;
+  secondaryDesc?: SafeReactNode;
   /**
    * 取消按钮文案
    * @default "取消"（i18n: common.cancel）
