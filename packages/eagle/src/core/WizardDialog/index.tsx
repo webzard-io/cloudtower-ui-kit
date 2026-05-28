@@ -3,6 +3,7 @@ import { cx } from "@linaria/core";
 import Button from "@src/core/Button";
 import { ImmersiveDialog } from "@src/core/ImmersiveDialog";
 import Steps from "@src/core/Steps";
+import { Typo } from "@src/core/Typo";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import React, { useEffect, useMemo, useState } from "react";
 
@@ -93,7 +94,9 @@ export function WizardDialog(props: WizardDialogProps) {
             }}
           >
             <ArrowChevronLeft16BoldBlueIcon className={PrevIconStyle} />
-            {prevText || t("common.prev_step")}
+            <span className={Typo.Label.l2_bold_title}>
+              {prevText || t("common.prev_step")}
+            </span>
           </Button>
         ) : null
       }

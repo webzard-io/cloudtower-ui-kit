@@ -208,5 +208,7 @@ export const ErrorTextStyle = css`
   margin-top: 5px;
 `;
 export const CancelButtonStyle = css`
-  font-weight: bold;
+  &.ant-btn-quiet {
+    --color: #{$text-neutral-secondary};
+  }
 `;
