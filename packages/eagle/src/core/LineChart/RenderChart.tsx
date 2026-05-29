@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Empty as AntdEmpty } from "antd";
 import { DropdownProps } from "antd5";
 import cs from "classnames";
@@ -7,6 +7,7 @@ import _ from "lodash";
 import {
   Area,
   AreaChart,
+  Customized,
   ReferenceArea,
   ReferenceDot,
   ReferenceLine,
@@ -50,6 +51,7 @@ import {
   getLineChartAreaHighlightData,
   getLineChartAreaHighlightRanges,
   getLineChartBackgroundRanges,
+  getLineChartMetricPayloadMatches,
   getLineChartThresholdIntersections,
   getLineChartXAxisDomain,
   getYAxisDomain,
@@ -122,7 +124,60 @@ interface IAreaHighlightOverlay {
   fill: string;
   fillOpacity: number;
   legendId: string;
-  stroke?: string;
+  stroke: string | undefined;
+}
+
+interface IAreaHighlightLayerProps {
+  overlay: IAreaHighlightOverlay;
+  hovering: string[];
+  offset?: {
+    top?: number;
+    left?: number;
+    width?: number;
+    height?: number;
+  };
+  xAxisMap?: Record<
+    string,
+    {
+      scale?: (value: number) => number;
+    }
+  >;
+  yAxisMap?: Record<
+    string,
+    {
+      scale?: (value: number) => number;
+    }
+  >;
+}
+
+interface IFullHeightBackgroundRangeLayerProps {
+  range: ILineChartBackgroundRange;
+  height?: number;
+  xAxisMap?: Record<
+    string,
+    {
+      scale?: (value: number) => number;
+    }
+  >;
+}
+
+export interface ILineChartWrapperBackgroundLayout {
+  key: string;
+  left: number;
+  width: number;
+  fill: string;
+  fillOpacity: number;
+}
+
+interface IWrapperBackgroundRangeLayoutBridgeProps {
+  ranges: ILineChartBackgroundRange[];
+  onChange?: (layouts: ILineChartWrapperBackgroundLayout[]) => void;
+  xAxisMap?: Record<
+    string,
+    {
+      scale?: (value: number) => number;
+    }
+  >;
 }
 
 const DEFAULT_THRESHOLD_LINE_STROKE = "#ff4d4f";
@@ -189,7 +244,211 @@ const getStreamStroke = (stream: ILineChartMetricStream) => {
     : stream.legend.color;
 };
 
-const RenderChart = (props: IChartProps & { width: number }) => {
+const getAreaHighlightLinePath = (
+  points: Array<{
+    x: number;
+    y: number;
+  }>,
+) => {
+  if (!points.length) {
+    return "";
+  }
+
+  return points
+    .map((point, index) => {
+      return `${index === 0 ? "M" : "L"}${point.x},${point.y}`;
+    })
+    .join(" ");
+};
+
+const getAreaHighlightFillPath = (
+  points: Array<{
+    x: number;
+    y: number;
+  }>,
+  baseLineY: number,
+) => {
+  if (!points.length) {
+    return "";
+  }
+
+  const linePath = getAreaHighlightLinePath(points);
+  const firstPoint = points[0];
+  const lastPoint = points[points.length - 1];
+
+  return `${linePath} L${lastPoint.x},${baseLineY} L${firstPoint.x},${baseLineY} Z`;
+};
+
+const FullHeightBackgroundRangeLayer: React.FC<
+  IFullHeightBackgroundRangeLayerProps
+> = ({ range, height, xAxisMap }) => {
+  const xScale = Object.values(xAxisMap || {})[0]?.scale;
+
+  if (typeof xScale !== "function" || !height) {
+    return null;
+  }
+
+  const x1 = xScale(range.start);
+  const x2 = xScale(range.end);
+
+  if (!Number.isFinite(x1) || !Number.isFinite(x2) || x2 <= x1) {
+    return null;
+  }
+
+  return (
+    <rect
+      className="line-chart-background-range line-chart-background-range-full"
+      data-testid="line-chart-background-range-full"
+      x={x1}
+      y={0}
+      width={x2 - x1}
+      height={height}
+      fill={range.fill}
+      fillOpacity={range.fillOpacity ?? 0.12}
+      style={{ pointerEvents: "none" }}
+    />
+  );
+};
+
+const WrapperBackgroundRangeLayoutBridge: React.FC<
+  IWrapperBackgroundRangeLayoutBridgeProps
+> = ({ ranges, onChange, xAxisMap }) => {
+  const xScale = Object.values(xAxisMap || {})[0]?.scale;
+  const layouts = useMemo(() => {
+    if (typeof xScale !== "function") {
+      return [];
+    }
+
+    return ranges.flatMap((range, index) => {
+      const x1 = xScale(range.start);
+      const x2 = xScale(range.end);
+      const left = Math.min(x1, x2);
+      const width = Math.abs(x2 - x1);
+
+      if (!Number.isFinite(left) || !Number.isFinite(width) || width <= 0) {
+        return [];
+      }
+
+      return [
+        {
+          key: `${range.start}-${range.end}-${index}`,
+          left,
+          width,
+          fill: range.fill,
+          fillOpacity: range.fillOpacity ?? 0.12,
+        },
+      ];
+    });
+  }, [ranges, xScale]);
+
+  useEffect(() => {
+    onChange?.(layouts);
+  }, [layouts, onChange]);
+
+  useEffect(() => {
+    return () => {
+      onChange?.([]);
+    };
+  }, [onChange]);
+
+  return null;
+};
+
+const AreaHighlightLayer: React.FC<IAreaHighlightLayerProps> = ({
+  overlay,
+  hovering,
+  offset,
+  xAxisMap,
+  yAxisMap,
+}) => {
+  const clipPathId = useMemo(() => {
+    return _.uniqueId("line-chart-area-highlight-");
+  }, []);
+  const xScale = Object.values(xAxisMap || {})[0]?.scale;
+  const yScale = Object.values(yAxisMap || {})[0]?.scale;
+  const offsetLeft = offset?.left ?? 0;
+  const offsetTop = offset?.top ?? 0;
+  const offsetWidth = offset?.width ?? 0;
+  const offsetHeight = offset?.height ?? 0;
+
+  if (
+    typeof xScale !== "function" ||
+    typeof yScale !== "function" ||
+    !offsetWidth ||
+    !offsetHeight
+  ) {
+    return null;
+  }
+
+  const projectedPoints = overlay.data
+    .map((point) => {
+      return {
+        x: xScale(point.t),
+        y: yScale(point.value),
+      };
+    })
+    .filter((point) => {
+      return Number.isFinite(point.x) && Number.isFinite(point.y);
+    });
+
+  if (projectedPoints.length < 2) {
+    return null;
+  }
+
+  const fallbackBaseLineY = offsetTop + offsetHeight;
+  const scaleBaseLineY = yScale(0);
+  const baseLineY = Number.isFinite(scaleBaseLineY)
+    ? scaleBaseLineY
+    : fallbackBaseLineY;
+  const linePath = getAreaHighlightLinePath(projectedPoints);
+  const fillPath = getAreaHighlightFillPath(projectedPoints, baseLineY);
+
+  return (
+    <g
+      className="line-chart-area-highlight"
+      data-testid="line-chart-area-highlight"
+      style={{ pointerEvents: "none" }}
+      opacity={hovering.includes(overlay.legendId) ? 0.3 : 1}
+    >
+      <defs>
+        <clipPath id={clipPathId}>
+          <rect
+            x={offsetLeft}
+            y={offsetTop}
+            width={offsetWidth}
+            height={offsetHeight}
+          />
+        </clipPath>
+      </defs>
+      <g clipPath={`url(#${clipPathId})`}>
+        <path
+          className="line-chart-area-highlight-fill"
+          d={fillPath}
+          fill={overlay.fill}
+          fillOpacity={overlay.fillOpacity}
+        />
+        {overlay.stroke && (
+          <path
+            className="line-chart-area-highlight-curve"
+            d={linePath}
+            fill="none"
+            stroke={overlay.stroke}
+            strokeWidth={1}
+          />
+        )}
+      </g>
+    </g>
+  );
+};
+
+const RenderChart = (
+  props: IChartProps & {
+    width: number;
+    onWrapperBackgroundRangesLayoutChange?: (
+      layouts: ILineChartWrapperBackgroundLayout[],
+    ) => void;
+  },
+) => {
   const {
     metricName,
     showLegend,
@@ -213,6 +472,7 @@ const RenderChart = (props: IChartProps & { width: number }) => {
     dateRange = [dayjs(), dayjs()],
     emptyText,
     emptyIcon,
+    onWrapperBackgroundRangesLayoutChange,
   } = props;
   const { t } = useParrotTranslation();
 
@@ -234,21 +494,36 @@ const RenderChart = (props: IChartProps & { width: number }) => {
     [streams],
   );
   const xDomain = getLineChartXAxisDomain(dateRange, dateRange[1].valueOf());
+  const thresholdValue = thresholdLineProps?.value;
   const thresholdExtraValues = useMemo(() => {
-    if (_.isNumber(thresholdLineProps?.value)) {
-      return [thresholdLineProps.value];
+    if (_.isNumber(thresholdValue)) {
+      return [thresholdValue];
     }
 
     return [];
-  }, [thresholdLineProps?.value]);
+  }, [thresholdValue]);
   const yDomain =
     yAxisProps?.domain ??
     getYAxisDomain(areaChartData, type, metric.unit, thresholdExtraValues);
+  const yTickDomain = yDomain as [number, number];
   const xTicks = lineChartXaxisCal(xDomain[1], dateRange, width);
 
   const normalizedBackgroundRanges = useMemo(() => {
     return getLineChartBackgroundRanges(backgroundRanges, xDomain);
   }, [backgroundRanges, xDomain]);
+  const plotBackgroundRanges = useMemo(() => {
+    return normalizedBackgroundRanges.filter((range) => !range.fullHeight);
+  }, [normalizedBackgroundRanges]);
+  const surfaceBackgroundRanges = useMemo(() => {
+    return normalizedBackgroundRanges.filter((range) => {
+      return range.fullHeight && range.fullHeightTarget !== "wrapper";
+    });
+  }, [normalizedBackgroundRanges]);
+  const wrapperBackgroundRanges = useMemo(() => {
+    return normalizedBackgroundRanges.filter((range) => {
+      return range.fullHeight && range.fullHeightTarget === "wrapper";
+    });
+  }, [normalizedBackgroundRanges]);
   const normalizedAreaHighlightRanges = useMemo(() => {
     return getLineChartAreaHighlightRanges(areaHighlightRanges, xDomain);
   }, [areaHighlightRanges, xDomain]);
@@ -313,18 +588,18 @@ const RenderChart = (props: IChartProps & { width: number }) => {
   );
 
   const thresholdIntersections = useMemo(() => {
-    if (!_.isNumber(thresholdLineProps?.value)) {
+    if (!_.isNumber(thresholdValue)) {
       return [];
     }
 
     const formattedThresholdValue = lineChartYaxisTickFormatter(
-      thresholdLineProps.value,
+      thresholdValue,
       metric.unit,
     );
 
     return getLineChartThresholdIntersections(
       streams,
-      thresholdLineProps.value,
+      thresholdValue,
       xDomain,
     ).map((intersection) => {
       return {
@@ -335,14 +610,14 @@ const RenderChart = (props: IChartProps & { width: number }) => {
           intersection.value,
           intersection.timestamp,
         ),
-        thresholdValue: thresholdLineProps.value,
+        thresholdValue,
       };
     });
   }, [
     formatIntersectionValue,
     metric.unit,
     streams,
-    thresholdLineProps,
+    thresholdValue,
     xDomain,
   ]);
 
@@ -476,24 +751,30 @@ const RenderChart = (props: IChartProps & { width: number }) => {
     (e) => {
       if (e.isTooltipActive) {
         const { chartX, activePayload } = e;
-        if (!activePayload?.[0]?.payload) {
+        const activeMetricPayload = getLineChartMetricPayloadMatches(
+          activePayload,
+          legends,
+        )[0]?.payload;
+
+        if (!activeMetricPayload?.payload) {
           return;
         }
+
         dispatch({
           type: ChartActions.SET_POINTER,
           payload: {
             uuid: syncId,
             visible: true,
             left: chartX,
-            text: dayjs(Number(activePayload[0].payload.t)).format(
+            text: dayjs(Number(activeMetricPayload.payload.t)).format(
               "MM/DD HH:mm:ss",
             ),
-            value: activePayload[0].payload.v,
+            value: activeMetricPayload.payload.v,
           },
         });
       }
     },
-    [dispatch, syncId],
+    [dispatch, legends, syncId],
   );
 
   const handleThresholdIntersectionEnter = useCallback(
@@ -621,6 +902,38 @@ const RenderChart = (props: IChartProps & { width: number }) => {
             onMouseLeave={hidePointer}
             onMouseMove={handleMouseMove}
           >
+            {plotBackgroundRanges.map((range, index) => {
+              return (
+                <ReferenceArea
+                  key={`${range.start}-${range.end}-${index}`}
+                  data-testid="line-chart-background-range"
+                  className="line-chart-background-range"
+                  x1={range.start}
+                  x2={range.end}
+                  fill={range.fill}
+                  fillOpacity={range.fillOpacity ?? 0.12}
+                  ifOverflow="hidden"
+                  isFront={false}
+                  style={{ pointerEvents: "none" }}
+                />
+              );
+            })}
+            {surfaceBackgroundRanges.map((range, index) => {
+              return (
+                <Customized
+                  key={`${range.start}-${range.end}-${index}`}
+                  component={FullHeightBackgroundRangeLayer}
+                  range={range}
+                />
+              );
+            })}
+            {!!wrapperBackgroundRanges.length && (
+              <Customized
+                component={WrapperBackgroundRangeLayoutBridge}
+                ranges={wrapperBackgroundRanges}
+                onChange={onWrapperBackgroundRangesLayoutChange}
+              />
+            )}
             <XAxis
               hide={!showXAxis}
               dataKey="t"
@@ -645,38 +958,22 @@ const RenderChart = (props: IChartProps & { width: number }) => {
                 dy: 16,
                 fontSize: 12,
               }}
-              ticks={[yDomain[1] / 2, yDomain[1]]}
+              ticks={[yTickDomain[1] / 2, yTickDomain[1]]}
               tickFormatter={(tick) =>
                 lineChartYaxisTickFormatter(tick, metric.unit)
               }
               {...yAxisProps}
             />
-            {normalizedBackgroundRanges.map((range, index) => {
-              return (
-                <ReferenceArea
-                  key={`${range.start}-${range.end}-${index}`}
-                  data-testid="line-chart-background-range"
-                  className="line-chart-background-range"
-                  x1={range.start}
-                  x2={range.end}
-                  fill={range.fill}
-                  fillOpacity={range.fillOpacity ?? 0.12}
-                  ifOverflow="hidden"
-                  isFront={false}
-                  style={{ pointerEvents: "none" }}
-                />
-              );
-            })}
-            {_.isNumber(thresholdLineProps?.value) && (
+            {_.isNumber(thresholdValue) && (
               <ReferenceLine
                 data-testid="line-chart-threshold-line"
                 className="line-chart-threshold-line"
-                y={thresholdLineProps.value}
+                y={thresholdValue}
                 stroke={
-                  thresholdLineProps.stroke || DEFAULT_THRESHOLD_LINE_STROKE
+                  thresholdLineProps?.stroke || DEFAULT_THRESHOLD_LINE_STROKE
                 }
                 strokeDasharray={
-                  thresholdLineProps.strokeDasharray ||
+                  thresholdLineProps?.strokeDasharray ||
                   DEFAULT_THRESHOLD_LINE_DASHARRAY
                 }
                 ifOverflow="discard"
@@ -727,24 +1024,11 @@ const RenderChart = (props: IChartProps & { width: number }) => {
               }
 
               return (
-                <Area
+                <Customized
                   key={overlay.key}
-                  data={overlay.data}
-                  dataKey="value"
-                  name={`line-chart-area-highlight-${overlay.key}`}
-                  className="line-chart-area-highlight"
-                  data-testid="line-chart-area-highlight"
-                  stroke={overlay.stroke}
-                  strokeWidth={1}
-                  fill={overlay.fill}
-                  fillOpacity={overlay.fillOpacity}
-                  legendType="none"
-                  isAnimationActive={false}
-                  dot={false}
-                  activeDot={false}
-                  connectNulls={false}
-                  baseValue={0}
-                  opacity={hovering.includes(overlay.legendId) ? 0.3 : 1}
+                  component={AreaHighlightLayer}
+                  overlay={overlay}
+                  hovering={hovering}
                 />
               );
             })}
@@ -806,7 +1090,7 @@ const RenderChart = (props: IChartProps & { width: number }) => {
                           fill="transparent"
                           stroke="transparent"
                         />
-                        {showIntersectionLabel ? (
+                        {showIntersectionLabel && (
                           <g data-testid="line-chart-threshold-intersection-label">
                             <rect
                               data-testid="line-chart-threshold-intersection-label-background"
@@ -835,16 +1119,6 @@ const RenderChart = (props: IChartProps & { width: number }) => {
                               {intersectionLabelText}
                             </text>
                           </g>
-                        ) : (
-                          <circle
-                            cx={cx}
-                            cy={cy}
-                            r={5}
-                            fill="white"
-                            stroke={intersection.legend.color}
-                            strokeWidth={2}
-                            opacity={intersectionOpacity}
-                          />
                         )}
                       </g>
                     );

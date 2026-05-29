@@ -2,6 +2,7 @@ import { styled } from "@linaria/react";
 import { LineChartColorBlock } from "@src/core/LineChart/LineChartLegend";
 import { TooltipColumn, TooltipWrapper } from "@src/core/LineChart/styled";
 import { ILineChartLegend } from "@src/core/LineChart/type";
+import { getLineChartMetricPayloadMatches } from "@src/core/LineChart/utils";
 import dayjs from "dayjs";
 import React from "react";
 import { TooltipProps } from "recharts";
@@ -55,36 +56,33 @@ const TooltipFormatter: React.FC<
     return null;
   }
 
-  const items = payload
-    .map((item) => {
-      return {
-        ...item,
-        legend: legends.find((_legend, index) => `v${index}` === item.name),
-      };
-    })
-    .sort((a, b) => (b.value as number) - (a.value as number))
-    .flatMap((item) => {
-      if (!item.legend) {
-        return [];
-      }
+  const metricPayloads = getLineChartMetricPayloadMatches(payload, legends);
+  const titlePayload = metricPayloads[0]?.payload?.payload;
 
-      if (deselected.includes(item.legend?.id || "")) {
+  if (!titlePayload) {
+    return null;
+  }
+
+  const items = metricPayloads
+    .sort((a, b) => (b.payload.value as number) - (a.payload.value as number))
+    .flatMap((item) => {
+      if (deselected.includes(item.legend.id)) {
         return [];
       }
 
       return [
         {
-          id: item.legend?.id || `${item.name}`,
-          color: item.legend?.color,
-          label: item.legend?.name,
-          value: format(item),
+          id: item.legend.id,
+          color: item.legend.color,
+          label: item.legend.name,
+          value: format(item.payload),
         },
       ];
     });
 
   return (
     <LineChartTooltipContent
-      title={dayjs(Number(payload[0].payload.t)).format("MM/DD HH:mm:ss")}
+      title={dayjs(Number(titlePayload.t)).format("MM/DD HH:mm:ss")}
       items={items}
     />
   );

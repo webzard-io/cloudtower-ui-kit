@@ -6,6 +6,7 @@ import {
   getLineChartAreaHighlightData,
   getLineChartAreaHighlightRanges,
   getLineChartBackgroundRanges,
+  getLineChartMetricPayloadMatches,
   getLineChartThresholdIntersections,
   getYAxisDomain,
 } from "@src/core/LineChart/utils";
@@ -240,5 +241,66 @@ describe("LineChart utils", () => {
     );
 
     expect(domain[1]).toBeGreaterThanOrEqual(10);
+  });
+
+  it("filters overlay payloads and keeps the real metric payload order", () => {
+    const legends = [
+      {
+        id: "forecast",
+        name: "Forecast",
+        color: "#8f63ff",
+      },
+    ];
+
+    const overlayPayload = {
+      name: "line-chart-area-highlight-forecast",
+      payload: {
+        t: 1000,
+        value: 3,
+      },
+      value: 3,
+    };
+    const metricPayload = {
+      name: "v0",
+      payload: {
+        t: 2000,
+        v: 8,
+        v0: 8,
+      },
+      value: 8,
+    };
+
+    expect(
+      getLineChartMetricPayloadMatches([overlayPayload, metricPayload], legends),
+    ).toEqual([
+      {
+        legend: legends[0],
+        payload: metricPayload,
+      },
+    ]);
+  });
+
+  it("returns an empty payload match list when only highlight overlays are present", () => {
+    expect(
+      getLineChartMetricPayloadMatches(
+        [
+          {
+            name: "line-chart-area-highlight-forecast",
+            payload: {
+              t: 1000,
+              value: 3,
+            },
+            value: 3,
+          },
+        ],
+        [
+          {
+            id: "forecast",
+            name: "Forecast",
+            color: "#8f63ff",
+          },
+        ],
+      ),
+    ).toEqual([]);
   });
 });

@@ -20,7 +20,12 @@ import { Popover as AntdPopover } from "antd";
 import dayjs, { Dayjs } from "dayjs";
 import React, { useEffect, useRef, useState } from "react";
 
-import { getDateText } from "./common";
+import {
+  getDateText,
+  getEffectiveAbsoluteTimeBounds,
+  getRelativeTimeRange,
+  normalizeRelativeTime,
+} from "./common";
 import {
   DateRangeHistory,
   DateRangePickerProps,
@@ -34,7 +39,8 @@ const TimeRange: React.FC<{
   /**
    *Selected relative or absolute time type
    */
-  type: string;
+  panelType: string;
+  direction: NonNullable<DateRangePickerProps["type"]>;
   /**
    * The absolute time range selected by the user
    */
@@ -61,7 +67,8 @@ const TimeRange: React.FC<{
 }> = (props) => {
   const {
     visible,
-    type,
+    panelType,
+    direction,
     relativeTime,
     range,
     mode = ["relative", "absolute"],
@@ -88,6 +95,7 @@ const TimeRange: React.FC<{
       <div className="relative-time-container">
         <RelativeTime
           value={relativeTime}
+          type={direction}
           onChange={(time) => onRelativeTimeChange?.(time)}
           config={relativeTimeSelectOptions}
         />
@@ -101,6 +109,7 @@ const TimeRange: React.FC<{
           range={range || [null, null]}
           minDate={minDate}
           maxDate={maxDate}
+          maxRange={maxRange}
           onChange={(range) => onAbsoluteTimeChange?.(range)}
           onOk={(range) => onAbsoluteTimeOk?.(range)}
         />
@@ -115,6 +124,7 @@ const TimeRange: React.FC<{
           <div className="relative-time-container">
             <RelativeTime
               value={relativeTime}
+              type={direction}
               onChange={(time) => onRelativeTimeChange?.(time)}
               config={relativeTimeSelectOptions}
             />
@@ -142,7 +152,7 @@ const TimeRange: React.FC<{
 
     return (
       <TabMenu
-        selectedKey={type}
+        selectedKey={panelType}
         tabs={tabs}
         onChange={onTypeChange}
         size="small"
@@ -153,34 +163,53 @@ const TimeRange: React.FC<{
 
 const TimePickerHistory: React.FC<{
   history: DateRangeHistory;
+  type: NonNullable<DateRangePickerProps["type"]>;
   onSelect: (value: PastTime | PickerDateRange) => void;
 }> = (props) => {
-  const { history, onSelect } = props;
+  const { history, type, onSelect } = props;
   const { t } = useParrotTranslation();
 
   function contentRender() {
-    if (!history.length) {
+    const filteredHistory = history
+      .filter((item) => {
+        if (Array.isArray(item.value)) {
+          return true;
+        }
+
+        return normalizeRelativeTime(item.value, "past").type === type;
+      })
+      .sort((a, b) => b.timestamp - a.timestamp);
+
+    if (!filteredHistory.length) {
       return <>{t("components.empty_search_history")}</>;
     }
 
-    return history
-      .sort((a, b) => b.timestamp - a.timestamp)
+    return filteredHistory
       .map((item, index) => {
+        const normalizedRelativeTime = Array.isArray(item.value)
+          ? undefined
+          : normalizeRelativeTime(item.value, "past");
         const text = Array.isArray(item.value)
           ? `${dayjs(item.value[0]).format("YYYY-MM-DD hh:mm:ss")} - ${dayjs(
               item.value[1],
             ).format("YYYY-MM-DD hh:mm:ss")}`
-          : getDateText(item.value, t);
-
-        const obj = Array.isArray(item.value)
-          ? ([dayjs(item.value[0]), dayjs(item.value[1])] as PickerDateRange)
-          : item.value;
+          : getDateText(normalizedRelativeTime as PastTime, t);
 
         return (
           <li
             key={index}
             className={Typo.Label.l2_regular}
-            onClick={() => onSelect(obj)}
+            onClick={() => {
+              if (Array.isArray(item.value)) {
+                onSelect([
+                  dayjs(item.value[0]),
+                  dayjs(item.value[1]),
+                ] as PickerDateRange);
+                return;
+              }
+
+              onSelect(normalizedRelativeTime as PastTime);
+            }}
           >
             {text}
           </li>
@@ -202,6 +231,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
   const {
     size = "medium",
     value,
+    type: relativeTimeType = "past",
     history,
     mode = ["relative", "absolute"],
     minDate,
@@ -213,14 +243,19 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
   const { t } = useParrotTranslation();
 
   const [datePickerVisible, setDatePickerVisible] = useState(false);
-  const [type, setType] = useState<string>("relative");
+  const [panelType, setPanelType] = useState<string>("relative");
   const [range, setRange] = useState<PickerDateRange | undefined>(
     Array.isArray(value) ? value : undefined,
   );
 
-  const relativeTime = !Array.isArray(value) ? value : undefined;
+  const relativeTime =
+    value && !Array.isArray(value)
+      ? normalizeRelativeTime(value, relativeTimeType)
+      : undefined;
 
-  const isRelativeValue = value && !Array.isArray(value);
+  const { minDate: effectiveMinDate, maxDate: effectiveMaxDate } =
+    getEffectiveAbsoluteTimeBounds(relativeTimeType, minDate, maxDate);
+
   const isAbsoluteValue = value && Array.isArray(value);
 
   function handleChange(
@@ -239,14 +274,20 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
       });
       onChange?.(type, time, time);
     } else if (type === "relative" && !Array.isArray(time)) {
+      const normalizedRelativeTime = normalizeRelativeTime(
+        time,
+        relativeTimeType,
+      );
       rangeHistory.push({
         type,
-        value: time,
+        value: normalizedRelativeTime,
         timestamp: Date.now(),
       });
-      const today = dayjs();
-      const pastDay = dayjs().subtract(time.value, time.unit);
-      onChange?.(type, time, [today, pastDay]);
+      onChange?.(
+        type,
+        normalizedRelativeTime,
+        getRelativeTimeRange(normalizedRelativeTime),
+      );
     }
     history?.setDateRangeHistory({
       ...(history?.dateRangeHistories ?? {}),
@@ -256,23 +297,20 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
   }
 
   useEffect(() => {
-    if (isRelativeValue) {
-      const today = dayjs();
-      const pastDay = dayjs().subtract(value.value, value.unit);
-
-      setType("relative");
-      onChange?.("relative", value, [today, pastDay]);
-    } else if (isAbsoluteValue) {
+    if (relativeTime) {
+      setPanelType("relative");
+      onChange?.("relative", relativeTime, getRelativeTimeRange(relativeTime));
+    } else if (Array.isArray(value)) {
       setRange(value);
-      setType("absolute");
+      setPanelType("absolute");
       onChange?.("absolute", value, value);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value]);
+  }, [relativeTimeType, value]);
 
   function displayRangeRender() {
-    if (isRelativeValue) {
-      return <>{getDateText(value, t)}</>;
+    if (relativeTime) {
+      return <>{getDateText(relativeTime, t)}</>;
     } else if (isAbsoluteValue) {
       return (
         <>
@@ -293,21 +331,23 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
   }
 
   function handleSelectHistory(value: PastTime | PickerDateRange) {
-    const type = Array.isArray(value) ? "absolute" : "relative";
-    if (type === "absolute" && Array.isArray(value)) {
+    if (Array.isArray(value)) {
       const _value: PickerDateRange = [...value];
       const [start, end] = _value;
-      if (minDate && start) {
-        const _minDate = dayjs(minDate);
+      if (effectiveMinDate && start) {
+        const _minDate = dayjs(effectiveMinDate);
         _value[0] = start.isBefore(_minDate) ? _minDate : start;
       }
-      if (maxDate && end) {
-        const _maxDate = dayjs(maxDate);
+      if (effectiveMaxDate && end) {
+        const _maxDate = dayjs(effectiveMaxDate);
         _value[1] = end.isAfter(_maxDate) ? _maxDate : end;
       }
-      handleChange(type, _value);
+
+      handleChange("absolute", _value);
+      return;
     }
-    handleChange(type, value);
+
+    handleChange("relative", normalizeRelativeTime(value, "past"));
   }
 
   return (
@@ -337,14 +377,15 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
         content={
           <TimeRange
             visible={datePickerVisible}
-            type={type}
+            panelType={panelType}
+            direction={relativeTimeType}
             range={range}
             relativeTime={relativeTime}
             mode={mode}
-            minDate={minDate}
-            maxDate={maxDate}
+            minDate={effectiveMinDate}
+            maxDate={effectiveMaxDate}
             maxRange={maxRange}
-            onTypeChange={setType}
+            onTypeChange={setPanelType}
             onRelativeTimeChange={(time) => {
               handleChange("relative", time);
             }}
@@ -373,6 +414,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
           content={
             <TimePickerHistory
               history={history.dateRangeHistories[history.scope] ?? []}
+              type={relativeTimeType}
               onSelect={handleSelectHistory}
             />
           }

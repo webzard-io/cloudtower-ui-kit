@@ -77,6 +77,10 @@ export interface ILineChartBackgroundRange {
   fill: string;
   /** 填充透明度 */
   fillOpacity?: number;
+  /** 是否填满整个图表内容高度，而非仅绘图区 */
+  fullHeight?: boolean;
+  /** 填满高度的目标层：surface 为整个图表 surface，wrapper 为整个 LineChartWrapper。 */
+  fullHeightTarget?: "surface" | "wrapper";
 }
 
 /**

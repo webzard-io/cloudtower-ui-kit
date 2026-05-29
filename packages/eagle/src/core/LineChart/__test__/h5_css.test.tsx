@@ -118,6 +118,7 @@ describe("line chart h5_css", () => {
           font-size: 12px;
           color: $white;
           transform: translateX(-50%);
+          z-index: 2;
         }
 
             style=height:,184px;
