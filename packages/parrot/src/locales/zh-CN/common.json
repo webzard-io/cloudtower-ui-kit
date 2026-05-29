@@ -51,6 +51,7 @@
   "hour_count": "{count} 小时",
   "minute_count": "{count} 分钟",
   "month_measure_count": "{count} 个月",
+  "year_count": "{count} 年",
   "show_unpassed": "只看未满足",
   "copy": "复制",
   "click_to_copy": "点击复制",

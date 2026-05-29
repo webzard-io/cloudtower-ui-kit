@@ -3,7 +3,11 @@ import { Typo } from "@src/core/Typo";
 import dayjs, { Dayjs } from "dayjs";
 import { TFunction } from "i18next";
 
-import { PastTime, PickerDateRange } from "./dateRangePicker.type";
+import {
+  PastTime,
+  PickerDateRange,
+  RelativeTimeDirection,
+} from "./dateRangePicker.type";
 
 export const BASIC_RELATIVE_TIME_CONFIG: PastTime[] = [
   {
@@ -170,16 +174,84 @@ export function time2string(time: number): string {
   }
 }
 
-export function getDateText(date: PastTime, t: TFunction) {
-  const count = date.value;
+export function normalizeRelativeTime(
+  date: Omit<PastTime, "disabled"> | PastTime,
+  defaultType: RelativeTimeDirection = "past",
+): PastTime {
+  if (date.type) {
+    return date as PastTime;
+  }
+
+  return {
+    ...date,
+    type: defaultType,
+  };
+}
+
+export function getRelativeTimeRange(
+  date: Omit<PastTime, "disabled"> | PastTime,
+  defaultType: RelativeTimeDirection = "past",
+  nowDate: Dayjs = dayjs(),
+): PickerDateRange {
+  const normalizedDate = normalizeRelativeTime(date, defaultType);
+  const rangeEnd =
+    normalizedDate.type === "future"
+      ? nowDate.add(normalizedDate.value, normalizedDate.unit)
+      : nowDate.subtract(normalizedDate.value, normalizedDate.unit);
+
+  return [nowDate, rangeEnd];
+}
+
+export function getEffectiveAbsoluteTimeBounds(
+  type: RelativeTimeDirection = "past",
+  minDate?: string | Dayjs | undefined,
+  maxDate?: string | Dayjs | undefined,
+  nowDate: Dayjs = dayjs(),
+) {
+  if (type !== "future") {
+    return {
+      minDate,
+      maxDate,
+    };
+  }
+
+  let effectiveMinDate = nowDate;
+  let effectiveMaxDate = nowDate.add(1, "year");
+
+  const parsedMinDate = dayjs(minDate);
+  if (parsedMinDate.isValid() && parsedMinDate.isAfter(effectiveMinDate)) {
+    effectiveMinDate = parsedMinDate;
+  }
+
+  const parsedMaxDate = dayjs(maxDate);
+  if (parsedMaxDate.isValid() && parsedMaxDate.isBefore(effectiveMaxDate)) {
+    effectiveMaxDate = parsedMaxDate;
+  }
+
+  return {
+    minDate: effectiveMinDate,
+    maxDate: effectiveMaxDate,
+  };
+}
+
+export function getDateText(
+  date: Omit<PastTime, "disabled"> | PastTime,
+  t: TFunction,
+  defaultType: RelativeTimeDirection = "past",
+) {
+  const normalizedDate = normalizeRelativeTime(date, defaultType);
+  const count = normalizedDate.value;
   const dateString = {
     d: t("common.day_count", { count }),
     h: t("common.hour_count", { count }),
     m: t("common.minute_count", { count }),
     M: t("common.month_measure_count", { count }),
-  }[date.unit];
+    y: t("common.year_count", { count }),
+  }[normalizedDate.unit];
 
-  return `${t("components.past")} ${dateString}`;
+  return `${t(
+    normalizedDate.type === "future" ? "components.future" : "components.past",
+  )} ${dateString}`;
 }
 
 export function checkDateNotInRange(

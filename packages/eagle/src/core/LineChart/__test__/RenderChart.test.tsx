@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import dayjs from "dayjs";
 import { describe, expect, it, vi } from "vitest";
 
@@ -48,7 +48,7 @@ vi.mock("recharts", async () => {
           style={{ height: resolvedHeight || 180, width: 800 }}
         >
           {React.isValidElement(children)
-            ? React.cloneElement(children, {
+            ? React.cloneElement(children as React.ReactElement<any>, {
                 height: resolvedHeight || 180,
                 width: 800,
               })
@@ -145,19 +145,19 @@ const renderChart = (
 
 describe("RenderChart", () => {
   it("renders background ranges, threshold line, and threshold intersections", () => {
-    renderChart();
+    const { container } = renderChart();
 
-    expect(screen.getAllByTestId("line-chart-background-range")).toHaveLength(
+    expect(container.querySelectorAll(".line-chart-background-range")).toHaveLength(
       2,
     );
-    expect(screen.getByTestId("line-chart-threshold-line")).toBeInTheDocument();
+    expect(container.querySelector(".line-chart-threshold-line")).toBeInTheDocument();
     expect(
       screen.getAllByTestId("line-chart-threshold-intersection-dot"),
     ).toHaveLength(3);
   });
 
   it("renders curve-only area highlights for the configured time ranges", () => {
-    renderChart({
+    const { container } = renderChart({
       areaHighlightRanges: [
         {
           start: rangeStart.add(5, "minute").valueOf(),
@@ -169,7 +169,82 @@ describe("RenderChart", () => {
       ],
     });
 
-    expect(screen.getAllByTestId("line-chart-area-highlight")).toHaveLength(1);
+    const highlights = container.querySelectorAll(".line-chart-area-highlight");
+    const highlight = container.querySelector(
+      ".line-chart-area-highlight",
+    );
+
+    expect(highlights).toHaveLength(1);
+    expect(
+      container.querySelector(".recharts-area.line-chart-area-highlight"),
+    ).not.toBeInTheDocument();
+    expect(highlight).toHaveStyle({ pointerEvents: "none" });
+  });
+
+  it("renders full-height background ranges across the entire chart content when configured", () => {
+    const { container } = renderChart({
+      backgroundRanges: [
+        {
+          start: rangeStart.add(4, "minute").valueOf(),
+          end: rangeStart.add(12, "minute").valueOf(),
+          fill: "#91caff",
+          fillOpacity: 0.16,
+          fullHeight: true,
+        },
+      ],
+    });
+
+    const fullHeightRange = container.querySelector(
+      ".line-chart-background-range-full",
+    );
+
+    expect(fullHeightRange).toBeInTheDocument();
+    expect(fullHeightRange).toHaveAttribute("y", "0");
+    expect(fullHeightRange).toHaveAttribute("height", "100");
+    expect(fullHeightRange).toHaveStyle({ pointerEvents: "none" });
+  });
+
+  it("bridges wrapper-height background ranges to the parent overlay layout without rendering chart-level fills", async () => {
+    const onWrapperBackgroundRangesLayoutChange = vi.fn();
+    const { container } = renderChart({
+      backgroundRanges: [
+        {
+          start: rangeStart.add(4, "minute").valueOf(),
+          end: rangeStart.add(12, "minute").valueOf(),
+          fill: "#91caff",
+          fillOpacity: 0.16,
+          fullHeight: true,
+          fullHeightTarget: "wrapper",
+        },
+      ],
+      onWrapperBackgroundRangesLayoutChange,
+    });
+
+    expect(
+      container.querySelector(".line-chart-background-range-full"),
+    ).not.toBeInTheDocument();
+    expect(
+      container.querySelector(".line-chart-background-range"),
+    ).not.toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(onWrapperBackgroundRangesLayoutChange).toHaveBeenCalled();
+    });
+
+    const layouts =
+      onWrapperBackgroundRangesLayoutChange.mock.calls[
+        onWrapperBackgroundRangesLayoutChange.mock.calls.length - 1
+      ]?.[0];
+
+    expect(layouts).toHaveLength(1);
+    expect(layouts[0]).toEqual(
+      expect.objectContaining({
+        fill: "#91caff",
+        fillOpacity: 0.16,
+      }),
+    );
+    expect(layouts[0].left).toBeGreaterThanOrEqual(0);
+    expect(layouts[0].width).toBeGreaterThan(0);
   });
 
   it("shows the default threshold tooltip when hovering an intersection", () => {
@@ -186,6 +261,15 @@ describe("RenderChart", () => {
     expect(screen.getByText("5%")).toBeInTheDocument();
   });
 
+  it("does not render visible threshold markers by default", () => {
+    const { container } = renderChart();
+
+    expect(
+      container.querySelectorAll(
+        '[data-testid="line-chart-threshold-intersection-dot"] circle[r="5"]',
+      ),
+    ).toHaveLength(0);
+  });
   it("renders threshold intersection labels above the markers when configured", () => {
     renderChart({
       thresholdLineProps: {
@@ -208,8 +292,8 @@ describe("RenderChart", () => {
     ).toHaveAttribute("fill", "#ff4d4f");
   });
 
-  it("keeps threshold dots and default tooltip when labels are disabled", () => {
-    renderChart({
+  it("keeps threshold hover targets and default tooltip when labels are disabled", () => {
+    const { container } = renderChart({
       thresholdLineProps: {
         value: 5,
         intersectionLabelProps: {
@@ -225,6 +309,11 @@ describe("RenderChart", () => {
     expect(
       screen.getAllByTestId("line-chart-threshold-intersection-dot"),
     ).toHaveLength(3);
+    expect(
+      container.querySelectorAll(
+        '[data-testid="line-chart-threshold-intersection-dot"] circle[r="5"]',
+      ),
+    ).toHaveLength(0);
 
     fireEvent.mouseEnter(
       screen.getAllByTestId("line-chart-threshold-intersection-dot")[0],
@@ -237,7 +326,7 @@ describe("RenderChart", () => {
   });
 
   it("only renders labels for intersections matching the visible condition", () => {
-    renderChart({
+    const { container } = renderChart({
       thresholdLineProps: {
         value: 5,
         intersectionLabelProps: {
@@ -252,6 +341,11 @@ describe("RenderChart", () => {
     expect(
       screen.getAllByTestId("line-chart-threshold-intersection-label"),
     ).toHaveLength(1);
+    expect(
+      container.querySelectorAll(
+        '[data-testid="line-chart-threshold-intersection-dot"] circle[r="5"]',
+      ),
+    ).toHaveLength(0);
 
     fireEvent.mouseEnter(
       screen.getAllByTestId("line-chart-threshold-intersection-dot")[0],

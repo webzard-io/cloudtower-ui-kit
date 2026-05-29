@@ -1,8 +1,8 @@
 import "@testing-library/jest-dom";
 
 import { initParrotI18n } from "@cloudtower/parrot";
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import { format, plugins } from "pretty-format";
 import ResizeObserver from "resize-observer-polyfill";
 import { expect, vi } from "vitest";

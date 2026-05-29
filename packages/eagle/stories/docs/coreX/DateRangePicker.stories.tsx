@@ -1,4 +1,7 @@
-import DateRangePicker, { PickerDateRange } from "@src/coreX/DateRangePicker";
+import DateRangePicker, {
+  DateRangePickerValue,
+  PickerDateRange,
+} from "@src/coreX/DateRangePicker";
 import type { Meta, StoryObj } from "@storybook/react";
 import dayjs from "dayjs";
 import React, { useState } from "react";
@@ -16,6 +19,26 @@ const Template = (props: Parameters<typeof DateRangePicker>[0]) => {
         setValue(range);
       }}
       mode="absolute"
+      {...props}
+    />
+  );
+};
+
+const FutureTemplate = (props: Parameters<typeof DateRangePicker>[0]) => {
+  const [value, setValue] = useState<DateRangePickerValue>({
+    unit: "M",
+    value: 2,
+    type: "future",
+  });
+
+  return (
+    <DateRangePicker
+      value={value}
+      type="future"
+      mode={["relative", "absolute"]}
+      onChange={(type, time, range) => {
+        setValue(type === "absolute" ? range : time);
+      }}
       {...props}
     />
   );
@@ -116,6 +139,42 @@ export const WithMaxRange: Story = {
       {
         unit: "M",
         value: 6,
+      },
+    ],
+  },
+};
+
+export const WithFutureTime: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "未来时间模式，支持未来相对时间和默认一年内的绝对时间选择",
+      },
+    },
+  },
+  render: (args) => <FutureTemplate {...args} />,
+  args: {
+    type: "future",
+    relativeTimeSelectOptions: [
+      {
+        unit: "M",
+        value: 1,
+      },
+      {
+        unit: "M",
+        value: 2,
+      },
+      {
+        unit: "M",
+        value: 3,
+      },
+      {
+        unit: "M",
+        value: 6,
+      },
+      {
+        unit: "y",
+        value: 1,
       },
     ],
   },
