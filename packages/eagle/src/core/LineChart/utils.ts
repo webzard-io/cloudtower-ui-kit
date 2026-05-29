@@ -10,6 +10,11 @@ import {
   ILineChartMetricStream,
 } from "@src/core/LineChart/type";
 import {
+  NameType,
+  Payload,
+  ValueType,
+} from "recharts/types/component/DefaultTooltipContent";
+import {
   DAY,
   formatBitPerSecond,
   formatBps,
@@ -37,6 +42,15 @@ export interface ILineChartThresholdIntersectionPoint {
 export interface ILineChartAreaHighlightPoint {
   t: number;
   value: number;
+}
+
+export interface ILineChartMetricPayloadMatch<
+  TValue extends ValueType = number,
+  TName extends NameType = string,
+  TLegend extends { id: string } = ILineChartILegend,
+> {
+  legend: TLegend;
+  payload: Payload<TValue, TName>;
 }
 
 export function filterLineChartPointsByDateRange(
@@ -116,6 +130,29 @@ export function getLineChartXAxisDomain(
 
   return [startDate.valueOf(), xaxisLastTime ?? endDate.valueOf()];
 }
+
+export const getLineChartMetricPayloadMatches = <
+  TValue extends ValueType = number,
+  TName extends NameType = string,
+  TLegend extends { id: string } = ILineChartILegend,
+>(
+  payload: ReadonlyArray<Payload<TValue, TName>> | undefined,
+  legends: readonly TLegend[] = [],
+): Array<ILineChartMetricPayloadMatch<TValue, TName, TLegend>> => {
+  if (!payload?.length) {
+    return [];
+  }
+
+  return payload.flatMap((item) => {
+    const legend = legends.find((_legend, index) => `v${index}` === item.name);
+
+    if (!legend) {
+      return [];
+    }
+
+    return [{ payload: item, legend }];
+  });
+};
 
 export const getLineChartBackgroundRanges = (
   ranges: ILineChartBackgroundRange[] = [],

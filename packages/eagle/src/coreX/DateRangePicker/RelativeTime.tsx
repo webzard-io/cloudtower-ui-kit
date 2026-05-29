@@ -5,7 +5,11 @@ import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import React, { useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
 
-import { BASIC_RELATIVE_TIME_CONFIG, getDateText } from "./common";
+import {
+  BASIC_RELATIVE_TIME_CONFIG,
+  getDateText,
+  normalizeRelativeTime,
+} from "./common";
 import { RelativeTimeStyle } from "./DateRangePicker.style";
 import { PastTime, RelativeTimeProps } from "./dateRangePicker.type";
 
@@ -16,7 +20,7 @@ const HighlightKeywordStyle = css`
 `;
 
 const RelativeTime: React.FC<RelativeTimeProps> = (props) => {
-  const { value, config, search, onChange } = props;
+  const { value, config, search, type = "past", onChange } = props;
   const { t } = useParrotTranslation();
 
   const configRef = useRef<PastTime[]>(config || BASIC_RELATIVE_TIME_CONFIG);
@@ -24,7 +28,7 @@ const RelativeTime: React.FC<RelativeTimeProps> = (props) => {
   const [keyword, setKeyword] = useState("");
 
   const configList = configRef.current.filter((config) => {
-    const text = getDateText(config, t);
+    const text = getDateText(config, t, type);
     return text.indexOf(keyword) > -1;
   });
 
@@ -40,9 +44,12 @@ const RelativeTime: React.FC<RelativeTimeProps> = (props) => {
       ) : null}
       <ul className={cx("past-time-list", !search && "no-search")}>
         {configList.map((config, index) => {
+          const normalizedConfig = normalizeRelativeTime(config, type);
           const selected =
-            config.unit === value?.unit && config.value === value?.value;
-          const text = getDateText(config, t);
+            normalizedConfig.unit === value?.unit &&
+            normalizedConfig.value === value?.value &&
+            normalizedConfig.type === value?.type;
+          const text = getDateText(normalizedConfig, t, type);
 
           return (
             <li
@@ -50,9 +57,9 @@ const RelativeTime: React.FC<RelativeTimeProps> = (props) => {
               className={cx(
                 Typo.Label.l2_regular,
                 selected && "selected",
-                config.disabled && "disabled",
+                normalizedConfig.disabled && "disabled",
               )}
-              onClick={() => onChange?.(config)}
+              onClick={() => onChange?.(normalizedConfig)}
             >
               <Highlighter
                 highlightClassName={cx(HighlightKeywordStyle, "highlight")}

@@ -375,6 +375,79 @@ const thresholdHighlightMetric: ILineChartMetric = {
   dropped: false,
 };
 
+export const BackgroundRangeHeightModes = () => {
+  const baseChartProps = {
+    syncId: "background-range-height-modes",
+    mode: "legend" as const,
+    showLegend: true,
+    metric: thresholdHighlightMetric,
+    height: 180,
+    type: ILineChartGraphType.Area,
+    dateRange: dateRange1,
+    showXAxis: true,
+    xAxisProps: {
+      domain: domain1,
+    },
+    tooltipProps: {
+      format: (val: Payload<number, string>) =>
+        lineChartYaxisTickFormatter(val.value, ILineChartMetricUnit.DataSize),
+    },
+  };
+
+  return (
+    <div style={{ width: 520, display: "grid", gap: 20 }}>
+      <LineChart
+        chartProps={{
+          ...baseChartProps,
+          metricName: "Plot Area Background",
+          backgroundRanges: [
+            {
+              start: dateRange1[0].add(12, "minute").valueOf(),
+              end: dateRange1[0].add(32, "minute").valueOf(),
+              fill: "#ff7875",
+              fillOpacity: 0.14,
+            },
+          ],
+        }}
+      />
+      <LineChart
+        chartProps={{
+          ...baseChartProps,
+          syncId: "background-range-surface-mode",
+          metricName: "Surface Background",
+          backgroundRanges: [
+            {
+              start: dateRange1[0].add(36, "minute").valueOf(),
+              end: dateRange1[0].add(60, "minute").valueOf(),
+              fill: "#ffd666",
+              fillOpacity: 0.18,
+              fullHeight: true,
+              fullHeightTarget: "surface",
+            },
+          ],
+        }}
+      />
+      <LineChart
+        chartProps={{
+          ...baseChartProps,
+          syncId: "background-range-wrapper-mode",
+          metricName: "Wrapper Background",
+          backgroundRanges: [
+            {
+              start: dateRange1[0].add(72, "minute").valueOf(),
+              end: dateRange1[0].add(102, "minute").valueOf(),
+              fill: "#91caff",
+              fillOpacity: 0.18,
+              fullHeight: true,
+              fullHeightTarget: "wrapper",
+            },
+          ],
+        }}
+      />
+    </div>
+  );
+};
+
 ThresholdHighlight.args = {
   chartProps: {
     syncId: "threshold-highlight",
@@ -401,6 +474,8 @@ ThresholdHighlight.args = {
         end: dateRange1[0].add(72, "minute").valueOf(),
         fill: "#ffd666",
         fillOpacity: 0.18,
+        fullHeight: true,
+        fullHeightTarget: "surface",
       },
     ],
     thresholdLineProps: {
@@ -423,7 +498,7 @@ ThresholdHighlight.parameters = {
   docs: {
     description: {
       story:
-        "灞曠ず澶氭鏃堕棿鑼冨洿鑳屾櫙楂樹寒銆佸崟鏉￠槇鍊艰櫄绾垮拰浜ょ偣 tooltip 鐨勭粍鍚堢ず渚嬨€?",
+        "展示多段时间范围背景高亮、单条阈值虚线和交点 tooltip 的组合示例。",
     },
   },
 };
@@ -450,7 +525,7 @@ ThresholdHighlightConditionalLabel.args = {
         text: (info) => dayjs(info.timestamp).format("HH:mm"),
         color: "#ff4d4f",
         visible: (info) => {
-          return info.timestamp >= dateRange1[0].add(18, "minute").valueOf();
+          return info.timestamp >= dateRange1[0].add(60, "minute").valueOf();
         },
       },
     },
@@ -465,7 +540,7 @@ ThresholdHighlightConditionalLabel.parameters = {
   docs: {
     description: {
       story:
-        "Shows how to keep all threshold intersections while only rendering label capsules for intersections that match a timestamp condition.",
+        "展示仍保留全部交点 marker，但仅有 1 个交点满足条件并显示上方 label 的示例。",
     },
   },
 };
@@ -504,7 +579,16 @@ AreaSegmentHighlight.parameters = {
   docs: {
     description: {
       story:
-        "灞曠ず鍦ㄦ寚瀹氭椂闂存鍐咃紝鍙～鍏呭埌鏇茬嚎 value 浣嶇疆鐨勫眬閮ㄩ珮浜ず渚嬨€?",
+        "展示在指定时间段内，仅填充到曲线 value 位置的局部高亮示例。",
+    },
+  },
+};
+
+BackgroundRangeHeightModes.parameters = {
+  docs: {
+    description: {
+      story:
+        "对比 backgroundRanges 的三种高度模式：默认仅高亮绘图区、surface 模式覆盖整个 chart surface、wrapper 模式铺满 LineChartWrapper 整体高度。",
     },
   },
 };
