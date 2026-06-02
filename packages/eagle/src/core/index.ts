@@ -105,6 +105,7 @@ export * from "./Tooltip";
 export * from "./Truncate";
 export * from "./Typo";
 export * from "./Units";
+export * from "./UrlUpload";
 export * from "./WizardDialog";
 
 export const units = {
