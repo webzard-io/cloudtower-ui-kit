@@ -4,9 +4,37 @@ export const UrlUploadWrapperStyle = css`
   width: 100%;
   position: relative;
 
+  &.label-left {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &.label-left .url-upload-label {
+    flex: 0 0 216px;
+    margin-bottom: 0;
+    padding-right: 12px;
+  }
+
+  &.label-left .url-upload-body {
+    flex: 1;
+    min-width: 0;
+    margin-top: 0;
+  }
+
+  .url-upload-label {
+    display: block;
+    margin-bottom: 4px;
+    color: $text-light-primary;
+    word-break: break-word;
+  }
+
   .url-upload-description {
     color: $text-light-secondary;
     word-break: break-word;
+  }
+
+  .url-upload-description-above {
+    margin-bottom: 4px;
   }
 
   .url-upload-body {
@@ -61,6 +89,10 @@ export const UrlUploadWrapperStyle = css`
 
   .url-upload-file.disabled {
     opacity: 0.5;
+  }
+
+  .url-upload-file.disabled .remove-icon {
+    cursor: default;
   }
 
   .url-upload-file .file-info {

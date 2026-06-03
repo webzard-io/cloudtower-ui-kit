@@ -42,6 +42,77 @@ describe("UrlUpload", () => {
     expect(onChange).toHaveBeenCalledWith("https://example.com/example.iso");
   });
 
+  it("默认顶部标签时描述展示在输入框上方", () => {
+    render(
+      <UrlUpload
+        data-testid="url-upload"
+        label="URL 地址"
+        description="请输入远端文件 URL"
+        value=""
+        fileList={[]}
+        setFileList={vi.fn()}
+      />,
+    );
+
+    const wrapper = screen.getByTestId("url-upload");
+    const description = screen.getByText("请输入远端文件 URL");
+    const input = screen.getByTestId("url-upload-input");
+
+    expect(wrapper).toHaveClass("label-top");
+    expect(screen.getByText("URL 地址")).toBeInTheDocument();
+    expect(
+      description.compareDocumentPosition(input) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
+  it("无标签时描述展示在输入框下方", () => {
+    render(
+      <UrlUpload
+        data-testid="url-upload"
+        description="请输入远端文件 URL"
+        value=""
+        fileList={[]}
+        setFileList={vi.fn()}
+      />,
+    );
+
+    const wrapper = screen.getByTestId("url-upload");
+    const input = screen.getByTestId("url-upload-input");
+    const description = screen.getByText("请输入远端文件 URL");
+
+    expect(wrapper).toHaveClass("no-label");
+    expect(
+      input.compareDocumentPosition(description) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
+  it("左侧标签时描述展示在输入框下方", () => {
+    render(
+      <UrlUpload
+        data-testid="url-upload"
+        label="URL 地址"
+        labelPosition="left"
+        description="请输入远端文件 URL"
+        value=""
+        fileList={[]}
+        setFileList={vi.fn()}
+      />,
+    );
+
+    const wrapper = screen.getByTestId("url-upload");
+    const input = screen.getByTestId("url-upload-input");
+    const description = screen.getByText("请输入远端文件 URL");
+
+    expect(wrapper).toHaveClass("label-left");
+    expect(screen.getByText("URL 地址")).toBeInTheDocument();
+    expect(
+      input.compareDocumentPosition(description) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
   it("空 URL 时展示内置必填校验错误", async () => {
     const setFileList = vi.fn();
     const validate = vi.fn();

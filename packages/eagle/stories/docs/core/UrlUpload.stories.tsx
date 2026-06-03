@@ -15,6 +15,80 @@ import React, { useState } from "react";
 const meta: Meta<typeof UrlUpload> = {
   title: "Core/UrlUpload | URL 上传",
   component: UrlUpload,
+  argTypes: {
+    className: {
+      control: "text",
+      description: "自定义类名，透传到根元素",
+    },
+    "data-testid": {
+      control: "text",
+      description: "测试标识，透传到根元素",
+    },
+    label: {
+      control: "text",
+      description: "标签内容",
+    },
+    labelPosition: {
+      control: "select",
+      options: ["top", "left"],
+      description:
+        "标签位置。label 在左或没有 label 时，description 展示在输入框下方",
+      table: { defaultValue: { summary: "top" } },
+    },
+    description: {
+      control: "text",
+      description: "描述文本。有顶部 label 时展示在输入框上方，否则展示在输入框下方",
+    },
+    disabled: {
+      control: "boolean",
+      description: "是否禁用 URL 输入和解析操作",
+      table: { defaultValue: { summary: "false" } },
+    },
+    value: {
+      control: "text",
+      description: "URL 输入框值",
+    },
+    onChange: {
+      control: false,
+      description: "URL 输入框值变化回调",
+    },
+    placeholder: {
+      control: "text",
+      description: "URL 输入框占位文案",
+    },
+    fileList: {
+      control: false,
+      description: "URL 文件列表，单 URL 场景最多一个",
+    },
+    setFileList: {
+      control: false,
+      description: "设置 URL 文件列表",
+    },
+    showParseButton: {
+      control: "boolean",
+      description:
+        "是否展示解析按钮。为 false 时仅展示 URL 输入框，组件不主动创建文件条目",
+      table: { defaultValue: { summary: "false" } },
+    },
+    parseButtonText: {
+      control: "text",
+      description: "解析按钮文案，仅 showParseButton=true 时生效",
+    },
+    disableRemoveList: {
+      control: "boolean",
+      description: "是否禁用解析成功后文件条目的移除入口",
+      table: { defaultValue: { summary: "false" } },
+    },
+    validate: {
+      control: false,
+      description:
+        "URL 验证函数，仅点击解析按钮时执行。内置必填和 URL 格式校验通过后执行，可返回 error 或 data",
+    },
+    onRemove: {
+      control: false,
+      description: "URL 文件移除事件回调",
+    },
+  },
   parameters: {
     design: {
       type: "figma",
@@ -79,6 +153,70 @@ export const WithParseButton: Story = {
   },
 };
 
+export const CustomParseButtonText: Story = {
+  name: "自定义解析按钮文案",
+  render: () => {
+    const [value, setValue] = useState("");
+    const [fileList, setFileList] = useState<UrlUploadFile[]>([]);
+
+    return (
+      <UrlUpload
+        description="按钮文案可按业务动作调整"
+        value={value}
+        onChange={setValue}
+        fileList={fileList}
+        setFileList={setFileList}
+        showParseButton
+        parseButtonText="校验链接"
+        placeholder="https://example.com/files/example.iso"
+      />
+    );
+  },
+};
+
+export const LabelTop: Story = {
+  name: "标签在上",
+  render: () => {
+    const [value, setValue] = useState("");
+    const [fileList, setFileList] = useState<UrlUploadFile[]>([]);
+
+    return (
+      <UrlUpload
+        label="URL 地址"
+        description="请输入远端文件 URL"
+        value={value}
+        onChange={setValue}
+        fileList={fileList}
+        setFileList={setFileList}
+        showParseButton
+        placeholder="https://example.com/files/example.iso"
+      />
+    );
+  },
+};
+
+export const LabelLeft: Story = {
+  name: "标签在左",
+  render: () => {
+    const [value, setValue] = useState("");
+    const [fileList, setFileList] = useState<UrlUploadFile[]>([]);
+
+    return (
+      <UrlUpload
+        label="URL 地址"
+        labelPosition="left"
+        description="请输入远端文件 URL"
+        value={value}
+        onChange={setValue}
+        fileList={fileList}
+        setFileList={setFileList}
+        showParseButton
+        placeholder="https://example.com/files/example.iso"
+      />
+    );
+  },
+};
+
 export const ParsedFile: Story = {
   name: "解析成功",
   render: () => {
@@ -96,6 +234,29 @@ export const ParsedFile: Story = {
         fileList={fileList}
         setFileList={setFileList}
         showParseButton
+      />
+    );
+  },
+};
+
+export const DisableRemove: Story = {
+  name: "禁用移除",
+  render: () => {
+    const url = "https://example.com/files/example.iso";
+    const [value, setValue] = useState(url);
+    const [fileList, setFileList] = useState<UrlUploadFile[]>([
+      createUrlFile(url),
+    ]);
+
+    return (
+      <UrlUpload
+        description="解析后的 URL 已锁定，无法移除"
+        value={value}
+        onChange={setValue}
+        fileList={fileList}
+        setFileList={setFileList}
+        showParseButton
+        disableRemoveList
       />
     );
   },

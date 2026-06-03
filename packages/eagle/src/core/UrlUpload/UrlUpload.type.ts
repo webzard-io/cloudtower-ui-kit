@@ -25,6 +25,10 @@ export type UrlUploadProps = {
   className?: string;
   /** 数据测试 id */
   "data-testid"?: string;
+  /** 标签 */
+  label?: React.ReactNode;
+  /** 标签位置 */
+  labelPosition?: "top" | "left";
   /** 描述文本 */
   description?: React.ReactNode;
   /** 是否禁用 */

@@ -42,7 +42,7 @@ const isValidHttpUrl = (url: string) => {
 const createUrlUploadFile = (
   url: string,
   validate?: UrlUploadProps["validate"],
-) => {
+): UrlUploadFile => {
   return {
     uid: `url-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
     url,
@@ -100,6 +100,8 @@ export const UrlUpload = React.forwardRef<HTMLDivElement, UrlUploadProps>(
     {
       className,
       "data-testid": dataTestId,
+      label,
+      labelPosition = "top",
       description,
       disabled,
       value = "",
@@ -121,6 +123,10 @@ export const UrlUpload = React.forwardRef<HTMLDivElement, UrlUploadProps>(
     const isValidating = isUrlFileValidating(firstFile);
     const hasParsedFile = showParseButton && firstFile?.fileStatus === "success";
     const trimmedValue = value.trim();
+    const shouldShowDescriptionAbove =
+      !!description && !!label && labelPosition === "top";
+    const shouldShowDescriptionBelow =
+      !!description && !shouldShowDescriptionAbove;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setError("");
@@ -176,58 +182,79 @@ export const UrlUpload = React.forwardRef<HTMLDivElement, UrlUploadProps>(
       }
     };
 
+    const uploadContent = (
+      <div className="url-upload-body">
+        {!hasParsedFile ? (
+          <>
+            {shouldShowDescriptionAbove ? (
+              <div
+                className={cx(
+                  "url-upload-description",
+                  "url-upload-description-above",
+                  Typo.Label.l4_regular,
+                )}
+              >
+                {description}
+              </div>
+            ) : null}
+            <Input
+              data-testid={dataTestId ? `${dataTestId}-input` : undefined}
+              disabled={disabled || isValidating}
+              error={!!error}
+              value={value}
+              onChange={handleChange}
+              placeholder={placeholder}
+            />
+            {error || shouldShowDescriptionBelow ? (
+              <div className={cx("url-upload-footnote", Typo.Label.l4_regular)}>
+                {error ? <div className="url-upload-error">{error}</div> : null}
+                {shouldShowDescriptionBelow ? (
+                  <div className="url-upload-description">{description}</div>
+                ) : null}
+              </div>
+            ) : null}
+            {showParseButton ? (
+              <div className="url-upload-action">
+                <Button
+                  disabled={disabled || isValidating}
+                  loading={isValidating}
+                  size="small"
+                  type="secondary"
+                  onClick={handleParse}
+                >
+                  {parseButtonText ?? t("components.parse_url")}
+                </Button>
+              </div>
+            ) : null}
+          </>
+        ) : null}
+        {hasParsedFile && firstFile ? (
+          <UrlUploadFileInfo
+            file={firstFile}
+            disabled={disabled || disableRemoveList}
+            onRemove={handleRemove}
+          />
+        ) : null}
+      </div>
+    );
+
     return (
       <div
-        className={cs(UrlUploadWrapperStyle, className)}
+        className={cs(
+          UrlUploadWrapperStyle,
+          className,
+          label && labelPosition === "left" ? "label-left" : "label-top",
+          !label && "no-label",
+        )}
         data-testid={dataTestId}
         ref={ref}
       >
-        <div className="url-upload-body">
-          {!hasParsedFile ? (
-            <>
-              <Input
-                data-testid={dataTestId ? `${dataTestId}-input` : undefined}
-                disabled={disabled || isValidating}
-                error={!!error}
-                value={value}
-                onChange={handleChange}
-                placeholder={placeholder}
-              />
-              {error || description ? (
-                <div
-                  className={cx("url-upload-footnote", Typo.Label.l4_regular)}
-                >
-                  {error ? (
-                    <div className="url-upload-error">{error}</div>
-                  ) : null}
-                  {description ? (
-                    <div className="url-upload-description">{description}</div>
-                  ) : null}
-                </div>
-              ) : null}
-              {showParseButton ? (
-                <div className="url-upload-action">
-                  <Button
-                    disabled={disabled || isValidating}
-                    loading={isValidating}
-                    size="small"
-                    type="secondary"
-                    onClick={handleParse}
-                  >
-                    {parseButtonText ?? t("components.parse_url")}
-                  </Button>
-                </div>
-              ) : null}
-            </>
-          ) : null}
-          {hasParsedFile && firstFile ? (
-            <UrlUploadFileInfo
-              file={firstFile}
-              disabled={disabled || disableRemoveList}
-              onRemove={handleRemove}
-            />
-          ) : null}
-        </div>
+        {label ? (
+          <label className={cx("url-upload-label", Typo.Label.l2_regular)}>
+            {label}
+          </label>
+        ) : null}
+        {uploadContent}
       </div>
     );
   },
