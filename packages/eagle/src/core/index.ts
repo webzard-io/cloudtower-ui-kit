@@ -45,6 +45,7 @@ export * from "./ErrorBoundary";
 export * from "./ExpandableList";
 export * from "./FailedLoad";
 export * from "./Fields";
+export * from "./FileSelector";
 export * from "./Form";
 export * from "./FormItem";
 export * from "./Frequency";
