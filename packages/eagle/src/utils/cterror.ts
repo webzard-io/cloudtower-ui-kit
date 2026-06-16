@@ -34,13 +34,25 @@ export const isResponseCTError = (
 export const handleResponseCTError = (
   error: CloudTowerErrorResponse,
 ): ParsedCTError => {
-  // 如果存在 detail，使用 detail 的 reason 作为 code
+  // 仅展示带有可用 reason 的 details；如果全部缺失 reason，则使用外层 code 兜底。
   if ("details" in error && error.details?.length) {
-    return error.details.map((detail) => ({
-      code: detail.reason,
-      message: detail.message,
-      params: detail.params,
-    }));
+    const validDetails = error.details.filter(
+      (detail) => !isNil(detail.reason) && detail.reason !== "",
+    );
+
+    if (validDetails.length) {
+      return validDetails.map((detail) => ({
+        code: detail.reason,
+        ...(!isNil(detail.message) ? { message: detail.message } : {}),
+        ...(!isNil(detail.params) ? { params: detail.params } : {}),
+      }));
+    }
+
+    return [
+      {
+        ...(!isNil(error.code) ? { code: error.code } : {}),
+      },
+    ];
   } else if ("code" in error) {
     // 否则，使用 code
     const code = error.code;
