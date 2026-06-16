@@ -111,7 +111,7 @@ describe("cterror", () => {
         ]);
       });
 
-      it("应该处理 details 中没有 reason 的情况", () => {
+      it("应该处理 details 中没有 reason 时 fallback 到外层 code", () => {
         const error: CloudTowerErrorResponse = {
           ...CTErrorBasicParams,
           details: [
@@ -125,7 +125,28 @@ describe("cterror", () => {
 
         expect(result).toEqual([
           {
-            params: { field: "username" },
+            code: "UNKNOWN",
+          },
+        ]);
+      });
+
+      it("应该处理 details 中 reason 为空字符串时 fallback 到外层 code", () => {
+        const error: CloudTowerErrorResponse = {
+          code: "NETWORK_FIREWALL_INTERNAL_ERR",
+          message: "Internal error",
+          details: [
+            {
+              reason: "",
+              message: "invalid argument",
+            },
+          ],
+        };
+
+        const result = parseCTError(error);
+
+        expect(result).toEqual([
+          {
+            code: "NETWORK_FIREWALL_INTERNAL_ERR",
           },
         ]);
       });
@@ -669,10 +690,6 @@ describe("cterror", () => {
           {
             code: "PERMISSION_DENIED",
             params: { resource: "user", action: "create" },
-          },
-          {
-            message: "Unknown detail error",
-            params: { context: "additional" },
           },
         ]);
       });
