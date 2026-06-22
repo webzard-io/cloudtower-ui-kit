@@ -43,7 +43,7 @@ export const WizardBody = styled.div`
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: 58%;
-    overflow: hidden;
+    min-width: 0;
     .form-base-field {
       width: 100%;
       .form-base-field {
