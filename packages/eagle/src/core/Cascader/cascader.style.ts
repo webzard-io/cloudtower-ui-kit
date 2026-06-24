@@ -75,10 +75,10 @@ export const CascaderDefaultHeaderContainer = css`
 
 export const CascaderDefaultHeader = css`
   padding: 7px 14px;
-  height: 20px;
+  height: 34px;
 
   font-weight: 400;
-  box-sizing: content-box;
+  box-sizing: border-box;
   color: $text-neutral-secondary;
   display: flex;
   flex-direction: row;
@@ -168,7 +168,7 @@ export const CascaderSmallDropdown = css`
     }
     .${CascaderDefaultHeader} {
       padding: 6px 12px;
-      height: 18px;
+      height: 30px;
       font-size: 12px;
     }
   }
@@ -188,7 +188,7 @@ export const CascaderLargeDropdown = css`
       }
     }
     .${CascaderDefaultHeader} {
-      height: 22px;
+      height: 38px;
       padding: 8px 16px;
       font-size: 14px;
     }
