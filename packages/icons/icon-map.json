@@ -12066,5 +12066,19 @@
     "svgFileName": "storage-access-network-16-yellow.svg",
     "hash": "030265635306085855bf234574f88ce1",
     "lastUpdated": "2026-05-17T02:43:07.503Z"
+  },
+  "19738:3": {
+    "componentSetName": "Icon / alert.bell.acknowledge",
+    "name": "Size=24, Fill=Ontint",
+    "svgFileName": "alert-bell-acknowledge-24-ontint.svg",
+    "hash": "2d59445dca564a30a83bcb44856ce917",
+    "lastUpdated": "2026-06-28T02:59:53.844Z"
+  },
+  "19738:5": {
+    "componentSetName": "Icon / alert.bell.acknowledge",
+    "name": "Size=24, Fill=Gradient - Blue",
+    "svgFileName": "alert-bell-acknowledge-24-gradient-blue.svg",
+    "hash": "b9ea3868f9c2c39436b6667f1fd503e8",
+    "lastUpdated": "2026-06-28T02:59:53.845Z"
   }
 }
