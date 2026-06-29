@@ -6,9 +6,9 @@ import React, {
   useState,
 } from "react";
 import { cx } from "@linaria/core";
-import { Terminal } from "@xterm/xterm";
-import { ISearchOptions, SearchAddon } from "@xterm/addon-search";
-import { FitAddon } from "@xterm/addon-fit";
+import type { Terminal } from "@xterm/xterm";
+import type { ISearchOptions, SearchAddon } from "@xterm/addon-search";
+import type { FitAddon } from "@xterm/addon-fit";
 import {
   ArrowChevronDown16BlueIcon,
   ArrowChevronDown16OntintIcon,
@@ -30,6 +30,7 @@ import {
   CustomContentOverlay,
 } from "./LogView.style";
 import type { EventSourceOptions, LogViewProps } from "./LogView.types";
+import { loadXtermModules as loadXtermModulesUntyped } from "./LogView.xtermLoader";
 import {
   customShortcutsForMac,
   customShortcutsForWin,
@@ -41,6 +42,14 @@ import {
   selectAll,
   copySelectLines,
 } from "./LogView.utils";
+
+interface XtermModules {
+  Terminal: typeof import("@xterm/xterm").Terminal;
+  SearchAddon: typeof import("@xterm/addon-search").SearchAddon;
+  FitAddon: typeof import("@xterm/addon-fit").FitAddon;
+}
+
+const loadXtermModules = loadXtermModulesUntyped as () => Promise<XtermModules>;
 
 interface UseLogViewEventSourceParams {
   enabled: boolean;
@@ -194,109 +203,129 @@ export const LogView: React.FC<LogViewProps> = ({
   useEffect(() => {
     if (!terminalContainerRef.current) return;
 
-    // Create terminal instance
-    const terminal = new Terminal({
-      fontFamily: "Roboto Mono, monospace",
-      fontSize: 12,
-      scrollOnUserInput: false,
-      lineHeight: 1.5,
-      theme: {
-        background: "#00122E",
-        foreground: "#FFFFFF",
-        cursor: "#FFFFFF",
-      },
-      rows,
-      convertEol: true,
-      cursorBlink: false,
-      disableStdin: true,
-      allowProposedApi: true,
-      scrollback,
-    });
+    let disposed = false;
+    let terminal: Terminal | null = null;
 
-    terminal.attachCustomKeyEventHandler((event) => {
-      if (!terminalRef.current.enableKeyboardShortcuts) return true;
+    setReadyTerminal(null);
 
-      const target = event.target;
-      const isXtermEvent =
-        target instanceof HTMLElement && target.closest(".xterm");
+    const initializeTerminal = async () => {
+      try {
+        const { Terminal, SearchAddon, FitAddon } = await loadXtermModules();
 
-      if (!isXtermEvent) return true;
+        if (disposed || !terminalContainerRef.current) return;
 
-      const shortcuts = isMacOS()
-        ? customShortcutsForMac
-        : customShortcutsForWin;
+        // Create terminal instance
+        terminal = new Terminal({
+          fontFamily: "Roboto Mono, monospace",
+          fontSize: 12,
+          scrollOnUserInput: false,
+          lineHeight: 1.5,
+          theme: {
+            background: "#00122E",
+            foreground: "#FFFFFF",
+            cursor: "#FFFFFF",
+          },
+          rows,
+          convertEol: true,
+          cursorBlink: false,
+          disableStdin: true,
+          allowProposedApi: true,
+          scrollback,
+        });
 
-      if (
-        event.type === "keydown" &&
-        isCustomKeyboardAction(event, shortcuts)
-      ) {
-        event.stopPropagation();
-        event.preventDefault();
+        terminal.attachCustomKeyEventHandler((event) => {
+          if (!terminalRef.current.enableKeyboardShortcuts) return true;
 
-        const keyActions = {
-          arrowup: () => scrollLines("up", terminal),
-          arrowdown: () => scrollLines("down", terminal),
-          pageup: () => scrollPages("up", terminal),
-          pagedown: () => scrollPages("down", terminal),
-          c: () => copySelectLines(terminal),
-          a: () => selectAll(terminal),
+          const target = event.target;
+          const isXtermEvent =
+            target instanceof HTMLElement && target.closest(".xterm");
+
+          if (!isXtermEvent) return true;
+
+          const shortcuts = isMacOS()
+            ? customShortcutsForMac
+            : customShortcutsForWin;
+
+          if (
+            event.type === "keydown" &&
+            isCustomKeyboardAction(event, shortcuts)
+          ) {
+            event.stopPropagation();
+            event.preventDefault();
+
+            const keyActions = {
+              arrowup: () => scrollLines("up", terminal),
+              arrowdown: () => scrollLines("down", terminal),
+              pageup: () => scrollPages("up", terminal),
+              pagedown: () => scrollPages("down", terminal),
+              c: () => copySelectLines(terminal),
+              a: () => selectAll(terminal),
+            };
+
+            const action =
+              keyActions[event.key.toLowerCase() as keyof typeof keyActions];
+            if (action) action();
+
+            return false;
+          }
+
+          return true;
+        });
+
+        // Add search addon
+        const search = new SearchAddon({
+          highlightLimit: searchHighlightLimit,
+        });
+        terminal.loadAddon(search);
+
+        // Add fit addon
+        const fit = new FitAddon();
+        terminal.loadAddon(fit);
+
+        // Store references
+        terminalRef.current = {
+          searchAddon: search,
+          fitAddon: fit,
+          enableKeyboardShortcuts: terminalRef.current.enableKeyboardShortcuts,
         };
 
-        const action =
-          keyActions[event.key.toLowerCase() as keyof typeof keyActions];
-        if (action) action();
+        // Open terminal in the container
+        terminal.open(terminalContainerRef.current);
 
-        return false;
+        // Fit terminal to container
+        try {
+          fit.fit();
+        } catch (e) {
+          console.error("Error fitting terminal:", e);
+        }
+
+        // Write initial content
+        if (content) {
+          terminal.write(content);
+          terminalRef.current.previousContent = content;
+          setHasData(true);
+        } else {
+          setHasData(false);
+        }
+
+        terminalRef.current.searchAddon?.onDidChangeResults(
+          ({ resultCount, resultIndex }) => {
+            setSearchCount(resultCount);
+            setCurrent(resultIndex + 1);
+          },
+        );
+
+        setReadyTerminal(terminal);
+      } catch (e) {
+        if (!disposed) console.error("Error initializing terminal:", e);
       }
-
-      return true;
-    });
-
-    // Add search addon
-    const search = new SearchAddon({
-      highlightLimit: searchHighlightLimit,
-    });
-    terminal.loadAddon(search);
-
-    // Add fit addon
-    const fit = new FitAddon();
-    terminal.loadAddon(fit);
-
-    // Store references
-    terminalRef.current = {
-      searchAddon: search,
-      fitAddon: fit,
     };
 
-    // Open terminal in the container
-    terminal.open(terminalContainerRef.current);
-    setReadyTerminal(terminal);
-
-    // Fit terminal to container
-    try {
-      fit.fit();
-    } catch (e) {
-      console.error("Error fitting terminal:", e);
-    }
-
-    // Write initial content
-    if (content) {
-      terminal.write(content);
-      terminalRef.current.previousContent = content;
-      setHasData(true);
-    } else {
-      setHasData(false);
-    }
-
-    terminalRef.current.searchAddon?.onDidChangeResults(
-      ({ resultCount, resultIndex }) => {
-        setSearchCount(resultCount);
-        setCurrent(resultIndex + 1);
-      },
-    );
+    initializeTerminal();
 
     return () => {
-      terminal.dispose();
+      disposed = true;
+      terminal?.dispose();
     };
   }, [rows, scrollback, searchHighlightLimit]);
 
