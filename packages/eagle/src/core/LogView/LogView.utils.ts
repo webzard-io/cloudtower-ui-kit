@@ -1,10 +1,17 @@
-import { EventSource } from "eventsource";
-import { Terminal } from "@xterm/xterm";
-import { EventSourceOptions } from "./LogView.types";
+import type { Terminal } from "@xterm/xterm";
+import { loadEventSourceModule as loadEventSourceModuleUntyped } from "./LogView.eventSourceLoader";
+import type { EventSourceOptions } from "./LogView.types";
 
 export const ENCODED_NEWLINE = 10; // \n
 export const ENCODED_CARRIAGE_RETURN = 13; // \r
 export const SEARCH_BAR_HEIGHT = 45;
+
+interface EventSourceModule {
+  EventSource: typeof import("eventsource").EventSource;
+}
+
+const loadEventSourceModule =
+  loadEventSourceModuleUntyped as () => Promise<EventSourceModule>;
 
 /**
  * Create an event source connection to stream logs
@@ -31,7 +38,8 @@ export const eventsource = (
     onMessage,
   } = options;
   let aborted: boolean = false;
-  let eventSource: EventSource | null = null;
+  let EventSourceConstructor: EventSourceModule["EventSource"] | null = null;
+  let eventSource: InstanceType<EventSourceModule["EventSource"]> | null = null;
 
   // Function to close connection
   const close = () => {
@@ -43,16 +51,26 @@ export const eventsource = (
   };
 
   // Function to start connection
-  const start = () => {
+  const start = async () => {
     try {
+      if (!EventSourceConstructor) {
+        EventSourceConstructor = (await loadEventSourceModule()).EventSource;
+      }
+
+      if (aborted) return;
+
       // Try to connect to eventSource
-      eventSource = new EventSource(url, initOptions);
+      eventSource = new EventSourceConstructor(url, initOptions);
 
       eventSource.addEventListener(openEventName, (e) => {
         onOpen &&
-          onOpen(e, eventSource as EventSource, {
-            terminal,
-          });
+          onOpen(
+            e,
+            eventSource as InstanceType<EventSourceModule["EventSource"]>,
+            {
+              terminal,
+            },
+          );
       });
 
       eventSource.addEventListener(errorEventName, (err) => {
@@ -62,7 +80,7 @@ export const eventsource = (
         if (
           !aborted &&
           options.reconnect &&
-          eventSource?.readyState === EventSource.CLOSED
+          eventSource?.readyState === EventSourceConstructor?.CLOSED
         ) {
           const timeout = options.reconnectWait ?? 1;
           setTimeout(start, timeout * 1000);
