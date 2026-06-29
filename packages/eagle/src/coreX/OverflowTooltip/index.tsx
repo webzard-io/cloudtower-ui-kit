@@ -20,7 +20,7 @@ const MultipleLine = styled.div<{
   display: -webkit-box;
   -webkit-line-clamp: ${({ lineClamp = 2 }) => lineClamp};
   -webkit-box-orient: vertical;
-  word-break: break-all;
+  word-break: break-word;
 `;
 
 const TooltipDefaultClass = css`
