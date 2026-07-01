@@ -9,6 +9,9 @@ import "./overrideRoot.css";
 initParrotI18n({
   resources: {
     "en-US": {
+      common: {
+        INVALID_PARAMETER: "Invalid parameter",
+      },
       CTError: {
         AXIOS_NETWORK_ERROR: "Network error",
         INVALID_PARAMETER: "Invalid parameter",
@@ -21,7 +24,30 @@ initParrotI18n({
         error_message_batch: "Batch Error Message {count}",
       },
     },
+    "ja-JP": {
+      common: {
+        INVALID_PARAMETER: "パラメーターが無効です",
+      },
+      CTError: {
+        AXIOS_NETWORK_ERROR: "ネットワークエラー",
+        INVALID_PARAMETER: "パラメーターが無効です",
+        INVALID_PARAMETER_DETAIL: "無効なフィールド: {field}",
+      },
+      CustomCTError: {
+        CUSTOM_ERROR: "カスタムエラー",
+      },
+      test: {
+        error_message_batch: "エラーメッセージ {count}",
+        highlight: "渡された <1>{name}</1> を強調表示するテキストです",
+        longHighlightText:
+          "強調表示する <1>{name}</1> が長い場合は自動で折り返します",
+        line: "<0>行</0>",
+      },
+    },
     "zh-CN": {
+      common: {
+        INVALID_PARAMETER: "参数无效，请检查输入",
+      },
       CTError: {
         AXIOS_NETWORK_ERROR: "网络错误",
         INVALID_PARAMETER: "参数无效，请检查输入",
@@ -97,6 +123,7 @@ export const globalTypes = {
       icon: "globe",
       items: [
         { value: "zh-CN", title: "简体中文" },
+        { value: "ja-JP", title: "日本語" },
         { value: "en-US", title: "English" },
       ],
       showName: true,

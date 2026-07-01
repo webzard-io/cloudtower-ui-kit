@@ -19,5 +19,10 @@ export function getCalendarTitle(month: string, t: TFunction, i18n: i18n) {
   if (i18n.language === ParrotLngs.zh) {
     return `${month} ${t("common.month")}`;
   }
+  if (i18n.language === ParrotLngs.ja) {
+    return new Intl.DateTimeFormat("ja-JP", { month: "long" }).format(
+      new Date(2020, Number(month) - 1),
+    );
+  }
   return MonthText[month];
 }

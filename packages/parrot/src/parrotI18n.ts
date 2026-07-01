@@ -6,12 +6,16 @@ import locales from "./locales";
 export enum ParrotLngs {
   zh = "zh-CN",
   en = "en-US",
+  ja = "ja-JP",
 }
 
 const defaultOptions: InitOptions = {
   lng: ParrotLngs.zh,
   compatibilityJSON: "v3",
-  fallbackLng: [ParrotLngs.zh, ParrotLngs.en],
+  fallbackLng: {
+    [ParrotLngs.ja]: [ParrotLngs.en, ParrotLngs.zh],
+    default: [ParrotLngs.zh, ParrotLngs.en],
+  },
   interpolation: {
     prefix: "{",
     suffix: "}",
@@ -19,6 +23,7 @@ const defaultOptions: InitOptions = {
   },
   resources: {
     [ParrotLngs.en]: locales["en-US"],
+    [ParrotLngs.ja]: locales["ja-JP"],
     [ParrotLngs.zh]: locales["zh-CN"],
   },
   nsSeparator: ".",

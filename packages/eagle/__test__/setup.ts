@@ -82,6 +82,11 @@ initParrotI18n({
         error_message_batch: "Batch Error Message {count}",
       },
     },
+    "ja-JP": {
+      test: {
+        error_message_batch: "Batch Error Message {count}",
+      },
+    },
     "zh-CN": {
       test: {
         error_message_batch: "聚合错误信息 {count}",
