@@ -1,4 +1,6 @@
 import "dayjs/locale/zh-cn";
+import "dayjs/locale/ja";
+import "moment/locale/ja";
 import "moment/locale/zh-cn";
 
 import { ParrotLngs } from "@cloudtower/parrot";
@@ -7,12 +9,14 @@ import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { ConfigProvider as Antd4ConfigProvider } from "antd";
 import { ConfigProviderProps } from "antd/lib/config-provider";
 import enUS from "antd/lib/locale/en_US";
+import jaJP from "antd/lib/locale/ja_JP";
 import zhCN from "antd/lib/locale/zh_CN";
 import {
   ConfigProvider as Antd5ConfigProvider,
   ConfigProviderProps as Antd5ConfigProviderProps,
 } from "antd5";
 import antd5enUS from "antd5/lib/locale/en_US";
+import antd5jaJP from "antd5/lib/locale/ja_JP";
 import antd5zhCN from "antd5/lib/locale/zh_CN";
 import dayjs from "dayjs";
 import moment from "moment";
@@ -45,8 +49,13 @@ export const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProps>> = ({
   const { i18n } = useParrotTranslation();
   useEffect(() => {
     const adjustDateLocale = (lng: ParrotLngs) => {
-      moment.locale(lng === "zh-CN" ? "zh-cn" : "en");
-      dayjs.locale(lng === "zh-CN" ? "zh-cn" : "en");
+      const localeMap = {
+        [ParrotLngs.zh]: "zh-cn",
+        [ParrotLngs.en]: "en",
+        [ParrotLngs.ja]: "ja",
+      };
+      moment.locale(localeMap[lng] ?? "en");
+      dayjs.locale(localeMap[lng] ?? "en");
     };
     i18n.on("languageChanged", adjustDateLocale);
     // init
@@ -54,16 +63,27 @@ export const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProps>> = ({
   }, [i18n]);
 
   const patchEnLocale = useAntdPatchEnLocales(enUS);
+  const lng = i18n.language as ParrotLngs;
+  const antd5Locales = {
+    [ParrotLngs.zh]: antd5zhCN,
+    [ParrotLngs.en]: antd5enUS,
+    [ParrotLngs.ja]: antd5jaJP,
+  };
+  const antd4Locales = {
+    [ParrotLngs.zh]: zhCN,
+    [ParrotLngs.en]: patchEnLocale,
+    [ParrotLngs.ja]: jaJP,
+  };
   return (
     <ConfigProviderContext.Provider value={config}>
       <Antd5ConfigProvider
         autoInsertSpaceInButton={false}
-        locale={i18n.language === "zh-CN" ? antd5zhCN : antd5enUS}
+        locale={antd5Locales[lng] ?? antd5enUS}
         {...antd5Configs}
       >
         <Antd4ConfigProvider
           autoInsertSpaceInButton={false}
-          locale={i18n.language === "zh-CN" ? zhCN : patchEnLocale}
+          locale={antd4Locales[lng] ?? patchEnLocale}
           {...antd4Configs}
         >
           {children}

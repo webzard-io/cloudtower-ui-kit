@@ -15,4 +15,10 @@ describe("check missing locales", () => {
       expect(diff).toEqual([]);
     });
   });
+
+  it("registers ja-JP namespaces", () => {
+    expect(Object.keys(locales["ja-JP"])).toEqual(
+      Object.keys(locales["zh-CN"]),
+    );
+  });
 });

@@ -9,6 +9,7 @@ export const EMPTY_COMPONENT = () => null;
 export const DAYJS_I18N_MAP: Record<string, string> = {
   "zh-CN": "zh-cn",
   "en-US": "en",
+  "ja-JP": "ja",
 };
 
 export const Antd5PrefixCls = "antd5";

@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-let locales = ["en-US", "zh-CN"];
+let locales = ["en-US", "ja-JP", "zh-CN"];
 
 const snakeToCamel = (str: string) =>
   str

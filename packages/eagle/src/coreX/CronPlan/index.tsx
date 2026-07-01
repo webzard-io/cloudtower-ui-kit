@@ -200,9 +200,9 @@ export const stringifyPlan = (
   monthly: MonthlyState,
   i18n: Ii18n,
 ) => {
-  const isEn = i18n.language === ParrotLngs.en;
-  const mark = isEn ? " , " : "、";
-  const days_map = isEn ? EN_WEEK_DAYS_MAP(i18n.t) : WEEK_DAYS_MAP(i18n.t);
+  const isZh = i18n.language === ParrotLngs.zh;
+  const mark = i18n.t("components.date_mark");
+  const days_map = isZh ? WEEK_DAYS_MAP(i18n.t) : EN_WEEK_DAYS_MAP(i18n.t);
   if (mode === "day") {
     const time = daily.time.format("HH:mm");
     const count = daily.step || 0;
@@ -404,7 +404,7 @@ const Weekly: React.FC<{
               className={cx(
                 "week-day-option",
                 active && "active",
-                i18n.language === ParrotLngs.en && "en-text",
+                i18n.language !== ParrotLngs.zh && "en-text",
               )}
               type="default"
               key={d.value}
