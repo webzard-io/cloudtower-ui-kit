@@ -9,6 +9,10 @@ import { groupBy, sortBy, toPairs, uniqBy } from "lodash";
 import React, { useCallback, useEffect, useState } from "react";
 import TimeZones from "timezones.json";
 
+import {
+  shouldShowTimeZoneSelectOption,
+  TimeZoneSelectPlaceholderValue,
+} from "./filter";
 import { ITimeZoneSelectProps } from "./timeZoneSelect.type";
 
 type TimeZoneType = {
@@ -168,6 +172,21 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
   // innerValue could be BrowserTimeValue
   const [innerValue, setInnerValue] = useState(value);
   const { t } = useParrotTranslation();
+  const browserTimeZoneLabel = `${t(
+    "components.browser_time_zone",
+  )} (${getUTCOffsetText(browserTz.offset)})`;
+  const utcTimeZoneLabel = `${t(
+    "components.coordinated_universal_time",
+  )} (${getUTCOffsetText(0)})`;
+  const searchableOptionTexts = [
+    `${browserTimeZoneLabel} ${BrowserTimeValue}`,
+    utcTimeZoneLabel,
+    ...timeZoneGroups.flatMap(([, timezones]) =>
+      timezones.map(
+        (zone) => `${zone.value} (${getUTCOffsetText(zone.offset)})`,
+      ),
+    ),
+  ];
 
   const _onChange = useCallback(
     (val) => {
@@ -233,25 +252,18 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
         // This is to fix http://jira.smartx.com/browse/SKS-1482
         // Always show placeholder no matter search what
         // and hide placeholder when no timezone is matched
-        const hasSome = allTimeZones.some((tz) =>
-          tz.value.toLowerCase().includes(keyword.toLowerCase()),
+        return shouldShowTimeZoneSelectOption(
+          keyword,
+          option,
+          searchableOptionTexts,
         );
-        if (!hasSome) return false;
-        if (option?.value === "_placeholder_") {
-          return true;
-        }
-        return (option?.value || "")
-          .toLowerCase()
-          .includes(keyword.toLowerCase());
       }}
       optionLabelProp="label"
       input={{}}
     >
       <AntdSelect.Option
         value={BrowserTimeValue}
-        label={`${t("components.browser_time_zone")} (${getUTCOffsetText(
-          browserTz.offset,
-        )})`}
+        label={browserTimeZoneLabel}
         className={OptionWrapperStyle}
       >
         <TimeZoneOption
@@ -260,7 +272,11 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
           timeZone={browserTz}
         />
       </AntdSelect.Option>
-      <AntdSelect.Option value="UTC" className={OptionWrapperStyle}>
+      <AntdSelect.Option
+        value="UTC"
+        label={utcTimeZoneLabel}
+        className={OptionWrapperStyle}
+      >
         <TimeZoneOption
           key="utc"
           customLabel={t("components.coordinated_universal_time")}
@@ -273,8 +289,11 @@ const TimeZoneSelect: React.FC<ITimeZoneSelectProps> = (props) => {
         />
       </AntdSelect.Option>
       {timeZoneOptionGroups}
-      <AntdSelect.Option value="_placeholder_" className={OptionPlaceholder}>
-        _placeholder_
+      <AntdSelect.Option
+        value={TimeZoneSelectPlaceholderValue}
+        className={OptionPlaceholder}
+      >
+        {TimeZoneSelectPlaceholderValue}
       </AntdSelect.Option>
     </LegacySelect>
   );
