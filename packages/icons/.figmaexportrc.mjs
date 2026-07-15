@@ -184,6 +184,13 @@ const componentsConfig = {
             );
           }
 
+          if (iconMap[id] && iconMap[id].svgFileName !== svgFileName) {
+            console.log(
+              `\n⚠️  The old icon ${iconMap[id].svgFileName} has been renamed to ${svgFileName}. To avoid mixing old and new icons, please handle this icon manually.`,
+            );
+            return;
+          }
+
           fs.mkdirSync(ICON_SVG_DIR, { recursive: true });
           fs.writeFileSync(path.resolve(ICON_SVG_DIR, svgFileName), svg);
 
