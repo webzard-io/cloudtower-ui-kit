@@ -11775,24 +11775,24 @@
   },
   "19241:22": {
     "componentSetName": "datastore",
-    "name": "Size=32, Fill=Colorful, Error=False",
-    "svgFileName": "datastore-32-colorful.svg",
-    "hash": "123dcc76e9867c0a667eb566ead41da6",
-    "lastUpdated": "2026-07-14T07:51:13.405Z"
+    "name": "Size=32, Fill=Colorful, Status=Default",
+    "svgFileName": "datastore-default-32-colorful.svg",
+    "hash": "b9c218ff6a1820c31007e536aedc7655",
+    "lastUpdated": "2026-07-15T06:50:56.985Z"
   },
   "19245:99": {
     "componentSetName": "datastore",
-    "name": "Size=24, Fill=Gradient - Blue, Error=False",
-    "svgFileName": "datastore-24-gradient-blue.svg",
-    "hash": "327727ca1232f854be3b8538efe534ca",
-    "lastUpdated": "2026-07-14T07:51:13.405Z"
+    "name": "Size=24, Fill=Gradient - Blue, Status=Default",
+    "svgFileName": "datastore-default-24-gradient-blue.svg",
+    "hash": "6a93cf24c77952b6489a00ea6785b45c",
+    "lastUpdated": "2026-07-15T06:50:56.985Z"
   },
   "19245:157": {
     "componentSetName": "datastore",
-    "name": "Size=16, Fill=Gradient - Blue, Error=False",
-    "svgFileName": "datastore-16-gradient-blue.svg",
-    "hash": "7e6aef775454520347383d9579b92a86",
-    "lastUpdated": "2026-07-14T07:51:13.406Z"
+    "name": "Size=16, Fill=Gradient - Blue, Status=Default",
+    "svgFileName": "datastore-default-16-gradient-blue.svg",
+    "hash": "285c16fba84ed59772374d299c5a8073",
+    "lastUpdated": "2026-07-15T06:50:56.985Z"
   },
   "19245:225": {
     "componentSetName": "storage.adapter",
@@ -11929,24 +11929,24 @@
   },
   "19445:21": {
     "componentSetName": "datastore",
-    "name": "Size=16, Fill=Ontint, Error=False",
-    "svgFileName": "datastore-16-ontint.svg",
-    "hash": "ec7d0e9ed857dcab4464e08abcd89274",
-    "lastUpdated": "2026-07-14T07:51:13.406Z"
+    "name": "Size=16, Fill=Ontint, Status=Default",
+    "svgFileName": "datastore-default-16-ontint.svg",
+    "hash": "21785797557cab9bbdd06d8438dd256c",
+    "lastUpdated": "2026-07-15T06:50:56.985Z"
   },
   "19445:29": {
     "componentSetName": "datastore",
-    "name": "Size=16, Fill=Gradient - Gray, Error=False",
-    "svgFileName": "datastore-16-gradient-gray.svg",
-    "hash": "ef5473d0803503b01a4c89023fda586b",
-    "lastUpdated": "2026-07-14T07:51:13.406Z"
+    "name": "Size=16, Fill=Gradient - Gray, Status=Default",
+    "svgFileName": "datastore-default-16-gradient-gray.svg",
+    "hash": "021039629019d8a4b80347693a1abcaa",
+    "lastUpdated": "2026-07-15T06:50:56.985Z"
   },
   "19445:45": {
     "componentSetName": "datastore",
-    "name": "Size=16, Fill=Yellow, Error=False",
-    "svgFileName": "datastore-16-yellow.svg",
-    "hash": "3c438db29ada2940bc2a38d094b455e7",
-    "lastUpdated": "2026-07-14T07:51:13.406Z"
+    "name": "Size=16, Fill=Yellow, Status=Default",
+    "svgFileName": "datastore-default-16-yellow.svg",
+    "hash": "d982ccd57245f1b87ed0b8310a5a33f9",
+    "lastUpdated": "2026-07-15T06:50:56.985Z"
   },
   "19472:47": {
     "componentSetName": "Icon / os.linux.alma",
@@ -12034,10 +12034,10 @@
   },
   "19670:1088": {
     "componentSetName": "datastore",
-    "name": "Size=24, Fill=Gradient - Gray, Error=False",
-    "svgFileName": "datastore-24-gradient-gray.svg",
-    "hash": "1a767f549fd3e3ef470e57def15e0a4a",
-    "lastUpdated": "2026-07-14T07:51:13.405Z"
+    "name": "Size=24, Fill=Gradient - Gray, Status=Default",
+    "svgFileName": "datastore-default-24-gradient-gray.svg",
+    "hash": "e3e3d65138c5d64be056446763bdb635",
+    "lastUpdated": "2026-07-15T06:50:56.985Z"
   },
   "19675:48927": {
     "componentSetName": "Icon / storage-access.network",
@@ -12097,16 +12097,16 @@
   },
   "19772:1982": {
     "componentSetName": "datastore",
-    "name": "Size=16, Fill=Gradient - Blue, Error=True",
-    "svgFileName": "datastore-16-gradient-blue.svg",
-    "hash": "a3ad3a25bc48119dcfeb49fe9bf72a8f",
-    "lastUpdated": "2026-07-14T07:51:13.406Z"
+    "name": "Size=16, Fill=Gradient - Blue, Status=Disconnected",
+    "svgFileName": "datastore-disconnected-16-gradient-blue.svg",
+    "hash": "4c393d43f44b38999a4d0b8a74f71ab7",
+    "lastUpdated": "2026-07-15T06:50:56.985Z"
   },
   "19772:1993": {
     "componentSetName": "datastore",
-    "name": "Size=16, Fill=Ontint, Error=True",
-    "svgFileName": "datastore-16-ontint.svg",
-    "hash": "9c1b5c68001a7a7e9e43a739e9baf46d",
-    "lastUpdated": "2026-07-14T07:51:13.406Z"
+    "name": "Size=16, Fill=Ontint, Status=Disconnected",
+    "svgFileName": "datastore-disconnected-16-ontint.svg",
+    "hash": "155f2bb9273726b15419eec376b74706",
+    "lastUpdated": "2026-07-15T06:50:56.985Z"
   }
 }
