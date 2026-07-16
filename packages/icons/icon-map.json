@@ -6343,45 +6343,45 @@
   },
   "929:33054": {
     "componentSetName": "Icon / cluster",
-    "name": "Style=Solid, Size=16, Fill=Ontint",
-    "svgFileName": "cluster-16-ontint-solid.svg",
-    "hash": "29c88fdf0924cb09c91470812c83d8ae",
-    "lastUpdated": "2026-01-12T08:10:24.060Z"
+    "name": "Style=Solid, Size=16, Fill=Ontint, Status=Default",
+    "svgFileName": "cluster-default-16-ontint-solid.svg",
+    "hash": "afb9f634bc53e84ce4fe474326f71504",
+    "lastUpdated": "2026-07-16T02:10:26.739Z"
   },
   "877:855": {
     "componentSetName": "Icon / cluster",
-    "name": "Style=Outlined, Size=16, Fill=Ontint",
-    "svgFileName": "cluster-16-ontint-outlined.svg",
-    "hash": "f7c618532de4ec1f111edb110d6ce469",
-    "lastUpdated": "2026-01-12T08:10:24.060Z"
+    "name": "Style=Outlined, Size=16, Fill=Ontint, Status=Default",
+    "svgFileName": "cluster-default-16-ontint-outlined.svg",
+    "hash": "e2067de86c30d5a1e6a8a7a392851fea",
+    "lastUpdated": "2026-07-16T02:10:26.740Z"
   },
   "877:850": {
     "componentSetName": "Icon / cluster",
-    "name": "Style=Outlined, Size=16, Fill=Gradient - Blue",
-    "svgFileName": "cluster-16-gradient-blue-outlined.svg",
-    "hash": "acb02606df0c3ea68a0f3cb695bbb099",
-    "lastUpdated": "2026-01-12T08:10:24.060Z"
+    "name": "Style=Outlined, Size=16, Fill=Gradient - Blue, Status=Default",
+    "svgFileName": "cluster-default-16-gradient-blue-outlined.svg",
+    "hash": "6b1d60dd935faee846ca45f49de3f1ac",
+    "lastUpdated": "2026-07-16T02:10:26.740Z"
   },
   "16590:14": {
     "componentSetName": "Icon / cluster",
-    "name": "Style=Outlined, Size=16, Fill=Yellow",
-    "svgFileName": "cluster-16-yellow-outlined.svg",
-    "hash": "3a984558c431c2117e2a0843a2441976",
-    "lastUpdated": "2026-01-12T08:10:24.060Z"
+    "name": "Style=Outlined, Size=16, Fill=Yellow, Status=Default",
+    "svgFileName": "cluster-default-16-yellow-outlined.svg",
+    "hash": "97f4e8f7bcc1245dd40afe232ec576f5",
+    "lastUpdated": "2026-07-16T02:10:26.740Z"
   },
   "11270:59275": {
     "componentSetName": "Icon / cluster",
-    "name": "Style=Outlined, Size=16, Fill=Gradient - Gray",
-    "svgFileName": "cluster-16-gradient-gray-outlined.svg",
-    "hash": "193ba763cfb2fabc02e8b17872f7c71c",
-    "lastUpdated": "2026-01-12T08:10:24.061Z"
+    "name": "Style=Outlined, Size=16, Fill=Gradient - Gray, Status=Default",
+    "svgFileName": "cluster-default-16-gradient-gray-outlined.svg",
+    "hash": "44301d9cbf4d01bd2bb06125ecedcc61",
+    "lastUpdated": "2026-07-16T02:10:26.740Z"
   },
   "877:857": {
     "componentSetName": "Icon / cluster",
-    "name": "Style=Outlined, Size=24, Fill=Gradient - Blue",
-    "svgFileName": "cluster-24-gradient-blue-outlined.svg",
-    "hash": "dddf54146088b33d781b54e147e66309",
-    "lastUpdated": "2026-01-12T08:10:24.061Z"
+    "name": "Style=Outlined, Size=24, Fill=Gradient - Blue, Status=Default",
+    "svgFileName": "cluster-default-24-gradient-blue-outlined.svg",
+    "hash": "de64923275711330d55eaca3d58b72f5",
+    "lastUpdated": "2026-07-16T02:10:26.740Z"
   },
   "801:21389": {
     "componentSetName": "Icon / lock",
@@ -11929,24 +11929,24 @@
   },
   "19445:21": {
     "componentSetName": "datastore",
-    "name": "Size=16, Fill=Ontint, Error=False",
-    "svgFileName": "datastore-16-ontint.svg",
-    "hash": "ec7d0e9ed857dcab4464e08abcd89274",
-    "lastUpdated": "2026-07-14T07:51:13.406Z"
+    "name": "Size=16, Fill=Ontint, Status=Default",
+    "svgFileName": "datastore-default-16-ontint.svg",
+    "hash": "21785797557cab9bbdd06d8438dd256c",
+    "lastUpdated": "2026-07-16T02:10:26.743Z"
   },
   "19445:29": {
     "componentSetName": "datastore",
-    "name": "Size=16, Fill=Gradient - Gray, Error=False",
-    "svgFileName": "datastore-16-gradient-gray.svg",
-    "hash": "ef5473d0803503b01a4c89023fda586b",
-    "lastUpdated": "2026-07-14T07:51:13.406Z"
+    "name": "Size=16, Fill=Gradient - Gray, Status=Default",
+    "svgFileName": "datastore-default-16-gradient-gray.svg",
+    "hash": "021039629019d8a4b80347693a1abcaa",
+    "lastUpdated": "2026-07-16T02:10:26.743Z"
   },
   "19445:45": {
     "componentSetName": "datastore",
-    "name": "Size=16, Fill=Yellow, Error=False",
-    "svgFileName": "datastore-16-yellow.svg",
-    "hash": "3c438db29ada2940bc2a38d094b455e7",
-    "lastUpdated": "2026-07-14T07:51:13.406Z"
+    "name": "Size=16, Fill=Yellow, Status=Default",
+    "svgFileName": "datastore-default-16-yellow.svg",
+    "hash": "d982ccd57245f1b87ed0b8310a5a33f9",
+    "lastUpdated": "2026-07-16T02:10:26.743Z"
   },
   "19472:47": {
     "componentSetName": "Icon / os.linux.alma",
@@ -12034,10 +12034,10 @@
   },
   "19670:1088": {
     "componentSetName": "datastore",
-    "name": "Size=24, Fill=Gradient - Gray, Error=False",
-    "svgFileName": "datastore-24-gradient-gray.svg",
-    "hash": "1a767f549fd3e3ef470e57def15e0a4a",
-    "lastUpdated": "2026-07-14T07:51:13.405Z"
+    "name": "Size=24, Fill=Gradient - Gray, Status=Default",
+    "svgFileName": "datastore-default-24-gradient-gray.svg",
+    "hash": "e3e3d65138c5d64be056446763bdb635",
+    "lastUpdated": "2026-07-16T02:10:26.743Z"
   },
   "19675:48927": {
     "componentSetName": "Icon / storage-access.network",
@@ -12083,30 +12083,30 @@
   },
   "19771:2": {
     "componentSetName": "Icon / cluster",
-    "name": "Style=Outlined, Size=16, Fill=Gradient - Blue, Error=True",
-    "svgFileName": "cluster-16-gradient-blue-outlined.svg",
-    "hash": "320d5e2c8bfe51dc07341ae6cfe4c6fb",
-    "lastUpdated": "2026-07-14T07:51:13.402Z"
+    "name": "Style=Outlined, Size=16, Fill=Gradient - Blue, Status=Disconnected",
+    "svgFileName": "cluster-disconnected-16-gradient-blue-outlined.svg",
+    "hash": "c4c282b1c1f3dad0d16e6bf63e55781d",
+    "lastUpdated": "2026-07-16T02:10:26.740Z"
   },
   "19772:1978": {
     "componentSetName": "Icon / cluster",
-    "name": "Style=Outlined, Size=16, Fill=Ontint, Error=True",
-    "svgFileName": "cluster-16-ontint-outlined.svg",
-    "hash": "445b2660ee6fc907a07e26d661d28406",
-    "lastUpdated": "2026-07-14T07:51:13.402Z"
+    "name": "Style=Outlined, Size=16, Fill=Ontint, Status=Disconnected",
+    "svgFileName": "cluster-disconnected-16-ontint-outlined.svg",
+    "hash": "3c42c13d0c1773510c927b3f820f3029",
+    "lastUpdated": "2026-07-16T02:10:26.740Z"
   },
   "19772:1982": {
     "componentSetName": "datastore",
-    "name": "Size=16, Fill=Gradient - Blue, Error=True",
-    "svgFileName": "datastore-16-gradient-blue.svg",
-    "hash": "a3ad3a25bc48119dcfeb49fe9bf72a8f",
-    "lastUpdated": "2026-07-14T07:51:13.406Z"
+    "name": "Size=16, Fill=Gradient - Blue, Status=Disconnected",
+    "svgFileName": "datastore-disconnected-16-gradient-blue.svg",
+    "hash": "4c393d43f44b38999a4d0b8a74f71ab7",
+    "lastUpdated": "2026-07-16T02:10:26.743Z"
   },
   "19772:1993": {
     "componentSetName": "datastore",
-    "name": "Size=16, Fill=Ontint, Error=True",
-    "svgFileName": "datastore-16-ontint.svg",
-    "hash": "9c1b5c68001a7a7e9e43a739e9baf46d",
-    "lastUpdated": "2026-07-14T07:51:13.406Z"
+    "name": "Size=16, Fill=Ontint, Status=Disconnected",
+    "svgFileName": "datastore-disconnected-16-ontint.svg",
+    "hash": "155f2bb9273726b15419eec376b74706",
+    "lastUpdated": "2026-07-16T02:10:26.743Z"
   }
 }
