@@ -2,16 +2,13 @@ import { CTErrorType as CloudTowerErrorResponse } from "@src/utils/type";
 import { AxiosError } from "axios";
 import { isNil } from "lodash";
 
-// 修复类型定义，支持混合的 code 和 message
-type ParsedCTErrorItem =
-  | {
-      code?: string | number;
-      params?: CloudTowerErrorResponse["params"];
-      message?: string;
-    }
-  | { message: string };
+export type ParsedCTErrorItem = {
+  code?: string | number;
+  params?: CloudTowerErrorResponse["params"];
+  message?: string;
+};
 
-type ParsedCTError = ParsedCTErrorItem[];
+export type ParsedCTError = ParsedCTErrorItem[];
 
 export type CTError =
   | AxiosError<CloudTowerErrorResponse>
@@ -104,7 +101,7 @@ export const handleAxiosCTError = (error: AxiosCTError): ParsedCTError => {
  * @param error - 各种类型的错误对象
  * @returns 解析后的错误信息，包含 code 或 message
  */
-export const parseCTError = (error: CTError): ParsedCTError => {
+export const parseCTError = (error: unknown): ParsedCTError => {
   if (typeof error === "object" && error !== null) {
     // 处理 Axios 错误
     if (isAxiosCTError(error)) {

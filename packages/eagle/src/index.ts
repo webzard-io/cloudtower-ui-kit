@@ -13,6 +13,12 @@ export {
 export * from "./styles/token";
 export * from "./UIKitProvider";
 export { default as UIKitProvider } from "./UIKitProvider";
+export type {
+  CTError,
+  ParsedCTError,
+  ParsedCTErrorItem,
+} from "./utils/cterror";
+export { parseCTError } from "./utils/cterror";
 
 // parrot reexport
 export * from "@cloudtower/parrot";
