@@ -199,24 +199,6 @@ export const LineChartWrapper = styled.div`
   }
 `;
 
-export const LineChartWrapperBackgroundOverlay = styled.div`
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
-`;
-
-export const LineChartWrapperBackgroundSegment = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-`;
-
-export const LineChartContentLayer = styled.div`
-  position: relative;
-  z-index: 1;
-`;
 
 export const ChartContentWrapper = styled.div`
   position: relative;

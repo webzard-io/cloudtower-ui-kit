@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { Empty as AntdEmpty } from "antd";
 import { DropdownProps } from "antd5";
 import cs from "classnames";
@@ -8,7 +8,6 @@ import {
   Area,
   AreaChart,
   Customized,
-  ReferenceArea,
   ReferenceDot,
   ReferenceLine,
   ResponsiveContainer,
@@ -37,7 +36,6 @@ import TooltipFormatter, {
 } from "@src/core/LineChart/TooltipFormatter";
 import {
   ILineChartAreaHighlightRange,
-  ILineChartBackgroundRange,
   ILineChartDateRange,
   ILineChartGraphType,
   ILineChartMetric,
@@ -50,7 +48,6 @@ import {
   convertLineChartDataStruct,
   getLineChartAreaHighlightData,
   getLineChartAreaHighlightRanges,
-  getLineChartBackgroundRanges,
   getLineChartMetricPayloadMatches,
   getLineChartThresholdIntersections,
   getLineChartXAxisDomain,
@@ -80,7 +77,6 @@ export interface IChartProps<
   dropdownProps?: DropdownProps;
   onLabelsChange?: (labels: string[]) => void;
   metric: ILineChartMetric;
-  backgroundRanges?: ILineChartBackgroundRange[];
   areaHighlightRanges?: ILineChartAreaHighlightRange[];
   thresholdLineProps?: ILineChartThresholdLineProps;
   renderThresholdTooltip?: (
@@ -143,36 +139,6 @@ interface IAreaHighlightLayerProps {
     }
   >;
   yAxisMap?: Record<
-    string,
-    {
-      scale?: (value: number) => number;
-    }
-  >;
-}
-
-interface IFullHeightBackgroundRangeLayerProps {
-  range: ILineChartBackgroundRange;
-  height?: number;
-  xAxisMap?: Record<
-    string,
-    {
-      scale?: (value: number) => number;
-    }
-  >;
-}
-
-export interface ILineChartWrapperBackgroundLayout {
-  key: string;
-  left: number;
-  width: number;
-  fill: string;
-  fillOpacity: number;
-}
-
-interface IWrapperBackgroundRangeLayoutBridgeProps {
-  ranges: ILineChartBackgroundRange[];
-  onChange?: (layouts: ILineChartWrapperBackgroundLayout[]) => void;
-  xAxisMap?: Record<
     string,
     {
       scale?: (value: number) => number;
@@ -279,81 +245,6 @@ const getAreaHighlightFillPath = (
   return `${linePath} L${lastPoint.x},${baseLineY} L${firstPoint.x},${baseLineY} Z`;
 };
 
-const FullHeightBackgroundRangeLayer: React.FC<
-  IFullHeightBackgroundRangeLayerProps
-> = ({ range, height, xAxisMap }) => {
-  const xScale = Object.values(xAxisMap || {})[0]?.scale;
-
-  if (typeof xScale !== "function" || !height) {
-    return null;
-  }
-
-  const x1 = xScale(range.start);
-  const x2 = xScale(range.end);
-
-  if (!Number.isFinite(x1) || !Number.isFinite(x2) || x2 <= x1) {
-    return null;
-  }
-
-  return (
-    <rect
-      className="line-chart-background-range line-chart-background-range-full"
-      data-testid="line-chart-background-range-full"
-      x={x1}
-      y={0}
-      width={x2 - x1}
-      height={height}
-      fill={range.fill}
-      fillOpacity={range.fillOpacity ?? 0.12}
-      style={{ pointerEvents: "none" }}
-    />
-  );
-};
-
-const WrapperBackgroundRangeLayoutBridge: React.FC<
-  IWrapperBackgroundRangeLayoutBridgeProps
-> = ({ ranges, onChange, xAxisMap }) => {
-  const xScale = Object.values(xAxisMap || {})[0]?.scale;
-  const layouts = useMemo(() => {
-    if (typeof xScale !== "function") {
-      return [];
-    }
-
-    return ranges.flatMap((range, index) => {
-      const x1 = xScale(range.start);
-      const x2 = xScale(range.end);
-      const left = Math.min(x1, x2);
-      const width = Math.abs(x2 - x1);
-
-      if (!Number.isFinite(left) || !Number.isFinite(width) || width <= 0) {
-        return [];
-      }
-
-      return [
-        {
-          key: `${range.start}-${range.end}-${index}`,
-          left,
-          width,
-          fill: range.fill,
-          fillOpacity: range.fillOpacity ?? 0.12,
-        },
-      ];
-    });
-  }, [ranges, xScale]);
-
-  useEffect(() => {
-    onChange?.(layouts);
-  }, [layouts, onChange]);
-
-  useEffect(() => {
-    return () => {
-      onChange?.([]);
-    };
-  }, [onChange]);
-
-  return null;
-};
-
 const AreaHighlightLayer: React.FC<IAreaHighlightLayerProps> = ({
   overlay,
   hovering,
@@ -444,9 +335,6 @@ const AreaHighlightLayer: React.FC<IAreaHighlightLayerProps> = ({
 const RenderChart = (
   props: IChartProps & {
     width: number;
-    onWrapperBackgroundRangesLayoutChange?: (
-      layouts: ILineChartWrapperBackgroundLayout[],
-    ) => void;
   },
 ) => {
   const {
@@ -460,7 +348,6 @@ const RenderChart = (
     mode = "legend",
     dropdownProps,
     metric,
-    backgroundRanges,
     areaHighlightRanges,
     thresholdLineProps,
     renderThresholdTooltip,
@@ -472,7 +359,6 @@ const RenderChart = (
     dateRange = [dayjs(), dayjs()],
     emptyText,
     emptyIcon,
-    onWrapperBackgroundRangesLayoutChange,
   } = props;
   const { t } = useParrotTranslation();
 
@@ -508,22 +394,6 @@ const RenderChart = (
   const yTickDomain = yDomain as [number, number];
   const xTicks = lineChartXaxisCal(xDomain[1], dateRange, width);
 
-  const normalizedBackgroundRanges = useMemo(() => {
-    return getLineChartBackgroundRanges(backgroundRanges, xDomain);
-  }, [backgroundRanges, xDomain]);
-  const plotBackgroundRanges = useMemo(() => {
-    return normalizedBackgroundRanges.filter((range) => !range.fullHeight);
-  }, [normalizedBackgroundRanges]);
-  const surfaceBackgroundRanges = useMemo(() => {
-    return normalizedBackgroundRanges.filter((range) => {
-      return range.fullHeight && range.fullHeightTarget !== "wrapper";
-    });
-  }, [normalizedBackgroundRanges]);
-  const wrapperBackgroundRanges = useMemo(() => {
-    return normalizedBackgroundRanges.filter((range) => {
-      return range.fullHeight && range.fullHeightTarget === "wrapper";
-    });
-  }, [normalizedBackgroundRanges]);
   const normalizedAreaHighlightRanges = useMemo(() => {
     return getLineChartAreaHighlightRanges(areaHighlightRanges, xDomain);
   }, [areaHighlightRanges, xDomain]);
@@ -674,8 +544,10 @@ const RenderChart = (
     (method: "enter" | "leave", id: string) => {
       if (method === "enter") {
         if (deselected.length) {
+          // If there are unselected metrics
           setTempDeselected(deselected);
           if (deselected.includes(id)) {
+            // If hovering over an unselected metric, select the currently unselected metric
             setDeselected(
               streams
                 .map((stream) => stream.legend.id)
@@ -697,6 +569,7 @@ const RenderChart = (
                 .filter((legendId) => legendId === id),
             );
           } else {
+            // If more than one metric is selected, hovering does not change the selected metrics, but the hovered metric will be highlighted
             if (deselected.length === streams.length - 1) {
               setDeselected([]);
               setHovering(
@@ -721,6 +594,7 @@ const RenderChart = (
             }
           }
         } else {
+          // If all metrics are selected
           setHovering(
             streams
               .map((stream) => stream.legend.id)
@@ -902,38 +776,6 @@ const RenderChart = (
             onMouseLeave={hidePointer}
             onMouseMove={handleMouseMove}
           >
-            {plotBackgroundRanges.map((range, index) => {
-              return (
-                <ReferenceArea
-                  key={`${range.start}-${range.end}-${index}`}
-                  data-testid="line-chart-background-range"
-                  className="line-chart-background-range"
-                  x1={range.start}
-                  x2={range.end}
-                  fill={range.fill}
-                  fillOpacity={range.fillOpacity ?? 0.12}
-                  ifOverflow="hidden"
-                  isFront={false}
-                  style={{ pointerEvents: "none" }}
-                />
-              );
-            })}
-            {surfaceBackgroundRanges.map((range, index) => {
-              return (
-                <Customized
-                  key={`${range.start}-${range.end}-${index}`}
-                  component={FullHeightBackgroundRangeLayer}
-                  range={range}
-                />
-              );
-            })}
-            {!!wrapperBackgroundRanges.length && (
-              <Customized
-                component={WrapperBackgroundRangeLayoutBridge}
-                ranges={wrapperBackgroundRanges}
-                onChange={onWrapperBackgroundRangesLayoutChange}
-              />
-            )}
             <XAxis
               hide={!showXAxis}
               dataKey="t"
