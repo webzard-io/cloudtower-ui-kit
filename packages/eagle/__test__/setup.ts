@@ -23,6 +23,15 @@ Object.defineProperty(window, "matchMedia", {
 
 global.ResizeObserver = ResizeObserver;
 
+global.IntersectionObserver = vi.fn().mockImplementation(() => ({
+  disconnect: vi.fn(),
+  observe: vi.fn(),
+  takeRecords: vi.fn(() => []),
+  unobserve: vi.fn(),
+})) as unknown as typeof IntersectionObserver;
+
+Element.prototype.scrollIntoView = vi.fn();
+
 const styleMapFileName = path.join(__dirname, "../linaria-temp-map.json");
 
 const safeJsonParse = (text: string) => {

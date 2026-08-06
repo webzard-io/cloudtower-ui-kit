@@ -8,7 +8,6 @@ import {
   Area,
   AreaChart,
   Customized,
-  ReferenceDot,
   ReferenceLine,
   ResponsiveContainer,
   Tooltip,
@@ -41,7 +40,6 @@ import {
   ILineChartMetric,
   ILineChartMetricStream,
   ILineChartThresholdIntersectionInfo,
-  ILineChartThresholdIntersectionLabelProps,
   ILineChartThresholdLineProps,
 } from "@src/core/LineChart/type";
 import {
@@ -60,6 +58,13 @@ import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { ChartActions } from "@src/store";
 
 import LineChartToolBar from "./LineChartToolBar";
+import AreaHighlightLayer, {
+  IAreaHighlightOverlay,
+} from "./AreaHighlightLayer";
+import ThresholdIntersectionLayer, {
+  THRESHOLD_INTERSECTION_LABEL_MARGIN_TOP,
+  isThresholdIntersectionLabelVisible,
+} from "./ThresholdIntersectionLayer";
 
 export interface IChartProps<
   TValue extends ValueType = string,
@@ -111,225 +116,12 @@ interface IHoveredThresholdIntersection {
   top: number;
 }
 
-interface IAreaHighlightOverlay {
-  key: string;
-  data: Array<{
-    t: number;
-    value: number;
-  }>;
-  fill: string;
-  fillOpacity: number;
-  legendId: string;
-  stroke: string | undefined;
-}
-
-interface IAreaHighlightLayerProps {
-  overlay: IAreaHighlightOverlay;
-  hovering: string[];
-  offset?: {
-    top?: number;
-    left?: number;
-    width?: number;
-    height?: number;
-  };
-  xAxisMap?: Record<
-    string,
-    {
-      scale?: (value: number) => number;
-    }
-  >;
-  yAxisMap?: Record<
-    string,
-    {
-      scale?: (value: number) => number;
-    }
-  >;
-}
-
 const DEFAULT_THRESHOLD_LINE_STROKE = "#ff4d4f";
 const DEFAULT_THRESHOLD_LINE_DASHARRAY = "4 4";
-const DEFAULT_THRESHOLD_INTERSECTION_LABEL_TEXT_COLOR = "#ffffff";
-const THRESHOLD_INTERSECTION_LABEL_HEIGHT = 28;
-const THRESHOLD_INTERSECTION_LABEL_RADIUS = 4;
-const THRESHOLD_INTERSECTION_LABEL_OFFSET = 10;
-const THRESHOLD_INTERSECTION_LABEL_PADDING_X = 12;
-const THRESHOLD_INTERSECTION_LABEL_MIN_WIDTH = 48;
-const THRESHOLD_INTERSECTION_LABEL_FONT_SIZE = 12;
-const THRESHOLD_INTERSECTION_LABEL_MARGIN_TOP = 44;
-const THRESHOLD_INTERSECTION_CJK_REGEXP = /[\u3400-\u9fff\uf900-\ufaff]/;
-
-const getThresholdIntersectionLabelText = (
-  labelProps: ILineChartThresholdIntersectionLabelProps | undefined,
-  info: ILineChartThresholdIntersectionInfo,
-) => {
-  const text = labelProps?.text;
-
-  if (_.isFunction(text)) {
-    return text(info) || info.formattedThresholdValue;
-  }
-
-  return text || info.formattedThresholdValue;
-};
-
-const isThresholdIntersectionLabelVisible = (
-  labelProps: ILineChartThresholdIntersectionLabelProps | undefined,
-  info: ILineChartThresholdIntersectionInfo,
-) => {
-  if (!labelProps) {
-    return false;
-  }
-
-  const { visible = true } = labelProps;
-
-  if (_.isFunction(visible)) {
-    return visible(info);
-  }
-
-  return visible;
-};
-
-const getThresholdIntersectionLabelWidth = (label: string) => {
-  const contentWidth = Array.from(label).reduce((sum, char) => {
-    return (
-      sum +
-      (THRESHOLD_INTERSECTION_CJK_REGEXP.test(char)
-        ? THRESHOLD_INTERSECTION_LABEL_FONT_SIZE
-        : THRESHOLD_INTERSECTION_LABEL_FONT_SIZE * 0.65)
-    );
-  }, 0);
-
-  return Math.max(
-    THRESHOLD_INTERSECTION_LABEL_MIN_WIDTH,
-    Math.ceil(contentWidth) + THRESHOLD_INTERSECTION_LABEL_PADDING_X * 2,
-  );
-};
-
 const getStreamStroke = (stream: ILineChartMetricStream) => {
   return stream.legend.stroke
     ? `${stream.legend.color}1A`
     : stream.legend.color;
-};
-
-const getAreaHighlightLinePath = (
-  points: Array<{
-    x: number;
-    y: number;
-  }>,
-) => {
-  if (!points.length) {
-    return "";
-  }
-
-  return points
-    .map((point, index) => {
-      return `${index === 0 ? "M" : "L"}${point.x},${point.y}`;
-    })
-    .join(" ");
-};
-
-const getAreaHighlightFillPath = (
-  points: Array<{
-    x: number;
-    y: number;
-  }>,
-  baseLineY: number,
-) => {
-  if (!points.length) {
-    return "";
-  }
-
-  const linePath = getAreaHighlightLinePath(points);
-  const firstPoint = points[0];
-  const lastPoint = points[points.length - 1];
-
-  return `${linePath} L${lastPoint.x},${baseLineY} L${firstPoint.x},${baseLineY} Z`;
-};
-
-const AreaHighlightLayer: React.FC<IAreaHighlightLayerProps> = ({
-  overlay,
-  hovering,
-  offset,
-  xAxisMap,
-  yAxisMap,
-}) => {
-  const clipPathId = useMemo(() => {
-    return _.uniqueId("line-chart-area-highlight-");
-  }, []);
-  const xScale = Object.values(xAxisMap || {})[0]?.scale;
-  const yScale = Object.values(yAxisMap || {})[0]?.scale;
-  const offsetLeft = offset?.left ?? 0;
-  const offsetTop = offset?.top ?? 0;
-  const offsetWidth = offset?.width ?? 0;
-  const offsetHeight = offset?.height ?? 0;
-
-  if (
-    typeof xScale !== "function" ||
-    typeof yScale !== "function" ||
-    !offsetWidth ||
-    !offsetHeight
-  ) {
-    return null;
-  }
-
-  const projectedPoints = overlay.data
-    .map((point) => {
-      return {
-        x: xScale(point.t),
-        y: yScale(point.value),
-      };
-    })
-    .filter((point) => {
-      return Number.isFinite(point.x) && Number.isFinite(point.y);
-    });
-
-  if (projectedPoints.length < 2) {
-    return null;
-  }
-
-  const fallbackBaseLineY = offsetTop + offsetHeight;
-  const scaleBaseLineY = yScale(0);
-  const baseLineY = Number.isFinite(scaleBaseLineY)
-    ? scaleBaseLineY
-    : fallbackBaseLineY;
-  const linePath = getAreaHighlightLinePath(projectedPoints);
-  const fillPath = getAreaHighlightFillPath(projectedPoints, baseLineY);
-
-  return (
-    <g
-      className="line-chart-area-highlight"
-      data-testid="line-chart-area-highlight"
-      style={{ pointerEvents: "none" }}
-      opacity={hovering.includes(overlay.legendId) ? 0.3 : 1}
-    >
-      <defs>
-        <clipPath id={clipPathId}>
-          <rect
-            x={offsetLeft}
-            y={offsetTop}
-            width={offsetWidth}
-            height={offsetHeight}
-          />
-        </clipPath>
-      </defs>
-      <g clipPath={`url(#${clipPathId})`}>
-        <path
-          className="line-chart-area-highlight-fill"
-          d={fillPath}
-          fill={overlay.fill}
-          fillOpacity={overlay.fillOpacity}
-        />
-        {overlay.stroke && (
-          <path
-            className="line-chart-area-highlight-curve"
-            d={linePath}
-            fill="none"
-            stroke={overlay.stroke}
-            strokeWidth={1}
-          />
-        )}
-      </g>
-    </g>
-  );
 };
 
 const RenderChart = (
@@ -399,7 +191,9 @@ const RenderChart = (
   }, [areaHighlightRanges, xDomain]);
   const thresholdIntersectionLabelProps =
     thresholdLineProps?.intersectionLabelProps;
-  const hasThresholdIntersectionLabel = Boolean(thresholdIntersectionLabelProps);
+  const hasThresholdIntersectionLabel = Boolean(
+    thresholdIntersectionLabelProps,
+  );
 
   const areaHighlightOverlays = useMemo(() => {
     if (type !== ILineChartGraphType.Area) {
@@ -483,13 +277,7 @@ const RenderChart = (
         thresholdValue,
       };
     });
-  }, [
-    formatIntersectionValue,
-    metric.unit,
-    streams,
-    thresholdValue,
-    xDomain,
-  ]);
+  }, [formatIntersectionValue, metric.unit, streams, thresholdValue, xDomain]);
 
   const visibleThresholdIntersections = useMemo(() => {
     return thresholdIntersections.filter((intersection) => {
@@ -874,100 +662,19 @@ const RenderChart = (
                 />
               );
             })}
-            {visibleThresholdIntersections.map((intersection, index) => {
-              return (
-                <ReferenceDot
-                  key={`${intersection.legend.id}-${intersection.timestamp}-${index}`}
-                  x={intersection.timestamp}
-                  y={intersection.value}
-                  isFront
-                  shape={(shapeProps: { cx?: number; cy?: number }) => {
-                    const { cx = 0, cy = 0 } = shapeProps;
-                    const intersectionOpacity = hovering.includes(
-                      intersection.legend.id,
-                    )
-                      ? 0.3
-                      : 1;
-                    const showIntersectionLabel =
-                      isThresholdIntersectionLabelVisible(
-                        thresholdIntersectionLabelProps,
-                        intersection,
-                      );
-                    const intersectionLabelText = showIntersectionLabel
-                      ? getThresholdIntersectionLabelText(
-                          thresholdIntersectionLabelProps,
-                          intersection,
-                        )
-                      : "";
-                    const intersectionLabelColor =
-                      thresholdIntersectionLabelProps?.color ||
-                      thresholdLineProps?.stroke ||
-                      DEFAULT_THRESHOLD_LINE_STROKE;
-                    const intersectionLabelTextColor =
-                      thresholdIntersectionLabelProps?.textColor ||
-                      DEFAULT_THRESHOLD_INTERSECTION_LABEL_TEXT_COLOR;
-                    const intersectionLabelWidth =
-                      getThresholdIntersectionLabelWidth(intersectionLabelText);
-                    const intersectionLabelX = cx - intersectionLabelWidth / 2;
-                    const intersectionLabelY =
-                      cy -
-                      THRESHOLD_INTERSECTION_LABEL_HEIGHT -
-                      THRESHOLD_INTERSECTION_LABEL_OFFSET;
-
-                    return (
-                      <g
-                        data-testid="line-chart-threshold-intersection-dot"
-                        data-intersection-id={`${intersection.legend.id}-${index}`}
-                        onMouseEnter={() =>
-                          handleThresholdIntersectionEnter(intersection, cx, cy)
-                        }
-                        onMouseLeave={() =>
-                          setHoveredThresholdIntersection(null)
-                        }
-                      >
-                        <circle
-                          cx={cx}
-                          cy={cy}
-                          r={8}
-                          fill="transparent"
-                          stroke="transparent"
-                        />
-                        {showIntersectionLabel && (
-                          <g data-testid="line-chart-threshold-intersection-label">
-                            <rect
-                              data-testid="line-chart-threshold-intersection-label-background"
-                              x={intersectionLabelX}
-                              y={intersectionLabelY}
-                              width={intersectionLabelWidth}
-                              height={THRESHOLD_INTERSECTION_LABEL_HEIGHT}
-                              rx={THRESHOLD_INTERSECTION_LABEL_RADIUS}
-                              ry={THRESHOLD_INTERSECTION_LABEL_RADIUS}
-                              fill={intersectionLabelColor}
-                              opacity={intersectionOpacity}
-                            />
-                            <text
-                              x={cx}
-                              y={
-                                intersectionLabelY +
-                                THRESHOLD_INTERSECTION_LABEL_HEIGHT / 2
-                              }
-                              fill={intersectionLabelTextColor}
-                              fontSize={THRESHOLD_INTERSECTION_LABEL_FONT_SIZE}
-                              fontWeight={500}
-                              textAnchor="middle"
-                              dominantBaseline="middle"
-                              opacity={intersectionOpacity}
-                            >
-                              {intersectionLabelText}
-                            </text>
-                          </g>
-                        )}
-                      </g>
-                    );
-                  }}
-                />
-              );
-            })}
+            {visibleThresholdIntersections.map((intersection, index) => (
+              <Customized
+                key={`${intersection.legend.id}-${intersection.timestamp}-${index}`}
+                component={ThresholdIntersectionLayer}
+                intersection={intersection as ILineChartThresholdIntersectionInfo}
+                index={index}
+                hovering={hovering}
+                intersectionLabelProps={thresholdIntersectionLabelProps}
+                thresholdStroke={thresholdLineProps?.stroke}
+                onMouseEnter={handleThresholdIntersectionEnter}
+                onMouseLeave={() => setHoveredThresholdIntersection(null)}
+              />
+            ))}
           </AreaChart>
         </ResponsiveContainer>
         {hoveredThresholdIntersection && thresholdTooltipContent && (
