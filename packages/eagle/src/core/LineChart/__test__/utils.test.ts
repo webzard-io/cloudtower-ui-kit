@@ -5,7 +5,6 @@ import {
 import {
   getLineChartAreaHighlightData,
   getLineChartAreaHighlightRanges,
-  getLineChartBackgroundRanges,
   getLineChartMetricPayloadMatches,
   getLineChartThresholdIntersections,
   getYAxisDomain,
@@ -13,44 +12,6 @@ import {
 import { describe, expect, it } from "vitest";
 
 describe("LineChart utils", () => {
-  it("clips background ranges to the current x domain and filters invalid ranges", () => {
-    expect(
-      getLineChartBackgroundRanges(
-        [
-          {
-            start: 0,
-            end: 50,
-            fill: "#ff4d4f",
-          },
-          {
-            start: 120,
-            end: 80,
-            fill: "#1890ff",
-          },
-          {
-            start: 160,
-            end: 260,
-            fill: "#52c41a",
-            fillOpacity: 0.2,
-          },
-        ],
-        [20, 200],
-      ),
-    ).toEqual([
-      {
-        start: 20,
-        end: 50,
-        fill: "#ff4d4f",
-      },
-      {
-        start: 160,
-        end: 200,
-        fill: "#52c41a",
-        fillOpacity: 0.2,
-      },
-    ]);
-  });
-
   it("clips area highlight ranges and keeps legend binding", () => {
     expect(
       getLineChartAreaHighlightRanges(

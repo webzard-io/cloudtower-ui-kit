@@ -64,24 +64,6 @@ export enum ILineChartGraphType {
 
 export type ILineChartDateRange = [Dayjs, Dayjs];
 
-/**
- * 背景高亮区间
- * @description 沿时间轴渲染整段背景高亮，不会跟随曲线形状裁剪
- */
-export interface ILineChartBackgroundRange {
-  /** 区间开始时间戳（毫秒） */
-  start: number;
-  /** 区间结束时间戳（毫秒） */
-  end: number;
-  /** 背景填充色 */
-  fill: string;
-  /** 填充透明度 */
-  fillOpacity?: number;
-  /** 是否填满整个图表内容高度，而非仅绘图区 */
-  fullHeight?: boolean;
-  /** 填满高度的目标层：surface 为整个图表 surface，wrapper 为整个 LineChartWrapper。 */
-  fullHeightTarget?: "surface" | "wrapper";
-}
 
 /**
  * 曲线区域高亮区间
@@ -158,9 +140,7 @@ export type ChartProps = {
   renderThresholdTooltip?: (
     info: ILineChartThresholdIntersectionInfo,
   ) => ReactElement;
-  /** 时间轴背景高亮区间 */
-  backgroundRanges?: ILineChartBackgroundRange[];
-  /** 曲线以下区域高亮区间 */
+  /** Area highlight ranges below the curve */
   areaHighlightRanges?: ILineChartAreaHighlightRange[];
   /** 水平阈值线配置 */
   thresholdLineProps?: ILineChartThresholdLineProps;
@@ -316,8 +296,6 @@ export type LineChartMetricProps = {
   formatLegendItemName?: FormatName;
 
   /** 时间轴背景高亮区间 */
-  backgroundRanges?: ILineChartBackgroundRange[];
-
   /** 曲线以下区域高亮区间 */
   areaHighlightRanges?: ILineChartAreaHighlightRange[];
 

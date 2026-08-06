@@ -1,6 +1,5 @@
 import {
   ILineChartAreaHighlightRange,
-  ILineChartBackgroundRange,
   ILineChartDataPoint,
   ILineChartDateRange,
   ILineChartGraphType,
@@ -154,20 +153,6 @@ export const getLineChartMetricPayloadMatches = <
   });
 };
 
-export const getLineChartBackgroundRanges = (
-  ranges: ILineChartBackgroundRange[] = [],
-  xDomain: [number, number],
-) => {
-  const [domainStart, domainEnd] = xDomain;
-
-  return ranges
-    .map((range) => ({
-      ...range,
-      start: Math.max(range.start, domainStart),
-      end: Math.min(range.end, domainEnd),
-    }))
-    .filter((range) => range.start < range.end);
-};
 
 export const getLineChartAreaHighlightRanges = (
   ranges: ILineChartAreaHighlightRange[] = [],
