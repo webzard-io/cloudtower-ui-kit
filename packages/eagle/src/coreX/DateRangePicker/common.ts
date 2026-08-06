@@ -218,14 +218,18 @@ export function getEffectiveAbsoluteTimeBounds(
   let effectiveMinDate = nowDate;
   let effectiveMaxDate = nowDate.add(1, "year");
 
-  const parsedMinDate = dayjs(minDate);
-  if (parsedMinDate.isValid() && parsedMinDate.isAfter(effectiveMinDate)) {
-    effectiveMinDate = parsedMinDate;
+  if (minDate) {
+    const parsedMinDate = dayjs(minDate);
+    if (parsedMinDate.isValid() && parsedMinDate.isAfter(effectiveMinDate)) {
+      effectiveMinDate = parsedMinDate;
+    }
   }
 
-  const parsedMaxDate = dayjs(maxDate);
-  if (parsedMaxDate.isValid() && parsedMaxDate.isBefore(effectiveMaxDate)) {
-    effectiveMaxDate = parsedMaxDate;
+  if (maxDate) {
+    const parsedMaxDate = dayjs(maxDate);
+    if (parsedMaxDate.isValid() && parsedMaxDate.isBefore(effectiveMaxDate)) {
+      effectiveMaxDate = parsedMaxDate;
+    }
   }
 
   return {
