@@ -5,6 +5,7 @@ import "moment/locale/zh-cn";
 
 import { ParrotLngs } from "@cloudtower/parrot";
 import { useAntdPatchEnLocales } from "@src/hooks/useAntdPatchEnLocales";
+import { useAntdPatchJaLocales } from "@src/hooks/useAntdPatchJaLocales";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { ConfigProvider as Antd4ConfigProvider } from "antd";
 import { ConfigProviderProps } from "antd/lib/config-provider";
@@ -63,16 +64,18 @@ export const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProps>> = ({
   }, [i18n]);
 
   const patchEnLocale = useAntdPatchEnLocales(enUS);
+  const patchAntd4JaLocale = useAntdPatchJaLocales(jaJP);
+  const patchAntd5JaLocale = useAntdPatchJaLocales(antd5jaJP);
   const lng = i18n.language as ParrotLngs;
   const antd5Locales = {
     [ParrotLngs.zh]: antd5zhCN,
     [ParrotLngs.en]: antd5enUS,
-    [ParrotLngs.ja]: antd5jaJP,
+    [ParrotLngs.ja]: patchAntd5JaLocale,
   };
   const antd4Locales = {
     [ParrotLngs.zh]: zhCN,
     [ParrotLngs.en]: patchEnLocale,
-    [ParrotLngs.ja]: jaJP,
+    [ParrotLngs.ja]: patchAntd4JaLocale,
   };
   return (
     <ConfigProviderContext.Provider value={config}>
