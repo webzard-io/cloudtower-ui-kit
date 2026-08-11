@@ -1,7 +1,7 @@
 {
   "name": "@cloudtower/icons-react",
   "license": "MIT",
-  "version": "4100.0.16",
+  "version": "4100.0.17",
   "types": "./dist/index.d.ts",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -41,7 +41,7 @@
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/plugin-transform-react-jsx": "^7.21.0",
-    "@cloudtower/icons": "^4100.0.16",
+    "@cloudtower/icons": "^4100.0.17",
     "@svgr/core": "^5.0.0",
     "camelcase": "^6.0.0"
   },

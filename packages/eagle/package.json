@@ -1,6 +1,6 @@
 {
   "name": "@cloudtower/eagle",
-  "version": "4100.0.16",
+  "version": "4100.0.17",
   "main": "dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "dist/src/index.d.ts",
@@ -30,8 +30,8 @@
     "sync:typography": "node tools/sync-figma-typography.js --write"
   },
   "dependencies": {
-    "@cloudtower/icons-react": "^4100.0.16",
-    "@cloudtower/parrot": "^4100.0.16",
+    "@cloudtower/icons-react": "^4100.0.17",
+    "@cloudtower/parrot": "^4100.0.17",
     "@cloudtower/rc-notification": "^4.6.1",
     "@linaria/core": "^4.2.2",
     "@linaria/react": "^4.3.0",
