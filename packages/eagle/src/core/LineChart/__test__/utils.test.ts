@@ -5,6 +5,7 @@ import {
 import {
   getLineChartAreaHighlightData,
   getLineChartAreaHighlightRanges,
+  getLineChartLineSegments,
   getLineChartMetricPayloadMatches,
   getLineChartThresholdIntersections,
   getYAxisDomain,
@@ -74,6 +75,120 @@ describe("LineChart utils", () => {
       {
         t: 15,
         value: 5,
+      },
+    ]);
+  });
+
+  it("splits a line at an interpolated forecast boundary", () => {
+    expect(
+      getLineChartLineSegments(
+        [
+          { t: 0, x: 0, y: 0 },
+          { t: 10, x: 10, y: 20 },
+          { t: 20, x: 20, y: 0 },
+        ],
+        15,
+      ),
+    ).toEqual([
+      {
+        dashed: false,
+        points: [
+          { t: 0, x: 0, y: 0 },
+          { t: 10, x: 10, y: 20 },
+          { t: 15, x: 15, y: 10 },
+        ],
+      },
+      {
+        dashed: true,
+        points: [
+          { t: 15, x: 15, y: 10 },
+          { t: 20, x: 20, y: 0 },
+        ],
+      },
+    ]);
+  });
+
+  it("keeps an exact forecast point in both adjoining line segments", () => {
+    const segments = getLineChartLineSegments(
+      [
+        { t: 0, x: 0, y: 0 },
+        { t: 10, x: 10, y: 10 },
+        { t: 20, x: 20, y: 20 },
+      ],
+      10,
+    );
+
+    expect(segments[0]).toEqual({
+      dashed: false,
+      points: [
+        { t: 0, x: 0, y: 0 },
+        { t: 10, x: 10, y: 10 },
+      ],
+    });
+    expect(segments[1]).toEqual({
+      dashed: true,
+      points: [
+        { t: 10, x: 10, y: 10 },
+        { t: 20, x: 20, y: 20 },
+      ],
+    });
+  });
+
+  it("handles out-of-range forecast boundaries and invalid points", () => {
+    const points = [
+      { t: 0, x: 0, y: 0 },
+      { t: 10, x: 10, y: 10 },
+      { t: 20, x: null, y: null },
+      { t: 30, x: 30, y: 30 },
+      { t: 40, x: 40, y: 40 },
+    ];
+
+    expect(getLineChartLineSegments(points, -1)).toEqual([
+      {
+        dashed: true,
+        points: [
+          { t: 0, x: 0, y: 0 },
+          { t: 10, x: 10, y: 10 },
+        ],
+      },
+      {
+        dashed: true,
+        points: [
+          { t: 30, x: 30, y: 30 },
+          { t: 40, x: 40, y: 40 },
+        ],
+      },
+    ]);
+    expect(getLineChartLineSegments(points, 100)).toEqual([
+      {
+        dashed: false,
+        points: [
+          { t: 0, x: 0, y: 0 },
+          { t: 10, x: 10, y: 10 },
+        ],
+      },
+      {
+        dashed: false,
+        points: [
+          { t: 30, x: 30, y: 30 },
+          { t: 40, x: 40, y: 40 },
+        ],
+      },
+    ]);
+    expect(getLineChartLineSegments(points)).toEqual([
+      {
+        dashed: false,
+        points: [
+          { t: 0, x: 0, y: 0 },
+          { t: 10, x: 10, y: 10 },
+        ],
+      },
+      {
+        dashed: false,
+        points: [
+          { t: 30, x: 30, y: 30 },
+          { t: 40, x: 40, y: 40 },
+        ],
       },
     ]);
   });
