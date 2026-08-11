@@ -1,6 +1,13 @@
 import React, { useMemo } from "react";
 import _ from "lodash";
 
+import {
+  getLineChartLinePath,
+  getLineChartLineSegments,
+} from "@src/core/LineChart/utils";
+
+import { DEFAULT_FORECAST_LINE_STROKE_DASHARRAY } from "./ForecastLineLayer";
+
 export interface IAreaHighlightOverlay {
   key: string;
   data: Array<{
@@ -14,6 +21,7 @@ export interface IAreaHighlightOverlay {
 }
 
 interface IAreaHighlightLayerProps {
+  forecastStartTimestamp?: number;
   overlay: IAreaHighlightOverlay;
   hovering: string[];
   offset?: {
@@ -72,6 +80,7 @@ const getAreaHighlightFillPath = (
 };
 
 const AreaHighlightLayer: React.FC<IAreaHighlightLayerProps> = ({
+  forecastStartTimestamp,
   overlay,
   hovering,
   offset,
@@ -100,6 +109,7 @@ const AreaHighlightLayer: React.FC<IAreaHighlightLayerProps> = ({
   const projectedPoints = overlay.data
     .map((point) => {
       return {
+        t: point.t,
         x: xScale(point.t),
         y: yScale(point.value),
       };
@@ -117,8 +127,10 @@ const AreaHighlightLayer: React.FC<IAreaHighlightLayerProps> = ({
   const baseLineY = Number.isFinite(scaleBaseLineY)
     ? scaleBaseLineY
     : fallbackBaseLineY;
-  const linePath = getAreaHighlightLinePath(projectedPoints);
   const fillPath = getAreaHighlightFillPath(projectedPoints, baseLineY);
+  const lineSegments = Number.isFinite(forecastStartTimestamp)
+    ? getLineChartLineSegments(projectedPoints, forecastStartTimestamp)
+    : [{ dashed: false, points: projectedPoints }];
 
   return (
     <g
@@ -144,15 +156,22 @@ const AreaHighlightLayer: React.FC<IAreaHighlightLayerProps> = ({
           fill={overlay.fill}
           fillOpacity={overlay.fillOpacity}
         />
-        {overlay.stroke && (
-          <path
-            className="line-chart-area-highlight-curve"
-            d={linePath}
-            fill="none"
-            stroke={overlay.stroke}
-            strokeWidth={1}
-          />
-        )}
+        {overlay.stroke &&
+          lineSegments.map((segment, index) => (
+            <path
+              key={`${segment.points[0].t}-${index}`}
+              className="line-chart-area-highlight-curve"
+              d={getLineChartLinePath(segment.points)}
+              fill="none"
+              stroke={overlay.stroke}
+              strokeDasharray={
+                segment.dashed
+                  ? DEFAULT_FORECAST_LINE_STROKE_DASHARRAY
+                  : undefined
+              }
+              strokeWidth={1}
+            />
+          ))}
       </g>
     </g>
   );
