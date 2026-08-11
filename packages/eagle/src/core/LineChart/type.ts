@@ -2,7 +2,7 @@ import { IChartProps } from "@src/core/LineChart/RenderChart";
 import { PickerDateRange } from "@src/coreX/DateRangePicker/dateRangePicker.type";
 import { Dayjs } from "dayjs";
 import { TFunction } from "i18next";
-import { ReactElement } from "react";
+import { CSSProperties, ReactElement } from "react";
 
 export interface ILineChartMetricData {
   id: string;
@@ -121,6 +121,8 @@ export interface ILineChartThresholdLineProps {
   stroke?: string;
   /** 阈值线虚线样式 */
   strokeDasharray?: string;
+  className?: string;
+  style?: CSSProperties;
   /** 交点上方胶囊配置 */
   intersectionLabelProps?: ILineChartThresholdIntersectionLabelProps;
   /** 自定义交点 tooltip 内容 */
@@ -142,6 +144,8 @@ export type ChartProps = {
   ) => ReactElement;
   /** Area highlight ranges below the curve */
   areaHighlightRanges?: ILineChartAreaHighlightRange[];
+  /** Forecast start timestamp in milliseconds. Forecast points use a dashed line. */
+  forecastStartTimestamp?: number;
   /** 水平阈值线配置 */
   thresholdLineProps?: ILineChartThresholdLineProps;
   yAxisAlign?: "left" | "right";
@@ -298,6 +302,9 @@ export type LineChartMetricProps = {
   /** 时间轴背景高亮区间 */
   /** 曲线以下区域高亮区间 */
   areaHighlightRanges?: ILineChartAreaHighlightRange[];
+
+  /** Forecast start timestamp in milliseconds. Forecast points use a dashed line. */
+  forecastStartTimestamp?: number;
 
   /** 水平阈值线配置 */
   thresholdLineProps?: ILineChartThresholdLineProps;
