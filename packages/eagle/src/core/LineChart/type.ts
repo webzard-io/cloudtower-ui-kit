@@ -142,6 +142,8 @@ export type ChartProps = {
   ) => ReactElement;
   /** Area highlight ranges below the curve */
   areaHighlightRanges?: ILineChartAreaHighlightRange[];
+  /** Forecast start timestamp in milliseconds. Forecast points use a dashed line. */
+  forecastStartTimestamp?: number;
   /** 水平阈值线配置 */
   thresholdLineProps?: ILineChartThresholdLineProps;
   yAxisAlign?: "left" | "right";
@@ -298,6 +300,9 @@ export type LineChartMetricProps = {
   /** 时间轴背景高亮区间 */
   /** 曲线以下区域高亮区间 */
   areaHighlightRanges?: ILineChartAreaHighlightRange[];
+
+  /** Forecast start timestamp in milliseconds. Forecast points use a dashed line. */
+  forecastStartTimestamp?: number;
 
   /** 水平阈值线配置 */
   thresholdLineProps?: ILineChartThresholdLineProps;

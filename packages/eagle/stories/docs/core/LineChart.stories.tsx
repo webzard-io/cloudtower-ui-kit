@@ -331,6 +331,7 @@ const menu: Antd5DropdownProps["menu"] = {
 export const ThresholdHighlight = Template.bind({});
 export const ThresholdHighlightConditionalLabel = Template.bind({});
 export const AreaSegmentHighlight = Template.bind({});
+export const ForecastDashedLine = Template.bind({});
 
 const thresholdHighlightMetric: ILineChartMetric = {
   sample_streams: [
@@ -491,6 +492,37 @@ AreaSegmentHighlight.parameters = {
     description: {
       story:
         "Shows partial highlight filling only up to the curve value within the selected time range.",
+    },
+  },
+};
+
+ForecastDashedLine.args = {
+  chartProps: {
+    syncId: "forecast-dashed-line",
+    mode: "legend",
+    showLegend: true,
+    metricName: "Forecast Dashed Line Demo",
+    metric: thresholdHighlightMetric,
+    height: 180,
+    type: ILineChartGraphType.Area,
+    dateRange: dateRange1,
+    forecastStartTimestamp: dateRange1[0].add(40, "minute").valueOf(),
+    showXAxis: true,
+    xAxisProps: {
+      domain: domain1,
+    },
+    tooltipProps: {
+      format: (val) =>
+        lineChartYaxisTickFormatter(val.value, ILineChartMetricUnit.DataSize),
+    },
+  },
+};
+
+ForecastDashedLine.parameters = {
+  docs: {
+    description: {
+      story:
+        "Shows historical values with a solid line and forecast values with a dashed line.",
     },
   },
 };

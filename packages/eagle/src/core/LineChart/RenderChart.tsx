@@ -61,6 +61,7 @@ import LineChartToolBar from "./LineChartToolBar";
 import AreaHighlightLayer, {
   IAreaHighlightOverlay,
 } from "./AreaHighlightLayer";
+import ForecastLineLayer from "./ForecastLineLayer";
 import ThresholdIntersectionLayer, {
   THRESHOLD_INTERSECTION_LABEL_MARGIN_TOP,
   isThresholdIntersectionLabelVisible,
@@ -83,6 +84,7 @@ export interface IChartProps<
   onLabelsChange?: (labels: string[]) => void;
   metric: ILineChartMetric;
   areaHighlightRanges?: ILineChartAreaHighlightRange[];
+  forecastStartTimestamp?: number;
   thresholdLineProps?: ILineChartThresholdLineProps;
   renderThresholdTooltip?: (
     info: ILineChartThresholdIntersectionInfo,
@@ -141,6 +143,7 @@ const RenderChart = (
     dropdownProps,
     metric,
     areaHighlightRanges,
+    forecastStartTimestamp,
     thresholdLineProps,
     renderThresholdTooltip,
     yAxisProps,
@@ -191,6 +194,7 @@ const RenderChart = (
   }, [areaHighlightRanges, xDomain]);
   const thresholdIntersectionLabelProps =
     thresholdLineProps?.intersectionLabelProps;
+  const hasForecastStartTimestamp = Number.isFinite(forecastStartTimestamp);
   const hasThresholdIntersectionLabel = Boolean(
     thresholdIntersectionLabelProps,
   );
@@ -636,6 +640,7 @@ const RenderChart = (
                     type === ILineChartGraphType.Stack ? "stack" : undefined
                   }
                   stroke={getStreamStroke(item)}
+                  strokeOpacity={hasForecastStartTimestamp ? 0 : undefined}
                   fill={item.legend.fill}
                   isAnimationActive={false}
                   activeDot={{
@@ -643,11 +648,22 @@ const RenderChart = (
                     r: 4,
                     strokeWidth: 2,
                     fill: "white",
+                    strokeOpacity: 1,
+                    fillOpacity: 1,
                   }}
                   opacity={hovering.includes(item.legend.id) ? 0.3 : 1}
                 />
               );
             })}
+            {hasForecastStartTimestamp && (
+              <Customized
+                key="line-chart-forecast-lines"
+                component={ForecastLineLayer}
+                forecastStartTimestamp={forecastStartTimestamp}
+                hovering={hovering}
+                streams={streams}
+              />
+            )}
             {areaHighlightOverlays.map((overlay) => {
               if (deselected.includes(overlay.legendId)) {
                 return null;
@@ -659,6 +675,7 @@ const RenderChart = (
                   component={AreaHighlightLayer}
                   overlay={overlay}
                   hovering={hovering}
+                  forecastStartTimestamp={forecastStartTimestamp}
                 />
               );
             })}
