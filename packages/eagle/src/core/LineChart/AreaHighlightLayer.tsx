@@ -109,6 +109,7 @@ const AreaHighlightLayer: React.FC<IAreaHighlightLayerProps> = ({
   const projectedPoints = overlay.data
     .map((point) => {
       return {
+        t: point.t,
         x: xScale(point.t),
         y: yScale(point.value),
       };
