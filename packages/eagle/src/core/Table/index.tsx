@@ -2,7 +2,7 @@ import { css, cx } from "@linaria/core";
 import { CheckboxStyleContent } from "@src/core/Checkbox/checkbox.style";
 import { useTableBodyHasScrollBar } from "@src/core/Table/common";
 import { ColumnTitle } from "@src/core/Table/TableWidget";
-import { zIndices } from "@src/styles/token";
+import { zIndices } from "@src/styles/token/zIndices";
 import { Table as BaseTable } from "antd";
 import cs from "classnames";
 import { isNil } from "lodash";

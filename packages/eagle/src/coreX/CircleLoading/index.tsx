@@ -3,7 +3,7 @@ import { css } from "@linaria/core";
 import Icon from "@src/core/Icon";
 import { LoadingComponentType } from "@src/core/Loading/loading.type";
 import { FullView } from "@src/core/Styled";
-import { Animation, Keyframes } from "@src/styles/token";
+import { Animation, Keyframes } from "@src/styles/token/animation";
 import cx from "classnames";
 import React, { Fragment } from "react";
 

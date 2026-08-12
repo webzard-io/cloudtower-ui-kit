@@ -20,7 +20,7 @@ import {
 } from "@cloudtower/icons-react";
 import { Show } from "@src/coreX";
 import { SearchInput } from "@src/core";
-import { Color } from "@src/styles/token";
+import { Color } from "@src/styles/token/color";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import {
   LogViewContainer,

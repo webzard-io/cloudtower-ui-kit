@@ -1,5 +1,6 @@
 import { css } from "@linaria/core";
-import { Animation, Color, Keyframes } from "@src/styles/token";
+import { Animation, Keyframes } from "@src/styles/token/animation";
+import { Color } from "@src/styles/token/color";
 import cx from "classnames";
 import React from "react";
 

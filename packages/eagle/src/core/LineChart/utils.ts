@@ -293,7 +293,6 @@ export const getLineChartMetricPayloadMatches = <
   });
 };
 
-
 export const getLineChartAreaHighlightRanges = (
   ranges: ILineChartAreaHighlightRange[] = [],
   xDomain: [number, number],
@@ -353,7 +352,9 @@ const isSameAreaHighlightPoint = (
     return false;
   }
 
-  return Math.abs(prev.t - next.t) < 1e-6 && Math.abs(prev.value - next.value) < 1e-6;
+  return (
+    Math.abs(prev.t - next.t) < 1e-6 && Math.abs(prev.value - next.value) < 1e-6
+  );
 };
 
 const pushLineChartAreaHighlightPoint = (
@@ -405,7 +406,10 @@ export const getLineChartAreaHighlightData = (
       segmentEnd,
     );
 
-    if (!isValidLineChartValue(startValue) || !isValidLineChartValue(endValue)) {
+    if (
+      !isValidLineChartValue(startValue) ||
+      !isValidLineChartValue(endValue)
+    ) {
       continue;
     }
 

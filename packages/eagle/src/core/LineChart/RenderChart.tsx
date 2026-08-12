@@ -683,7 +683,9 @@ const RenderChart = (
               <Customized
                 key={`${intersection.legend.id}-${intersection.timestamp}-${index}`}
                 component={ThresholdIntersectionLayer}
-                intersection={intersection as ILineChartThresholdIntersectionInfo}
+                intersection={
+                  intersection as ILineChartThresholdIntersectionInfo
+                }
                 index={index}
                 hovering={hovering}
                 intersectionLabelProps={thresholdIntersectionLabelProps}

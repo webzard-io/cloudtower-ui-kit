@@ -2,7 +2,7 @@ import { Search24BlueIcon, Search24Icon } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
 import Icon from "@src/core/Icon";
 import { Typo } from "@src/core/Typo";
-import { OverflowTooltip } from "@src/coreX";
+import OverflowTooltip from "@src/coreX/OverflowTooltip";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { type DebouncedFunc, debounce } from "lodash";
 import React, { useEffect, useMemo, useRef, useState } from "react";

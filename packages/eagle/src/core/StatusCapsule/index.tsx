@@ -3,7 +3,7 @@ import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import Icon from "@src/core/Icon";
 import { Typo } from "@src/core/Typo";
-import { Color } from "@src/styles/token";
+import { Color } from "@src/styles/token/color";
 import { Tag as AntdTag } from "antd";
 import cs from "classnames";
 import React from "react";

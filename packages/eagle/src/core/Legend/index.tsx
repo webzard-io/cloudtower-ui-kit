@@ -4,7 +4,7 @@ import { styled } from "@linaria/react";
 import Icon from "@src/core/Icon";
 import { Typo } from "@src/core/Typo";
 import OverflowTooltip from "@src/coreX/OverflowTooltip";
-import { Color } from "@src/styles/token";
+import { Color } from "@src/styles/token/color";
 import cs from "classnames";
 import React from "react";
 

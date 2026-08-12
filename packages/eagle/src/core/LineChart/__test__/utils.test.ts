@@ -347,7 +347,10 @@ describe("LineChart utils", () => {
     };
 
     expect(
-      getLineChartMetricPayloadMatches([overlayPayload, metricPayload], legends),
+      getLineChartMetricPayloadMatches(
+        [overlayPayload, metricPayload],
+        legends,
+      ),
     ).toEqual([
       {
         legend: legends[0],

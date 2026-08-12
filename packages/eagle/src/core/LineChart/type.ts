@@ -64,7 +64,6 @@ export enum ILineChartGraphType {
 
 export type ILineChartDateRange = [Dayjs, Dayjs];
 
-
 /**
  * 曲线区域高亮区间
  * @description 仅在指定时间段内填充曲线以下区域，可按图例定向生效
