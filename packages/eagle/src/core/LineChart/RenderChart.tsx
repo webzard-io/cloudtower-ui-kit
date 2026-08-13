@@ -601,7 +601,11 @@ const RenderChart = (
             {_.isNumber(thresholdValue) && (
               <ReferenceLine
                 data-testid="line-chart-threshold-line"
-                className="line-chart-threshold-line"
+                className={cs(
+                  "line-chart-threshold-line",
+                  thresholdLineProps?.className,
+                )}
+                style={thresholdLineProps?.style}
                 y={thresholdValue}
                 stroke={
                   thresholdLineProps?.stroke || DEFAULT_THRESHOLD_LINE_STROKE

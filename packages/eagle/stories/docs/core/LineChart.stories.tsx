@@ -394,6 +394,11 @@ ThresholdHighlight.args = {
       value: 250 * 1024 ** 4,
       stroke: "#ff4d4f",
       strokeDasharray: "4 4",
+      className: "threshold-line-custom-style",
+      style: {
+        opacity: 0.8,
+        strokeWidth: 2,
+      },
       intersectionLabelProps: {
         text: "24d",
         color: "#ff4d4f",
