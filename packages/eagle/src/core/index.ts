@@ -45,6 +45,7 @@ export * from "./ErrorBoundary";
 export * from "./ExpandableList";
 export * from "./FailedLoad";
 export * from "./Fields";
+export * from "./FileSelector";
 export * from "./Form";
 export * from "./FormItem";
 export * from "./Frequency";
@@ -105,6 +106,7 @@ export * from "./Tooltip";
 export * from "./Truncate";
 export * from "./Typo";
 export * from "./Units";
+export * from "./UrlUpload";
 export * from "./WizardDialog";
 
 export const units = {

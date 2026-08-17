@@ -1,6 +1,6 @@
 import { LocalUpload, LocalUploadFile } from "@src/core/LocalUpload";
 import { Meta, StoryObj } from "@storybook/react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 /**
  * LocalUpload 组件用于本地文件上传，支持按钮上传和拖拽上传两种方式。
@@ -15,10 +15,88 @@ import React, { useEffect, useState } from "react";
 const meta: Meta<typeof LocalUpload> = {
   title: "Core/LocalUpload | 本地文件上传",
   component: LocalUpload,
+  argTypes: {
+    className: {
+      control: "text",
+      description: "自定义类名，透传到根元素",
+    },
+    "data-testid": {
+      control: "text",
+      description: "测试标识，透传到根元素",
+    },
+    label: {
+      control: "text",
+      description: "上传组件标签",
+    },
+    labelPosition: {
+      control: "select",
+      options: ["top", "left"],
+      description: "标签位置。label 在左或没有 label 时，description 展示在上传区域下方",
+      table: { defaultValue: { summary: "top" } },
+    },
+    description: {
+      control: "text",
+      description: "上传要求或辅助描述文本",
+    },
+    info: {
+      control: false,
+      description: "额外信息区域，展示在上传区域和文件列表之间",
+    },
+    type: {
+      control: "select",
+      options: ["button", "dragger"],
+      description: "上传触发方式：按钮上传或拖拽上传",
+      table: { defaultValue: { summary: "dragger" } },
+    },
+    multiple: {
+      control: "boolean",
+      description: "是否支持多文件选择",
+      table: { defaultValue: { summary: "false" } },
+    },
+    accept: {
+      control: "text",
+      description: "允许选择的文件扩展名，例如 .iso、.json",
+    },
+    disabled: {
+      control: "boolean",
+      description: "是否禁用上传操作",
+      table: { defaultValue: { summary: "false" } },
+    },
+    maxCount: {
+      control: "number",
+      description: "最大文件数量。multiple=false 时固定为单文件场景；仅多文件上传时按传入值限制",
+    },
+    fileList: {
+      control: false,
+      description: "受控文件列表",
+    },
+    setFileList: {
+      control: false,
+      description: "设置受控文件列表",
+    },
+    disableRemoveList: {
+      control: "boolean",
+      description: "是否禁用已选文件的移除入口。单文件拖拽态和文件列表均生效",
+      table: { defaultValue: { summary: "false" } },
+    },
+    validate: {
+      control: false,
+      description:
+        "文件验证函数。返回 error 时展示错误，返回 data 时写入文件自定义数据",
+    },
+    buttonProps: {
+      control: false,
+      description: "按钮上传的额外配置，仅 type=button 时生效，支持 className 和 hideIcon",
+    },
+    onRemove: {
+      control: false,
+      description: "文件移除事件回调",
+    },
+  },
   parameters: {
     design: {
       type: "figma",
-      url: "",
+      url: "https://www.figma.com/design/g3vMiCwvaj8g8ZmjNvCQmU/File-Selector-%7C-%E6%96%87%E4%BB%B6%E9%80%89%E6%8B%A9%E5%99%A8?node-id=4299-114678",
     },
   },
 };
@@ -37,6 +115,9 @@ const createMockFile = (
   }) as LocalUploadFile;
   file.uid = `mock-${Math.random().toString(36).slice(2, 9)}`;
   file.fileStatus = status;
+  Object.defineProperty(file, "size", {
+    value: size,
+  });
   return file;
 };
 
@@ -56,6 +137,70 @@ export const BasicDragger: Story = {
         setFileList={setFileList}
         multiple
         label="上传文件"
+        description="支持上传 .txt, .pdf, .doc 等格式文件"
+      />
+    );
+  },
+};
+
+/**
+ * 按钮上传示例
+ * 使用按钮触发文件选择对话框
+ */
+export const ButtonUpload: Story = {
+  name: "按钮上传",
+  render: () => {
+    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
+
+    return (
+      <LocalUpload
+        type="button"
+        fileList={fileList}
+        setFileList={setFileList}
+        multiple
+        label="上传文件"
+        description="点击按钮选择要上传的文件"
+      />
+    );
+  },
+};
+
+/**
+ * 标签在左侧，描述展示在拖拽区域下方。
+ */
+export const LeftLabelDragger: Story = {
+  name: "标签在左",
+  render: () => {
+    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
+
+    return (
+      <LocalUpload
+        type="dragger"
+        fileList={fileList}
+        setFileList={setFileList}
+        multiple
+        label="上传文件"
+        labelPosition="left"
+        description="支持上传 .txt, .pdf, .doc 等格式文件"
+      />
+    );
+  },
+};
+
+/**
+ * 没有标签时，描述展示在拖拽区域下方。
+ */
+export const NoLabelDescriptionBelow: Story = {
+  name: "无标签描述在下",
+  render: () => {
+    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
+
+    return (
+      <LocalUpload
+        type="dragger"
+        fileList={fileList}
+        setFileList={setFileList}
+        multiple
         description="支持上传 .txt, .pdf, .doc 等格式文件"
       />
     );
@@ -85,22 +230,97 @@ export const SingleFileDragger: Story = {
 };
 
 /**
- * 按钮上传示例
- * 使用按钮触发文件选择对话框
+ * 单文件选择后
  */
-export const ButtonUpload: Story = {
-  name: "按钮上传",
+export const SingleFileSelected: Story = {
+  name: "单文件选择后",
   render: () => {
-    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
+    const [fileList, setFileList] = useState<LocalUploadFile[]>(() => [
+      createMockFile("Document-01.json", 1024 * 10, "success"),
+    ]);
 
     return (
       <LocalUpload
-        type="button"
+        type="dragger"
+        fileList={fileList}
+        setFileList={setFileList}
+        multiple={false}
+        label="上传配置文件"
+        description="仅支持上传单个文件"
+      />
+    );
+  },
+};
+
+/**
+ * 单文件解析校验中
+ */
+export const SingleFileValidating: Story = {
+  name: "单文件解析校验中",
+  render: () => {
+    const [fileList, setFileList] = useState<LocalUploadFile[]>(() => [
+      createMockFile("Document-01.json", 1024 * 10, "validating"),
+    ]);
+
+    return (
+      <LocalUpload
+        type="dragger"
+        fileList={fileList}
+        setFileList={setFileList}
+        multiple={false}
+        label="上传配置文件"
+        description="仅支持上传单个文件"
+      />
+    );
+  },
+};
+
+/**
+ * 多文件选择后
+ */
+export const MultipleFilesSelected: Story = {
+  name: "多文件选择后",
+  render: () => {
+    const [fileList, setFileList] = useState<LocalUploadFile[]>(() => [
+      createMockFile("Document-01.json", 1024 * 10, "success"),
+      createMockFile("Document-02.json", 1024 * 16, "success"),
+    ]);
+
+    return (
+      <LocalUpload
+        type="dragger"
         fileList={fileList}
         setFileList={setFileList}
         multiple
         label="上传文件"
-        description="点击按钮选择要上传的文件"
+        description="支持上传 .json 格式文件"
+      />
+    );
+  },
+};
+
+/**
+ * 预填充文件
+ */
+export const WithPrefilledFiles: Story = {
+  name: "预填充文件",
+  render: () => {
+    const [fileList, setFileList] = useState<LocalUploadFile[]>(() => {
+      const mockFiles = [
+        createMockFile("document.pdf", 1024 * 512, "success"),
+        createMockFile("image.jpg", 1024 * 1024 * 2, "error"),
+      ];
+      mockFiles[1].error = "文件大小超过限制";
+      return mockFiles;
+    });
+
+    return (
+      <LocalUpload
+        label="预填充文件示例"
+        description="包含成功和失败状态的文件"
+        multiple
+        fileList={fileList}
+        setFileList={setFileList}
       />
     );
   },
@@ -113,17 +333,11 @@ export const ButtonUpload: Story = {
 export const MaxCountUpload: Story = {
   name: "限制文件数量",
   render: () => {
-    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
-
-    useEffect(() => {
-      // 初始化预填充文件
-      const mockFiles = [
-        createMockFile("document.pdf", 1024 * 512, "success"),
-        createMockFile("image.jpg", 1024 * 1024 * 2, "success"),
-        createMockFile("video.mp4", 1024 * 1024 * 10, "success"),
-      ];
-      setFileList(mockFiles);
-    }, []);
+    const [fileList, setFileList] = useState<LocalUploadFile[]>(() => [
+      createMockFile("document.pdf", 1024 * 512, "success"),
+      createMockFile("image.jpg", 1024 * 1024 * 2, "success"),
+      createMockFile("video.mp4", 1024 * 1024 * 10, "success"),
+    ]);
 
     return (
       <LocalUpload
@@ -226,96 +440,24 @@ export const DisabledUpload: Story = {
 };
 
 /**
- * 预填充文件
+ * 禁用文件移除入口
  */
-export const WithPrefilledFiles: Story = {
-  name: "预填充文件",
+export const DisableRemove: Story = {
+  name: "禁用移除",
   render: () => {
-    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
-
-    useEffect(() => {
-      // 初始化预填充文件
-      const mockFiles = [
-        createMockFile("document.pdf", 1024 * 512, "success"),
-        createMockFile("image.jpg", 1024 * 1024 * 2, "error"),
-      ];
-      mockFiles[1].error = "文件大小超过限制";
-      setFileList(mockFiles);
-    }, []);
-
-    return (
-      <LocalUpload
-        label="预填充文件示例"
-        description="包含成功和失败状态的文件"
-        multiple
-        fileList={fileList}
-        setFileList={setFileList}
-      />
-    );
-  },
-};
-
-/**
- * List 类型文件列表
- * 使用标准列表展示文件，包含文件名、文件大小、文件状态等信息
- */
-export const ListTypeList: Story = {
-  name: "List 类型文件列表",
-  render: () => {
-    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
-
-    useEffect(() => {
-      // 初始化预填充文件
-      const mockFiles = [
-        createMockFile("document.pdf", 1024 * 512, "success"),
-        createMockFile("report.docx", 1024 * 768, "success"),
-        createMockFile("data.xlsx", 1024 * 256, "validating"),
-      ];
-      setFileList(mockFiles);
-    }, []);
-
-    return (
-      <LocalUpload
-        type="button"
-        label="List 类型文件列表"
-        description="使用标准列表展示文件"
-        multiple
-        listType="list"
-        fileList={fileList}
-        setFileList={setFileList}
-      />
-    );
-  },
-};
-
-/**
- * Info 类型文件列表
- * 以 Info 形式展示文件信息，包含文件名、文件大小、文件状态等信息
- */
-export const InfoListType: Story = {
-  name: "Info 类型文件列表",
-  render: () => {
-    const [fileList, setFileList] = useState<LocalUploadFile[]>([]);
-
-    useEffect(() => {
-      // 初始化预填充文件
-      const mockFiles = [
-        createMockFile("document.pdf", 1024 * 512, "success"),
-        createMockFile("image.jpg", 1024 * 1024 * 2, "error"),
-      ];
-      mockFiles[1].error = "文件大小超过限制";
-      setFileList(mockFiles);
-    }, []);
+    const [fileList, setFileList] = useState<LocalUploadFile[]>(() => [
+      createMockFile("Document-01.json", 1024 * 10, "success"),
+    ]);
 
     return (
       <LocalUpload
         type="dragger"
         fileList={fileList}
         setFileList={setFileList}
-        multiple
-        listType="info"
-        label="Info 类型文件列表"
-        description="文件将以卡片形式展示"
+        multiple={false}
+        disableRemoveList
+        label="上传配置文件"
+        description="文件已锁定，无法移除"
       />
     );
   },

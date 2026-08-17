@@ -1,4 +1,5 @@
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import cs from "classnames";
 import React, {
   ForwardRefExoticComponent,
   PropsWithoutRef,
@@ -32,6 +33,7 @@ const UploadComp = React.forwardRef<HTMLDivElement, LocalUploadProps>(
       className,
       "data-testid": dataTestId,
       label,
+      labelPosition = "top",
       description,
       type = "dragger",
 
@@ -44,7 +46,6 @@ const UploadComp = React.forwardRef<HTMLDivElement, LocalUploadProps>(
       setFileList,
       validate,
       buttonProps,
-      listType = "list",
       disableRemoveList = false,
       onRemove,
     },
@@ -52,24 +53,21 @@ const UploadComp = React.forwardRef<HTMLDivElement, LocalUploadProps>(
   ) => {
     const { t } = useParrotTranslation();
     const removeFile = (id: string) => {
-      const index = fileList.findIndex((f) => f.uid === id);
-      if (index !== -1) {
-        const file = fileList[index];
-        fileList.splice(index, 1);
-        setFileList([...fileList]);
-        onRemove?.(file);
+      const nextFileList = fileList.filter((file) => file.uid !== id);
+      if (nextFileList.length !== fileList.length) {
+        setFileList(nextFileList);
       }
     };
     const _maxCount = multiple ? maxCount || Infinity : 1;
     const isSingleSelect = _maxCount === 1;
-    return (
-      <UploadComp.Wrapper
-        className={className}
-        ref={ref}
-        data-testid={dataTestId}
-      >
-        {label ? <UploadComp.Label>{label}</UploadComp.Label> : null}
-        {description ? (
+    const shouldShowDescriptionAbove =
+      !!description && !!label && labelPosition === "top";
+    const shouldShowDescriptionBelow =
+      !!description && !shouldShowDescriptionAbove;
+    const shouldDisableRemove = disabled || disableRemoveList;
+    const uploadContent = (
+      <>
+        {shouldShowDescriptionAbove ? (
           <UploadComp.Description>{description}</UploadComp.Description>
         ) : null}
         {type === "button" ? (
@@ -97,19 +95,42 @@ const UploadComp = React.forwardRef<HTMLDivElement, LocalUploadProps>(
               fileList,
               setFileList,
               validate,
+              disableRemove: shouldDisableRemove,
+              onRemove,
             }}
           />
         )}
-        {info ?? <></>}
+        {shouldShowDescriptionBelow ? (
+          <UploadComp.Description>{description}</UploadComp.Description>
+        ) : null}
+        {info}
         {type === "button" || !isSingleSelect ? (
           <UploadComp.FileList
             fileList={fileList}
             removeFile={removeFile}
-            type={listType}
-            disableRemove={disableRemoveList}
+            disableRemove={shouldDisableRemove}
             onRemove={onRemove}
           />
         ) : null}
+      </>
+    );
+
+    return (
+      <UploadComp.Wrapper
+        className={cs(
+          className,
+          label && labelPosition === "left" ? "label-left" : "label-top",
+          !label && "no-label",
+        )}
+        ref={ref}
+        data-testid={dataTestId}
+      >
+        {label ? <UploadComp.Label>{label}</UploadComp.Label> : null}
+        {labelPosition === "left" && label ? (
+          <div className="upload-main">{uploadContent}</div>
+        ) : (
+          uploadContent
+        )}
       </UploadComp.Wrapper>
     );
   },

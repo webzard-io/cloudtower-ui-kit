@@ -93,5 +93,12 @@
   "select_file": "选择文件",
   "reselect_file": "重新选择",
   "exceed_max_count": "最多只能选择 {count} 个文件",
-  "upload_file_desc": "点击或拖拽文件到此区域上传"
+  "upload_file_desc": "将文件拖拽到此处或",
+  "parse_url": "解析 URL",
+  "url_required": "请输入 URL。",
+  "url_format_error": "URL 格式错误。",
+  "file_selector_local": "从本地选择",
+  "file_selector_url": "从 URL 上传",
+  "file_selector_clear_url_first": "需清空已输入的 URL。",
+  "file_selector_remove_file_first": "需移除已选文件。"
 }

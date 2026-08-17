@@ -99,5 +99,12 @@
   "reselect_file": "Re-select",
   "exceed_max_count": "Maximum {count} file allowed",
   "exceed_max_count_plural": "Maximum {count} files allowed",
-  "upload_file_desc": "Click or drag file to this area to upload"
+  "upload_file_desc": "Drag file here or ",
+  "parse_url": "Parse URL",
+  "url_required": "Please enter URL.",
+  "url_format_error": "Invalid URL format.",
+  "file_selector_local": "Select from Local",
+  "file_selector_url": "Upload from URL",
+  "file_selector_clear_url_first": "Clear the entered URL first.",
+  "file_selector_remove_file_first": "Remove the selected file first."
 }
