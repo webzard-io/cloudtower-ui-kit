@@ -27,7 +27,7 @@ describe("ui unit test - time", () => {
     expect(container).toMatchInlineSnapshot(`
       <div>
         <span
-          class="time-wrapper tju3gfj"
+          class="time-wrapper t1ko7tvc"
         >
           <span
             class="date"
@@ -50,7 +50,7 @@ describe("ui unit test - time", () => {
     expect(container).toMatchInlineSnapshot(`
       <div>
         <span
-          class="time-wrapper tju3gfj"
+          class="time-wrapper t1ko7tvc"
         >
           <span
             class="date"

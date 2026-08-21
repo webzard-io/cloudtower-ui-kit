@@ -267,7 +267,7 @@ describe("SimplePagination h5_css", () => {
         line-height: 18px;
       ,
         .ant-input-number-handler-wrap {
-          display: var(--ai7qkf2-0);
+          display: var(--a1lk78lb-0);
         }
         .ant-input-number-input-wrap {
           display: inline-flex;
@@ -277,8 +277,8 @@ describe("SimplePagination h5_css", () => {
         }
 
         .ant-input-number-input-wrap::after {
-          content: var(--ai7qkf2-1);
-          display: var(--ai7qkf2-2);
+          content: var(--a1lk78lb-1);
+          display: var(--a1lk78lb-2);
           flex: none;
           align-items: center;
           margin-left: 4px;
@@ -287,8 +287,8 @@ describe("SimplePagination h5_css", () => {
         }
 
         .ant-input-number-input-wrap::before {
-          content: var(--ai7qkf2-3);
-          display: var(--ai7qkf2-4);
+          content: var(--a1lk78lb-3);
+          display: var(--a1lk78lb-4);
           flex: none;
           align-items: center;
           margin-right: 4px;
@@ -344,7 +344,7 @@ describe("SimplePagination h5_css", () => {
           padding: 2px 8px;
         }
 
-              style=--ai7qkf2-0:,none;,--ai7qkf2-1:,"";,--ai7qkf2-2:,none;,--ai7qkf2-3:,"";,--ai7qkf2-4:,none;
+              style=--a1lk78lb-0:,none;,--a1lk78lb-1:,"";,--a1lk78lb-2:,none;,--a1lk78lb-3:,"";,--a1lk78lb-4:,none;
             >
               <div
                 class=ant-input-number-handler-wrap
@@ -1525,7 +1525,7 @@ describe("SimplePagination h5_css", () => {
         line-height: 18px;
       ,
         .ant-input-number-handler-wrap {
-          display: var(--ai7qkf2-0);
+          display: var(--a1lk78lb-0);
         }
         .ant-input-number-input-wrap {
           display: inline-flex;
@@ -1535,8 +1535,8 @@ describe("SimplePagination h5_css", () => {
         }
 
         .ant-input-number-input-wrap::after {
-          content: var(--ai7qkf2-1);
-          display: var(--ai7qkf2-2);
+          content: var(--a1lk78lb-1);
+          display: var(--a1lk78lb-2);
           flex: none;
           align-items: center;
           margin-left: 4px;
@@ -1545,8 +1545,8 @@ describe("SimplePagination h5_css", () => {
         }
 
         .ant-input-number-input-wrap::before {
-          content: var(--ai7qkf2-3);
-          display: var(--ai7qkf2-4);
+          content: var(--a1lk78lb-3);
+          display: var(--a1lk78lb-4);
           flex: none;
           align-items: center;
           margin-right: 4px;
@@ -1602,7 +1602,7 @@ describe("SimplePagination h5_css", () => {
           padding: 2px 8px;
         }
 
-              style=--ai7qkf2-0:,none;,--ai7qkf2-1:,"";,--ai7qkf2-2:,none;,--ai7qkf2-3:,"";,--ai7qkf2-4:,none;
+              style=--a1lk78lb-0:,none;,--a1lk78lb-1:,"";,--a1lk78lb-2:,none;,--a1lk78lb-3:,"";,--a1lk78lb-4:,none;
             >
               <div
                 class=ant-input-number-handler-wrap
@@ -2370,7 +2370,7 @@ describe("SimplePagination h5_css", () => {
         line-height: 18px;
       ,
         .ant-input-number-handler-wrap {
-          display: var(--ai7qkf2-0);
+          display: var(--a1lk78lb-0);
         }
         .ant-input-number-input-wrap {
           display: inline-flex;
@@ -2380,8 +2380,8 @@ describe("SimplePagination h5_css", () => {
         }
 
         .ant-input-number-input-wrap::after {
-          content: var(--ai7qkf2-1);
-          display: var(--ai7qkf2-2);
+          content: var(--a1lk78lb-1);
+          display: var(--a1lk78lb-2);
           flex: none;
           align-items: center;
           margin-left: 4px;
@@ -2390,8 +2390,8 @@ describe("SimplePagination h5_css", () => {
         }
 
         .ant-input-number-input-wrap::before {
-          content: var(--ai7qkf2-3);
-          display: var(--ai7qkf2-4);
+          content: var(--a1lk78lb-3);
+          display: var(--a1lk78lb-4);
           flex: none;
           align-items: center;
           margin-right: 4px;
@@ -2447,7 +2447,7 @@ describe("SimplePagination h5_css", () => {
           padding: 2px 8px;
         }
 
-              style=--ai7qkf2-0:,none;,--ai7qkf2-1:,"";,--ai7qkf2-2:,none;,--ai7qkf2-3:,"";,--ai7qkf2-4:,none;
+              style=--a1lk78lb-0:,none;,--a1lk78lb-1:,"";,--a1lk78lb-2:,none;,--a1lk78lb-3:,"";,--a1lk78lb-4:,none;
             >
               <div
                 class=ant-input-number-handler-wrap
