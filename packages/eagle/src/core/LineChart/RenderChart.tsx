@@ -643,8 +643,9 @@ const RenderChart = (
                   stackId={
                     type === ILineChartGraphType.Stack ? "stack" : undefined
                   }
-                  stroke={getStreamStroke(item)}
-                  strokeOpacity={hasForecastStartTimestamp ? 0 : undefined}
+                  stroke={
+                    hasForecastStartTimestamp ? "none" : getStreamStroke(item)
+                  }
                   fill={item.legend.fill}
                   isAnimationActive={false}
                   activeDot={{
@@ -659,15 +660,6 @@ const RenderChart = (
                 />
               );
             })}
-            {hasForecastStartTimestamp && (
-              <Customized
-                key="line-chart-forecast-lines"
-                component={ForecastLineLayer}
-                forecastStartTimestamp={forecastStartTimestamp}
-                hovering={hovering}
-                streams={streams}
-              />
-            )}
             {areaHighlightOverlays.map((overlay) => {
               if (deselected.includes(overlay.legendId)) {
                 return null;
@@ -683,6 +675,16 @@ const RenderChart = (
                 />
               );
             })}
+            {hasForecastStartTimestamp && (
+              <Customized
+                key="line-chart-forecast-lines"
+                component={ForecastLineLayer}
+                forecastStartTimestamp={forecastStartTimestamp}
+                hovering={hovering}
+                streams={streams}
+                deselected={deselected}
+              />
+            )}
             {visibleThresholdIntersections.map((intersection, index) => (
               <Customized
                 key={`${intersection.legend.id}-${intersection.timestamp}-${index}`}

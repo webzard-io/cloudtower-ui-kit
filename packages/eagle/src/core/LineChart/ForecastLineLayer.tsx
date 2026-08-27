@@ -1,37 +1,37 @@
 import React from "react";
+import _ from "lodash";
 
+import { ILineChartMetricStream } from "@src/core/LineChart/type";
 import {
   getLineChartLinePath,
   getLineChartLineSegments,
 } from "@src/core/LineChart/utils";
-import { ILineChartMetricStream } from "@src/core/LineChart/type";
 
 export const DEFAULT_FORECAST_LINE_STROKE_DASHARRAY = "4 4";
 
-interface IFormattedGraphicalItemPoint {
-  x?: number | null;
-  y?: number | null;
-  payload?: {
-    t?: number;
-  };
-}
-
-interface IFormattedGraphicalItem {
-  item?: {
-    props?: {
-      dataKey?: unknown;
-    };
-  };
-  props?: {
-    points?: IFormattedGraphicalItemPoint[];
-  };
-}
-
 interface IForecastLineLayerProps {
-  formattedGraphicalItems?: IFormattedGraphicalItem[];
   forecastStartTimestamp?: number;
   hovering: string[];
   streams: ILineChartMetricStream[];
+  deselected: string[];
+  offset?: {
+    top?: number;
+    left?: number;
+    width?: number;
+    height?: number;
+  };
+  xAxisMap?: Record<
+    string,
+    {
+      scale?: (value: number) => number;
+    }
+  >;
+  yAxisMap?: Record<
+    string,
+    {
+      scale?: (value: number) => number;
+    }
+  >;
 }
 
 const getStreamStroke = (stream: ILineChartMetricStream) => {
@@ -40,38 +40,51 @@ const getStreamStroke = (stream: ILineChartMetricStream) => {
     : stream.legend.color;
 };
 
-const getStreamIndex = (dataKey: unknown) => {
-  if (typeof dataKey !== "string") {
-    return undefined;
-  }
-
-  const match = /^v(\d+)$/.exec(dataKey);
-  return match ? Number(match[1]) : undefined;
-};
+const isFiniteNumber = (value: unknown): value is number =>
+  typeof value === "number" && Number.isFinite(value);
 
 const ForecastLineLayer: React.FC<IForecastLineLayerProps> = ({
-  formattedGraphicalItems,
   forecastStartTimestamp,
   hovering,
   streams,
+  deselected,
+  offset,
+  xAxisMap,
+  yAxisMap,
 }) => {
+  const clipPathId = React.useMemo(() => {
+    return _.uniqueId("line-chart-forecast-");
+  }, []);
+  const xScale = Object.values(xAxisMap || {})[0]?.scale;
+  const yScale = Object.values(yAxisMap || {})[0]?.scale;
+  const offsetLeft = offset?.left ?? 0;
+  const offsetTop = offset?.top ?? 0;
+  const offsetWidth = offset?.width ?? 0;
+  const offsetHeight = offset?.height ?? 0;
+
   if (!Number.isFinite(forecastStartTimestamp)) {
     return null;
   }
 
-  const lines = (formattedGraphicalItems ?? []).flatMap((item) => {
-    const streamIndex = getStreamIndex(item.item?.props?.dataKey);
-    const stream = streamIndex === undefined ? undefined : streams[streamIndex];
+  if (
+    typeof xScale !== "function" ||
+    typeof yScale !== "function" ||
+    !offsetWidth ||
+    !offsetHeight
+  ) {
+    return null;
+  }
 
-    if (!stream || !item.props?.points?.length) {
+  const lines = streams.flatMap((stream) => {
+    if (deselected.includes(stream.legend.id)) {
       return [];
     }
 
     const segments = getLineChartLineSegments(
-      item.props.points.map((point) => ({
-        t: point.payload?.t,
-        x: point.x,
-        y: point.y,
+      stream.points.map((point) => ({
+        t: point.t,
+        x: isFiniteNumber(point.t) ? xScale(point.t) : undefined,
+        y: isFiniteNumber(point.v) ? yScale(point.v) : undefined,
       })),
       forecastStartTimestamp,
     );
@@ -95,19 +108,31 @@ const ForecastLineLayer: React.FC<IForecastLineLayerProps> = ({
       data-testid="line-chart-forecast-lines"
       style={{ pointerEvents: "none" }}
     >
-      {lines.map((line) => (
-        <path
-          key={line.key}
-          className="line-chart-forecast-line"
-          d={line.path}
-          fill="none"
-          opacity={line.opacity}
-          stroke={line.stroke}
-          strokeDasharray={
-            line.dashed ? DEFAULT_FORECAST_LINE_STROKE_DASHARRAY : undefined
-          }
-        />
-      ))}
+      <defs>
+        <clipPath id={clipPathId}>
+          <rect
+            x={offsetLeft}
+            y={offsetTop}
+            width={offsetWidth}
+            height={offsetHeight}
+          />
+        </clipPath>
+      </defs>
+      <g clipPath={`url(#${clipPathId})`}>
+        {lines.map((line) => (
+          <path
+            key={line.key}
+            className="line-chart-forecast-line"
+            d={line.path}
+            fill="none"
+            opacity={line.opacity}
+            stroke={line.stroke}
+            strokeDasharray={
+              line.dashed ? DEFAULT_FORECAST_LINE_STROKE_DASHARRAY : undefined
+            }
+          />
+        ))}
+      </g>
     </g>
   );
 };

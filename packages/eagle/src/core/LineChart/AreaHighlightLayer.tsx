@@ -1,13 +1,6 @@
 import React, { useMemo } from "react";
 import _ from "lodash";
 
-import {
-  getLineChartLinePath,
-  getLineChartLineSegments,
-} from "@src/core/LineChart/utils";
-
-import { DEFAULT_FORECAST_LINE_STROKE_DASHARRAY } from "./ForecastLineLayer";
-
 export interface IAreaHighlightOverlay {
   key: string;
   data: Array<{
@@ -128,9 +121,7 @@ const AreaHighlightLayer: React.FC<IAreaHighlightLayerProps> = ({
     ? scaleBaseLineY
     : fallbackBaseLineY;
   const fillPath = getAreaHighlightFillPath(projectedPoints, baseLineY);
-  const lineSegments = Number.isFinite(forecastStartTimestamp)
-    ? getLineChartLineSegments(projectedPoints, forecastStartTimestamp)
-    : [{ dashed: false, points: projectedPoints }];
+  const linePath = getAreaHighlightLinePath(projectedPoints);
 
   return (
     <g
@@ -156,22 +147,15 @@ const AreaHighlightLayer: React.FC<IAreaHighlightLayerProps> = ({
           fill={overlay.fill}
           fillOpacity={overlay.fillOpacity}
         />
-        {overlay.stroke &&
-          lineSegments.map((segment, index) => (
-            <path
-              key={`${segment.points[0].t}-${index}`}
-              className="line-chart-area-highlight-curve"
-              d={getLineChartLinePath(segment.points)}
-              fill="none"
-              stroke={overlay.stroke}
-              strokeDasharray={
-                segment.dashed
-                  ? DEFAULT_FORECAST_LINE_STROKE_DASHARRAY
-                  : undefined
-              }
-              strokeWidth={1}
-            />
-          ))}
+        {!Number.isFinite(forecastStartTimestamp) && overlay.stroke && (
+          <path
+            className="line-chart-area-highlight-curve"
+            d={linePath}
+            fill="none"
+            stroke={overlay.stroke}
+            strokeWidth={1}
+          />
+        )}
       </g>
     </g>
   );
