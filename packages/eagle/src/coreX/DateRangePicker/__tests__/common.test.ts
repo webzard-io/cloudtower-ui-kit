@@ -2,9 +2,12 @@ import dayjs from "dayjs";
 import { describe, expect, it } from "vitest";
 
 import {
+  clampAbsoluteTimeRangeToBounds,
   getDateText,
   getEffectiveAbsoluteTimeBounds,
   getRelativeTimeRange,
+  hasAbsoluteTimeRangeIntersection,
+  isAbsoluteTimeRangeWithinBounds,
   normalizeRelativeTime,
 } from "../common";
 
@@ -136,5 +139,49 @@ describe("DateRangePicker common helpers", () => {
     expect(dayjs(intersectedBounds.maxDate).format("YYYY-MM-DD HH:mm:ss")).toBe(
       "2026-03-01 09:30:00",
     );
+  });
+
+  it("filters and clamps future absolute history ranges safely", () => {
+    const minDate = dayjs("2025-12-09 10:20:30");
+    const maxDate = dayjs("2026-12-09 10:20:30");
+
+    expect(
+      hasAbsoluteTimeRangeIntersection(
+        [dayjs("2025-12-08"), dayjs("2025-12-09")],
+        minDate,
+        maxDate,
+      ),
+    ).toBe(false);
+    expect(
+      hasAbsoluteTimeRangeIntersection(
+        [dayjs("2025-12-09"), dayjs("2026-01-01")],
+        minDate,
+        maxDate,
+      ),
+    ).toBe(true);
+
+    const clampedRange = clampAbsoluteTimeRangeToBounds(
+      [dayjs("2025-12-08"), dayjs("2027-01-01")],
+      minDate,
+      maxDate,
+    );
+
+    expect(
+      clampedRange?.map((item) => item?.format("YYYY-MM-DD HH:mm:ss")),
+    ).toEqual(["2025-12-09 10:20:30", "2026-12-09 10:20:30"]);
+    expect(
+      clampAbsoluteTimeRangeToBounds(
+        [dayjs("2027-01-01"), dayjs("2027-01-02")],
+        minDate,
+        maxDate,
+      ),
+    ).toBe(undefined);
+    expect(
+      isAbsoluteTimeRangeWithinBounds(
+        [dayjs("2026-01-01"), dayjs("2025-12-31")],
+        minDate,
+        maxDate,
+      ),
+    ).toBe(false);
   });
 });

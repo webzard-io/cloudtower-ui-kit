@@ -64,7 +64,6 @@ export enum ILineChartGraphType {
 
 export type ILineChartDateRange = [Dayjs, Dayjs];
 
-
 /**
  * 曲线区域高亮区间
  * @description 仅在指定时间段内填充曲线以下区域，可按图例定向生效
@@ -98,6 +97,15 @@ export interface ILineChartThresholdIntersectionInfo {
   formattedThresholdValue: string;
   /** 当前交点所属图例 */
   legend: ILineChartILegend;
+}
+
+/**
+ * Legacy threshold tooltip information
+ * @description Kept for compatibility with existing consumers of renderThresholdTooltip
+ */
+export interface ILineChartThresholdTooltipInfo {
+  current: string;
+  max: string;
 }
 
 export interface ILineChartThresholdIntersectionLabelProps {
@@ -140,7 +148,7 @@ export type ChartProps = {
   legendTooltip?: ReactElement;
   /** 阈值线交点 tooltip，自定义内容时优先生效 */
   renderThresholdTooltip?: (
-    info: ILineChartThresholdIntersectionInfo,
+    info: ILineChartThresholdTooltipInfo,
   ) => ReactElement;
   /** Area highlight ranges below the curve */
   areaHighlightRanges?: ILineChartAreaHighlightRange[];
@@ -311,7 +319,7 @@ export type LineChartMetricProps = {
 
   /** 阈值线交点 tooltip，自定义内容时优先生效 */
   renderThresholdTooltip?: (
-    info: ILineChartThresholdIntersectionInfo,
+    info: ILineChartThresholdTooltipInfo,
   ) => ReactElement;
 
   /** 历史记录对象 */

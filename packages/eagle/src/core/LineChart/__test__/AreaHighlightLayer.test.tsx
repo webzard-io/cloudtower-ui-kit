@@ -9,9 +9,11 @@ import AreaHighlightLayer, {
 const overlay: IAreaHighlightOverlay = {
   key: "cpu-highlight",
   data: [
-    { t: 0, value: 10 },
-    { t: 10, value: 20 },
-    { t: 20, value: 15 },
+    [
+      { t: 0, value: 10 },
+      { t: 10, value: 20 },
+      { t: 20, value: 15 },
+    ],
   ],
   fill: "#1890ff",
   fillOpacity: 0.2,
@@ -48,5 +50,38 @@ describe("AreaHighlightLayer", () => {
 
     expect(layer).toContainHTML("line-chart-area-highlight-fill");
     expect(layer).toContainHTML("line-chart-area-highlight-curve");
+  });
+
+  it("renders each continuous highlight run as an independent path", () => {
+    render(
+      <svg>
+        <AreaHighlightLayer
+          overlay={{
+            ...overlay,
+            data: [
+              [
+                { t: 0, value: 10 },
+                { t: 10, value: 20 },
+              ],
+              [
+                { t: 30, value: 15 },
+                { t: 40, value: 25 },
+              ],
+            ],
+          }}
+          hovering={[]}
+          offset={{ left: 0, top: 0, width: 100, height: 80 }}
+          xAxisMap={{ 0: { scale: (value: number) => value * 5 } }}
+          yAxisMap={{ 0: { scale: (value: number) => 80 - value } }}
+        />
+      </svg>,
+    );
+
+    expect(
+      document.querySelectorAll(".line-chart-area-highlight-fill"),
+    ).toHaveLength(2);
+    expect(
+      document.querySelectorAll(".line-chart-area-highlight-curve"),
+    ).toHaveLength(2);
   });
 });

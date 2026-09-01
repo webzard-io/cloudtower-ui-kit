@@ -5,14 +5,9 @@ import {
   ILineChartGraphType,
   ILineChartILegend,
   ILineChartMetric,
-  ILineChartMetricUnit,
   ILineChartMetricStream,
+  ILineChartMetricUnit,
 } from "@src/core/LineChart/type";
-import {
-  NameType,
-  Payload,
-  ValueType,
-} from "recharts/types/component/DefaultTooltipContent";
 import {
   DAY,
   formatBitPerSecond,
@@ -30,6 +25,11 @@ import {
 } from "@src/utils/tower";
 import dayjs from "dayjs";
 import _ from "lodash";
+import {
+  NameType,
+  Payload,
+  ValueType,
+} from "recharts/types/component/DefaultTooltipContent";
 
 export interface ILineChartThresholdIntersectionPoint {
   timestamp: number;
@@ -38,150 +38,24 @@ export interface ILineChartThresholdIntersectionPoint {
   streamIndex: number;
 }
 
-export interface ILineChartAreaHighlightPoint {
-  t: number;
-  value: number;
-}
-
-export interface ILineChartLinePoint {
-  t: number;
-  x: number;
-  y: number;
-}
-
-export interface ILineChartLinePointInput {
-  t?: number;
-  x?: number | null;
-  y?: number | null;
-}
-
-export interface ILineChartLineSegment {
-  dashed: boolean;
-  points: ILineChartLinePoint[];
-}
-
-const isFiniteNumber = (value: unknown): value is number =>
-  typeof value === "number" && Number.isFinite(value);
-
-const getLineChartLinePoint = (
-  point: ILineChartLinePointInput,
-): ILineChartLinePoint | undefined => {
-  if (
-    !isFiniteNumber(point.t) ||
-    !isFiniteNumber(point.x) ||
-    !isFiniteNumber(point.y)
-  ) {
-    return undefined;
-  }
-
-  return {
-    t: point.t,
-    x: point.x,
-    y: point.y,
-  };
-};
-
-const getLineChartBoundaryPoint = (
-  previous: ILineChartLinePoint,
-  next: ILineChartLinePoint,
-  timestamp: number,
-): ILineChartLinePoint | undefined => {
-  const duration = next.t - previous.t;
-
-  if (!duration) {
-    return undefined;
-  }
-
-  const ratio = (timestamp - previous.t) / duration;
-
-  return {
-    t: timestamp,
-    x: previous.x + (next.x - previous.x) * ratio,
-    y: previous.y + (next.y - previous.y) * ratio,
-  };
-};
-
-export const getLineChartLineSegments = (
-  points: ILineChartLinePointInput[],
-  forecastStartTimestamp?: number,
-): ILineChartLineSegment[] => {
-  const segments: ILineChartLineSegment[] = [];
-  const hasForecastStart = isFiniteNumber(forecastStartTimestamp);
-  let continuousPoints: ILineChartLinePoint[] = [];
-
-  const flushContinuousPoints = () => {
-    if (continuousPoints.length < 2) {
-      continuousPoints = [];
-      return;
-    }
-
-    let segmentPoints: ILineChartLinePoint[] = [continuousPoints[0]];
-    let dashed = Boolean(
-      hasForecastStart && continuousPoints[0].t >= forecastStartTimestamp!,
-    );
-
-    const pushSegment = () => {
-      if (segmentPoints.length >= 2) {
-        segments.push({ dashed, points: segmentPoints });
-      }
-    };
-
-    for (let index = 1; index < continuousPoints.length; index += 1) {
-      const previous = continuousPoints[index - 1];
-      const next = continuousPoints[index];
-      const nextDashed = Boolean(
-        hasForecastStart && next.t >= forecastStartTimestamp!,
-      );
-
-      if (hasForecastStart && nextDashed !== dashed) {
-        const boundaryPoint = getLineChartBoundaryPoint(
-          previous,
-          next,
-          forecastStartTimestamp!,
-        );
-
-        if (boundaryPoint) {
-          segmentPoints.push(boundaryPoint);
-          pushSegment();
-          segmentPoints = [boundaryPoint];
-          if (boundaryPoint.t !== next.t) {
-            segmentPoints.push(next);
-          }
-          dashed = nextDashed;
-          continue;
-        }
-      }
-
-      segmentPoints.push(next);
-    }
-
-    pushSegment();
-    continuousPoints = [];
-  };
-
-  points.forEach((point) => {
-    const linePoint = getLineChartLinePoint(point);
-
-    if (!linePoint) {
-      flushContinuousPoints();
-      return;
-    }
-
-    continuousPoints.push(linePoint);
-  });
-
-  flushContinuousPoints();
-
-  return segments;
-};
-
-export const getLineChartLinePath = (points: ILineChartLinePoint[]) => {
-  return points
-    .map((point, index) => {
-      return `${index === 0 ? "M" : "L"}${point.x},${point.y}`;
-    })
-    .join(" ");
-};
+export {
+  DEFAULT_LINE_CHART_STROKE,
+  getLineChartDefaultYAxisTicks,
+  getLineChartLegacyThresholdTooltipInfo,
+  getLineChartStreamStroke,
+} from "./lineChartDisplayUtils";
+export {
+  getLineChartAreaHighlightData,
+  getLineChartAreaHighlightRuns,
+  type ILineChartAreaHighlightPoint,
+} from "./areaHighlightUtils";
+export {
+  getLineChartLinePath,
+  getLineChartLineSegments,
+  type ILineChartLinePoint,
+  type ILineChartLinePointInput,
+  type ILineChartLineSegment,
+} from "./lineSegments";
 
 export interface ILineChartMetricPayloadMatch<
   TValue extends ValueType = number,
@@ -293,7 +167,6 @@ export const getLineChartMetricPayloadMatches = <
   });
 };
 
-
 export const getLineChartAreaHighlightRanges = (
   ranges: ILineChartAreaHighlightRange[] = [],
   xDomain: [number, number],
@@ -314,112 +187,6 @@ export const getLineChartRangeTimestamp = (
 ): number => {
   const [startDate, endDate] = dateRange;
   return endDate.valueOf() - startDate.valueOf();
-};
-
-const isValidLineChartValue = (value?: number): value is number => {
-  return _.isNumber(value) && Number.isFinite(value);
-};
-
-const getLineChartInterpolatedValue = (
-  currentPoint: ILineChartDataPoint,
-  nextPoint: ILineChartDataPoint,
-  timestamp: number,
-) => {
-  if (
-    !isValidLineChartValue(currentPoint.v) ||
-    !isValidLineChartValue(nextPoint.v) ||
-    currentPoint.t === nextPoint.t
-  ) {
-    return undefined;
-  }
-
-  if (timestamp === currentPoint.t) {
-    return currentPoint.v;
-  }
-
-  if (timestamp === nextPoint.t) {
-    return nextPoint.v;
-  }
-
-  const ratio = (timestamp - currentPoint.t) / (nextPoint.t - currentPoint.t);
-  return currentPoint.v + (nextPoint.v - currentPoint.v) * ratio;
-};
-
-const isSameAreaHighlightPoint = (
-  prev: ILineChartAreaHighlightPoint | undefined,
-  next: ILineChartAreaHighlightPoint,
-) => {
-  if (!prev) {
-    return false;
-  }
-
-  return Math.abs(prev.t - next.t) < 1e-6 && Math.abs(prev.value - next.value) < 1e-6;
-};
-
-const pushLineChartAreaHighlightPoint = (
-  points: ILineChartAreaHighlightPoint[],
-  next: ILineChartAreaHighlightPoint,
-) => {
-  if (!isSameAreaHighlightPoint(points[points.length - 1], next)) {
-    points.push(next);
-  }
-};
-
-export const getLineChartAreaHighlightData = (
-  points: ILineChartDataPoint[],
-  range: Pick<ILineChartAreaHighlightRange, "start" | "end">,
-) => {
-  const highlightedPoints: ILineChartAreaHighlightPoint[] = [];
-
-  for (let index = 0; index < points.length - 1; index++) {
-    const currentPoint = points[index];
-    const nextPoint = points[index + 1];
-
-    if (
-      !isValidLineChartValue(currentPoint?.v) ||
-      !isValidLineChartValue(nextPoint?.v) ||
-      currentPoint.t === nextPoint.t
-    ) {
-      continue;
-    }
-
-    if (nextPoint.t < range.start || currentPoint.t > range.end) {
-      continue;
-    }
-
-    const segmentStart = Math.max(range.start, currentPoint.t);
-    const segmentEnd = Math.min(range.end, nextPoint.t);
-
-    if (segmentStart > segmentEnd) {
-      continue;
-    }
-
-    const startValue = getLineChartInterpolatedValue(
-      currentPoint,
-      nextPoint,
-      segmentStart,
-    );
-    const endValue = getLineChartInterpolatedValue(
-      currentPoint,
-      nextPoint,
-      segmentEnd,
-    );
-
-    if (!isValidLineChartValue(startValue) || !isValidLineChartValue(endValue)) {
-      continue;
-    }
-
-    pushLineChartAreaHighlightPoint(highlightedPoints, {
-      t: segmentStart,
-      value: startValue,
-    });
-    pushLineChartAreaHighlightPoint(highlightedPoints, {
-      t: segmentEnd,
-      value: endValue,
-    });
-  }
-
-  return highlightedPoints.length >= 2 ? highlightedPoints : [];
 };
 
 const isSameIntersectionPoint = (
@@ -444,6 +211,10 @@ const pushLineChartIntersection = (
   if (!isSameIntersectionPoint(intersections[intersections.length - 1], next)) {
     intersections.push(next);
   }
+};
+
+const isValidLineChartValue = (value?: number): value is number => {
+  return _.isNumber(value) && Number.isFinite(value);
 };
 
 export const getLineChartThresholdIntersections = (
