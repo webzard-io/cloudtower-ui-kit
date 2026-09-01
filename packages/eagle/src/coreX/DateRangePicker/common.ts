@@ -238,6 +238,74 @@ export function getEffectiveAbsoluteTimeBounds(
   };
 }
 
+export function isAbsoluteTimeRangeWithinBounds(
+  range: PickerDateRange,
+  minDate?: string | Dayjs,
+  maxDate?: string | Dayjs,
+) {
+  const [start, end] = range;
+  const min = minDate ? dayjs(minDate) : undefined;
+  const max = maxDate ? dayjs(maxDate) : undefined;
+
+  if (
+    !start?.isValid() ||
+    !end?.isValid() ||
+    start.isAfter(end) ||
+    (min && !min.isValid()) ||
+    (max && !max.isValid()) ||
+    (min && max && min.isAfter(max))
+  ) {
+    return false;
+  }
+
+  return (!min || !start.isBefore(min)) && (!max || !end.isAfter(max));
+}
+
+export function hasAbsoluteTimeRangeIntersection(
+  range: PickerDateRange,
+  minDate?: string | Dayjs,
+  maxDate?: string | Dayjs,
+) {
+  const [start, end] = range;
+  const min = minDate ? dayjs(minDate) : undefined;
+  const max = maxDate ? dayjs(maxDate) : undefined;
+
+  if (
+    !start?.isValid() ||
+    !end?.isValid() ||
+    start.isAfter(end) ||
+    (min && !min.isValid()) ||
+    (max && !max.isValid()) ||
+    (min && max && min.isAfter(max))
+  ) {
+    return false;
+  }
+
+  return (!min || !end.isBefore(min)) && (!max || !start.isAfter(max));
+}
+
+export function clampAbsoluteTimeRangeToBounds(
+  range: PickerDateRange,
+  minDate?: string | Dayjs,
+  maxDate?: string | Dayjs,
+): PickerDateRange | undefined {
+  if (!hasAbsoluteTimeRangeIntersection(range, minDate, maxDate)) {
+    return undefined;
+  }
+
+  const [start, end] = range;
+  const min = minDate ? dayjs(minDate) : undefined;
+  const max = maxDate ? dayjs(maxDate) : undefined;
+  const clampedRange: PickerDateRange = [
+    min && start!.isBefore(min) ? min : start,
+    max && end!.isAfter(max) ? max : end,
+  ];
+
+  return isAbsoluteTimeRangeWithinBounds(clampedRange, minDate, maxDate)
+    ? clampedRange
+    : undefined;
+}
+
 export function getDateText(
   date: Omit<PastTime, "disabled"> | PastTime,
   t: TFunction,

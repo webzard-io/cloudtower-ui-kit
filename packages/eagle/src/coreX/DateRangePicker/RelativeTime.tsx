@@ -26,6 +26,9 @@ const RelativeTime: React.FC<RelativeTimeProps> = (props) => {
   const configRef = useRef<PastTime[]>(config || BASIC_RELATIVE_TIME_CONFIG);
 
   const [keyword, setKeyword] = useState("");
+  const normalizedValue = value
+    ? normalizeRelativeTime(value, type)
+    : undefined;
 
   const configList = configRef.current.filter((config) => {
     const text = getDateText(config, t, type);
@@ -46,9 +49,9 @@ const RelativeTime: React.FC<RelativeTimeProps> = (props) => {
         {configList.map((config, index) => {
           const normalizedConfig = normalizeRelativeTime(config, type);
           const selected =
-            normalizedConfig.unit === value?.unit &&
-            normalizedConfig.value === value?.value &&
-            normalizedConfig.type === value?.type;
+            normalizedConfig.unit === normalizedValue?.unit &&
+            normalizedConfig.value === normalizedValue?.value &&
+            normalizedConfig.type === normalizedValue?.type;
           const text = getDateText(normalizedConfig, t, type);
 
           return (

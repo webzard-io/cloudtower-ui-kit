@@ -1,9 +1,47 @@
-import React, { useCallback, useMemo, useState } from "react";
+import { useKitDispatch } from "@src/core/KitStoreProvider";
+import LineChartLegend from "@src/core/LineChart/LineChartLegend";
+import {
+  ChartContentWrapper,
+  MetricLegendTabStyle,
+  ThresholdTooltipOverlay,
+} from "@src/core/LineChart/styled";
+import TooltipFormatter, {
+  LineChartTooltipContent,
+} from "@src/core/LineChart/TooltipFormatter";
+import {
+  ILineChartAreaHighlightRange,
+  ILineChartDateRange,
+  ILineChartGraphType,
+  ILineChartMetric,
+  ILineChartThresholdIntersectionInfo,
+  ILineChartThresholdLineProps,
+  ILineChartThresholdTooltipInfo,
+} from "@src/core/LineChart/type";
+import {
+  convertLineChartDataStruct,
+  getLineChartAreaHighlightRanges,
+  getLineChartMetricPayloadMatches,
+  getLineChartThresholdIntersections,
+  getLineChartXAxisDomain,
+  getYAxisDomain,
+  lineChartTickFormatter,
+  lineChartXaxisCal,
+  lineChartYaxisTickFormatter,
+} from "@src/core/LineChart/utils";
+import { getLineChartAreaHighlightRuns } from "@src/core/LineChart/areaHighlightUtils";
+import {
+  getLineChartDefaultYAxisTicks,
+  getLineChartLegacyThresholdTooltipInfo,
+  getLineChartStreamStroke,
+} from "@src/core/LineChart/lineChartDisplayUtils";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { ChartActions } from "@src/store";
 import { Empty as AntdEmpty } from "antd";
 import { DropdownProps } from "antd5";
 import cs from "classnames";
 import dayjs from "dayjs";
 import _ from "lodash";
+import React, { useCallback, useMemo, useState } from "react";
 import {
   Area,
   AreaChart,
@@ -23,48 +61,14 @@ import {
 } from "recharts/types/component/DefaultTooltipContent";
 import { AxisDomain } from "recharts/types/util/types";
 
-import { useKitDispatch } from "@src/core/KitStoreProvider";
-import LineChartLegend from "@src/core/LineChart/LineChartLegend";
-import {
-  ChartContentWrapper,
-  MetricLegendTabStyle,
-  ThresholdTooltipOverlay,
-} from "@src/core/LineChart/styled";
-import TooltipFormatter, {
-  LineChartTooltipContent,
-} from "@src/core/LineChart/TooltipFormatter";
-import {
-  ILineChartAreaHighlightRange,
-  ILineChartDateRange,
-  ILineChartGraphType,
-  ILineChartMetric,
-  ILineChartMetricStream,
-  ILineChartThresholdIntersectionInfo,
-  ILineChartThresholdLineProps,
-} from "@src/core/LineChart/type";
-import {
-  convertLineChartDataStruct,
-  getLineChartAreaHighlightData,
-  getLineChartAreaHighlightRanges,
-  getLineChartMetricPayloadMatches,
-  getLineChartThresholdIntersections,
-  getLineChartXAxisDomain,
-  getYAxisDomain,
-  lineChartTickFormatter,
-  lineChartXaxisCal,
-  lineChartYaxisTickFormatter,
-} from "@src/core/LineChart/utils";
-import useParrotTranslation from "@src/hooks/useParrotTranslation";
-import { ChartActions } from "@src/store";
-
-import LineChartToolBar from "./LineChartToolBar";
 import AreaHighlightLayer, {
   IAreaHighlightOverlay,
 } from "./AreaHighlightLayer";
 import ForecastLineLayer from "./ForecastLineLayer";
+import LineChartToolBar from "./LineChartToolBar";
 import ThresholdIntersectionLayer, {
-  THRESHOLD_INTERSECTION_LABEL_MARGIN_TOP,
   isThresholdIntersectionLabelVisible,
+  THRESHOLD_INTERSECTION_LABEL_MARGIN_TOP,
 } from "./ThresholdIntersectionLayer";
 
 export interface IChartProps<
@@ -87,7 +91,7 @@ export interface IChartProps<
   forecastStartTimestamp?: number;
   thresholdLineProps?: ILineChartThresholdLineProps;
   renderThresholdTooltip?: (
-    info: ILineChartThresholdIntersectionInfo,
+    info: ILineChartThresholdTooltipInfo,
   ) => React.ReactElement;
   yAxisProps?: {
     domain?: AxisDomain;
@@ -120,11 +124,6 @@ interface IHoveredThresholdIntersection {
 
 const DEFAULT_THRESHOLD_LINE_STROKE = "#ff4d4f";
 const DEFAULT_THRESHOLD_LINE_DASHARRAY = "4 4";
-const getStreamStroke = (stream: ILineChartMetricStream) => {
-  return stream.legend.stroke
-    ? `${stream.legend.color}1A`
-    : stream.legend.color;
-};
 
 const RenderChart = (
   props: IChartProps & {
@@ -186,7 +185,7 @@ const RenderChart = (
   const yDomain =
     yAxisProps?.domain ??
     getYAxisDomain(areaChartData, type, metric.unit, thresholdExtraValues);
-  const yTickDomain = yDomain as [number, number];
+  const yTicks = getLineChartDefaultYAxisTicks(yDomain);
   const xTicks = lineChartXaxisCal(xDomain[1], dateRange, width);
 
   const normalizedAreaHighlightRanges = useMemo(() => {
@@ -210,9 +209,9 @@ const RenderChart = (
           return [];
         }
 
-        const data = getLineChartAreaHighlightData(stream.points, range);
+        const data = getLineChartAreaHighlightRuns(stream.points, range);
 
-        if (data.length < 2) {
+        if (!data.length) {
           return [];
         }
 
@@ -223,7 +222,7 @@ const RenderChart = (
             fill: range.fill,
             fillOpacity: range.fillOpacity ?? 0.18,
             legendId: stream.legend.id,
-            stroke: getStreamStroke(stream),
+            stroke: getLineChartStreamStroke(stream),
           } satisfies IAreaHighlightOverlay,
         ];
       });
@@ -459,11 +458,18 @@ const RenderChart = (
       return null;
     }
 
-    const renderer =
-      thresholdLineProps?.renderTooltip ?? renderThresholdTooltip;
+    const renderer = thresholdLineProps?.renderTooltip;
 
     if (renderer) {
       return renderer(hoveredThresholdIntersection.info);
+    }
+
+    if (renderThresholdTooltip) {
+      return renderThresholdTooltip(
+        getLineChartLegacyThresholdTooltipInfo(
+          hoveredThresholdIntersection.info,
+        ),
+      );
     }
 
     const showHoveredThresholdIntersectionLabel =
@@ -592,7 +598,7 @@ const RenderChart = (
                 dy: 16,
                 fontSize: 12,
               }}
-              ticks={[yTickDomain[1] / 2, yTickDomain[1]]}
+              ticks={yTicks}
               tickFormatter={(tick) =>
                 lineChartYaxisTickFormatter(tick, metric.unit)
               }
@@ -644,7 +650,9 @@ const RenderChart = (
                     type === ILineChartGraphType.Stack ? "stack" : undefined
                   }
                   stroke={
-                    hasForecastStartTimestamp ? "none" : getStreamStroke(item)
+                    hasForecastStartTimestamp
+                      ? "none"
+                      : getLineChartStreamStroke(item)
                   }
                   fill={item.legend.fill}
                   isAnimationActive={false}
@@ -676,10 +684,14 @@ const RenderChart = (
               );
             })}
             {hasForecastStartTimestamp && (
-              <Customized
+              <Customized<
+                React.ComponentProps<typeof ForecastLineLayer>,
+                typeof ForecastLineLayer
+              >
                 key="line-chart-forecast-lines"
                 component={ForecastLineLayer}
                 forecastStartTimestamp={forecastStartTimestamp}
+                stacked={type === ILineChartGraphType.Stack}
                 hovering={hovering}
                 streams={streams}
                 deselected={deselected}
@@ -689,7 +701,9 @@ const RenderChart = (
               <Customized
                 key={`${intersection.legend.id}-${intersection.timestamp}-${index}`}
                 component={ThresholdIntersectionLayer}
-                intersection={intersection as ILineChartThresholdIntersectionInfo}
+                intersection={
+                  intersection as ILineChartThresholdIntersectionInfo
+                }
                 index={index}
                 hovering={hovering}
                 intersectionLabelProps={thresholdIntersectionLabelProps}

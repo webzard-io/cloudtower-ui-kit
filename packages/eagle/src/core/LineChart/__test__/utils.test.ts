@@ -5,8 +5,12 @@ import {
 import {
   getLineChartAreaHighlightData,
   getLineChartAreaHighlightRanges,
+  getLineChartAreaHighlightRuns,
+  getLineChartDefaultYAxisTicks,
+  getLineChartLegacyThresholdTooltipInfo,
   getLineChartLineSegments,
   getLineChartMetricPayloadMatches,
+  getLineChartStreamStroke,
   getLineChartThresholdIntersections,
   getYAxisDomain,
 } from "@src/core/LineChart/utils";
@@ -43,7 +47,7 @@ describe("LineChart utils", () => {
 
   it("calculates area highlight points with boundary interpolation", () => {
     expect(
-      getLineChartAreaHighlightData(
+      getLineChartAreaHighlightRuns(
         [
           {
             t: 0,
@@ -64,18 +68,82 @@ describe("LineChart utils", () => {
         },
       ),
     ).toEqual([
-      {
-        t: 5,
-        value: 5,
-      },
-      {
-        t: 10,
-        value: 10,
-      },
-      {
-        t: 15,
-        value: 5,
-      },
+      [
+        {
+          t: 5,
+          value: 5,
+        },
+        {
+          t: 10,
+          value: 10,
+        },
+        {
+          t: 15,
+          value: 5,
+        },
+      ],
+    ]);
+  });
+
+  it("splits area highlight data at invalid points", () => {
+    expect(
+      getLineChartAreaHighlightRuns(
+        [
+          { t: 0, v: 0 },
+          { t: 10, v: 10 },
+          { t: 20, v: undefined },
+          { t: 30, v: 30 },
+          { t: 40, v: 40 },
+        ],
+        { start: 0, end: 40 },
+      ),
+    ).toEqual([
+      [
+        { t: 0, value: 0 },
+        { t: 10, value: 10 },
+      ],
+      [
+        { t: 30, value: 30 },
+        { t: 40, value: 40 },
+      ],
+    ]);
+  });
+
+  it("keeps the legacy area highlight data flattened", () => {
+    expect(
+      getLineChartAreaHighlightData(
+        [
+          { t: 0, v: 0 },
+          { t: 10, v: 10 },
+          { t: 20, v: undefined },
+          { t: 30, v: 30 },
+          { t: 40, v: 40 },
+        ],
+        { start: 0, end: 40 },
+      ),
+    ).toEqual([
+      { t: 0, value: 0 },
+      { t: 10, value: 10 },
+      { t: 30, value: 30 },
+      { t: 40, value: 40 },
+    ]);
+  });
+
+  it("keeps isolated legacy highlight points in the flattened result", () => {
+    expect(
+      getLineChartAreaHighlightData(
+        [
+          { t: 0, v: 0 },
+          { t: 10, v: 10 },
+          { t: 20, v: undefined },
+          { t: 30, v: 30 },
+          { t: 40, v: 40 },
+        ],
+        { start: 10, end: 30 },
+      ),
+    ).toEqual([
+      { t: 10, value: 10 },
+      { t: 30, value: 30 },
     ]);
   });
 
@@ -319,6 +387,51 @@ describe("LineChart utils", () => {
     expect(domain[1]).toBeGreaterThanOrEqual(10);
   });
 
+  it("only creates default y-axis ticks for finite numeric domains", () => {
+    expect(getLineChartDefaultYAxisTicks([0, 10])).toEqual([5, 10]);
+    expect(getLineChartDefaultYAxisTicks(["dataMin", "dataMax"])).toBe(
+      undefined,
+    );
+    expect(
+      getLineChartDefaultYAxisTicks([() => 0, () => 10] as [
+        () => number,
+        () => number,
+      ]),
+    ).toBe(undefined);
+    expect(
+      getLineChartDefaultYAxisTicks((() => [0, 10]) as unknown as (
+        domain: [number, number],
+      ) => [number, number]),
+    ).toBe(undefined);
+  });
+
+  it("keeps the legacy threshold tooltip shape", () => {
+    expect(
+      getLineChartLegacyThresholdTooltipInfo({
+        timestamp: 10,
+        value: 4,
+        thresholdValue: 5,
+        formattedValue: "4 units",
+        formattedThresholdValue: "5 units",
+        legend: { id: "cpu", name: "CPU" },
+      }),
+    ).toEqual({
+      current: "4 units",
+      max: "5 units",
+    });
+  });
+
+  it("uses Recharts default color when a stream has no legend color", () => {
+    expect(
+      getLineChartStreamStroke({
+        points: [],
+        legend: { id: "cpu", name: "CPU" },
+        step: 1,
+        tolerance: 0,
+      }),
+    ).toBe("#3182bd");
+  });
+
   it("filters overlay payloads and keeps the real metric payload order", () => {
     const legends = [
       {
@@ -347,7 +460,10 @@ describe("LineChart utils", () => {
     };
 
     expect(
-      getLineChartMetricPayloadMatches([overlayPayload, metricPayload], legends),
+      getLineChartMetricPayloadMatches(
+        [overlayPayload, metricPayload],
+        legends,
+      ),
     ).toEqual([
       {
         legend: legends[0],

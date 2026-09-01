@@ -21,9 +21,12 @@ import dayjs, { Dayjs } from "dayjs";
 import React, { useEffect, useRef, useState } from "react";
 
 import {
+  clampAbsoluteTimeRangeToBounds,
   getDateText,
   getEffectiveAbsoluteTimeBounds,
   getRelativeTimeRange,
+  hasAbsoluteTimeRangeIntersection,
+  isAbsoluteTimeRangeWithinBounds,
   normalizeRelativeTime,
 } from "./common";
 import {
@@ -164,16 +167,30 @@ const TimeRange: React.FC<{
 const TimePickerHistory: React.FC<{
   history: DateRangeHistory;
   type: NonNullable<DateRangePickerProps["type"]>;
+  minDate?: string | Dayjs;
+  maxDate?: string | Dayjs;
   onSelect: (value: PastTime | PickerDateRange) => void;
 }> = (props) => {
-  const { history, type, onSelect } = props;
+  const { history, type, minDate, maxDate, onSelect } = props;
   const { t } = useParrotTranslation();
 
   function contentRender() {
     const filteredHistory = history
       .filter((item) => {
         if (Array.isArray(item.value)) {
-          return true;
+          if (type !== "future") {
+            return true;
+          }
+
+          if (item.value.length !== 2 || !item.value[0] || !item.value[1]) {
+            return false;
+          }
+
+          return hasAbsoluteTimeRangeIntersection(
+            [dayjs(item.value[0]), dayjs(item.value[1])],
+            minDate,
+            maxDate,
+          );
         }
 
         return normalizeRelativeTime(item.value, "past").type === type;
@@ -184,37 +201,36 @@ const TimePickerHistory: React.FC<{
       return <>{t("components.empty_search_history")}</>;
     }
 
-    return filteredHistory
-      .map((item, index) => {
-        const normalizedRelativeTime = Array.isArray(item.value)
-          ? undefined
-          : normalizeRelativeTime(item.value, "past");
-        const text = Array.isArray(item.value)
-          ? `${dayjs(item.value[0]).format("YYYY-MM-DD hh:mm:ss")} - ${dayjs(
-              item.value[1],
-            ).format("YYYY-MM-DD hh:mm:ss")}`
-          : getDateText(normalizedRelativeTime as PastTime, t);
+    return filteredHistory.map((item, index) => {
+      const normalizedRelativeTime = Array.isArray(item.value)
+        ? undefined
+        : normalizeRelativeTime(item.value, "past");
+      const text = Array.isArray(item.value)
+        ? `${dayjs(item.value[0]).format("YYYY-MM-DD hh:mm:ss")} - ${dayjs(
+            item.value[1],
+          ).format("YYYY-MM-DD hh:mm:ss")}`
+        : getDateText(normalizedRelativeTime as PastTime, t);
 
-        return (
-          <li
-            key={index}
-            className={Typo.Label.l2_regular}
-            onClick={() => {
-              if (Array.isArray(item.value)) {
-                onSelect([
-                  dayjs(item.value[0]),
-                  dayjs(item.value[1]),
-                ] as PickerDateRange);
-                return;
-              }
+      return (
+        <li
+          key={index}
+          className={Typo.Label.l2_regular}
+          onClick={() => {
+            if (Array.isArray(item.value)) {
+              onSelect([
+                dayjs(item.value[0]),
+                dayjs(item.value[1]),
+              ] as PickerDateRange);
+              return;
+            }
 
-              onSelect(normalizedRelativeTime as PastTime);
-            }}
-          >
-            {text}
-          </li>
-        );
-      });
+            onSelect(normalizedRelativeTime as PastTime);
+          }}
+        >
+          {text}
+        </li>
+      );
+    });
   }
 
   return (
@@ -266,6 +282,17 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
       ...(history?.dateRangeHistories[history.scope] ?? []),
     ];
     if (type === "absolute" && Array.isArray(time)) {
+      if (
+        relativeTimeType === "future" &&
+        !isAbsoluteTimeRangeWithinBounds(
+          time,
+          effectiveMinDate,
+          effectiveMaxDate,
+        )
+      ) {
+        return;
+      }
+
       const value = time.map((item) => item?.format() || "");
       rangeHistory.push({
         type,
@@ -332,18 +359,42 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
 
   function handleSelectHistory(value: PastTime | PickerDateRange) {
     if (Array.isArray(value)) {
-      const _value: PickerDateRange = [...value];
-      const [start, end] = _value;
-      if (effectiveMinDate && start) {
-        const _minDate = dayjs(effectiveMinDate);
-        _value[0] = start.isBefore(_minDate) ? _minDate : start;
-      }
-      if (effectiveMaxDate && end) {
-        const _maxDate = dayjs(effectiveMaxDate);
-        _value[1] = end.isAfter(_maxDate) ? _maxDate : end;
+      let selectedRange: PickerDateRange | undefined = [...value];
+
+      if (relativeTimeType === "future") {
+        selectedRange = clampAbsoluteTimeRangeToBounds(
+          value,
+          effectiveMinDate,
+          effectiveMaxDate,
+        );
+      } else {
+        const [start, end] = selectedRange;
+        if (minDate && start) {
+          const parsedMinDate = dayjs(minDate);
+          selectedRange[0] = start.isBefore(parsedMinDate)
+            ? parsedMinDate
+            : start;
+        }
+        if (maxDate && end) {
+          const parsedMaxDate = dayjs(maxDate);
+          selectedRange[1] = end.isAfter(parsedMaxDate) ? parsedMaxDate : end;
+        }
       }
 
-      handleChange("absolute", _value);
+      if (!selectedRange) {
+        return;
+      }
+
+      const [selectedStart, selectedEnd] = selectedRange;
+      if (
+        !selectedStart?.isValid() ||
+        !selectedEnd?.isValid() ||
+        selectedStart.isAfter(selectedEnd)
+      ) {
+        return;
+      }
+
+      handleChange("absolute", selectedRange);
       return;
     }
 
@@ -415,6 +466,8 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
             <TimePickerHistory
               history={history.dateRangeHistories[history.scope] ?? []}
               type={relativeTimeType}
+              minDate={effectiveMinDate}
+              maxDate={effectiveMaxDate}
               onSelect={handleSelectHistory}
             />
           }

@@ -1,16 +1,18 @@
-import React, { useMemo } from "react";
 import _ from "lodash";
+import React, { useMemo } from "react";
 
 export interface IAreaHighlightOverlay {
   key: string;
-  data: Array<{
-    t: number;
-    value: number;
-  }>;
+  data: Array<
+    Array<{
+      t: number;
+      value: number;
+    }>
+  >;
   fill: string;
   fillOpacity: number;
   legendId: string;
-  stroke: string | undefined;
+  stroke: string;
 }
 
 interface IAreaHighlightLayerProps {
@@ -99,19 +101,39 @@ const AreaHighlightLayer: React.FC<IAreaHighlightLayerProps> = ({
     return null;
   }
 
-  const projectedPoints = overlay.data
-    .map((point) => {
-      return {
+  const projectedRuns = overlay.data.flatMap((run) => {
+    const runs: Array<Array<{ t: number; x: number; y: number }>> = [];
+    let projectedPoints: Array<{ t: number; x: number; y: number }> = [];
+
+    const flushProjectedPoints = () => {
+      if (projectedPoints.length >= 2) {
+        runs.push(projectedPoints);
+      }
+      projectedPoints = [];
+    };
+
+    run.forEach((point) => {
+      const projectedPoint = {
         t: point.t,
         x: xScale(point.t),
         y: yScale(point.value),
       };
-    })
-    .filter((point) => {
-      return Number.isFinite(point.x) && Number.isFinite(point.y);
+
+      if (
+        Number.isFinite(projectedPoint.x) &&
+        Number.isFinite(projectedPoint.y)
+      ) {
+        projectedPoints.push(projectedPoint);
+      } else {
+        flushProjectedPoints();
+      }
     });
 
-  if (projectedPoints.length < 2) {
+    flushProjectedPoints();
+    return runs;
+  });
+
+  if (!projectedRuns.length) {
     return null;
   }
 
@@ -120,9 +142,6 @@ const AreaHighlightLayer: React.FC<IAreaHighlightLayerProps> = ({
   const baseLineY = Number.isFinite(scaleBaseLineY)
     ? scaleBaseLineY
     : fallbackBaseLineY;
-  const fillPath = getAreaHighlightFillPath(projectedPoints, baseLineY);
-  const linePath = getAreaHighlightLinePath(projectedPoints);
-
   return (
     <g
       className="line-chart-area-highlight"
@@ -141,21 +160,30 @@ const AreaHighlightLayer: React.FC<IAreaHighlightLayerProps> = ({
         </clipPath>
       </defs>
       <g clipPath={`url(#${clipPathId})`}>
-        <path
-          className="line-chart-area-highlight-fill"
-          d={fillPath}
-          fill={overlay.fill}
-          fillOpacity={overlay.fillOpacity}
-        />
-        {!Number.isFinite(forecastStartTimestamp) && overlay.stroke && (
-          <path
-            className="line-chart-area-highlight-curve"
-            d={linePath}
-            fill="none"
-            stroke={overlay.stroke}
-            strokeWidth={1}
-          />
-        )}
+        {projectedRuns.map((projectedPoints, index) => {
+          const fillPath = getAreaHighlightFillPath(projectedPoints, baseLineY);
+          const linePath = getAreaHighlightLinePath(projectedPoints);
+
+          return (
+            <g key={`${overlay.key}-${index}`}>
+              <path
+                className="line-chart-area-highlight-fill"
+                d={fillPath}
+                fill={overlay.fill}
+                fillOpacity={overlay.fillOpacity}
+              />
+              {!Number.isFinite(forecastStartTimestamp) && (
+                <path
+                  className="line-chart-area-highlight-curve"
+                  d={linePath}
+                  fill="none"
+                  stroke={overlay.stroke}
+                  strokeWidth={1}
+                />
+              )}
+            </g>
+          );
+        })}
       </g>
     </g>
   );
