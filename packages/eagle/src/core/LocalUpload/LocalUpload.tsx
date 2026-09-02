@@ -48,6 +48,7 @@ const UploadComp = React.forwardRef<HTMLDivElement, LocalUploadProps>(
       buttonProps,
       disableRemoveList = false,
       onRemove,
+      error,
     },
     ref,
   ) => {
@@ -80,6 +81,7 @@ const UploadComp = React.forwardRef<HTMLDivElement, LocalUploadProps>(
               fileList,
               setFileList,
               validate,
+              error,
               ...buttonProps,
             }}
           >
@@ -97,6 +99,7 @@ const UploadComp = React.forwardRef<HTMLDivElement, LocalUploadProps>(
               validate,
               disableRemove: shouldDisableRemove,
               onRemove,
+              error,
             }}
           />
         )}

@@ -43,6 +43,11 @@ const meta: Meta<typeof LocalUpload> = {
       control: false,
       description: "额外信息区域，展示在上传区域和文件列表之间",
     },
+    error: {
+      control: "text",
+      description:
+        "字段级错误信息，展示在上传区域下方，优先级高于组件内部的文件数量超限提示",
+    },
     type: {
       control: "select",
       options: ["button", "dragger"],
@@ -333,6 +338,27 @@ export const WithPrefilledFiles: Story = {
  * 限制文件数量
  * 最多只能上传指定数量的文件
  */
+export const FieldErrorUpload: Story = {
+  name: "字段级错误",
+  render: () => {
+    const [fileList, setFileList] = useState<LocalUploadFile[]>(() => [
+      createMockFile("metadata.json", 1024 * 10, "success"),
+    ]);
+
+    return (
+      <LocalUpload
+        type="dragger"
+        fileList={fileList}
+        setFileList={setFileList}
+        multiple
+        accept=".tar"
+        error="选择 1 个扩展名为 .tar 的文件和 1 个与其相匹配的扩展名为 .json 的文件。"
+        description="校验不通过时，错误信息展示在上传区域和描述文本之间"
+      />
+    );
+  },
+};
+
 export const MaxCountUpload: Story = {
   name: "限制文件数量",
   render: () => {

@@ -47,6 +47,8 @@ export type LocalUploadButtonProps = Pick<
   setFileList: (files: LocalUploadFile[]) => void;
   /** 最大文件数量 */
   maxCount?: number;
+  /** 字段级错误信息，展示在上传区域下方，优先级高于组件内部的文件数量超限提示 */
+  error?: React.ReactNode;
   /**
    * 文件验证函数
    * @param file 当前文件
@@ -76,6 +78,8 @@ export type LocalUploadDraggerProps = Pick<
   maxCount?: number;
   /** 是否禁用文件移除功能 */
   disableRemove?: boolean;
+  /** 字段级错误信息，展示在上传区域下方，优先级高于组件内部的文件数量超限提示 */
+  error?: React.ReactNode;
   /**
    * 文件验证函数
    * @param file 当前文件
@@ -167,6 +171,8 @@ export type LocalUploadProps = {
   setFileList: (files: LocalUploadFile[]) => void;
   /** 是否禁用文件列表的移除功能 */
   disableRemoveList?: boolean;
+  /** 字段级错误信息，展示在上传区域下方，优先级高于组件内部的文件数量超限提示 */
+  error?: React.ReactNode;
   /**
    * 文件验证函数
    * @param file 当前文件
