@@ -202,9 +202,10 @@ export const UploadButton: React.FC<
   multiple = false,
   disabled,
   accept,
+  error,
 }) => {
   const { t } = useParrotTranslation();
-  const [error, setError] = useState("");
+  const [countError, setCountError] = useState("");
   const _maxCount = multiple ? maxCount || Infinity : 1;
   const isSingleSelect = _maxCount === 1;
 
@@ -217,7 +218,7 @@ export const UploadButton: React.FC<
   useFileCountErrorClear({
     fileList,
     maxCount: _maxCount,
-    setError,
+    setError: setCountError,
   });
 
   const props: AntdUploadProps = {
@@ -230,12 +231,15 @@ export const UploadButton: React.FC<
       validate,
       maxCount: _maxCount,
       isSingleSelect,
-      setError,
+      setError: setCountError,
       t,
       checkSingleSelectCount: false,
     }),
     multiple,
   };
+
+  // 外部传入的字段级错误优先于组件内部的文件数量超限提示
+  const fieldError = error || countError;
 
   return (
     <AntdUpload {...props} className={cs("upload-button", className)}>
@@ -250,8 +254,10 @@ export const UploadButton: React.FC<
       >
         {children}
       </Button>
-      {error ? (
-        <div className={cx("upload-error", Typo.Label.l4_regular)}>{error}</div>
+      {fieldError ? (
+        <div className={cx("upload-error", Typo.Label.l4_regular)}>
+          {fieldError}
+        </div>
       ) : null}
     </AntdUpload>
   );
@@ -271,9 +277,10 @@ export const UploadDragger: React.FC<
   accept,
   disableRemove,
   onRemove,
+  error,
 }) => {
   const { t } = useParrotTranslation();
-  const [error, setError] = useState("");
+  const [countError, setCountError] = useState("");
   const _maxCount = multiple ? maxCount || Infinity : 1;
   const isSingleSelect = _maxCount === 1;
   const reachMaxCount =
@@ -288,7 +295,7 @@ export const UploadDragger: React.FC<
   useFileCountErrorClear({
     fileList,
     maxCount: _maxCount,
-    setError,
+    setError: setCountError,
   });
 
   const props: AntdUploadProps = {
@@ -301,7 +308,7 @@ export const UploadDragger: React.FC<
       validate,
       maxCount: _maxCount,
       isSingleSelect,
-      setError,
+      setError: setCountError,
       t,
       checkSingleSelectCount: true,
     }),
@@ -355,9 +362,13 @@ export const UploadDragger: React.FC<
   };
 
   const Error = () => {
-    if (error) {
+    // 外部传入的字段级错误优先于组件内部的文件数量超限提示
+    const fieldError = error || countError;
+    if (fieldError) {
       return (
-        <div className={cx("upload-error", Typo.Label.l4_regular)}>{error}</div>
+        <div className={cx("upload-error", Typo.Label.l4_regular)}>
+          {fieldError}
+        </div>
       );
     }
     const file = fileList[0];

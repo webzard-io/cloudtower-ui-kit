@@ -233,4 +233,67 @@ describe("LocalUpload", () => {
 
     expect(setFileList).not.toHaveBeenCalled();
   });
+
+  it("拖拽模式展示外部传入的字段级错误，位置在上传区域和描述之间", () => {
+    const { container } = render(
+      <LocalUpload
+        fileList={[]}
+        setFileList={vi.fn()}
+        multiple
+        description="支持上传 .json 文件"
+        error="请选择 1 个 .tar 文件和 1 个 .json 文件。"
+      />,
+    );
+
+    const fieldError = screen.getByText(
+      "请选择 1 个 .tar 文件和 1 个 .json 文件。",
+    );
+    const dragger = container.querySelector(".upload-drag") as Element;
+    const description = screen.getByText("支持上传 .json 文件");
+
+    expect(fieldError).toHaveClass("upload-error");
+    expect(
+      dragger.compareDocumentPosition(fieldError) &
+        Node.DOCUMENT_POSITION_CONTAINED_BY,
+    ).toBeTruthy();
+    expect(
+      fieldError.compareDocumentPosition(description) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
+  it("按钮模式展示外部传入的字段级错误", () => {
+    render(
+      <LocalUpload
+        type="button"
+        fileList={[]}
+        setFileList={vi.fn()}
+        multiple
+        error="请选择文件。"
+      />,
+    );
+
+    expect(screen.getByText("请选择文件。")).toHaveClass("upload-error");
+  });
+
+  it("字段级错误与文件条目自身的错误同时展示", () => {
+    const file = createMockFile("Document-01.json", 1024 * 10, "error");
+    file.error = "不是节点相关文件。";
+
+    render(
+      <LocalUpload
+        fileList={[file]}
+        setFileList={vi.fn()}
+        multiple
+        error="请选择 1 个 .tar 文件和 1 个 .json 文件。"
+      />,
+    );
+
+    expect(
+      screen.getByText("请选择 1 个 .tar 文件和 1 个 .json 文件。"),
+    ).toHaveClass("upload-error");
+    expect(screen.getByText("不是节点相关文件。")).toHaveClass(
+      "upload-file-error",
+    );
+  });
 });
