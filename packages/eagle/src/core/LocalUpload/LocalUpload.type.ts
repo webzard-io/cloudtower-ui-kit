@@ -74,6 +74,8 @@ export type LocalUploadDraggerProps = Pick<
   setFileList: (files: LocalUploadFile[]) => void;
   /** 最大文件数量 */
   maxCount?: number;
+  /** 是否禁用文件移除功能 */
+  disableRemove?: boolean;
   /**
    * 文件验证函数
    * @param file 当前文件
@@ -84,6 +86,8 @@ export type LocalUploadDraggerProps = Pick<
     file: LocalUploadFile,
     files?: LocalUploadFile[],
   ) => Promise<{ error?: string; data?: any }>; // eslint-disable-line @typescript-eslint/no-explicit-any
+  /** 文件移除事件回调 */
+  onRemove?: (file: LocalUploadFile) => void;
 };
 
 /**
@@ -94,8 +98,6 @@ export type LocalUploadFileListProps = {
   className?: string;
   /** 文件列表 */
   fileList: LocalUploadFile[];
-  /** 列表展示类型 */
-  type?: "list" | "info";
   /** 移除文件回调 */
   removeFile: (id: string) => void;
   /** 是否禁用移除操作 */
@@ -143,14 +145,14 @@ export type LocalUploadProps = {
   "data-testid"?: string;
   /** 标签 */
   label?: React.ReactNode;
+  /** 标签位置 */
+  labelPosition?: "top" | "left";
   /** 描述文本 */
   description?: React.ReactNode;
   /** 额外信息 */
   info?: React.ReactNode;
   /** 上传类型：按钮或拖拽 */
   type?: "button" | "dragger";
-  /** 列表展示类型 */
-  listType?: "list" | "info";
   /** 是否支持多选 */
   multiple?: boolean;
   /** 接受的文件类型 */

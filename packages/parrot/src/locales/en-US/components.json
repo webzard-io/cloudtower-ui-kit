@@ -99,5 +99,5 @@
   "reselect_file": "Re-select",
   "exceed_max_count": "Maximum {count} file allowed",
   "exceed_max_count_plural": "Maximum {count} files allowed",
-  "upload_file_desc": "Click or drag file to this area to upload"
+  "upload_file_desc": "Drag file here or "
 }
