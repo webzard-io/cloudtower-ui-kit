@@ -53,6 +53,7 @@ const UploadComp = React.forwardRef<HTMLDivElement, LocalUploadProps>(
     ref,
   ) => {
     const { t } = useParrotTranslation();
+    // onRemove 由 FileListItem 内部触发，此处不重复调用
     const removeFile = (id: string) => {
       const nextFileList = fileList.filter((file) => file.uid !== id);
       if (nextFileList.length !== fileList.length) {
@@ -104,7 +105,9 @@ const UploadComp = React.forwardRef<HTMLDivElement, LocalUploadProps>(
           />
         )}
         {shouldShowDescriptionBelow ? (
-          <UploadComp.Description>{description}</UploadComp.Description>
+          <UploadComp.Description className="description-below">
+            {description}
+          </UploadComp.Description>
         ) : null}
         {info}
         {type === "button" || !isSingleSelect ? (
