@@ -1,5 +1,5 @@
 /* eslint-disable testing-library/no-container, testing-library/no-node-access */
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import React from "react";
 import { describe, expect, it, vi } from "vitest";
 
@@ -149,9 +149,15 @@ describe("LocalUpload", () => {
       />,
     );
 
-    fireEvent.click(container.querySelector(".remove-button") as Element);
+    const openFileDialog = vi.spyOn(HTMLInputElement.prototype, "click");
+    const removeButton = container.querySelector(".remove-button") as Element;
+    fireEvent.click(removeButton);
 
     expect(setFileList).not.toHaveBeenCalled();
+    expect(removeButton).toHaveStyle({ cursor: "not-allowed" });
+    // 点击被吃掉，不能冒泡到 Dragger 去唤起文件选择框
+    expect(openFileDialog).not.toHaveBeenCalled();
+    openFileDialog.mockRestore();
   });
 
   it("组件禁用时单文件移除入口不清空列表", () => {
@@ -252,6 +258,8 @@ describe("LocalUpload", () => {
     const description = screen.getByText("支持上传 .json 文件");
 
     expect(fieldError).toHaveClass("upload-error");
+    // 有错误时上传区收窄下边距，与描述凑成设计稿的 4px 一组
+    expect(dragger).toHaveClass("has-error");
     expect(
       dragger.compareDocumentPosition(fieldError) &
         Node.DOCUMENT_POSITION_CONTAINED_BY,
@@ -295,5 +303,122 @@ describe("LocalUpload", () => {
     expect(screen.getByText("不是节点相关文件。")).toHaveClass(
       "upload-file-error",
     );
+  });
+
+  it("文件名渲染为可换行，不做单行省略", () => {
+    const { container } = render(
+      <LocalUpload
+        fileList={[
+          createMockFile(
+            "Document-01-with-a-very-very-long-file-name-that-should-wrap.json",
+            1024 * 10,
+          ),
+        ]}
+        setFileList={vi.fn()}
+      />,
+    );
+
+    expect(container.querySelector(".file-name")).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "Document-01-with-a-very-very-long-file-name-that-should-wrap.json",
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("解析中的文件只展示文件名，不展示文件大小", () => {
+    const { container } = render(
+      <LocalUpload
+        fileList={[createMockFile("Document-01.json", 1024 * 10, "validating")]}
+        setFileList={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByText("Document-01.json")).toBeInTheDocument();
+    expect(container.querySelector(".file-size-line")).toBeNull();
+    expect(container.querySelector(".file-content")).toHaveClass("validating");
+  });
+
+  it("文件数达到 maxCount 时拖拽区不置灰", () => {
+    const { container } = render(
+      <LocalUpload
+        fileList={[
+          createMockFile("Document-01.json", 1024 * 10),
+          createMockFile("Document-02.json", 1024 * 16),
+        ]}
+        setFileList={vi.fn()}
+        multiple
+        maxCount={2}
+      />,
+    );
+
+    const dragArea = container.querySelector(".upload-drag-area") as Element;
+
+    expect(dragArea).not.toHaveClass("reach-max-count");
+    expect(dragArea).not.toHaveClass("ant-upload-disabled");
+  });
+
+  it("字段级错误优先于内部的文件数量超限提示", async () => {
+    const { container } = render(
+      <LocalUpload
+        fileList={[]}
+        setFileList={vi.fn()}
+        multiple
+        maxCount={2}
+        accept=".json"
+        error="请选择 1 个 .tar 文件和 1 个 .json 文件。"
+      />,
+    );
+
+    const input = container.querySelector(
+      'input[type="file"]',
+    ) as HTMLInputElement;
+    fireEvent.change(input, {
+      target: {
+        files: [
+          createMockFile("Document-01.json", 1024 * 10),
+          createMockFile("Document-02.json", 1024 * 16),
+          createMockFile("Document-03.json", 1024 * 20),
+        ],
+      },
+    });
+
+    await waitFor(() =>
+      expect(
+        screen.getByText("请选择 1 个 .tar 文件和 1 个 .json 文件。"),
+      ).toHaveClass("upload-error"),
+    );
+    expect(screen.queryByText(/最多可选择/)).not.toBeInTheDocument();
+  });
+
+  it("单文件场景下拖入多个文件时只接受第 1 个", async () => {
+    const setFileList = vi.fn();
+
+    const { container } = render(
+      <LocalUpload
+        fileList={[]}
+        setFileList={setFileList}
+        multiple={false}
+        accept=".json"
+      />,
+    );
+
+    const input = container.querySelector(
+      'input[type="file"]',
+    ) as HTMLInputElement;
+
+    fireEvent.change(input, {
+      target: {
+        files: [
+          createMockFile("Document-01.json", 1024 * 10),
+          createMockFile("Document-02.json", 1024 * 16),
+        ],
+      },
+    });
+
+    await waitFor(() => expect(setFileList).toHaveBeenCalledTimes(1));
+    expect(setFileList.mock.calls[0][0]).toHaveLength(1);
+    expect(setFileList.mock.calls[0][0][0].name).toBe("Document-01.json");
+    expect(screen.queryByText(/最多可选择|Up to/)).not.toBeInTheDocument();
   });
 });

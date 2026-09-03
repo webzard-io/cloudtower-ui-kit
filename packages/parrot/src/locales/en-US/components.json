@@ -97,7 +97,7 @@
   "recent_search": "Recent search",
   "select_file": "Select File",
   "reselect_file": "Re-select",
-  "exceed_max_count": "Maximum {count} file allowed",
-  "exceed_max_count_plural": "Maximum {count} files allowed",
-  "upload_file_desc": "Drag file here or "
+  "exceed_max_count": "Up to {count} file can be selected.",
+  "exceed_max_count_plural": "Up to {count} files can be selected.",
+  "upload_file_desc": "Drag file here or <0>Select File</0>"
 }

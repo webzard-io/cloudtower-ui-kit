@@ -18,7 +18,7 @@ export const UploadWrapper = styled.div`
     }
   }
   .upload-label {
-    color: $text-light-primary;
+    color: $text-light-secondary;
     word-break: break-word;
     margin-bottom: 4px;
     display: block;
@@ -38,8 +38,16 @@ export const UploadWrapper = styled.div`
   .upload-drag:not(:last-child) {
     margin-bottom: 8px;
   }
+  /* 设计稿把错误、描述和文件列表归到同一组，组内间距 4px，组与上传区之间 8px。
+     错误渲染在上传区内部，所以由上传区代为收窄下边距 */
+  .upload-button.has-error:not(:last-child),
+  .upload-drag.has-error:not(:last-child),
+  .upload-description.description-below:not(:last-child) {
+    margin-bottom: 4px;
+  }
 
   .upload-drag-area {
+    height: 138px;
     padding: 32px 16px;
     border-radius: 4px;
     border: 1px dashed $strokes-light-trans-4;
@@ -48,6 +56,10 @@ export const UploadWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    .ant-upload-drag-container {
+      gap: 4px;
+    }
     .upload-drag-text {
       text-align: center;
       .upload-drag-link {
@@ -66,6 +78,7 @@ export const UploadWrapper = styled.div`
     }
 
     &.has-file {
+      height: 56px;
       padding: 16px;
       .ant-upload-drag-container {
         display: flex;
@@ -89,6 +102,7 @@ export const UploadWrapper = styled.div`
       }
     }
     &.has-file.single {
+      height: auto;
       padding: 11px;
       .ant-upload-drag-container {
         display: flex;
@@ -104,7 +118,6 @@ export const UploadWrapper = styled.div`
     }
     &.file-validating.single {
       cursor: not-allowed;
-      color: $text-light-quaternary;
     }
 
     .file-info {
@@ -139,9 +152,18 @@ export const UploadWrapper = styled.div`
     &.ant-upload-disabled.file-validating {
       opacity: 1;
     }
-    &.ant-upload-disabled.reach-max-count {
-      color: $text-light-tertiary;
-    }
+  }
+
+  /* 文件名超过宽度时换行，OverflowTooltip 默认是单行省略 */
+  .file-name {
+    display: block;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  /* 解析中的文件名颜色，两个类名是为了盖过 Typo 自带的 color */
+  .file-content.validating {
+    color: $text-light-tertiary;
   }
 
   .upload-error {
@@ -153,11 +175,8 @@ export const UploadWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
     .upload-file-item {
-      .validating {
-        color: $text-light-quaternary;
-      }
       .upload-file-error {
         color: $text-light-serious;
       }
@@ -186,11 +205,6 @@ export const FileInfoWrapperStyle = css`
     min-width: 0;
     overflow: hidden;
     text-align: left;
-  }
-  .file-name {
-    display: block;
-    white-space: normal;
-    overflow-wrap: anywhere;
   }
   .file-size-line {
     line-height: 18px;
