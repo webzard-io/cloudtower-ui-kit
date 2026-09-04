@@ -55,6 +55,8 @@
   "minute_count_plural": "{count} minutes",
   "month_measure_count": "{count} month",
   "month_measure_count_plural": "{count} months",
+  "year_count": "{count} year",
+  "year_count_plural": "{count} years",
   "show_unpassed": "Show Failed only",
   "copy": "Copy",
   "click_to_copy": "Copy",

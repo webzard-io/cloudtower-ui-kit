@@ -1,16 +1,39 @@
 import { useKitDispatch } from "@src/core/KitStoreProvider";
 import LineChartLegend from "@src/core/LineChart/LineChartLegend";
-import { MetricLegendTabStyle } from "@src/core/LineChart/styled";
-import TooltipFormatter from "@src/core/LineChart/TooltipFormatter";
 import {
+  ChartContentWrapper,
+  MetricLegendTabStyle,
+  ThresholdTooltipOverlay,
+} from "@src/core/LineChart/styled";
+import TooltipFormatter, {
+  LineChartTooltipContent,
+} from "@src/core/LineChart/TooltipFormatter";
+import {
+  ILineChartAreaHighlightRange,
   ILineChartDateRange,
   ILineChartGraphType,
   ILineChartMetric,
+  ILineChartThresholdIntersectionInfo,
+  ILineChartThresholdLineProps,
+  ILineChartThresholdTooltipInfo,
 } from "@src/core/LineChart/type";
 import {
   convertLineChartDataStruct,
+  getLineChartAreaHighlightRanges,
+  getLineChartMetricPayloadMatches,
+  getLineChartThresholdIntersections,
+  getLineChartXAxisDomain,
+  getYAxisDomain,
+  lineChartTickFormatter,
+  lineChartXaxisCal,
   lineChartYaxisTickFormatter,
 } from "@src/core/LineChart/utils";
+import { getLineChartAreaHighlightRuns } from "@src/core/LineChart/areaHighlightUtils";
+import {
+  getLineChartDefaultYAxisTicks,
+  getLineChartLegacyThresholdTooltipInfo,
+  getLineChartStreamStroke,
+} from "@src/core/LineChart/lineChartDisplayUtils";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { ChartActions } from "@src/store";
 import { Empty as AntdEmpty } from "antd";
@@ -22,6 +45,8 @@ import React, { useCallback, useMemo, useState } from "react";
 import {
   Area,
   AreaChart,
+  Customized,
+  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   TooltipProps,
@@ -36,13 +61,15 @@ import {
 } from "recharts/types/component/DefaultTooltipContent";
 import { AxisDomain } from "recharts/types/util/types";
 
+import AreaHighlightLayer, {
+  IAreaHighlightOverlay,
+} from "./AreaHighlightLayer";
+import ForecastLineLayer from "./ForecastLineLayer";
 import LineChartToolBar from "./LineChartToolBar";
-import {
-  getLineChartXAxisDomain,
-  getYAxisDomain,
-  lineChartTickFormatter,
-  lineChartXaxisCal,
-} from "./utils";
+import ThresholdIntersectionLayer, {
+  isThresholdIntersectionLabelVisible,
+  THRESHOLD_INTERSECTION_LABEL_MARGIN_TOP,
+} from "./ThresholdIntersectionLayer";
 
 export interface IChartProps<
   TValue extends ValueType = string,
@@ -60,6 +87,12 @@ export interface IChartProps<
   dropdownProps?: DropdownProps;
   onLabelsChange?: (labels: string[]) => void;
   metric: ILineChartMetric;
+  areaHighlightRanges?: ILineChartAreaHighlightRange[];
+  forecastStartTimestamp?: number;
+  thresholdLineProps?: ILineChartThresholdLineProps;
+  renderThresholdTooltip?: (
+    info: ILineChartThresholdTooltipInfo,
+  ) => React.ReactElement;
   yAxisProps?: {
     domain?: AxisDomain;
     ticks?: (string | number)[];
@@ -83,7 +116,20 @@ export interface IChartProps<
   emptyIcon?: React.ReactNode | string;
 }
 
-const RenderChart = (props: IChartProps & { width: number }) => {
+interface IHoveredThresholdIntersection {
+  info: ILineChartThresholdIntersectionInfo;
+  left: number;
+  top: number;
+}
+
+const DEFAULT_THRESHOLD_LINE_STROKE = "#ff4d4f";
+const DEFAULT_THRESHOLD_LINE_DASHARRAY = "4 4";
+
+const RenderChart = (
+  props: IChartProps & {
+    width: number;
+  },
+) => {
   const {
     metricName,
     showLegend,
@@ -94,8 +140,11 @@ const RenderChart = (props: IChartProps & { width: number }) => {
     type,
     mode = "legend",
     dropdownProps,
-    onLabelsChange,
     metric,
+    areaHighlightRanges,
+    forecastStartTimestamp,
+    thresholdLineProps,
+    renderThresholdTooltip,
     yAxisProps,
     xAxisProps,
     actionsProps,
@@ -112,6 +161,8 @@ const RenderChart = (props: IChartProps & { width: number }) => {
   const [hovering, setHovering] = useState<string[]>([]);
   const [hoveringSelf, setHoveringSelf] = useState<string[]>([]);
   const [tempDeselected, setTempDeselected] = useState<string[]>([]);
+  const [hoveredThresholdIntersection, setHoveredThresholdIntersection] =
+    useState<IHoveredThresholdIntersection | null>(null);
   const streams = useMemo(() => metric.sample_streams, [metric]);
 
   const legends = useMemo(() => {
@@ -122,12 +173,124 @@ const RenderChart = (props: IChartProps & { width: number }) => {
     () => convertLineChartDataStruct(streams.map((stream) => stream.points)),
     [streams],
   );
-  const yDomain = getYAxisDomain(areaChartData, type, metric.unit);
   const xDomain = getLineChartXAxisDomain(dateRange, dateRange[1].valueOf());
+  const thresholdValue = thresholdLineProps?.value;
+  const thresholdExtraValues = useMemo(() => {
+    if (_.isNumber(thresholdValue)) {
+      return [thresholdValue];
+    }
+
+    return [];
+  }, [thresholdValue]);
+  const yDomain =
+    yAxisProps?.domain ??
+    getYAxisDomain(areaChartData, type, metric.unit, thresholdExtraValues);
+  const yTicks = getLineChartDefaultYAxisTicks(yDomain);
   const xTicks = lineChartXaxisCal(xDomain[1], dateRange, width);
+
+  const normalizedAreaHighlightRanges = useMemo(() => {
+    return getLineChartAreaHighlightRanges(areaHighlightRanges, xDomain);
+  }, [areaHighlightRanges, xDomain]);
+  const thresholdIntersectionLabelProps =
+    thresholdLineProps?.intersectionLabelProps;
+  const hasForecastStartTimestamp = Number.isFinite(forecastStartTimestamp);
+  const hasThresholdIntersectionLabel = Boolean(
+    thresholdIntersectionLabelProps,
+  );
+
+  const areaHighlightOverlays = useMemo(() => {
+    if (type !== ILineChartGraphType.Area) {
+      return [];
+    }
+
+    return normalizedAreaHighlightRanges.flatMap((range, rangeIndex) => {
+      return streams.flatMap((stream, streamIndex) => {
+        if (range.legendId && stream.legend.id !== range.legendId) {
+          return [];
+        }
+
+        const data = getLineChartAreaHighlightRuns(stream.points, range);
+
+        if (!data.length) {
+          return [];
+        }
+
+        return [
+          {
+            key: `${stream.legend.id}-${range.start}-${range.end}-${rangeIndex}-${streamIndex}`,
+            data,
+            fill: range.fill,
+            fillOpacity: range.fillOpacity ?? 0.18,
+            legendId: stream.legend.id,
+            stroke: getLineChartStreamStroke(stream),
+          } satisfies IAreaHighlightOverlay,
+        ];
+      });
+    });
+  }, [normalizedAreaHighlightRanges, streams, type]);
+
+  const formatIntersectionValue = useCallback(
+    (streamIndex: number, value: number, timestamp: number) => {
+      if (!tooltipProps.format) {
+        return lineChartYaxisTickFormatter(value, metric.unit);
+      }
+
+      const payload = {
+        color: legends[streamIndex]?.color,
+        dataKey: `v${streamIndex}`,
+        fill: legends[streamIndex]?.fill,
+        name: `v${streamIndex}`,
+        payload: {
+          [`v${streamIndex}`]: value,
+          t: timestamp,
+          v: value,
+        },
+        stroke: legends[streamIndex]?.color,
+        value,
+      } as Payload<number, string>;
+
+      return tooltipProps.format(payload);
+    },
+    [legends, metric.unit, tooltipProps],
+  );
+
+  const thresholdIntersections = useMemo(() => {
+    if (!_.isNumber(thresholdValue)) {
+      return [];
+    }
+
+    const formattedThresholdValue = lineChartYaxisTickFormatter(
+      thresholdValue,
+      metric.unit,
+    );
+
+    return getLineChartThresholdIntersections(
+      streams,
+      thresholdValue,
+      xDomain,
+    ).map((intersection) => {
+      return {
+        ...intersection,
+        formattedThresholdValue,
+        formattedValue: formatIntersectionValue(
+          intersection.streamIndex,
+          intersection.value,
+          intersection.timestamp,
+        ),
+        thresholdValue,
+      };
+    });
+  }, [formatIntersectionValue, metric.unit, streams, thresholdValue, xDomain]);
+
+  const visibleThresholdIntersections = useMemo(() => {
+    return thresholdIntersections.filter((intersection) => {
+      return !deselected.includes(intersection.legend.id);
+    });
+  }, [deselected, thresholdIntersections]);
 
   const onLegendClick = useCallback(
     (id: string) => {
+      setHoveredThresholdIntersection(null);
       setDeselected((prev) => {
         const currentDeselected = tempDeselected.length ? tempDeselected : prev;
 
@@ -240,7 +403,9 @@ const RenderChart = (props: IChartProps & { width: number }) => {
     },
     [deselected, streams, tempDeselected],
   );
+
   const hidePointer: CategoricalChartFunc = useCallback(() => {
+    setHoveredThresholdIntersection(null);
     dispatch({
       type: ChartActions.SET_POINTER,
       payload: { visible: false, uuid: syncId },
@@ -251,25 +416,93 @@ const RenderChart = (props: IChartProps & { width: number }) => {
     (e) => {
       if (e.isTooltipActive) {
         const { chartX, activePayload } = e;
-        if (!activePayload?.[0]?.payload) {
+        const activeMetricPayload = getLineChartMetricPayloadMatches(
+          activePayload,
+          legends,
+        )[0]?.payload;
+
+        if (!activeMetricPayload?.payload) {
           return;
         }
+
         dispatch({
           type: ChartActions.SET_POINTER,
           payload: {
             uuid: syncId,
             visible: true,
             left: chartX,
-            text: dayjs(Number(activePayload[0].payload.t)).format(
+            text: dayjs(Number(activeMetricPayload.payload.t)).format(
               "MM/DD HH:mm:ss",
             ),
-            value: activePayload[0].payload.v,
+            value: activeMetricPayload.payload.v,
           },
         });
       }
     },
-    [dispatch, syncId],
+    [dispatch, legends, syncId],
   );
+
+  const handleThresholdIntersectionEnter = useCallback(
+    (info: ILineChartThresholdIntersectionInfo, left: number, top: number) => {
+      setHoveredThresholdIntersection({
+        info,
+        left,
+        top,
+      });
+    },
+    [],
+  );
+
+  const thresholdTooltipContent = useMemo(() => {
+    if (!hoveredThresholdIntersection) {
+      return null;
+    }
+
+    const renderer = thresholdLineProps?.renderTooltip;
+
+    if (renderer) {
+      return renderer(hoveredThresholdIntersection.info);
+    }
+
+    if (renderThresholdTooltip) {
+      return renderThresholdTooltip(
+        getLineChartLegacyThresholdTooltipInfo(
+          hoveredThresholdIntersection.info,
+        ),
+      );
+    }
+
+    const showHoveredThresholdIntersectionLabel =
+      isThresholdIntersectionLabelVisible(
+        thresholdIntersectionLabelProps,
+        hoveredThresholdIntersection.info,
+      );
+
+    if (showHoveredThresholdIntersectionLabel) {
+      return null;
+    }
+
+    return (
+      <LineChartTooltipContent
+        title={dayjs(hoveredThresholdIntersection.info.timestamp).format(
+          "MM/DD HH:mm:ss",
+        )}
+        items={[
+          {
+            id: hoveredThresholdIntersection.info.legend.id,
+            color: hoveredThresholdIntersection.info.legend.color,
+            label: hoveredThresholdIntersection.info.legend.name,
+            value: hoveredThresholdIntersection.info.formattedValue,
+          },
+        ]}
+      />
+    );
+  }, [
+    thresholdIntersectionLabelProps,
+    hoveredThresholdIntersection,
+    renderThresholdTooltip,
+    thresholdLineProps?.renderTooltip,
+  ]);
 
   if (!streams?.length || streams.every((stream) => !stream.points?.length)) {
     return (
@@ -313,94 +546,187 @@ const RenderChart = (props: IChartProps & { width: number }) => {
         onLegendHover={onLegendHover}
       />
 
-      <ResponsiveContainer height={height}>
-        <AreaChart
-          style={{ backgroundColor: "white" }}
-          margin={
-            showLegend
-              ? { top: 10, left: -20, right: 0, bottom: 0 }
-              : { top: 20, left: -20, right: 0, bottom: 5 }
-          }
-          data={areaChartData}
-          syncId={syncId}
-          onMouseLeave={hidePointer}
-          onMouseMove={handleMouseMove}
-        >
-          <XAxis
-            hide={!showXAxis}
-            dataKey="t"
-            axisLine={false}
-            tickLine={false}
-            type="number"
-            ticks={xTicks}
-            domain={xDomain}
-            tickFormatter={(tick) => lineChartTickFormatter(tick, dateRange)}
-            {...xAxisProps}
-          />
-          <YAxis
-            width={200}
-            mirror
-            // allowDataOverflow
-            axisLine={false}
-            tickLine={false}
-            allowDecimals={false}
-            domain={yDomain}
-            orientation={yAxisAlign}
-            tick={{
-              dx: 20,
-              dy: 16,
-              fontSize: 12,
-            }}
-            ticks={[yDomain[1] / 2, yDomain[1]]}
-            tickFormatter={(tick) =>
-              lineChartYaxisTickFormatter(tick, metric.unit)
+      <ChartContentWrapper style={{ height }}>
+        <ResponsiveContainer height="100%">
+          <AreaChart
+            style={{ backgroundColor: "white" }}
+            margin={
+              showLegend
+                ? {
+                    top: hasThresholdIntersectionLabel
+                      ? THRESHOLD_INTERSECTION_LABEL_MARGIN_TOP
+                      : 10,
+                    left: -20,
+                    right: 0,
+                    bottom: 0,
+                  }
+                : {
+                    top: hasThresholdIntersectionLabel
+                      ? THRESHOLD_INTERSECTION_LABEL_MARGIN_TOP
+                      : 20,
+                    left: -20,
+                    right: 0,
+                    bottom: 5,
+                  }
             }
-            {...yAxisProps}
-          />
-          <Tooltip
-            wrapperStyle={{ left: 20 }}
-            content={
-              tooltipProps.format && (
-                <TooltipFormatter
-                  deselected={deselected}
-                  legends={legends}
-                  format={tooltipProps.format}
-                />
-              )
-            }
-            {...tooltipProps}
-          />
-          {streams.map((item, index) => {
-            if (deselected.includes(item.legend.id)) {
-              return null;
-            }
-
-            return (
-              <Area
-                key={index}
-                dataKey={`v${index}`}
-                stackId={
-                  type === ILineChartGraphType.Stack ? "stack" : undefined
-                }
+            data={areaChartData}
+            syncId={syncId}
+            onMouseLeave={hidePointer}
+            onMouseMove={handleMouseMove}
+          >
+            <XAxis
+              hide={!showXAxis}
+              dataKey="t"
+              axisLine={false}
+              tickLine={false}
+              type="number"
+              ticks={xTicks}
+              domain={xDomain}
+              tickFormatter={(tick) => lineChartTickFormatter(tick, dateRange)}
+              {...xAxisProps}
+            />
+            <YAxis
+              width={200}
+              mirror
+              axisLine={false}
+              tickLine={false}
+              allowDecimals={false}
+              domain={yDomain}
+              orientation={yAxisAlign}
+              tick={{
+                dx: 20,
+                dy: 16,
+                fontSize: 12,
+              }}
+              ticks={yTicks}
+              tickFormatter={(tick) =>
+                lineChartYaxisTickFormatter(tick, metric.unit)
+              }
+              {...yAxisProps}
+            />
+            {_.isNumber(thresholdValue) && (
+              <ReferenceLine
+                data-testid="line-chart-threshold-line"
+                className={cs(
+                  "line-chart-threshold-line",
+                  thresholdLineProps?.className,
+                )}
+                style={thresholdLineProps?.style}
+                y={thresholdValue}
                 stroke={
-                  item.legend.stroke
-                    ? `${item.legend.color}1A`
-                    : item.legend.color
+                  thresholdLineProps?.stroke || DEFAULT_THRESHOLD_LINE_STROKE
                 }
-                fill={item.legend.fill}
-                isAnimationActive={false}
-                activeDot={{
-                  stroke: item.legend.color,
-                  r: 4,
-                  strokeWidth: 2,
-                  fill: "white",
-                }}
-                opacity={hovering.includes(item.legend.id) ? 0.3 : 1}
+                strokeDasharray={
+                  thresholdLineProps?.strokeDasharray ||
+                  DEFAULT_THRESHOLD_LINE_DASHARRAY
+                }
+                ifOverflow="discard"
+                isFront
               />
-            );
-          })}
-        </AreaChart>
-      </ResponsiveContainer>
+            )}
+            <Tooltip
+              wrapperStyle={{ left: 20 }}
+              content={
+                tooltipProps.format && (
+                  <TooltipFormatter
+                    deselected={deselected}
+                    legends={legends}
+                    format={tooltipProps.format}
+                  />
+                )
+              }
+              {...tooltipProps}
+            />
+            {streams.map((item, index) => {
+              if (deselected.includes(item.legend.id)) {
+                return null;
+              }
+
+              return (
+                <Area
+                  key={index}
+                  dataKey={`v${index}`}
+                  stackId={
+                    type === ILineChartGraphType.Stack ? "stack" : undefined
+                  }
+                  stroke={
+                    hasForecastStartTimestamp
+                      ? "none"
+                      : getLineChartStreamStroke(item)
+                  }
+                  fill={item.legend.fill}
+                  isAnimationActive={false}
+                  activeDot={{
+                    stroke: item.legend.color,
+                    r: 4,
+                    strokeWidth: 2,
+                    fill: "white",
+                    strokeOpacity: 1,
+                    fillOpacity: 1,
+                  }}
+                  opacity={hovering.includes(item.legend.id) ? 0.3 : 1}
+                />
+              );
+            })}
+            {areaHighlightOverlays.map((overlay) => {
+              if (deselected.includes(overlay.legendId)) {
+                return null;
+              }
+
+              return (
+                <Customized
+                  key={overlay.key}
+                  component={AreaHighlightLayer}
+                  overlay={overlay}
+                  hovering={hovering}
+                  forecastStartTimestamp={forecastStartTimestamp}
+                />
+              );
+            })}
+            {hasForecastStartTimestamp && (
+              <Customized<
+                React.ComponentProps<typeof ForecastLineLayer>,
+                typeof ForecastLineLayer
+              >
+                key="line-chart-forecast-lines"
+                component={ForecastLineLayer}
+                forecastStartTimestamp={forecastStartTimestamp}
+                stacked={type === ILineChartGraphType.Stack}
+                hovering={hovering}
+                streams={streams}
+                deselected={deselected}
+              />
+            )}
+            {visibleThresholdIntersections.map((intersection, index) => (
+              <Customized
+                key={`${intersection.legend.id}-${intersection.timestamp}-${index}`}
+                component={ThresholdIntersectionLayer}
+                intersection={
+                  intersection as ILineChartThresholdIntersectionInfo
+                }
+                index={index}
+                hovering={hovering}
+                intersectionLabelProps={thresholdIntersectionLabelProps}
+                thresholdStroke={thresholdLineProps?.stroke}
+                onMouseEnter={handleThresholdIntersectionEnter}
+                onMouseLeave={() => setHoveredThresholdIntersection(null)}
+              />
+            ))}
+          </AreaChart>
+        </ResponsiveContainer>
+        {hoveredThresholdIntersection && thresholdTooltipContent && (
+          <ThresholdTooltipOverlay
+            data-testid="line-chart-threshold-tooltip"
+            role="tooltip"
+            style={{
+              left: hoveredThresholdIntersection.left,
+              top: hoveredThresholdIntersection.top,
+            }}
+          >
+            {thresholdTooltipContent}
+          </ThresholdTooltipOverlay>
+        )}
+      </ChartContentWrapper>
     </>
   );
 };
