@@ -3,18 +3,18 @@ import {
   File16GradientBlueIcon,
   Loading16GradientBlueIcon,
   Upload24GradientBlueIcon,
-  Upload24GradientGrayIcon,
   Upload48GradientBlueIcon,
   Uploading16GradientBlueIcon,
   Uploading16GradientGrayIcon,
+  XmarkRemove16RegularPrimaryCapsOffIcon,
   XmarkRemove16SecondaryIcon,
-  XmarkRemove24SecondaryIcon,
 } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
 import { AntdRcFile, AntdUploadProps, Upload as AntdUpload } from "@src/antd";
 import Button from "@src/core/Button";
 import Byte from "@src/core/Byte";
 import Icon from "@src/core/Icon";
+import { ParrotTrans } from "@src/core/ParrotTrans";
 import Tooltip from "@src/core/Tooltip";
 import { Typo } from "@src/core/Typo";
 import OverflowTooltip from "@src/coreX/OverflowTooltip";
@@ -41,6 +41,105 @@ const STATUS_ICON_MAP = {
   "need-validate": Loading16GradientBlueIcon,
 };
 
+const isFileValidating = (fileStatus?: LocalUploadFile["fileStatus"]) =>
+  fileStatus === "validating" || fileStatus === "need-validate";
+
+const FileMeta: React.FC<{
+  file: {
+    name: string;
+    fileName?: string;
+    size?: number;
+    fileStatus?: LocalUploadFile["fileStatus"];
+    error?: string | null;
+  };
+  showError?: boolean;
+}> = ({ file, showError = true }) => {
+  const fileStatus = file.fileStatus || "success";
+
+  return (
+    <div
+      className={cs(
+        "file-content",
+        Typo.Label.l4_regular,
+        isFileValidating(fileStatus) && "validating",
+      )}
+    >
+      <OverflowTooltip
+        className="file-name"
+        content={file.name || file.fileName}
+        tooltip={file.name || file.fileName}
+      />
+      {/* 解析中只展示文件名，与设计稿的 File Loading 一致 */}
+      {file.size && !isFileValidating(fileStatus) ? (
+        <div className="file-size-line">
+          <Byte
+            rawValue={file.size}
+            valueClassName="file-size"
+            unitClassName="file-size-unit"
+          />
+        </div>
+      ) : null}
+      {showError && file.fileStatus === "error" && !!file.error && (
+        <div className={cx("upload-file-error", Typo.Footnote.f2_regular)}>
+          {file.error}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// 禁用时也要吃掉点击，否则会冒泡到 Dragger 唤起文件选择框
+const swallowClick: React.MouseEventHandler<HTMLSpanElement> = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+};
+
+const FileRemoveIcon: React.FC<{
+  disabled?: boolean;
+  onClick?: React.MouseEventHandler<HTMLSpanElement>;
+}> = ({ disabled, onClick }) => {
+  const { t } = useParrotTranslation();
+  const icon = (
+    <Icon
+      className="remove-button"
+      cursor={disabled ? "not-allowed" : "pointer"}
+      src={XmarkRemove16SecondaryIcon}
+      hoverSrc={disabled ? undefined : XmarkRemove16RegularPrimaryCapsOffIcon}
+      onClick={disabled ? swallowClick : onClick}
+    />
+  );
+
+  return disabled ? icon : <Tooltip title={t("common.remove")}>{icon}</Tooltip>;
+};
+
+/** 单文件拖拽区内的文件行，与多文件列表项样式不同，故单独实现 */
+const DraggerFileInfo: React.FC<{
+  file: LocalUploadFile;
+  disableRemove?: boolean;
+  onRemove: (file: LocalUploadFile) => void;
+}> = ({ file, disableRemove, onRemove }) => {
+  const fileStatus = file.fileStatus || "success";
+
+  return (
+    <div className="file-info">
+      <Icon
+        src={STATUS_ICON_MAP[fileStatus]}
+        isRotate={isFileValidating(fileStatus)}
+      />
+      <FileMeta file={file} showError={false} />
+      <FileRemoveIcon
+        disabled={disableRemove}
+        onClick={(e) => {
+          // 阻止冒泡到 Dragger，否则会触发文件选择弹窗
+          e.preventDefault();
+          e.stopPropagation();
+          onRemove(file);
+        }}
+      />
+    </div>
+  );
+};
+
 /**
  * Helper function to create beforeUpload handler for upload components.
  * Handles file validation, count checking, and file list updates.
@@ -56,7 +155,6 @@ const createBeforeUploadHandler = ({
   isSingleSelect,
   setError,
   t,
-  checkSingleSelectCount = false,
 }: {
   fileList: LocalUploadFile[];
   setFileList: (files: LocalUploadFile[]) => void;
@@ -67,15 +165,13 @@ const createBeforeUploadHandler = ({
   isSingleSelect: boolean;
   setError: (error: string) => void;
   t: TFunction<"translation", undefined>;
-  checkSingleSelectCount?: boolean;
 }) => {
   return (file: AntdRcFile, _fileList: AntdRcFile[]) => {
     if (isSingleSelect) {
-      if (checkSingleSelectCount && _fileList.length > 1) {
-        setError(t("components.exceed_max_count", { count: 1 }) || "");
+      setError("");
+      // 单文件场景下拖入多个文件时只接受第 1 个，其余静默忽略
+      if (file.uid !== _fileList[0]?.uid) {
         return false;
-      } else {
-        setError("");
       }
       const _file = file as LocalUploadFile;
       _file.fileStatus = validate ? "need-validate" : "success";
@@ -138,9 +234,10 @@ export const UploadButton: React.FC<
   multiple = false,
   disabled,
   accept,
+  error,
 }) => {
   const { t } = useParrotTranslation();
-  const [error, setError] = useState("");
+  const [countError, setCountError] = useState("");
   const _maxCount = multiple ? maxCount || Infinity : 1;
   const isSingleSelect = _maxCount === 1;
 
@@ -153,7 +250,7 @@ export const UploadButton: React.FC<
   useFileCountErrorClear({
     fileList,
     maxCount: _maxCount,
-    setError,
+    setError: setCountError,
   });
 
   const props: AntdUploadProps = {
@@ -166,15 +263,20 @@ export const UploadButton: React.FC<
       validate,
       maxCount: _maxCount,
       isSingleSelect,
-      setError,
+      setError: setCountError,
       t,
-      checkSingleSelectCount: false,
     }),
     multiple,
   };
 
+  // 外部传入的字段级错误优先于组件内部的文件数量超限提示
+  const fieldError = error || countError;
+
   return (
-    <AntdUpload {...props} className={cs("upload-button", className)}>
+    <AntdUpload
+      {...props}
+      className={cs("upload-button", fieldError && "has-error", className)}
+    >
       <Button
         disabled={disabled}
         prefixIcon={
@@ -186,8 +288,10 @@ export const UploadButton: React.FC<
       >
         {children}
       </Button>
-      {error ? (
-        <div className={cx("upload-error", Typo.Label.l4_regular)}>{error}</div>
+      {fieldError ? (
+        <div className={cx("upload-error", Typo.Label.l4_regular)}>
+          {fieldError}
+        </div>
       ) : null}
     </AntdUpload>
   );
@@ -205,13 +309,14 @@ export const UploadDragger: React.FC<
   multiple = false,
   disabled,
   accept,
+  disableRemove,
+  onRemove,
+  error,
 }) => {
   const { t } = useParrotTranslation();
-  const [error, setError] = useState("");
+  const [countError, setCountError] = useState("");
   const _maxCount = multiple ? maxCount || Infinity : 1;
   const isSingleSelect = _maxCount === 1;
-  const reachMaxCount =
-    !!maxCount && !isSingleSelect && fileList.length >= maxCount;
 
   useFileValidation({
     fileList,
@@ -222,7 +327,7 @@ export const UploadDragger: React.FC<
   useFileCountErrorClear({
     fileList,
     maxCount: _maxCount,
-    setError,
+    setError: setCountError,
   });
 
   const props: AntdUploadProps = {
@@ -235,9 +340,8 @@ export const UploadDragger: React.FC<
       validate,
       maxCount: _maxCount,
       isSingleSelect,
-      setError,
+      setError: setCountError,
       t,
-      checkSingleSelectCount: true,
     }),
     disabled,
     multiple,
@@ -247,17 +351,16 @@ export const UploadDragger: React.FC<
     <>
       <Icon
         src={
-          fileList?.length
-            ? reachMaxCount
-              ? Upload24GradientGrayIcon
-              : Upload24GradientBlueIcon
-            : Upload48GradientBlueIcon
+          fileList?.length ? Upload24GradientBlueIcon : Upload48GradientBlueIcon
         }
         iconHeight={fileList?.length ? 24 : 48}
         iconWidth={fileList?.length ? 24 : 48}
       />
       <div className={cx("upload-drag-text", Typo.Label.l2_regular)}>
-        {t("components.upload_file_desc")}
+        {/* 用 Trans 承载整句，避免拼接两个 key 后锁死语序 */}
+        <ParrotTrans i18nKey="components.upload_file_desc">
+          <span className="upload-drag-link" />
+        </ParrotTrans>
       </div>
     </>
   );
@@ -266,66 +369,44 @@ export const UploadDragger: React.FC<
     ? fileList[0]?.fileStatus || "success"
     : undefined;
 
-  const FileInfo: React.FC<{ file: LocalUploadFile }> = ({ file }) => {
-    const fileStatus = file.fileStatus || "success";
-    return (
-      <>
-        <div className="file-info" onClick={(e) => e.preventDefault()}>
-          <Icon
-            src={STATUS_ICON_MAP[fileStatus]}
-            isRotate={
-              fileStatus === "validating" || fileStatus === "need-validate"
-            }
-          />
-          <div className={cx("file-name", Typo.Label.l4_regular)}>
-            {file.name || file.fileName}
-          </div>
-        </div>
-        <Button className={Typo.Label.l2_regular} type="link">
-          {t("components.reselect_file")}
-        </Button>
-      </>
-    );
-  };
-
-  const Error = () => {
-    if (error) {
-      return (
-        <div className={cx("upload-error", Typo.Label.l4_regular)}>{error}</div>
-      );
-    }
-    const file = fileList[0];
-    if (isSingleSelect && file?.fileStatus === "error" && file.error) {
-      return (
-        <div className={cx("upload-error", Typo.Label.l4_regular)}>
-          {file.error}
-        </div>
-      );
-    }
-    return null;
-  };
+  // 错误优先级：外部字段级错误 > 内部数量超限提示 > 单文件自身的校验错误
+  const singleFileError =
+    isSingleSelect && fileList[0]?.fileStatus === "error"
+      ? fileList[0].error
+      : undefined;
+  const displayError = error || countError || singleFileError;
 
   return (
-    <div className={cs("upload-drag", className)}>
+    <div className={cs("upload-drag", displayError && "has-error", className)}>
       <AntdUpload.Dragger
         {...props}
-        disabled={disabled || fileStatus === "validating"}
+        disabled={disabled || isFileValidating(fileStatus)}
         className={cs(
           "upload-drag-area",
           fileList.length ? "has-file" : "",
-          reachMaxCount && "reach-max-count",
           isSingleSelect && "single",
           fileStatus === "error" && "file-error",
-          fileStatus === "validating" && "file-validating",
+          isFileValidating(fileStatus) && "file-validating",
         )}
       >
         {isSingleSelect && fileList.length ? (
-          <FileInfo file={fileList[0]} />
+          <DraggerFileInfo
+            file={fileList[0]}
+            disableRemove={disableRemove}
+            onRemove={(file) => {
+              setFileList([]);
+              onRemove?.(file);
+            }}
+          />
         ) : (
           children || DefaultChildren
         )}
       </AntdUpload.Dragger>
-      <Error />
+      {displayError ? (
+        <div className={cx("upload-error", Typo.Label.l4_regular)}>
+          {displayError}
+        </div>
+      ) : null}
     </div>
   );
 };
@@ -348,40 +429,15 @@ export const UploadFileInfo: React.FC<LocalUploadFileInfoProps> = ({
     <div
       className={cs(FileInfoWrapperStyle, {
         "file-error-wrapper": fileStatus === "error",
-        disabled: disabled,
+        disabled,
       })}
     >
       <Icon
         src={STATUS_ICON_MAP[fileStatus]}
-        isRotate={fileStatus === "validating" || fileStatus === "need-validate"}
+        isRotate={isFileValidating(fileStatus)}
       />
-      <div className={cx("file-info", Typo.Label.l4_regular)}>
-        <OverflowTooltip
-          className="file-name"
-          content={file.name || file.fileName}
-          tooltip={file.name || file.fileName}
-        />
-        {file.size ? (
-          <div className="file-info">
-            <Byte
-              rawValue={file.size}
-              valueClassName="file-size"
-              unitClassName="file-size-unit"
-            />
-          </div>
-        ) : (
-          <></>
-        )}
-        {file.fileStatus === "error" && !!file.error && (
-          <div className={cx("upload-file-error", Typo.Footnote.f2_regular)}>
-            {file.error}
-          </div>
-        )}
-      </div>
-      <Icon
-        src={XmarkRemove16SecondaryIcon}
-        onClick={disabled ? undefined : handleRemove}
-      />
+      <FileMeta file={file} />
+      <FileRemoveIcon disabled={disabled} onClick={handleRemove} />
     </div>
   );
 };
@@ -389,10 +445,10 @@ export const UploadFileInfo: React.FC<LocalUploadFileInfoProps> = ({
 export const FileListItem: React.FC<{
   file: LocalUploadFile;
   removeFile: (id: string) => void;
+  disableRemove?: boolean;
   onRemove?: (file: LocalUploadFile) => void;
-}> = ({ file, removeFile, onRemove }) => {
+}> = ({ file, removeFile, disableRemove, onRemove }) => {
   const fileStatus = file.fileStatus || "success";
-  const { t } = useParrotTranslation();
 
   const handleRemove = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -402,40 +458,22 @@ export const FileListItem: React.FC<{
 
   return (
     <div
-      className={cx("upload-file-item", Typo.Label.l4_regular)}
+      className={cs(
+        "upload-file-item",
+        FileInfoWrapperStyle,
+        Typo.Label.l4_regular,
+        {
+          "file-error-wrapper": fileStatus === "error",
+        },
+      )}
       key={file.uid}
     >
-      <div className="upload-file-info">
-        <div className="file-info">
-          <Icon
-            src={STATUS_ICON_MAP[fileStatus]}
-            isRotate={
-              fileStatus === "validating" || fileStatus === "need-validate"
-            }
-          />
-          <div
-            className={
-              fileStatus === "validating" || fileStatus === "need-validate"
-                ? "validating"
-                : ""
-            }
-          >
-            {file.name || file.fileName}
-          </div>
-        </div>
-        <Tooltip title={t("common.remove")}>
-          <Icon
-            className="remove-button"
-            src={XmarkRemove24SecondaryIcon}
-            onClick={handleRemove}
-          />
-        </Tooltip>
-      </div>
-      {file.fileStatus === "error" && !!file.error && (
-        <div className={cx("upload-file-error", Typo.Footnote.f2_regular)}>
-          {file.error}
-        </div>
-      )}
+      <Icon
+        src={STATUS_ICON_MAP[fileStatus]}
+        isRotate={isFileValidating(fileStatus)}
+      />
+      <FileMeta file={file} />
+      <FileRemoveIcon disabled={disableRemove} onClick={handleRemove} />
     </div>
   );
 };
@@ -444,7 +482,6 @@ export const UploadFileList: React.FC<LocalUploadFileListProps> = ({
   className,
   fileList,
   removeFile,
-  type = "list",
   disableRemove = false,
   onRemove,
 }) => {
@@ -452,31 +489,16 @@ export const UploadFileList: React.FC<LocalUploadFileListProps> = ({
     return null;
   }
   return (
-    <div
-      className={cs(
-        "upload-file-list",
-        type === "list" ? "" : "upload-file-info-list",
-        className,
-      )}
-    >
-      {fileList.map((file) =>
-        type === "list" ? (
-          <FileListItem
-            key={file.uid}
-            file={file}
-            removeFile={removeFile}
-            onRemove={onRemove}
-          />
-        ) : (
-          <UploadFileInfo
-            key={file.uid}
-            file={file}
-            removeFile={removeFile}
-            disabled={disableRemove}
-            onRemove={onRemove}
-          />
-        ),
-      )}
+    <div className={cs("upload-file-list", className)}>
+      {fileList.map((file) => (
+        <FileListItem
+          key={file.uid}
+          file={file}
+          removeFile={removeFile}
+          disableRemove={disableRemove}
+          onRemove={onRemove}
+        />
+      ))}
     </div>
   );
 };

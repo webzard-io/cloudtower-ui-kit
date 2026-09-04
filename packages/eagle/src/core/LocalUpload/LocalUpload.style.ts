@@ -4,8 +4,21 @@ import { styled } from "@linaria/react";
 export const UploadWrapper = styled.div`
   width: 100%;
   position: relative;
+  &.label-left {
+    display: flex;
+    align-items: flex-start;
+    .upload-label {
+      flex: 0 0 216px;
+      margin-bottom: 0;
+      padding-right: 12px;
+    }
+    .upload-main {
+      flex: 1;
+      min-width: 0;
+    }
+  }
   .upload-label {
-    color: $text-light-primary;
+    color: $text-light-secondary;
     word-break: break-word;
     margin-bottom: 4px;
     display: block;
@@ -25,8 +38,16 @@ export const UploadWrapper = styled.div`
   .upload-drag:not(:last-child) {
     margin-bottom: 8px;
   }
+  /* 设计稿把错误、描述和文件列表归到同一组，组内间距 4px，组与上传区之间 8px。
+     错误渲染在上传区内部，所以由上传区代为收窄下边距 */
+  .upload-button.has-error:not(:last-child),
+  .upload-drag.has-error:not(:last-child),
+  .upload-description.description-below:not(:last-child) {
+    margin-bottom: 4px;
+  }
 
   .upload-drag-area {
+    height: 138px;
     padding: 32px 16px;
     border-radius: 4px;
     border: 1px dashed $strokes-light-trans-4;
@@ -35,8 +56,21 @@ export const UploadWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    .ant-upload-drag-container {
+      gap: 4px;
+    }
     .upload-drag-text {
       text-align: center;
+      .upload-drag-link {
+        color: $text-light-general;
+      }
+      .upload-drag-link:hover {
+        color: $link-outstandinghover;
+      }
+      .upload-drag-link:active {
+        color: $link-outstandingactive;
+      }
     }
 
     .ant-upload-drag-container {
@@ -44,6 +78,7 @@ export const UploadWrapper = styled.div`
     }
 
     &.has-file {
+      height: 56px;
       padding: 16px;
       .ant-upload-drag-container {
         display: flex;
@@ -67,48 +102,68 @@ export const UploadWrapper = styled.div`
       }
     }
     &.has-file.single {
-      padding: 12px;
-      line-height: 24px;
+      height: auto;
+      padding: 11px;
       .ant-upload-drag-container {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
-        justify-content: space-between;
-        line-height: 24px;
+        line-height: 18px;
         word-break: break-all;
-        .ant-btn.ant-btn-link {
-          height: 24px;
-        }
       }
     }
     &.file-error.single {
       border-color: $strokes-light-serious;
       background: $fills-element-light-container-serious;
     }
+    &.file-validating.single {
+      cursor: not-allowed;
+    }
 
     .file-info {
       display: flex;
       cursor: default;
+      gap: 4px;
+      width: 100%;
       align-items: flex-start;
       .icon-wrapper {
-        margin: 4px 0;
+        flex-shrink: 0;
+        margin-top: 1px;
       }
-      .file-name {
-        margin: 3px 4px;
+      .file-content {
+        flex: 1;
+        min-width: 0;
         text-align: left;
+      }
+      .remove-button {
+        flex-shrink: 0;
+        margin-left: 0;
       }
     }
 
-    &:not(.ant-upload-disabled):not(.file-error):hover {
+    &:not(.ant-upload-disabled):not(.file-error):hover,
+    &.ant-upload-drag-hover:not(.ant-upload-disabled):not(.file-error) {
       border-color: $strokes-light-outstanding;
       background: $fills-light-general-general-light;
     }
     &.ant-upload-disabled {
       opacity: 0.5;
     }
-    &.ant-upload-disabled.reach-max-count {
-      color: $text-light-tertiary;
+    &.ant-upload-disabled.file-validating {
+      opacity: 1;
     }
+  }
+
+  /* 文件名超过宽度时换行，OverflowTooltip 默认是单行省略 */
+  .file-name {
+    display: block;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  /* 解析中的文件名颜色，两个类名是为了盖过 Typo 自带的 color */
+  .file-content.validating {
+    color: $text-light-tertiary;
   }
 
   .upload-error {
@@ -116,40 +171,14 @@ export const UploadWrapper = styled.div`
     color: $text-light-serious;
   }
 
-  .upload-file-info-list {
-    gap: 4px;
-    display: flex;
-    flex-direction: column;
-  }
   .upload-file-list {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     .upload-file-item {
-      padding-bottom: 4px;
-      &:not(:last-child) {
-        border-bottom: 1px solid $strokes-light-trans-1;
-        margin-bottom: 4px;
-      }
-      .upload-file-info {
-        display: flex;
-        align-items: flex-start;
-        .file-info {
-          display: flex;
-          align-items: flex-start;
-          width: calc(100% - 25px);
-          .validating {
-            color: $text-light-tertiary;
-          }
-          .icon-wrapper {
-            margin: 0 4px;
-          }
-        }
-        .remove-button {
-          margin-left: auto;
-        }
-      }
       .upload-file-error {
-        color: $red;
-        margin-left: 24px;
+        color: $text-light-serious;
       }
     }
   }
@@ -163,20 +192,30 @@ export const FileInfoWrapperStyle = css`
   padding: 7px 8px;
   border-radius: 4px;
   gap: 4px;
-  align-items: self-start;
+  align-items: flex-start;
   color: $text-light-primary;
+  line-height: 18px;
 
   .file-size,
   .file-size-unit {
-    color: $text-light-secondary;
+    color: $text-neutral-tertiary;
   }
-  .file-info {
+  .file-content {
     flex-grow: 1;
+    min-width: 0;
     overflow: hidden;
+    text-align: left;
+  }
+  .file-size-line {
+    line-height: 18px;
   }
   .icon-wrapper {
-    margin-top: 2px;
+    flex-shrink: 0;
+    margin-top: 1px;
     cursor: pointer;
+  }
+  .remove-button {
+    margin-left: auto;
   }
   .upload-file-error {
     color: $text-light-serious;
@@ -186,5 +225,8 @@ export const FileInfoWrapperStyle = css`
   }
   &.disabled {
     opacity: 0.5;
+    .icon-wrapper {
+      cursor: default;
+    }
   }
 `;

@@ -92,6 +92,6 @@
   "recent_search": "最近搜索",
   "select_file": "选择文件",
   "reselect_file": "重新选择",
-  "exceed_max_count": "最多只能选择 {count} 个文件",
-  "upload_file_desc": "点击或拖拽文件到此区域上传"
+  "exceed_max_count": "最多可选择 {count} 个文件。",
+  "upload_file_desc": "将文件拖拽到此处或<0>选择文件</0>"
 }

@@ -99,5 +99,5 @@
   "reselect_file": "再選択",
   "exceed_max_count": "選択できるファイルは最大 {count} 個です",
   "exceed_max_count_plural": "選択できるファイルは最大 {count} 個です",
-  "upload_file_desc": "ファイルをクリックするか、このエリアにドラッグ＆ドロップしてアップロードします"
+  "upload_file_desc": "ファイルをここにドラッグするか<0>ファイルを選択</0>"
 }
