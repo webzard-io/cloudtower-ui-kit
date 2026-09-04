@@ -30,12 +30,18 @@ export const useFileValidation = ({
     | LocalUploadButtonProps["validate"];
   createNewFile?: boolean;
 }) => {
+  // 校验是异步的，期间用户可以移除文件。回调必须基于最新的列表判断文件是否还在，
+  // 否则会把 effect 闭包里那份仍含该文件的旧列表写回去，已移除的文件又冒出来
+  const latestFileList = useRef(fileList);
+
   useEffect(() => {
+    latestFileList.current = fileList;
     if (!validate) return;
     const updateFile = (fileId: string, file: LocalUploadFile) => {
-      const index = fileList.findIndex((f) => f.uid === fileId);
+      const currentList = latestFileList.current;
+      const index = currentList.findIndex((f) => f.uid === fileId);
       if (index !== -1) {
-        const newList = [...fileList];
+        const newList = [...currentList];
         const fileToUpdate = createNewFile
           ? (() => {
               const newFile = new File([file], file.name, { type: file.type });
