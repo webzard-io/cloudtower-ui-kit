@@ -1,6 +1,12 @@
 /* eslint-disable testing-library/no-container, testing-library/no-node-access */
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import React from "react";
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
+import React, { useState } from "react";
 import { describe, expect, it, vi } from "vitest";
 
 import { LocalUpload } from "..";
@@ -28,6 +34,24 @@ const createMockFile = (
     value: size,
   });
   return file;
+};
+
+// 校验竞态的测试需要真实的受控列表，用一个壳组件把 fileList 托管起来
+const ControlledUpload: React.FC<{
+  initialFiles: LocalUploadFile[];
+  validate: (file: LocalUploadFile) => Promise<{ error?: string }>;
+  multiple?: boolean;
+}> = ({ initialFiles, validate, multiple }) => {
+  const [fileList, setFileList] = useState<LocalUploadFile[]>(initialFiles);
+
+  return (
+    <LocalUpload
+      fileList={fileList}
+      setFileList={setFileList}
+      validate={validate}
+      multiple={multiple}
+    />
+  );
 };
 
 describe("LocalUpload", () => {
@@ -337,6 +361,66 @@ describe("LocalUpload", () => {
     expect(screen.getByText("Document-01.json")).toBeInTheDocument();
     expect(container.querySelector(".file-size-line")).toBeNull();
     expect(container.querySelector(".file-content")).toHaveClass("validating");
+  });
+
+  it("单文件校验期间移除后，校验结果不会把文件加回来", async () => {
+    let finishValidate: (result: { error?: string }) => void = () => undefined;
+    const validate = vi.fn(
+      () =>
+        new Promise<{ error?: string }>((resolve) => {
+          finishValidate = resolve;
+        }),
+    );
+
+    const { container } = render(
+      <ControlledUpload
+        initialFiles={[
+          createMockFile("Document-01.json", 1024 * 10, "need-validate"),
+        ]}
+        validate={validate}
+      />,
+    );
+
+    await waitFor(() => expect(validate).toHaveBeenCalledTimes(1));
+    fireEvent.click(container.querySelector(".remove-button") as Element);
+    expect(screen.queryByText("Document-01.json")).not.toBeInTheDocument();
+
+    await act(async () => {
+      finishValidate({});
+    });
+
+    expect(screen.queryByText("Document-01.json")).not.toBeInTheDocument();
+  });
+
+  it("多文件校验期间移除后，校验结果不会把文件加回来", async () => {
+    let finishValidate: (result: { error?: string }) => void = () => undefined;
+    const validate = vi.fn(
+      () =>
+        new Promise<{ error?: string }>((resolve) => {
+          finishValidate = resolve;
+        }),
+    );
+
+    const { container } = render(
+      <ControlledUpload
+        multiple
+        initialFiles={[
+          createMockFile("Document-01.json", 1024 * 10, "need-validate"),
+        ]}
+        validate={validate}
+      />,
+    );
+
+    await waitFor(() => expect(validate).toHaveBeenCalledTimes(1));
+    fireEvent.click(container.querySelector(".remove-button") as Element);
+    expect(screen.queryByText("Document-01.json")).not.toBeInTheDocument();
+
+    await act(async () => {
+      finishValidate({ error: "不是节点相关文件。" });
+    });
+
+    expect(screen.queryByText("Document-01.json")).not.toBeInTheDocument();
+    expect(screen.queryByText("不是节点相关文件。")).not.toBeInTheDocument();
   });
 
   it("文件数达到 maxCount 时拖拽区不置灰", () => {
