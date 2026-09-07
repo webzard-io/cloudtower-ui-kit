@@ -68,7 +68,6 @@ import ForecastLineLayer from "./ForecastLineLayer";
 import LineChartToolBar from "./LineChartToolBar";
 import ThresholdIntersectionLayer, {
   isThresholdIntersectionLabelVisible,
-  THRESHOLD_INTERSECTION_LABEL_MARGIN_TOP,
 } from "./ThresholdIntersectionLayer";
 
 export interface IChartProps<
@@ -194,9 +193,6 @@ const RenderChart = (
   const thresholdIntersectionLabelProps =
     thresholdLineProps?.intersectionLabelProps;
   const hasForecastStartTimestamp = Number.isFinite(forecastStartTimestamp);
-  const hasThresholdIntersectionLabel = Boolean(
-    thresholdIntersectionLabelProps,
-  );
 
   const areaHighlightOverlays = useMemo(() => {
     if (type !== ILineChartGraphType.Area) {
@@ -553,18 +549,14 @@ const RenderChart = (
             margin={
               showLegend
                 ? {
-                    top: hasThresholdIntersectionLabel
-                      ? THRESHOLD_INTERSECTION_LABEL_MARGIN_TOP
-                      : 10,
-                    left: -20,
+                    top: 0,
+                    left: 0,
                     right: 0,
                     bottom: 0,
                   }
                 : {
-                    top: hasThresholdIntersectionLabel
-                      ? THRESHOLD_INTERSECTION_LABEL_MARGIN_TOP
-                      : 20,
-                    left: -20,
+                    top: 0,
+                    left: 0,
                     right: 0,
                     bottom: 5,
                   }

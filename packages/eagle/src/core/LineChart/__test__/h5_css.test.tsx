@@ -759,6 +759,11 @@ describe("line chart h5_css", () => {
               class=mocked-styled-2,
         position: relative;
         width: 100%;
+        overflow: visible;
+
+        .recharts-surface {
+          overflow: visible;
+        }
 
               style=height:,88px;
             >

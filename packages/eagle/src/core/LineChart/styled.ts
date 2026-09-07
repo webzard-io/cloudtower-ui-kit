@@ -199,10 +199,14 @@ export const LineChartWrapper = styled.div`
   }
 `;
 
-
 export const ChartContentWrapper = styled.div`
   position: relative;
   width: 100%;
+  overflow: visible;
+
+  .recharts-surface {
+    overflow: visible;
+  }
 `;
 
 export const ThresholdTooltipOverlay = styled.div`
