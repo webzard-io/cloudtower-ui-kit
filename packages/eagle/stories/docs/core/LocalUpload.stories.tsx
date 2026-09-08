@@ -469,7 +469,7 @@ export const DisabledUpload: Story = {
 };
 
 /**
- * 禁用文件移除入口
+ * 禁用文件移除入口，此时文件既不能移除也不能替换
  */
 export const DisableRemove: Story = {
   name: "禁用移除",
@@ -484,6 +484,31 @@ export const DisableRemove: Story = {
         fileList={fileList}
         setFileList={setFileList}
         multiple={false}
+        disableRemoveList
+        label="上传配置文件"
+        description="文件已锁定，无法移除"
+      />
+    );
+  },
+};
+
+/**
+ * 多文件场景下禁用移除，已选中的文件条目整体置为禁用态
+ */
+export const DisableRemoveMultiple: Story = {
+  name: "禁用移除 - 多文件",
+  render: () => {
+    const [fileList, setFileList] = useState<LocalUploadFile[]>(() => [
+      createMockFile("Document-01.json", 1024 * 10, "success"),
+      createMockFile("Document-02.json", 1024 * 16, "success"),
+    ]);
+
+    return (
+      <LocalUpload
+        type="dragger"
+        fileList={fileList}
+        setFileList={setFileList}
+        multiple
         disableRemoveList
         label="上传配置文件"
         description="文件已锁定，无法移除"
