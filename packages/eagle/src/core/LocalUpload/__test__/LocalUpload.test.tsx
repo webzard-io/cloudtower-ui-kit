@@ -184,6 +184,60 @@ describe("LocalUpload", () => {
     openFileDialog.mockRestore();
   });
 
+  it("单文件禁用移除时拖拽区一并禁用，不能替换已选文件", () => {
+    const setFileList = vi.fn();
+
+    const { container } = render(
+      <LocalUpload
+        fileList={[createMockFile("Document-01.json", 1024 * 10)]}
+        setFileList={setFileList}
+        multiple={false}
+        disableRemoveList
+      />,
+    );
+
+    const dragArea = container.querySelector(".upload-drag-area") as Element;
+
+    expect(dragArea).toHaveClass("ant-upload-disabled");
+    expect(container.querySelector(".file-info")).toHaveClass("disabled");
+
+    const openFileDialog = vi.spyOn(HTMLInputElement.prototype, "click");
+    fireEvent.click(dragArea);
+
+    expect(openFileDialog).not.toHaveBeenCalled();
+    expect(setFileList).not.toHaveBeenCalled();
+    openFileDialog.mockRestore();
+  });
+
+  it("禁用移除但尚未选择文件时拖拽区仍可用", () => {
+    const { container } = render(
+      <LocalUpload fileList={[]} setFileList={vi.fn()} disableRemoveList />,
+    );
+
+    expect(container.querySelector(".upload-drag-area")).not.toHaveClass(
+      "ant-upload-disabled",
+    );
+  });
+
+  it("多文件禁用移除时列表条目整体展示禁用样式", () => {
+    const { container } = render(
+      <LocalUpload
+        fileList={[
+          createMockFile("Document-01.json", 1024 * 10),
+          createMockFile("Document-02.json", 1024 * 16),
+        ]}
+        setFileList={vi.fn()}
+        multiple
+        disableRemoveList
+      />,
+    );
+
+    const items = container.querySelectorAll(".upload-file-item");
+
+    expect(items).toHaveLength(2);
+    items.forEach((item) => expect(item).toHaveClass("disabled"));
+  });
+
   it("组件禁用时单文件移除入口不清空列表", () => {
     const file = createMockFile("Document-01.json", 1024 * 10);
     const setFileList = vi.fn();

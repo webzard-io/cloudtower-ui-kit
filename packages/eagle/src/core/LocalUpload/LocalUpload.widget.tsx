@@ -121,7 +121,7 @@ const DraggerFileInfo: React.FC<{
   const fileStatus = file.fileStatus || "success";
 
   return (
-    <div className="file-info">
+    <div className={cs("file-info", disableRemove && "disabled")}>
       <Icon
         src={STATUS_ICON_MAP[fileStatus]}
         isRotate={isFileValidating(fileStatus)}
@@ -368,6 +368,9 @@ export const UploadDragger: React.FC<
   const fileStatus = isSingleSelect
     ? fileList[0]?.fileStatus || "success"
     : undefined;
+  // 禁用移除时单文件拖拽区必须一并禁用，否则点击文件行仍会唤起选择框，把锁定的文件替换掉
+  const lockedSingleFile =
+    isSingleSelect && !!fileList.length && !!disableRemove;
 
   // 错误优先级：外部字段级错误 > 内部数量超限提示 > 单文件自身的校验错误
   const singleFileError =
@@ -380,7 +383,7 @@ export const UploadDragger: React.FC<
     <div className={cs("upload-drag", displayError && "has-error", className)}>
       <AntdUpload.Dragger
         {...props}
-        disabled={disabled || isFileValidating(fileStatus)}
+        disabled={disabled || lockedSingleFile || isFileValidating(fileStatus)}
         className={cs(
           "upload-drag-area",
           fileList.length ? "has-file" : "",
@@ -464,6 +467,7 @@ export const FileListItem: React.FC<{
         Typo.Label.l4_regular,
         {
           "file-error-wrapper": fileStatus === "error",
+          disabled: disableRemove,
         },
       )}
       key={file.uid}

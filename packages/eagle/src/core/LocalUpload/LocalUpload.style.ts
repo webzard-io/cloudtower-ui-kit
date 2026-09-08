@@ -38,12 +38,18 @@ export const UploadWrapper = styled.div`
   .upload-drag:not(:last-child) {
     margin-bottom: 8px;
   }
-  /* 设计稿把错误、描述和文件列表归到同一组，组内间距 4px，组与上传区之间 8px。
-     错误渲染在上传区内部，所以由上传区代为收窄下边距 */
+  /* 间距语义：4px 表示从属关系，8px 表示同级或不同信息组。错误文案与辅助说明都在解释
+     同一个上传控件，两者相邻时收紧到 4px，其余相邻关系一律 8px。错误文案渲染在上传区
+     内部，所以由上传区代为收窄下边距。
+     下面几条只声明下限，最终间距由相邻块级元素的外边距合并（取较大值）得出：
+     有错误 + 有描述 → 4 与 4 合并为 4px；无错误 + 有描述 → 8 与 4 合并为 8px；
+     错误或描述后面直接接文件列表 → 与列表的 8px 上边距合并为 8px。 */
   .upload-button.has-error:not(:last-child),
-  .upload-drag.has-error:not(:last-child),
-  .upload-description.description-below:not(:last-child) {
+  .upload-drag.has-error:not(:last-child) {
     margin-bottom: 4px;
+  }
+  .upload-description.description-below {
+    margin-top: 4px;
   }
 
   .upload-drag-area {
@@ -123,6 +129,9 @@ export const UploadWrapper = styled.div`
     .file-info {
       display: flex;
       cursor: default;
+      &.disabled {
+        cursor: not-allowed;
+      }
       gap: 4px;
       width: 100%;
       align-items: flex-start;
@@ -175,7 +184,8 @@ export const UploadWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    margin-top: 8px;
+    gap: 8px;
     .upload-file-item {
       .upload-file-error {
         color: $text-light-serious;
@@ -225,8 +235,9 @@ export const FileInfoWrapperStyle = css`
   }
   &.disabled {
     opacity: 0.5;
+    cursor: not-allowed;
     .icon-wrapper {
-      cursor: default;
+      cursor: not-allowed;
     }
   }
 `;
