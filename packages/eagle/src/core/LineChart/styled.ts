@@ -195,7 +195,23 @@ export const LineChartWrapper = styled.div`
     font-size: 12px;
     color: $white;
     transform: translateX(-50%);
+    z-index: 2;
   }
+`;
+
+
+export const ChartContentWrapper = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
+export const ThresholdTooltipOverlay = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, calc(-100% - 12px));
+  pointer-events: none;
+  z-index: 1;
 `;
 
 export const TooltipWrapper = styled.div`

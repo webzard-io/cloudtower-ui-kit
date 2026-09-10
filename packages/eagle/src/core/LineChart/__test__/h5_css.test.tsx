@@ -118,6 +118,7 @@ describe("line chart h5_css", () => {
           font-size: 12px;
           color: $white;
           transform: translateX(-50%);
+          z-index: 2;
         }
 
             style=height:,184px;
@@ -755,9 +756,17 @@ describe("line chart h5_css", () => {
               </div>
             </div>
             <div
-              class=recharts-responsive-container
-              style=width:,100%;,height:,88px;,min-width:,0;
-            />
+              class=mocked-styled-2,
+        position: relative;
+        width: 100%;
+
+              style=height:,88px;
+            >
+              <div
+                class=recharts-responsive-container
+                style=width:,100%;,height:,100%;,min-width:,0;
+              />
+            </div>
           </div>
         </div>
       </div>
