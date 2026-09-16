@@ -5,4 +5,10 @@ import { CheckboxStyleContent } from "../Checkbox/checkbox.style";
 
 export const Antd5TreeStyle = css`
   ${(CheckboxStyleContent || "").replaceAll("ant-", `${Antd5PrefixCls}-tree-`)}
+
+  .${Antd5PrefixCls}-tree-checkbox {
+    height: auto;
+    display: inline-block;
+    top: initial;
+  }
 `;
