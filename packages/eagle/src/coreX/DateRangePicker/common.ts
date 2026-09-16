@@ -215,7 +215,7 @@ export function getEffectiveAbsoluteTimeBounds(
     };
   }
 
-  let effectiveMinDate = nowDate;
+  let effectiveMinDate = nowDate.startOf("day");
   let effectiveMaxDate = nowDate.add(1, "year");
 
   if (minDate) {

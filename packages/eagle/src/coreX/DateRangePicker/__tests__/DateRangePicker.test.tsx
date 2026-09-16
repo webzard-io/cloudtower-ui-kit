@@ -53,7 +53,7 @@ describe("DateRangePicker future absolute bounds", () => {
 
     expect(screen.getByTestId("absolute-date-props")).toHaveAttribute(
       "data-min",
-      "2025-12-09 10:20:30",
+      "2025-12-09 00:00:00",
     );
     expect(screen.getByTestId("absolute-date-props")).toHaveAttribute(
       "data-max",
@@ -122,7 +122,7 @@ describe("DateRangePicker future absolute bounds", () => {
         default: [
           {
             type: "absolute" as const,
-            value: ["2025-12-08 00:00:00", "2025-12-09 00:00:00"],
+            value: ["2025-12-07 00:00:00", "2025-12-08 00:00:00"],
             timestamp: 1,
           },
           {
@@ -147,7 +147,7 @@ describe("DateRangePicker future absolute bounds", () => {
     fireEvent.click(container.querySelector(".past-time-icon")!);
 
     expect(
-      screen.queryByText("2025-12-08 12:00:00 - 2025-12-09 12:00:00"),
+      screen.queryByText("2025-12-07 12:00:00 - 2025-12-08 12:00:00"),
     ).toBe(null);
     expect(
       screen.getByText("2025-12-09 12:00:00 - 2025-12-10 12:00:00"),
@@ -185,7 +185,7 @@ describe("DateRangePicker future absolute bounds", () => {
     const [, , changedRange] = onChange.mock.lastCall!;
     expect(
       changedRange.map((item: Dayjs) => item?.format("YYYY-MM-DD HH:mm:ss")),
-    ).toEqual(["2025-12-09 10:20:30", "2025-12-10 00:00:00"]);
+    ).toEqual(["2025-12-09 00:00:00", "2025-12-10 00:00:00"]);
   });
 
   it("does not change for a past history range fully before minDate", () => {

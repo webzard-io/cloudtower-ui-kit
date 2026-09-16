@@ -121,7 +121,7 @@ describe("DateRangePicker common helpers", () => {
       nowDate,
     );
     expect(dayjs(defaultBounds.minDate).format("YYYY-MM-DD HH:mm:ss")).toBe(
-      "2025-12-09 10:20:30",
+      "2025-12-09 00:00:00",
     );
     expect(dayjs(defaultBounds.maxDate).format("YYYY-MM-DD HH:mm:ss")).toBe(
       "2026-12-09 10:20:30",
