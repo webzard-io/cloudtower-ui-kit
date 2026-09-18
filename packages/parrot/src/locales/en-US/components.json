@@ -74,6 +74,7 @@
   "saturday-simple": "Sat",
   "sunday-simple": "Sun",
   "past": "Past",
+  "future": "Future",
   "relative_time": "Relative Time",
   "absolute_time": "Absolute Time",
   "empty_search_history": "No search history ",
