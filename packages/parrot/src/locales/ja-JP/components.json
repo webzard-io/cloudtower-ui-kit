@@ -97,7 +97,7 @@
   "recent_search": "最近の検索",
   "select_file": "ファイルを選択",
   "reselect_file": "再選択",
-  "exceed_max_count": "選択できるファイルは最大 {count} 個です",
-  "exceed_max_count_plural": "選択できるファイルは最大 {count} 個です",
-  "upload_file_desc": "ファイルをクリックするか、このエリアにドラッグ＆ドロップしてアップロードします"
+  "exceed_max_count": "最大 {count} 個のファイルを選択できます。",
+  "exceed_max_count_plural": "最大 {count} 個のファイルを選択できます。",
+  "upload_file_desc": "ここにファイルをドラッグ＆ドロップしてください。または、<0>ファイルを選択</0>"
 }
