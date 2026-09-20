@@ -245,6 +245,44 @@ describe("ForecastLineLayer", () => {
     expect(paths[2]).toHaveAttribute("d", "M0,90 L100,70 L150,60");
   });
 
+  it("sorts stacked timestamps before projecting paths", () => {
+    const unsortedStream = {
+      ...stream,
+      points: [
+        { t: 20, v: 20 },
+        { t: 0, v: 0 },
+        { t: 30, v: 30 },
+        { t: 10, v: 10 },
+      ],
+    };
+    const secondStream = {
+      ...stream,
+      legend: {
+        ...stream.legend,
+        id: "memory",
+      },
+      points: [
+        { t: 10, v: 20 },
+        { t: 30, v: 40 },
+        { t: 0, v: 10 },
+        { t: 20, v: 30 },
+      ],
+    };
+
+    const { container } = renderLayer(
+      getProps({
+        stacked: true,
+        streams: [unsortedStream, secondStream],
+      }),
+    );
+
+    const paths = Array.from(
+      container.querySelectorAll(".line-chart-forecast-line"),
+    );
+
+    expect(paths[0]).toHaveAttribute("d", "M0,100 L100,90 L150,85");
+  });
+
   it("renders nothing when scales are unavailable", () => {
     const { container } = renderLayer(
       getProps({

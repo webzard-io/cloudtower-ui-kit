@@ -8,7 +8,7 @@ import type { AxisDomain } from "recharts/types/util/types";
 
 export const DEFAULT_LINE_CHART_STROKE = "#3182bd";
 
-const isFiniteNumber = (value: unknown): value is number =>
+export const isFiniteNumber = (value: unknown): value is number =>
   typeof value === "number" && Number.isFinite(value);
 
 const isFiniteNumericYAxisDomain = (

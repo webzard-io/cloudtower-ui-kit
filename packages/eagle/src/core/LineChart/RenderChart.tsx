@@ -22,7 +22,6 @@ import {
   getLineChartAreaHighlightRanges,
   getLineChartMetricPayloadMatches,
   getLineChartThresholdIntersections,
-  getLineChartXAxisDomain,
   getYAxisDomain,
   lineChartTickFormatter,
   lineChartXaxisCal,
@@ -172,7 +171,12 @@ const RenderChart = (
     () => convertLineChartDataStruct(streams.map((stream) => stream.points)),
     [streams],
   );
-  const xDomain = getLineChartXAxisDomain(dateRange, dateRange[1].valueOf());
+  const xDomainStart = dateRange[0].valueOf();
+  const xDomainEnd = dateRange[1].valueOf();
+  const xDomain = useMemo<[number, number]>(
+    () => [xDomainStart, xDomainEnd],
+    [xDomainStart, xDomainEnd],
+  );
   const thresholdValue = thresholdLineProps?.value;
   const thresholdExtraValues = useMemo(() => {
     if (_.isNumber(thresholdValue)) {

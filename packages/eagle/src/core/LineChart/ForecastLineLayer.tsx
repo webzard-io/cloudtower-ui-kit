@@ -1,5 +1,8 @@
 import { ILineChartMetricStream } from "@src/core/LineChart/type";
-import { getLineChartStreamStroke } from "@src/core/LineChart/lineChartDisplayUtils";
+import {
+  getLineChartStreamStroke,
+  isFiniteNumber,
+} from "@src/core/LineChart/lineChartDisplayUtils";
 import {
   getLineChartLinePath,
   getLineChartLineSegments,
@@ -34,9 +37,6 @@ interface IForecastLineLayerProps {
     }
   >;
 }
-
-const isFiniteNumber = (value: unknown): value is number =>
-  typeof value === "number" && Number.isFinite(value);
 
 const ForecastLineLayer: React.FC<IForecastLineLayerProps> = ({
   forecastStartTimestamp,
@@ -79,7 +79,7 @@ const ForecastLineLayer: React.FC<IForecastLineLayerProps> = ({
               stream.points.map((point) => point.t).filter(isFiniteNumber),
             ),
           ),
-        )
+        ).sort((a, b) => a - b)
       : [];
 
     return streams.flatMap((stream, streamIndex) => {
@@ -158,10 +158,6 @@ const ForecastLineLayer: React.FC<IForecastLineLayerProps> = ({
       </defs>
       <g clipPath={`url(#${clipPathId})`}>
         {lines.map((line) => {
-          if (deselected.includes(line.legendId)) {
-            return null;
-          }
-
           return (
             <path
               key={line.key}

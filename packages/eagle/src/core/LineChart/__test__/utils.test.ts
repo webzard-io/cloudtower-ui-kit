@@ -3,7 +3,6 @@ import {
   ILineChartMetricUnit,
 } from "@src/core/LineChart/type";
 import {
-  getLineChartAreaHighlightData,
   getLineChartAreaHighlightRanges,
   getLineChartAreaHighlightRuns,
   getLineChartDefaultYAxisTicks,
@@ -106,44 +105,6 @@ describe("LineChart utils", () => {
         { t: 30, value: 30 },
         { t: 40, value: 40 },
       ],
-    ]);
-  });
-
-  it("keeps the legacy area highlight data flattened", () => {
-    expect(
-      getLineChartAreaHighlightData(
-        [
-          { t: 0, v: 0 },
-          { t: 10, v: 10 },
-          { t: 20, v: undefined },
-          { t: 30, v: 30 },
-          { t: 40, v: 40 },
-        ],
-        { start: 0, end: 40 },
-      ),
-    ).toEqual([
-      { t: 0, value: 0 },
-      { t: 10, value: 10 },
-      { t: 30, value: 30 },
-      { t: 40, value: 40 },
-    ]);
-  });
-
-  it("keeps isolated legacy highlight points in the flattened result", () => {
-    expect(
-      getLineChartAreaHighlightData(
-        [
-          { t: 0, v: 0 },
-          { t: 10, v: 10 },
-          { t: 20, v: undefined },
-          { t: 30, v: 30 },
-          { t: 40, v: 40 },
-        ],
-        { start: 10, end: 30 },
-      ),
-    ).toEqual([
-      { t: 10, value: 10 },
-      { t: 30, value: 30 },
     ]);
   });
 

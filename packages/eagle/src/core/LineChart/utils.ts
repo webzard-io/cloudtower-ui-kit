@@ -45,7 +45,6 @@ export {
   getLineChartStreamStroke,
 } from "./lineChartDisplayUtils";
 export {
-  getLineChartAreaHighlightData,
   getLineChartAreaHighlightRuns,
   type ILineChartAreaHighlightPoint,
 } from "./areaHighlightUtils";

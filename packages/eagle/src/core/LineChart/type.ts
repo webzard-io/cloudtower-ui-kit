@@ -307,7 +307,6 @@ export type LineChartMetricProps = {
   /** 图例项名称格式化函数 */
   formatLegendItemName?: FormatName;
 
-  /** 时间轴背景高亮区间 */
   /** 曲线以下区域高亮区间 */
   areaHighlightRanges?: ILineChartAreaHighlightRange[];
 
