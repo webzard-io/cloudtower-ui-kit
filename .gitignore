@@ -22,3 +22,4 @@ package-lock.json
 yalc.lock
 /docs/
 skills/**/evals/
+AGENTS.md

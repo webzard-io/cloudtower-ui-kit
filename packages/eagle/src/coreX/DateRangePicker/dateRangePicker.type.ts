@@ -6,6 +6,8 @@ export type MonthAndDate = {
   firstDateOfDay: number;
 };
 
+export type RelativeTimeDirection = "past" | "future";
+
 export type PickerDateRange = [Dayjs | null, Dayjs | null];
 export type InputTimeValue = [string, string, string];
 
@@ -39,6 +41,7 @@ export type RelativeTimeProps = {
   config?: PastTime[];
   value?: PastTime;
   search?: boolean;
+  type?: RelativeTimeDirection;
   onChange: (config: PastTime) => void;
 };
 
@@ -59,6 +62,7 @@ export type DateRangeHistories = {
 export type DateRangePickerProps = {
   size?: "large" | "medium";
   value?: Omit<PastTime, "disabled"> | PickerDateRange;
+  type?: RelativeTimeDirection;
   history?: {
     scope: string;
     dateRangeHistories: DateRangeHistories;
@@ -87,7 +91,8 @@ export type DateRangePickerProps = {
 };
 
 export type PastTime = {
-  unit: "h" | "m" | "d" | "M";
+  unit: "h" | "m" | "d" | "M" | "y";
   value: number;
+  type?: RelativeTimeDirection;
   disabled?: boolean;
 };
