@@ -4,12 +4,15 @@ import {
   XmarkCloseBold24TertiaryIcon,
 } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
-import { Antd5Flex, Button, Icon, Typo } from "@src/core";
+import { Antd5Flex } from "@src/core/Antd5Flex";
+import Button from "@src/core/Button";
+import Icon from "@src/core/Icon";
 import { usePopModal } from "@src/core/KitStoreProvider";
+import { Typo } from "@src/core/Typo";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { SafeReactNode } from "@src/spec";
 import { Modal } from "antd";
 import cls from "classnames";
-import { SafeReactNode } from "@src/spec";
 import React from "react";
 
 import OverflowTooltip from "../../coreX/OverflowTooltip";
@@ -26,6 +29,7 @@ import {
   ModelInitializingError,
   ModelTitleSkeleton,
 } from "./SmallDialog.widget";
+import { useDialogInitialization } from "./useDialogInitialization";
 
 const DefaultTitleRender: React.FC<{ title?: SafeReactNode }> = ({ title }) => {
   return <span className={cls(Typo.Display.d2_bold_title)}>{title}</span>;
@@ -51,13 +55,19 @@ export const SmallDialog: React.FC<SmallDialogProps> = ({
   showFooterErrorIcon = true,
   error,
   confirmLoading,
-  initializing,
-  initializingError,
+  initializeOnce,
+  initializing: initializingProp,
+  initializingError: initializingErrorProp,
   initializingSkeletonRows,
   "data-testid": dataTestId,
 }) => {
   const { t } = useParrotTranslation();
   const popModal = usePopModal();
+  const { initializing, initializingError } = useDialogInitialization({
+    initializeOnce,
+    initializing: initializingProp,
+    initializingError: initializingErrorProp,
+  });
   const sub = (suffix: string) =>
     dataTestId ? `${dataTestId}-${suffix}` : undefined;
 

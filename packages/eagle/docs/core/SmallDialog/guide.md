@@ -23,7 +23,12 @@ SmallDialog 是一个固定 492px 宽度的轻量级对话框组件，适用于�
 
 ```tsx
 import React from "react";
-import { SmallDialog, Button, KitStoreProvider, ModalStack } from "@cloudtower/eagle";
+import {
+  SmallDialog,
+  Button,
+  KitStoreProvider,
+  ModalStack,
+} from "@cloudtower/eagle";
 import { usePushModal } from "@cloudtower/eagle";
 
 const App = () => {
@@ -56,6 +61,18 @@ const App = () => {
   );
 };
 ```
+
+## 初始化生命周期
+
+`initializeOnce` 默认为 `true`。当 `initializing` 为 false 或未传入，且 `initializingError` 无值时，弹窗记录首次初始化成功。之后忽略这两个属性的变化，后台刷新不会再显示骨架屏或初始化错误页，也不会因此卸载内容中的表单。
+
+- 成功前，加载失败仍展示初始化错误；点击重试可以再次进入骨架屏，多次失败重试也一样。
+- 首次渲染就没有加载和错误时，也会记录成功，例如直接使用缓存数据的场景。
+- 延迟启动请求时，应在准备期间保持 `initializing=true`，避免尚未请求就被视为成功。
+- 记录按组件的一次挂载周期计算。卸载后重新打开会重置；同一实例切换资源时，可通过 `key` 重新挂载。
+- 设置 `initializeOnce={false}` 可恢复完全受控行为，允许反复进入加载和错误状态。已有调用方若依赖此行为，需要显式关闭该选项。
+
+该选项仅处理 `initializing` 和 `initializingError`，不会冻结其他 props。后台刷新时应继续传入正常标题和内容；刷新错误可以在内容区域或通过 `error` 展示。
 
 ## 常见模式
 

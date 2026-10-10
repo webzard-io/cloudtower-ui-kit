@@ -137,9 +137,23 @@ export type ImmersiveDialogProps = React.PropsWithChildren<
      */
     footerLeftAction?: React.ReactNode;
     /**
+     * 是否仅初始化一次。首次初始化成功后，忽略后续的 `initializing` 和 `initializingError`。
+     *
+     * @description
+     * `initializing` 为 false 或未传入，且 `initializingError` 无值时，视为初始化成功；
+     * 首次渲染就满足该条件时也会记录成功。成功前允许失败后重试，再次进入加载状态。
+     * 记录在组件卸载后重置，仅切换 `visible` 不重置；切换资源可通过 `key` 重新挂载。
+     * 延迟启动请求时，需要在准备期间保持 `initializing=true`。
+     * 设为 false 时，两项初始化状态完全跟随外部传入的值。
+     *
+     * @default true
+     */
+    initializeOnce?: boolean;
+    /**
      * 是否处于初始化加载中状态。
      * 为 true 时标题区显示骨架屏，内容区显示 4 行骨架屏加载占位，footer 隐藏。
      * 加载完成后设为 false 显示正常内容。
+     * 默认仅在首次初始化成功前生效；设 `initializeOnce=false` 可反复进入加载状态。
      * @default false
      */
     initializing?: boolean;
@@ -148,6 +162,7 @@ export type ImmersiveDialogProps = React.PropsWithChildren<
      * 标题自动变为"加载失败"，确定按钮文本自动变为"重试"。
      * 与 initializing 配合使用：先设 initializing=true 开始加载，
      * 失败时设 initializing=false 并设置 initializingError。
+     * 默认在首次初始化成功后被忽略。
      */
     initializingError?: string | SafeReactNode;
     /**

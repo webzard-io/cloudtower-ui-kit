@@ -427,6 +427,77 @@ export const Initializing = () => {
 };
 Initializing.storyName = "初始化状态";
 
+const InitializeOnceExample: React.FC<{ initializeOnce?: boolean }> = ({
+  initializeOnce,
+}) => {
+  const popModal = usePopModal();
+  const [shouldFail, setShouldFail] = useState(false);
+  const { isLoading, data, error, retry, refetch } = useMockQuery({
+    failFirstTime: true,
+    shouldFail,
+  });
+
+  return (
+    <ImmersiveDialog
+      title="主机详情"
+      initializeOnce={initializeOnce}
+      initializing={isLoading}
+      initializingError={error}
+      left={<p>主机信息</p>}
+      right={<p>刷新时可以观察左右面板是否保留。</p>}
+      onOk={() => {
+        if (!error || (data && initializeOnce !== false)) popModal();
+        else if (shouldFail) setShouldFail(false);
+        else retry();
+      }}
+    >
+      <Space direction="vertical" size={16}>
+        <p>
+          首次加载会失败，请点击重试。成功后修改主机名称，再刷新以观察输入值是否保留。
+        </p>
+        <input aria-label="主机名称" defaultValue="host-01" />
+        <Button disabled={isLoading} onClick={() => refetch()}>
+          刷新主机详情
+        </Button>
+        <Button
+          disabled={isLoading || shouldFail}
+          onClick={() => setShouldFail(true)}
+        >
+          模拟刷新失败
+        </Button>
+        {error && <p>刷新错误：{error}</p>}
+      </Space>
+    </ImmersiveDialog>
+  );
+};
+
+/** 对比默认的一次初始化与 initializeOnce=false 的完全受控行为。 */
+export const InitializeOnce = () => {
+  const pushModal = usePushModal();
+  return (
+    <Space direction="vertical" size={16}>
+      <Button
+        onClick={() =>
+          pushModal({ component: () => <InitializeOnceExample />, props: {} })
+        }
+      >
+        默认只初始化一次
+      </Button>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => <InitializeOnceExample initializeOnce={false} />,
+            props: {},
+          })
+        }
+      >
+        完全受控初始化
+      </Button>
+    </Space>
+  );
+};
+InitializeOnce.storyName = "首次成功后保留内容";
+
 /**
  * 不展示 footer
  */
@@ -513,7 +584,9 @@ const NavItemStyle = css`
   cursor: pointer;
   margin-bottom: 4px;
   color: #6e7d95;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 
   &:hover {
     background-color: rgba(30, 201, 127, 0.06);
@@ -653,36 +726,24 @@ export const TwoPanelLayout = () => {
                   </div>
                   <div className={PropertyItemStyle}>
                     <span
-                      className={cx(
-                        Typo.Label.l3_regular,
-                        PropertyLabelStyle,
-                      )}
+                      className={cx(Typo.Label.l3_regular, PropertyLabelStyle)}
                     >
                       运行状态
                     </span>
                     <span
-                      className={cx(
-                        Typo.Label.l3_regular,
-                        PropertyValueStyle,
-                      )}
+                      className={cx(Typo.Label.l3_regular, PropertyValueStyle)}
                     >
                       运行中
                     </span>
                   </div>
                   <div className={PropertyItemStyle}>
                     <span
-                      className={cx(
-                        Typo.Label.l3_regular,
-                        PropertyLabelStyle,
-                      )}
+                      className={cx(Typo.Label.l3_regular, PropertyLabelStyle)}
                     >
                       IP 地址
                     </span>
                     <span
-                      className={cx(
-                        Typo.Label.l3_regular,
-                        PropertyValueStyle,
-                      )}
+                      className={cx(Typo.Label.l3_regular, PropertyValueStyle)}
                     >
                       10.0.0.15
                     </span>
@@ -699,36 +760,24 @@ export const TwoPanelLayout = () => {
                   </div>
                   <div className={PropertyItemStyle}>
                     <span
-                      className={cx(
-                        Typo.Label.l3_regular,
-                        PropertyLabelStyle,
-                      )}
+                      className={cx(Typo.Label.l3_regular, PropertyLabelStyle)}
                     >
                       vCPU
                     </span>
                     <span
-                      className={cx(
-                        Typo.Label.l3_regular,
-                        PropertyValueStyle,
-                      )}
+                      className={cx(Typo.Label.l3_regular, PropertyValueStyle)}
                     >
                       4 核
                     </span>
                   </div>
                   <div className={PropertyItemStyle}>
                     <span
-                      className={cx(
-                        Typo.Label.l3_regular,
-                        PropertyLabelStyle,
-                      )}
+                      className={cx(Typo.Label.l3_regular, PropertyLabelStyle)}
                     >
                       内存
                     </span>
                     <span
-                      className={cx(
-                        Typo.Label.l3_regular,
-                        PropertyValueStyle,
-                      )}
+                      className={cx(Typo.Label.l3_regular, PropertyValueStyle)}
                     >
                       8 GiB
                     </span>
@@ -762,9 +811,7 @@ export const TwoPanelLayout = () => {
                       >
                         名称
                       </span>
-                      <span className={DetailValueStyle}>
-                        vm-web-server-01
-                      </span>
+                      <span className={DetailValueStyle}>vm-web-server-01</span>
                     </div>
                     <div className={DetailRowStyle}>
                       <span
@@ -782,9 +829,7 @@ export const TwoPanelLayout = () => {
                       >
                         操作系统
                       </span>
-                      <span className={DetailValueStyle}>
-                        Ubuntu 22.04 LTS
-                      </span>
+                      <span className={DetailValueStyle}>Ubuntu 22.04 LTS</span>
                     </div>
                     <div className={DetailRowStyle}>
                       <span
@@ -919,9 +964,7 @@ export const FooterLeftAction = () => {
             cancelText: "取消",
             footerLeftAction: (
               <Button size="large" type="quiet" danger>
-                <span className={Typo.Label.l1_bold_title}>
-                  重置为默认值
-                </span>
+                <span className={Typo.Label.l1_bold_title}>重置为默认值</span>
               </Button>
             ),
             children: (
@@ -935,25 +978,19 @@ export const FooterLeftAction = () => {
                   虚拟机配置
                 </h3>
                 <div className={DetailRowStyle}>
-                  <span
-                    className={cx(Typo.Label.l2_regular, DetailLabelStyle)}
-                  >
+                  <span className={cx(Typo.Label.l2_regular, DetailLabelStyle)}>
                     vCPU
                   </span>
                   <span className={DetailValueStyle}>4 核</span>
                 </div>
                 <div className={DetailRowStyle}>
-                  <span
-                    className={cx(Typo.Label.l2_regular, DetailLabelStyle)}
-                  >
+                  <span className={cx(Typo.Label.l2_regular, DetailLabelStyle)}>
                     内存
                   </span>
                   <span className={DetailValueStyle}>8 GiB</span>
                 </div>
                 <div className={DetailRowStyle}>
-                  <span
-                    className={cx(Typo.Label.l2_regular, DetailLabelStyle)}
-                  >
+                  <span className={cx(Typo.Label.l2_regular, DetailLabelStyle)}>
                     系统盘
                   </span>
                   <span className={DetailValueStyle}>40 GiB</span>
