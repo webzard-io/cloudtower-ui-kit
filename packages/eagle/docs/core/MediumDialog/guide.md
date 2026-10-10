@@ -22,7 +22,12 @@ MediumDialog 是一个固定 720px 宽度的中型对话框组件，继承 Small
 
 ```tsx
 import React from "react";
-import { MediumDialog, Button, KitStoreProvider, ModalStack } from "@cloudtower/eagle";
+import {
+  MediumDialog,
+  Button,
+  KitStoreProvider,
+  ModalStack,
+} from "@cloudtower/eagle";
 import { usePushModal } from "@cloudtower/eagle";
 
 const App = () => {
@@ -243,16 +248,20 @@ const App = () => {
 };
 ```
 
+## 初始化生命周期
+
+MediumDialog 继承 SmallDialog 的 `initializeOnce`，默认为 `true`：成功前允许失败重试，首次成功后忽略后续的加载和初始化错误。需要反复展示骨架屏时，显式设置 `initializeOnce={false}`。完整约定见 [SmallDialog 初始化生命周期](../SmallDialog/guide.md#初始化生命周期)。
+
 ## 与 SmallDialog 的差异对比
 
-| 特性 | SmallDialog | MediumDialog |
-|------|-------------|--------------|
-| 默认宽度 | 492px | 720px |
-| 水平内边距 | 40px | 60px |
-| 标题排版 | `d2_bold_title` | `d1s_bold_title` |
-| 骨架屏默认行数 | 2 | 3 |
-| 全屏模式 | 不支持 | 支持（`isContentFull`） |
-| 适用场景 | 简单确认、信息提示 | 表单弹窗、内容较多的确认 |
+| 特性           | SmallDialog        | MediumDialog             |
+| -------------- | ------------------ | ------------------------ |
+| 默认宽度       | 492px              | 720px                    |
+| 水平内边距     | 40px               | 60px                     |
+| 标题排版       | `d2_bold_title`    | `d1s_bold_title`         |
+| 骨架屏默认行数 | 2                  | 3                        |
+| 全屏模式       | 不支持             | 支持（`isContentFull`）  |
+| 适用场景       | 简单确认、信息提示 | 表单弹窗、内容较多的确认 |
 
 ## 相关组件
 

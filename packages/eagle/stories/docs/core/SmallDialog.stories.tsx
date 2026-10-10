@@ -1,12 +1,15 @@
 import { css, cx } from "@linaria/core";
 import { Button, SmallDialogProps, Space, Typo } from "@src/core";
 import { SmallDialog } from "@src/core";
-import KitStoreProvider, { usePushModal } from "@src/core/KitStoreProvider";
+import KitStoreProvider, {
+  usePopModal,
+  usePushModal,
+} from "@src/core/KitStoreProvider";
 import ModalStack from "@src/core/ModalStack";
+import { SafeReactNode } from "@src/spec";
 import { CoreMeta } from "@stories/types";
 import { useMockQuery } from "@stories/utils";
-import { SafeReactNode } from "@src/spec";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 
 const StoryContainer = css`
   padding: 20px;
@@ -419,6 +422,75 @@ export const Initializing = () => {
   );
 };
 Initializing.storyName = "初始化状态";
+
+const InitializeOnceExample: React.FC<{ initializeOnce?: boolean }> = ({
+  initializeOnce,
+}) => {
+  const popModal = usePopModal();
+  const [shouldFail, setShouldFail] = useState(false);
+  const { isLoading, data, error, retry, refetch } = useMockQuery({
+    failFirstTime: true,
+    shouldFail,
+  });
+
+  return (
+    <SmallDialog
+      title="主机详情"
+      initializeOnce={initializeOnce}
+      initializing={isLoading}
+      initializingError={error}
+      onOk={() => {
+        if (!error || (data && initializeOnce !== false)) popModal();
+        else if (shouldFail) setShouldFail(false);
+        else retry();
+      }}
+    >
+      <Space direction="vertical" size={16}>
+        <p>
+          首次加载会失败，请点击重试。成功后修改主机名称，再刷新以观察输入值是否保留。
+        </p>
+        <input aria-label="主机名称" defaultValue="host-01" />
+        <Button disabled={isLoading} onClick={() => refetch()}>
+          刷新主机详情
+        </Button>
+        <Button
+          disabled={isLoading || shouldFail}
+          onClick={() => setShouldFail(true)}
+        >
+          模拟刷新失败
+        </Button>
+        {error && <p>刷新错误：{error}</p>}
+      </Space>
+    </SmallDialog>
+  );
+};
+
+/** 对比默认的一次初始化与 initializeOnce=false 的完全受控行为。 */
+export const InitializeOnce = () => {
+  const pushModal = usePushModal();
+  return (
+    <Space direction="vertical" size={16}>
+      <Button
+        onClick={() =>
+          pushModal({ component: () => <InitializeOnceExample />, props: {} })
+        }
+      >
+        默认只初始化一次
+      </Button>
+      <Button
+        onClick={() =>
+          pushModal({
+            component: () => <InitializeOnceExample initializeOnce={false} />,
+            props: {},
+          })
+        }
+      >
+        完全受控初始化
+      </Button>
+    </Space>
+  );
+};
+InitializeOnce.storyName = "首次成功后保留内容";
 
 /**
  * 不展示 footer

@@ -81,6 +81,14 @@ const App = () => {
 
 > **注意**：ImmersiveDialog 的 `onOk` 签名是 `(e: React.MouseEvent) => void`，不会自动关闭弹窗。必须通过 `usePopModal()` 获取 `popModal` 函数手动关闭，这一点与 SmallDialog / MediumDialog 的 `(popModal: () => void) => void` 签名不同。
 
+## 初始化生命周期
+
+`initializeOnce` 默认为 `true`，首次初始化成功后忽略后续的 `initializing` 和 `initializingError`，保留正常标题、内容和 footer。成功前允许失败后多次重试；设置 `initializeOnce={false}` 可恢复完全受控行为。
+
+初始化记录按组件的挂载周期计算。仅切换 `visible`，包括底层 Modal 的 `destroyOnClose` 销毁内容，都不会重置 ImmersiveDialog 自身的记录。切换资源并需要重新初始化时，可通过 `key` 重新挂载。
+
+首次渲染没有加载和错误时也视为成功；延迟请求应在准备期间保持 `initializing=true`。更多调用约定见 [SmallDialog 初始化生命周期](../SmallDialog/guide.md#初始化生命周期)。
+
 ## 常见模式
 
 ### 模式一：三栏布局
@@ -272,7 +280,7 @@ ImmersiveDialog 的 `onOk` 签名是 `(e: React.MouseEvent) => void`，与 Small
   onOk={(popModal) => {
     popModal(); // 直接通过参数关闭
   }}
-/>
+/>;
 
 // ImmersiveDialog -- 需要 usePopModal() hook
 const MyDialog = () => {

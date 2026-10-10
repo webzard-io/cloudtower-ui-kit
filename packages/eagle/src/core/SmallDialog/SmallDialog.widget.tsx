@@ -1,5 +1,7 @@
 import { cx } from "@linaria/core";
-import { Skeleton, Space, Typo } from "@src/core";
+import { Skeleton } from "@src/core/Skeleton";
+import Space from "@src/core/Space";
+import { Typo } from "@src/core/Typo";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { SafeReactNode } from "@src/spec";
 import React from "react";
