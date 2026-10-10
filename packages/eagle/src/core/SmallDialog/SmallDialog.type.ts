@@ -158,9 +158,23 @@ export interface SmallDialogProps {
    */
   confirmLoading?: boolean;
   /**
+   * 是否仅初始化一次。首次初始化成功后，忽略后续的 `initializing` 和 `initializingError`。
+   *
+   * @description
+   * `initializing` 为 false 或未传入，且 `initializingError` 无值时，视为初始化成功；
+   * 首次渲染就满足该条件时也会记录成功。成功前允许失败后重试，再次进入加载状态。
+   * 记录在组件卸载后重置。同一实例切换资源时，可通过 `key` 重新挂载。
+   * 延迟启动请求时，需要在准备期间保持 `initializing=true`。
+   * 设为 false 时，两项初始化状态完全跟随外部传入的值。
+   *
+   * @default true
+   */
+  initializeOnce?: boolean;
+  /**
    * 是否处于初始化加载中状态。为 true 时，标题显示骨架屏、
    * 内容区域显示骨架屏（行数由 `initializingSkeletonRows` 控制）、footer 隐藏。
    * 初始化完成后设为 false，若加载失败可设置 `initializingError` 展示错误状态。
+   * 默认仅在首次初始化成功前生效；设 `initializeOnce=false` 可反复进入加载状态。
    */
   initializing?: boolean;
   /**
@@ -168,6 +182,7 @@ export interface SmallDialogProps {
    * 内容区域显示错误详情，确认按钮文案变为"重试"。
    * 与 `initializing` 配合使用：先设 initializing=true 加载，
    * 失败时设 initializing=false 且 initializingError="错误信息"。
+   * 默认在首次初始化成功后被忽略。
    */
   initializingError?: string | SafeReactNode;
   /**

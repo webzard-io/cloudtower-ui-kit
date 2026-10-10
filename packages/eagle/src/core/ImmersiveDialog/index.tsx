@@ -19,6 +19,7 @@ import {
   ModelInitializingError,
   ModelTitleSkeleton,
 } from "../SmallDialog/SmallDialog.widget";
+import { useDialogInitialization } from "../SmallDialog/useDialogInitialization";
 import {
   BodyStyle,
   CancelButtonStyle,
@@ -63,13 +64,19 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
     isContentFull,
     onCancel,
     onOk,
-    initializing,
-    initializingError,
+    initializeOnce,
+    initializing: initializingProp,
+    initializingError: initializingErrorProp,
     "data-testid": dataTestId,
     ...restProps
   } = props;
   const { t } = useParrotTranslation();
   const popModal = usePopModal();
+  const { initializing, initializingError } = useDialogInitialization({
+    initializeOnce,
+    initializing: initializingProp,
+    initializingError: initializingErrorProp,
+  });
   const sub = useCallback(
     (suffix: string) => (dataTestId ? `${dataTestId}-${suffix}` : undefined),
     [dataTestId],
