@@ -100,6 +100,63 @@ export const Checkable: Story = {
 };
 
 /**
+ * 对照正常、叶子节点禁用和整树禁用时的勾选联动。
+ */
+export const DisabledCheckboxStates: Story = {
+  name: "复选框禁用状态",
+  args: {
+    checkable: true,
+    defaultExpandAll: true,
+    defaultCheckedKeys: ["checked", "disabled-checked"],
+    treeData: [
+      {
+        title: "父节点",
+        key: "parent",
+        children: [
+          { title: "叶子节点 1", key: "unchecked" },
+          { title: "叶子节点 2", key: "checked" },
+          { title: "叶子节点 3", key: "disabled-unchecked", disabled: true },
+          { title: "叶子节点 4", key: "disabled-checked", disabled: true },
+        ],
+      },
+    ],
+  },
+  render: (args) => (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 32 }}>
+      <section>
+        <h4>正常状态</h4>
+        <Antd5Tree
+          {...args}
+          treeData={args.treeData?.map((node) => ({
+            ...node,
+            children: node.children?.map((child) => ({
+              ...child,
+              disabled: false,
+            })),
+          }))}
+        />
+      </section>
+      <section>
+        <h4>禁用叶子节点</h4>
+        <Antd5Tree {...args} />
+      </section>
+      <section>
+        <h4>整树禁用</h4>
+        <Antd5Tree {...args} disabled />
+      </section>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "父节点默认展开，叶子节点 2、4 初始勾选。禁用叶子节点场景中，叶子节点 3 未勾选且禁用，叶子节点 4 已勾选且禁用，其余节点可交互。点击可用叶子节点或父节点可验证勾选联动；父节点根据可用叶子节点自动呈现未选中、半选或全选，禁用叶子节点保持原状态。整树禁用场景用于对照禁用样式。",
+      },
+    },
+  },
+};
+
+/**
  * 默认展开部分节点
  */
 export const DefaultExpanded: Story = {
