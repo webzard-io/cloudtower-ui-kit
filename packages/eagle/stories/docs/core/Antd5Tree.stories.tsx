@@ -1,4 +1,4 @@
-import { Antd5Tree } from "@src/core";
+import { Antd5Tree, Antd5TreeProps } from "@src/core";
 import { CoreMeta } from "@stories/types";
 import type { StoryObj } from "@storybook/react";
 import React from "react";
@@ -22,7 +22,7 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof Antd5Tree>;
+type Story = StoryObj<Antd5TreeProps>;
 
 /**
  * 基础用法
