@@ -1,5 +1,6 @@
-import type { EventSourceInit } from "eventsource";
 import type { Terminal } from "@xterm/xterm";
+import type { EventSourceInit } from "eventsource";
+
 import type { SearchInputProps } from "../SearchInput";
 
 export interface EventSourceOptions {
@@ -55,6 +56,11 @@ export interface LogViewProps {
    * 类名
    */
   className?: string;
+  /**
+   * 是否展示日志加载状态。加载时遮住日志和搜索栏，终端仍继续接收内容。
+   * @default false
+   */
+  loading?: boolean;
   /**
    * 是否显示顶部搜索栏。
    * @default true

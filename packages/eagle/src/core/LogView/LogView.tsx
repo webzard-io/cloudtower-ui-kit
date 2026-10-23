@@ -1,3 +1,22 @@
+import {
+  ArrowChevronDown16BlueIcon,
+  ArrowChevronDown16OntintIcon,
+  ArrowChevronUp16BlueIcon,
+  ArrowChevronUp16OntintIcon,
+  Loading24OntintIcon,
+  Search16OntintIcon,
+  XmarkCloseCircleFill16OntintIcon,
+  XmarkCloseCircleFill16OntintLightIcon,
+} from "@cloudtower/icons-react";
+import { cx } from "@linaria/core";
+import { SearchInput } from "@src/core";
+import Icon from "@src/core/Icon";
+import { Show } from "@src/coreX";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { Color } from "@src/styles/token";
+import type { FitAddon } from "@xterm/addon-fit";
+import type { ISearchOptions, SearchAddon } from "@xterm/addon-search";
+import type { Terminal } from "@xterm/xterm";
 import React, {
   useCallback,
   useEffect,
@@ -5,43 +24,28 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { cx } from "@linaria/core";
-import type { Terminal } from "@xterm/xterm";
-import type { ISearchOptions, SearchAddon } from "@xterm/addon-search";
-import type { FitAddon } from "@xterm/addon-fit";
+
 import {
-  ArrowChevronDown16BlueIcon,
-  ArrowChevronDown16OntintIcon,
-  ArrowChevronUp16BlueIcon,
-  ArrowChevronUp16OntintIcon,
-  Search16OntintIcon,
-  XmarkCloseCircleFill16OntintIcon,
-  XmarkCloseCircleFill16OntintLightIcon,
-} from "@cloudtower/icons-react";
-import { Show } from "@src/coreX";
-import { SearchInput } from "@src/core";
-import { Color } from "@src/styles/token";
-import useParrotTranslation from "@src/hooks/useParrotTranslation";
-import {
-  LogViewContainer,
+  CustomContentOverlay,
+  LoadingOverlayStyle,
   LogTerminal,
+  LogViewContainer,
   LogViewInnerContaier,
   SearchInputStyle,
-  CustomContentOverlay,
 } from "./LogView.style";
 import type { EventSourceOptions, LogViewProps } from "./LogView.types";
-import { loadXtermModules as loadXtermModulesUntyped } from "./LogView.xtermLoader";
 import {
+  copySelectLines,
   customShortcutsForMac,
   customShortcutsForWin,
   eventsource,
   isCustomKeyboardAction,
+  isMacOS,
   scrollLines,
   scrollPages,
-  isMacOS,
   selectAll,
-  copySelectLines,
 } from "./LogView.utils";
+import { loadXtermModules as loadXtermModulesUntyped } from "./LogView.xtermLoader";
 
 interface XtermModules {
   Terminal: typeof import("@xterm/xterm").Terminal;
@@ -165,9 +169,14 @@ const useLogViewEventSource = ({
   };
 };
 
+/**
+ * 展示可持续追加的日志，加载态仅覆盖视图，不重建终端或中断日志连接。
+ * @param props 日志内容、加载状态、搜索配置及实时连接选项。
+ */
 export const LogView: React.FC<LogViewProps> = ({
   className,
   content = "",
+  loading = false,
   showSearch = true,
   eventSource = false,
   eventSourceOptions = {},
@@ -432,6 +441,9 @@ export const LogView: React.FC<LogViewProps> = ({
 
   // 渲染自定义内容
   const renderCustomContent = () => {
+    // 加载由调用方控制，优先于空态和错误态，避免日志快照尚未就绪时闪现其他提示。
+    if (loading) return null;
+
     if (eventSourceError && errorRenderer && readyTerminal)
       return (
         <CustomContentOverlay>
@@ -451,7 +463,13 @@ export const LogView: React.FC<LogViewProps> = ({
 
   return (
     <LogViewContainer className={cx("log-view-container", className)}>
-      <LogViewInnerContaier className="log-view-inner-container">
+      <LogViewInnerContaier
+        className="log-view-inner-container"
+        aria-busy={loading}
+        aria-hidden={loading || undefined}
+        // React 17 的类型尚未声明 inert，字符串属性可让加载时的搜索和终端退出焦点顺序。
+        {...(loading ? { inert: "" } : {})}
+      >
         <Show condition={showSearch}>
           <SearchInput
             type="text"
@@ -472,6 +490,7 @@ export const LogView: React.FC<LogViewProps> = ({
             onSearchNext={searchNext}
             onSearchPrev={searchPrevious}
             {...searchInputProps}
+            disabled={loading || searchInputProps?.disabled}
           />
         </Show>
 
@@ -479,6 +498,18 @@ export const LogView: React.FC<LogViewProps> = ({
           {renderCustomContent()}
         </LogTerminal>
       </LogViewInnerContaier>
+      {loading && (
+        <div className={LoadingOverlayStyle} role="status" aria-live="polite">
+          <Icon
+            src={Loading24OntintIcon}
+            iconWidth={24}
+            iconHeight={24}
+            isRotate
+          >
+            {t("common.loading_log")}
+          </Icon>
+        </div>
+      )}
     </LogViewContainer>
   );
 };

@@ -70,5 +70,6 @@
   "colon_with_space": ": ",
   "semicolon_with_space": "; ",
   "remove": "Remove",
-  "search_log": "Search logs..."
+  "search_log": "Search logs...",
+  "loading_log": "Loading logs..."
 }

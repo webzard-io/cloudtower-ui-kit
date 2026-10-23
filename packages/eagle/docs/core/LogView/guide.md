@@ -173,6 +173,21 @@ const App = () => (
 );
 ```
 
+### 模式七：等待当前日志加载完成
+
+通过 `loading` 控制加载提示。组件会用深蓝背景遮住日志和搜索栏，居中显示旋转圆环及“正在获取日志信息...”。终端保持挂载，内容更新和 EventSource 连接继续运行；加载提示优先于自定义空态和错误态。
+
+```tsx
+import React from "react";
+import { LogView } from "@cloudtower/eagle";
+
+const App = ({ logs, isLoading }) => (
+  <LogView content={logs} loading={isLoading} rows={16} />
+);
+```
+
+`loading` 默认为 `false`，由调用方在当前日志完整读取后关闭。后续实时追加日志时保持 `false` 即可。
+
 ## 注意事项
 
 - `content` 适合静态日志或外部已合并好的实时日志；直接使用 SSE 时优先配置 `eventSource` 和 `eventSourceOptions`。

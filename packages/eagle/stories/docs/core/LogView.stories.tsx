@@ -1,6 +1,6 @@
 import { LogView } from "@src/core";
-import type { LogViewProps } from "@src/core/LogView";
 import Button from "@src/core/Button";
+import type { LogViewProps } from "@src/core/LogView";
 import { CoreMeta } from "@stories/types";
 import { StoryObj } from "@storybook/react";
 import React from "react";
@@ -25,10 +25,19 @@ const meta = {
   },
   args: {
     showSearch: true,
+    loading: false,
     rows: 16,
     enableKeyboardShortcuts: true,
   },
   argTypes: {
+    loading: {
+      control: "boolean",
+      description: "展示居中的日志加载提示，加载期间保留终端和日志连接。",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
+    },
     content: {
       control: false,
       description: "静态日志内容，换行后会按终端逐行渲染。",
@@ -663,4 +672,43 @@ export const RealtimeLargeVolume100K: Story = {
     },
   },
   render: () => <LargeRealtimeLogPreview />,
+};
+
+export const Loading: Story = {
+  name: "加载日志",
+  args: {
+    loading: true,
+    content: basicLogContent,
+    showSearch: false,
+    rows: 12,
+  },
+  render: renderPreview,
+};
+
+export const LoadingTransition: Story = {
+  name: "加载完成后展示日志",
+  args: {
+    loading: true,
+    content: basicLogContent,
+    rows: 12,
+  },
+  render: (args) => {
+    const [loading, setLoading] = React.useState(args.loading);
+
+    React.useEffect(() => {
+      setLoading(args.loading);
+    }, [args.loading]);
+
+    return (
+      <div style={previewStyle}>
+        <Button
+          style={{ marginBottom: 12 }}
+          onClick={() => setLoading((previous) => !previous)}
+        >
+          {loading ? "完成加载" : "重新加载"}
+        </Button>
+        <LogView {...args} loading={loading} />
+      </div>
+    );
+  },
 };

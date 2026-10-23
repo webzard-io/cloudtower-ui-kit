@@ -65,5 +65,6 @@
   "colon_with_space": "：",
   "semicolon_with_space": "；",
   "remove": "移除",
-  "search_log": "搜索日志"
+  "search_log": "搜索日志",
+  "loading_log": "正在获取日志信息..."
 }

@@ -1,5 +1,7 @@
-import { css } from "@linaria/core";
+import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
+import { Typo } from "@src/core/Typo";
+import { Color } from "@src/styles/token";
 
 export const LogViewContainer = styled.div`
   background-color: #00122e;
@@ -96,3 +98,19 @@ export const SearchInputStyle = css`
     border-bottom-left-radius: 0px;
   }
 `;
+
+export const LoadingOverlayStyle = cx(
+  Typo.Label.l2_medium,
+  css`
+    position: absolute;
+    inset: 0;
+    z-index: 11;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background-color: ${Color.text.neutral.primary};
+    color: ${Color.fill.neutral.lightwhite};
+    /* 保留页面的中文字体回退，避免 Inter 未加载时退回衬线字体。 */
+    font-family: inherit;
+  `,
+);
