@@ -301,6 +301,7 @@ const App = () => {
 
 ## 关键说明
 
+- **暂时禁用关闭**：继承 `closeDisabled`（默认 `false`），为 `true` 时保留灰色关闭按钮并阻止 Escape、遮罩关闭；`closable=false` 仍隐藏按钮。Footer 取消及步骤导航需独立控制。完整约定见 [ImmersiveDialog 暂时禁用关闭](../ImmersiveDialog/guide.md#暂时禁用关闭)。
 - **首次初始化**：继承 ImmersiveDialog 的 `initializeOnce`，默认为 `true`。成功前允许失败重试，首次成功后忽略后续的加载和初始化错误，避免刷新时卸载步骤内容。设为 false 可恢复完全受控行为；仅切换 `visible` 不重置记录。完整约定见 [ImmersiveDialog 初始化生命周期](../ImmersiveDialog/guide.md#初始化生命周期)。
 - **按钮文案自动切换**：非最后一步时，确认按钮文案自动显示为 `nextText`（默认"下一步"）；最后一步时显示为 `okText`（默认"确认"）。
 - **onNextStep 校验机制**：`onNextStep` 返回值严格等于 `false`（`=== false`）时阻止导航到下一步。返回 `undefined`、`null`、`true` 或其他值均不会阻止。这是该组件最核心的交互模式。

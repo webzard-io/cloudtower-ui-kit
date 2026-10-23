@@ -89,6 +89,23 @@ const App = () => {
 
 首次渲染没有加载和错误时也视为成功；延迟请求应在准备期间保持 `initializing=true`。更多调用约定见 [SmallDialog 初始化生命周期](../SmallDialog/guide.md#初始化生命周期)。
 
+## 暂时禁用关闭
+
+`closeDisabled` 默认为 `false`。设为 `true` 时保留灰色且原生禁用的右上角关闭按钮，同时阻止 Escape 和点击遮罩关闭。即使显式设置 `keyboard` 或 `maskClosable` 为 `true`，锁定期间也不会关闭；恢复为 `false` 后按这两项的原有配置处理。
+
+`closable={false}` 优先隐藏关闭按钮，自定义 `closeIcon` 在禁用期间仍会展示。此属性只锁定右上角关闭及其快捷入口，不影响 footer 取消按钮、确认按钮或业务主动调用 `popModal()`。异步任务需要锁定全部退出入口时，应同时设置 `cancelButtonProps.disabled`。
+
+```tsx
+<ImmersiveDialog
+  title="检查环境"
+  closeDisabled={checking}
+  cancelButtonProps={{ disabled: checking }}
+  okButtonProps={{ disabled: checking }}
+>
+  <EnvironmentCheck />
+</ImmersiveDialog>
+```
+
 ## 常见模式
 
 ### 模式一：三栏布局
