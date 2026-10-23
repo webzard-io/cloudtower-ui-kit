@@ -1,0 +1,11 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Size=24, Fill=Gradient - Blue">
+<path id="Polygon 6" d="M5.93804 19.5H18.0624C19.602 19.5 20.5642 17.8333 19.7944 16.5L13.7323 6C12.9625 4.66667 11.038 4.66667 10.2682 6L4.20599 16.5C3.43619 17.8333 4.39844 19.5 5.93804 19.5Z" stroke-width="2" stroke="url(#paint0_radial_16096_14)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_16096_14" cx="0" cy="0" r="1" gradientTransform="matrix(16.1303 -14.5 16.1303 14.5 3.93506 19.5)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5BCAFF"/>
+<stop offset="1" stop-color="#0066FF"/>
+</radialGradient>
+</defs>
+</svg>
