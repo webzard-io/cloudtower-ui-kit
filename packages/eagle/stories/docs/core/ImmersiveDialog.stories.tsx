@@ -9,7 +9,7 @@ import KitStoreProvider, {
 import ModalStack from "@src/core/ModalStack";
 import Space from "@src/core/Space";
 import { Typo } from "@src/core/Typo";
-import { SwitchWithText } from "@src/coreX";
+import SwitchWithText from "@src/coreX/SwitchWithText";
 import { CoreMeta } from "@stories/types";
 import { useMockQuery } from "@stories/utils";
 import React, { useMemo, useState } from "react";
@@ -198,6 +198,46 @@ export const ScrollableImmersiveDialog = () => {
   );
 };
 ScrollableImmersiveDialog.storyName = "可滚动内容";
+
+/** 演示异步任务期间保留关闭图标，并单独控制 footer 操作。 */
+export const CloseDisabledImmersiveDialog = () => {
+  const pushModal = usePushModal();
+
+  return (
+    <Button
+      onClick={() => {
+        pushModal({
+          component: () => {
+            const [checking, setChecking] = useState(true);
+
+            return (
+              <ImmersiveDialog
+                title="检查环境"
+                closeDisabled={checking}
+                cancelButtonProps={{ disabled: checking }}
+                okButtonProps={{ disabled: checking }}
+                data-testid="close-disabled-dialog"
+              >
+                <Space direction="vertical" size={16}>
+                  <p>
+                    检查期间关闭图标保留为禁用状态，Escape 和遮罩关闭同时禁用。
+                  </p>
+                  <Button onClick={() => setChecking(!checking)}>
+                    {checking ? "模拟检查完成，恢复关闭" : "重新锁定关闭"}
+                  </Button>
+                </Space>
+              </ImmersiveDialog>
+            );
+          },
+          props: {},
+        });
+      }}
+    >
+      打开关闭禁用示例
+    </Button>
+  );
+};
+CloseDisabledImmersiveDialog.storyName = "异步任务期间禁用关闭";
 
 /**
  * ImmersiveDialog 组件

@@ -49,6 +49,8 @@ import { ImmersiveDialogProps } from "@src/core/ImmersiveDialog/type";
  * />
  * ```
  *
+ * 继承 `closeDisabled`：禁用右上角关闭按钮及 Escape、遮罩关闭；footer 和步骤导航需单独控制。
+ *
  * 注意以下继承属性在 WizardDialog 中有特殊行为：
  * - `footerLeftAction`：WizardDialog 内部使用此属性渲染"上一步"按钮，外部传入会被覆盖。
  * - `isContentFull`：WizardDialog 内部强制设为 `false`，外部传入无效。

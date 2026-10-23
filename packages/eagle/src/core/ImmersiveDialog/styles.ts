@@ -118,6 +118,17 @@ export const CloseIconStyle = css`
     transition: 0.3s ease-out;
   }
 `;
+// 保持禁用关闭按钮与 Antd 默认关闭区域相同的尺寸，覆盖 Button 自身的内边距。
+export const CloseButtonStyle = css`
+  &.ant-modal-close.ant-btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+  }
+`;
 export const TitleStyle = css`
   color: $gray-120;
 `;

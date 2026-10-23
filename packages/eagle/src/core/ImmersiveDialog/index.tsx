@@ -23,6 +23,7 @@ import { useDialogInitialization } from "../SmallDialog/useDialogInitialization"
 import {
   BodyStyle,
   CancelButtonStyle,
+  CloseButtonStyle,
   CloseIconStyle,
   ErrorIconStyle,
   ErrorStyle,
@@ -38,6 +39,10 @@ import {
 } from "./styles";
 import { ImmersiveDialogProps } from "./type";
 
+/**
+ * 统一沉浸式弹窗的初始化展示、footer 和关闭入口，关闭锁定不接管业务主动出栈。
+ * @param props 弹窗布局、初始化状态与操作配置
+ */
 export function ImmersiveDialog(props: ImmersiveDialogProps) {
   const {
     className,
@@ -49,6 +54,10 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
     leftClassName,
     rightClassName,
     closeIcon,
+    closeDisabled = false,
+    closable = true,
+    keyboard,
+    maskClosable,
     footer,
     showCancel = true,
     showOk = true,
@@ -223,13 +232,36 @@ export function ImmersiveDialog(props: ImmersiveDialogProps) {
       }
       footer={finalFooter}
       onCancel={(e) => {
+        // 关闭锁定必须先于弹窗出栈，避免底层意外触发取消时提前卸载。
+        if (closeDisabled) return;
         popModal();
         onCancel?.(e);
       }}
       visible={visible}
       destroyOnClose
       {...restProps}
+      closable={closable && !closeDisabled}
+      keyboard={closeDisabled ? false : keyboard}
+      // 保留遮罩鼠标事件以清理 rc-dialog 的按下状态，关闭锁定由 onCancel 统一拦截。
+      maskClosable={maskClosable}
     >
+      {closeDisabled && closable ? (
+        <Button
+          type="quiet"
+          disabled
+          aria-label={t("common.close")}
+          className={cx("ant-modal-close", CloseButtonStyle)}
+          data-testid={sub("close")}
+        >
+          {closeIcon ?? (
+            <Icon
+              src={XmarkCloseBold24TertiaryIcon}
+              iconHeight={24}
+              iconWidth={24}
+            />
+          )}
+        </Button>
+      ) : null}
       <div className={cx(BodyStyle, isContentFull ? "" : MultiAreaBodyStyle)}>
         {initializing || initializingError ? (
           <>
