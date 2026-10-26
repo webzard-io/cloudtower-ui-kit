@@ -60,6 +60,13 @@ export type ImmersiveDialogProps = React.PropsWithChildren<
     /** 自定义关闭图标，替换右上角默认的关闭按钮图标 */
     closeIcon?: React.ReactNode;
     /**
+     * 是否禁用右上角关闭按钮及 Escape、遮罩关闭。
+     * 禁用时保留灰色关闭按钮；`closable=false` 时仍隐藏按钮。
+     * 不影响 footer 取消按钮或业务主动调用 `popModal`，需要分别控制。
+     * @default false
+     */
+    closeDisabled?: boolean;
+    /**
      * 是否显示取消按钮
      * @default true
      */
