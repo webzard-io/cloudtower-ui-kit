@@ -1,5 +1,10 @@
 name: Sync Icons
 
+env:
+  SYNC_ICON_RESULT_PATH: /tmp/sync-icon-result.json
+  PR_BODY_PATH: /tmp/pr-body.md
+  SLACK_DESCRIPTION_PATH: /tmp/slack-description.txt
+
 on:
   # 手动触发
   workflow_dispatch:
@@ -9,6 +14,9 @@ on:
         required: false
       slack_user:
         description: "Slack user ID to notify (e.g., U123456)"
+        required: false
+      figma_ids:
+        description: "Force-update existing icons. Comma-separated Figma node ids from icon-map.json keys, e.g. 7374:56758,7202:49694"
         required: false
   # 外部 dispatch 触发
   repository_dispatch:
@@ -34,9 +42,16 @@ jobs:
       - name: Install deps
         run: yarn install --frozen-lockfile
       - name: Sync Icons
-        run: FIGMA_TOKEN=${{ secrets.FIGMA_TOKEN }} yarn workspace @cloudtower/icons sync-icons
+        env:
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+          FIGMA_FORCE_SYNC_IDS: ${{ inputs.figma_ids || github.event.client_payload.figma_ids || '' }}
+        run: yarn workspace @cloudtower/icons sync-icons
       - name: Bundlewatch icons
         run: yarn workspace @cloudtower/icons build-icons && yarn bundlewatch ./packages/icons/dist/**/*.svg --max-size 6kb
+      - name: Build sync result description
+        env:
+          DESCRIPTION: ${{ inputs.description || github.event.client_payload.description || 'Scheduled sync' }}
+        run: node .github/scripts/build-sync-result-desc.mjs
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v5
@@ -49,10 +64,7 @@ jobs:
           branch-suffix: short-commit-hash
           title: "[SYNC-ICON]: update icons"
           labels: feat
-          body: |
-            Sync Icons from figma
-            - ${{ inputs.description || github.event.client_payload.description || 'Scheduled sync' }}
-            - @netweng @chenenpei @tanbowensg PTAL
+          body-path: ${{ env.PR_BODY_PATH }}
       - name: Check outputs
         if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
@@ -75,8 +87,15 @@ jobs:
           PR_URL="${{ steps.cpr.outputs.pull-request-url }}"
           PR_NUMBER="${{ steps.cpr.outputs.pull-request-number }}"
           SLACK_USER_MENTION="${{ steps.set_slack_user.outputs.slack_user_mention }}"
+          SLACK_DESCRIPTION=""
+          if [ -s "$SLACK_DESCRIPTION_PATH" ]; then
+            SLACK_DESCRIPTION="$(cat "$SLACK_DESCRIPTION_PATH")"
+          fi
 
-          TEXT="🎨 Icons Synced! New PR created: <${PR_URL}|#${PR_NUMBER}>\n${DESCRIPTION} ${SLACK_USER_MENTION}"
+          TEXT="🎨 Icons Synced! New PR created: <${PR_URL}|#${PR_NUMBER}>"$'\n'"${DESCRIPTION} ${SLACK_USER_MENTION}"
+          if [ -n "$SLACK_DESCRIPTION" ]; then
+            TEXT="${TEXT}"$'\n'"${SLACK_DESCRIPTION}"
+          fi
 
           PAYLOAD=$(jq -n --arg text "$TEXT" '{text: $text}')
           echo "payload<<EOF" >> $GITHUB_OUTPUT
