@@ -4,11 +4,14 @@ const description = process.env.DESCRIPTION || "Scheduled sync";
 const syncIconResultPath =
   process.env.SYNC_ICON_RESULT_PATH || "/tmp/sync-icon-result.json";
 const prBodyPath = process.env.PR_BODY_PATH || "/tmp/pr-body.md";
-const prDescriptionPath =
-  process.env.PR_DESCRIPTION_PATH || "/tmp/sync-icon-pr-description.md";
-const prDescriptionUrl = process.env.PR_DESCRIPTION_URL || "";
 const slackDescriptionPath =
   process.env.SLACK_DESCRIPTION_PATH || "/tmp/slack-description.txt";
+const workflowRunUrl =
+  process.env.GITHUB_SERVER_URL &&
+  process.env.GITHUB_REPOSITORY &&
+  process.env.GITHUB_RUN_ID
+    ? `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`
+    : "";
 
 const PREVIEW_LIMIT = 10;
 
@@ -34,11 +37,19 @@ function formatFileLabel(item) {
     : `${item.svgFileName}${item.nextSvgFileName ? `（最新文件名 ${item.nextSvgFileName}）` : ""}`;
 }
 
-const needManualSyncIconLines = needManualSyncIcons.map(
-  (item) => `- \`${item.id}\` ${formatFileLabel(item)}`,
+/**
+ * @param {string[]} labels
+ * @returns {string[]}
+ */
+function toNumberedLines(labels) {
+  return labels.map((label, index) => `${index + 1}. ${label}`);
+}
+
+const needManualSyncIconLines = toNumberedLines(
+  needManualSyncIcons.map((item) => `\`${item.id}\` ${formatFileLabel(item)}`),
 );
-const missingForceSyncIconIdLines = missingForceSyncIconIds.map(
-  (id) => `- \`${id}\``,
+const missingForceSyncIconIdLines = toNumberedLines(
+  missingForceSyncIconIds.map((id) => `\`${id}\``),
 );
 
 const needManualSyncIconsIntro = `以下 ${needManualSyncIcons.length} 个图标未同步，原因可能是文件名发生了变更或已存在该图标等。如需更新，请手动运行 Sync Icons workflow ，并在 figma_ids 中填写对应的 Figma 节点 id（取自 icon-map.json 的 key，多个 id 用英文逗号分隔）。`;
@@ -73,8 +84,9 @@ const manualOmitted = needManualSyncIconLines.length - manualPreview.length;
 const missingPreview = missingForceSyncIconIdLines.slice(0, PREVIEW_LIMIT);
 const missingOmitted =
   missingForceSyncIconIdLines.length - missingPreview.length;
-const prLinkTarget = prDescriptionUrl
-  ? `[链接内容](${prDescriptionUrl})`
+
+const prLinkTarget = workflowRunUrl
+  ? `[链接内容](${workflowRunUrl})`
   : "链接内容";
 
 /**
@@ -120,8 +132,6 @@ const prBody = [
   ...(prBodyDescription.length ? [prBodyDescription] : []),
 ].join("\n");
 
-console.log("prDescription", prDescription);
-
 console.log("prBody", prBody);
 
 const slackDescription = buildPreviewDescription(" PR");
@@ -129,19 +139,8 @@ const slackDescription = buildPreviewDescription(" PR");
 console.log("slackDescription", slackDescription);
 
 const hasOmitted = manualOmitted > 0 || missingOmitted > 0;
-if (process.env.GITHUB_OUTPUT) {
-  fs.appendFileSync(
-    process.env.GITHUB_OUTPUT,
-    `has_omitted=${hasOmitted ? "true" : "false"}\n`,
-  );
-}
-if (hasOmitted) {
-  fs.writeFileSync(prDescriptionPath, prDescription);
-  console.log(
-    `prDescription written to ${prDescriptionPath} (${prDescription.length} chars)`,
-  );
-} else if (fs.existsSync(prDescriptionPath)) {
-  fs.unlinkSync(prDescriptionPath);
+if (hasOmitted && process.env.GITHUB_STEP_SUMMARY) {
+  fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, prDescription);
 }
 
 fs.writeFileSync(prBodyPath, prBody);

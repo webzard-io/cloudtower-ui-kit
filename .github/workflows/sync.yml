@@ -3,7 +3,6 @@ name: Sync Icons
 env:
   SYNC_ICON_RESULT_PATH: /tmp/sync-icon-result.json
   PR_BODY_PATH: /tmp/pr-body.md
-  PR_DESCRIPTION_PATH: /tmp/sync-icon-pr-description.md
   SLACK_DESCRIPTION_PATH: /tmp/slack-description.txt
 
 on:
@@ -50,23 +49,8 @@ jobs:
       - name: Bundlewatch icons
         run: yarn workspace @cloudtower/icons build-icons && yarn bundlewatch ./packages/icons/dist/**/*.svg --max-size 6kb
       - name: Build sync result description
-        id: sync_result
         env:
           DESCRIPTION: ${{ inputs.description || github.event.client_payload.description || 'Scheduled sync' }}
-        run: node .github/scripts/build-sync-result-desc.mjs
-      - name: Upload full PR description
-        id: upload_pr_description
-        if: steps.sync_result.outputs.has_omitted == 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: sync-icon-pr-description
-          path: ${{ env.PR_DESCRIPTION_PATH }}
-          if-no-files-found: ignore
-      - name: Build pull request body
-        if: ${{ steps.upload_pr_description.outputs.artifact-url != '' }}
-        env:
-          DESCRIPTION: ${{ inputs.description || github.event.client_payload.description || 'Scheduled sync' }}
-          PR_DESCRIPTION_URL: ${{ steps.upload_pr_description.outputs.artifact-url }}
         run: node .github/scripts/build-sync-result-desc.mjs
       - name: Create Pull Request
         id: cpr
