@@ -12108,5 +12108,300 @@
     "svgFileName": "datastore-disconnected-16-ontint.svg",
     "hash": "155f2bb9273726b15419eec376b74706",
     "lastUpdated": "2026-07-16T02:10:26.743Z"
+  },
+  "19916:58": {
+    "componentSetName": "Icon / arrow.turn.right",
+    "name": "Size=16, Fill=Ontint",
+    "svgFileName": "arrow-turn-right-16-ontint.svg",
+    "hash": "e39ada9dfc63b497968d7b5a3f23726b",
+    "lastUpdated": "2026-10-21T06:07:25.166Z"
+  },
+  "19916:62": {
+    "componentSetName": "Icon / arrow.turn.right",
+    "name": "Size=16, Fill=Tertinary",
+    "svgFileName": "arrow-turn-right-16-tertinary.svg",
+    "hash": "73bc20fd741d3b675b679e6d1d1dcd8f",
+    "lastUpdated": "2026-10-21T06:07:25.167Z"
+  },
+  "19916:64": {
+    "componentSetName": "Icon / arrow.turn.right",
+    "name": "Size=16, Fill=Gradient - Gray",
+    "svgFileName": "arrow-turn-right-16-gradient-gray.svg",
+    "hash": "b12d15d876172879d582d49c3fd7fbf2",
+    "lastUpdated": "2026-10-21T06:07:25.167Z"
+  },
+  "19916:66": {
+    "componentSetName": "Icon / arrow.turn.right",
+    "name": "Size=16, Fill=Gradient - Blue",
+    "svgFileName": "arrow-turn-right-16-gradient-blue.svg",
+    "hash": "2bd6e972d62cfd9c290cd79507a37fc2",
+    "lastUpdated": "2026-10-21T06:07:25.167Z"
+  },
+  "19876:57": {
+    "componentSetName": "Icon / virtual.volume",
+    "name": "Size=16, Fill=Gradient - Gray",
+    "svgFileName": "virtual-volume-16-gradient-gray.svg",
+    "existingSvgFileName": "virtual-volume-16-gray.svg",
+    "hash": "98f4f79db0e482a176a986003823230e",
+    "lastUpdated": "2026-10-21T06:07:25.276Z"
+  },
+  "19852:89": {
+    "componentSetName": "Icon / cluster",
+    "name": "Style=Solid, Size=16, Fill=Ontint, Status=Disconnected",
+    "svgFileName": "cluster-disconnected-16-ontint-solid.svg",
+    "hash": "f019ddc9bb1278eff907db9a6e40f938",
+    "lastUpdated": "2026-10-21T06:07:25.298Z"
+  },
+  "19851:55": {
+    "componentSetName": "Icon / cluster.compute",
+    "name": "Style=Outlined, Size=16, Fill=Gradient - Green, Status=Default",
+    "svgFileName": "cluster-compute-default-16-gradient-green-outlined.svg",
+    "hash": "2494878f726707205e8874a6b4d43a51",
+    "lastUpdated": "2026-10-21T06:07:25.300Z"
+  },
+  "19852:73": {
+    "componentSetName": "Icon / cluster.compute",
+    "name": "Style=Outlined, Size=16, Fill=Gradient - Blue, Status=Default",
+    "svgFileName": "cluster-compute-default-16-gradient-blue-outlined.svg",
+    "hash": "41d04aa8d81770d362e76640013cba12",
+    "lastUpdated": "2026-10-21T06:07:25.300Z"
+  },
+  "19852:77": {
+    "componentSetName": "Icon / cluster.compute",
+    "name": "Style=Outlined, Size=16, Fill=Gradient - Gray, Status=Default",
+    "svgFileName": "cluster-compute-default-16-gradient-gray-outlined.svg",
+    "hash": "aa3bd4bc6795ed883e2baa4aa97008a9",
+    "lastUpdated": "2026-10-21T06:07:25.300Z"
+  },
+  "19852:81": {
+    "componentSetName": "Icon / cluster.compute",
+    "name": "Style=Outlined, Size=16, Fill=Ontint, Status=Default",
+    "svgFileName": "cluster-compute-default-16-ontint-outlined.svg",
+    "hash": "bd8f5cff6dc1f255bea847a39c8e0553",
+    "lastUpdated": "2026-10-21T06:07:25.300Z"
+  },
+  "19853:2052": {
+    "componentSetName": "Icon / cluster.compute",
+    "name": "Style=Outlined, Size=16, Fill=Yellow, Status=Default",
+    "svgFileName": "cluster-compute-default-16-yellow-outlined.svg",
+    "hash": "00e9956caea41cbe81cae5472c9ad144",
+    "lastUpdated": "2026-10-21T06:07:25.300Z"
+  },
+  "19853:2048": {
+    "componentSetName": "Icon / cluster.compute",
+    "name": "Style=Solid, Size=16, Fill=Ontint, Status=Default",
+    "svgFileName": "cluster-compute-default-16-ontint-solid.svg",
+    "hash": "d5a08b1ba89bbf207fd01517cd0a8545",
+    "lastUpdated": "2026-10-21T06:07:25.301Z"
+  },
+  "19851:57": {
+    "componentSetName": "Icon / cluster.compute",
+    "name": "Style=Outlined, Size=16, Fill=Gradient - Blue, Status=Disconnected",
+    "svgFileName": "cluster-compute-disconnected-16-gradient-blue-outlined.svg",
+    "hash": "d0e8968435e89cadaeefd2cc301db666",
+    "lastUpdated": "2026-10-21T06:07:25.301Z"
+  },
+  "19853:2058": {
+    "componentSetName": "Icon / cluster.compute",
+    "name": "Style=Outlined, Size=16, Fill=Ontint, Status=Disconnected",
+    "svgFileName": "cluster-compute-disconnected-16-ontint-outlined.svg",
+    "hash": "448649dfc16bc30ac790241afde44b21",
+    "lastUpdated": "2026-10-21T06:07:25.301Z"
+  },
+  "19853:2062": {
+    "componentSetName": "Icon / cluster.compute",
+    "name": "Style=Solid, Size=16, Fill=Ontint, Status=Disconnected",
+    "svgFileName": "cluster-compute-disconnected-16-ontint-solid.svg",
+    "hash": "a094205e7d2a87dd2711c3659b65f751",
+    "lastUpdated": "2026-10-21T06:07:25.301Z"
+  },
+  "19853:43980": {
+    "componentSetName": "Icon / cluster.storage",
+    "name": "Style=Outlined, Size=16, Fill=Gradient - Purple, Status=Default",
+    "svgFileName": "cluster-storage-default-16-gradient-purple-outlined.svg",
+    "hash": "ff8e77ab2c4a753c9ac354febc350861",
+    "lastUpdated": "2026-10-21T06:07:25.301Z"
+  },
+  "19853:43982": {
+    "componentSetName": "Icon / cluster.storage",
+    "name": "Style=Outlined, Size=16, Fill=Gradient - Blue, Status=Default",
+    "svgFileName": "cluster-storage-default-16-gradient-blue-outlined.svg",
+    "hash": "1af98d245a4c89a90724f2f38a8f431c",
+    "lastUpdated": "2026-10-21T06:07:25.301Z"
+  },
+  "19853:43984": {
+    "componentSetName": "Icon / cluster.storage",
+    "name": "Style=Outlined, Size=16, Fill=Gradient - Gray, Status=Default",
+    "svgFileName": "cluster-storage-default-16-gradient-gray-outlined.svg",
+    "hash": "36e58e56f58340869d4448041f821a02",
+    "lastUpdated": "2026-10-21T06:07:25.301Z"
+  },
+  "19853:43986": {
+    "componentSetName": "Icon / cluster.storage",
+    "name": "Style=Outlined, Size=16, Fill=Ontint, Status=Default",
+    "svgFileName": "cluster-storage-default-16-ontint-outlined.svg",
+    "hash": "f869fbb6c7f379bc53d52cb0ea1930b4",
+    "lastUpdated": "2026-10-21T06:07:25.301Z"
+  },
+  "19853:43988": {
+    "componentSetName": "Icon / cluster.storage",
+    "name": "Style=Outlined, Size=16, Fill=Yellow, Status=Default",
+    "svgFileName": "cluster-storage-default-16-yellow-outlined.svg",
+    "hash": "ac7b98b48717cccbaacf49a83d6ef041",
+    "lastUpdated": "2026-10-21T06:07:25.302Z"
+  },
+  "19853:43990": {
+    "componentSetName": "Icon / cluster.storage",
+    "name": "Style=Solid, Size=16, Fill=Ontint, Status=Default",
+    "svgFileName": "cluster-storage-default-16-ontint-solid.svg",
+    "hash": "123154915b3d81c1a01720859965a0ad",
+    "lastUpdated": "2026-10-21T06:07:25.302Z"
+  },
+  "19853:43992": {
+    "componentSetName": "Icon / cluster.storage",
+    "name": "Style=Outlined, Size=16, Fill=Gradient - Blue, Status=Disconnected",
+    "svgFileName": "cluster-storage-disconnected-16-gradient-blue-outlined.svg",
+    "hash": "ab6588b505c207f450b4b9751018f7af",
+    "lastUpdated": "2026-10-21T06:07:25.302Z"
+  },
+  "19854:44027": {
+    "componentSetName": "Icon / cluster.storage",
+    "name": "Style=Outlined, Size=16, Fill=Ontint, Status=Disconnected",
+    "svgFileName": "cluster-storage-disconnected-16-ontint-outlined.svg",
+    "hash": "f0a7e9683634e49ed8d0ff606d84cb67",
+    "lastUpdated": "2026-10-21T06:07:25.302Z"
+  },
+  "19854:44031": {
+    "componentSetName": "Icon / cluster.storage",
+    "name": "Style=Solid, Size=16, Fill=Ontint, Status=Disconnected",
+    "svgFileName": "cluster-storage-disconnected-16-ontint-solid.svg",
+    "hash": "759b2d5b2d6d3e9fc4417a66d686c620",
+    "lastUpdated": "2026-10-21T06:07:25.302Z"
+  },
+  "19849:42954": {
+    "componentSetName": "Icon / security.vm.group",
+    "name": "Size=16, Fill=Ontint",
+    "svgFileName": "security-vm-group-16-ontint.svg",
+    "hash": "f673ddd792beb85d3c1a3b55a6b0e547",
+    "lastUpdated": "2026-10-21T06:07:25.429Z"
+  },
+  "19849:42956": {
+    "componentSetName": "Icon / security.pod.group",
+    "name": "Size=16, Fill=Ontint",
+    "svgFileName": "security-pod-group-16-ontint.svg",
+    "hash": "8c89ecdf5802ac95ebce5b69de342fcf",
+    "lastUpdated": "2026-10-21T06:07:25.432Z"
+  },
+  "19849:42960": {
+    "componentSetName": "Icon / tag",
+    "name": "Size=16, Fill=Ontint",
+    "svgFileName": "tag-16-ontint.svg",
+    "hash": "4d4e5b86edc2565f40e5fc8cd061a453",
+    "lastUpdated": "2026-10-21T06:07:25.440Z"
+  },
+  "19849:42958": {
+    "componentSetName": "Icon / security.ip.group",
+    "name": "Size=16, Fill=Ontint",
+    "svgFileName": "security-ip-group-16-ontint.svg",
+    "hash": "83e96f9392f98b553a65c6dc7e819ffa",
+    "lastUpdated": "2026-10-21T06:07:25.476Z"
+  },
+  "19909:43016": {
+    "componentSetName": "Icon / pin",
+    "name": "Size=24, Fill=Gradient - Blue",
+    "svgFileName": "pin-24-gradient-blue.svg",
+    "hash": "ec49a05453ef5c92338833c318e46f67",
+    "lastUpdated": "2026-10-21T06:07:25.481Z"
+  },
+  "19909:43018": {
+    "componentSetName": "Icon / unpin",
+    "name": "Size=24, Fill=Gradient - Blue",
+    "svgFileName": "unpin-24-gradient-blue.svg",
+    "hash": "4eab6973f6874338acc35511bfa2e374",
+    "lastUpdated": "2026-10-21T06:07:25.481Z"
+  },
+  "19909:43024": {
+    "componentSetName": "Icon / policy-group",
+    "name": "Size=24, Fill=Gradient - Blue",
+    "svgFileName": "policy-group-24-gradient-blue.svg",
+    "hash": "f96cc94efca145597f89788f3187a8d9",
+    "lastUpdated": "2026-10-21T06:07:25.481Z"
+  },
+  "19909:43167": {
+    "componentSetName": "Icon / policy-group",
+    "name": "Size=24, Fill=Gradient - Gray",
+    "svgFileName": "policy-group-24-gradient-gray.svg",
+    "hash": "1a037525fdf743ee8b31879e78a11a3a",
+    "lastUpdated": "2026-10-21T06:07:25.481Z"
+  },
+  "19906:78": {
+    "componentSetName": "Icon / system.service",
+    "name": "Size=24, Fill=Gradient - Blue",
+    "svgFileName": "system-service-24-gradient-blue.svg",
+    "hash": "2aabd855da1b373576d57a863ab5f01b",
+    "lastUpdated": "2026-10-21T06:07:25.491Z"
+  },
+  "19906:80": {
+    "componentSetName": "Icon / system.service",
+    "name": "Size=24, Fill=Gradient - Gray",
+    "svgFileName": "system-service-24-gradient-gray.svg",
+    "hash": "1918367ab9e4ac50b04c2b0c88e76b51",
+    "lastUpdated": "2026-10-21T06:07:25.491Z"
+  },
+  "19906:82": {
+    "componentSetName": "Icon / system.service",
+    "name": "Size=24, Fill=Ontint",
+    "svgFileName": "system-service-24-ontint.svg",
+    "hash": "5b911828168fe16bc389f848ca3b8104",
+    "lastUpdated": "2026-10-21T06:07:25.491Z"
+  },
+  "19906:79": {
+    "componentSetName": "Icon / system.service",
+    "name": "Size=16, Fill=Gradient - Blue",
+    "svgFileName": "system-service-16-gradient-blue.svg",
+    "hash": "77e40549e27103eb7d4ea4280a7dbcae",
+    "lastUpdated": "2026-10-21T06:07:25.491Z"
+  },
+  "19906:81": {
+    "componentSetName": "Icon / system.service",
+    "name": "Size=16, Fill=Gradient - Gray",
+    "svgFileName": "system-service-16-gradient-gray.svg",
+    "hash": "ca1f1fff0142262ec4d544b8b0dd4380",
+    "lastUpdated": "2026-10-21T06:07:25.491Z"
+  },
+  "19906:83": {
+    "componentSetName": "Icon / system.service",
+    "name": "Size=16, Fill=Ontint",
+    "svgFileName": "system-service-16-ontint.svg",
+    "hash": "bbf0a8cb75fe5632070c1f34ea206422",
+    "lastUpdated": "2026-10-21T06:07:25.491Z"
+  },
+  "19928:60": {
+    "componentSetName": "Icon / cluster.alert.bell",
+    "name": "Size=16, Fill=Gradient - Blue",
+    "svgFileName": "cluster-alert-bell-16-gradient-blue.svg",
+    "hash": "e96443541849912f1af26312ea7dc9f7",
+    "lastUpdated": "2026-10-21T06:07:25.504Z"
+  },
+  "19928:62": {
+    "componentSetName": "Icon / cluster.alert.bell",
+    "name": "Size=16, Fill=Gradient - Gray",
+    "svgFileName": "cluster-alert-bell-16-gradient-gray.svg",
+    "hash": "a860b54365f39395dd57ac19a4fbe1e9",
+    "lastUpdated": "2026-10-21T06:07:25.504Z"
+  },
+  "19928:65": {
+    "componentSetName": "Icon / service.alert.bell",
+    "name": "Size=16, Fill=Gradient - Blue",
+    "svgFileName": "service-alert-bell-16-gradient-blue.svg",
+    "hash": "d6588b8f3f5d392178f628f526add48e",
+    "lastUpdated": "2026-10-21T06:07:25.504Z"
+  },
+  "19928:67": {
+    "componentSetName": "Icon / service.alert.bell",
+    "name": "Size=16, Fill=Gradient - Gray",
+    "svgFileName": "service-alert-bell-16-gradient-gray.svg",
+    "hash": "49bf021174867b4529093e44de8af893",
+    "lastUpdated": "2026-10-21T06:07:25.504Z"
   }
 }
