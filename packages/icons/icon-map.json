@@ -5,14 +5,14 @@
     "svgFileName": "pause-16-gradient-yellow.svg",
     "existingSvgFileName": "suspended-pause-16-gradient-orange.svg",
     "hash": "898e40b0d03363e7c0299e8d743f6e94",
-    "lastUpdated": "2026-10-21T06:07:24.975Z"
+    "lastUpdated": "2026-10-30T09:34:53.646Z"
   },
   "7374:56758": {
     "componentSetName": "Icon / pause",
     "name": "Size=16, Fill=Gradient - Blue",
     "svgFileName": "pause-16-gradient-blue.svg",
     "hash": "90d76153aac66a31f237245407b74fac",
-    "lastUpdated": "2026-10-21T06:07:24.982Z"
+    "lastUpdated": "2026-10-30T09:34:53.647Z"
   },
   "7202:49694": {
     "componentSetName": "Icon / pause",
@@ -20,7 +20,7 @@
     "svgFileName": "pause-24-gradient-yellow.svg",
     "existingSvgFileName": "pause-24.svg",
     "hash": "c50662cdb485c39248c45727d7753e67",
-    "lastUpdated": "2026-10-21T06:07:24.982Z"
+    "lastUpdated": "2026-10-30T09:34:53.647Z"
   },
   "6998:49710": {
     "componentSetName": "Icon / active.connection",
