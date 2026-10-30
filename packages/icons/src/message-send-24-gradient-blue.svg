@@ -1,0 +1,11 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Size=24, Fill=Gradient - Blue">
+<path id="Union" d="M10.1078 13.4056L1.85938 10.9796C1.65118 10.9183 1.50562 10.7297 1.5 10.5128C1.4945 10.296 1.62947 10.1004 1.83399 10.0284L20.3146 3.53519C20.4667 3.47491 20.6434 3.49172 20.7842 3.58893C20.8993 3.66853 20.9723 3.78974 20.9935 3.92085C21.0089 4.01582 20.9965 4.11334 20.9582 4.20119L13.9658 22.1817C13.8893 22.3778 13.6978 22.5052 13.4873 22.5001C13.2768 22.4947 13.092 22.358 13.0254 22.1583L10.1078 13.4056ZM11.0784 13.1531L13.5361 20.5264L19.271 5.77973L11.0784 13.1531ZM10.3721 12.4415L3.62793 10.4571L18.3057 5.29986L10.3721 12.4415Z" fill-rule="evenodd" clip-rule="evenodd" fill="url(#paint0_radial_13639_62574)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_13639_62574" cx="0" cy="0" r="1" gradientTransform="matrix(19.5 -19.0001 19.5 19.0001 1.5 22.5001)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5BCAFF"/>
+<stop offset="1" stop-color="#0066FF"/>
+</radialGradient>
+</defs>
+</svg>
