@@ -48,7 +48,7 @@ jobs:
         run: yarn workspace @cloudtower/icons sync-icons
       - name: Bundlewatch icons
         run: yarn workspace @cloudtower/icons build-icons && yarn bundlewatch ./packages/icons/dist/**/*.svg --max-size 6kb
-      - name: Build pull request body
+      - name: Build sync result description
         env:
           DESCRIPTION: ${{ inputs.description || github.event.client_payload.description || 'Scheduled sync' }}
         run: node .github/scripts/build-sync-result-desc.mjs
