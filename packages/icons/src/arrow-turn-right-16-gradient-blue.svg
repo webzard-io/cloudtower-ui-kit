@@ -1,0 +1,11 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Size=16, Fill=Gradient - Blue">
+<path id="Vector 5" d="M2 3.5V5.5C2 7.70914 3.79086 9.5 6 9.5H14M11 12.5L14 9.5L11 6.5" stroke-linecap="round" stroke-linejoin="round" stroke="url(#paint0_radial_19916_66)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_19916_66" cx="0" cy="0" r="1" gradientTransform="matrix(12 -9 12 9 2 12.5)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5BCAFF"/>
+<stop offset="1" stop-color="#0066FF"/>
+</radialGradient>
+</defs>
+</svg>

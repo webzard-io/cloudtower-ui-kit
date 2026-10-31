@@ -1,7 +1,9 @@
-<svg width="16" height="6" viewBox="0 0 16 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Size=16">
 <g id="Group 1">
-<line id="Line 1" x1="4.75" y1="2.96631" x2="11.25" y2="2.96631" stroke="#00BA5D" stroke-width="1.5" stroke-linecap="round"/>
-<circle id="Ellipse 1" cx="2.5" cy="3" r="2" fill="white" stroke="#CCD4E3"/>
-<circle id="Ellipse 2" cx="13.5" cy="3" r="2" fill="white" stroke="#CCD4E3"/>
+<path id="Line 1" d="M4.75 7.96582L11.25 7.96582" stroke-width="1.5" stroke-linecap="round" stroke="#00BA5D"/>
+<path id="Ellipse 1" d="M4.5 8C4.5 9.10457 3.60457 10 2.5 10C1.39543 10 0.5 9.10457 0.5 8C0.5 6.89543 1.39543 6 2.5 6C3.60457 6 4.5 6.89543 4.5 8Z" fill="white" stroke="#CCD4E3"/>
+<path id="Ellipse 2" d="M15.5 8C15.5 9.10457 14.6046 10 13.5 10C12.3954 10 11.5 9.10457 11.5 8C11.5 6.89543 12.3954 6 13.5 6C14.6046 6 15.5 6.89543 15.5 8Z" fill="white" stroke="#CCD4E3"/>
+</g>
 </g>
 </svg>
