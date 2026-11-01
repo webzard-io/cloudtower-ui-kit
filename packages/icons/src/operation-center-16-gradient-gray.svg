@@ -1,0 +1,11 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Size=16, Fill=Gradient - Gray">
+<path id="Polygon 7" d="M3.66995 12.7002H12.3302C13.1 12.7002 13.5811 11.8669 13.1962 11.2002L8.8661 3.7002C8.4812 3.03353 7.51895 3.03353 7.13405 3.7002L2.80392 11.2002C2.41902 11.8669 2.90015 12.7002 3.66995 12.7002Z" stroke="url(#paint0_radial_15255_5)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_15255_5" cx="0" cy="0" r="1" gradientTransform="matrix(10.6632 -9.5 10.6632 9.5 2.66846 12.7002)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#CCD4E3"/>
+<stop offset="1" stop-color="#6B7D99"/>
+</radialGradient>
+</defs>
+</svg>

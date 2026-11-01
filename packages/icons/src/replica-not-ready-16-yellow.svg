@@ -1,0 +1,8 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Size=16, Fill=Yellow">
+<g id="icon">
+<path id="Ellipse" d="M14.5 8C14.5 11.5899 11.5899 14.5 8 14.5C4.41015 14.5 1.5 11.5899 1.5 8C1.5 4.41015 4.41015 1.5 8 1.5C11.5899 1.5 14.5 4.41015 14.5 8Z" fill="#FFBB00" fill-opacity="0.1" stroke="#FEA008"/>
+<rect id="Rounded Rectangle" x="9.76758" y="5.16992" width="1.5" height="6.5" rx="0.75" transform="rotate(45 9.76758 5.16992)" fill="#FEA008"/>
+</g>
+</g>
+</svg>
