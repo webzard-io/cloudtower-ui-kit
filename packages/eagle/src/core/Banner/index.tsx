@@ -13,6 +13,7 @@ import cls from "classnames";
 import React from "react";
 
 import {
+  BannerWrapper,
   BasicBanner,
   ErrorBanner,
   InfoBanner,
@@ -28,15 +29,16 @@ export const Banner: React.FC<BannerProps> = ({
   btnProps,
   pagination,
   onClose,
+  id,
   "data-testid": dataTestId,
 }) => {
   const { t } = useParrotTranslation();
   const hasPagination = pagination && pagination.total > 1;
   // rc-trigger 在入场动画结束时会短暂恢复 opacity: 0，关闭动画以避免闪烁。
   return (
-    <div data-testid={dataTestId} id="global-banner">
+    <div className={BannerWrapper} data-testid={dataTestId} id={id}>
       <div
-        className={cls(Typo.Label.l3_bold, BasicBanner, {
+        className={cls("banner-body", Typo.Label.l3_bold, BasicBanner, {
           [ErrorBanner]: type === "error",
           [InfoBanner]: type === "info",
           [WarningBanner]: type === "warning",

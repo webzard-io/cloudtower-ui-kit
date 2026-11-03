@@ -1,6 +1,12 @@
 import { css } from "@linaria/core";
 import { Color } from "@src/styles/token/color";
 
+export const BannerWrapper = css`
+  & + & > .banner-body {
+    border-top: 1px solid ${Color.text.neutral.ontint};
+  }
+`;
+
 export const BasicBanner = css`
   color: ${Color.text.neutral.ontint};
   display: grid;
