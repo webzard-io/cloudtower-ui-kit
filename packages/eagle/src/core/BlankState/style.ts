@@ -8,7 +8,7 @@ export const BlankStateWrapper = css`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: $gray-a30-10;
+  color: rgba(0, 21, 64, 0.3);
   &.large {
     max-width: 648px;
   }
@@ -16,10 +16,10 @@ export const BlankStateWrapper = css`
     max-width: 412px;
   }
   &.gray {
-    background-color: $fills-trans-primary-light;
+    background-color: $fill-neutral-trans-1;
   }
   &.white {
-    background-color: $fills-light-light-white;
+    background-color: $fill-neutral-lightwhite;
   }
   .title {
     margin-bottom: 4px;

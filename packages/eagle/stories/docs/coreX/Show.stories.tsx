@@ -29,23 +29,23 @@ const ContentStyle = css`
 `;
 
 const SuccessContentStyle = css`
-  background-color: $fills-light-positive-positive-light;
-  color: $text-light-positive;
+  background-color: $fill-positive-light;
+  color: $text-colorful-positive;
 `;
 
 const WarningContentStyle = css`
-  background-color: $fills-light-notice-notice-light;
-  color: $text-light-notice;
+  background-color: $fill-notice-light;
+  color: $text-colorful-notice;
 `;
 
 const InfoContentStyle = css`
-  background-color: $fills-light-general-general-light;
-  color: $text-light-general;
+  background-color: $fill-outstanding-light;
+  color: $text-colorful-outstanding;
 `;
 
 const DisableStyle = css`
-  background-color: $fills-light-trans-3;
-  color: $text-light-tertiary;
+  background-color: $fill-neutral-trans-3;
+  color: $text-neutral-quaternary;
 `;
 
 /*

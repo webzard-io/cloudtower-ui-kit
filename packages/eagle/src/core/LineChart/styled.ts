@@ -2,7 +2,7 @@ import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 
 export const MetricPlaceholderWrapper = styled.div`
-  color: $text-light-secondary;
+  color: $text-neutral-tertiary;
   text-align: center;
 
   display: flex;
@@ -12,7 +12,7 @@ export const MetricPlaceholderWrapper = styled.div`
   height: 100%;
 
   .link {
-    color: $text-light-general;
+    color: $text-colorful-outstanding;
     cursor: pointer;
   }
 `;
@@ -34,7 +34,7 @@ export const MetricLegendTabStyle = css`
       align-items: center;
 
       .info-item {
-        color: $gray-60;
+        color: $gray-gray-60;
       }
       .info-item + .info-item {
         margin-left: 10px;
@@ -98,7 +98,7 @@ export const LegendItemsStyle = css`
     margin-left: 12px;
   }
   .legend-name {
-    color: $text-light-primary;
+    color: $text-neutral-primary;
   }
   .icon-suffix-wrapper {
     display: flex;
@@ -124,7 +124,7 @@ export const LegendItemsStyleDropdown = css`
     }
   }
   .legend-name {
-    color: $text-light-primary;
+    color: $text-neutral-primary;
   }
   &.hoverering-self {
     opacity: 1;
@@ -171,7 +171,7 @@ export const LineChartWrapper = styled.div`
       align-items: center;
 
       .info-item {
-        color: $gray-60;
+        color: $gray-gray-60;
       }
       .info-item + .info-item {
         margin-left: 10px;
@@ -193,7 +193,7 @@ export const LineChartWrapper = styled.div`
     bottom: 10px;
     padding: 0 8px;
     font-size: 12px;
-    color: $white;
+    color: $text-neutral-ontint;
     transform: translateX(-50%);
     z-index: 2;
   }
@@ -222,7 +222,7 @@ export const TooltipWrapper = styled.div`
   min-width: 200px;
   background-color: $fill-neutral-trans-8;
   border-radius: 4px;
-  box-shadow: 0px 1px 4px 0px rgba(29, 50, 108, 0.6);
+  box-shadow: $effect-shadow-tooltip;
   padding: 8px;
 `;
 

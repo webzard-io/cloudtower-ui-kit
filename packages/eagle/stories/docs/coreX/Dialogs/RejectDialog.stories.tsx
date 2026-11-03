@@ -238,7 +238,7 @@ const BeforeDescription = css`
   background: $fill-neutral-trans-2;
   padding: 8px;
   border-radius: 6px;
-  color: $gray-a60-8;
+  color: $text-neutral-tertiary;
   margin-bottom: 16px;
 `;
 

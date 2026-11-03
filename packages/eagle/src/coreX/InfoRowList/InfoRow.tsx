@@ -50,13 +50,13 @@ const Col = styled.div`
 
   .col-label {
     width: 216px;
-    color: $text-secondary-light;
+    color: $text-neutral-tertiary;
     margin-right: 12px;
     flex-shrink: 0;
   }
 
   .col-content {
-    color: $text-primary-light;
+    color: $gray-gray-80;
 
     /* make btn link in info row have the same height as normal text */
     .ant-btn.ant-btn-link {

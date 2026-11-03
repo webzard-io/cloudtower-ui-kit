@@ -6,7 +6,7 @@ const CalendarWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: $white;
+  background: $fill-neutral-white;
   overflow: auto;
 `;
 
@@ -43,7 +43,7 @@ const CalendarYearWrapper = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      background: $fills-light-trans-1;
+      background: $fill-neutral-trans-1;
     }
   }
 `;
@@ -56,7 +56,7 @@ const CalendarWeekWrapper = styled.ul`
   margin: unset;
   height: 40px;
   gap: 4px;
-  border-bottom: 1px solid $fills-trans-terdiary-light;
+  border-bottom: 1px solid $fill-neutral-trans-3;
   flex-wrap: wrap;
   flex-shrink: 0;
 
@@ -65,7 +65,7 @@ const CalendarWeekWrapper = styled.ul`
     height: 40px;
     line-height: 40px;
     text-align: center;
-    color: $text-light-secondary;
+    color: $text-neutral-tertiary;
   }
 `;
 
@@ -84,14 +84,14 @@ const CalendarMonthWrapper = styled.div`
         padding: 4px 12px;
         position: sticky;
         top: 0;
-        background: $white;
+        background: $fill-neutral-white;
         transition: all 0.2s ease-in-out;
         z-index: 2;
 
         &.pinned {
           box-shadow:
             0px 4px 12px rgba(225, 230, 241, 0.4),
-            inset 0px -1px 0px rgba(225, 230, 241, 0.6);
+            inset 0px -1px 0px $stroke-neutral-trans-1;
         }
       }
 
@@ -114,7 +114,7 @@ const CalendarMonthWrapper = styled.div`
 
             &.first-highlight {
               position: relative;
-              background: $white;
+              background: $fill-neutral-white;
 
               &::after {
                 content: "";
@@ -131,7 +131,7 @@ const CalendarMonthWrapper = styled.div`
 
             &.last-highlight {
               position: relative;
-              background: $white;
+              background: $fill-neutral-white;
 
               &::after {
                 content: "";
@@ -158,9 +158,9 @@ const CalendarMonthWrapper = styled.div`
           }
 
           &:hover > .date {
-            border: 1px solid $text-light-general;
+            border: 1px solid $stroke-outstanding-base;
             cursor: pointer;
-            background: $white;
+            background: $fill-neutral-white;
           }
 
           & > .date {
@@ -169,7 +169,7 @@ const CalendarMonthWrapper = styled.div`
             line-height: 36px;
             text-align: center;
             border-radius: 50%;
-            color: $text-light-primary;
+            color: $text-neutral-primary;
             border: 1px solid transparent;
             transition:
               background,
@@ -182,8 +182,8 @@ const CalendarMonthWrapper = styled.div`
             }
 
             &.today {
-              color: $text-light-general;
-              border-color: $strokes-light-outstanding-light;
+              color: $text-colorful-outstanding;
+              border-color: rgba(0, 136, 255, 0.16);
             }
 
             &.highlight {
@@ -191,21 +191,21 @@ const CalendarMonthWrapper = styled.div`
             }
 
             &:hover {
-              border-color: $text-light-general;
+              border-color: $stroke-outstanding-base;
               cursor: pointer;
-              background: $white;
+              background: $fill-neutral-white;
             }
 
             &.checked {
-              background: $text-light-general;
-              color: $white;
+              background: $fill-outstanding-base;
+              color: $text-neutral-ontint;
             }
 
             &.disabled {
               cursor: not-allowed;
               border-color: transparent;
-              background: $fills-light-opaque-3;
-              color: $text-quaternary-light;
+              background: $fill-neutral-opaque-3;
+              color: $gray-gray-a60-6;
             }
           }
         }
@@ -230,22 +230,22 @@ const InputTimeWrapper = styled.div`
     flex-shrink: 0;
     display: inline-flex;
     align-items: center;
-    border: 1px solid $fills-light-opaque-3;
+    border: 1px solid $fill-neutral-opaque-3;
     transition: all 0.1s ease-in-out;
     padding: 4px 8px;
-    background: $white;
+    background: $fill-neutral-white;
     border-radius: 5px;
 
     &.focus {
-      border-color: $strokes-light-outstanding;
-      box-shadow: 0px 0px 0px 4px rgba(0, 136, 255, 0.16);
+      border-color: $stroke-outstanding-base;
+      box-shadow: $effect-outline-activeFocus;
     }
 
     &.error {
-      border-color: $fills-light-serious-serious;
+      border-color: $fill-serious-base;
 
       &.focus {
-        box-shadow: 0px 0px 0px 4px $fills-light-serious-serious-light-active;
+        box-shadow: 0px 0px 0px 4px $fill-serious-lightactive;
       }
     }
 
@@ -261,10 +261,10 @@ const InputTimeWrapper = styled.div`
       height: 20px;
       text-align: center;
       padding: 0;
-      color: $text-light-primary;
+      color: $text-neutral-primary;
 
       &::placeholder {
-        color: $text-light-tertiary;
+        color: rgba(0, 21, 64, 0.3);
       }
 
       &:disabled {
@@ -280,16 +280,16 @@ const InputTimeWrapper = styled.div`
 
     .connect-symbol {
       margin: 0 2px;
-      color: $text-light-tertiary;
+      color: rgba(0, 21, 64, 0.3);
 
       &.inputted {
-        color: $text-light-primary;
+        color: $text-neutral-primary;
       }
     }
   }
 
   .error-message {
-    color: #f0483e;
+    color: $text-colorful-serious;
     margin-top: 4px;
   }
 `;
@@ -328,7 +328,7 @@ const AbsoluteTimeSectionWrapper = styled.div`
       .start-time,
       .end-time,
       .to {
-        color: $text-light-secondary;
+        color: $text-neutral-tertiary;
 
         p {
           margin: 0;
@@ -357,7 +357,7 @@ const AbsoluteTimeSectionWrapper = styled.div`
   }
 
   .time-input-error {
-    color: $fills-light-serious-serious;
+    color: $fill-serious-base;
   }
 `;
 
@@ -372,7 +372,7 @@ const RelativeTimeWrapper = styled.div`
   .ant-input-affix-wrapper {
     width: 100% !important;
     border-width: 0 0 1px 0 !important;
-    border-color: $strokes-light-trans-2;
+    border-color: $stroke-neutral-trans-2;
     border-radius: 0;
 
     & + .past-time-list {
@@ -393,27 +393,27 @@ const RelativeTimeWrapper = styled.div`
       cursor: pointer;
 
       &:hover {
-        background: $fills-interaction-light-outstanding-hover;
-        color: $text-light-general;
+        background: rgba(0, 136, 255, 0.16);
+        color: $text-colorful-outstanding;
       }
 
       &:active {
-        background: $fills-interaction-light-outstanding-active;
-        color: $text-light-general;
+        background: $fill-outstanding-lightactive;
+        color: $text-colorful-outstanding;
       }
 
       &.selected {
-        background: $fills-interaction-light-outstanding-active;
-        color: $text-light-general;
+        background: $fill-outstanding-lightactive;
+        color: $text-colorful-outstanding;
 
         .highlight {
-          color: $text-light-general;
+          color: $text-colorful-outstanding;
         }
       }
 
       &.disabled {
-        background: $fills-light-trans-1;
-        color: $text-light-tertiary;
+        background: $fill-neutral-trans-1;
+        color: rgba(0, 21, 64, 0.3);
         cursor: not-allowed;
       }
 
@@ -435,9 +435,9 @@ const DateRangePickerWrapper = styled.div`
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: $white;
+    background: $fill-neutral-white;
     border-radius: 5px;
-    border: 1px solid $strokes-light-trans-3;
+    border: 1px solid $stroke-neutral-trans-3;
     transition: all 0.2s ease-in-out;
 
     .default-calendar-icon {
@@ -450,8 +450,8 @@ const DateRangePickerWrapper = styled.div`
 
     &:hover,
     &.active {
-      border-color: $strokes-light-outstanding;
-      box-shadow: 0px 0px 0px 4px rgba(0, 136, 255, 0.16);
+      border-color: $stroke-outstanding-base;
+      box-shadow: $effect-outline-activeFocus;
 
       .default-calendar-icon {
         display: none;
@@ -491,10 +491,10 @@ const DateRangePickerWrapper = styled.div`
       display: flex;
       align-items: center;
       gap: 8px;
-      color: $text-light-primary;
+      color: $text-neutral-primary;
 
       .concat-symbol-block {
-        color: $text-light-tertiary;
+        color: rgba(0, 21, 64, 0.3);
       }
 
       input {
@@ -507,7 +507,7 @@ const DateRangePickerWrapper = styled.div`
         text-align: center;
 
         &::placeholder {
-          color: $text-light-tertiary;
+          color: rgba(0, 21, 64, 0.3);
           text-align: center;
         }
 
@@ -575,9 +575,9 @@ const DateRangePickerHistory = styled.div`
   min-width: 200px;
 
   header {
-    border-bottom: 1px solid $strokes-light-trans-2;
+    border-bottom: 1px solid $stroke-neutral-trans-2;
     padding: 8px 12px;
-    color: $text-light-secondary;
+    color: $text-neutral-tertiary;
   }
 
   ul {
@@ -591,13 +591,13 @@ const DateRangePickerHistory = styled.div`
       cursor: pointer;
 
       &:hover {
-        background: $fills-interaction-light-outstanding-hover;
-        color: $text-light-general;
+        background: rgba(0, 136, 255, 0.16);
+        color: $text-colorful-outstanding;
       }
 
       &:active {
-        background: $fills-interaction-light-outstanding-active;
-        color: $text-light-general;
+        background: $fill-outstanding-lightactive;
+        color: $text-colorful-outstanding;
       }
 
       & + li {

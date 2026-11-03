@@ -34,10 +34,10 @@ const CronPlanWrapper = css`
   width: 648px;
 
   &.active {
-    border-color: $blue-60;
+    border-color: $stroke-outstanding-base;
 
     > header {
-      background: rgba($blue-60, 0.1);
+      background: rgba(#0080ff, 0.1);
     }
   }
 
@@ -133,7 +133,7 @@ const ModeTabs = css`
 
     &.active {
       background: rgba(0, 128, 255, 0.1);
-      color: $blue;
+      color: #0096ff;
     }
   }
 
@@ -171,9 +171,9 @@ const Wrapper = css`
   }
   .week-day-option {
     &.active {
-      background-color: $blue;
-      border-color: $blue;
-      color: $white;
+      background-color: #0096ff;
+      border-color: #0096ff;
+      color: $text-neutral-ontint;
     }
     &.en-text {
       width: 110px;
@@ -186,9 +186,9 @@ const Wrapper = css`
     margin-bottom: 8px;
 
     &.active {
-      background-color: $blue;
-      border-color: $blue;
-      color: $white;
+      background-color: #0096ff;
+      border-color: #0096ff;
+      color: $text-neutral-ontint;
     }
   }
 `;

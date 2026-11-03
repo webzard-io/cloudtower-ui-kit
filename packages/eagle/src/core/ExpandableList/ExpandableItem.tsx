@@ -8,7 +8,7 @@ import React, { PropsWithChildren, useMemo, useState } from "react";
 const CollapseStyle = css`
   .ant-collapse-item {
     border: 0px;
-    background-color: $fills-light-white;
+    background-color: $fill-neutral-white;
 
     .ant-collapse-header {
       padding-top: 0px;
@@ -57,7 +57,7 @@ const ExpandableItem = (props: PropsWithChildren<IProps>) => {
   }, [defaultActive, disableExpand]);
 
   const [activeKey, setActiveKey] = useState<string[] | string>(
-    showExpandOnDisable ? ["expandPanelKey"] : []
+    showExpandOnDisable ? ["expandPanelKey"] : [],
   );
 
   return (

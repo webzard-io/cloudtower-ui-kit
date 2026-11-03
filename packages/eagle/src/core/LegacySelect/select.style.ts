@@ -16,8 +16,8 @@ export const SelectStyle = css`
       }
       &[data-size="large"] {
       }
-      color: $text-primary-light;
-      border-color: $strokes-light-trans-2;
+      color: $gray-gray-80;
+      border-color: $stroke-neutral-trans-2;
       transition:
         border 160ms ease 8ms,
         box-shadow 160ms ease 8ms;
@@ -34,19 +34,19 @@ export const SelectStyle = css`
       }
 
       .ant-select-arrow-loading {
-        color: $fills-light-general-general;
+        color: $fill-outstanding-base;
       }
 
       &:not(.ant-select-disabled) {
         &:hover .ant-select-selector,
         &.__pseudo-states-hover .ant-select-selector {
-          border-color: $strokes-light-trans-4;
-          box-shadow: $shadow-light-hover;
+          border-color: $stroke-neutral-trans-4;
+          box-shadow: $effect-outline-hover;
         }
 
         &:hover .ant-select-arrow,
         &.__pseudo-states-hover .ant-select-arrow {
-          color: $fills-light-general-general;
+          color: $fill-outstanding-base;
         }
 
         &:active,
@@ -56,8 +56,8 @@ export const SelectStyle = css`
         &.__pseudo-states-active,
         &.__pseudo-states-focus {
           .ant-select-selector {
-            border-color: $fills-light-general-general;
-            box-shadow: $shadow-light-active;
+            border-color: $fill-outstanding-base;
+            box-shadow: $effect-outline-activeFocus;
           }
         }
 
@@ -67,19 +67,19 @@ export const SelectStyle = css`
       }
 
       &.ant-select-disabled .ant-select-selector {
-        background: $fills-light-trans-3;
-        border-color: $strokes-light-trans-3;
+        background: $fill-neutral-trans-3;
+        border-color: $stroke-neutral-trans-3;
         cursor: "not-allowed";
       }
     }
     &.select-error:not(.ant-select-disabled) {
       .ant-select-selector {
-        border-color: $fills-light-serious-serious !important;
+        border-color: $fill-serious-base !important;
       }
 
       &:hover .ant-select-arrow,
       &.__pseudo-states-hover .ant-select-arrow {
-        color: $text-light-super;
+        color: $text-neutral-super;
       }
 
       &:active,
@@ -89,8 +89,8 @@ export const SelectStyle = css`
       &.__pseudo-states-focus,
       &.__pseudo-states-active {
         .ant-select-selector {
-          border-color: $fills-light-general-general;
-          box-shadow: $shadow-light-error;
+          border-color: $fill-outstanding-base;
+          box-shadow: $effect-outline-error;
         }
       }
 

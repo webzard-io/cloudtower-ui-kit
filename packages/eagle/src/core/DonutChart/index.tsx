@@ -117,7 +117,7 @@ const DonutChartWrapper = styled.div<DonutChartWrapperProps>`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: $text-light-primary;
+    color: $text-neutral-primary;
 
     .number {
       font-size: 24px;
@@ -157,7 +157,7 @@ const DonutChartWrapper = styled.div<DonutChartWrapperProps>`
           max-width: 198px;
           width: calc(100% - 20px);
           margin-left: 2px;
-          color: $text-light-primary !important;
+          color: $text-neutral-primary !important;
           display: inline-flex;
           justify-content: space-between;
         }
@@ -167,7 +167,7 @@ const DonutChartWrapper = styled.div<DonutChartWrapperProps>`
   .tooltip-text {
     maxwidth: calc(100% - 12px);
     cursor: pointer;
-    border-bottom: 1px dashed $strokes-light-trans-4;
+    border-bottom: 1px dashed $stroke-neutral-trans-4;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

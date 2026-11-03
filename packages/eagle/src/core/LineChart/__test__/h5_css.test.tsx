@@ -94,7 +94,7 @@ describe("line chart h5_css", () => {
             align-items: center;
 
             .info-item {
-              color: $gray-60;
+              color: $gray-gray-60;
             }
             .info-item + .info-item {
               margin-left: 10px;
@@ -116,7 +116,7 @@ describe("line chart h5_css", () => {
           bottom: 10px;
           padding: 0 8px;
           font-size: 12px;
-          color: $white;
+          color: $text-neutral-ontint;
           transform: translateX(-50%);
           z-index: 2;
         }
@@ -167,7 +167,7 @@ describe("line chart h5_css", () => {
           margin-left: 12px;
         }
         .legend-name {
-          color: $text-light-primary;
+          color: $text-neutral-primary;
         }
         .icon-suffix-wrapper {
           display: flex;
@@ -229,7 +229,7 @@ describe("line chart h5_css", () => {
           margin-left: 12px;
         }
         .legend-name {
-          color: $text-light-primary;
+          color: $text-neutral-primary;
         }
         .icon-suffix-wrapper {
           display: flex;
@@ -291,7 +291,7 @@ describe("line chart h5_css", () => {
           margin-left: 12px;
         }
         .legend-name {
-          color: $text-light-primary;
+          color: $text-neutral-primary;
         }
         .icon-suffix-wrapper {
           display: flex;
@@ -395,7 +395,7 @@ describe("line chart h5_css", () => {
         &.ant-btn.ant-btn-quiet {
           color: var(--color, #06101f);
           font-weight: var(--font-weight);
-          background: var(--background-color, #fff);
+          background: var(--background-color, $fill-neutral-white);
           border-width: var(--border-width, 1px);
           border-color: var(--border-color, #d9d9d9);
 
@@ -448,7 +448,7 @@ describe("line chart h5_css", () => {
 
         &.ant-btn-link {
           &[disabled] {
-            color: $text-light-general;
+            color: $text-colorful-outstanding;
             opacity: 0.5;
           }
 
@@ -463,69 +463,69 @@ describe("line chart h5_css", () => {
         }
 
         &.ant-btn-primary {
-          --color: #{$white};
+          --color: #{$text-neutral-ontint};
           --font-weight: bold;
           --border-width: 0;
 
-          --background-color: #{$fills-light-general-general};
-          --background-color-hover: #{$fills-light-general-general-bright};
-          --background-color-active: #{$fills-light-general-general-dark};
-          --background-color-focus: #{$fills-light-general-general};
-          --box-shadow-color-focus: #{$strokes-light-outstanding-light};
+          --background-color: #{$fill-outstanding-base};
+          --background-color-hover: #{$fill-outstanding-bright};
+          --background-color-active: #{$fill-outstanding-dark};
+          --background-color-focus: #{$fill-outstanding-base};
+          --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
         }
 
         &.ant-btn-primary.ant-btn-dangerous {
-          --background-color: #{$fills-light-serious-serious};
-          --background-color-hover: #{$fills-light-serious-serious-bright};
-          --background-color-active: #{$fills-light-serious-serious-dark};
-          --background-color-focus: #{$fills-light-serious-serious-bright};
-          --box-shadow-color-focus: #{$strokes-light-serious-light};
+          --background-color: #{$fill-serious-base};
+          --background-color-hover: #{$fill-serious-bright};
+          --background-color-active: #{$fill-serious-dark};
+          --background-color-focus: #{$fill-serious-bright};
+          --box-shadow-color-focus: #{rgba(255, 74, 74, 0.16)};
         }
 
         &.ant-btn-primary.btn-primary-orange {
-          --background-color: #{$fills-light-notice-notice};
-          --background-color-hover: #{$fills-light-notice-notice-bright};
-          --background-color-active: #{$fills-light-notice-notice-dark};
-          --background-color-focus: #{$fills-light-notice-notice};
+          --background-color: #{$fill-notice-base};
+          --background-color-hover: #{$fill-notice-bright};
+          --background-color-active: #{$fill-notice-dark};
+          --background-color-focus: #{$fill-notice-base};
         }
 
         &.ant-btn-secondary {
-          --color: #{$text-light-general};
+          --color: #{$text-colorful-outstanding};
           --font-weight: bold;
           --border-width: 0;
 
-          --background-color: #{$fills-light-general-general-light};
-          --background-color-hover: #{$fills-interaction-light-outstanding-hover};
-          --background-color-active: #{$fills-interaction-light-outstanding-active};
-          --background-color-focus: #{$fills-light-general-general-light};
-          --box-shadow-color-focus: #{$strokes-light-outstanding-light};
+          --background-color: #{rgba(0, 136, 255, 0.1)};
+          --background-color-hover: #{rgba(0, 136, 255, 0.16)};
+          --background-color-active: #{$fill-outstanding-lightactive};
+          --background-color-focus: #{rgba(0, 136, 255, 0.1)};
+          --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
         }
 
         &.ant-btn-secondary.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+          --color: #{$text-colorful-serious};
 
-          --background-color: #{$fills-light-serious-serious-light};
-          --background-color-hover: #{$fills-interaction-light-serious-hover};
-          --background-color-active: #{$fills-interaction-light-serious-active};
-          --background-color-focus: #{$fills-light-serious-serious-light};
-          --box-shadow-color-focus: #{$fills-interaction-light-serious-hover};
+          --background-color: #{rgba(255, 74, 74, 0.1)};
+          --background-color-hover: #{rgba(255, 74, 74, 0.16)};
+          --background-color-active: #{$fill-serious-lightactive};
+          --background-color-focus: #{rgba(255, 74, 74, 0.1)};
+          --box-shadow-color-focus: #{rgba(255, 74, 74, 0.16)};
         }
 
         &.ant-btn-secondary.btn-primary-orange {
-          --color: #{$text-light-notice};
-          --background-color: #{$fills-light-notice-notice-light};
-          --background-color-hover: #{$fills-interaction-light-notice-hover};
-          --background-color-active: #{$fills-interaction-light-notice-active};
-          --background-color-focus: #{$fills-light-notice-notice-light};
+          --color: #{$text-colorful-notice};
+          --background-color: #{rgba(255, 187, 0, 0.1)};
+          --background-color-hover: #{rgba(255, 187, 0, 0.16)};
+          --background-color-active: #{rgba(255, 187, 0, 0.2)};
+          --background-color-focus: #{rgba(255, 187, 0, 0.1)};
         }
 
         &.ant-btn-tertiary {
-          --color: #{$text-light-general};
+          --color: #{$text-colorful-outstanding};
           --font-weight: bold;
           --border-width: 0;
 
-          --background-color: #{$white};
-          --box-shadow-color-focus: #{$strokes-light-outstanding-light};
+          --background-color: #{$fill-neutral-white};
+          --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
 
           box-shadow: none;
 
@@ -541,10 +541,10 @@ describe("line chart h5_css", () => {
         }
 
         &.ant-btn-tertiary.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+          --color: #{$text-colorful-serious};
 
-          --background-color: #{$white};
-          --box-shadow-color-focus: #{$fills-interaction-light-serious-hover};
+          --background-color: #{$fill-neutral-white};
+          --box-shadow-color-focus: #{rgba(255, 74, 74, 0.16)};
 
           &:not([disabled]),
           &:not(:focus) {
@@ -558,8 +558,8 @@ describe("line chart h5_css", () => {
         }
 
         &.ant-btn-tertiary.btn-primary-orange {
-          --color: #{$text-light-notice};
-          --background-color: #{$white};
+          --color: #{$text-colorful-notice};
+          --background-color: #{$fill-neutral-white};
 
           &:not([disabled]),
           &:not(:focus) {
@@ -573,15 +573,15 @@ describe("line chart h5_css", () => {
         }
 
         &.ant-btn-ordinary {
-          --color: #{$text-light-super};
-          --border-color: #{$strokes-light-opaque-3};
+          --color: #{$text-neutral-super};
+          --border-color: #{$stroke-neutral-opaque-3};
 
-          --background-color: #{$white};
-          --background-color-hover: #{$fills-light-opaque-2};
-          --background-color-active: #{$fills-light-opaque-3};
-          --box-shadow-color-focus: #{$strokes-light-outstanding-light};
+          --background-color: #{$fill-neutral-white};
+          --background-color-hover: #{$fill-neutral-opaque-2};
+          --background-color-active: #{$fill-neutral-opaque-3};
+          --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
 
-          box-shadow: 0px 1px 2px -1px rgba(44, 56, 82, 0.18);
+          box-shadow: $effect-shadow-button-ordinary;
 
           &:focus,
           &.__pseudo-states-focus {
@@ -590,107 +590,107 @@ describe("line chart h5_css", () => {
         }
 
         &.ant-btn-ordinary.ordinary-blue {
-          --color: #{$text-light-general};
-          --border-color: #{$fills-light-general-general};
+          --color: #{$text-colorful-outstanding};
+          --border-color: #{$fill-outstanding-base};
 
-          --background-color: #{$white};
-          --background-color-hover: linear-gradient(
-              0deg,
-              rgba(0, 136, 255, 0.16),
-              rgba(0, 136, 255, 0.16)
-            ),
-            #ffffff;
-          --background-color-active: linear-gradient(
-              0deg,
-              rgba(0, 136, 255, 0.2),
-              rgba(0, 136, 255, 0.2)
-            ),
-            #ffffff;
-          --box-shadow-color-focus: #{$strokes-light-outstanding-light};
+          --background-color: #{$fill-neutral-white};
+          --background-color-hover: #{linear-gradient(
+                0deg,
+                rgba(0, 136, 255, 0.16),
+                rgba(0, 136, 255, 0.16)
+              ),
+            $fill-neutral-white};
+          --background-color-active: #{linear-gradient(
+                0deg,
+                $fill-outstanding-lightactive,
+                $fill-outstanding-lightactive
+              ),
+            $fill-neutral-white};
+          --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
 
-          box-shadow: 0px 1px 2px -1px rgba(44, 56, 82, 0.18);
+          box-shadow: $effect-shadow-button-ordinary;
         }
 
         &.ant-btn-ordinary.ant-btn-dangerous {
-          --color: #{$text-light-serious};
-          --border-color: #{$fills-light-serious-serious};
+          --color: #{$text-colorful-serious};
+          --border-color: #{$fill-serious-base};
 
-          --background-color: #{$white};
-          --background-color-hover: linear-gradient(
-              0deg,
-              rgba(255, 74, 74, 0.16),
-              rgba(255, 74, 74, 0.16)
-            ),
-            #ffffff;
-          --background-color-active: linear-gradient(
-              0deg,
-              rgba(255, 74, 74, 0.2),
-              rgba(255, 74, 74, 0.2)
-            ),
-            #ffffff;
-          --box-shadow-color-focus: #{$strokes-light-serious-light};
+          --background-color: #{$fill-neutral-white};
+          --background-color-hover: #{linear-gradient(
+                0deg,
+                rgba(255, 74, 74, 0.16),
+                rgba(255, 74, 74, 0.16)
+              ),
+            $fill-neutral-white};
+          --background-color-active: #{linear-gradient(
+                0deg,
+                $fill-serious-lightactive,
+                $fill-serious-lightactive
+              ),
+            $fill-neutral-white};
+          --box-shadow-color-focus: #{rgba(255, 74, 74, 0.16)};
         }
 
         &.ant-btn-ordinary-onTint {
-          --color: #{$text-light-super};
-          --border-color: #{$white};
+          --color: #{$text-neutral-super};
+          --border-color: #{$stroke-neutral-white};
 
-          --background-color: #{$white};
-          --background-color-hover: #{$fills-interaction-light-general-hover};
-          --background-color-active: #{$fills-interaction-light-general-active};
-          --box-shadow-color-focus: #{$strokes-light-outstanding-light};
+          --background-color: #{$fill-neutral-white};
+          --background-color-hover: #{$fill-neutral-trans-3};
+          --background-color-active: #{$fill-neutral-trans-4};
+          --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
 
           box-shadow: none;
         }
 
         &.ant-btn-ordinary-onTint.ordinary-blue {
-          --color: #{$text-light-general};
-          --border-color: #{$white};
+          --color: #{$text-colorful-outstanding};
+          --border-color: #{$stroke-neutral-white};
 
-          --background-color: #{$white};
-          --background-color-hover: #{$fills-interaction-light-outstanding-hover};
-          --background-color-active: #{$fills-interaction-light-outstanding-active};
-          --box-shadow-color-focus: #{$strokes-light-outstanding-light};
+          --background-color: #{$fill-neutral-white};
+          --background-color-hover: #{rgba(0, 136, 255, 0.16)};
+          --background-color-active: #{$fill-outstanding-lightactive};
+          --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
 
           box-shadow: none;
         }
 
         &.ant-btn-ordinary-onTint.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+          --color: #{$text-colorful-serious};
 
-          --background-color-hover: #{$fills-interaction-light-serious-hover};
-          --background-color-active: #{$fills-interaction-light-serious-active};
-          --box-shadow-color-focus: #{$strokes-light-serious-light};
+          --background-color-hover: #{rgba(255, 74, 74, 0.16)};
+          --background-color-active: #{$fill-serious-lightactive};
+          --box-shadow-color-focus: #{rgba(255, 74, 74, 0.16)};
         }
 
         &.ant-btn-quiet {
-          --color: #{$text-light-secondary};
+          --color: #{$text-neutral-tertiary};
           --border-width: 0;
 
           --background-color: transparent;
-          --background-color-hover: #{$fills-interaction-light-general-hover};
-          --background-color-active: #{$fills-interaction-light-general-active};
-          --background-color-focus: #{$white};
-          --box-shadow-color-focus: #{$strokes-light-outstanding-light};
+          --background-color-hover: #{$fill-neutral-trans-3};
+          --background-color-active: #{$fill-neutral-trans-4};
+          --background-color-focus: #{$fill-neutral-white};
+          --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
           box-shadow: none;
         }
 
         &.ant-btn-quiet.ant-btn-dangerous {
-          --color: #{$text-light-serious};
+          --color: #{$text-colorful-serious};
 
-          --background-color-hover: #{$fills-interaction-light-serious-hover};
-          --background-color-active: #{$fills-interaction-light-serious-active};
-          --box-shadow-color-focus: #{$strokes-light-serious-light};
+          --background-color-hover: #{rgba(255, 74, 74, 0.16)};
+          --background-color-active: #{$fill-serious-lightactive};
+          --box-shadow-color-focus: #{rgba(255, 74, 74, 0.16)};
         }
 
         &.ant-btn-quiet.quiet-blue {
-          --color: #{$text-light-general};
+          --color: #{$text-colorful-outstanding};
 
           --background-color: transparent;
-          --background-color-hover: #{$fills-interaction-light-outstanding-hover};
-          --background-color-active: #{$fills-interaction-light-outstanding-active};
-          --background-color-focus: #{$white};
-          --box-shadow-color-focus: #{$strokes-light-outstanding-light};
+          --background-color-hover: #{rgba(0, 136, 255, 0.16)};
+          --background-color-active: #{$fill-outstanding-lightactive};
+          --background-color-focus: #{$fill-neutral-white};
+          --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
         }
 
         .button-prefix-icon {

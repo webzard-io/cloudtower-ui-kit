@@ -95,7 +95,7 @@ const SimplePagination = (props: ISimplePaginationProps) => {
         <span
           className={cs(
             css`
-              color: $text-secondary-light;
+              color: $text-neutral-tertiary;
             `,
             Typo.Label.l3_regular_upper,
           )}

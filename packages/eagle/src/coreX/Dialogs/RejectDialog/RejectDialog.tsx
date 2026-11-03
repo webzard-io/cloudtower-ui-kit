@@ -12,7 +12,7 @@ import {
 } from "./RejectDialog.type";
 
 const ContentList = css`
-  color: $text-light-secondary;
+  color: $text-neutral-tertiary;
   &:is(ul, ol) {
     padding-inline-start: 12px;
   }
@@ -30,7 +30,7 @@ const MultiRejectContentList = css`
   background: $fill-neutral-trans-2;
   padding: 8px;
   border-radius: 6px;
-  color: $gray-a60-8;
+  color: $text-neutral-tertiary;
 
   .icon-wrapper {
     margin-top: 1px; // The text line height is 18px, the icon height is 16px, so a 1px offset is needed
@@ -57,13 +57,13 @@ const PartialDescription = css`
 `;
 
 const SecondaryDesc = css`
-  color: $text-light-secondary;
+  color: $text-neutral-tertiary;
   margin-bottom: 8px;
 `;
 
 const Divider = css`
   height: 1px;
-  background: $strokes-light-opaque-2;
+  background: $stroke-neutral-opaque-2;
   margin: 16px 0;
 `;
 

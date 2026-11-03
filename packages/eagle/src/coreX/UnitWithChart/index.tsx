@@ -51,7 +51,7 @@ export const UnitWrapper = css`
   min-width: 40px;
 
   .unit {
-    color: $text-light-primary !important;
+    color: $text-neutral-primary !important;
   }
 `;
 

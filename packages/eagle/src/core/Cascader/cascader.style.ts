@@ -40,7 +40,7 @@ export const CascaderDefaultHeaderSearch = css`
     border-radius: 0px;
     box-shadow: unset;
     border: 0;
-    border-bottom: 1px solid $gray-30;
+    border-bottom: 1px solid $stroke-neutral-opaque-2;
   }
 `;
 
@@ -84,12 +84,12 @@ export const CascaderDefaultHeader = css`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid $gray-30;
+  border-bottom: 1px solid $stroke-neutral-opaque-2;
   gap: 4px;
 `;
 
 export const CascaderDropdown = css`
-  box-shadow: $shadow-menu-light-default;
+  box-shadow: $effect-shadow-menu-default;
   border-radius: 8px;
   padding: 0px;
 
@@ -114,21 +114,21 @@ export const CascaderDropdown = css`
         font-weight: 400;
       }
       &:active {
-        background: $fill-outstanding-light-active;
+        background: $fill-outstanding-lightactive;
       }
       .icon-wrapper svg path {
-        fill: $blue-60;
+        fill: $fill-outstanding-base;
       }
     }
     li:hover {
       background: $fill-neutral-trans-2;
       font-weight: 400;
       .icon-wrapper svg path {
-        fill: $blue-60;
+        fill: $fill-outstanding-base;
       }
     }
     li:active {
-      background: $fill-neutral-trans-3-trans-2-hover;
+      background: $fill-neutral-trans-3;
     }
   }
 

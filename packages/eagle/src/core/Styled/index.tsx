@@ -117,13 +117,13 @@ export const FormWrapper = styled.div`
   label {
     font-size: 13px;
     line-height: 20px;
-    color: $text-secondary-light;
+    color: $text-neutral-tertiary;
   }
 
   .title {
     font-size: 14px;
     line-height: 20px;
-    color: $text-primary-light;
+    color: $gray-gray-80;
     margin-bottom: 12px;
   }
 
@@ -157,7 +157,7 @@ export const FormField = styled.div`
 `;
 
 export const ErrorSpan = styled.span`
-  color: $red;
+  color: #e75a3a;
   margin-right: 10px;
 `;
 
@@ -216,7 +216,7 @@ export const TagSpan = styled.span<{ color: TagColor }>`
   font-size: 12px;
   line-height: 18px;
   font-weight: bold;
-  color: $white;
+  color: $text-neutral-ontint;
   padding: 0 4px;
   border-radius: 4px;
   display: inline-block;
@@ -286,7 +286,7 @@ export const FormItemDiv = styled.div`
   .form-item-label {
     padding-right: 12px;
     font-size: 13px;
-    color: $text-secondary-light;
+    color: $text-neutral-tertiary;
 
     &.label-right {
       text-align: right;
@@ -310,7 +310,7 @@ export const FormItemDiv = styled.div`
     }
   }
   .form-item-error {
-    color: $red;
+    color: #e75a3a;
     height: 0;
     overflow: hidden;
   }
@@ -323,8 +323,8 @@ export const FormItemDiv = styled.div`
     .form-item-control.field-error .form-item-error {
       > input:not(.ant-input),
       :not(.ant-select) input {
-        border: 1px solid $red;
-        color: $red;
+        border: 1px solid #e75a3a;
+        color: #e75a3a;
       }
     }
   }
@@ -337,7 +337,7 @@ export const FormItemDiv = styled.div`
  * 注意：默认字体大小为 12px，可通过 --field-title-font-size CSS 变量覆盖
  */
 export const FieldTitle = styled.div`
-  color: $gray-80;
+  color: $gray-gray-80;
   font-size: var(--field-title-font-size, 12px);
   font-weight: bold;
   padding-bottom: 6px;
@@ -364,7 +364,7 @@ export const ExpandArrow = styled.i`
     width: 1px;
     height: 6px;
     border-radius: 1px;
-    background: $gray-50;
+    background: $gray-gray-50;
     position: relative;
     right: 2px;
     transform: rotate(-45deg);
@@ -384,9 +384,9 @@ export const WarningAlert = css`
   }
   &.ant-alert,
   .ant-alert-message {
-    color: #e07f00;
+    color: $text-colorful-noticedark;
     .dashed-border-bottom {
-      border-bottom-color: #e07f00;
+      border-bottom-color: $text-colorful-noticedark;
     }
   }
 `;
@@ -397,7 +397,7 @@ export const NoticeAlert = css`
   padding: 7px 12px;
   background: rgba(255, 187, 0, 0.1);
   border-radius: 6px;
-  color: $fills-light-notice-notice-dark;
+  color: $fill-notice-dark;
   font-size: 12px;
   line-height: 18px;
   .icon-wrapper {
@@ -410,9 +410,9 @@ export const NormalAlert = css`
   display: flex;
   flex-direction: row;
   padding: 7px 12px;
-  background: rgba(225, 230, 241, 0.6);
+  background: $stroke-neutral-trans-1;
   border-radius: 6px;
-  color: $text-light-secondary;
+  color: $text-neutral-tertiary;
   font-size: 12px;
   line-height: 18px;
   .icon-wrapper {
@@ -427,7 +427,7 @@ export const InfoAlert = css`
   padding: 7px 12px;
   background: rgba(0, 136, 255, 0.1);
   border-radius: 6px;
-  color: $fills-light-general-general-dark;
+  color: $fill-outstanding-dark;
   font-size: 12px;
   line-height: 18px;
   .icon-wrapper {
@@ -437,14 +437,14 @@ export const InfoAlert = css`
 `;
 
 export const Description = styled.div`
-  color: $text-light-secondary;
+  color: $text-neutral-tertiary;
   margin-top: 5px;
   font-size: 12px;
   line-height: 18px;
 `;
 
 export const SelectOptionDisabledText = styled.div`
-  color: $text-light-serious;
+  color: $text-colorful-serious;
   font-size: 12px;
   white-space: pre-wrap;
 `;
@@ -459,16 +459,16 @@ export const OperationWraper = styled.div`
 `;
 
 export const TertiaryText = styled.div`
-  color: $text-light-tertiary;
+  color: rgba(0, 21, 64, 0.3);
 `;
 
 export const InputStyle = css`
   &.ant-input {
     padding: 5px 12px;
     line-height: 20px;
-    color: $text-primary-light;
+    color: $gray-gray-80;
     border-radius: 6px;
-    border-color: $strokes-light-trans-3;
+    border-color: $stroke-neutral-trans-3;
     transition:
       height 240ms ease 8ms,
       border 160ms ease 8ms,
@@ -489,8 +489,8 @@ export const InputStyle = css`
   &.ant-input-number:not([disabled]) {
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $strokes-light-trans-4;
-      box-shadow: $shadow-light-hover;
+      border-color: $stroke-neutral-trans-4;
+      box-shadow: $effect-outline-hover;
       z-index: $input-hover-index;
     }
 
@@ -498,8 +498,8 @@ export const InputStyle = css`
     &:focus,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $blue;
-      box-shadow: $shadow-light-active;
+      border-color: #0096ff;
+      box-shadow: $effect-outline-activeFocus;
       z-index: $input-hover-index;
     }
   }
@@ -507,21 +507,21 @@ export const InputStyle = css`
   &.ant-input.error:not([disabled]),
   &.ant-picker.error:not([disabled]),
   &.ant-input-number.error:not([disabled]) {
-    border-color: $red;
-    color: $red;
+    border-color: #e75a3a;
+    color: #e75a3a;
 
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $red;
-      box-shadow: $shadow-light-hover;
+      border-color: #e75a3a;
+      box-shadow: $effect-outline-hover;
     }
 
     &:active,
     &:focus,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $red;
-      box-shadow: $shadow-light-error;
+      border-color: #e75a3a;
+      box-shadow: $effect-outline-error;
     }
   }
 
@@ -529,17 +529,17 @@ export const InputStyle = css`
   &.ant-input.ant-input-disabled,
   &.ant-input-number[disabled],
   &.ant-input-number.ant-input-number-disabled {
-    background: $fills-trans-terdiary-light;
-    color: $text-light-tertiary;
-    border-color: $strokes-light-trans-3;
+    background: $fill-neutral-trans-3;
+    color: rgba(0, 21, 64, 0.3);
+    border-color: $stroke-neutral-trans-3;
   }
 
   &.ant-input-affix-wrapper {
     padding: 5px 12px;
     border-radius: 6px;
-    border-color: $strokes-light-trans-3;
+    border-color: $stroke-neutral-trans-3;
     line-height: 20px;
-    color: $text-primary-light;
+    color: $gray-gray-80;
     transition:
       height 240ms ease 8ms,
       border 160ms ease 8ms,
@@ -547,7 +547,7 @@ export const InputStyle = css`
 
     .ant-input-suffix,
     .ant-input-prefix {
-      color: $text-secondary-light;
+      color: $text-neutral-tertiary;
     }
   }
 
@@ -564,8 +564,8 @@ export const InputStyle = css`
   &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $strokes-light-trans-4;
-      box-shadow: $shadow-light-hover;
+      border-color: $stroke-neutral-trans-4;
+      box-shadow: $effect-outline-hover;
     }
 
     &:active,
@@ -573,21 +573,21 @@ export const InputStyle = css`
     &.ant-input-affix-wrapper-focused,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $blue;
-      box-shadow: $shadow-light-active;
+      border-color: #0096ff;
+      box-shadow: $effect-outline-activeFocus;
     }
   }
 
   &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
-    border-color: $red;
+    border-color: #e75a3a;
     > .ant-input {
-      color: $red;
+      color: #e75a3a;
     }
 
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $red;
-      box-shadow: $shadow-light-hover;
+      border-color: #e75a3a;
+      box-shadow: $effect-outline-hover;
     }
 
     &:active,
@@ -595,15 +595,15 @@ export const InputStyle = css`
     &.ant-input-affix-wrapper-focused,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $red;
-      box-shadow: $shadow-light-error;
+      border-color: #e75a3a;
+      box-shadow: $effect-outline-error;
     }
   }
 
   &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
-    background: $fills-trans-terdiary-light;
-    color: $text-light-tertiary;
-    border-color: $strokes-light-trans-3;
+    background: $fill-neutral-trans-3;
+    color: rgba(0, 21, 64, 0.3);
+    border-color: $stroke-neutral-trans-3;
   }
 
   @at-root {
@@ -648,8 +648,8 @@ export const KitInputStyle = css`
     transition: border 150ms;
 
     &:hover {
-      border-color: $blue-60;
-      box-shadow: 0 0 0px 2px rgba($blue-60, 0.1);
+      border-color: $stroke-outstanding-base;
+      box-shadow: 0 0 0px 2px rgba(#0080ff, 0.1);
     }
 
     &.kit-input-suffix-wrapper {
@@ -786,7 +786,7 @@ export const Desc = styled.div`
 
 export const LightDesc = styled(Desc)`
   font-size: 12px;
-  color: $gray-a60-8;
+  color: $text-neutral-tertiary;
   margin-top: 12px;
 `;
 
@@ -812,8 +812,8 @@ export const CannotOperationInfo = css`
   margin-top: 16px;
   padding: 8px;
   border-radius: 6px;
-  background: $fills-element-light-container-general;
-  color: $text-light-secondary;
+  background: $fill-neutral-trans-2;
+  color: $text-neutral-tertiary;
   font-size: 12px;
   div {
     line-height: 20px;

@@ -2,7 +2,7 @@ import { css, cx } from "@linaria/core";
 import { CheckboxStyleContent } from "@src/core/Checkbox/checkbox.style";
 import { useTableBodyHasScrollBar } from "@src/core/Table/common";
 import { ColumnTitle } from "@src/core/Table/TableWidget";
-import { zIndices } from "@src/styles/token";
+import { zIndices } from "@src/styles/token/zIndices";
 import { Table as BaseTable } from "antd";
 import cs from "classnames";
 import { isNil } from "lodash";
@@ -72,7 +72,7 @@ export const tableStyleCover = css`
 
   td.ant-table-cell-fix-left,
   td.ant-table-cell-fix-right {
-    background: #fff;
+    background: $fill-neutral-white;
     padding: 0 !important;
     .ant-table-cell-content {
       display: flex;
@@ -108,18 +108,18 @@ export const tableStyleCover = css`
     .ant-table-header {
       position: relative;
       z-index: $table-header-index;
-      border-bottom: 1px solid $strokes-light-trans-2;
+      border-bottom: 1px solid $stroke-neutral-trans-2;
       margin-bottom: -1px;
     }
 
     .time-wrapper .date,
     .value {
-      color: $text-primary-light;
+      color: $gray-gray-80;
     }
 
     .time-wrapper .time,
     .unit {
-      color: $text-secondary-light;
+      color: $text-neutral-tertiary;
     }
 
     .ant-table-selection {
@@ -128,7 +128,7 @@ export const tableStyleCover = css`
     }
 
     .ant-table-tbody > tr.ant-table-row-selected td {
-      background: $white;
+      background: $fill-neutral-white;
     }
 
     .anticon-setting {
@@ -159,21 +159,21 @@ export const tableStyleCover = css`
       position: relative;
       .ant-table-row {
         td {
-          border-top: 1px solid $strokes-light-trans-2;
-          border-bottom: 1px solid white;
+          border-top: 1px solid $stroke-neutral-trans-2;
+          border-bottom: 1px solid $stroke-neutral-white;
           height: 40px;
           vertical-align: middle;
           transition: background 0ms;
-          color: $gray-120;
+          color: $text-neutral-primary;
 
           &.header-hover {
-            background: $fills-light-opaque-1;
-            border-bottom-color: $fills-light-opaque-1;
+            background: $fill-neutral-opaque-1;
+            border-bottom-color: $fill-neutral-opaque-1;
           }
 
           .ant-btn.ant-btn-link {
             height: auto;
-            color: $gray-120;
+            color: $text-neutral-primary;
             font-size: 12px;
             text-align: left;
             transition: none;
@@ -182,7 +182,7 @@ export const tableStyleCover = css`
             white-space: nowrap;
 
             &:hover {
-              color: $blue;
+              color: #0096ff;
             }
 
             > span {
@@ -206,8 +206,8 @@ export const tableStyleCover = css`
             border-top-color: transparent;
           }
           td {
-            background: $fills-trans-secondary-light;
-            border-color: transparent transparent white;
+            background: $fill-neutral-trans-2;
+            border-color: transparent transparent $stroke-neutral-white;
 
             &:first-child {
               border-radius: 8px 0 0 8px;
@@ -219,7 +219,7 @@ export const tableStyleCover = css`
                 width: 4px;
                 top: -1px;
                 bottom: -1px;
-                background: white;
+                background: $fill-neutral-white;
               }
             }
             &:last-child {
@@ -227,52 +227,52 @@ export const tableStyleCover = css`
             }
             &:last-child.cell__action_ {
               border-radius: 0;
-              background: white;
+              background: $fill-neutral-white;
               border-top: none;
 
               > * {
                 border-top: 1px solid transparent;
                 border-radius: 0 8px 8px 0;
-                background: $fills-trans-secondary-light;
+                background: $fill-neutral-trans-2;
               }
             }
             &.ant-table-cell-fix-right {
-              background: white;
-              border-top: 1px solid rgba(211, 218, 235, 0.6);
+              background: $fill-neutral-white;
+              border-top: 1px solid $stroke-neutral-trans-2;
               .ant-table-cell-content {
                 display: flex;
                 align-items: center;
                 height: 100%;
-                background: $fills-trans-secondary-light;
+                background: $fill-neutral-trans-2;
               }
             }
 
             &.ant-table-cell-fix-left {
-              background: white;
-              border-top: 1px solid rgba(211, 218, 235, 0.6);
+              background: $fill-neutral-white;
+              border-top: 1px solid $stroke-neutral-trans-2;
               .ant-table-cell-content {
                 display: flex;
                 align-items: center;
                 height: 100%;
-                background: $fills-trans-secondary-light;
+                background: $fill-neutral-trans-2;
               }
             }
           }
         }
 
         &:last-child td {
-          border-bottom: 1px solid $strokes-light-trans-2;
+          border-bottom: 1px solid $stroke-neutral-trans-2;
         }
 
         &.active-row {
-          box-shadow: inset 0px 0px 0 2px $blue-a10;
+          box-shadow: inset 0px 0px 0 2px rgba(0, 136, 255, 0.1);
           border-radius: 8px;
 
           & + tr td {
-            border-top-color: white;
+            border-top-color: $stroke-neutral-white;
           }
           td {
-            background: $blue-a10;
+            background: rgba(0, 136, 255, 0.1);
             border-bottom-color: transparent;
             border-top-color: transparent;
 
@@ -283,7 +283,7 @@ export const tableStyleCover = css`
               border-radius: 0 8px 8px 0;
             }
             &:hover {
-              background: $blue-a10;
+              background: rgba(0, 136, 255, 0.1);
             }
           }
         }
@@ -292,11 +292,11 @@ export const tableStyleCover = css`
 
     .ant-table-thead {
       > tr > th {
-        background: $white;
+        background: $fill-neutral-white;
         font-weight: 400;
         position: relative;
         border-bottom: none;
-        color: $gray-120;
+        color: $text-neutral-primary;
         transition: none;
         padding: 14px 8px 14px 8px;
         line-height: 20px;
@@ -306,7 +306,7 @@ export const tableStyleCover = css`
           width: 1px;
           top: 0;
           bottom: 0;
-          background: $strokes-light-trans-2;
+          background: $stroke-neutral-trans-2;
           position: absolute;
           right: 0;
         }
@@ -372,7 +372,7 @@ export const tableStyleCover = css`
         }
 
         &:hover:not(.is-blank) {
-          background: $fills-light-opaque-1;
+          background: $fill-neutral-opaque-1;
           .ant-table-column-sorters .order-icon {
             display: block;
           }
@@ -399,7 +399,7 @@ export const tableStyleCover = css`
     }
 
     .ant-table-hide-scrollbar {
-      background: $white;
+      background: $fill-neutral-white;
     }
     .ant-table-placeholder {
       background: inherit;
@@ -416,7 +416,7 @@ export const tableStyleCover = css`
       .ant-table-expanded-row-fixed {
         font-weight: bold;
         font-size: 20px;
-        color: $text-terdiary-light;
+        color: $gray-gray-a60-7;
       }
     }
     th.ant-table-cell-scrollbar,
@@ -426,7 +426,7 @@ export const tableStyleCover = css`
     td.cell__action_ {
       padding: 0 !important;
       position: relative;
-      background: $white;
+      background: $fill-neutral-white;
       > * {
         height: 100%;
         display: flex;
@@ -442,7 +442,7 @@ export const tableStyleCover = css`
         border-radius: 4px;
 
         &:hover {
-          background: $white;
+          background: $fill-neutral-white;
         }
       }
     }

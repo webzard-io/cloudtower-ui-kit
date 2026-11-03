@@ -11,7 +11,7 @@ import {
 } from "./summaryTable.type";
 
 const Table = styled.div`
-  background: white;
+  background: $fill-neutral-white;
 
   &.inline {
     .table-row {
@@ -25,7 +25,7 @@ const Table = styled.div`
 
   &.has-border {
     .table-header {
-      border-bottom: 1px solid $strokes-light-trans-1;
+      border-bottom: 1px solid $stroke-neutral-trans-1;
     }
 
     .hiddenBorder {
@@ -33,7 +33,7 @@ const Table = styled.div`
     }
 
     .table-row + .table-row {
-      border-top: 1px solid $strokes-light-trans-1;
+      border-top: 1px solid $stroke-neutral-trans-1;
     }
 
     .table-row:last-of-type {
@@ -66,7 +66,7 @@ const TableHeader = styled.header`
   min-height: 32px;
 
   .table-title {
-    color: $text-secondary-light;
+    color: $text-neutral-tertiary;
     font-weight: 600;
     font-size: 12px;
     line-height: 8px;
@@ -74,7 +74,7 @@ const TableHeader = styled.header`
 
   .edit-icon {
     font-size: 16px;
-    color: $strokes-translucent-2-light;
+    color: $gray-gray-a60-7;
     cursor: pointer;
   }
 `;
@@ -87,7 +87,7 @@ const TableContent = styled.div`
 const TableRow = styled.div`
   display: flex;
   padding: 8px 0;
-  color: $text-primary-light;
+  color: $gray-gray-80;
 
   .hidden {
     display: none;
@@ -117,7 +117,7 @@ const TableRow = styled.div`
 const RowLabel = styled.label<{ width: string }>`
   width: ${(props) => props.width};
   flex-shrink: 0;
-  color: $text-secondary-light;
+  color: $text-neutral-tertiary;
   padding-right: 12px;
 `;
 

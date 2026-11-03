@@ -43,11 +43,11 @@ const ContentWrapper = styled.div`
 
 const OverflowUnderlineStyle = css`
   border-bottom: 1px dashed;
-  border-color: $strokes-light-trans-4;
+  border-color: $stroke-neutral-trans-4;
 `;
 
 const CustomSubtitleStyle = css`
-  color: $text-secondary-light;
+  color: $text-neutral-tertiary;
 `;
 
 const basicColumns: TableFormColumn[] = [

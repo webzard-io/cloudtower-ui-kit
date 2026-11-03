@@ -42,7 +42,7 @@ export const StepsStyle = css`
 
 export const HorizontalStyle = css`
   $item: ant-steps-item;
-  @mixin rightTriangle($color: $fills-light-trans-1) {
+  @mixin rightTriangle($color: $fill-neutral-trans-1) {
     content: "";
     width: 0;
     height: 0;
@@ -121,10 +121,10 @@ export const HorizontalStyle = css`
     .#{$item}-active {
       max-width: calc(100% - var(--item-min-width) * 2);
       .#{$item}-container {
-        background-color: $fills-light-general-general-light;
+        background-color: rgba(0, 136, 255, 0.1);
       }
       &::after {
-        border-left-color: $fills-light-general-general-light !important;
+        border-left-color: rgba(0, 136, 255, 0.1) !important;
       }
     }
     .#{$item}-finish {
@@ -135,7 +135,7 @@ export const HorizontalStyle = css`
     .#{$item}-finish {
       min-width: var(--item-min-width);
       .#{$item}-container {
-        background-color: $fills-light-trans-1;
+        background-color: $fill-neutral-trans-1;
       }
     }
   }
@@ -184,7 +184,7 @@ export const VerticalStyle = css`
     }
     .#{$item}-active {
       .ant-steps-item-container {
-        background: rgba($blue-60, 0.1);
+        background: rgba(#0080ff, 0.1);
       }
     }
   }
@@ -201,7 +201,7 @@ export const HorizontalStepContentStyle = css`
     align-items: center;
     width: 18px;
     height: 18px;
-    color: $gray-a75-8;
+    color: rgba(44, 56, 82, 0.75);
     justify-content: center;
   }
 `;
@@ -218,7 +218,7 @@ export const VerticalStepContentStyle = css`
     align-items: center;
     min-width: 20px;
     min-height: 20px;
-    color: $gray-a75-8;
+    color: rgba(44, 56, 82, 0.75);
     justify-content: center;
   }
 `;

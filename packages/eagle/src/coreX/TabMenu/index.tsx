@@ -18,7 +18,7 @@ const TabMenuStyle = css`
   .tab-bar {
     flex-shrink: 0;
     display: flex;
-    border-bottom: 1px solid $strokes-translucent-1-light;
+    border-bottom: 1px solid $stroke-neutral-trans-3;
   }
 
   .tab-content {
@@ -30,7 +30,7 @@ const TabMenuStyle = css`
     padding: 1px 12px;
     line-height: 24px;
     height: 24px;
-    color: $text-secondary-light;
+    color: $text-neutral-tertiary;
     border-radius: 4px 4px 0 0;
     cursor: pointer;
     transition:
@@ -48,45 +48,45 @@ const TabMenuStyle = css`
     }
 
     &:hover {
-      color: $blue-60;
-      background: $fills-trans-terdiary-light;
+      color: $text-colorful-outstanding;
+      background: $fill-neutral-trans-3;
 
       .expand-arrow path {
-        fill: $blue-60;
+        fill: $fill-outstanding-base;
       }
     }
 
     &:active {
-      background: $fills-trans-quaternary-light;
+      background: $fill-neutral-trans-4;
     }
 
     &.ant-dropdown-open {
-      color: $blue-60;
-      background: $fills-trans-terdiary-light;
+      color: $text-colorful-outstanding;
+      background: $fill-neutral-trans-3;
 
       &:active {
-        background: $fills-trans-quaternary-light;
+        background: $fill-neutral-trans-4;
       }
 
       &.tab-menu-item-selected {
-        background: rgba($blue-60, 0.16);
+        background: rgba(#0080ff, 0.16);
       }
 
       .expand-arrow path {
-        fill: $blue-60;
+        fill: $fill-outstanding-base;
       }
     }
 
     &.tab-menu-item-selected {
-      color: $blue-60;
-      background: rgba($blue-60, 0.1);
+      color: $text-colorful-outstanding;
+      background: rgba(#0080ff, 0.1);
 
       &:hover {
-        background: rgba($blue-60, 0.16);
+        background: rgba(#0080ff, 0.16);
       }
 
       .expand-arrow path {
-        fill: $blue-100;
+        fill: $fill-outstanding-deep;
       }
     }
 
@@ -95,7 +95,7 @@ const TabMenuStyle = css`
       height: 22px;
     }
     .expand-arrow path {
-      fill: $text-secondary-light;
+      fill: $text-neutral-tertiary;
     }
   }
 
@@ -125,12 +125,12 @@ const TabMenuStyle = css`
         left: 0;
         transform: translate(-50%, -50%);
         transition: opacity 100ms linear;
-        fill: rgba($blue-60, 0.2);
+        fill: rgba(#0080ff, 0.2);
       }
     }
 
     &.tab-menu-item-selected {
-      color: $blue-60;
+      color: $text-colorful-outstanding;
 
       .main-title {
         padding: 1px 12px;
@@ -141,7 +141,7 @@ const TabMenuStyle = css`
 
       .sub-title {
         padding: 1px 12px;
-        color: $blue-80;
+        color: $blue-blue-60;
 
         > .slash-arrow {
           opacity: 1;
@@ -151,7 +151,7 @@ const TabMenuStyle = css`
       &:hover,
       &:active {
         .sub-title {
-          background: rgba($blue-60, 0.16);
+          background: rgba(#0080ff, 0.16);
         }
         .sub-title > .slash-arrow {
           opacity: 0;
@@ -197,33 +197,33 @@ const TabMenuStyle = css`
   .tab-menu-item-light {
     &:hover,
     &:active {
-      background: $white;
+      background: $fill-neutral-white;
     }
 
     &:active {
-      color: $blue-80;
+      color: $blue-blue-60;
     }
 
     &.tab-menu-item.tab-menu-item-selected {
-      background: $white;
-      color: $blue-100;
+      background: $fill-neutral-white;
+      color: $blue-blue-90;
     }
 
     &.tab-menu-item-group.tab-menu-item-selected {
       .main-title {
-        color: rgba($gray-80, 0.6);
+        color: rgba(#2d3a56, 0.6);
       }
 
       .sub-title {
-        color: $blue-100;
+        color: $blue-blue-90;
       }
 
       .sub-title > .slash-arrow {
-        fill: $fills-opaque-quaternary-light;
+        fill: $fill-neutral-opaque-4;
       }
 
       .sub-title > .expand-arrow path {
-        fill: $blue-100;
+        fill: $fill-outstanding-deep;
       }
     }
   }
@@ -245,7 +245,7 @@ const TabMenuSubMenu = css`
   animation: none;
 
   &.ant-dropdown .ant-dropdown-menu {
-    border: 1px solid $blue-60;
+    border: 1px solid $stroke-outstanding-base;
     padding: 0;
 
     .ant-dropdown-menu-item {
@@ -264,13 +264,13 @@ const TabMenuSubMenu = css`
           content: " ";
           height: 1px;
           width: calc(100% + 10px);
-          background: $strokes-translucent-1-light;
+          background: $stroke-neutral-trans-3;
           display: block;
         }
       }
 
       &.ant-dropdown-menu-item-selected {
-        color: $blue-60;
+        color: $text-colorful-outstanding;
         background: transparent;
       }
     }

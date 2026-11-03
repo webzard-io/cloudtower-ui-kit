@@ -42,7 +42,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -51,7 +51,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -61,7 +61,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -71,7 +71,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -81,17 +81,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -133,7 +133,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -142,7 +142,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -152,7 +152,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -162,7 +162,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -172,17 +172,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -224,7 +224,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -233,7 +233,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -243,7 +243,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -253,7 +253,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -263,17 +263,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -315,7 +315,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -324,7 +324,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -334,7 +334,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -344,7 +344,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -354,17 +354,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -406,7 +406,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -415,7 +415,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -425,7 +425,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -435,7 +435,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -445,17 +445,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -519,7 +519,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -528,7 +528,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -538,7 +538,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -548,7 +548,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -558,17 +558,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -615,7 +615,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -624,7 +624,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -634,7 +634,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -644,7 +644,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -654,17 +654,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -711,7 +711,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -720,7 +720,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -730,7 +730,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -740,7 +740,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -750,17 +750,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -807,7 +807,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -816,7 +816,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -826,7 +826,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -836,7 +836,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -846,17 +846,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -903,7 +903,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -912,7 +912,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -922,7 +922,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -932,7 +932,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -942,17 +942,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -1020,7 +1020,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1029,7 +1029,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -1039,7 +1039,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -1049,7 +1049,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -1059,17 +1059,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -1116,7 +1116,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1125,7 +1125,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -1135,7 +1135,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -1145,7 +1145,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -1155,17 +1155,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -1212,7 +1212,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1221,7 +1221,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -1231,7 +1231,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -1241,7 +1241,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -1251,17 +1251,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -1308,7 +1308,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1317,7 +1317,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -1327,7 +1327,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -1337,7 +1337,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -1347,17 +1347,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -1404,7 +1404,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1413,7 +1413,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -1423,7 +1423,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -1433,7 +1433,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -1443,17 +1443,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -1521,7 +1521,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1530,7 +1530,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -1540,7 +1540,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -1550,7 +1550,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -1560,17 +1560,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -1671,7 +1671,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1680,7 +1680,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -1690,7 +1690,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -1700,7 +1700,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -1710,17 +1710,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -1821,7 +1821,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1830,7 +1830,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -1840,7 +1840,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -1850,7 +1850,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -1860,17 +1860,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -1971,7 +1971,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -1980,7 +1980,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -1990,7 +1990,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -2000,7 +2000,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -2010,17 +2010,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -2121,7 +2121,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -2130,7 +2130,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -2140,7 +2140,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -2150,7 +2150,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -2160,17 +2160,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -2292,7 +2292,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -2301,7 +2301,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -2311,7 +2311,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -2321,7 +2321,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -2331,17 +2331,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -2442,7 +2442,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -2451,7 +2451,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -2461,7 +2461,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -2471,7 +2471,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -2481,17 +2481,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
@@ -2592,7 +2592,7 @@ describe("StatusCapsule h5_css", () => {
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
             background-color: $fill-outstanding-light;
@@ -2601,7 +2601,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
@@ -2611,7 +2611,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
@@ -2621,7 +2621,7 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
@@ -2631,17 +2631,17 @@ describe("StatusCapsule h5_css", () => {
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
             background-color: $fill-neutral-trans-2;
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: $gray-gray-70;
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: $fill-neutral-trans-3;
             }
           }
         }
