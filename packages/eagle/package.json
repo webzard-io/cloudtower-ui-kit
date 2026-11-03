@@ -27,7 +27,11 @@
     "check:color": "node tools/sync-figma-color.js --check",
     "sync:color": "node tools/sync-figma-color.js --write",
     "check:typography": "node tools/sync-figma-typography.js --check",
-    "sync:typography": "node tools/sync-figma-typography.js --write"
+    "sync:typography": "node tools/sync-figma-typography.js --write",
+    "generate:theme": "node tools/generate-theme.js",
+    "prebuild": "yarn generate:theme",
+    "check:theme": "yarn generate:theme && git diff --exit-code -- src/styles/token src/styles/common/variables.scss",
+    "postbuild": "node -e \"for (const file of ['dist/variables.scss', 'dist/linaria.merged.scss']) require('fs').rmSync(file, { force: true })\""
   },
   "dependencies": {
     "@cloudtower/icons-react": "^4101.0.1",
