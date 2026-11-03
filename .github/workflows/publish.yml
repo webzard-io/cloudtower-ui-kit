@@ -1,5 +1,12 @@
 name: publish
 on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "UI kit theme preview version"
+        required: true
+        default: "0.0.0-theme-rc-1"
+        type: string
   # When Release Pull Request is merged
   pull_request:
     branches:
@@ -191,3 +198,90 @@ jobs:
           tag_name: "v${{ env.CURRENT_VERSION }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-theme-preview:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/feat/theme'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - name: Setup package managers
+        run: npm install -g yarn npm@^11.5.1
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+        timeout-minutes: 15
+      - name: Set workspace preview versions
+        env:
+          PREVIEW_VERSION: ${{ inputs.version }}
+        run: |
+          node <<'JS'
+          const fs = require("fs");
+          const version = process.env.PREVIEW_VERSION;
+          if (!/^0\.0\.0-theme-rc-[1-9]\d*$/.test(version)) {
+            throw new Error("Expected 0.0.0-theme-rc-N");
+          }
+          const path = require("path");
+          const files = fs.readdirSync("packages").map(dir => path.join("packages", dir, "package.json"));
+          const packages = files.map(file => [file, JSON.parse(fs.readFileSync(file, "utf8"))]);
+          const names = new Set(packages.map(([, manifest]) => manifest.name));
+          for (const [file, manifest] of packages) {
+            manifest.version = version;
+            for (const field of ["dependencies", "devDependencies", "peerDependencies", "optionalDependencies"]) {
+              for (const name of Object.keys(manifest[field] ?? {})) {
+                if (names.has(name)) manifest[field][name] = version;
+              }
+            }
+            fs.writeFileSync(file, JSON.stringify(manifest, null, 2) + "\n");
+          }
+          const lerna = JSON.parse(fs.readFileSync("lerna.json", "utf8"));
+          lerna.version = version;
+          fs.writeFileSync("lerna.json", JSON.stringify(lerna, null, 2) + "\n");
+          JS
+      - name: Build
+        run: yarn build
+      - name: Test
+        run: yarn test:ci
+      - name: Check package contents
+        run: |
+          cp README.md packages/eagle/README.md
+          npm pack ./packages/eagle --dry-run --json > /tmp/eagle-preview-pack.json
+          node <<'JS'
+          const fs = require("fs");
+          const pack = JSON.parse(fs.readFileSync("/tmp/eagle-preview-pack.json", "utf8"))[0];
+          for (const file of ["dist/style.css", "dist/token.css", "dist/esm/index.js", "dist/src/index.d.ts"]) {
+            if (!pack.files.some(item => item.path === file)) throw new Error(`Missing ${file}`);
+          }
+          if (pack.files.some(item => item.path.endsWith(".scss"))) throw new Error("Unexpected Sass publication");
+          console.log(`${pack.name}@${pack.version}: ${pack.files.length} files checked`);
+          JS
+      - name: Check workspace package contents
+        run: |
+          ./node_modules/.bin/lerna list --toposort --json --loglevel silent > /tmp/theme-packages.json
+          node <<'JS'
+          const fs = require("fs");
+          const { execFileSync } = require("child_process");
+          const packages = JSON.parse(fs.readFileSync("/tmp/theme-packages.json", "utf8"));
+          for (const pkg of packages) {
+            const manifest = JSON.parse(fs.readFileSync(`${pkg.location}/package.json`, "utf8"));
+            const pack = JSON.parse(execFileSync("npm", ["pack", pkg.location, "--dry-run", "--json"], { encoding: "utf8" }))[0];
+            for (const entry of [manifest.main, manifest.module, manifest.types].filter(Boolean)) {
+              if (!pack.files.some(file => file.path === entry.replace(/^\.\//, ""))) throw new Error(`${pkg.name}: missing ${entry}`);
+            }
+            console.log(`${pkg.name}@${pkg.version}: checked`);
+          }
+          JS
+      - name: Publish workspace previews
+        run: |
+          node <<'JS'
+          const fs = require("fs");
+          const { execFileSync } = require("child_process");
+          const packages = JSON.parse(fs.readFileSync("/tmp/theme-packages.json", "utf8"));
+          for (const pkg of packages) {
+            const manifest = JSON.parse(fs.readFileSync(`${pkg.location}/package.json`, "utf8"));
+            if (manifest.private) continue;
+            execFileSync("npm", ["publish", "--access", "public", "--tag", "theme", "--provenance"], { cwd: pkg.location, stdio: "inherit" });
+          }
+          JS
