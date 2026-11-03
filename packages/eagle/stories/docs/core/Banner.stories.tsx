@@ -180,3 +180,23 @@ export const MultipleMessages: Story = {
     );
   },
 };
+
+/** 不同事项类型并列展示，下方横幅以 1px 白色顶部描边分隔。 */
+export const Stacked: Story = {
+  name: "多条横幅叠加",
+  render: () => (
+    <div>
+      <Banner
+        type="error"
+        message="CloudTower 许可已过期。"
+        btnProps={{ text: "更新许可" }}
+      />
+      <Banner
+        type="error"
+        message="CloudTower 升级失败，请勿进行业务变更。请联系售后。"
+        btnProps={{ text: "详情" }}
+      />
+      <Banner type="warning" message="系统将在30分钟后进行维护" />
+    </div>
+  ),
+};

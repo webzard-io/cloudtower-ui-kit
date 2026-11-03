@@ -13,6 +13,7 @@ import cls from "classnames";
 import React from "react";
 
 import {
+  BannerWrapper,
   BasicBanner,
   ErrorBanner,
   InfoBanner,
@@ -34,7 +35,7 @@ export const Banner: React.FC<BannerProps> = ({
   const hasPagination = pagination && pagination.total > 1;
   // rc-trigger 在入场动画结束时会短暂恢复 opacity: 0，关闭动画以避免闪烁。
   return (
-    <div data-testid={dataTestId} id="global-banner">
+    <div className={BannerWrapper} data-testid={dataTestId} id="global-banner">
       <div
         className={cls(Typo.Label.l3_bold, BasicBanner, {
           [ErrorBanner]: type === "error",
