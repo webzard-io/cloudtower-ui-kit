@@ -5,7 +5,7 @@ import { describe, expect, it, vi } from "vitest";
 import { Banner } from "..";
 
 describe("Banner", () => {
-  it("preserves the legacy wrapper, action element and callback", () => {
+  it("supports a caller-supplied id and preserves the legacy action callback", () => {
     const onClick = vi.fn();
     const wrapperClick = vi.fn();
     render(
@@ -20,7 +20,7 @@ describe("Banner", () => {
         btnProps={{ text: "Action", onClick }}
       />
     );
-    expect(screen.getByTestId("banner")).toHaveAttribute("id", "global-banner");
+    expect(screen.getByTestId("banner")).toHaveAttribute("id", "custom-id");
     const action = screen.getByTestId("banner-action");
     expect(action.tagName).toBe("SPAN");
     expect(action).toHaveClass("dashed-btn");
@@ -36,9 +36,11 @@ describe("Banner", () => {
       <Banner
         type="info"
         message="Message"
+        data-testid="default-banner"
         pagination={{ current: 1, total: 1, onChange: vi.fn() }}
       />
     );
+    expect(screen.getByTestId("default-banner")).not.toHaveAttribute("id");
     expect(screen.queryByRole("button")).not.toBeInTheDocument();
     rerender(
       <Banner

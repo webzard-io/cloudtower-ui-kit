@@ -21,6 +21,8 @@ import { ButtonProps } from "../Button";
  * }
  */
 export type BannerProps = HTMLAttributes<HTMLDivElement> & {
+  /** 根节点 ID，由调用方指定；默认不设置 ID。 */
+  id?: string;
   /** 提示类型：info 为蓝色，warning 为橙色，error 为红色且不显示移除按钮。 */
   type: "error" | "info" | "warning";
   /** 提示文案，宽度随内容变化，以距两侧操作区或容器边距 12px 为限；超出后省略，悬停展示完整内容。 */
