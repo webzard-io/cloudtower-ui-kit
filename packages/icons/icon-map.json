@@ -12838,5 +12838,19 @@
     "svgFileName": "service-alert-bell-16-gradient-gray.svg",
     "hash": "49bf021174867b4529093e44de8af893",
     "lastUpdated": "2026-10-21T06:07:25.504Z"
+  },
+  "20171:58": {
+    "componentSetName": "Icon / arrow.up-right",
+    "name": "Size=16, Weight=Regular, Fill=Tertiary",
+    "svgFileName": "arrow-up-right-16-tertiary-regular.svg",
+    "hash": "53c1b7d6a98fe9583840f3acf9e77c93",
+    "lastUpdated": "2026-11-05T04:51:48.075Z"
+  },
+  "20171:60": {
+    "componentSetName": "Icon / arrow.up-right",
+    "name": "Size=16, Weight=Regular, Fill=Blue",
+    "svgFileName": "arrow-up-right-16-blue-regular.svg",
+    "hash": "ceffc683458a024e912792f8031f43bd",
+    "lastUpdated": "2026-11-05T04:51:48.076Z"
   }
 }
