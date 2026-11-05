@@ -33,5 +33,9 @@ jobs:
         run: yarn build
       - name: Bundlewatch
         run: yarn bundlewatch
+      - name: Install Chromium
+        run: yarn workspace @cloudtower/eagle exec playwright install --with-deps chromium
       - name: Test
-        run: yarn test:ci
+        run: |
+          yarn test:ci
+          yarn workspace @cloudtower/eagle test:styles
