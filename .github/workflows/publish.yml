@@ -110,6 +110,7 @@ jobs:
           max_attempts: 3 # 设置最大重试次数
           command: |
             set -eu
+            dist_tag="release-${CURRENT_VERSION%%.*}"
             ./node_modules/.bin/lerna list --toposort --json --loglevel silent > /tmp/publish-packages.json
             node -e '
               const fs = require("fs");
@@ -125,8 +126,8 @@ jobs:
               if npm view "${name}@${version}" version >/dev/null 2>&1; then
                 echo "Skip ${name}@${version}: already published"
               else
-                echo "Publish ${name}@${version}"
-                npm publish "${location}" --access public
+                echo "Publish ${name}@${version} with tag ${dist_tag}"
+                npm publish "${location}" --access public --tag "${dist_tag}"
               fi
             done < /tmp/publish-list.tsv
       - name: Get Output
