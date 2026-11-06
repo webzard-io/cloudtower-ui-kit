@@ -134,7 +134,7 @@ describe("Table h5_css", () => {
 
         td.ant-table-cell-fix-left,
         td.ant-table-cell-fix-right {
-          background: #fff;
+          background: $fill-neutral-white;
           padding: 0 !important;
           .ant-table-cell-content {
             display: flex;
@@ -170,18 +170,18 @@ describe("Table h5_css", () => {
           .ant-table-header {
             position: relative;
             z-index: $table-header-index;
-            border-bottom: 1px solid $strokes-light-trans-2;
+            border-bottom: 1px solid $stroke-neutral-trans-2;
             margin-bottom: -1px;
           }
 
           .time-wrapper .date,
           .value {
-            color: $text-primary-light;
+            color: $gray-gray-80;
           }
 
           .time-wrapper .time,
           .unit {
-            color: $text-secondary-light;
+            color: $text-neutral-tertiary;
           }
 
           .ant-table-selection {
@@ -190,7 +190,7 @@ describe("Table h5_css", () => {
           }
 
           .ant-table-tbody > tr.ant-table-row-selected td {
-            background: $white;
+            background: $fill-neutral-white;
           }
 
           .anticon-setting {
@@ -221,21 +221,21 @@ describe("Table h5_css", () => {
             position: relative;
             .ant-table-row {
               td {
-                border-top: 1px solid $strokes-light-trans-2;
-                border-bottom: 1px solid white;
+                border-top: 1px solid $stroke-neutral-trans-2;
+                border-bottom: 1px solid $stroke-neutral-white;
                 height: 40px;
                 vertical-align: middle;
                 transition: background 0ms;
-                color: $gray-120;
+                color: $text-neutral-primary;
 
                 &.header-hover {
-                  background: $fills-light-opaque-1;
-                  border-bottom-color: $fills-light-opaque-1;
+                  background: $fill-neutral-opaque-1;
+                  border-bottom-color: $fill-neutral-opaque-1;
                 }
 
                 .ant-btn.ant-btn-link {
                   height: auto;
-                  color: $gray-120;
+                  color: $text-neutral-primary;
                   font-size: 12px;
                   text-align: left;
                   transition: none;
@@ -244,7 +244,7 @@ describe("Table h5_css", () => {
                   white-space: nowrap;
 
                   &:hover {
-                    color: $blue;
+                    color: #0096ff;
                   }
 
                   > span {
@@ -268,8 +268,8 @@ describe("Table h5_css", () => {
                   border-top-color: transparent;
                 }
                 td {
-                  background: $fills-trans-secondary-light;
-                  border-color: transparent transparent white;
+                  background: $fill-neutral-trans-2;
+                  border-color: transparent transparent $stroke-neutral-white;
 
                   &:first-child {
                     border-radius: 8px 0 0 8px;
@@ -281,7 +281,7 @@ describe("Table h5_css", () => {
                       width: 4px;
                       top: -1px;
                       bottom: -1px;
-                      background: white;
+                      background: $fill-neutral-white;
                     }
                   }
                   &:last-child {
@@ -289,52 +289,52 @@ describe("Table h5_css", () => {
                   }
                   &:last-child.cell__action_ {
                     border-radius: 0;
-                    background: white;
+                    background: $fill-neutral-white;
                     border-top: none;
 
                     > * {
                       border-top: 1px solid transparent;
                       border-radius: 0 8px 8px 0;
-                      background: $fills-trans-secondary-light;
+                      background: $fill-neutral-trans-2;
                     }
                   }
                   &.ant-table-cell-fix-right {
-                    background: white;
-                    border-top: 1px solid rgba(211, 218, 235, 0.6);
+                    background: $fill-neutral-white;
+                    border-top: 1px solid $stroke-neutral-trans-2;
                     .ant-table-cell-content {
                       display: flex;
                       align-items: center;
                       height: 100%;
-                      background: $fills-trans-secondary-light;
+                      background: $fill-neutral-trans-2;
                     }
                   }
 
                   &.ant-table-cell-fix-left {
-                    background: white;
-                    border-top: 1px solid rgba(211, 218, 235, 0.6);
+                    background: $fill-neutral-white;
+                    border-top: 1px solid $stroke-neutral-trans-2;
                     .ant-table-cell-content {
                       display: flex;
                       align-items: center;
                       height: 100%;
-                      background: $fills-trans-secondary-light;
+                      background: $fill-neutral-trans-2;
                     }
                   }
                 }
               }
 
               &:last-child td {
-                border-bottom: 1px solid $strokes-light-trans-2;
+                border-bottom: 1px solid $stroke-neutral-trans-2;
               }
 
               &.active-row {
-                box-shadow: inset 0px 0px 0 2px $blue-a10;
+                box-shadow: inset 0px 0px 0 2px rgba(0, 136, 255, 0.1);
                 border-radius: 8px;
 
                 & + tr td {
-                  border-top-color: white;
+                  border-top-color: $stroke-neutral-white;
                 }
                 td {
-                  background: $blue-a10;
+                  background: rgba(0, 136, 255, 0.1);
                   border-bottom-color: transparent;
                   border-top-color: transparent;
 
@@ -345,7 +345,7 @@ describe("Table h5_css", () => {
                     border-radius: 0 8px 8px 0;
                   }
                   &:hover {
-                    background: $blue-a10;
+                    background: rgba(0, 136, 255, 0.1);
                   }
                 }
               }
@@ -354,11 +354,11 @@ describe("Table h5_css", () => {
 
           .ant-table-thead {
             > tr > th {
-              background: $white;
+              background: $fill-neutral-white;
               font-weight: 400;
               position: relative;
               border-bottom: none;
-              color: $gray-120;
+              color: $text-neutral-primary;
               transition: none;
               padding: 14px 8px 14px 8px;
               line-height: 20px;
@@ -368,7 +368,7 @@ describe("Table h5_css", () => {
                 width: 1px;
                 top: 0;
                 bottom: 0;
-                background: $strokes-light-trans-2;
+                background: $stroke-neutral-trans-2;
                 position: absolute;
                 right: 0;
               }
@@ -434,7 +434,7 @@ describe("Table h5_css", () => {
               }
 
               &:hover:not(.is-blank) {
-                background: $fills-light-opaque-1;
+                background: $fill-neutral-opaque-1;
                 .ant-table-column-sorters .order-icon {
                   display: block;
                 }
@@ -453,7 +453,7 @@ describe("Table h5_css", () => {
               left: 50%;
               top: 50%;
               transform: translate(-50%, -50%);
-              .ant-checkbox {   height: 22px;   display: flex;   align-items: center;   top: 0; } .ant-checkbox-checked::after {   border: none; } &.ant-checkbox-wrapper:hover .ant-checkbox-inner, &.ant-checkbox-wrapper.__pseudo-states-hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner {   border-color: $fills-light-general-general; } .ant-checkbox .ant-checkbox-inner {   border: 1px solid $strokes-light-trans-4; } .ant-checkbox.ant-checkbox-checked, .ant-checkbox.ant-checkbox-indeterminate {   .ant-checkbox-inner {     border: 1px solid $fills-light-general-general;   } } .ant-checkbox.ant-checkbox-indeterminate .ant-checkbox-inner {   background: $fills-light-general-general;   &:after {     background-color: $white;     height: 2px;     width: 10px;     border-radius: 2px;   } } &.ant-checkbox-wrapper-disabled {   opacity: 0.5;   .ant-checkbox-disabled .ant-checkbox-inner {     background: $fills-light-trans-3;     border-color: $strokes-light-trans-4 !important;   }   .ant-checkbox-disabled.ant-checkbox-checked .ant-checkbox-inner:after {     border-color: $text-primary-light;   }   .ant-checkbox-disabled.ant-checkbox-indeterminate     .ant-checkbox-inner:after {     background: $text-primary-light;   } } .ant-checkbox + span, .ant-checkbox-disabled + span {   padding: 0;   .main {     display: inline-block;     margin-left: 12px;     color: $text-primary-light;   }   .sub {     margin-left: 28px;     color: $text-secondary-light;   } } &.compact {   .ant-checkbox + span,   .ant-checkbox-disabled + span {     .main {       margin-left: 8px;     }     .sub {       margin-left: 24px;     }   } }
+              .ant-checkbox {   height: 22px;   display: flex;   align-items: center;   top: 0; } .ant-checkbox-checked::after {   border: none; } &.ant-checkbox-wrapper:hover .ant-checkbox-inner, &.ant-checkbox-wrapper.__pseudo-states-hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner {   border-color: $fill-outstanding-base; } .ant-checkbox .ant-checkbox-inner {   border: 1px solid $stroke-neutral-trans-4; } .ant-checkbox.ant-checkbox-checked, .ant-checkbox.ant-checkbox-indeterminate {   .ant-checkbox-inner {     border: 1px solid $fill-outstanding-base;   } } .ant-checkbox.ant-checkbox-indeterminate .ant-checkbox-inner {   background: $fill-outstanding-base;   &:after {     background-color: $fill-neutral-white;     height: 2px;     width: 10px;     border-radius: 2px;   } } &.ant-checkbox-wrapper-disabled {   opacity: 0.5;   .ant-checkbox-disabled .ant-checkbox-inner {     background: $fill-neutral-trans-3;     border-color: $stroke-neutral-trans-4 !important;   }   .ant-checkbox-disabled.ant-checkbox-checked .ant-checkbox-inner:after {     border-color: $gray-gray-80;   }   .ant-checkbox-disabled.ant-checkbox-indeterminate     .ant-checkbox-inner:after {     background: $gray-gray-80;   } } .ant-checkbox + span, .ant-checkbox-disabled + span {   padding: 0;   .main {     display: inline-block;     margin-left: 12px;     color: $gray-gray-80;   }   .sub {     margin-left: 28px;     color: $text-neutral-tertiary;   } } &.compact {   .ant-checkbox + span,   .ant-checkbox-disabled + span {     .main {       margin-left: 8px;     }     .sub {       margin-left: 24px;     }   } }
             }
             &:after {
               display: none;
@@ -461,7 +461,7 @@ describe("Table h5_css", () => {
           }
 
           .ant-table-hide-scrollbar {
-            background: $white;
+            background: $fill-neutral-white;
           }
           .ant-table-placeholder {
             background: inherit;
@@ -478,7 +478,7 @@ describe("Table h5_css", () => {
             .ant-table-expanded-row-fixed {
               font-weight: bold;
               font-size: 20px;
-              color: $text-terdiary-light;
+              color: $gray-gray-a60-7;
             }
           }
           th.ant-table-cell-scrollbar,
@@ -488,7 +488,7 @@ describe("Table h5_css", () => {
           td.cell__action_ {
             padding: 0 !important;
             position: relative;
-            background: $white;
+            background: $fill-neutral-white;
             > * {
               height: 100%;
               display: flex;
@@ -504,7 +504,7 @@ describe("Table h5_css", () => {
               border-radius: 4px;
 
               &:hover {
-                background: $white;
+                background: $fill-neutral-white;
               }
             }
           }

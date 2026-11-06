@@ -5,7 +5,7 @@ import React, { useMemo } from "react";
 const TableLoadingStyle = css`
   overflow: hidden;
   height: 100%;
-  background: white;
+  background: $fill-neutral-white;
   .table-loading-item {
     padding: 8px 4px;
     display: flex;

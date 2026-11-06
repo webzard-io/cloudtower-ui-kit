@@ -3,6 +3,7 @@ import "dayjs/locale/ja";
 import "moment/locale/ja";
 import "moment/locale/zh-cn";
 
+import { antdTokens } from "@src/styles/token/antd";
 import { ParrotLngs } from "@cloudtower/parrot";
 import { useAntdPatchEnLocales } from "@src/hooks/useAntdPatchEnLocales";
 import { useAntdPatchJaLocales } from "@src/hooks/useAntdPatchJaLocales";
@@ -13,6 +14,8 @@ import enUS from "antd/lib/locale/en_US";
 import jaJP from "antd/lib/locale/ja_JP";
 import zhCN from "antd/lib/locale/zh_CN";
 import {
+  theme as antdTheme,
+  ThemeConfig,
   ConfigProvider as Antd5ConfigProvider,
   ConfigProviderProps as Antd5ConfigProviderProps,
 } from "antd5";
@@ -23,8 +26,14 @@ import dayjs from "dayjs";
 import moment from "moment";
 import React, { createContext, useContext, useEffect } from "react";
 
+const mappedAntdTokens: Record<string, ThemeConfig["token"]> = antdTokens;
+
 // 完整的配置类型
+export type EagleTheme = "light" | "dark";
+
 export type ConfigProps = {
+  /** Must match the host document data-theme; does not mutate the host. */
+  theme?: EagleTheme;
   antd4Configs?: ConfigProviderProps;
   antd5Configs?: Antd5ConfigProviderProps;
   config?: {
@@ -32,6 +41,9 @@ export type ConfigProps = {
     CTErrorI18nNs?: string;
   };
 };
+
+const ThemeContext = createContext<EagleTheme>("light");
+export const useEagleTheme = () => useContext(ThemeContext);
 
 // 创建 CTError 配置 Context
 const ConfigProviderContext = createContext<ConfigProps["config"]>({});
@@ -42,6 +54,7 @@ export const useConfig = (): ConfigProps["config"] => {
 };
 
 export const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProps>> = ({
+  theme = "light",
   antd5Configs,
   antd4Configs,
   config = {},
@@ -78,20 +91,33 @@ export const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProps>> = ({
     [ParrotLngs.ja]: patchAntd4JaLocale,
   };
   return (
-    <ConfigProviderContext.Provider value={config}>
-      <Antd5ConfigProvider
-        autoInsertSpaceInButton={false}
-        locale={antd5Locales[lng] ?? antd5enUS}
-        {...antd5Configs}
-      >
-        <Antd4ConfigProvider
+    <ThemeContext.Provider value={theme}>
+      <ConfigProviderContext.Provider value={config}>
+        <Antd5ConfigProvider
           autoInsertSpaceInButton={false}
-          locale={antd4Locales[lng] ?? patchEnLocale}
-          {...antd4Configs}
+          locale={antd5Locales[lng] ?? antd5enUS}
+          {...antd5Configs}
+          theme={{
+            algorithm:
+              theme === "dark"
+                ? antdTheme.darkAlgorithm
+                : antdTheme.defaultAlgorithm,
+            ...antd5Configs?.theme,
+            token: {
+              ...mappedAntdTokens[theme],
+              ...antd5Configs?.theme?.token,
+            },
+          }}
         >
-          {children}
-        </Antd4ConfigProvider>
-      </Antd5ConfigProvider>
-    </ConfigProviderContext.Provider>
+          <Antd4ConfigProvider
+            autoInsertSpaceInButton={false}
+            locale={antd4Locales[lng] ?? patchEnLocale}
+            {...antd4Configs}
+          >
+            {children}
+          </Antd4ConfigProvider>
+        </Antd5ConfigProvider>
+      </ConfigProviderContext.Provider>
+    </ThemeContext.Provider>
   );
 };

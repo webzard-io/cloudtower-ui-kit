@@ -3,7 +3,7 @@ import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import Icon from "@src/core/Icon";
 import { Typo } from "@src/core/Typo";
-import { Color } from "@src/styles/token";
+import { Color } from "@src/styles/token/color";
 import { Tag as AntdTag } from "antd";
 import cs from "classnames";
 import React from "react";
@@ -51,7 +51,7 @@ const StatusCapsuleStyle = css`
       }
       &.tag-hover:hover,
       &.__pseudo-states-hover {
-        background-color: $fill-outstanding-light-hover;
+        background-color: rgba(0, 136, 255, 0.16);
       }
     }
     &.ant-tag-red {
@@ -61,7 +61,7 @@ const StatusCapsuleStyle = css`
       }
       &.tag-hover:hover,
       &.__pseudo-states-hover {
-        background-color: $fill-serious-light-hover;
+        background-color: rgba(255, 74, 74, 0.16);
       }
     }
     &.ant-tag-yellow {
@@ -71,7 +71,7 @@ const StatusCapsuleStyle = css`
       }
       &.tag-hover:hover,
       &.__pseudo-states-hover {
-        background-color: $fill-notice-light-hover;
+        background-color: rgba(255, 187, 0, 0.16);
       }
     }
     &.ant-tag-green {
@@ -81,17 +81,17 @@ const StatusCapsuleStyle = css`
       }
       &.tag-hover:hover,
       &.__pseudo-states-hover {
-        background-color: $fill-positive-light-hover;
+        background-color: rgba(30, 201, 127, 0.16);
       }
     }
     &.ant-tag-gray {
       background-color: $fill-neutral-trans-2;
       .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-        background-color: $gray-70;
+        background-color: $gray-gray-70;
       }
       &.tag-hover:hover,
       &.__pseudo-states-hover {
-        background-color: $fill-neutral-trans-3-trans-2-hover;
+        background-color: $fill-neutral-trans-3;
       }
     }
   }

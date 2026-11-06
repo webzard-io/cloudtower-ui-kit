@@ -3,8 +3,8 @@ import { styled } from "@linaria/react";
 
 export const Header = styled.header`
   height: 50px;
-  border-bottom: 2px solid #edf0f7;
-  background: $fills-opaque-primary-light;
+  border-bottom: 2px solid $stroke-neutral-opaque-1;
+  background: $fill-neutral-white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,7 +43,7 @@ export const Header = styled.header`
         opacity: 0;
         height: 24px;
         width: 1px;
-        background: $fills-light-trans-2;
+        background: $fill-neutral-trans-2;
         position: absolute;
         left: -16px;
         top: 50%;
@@ -62,9 +62,7 @@ export const Header = styled.header`
         border-radius: 6px;
 
         &:hover {
-          box-shadow:
-            0px 0px 20px rgba(107, 125, 153, 0.18),
-            0px 25px 80px rgba(45, 58, 86, 0.3);
+          box-shadow: $effect-shadow-previewPanel-default;
         }
 
         &:active {
@@ -112,7 +110,7 @@ export const Header = styled.header`
           border-radius: 6px;
 
           &:hover {
-            background: rgba(211, 218, 235, 0.6);
+            background: $stroke-neutral-trans-2;
           }
         }
       }
@@ -148,7 +146,7 @@ export const Header = styled.header`
       font-size: 20px;
       line-height: 24px;
       font-weight: bold;
-      color: $text-light-super;
+      color: $text-neutral-super;
       margin: 0px 8px;
     }
 
@@ -169,7 +167,7 @@ export const Header = styled.header`
         flex: 1;
 
         .search-input {
-          border-color: $blue-60;
+          border-color: $stroke-outstanding-base;
           width: 100%;
         }
       }
@@ -190,7 +188,7 @@ export const Header = styled.header`
 `;
 
 export const NavCenterStyle = css`
-  color: $text-terdiary-light;
+  color: $gray-gray-a60-7;
   position: relative;
   height: 48px;
   display: inline-flex;
@@ -204,11 +202,7 @@ export const NavCenterStyle = css`
     width: 100%;
     height: 12px;
     position: absolute;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 1)
-    );
+    background: linear-gradient(to bottom, transparent, $fill-neutral-white);
   }
 
   &:before {
@@ -245,14 +239,14 @@ export const NavCenterStyle = css`
     justify-content: center;
 
     .scrolled-resource {
-      color: $text-light-super;
+      color: $text-neutral-super;
       flex: 1;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
     .scrolled-view {
-      color: $text-light-secondary;
+      color: $text-neutral-tertiary;
       margin-left: 8px;
     }
   }

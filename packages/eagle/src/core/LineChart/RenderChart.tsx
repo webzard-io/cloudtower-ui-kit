@@ -1,3 +1,4 @@
+import { Color } from "@src/styles/token/color";
 import { useKitDispatch } from "@src/core/KitStoreProvider";
 import LineChartLegend from "@src/core/LineChart/LineChartLegend";
 import {
@@ -549,7 +550,9 @@ const RenderChart = (
       <ChartContentWrapper style={{ height }}>
         <ResponsiveContainer height="100%">
           <AreaChart
-            style={{ backgroundColor: "white" }}
+            style={{
+              backgroundColor: Color.text.neutral.ontint,
+            }}
             margin={
               showLegend
                 ? {
@@ -656,7 +659,7 @@ const RenderChart = (
                     stroke: item.legend.color,
                     r: 4,
                     strokeWidth: 2,
-                    fill: "white",
+                    fill: Color.text.neutral.ontint,
                     strokeOpacity: 1,
                     fillOpacity: 1,
                   }}

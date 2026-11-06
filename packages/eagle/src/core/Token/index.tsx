@@ -54,24 +54,24 @@ const TokenStyle = css`
       }
     }
     &.ant-tag-blue {
-      color: $fills-light-general-general;
-      background-color: $fills-light-general-general-light;
+      color: $fill-outstanding-base;
+      background-color: rgba(0, 136, 255, 0.1);
     }
     &.ant-tag-red {
-      color: $fills-light-serious-serious;
-      background-color: $fills-light-serious-serious-light;
+      color: $fill-serious-base;
+      background-color: rgba(255, 74, 74, 0.1);
     }
     &.ant-tag-yellow {
-      color: $fills-light-notice-notice-dark;
-      background-color: $fills-light-notice-notice-light;
+      color: $fill-notice-dark;
+      background-color: rgba(255, 187, 0, 0.1);
     }
     &.ant-tag-green {
-      color: $fills-light-positive-positive-dark;
-      background-color: $fills-light-positive-positive-light;
+      color: $fill-positive-dark;
+      background-color: rgba(30, 201, 127, 0.1);
     }
     &.ant-tag-gray {
-      color: $text-light-super;
-      background-color: $fills-element-light-container-general;
+      color: $text-neutral-super;
+      background-color: $fill-neutral-trans-2;
     }
     &.ant-tag-purple {
       color: $text-colorful-purple;
@@ -79,21 +79,21 @@ const TokenStyle = css`
     }
 
     &.ui-kit-token-checked {
-      color: $text-light-on-tint;
+      color: $text-neutral-ontint;
       &.ant-tag-red {
-        background-color: $fills-light-serious-serious;
+        background-color: $fill-serious-base;
       }
       &.ant-tag-yellow {
-        background-color: $fills-light-notice-notice;
+        background-color: $fill-notice-base;
       }
       &.ant-tag-green {
-        background-color: $fills-light-positive-positive;
+        background-color: $fill-positive-base;
       }
       &.ant-tag-blue {
-        background-color: $fills-light-general-general;
+        background-color: $fill-outstanding-base;
       }
       &.ant-tag-gray {
-        background-color: $gray-70;
+        background-color: $gray-gray-70;
       }
       &.ant-tag-purple {
         background-color: $fill-purple-base;

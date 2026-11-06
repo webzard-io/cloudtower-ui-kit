@@ -13,10 +13,10 @@ const SwitchStyle = css`
   &.ant-switch {
     min-width: 40px;
     height: 24px;
-    background: $fills-trans-quinary-light;
+    background: $fill-neutral-trans-5;
     overflow: hidden;
     &:focus {
-      box-shadow: 0 0 0 2px $strokes-light-trans-1;
+      box-shadow: 0 0 0 2px $stroke-neutral-trans-1;
     }
   }
   &.ant-switch-small {
@@ -51,7 +51,7 @@ const SwitchStyle = css`
   }
 
   &.ant-switch-checked {
-    background-color: $green-60;
+    background-color: $fill-positive-base;
   }
   &.ant-switch-checked .ant-switch-handle {
     left: calc(100% - 20px - 2px);

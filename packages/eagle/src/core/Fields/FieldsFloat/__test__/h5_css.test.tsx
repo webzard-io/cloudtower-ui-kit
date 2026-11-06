@@ -34,9 +34,9 @@ describe("FieldsFloat h5_css", () => {
         &.ant-input {
           padding: 5px 12px;
           line-height: 20px;
-          color: $text-primary-light;
+          color: $gray-gray-80;
           border-radius: 6px;
-          border-color: $strokes-light-trans-3;
+          border-color: $stroke-neutral-trans-3;
           transition:
             height 240ms ease 8ms,
             border 160ms ease 8ms,
@@ -57,8 +57,8 @@ describe("FieldsFloat h5_css", () => {
         &.ant-input-number:not([disabled]) {
           &:hover,
           &.__pseudo-states-hover {
-            border-color: $strokes-light-trans-4;
-            box-shadow: $shadow-light-hover;
+            border-color: $stroke-neutral-trans-4;
+            box-shadow: $effect-outline-hover;
             z-index: $input-hover-index;
           }
 
@@ -66,8 +66,8 @@ describe("FieldsFloat h5_css", () => {
           &:focus,
           &.__pseudo-states-active,
           &.__pseudo-states-focus {
-            border-color: $blue;
-            box-shadow: $shadow-light-active;
+            border-color: #0096ff;
+            box-shadow: $effect-outline-activeFocus;
             z-index: $input-hover-index;
           }
         }
@@ -75,21 +75,21 @@ describe("FieldsFloat h5_css", () => {
         &.ant-input.error:not([disabled]),
         &.ant-picker.error:not([disabled]),
         &.ant-input-number.error:not([disabled]) {
-          border-color: $red;
-          color: $red;
+          border-color: #e75a3a;
+          color: #e75a3a;
 
           &:hover,
           &.__pseudo-states-hover {
-            border-color: $red;
-            box-shadow: $shadow-light-hover;
+            border-color: #e75a3a;
+            box-shadow: $effect-outline-hover;
           }
 
           &:active,
           &:focus,
           &.__pseudo-states-active,
           &.__pseudo-states-focus {
-            border-color: $red;
-            box-shadow: $shadow-light-error;
+            border-color: #e75a3a;
+            box-shadow: $effect-outline-error;
           }
         }
 
@@ -97,17 +97,17 @@ describe("FieldsFloat h5_css", () => {
         &.ant-input.ant-input-disabled,
         &.ant-input-number[disabled],
         &.ant-input-number.ant-input-number-disabled {
-          background: $fills-trans-terdiary-light;
-          color: $text-light-tertiary;
-          border-color: $strokes-light-trans-3;
+          background: $fill-neutral-trans-3;
+          color: rgba(0, 21, 64, 0.3);
+          border-color: $stroke-neutral-trans-3;
         }
 
         &.ant-input-affix-wrapper {
           padding: 5px 12px;
           border-radius: 6px;
-          border-color: $strokes-light-trans-3;
+          border-color: $stroke-neutral-trans-3;
           line-height: 20px;
-          color: $text-primary-light;
+          color: $gray-gray-80;
           transition:
             height 240ms ease 8ms,
             border 160ms ease 8ms,
@@ -115,7 +115,7 @@ describe("FieldsFloat h5_css", () => {
 
           .ant-input-suffix,
           .ant-input-prefix {
-            color: $text-secondary-light;
+            color: $text-neutral-tertiary;
           }
         }
 
@@ -132,8 +132,8 @@ describe("FieldsFloat h5_css", () => {
         &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
           &:hover,
           &.__pseudo-states-hover {
-            border-color: $strokes-light-trans-4;
-            box-shadow: $shadow-light-hover;
+            border-color: $stroke-neutral-trans-4;
+            box-shadow: $effect-outline-hover;
           }
 
           &:active,
@@ -141,21 +141,21 @@ describe("FieldsFloat h5_css", () => {
           &.ant-input-affix-wrapper-focused,
           &.__pseudo-states-active,
           &.__pseudo-states-focus {
-            border-color: $blue;
-            box-shadow: $shadow-light-active;
+            border-color: #0096ff;
+            box-shadow: $effect-outline-activeFocus;
           }
         }
 
         &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
-          border-color: $red;
+          border-color: #e75a3a;
           > .ant-input {
-            color: $red;
+            color: #e75a3a;
           }
 
           &:hover,
           &.__pseudo-states-hover {
-            border-color: $red;
-            box-shadow: $shadow-light-hover;
+            border-color: #e75a3a;
+            box-shadow: $effect-outline-hover;
           }
 
           &:active,
@@ -163,15 +163,15 @@ describe("FieldsFloat h5_css", () => {
           &.ant-input-affix-wrapper-focused,
           &.__pseudo-states-active,
           &.__pseudo-states-focus {
-            border-color: $red;
-            box-shadow: $shadow-light-error;
+            border-color: #e75a3a;
+            box-shadow: $effect-outline-error;
           }
         }
 
         &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
-          background: $fills-trans-terdiary-light;
-          color: $text-light-tertiary;
-          border-color: $strokes-light-trans-3;
+          background: $fill-neutral-trans-3;
+          color: rgba(0, 21, 64, 0.3);
+          border-color: $stroke-neutral-trans-3;
         }
 
         @at-root {

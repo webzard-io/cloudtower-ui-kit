@@ -13,6 +13,7 @@
       "dependsOn": ["^prebuild"]
     },
     "test:ci": {
+      "dependsOn": ["build"],
       "outputs": []
     },
     "lint": {

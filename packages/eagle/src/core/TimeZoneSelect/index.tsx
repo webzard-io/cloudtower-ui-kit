@@ -62,7 +62,7 @@ const DropdownStyle = css`
   .ant-select-item-group {
     padding: 8px 16px;
     line-height: 18px;
-    border-top: 1px solid rgba(211, 218, 235, 0.6);
+    border-top: 1px solid $stroke-neutral-trans-2;
     height: 34px;
     min-height: 34px;
     box-sizing: border-box;
@@ -87,9 +87,9 @@ const OptionWrapperStyle = cx(
     }
 
     &.ant-select-item-option-selected {
-      background-color: white;
+      background-color: $fill-neutral-white;
       .timezone-title {
-        color: #0080ff;
+        color: $text-colorful-outstanding;
       }
       .selected-icon {
         display: block;
@@ -99,11 +99,11 @@ const OptionWrapperStyle = cx(
     &.ant-select-item-option-active {
       background: rgba(0, 136, 255, 0.16);
       .timezone-title {
-        color: #0080ff;
+        color: $text-colorful-outstanding;
       }
       .timezone-tag {
         background: rgba(0, 136, 255, 0.1);
-        color: #0080ff;
+        color: $text-colorful-outstanding;
       }
     }
   `,
@@ -118,7 +118,7 @@ const OptionFirstLineStyle = cx(
     line-height: 20px;
 
     .timezone-title {
-      color: #2d3a56;
+      color: $gray-gray-80;
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -130,7 +130,7 @@ const OptionSecondLineStyle = cx(
   css`
     display: flex;
     justify-content: space-between;
-    color: $text-light-secondary;
+    color: $text-neutral-tertiary;
     height: 18px;
     line-height: 18px;
     margin-top: 2px;
@@ -141,7 +141,7 @@ const OptionSecondLineStyle = cx(
 const TagStyle = css`
   border: none;
   margin-right: 0;
-  background: rgba(225, 230, 241, 0.6);
+  background: $stroke-neutral-trans-1;
 `;
 
 const OptionPlaceholder = css`

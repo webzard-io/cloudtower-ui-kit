@@ -13,23 +13,23 @@ export const CheckboxStyleContent = `
 &.ant-checkbox-wrapper:hover .ant-checkbox-inner,
 &.ant-checkbox-wrapper.__pseudo-states-hover .ant-checkbox-inner,
 .ant-checkbox:hover .ant-checkbox-inner {
-  border-color: $fills-light-general-general;
+  border-color: $fill-outstanding-base;
 }
 
 .ant-checkbox .ant-checkbox-inner {
-  border: 1px solid $strokes-light-trans-4;
+  border: 1px solid $stroke-neutral-trans-4;
 }
 .ant-checkbox.ant-checkbox-checked,
 .ant-checkbox.ant-checkbox-indeterminate {
   .ant-checkbox-inner {
-    border: 1px solid $fills-light-general-general;
+    border: 1px solid $fill-outstanding-base;
   }
 }
 
 .ant-checkbox.ant-checkbox-indeterminate .ant-checkbox-inner {
-  background: $fills-light-general-general;
+  background: $fill-outstanding-base;
   &:after {
-    background-color: $white;
+    background-color: $fill-neutral-white;
     height: 2px;
     width: 10px;
     border-radius: 2px;
@@ -39,15 +39,15 @@ export const CheckboxStyleContent = `
 &.ant-checkbox-wrapper-disabled {
   opacity: 0.5;
   .ant-checkbox-disabled .ant-checkbox-inner {
-    background: $fills-light-trans-3;
-    border-color: $strokes-light-trans-4 !important;
+    background: $fill-neutral-trans-3;
+    border-color: $stroke-neutral-trans-4 !important;
   }
   .ant-checkbox-disabled.ant-checkbox-checked .ant-checkbox-inner:after {
-    border-color: $text-primary-light;
+    border-color: $gray-gray-80;
   }
   .ant-checkbox-disabled.ant-checkbox-indeterminate
     .ant-checkbox-inner:after {
-    background: $text-primary-light;
+    background: $gray-gray-80;
   }
 }
 
@@ -57,11 +57,11 @@ export const CheckboxStyleContent = `
   .main {
     display: inline-block;
     margin-left: 12px;
-    color: $text-primary-light;
+    color: $gray-gray-80;
   }
   .sub {
     margin-left: 28px;
-    color: $text-secondary-light;
+    color: $text-neutral-tertiary;
   }
 }
 
@@ -78,7 +78,7 @@ export const CheckboxStyleContent = `
 }
 `;
 export const CheckboxStyle = css`
-  color: $text-primary-light;
+  color: $gray-gray-80;
   line-height: 22px;
   display: inline-flex;
   ${CheckboxStyleContent}

@@ -11,7 +11,7 @@ export const BasicBanner = css`
   white-space: pre-wrap;
   align-items: center;
   .dashed-btn {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid $stroke-neutral-white;
     cursor: pointer;
   }
 `;

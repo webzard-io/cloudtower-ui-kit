@@ -1,10 +1,10 @@
 import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { Typo } from "@src/core/Typo";
-import { Color } from "@src/styles/token";
+import { Color } from "@src/styles/token/color";
 
 export const LogViewContainer = styled.div`
-  background-color: #00122e;
+  background-color: $gray-gray-120;
   border-radius: 8px;
   width: 100%;
   height: 100%;
@@ -15,7 +15,7 @@ export const LogViewContainer = styled.div`
   position: relative;
   span.xterm-decoration-top,
   span[style*="background-color: rgb(254, 168, 25)"] {
-    color: #00122e;
+    color: $gray-gray-120;
   }
   margin-bottom: 10px;
 `;
@@ -36,7 +36,7 @@ export const LogTerminal = styled.div`
   overflow: hidden;
   padding-left: 8px;
   border-radius: 8px;
-  background-color: #00122e;
+  background-color: $gray-gray-120;
   font-family: "Roboto Mono", monospace;
   .xterm .xterm-viewport {
     overflow-y: auto;
@@ -48,12 +48,12 @@ export const LogTerminal = styled.div`
     }
 
     &::-webkit-scrollbar-track {
-      background: #00122e; /* 滚动条轨道的背景色 */
+      background: $gray-gray-120; /* 滚动条轨道的背景色 */
       border-radius: 10px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: #6b7d99; /* 滚动条的颜色 */
+      background-color: $gray-gray-70; /* 滚动条的颜色 */
       border-radius: 10px; /* 滚动条的圆角 */
     }
 
@@ -76,22 +76,31 @@ export const CustomContentOverlay = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 18, 46, 0.7);
-  color: #ffffff;
+  color: $text-neutral-ontint;
   z-index: 10;
   padding: 20px;
+
+  // Keep backdrop alpha separate from the overlay content.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: $gray-gray-120;
+    opacity: 0.7;
+  }
 `;
 
 export const SearchInputStyle = css`
-  background-color: #00122e;
+  background-color: $gray-gray-120;
   border-radius: 5px 0 0 5px;
   .ant-input {
-    background-color: #00122e;
-    color: #ffffff;
+    background-color: $gray-gray-120;
+    color: $text-neutral-ontint;
     border: none;
   }
   .ant-input-suffix .counter-text {
-    color: #ffffff;
+    color: $text-neutral-ontint;
   }
   &.ant-input-affix-wrapper {
     border-bottom-right-radius: 0px;
@@ -108,7 +117,7 @@ export const LoadingOverlayStyle = cx(
     display: grid;
     place-items: center;
     padding: 20px;
-    background-color: ${Color.text.neutral.primary};
+    background-color: ${Color.gray["gray-120"]};
     color: ${Color.fill.neutral.lightwhite};
     /* 保留页面的中文字体回退，避免 Inter 未加载时退回衬线字体。 */
     font-family: inherit;

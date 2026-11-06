@@ -3,36 +3,36 @@ import { styled } from "@linaria/react";
 
 export const TitleStyle = css`
   margin-bottom: 4px;
-  color: $text-secondary-light;
+  color: $text-neutral-tertiary;
 `;
 
 export const SubtitleStyle = css`
-  color: rgba(44, 56, 82, 0.6);
+  color: $text-neutral-tertiary;
   line-height: 32px;
   height: 32px;
   margin-bottom: 0;
   &.primary,
   &.info {
-    color: $text-light-general;
+    color: $text-colorful-outstanding;
   }
   &.warning {
     color: #ffa500;
   }
   &.success {
-    color: $text-light-positive;
+    color: $text-colorful-positive;
   }
   &.danger,
   &.error {
-    color: $text-light-serious;
+    color: $text-colorful-serious;
   }
   &.normal {
-    color: $text-secondary-light;
+    color: $text-neutral-tertiary;
   }
 `;
 
 export const BodyCellTextStyle = css`
   margin-bottom: 0;
-  color: $text-light-primary;
+  color: $text-neutral-primary;
 `;
 
 export const BodyCellIconStyle = css`
@@ -56,7 +56,7 @@ export const BodyCellTextWrapper = styled.div`
 `;
 
 export const TableFormWrapper = styled.div`
-  border: 1px solid $strokes-light-trans-2;
+  border: 1px solid $stroke-neutral-trans-2;
   border-radius: 8px;
   overflow: auto;
   .ant-list {
@@ -75,10 +75,10 @@ export const TableFormWrapper = styled.div`
       }
       flex-wrap: nowrap;
       justify-content: flex-start;
-      background: $fills-light-opaque-1;
+      background: $fill-neutral-opaque-1;
       font-size: 14px;
-      color: $text-secondary-light;
-      border-bottom: 1px solid $fills-light-trans-2;
+      color: $text-neutral-tertiary;
+      border-bottom: 1px solid $fill-neutral-trans-2;
     }
     .eagle-table-form-header .eagle-table-form-cell > p {
       margin-bottom: 0;
@@ -94,26 +94,26 @@ export const TableFormWrapper = styled.div`
         flex-basis: 100%;
         margin: 12px 0 0;
         order: 99;
-        color: $text-secondary-light;
+        color: $text-neutral-tertiary;
       }
       .row-error-message {
-        color: $text-light-serious;
+        color: $text-colorful-serious;
         flex-basis: 100%;
         order: 98;
         margin: 12px 0 0;
       }
       &:hover {
-        background-color: $fills-light-trans-1;
+        background-color: $fill-neutral-trans-1;
       }
       &.isDragging {
-        background-color: $fills-light-general-general-light;
+        background-color: rgba(0, 136, 255, 0.1);
       }
     }
     .eagle-table-form-cell {
       flex: 1 0 0;
       overflow: hidden;
       .cell-description {
-        color: $text-secondary-light;
+        color: $text-neutral-tertiary;
         margin: 0;
       }
 
@@ -196,13 +196,13 @@ export const TableFormWrapper = styled.div`
   }
   &.row-split-by-border {
     .eagle-table-form-row {
-      border-bottom: 1px solid $fills-light-trans-2;
+      border-bottom: 1px solid $fill-neutral-trans-2;
     }
   }
   &.row-split-by-zebraMarking {
     .draggable-container {
       & > :nth-child(2n) {
-        background-color: $fills-trans-primary-light;
+        background-color: $fill-neutral-trans-1;
       }
     }
   }
@@ -219,7 +219,7 @@ export const AddRowButtonWrapper = styled.div`
   }
   & > span.maximum-desc {
     display: none;
-    color: $text-secondary-light;
+    color: $text-neutral-tertiary;
     &.disabled {
       display: inline;
     }

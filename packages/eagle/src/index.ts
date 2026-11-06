@@ -1,6 +1,6 @@
 export * from "./core";
 export * from "./coreX";
-export { useElementsSize } from "./hooks";
+export { useUIKitTheme, useElementsSize } from "./hooks";
 export type * from "./spec";
 export type * from "./store";
 export {

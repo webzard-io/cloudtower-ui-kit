@@ -1,5 +1,5 @@
 import { css } from "@linaria/core";
-import { Color } from "@src/styles/token";
+import { Color } from "@src/styles/token/color";
 
 export const DialogStyle = css`
   --footer-height: 80px;
@@ -18,7 +18,7 @@ export const DialogStyle = css`
   padding-bottom: 0;
 
   .ant-modal-content {
-    background: $backgrounds-light-primary;
+    background: $pagebackground-primary;
     border-radius: 16px;
     max-width: var(--modal-content-width);
     min-width: var(--modal-content-width);
@@ -83,7 +83,7 @@ export const DialogStyle = css`
     padding: var(--modal-footer-padding);
     margin-top: 0;
     border-top: none;
-    box-shadow: 0px 1px 0px 0px #e1e6f199 inset;
+    box-shadow: 0px 1px 0px 0px $stroke-neutral-trans-1 inset;
     flex-shrink: 0; // Prevent footer from being compressed
     .ant-btn-quiet {
       color: ${Color.text.neutral.secondary};

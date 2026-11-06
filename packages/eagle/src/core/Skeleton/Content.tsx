@@ -1,5 +1,6 @@
 import { css } from "@linaria/core";
-import { Animation, Color, Keyframes } from "@src/styles/token";
+import { Animation, Keyframes } from "@src/styles/token/animation";
+import { Color } from "@src/styles/token/color";
 import cx from "classnames";
 import React from "react";
 
@@ -23,9 +24,9 @@ const SkeletonContentStyle = css`
       opacity: 0.8;
       background: linear-gradient(
         90deg,
-        rgba(255, 255, 255, 0) 15%,
+        transparent 15%,
         ${Color.white["white-a60"]} 50%,
-        rgba(255, 255, 255, 0) 85%
+        transparent 85%
       );
 
       animation: ${Animation.shimmer};

@@ -1,3 +1,4 @@
+import { Color } from "@src/styles/token/color";
 import { css, cx } from "@linaria/core";
 import type { TooltipProps } from "@src/core";
 import Tooltip from "@src/core/Tooltip";
@@ -63,7 +64,7 @@ export const UnderlineTooltipStyle = css`
 const UnderlineTooltip: React.FC<UnderlineTooltipProps> = (props) => {
   const {
     style = "dashed",
-    color = "rgba(107, 128, 167, 0.6)",
+    color = Color.stroke.neutral["trans-4"],
     width = "1px",
     contentColor,
     customContentColor,

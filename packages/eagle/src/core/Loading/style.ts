@@ -17,7 +17,11 @@ export const LoadingLine1 = css`
   left: 9.33px;
   top: 40.5px;
 
-  background: linear-gradient(180deg, #0080ff 0%, rgba(0, 128, 255, 0.16) 100%);
+  background: linear-gradient(
+    180deg,
+    $fill-outstanding-base 0%,
+    rgba(0, 128, 255, 0.16) 100%
+  );
   border-radius: 5px;
   transform: rotate(-128deg);
   transform-origin: top left;
@@ -32,7 +36,11 @@ export const LoadingLine2 = css`
   left: 40.8px;
   top: 8.4px;
 
-  background: linear-gradient(180deg, #0080ff 0%, rgba(0, 128, 255, 0.16) 100%);
+  background: linear-gradient(
+    180deg,
+    $fill-outstanding-base 0%,
+    rgba(0, 128, 255, 0.16) 100%
+  );
   border-radius: 5px;
   transform: rotate(-8deg);
   transform-origin: top left;
@@ -46,7 +54,11 @@ export const LoadingLine3 = css`
   left: 52.9px;
   top: 51.8px;
 
-  background: linear-gradient(180deg, #0080ff 0%, rgba(0, 128, 255, 0.16) 100%);
+  background: linear-gradient(
+    180deg,
+    $fill-outstanding-base 0%,
+    rgba(0, 128, 255, 0.16) 100%
+  );
   border-radius: 5px;
   transform: rotate(112deg);
   transform-origin: top left;

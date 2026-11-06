@@ -18,7 +18,7 @@ const Description: React.FC = ({ children }) => (
     className={cs(
       Typo.Label.l2_regular,
       css`
-        color: $text-light-secondary;
+        color: $text-neutral-tertiary;
       `,
     )}
   >

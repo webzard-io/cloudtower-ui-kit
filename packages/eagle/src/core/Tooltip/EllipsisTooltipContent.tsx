@@ -18,7 +18,7 @@ const Wrapper = styled.div<WrapperProps>`
     overflow: hidden;
   }
   .tips {
-    color: #fff;
+    color: $text-neutral-ontint;
     opacity: 0.8;
   }
 `;

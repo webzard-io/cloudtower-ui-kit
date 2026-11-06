@@ -4,7 +4,7 @@ import { styled } from "@linaria/react";
 import Icon from "@src/core/Icon";
 import { Typo } from "@src/core/Typo";
 import OverflowTooltip from "@src/coreX/OverflowTooltip";
-import { Color } from "@src/styles/token";
+import { Color } from "@src/styles/token/color";
 import cs from "classnames";
 import React from "react";
 
@@ -69,12 +69,12 @@ const LegendStyle = css`
     }
     &.eagle-legend-gray {
       .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-        background-color: $gray-70;
+        background-color: $gray-gray-70;
       }
     }
     &.eagle-legend-purple {
       .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-        background-color: $purple-50;
+        background-color: $purple-purple-50;
       }
     }
   }

@@ -38,7 +38,7 @@ const CopyTooltip = React.forwardRef<HTMLSpanElement, CopyTooltipProps>(
         </Tooltip>
       </span>
     );
-  }
+  },
 );
 
 export default CopyTooltip;

@@ -32,6 +32,7 @@ const main = async () => {
 
   console.error("[sync:color] 正在写入 color.ts / color.scss / color.css");
   writeColorArtifacts(nextColor);
+  require("./generate-theme").generate();
 };
 
 if (require.main === module) {

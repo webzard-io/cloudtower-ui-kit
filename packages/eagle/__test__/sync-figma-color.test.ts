@@ -6,6 +6,7 @@ import {
   buildCssVariables,
   extractColorTokensFromDisplayDoc,
   rgbaToHex,
+  tokenName,
   writeColorArtifacts,
 } from "../tools/utils/color-sync";
 
@@ -75,10 +76,10 @@ describe("sync-figma-color", () => {
     };
 
     expect(buildCssVariables(sample, true)).toContain(
-      "$text-neutral-primary: #00122E;",
+      `$text-neutral-primary: var(${tokenName("text-neutral-primary")});`
     );
     expect(buildCssVariables(sample, false)).toContain(
-      "--text-neutral-primary: #00122E;",
+      `${tokenName("text-neutral-primary")}: #00122E;`
     );
   });
 
@@ -101,13 +102,13 @@ describe("sync-figma-color", () => {
     expect(mkdirSpy).toHaveBeenCalled();
     expect(
       writeSpy.mock.calls.some(([target]) =>
-        String(target).endsWith("src/styles/token/color.ts"),
-      ),
+        String(target).endsWith("src/styles/token/color.ts")
+      )
     ).toBe(true);
     expect(
       writeSpy.mock.calls.some(([target]) =>
-        String(target).includes("/generated/tokens.ts"),
-      ),
+        String(target).includes("/generated/tokens.ts")
+      )
     ).toBe(false);
   });
 });

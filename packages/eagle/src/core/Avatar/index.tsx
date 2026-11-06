@@ -12,7 +12,7 @@ const AvatarWrapper = styled.span<{
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: $white;
+    color: $text-neutral-ontint;
     font-weight: bold;
     font-size: 12px;
     width: 24px;
@@ -31,9 +31,7 @@ const AvatarWrapper = styled.span<{
     border-radius: 6px;
 
     &:hover {
-      box-shadow:
-        0px 0px 20px rgba(107, 125, 153, 0.18),
-        0px 25px 80px rgba(45, 58, 86, 0.3);
+      box-shadow: $effect-shadow-previewPanel-default;
     }
 
     &:active {
