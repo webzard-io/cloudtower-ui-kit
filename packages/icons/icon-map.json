@@ -5315,16 +5315,16 @@
     "componentSetName": "Icon / status.unknown.questionmark",
     "name": "Size=16, Fill=Red",
     "svgFileName": "status-unknown-questionmark-16-red.svg",
-    "hash": "6fe01505acaf7b979ea937399185a1b1",
-    "lastUpdated": "2026-10-21T06:07:25.273Z"
+    "hash": "9699a4511c22efca094dae25c219a028",
+    "lastUpdated": "2026-11-07T04:20:51.247Z"
   },
   "16183:14": {
     "componentSetName": "Icon / status.unknown.questionmark",
     "name": "Size=16, Fill=Grey",
     "svgFileName": "status-unknown-questionmark-16-grey.svg",
     "existingSvgFileName": "status-unknown-question-mark-16-grey-icon.svg",
-    "hash": "be91d2e9cd65a5951c4251a023e61b5b",
-    "lastUpdated": "2026-10-21T06:07:25.273Z"
+    "hash": "9e75d15357cff24637d2483a80afc169",
+    "lastUpdated": "2026-11-07T04:20:51.247Z"
   },
   "7534:57257": {
     "componentSetName": "Icon / status.unavailable",
@@ -5521,8 +5521,8 @@
     "componentSetName": "Icon / status.stopped.poweredoff.shutdown.square",
     "name": "Size=16, Fill=Gray",
     "svgFileName": "status-stopped-poweredoff-shutdown-square-16-gray.svg",
-    "hash": "617359a2b0716933d40377066280ed69",
-    "lastUpdated": "2026-10-21T06:07:25.278Z"
+    "hash": "f91a0de111b39a82765f3deb06307bc0",
+    "lastUpdated": "2026-11-07T04:20:51.247Z"
   },
   "878:24018": {
     "componentSetName": "Icon / os.linux.ubuntu",
@@ -5581,8 +5581,8 @@
     "name": "Size=16, Fill=Yellow",
     "svgFileName": "status-suspended-paused-16-yellow.svg",
     "existingSvgFileName": "status-suspended-paused-16-gradient-yellow.svg",
-    "hash": "32d5f74cf7cbfa28c1bf95a9e0301a12",
-    "lastUpdated": "2026-10-21T06:07:25.279Z"
+    "hash": "cbb2a1b178c7c3966b8aef47c02fc91d",
+    "lastUpdated": "2026-11-07T04:20:51.248Z"
   },
   "878:24029": {
     "componentSetName": "Icon / os.windows.98",
@@ -5663,8 +5663,8 @@
     "name": "Size=16, Fill=Green",
     "svgFileName": "status-running-triangle-16-green.svg",
     "existingSvgFileName": "replica-vm-ready-16.svg",
-    "hash": "0796289cabe0d19ace2c34dc6fbcd424",
-    "lastUpdated": "2026-10-21T06:07:25.281Z"
+    "hash": "160d21f6a50cd0eb4bcc69c9043863bc",
+    "lastUpdated": "2026-11-07T04:20:51.248Z"
   },
   "878:24021": {
     "componentSetName": "Icon / os.windows.xp",
@@ -8754,8 +8754,8 @@
     "name": "Size=16, Fill=Yellow",
     "svgFileName": "replica-not-ready-16-yellow.svg",
     "existingSvgFileName": "replica-vm-not-ready-16.svg",
-    "hash": "bd43a50ae5fd939868d51cfd6d76d8ab",
-    "lastUpdated": "2026-10-21T06:07:25.372Z"
+    "hash": "a7354886d5519794d21557396cfc8ae1",
+    "lastUpdated": "2026-11-07T04:20:51.250Z"
   },
   "11780:41847": {
     "componentSetName": "replica.permanent-failover",
@@ -9106,57 +9106,57 @@
     "name": "Size=24, Fill=Gradient - Gray, Status=Running",
     "svgFileName": "failover-test-vm-status-running-24-gradient-gray.svg",
     "existingSvgFileName": "replication-plan-test-vm-running-24.svg",
-    "hash": "8d5ccb7e43e640c0c28dec069a3f0f41",
-    "lastUpdated": "2026-10-21T06:07:25.390Z"
+    "hash": "56460917c8aa945aa3a2fb2a7bb0fef4",
+    "lastUpdated": "2026-11-07T04:20:51.251Z"
   },
   "16820:121": {
     "componentSetName": "failover.test.vm.status",
     "name": "Size=24, Fill=Gradient - Gray, Status=Paused",
     "svgFileName": "failover-test-vm-status-paused-24-gradient-gray.svg",
-    "hash": "9461ddc7fc8f36baee098c927898769b",
-    "lastUpdated": "2026-10-21T06:07:25.390Z"
+    "hash": "9fd6d39aac5c5e40ff39132f82190b23",
+    "lastUpdated": "2026-11-07T04:20:51.251Z"
   },
   "16820:122": {
     "componentSetName": "failover.test.vm.status",
     "name": "Size=24, Fill=Gradient - Gray, Status=Shut Down",
     "svgFileName": "failover-test-vm-status-shutdown-24-gradient-gray.svg",
-    "hash": "239e2a795fd6d752b54f46359dc16d0b",
-    "lastUpdated": "2026-10-21T06:07:25.390Z"
+    "hash": "a81879422e8b413042ac170c20e3f918",
+    "lastUpdated": "2026-11-07T04:20:51.251Z"
   },
   "16820:123": {
     "componentSetName": "failover.test.vm.status",
     "name": "Size=24, Fill=Gradient - Gray, Status=Unknown",
     "svgFileName": "failover-test-vm-status-unknown-24-gradient-gray.svg",
-    "hash": "8a357b416b9d103891310c9d03fc4e36",
-    "lastUpdated": "2026-10-21T06:07:25.390Z"
+    "hash": "5c3d670300827936b91a1877a0674d6c",
+    "lastUpdated": "2026-11-07T04:20:51.251Z"
   },
   "16828:52": {
     "componentSetName": "replica.vm.status",
     "name": "Size=24, Fill=Gradient - Gray, Status=Running",
     "svgFileName": "replica-vm-status-running-24-gradient-gray.svg",
-    "hash": "bc5c805140664fdf88450bc3b56176cf",
-    "lastUpdated": "2026-10-21T06:07:25.390Z"
+    "hash": "9d87f56272f7a65b94497ea3f8dc8466",
+    "lastUpdated": "2026-11-07T04:20:51.251Z"
   },
   "16828:55": {
     "componentSetName": "replica.vm.status",
     "name": "Size=24, Fill=Gradient - Gray, Status=Paused",
     "svgFileName": "replica-vm-status-paused-24-gradient-gray.svg",
-    "hash": "6736c4bf4f7cfa4834f6133502dbf172",
-    "lastUpdated": "2026-10-21T06:07:25.390Z"
+    "hash": "5a084091009ed4f613abd6e1ca53e039",
+    "lastUpdated": "2026-11-07T04:20:51.251Z"
   },
   "16828:58": {
     "componentSetName": "replica.vm.status",
     "name": "Size=24, Fill=Gradient - Gray, Status=Shut Down",
     "svgFileName": "replica-vm-status-shutdown-24-gradient-gray.svg",
-    "hash": "149e1c0dd646977808e14e64c6979bc0",
-    "lastUpdated": "2026-10-21T06:07:25.390Z"
+    "hash": "e1208b828588a9a52edbd002b905f119",
+    "lastUpdated": "2026-11-07T04:20:51.251Z"
   },
   "16828:61": {
     "componentSetName": "replica.vm.status",
     "name": "Size=24, Fill=Gradient - Gray, Status=Unknown",
     "svgFileName": "replica-vm-status-unknown-24-gradient-gray.svg",
-    "hash": "4a6fd35ccb390b76680610ddb4ed7a62",
-    "lastUpdated": "2026-10-21T06:07:25.390Z"
+    "hash": "06f1c4a92c28ec275fb6e48fdbfe346a",
+    "lastUpdated": "2026-11-07T04:20:51.251Z"
   },
   "16828:49": {
     "componentSetName": "failover.test.vm.line",
@@ -9385,8 +9385,8 @@
     "componentSetName": "task",
     "name": "Size=32, Fill=Colorful",
     "svgFileName": "task-32-colorful.svg",
-    "hash": "9a5719bc8143eb4d210e23f2b5a91552",
-    "lastUpdated": "2026-10-21T06:07:25.407Z"
+    "hash": "47daabca1e4d8b97d5ecedbdc96f479b",
+    "lastUpdated": "2026-11-07T04:20:51.252Z"
   },
   "13666:77994": {
     "componentSetName": "contanier.registry",
@@ -10380,30 +10380,30 @@
     "name": "Size=24",
     "svgFileName": "er-policy-inter-allow-24.svg",
     "existingSvgFileName": "vm-connection-allowed-24.svg",
-    "hash": "a6330dcb5ebe5b1c22aed8f2bae9a0e7",
-    "lastUpdated": "2026-10-21T06:07:25.441Z"
+    "hash": "576c5e45b6fa1bffc700294260c3875c",
+    "lastUpdated": "2026-11-07T04:20:51.253Z"
   },
   "15047:3": {
     "componentSetName": "Icon / er.policy.inter.allow",
     "name": "Size=16",
     "svgFileName": "er-policy-inter-allow-16.svg",
-    "hash": "369e3c5bab5f45d23f453a9d8a47c63a",
-    "lastUpdated": "2026-10-21T06:07:25.441Z"
+    "hash": "eedb2e1d669f39f8c68d9aa503c546cf",
+    "lastUpdated": "2026-11-07T04:20:51.253Z"
   },
   "13236:1883": {
     "componentSetName": "Icon / er.policy.inter.block",
     "name": "Size=24",
     "svgFileName": "er-policy-inter-block-24.svg",
     "existingSvgFileName": "vm-connection-disconnect-24.svg",
-    "hash": "cabeeb4487481b201905ecf3a91956fb",
-    "lastUpdated": "2026-10-21T06:07:25.441Z"
+    "hash": "2ade01e604b7ee8fba07d9e42acf3496",
+    "lastUpdated": "2026-11-07T04:20:51.253Z"
   },
   "15047:12": {
     "componentSetName": "Icon / er.policy.inter.block",
     "name": "Size=16",
     "svgFileName": "er-policy-inter-block-16.svg",
-    "hash": "bbdf70276bc39c4eedb70f235cbf414a",
-    "lastUpdated": "2026-10-21T06:07:25.442Z"
+    "hash": "47fc29814fb34738b8738a3f48e43038",
+    "lastUpdated": "2026-11-07T04:20:51.253Z"
   },
   "11494:59280": {
     "componentSetName": "Icon / VPC",
@@ -12520,29 +12520,29 @@
     "componentSetName": "Icon / cluster",
     "name": "Style=Outlined, Size=16, Fill=Gradient - Blue, Status=Disconnected",
     "svgFileName": "cluster-disconnected-16-gradient-blue-outlined.svg",
-    "hash": "547d0452edccf847160659ff21a90c95",
-    "lastUpdated": "2026-10-21T06:07:25.298Z"
+    "hash": "889b70019cfc80e4008816f734aeaa42",
+    "lastUpdated": "2026-11-07T04:20:51.248Z"
   },
   "19772:1978": {
     "componentSetName": "Icon / cluster",
     "name": "Style=Outlined, Size=16, Fill=Ontint, Status=Disconnected",
     "svgFileName": "cluster-disconnected-16-ontint-outlined.svg",
-    "hash": "ca28ac89aad63afc7275fa2b18b81369",
-    "lastUpdated": "2026-10-21T06:07:25.298Z"
+    "hash": "188a4a08b60780630e0cb80245ba8ce5",
+    "lastUpdated": "2026-11-07T04:20:51.248Z"
   },
   "19772:1982": {
     "componentSetName": "datastore",
     "name": "Size=16, Fill=Gradient - Blue, Status=Disconnected",
     "svgFileName": "datastore-disconnected-16-gradient-blue.svg",
-    "hash": "2d4c005f30d8801fc8c04c85787ce222",
-    "lastUpdated": "2026-10-21T06:07:25.396Z"
+    "hash": "4c393d43f44b38999a4d0b8a74f71ab7",
+    "lastUpdated": "2026-11-07T04:20:51.251Z"
   },
   "19772:1993": {
     "componentSetName": "datastore",
     "name": "Size=16, Fill=Ontint, Status=Disconnected",
     "svgFileName": "datastore-disconnected-16-ontint.svg",
-    "hash": "1e27d152f349c85990272c7cf433cc3a",
-    "lastUpdated": "2026-10-21T06:07:25.397Z"
+    "hash": "155f2bb9273726b15419eec376b74706",
+    "lastUpdated": "2026-11-07T04:20:51.251Z"
   },
   "19916:58": {
     "componentSetName": "Icon / arrow.turn.right",
@@ -12584,8 +12584,8 @@
     "componentSetName": "Icon / cluster",
     "name": "Style=Solid, Size=16, Fill=Ontint, Status=Disconnected",
     "svgFileName": "cluster-disconnected-16-ontint-solid.svg",
-    "hash": "f019ddc9bb1278eff907db9a6e40f938",
-    "lastUpdated": "2026-10-21T06:07:25.298Z"
+    "hash": "5f90d1a35dd941a1877f78e5ddf2cfed",
+    "lastUpdated": "2026-11-07T04:20:51.248Z"
   },
   "19851:55": {
     "componentSetName": "Icon / cluster.compute",
@@ -12633,22 +12633,22 @@
     "componentSetName": "Icon / cluster.compute",
     "name": "Style=Outlined, Size=16, Fill=Gradient - Blue, Status=Disconnected",
     "svgFileName": "cluster-compute-disconnected-16-gradient-blue-outlined.svg",
-    "hash": "d0e8968435e89cadaeefd2cc301db666",
-    "lastUpdated": "2026-10-21T06:07:25.301Z"
+    "hash": "8d4e92fd6ef55d05a49b22e25b425a30",
+    "lastUpdated": "2026-11-07T04:20:51.249Z"
   },
   "19853:2058": {
     "componentSetName": "Icon / cluster.compute",
     "name": "Style=Outlined, Size=16, Fill=Ontint, Status=Disconnected",
     "svgFileName": "cluster-compute-disconnected-16-ontint-outlined.svg",
-    "hash": "448649dfc16bc30ac790241afde44b21",
-    "lastUpdated": "2026-10-21T06:07:25.301Z"
+    "hash": "e7c309de57cb0acc44294e9ad2ba1d6c",
+    "lastUpdated": "2026-11-07T04:20:51.249Z"
   },
   "19853:2062": {
     "componentSetName": "Icon / cluster.compute",
     "name": "Style=Solid, Size=16, Fill=Ontint, Status=Disconnected",
     "svgFileName": "cluster-compute-disconnected-16-ontint-solid.svg",
-    "hash": "a094205e7d2a87dd2711c3659b65f751",
-    "lastUpdated": "2026-10-21T06:07:25.301Z"
+    "hash": "f5c3990861bce7e56656c755e7a885ba",
+    "lastUpdated": "2026-11-07T04:20:51.249Z"
   },
   "19853:43980": {
     "componentSetName": "Icon / cluster.storage",
@@ -12696,22 +12696,22 @@
     "componentSetName": "Icon / cluster.storage",
     "name": "Style=Outlined, Size=16, Fill=Gradient - Blue, Status=Disconnected",
     "svgFileName": "cluster-storage-disconnected-16-gradient-blue-outlined.svg",
-    "hash": "ab6588b505c207f450b4b9751018f7af",
-    "lastUpdated": "2026-10-21T06:07:25.302Z"
+    "hash": "5023c1c15f2093451edec8767f60fc98",
+    "lastUpdated": "2026-11-07T04:20:51.249Z"
   },
   "19854:44027": {
     "componentSetName": "Icon / cluster.storage",
     "name": "Style=Outlined, Size=16, Fill=Ontint, Status=Disconnected",
     "svgFileName": "cluster-storage-disconnected-16-ontint-outlined.svg",
-    "hash": "f0a7e9683634e49ed8d0ff606d84cb67",
-    "lastUpdated": "2026-10-21T06:07:25.302Z"
+    "hash": "64eada872924c82b356645ee97abb73d",
+    "lastUpdated": "2026-11-07T04:20:51.249Z"
   },
   "19854:44031": {
     "componentSetName": "Icon / cluster.storage",
     "name": "Style=Solid, Size=16, Fill=Ontint, Status=Disconnected",
     "svgFileName": "cluster-storage-disconnected-16-ontint-solid.svg",
-    "hash": "759b2d5b2d6d3e9fc4417a66d686c620",
-    "lastUpdated": "2026-10-21T06:07:25.302Z"
+    "hash": "fefd1b4afffd2df375238d9473fb1620",
+    "lastUpdated": "2026-11-07T04:20:51.249Z"
   },
   "19849:42954": {
     "componentSetName": "Icon / security.vm.group",
