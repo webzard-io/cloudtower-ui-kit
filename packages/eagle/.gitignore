@@ -2,3 +2,6 @@
 antd
 
 .env
+
+/test-results/
+/playwright-report/
