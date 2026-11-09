@@ -7,6 +7,16 @@ export const SelectStyle = css`
   }
 
   &.ant-select {
+    // 16px 清除图标沿用 antd 的定位（含表单校验图标时的偏移），只向右补偿 2px 与 12px 箭头中心对齐
+    .ant-select-clear {
+      display: flex;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+      margin-top: -8px;
+      margin-right: -2px;
+    }
+
     &.ant-select-single {
       width: 100%;
       &[data-size="small"] {

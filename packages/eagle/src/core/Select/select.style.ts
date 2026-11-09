@@ -158,10 +158,12 @@ export const SelectSizeStyle = css`
       padding: 0 7px 0 12px;
     }
 
-    .ant-select-arrow {
+    .ant-select-arrow,
+    .ant-select-clear {
       right: 8px;
       top: 50%;
       margin-top: -8px;
+      margin-right: 0;
       width: 16px;
       height: 16px;
       display: flex;
@@ -173,7 +175,8 @@ export const SelectSizeStyle = css`
         padding: 0 11px 0 16px;
       }
 
-      .ant-select-arrow {
+      .ant-select-arrow,
+      .ant-select-clear {
         right: 12px;
       }
     }
@@ -183,7 +186,8 @@ export const SelectSizeStyle = css`
         padding: 0 3px 0 8px;
       }
 
-      .ant-select-arrow {
+      .ant-select-arrow,
+      .ant-select-clear {
         right: 4px;
       }
     }

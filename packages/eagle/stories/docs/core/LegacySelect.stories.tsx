@@ -121,6 +121,24 @@ export const Basic = () => {
     return <OptionsDemo>{options}</OptionsDemo>;
   }
 
+  function AllowClear() {
+    const [value, setValue] = React.useState("jack");
+    const input = {
+      value,
+      onChange: (newValue: string | string[]) => setValue(newValue as string),
+    };
+
+    return (
+      <Space>
+        {(["large", "middle", "small"] as const).map((size) => (
+          <LegacySelect key={size} input={input} size={size} allowClear>
+            {options}
+          </LegacySelect>
+        ))}
+      </Space>
+    );
+  }
+
   function Truncate() {
     const options = getOptions([
       {
@@ -214,6 +232,9 @@ export const Basic = () => {
       <Row state="Expanded" />
       <Row state="Disabled" />
       <Row state="Loading" />
+
+      <Title>AllowClear</Title>
+      <AllowClear />
 
       <Title>Prefix</Title>
       <Prefix />

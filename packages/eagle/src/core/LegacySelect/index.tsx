@@ -1,6 +1,13 @@
+import {
+  XmarkCloseCircleFill16SecondaryIcon,
+  XmarkCloseCircleFill16TertiaryIcon,
+} from "@cloudtower/icons-react";
+import Icon from "@src/core/Icon";
 import Loading from "@src/core/Loading";
+import Tooltip from "@src/core/Tooltip";
 import { Typo } from "@src/core/Typo";
 import useLegacyComponentWarning from "@src/hooks/useLegacyComponentWarning";
+import useParrotTranslation from "@src/hooks/useParrotTranslation";
 import { Select as AntdSelect } from "antd";
 import cs from "classnames";
 import _ from "lodash";
@@ -35,6 +42,7 @@ const LegacySelect: LegacySelectComponentType<any, HTMLElement> = ({
   "data-test": dataTest,
   ...restProps
 }) => {
+  const { t } = useParrotTranslation();
   const limitExceeded =
     multiple && selectLimit && selectLimit <= (input.value?.length || 0);
   const typo = {
@@ -158,6 +166,16 @@ const LegacySelect: LegacySelectComponentType<any, HTMLElement> = ({
       loading={loading}
       placeholder={placeholder}
       {...restProps}
+      clearIcon={
+        restProps.clearIcon ?? (
+          <Tooltip title={t("components.remove")}>
+            <Icon
+              src={XmarkCloseCircleFill16TertiaryIcon}
+              hoverSrc={XmarkCloseCircleFill16SecondaryIcon}
+            />
+          </Tooltip>
+        )
+      }
     >
       {React.Children.map(children, (child) => {
         return isElement(child)

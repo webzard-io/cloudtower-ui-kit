@@ -24,6 +24,8 @@ import React from "react";
  * | mode | 设置选择模式，multiple 为多选，tags 为自由输入多选 | 'multiple' \| 'tags' | - |
  * | showSearch | 是否可搜索，开启后可通过输入关键字过滤选项 | boolean | false |
  * | danger | 错误状态，用于表单校验失败等场景 | boolean | false |
+ * | allowClear | 是否支持清除已选值 | boolean | false |
+ * | clearIcon | 自定义清除图标 | ReactNode | 带「移除」提示的 xmark.close.circle.fill 图标 |
  * | placeholder | 选择框默认文本 | string | - |
  * | value | 指定当前选中的条目 | string \| string[] | - |
  * | defaultValue | 指定默认选中的条目 | string \| string[] | - |
@@ -243,6 +245,36 @@ export const SearchSelect: Story = {
               .includes(input.toLowerCase())
           }
         />
+      </div>
+    );
+  },
+};
+
+/**
+ * 设置 allowClear 后，选中值时悬停选择框，下拉箭头会替换为移除图标，悬停图标时提示「移除」，点击清空已选值。
+ * 移除图标在各尺寸下与下拉箭头位置一致，可通过 clearIcon 属性自定义。
+ */
+export const AllowClear: Story = {
+  name: "可清除",
+  render: (args) => {
+    const [value, setValue] = React.useState("lucy");
+    const input = {
+      value,
+      onChange: (newValue: string | string[]) => setValue(newValue as string),
+    };
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        {(["large", "middle", "small"] as const).map((size) => (
+          <Select
+            {...args}
+            key={size}
+            size={size}
+            input={input}
+            allowClear
+            style={{ width: 200 }}
+          />
+        ))}
       </div>
     );
   },
