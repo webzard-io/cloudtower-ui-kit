@@ -1,0 +1,316 @@
+[
+  {
+    "elements": [
+      "CommonContent",
+      "CommonContent/div[0]",
+      "ContentWrapper",
+      "ContentWrapper/div[0]",
+      "Desc",
+      "Description",
+      "Divider",
+      "Dot",
+      "ErrorSpan",
+      "ExpandArrow",
+      "ExpandArrow/i[0]",
+      "FieldTitle",
+      "FormField",
+      "FormField/div[0]",
+      "FormItemDiv",
+      "FormItemDiv/div[0]",
+      "FormSectionTitle",
+      "FormWrapper",
+      "FormWrapper/div[0]",
+      "FullView",
+      "FullView/div[0]",
+      "LightDesc",
+      "LoadingWrapper",
+      "LoadingWrapper/div[0]",
+      "ModalBody",
+      "ModalBody/div[0]",
+      "NameTag",
+      "OperationWraper",
+      "OperationWraper/div[0]",
+      "RadioDesc",
+      "SelectOptionDisabledText",
+      "TagSpan",
+      "TertiaryText",
+      "WizardBody",
+      "WizardBody/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Desc/div[0]"
+    ],
+    "style": {
+      "color": "rgb(62, 70, 82)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(62, 70, 82)",
+      "borderRightColor": "rgb(62, 70, 82)",
+      "borderBottomColor": "rgb(62, 70, 82)",
+      "borderLeftColor": "rgb(62, 70, 82)",
+      "outlineColor": "rgb(62, 70, 82)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Description/div[0]",
+      "LightDesc/div[0]",
+      "RadioDesc/div[0]"
+    ],
+    "style": {
+      "color": "rgba(44, 56, 82, 0.6)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(44, 56, 82, 0.6)",
+      "borderRightColor": "rgba(44, 56, 82, 0.6)",
+      "borderBottomColor": "rgba(44, 56, 82, 0.6)",
+      "borderLeftColor": "rgba(44, 56, 82, 0.6)",
+      "outlineColor": "rgba(44, 56, 82, 0.6)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Divider/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(213, 219, 227, 0.6)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Dot/span[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(142, 154, 169)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0.4",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "ErrorSpan/span[0]"
+    ],
+    "style": {
+      "color": "rgb(231, 90, 58)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(231, 90, 58)",
+      "borderRightColor": "rgb(231, 90, 58)",
+      "borderBottomColor": "rgb(231, 90, 58)",
+      "borderLeftColor": "rgb(231, 90, 58)",
+      "outlineColor": "rgb(231, 90, 58)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "ExpandArrow/i[0]::after",
+      "ExpandArrow/i[0]::before"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(204, 212, 227)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "FieldTitle/div[0]"
+    ],
+    "style": {
+      "color": "rgb(45, 58, 86)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(45, 58, 86)",
+      "borderRightColor": "rgb(45, 58, 86)",
+      "borderBottomColor": "rgba(213, 219, 227, 0.6)",
+      "borderLeftColor": "rgb(45, 58, 86)",
+      "outlineColor": "rgb(45, 58, 86)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "FormSectionTitle/h4[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.85)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgb(225, 229, 235)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "NameTag/span[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(240, 243, 247, 0.6)",
+      "borderTopColor": "rgba(213, 219, 227, 0.6)",
+      "borderRightColor": "rgba(213, 219, 227, 0.6)",
+      "borderBottomColor": "rgba(213, 219, 227, 0.6)",
+      "borderLeftColor": "rgba(213, 219, 227, 0.6)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "SelectOptionDisabledText/div[0]"
+    ],
+    "style": {
+      "color": "rgb(240, 72, 62)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(240, 72, 62)",
+      "borderRightColor": "rgb(240, 72, 62)",
+      "borderBottomColor": "rgb(240, 72, 62)",
+      "borderLeftColor": "rgb(240, 72, 62)",
+      "outlineColor": "rgb(240, 72, 62)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "TagSpan/span[0]"
+    ],
+    "style": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(255, 255, 255)",
+      "borderRightColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(255, 255, 255)",
+      "outlineColor": "rgb(255, 255, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "gradientColors": [
+        "rgb(0, 102, 255)",
+        "rgb(92, 168, 255)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "TertiaryText/div[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 21, 64, 0.3)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 21, 64, 0.3)",
+      "borderRightColor": "rgba(0, 21, 64, 0.3)",
+      "borderBottomColor": "rgba(0, 21, 64, 0.3)",
+      "borderLeftColor": "rgba(0, 21, 64, 0.3)",
+      "outlineColor": "rgba(0, 21, 64, 0.3)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  }
+]

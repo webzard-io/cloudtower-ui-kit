@@ -2,8 +2,8 @@ import { cx } from "@linaria/core";
 import Link from "@src/core/Link";
 import Tag from "@src/core/Tag";
 import { Typo } from "@src/core/Typo";
-import { Show } from "@src/coreX";
 import OverflowTooltip from "@src/coreX/OverflowTooltip";
+import { Show } from "@src/coreX/Show";
 import { splitMap } from "@src/utils/constants";
 import { Flex } from "antd5";
 import cls from "classnames";
@@ -40,7 +40,7 @@ export const TimelineArea: React.FC<
   const rendetItem = <T extends TimelineAreaProps["items"][number]["category"]>(
     category: T,
     props: Extract<TimelineAreaProps["items"][number], { category: T }>,
-    compact?: boolean,
+    compact?: boolean
   ) => {
     const { className, ...restProps } = props;
     switch (category) {
@@ -60,7 +60,7 @@ export const TimelineArea: React.FC<
                 [Typo.Label.l4_regular]: compact,
                 [Typo.Label.l2_regular]: !compact,
               },
-              className,
+              className
             )}
             {...(restProps as InfoProps)}
           />
@@ -74,7 +74,7 @@ export const TimelineArea: React.FC<
                 [Typo.Label.l4_bold]: compact,
                 [Typo.Label.l2_bold]: !compact,
               },
-              className,
+              className
             )}
             {...(restProps as InfoProps)}
           />

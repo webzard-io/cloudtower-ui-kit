@@ -5,6 +5,9 @@ on:
     branches:
       - "**"
 
+permissions:
+  contents: read
+
 # Cancel prev CI if new commit come
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -12,7 +15,7 @@ concurrency:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         node: [24]
@@ -33,5 +36,9 @@ jobs:
         run: yarn build
       - name: Bundlewatch
         run: yarn bundlewatch
+      - name: Install Chromium
+        run: yarn workspace @cloudtower/eagle exec playwright install --with-deps chromium
       - name: Test
-        run: yarn test:ci
+        run: |
+          yarn test:ci
+          yarn workspace @cloudtower/eagle test:styles

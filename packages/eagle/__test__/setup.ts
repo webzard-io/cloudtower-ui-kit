@@ -48,18 +48,18 @@ expect.addSnapshotSerializer({
     indentation,
     depth,
     refs,
-    printer,
+    printer
   ) {
     if (val.linaria) {
+      const styles = fs.existsSync(styleMapFileName)
+        ? safeJsonParse(fs.readFileSync(styleMapFileName, "utf-8"))
+        : {};
       return format(val.dom, {
         plugins: [
           plugins.DOMElement,
           {
             serialize(val, config, indentation, depth, refs, printer) {
               const classNames = val.split(" ");
-              const styles = fs.existsSync(styleMapFileName)
-                ? safeJsonParse(fs.readFileSync(styleMapFileName, "utf-8"))
-                : {};
               return classNames
                 .map((classname) => {
                   if (styles[`.${classname}`] != null) {
