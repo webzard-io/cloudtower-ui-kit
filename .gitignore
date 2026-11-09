@@ -10,6 +10,7 @@ lib
 typings
 storybook-static
 linaria-temp-map.json
+linaria-temp-map.json.*.tmp
 .vercel
 package-lock.json
 .history

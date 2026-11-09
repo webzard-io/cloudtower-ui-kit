@@ -1,0 +1,96 @@
+[
+  {
+    "elements": [
+      "portal-0"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]",
+      "portal-0/div[0]/span[0]",
+      "portal-0/div[0]/span[0]/span[0]",
+      "portal-0/div[0]/span[1]",
+      "portal-0/div[0]/span[1]/span[1]",
+      "portal-0/div[0]/span[2]",
+      "portal-0/div[0]/span[2]/span[1]"
+    ],
+    "style": {
+      "color": "rgba(10, 37, 85, 0.6)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(10, 37, 85, 0.6)",
+      "borderRightColor": "rgba(10, 37, 85, 0.6)",
+      "borderBottomColor": "rgba(10, 37, 85, 0.6)",
+      "borderLeftColor": "rgba(10, 37, 85, 0.6)",
+      "outlineColor": "rgba(10, 37, 85, 0.6)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/span[1]/svg[0]",
+      "portal-0/div[0]/span[2]/svg[0]",
+      "portal-0/div[0]/span[2]/svg[2]"
+    ],
+    "style": {
+      "color": "rgba(10, 37, 85, 0.6)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(10, 37, 85, 0.6)",
+      "borderRightColor": "rgba(10, 37, 85, 0.6)",
+      "borderBottomColor": "rgba(10, 37, 85, 0.6)",
+      "borderLeftColor": "rgba(10, 37, 85, 0.6)",
+      "outlineColor": "rgba(10, 37, 85, 0.6)",
+      "opacity": "1",
+      "fill": "none",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/span[1]/svg[0]/path[0]",
+      "portal-0/div[0]/span[2]/svg[0]/path[0]",
+      "portal-0/div[0]/span[2]/svg[2]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(10, 37, 85, 0.6)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(10, 37, 85, 0.6)",
+      "borderRightColor": "rgba(10, 37, 85, 0.6)",
+      "borderBottomColor": "rgba(10, 37, 85, 0.6)",
+      "borderLeftColor": "rgba(10, 37, 85, 0.6)",
+      "outlineColor": "rgba(10, 37, 85, 0.6)",
+      "opacity": "1",
+      "fill": "rgb(3, 30, 79)",
+      "fillOpacity": "0.18",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  }
+]

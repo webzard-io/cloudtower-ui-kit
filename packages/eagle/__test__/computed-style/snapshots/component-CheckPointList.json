@@ -1,0 +1,535 @@
+[
+  {
+    "elements": [
+      "portal-0",
+      "portal-0/div[0]/div[1]",
+      "portal-0/div[0]/div[1]/div[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]",
+      "portal-0/div[0]/header[0]/span[0]/button[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(228, 233, 242)",
+      "borderRightColor": "rgb(228, 233, 242)",
+      "borderBottomColor": "rgb(228, 233, 242)",
+      "borderLeftColor": "rgb(228, 233, 242)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]/div[3]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/div[5]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(255, 74, 74, 0.1)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]/div[3]/span[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/div[3]/span[0]/div[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/div[3]/span[0]/div[0]/div[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/div[5]/span[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/div[5]/span[0]/div[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/div[5]/span[0]/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(240, 72, 62)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(240, 72, 62)",
+      "borderRightColor": "rgb(240, 72, 62)",
+      "borderBottomColor": "rgb(240, 72, 62)",
+      "borderLeftColor": "rgb(240, 72, 62)",
+      "outlineColor": "rgb(240, 72, 62)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]/div[7]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(225, 230, 241, 0.6)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]/div[7]/span[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/div[7]/span[0]/div[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/div[7]/span[0]/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgba(44, 56, 82, 0.6)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(44, 56, 82, 0.6)",
+      "borderRightColor": "rgba(44, 56, 82, 0.6)",
+      "borderBottomColor": "rgba(44, 56, 82, 0.6)",
+      "borderLeftColor": "rgba(44, 56, 82, 0.6)",
+      "outlineColor": "rgba(44, 56, 82, 0.6)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[0]/div[2]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[0]/span[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[0]/span[0]/span[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[0]/span[1]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[1]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[1]/div[2]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[1]/span[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[1]/span[0]/span[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[1]/span[1]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[2]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[2]/div[2]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[2]/div[2]/span[1]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[2]/div[2]/span[1]/span[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[2]/span[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[2]/span[0]/span[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[2]/span[1]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[4]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[4]/div[2]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[4]/span[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[4]/span[0]/span[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[4]/span[1]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[6]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[6]/span[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[6]/span[0]/span[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[6]/span[1]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.88)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.88)",
+      "borderRightColor": "rgba(0, 0, 0, 0.88)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.88)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.88)",
+      "outlineColor": "rgba(0, 0, 0, 0.88)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[0]/div[2]/span[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[1]/div[2]/span[0]"
+    ],
+    "style": {
+      "color": "rgb(0, 143, 76)",
+      "backgroundColor": "rgba(30, 201, 127, 0.1)",
+      "borderTopColor": "rgb(0, 143, 76)",
+      "borderRightColor": "rgb(0, 143, 76)",
+      "borderBottomColor": "rgb(0, 143, 76)",
+      "borderLeftColor": "rgb(0, 143, 76)",
+      "outlineColor": "rgb(0, 143, 76)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[0]/span[0]/span[0]/svg[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[1]/span[0]/span[0]/svg[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[2]/div[2]/span[1]/span[0]/svg[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[2]/span[0]/span[0]/svg[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[4]/span[0]/span[0]/svg[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[6]/span[0]/span[0]/svg[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.88)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.88)",
+      "borderRightColor": "rgba(0, 0, 0, 0.88)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.88)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.88)",
+      "outlineColor": "rgba(0, 0, 0, 0.88)",
+      "opacity": "1",
+      "fill": "none",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[0]/span[0]/span[0]/svg[0]/path[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[1]/span[0]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.88)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.88)",
+      "borderRightColor": "rgba(0, 0, 0, 0.88)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.88)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.88)",
+      "outlineColor": "rgba(0, 0, 0, 0.88)",
+      "opacity": "1",
+      "fill": "rgb(0, 186, 93)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[2]/div[2]/button[0]"
+    ],
+    "style": {
+      "color": "rgb(0, 128, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0)",
+      "borderRightColor": "rgba(0, 0, 0, 0)",
+      "borderBottomColor": "rgba(0, 0, 0, 0)",
+      "borderLeftColor": "rgba(0, 0, 0, 0)",
+      "outlineColor": "rgb(0, 128, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[2]/div[2]/button[0]/span[0]"
+    ],
+    "style": {
+      "color": "rgb(0, 128, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(0, 128, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[2]/div[2]/button[0]::before"
+    ],
+    "style": {
+      "color": "rgb(0, 128, 255)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(0, 128, 255)",
+      "opacity": "0.35",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[2]/div[2]/span[1]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.88)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.88)",
+      "borderRightColor": "rgba(0, 0, 0, 0.88)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.88)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.88)",
+      "outlineColor": "rgba(0, 0, 0, 0.88)",
+      "opacity": "1",
+      "fill": "rgb(44, 56, 82)",
+      "fillOpacity": "0.6",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[2]/div[2]/span[2]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[4]/div[2]/span[0]"
+    ],
+    "style": {
+      "color": "rgb(240, 72, 62)",
+      "backgroundColor": "rgba(255, 74, 74, 0.1)",
+      "borderTopColor": "rgb(240, 72, 62)",
+      "borderRightColor": "rgb(240, 72, 62)",
+      "borderBottomColor": "rgb(240, 72, 62)",
+      "borderLeftColor": "rgb(240, 72, 62)",
+      "outlineColor": "rgb(240, 72, 62)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[2]/span[0]/span[0]/svg[0]/path[0]",
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[4]/span[0]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.88)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.88)",
+      "borderRightColor": "rgba(0, 0, 0, 0.88)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.88)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.88)",
+      "outlineColor": "rgba(0, 0, 0, 0.88)",
+      "opacity": "1",
+      "fill": "rgb(240, 72, 62)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]/li[6]/span[0]/span[0]/svg[0]/rect[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.88)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.88)",
+      "borderRightColor": "rgba(0, 0, 0, 0.88)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.88)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.88)",
+      "outlineColor": "rgba(0, 0, 0, 0.88)",
+      "opacity": "1",
+      "fill": "rgb(163, 180, 204)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[1]/div[0]/div[0]::after"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/header[0]"
+    ],
+    "style": {
+      "color": "rgb(29, 50, 108)",
+      "backgroundColor": "rgba(225, 230, 241, 0.6)",
+      "borderTopColor": "rgb(29, 50, 108)",
+      "borderRightColor": "rgb(29, 50, 108)",
+      "borderBottomColor": "rgb(29, 50, 108)",
+      "borderLeftColor": "rgb(29, 50, 108)",
+      "outlineColor": "rgb(29, 50, 108)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/header[0]/span[0]",
+      "portal-0/div[0]/header[0]/span[0]/span[1]"
+    ],
+    "style": {
+      "color": "rgb(0, 18, 46)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(0, 18, 46)",
+      "borderRightColor": "rgb(0, 18, 46)",
+      "borderBottomColor": "rgb(0, 18, 46)",
+      "borderLeftColor": "rgb(0, 18, 46)",
+      "outlineColor": "rgb(0, 18, 46)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/header[0]/span[0]/button[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(172, 186, 211, 0.6)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/header[0]/span[0]/button[0]/div[0]::before"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(0, 35, 11, 0.2)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/header[0]/span[0]/button[0]/span[1]"
+    ],
+    "style": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(255, 255, 255)",
+      "borderRightColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(255, 255, 255)",
+      "outlineColor": "rgb(255, 255, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  }
+]

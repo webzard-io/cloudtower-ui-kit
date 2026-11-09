@@ -9,6 +9,7 @@ import readline from "readline";
 import { defineConfig } from "vitest/config";
 
 const styleMapFileName = path.join(__dirname, "linaria-temp-map.json");
+const nextStyleMapFileName = `${styleMapFileName}.${process.pid}.tmp`;
 
 export default defineConfig({
   plugins: [
@@ -21,12 +22,14 @@ export default defineConfig({
         try {
           readline.cursorTo(process.stdout, 0);
           fs.writeFileSync(
-            styleMapFileName,
+            nextStyleMapFileName,
             JSON.stringify({
               ...JSON.parse(value),
               [selector]: cssText,
             })
           );
+          // Test workers may read the map while Vite transforms another file.
+          fs.renameSync(nextStyleMapFileName, styleMapFileName);
         } catch (error) {
           console.error(error);
         }
