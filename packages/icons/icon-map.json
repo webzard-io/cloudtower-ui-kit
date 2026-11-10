@@ -12852,5 +12852,26 @@
     "svgFileName": "arrow-up-right-16-blue-regular.svg",
     "hash": "ceffc683458a024e912792f8031f43bd",
     "lastUpdated": "2026-11-05T04:51:48.076Z"
+  },
+  "20204:4010": {
+    "componentSetName": "Icon / xmark.clear.fill",
+    "name": "Size=16, Fill=Secondary",
+    "svgFileName": "xmark-clear-fill-16-secondary.svg",
+    "hash": "fb024723249e1edde30d6dd5a9071278",
+    "lastUpdated": "2026-11-10T05:44:55.941Z"
+  },
+  "20202:2400": {
+    "componentSetName": "Icon / xmark.clear.fill",
+    "name": "Size=16, Fill=Tertiary",
+    "svgFileName": "xmark-clear-fill-16-tertiary.svg",
+    "hash": "5e4ad8e2c17f3e1bb6f74a39e78e3f9d",
+    "lastUpdated": "2026-11-10T05:44:55.942Z"
+  },
+  "20202:57": {
+    "componentSetName": "Icon / xmark.clear.fill",
+    "name": "Size=16, Fill=Quaternary",
+    "svgFileName": "xmark-clear-fill-16-quaternary.svg",
+    "hash": "a9c8c34d52a4c6f1b77d100ea6a30a09",
+    "lastUpdated": "2026-11-10T05:44:55.942Z"
   }
 }
