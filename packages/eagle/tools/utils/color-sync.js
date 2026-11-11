@@ -9,10 +9,6 @@ const COLOR_TS_PATH = path.resolve(
   __dirname,
   "../../src/styles/token/color.ts",
 );
-const GENERATED_SCSS_PATH = path.resolve(
-  __dirname,
-  "../../src/styles/token/color.scss",
-);
 const GENERATED_CSS_PATH = path.resolve(
   __dirname,
   "../../src/styles/token/color.css",
@@ -97,7 +93,8 @@ const extractColorTokensFromDisplayDoc = (rootNode) => {
 
     if (node.type === "INSTANCE") {
       const textContent = collectTextContentByName(node);
-      const tokenValue = textContent["{token-name}"] || textContent["Text Name"];
+      const tokenValue =
+        textContent["{token-name}"] || textContent["Text Name"];
       const hexValue = textContent["{hex-value}"];
 
       if (typeof tokenValue === "string" && typeof hexValue === "string") {
@@ -129,25 +126,31 @@ const GRADIENT_TOKENS = {
     "radial-gradient(133.15% 133.15% at 4.69% 7.03%, #5BCAFF 0%, #06F 100%)",
 };
 
-const buildColorModuleTs = (tokenObject) =>
-  `export const Color = ${JSON.stringify(
-    {
-      ...tokenObject,
-      gradient: GRADIENT_TOKENS,
-    },
-    null,
-    2,
-  )} as const;\n`;
+const tokenName = (name) => `--${name}`;
+const runtimeColor = (object, prefix = []) =>
+  Object.fromEntries(
+    Object.entries(object).map(([key, value]) => [
+      key,
+      typeof value === "string"
+        ? `var(${tokenName([...prefix, key].join("-"))})`
+        : runtimeColor(value, [...prefix, key]),
+    ]),
+  );
 
-const buildCssVariables = (tokenObject, isScss = false) => {
+// Widen values so declaration files do not promise build-specific literal strings.
+const runtimeModule = (name, object, prefix = []) =>
+  `export const ${name} = ${JSON.stringify(runtimeColor(object, prefix), null, 2).replace(/"(var\([^"\n]+\))"/g, '"$1" as string')} as const;\n`;
+const buildColorModuleTs = (tokenObject) =>
+  runtimeModule("Color", { ...tokenObject, gradient: GRADIENT_TOKENS });
+
+const buildCssVariables = (tokenObject) => {
   const lines = [];
 
   const walk = (current, pathSegments = []) => {
     Object.entries(current).forEach(([key, value]) => {
       const nextSegments = [...pathSegments, key];
       if (typeof value === "string") {
-        const prefix = isScss ? "$" : "--";
-        lines.push(`${prefix}${nextSegments.join("-")}: ${value}`);
+        lines.push(`${tokenName(nextSegments.join("-"))}: ${value}`);
         return;
       }
       walk(value, nextSegments);
@@ -155,10 +158,6 @@ const buildCssVariables = (tokenObject, isScss = false) => {
   };
 
   walk(tokenObject);
-
-  if (isScss) {
-    return `${lines.join(";\n")};\n`;
-  }
 
   return `:root {\n  ${lines.join(";\n  ")};\n}\n`;
 };
@@ -205,10 +204,15 @@ const buildColorDiff = (nextColor) => {
 
 const writeColorArtifacts = (tokenObject) => {
   fs.mkdirSync(path.dirname(LAST_SYNC_STATE_PATH), { recursive: true });
-  fs.writeFileSync(LAST_SYNC_STATE_PATH, `${JSON.stringify(tokenObject, null, 2)}\n`);
+  fs.writeFileSync(
+    LAST_SYNC_STATE_PATH,
+    `${JSON.stringify(tokenObject, null, 2)}\n`,
+  );
   fs.writeFileSync(COLOR_TS_PATH, buildColorModuleTs(tokenObject));
-  fs.writeFileSync(GENERATED_SCSS_PATH, buildCssVariables(tokenObject, true));
-  fs.writeFileSync(GENERATED_CSS_PATH, buildCssVariables(tokenObject, false));
+  fs.writeFileSync(
+    GENERATED_CSS_PATH,
+    buildCssVariables({ ...tokenObject, gradient: GRADIENT_TOKENS }),
+  );
 };
 
 const summarizeColorDiff = (diff) => ({
@@ -224,6 +228,10 @@ const summarizeColorDiff = (diff) => ({
 });
 
 module.exports = {
+  GRADIENT_TOKENS,
+  tokenName,
+  runtimeColor,
+  runtimeModule,
   rgbaToHex,
   extractColorTokensFromDisplayDoc,
   buildCssVariables,

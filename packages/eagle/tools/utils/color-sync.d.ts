@@ -29,7 +29,6 @@ export declare function extractColorTokensFromDisplayDoc(
 ): ColorTokenTree;
 export declare function buildCssVariables(
   tokenObject: ColorTokenTree,
-  isScss?: boolean,
 ): string;
 export declare function buildColorDiff(nextColor: ColorTokenTree): ColorDiff;
 export declare function writeColorArtifacts(tokenObject: ColorTokenTree): void;
