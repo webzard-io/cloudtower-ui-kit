@@ -29,69 +29,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -120,69 +120,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -211,69 +211,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -302,69 +302,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -393,69 +393,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -506,69 +506,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -602,69 +602,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -698,69 +698,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -794,69 +794,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -890,69 +890,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -1007,69 +1007,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -1103,69 +1103,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -1199,69 +1199,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -1295,69 +1295,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -1391,69 +1391,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -1508,69 +1508,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -1658,69 +1658,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -1808,69 +1808,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -1958,69 +1958,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -2108,69 +2108,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -2279,69 +2279,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -2429,69 +2429,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }
@@ -2579,69 +2579,69 @@ describe("StatusCapsule h5_css", () => {
         height: 22px;
 
         &.ant-tag.#{$prefix}.off-white {
-          background-color: $fill-neutral-trans-1 !important;
+          background-color: var(--fill-neutral-trans-1) !important;
           &.tag-hover:hover,
           &.__pseudo-states-hover {
-            background-color: $fill-neutral-trans-2 !important;
+            background-color: var(--fill-neutral-trans-2) !important;
           }
         }
         &.ant-tag.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
           }
           &.ant-tag-blue {
-            background-color: $fill-outstanding-light;
+            background-color: var(--fill-outstanding-light);
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-outstanding-light-hover;
+              background-color: rgba(0, 136, 255, 0.16);
             }
           }
           &.ant-tag-red {
-            background-color: $fill-serious-light;
+            background-color: var(--fill-serious-light);
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-serious-light-hover;
+              background-color: rgba(255, 74, 74, 0.16);
             }
           }
           &.ant-tag-yellow {
-            background-color: $fill-notice-light;
+            background-color: var(--fill-notice-light);
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-notice-light-hover;
+              background-color: rgba(255, 187, 0, 0.16);
             }
           }
           &.ant-tag-green {
-            background-color: $fill-positive-light;
+            background-color: var(--fill-positive-light);
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-positive-light-hover;
+              background-color: rgba(30, 201, 127, 0.16);
             }
           }
           &.ant-tag-gray {
-            background-color: $fill-neutral-trans-2;
+            background-color: var(--fill-neutral-trans-2);
             .#{$prefix}-icon:not(.ui-kit-status-capsule-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
             &.tag-hover:hover,
             &.__pseudo-states-hover {
-              background-color: $fill-neutral-trans-3-trans-2-hover;
+              background-color: var(--fill-neutral-trans-3);
             }
           }
         }

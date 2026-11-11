@@ -1,6 +1,10 @@
+import themes from "@src/styles/themes.json";
 import React, { useEffect } from "react";
 import { Preview } from "@storybook/react";
 import "@src/styles/libs/antd.css";
+import "@src/styles/token/color.css";
+import { ConfigProvider } from "@src/core/ConfigProvider";
+import { useUIKitTheme } from "@src/hooks/useUIKitTheme";
 import "@src/styles/index.scss";
 import "@xterm/xterm/css/xterm.css";
 import { initParrotI18n, parrotI18n } from "@cloudtower/parrot";
@@ -67,15 +71,19 @@ initParrotI18n({
 });
 
 const withI18next = (Story, context) => {
-  const { locale } = context.globals;
+  const { locale, theme = "light" } = context.globals;
+  const eagleTheme = theme === "dark" ? "dark" : "light";
+  useUIKitTheme(eagleTheme);
   useEffect(() => {
     parrotI18n.changeLanguage(locale);
   }, [locale]);
 
-  return (
-    <>
+  return eagleTheme === "dark" ? (
+    <ConfigProvider theme="dark">
       <Story />
-    </>
+    </ConfigProvider>
+  ) : (
+    <Story />
   );
 };
 
@@ -116,6 +124,16 @@ const preview: Preview = {
 };
 
 export const globalTypes = {
+  theme: {
+    defaultValue: "light",
+    toolbar: {
+      icon: "circlehollow",
+      items: [
+        { value: "light", title: "Light" },
+        ...Object.keys(themes).map((value) => ({ value, title: value })),
+      ],
+    },
+  },
   locale: {
     name: "Locale",
     description: "Internationalization locale",

@@ -66,7 +66,7 @@ yarn bundlewatch
 
 ### 样式系统
 - **Linaria** (`@linaria/core` 的 `css`) — 零运行时 CSS-in-JS，样式变量名以 `Style` 结尾（如 `ContentStyle`）
-- **SCSS** — 设计 token（颜色在 `src/styles/token/color.scss`），直接作为 SCSS 变量使用
+- **样式 token** — SCSS 和 Linaria 直接使用 `var(--token-name)`，JS 属性使用 `Color`／`Effect`
 - **字体排版** — 使用 `src/core/Typo/index.ts` 预定义的 Linaria 样式，用 `cx` 合并
 - 不要使用 `styled`，不要使用未定义的变量
 

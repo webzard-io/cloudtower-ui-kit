@@ -31,52 +31,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -121,52 +121,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -211,52 +211,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -301,52 +301,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -391,52 +391,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -481,52 +481,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -593,52 +593,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -671,7 +671,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number
                 >
                   1
@@ -690,52 +690,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -768,7 +768,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number
                 >
                   1
@@ -787,52 +787,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -865,7 +865,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number
                 >
                   1
@@ -884,52 +884,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -962,7 +962,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number
                 >
                   1
@@ -981,52 +981,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -1059,7 +1059,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number
                 >
                   1
@@ -1078,52 +1078,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -1156,7 +1156,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number
                 >
                   1
@@ -1196,52 +1196,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -1274,7 +1274,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number,on-tint
                 >
                   1
@@ -1293,52 +1293,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -1371,7 +1371,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number,on-tint
                 >
                   1
@@ -1390,52 +1390,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -1468,7 +1468,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number,on-tint
                 >
                   1
@@ -1487,52 +1487,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -1565,7 +1565,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number,on-tint
                 >
                   1
@@ -1584,52 +1584,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -1662,7 +1662,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number,on-tint
                 >
                   1
@@ -1681,52 +1681,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -1759,7 +1759,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number,on-tint
                 >
                   1
@@ -1799,52 +1799,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -1877,7 +1877,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number,on-tint
                 >
                   1
@@ -1896,52 +1896,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -1974,7 +1974,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number,on-tint
                 >
                   1
@@ -1993,52 +1993,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -2071,7 +2071,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number,on-tint
                 >
                   1
@@ -2090,52 +2090,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -2168,7 +2168,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number,on-tint
                 >
                   1
@@ -2187,52 +2187,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -2265,7 +2265,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number,on-tint
                 >
                   1
@@ -2284,52 +2284,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -2362,7 +2362,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number,on-tint
                 >
                   1
@@ -2402,52 +2402,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -2480,7 +2480,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number
                 >
                   1
@@ -2499,52 +2499,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -2577,7 +2577,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number
                 >
                   1
@@ -2596,52 +2596,52 @@ describe("Legend h5_css", () => {
         align-items: center;
 
         &.ui-kit-status-legend.on-tint {
-          color: $text-neutral-ontint;
+          color: var(--text-neutral-ontint);
         }
         &.tag-hover {
           cursor: pointer;
         }
 
         &.#{$prefix} {
-          color: $text-neutral-primary;
+          color: var(--text-neutral-primary);
           .#{$prefix}-icon {
             margin-right: 6px;
           }
           .#{$prefix}-number {
             margin-left: 8px;
-            color: #2C385299;
+            color: var(--text-neutral-tertiary);
             &.#{$prefix}-number.on-tint {
-              color: $text-neutral-ontint;
+              color: var(--text-neutral-ontint);
             }
           }
           &.eagle-legend-blue {
             .#{$prefix}-icon {
-              background-color: $fill-outstanding-base;
+              background-color: var(--fill-outstanding-base);
             }
           }
           &.eagle-legend-red {
             .#{$prefix}-icon {
-              background-color: $fill-serious-base;
+              background-color: var(--fill-serious-base);
             }
           }
           &.eagle-legend-yellow {
             .#{$prefix}-icon {
-              background-color: $fill-notice-base;
+              background-color: var(--fill-notice-base);
             }
           }
           &.eagle-legend-green {
             .#{$prefix}-icon {
-              background-color: $fill-positive-base;
+              background-color: var(--fill-positive-base);
             }
           }
           &.eagle-legend-gray {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $gray-70;
+              background-color: var(--gray-gray-70);
             }
           }
           &.eagle-legend-purple {
             .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-              background-color: $purple-50;
+              background-color: var(--purple-purple-50);
             }
           }
         }
@@ -2674,7 +2674,7 @@ describe("Legend h5_css", () => {
                 Label
                 <span
                   class=
-                    color: #2C385299;
+                    color: var(--text-neutral-tertiary);
                   ,ui-kit-status-legend-number
                 >
                   1

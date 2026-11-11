@@ -62,11 +62,7 @@ TBD
 
 #### 新增 css 变量
 
-在 src/styles/token 文件夹下， 新增相关 css 变量文件，并且在 src/styles/token.ts 中进行 export
-
-#### 新增 scss 变量
-
-在 src/styles/token 文件夹下。新增相关的 scss 变量文件，并且修改 rollup.config.js 文件， 查找到 color.scss 一行，按照 color 的处理，追加新增的 scss 变量内容。
+在颜色或效果的主题数据源维护 token，并运行 `yarn workspace @cloudtower/eagle generate:theme`。SCSS 和 Linaria 样式使用 `var(--token-name)`，JS 属性使用公开的 `Color`／`Effect`。
 
 ## 建议的 VSCode 配置
 

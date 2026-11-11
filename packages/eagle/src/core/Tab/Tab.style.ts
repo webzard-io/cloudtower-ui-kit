@@ -51,7 +51,7 @@ export const TabMenuWrapper = styled.div`
     max-width: 100%;
     display: flex;
     place-items: center;
-    border-bottom: 1px solid $fills-trans-terdiary-light;
+    border-bottom: 1px solid var(--fill-neutral-trans-3);
 
     .common-tab-bar {
       overflow: hidden;
@@ -72,7 +72,7 @@ export const TabMenuWrapper = styled.div`
           content: "";
           width: 1px;
           height: 24px;
-          background: $strokes-light-trans-3;
+          background: var(--stroke-neutral-trans-3);
           position: absolute;
           left: -6px;
           top: 50%;
@@ -86,7 +86,7 @@ export const TabMenuWrapper = styled.div`
       display: flex;
       place-items: center;
       cursor: pointer;
-      color: $text-neutral-secondary;
+      color: var(--text-neutral-secondary);
       transition:
         color 100ms ease-out,
         background-color 100ms ease-out,
@@ -94,8 +94,8 @@ export const TabMenuWrapper = styled.div`
 
       &:hover {
         padding-left: 16px;
-        color: $text-light-general;
-        background: $fill-outstanding-lighthover;
+        color: var(--text-colorful-outstanding);
+        background: var(--fill-outstanding-lighthover);
       }
 
       & + .tab-item-title {
@@ -118,8 +118,8 @@ export const TabMenuWrapper = styled.div`
 
       &.__selected {
         padding-left: 16px;
-        background: $fills-light-general-general-light;
-        color: $text-light-general;
+        background: rgba(0, 136, 255, 0.1);
+        color: var(--text-colorful-outstanding);
       }
 
       &.__hidden {
@@ -131,8 +131,8 @@ export const TabMenuWrapper = styled.div`
 
 export const TabTitleElStyle = css`
   &.ant-dropdown-open {
-    color: $text-light-general;
-    background: $fills-light-trans-3;
+    color: var(--text-colorful-outstanding);
+    background: var(--fill-neutral-trans-3);
   }
 `;
 
@@ -142,10 +142,8 @@ export const MoreThanTooltipStyle = css`
     min-width: 160px;
     max-width: 400px;
     padding: 6px;
-    background: $white;
-    box-shadow:
-      0px 0px 10px rgba(107, 125, 153, 0.18),
-      0px 12px 40px rgba(45, 58, 86, 0.3);
+    background: var(--fill-neutral-white);
+    box-shadow: var(--effect-shadow-menu-default);
     border-radius: 8px;
     max-height: calc(100vh - 250px);
     overflow: auto;
@@ -161,8 +159,8 @@ export const MoreThanTooltipStyle = css`
 
       &.__selected {
         padding: 6px;
-        background: $fills-light-general-general-light;
-        color: $text-light-general;
+        background: rgba(0, 136, 255, 0.1);
+        color: var(--text-colorful-outstanding);
 
         &${Typo.Label.l1_bold_title} {
           @include Inter(bold !important);
@@ -175,8 +173,8 @@ export const MoreThanTooltipStyle = css`
       }
 
       &.ant-dropdown-menu-item:not(.ant-dropdown-menu-item-disabled):hover {
-        color: $text-light-general;
-        background: $fills-light-trans-3;
+        color: var(--text-colorful-outstanding);
+        background: var(--fill-neutral-trans-3);
       }
 
       &-text {

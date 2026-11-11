@@ -197,5 +197,5 @@ export const SelectSizeStyle = css`
 `;
 
 export const PlaceholderTextStyle = css`
-  color: $gray-a30-10;
+  color: rgba(0, 21, 64, 0.3);
 `;
