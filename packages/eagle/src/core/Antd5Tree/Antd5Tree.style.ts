@@ -19,17 +19,17 @@ export const Antd5TreeStyle = css`
           .${Antd5PrefixCls}-tree-checkbox-indeterminate
         )
         .${Antd5PrefixCls}-tree-checkbox-inner {
-        border-color: $strokes-light-trans-4;
+        border-color: var(--stroke-neutral-trans-4);
       }
 
       &:not(.${Antd5PrefixCls}-tree-checkbox-disabled) {
         &:hover .${Antd5PrefixCls}-tree-checkbox-inner {
-          border-color: $fills-light-general-general;
+          border-color: var(--fill-outstanding-base);
         }
 
         &.${Antd5PrefixCls}-tree-checkbox-checked {
           .${Antd5PrefixCls}-tree-checkbox-inner {
-            background: $fills-light-general-general;
+            background: var(--fill-outstanding-base);
           }
         }
       }
@@ -39,18 +39,18 @@ export const Antd5TreeStyle = css`
         opacity: 0.5;
 
         .${Antd5PrefixCls}-tree-checkbox-inner {
-          background: $fills-light-trans-3;
-          border-color: $strokes-light-trans-4;
+          background: var(--fill-neutral-trans-3);
+          border-color: var(--stroke-neutral-trans-4);
         }
 
         &.${Antd5PrefixCls}-tree-checkbox-checked
           .${Antd5PrefixCls}-tree-checkbox-inner:after {
-          border-color: $text-primary-light;
+          border-color: var(--gray-gray-80);
         }
 
         &.${Antd5PrefixCls}-tree-checkbox-indeterminate
           .${Antd5PrefixCls}-tree-checkbox-inner:after {
-          background: $text-primary-light;
+          background: var(--gray-gray-80);
         }
       }
     }

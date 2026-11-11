@@ -78,7 +78,7 @@ const Control = css`
   .anticon {
     cursor: pointer;
     &:hover {
-      color: $blue;
+      color: #0096ff;
     }
   }
 `;
@@ -95,7 +95,7 @@ const Cell = css`
     width: 2px;
     height: 2px;
     border-radius: 1px;
-    background: $blue;
+    background: #0096ff;
 
     &:not(:last-child) {
       margin-right: 2px;
@@ -104,7 +104,7 @@ const Cell = css`
   .bar {
     width: 9px;
     height: 2px;
-    background: $blue;
+    background: #0096ff;
     border-radius: 2px;
   }
 `;

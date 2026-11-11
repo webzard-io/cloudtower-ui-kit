@@ -19,22 +19,22 @@ const RadioStyle = css`
       top: 3px;
 
       .ant-radio-inner {
-        border-color: $strokes-light-trans-4;
+        border-color: var(--stroke-neutral-trans-4);
       }
 
       &:hover .ant-radio-inner {
-        border-color: $blue-60;
+        border-color: var(--stroke-outstanding-base);
       }
 
       &.ant-radio-checked .ant-radio-inner {
-        border-color: $blue-60;
-        background: $blue-60;
+        border-color: var(--stroke-outstanding-base);
+        background: var(--fill-outstanding-base);
         &::after {
           top: 4px;
           left: 4px;
           width: 6px;
           height: 6px;
-          background: $white;
+          background: var(--fill-neutral-white);
         }
       }
 
@@ -42,19 +42,19 @@ const RadioStyle = css`
         opacity: 0.5;
 
         .ant-radio-inner {
-          border-color: $strokes-light-trans-4;
-          background: $fills-light-trans-3;
+          border-color: var(--stroke-neutral-trans-4);
+          background: var(--fill-neutral-trans-3);
           &::after {
-            background: $text-light-primary;
+            background: var(--text-neutral-primary);
           }
         }
 
         & + span {
-          color: $text-light-primary;
+          color: var(--text-neutral-primary);
           opacity: 0.5;
 
           .radio-description {
-            color: $text-light-primary;
+            color: var(--text-neutral-primary);
           }
         }
       }
@@ -67,7 +67,7 @@ const RadioStyle = css`
         .radio-description {
           margin-bottom: 0;
           white-space: pre-wrap;
-          color: $text-secondary-light;
+          color: var(--text-neutral-tertiary);
         }
       }
     }
@@ -90,11 +90,11 @@ const RadioGroupStyle = css`
 `;
 
 const RadioButtonStyle = css`
-  color: $text-light-primary;
-  border-color: $strokes-light-opaque-3;
+  color: var(--text-neutral-primary);
+  border-color: var(--stroke-neutral-opaque-3);
 
   &:first-child {
-    border-color: $strokes-light-opaque-4;
+    border-color: var(--stroke-neutral-opaque-4);
   }
 
   &.ant-radio-button-wrapper {
@@ -114,48 +114,48 @@ const RadioButtonStyle = css`
   }
 
   &.ant-radio-button-wrapper:not(:first-child)::before {
-    background: $strokes-light-opaque-3;
+    background: var(--stroke-neutral-opaque-3);
   }
 
   &.ant-radio-button-wrapper-checked:not(:first-child)::before {
-    background: $fills-light-general-general;
+    background: var(--fill-outstanding-base);
   }
 
   &.ant-radio-button-wrapper-disabled:not(:first-child)::before {
-    background: $strokes-light-opaque-3;
+    background: var(--stroke-neutral-opaque-3);
     opacity: 0.5;
   }
 
   &.ant-radio-button-wrapper-checked:not(
       [class*=" ant-radio-button-wrapper-disabled"]
     ).ant-radio-button-wrapper:first-child {
-    border-right-color: $fills-light-general-general;
+    border-right-color: var(--fill-outstanding-base);
   }
 
   &.ant-radio-button-wrapper-checked:not(
       .ant-radio-button-wrapper-disabled
     ):first-child {
-    border-color: $fills-light-general-general;
+    border-color: var(--fill-outstanding-base);
   }
 
   &.ant-radio-button-wrapper-checked {
-    background: $fills-light-general-general-light;
+    background: rgba(0, 136, 255, 0.1);
   }
 
   &.ant-radio-button-wrapper-disabled {
-    background: $fills-light-trans-3;
-    border-color: $strokes-light-opaque-3;
+    background: var(--fill-neutral-trans-3);
+    border-color: var(--stroke-neutral-opaque-3);
     opacity: 0.5;
     &:hover {
-      color: $text-light-primary;
-      border-color: $strokes-light-opaque-3;
+      color: var(--text-neutral-primary);
+      border-color: var(--stroke-neutral-opaque-3);
     }
   }
 
   &.ant-radio-button-wrapper-disabled.ant-radio-button-wrapper-checked {
-    color: $text-light-primary;
-    border-color: $strokes-light-opaque-3;
-    background: $fills-light-trans-5;
+    color: var(--text-neutral-primary);
+    border-color: var(--stroke-neutral-opaque-3);
+    background: var(--fill-neutral-trans-5);
   }
 
   & .ant-radio-button-input {

@@ -188,7 +188,7 @@ export const Tab = (props: TabProps) => {
                 {extraSlot && (
                   <span
                     className={css`
-                      background: #acbad399;
+                      background: var(--fill-neutral-trans-5);
                       content: "";
                       height: 100%;
                       margin: 0 6px;

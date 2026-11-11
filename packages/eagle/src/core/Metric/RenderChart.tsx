@@ -1,3 +1,4 @@
+import { Color } from "@src/styles/token/color";
 import { useKitDispatch } from "@src/core/KitStoreProvider";
 import { convertDataStruct } from "@src/core/Metric/metric";
 import MetricActions from "@src/core/Metric/MetricActions";
@@ -29,7 +30,7 @@ import { AxisDomain } from "recharts/types/util/types";
 
 export interface IChartProps<
   TValue extends ValueType = string,
-  TName extends NameType = number
+  TName extends NameType = number,
 > {
   metricName: string;
   yAxisAlign?: "left" | "right";
@@ -97,7 +98,7 @@ const RenderChart = (props: IChartProps) => {
 
   const areaChartData = useMemo(
     () => convertDataStruct(streams.map((stream) => stream.points)),
-    [streams]
+    [streams],
   );
 
   const onLegendClick = useCallback(
@@ -111,7 +112,7 @@ const RenderChart = (props: IChartProps) => {
         return newDeselected.length >= streams!.length ? prev : newDeselected;
       });
     },
-    [onLabelsChange, streams]
+    [onLabelsChange, streams],
   );
 
   const hidePointer: CategoricalChartFunc = useCallback(() => {
@@ -135,14 +136,14 @@ const RenderChart = (props: IChartProps) => {
             visible: true,
             left: chartX,
             text: dayjs(Number(activePayload[0].payload.t)).format(
-              "MM-DD HH:mm:ss"
+              "MM-DD HH:mm:ss",
             ),
             value: activePayload[0].payload.v,
           },
         });
       }
     },
-    [dispatch, syncId]
+    [dispatch, syncId],
   );
 
   if (!streams?.length || streams.every((stream) => !stream.points?.length)) {
@@ -182,7 +183,9 @@ const RenderChart = (props: IChartProps) => {
       </div>
       <ResponsiveContainer height={height}>
         <AreaChart
-          style={{ backgroundColor: "white" }}
+          style={{
+            backgroundColor: Color.text.neutral.ontint,
+          }}
           margin={
             showLegend
               ? { top: 10, left: 10, right: 10, bottom: 0 }
@@ -243,7 +246,7 @@ const RenderChart = (props: IChartProps) => {
                   stroke: item.legend.color,
                   r: 4,
                   strokeWidth: 2,
-                  fill: "white",
+                  fill: Color.text.neutral.ontint,
                 }}
               />
             );

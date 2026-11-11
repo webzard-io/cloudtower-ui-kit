@@ -66,11 +66,15 @@
       },
       {
         "path": "./packages/eagle/dist/style.css",
-        "maxSize": "100 kB"
+        "maxSize": "120 kB"
       },
       {
         "path": "./packages/icons/dist/**/*.svg",
         "maxSize": "6 kB"
+      },
+      {
+        "path": "./packages/eagle/dist/token.css",
+        "maxSize": "30 kB"
       }
     ]
   }

@@ -14,7 +14,7 @@ const FailedLoadStyle = css`
   align-items: center;
 
   .error-text {
-    color: $text-terdiary-light;
+    color: var(--gray-gray-a60-7);
     margin-bottom: 16px;
     font-size: 18px;
   }

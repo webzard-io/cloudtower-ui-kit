@@ -1,5 +1,5 @@
 import { css } from "@linaria/core";
-import { Color } from "@src/styles/token";
+import { Color } from "@src/styles/token/color";
 
 export const ImmersiveDialogStyle = css`
   --modal-to-viewport-margin: 10px;
@@ -70,7 +70,7 @@ export const ImmersiveDialogStyle = css`
     }
 
     .ant-modal-footer {
-      border-top: 1px solid rgba(225, 230, 241, 0.6);
+      border-top: 1px solid var(--stroke-neutral-trans-1);
       height: var(--modal-footer-height);
       padding: 24px 0 60px 0;
     }
@@ -114,7 +114,7 @@ export const CloseIconStyle = css`
   justify-content: center;
 
   &:hover {
-    background-color: $fill-neutral-trans-2;
+    background-color: var(--fill-neutral-trans-2);
     transition: 0.3s ease-out;
   }
 `;
@@ -130,7 +130,7 @@ export const CloseButtonStyle = css`
   }
 `;
 export const TitleStyle = css`
-  color: $gray-120;
+  color: var(--text-neutral-primary);
 `;
 export const FullContentStyle = css`
   &.ant-modal {
@@ -205,7 +205,7 @@ export const FooterButtonRightStyle = css`
   flex-shrink: 0;
 `;
 export const ErrorStyle = css`
-  color: $red-60;
+  color: var(--text-colorful-serious);
   display: flex;
   align-items: center;
   height: 32px;
@@ -220,6 +220,6 @@ export const ErrorTextStyle = css`
 `;
 export const CancelButtonStyle = css`
   &.ant-btn-quiet {
-    --color: #{$text-neutral-secondary};
+    --color: var(--text-neutral-secondary);
   }
 `;

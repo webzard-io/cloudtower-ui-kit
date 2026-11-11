@@ -7,12 +7,12 @@ import React from "react";
 import { DeleteDialogProps } from "./DeleteDialog.type";
 
 const ContentStyle = css`
-  color: $text-light-primary;
+  color: var(--text-neutral-primary);
 `;
 
 const SecondaryDescStyle = css`
   margin-top: 8px;
-  color: $text-light-secondary;
+  color: var(--text-neutral-tertiary);
 `;
 
 export const DeleteDialog: React.FC<DeleteDialogProps> = (props) => {

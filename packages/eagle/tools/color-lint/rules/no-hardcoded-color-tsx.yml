@@ -1,0 +1,107 @@
+id: no-hardcoded-color-tsx
+language: tsx
+files:
+  - src/**/*.tsx
+ignores:
+  - src/core/Metric/mockMetric.ts
+  - src/styles/token/**
+  - src/**/__test__/**
+  - src/**/__tests__/**
+  - src/**/*.stories.*
+  - src/generated/**
+  - src/__tests__/**
+  - '**/*.d.ts'
+rule:
+  any:
+    - all:
+        - kind: string_fragment
+        - not:
+            inside:
+              kind: template_string
+              inside:
+                kind: call_expression
+        - any:
+            - all:
+                - regex: >-
+                    (?i)(?:^#[0-9a-f]{3,8}$|(?:^|[\s,(])#[0-9a-f]{3,8}\b|\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|device-cmyk)\(\s*[-+.0-9]|\bcolor\(\s*(?:srgb(?:-linear)?|display-p3|a98-rgb|prophoto-rgb|rec2020|xyz(?:-d50|-d65)?)\s+[-+.0-9])
+                - any:
+                    - inside:
+                        stopBy: end
+                        kind: pair
+                        has:
+                          field: key
+                          regex: >-
+                            ^['"]?(?:[a-zA-Z]*[Cc]olors?|--[\w-]+|color|background(?:Color|Image)?|fill|stroke|stopColor|floodColor|lightingColor|outline(?:Color)?|border(?:Top|Right|Bottom|Left|Inline|Block)?(?:Color)?|boxShadow|textShadow|caretColor|accentColor|columnRule(?:Color)?|textDecoration(?:Color)?|textEmphasisColor)['"]?$
+                    - inside:
+                        stopBy: end
+                        kind: jsx_attribute
+                        has:
+                          kind: property_identifier
+                          regex: >-
+                            ^(?:[a-zA-Z]*[Cc]olors?|--[\w-]+|color|background(?:Color|Image)?|fill|stroke|stopColor|floodColor|lightingColor|outline(?:Color)?|border(?:Top|Right|Bottom|Left|Inline|Block)?(?:Color)?|boxShadow|textShadow|caretColor|accentColor|columnRule(?:Color)?|textDecoration(?:Color)?|textEmphasisColor)$
+                    - inside:
+                        stopBy: end
+                        kind: variable_declarator
+                        has:
+                          field: name
+                          regex: (?i)(color|palette|shadow)
+                    - matches: style-interpolation
+                    - regex: '(?i)\{[^}]*\b(?:[a-zA-Z]*[Cc]olors?|--[\w-]+|color|background|border|shadow)\s*:'
+            - all:
+                - regex: >-
+                    (?i)^(aliceblue|antiquewhite|aqua|aquamarine|azure|beige|bisque|black|blanchedalmond|blue|blueviolet|brown|burlywood|cadetblue|chartreuse|chocolate|coral|cornflowerblue|cornsilk|crimson|cyan|darkblue|darkcyan|darkgoldenrod|darkgray|darkgreen|darkgrey|darkkhaki|darkmagenta|darkolivegreen|darkorange|darkorchid|darkred|darksalmon|darkseagreen|darkslateblue|darkslategray|darkslategrey|darkturquoise|darkviolet|deeppink|deepskyblue|dimgray|dimgrey|dodgerblue|firebrick|floralwhite|forestgreen|fuchsia|gainsboro|ghostwhite|gold|goldenrod|gray|green|greenyellow|grey|honeydew|hotpink|indianred|indigo|ivory|khaki|lavender|lavenderblush|lawngreen|lemonchiffon|lightblue|lightcoral|lightcyan|lightgoldenrodyellow|lightgray|lightgreen|lightgrey|lightpink|lightsalmon|lightseagreen|lightskyblue|lightslategray|lightslategrey|lightsteelblue|lightyellow|lime|limegreen|linen|magenta|maroon|mediumaquamarine|mediumblue|mediumorchid|mediumpurple|mediumseagreen|mediumslateblue|mediumspringgreen|mediumturquoise|mediumvioletred|midnightblue|mintcream|mistyrose|moccasin|navajowhite|navy|oldlace|olive|olivedrab|orange|orangered|orchid|palegoldenrod|palegreen|paleturquoise|palevioletred|papayawhip|peachpuff|peru|pink|plum|powderblue|purple|rebeccapurple|red|rosybrown|royalblue|saddlebrown|salmon|sandybrown|seagreen|seashell|sienna|silver|skyblue|slateblue|slategray|slategrey|snow|springgreen|steelblue|tan|teal|thistle|tomato|turquoise|violet|wheat|white|whitesmoke|yellow|yellowgreen)$
+                - any:
+                    - matches: style-interpolation
+                    - all:
+                        - inside:
+                            stopBy: end
+                            kind: pair
+                            has:
+                              field: key
+                              regex: >-
+                                ^['"]?(?:[a-zA-Z]*[Cc]olors?|--[\w-]+|color|background(?:Color|Image)?|fill|stroke|stopColor|floodColor|lightingColor|outline(?:Color)?|border(?:Top|Right|Bottom|Left|Inline|Block)?(?:Color)?|boxShadow|textShadow|caretColor|accentColor|columnRule(?:Color)?|textDecoration(?:Color)?|textEmphasisColor)['"]?$
+                        - inside:
+                            stopBy: end
+                            kind: jsx_attribute
+                            has:
+                              kind: property_identifier
+                              regex: ^style$
+                    - all:
+                        - inside:
+                            stopBy: end
+                            kind: jsx_attribute
+                            has:
+                              kind: property_identifier
+                              regex: >-
+                                ^(?:[a-zA-Z]*[Cc]olors?|--[\w-]+|color|background(?:Color|Image)?|fill|stroke|stopColor|floodColor|lightingColor|outline(?:Color)?|border(?:Top|Right|Bottom|Left|Inline|Block)?(?:Color)?|boxShadow|textShadow|caretColor|accentColor|columnRule(?:Color)?|textDecoration(?:Color)?|textEmphasisColor)$
+                        - inside:
+                            stopBy:
+                              any:
+                                - kind: jsx_opening_element
+                                - kind: jsx_self_closing_element
+                            any:
+                              - kind: jsx_opening_element
+                              - kind: jsx_self_closing_element
+                            has:
+                              field: name
+                              regex: ^[a-z][a-z0-9-]*$
+    - all:
+        - kind: import_specifier
+        - regex: '^(?:css|styled)\s+as\s+'
+        - inside:
+            stopBy: end
+            kind: import_statement
+            regex: '@linaria/(?:core|react)'
+message: Use color variables; keep Linaria css/styled import names so Stylelint can inspect templates.
+severity: warning
+utils:
+  style-interpolation:
+    inside:
+      stopBy: end
+      kind: template_substitution
+      inside:
+        stopBy: end
+        kind: call_expression
+        has:
+          field: function
+          regex: '^(?:css|styled)(?:\b|\.)'

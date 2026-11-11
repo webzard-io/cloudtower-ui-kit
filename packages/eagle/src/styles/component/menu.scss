@@ -1,6 +1,6 @@
 .ant-dropdown,
 .ant-dropdown-menu-submenu {
-  background: $fills-opaque-primary-light;
+  background: var(--fill-neutral-white);
   border-radius: 3px;
   min-width: 130px;
   box-sizing: content-box !important;
@@ -36,11 +36,11 @@
       @include Inter();
       font-size: 14px;
       line-height: 22px;
-      color: $text-primary-light;
+      color: var(--gray-gray-80);
 
       &:not(.ant-dropdown-menu-item-disabled):hover {
-        background-color: rgba($blue-60, 0.1);
-        color: $blue-80;
+        background-color: rgba(#0080ff, 0.1);
+        color: var(--blue-blue-60);
       }
 
       &.ant-dropdown-menu-item-disabled {
@@ -48,15 +48,15 @@
       }
 
       &.ant-dropdown-menu-item-danger {
-        color: $text-light-serious;
+        color: var(--text-colorful-serious);
         &:hover {
-          background-color: rgba($text-light-serious, 0.1);
-          color: $text-light-serious;
+          background-color: rgba(#f0483e, 0.1);
+          color: var(--text-colorful-serious);
         }
       }
 
       &.item-danger-disabled {
-        color: $text-light-serious;
+        color: var(--text-colorful-serious);
         opacity: 0.5;
       }
     }

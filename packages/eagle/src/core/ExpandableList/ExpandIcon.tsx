@@ -22,7 +22,7 @@ const Style = css`
   border-radius: 6px;
   padding: 4px;
   &:hover {
-    background-color: $fill-outstanding-light;
+    background-color: var(--fill-outstanding-light);
     svg {
       path {
         fill: blue;

@@ -9,21 +9,15 @@ import {
   XmarkCloseCircleFill16OntintLightIcon,
 } from "@cloudtower/icons-react";
 import { cx } from "@linaria/core";
+import { useEagleTheme } from "@src/core/ConfigProvider";
 import { SearchInput } from "@src/core";
 import Icon from "@src/core/Icon";
 import { Show } from "@src/coreX";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
-import { Color } from "@src/styles/token";
 import type { FitAddon } from "@xterm/addon-fit";
-import type { ISearchOptions, SearchAddon } from "@xterm/addon-search";
+import type { SearchAddon } from "@xterm/addon-search";
 import type { Terminal } from "@xterm/xterm";
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import {
   CustomContentOverlay,
@@ -33,6 +27,7 @@ import {
   LogViewInnerContaier,
   SearchInputStyle,
 } from "./LogView.style";
+import { getLogViewTheme, getLogViewSearchOptions } from "./LogView.theme";
 import type { EventSourceOptions, LogViewProps } from "./LogView.types";
 import {
   copySelectLines,
@@ -189,6 +184,8 @@ export const LogView: React.FC<LogViewProps> = ({
   searchInputProps,
 }) => {
   const { t } = useParrotTranslation();
+  const theme = useEagleTheme();
+  const lastSearch = useRef<string>("");
 
   const terminalContainerRef = useRef<HTMLDivElement | null>(null);
   const terminalRef = useRef<{
@@ -207,6 +204,20 @@ export const LogView: React.FC<LogViewProps> = ({
   const [eventSourceError, setEventSourceError] = useState<
     Error | Event | null
   >(null);
+
+  useEffect(() => {
+    if (!readyTerminal) return;
+    readyTerminal.options.theme = getLogViewTheme(terminalContainerRef.current ?? undefined);
+    if (lastSearch.current) {
+      const viewport = readyTerminal.buffer.active.viewportY;
+      terminalRef.current.searchAddon?.clearDecorations();
+      terminalRef.current.searchAddon?.findNext(lastSearch.current, {
+        ...getLogViewSearchOptions(terminalContainerRef.current ?? undefined),
+        incremental: true,
+      });
+      readyTerminal.scrollToLine(viewport);
+    }
+  }, [readyTerminal, theme]);
 
   // Initialize terminal
   useEffect(() => {
@@ -229,11 +240,7 @@ export const LogView: React.FC<LogViewProps> = ({
           fontSize: 12,
           scrollOnUserInput: false,
           lineHeight: 1.5,
-          theme: {
-            background: "#00122E",
-            foreground: "#FFFFFF",
-            cursor: "#FFFFFF",
-          },
+          theme: getLogViewTheme(terminalContainerRef.current ?? undefined),
           rows,
           convertEol: true,
           cursorBlink: false,
@@ -399,28 +406,19 @@ export const LogView: React.FC<LogViewProps> = ({
     }
   }, [readyTerminal, content, eventSource]);
 
-  const { searchNext, searchPrevious } = useMemo(() => {
-    const searchOptions: ISearchOptions = {
-      caseSensitive: false,
-      decorations: {
-        activeMatchColorOverviewRuler: "#000000",
-        matchOverviewRuler: "#000000",
-        activeMatchBackground: Color.chart.yellow["yellow-5"],
-        matchBackground: Color.chart.yellow["yellow-1"],
-      },
-    };
-
-    return {
-      searchNext: (search: string) => {
-        terminalRef.current?.searchAddon?.findNext(search || "", searchOptions);
-      },
-      searchPrevious: (search: string) => {
-        terminalRef.current?.searchAddon?.findPrevious(
-          search || "",
-          searchOptions,
-        );
-      },
-    };
+  const searchNext = useCallback((search: string) => {
+    lastSearch.current = search || "";
+    terminalRef.current?.searchAddon?.findNext(
+      lastSearch.current,
+      getLogViewSearchOptions(terminalContainerRef.current ?? undefined),
+    );
+  }, []);
+  const searchPrevious = useCallback((search: string) => {
+    lastSearch.current = search || "";
+    terminalRef.current?.searchAddon?.findPrevious(
+      lastSearch.current,
+      getLogViewSearchOptions(terminalContainerRef.current ?? undefined),
+    );
   }, []);
 
   const { reconnectFnRef: eventSourceReconnectFnRef } = useLogViewEventSource({

@@ -19,7 +19,7 @@ export const PaginationStyle = css`
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  color: $text-light-secondary;
+  color: var(--text-neutral-tertiary);
   font-size: 12px;
   line-height: 24px;
 
@@ -35,8 +35,8 @@ export const PaginationStyle = css`
     transition: all 0.3s ease;
 
     &:hover {
-      background: $fills-interaction-light-general-hover;
-      color: $text-light-general;
+      background: var(--fill-neutral-trans-3);
+      color: var(--text-colorful-outstanding);
     }
     .icon-inner {
       margin-left: 4px;
@@ -46,7 +46,7 @@ export const PaginationStyle = css`
   .pagination-right {
     display: flex;
     align-items: center;
-    color: $blue-60;
+    color: var(--text-colorful-outstanding);
     font-weight: bold;
     .icon-inner {
       margin-left: 4px;
@@ -55,7 +55,7 @@ export const PaginationStyle = css`
     .next-btn {
       padding: 0 8px;
       > span {
-        color: $text-light-general;
+        color: var(--text-colorful-outstanding);
       }
     }
 

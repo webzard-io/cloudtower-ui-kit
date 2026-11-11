@@ -7,12 +7,11 @@ import path from "path";
 
 const VariableSassPath = path.resolve(
   __dirname,
-  "../src/styles/common/variables.scss",
+  "../src/styles/common/variables.scss"
 );
-const ColorSassPath = path.resolve(__dirname, "../src/styles/token/color.scss");
 const AnimationPath = path.resolve(
   __dirname,
-  "../src/styles/common/animation.scss",
+  "../src/styles/common/animation.scss"
 );
 const config: StorybookConfig = {
   framework: "@storybook/react-vite",
@@ -44,12 +43,7 @@ const config: StorybookConfig = {
     autodocs: true,
   },
   async viteFinal(config) {
-    const varData = fs.readFileSync(VariableSassPath, {
-      encoding: "utf-8",
-    });
-    const colorData = fs.readFileSync(ColorSassPath, {
-      encoding: "utf-8",
-    });
+    const varData = `@import "${VariableSassPath}";`;
     const animationData = fs.readFileSync(AnimationPath, {
       encoding: "utf-8",
     });
@@ -88,8 +82,6 @@ const config: StorybookConfig = {
                 data: [
                   varData,
                   `\n`,
-                  colorData,
-                  `\n`,
                   animationData,
                   `${selector} { ${cssText} }`,
                 ].join("\n"),
@@ -106,7 +98,7 @@ const config: StorybookConfig = {
           ...((config.resolve?.alias as Record<string, string>) || {}),
           "@cloudtower/parrot": path.resolve(
             __dirname,
-            "../../parrot/src/index.ts",
+            "../../parrot/src/index.ts"
           ),
           "@src": path.resolve(__dirname, "../src/"),
           "@stories": path.resolve(__dirname, "../stories/"),
