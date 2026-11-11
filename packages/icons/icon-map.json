@@ -12873,5 +12873,19 @@
     "svgFileName": "xmark-clear-fill-16-quaternary.svg",
     "hash": "a9c8c34d52a4c6f1b77d100ea6a30a09",
     "lastUpdated": "2026-11-10T05:44:55.942Z"
+  },
+  "20223:58": {
+    "componentSetName": "Icon / vm.re-encrypt",
+    "name": "Size=16, Fill=Gradient - Blue",
+    "svgFileName": "vm-re-encrypt-16-gradient-blue.svg",
+    "hash": "a6c7a97837a59a786555d324c179c9cb",
+    "lastUpdated": "2026-11-11T02:16:55.743Z"
+  },
+  "20224:65": {
+    "componentSetName": "Icon / vm.re-encrypt",
+    "name": "Size=24, Fill=Gradient - Blue",
+    "svgFileName": "vm-re-encrypt-24-gradient-blue.svg",
+    "hash": "3130cf9ffc442e7555934393b644b26a",
+    "lastUpdated": "2026-11-11T02:16:55.743Z"
   }
 }
