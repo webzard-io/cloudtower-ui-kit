@@ -33,7 +33,7 @@ const Wrapper = forwardRef<
 });
 const CardWrapper = styled(Wrapper)`
   border-radius: 8px;
-  background-color: white;
+  background-color: var(--fill-neutral-white);
   &.hoverable {
     cursor: pointer;
 

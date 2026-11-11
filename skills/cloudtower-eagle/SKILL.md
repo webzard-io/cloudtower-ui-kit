@@ -40,6 +40,7 @@ import "@cloudtower/eagle/dist/style.css";
 2. 读 TypeScript 类型定义：`node_modules/@cloudtower/eagle/dist/src/<layer>/<组件名>/<component>.type.d.ts`
 
 如果 node_modules 路径不存在（pnpm/Yarn PnP）：
+
 ```bash
 find . -path "*/@cloudtower/eagle/docs/llms.txt" 2>/dev/null
 ```
@@ -68,23 +69,15 @@ find . -path "*/@cloudtower/eagle/docs/llms.txt" 2>/dev/null
 
 ### 颜色
 
-1. 先判断目标文件上下文，再决定输出格式。
-2. 如果当前文件已经有 `$...` 写法、依赖全局 Sass 变量、或者外部项目通过 `@cloudtower/eagle/dist/variables.scss` 注入样式变量，优先使用 Sass 变量。
-3. 这里要把 `dist/variables.scss` 当作外部项目真实消费的 Sass 变量接口；它是旧 `variables.scss` 与最新 `token/color.scss` 的并集，不要把源码 `src/**/variables.scss` 当作唯一外部事实。
-4. 如果当前文件是 TS/Linaria、已经在用 `Color`、或者并不依赖全局 Sass 变量，优先使用 `Color.*`。
-5. `dist/token.css` 只用来校验 Figma token 名和 CSS 变量形式，不作为首选输出格式。
-6. 不要先猜旧变量名，先按 Figma token 名去查现有导出与 `dist` 产物。
+1. 对外使用 `Color.*` / `Effect.*` 的运行时引用，不再推荐 Sass 颜色变量；`dist/variables.scss` 已移除。
+2. 旧 Sass 接入先按 [迁移 skill](../migrate-eagle-theme/SKILL.md) 盘点构建注入、变量及颜色运算，再改造。
+3. CSS/SCSS 引用需由构建使用实际依赖版本转换并验证声明，不手写版本号，也不导入 Eagle 私有源码。
+4. 按语义和实际取值选择 token；无法确认的旧别名或必须使用具体颜色的场景列入迁移报告。
 
-**示例 1：Sass 上下文**
-
-输入：Figma `Form / Tip` 组件，目标文件里已经有 `$text-light-secondary` 这类写法  
-输出：
-- 颜色优先使用 `$fill-serious-light`、`$text-colorful-serious`、`$text-colorful-outstanding`
-- 字体优先使用 `Typo.Label.l4_regular`
-
-**示例 2：TS/Linaria 上下文**
+**示例：TS/Linaria 上下文**
 
 输入：Figma `Form / Tip` 组件，目标文件已经在用 `Color.*`  
 输出：
+
 - 颜色优先使用 `Color.fill.serious.light`、`Color.text.colorful.serious`、`Color.text.colorful.outstanding`
 - 字体仍然优先使用 `Typo.Label.l4_regular`

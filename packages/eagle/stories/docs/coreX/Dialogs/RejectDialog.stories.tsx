@@ -235,10 +235,10 @@ export const AllReject = () => {
 };
 
 const BeforeDescription = css`
-  background: $fill-neutral-trans-2;
+  background: var(--fill-neutral-trans-2);
   padding: 8px;
   border-radius: 6px;
-  color: $gray-a60-8;
+  color: var(--text-neutral-tertiary);
   margin-bottom: 16px;
 `;
 

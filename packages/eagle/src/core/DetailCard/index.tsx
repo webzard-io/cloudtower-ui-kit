@@ -8,21 +8,21 @@ const CardWrapper = styled.div`
 
   .card-title {
     font-size: 16px;
-    color: $text-secondary-light;
+    color: var(--text-neutral-tertiary);
     font-weight: 700;
     line-height: 32px;
   }
   .card-body {
     padding: 24px;
     border-radius: 8px;
-    background: $fills-light-white;
+    background: var(--fill-neutral-white);
   }
 
   .empty {
     font-weight: 700;
     font-size: 14px;
     line-height: 22px;
-    color: $text-light-tertiary;
+    color: rgba(0, 21, 64, 0.3);
     text-align: center;
   }
 `;

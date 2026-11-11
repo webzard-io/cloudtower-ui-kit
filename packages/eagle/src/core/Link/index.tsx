@@ -1,6 +1,6 @@
 import { css } from "@linaria/core";
 import Button from "@src/core/Button";
-import { Color } from "@src/styles/token";
+import { Color } from "@src/styles/token/color";
 import cs from "classnames";
 import React from "react";
 

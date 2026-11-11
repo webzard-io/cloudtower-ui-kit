@@ -5,19 +5,19 @@ import React from "react";
 import { IBreadcrumbProps } from "./breadcrumb.type";
 
 export const BreadWrapper = styled.div`
-  color: $text-terdiary-light;
+  color: var(--gray-gray-a60-7);
   margin-bottom: 4px;
 
   .breadcrumb-link {
-    color: $text-terdiary-light;
+    color: var(--gray-gray-a60-7);
     cursor: pointer;
     transition: color 160ms ease;
 
     &:hover {
-      color: $blue-60;
+      color: var(--text-colorful-outstanding);
     }
     &:active {
-      color: $blue-80;
+      color: var(--blue-blue-60);
     }
   }
 `;
