@@ -34,7 +34,7 @@ describe("ui unit test - card", () => {
           0px 6px 22px rgba(129, 138, 153, 0.0335534);
       ,card-wrapper,class-string,
         border-radius: 8px;
-        background-color: white;
+        background-color: var(--fill-neutral-white);
         &.hoverable {
           cursor: pointer;
 
@@ -49,7 +49,7 @@ describe("ui unit test - card", () => {
         >
           <div
             class=card-title,
-        color: $text-primary-light;
+        color: var(--gray-gray-80);
         padding: 7px 12px;
         display: flex;
         justify-content: space-between;
@@ -60,10 +60,10 @@ describe("ui unit test - card", () => {
 
           .title-wrapper {
             cursor: pointer;
-            color: $text-light-primary;
+            color: var(--text-neutral-primary);
 
             &.is-open {
-              color: $text-primary-light;
+              color: var(--gray-gray-80);
               font-weight: 600;
 
               .collapse-arrow {
@@ -85,7 +85,7 @@ describe("ui unit test - card", () => {
           flex-grow: 1;
           font-size: 12px;
           line-height: 18px;
-          color: $text-primary-light;
+          color: var(--gray-gray-80);
           font-weight: 700;
         }
 

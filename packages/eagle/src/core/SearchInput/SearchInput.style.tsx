@@ -1,5 +1,5 @@
 import { css } from "@linaria/core";
-import { Color } from "@src/styles/token";
+import { Color } from "@src/styles/token/color";
 
 export const SearchInputStyles = css`
   .ant-input-prefix {
@@ -11,8 +11,8 @@ export const SearchInputStyles = css`
 `;
 
 export const CountTextStyles = css`
-  color: $gray-120;
-  border-right: 1px solid $gray-a60-5;
+  color: var(--text-neutral-primary);
+  border-right: 1px solid var(--gray-gray-a60-5);
   margin-right: 8px;
   padding-right: 8px;
 `;

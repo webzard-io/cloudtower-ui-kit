@@ -1,3 +1,4 @@
+import { Color } from "@src/styles/token/color";
 import { css } from "@linaria/core";
 import cs from "classnames";
 import React, { useLayoutEffect, useRef } from "react";
@@ -5,7 +6,7 @@ import React, { useLayoutEffect, useRef } from "react";
 import { ICircleProgressProps } from "./stepProgress.type";
 
 const CircleProgressStyle = css`
-  --color: white;
+  --color: var(--text-neutral-ontint);
   height: 14px;
   width: 14px;
   border-radius: 50%;
@@ -30,7 +31,7 @@ const CircleProgressStyle = css`
     left: 0;
     top: 0;
     border-radius: 50%;
-    background: linear-gradient(to right, var(--color) 50%, white 50%);
+    background: linear-gradient(to right, var(--color) 50%, var(--white-white) 50%);
     transform: rotate(180deg);
   }
 
@@ -42,7 +43,7 @@ const CircleProgressStyle = css`
     top: 0;
     margin-left: 50%;
     transform-origin: left;
-    background: white;
+    background: var(--fill-neutral-white);
     transform: rotate(0deg);
   }
 `;
@@ -50,7 +51,7 @@ const CircleProgressStyle = css`
 export const CircleProgress: React.FC<ICircleProgressProps> = (props) => {
   const {
     percent,
-    color = "#0080ff",
+    color = Color.fill.outstanding.base,
     className,
     "data-testid": dataTestId,
   } = props;
@@ -68,7 +69,7 @@ export const CircleProgress: React.FC<ICircleProgressProps> = (props) => {
 
     if (percent <= 0.5) {
       deg = 180 * (percent / 0.5);
-      childStyle.background = "white";
+      childStyle.background = Color.fill.neutral.white;
     } else {
       deg = 180 * ((percent - 0.5) / 0.5);
       childStyle.background = color;

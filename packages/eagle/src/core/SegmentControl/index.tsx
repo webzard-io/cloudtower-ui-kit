@@ -39,13 +39,13 @@ const MediumSegment = css`
 `;
 
 const ColorSegment = css`
-  background-color: $fill-neutral-trans-2;
+  background-color: var(--fill-neutral-trans-2);
   &.${Antd5PrefixCls}-segmented
     .${Antd5PrefixCls}-segmented-item:hover:not(.${Antd5PrefixCls}-segmented-item-selected):not(
       .${Antd5PrefixCls}-segmented-item-disabled
     ) {
-    background-color: $fill-neutral-light-white;
-    color: $text-neutral-secondary-light;
+    background-color: var(--fill-neutral-lightwhite);
+    color: rgba(44, 56, 82, 0.75);
   }
   // on animate remove hover bg color
   &.${Antd5PrefixCls}-segmented

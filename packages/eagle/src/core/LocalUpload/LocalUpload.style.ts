@@ -18,13 +18,13 @@ export const UploadWrapper = styled.div`
     }
   }
   .upload-label {
-    color: $text-light-secondary;
+    color: var(--text-neutral-tertiary);
     word-break: break-word;
     margin-bottom: 4px;
     display: block;
   }
   .upload-description {
-    color: $text-light-secondary;
+    color: var(--text-neutral-tertiary);
     word-break: break-word;
   }
   .upload-button {
@@ -56,8 +56,8 @@ export const UploadWrapper = styled.div`
     height: 138px;
     padding: 32px 16px;
     border-radius: 4px;
-    border: 1px dashed $strokes-light-trans-4;
-    background: $fills-light-trans-1;
+    border: 1px dashed var(--stroke-neutral-trans-4);
+    background: var(--fill-neutral-trans-1);
 
     display: flex;
     flex-direction: column;
@@ -69,18 +69,18 @@ export const UploadWrapper = styled.div`
     .upload-drag-text {
       text-align: center;
       .upload-drag-link {
-        color: $text-light-general;
+        color: var(--text-colorful-outstanding);
       }
       .upload-drag-link:hover {
-        color: $link-outstandinghover;
+        color: var(--link-outstandinghover);
       }
       .upload-drag-link:active {
-        color: $link-outstandingactive;
+        color: var(--link-outstandingactive);
       }
     }
 
     .ant-upload-drag-container {
-      color: $text-light-primary;
+      color: var(--text-neutral-primary);
     }
 
     &.has-file {
@@ -95,7 +95,7 @@ export const UploadWrapper = styled.div`
           height: 24px;
         }
         .ant-btn.ant-btn-link[disabled] {
-          color: $text-light-primary;
+          color: var(--text-neutral-primary);
           opacity: 1;
         }
       }
@@ -119,8 +119,8 @@ export const UploadWrapper = styled.div`
       }
     }
     &.file-error.single {
-      border-color: $strokes-light-serious;
-      background: $fills-element-light-container-serious;
+      border-color: var(--stroke-serious-base);
+      background: rgba(255, 74, 74, 0.1);
     }
     &.file-validating.single {
       cursor: not-allowed;
@@ -152,8 +152,8 @@ export const UploadWrapper = styled.div`
 
     &:not(.ant-upload-disabled):not(.file-error):hover,
     &.ant-upload-drag-hover:not(.ant-upload-disabled):not(.file-error) {
-      border-color: $strokes-light-outstanding;
-      background: $fills-light-general-general-light;
+      border-color: var(--stroke-outstanding-base);
+      background: rgba(0, 136, 255, 0.1);
     }
     &.ant-upload-disabled {
       opacity: 0.5;
@@ -172,12 +172,12 @@ export const UploadWrapper = styled.div`
 
   /* 解析中的文件名颜色，两个类名是为了盖过 Typo 自带的 color */
   .file-content.validating {
-    color: $text-light-tertiary;
+    color: rgba(0, 21, 64, 0.3);
   }
 
   .upload-error {
     margin-top: 8px;
-    color: $text-light-serious;
+    color: var(--text-colorful-serious);
   }
 
   .upload-file-list {
@@ -188,7 +188,7 @@ export const UploadWrapper = styled.div`
     gap: 8px;
     .upload-file-item {
       .upload-file-error {
-        color: $text-light-serious;
+        color: var(--text-colorful-serious);
       }
     }
   }
@@ -198,17 +198,17 @@ export const FileInfoWrapperStyle = css`
   display: flex;
   width: 100%;
   flex-direction: row;
-  background: $fills-light-trans-1;
+  background: var(--fill-neutral-trans-1);
   padding: 7px 8px;
   border-radius: 4px;
   gap: 4px;
   align-items: flex-start;
-  color: $text-light-primary;
+  color: var(--text-neutral-primary);
   line-height: 18px;
 
   .file-size,
   .file-size-unit {
-    color: $text-neutral-tertiary;
+    color: var(--text-neutral-tertiary);
   }
   .file-content {
     flex-grow: 1;
@@ -228,10 +228,10 @@ export const FileInfoWrapperStyle = css`
     margin-left: auto;
   }
   .upload-file-error {
-    color: $text-light-serious;
+    color: var(--text-colorful-serious);
   }
   &.file-error-wrapper {
-    background: $fills-element-light-container-serious;
+    background: rgba(255, 74, 74, 0.1);
   }
   &.disabled {
     opacity: 0.5;

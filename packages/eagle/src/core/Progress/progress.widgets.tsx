@@ -12,7 +12,7 @@ import {
   TitleAreaProps,
 } from "@src/core/Progress/progress.type";
 import Tag from "@src/core/Tag";
-import { Color } from "@src/styles/token";
+import { Color } from "@src/styles/token/color";
 import { splitMap } from "@src/utils/constants";
 import React from "react";
 

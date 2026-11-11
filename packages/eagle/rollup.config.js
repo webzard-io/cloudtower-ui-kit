@@ -8,7 +8,6 @@ import postcss from "postcss";
 import atImport from "postcss-import";
 import url from "postcss-url";
 import { defineConfig } from "rollup";
-import copy from "rollup-plugin-copy";
 import esbuild from "rollup-plugin-esbuild";
 import nodePolyfills from "rollup-plugin-polyfill-node";
 import scss from "rollup-plugin-scss";
@@ -80,24 +79,6 @@ const config = defineConfig([
         emitFile: true,
         filename: "stats1.html",
       }),
-      copy({
-        targets: [
-          {
-            src: "src/styles/common/variables.scss",
-            dest: "dist",
-            transform: async (content) => {
-              const variablesContent = [
-                content,
-                fs.readFileSync(
-                  path.join(__dirname, "src/styles/token/color.scss"),
-                  "utf-8",
-                ),
-              ].join("\n");
-              return variablesContent;
-            },
-          },
-        ],
-      }),
     ],
     output: [
       {
@@ -137,7 +118,9 @@ const config = defineConfig([
           ]),
         failOnError: true,
         prefix: [
+          "/* eagle-antd-start */",
           '@import "./src/styles/libs/antd";',
+          "/* eagle-antd-end */",
           '@import "./src/styles/index.scss";',
           '@import "./src/styles/reset";',
           xtermStyle,
