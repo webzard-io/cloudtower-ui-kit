@@ -28,6 +28,9 @@
     "sync:color": "node tools/sync-figma-color.js --write",
     "check:typography": "node tools/sync-figma-typography.js --check",
     "sync:typography": "node tools/sync-figma-typography.js --write",
+    "generate:theme": "node tools/generate-theme.js",
+    "prebuild": "yarn generate:theme",
+    "check:theme": "yarn generate:theme && git diff --exit-code -- src/styles/token src/styles/common/variables.scss",
     "test:styles": "playwright test --config playwright.config.cjs",
     "test:styles:update": "yarn test:styles --update-snapshots"
   },
