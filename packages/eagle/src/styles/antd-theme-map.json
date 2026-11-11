@@ -1,0 +1,32 @@
+[
+  {
+    "source": "fill-outstanding-base",
+    "antd4": "primary-color"
+  },
+  {
+    "source": "link-outstandingnormal",
+    "antd4": "link-color"
+  },
+  {
+    "source": "fill-outstanding-base",
+    "antd4": "info-color"
+  },
+  {
+    "source": "pagebackground-primary",
+    "antd4": "body-background"
+  },
+  {
+    "source": "fill-neutral-white",
+    "antd4": "component-background",
+    "antd5": "colorBgContainer"
+  },
+  {
+    "source": "fill-neutral-white",
+    "antd4": "popover-background",
+    "antd5": "colorBgElevated"
+  },
+  {
+    "source": "pagebackground-primary",
+    "antd5": "colorBgBase"
+  }
+]
