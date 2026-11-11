@@ -1,1 +1,7 @@
 generated
+# Deterministic theme generator output.
+packages/eagle/src/styles/token/color.ts
+packages/eagle/src/styles/token/effect.ts
+packages/eagle/src/styles/token/antd.ts
+
+packages/eagle/docs/theme-tokens.md

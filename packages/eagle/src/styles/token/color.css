@@ -1,4 +1,4 @@
-:root {
+:root, :root[data-theme="light"] {
   --text-neutral-primary: #00122E;
   --text-neutral-secondary: #2C3852BF;
   --text-neutral-tertiary: #2C385299;
@@ -226,4 +226,26 @@
   --purple-purple-a20-50: #7E41FF33;
   --purple-purple-a16-50: #7E41FF29;
   --purple-purple-a10-50: #7E41FF1A;
+  --gradient-loading: linear-gradient(90deg, #0080ff 0%, #9ecfff 50%, #0080ff 100%);
+  --gradient-light-blue: linear-gradient(180deg,rgba(0, 136, 255, 0.2) 0%,rgba(0, 136, 255, 0.6) 100%);
+  --gradient-dark-blue: radial-gradient(133.15% 133.15% at 4.69% 7.03%, #5BCAFF 0%, #06F 100%);
+  --effect-shadow-dashboardCard-normal: 0px 0px 16px 0px rgba(107,125,153,0.08), 0px 0px 2.003px 0px rgba(107,125,153,0.15);
+  --effect-shadow-dashboardCard-hoverFloat: 0px 0px 4px -2px rgba(10,37,85,0.18), 0px 8px 16px 0px rgba(10,37,85,0.18);
+  --effect-shadow-listItem-hover: 0px 0px 4px 0px rgba(235,239,245,0.6), 0px 8px 16px 0px rgba(129,138,153,0.18);
+  --effect-shadow-listItem-selected: 0px 1px 2px 0px rgba(184,192,204,0.6);
+  --effect-shadow-menu-default: 0px 0px 10px 0px rgba(107,125,153,0.18), 0px 12px 40px 0px rgba(45,58,86,0.3);
+  --effect-shadow-menu-above: 0px 0px 10px 0px rgba(107,125,153,0.18), 0px -12px 40px 0px rgba(45,58,86,0.3);
+  --effect-shadow-button-cta: 0px 1px 2px 0px rgba(44,56,82,0.18);
+  --effect-shadow-button-ordinary: 0px 1px 2px -1px rgba(44,56,82,0.18);
+  --effect-shadow-previewPanel-default: 0px 0px 20px 0px rgba(107,125,153,0.18), 0px 25px 80px 0px rgba(45,58,86,0.3);
+  --effect-shadow-previewPanel-above: 0px 0px 20px 0px rgba(107,125,153,0.18), 0px -25px 80px 0px rgba(45,58,86,0.3);
+  --effect-shadow-tooltip: 0px 1px 4px 0px rgba(29,50,108,0.6);
+  --effect-glow-toast-blue: 0px 2px 12px -4px rgba(0,128,255,0.6);
+  --effect-glow-toast-red: 0px 2px 12px -4px rgba(240,72,62,0.6);
+  --effect-glow-toast-green: 0px 2px 12px -4px rgba(0,186,93,0.6);
+  --effect-glow-toast-yellow: 0px 2px 12px -4px rgba(254,160,8,0.6);
+  --effect-outline-hover: 0px 0px 0px 4px rgba(225,230,241,0.6);
+  --effect-outline-activeFocus: 0px 0px 0px 4px rgba(0,136,255,0.16);
+  --effect-outline-error: 0px 0px 0px 4px rgba(255,74,74,0.16);
+  --effect-outline-notice: 0px 0px 0px 4px rgba(254,160,8,0.16);
 }
