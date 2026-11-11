@@ -12,22 +12,22 @@ export const StepsStyle = css`
   .#{$item}.#{$item}-active {
     flex-shrink: 0 !important;
     .step-item-prefix-container {
-      color: $text-colorful-outstanding;
+      color: var(--text-colorful-outstanding);
     }
     .#{$item}-container .#{$item}-content .#{$item}-title {
-      color: $text-colorful-outstanding;
+      color: var(--text-colorful-outstanding);
       font-weight: normal;
     }
   }
   .#{$item}.#{$item}-finish {
     .#{$item}-container .#{$item}-content .#{$item}-title,
     & .#{$item}-container:hover .#{$item}-content .#{$item}-title {
-      color: $text-neutral-tertiary;
+      color: var(--text-neutral-tertiary);
     }
   }
   .#{$item}.#{$item}-wait {
     .#{$item}-container .#{$item}-content .#{$item}-title {
-      color: $text-neutral-primary;
+      color: var(--text-neutral-primary);
     }
   }
   .step-item-text {
@@ -42,7 +42,7 @@ export const StepsStyle = css`
 
 export const HorizontalStyle = css`
   $item: ant-steps-item;
-  @mixin rightTriangle($color: $fills-light-trans-1) {
+  @mixin rightTriangle($color: var(--fill-neutral-trans-1)) {
     content: "";
     width: 0;
     height: 0;
@@ -113,7 +113,7 @@ export const HorizontalStyle = css`
       }
       &:not(&:first-child) {
         &::before {
-          @include rightTriangle(#fff);
+          @include rightTriangle(var(--fill-neutral-white));
           left: 0;
         }
       }
@@ -121,10 +121,10 @@ export const HorizontalStyle = css`
     .#{$item}-active {
       max-width: calc(100% - var(--item-min-width) * 2);
       .#{$item}-container {
-        background-color: $fills-light-general-general-light;
+        background-color: rgba(0, 136, 255, 0.1);
       }
       &::after {
-        border-left-color: $fills-light-general-general-light !important;
+        border-left-color: rgba(0, 136, 255, 0.1) !important;
       }
     }
     .#{$item}-finish {
@@ -135,7 +135,7 @@ export const HorizontalStyle = css`
     .#{$item}-finish {
       min-width: var(--item-min-width);
       .#{$item}-container {
-        background-color: $fills-light-trans-1;
+        background-color: var(--fill-neutral-trans-1);
       }
     }
   }
@@ -155,15 +155,15 @@ export const VerticalStyle = css`
 
     .preview-mode:not(.#{$item}-active) .#{$item}-container {
       &:hover {
-        background-color: $fill-neutral-trans-2;
+        background-color: var(--fill-neutral-trans-2);
       }
       .#{$item}-title {
-        color: $text-neutral-primary !important;
+        color: var(--text-neutral-primary) !important;
       }
     }
     .#{$item}:not(.#{$item}-active):not(.#{$item}-disabled)
       .#{$item}-container:hover {
-      background-color: $fill-neutral-trans-2;
+      background-color: var(--fill-neutral-trans-2);
     }
     .#{$item}-container {
       padding: 0 8px;
@@ -184,7 +184,7 @@ export const VerticalStyle = css`
     }
     .#{$item}-active {
       .ant-steps-item-container {
-        background: rgba($blue-60, 0.1);
+        background: rgba(#0080ff, 0.1);
       }
     }
   }
@@ -201,7 +201,7 @@ export const HorizontalStepContentStyle = css`
     align-items: center;
     width: 18px;
     height: 18px;
-    color: $gray-a75-8;
+    color: rgba(44, 56, 82, 0.75);
     justify-content: center;
   }
 `;
@@ -218,7 +218,7 @@ export const VerticalStepContentStyle = css`
     align-items: center;
     min-width: 20px;
     min-height: 20px;
-    color: $gray-a75-8;
+    color: rgba(44, 56, 82, 0.75);
     justify-content: center;
   }
 `;

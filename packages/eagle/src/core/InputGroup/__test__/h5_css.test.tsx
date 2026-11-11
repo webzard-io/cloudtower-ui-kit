@@ -99,8 +99,8 @@ describe("InputGroup h5_css", () => {
             }
             &[data-size="large"] {
             }
-            color: $text-primary-light;
-            border-color: $strokes-light-trans-2;
+            color: var(--gray-gray-80);
+            border-color: var(--stroke-neutral-trans-2);
             transition:
               border 160ms ease 8ms,
               box-shadow 160ms ease 8ms;
@@ -117,19 +117,19 @@ describe("InputGroup h5_css", () => {
             }
 
             .ant-select-arrow-loading {
-              color: $fills-light-general-general;
+              color: var(--fill-outstanding-base);
             }
 
             &:not(.ant-select-disabled) {
               &:hover .ant-select-selector,
               &.__pseudo-states-hover .ant-select-selector {
-                border-color: $strokes-light-trans-4;
-                box-shadow: $shadow-light-hover;
+                border-color: var(--stroke-neutral-trans-4);
+                box-shadow: var(--effect-outline-hover);
               }
 
               &:hover .ant-select-arrow,
               &.__pseudo-states-hover .ant-select-arrow {
-                color: $fills-light-general-general;
+                color: var(--fill-outstanding-base);
               }
 
               &:active,
@@ -139,8 +139,8 @@ describe("InputGroup h5_css", () => {
               &.__pseudo-states-active,
               &.__pseudo-states-focus {
                 .ant-select-selector {
-                  border-color: $fills-light-general-general;
-                  box-shadow: $shadow-light-active;
+                  border-color: var(--fill-outstanding-base);
+                  box-shadow: var(--effect-outline-activeFocus);
                 }
               }
 
@@ -150,19 +150,19 @@ describe("InputGroup h5_css", () => {
             }
 
             &.ant-select-disabled .ant-select-selector {
-              background: $fills-light-trans-3;
-              border-color: $strokes-light-trans-3;
+              background: var(--fill-neutral-trans-3);
+              border-color: var(--stroke-neutral-trans-3);
               cursor: "not-allowed";
             }
           }
           &.select-error:not(.ant-select-disabled) {
             .ant-select-selector {
-              border-color: $fills-light-serious-serious !important;
+              border-color: var(--fill-serious-base) !important;
             }
 
             &:hover .ant-select-arrow,
             &.__pseudo-states-hover .ant-select-arrow {
-              color: $text-light-super;
+              color: var(--text-neutral-super);
             }
 
             &:active,
@@ -172,8 +172,8 @@ describe("InputGroup h5_css", () => {
             &.__pseudo-states-focus,
             &.__pseudo-states-active {
               .ant-select-selector {
-                border-color: $fills-light-general-general;
-                box-shadow: $shadow-light-error;
+                border-color: var(--fill-outstanding-base);
+                box-shadow: var(--effect-outline-error);
               }
             }
 
@@ -248,9 +248,9 @@ describe("InputGroup h5_css", () => {
         &.ant-input {
           padding: 5px 12px;
           line-height: 20px;
-          color: $text-primary-light;
+          color: var(--gray-gray-80);
           border-radius: 6px;
-          border-color: $strokes-light-trans-3;
+          border-color: var(--stroke-neutral-trans-3);
           transition:
             height 240ms ease 8ms,
             border 160ms ease 8ms,
@@ -271,8 +271,8 @@ describe("InputGroup h5_css", () => {
         &.ant-input-number:not([disabled]) {
           &:hover,
           &.__pseudo-states-hover {
-            border-color: $strokes-light-trans-4;
-            box-shadow: $shadow-light-hover;
+            border-color: var(--stroke-neutral-trans-4);
+            box-shadow: var(--effect-outline-hover);
             z-index: $input-hover-index;
           }
 
@@ -280,8 +280,8 @@ describe("InputGroup h5_css", () => {
           &:focus,
           &.__pseudo-states-active,
           &.__pseudo-states-focus {
-            border-color: $blue;
-            box-shadow: $shadow-light-active;
+            border-color: #0096ff;
+            box-shadow: var(--effect-outline-activeFocus);
             z-index: $input-hover-index;
           }
         }
@@ -289,21 +289,21 @@ describe("InputGroup h5_css", () => {
         &.ant-input.error:not([disabled]),
         &.ant-picker.error:not([disabled]),
         &.ant-input-number.error:not([disabled]) {
-          border-color: $red;
-          color: $red;
+          border-color: #e75a3a;
+          color: #e75a3a;
 
           &:hover,
           &.__pseudo-states-hover {
-            border-color: $red;
-            box-shadow: $shadow-light-hover;
+            border-color: #e75a3a;
+            box-shadow: var(--effect-outline-hover);
           }
 
           &:active,
           &:focus,
           &.__pseudo-states-active,
           &.__pseudo-states-focus {
-            border-color: $red;
-            box-shadow: $shadow-light-error;
+            border-color: #e75a3a;
+            box-shadow: var(--effect-outline-error);
           }
         }
 
@@ -311,17 +311,17 @@ describe("InputGroup h5_css", () => {
         &.ant-input.ant-input-disabled,
         &.ant-input-number[disabled],
         &.ant-input-number.ant-input-number-disabled {
-          background: $fills-trans-terdiary-light;
-          color: $text-light-tertiary;
-          border-color: $strokes-light-trans-3;
+          background: var(--fill-neutral-trans-3);
+          color: rgba(0, 21, 64, 0.3);
+          border-color: var(--stroke-neutral-trans-3);
         }
 
         &.ant-input-affix-wrapper {
           padding: 5px 12px;
           border-radius: 6px;
-          border-color: $strokes-light-trans-3;
+          border-color: var(--stroke-neutral-trans-3);
           line-height: 20px;
-          color: $text-primary-light;
+          color: var(--gray-gray-80);
           transition:
             height 240ms ease 8ms,
             border 160ms ease 8ms,
@@ -329,7 +329,7 @@ describe("InputGroup h5_css", () => {
 
           .ant-input-suffix,
           .ant-input-prefix {
-            color: $text-secondary-light;
+            color: var(--text-neutral-tertiary);
           }
         }
 
@@ -346,8 +346,8 @@ describe("InputGroup h5_css", () => {
         &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
           &:hover,
           &.__pseudo-states-hover {
-            border-color: $strokes-light-trans-4;
-            box-shadow: $shadow-light-hover;
+            border-color: var(--stroke-neutral-trans-4);
+            box-shadow: var(--effect-outline-hover);
           }
 
           &:active,
@@ -355,21 +355,21 @@ describe("InputGroup h5_css", () => {
           &.ant-input-affix-wrapper-focused,
           &.__pseudo-states-active,
           &.__pseudo-states-focus {
-            border-color: $blue;
-            box-shadow: $shadow-light-active;
+            border-color: #0096ff;
+            box-shadow: var(--effect-outline-activeFocus);
           }
         }
 
         &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
-          border-color: $red;
+          border-color: #e75a3a;
           > .ant-input {
-            color: $red;
+            color: #e75a3a;
           }
 
           &:hover,
           &.__pseudo-states-hover {
-            border-color: $red;
-            box-shadow: $shadow-light-hover;
+            border-color: #e75a3a;
+            box-shadow: var(--effect-outline-hover);
           }
 
           &:active,
@@ -377,15 +377,15 @@ describe("InputGroup h5_css", () => {
           &.ant-input-affix-wrapper-focused,
           &.__pseudo-states-active,
           &.__pseudo-states-focus {
-            border-color: $red;
-            box-shadow: $shadow-light-error;
+            border-color: #e75a3a;
+            box-shadow: var(--effect-outline-error);
           }
         }
 
         &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
-          background: $fills-trans-terdiary-light;
-          color: $text-light-tertiary;
-          border-color: $strokes-light-trans-3;
+          background: var(--fill-neutral-trans-3);
+          color: rgba(0, 21, 64, 0.3);
+          border-color: var(--stroke-neutral-trans-3);
         }
 
         @at-root {

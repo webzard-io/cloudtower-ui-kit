@@ -31,7 +31,7 @@ export const AntdIntStyled = styled(AntdInputNumber)<{
     align-items: center;
     margin-left: 4px;
     padding: 5px 12px 5px 0;
-    color: rgba(44, 56, 82, 0.6);
+    color: var(--text-neutral-tertiary);
   }
 
   .ant-input-number-input-wrap::before {
@@ -41,7 +41,7 @@ export const AntdIntStyled = styled(AntdInputNumber)<{
     align-items: center;
     margin-right: 4px;
     cursor: auto;
-    color: rgba(44, 56, 82, 0.6);
+    color: var(--text-neutral-tertiary);
   }
 
   .ant-input-group.ant-input-group-compact > & {
@@ -57,8 +57,8 @@ export const AntdIntStyled = styled(AntdInputNumber)<{
     &:active,
     &.ant-input-number-focused {
       &.ant-input-number {
-        border-color: $blue;
-        box-shadow: $shadow-light-active;
+        border-color: #0096ff;
+        box-shadow: var(--effect-outline-activeFocus);
         z-index: $input-hover-index;
       }
     }
@@ -66,8 +66,8 @@ export const AntdIntStyled = styled(AntdInputNumber)<{
       &:hover,
       &.ant-input-number-focused {
         &.ant-input-number {
-          border-color: $red;
-          box-shadow: $shadow-light-error;
+          border-color: #e75a3a;
+          box-shadow: var(--effect-outline-error);
         }
       }
     }

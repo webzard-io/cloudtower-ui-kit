@@ -9,7 +9,7 @@ export const Hide = css`
 
 export const DoubleRowOptionStyleWrapper = css`
   .bottom {
-    color: $text-neutral-secondary;
+    color: var(--text-neutral-secondary);
   }
   .left {
     min-width: 0;
@@ -21,7 +21,7 @@ export const CascaderDefaultOptionLabel = css`
   flex-direction: row;
   justify-content: space-between;
   .label {
-    color: $text-neutral-tertiary;
+    color: var(--text-neutral-tertiary);
     font-weight: 400;
   }
 `;
@@ -40,7 +40,7 @@ export const CascaderDefaultHeaderSearch = css`
     border-radius: 0px;
     box-shadow: unset;
     border: 0;
-    border-bottom: 1px solid $gray-30;
+    border-bottom: 1px solid var(--stroke-neutral-opaque-2);
   }
 `;
 
@@ -79,17 +79,17 @@ export const CascaderDefaultHeader = css`
 
   font-weight: 400;
   box-sizing: border-box;
-  color: $text-neutral-secondary;
+  color: var(--text-neutral-secondary);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid $gray-30;
+  border-bottom: 1px solid var(--stroke-neutral-opaque-2);
   gap: 4px;
 `;
 
 export const CascaderDropdown = css`
-  box-shadow: $shadow-menu-light-default;
+  box-shadow: var(--effect-shadow-menu-default);
   border-radius: 8px;
   padding: 0px;
 
@@ -102,7 +102,7 @@ export const CascaderDropdown = css`
     li {
       min-width: 296px;
       padding: 4px 4px 4px 8px;
-      color: $text-neutral-primary;
+      color: var(--text-neutral-primary);
       margin-bottom: 2px;
       .icon-wrapper {
         vertical-align: middle;
@@ -114,21 +114,21 @@ export const CascaderDropdown = css`
         font-weight: 400;
       }
       &:active {
-        background: $fill-outstanding-light-active;
+        background: var(--fill-outstanding-lightactive);
       }
       .icon-wrapper svg path {
-        fill: $blue-60;
+        fill: var(--fill-outstanding-base);
       }
     }
     li:hover {
-      background: $fill-neutral-trans-2;
+      background: var(--fill-neutral-trans-2);
       font-weight: 400;
       .icon-wrapper svg path {
-        fill: $blue-60;
+        fill: var(--fill-outstanding-base);
       }
     }
     li:active {
-      background: $fill-neutral-trans-3-trans-2-hover;
+      background: var(--fill-neutral-trans-3);
     }
   }
 

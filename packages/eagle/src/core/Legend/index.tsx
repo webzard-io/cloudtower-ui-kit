@@ -4,7 +4,7 @@ import { styled } from "@linaria/react";
 import Icon from "@src/core/Icon";
 import { Typo } from "@src/core/Typo";
 import OverflowTooltip from "@src/coreX/OverflowTooltip";
-import { Color } from "@src/styles/token";
+import { Color } from "@src/styles/token/color";
 import cs from "classnames";
 import React from "react";
 
@@ -29,14 +29,14 @@ const LegendStyle = css`
   align-items: center;
 
   &.ui-kit-status-legend.on-tint {
-    color: $text-neutral-ontint;
+    color: var(--text-neutral-ontint);
   }
   &.tag-hover {
     cursor: pointer;
   }
 
   &.#{$prefix} {
-    color: $text-neutral-primary;
+    color: var(--text-neutral-primary);
     .#{$prefix}-icon {
       margin-right: 6px;
     }
@@ -44,37 +44,37 @@ const LegendStyle = css`
       margin-left: 8px;
       color: ${Color.text.neutral.tertiary};
       &.#{$prefix}-number.on-tint {
-        color: $text-neutral-ontint;
+        color: var(--text-neutral-ontint);
       }
     }
     &.eagle-legend-blue {
       .#{$prefix}-icon {
-        background-color: $fill-outstanding-base;
+        background-color: var(--fill-outstanding-base);
       }
     }
     &.eagle-legend-red {
       .#{$prefix}-icon {
-        background-color: $fill-serious-base;
+        background-color: var(--fill-serious-base);
       }
     }
     &.eagle-legend-yellow {
       .#{$prefix}-icon {
-        background-color: $fill-notice-base;
+        background-color: var(--fill-notice-base);
       }
     }
     &.eagle-legend-green {
       .#{$prefix}-icon {
-        background-color: $fill-positive-base;
+        background-color: var(--fill-positive-base);
       }
     }
     &.eagle-legend-gray {
       .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-        background-color: $gray-70;
+        background-color: var(--gray-gray-70);
       }
     }
     &.eagle-legend-purple {
       .#{$prefix}-icon:not(.ui-kit-status-legend-icon-loading) {
-        background-color: $purple-50;
+        background-color: var(--purple-purple-50);
       }
     }
   }

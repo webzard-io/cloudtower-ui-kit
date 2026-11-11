@@ -12,13 +12,13 @@ export const KubeConfigWrapperStyle = css`
   height: 100%;
 `;
 export const KubeConfigTitleStyle = css`
-  color: $gray-120;
+  color: var(--text-neutral-primary);
   font-size: 32px !important;
   margin-bottom: 16px;
 `;
 export const KubeConfigTipStyle = css`
   margin-bottom: 32px;
-  color: $gray-120;
+  color: var(--text-neutral-primary);
 `;
 export const KubeConfigContentStyle = css`
   font-family:
@@ -32,8 +32,8 @@ export const KubeConfigContentStyle = css`
   min-height: 0;
   flex: 1;
   padding: 16px;
-  background-color: $gray-80;
-  color: $white;
+  background-color: var(--gray-gray-80);
+  color: var(--text-neutral-ontint);
   overflow: auto;
   max-width: 100%;
   min-height: 0;

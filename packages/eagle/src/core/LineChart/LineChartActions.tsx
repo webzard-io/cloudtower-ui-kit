@@ -12,7 +12,7 @@ const actionStyle = css`
 
 const actionStyleLabel = css`
   font-size: 12px;
-  color: $text-neutral-primary;
+  color: var(--text-neutral-primary);
 `;
 
 const LineChartActions: React.FC<{

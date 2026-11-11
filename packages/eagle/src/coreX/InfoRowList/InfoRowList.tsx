@@ -46,7 +46,7 @@ const ContentWrapper = styled.div`
 `;
 
 const NullText = styled.div`
-  color: $text-light-tertiary;
+  color: rgba(0, 21, 64, 0.3);
 `;
 
 export const InfoRowList = React.forwardRef<HTMLDivElement, InfoListProps>(

@@ -1,0 +1,4 @@
+ruleDirs:
+  - tools/color-lint/rules
+testConfigs:
+  - testDir: __test__/color-lint

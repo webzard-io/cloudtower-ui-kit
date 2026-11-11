@@ -20,7 +20,7 @@ const FormItemStyle = css`
       min-height: 32px;
       height: auto;
       font-size: 13px;
-      color: rgba(44, 56, 82, 0.6);
+      color: var(--text-neutral-tertiary);
       white-space: normal;
     }
   }
@@ -42,7 +42,7 @@ const FormItemStyle = css`
 
   .ant-form-item-extra {
     font-size: 12px;
-    color: rgba(44, 56, 82, 0.6);
+    color: var(--text-neutral-tertiary);
     min-height: 0px;
   }
 `;

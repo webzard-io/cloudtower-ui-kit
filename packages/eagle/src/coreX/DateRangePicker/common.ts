@@ -80,8 +80,7 @@ export function getClassNameForDateBlock(
 ) {
   const className: string[] = ["date", Typo.Label.l1_regular];
 
-  const today = dayjs(dayjs().format("YYYY-MM-DD"), "YYY-MM-DD");
-  if (today.diff(date, "day") === 0) {
+  if (date.isSame(dayjs(), "day")) {
     className.push("today");
   }
 

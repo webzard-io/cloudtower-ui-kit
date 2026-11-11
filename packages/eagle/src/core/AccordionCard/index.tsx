@@ -8,7 +8,7 @@ import DropdownTransition from "../../coreX/DropdownTransition";
 import { IAccordionCardProps } from "./accordionCard.type";
 
 const Card = styled.div`
-  border: 1px solid $gray-40;
+  border: 1px solid var(--gray-gray-40);
   border-radius: 4px;
 
   & + & {
@@ -16,16 +16,16 @@ const Card = styled.div`
   }
 
   &:hover {
-    border-color: $blue-60;
+    border-color: var(--stroke-outstanding-base);
 
     > header {
-      background: rgba($blue-60, 0.1);
+      background: rgba(#0080ff, 0.1);
     }
   }
 
   &.active {
     header {
-      border-bottom: 1px solid $gray-40;
+      border-bottom: 1px solid var(--gray-gray-40);
     }
   }
 

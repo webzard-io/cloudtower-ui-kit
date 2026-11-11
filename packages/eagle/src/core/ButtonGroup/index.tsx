@@ -13,11 +13,11 @@ const ButtonGroupContainer = styled.div`
 
   & > .ant-btn {
     &.ant-btn-ordinary-onTint:not(.ant-btn-dangerous) {
-      --color: #{$text-light-general};
+      --color: var(--text-colorful-outstanding);
 
       &[disabled],
       &:hover[disabled] {
-        --color: #{$text-light-general};
+        --color: var(--text-colorful-outstanding);
       }
     }
   }

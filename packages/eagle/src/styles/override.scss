@@ -54,11 +54,11 @@
 
 .ant-picker {
   &.ant-picker-disabled {
-    background: $fills-trans-terdiary-light;
-    border-color: $strokes-light-trans-2;
+    background: var(--fill-neutral-trans-3);
+    border-color: var(--stroke-neutral-trans-2);
   }
   &.error:not(.ant-picker-disabled) {
-    border-color: $red;
+    border-color: #e75a3a;
   }
 }
 
@@ -103,18 +103,18 @@
         display: flex;
         align-items: center;
         .anticon-exclamation-circle {
-          color: $red-60;
+          color: var(--text-colorful-serious);
           margin-right: 5px;
         }
         .modal-error {
           margin-right: 12px;
           font-size: 13px;
           line-height: 20px;
-          color: $red-60;
+          color: var(--text-colorful-serious);
           text-align: left;
         }
         .prev-step {
-          color: $blue-60;
+          color: var(--text-colorful-outstanding);
           cursor: pointer;
           margin-right: 16px;
           flex-shrink: 0;
@@ -156,7 +156,7 @@
   }
 
   .form-field-title {
-    color: $gray-80;
+    color: var(--gray-gray-80);
     font-weight: bold;
     padding-bottom: 6px;
     border-bottom: 1px solid rgba(213, 219, 227, 0.6);
@@ -179,7 +179,7 @@
     border: none;
 
     .ant-modal-title {
-      color: $gray-120;
+      color: var(--text-neutral-primary);
       font-size: 32px;
       line-height: 40px;
       font-weight: 700;
@@ -199,7 +199,7 @@
   }
 
   .ant-modal-footer {
-    background: $fills-trans-primary-light;
+    background: var(--fill-neutral-trans-1);
     padding: 15px 0;
   }
 }
@@ -323,11 +323,11 @@ $footer-height: 64px;
   .ant-select-selector {
     pointer-events: none;
     border-color: #d9d9d9 !important;
-    background: $gray-40;
+    background: var(--gray-gray-40);
 
     .ant-select-selection-item {
       pointer-events: auto;
-      background: $white;
+      background: var(--fill-neutral-white);
     }
     .ant-select-selection-search input {
       display: none;
@@ -355,18 +355,18 @@ $footer-height: 64px;
     height: 26px;
     margin-right: 16px;
     padding: 0px;
-    color: $text-secondary-light;
+    color: var(--text-neutral-tertiary);
 
     &:hover {
-      color: $blue-60;
+      color: var(--text-colorful-outstanding);
     }
   }
 
   .ant-tabs-tab-active {
-    color: $blue-60 !important;
+    color: var(--text-colorful-outstanding) !important;
   }
   &:before {
-    border-bottom: 1px solid rgba(211, 218, 235, 0.6) !important;
+    border-bottom: 1px solid var(--stroke-neutral-trans-2) !important;
   }
 }
 
@@ -375,7 +375,7 @@ $footer-height: 64px;
 }
 
 .ant-input:focus {
-  border-color: $blue-60;
+  border-color: var(--stroke-outstanding-base);
 }
 
 .vertical-align-middle {
@@ -384,7 +384,7 @@ $footer-height: 64px;
 
 // FIXME: remove later should be in tower/ui only
 .dashed-border-bottom {
-  border-bottom: 1px dashed $strokes-translucent-2-light;
+  border-bottom: 1px dashed var(--gray-gray-a60-7);
 }
 
 .ant-upload-drag {
@@ -493,7 +493,7 @@ $footer-height: 64px;
     position: initial;
     margin-left: 8px;
     .ant-alert-close-text {
-      color: $text-light-general;
+      color: var(--text-colorful-outstanding);
       line-height: 18px;
     }
   }
@@ -502,41 +502,41 @@ $footer-height: 64px;
 .ant-alert-warning {
   background: rgba(255, 187, 0, 0.1);
   .ant-alert-message {
-    color: $fills-light-notice-notice-dark;
+    color: var(--fill-notice-dark);
   }
 }
 
 .ant-alert-error {
   background: rgba(255, 74, 74, 0.1);
   .ant-alert-message {
-    color: $text-light-serious;
+    color: var(--text-colorful-serious);
   }
 }
 
 .ant-alert-success {
   background: rgba(30, 201, 127, 0.1);
   .ant-alert-message {
-    color: $fills-light-positive-positive-dark;
+    color: var(--fill-positive-dark);
   }
 }
 
 .ant-alert-info {
   background: rgba(0, 136, 255, 0.1);
   .ant-alert-message {
-    color: $fills-light-general-general-dark;
+    color: var(--fill-outstanding-dark);
   }
 }
 
 .ant-alert-info.action:not(.alert-normal) {
   .ant-alert-message {
-    color: $text-light-primary;
+    color: var(--text-neutral-primary);
   }
 }
 
 .alert-normal {
-  background: rgba(225, 230, 241, 0.6);
+  background: var(--stroke-neutral-trans-1);
   .ant-alert-message {
-    color: $text-light-secondary;
+    color: var(--text-neutral-tertiary);
   }
 }
 
@@ -591,10 +591,10 @@ $footer-height: 64px;
   }
 
   .ant-select-item-option {
-    color: $text-light-primary;
+    color: var(--text-neutral-primary);
   }
   .ant-select-item-option-disabled {
-    background-color: $fills-element-light-container-general;
+    background-color: var(--fill-neutral-trans-2);
     opacity: 0.5;
   }
 }
@@ -607,16 +607,16 @@ $footer-height: 64px;
   min-width: 18px;
   right: 4px;
   top: 4px;
-  box-shadow: 0px 1px 2px rgba(184, 192, 204, 0.6);
+  box-shadow: var(--effect-shadow-listItem-selected);
   border-radius: 40px;
-  color: #ffffff;
+  color: var(--text-neutral-ontint);
   padding: 0 5px;
   font-size: 12px;
   line-height: 18px;
   height: 18px;
 }
 
-@include Autofill;
+@include Autofill(var(--fill-neutral-white));
 
 td .ant-btn-link {
   border: 0;
@@ -709,13 +709,13 @@ td .ant-btn-link {
 }
 
 .push-button-cta-box {
-  box-shadow: 0px 1px 2px 0px rgba(44, 56, 82, 0.18);
+  box-shadow: var(--effect-shadow-button-cta);
 }
 .push-button-cta-filter {
   filter: drop-shadow(0px 1px 2px 0px rgba(44, 56, 82, 0.18));
 }
 .push-button-ordinary-box {
-  box-shadow: 0px 1px 2px -1px rgba(44, 56, 82, 0.18);
+  box-shadow: var(--effect-shadow-button-ordinary);
 }
 .push-button-ordinary-filter {
   filter: drop-shadow(0px 1px 2px -1px rgba(44, 56, 82, 0.18));
@@ -747,19 +747,19 @@ td .ant-btn-link {
 }
 
 .dropdown-button-for-select-hover-box {
-  box-shadow: 0px 0px 0px 4px rgba(225, 230, 241, 0.6);
+  box-shadow: var(--effect-outline-hover);
 }
 .dropdown-button-for-select-hover-filter {
-  filter: drop-shadow(0px 0px 0px 4px rgba(225, 230, 241, 0.6));
+  filter: drop-shadow(0px 0px 0px 4px var(--stroke-neutral-trans-1));
 }
 .dropdown-button-for-select-active-and-focus-box {
-  box-shadow: 0px 0px 0px 4px rgba(0, 136, 255, 0.16);
+  box-shadow: var(--effect-outline-activeFocus);
 }
 .dropdown-button-for-select-active-and-focus-filter {
   filter: drop-shadow(0px 0px 0px 4px rgba(0, 136, 255, 0.16));
 }
 .dropdown-button-for-select-active-and-focus-error-box {
-  box-shadow: 0px 0px 0px 4px rgba(255, 74, 74, 0.16);
+  box-shadow: var(--effect-outline-error);
 }
 .dropdown-button-for-select-active-and-focus-error-filter {
   filter: drop-shadow(0px 0px 0px 4px rgba(255, 74, 74, 0.16));
@@ -777,59 +777,59 @@ td .ant-btn-link {
     display: none;
   }
   &.ant-tag-red {
-    color: $fills-light-serious-serious;
-    background-color: $fills-light-serious-serious-light;
+    color: var(--fill-serious-base);
+    background-color: rgba(255, 74, 74, 0.1);
     &.tag-hover:hover,
     &.__pseudo-states-hover {
-      background-color: $fills-interaction-light-serious-hover;
+      background-color: rgba(255, 74, 74, 0.16);
     }
   }
   &.ant-tag-red-ontint {
-    color: $fills-light-serious-serious-bright;
-    background-color: $fills-light-serious-serious-light-active;
+    color: var(--fill-serious-bright);
+    background-color: var(--fill-serious-lightactive);
   }
   &.ant-tag-yellow {
-    color: $fills-light-notice-notice-dark;
-    background-color: $fills-light-notice-notice-light;
+    color: var(--fill-notice-dark);
+    background-color: rgba(255, 187, 0, 0.1);
     &.tag-hover:hover,
     &.__pseudo-states-hover {
-      background-color: $fills-light-notice-notice-light-hover;
+      background-color: rgba(255, 187, 0, 0.16);
     }
   }
   &.ant-tag-green {
-    color: $fills-light-positive-positive-dark;
-    background-color: $fills-light-positive-positive-light;
+    color: var(--fill-positive-dark);
+    background-color: rgba(30, 201, 127, 0.1);
     &.tag-hover:hover,
     &.__pseudo-states-hover {
-      background-color: $fills-light-positive-positive-light-hover;
+      background-color: rgba(30, 201, 127, 0.16);
     }
   }
   &.ant-tag-green-ontint {
-    color: $fills-light-positive-positive-bright;
-    background-color: $fills-light-positive-positive-light-active;
+    color: var(--fill-positive-bright);
+    background-color: var(--fill-positive-lightactive);
   }
   &.ant-tag-blue {
-    color: $fills-light-general-general;
-    background-color: $fills-element-light-container-outstanding;
+    color: var(--fill-outstanding-base);
+    background-color: rgba(0, 136, 255, 0.1);
     &.tag-hover:hover,
     &.__pseudo-states-hover {
-      background-color: $fills-element-light-container-outstanding-hover;
+      background-color: rgba(0, 136, 255, 0.16);
     }
   }
   &.ant-tag-purple {
-    color: $text-light-storage;
-    background-color: $fills-element-light-container-storage;
+    color: var(--text-colorful-purple);
+    background-color: rgba(126, 65, 255, 0.1);
     &.tag-hover:hover,
     &.__pseudo-states-hover {
-      background-color: $fills-light-interaction-purple-hover;
+      background-color: rgba(126, 65, 255, 0.16);
     }
   }
   &.ant-tag-gray {
-    color: $text-light-super;
-    background-color: $fills-element-light-container-general;
+    color: var(--text-neutral-super);
+    background-color: var(--fill-neutral-trans-2);
     &.tag-hover:hover,
     &.__pseudo-states-hover {
-      background-color: $fills-interaction-light-general-hover;
+      background-color: var(--fill-neutral-trans-3);
     }
   }
 }

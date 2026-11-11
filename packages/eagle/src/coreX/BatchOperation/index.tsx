@@ -21,7 +21,7 @@ const SelectToolbar = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: $backgrounds-light-grouped;
+  background: var(--pagebackground-grouped);
   padding: 8px 12px;
   position: sticky;
   top: 0;
@@ -43,7 +43,7 @@ const SelectToolbar = css`
       justify-content: center;
 
       &:hover {
-        background: $fills-light-trans-2;
+        background: var(--fill-neutral-trans-2);
       }
     }
   }
@@ -77,7 +77,7 @@ const SelectToolbar = css`
       border-radius: 50%;
 
       &:hover {
-        background: $white;
+        background: var(--fill-neutral-white);
       }
     }
   }
