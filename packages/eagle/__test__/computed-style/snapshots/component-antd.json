@@ -1,0 +1,1998 @@
+[
+  {
+    "elements": [
+      "AntdAutoComplete",
+      "AntdAutoComplete/div[0]",
+      "AntdAutoComplete/div[0]/div[0]/span[0]",
+      "AntdAutoComplete/div[0]/div[0]/span[0]/input[0]",
+      "AntdAutoComplete/div[0]/div[0]::after",
+      "AntdBadge",
+      "AntdBadge/span[0]",
+      "AntdButton",
+      "AntdCheckbox",
+      "AntdCheckbox/label[0]",
+      "AntdCheckbox/label[0]/span[0]",
+      "AntdCheckbox/label[0]/span[1]",
+      "AntdCollapse",
+      "AntdCollapse/div[0]/div[0]/div[1]/div[0]",
+      "AntdDivider",
+      "AntdDrawer",
+      "AntdDrawer/div[0]",
+      "AntdDrawer/div[0]/div[0]",
+      "AntdDrawer/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "AntdDrawer/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]",
+      "AntdEmpty",
+      "AntdEmpty/div[0]",
+      "AntdEmpty/div[0]/div[0]",
+      "AntdEmpty/div[0]/div[0]/svg[0]",
+      "AntdEmpty/div[0]/p[1]",
+      "AntdInput",
+      "AntdModal",
+      "AntdModal/div[0]",
+      "AntdModal/div[0]/div[0]",
+      "AntdModal/div[0]/div[0]/div[0]",
+      "AntdModal/div[0]/div[0]/div[0]/div[0]",
+      "AntdModal/div[0]/div[0]/div[0]/div[1]/div[2]",
+      "AntdModal/div[0]/div[0]/div[0]/div[1]/div[3]/button[0]/span[0]",
+      "AntdModal/div[0]/div[0]/div[0]/div[2]",
+      "AntdOption",
+      "AntdOption/div[0]",
+      "AntdOption/div[0]/div[0]/span[0]",
+      "AntdOption/div[0]/div[0]/span[1]::after",
+      "AntdOption/div[0]/div[0]::after",
+      "AntdOption/div[0]/div[2]",
+      "AntdOption/div[0]/div[2]/div[0]",
+      "AntdOption/div[0]/div[2]/div[0]/div[0]/div[0]",
+      "AntdOption/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]",
+      "AntdOption/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "AntdOption/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]",
+      "AntdOption/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[0]",
+      "AntdOption/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]",
+      "AntdOption/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[0]",
+      "AntdSelect",
+      "AntdSelect/div[0]",
+      "AntdSelect/div[0]/div[0]/span[0]",
+      "AntdSelect/div[0]/div[0]/span[1]",
+      "AntdSelect/div[0]/div[0]/span[1]::after",
+      "AntdSelect/div[0]/div[0]::after",
+      "AntdSelectOptGroup",
+      "AntdSelectOptGroup/div[0]",
+      "AntdSelectOptGroup/div[0]/div[0]/span[0]",
+      "AntdSelectOptGroup/div[0]/div[0]/span[1]::after",
+      "AntdSelectOptGroup/div[0]/div[0]::after",
+      "AntdSelectOptGroup/div[0]/div[2]",
+      "AntdSelectOptGroup/div[0]/div[2]/div[0]",
+      "AntdSelectOptGroup/div[0]/div[2]/div[0]/div[0]/div[0]",
+      "AntdSelectOptGroup/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]",
+      "AntdSelectOptGroup/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "AntdSelectOptGroup/div[0]/div[2]/div[0]/div[0]/div[0]/div[0]/div[1]",
+      "AntdSelectOptGroup/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]",
+      "AntdSelectOptGroup/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[0]",
+      "AntdSelectOptGroup/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]",
+      "AntdSelectOptGroup/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[0]",
+      "AntdSkeleton",
+      "AntdSkeleton/div[0]",
+      "AntdSkeleton/div[0]/div[0]",
+      "AntdSkeleton/div[0]/div[0]/ul[1]",
+      "AntdSteps",
+      "AntdSteps/div[0]",
+      "AntdSteps/div[0]/div[0]",
+      "AntdSteps/div[0]/div[0]/div[0]",
+      "AntdSteps/div[0]/div[0]/div[0]/div[2]",
+      "AntdSteps/div[0]/div[0]/div[0]/div[2]/div[0]",
+      "AntdSteps/div[0]/div[1]",
+      "AntdSteps/div[0]/div[1]/div[0]",
+      "AntdSteps/div[0]/div[1]/div[0]/div[2]",
+      "AntdSwitch",
+      "AntdSwitch/button[0]/div[0]",
+      "AntdTable",
+      "AntdTable/div[0]",
+      "AntdTable/div[0]/div[0]",
+      "AntdTable/div[0]/div[0]/div[0]",
+      "AntdTable/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "AntdTable/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "AntdTable/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/colgroup[0]",
+      "AntdTable/div[0]/div[0]/div[0]/div[0]/div[0]::after",
+      "AntdTable/div[0]/div[0]/div[0]/div[0]/div[0]::before",
+      "AntdTable/div[0]::after",
+      "AntdTable/div[0]::before",
+      "AntdTimePicker",
+      "AntdTimePicker/div[0]/div[0]",
+      "AntdTimePicker/div[0]/div[0]/input[0]",
+      "AntdTimeline",
+      "AntdTimeline/ul[0]",
+      "AntdTimeline/ul[0]/li[0]",
+      "AntdTimeline/ul[0]/li[0]/div[2]",
+      "AntdTimelineItem",
+      "AntdTimelineItem/ul[0]",
+      "AntdTimelineItem/ul[0]/li[0]",
+      "AntdTimelineItem/ul[0]/li[0]/div[2]",
+      "AntdTooltip",
+      "AntdTooltip/span[0]",
+      "AntdTreeSelect",
+      "AntdTreeSelect/div[0]",
+      "AntdTreeSelect/div[0]/div[0]/span[0]",
+      "AntdTreeSelect/div[0]/div[0]/span[1]",
+      "AntdTreeSelect/div[0]/div[0]/span[1]::after",
+      "AntdTreeSelect/div[0]/div[0]::after",
+      "Col",
+      "Col/div[0]",
+      "Col/div[0]/div[0]",
+      "DatePicker",
+      "DatePicker/div[0]/div[0]",
+      "DatePicker/div[0]/div[0]/input[0]",
+      "DatePickerRangePicker",
+      "DatePickerRangePicker/div[0]/div[0]",
+      "DatePickerRangePicker/div[0]/div[0]/input[0]",
+      "DatePickerRangePicker/div[0]/div[1]",
+      "DatePickerRangePicker/div[0]/div[2]",
+      "DatePickerRangePicker/div[0]/div[2]/input[0]",
+      "Dropdown",
+      "Dropdown/span[0]",
+      "Layout",
+      "Layout/section[0]/main[1]",
+      "List",
+      "List/div[0]",
+      "List/div[0]/div[0]",
+      "List/div[0]/div[0]/div[0]",
+      "List/div[0]/div[0]/div[0]/ul[0]",
+      "List/div[0]/div[0]/div[0]/ul[0]/li[0]",
+      "ListItem",
+      "ListItem/div[0]",
+      "ListItem/div[0]/div[0]",
+      "ListItem/div[0]/div[0]/div[0]",
+      "ListItem/div[0]/div[0]/div[0]/li[0]",
+      "Menu",
+      "Menu/ul[0]::after",
+      "Menu/ul[0]::before",
+      "MenuItemGroup",
+      "MenuItemGroup/ul[0]/li[0]",
+      "MenuItemGroup/ul[0]/li[0]/ul[1]",
+      "MenuItemGroup/ul[0]/li[0]/ul[1]/li[0]",
+      "MenuItemGroup/ul[0]::after",
+      "MenuItemGroup/ul[0]::before",
+      "Popover",
+      "Popover/span[0]",
+      "Row",
+      "Row/div[0]",
+      "Row/div[0]/div[0]",
+      "SkeletonButton",
+      "SkeletonButton/div[0]",
+      "Tabs",
+      "Tabs/div[0]",
+      "Tabs/div[0]/div[0]",
+      "Tabs/div[0]/div[0]/div[0]",
+      "Tabs/div[0]/div[0]/div[0]/div[0]",
+      "Tabs/div[0]/div[0]/div[1]",
+      "Tabs/div[0]/div[0]/div[1]/button[0]",
+      "Tabs/div[0]/div[0]/div[1]/button[0]/span[0]",
+      "Tabs/div[0]/div[0]/div[1]/button[0]::after",
+      "Tabs/div[0]/div[1]",
+      "Tabs/div[0]/div[1]/div[0]",
+      "Tabs/div[0]/div[1]/div[0]/div[0]",
+      "TabsTabPane",
+      "TabsTabPane/div[0]",
+      "TabsTabPane/div[0]/div[0]",
+      "TabsTabPane/div[0]/div[0]/div[0]",
+      "TabsTabPane/div[0]/div[0]/div[0]/div[0]",
+      "TabsTabPane/div[0]/div[0]/div[1]",
+      "TabsTabPane/div[0]/div[0]/div[1]/button[0]",
+      "TabsTabPane/div[0]/div[0]/div[1]/button[0]/span[0]",
+      "TabsTabPane/div[0]/div[0]/div[1]/button[0]::after",
+      "TabsTabPane/div[0]/div[1]",
+      "TabsTabPane/div[0]/div[1]/div[0]",
+      "TabsTabPane/div[0]/div[1]/div[0]/div[0]",
+      "Tree",
+      "Tree/div[0]/div[0]",
+      "Tree/div[0]/div[1]",
+      "Tree/div[0]/div[1]/div[0]",
+      "Tree/div[0]/div[1]/div[0]/div[0]",
+      "Tree/div[0]/div[1]/div[0]/div[0]/div[0]",
+      "Tree/div[0]/div[1]/div[0]/div[0]/div[0]/span[0]",
+      "Tree/div[0]/div[1]/div[0]/div[0]/div[0]/span[1]/span[0]",
+      "Typography",
+      "Typography/article[0]",
+      "TypographyText",
+      "Upload",
+      "Upload/span[0]",
+      "Upload/span[0]/div[0]",
+      "Upload/span[0]/div[0]/span[0]",
+      "Upload/span[0]/div[0]/span[0]/button[1]/span[0]",
+      "Upload/span[0]/div[1]",
+      "Upload/span[0]/div[1]::after",
+      "Upload/span[0]/div[1]::before",
+      "UploadDragger",
+      "UploadDragger/span[0]",
+      "UploadDragger/span[0]/div[0]/span[0]",
+      "UploadDragger/span[0]/div[0]/span[0]/div[1]",
+      "UploadDragger/span[0]/div[1]",
+      "UploadDragger/span[0]/div[1]::after",
+      "UploadDragger/span[0]/div[1]::before",
+      "portal-41",
+      "portal-41/div[0]",
+      "portal-41/div[0]/div[0]",
+      "portal-41/div[0]/div[0]/div[0]",
+      "portal-41/div[0]/div[0]/div[0]/div[0]",
+      "portal-42",
+      "portal-42/div[0]",
+      "portal-43",
+      "portal-43/div[0]",
+      "portal-43/div[0]/div[0]",
+      "portal-43/div[0]/div[0]/div[0]",
+      "portal-43/div[0]/div[0]/div[0]/div[0]/span[0]",
+      "portal-43/div[0]/div[0]/div[0]/div[1]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdAutoComplete/div[0]/div[0]",
+      "AntdInput/input[0]",
+      "AntdOption/div[0]/div[0]",
+      "AntdSelect/div[0]/div[0]",
+      "AntdSelectOptGroup/div[0]/div[0]",
+      "AntdTimePicker/div[0]",
+      "AntdTreeSelect/div[0]/div[0]",
+      "DatePicker/div[0]",
+      "DatePickerRangePicker/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(217, 217, 217)",
+      "borderRightColor": "rgb(217, 217, 217)",
+      "borderBottomColor": "rgb(217, 217, 217)",
+      "borderLeftColor": "rgb(217, 217, 217)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdBadge/span[0]/sup[0]"
+    ],
+    "style": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgb(255, 77, 79)",
+      "borderTopColor": "rgb(255, 255, 255)",
+      "borderRightColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(255, 255, 255)",
+      "outlineColor": "rgb(255, 255, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(184, 192, 204, 0.6)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "AntdBadge/span[0]/sup[0]/span[0]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[0]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[10]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[11]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[12]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[13]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[14]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[15]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[16]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[17]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[18]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[19]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[1]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[20]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[21]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[22]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[23]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[24]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[25]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[26]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[27]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[28]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[29]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[2]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[3]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[4]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[5]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[6]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[7]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[8]",
+      "AntdBadge/span[0]/sup[0]/span[0]/p[9]",
+      "AntdSteps/div[0]/div[1]/div[0]/div[1]/span[0]",
+      "AntdSwitch/button[0]/span[1]"
+    ],
+    "style": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(255, 255, 255)",
+      "borderRightColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(255, 255, 255)",
+      "outlineColor": "rgb(255, 255, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdButton/button[0]",
+      "AntdModal/div[0]/div[0]/div[0]/div[1]/div[3]/button[1]"
+    ],
+    "style": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgb(0, 128, 255)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(255, 255, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(0, 0, 0, 0.043)"
+      ],
+      "textShadowColors": [
+        "rgba(0, 0, 0, 0.12)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "AntdButton/button[0]/span[0]",
+      "AntdModal/div[0]/div[0]/div[0]/div[1]/div[3]/button[1]/span[0]"
+    ],
+    "style": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(255, 255, 255)",
+      "borderRightColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(255, 255, 255)",
+      "outlineColor": "rgb(255, 255, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "textShadowColors": [
+        "rgba(0, 0, 0, 0.12)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "AntdButton/button[0]::before",
+      "AntdModal/div[0]/div[0]/div[0]/div[1]/div[3]/button[1]::before"
+    ],
+    "style": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(255, 255, 255)",
+      "borderRightColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(255, 255, 255)",
+      "outlineColor": "rgb(255, 255, 255)",
+      "opacity": "0.35",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "textShadowColors": [
+        "rgba(0, 0, 0, 0.12)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "AntdCheckbox/label[0]/span[0]/input[0]",
+      "AntdOption/div[0]/div[0]/span[0]/input[0]",
+      "AntdSelect/div[0]/div[0]/span[0]/input[0]",
+      "AntdSelectOptGroup/div[0]/div[0]/span[0]/input[0]",
+      "AntdTreeSelect/div[0]/div[0]/span[0]/input[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdCheckbox/label[0]/span[0]/span[1]",
+      "AntdSteps/div[0]/div[1]/div[0]/div[1]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(0, 128, 255)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdCheckbox/label[0]/span[0]/span[1]::after"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdCheckbox/label[0]/span[0]::after"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdCollapse/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(250, 250, 250)",
+      "borderTopColor": "rgb(217, 217, 217)",
+      "borderRightColor": "rgb(217, 217, 217)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(217, 217, 217)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdCollapse/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(217, 217, 217)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdCollapse/div[0]/div[0]/div[0]",
+      "AntdCollapse/div[0]/div[0]/div[0]/span[0]",
+      "AntdCollapse/div[0]/div[0]/div[0]::after",
+      "AntdCollapse/div[0]/div[0]/div[0]::before",
+      "AntdDivider/div[0]",
+      "AntdDivider/div[0]/span[0]",
+      "AntdDrawer/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "AntdModal/div[0]/div[0]/div[0]/div[1]/div[1]/div[0]",
+      "AntdSteps/div[0]/div[1]/div[0]/div[2]/div[0]",
+      "Typography/article[0]/h1[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.85)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.85)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdCollapse/div[0]/div[0]/div[0]/span[0]/svg[0]",
+      "AntdCollapse/div[0]/div[0]/div[0]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.85)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.85)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "rgba(0, 0, 0, 0.85)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdCollapse/div[0]/div[0]/div[1]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(217, 217, 217)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdDivider/div[0]::after",
+      "AntdDivider/div[0]::before"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(240, 240, 240)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.85)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdDrawer/div[0]/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(0, 0, 0, 0.08)",
+        "rgba(0, 0, 0, 0.05)",
+        "rgba(0, 0, 0, 0.03)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "AntdDrawer/div[0]/div[0]/div[0]/div[0]",
+      "AntdTable/div[0]/div[0]/div[0]/div[0]",
+      "Tree/div[0]",
+      "portal-42/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdDrawer/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "AntdModal/div[0]/div[0]/div[0]/div[1]/div[1]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(240, 240, 240)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdDrawer/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/button[1]",
+      "AntdDrawer/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/button[1]/span[0]",
+      "AntdModal/div[0]/div[0]/div[0]/div[1]/button[0]",
+      "AntdSelectOptGroup/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]",
+      "MenuItemGroup/ul[0]/li[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.45)",
+      "borderRightColor": "rgba(0, 0, 0, 0.45)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.45)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.45)",
+      "outlineColor": "rgba(0, 0, 0, 0.45)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdDrawer/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/button[1]/span[0]/svg[0]",
+      "AntdDrawer/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/button[1]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.45)",
+      "borderRightColor": "rgba(0, 0, 0, 0.45)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.45)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.45)",
+      "outlineColor": "rgba(0, 0, 0, 0.45)",
+      "opacity": "1",
+      "fill": "rgba(0, 0, 0, 0.45)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdEmpty/div[0]/div[0]/svg[0]/g[0]",
+      "AntdEmpty/div[0]/div[0]/svg[0]/g[0]/g[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "none",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdEmpty/div[0]/div[0]/svg[0]/g[0]/g[0]/ellipse[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(245, 245, 245)",
+      "fillOpacity": "0.8",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdEmpty/div[0]/div[0]/svg[0]/g[0]/g[0]/path[1]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(174, 184, 194)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdEmpty/div[0]/div[0]/svg[0]/g[0]/g[0]/path[2]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "url(\"#linearGradient-1\")",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdEmpty/div[0]/div[0]/svg[0]/g[0]/g[0]/path[3]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(245, 245, 247)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdEmpty/div[0]/div[0]/svg[0]/g[0]/g[0]/path[4]",
+      "AntdEmpty/div[0]/div[0]/svg[0]/g[0]/path[1]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(220, 224, 230)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdEmpty/div[0]/div[0]/svg[0]/g[0]/g[2]",
+      "AntdEmpty/div[0]/div[0]/svg[0]/g[0]/g[2]/ellipse[0]",
+      "AntdEmpty/div[0]/div[0]/svg[0]/g[0]/g[2]/path[1]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(255, 255, 255)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdModal/div[0]/div[0]/div[0]/div[1]",
+      "AntdOption/div[0]/div[2]/div[0]/div[0]",
+      "AntdSelectOptGroup/div[0]/div[2]/div[0]/div[0]",
+      "portal-43/div[0]/div[0]/div[0]/div[1]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(0, 0, 0, 0.12)",
+        "rgba(0, 0, 0, 0.08)",
+        "rgba(0, 0, 0, 0.05)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "AntdModal/div[0]/div[0]/div[0]/div[1]/button[0]/span[0]",
+      "AntdModal/div[0]/div[0]/div[0]/div[1]/button[0]/span[0]/span[0]"
+    ],
+    "style": {
+      "color": "rgb(62, 70, 82)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(62, 70, 82)",
+      "borderRightColor": "rgb(62, 70, 82)",
+      "borderBottomColor": "rgb(62, 70, 82)",
+      "borderLeftColor": "rgb(62, 70, 82)",
+      "outlineColor": "rgb(62, 70, 82)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdModal/div[0]/div[0]/div[0]/div[1]/button[0]/span[0]/span[0]/svg[0]",
+      "AntdModal/div[0]/div[0]/div[0]/div[1]/button[0]/span[0]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgb(62, 70, 82)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(62, 70, 82)",
+      "borderRightColor": "rgb(62, 70, 82)",
+      "borderBottomColor": "rgb(62, 70, 82)",
+      "borderLeftColor": "rgb(62, 70, 82)",
+      "outlineColor": "rgb(62, 70, 82)",
+      "opacity": "1",
+      "fill": "rgb(62, 70, 82)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdModal/div[0]/div[0]/div[0]/div[1]/div[3]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(240, 240, 240)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdModal/div[0]/div[0]/div[0]/div[1]/div[3]/button[0]",
+      "Upload/span[0]/div[0]/span[0]/button[1]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(217, 217, 217)",
+      "borderRightColor": "rgb(217, 217, 217)",
+      "borderBottomColor": "rgb(217, 217, 217)",
+      "borderLeftColor": "rgb(217, 217, 217)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(0, 0, 0, 0.016)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "AntdModal/div[0]/div[0]/div[0]/div[1]/div[3]/button[0]::before",
+      "Upload/span[0]/div[0]/span[0]/button[1]::before"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0.35",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdOption/div[0]/div[0]/span[1]",
+      "AntdSelectOptGroup/div[0]/div[0]/span[1]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0.4",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdOption/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]",
+      "AntdSelectOptGroup/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[0]/div[1]"
+    ],
+    "style": {
+      "color": "rgb(0, 18, 46)",
+      "backgroundColor": "rgb(230, 247, 255)",
+      "borderTopColor": "rgb(0, 18, 46)",
+      "borderRightColor": "rgb(0, 18, 46)",
+      "borderBottomColor": "rgb(0, 18, 46)",
+      "borderLeftColor": "rgb(0, 18, 46)",
+      "outlineColor": "rgb(0, 18, 46)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdOption/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "AntdSelectOptGroup/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[0]/div[1]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(0, 18, 46)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(0, 18, 46)",
+      "borderRightColor": "rgb(0, 18, 46)",
+      "borderBottomColor": "rgb(0, 18, 46)",
+      "borderLeftColor": "rgb(0, 18, 46)",
+      "outlineColor": "rgb(0, 18, 46)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdOption/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[0]/div[0]/span[1]",
+      "AntdSelectOptGroup/div[0]/div[2]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[0]/div[1]/span[1]",
+      "AntdSteps/div[0]/div[0]/div[0]/div[1]/span[0]",
+      "AntdSteps/div[0]/div[0]/div[0]/div[1]/span[0]/span[0]",
+      "Tabs/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "Tabs/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "TabsTabPane/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "TabsTabPane/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(0, 128, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(0, 128, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdOption/div[0]/span[1]",
+      "AntdOption/div[0]/span[1]/span[0]",
+      "AntdSelect/div[0]/span[1]",
+      "AntdSelect/div[0]/span[1]/span[0]",
+      "AntdSelectOptGroup/div[0]/span[1]",
+      "AntdSelectOptGroup/div[0]/span[1]/span[0]",
+      "AntdTimePicker/div[0]/div[0]/span[1]",
+      "AntdTimePicker/div[0]/div[0]/span[1]/span[0]",
+      "AntdTimePicker/div[0]/div[0]/span[2]/span[0]",
+      "AntdTreeSelect/div[0]/span[1]",
+      "AntdTreeSelect/div[0]/span[1]/span[0]",
+      "DatePicker/div[0]/div[0]/span[1]",
+      "DatePicker/div[0]/div[0]/span[1]/span[0]",
+      "DatePicker/div[0]/div[0]/span[2]/span[0]",
+      "DatePickerRangePicker/div[0]/div[1]/span[0]",
+      "DatePickerRangePicker/div[0]/div[1]/span[0]/span[0]",
+      "DatePickerRangePicker/div[0]/span[4]",
+      "DatePickerRangePicker/div[0]/span[4]/span[0]",
+      "DatePickerRangePicker/div[0]/span[5]/span[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.25)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.25)",
+      "borderRightColor": "rgba(0, 0, 0, 0.25)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.25)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.25)",
+      "outlineColor": "rgba(0, 0, 0, 0.25)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdOption/div[0]/span[1]/span[0]/svg[0]",
+      "AntdOption/div[0]/span[1]/span[0]/svg[0]/path[0]",
+      "AntdSelect/div[0]/span[1]/span[0]/svg[0]",
+      "AntdSelect/div[0]/span[1]/span[0]/svg[0]/path[0]",
+      "AntdSelectOptGroup/div[0]/span[1]/span[0]/svg[0]",
+      "AntdSelectOptGroup/div[0]/span[1]/span[0]/svg[0]/path[0]",
+      "AntdTimePicker/div[0]/div[0]/span[1]/span[0]/svg[0]",
+      "AntdTimePicker/div[0]/div[0]/span[1]/span[0]/svg[0]/path[0]",
+      "AntdTimePicker/div[0]/div[0]/span[1]/span[0]/svg[0]/path[1]",
+      "AntdTimePicker/div[0]/div[0]/span[2]/span[0]/svg[0]",
+      "AntdTimePicker/div[0]/div[0]/span[2]/span[0]/svg[0]/path[0]",
+      "AntdTreeSelect/div[0]/span[1]/span[0]/svg[0]",
+      "AntdTreeSelect/div[0]/span[1]/span[0]/svg[0]/path[0]",
+      "DatePicker/div[0]/div[0]/span[1]/span[0]/svg[0]",
+      "DatePicker/div[0]/div[0]/span[1]/span[0]/svg[0]/path[0]",
+      "DatePicker/div[0]/div[0]/span[2]/span[0]/svg[0]",
+      "DatePicker/div[0]/div[0]/span[2]/span[0]/svg[0]/path[0]",
+      "DatePickerRangePicker/div[0]/div[1]/span[0]/span[0]/svg[0]",
+      "DatePickerRangePicker/div[0]/div[1]/span[0]/span[0]/svg[0]/path[0]",
+      "DatePickerRangePicker/div[0]/span[4]/span[0]/svg[0]",
+      "DatePickerRangePicker/div[0]/span[4]/span[0]/svg[0]/path[0]",
+      "DatePickerRangePicker/div[0]/span[5]/span[0]/svg[0]",
+      "DatePickerRangePicker/div[0]/span[5]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.25)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.25)",
+      "borderRightColor": "rgba(0, 0, 0, 0.25)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.25)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.25)",
+      "outlineColor": "rgba(0, 0, 0, 0.25)",
+      "opacity": "1",
+      "fill": "rgba(0, 0, 0, 0.25)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdSkeleton/div[0]/div[0]/h3[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgb(242, 242, 242)",
+      "borderTopColor": "rgba(0, 0, 0, 0.85)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.85)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdSkeleton/div[0]/div[0]/ul[1]/li[0]",
+      "AntdSkeleton/div[0]/div[0]/ul[1]/li[1]",
+      "AntdSkeleton/div[0]/div[0]/ul[1]/li[2]",
+      "SkeletonButton/div[0]/span[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(242, 242, 242)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdSteps/div[0]/div[0]/div[0]/div[1]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdSteps/div[0]/div[0]/div[0]/div[1]/span[0]/span[0]/svg[0]",
+      "AntdSteps/div[0]/div[0]/div[0]/div[1]/span[0]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgb(0, 128, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(0, 128, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 128, 255)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdSteps/div[0]/div[0]/div[0]/div[2]/div[0]::after",
+      "AntdSwitch/button[0]",
+      "Tabs/div[0]/div[0]/div[0]/div[0]/div[1]",
+      "TabsTabPane/div[0]/div[0]/div[0]/div[0]/div[1]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(0, 128, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdSteps/div[0]/div[1]/div[0]/div[2]/div[0]::after"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgb(240, 240, 240)",
+      "borderTopColor": "rgba(0, 0, 0, 0.85)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.85)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdSwitch/button[0]/div[0]::before"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(0, 35, 11, 0.2)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "AntdTable/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]",
+      "AntdTable/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/tbody[2]",
+      "AntdTable/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/tbody[2]/tr[0]",
+      "AntdTable/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]",
+      "AntdTable/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(128, 128, 128)",
+      "borderRightColor": "rgb(128, 128, 128)",
+      "borderBottomColor": "rgb(128, 128, 128)",
+      "borderLeftColor": "rgb(128, 128, 128)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdTable/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/tbody[2]/tr[0]/td[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(240, 240, 240)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdTable/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/table[0]/thead[1]/tr[0]/th[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgb(250, 250, 250)",
+      "borderTopColor": "rgba(0, 0, 0, 0.85)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgb(240, 240, 240)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdTable/div[0]/div[0]/div[0]::after",
+      "List/div[0]/div[0]/div[0]::after",
+      "ListItem/div[0]/div[0]/div[0]::after",
+      "Tree/div[0]/div[0]/input[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdTimePicker/div[0]/div[0]/span[2]",
+      "DatePicker/div[0]/div[0]/span[2]",
+      "DatePickerRangePicker/div[0]/span[5]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.25)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgba(0, 0, 0, 0.25)",
+      "borderRightColor": "rgba(0, 0, 0, 0.25)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.25)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.25)",
+      "outlineColor": "rgba(0, 0, 0, 0.25)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdTimeline/ul[0]/li[0]/div[1]"
+    ],
+    "style": {
+      "color": "rgb(0, 128, 255)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(0, 128, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdTimelineItem/ul[0]/li[0]/div[1]"
+    ],
+    "style": {
+      "color": "rgb(255, 77, 79)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(255, 77, 79)",
+      "borderRightColor": "rgb(255, 77, 79)",
+      "borderBottomColor": "rgb(255, 77, 79)",
+      "borderLeftColor": "rgb(255, 77, 79)",
+      "outlineColor": "rgb(255, 77, 79)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "DatePickerRangePicker/div[0]/div[3]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(0, 128, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Layout/section[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(240, 242, 245)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Layout/section[0]/header[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(0, 21, 41)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Menu/ul[0]",
+      "MenuItemGroup/ul[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(240, 240, 240)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Menu/ul[0]/li[0]"
+    ],
+    "style": {
+      "color": "rgb(0, 128, 255)",
+      "backgroundColor": "rgb(230, 247, 255)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(0, 128, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Menu/ul[0]/li[0]::after"
+    ],
+    "style": {
+      "color": "rgb(0, 128, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(0, 128, 255)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "MenuItemGroup/ul[0]/li[0]/ul[1]/li[0]::after"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Tabs/div[0]/div[0]/div[0]::after",
+      "Tabs/div[0]/div[0]/div[0]::before",
+      "TabsTabPane/div[0]/div[0]/div[0]::after",
+      "TabsTabPane/div[0]/div[0]/div[0]::before"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(0, 0, 0, 0.08)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "Tabs/div[0]/div[0]/div[1]/button[0]/span[0]/svg[0]",
+      "Tabs/div[0]/div[0]/div[1]/button[0]/span[0]/svg[0]/path[0]",
+      "TabsTabPane/div[0]/div[0]/div[1]/button[0]/span[0]/svg[0]",
+      "TabsTabPane/div[0]/div[0]/div[1]/button[0]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(6, 16, 31)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Tabs/div[0]/div[0]::before",
+      "TabsTabPane/div[0]/div[0]::before"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgba(211, 218, 235, 0.6)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Tree/div[0]/div[1]/div[0]/div[0]/div[0]/span[1]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(163, 221, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "TypographyText/span[0]"
+    ],
+    "style": {
+      "color": "rgb(255, 77, 79)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(255, 77, 79)",
+      "borderRightColor": "rgb(255, 77, 79)",
+      "borderBottomColor": "rgb(255, 77, 79)",
+      "borderLeftColor": "rgb(255, 77, 79)",
+      "outlineColor": "rgb(255, 77, 79)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "UploadDragger/span[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(250, 250, 250)",
+      "borderTopColor": "rgb(217, 217, 217)",
+      "borderRightColor": "rgb(217, 217, 217)",
+      "borderBottomColor": "rgb(217, 217, 217)",
+      "borderLeftColor": "rgb(217, 217, 217)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-41/div[0]/div[0]/div[0]/div[0]/span[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0.75)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(0, 0, 0, 0.07)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "portal-41/div[0]/div[0]/div[0]/div[1]"
+    ],
+    "style": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0.75)",
+      "borderTopColor": "rgb(255, 255, 255)",
+      "borderRightColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(255, 255, 255)",
+      "outlineColor": "rgb(255, 255, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(0, 0, 0, 0.12)",
+        "rgba(0, 0, 0, 0.08)",
+        "rgba(0, 0, 0, 0.05)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "portal-42/div[0]/div[0]/ul[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(223, 228, 235)",
+      "borderRightColor": "rgb(223, 228, 235)",
+      "borderBottomColor": "rgb(223, 228, 235)",
+      "borderLeftColor": "rgb(223, 228, 235)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(129, 138, 153, 0.18)",
+        "rgba(235, 239, 245, 0.6)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "portal-42/div[0]/div[0]/ul[0]/li[0]"
+    ],
+    "style": {
+      "color": "rgb(45, 58, 86)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(45, 58, 86)",
+      "borderRightColor": "rgb(45, 58, 86)",
+      "borderBottomColor": "rgb(45, 58, 86)",
+      "borderLeftColor": "rgb(45, 58, 86)",
+      "outlineColor": "rgb(45, 58, 86)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-42/div[0]/div[0]::before"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0.0001",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-43/div[0]/div[0]/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0)",
+      "borderRightColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgba(0, 0, 0, 0)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(0, 0, 0, 0.07)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "portal-43/div[0]/div[0]::after"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(255, 255, 255, 0.01)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  }
+]

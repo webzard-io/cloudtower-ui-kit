@@ -1,0 +1,112 @@
+[
+  {
+    "elements": [
+      "portal-0"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]",
+      "portal-0/div[0]/div[0]",
+      "portal-0/div[0]/div[1]"
+    ],
+    "style": {
+      "color": "rgba(0, 21, 64, 0.3)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 21, 64, 0.3)",
+      "borderRightColor": "rgba(0, 21, 64, 0.3)",
+      "borderBottomColor": "rgba(0, 21, 64, 0.3)",
+      "borderLeftColor": "rgba(0, 21, 64, 0.3)",
+      "outlineColor": "rgba(0, 21, 64, 0.3)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/button[2]"
+    ],
+    "style": {
+      "color": "rgb(29, 50, 108)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(204, 212, 227)",
+      "borderRightColor": "rgb(204, 212, 227)",
+      "borderBottomColor": "rgb(204, 212, 227)",
+      "borderLeftColor": "rgb(204, 212, 227)",
+      "outlineColor": "rgb(29, 50, 108)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(44, 56, 82, 0.18)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/button[2]/span[0]"
+    ],
+    "style": {
+      "color": "rgb(29, 50, 108)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(29, 50, 108)",
+      "borderRightColor": "rgb(29, 50, 108)",
+      "borderBottomColor": "rgb(29, 50, 108)",
+      "borderLeftColor": "rgb(29, 50, 108)",
+      "outlineColor": "rgb(29, 50, 108)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/button[2]::before"
+    ],
+    "style": {
+      "color": "rgb(29, 50, 108)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(29, 50, 108)",
+      "borderRightColor": "rgb(29, 50, 108)",
+      "borderBottomColor": "rgb(29, 50, 108)",
+      "borderLeftColor": "rgb(29, 50, 108)",
+      "outlineColor": "rgb(29, 50, 108)",
+      "opacity": "0.35",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  }
+]

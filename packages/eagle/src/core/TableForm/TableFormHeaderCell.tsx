@@ -5,10 +5,10 @@ import { TitleStyle } from "@src/core/TableForm/style";
 import { ColumnHeaderCellProps } from "@src/core/TableForm/types";
 import { increaseLastNumber } from "@src/core/TableForm/utils";
 import { Typo } from "@src/core/Typo";
-import { OverflowTooltip } from "@src/coreX";
+import OverflowTooltip from "@src/coreX/OverflowTooltip";
 import React, { useCallback, useState } from "react";
 export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
-  props,
+  props
 ) => {
   const { column, disabled, data, disableBatchFilling, onBlur, onChange } =
     props;
@@ -36,7 +36,7 @@ export const BatchInputListHeaderCell: React.FC<ColumnHeaderCellProps> = (
       });
       onChange?.(newData, column.key, shouldUpdateData);
     },
-    [onChange, data, column],
+    [onChange, data, column]
   );
 
   const headerOnBlur = useCallback(() => {

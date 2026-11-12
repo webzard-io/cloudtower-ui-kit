@@ -1,5 +1,5 @@
 import { css } from "@linaria/core";
-import { Form } from "antd";
+import EagleFormItem from "@src/core/FormItem";
 import React from "react";
 
 const FormItemStyle = css`
@@ -36,12 +36,12 @@ export const FormItem: React.FC<FormItemProps> = (props) => {
   const { validateStatus, message, children } = props;
 
   return (
-    <Form.Item
+    <EagleFormItem
       className={FormItemStyle}
       validateStatus={validateStatus}
       help={validateStatus && message ? message : undefined}
     >
       {children}
-    </Form.Item>
+    </EagleFormItem>
   );
 };
