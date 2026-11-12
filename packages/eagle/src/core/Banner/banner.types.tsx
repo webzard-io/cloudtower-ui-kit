@@ -21,11 +21,36 @@ import { ButtonProps } from "../Button";
  * }
  */
 export type BannerProps = HTMLAttributes<HTMLDivElement> & {
+  /** 根节点 ID，由调用方指定；默认不设置 ID。 */
+  id?: string;
+  /** 提示类型：info 为蓝色，warning 为橙色，error 为红色且不显示移除按钮。 */
   type: "error" | "info" | "warning";
+  /** 提示文案，宽度随内容变化，以距两侧操作区或容器边距 12px 为限；超出后省略，悬停展示完整内容。 */
   message: string;
+  /** 根节点测试标识；操作按钮的标识为 `${data-testid}-action`。 */
   "data-testid"?: string;
+  /** 受控分页配置；不传或 total <= 1 时不显示分页。 */
+  pagination?: {
+    /** 当前页码，从 1 开始，取值应在 1 到 total 之间。 */
+    current: number;
+    /** 提示总条数。 */
+    total: number;
+    /** 切页回调，首尾循环；调用方需同步更新页码及对应的文案、类型和按钮。 */
+    onChange: (page: number) => void;
+  };
+  /**
+   * 移除当前提示的回调；不传时不显示移除按钮，error 类型始终不显示。
+   * 组件不自行删除数据；调用方负责更新提示列表和页码，刷新页面后可恢复提示，无需绑定登录态。
+   */
+  onClose?: () => void;
+  /** 操作按钮配置；不传时不显示按钮。 */
   btnProps?: Pick<ButtonProps, "onClick"> & {
+    /** 操作按钮文案。点击回调通过 btnProps.onClick 配置。 */
     text: string;
+    /**
+     * 是否隐藏操作按钮。
+     * @default false
+     */
     hide?: boolean;
   };
 };

@@ -99,7 +99,9 @@ export const LongMessage: Story = {
   args: {
     type: "warning",
     message:
-      "由于系统升级，部分功能可能暂时不可用。我们正在努力恢复，预计将在24小时内完成。感谢您的耐心等待和理解。",
+      "由于系统升级，部分功能可能暂时不可用。我们正在努力恢复，预计将在24小时内完成。感谢您的耐心等待和理解。".repeat(
+        4
+      ),
     btnProps: {
       text: "详情",
       onClick: () => console.log("查看详细说明"),
@@ -143,6 +145,60 @@ export const CustomStyle: Story = {
           onClick: () => console.log("管理资源"),
         }}
       />
+    </div>
+  ),
+};
+
+/** 分页及移除由调用方管理，刷新页面后可恢复提示列表。 */
+export const MultipleMessages: Story = {
+  name: "多条提示与移除",
+  render: function Render() {
+    const [items, setItems] = React.useState([
+      { type: "info" as const, message: "系统已更新至最新版本" },
+      { type: "warning" as const, message: "系统将在30分钟后进行维护" },
+      {
+        type: "error" as const,
+        message: "系统发生严重错误，部分功能可能不可用",
+      },
+    ]);
+    const [page, setPage] = React.useState(1);
+    const item = items[page - 1];
+    if (!item) return <div>暂无提示</div>;
+    return (
+      <Banner
+        {...item}
+        btnProps={{
+          text: "相关操作",
+          onClick: () => console.log(item.message),
+        }}
+        pagination={{ current: page, total: items.length, onChange: setPage }}
+        onClose={() => {
+          setItems(items.filter((_, index) => index !== page - 1));
+          setPage(Math.max(1, Math.min(page, items.length - 1)));
+        }}
+      />
+    );
+  },
+};
+
+/** 不同事项类型并列展示，下方横幅以 1px 白色顶部描边分隔。 */
+export const Stacked: Story = {
+  name: "多条横幅叠加",
+  render: () => (
+    <div>
+      <Banner
+        type="error"
+        id="license-banner"
+        message="CloudTower 许可已过期。"
+        btnProps={{ text: "更新许可" }}
+      />
+      <Banner
+        type="error"
+        id="upgrade-banner"
+        message="CloudTower 升级失败，请勿进行业务变更。请联系售后。"
+        btnProps={{ text: "详情" }}
+      />
+      <Banner type="warning" message="系统将在30分钟后进行维护" />
     </div>
   ),
 };
