@@ -12887,5 +12887,12 @@
     "svgFileName": "vm-re-encrypt-24-gradient-blue.svg",
     "hash": "3130cf9ffc442e7555934393b644b26a",
     "lastUpdated": "2026-11-11T02:16:55.743Z"
+  },
+  "20246:72": {
+    "componentSetName": "Icon / arrow.up-right",
+    "name": "Size=16, Weight=Bold, Fill=Ontint",
+    "svgFileName": "arrow-up-right-16-ontint-bold.svg",
+    "hash": "ac33c22a867b5df44081626de06bd821",
+    "lastUpdated": "2026-11-14T04:41:45.022Z"
   }
 }
