@@ -1,11 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import {
+  type EagleTheme,
+  ConfigProvider,
+  useEagleTheme,
+} from "@src/core/ConfigProvider";
 import { useUIKitTheme } from "@src/hooks/useUIKitTheme";
-import type { EagleTheme } from "@src/core/ConfigProvider";
-import { useEagleTheme } from "@src/core/ConfigProvider";
-import { useEffect } from "react";
-import { ConfigProvider } from "@src/core/ConfigProvider";
+import { render, screen } from "@testing-library/react";
 import { theme } from "antd5";
-import React from "react";
+import React, { useEffect } from "react";
 
 const Probe = () => {
   const { token } = theme.useToken();
@@ -58,6 +59,24 @@ it("maps Eagle tokens and preserves caller token and algorithm overrides", () =>
   expect(screen.getByTestId("tokens")).toHaveAttribute("data-border", "#654321");
 });
 
+it("preserves the Ant Design 5 dark algorithm when Eagle theme is omitted", () => {
+  const antd5Theme = { algorithm: theme.darkAlgorithm };
+  const token = theme.getDesignToken(antd5Theme);
+  render(
+    <ConfigProvider antd5Configs={{ theme: antd5Theme }}>
+      <Probe />
+    </ConfigProvider>,
+  );
+  expect(screen.getByTestId("tokens")).toHaveAttribute(
+    "data-background",
+    token.colorBgContainer,
+  );
+  expect(screen.getByTestId("tokens")).toHaveAttribute(
+    "data-text",
+    token.colorText,
+  );
+});
+
 const observedRootThemes: Array<string | undefined> = [];
 const HostProbe = () => {
   const theme = useEagleTheme();
@@ -78,31 +97,31 @@ const Host = ({ value }: { value: EagleTheme }) => {
 
 it("lets the host synchronize CSS and Ant themes while providers leave the root alone", () => {
   document.documentElement.dataset.theme = "host-owned";
-  const island = render(
+  const { unmount: unmountIsland } = render(
     <ConfigProvider theme="dark">
       <Probe />
     </ConfigProvider>,
   );
   expect(document.documentElement.dataset.theme).toBe("host-owned");
-  island.unmount();
+  unmountIsland();
 
   observedRootThemes.length = 0;
-  const host = render(<Host value="light" />);
+  const { rerender, unmount } = render(<Host value="light" />);
   expect(document.documentElement.dataset.theme).toBe("light");
   expect(screen.getByTestId("tokens").getAttribute("data-background")).toMatch(
     /^#ffffff$/i,
   );
-  host.rerender(<Host value="dark" />);
+  rerender(<Host value="dark" />);
   expect(document.documentElement.dataset.theme).toBe("dark");
   expect(
     screen.getByTestId("tokens").getAttribute("data-background"),
   ).not.toMatch(/^#ffffff$/i);
-  host.rerender(<Host value="light" />);
+  rerender(<Host value="light" />);
   expect(document.documentElement.dataset.theme).toBe("light");
   expect(screen.getByTestId("tokens").getAttribute("data-background")).toMatch(
     /^#ffffff$/i,
   );
   expect(observedRootThemes).toEqual(["light", "dark", "light"]);
-  host.unmount();
+  unmount();
   delete document.documentElement.dataset.theme;
 });
