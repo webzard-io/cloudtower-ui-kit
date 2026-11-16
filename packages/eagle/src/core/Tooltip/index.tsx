@@ -12,7 +12,7 @@ const TooltipDefaultClass = css`
     display: none;
   }
   .ant-tooltip-inner {
-    background: $gray-a80-9;
+    background: var(--gray-gray-a80-9);
     border-radius: 4px;
     &:has(.eagle-ellipsis-content) {
       visibility: hidden;

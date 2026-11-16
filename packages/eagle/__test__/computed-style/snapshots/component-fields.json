@@ -1,0 +1,475 @@
+[
+  {
+    "elements": [
+      "Fields.Boolean",
+      "Fields.Boolean/label[0]/span[0]",
+      "Fields.Boolean/label[0]/span[0]::after",
+      "Fields.DateTime",
+      "Fields.DateTime/div[0]/div[0]",
+      "Fields.DateTime/div[0]/div[0]/input[0]",
+      "Fields.DateTimeRange",
+      "Fields.DateTimeRange/div[0]",
+      "Fields.DateTimeRange/div[0]/div[0]/div[0]",
+      "Fields.DateTimeRange/div[0]/div[0]/div[0]/input[0]",
+      "Fields.DateTimeRange/div[0]/div[0]/div[1]",
+      "Fields.DateTimeRange/div[0]/div[0]/div[2]",
+      "Fields.DateTimeRange/div[0]/div[0]/div[2]/input[0]",
+      "Fields.Enum",
+      "Fields.Float",
+      "Fields.Float/div[0]/div[1]",
+      "Fields.Float/div[0]/div[1]/input[0]",
+      "Fields.Float/div[0]/div[1]::after",
+      "Fields.Float/div[0]/div[1]::before",
+      "Fields.Int",
+      "Fields.Integer",
+      "Fields.Integer/div[0]/div[1]",
+      "Fields.Integer/div[0]/div[1]/input[0]",
+      "Fields.String",
+      "Fields.TextArea",
+      "Fields.TimePicker",
+      "Fields.TimePicker/div[0]/div[0]",
+      "Fields.TimePicker/div[0]/div[0]/input[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.Boolean/label[0]",
+      "Fields.Boolean/label[0]/span[1]",
+      "Fields.Enum/div[0]/div[0]/span[0]",
+      "Fields.Enum/div[0]/div[0]/span[1]",
+      "Fields.Enum/div[0]/div[0]/span[1]::after",
+      "Fields.Enum/div[0]/div[0]::after"
+    ],
+    "style": {
+      "color": "rgb(45, 58, 86)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(45, 58, 86)",
+      "borderRightColor": "rgb(45, 58, 86)",
+      "borderBottomColor": "rgb(45, 58, 86)",
+      "borderLeftColor": "rgb(45, 58, 86)",
+      "outlineColor": "rgb(45, 58, 86)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.Boolean/label[0]/span[0]/input[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.Boolean/label[0]/span[0]/span[1]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(0, 128, 255)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.Boolean/label[0]/span[0]/span[1]::after"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.DateTime/div[0]",
+      "Fields.DateTimeRange/div[0]/div[0]",
+      "Fields.Float/div[0]",
+      "Fields.Integer/div[0]",
+      "Fields.TimePicker/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(217, 217, 217)",
+      "borderRightColor": "rgb(217, 217, 217)",
+      "borderBottomColor": "rgb(217, 217, 217)",
+      "borderLeftColor": "rgb(217, 217, 217)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.DateTime/div[0]/div[0]/span[1]",
+      "Fields.DateTime/div[0]/div[0]/span[1]/span[0]",
+      "Fields.DateTime/div[0]/div[0]/span[2]/span[0]",
+      "Fields.DateTimeRange/div[0]/div[0]/div[1]/span[0]",
+      "Fields.DateTimeRange/div[0]/div[0]/div[1]/span[0]/span[0]",
+      "Fields.DateTimeRange/div[0]/div[0]/span[4]",
+      "Fields.DateTimeRange/div[0]/div[0]/span[4]/span[0]",
+      "Fields.DateTimeRange/div[0]/div[0]/span[5]/span[0]",
+      "Fields.Enum/div[0]/span[1]",
+      "Fields.Enum/div[0]/span[1]/span[0]",
+      "Fields.TimePicker/div[0]/div[0]/span[1]",
+      "Fields.TimePicker/div[0]/div[0]/span[1]/span[0]",
+      "Fields.TimePicker/div[0]/div[0]/span[2]/span[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.25)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.25)",
+      "borderRightColor": "rgba(0, 0, 0, 0.25)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.25)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.25)",
+      "outlineColor": "rgba(0, 0, 0, 0.25)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.DateTime/div[0]/div[0]/span[1]/span[0]/svg[0]",
+      "Fields.DateTime/div[0]/div[0]/span[1]/span[0]/svg[0]/path[0]",
+      "Fields.DateTime/div[0]/div[0]/span[2]/span[0]/svg[0]",
+      "Fields.DateTime/div[0]/div[0]/span[2]/span[0]/svg[0]/path[0]",
+      "Fields.DateTimeRange/div[0]/div[0]/div[1]/span[0]/span[0]/svg[0]",
+      "Fields.DateTimeRange/div[0]/div[0]/div[1]/span[0]/span[0]/svg[0]/path[0]",
+      "Fields.DateTimeRange/div[0]/div[0]/span[4]/span[0]/svg[0]",
+      "Fields.DateTimeRange/div[0]/div[0]/span[4]/span[0]/svg[0]/path[0]",
+      "Fields.DateTimeRange/div[0]/div[0]/span[5]/span[0]/svg[0]",
+      "Fields.DateTimeRange/div[0]/div[0]/span[5]/span[0]/svg[0]/path[0]",
+      "Fields.Enum/div[0]/span[1]/span[0]/svg[0]",
+      "Fields.Enum/div[0]/span[1]/span[0]/svg[0]/path[0]",
+      "Fields.TimePicker/div[0]/div[0]/span[1]/span[0]/svg[0]",
+      "Fields.TimePicker/div[0]/div[0]/span[1]/span[0]/svg[0]/path[0]",
+      "Fields.TimePicker/div[0]/div[0]/span[1]/span[0]/svg[0]/path[1]",
+      "Fields.TimePicker/div[0]/div[0]/span[2]/span[0]/svg[0]",
+      "Fields.TimePicker/div[0]/div[0]/span[2]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.25)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.25)",
+      "borderRightColor": "rgba(0, 0, 0, 0.25)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.25)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.25)",
+      "outlineColor": "rgba(0, 0, 0, 0.25)",
+      "opacity": "1",
+      "fill": "rgba(0, 0, 0, 0.25)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.DateTime/div[0]/div[0]/span[2]",
+      "Fields.DateTimeRange/div[0]/div[0]/span[5]",
+      "Fields.TimePicker/div[0]/div[0]/span[2]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.25)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgba(0, 0, 0, 0.25)",
+      "borderRightColor": "rgba(0, 0, 0, 0.25)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.25)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.25)",
+      "outlineColor": "rgba(0, 0, 0, 0.25)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.DateTimeRange/div[0]/div[0]/div[3]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(0, 128, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.Enum/div[0]"
+    ],
+    "style": {
+      "color": "rgb(45, 58, 86)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(211, 218, 235, 0.6)",
+      "borderRightColor": "rgba(211, 218, 235, 0.6)",
+      "borderBottomColor": "rgba(211, 218, 235, 0.6)",
+      "borderLeftColor": "rgba(211, 218, 235, 0.6)",
+      "outlineColor": "rgb(45, 58, 86)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.Enum/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(45, 58, 86)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(217, 217, 217)",
+      "borderRightColor": "rgb(217, 217, 217)",
+      "borderBottomColor": "rgb(217, 217, 217)",
+      "borderLeftColor": "rgb(217, 217, 217)",
+      "outlineColor": "rgb(45, 58, 86)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.Enum/div[0]/div[0]/span[0]/input[0]"
+    ],
+    "style": {
+      "color": "rgb(45, 58, 86)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(45, 58, 86)",
+      "borderRightColor": "rgb(45, 58, 86)",
+      "borderBottomColor": "rgb(45, 58, 86)",
+      "borderLeftColor": "rgb(45, 58, 86)",
+      "outlineColor": "rgb(45, 58, 86)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.Float/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(217, 217, 217)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.Float/div[0]/div[0]/span[0]",
+      "Fields.Float/div[0]/div[0]/span[0]/span[0]",
+      "Fields.Float/div[0]/div[0]/span[1]/span[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.45)",
+      "borderRightColor": "rgba(0, 0, 0, 0.45)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.45)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.45)",
+      "outlineColor": "rgba(0, 0, 0, 0.45)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.Float/div[0]/div[0]/span[0]/span[0]/svg[0]",
+      "Fields.Float/div[0]/div[0]/span[0]/span[0]/svg[0]/path[0]",
+      "Fields.Float/div[0]/div[0]/span[1]/span[0]/svg[0]",
+      "Fields.Float/div[0]/div[0]/span[1]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.45)",
+      "borderRightColor": "rgba(0, 0, 0, 0.45)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.45)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.45)",
+      "outlineColor": "rgba(0, 0, 0, 0.45)",
+      "opacity": "1",
+      "fill": "rgba(0, 0, 0, 0.45)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.Float/div[0]/div[0]/span[1]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(217, 217, 217)",
+      "borderRightColor": "rgba(0, 0, 0, 0.45)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.45)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.45)",
+      "outlineColor": "rgba(0, 0, 0, 0.45)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.Int/input[0]",
+      "Fields.String/input[0]",
+      "Fields.TextArea/textarea[0]"
+    ],
+    "style": {
+      "color": "rgb(45, 58, 86)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgba(172, 186, 211, 0.6)",
+      "borderRightColor": "rgba(172, 186, 211, 0.6)",
+      "borderBottomColor": "rgba(172, 186, 211, 0.6)",
+      "borderLeftColor": "rgba(172, 186, 211, 0.6)",
+      "outlineColor": "rgb(45, 58, 86)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Fields.Integer/div[0]/div[1]::after",
+      "Fields.Integer/div[0]/div[1]::before"
+    ],
+    "style": {
+      "color": "rgba(44, 56, 82, 0.6)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(44, 56, 82, 0.6)",
+      "borderRightColor": "rgba(44, 56, 82, 0.6)",
+      "borderBottomColor": "rgba(44, 56, 82, 0.6)",
+      "borderLeftColor": "rgba(44, 56, 82, 0.6)",
+      "outlineColor": "rgba(44, 56, 82, 0.6)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  }
+]

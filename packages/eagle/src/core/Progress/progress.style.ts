@@ -1,5 +1,5 @@
 import { css } from "@linaria/core";
-import { Animation } from "@src/styles/token";
+import { Animation } from "@src/styles/token/animation";
 import { Color } from "@src/styles/token/color";
 import { Antd5PrefixCls } from "@src/utils";
 

@@ -1,0 +1,161 @@
+[
+  {
+    "elements": [
+      "portal-0",
+      "portal-0/div[0]",
+      "portal-1"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/a[0]",
+      "portal-0/div[0]/a[0]/div[0]",
+      "portal-0/div[0]/a[0]/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(41, 155, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(41, 155, 255)",
+      "borderRightColor": "rgb(41, 155, 255)",
+      "borderBottomColor": "rgb(41, 155, 255)",
+      "borderLeftColor": "rgb(41, 155, 255)",
+      "outlineColor": "rgb(41, 155, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-1/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-1/div[0]/ul[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(223, 228, 235)",
+      "borderRightColor": "rgb(223, 228, 235)",
+      "borderBottomColor": "rgb(223, 228, 235)",
+      "borderLeftColor": "rgb(223, 228, 235)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(129, 138, 153, 0.18)",
+        "rgba(235, 239, 245, 0.6)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "portal-1/div[0]/ul[0]/li[0]",
+      "portal-1/div[0]/ul[0]/li[0]/span[0]",
+      "portal-1/div[0]/ul[0]/li[1]",
+      "portal-1/div[0]/ul[0]/li[1]/span[0]",
+      "portal-1/div[0]/ul[0]/li[2]/span[0]"
+    ],
+    "style": {
+      "color": "rgb(45, 58, 86)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(45, 58, 86)",
+      "borderRightColor": "rgb(45, 58, 86)",
+      "borderBottomColor": "rgb(45, 58, 86)",
+      "borderLeftColor": "rgb(45, 58, 86)",
+      "outlineColor": "rgb(45, 58, 86)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-1/div[0]/ul[0]/li[2]"
+    ],
+    "style": {
+      "color": "rgb(45, 58, 86)",
+      "backgroundColor": "rgb(230, 244, 255)",
+      "borderTopColor": "rgb(45, 58, 86)",
+      "borderRightColor": "rgb(45, 58, 86)",
+      "borderBottomColor": "rgb(45, 58, 86)",
+      "borderLeftColor": "rgb(45, 58, 86)",
+      "outlineColor": "rgb(45, 58, 86)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-1/div[0]::before"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0.0001",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  }
+]

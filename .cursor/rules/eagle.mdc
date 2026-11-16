@@ -15,7 +15,7 @@ alwaysApply: false
 
 # 样式
 - 要为组件添加样式。样式应该以 @linaria/core 的 css 来添加，不要用 styled。所有的linaria 样式变量名格式应该以Style结尾，例如 ContentStyle。
-- 如果样式中涉及到颜色，应该使用 [color.scss](mdc:packages/eagle/src/styles/token/color.scss) 中定义好的颜色变量。这些变量可以直接作为 SCSS 变量使用，不需要套用js的模板字符串，也不需要套用CSS的 var变量。
+- SCSS 和 Linaria 样式中的颜色、效果直接引用 [CSS token](mdc:packages/eagle/src/styles/token/color.css)，例如 `var(--text-neutral-primary)`。JS 属性使用 `Color`／`Effect`。
 - 你绝对不应该使用没有定义过的变量。
 - 如果样式中涉及字号、粗细，应该使用 [index.ts](mdc:packages/eagle/src/core/Typo/index.ts) 中预先定义好的样式。注意，这些样式都是linaria形式。使用时应该用linaria的cx来和其他样式变量合并。
 

@@ -11,7 +11,7 @@ import { Payload } from "recharts/types/component/DefaultTooltipContent";
 import { Typo } from "../Typo";
 
 const TooltipTitle = styled.div`
-  color: $text-light-on-tint;
+  color: var(--text-neutral-ontint);
 `;
 
 export interface ILineChartTooltipItem {

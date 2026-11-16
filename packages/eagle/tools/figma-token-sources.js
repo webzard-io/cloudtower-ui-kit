@@ -8,6 +8,14 @@ module.exports = {
       url: "https://www.figma.com/design/2Jv3JpCgxI4g0t08Tzyvcb/Style-%7C-%E6%A0%B7%E5%BC%8F?node-id=1537-7735&p=f&m=dev",
     },
   },
+  effects: {
+    sourceOfTruth: {
+      fileKey: "2Jv3JpCgxI4g0t08Tzyvcb",
+      pageId: "1537:8416",
+      pageName: "Shadow & Glow & Outline",
+      url: "https://www.figma.com/design/2Jv3JpCgxI4g0t08Tzyvcb/Style?node-id=1537-8416",
+    },
+  },
   typography: {
     sourceOfTruth: {
       fileKey: "2Jv3JpCgxI4g0t08Tzyvcb",

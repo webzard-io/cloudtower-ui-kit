@@ -9,7 +9,7 @@ const DropdownOverlayStyle = css`
   .ant-dropdown-menu-item-group {
     .ant-dropdown-menu-item-group-title {
       padding: 4px 8px 0 8px;
-      color: $text-light-secondary;
+      color: var(--text-neutral-tertiary);
       font-size: 12px;
     }
     .ant-dropdown-menu-item-group-list {
@@ -17,7 +17,7 @@ const DropdownOverlayStyle = css`
     }
     &:not(:first-child) {
       padding-top: 4px;
-      border-top: 1px solid $strokes-light-trans-2;
+      border-top: 1px solid var(--stroke-neutral-trans-2);
     }
   }
 `;

@@ -1,0 +1,415 @@
+[
+  {
+    "elements": [
+      "portal-0",
+      "portal-0/div[0]/div[0]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]::after",
+      "portal-0/div[0]/div[0]/div[0]::before"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(237, 240, 247)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(240, 240, 240)",
+      "borderRightColor": "rgb(240, 240, 240)",
+      "borderBottomColor": "rgb(240, 240, 240)",
+      "borderLeftColor": "rgb(240, 240, 240)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[0]/div[0]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(250, 250, 250)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]/span[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]/span[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]/span[2]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]::after",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]::before",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]/span[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]/span[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]/span[2]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]::after",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]::before",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]/span[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]/span[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]/span[2]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]::after",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]::before",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]/span[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]/span[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[0]/div[1]/div[1]/span[2]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]::after",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]::before"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.85)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.85)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/svg[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]/radialGradient[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[0]/svg[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]/radialGradient[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[0]/svg[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]/radialGradient[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[0]/svg[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]/radialGradient[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.85)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.85)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "none",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/svg[0]/path[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[0]/svg[0]/path[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[0]/svg[0]/path[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.85)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.85)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "rgb(44, 56, 82)",
+      "fillOpacity": "0.6",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]/radialGradient[0]/stop[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]/radialGradient[0]/stop[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]/radialGradient[0]/stop[0]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]/radialGradient[0]/stop[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.85)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.85)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "none",
+      "fillOpacity": "1",
+      "stopColor": "rgb(91, 202, 255)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]/radialGradient[0]/stop[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]/radialGradient[0]/stop[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]/radialGradient[0]/stop[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/defs[1]/radialGradient[0]/stop[1]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.85)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.85)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "none",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 102, 255)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[0]/div[0]/div[0]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.85)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.85)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "url(#svg-definition-0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[0]/div[0]/div[1]",
+      "portal-0/div[0]/div[0]/div[0]/div[3]",
+      "portal-0/div[0]/div[0]/div[0]/div[5]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(240, 240, 240)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[0]/div[0]/div[2]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.85)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.85)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "url(#svg-definition-1)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[0]/div[0]/div[4]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.85)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.85)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "url(#svg-definition-2)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "portal-0/div[0]/div[0]/div[0]/div[6]/div[0]/div[0]/div[1]/div[0]/div[0]/span[0]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.85)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.85)",
+      "borderRightColor": "rgba(0, 0, 0, 0.85)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.85)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.85)",
+      "outlineColor": "rgba(0, 0, 0, 0.85)",
+      "opacity": "1",
+      "fill": "url(#svg-definition-3)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  }
+]

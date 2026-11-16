@@ -1,0 +1,1040 @@
+[
+  {
+    "elements": [
+      "Antd5Anchor.Link",
+      "Antd5Anchor.Link/div[0]",
+      "Antd5Anchor.Link/div[0]/div[0]",
+      "Antd5Flex",
+      "Antd5Flex/div[0]",
+      "Antd5Flex/div[0]/span[0]",
+      "Antd5Flex/div[0]/span[1]",
+      "AntdInputNumberStyled",
+      "AntdInputNumberStyled/div[0]/div[1]",
+      "AntdInputNumberStyled/div[0]/div[1]/input[0]",
+      "AntdInputNumberStyled/div[0]/div[1]::after",
+      "AntdInputNumberStyled/div[0]/div[1]::before",
+      "Badge",
+      "Badge/span[0]",
+      "ButtonGroup",
+      "Checkbox",
+      "Checkbox/label[0]/span[0]",
+      "Checkbox/label[0]/span[0]::after",
+      "ConfigProvider",
+      "ConfigProvider/button[0]/div[0]",
+      "Counting",
+      "Counting/span[0]",
+      "DeprecatedProgress",
+      "DeprecatedProgress/div[0]",
+      "DeprecatedProgress/div[0]/div[0]",
+      "DropdownTransition",
+      "Empty",
+      "Empty/span[0]",
+      "Error",
+      "Error/div[0]",
+      "ErrorBoundary",
+      "ErrorBoundary/div[0]",
+      "ExtraOverflow",
+      "ExtraOverflow/div[0]",
+      "ExtraOverflow/div[0]/span[0]",
+      "FailedLoad",
+      "FailedLoad/div[0]",
+      "Form",
+      "Form.Item",
+      "Form.Item/div[0]",
+      "Form.Item/div[0]/div[0]",
+      "Form.Item/div[0]/div[1]",
+      "Form.Item/div[0]/div[1]/div[0]",
+      "Form.Item/div[0]/div[1]/div[0]/div[0]",
+      "Form.List",
+      "Form.List/form[0]",
+      "Form.List/form[0]/div[0]",
+      "Form.List/form[0]/div[0]/div[0]",
+      "Form.List/form[0]/div[0]/div[0]/div[0]",
+      "Form.List/form[0]/div[0]/div[0]/div[0]/div[0]",
+      "Form.Provider",
+      "Form.Provider/form[0]",
+      "Form.Provider/form[0]/div[0]",
+      "Form.Provider/form[0]/div[0]/div[0]",
+      "Form.Provider/form[0]/div[0]/div[1]",
+      "Form.Provider/form[0]/div[0]/div[1]/div[0]",
+      "Form.Provider/form[0]/div[0]/div[1]/div[0]/div[0]",
+      "Form/form[0]",
+      "Form/form[0]/div[0]",
+      "Form/form[0]/div[0]/div[0]",
+      "Form/form[0]/div[0]/div[1]",
+      "Form/form[0]/div[0]/div[1]/div[0]",
+      "Form/form[0]/div[0]/div[1]/div[0]/div[0]",
+      "InputNumber",
+      "InputNumber/div[0]/div[1]",
+      "InputNumber/div[0]/div[1]/input[0]",
+      "InputNumber/div[0]/div[1]::after",
+      "InputNumber/div[0]/div[1]::before",
+      "InputTagItem",
+      "Overflow",
+      "Overflow/div[0]",
+      "Overflow/div[0]/span[0]",
+      "Overflow/div[0]/span[0]/span[0]",
+      "OverflowTooltip",
+      "OverflowTooltip/div[0]",
+      "OverflowTooltip/div[0]/span[0]",
+      "ParrotTrans",
+      "ParrotTrans/strong[0]",
+      "Tag.NameTag",
+      "Tag.SplitTag",
+      "TextArea",
+      "TimePicker",
+      "TimePicker/div[0]/div[0]",
+      "TimePicker/div[0]/div[0]/input[0]",
+      "Tooltip.EllipsisContent",
+      "Tooltip.EllipsisContent/div[0]",
+      "Tooltip.EllipsisContent/div[0]/div[0]",
+      "UIKitProvider",
+      "UIKitProvider/button[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Antd5Anchor.Link/div[0]/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Antd5Anchor.Link/div[0]/div[0]/div[0]/div[0]",
+      "Antd5Anchor.Link/div[0]/div[0]/div[0]/div[0]/div[1]",
+      "Antd5Anchor.Link/div[0]/div[0]/div[0]/div[0]/div[1]/a[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.88)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.88)",
+      "borderRightColor": "rgba(0, 0, 0, 0.88)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.88)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.88)",
+      "outlineColor": "rgba(0, 0, 0, 0.88)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Antd5Anchor.Link/div[0]/div[0]/div[0]/div[0]::before"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.88)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.88)",
+      "borderRightColor": "rgba(0, 0, 0, 0.88)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.88)",
+      "borderLeftColor": "rgba(5, 5, 5, 0.06)",
+      "outlineColor": "rgba(0, 0, 0, 0.88)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdInputNumberStyled/div[0]",
+      "InputNumber/div[0]",
+      "TimePicker/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(217, 217, 217)",
+      "borderRightColor": "rgb(217, 217, 217)",
+      "borderBottomColor": "rgb(217, 217, 217)",
+      "borderLeftColor": "rgb(217, 217, 217)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdInputNumberStyled/div[0]/div[0]",
+      "InputNumber/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(217, 217, 217)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdInputNumberStyled/div[0]/div[0]/span[0]",
+      "AntdInputNumberStyled/div[0]/div[0]/span[0]/span[0]",
+      "AntdInputNumberStyled/div[0]/div[0]/span[1]/span[0]",
+      "InputNumber/div[0]/div[0]/span[0]",
+      "InputNumber/div[0]/div[0]/span[0]/span[0]",
+      "InputNumber/div[0]/div[0]/span[1]/span[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.45)",
+      "borderRightColor": "rgba(0, 0, 0, 0.45)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.45)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.45)",
+      "outlineColor": "rgba(0, 0, 0, 0.45)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdInputNumberStyled/div[0]/div[0]/span[0]/span[0]/svg[0]",
+      "AntdInputNumberStyled/div[0]/div[0]/span[0]/span[0]/svg[0]/path[0]",
+      "AntdInputNumberStyled/div[0]/div[0]/span[1]/span[0]/svg[0]",
+      "AntdInputNumberStyled/div[0]/div[0]/span[1]/span[0]/svg[0]/path[0]",
+      "InputNumber/div[0]/div[0]/span[0]/span[0]/svg[0]",
+      "InputNumber/div[0]/div[0]/span[0]/span[0]/svg[0]/path[0]",
+      "InputNumber/div[0]/div[0]/span[1]/span[0]/svg[0]",
+      "InputNumber/div[0]/div[0]/span[1]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.45)",
+      "borderRightColor": "rgba(0, 0, 0, 0.45)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.45)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.45)",
+      "outlineColor": "rgba(0, 0, 0, 0.45)",
+      "opacity": "1",
+      "fill": "rgba(0, 0, 0, 0.45)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "AntdInputNumberStyled/div[0]/div[0]/span[1]",
+      "InputNumber/div[0]/div[0]/span[1]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(217, 217, 217)",
+      "borderRightColor": "rgba(0, 0, 0, 0.45)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.45)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.45)",
+      "outlineColor": "rgba(0, 0, 0, 0.45)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Badge/span[0]/sup[0]"
+    ],
+    "style": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(255, 255, 255)",
+      "borderRightColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(255, 255, 255)",
+      "outlineColor": "rgb(255, 255, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "gradientColors": [
+        "rgb(255, 92, 120)",
+        "rgb(220, 0, 0)"
+      ],
+      "boxShadowColors": [
+        "rgba(184, 192, 204, 0.6)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "Badge/span[0]/sup[0]/span[0]",
+      "Badge/span[0]/sup[0]/span[0]/p[0]",
+      "Badge/span[0]/sup[0]/span[0]/p[10]",
+      "Badge/span[0]/sup[0]/span[0]/p[11]",
+      "Badge/span[0]/sup[0]/span[0]/p[12]",
+      "Badge/span[0]/sup[0]/span[0]/p[13]",
+      "Badge/span[0]/sup[0]/span[0]/p[14]",
+      "Badge/span[0]/sup[0]/span[0]/p[15]",
+      "Badge/span[0]/sup[0]/span[0]/p[16]",
+      "Badge/span[0]/sup[0]/span[0]/p[17]",
+      "Badge/span[0]/sup[0]/span[0]/p[18]",
+      "Badge/span[0]/sup[0]/span[0]/p[19]",
+      "Badge/span[0]/sup[0]/span[0]/p[1]",
+      "Badge/span[0]/sup[0]/span[0]/p[20]",
+      "Badge/span[0]/sup[0]/span[0]/p[21]",
+      "Badge/span[0]/sup[0]/span[0]/p[22]",
+      "Badge/span[0]/sup[0]/span[0]/p[23]",
+      "Badge/span[0]/sup[0]/span[0]/p[24]",
+      "Badge/span[0]/sup[0]/span[0]/p[25]",
+      "Badge/span[0]/sup[0]/span[0]/p[26]",
+      "Badge/span[0]/sup[0]/span[0]/p[27]",
+      "Badge/span[0]/sup[0]/span[0]/p[28]",
+      "Badge/span[0]/sup[0]/span[0]/p[29]",
+      "Badge/span[0]/sup[0]/span[0]/p[2]",
+      "Badge/span[0]/sup[0]/span[0]/p[3]",
+      "Badge/span[0]/sup[0]/span[0]/p[4]",
+      "Badge/span[0]/sup[0]/span[0]/p[5]",
+      "Badge/span[0]/sup[0]/span[0]/p[6]",
+      "Badge/span[0]/sup[0]/span[0]/p[7]",
+      "Badge/span[0]/sup[0]/span[0]/p[8]",
+      "Badge/span[0]/sup[0]/span[0]/p[9]",
+      "ConfigProvider/button[0]/span[1]",
+      "UIKitProvider/button[0]/span[1]"
+    ],
+    "style": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(255, 255, 255)",
+      "borderRightColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(255, 255, 255)",
+      "outlineColor": "rgb(255, 255, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "ButtonGroup/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "filterColors": [
+        "rgba(0, 136, 255, 0.1)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "ButtonGroup/div[0]/button[0]"
+    ],
+    "style": {
+      "color": "rgb(0, 128, 255)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(255, 255, 255)",
+      "borderRightColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(255, 255, 255)",
+      "outlineColor": "rgb(0, 128, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "ButtonGroup/div[0]/button[0]/span[0]"
+    ],
+    "style": {
+      "color": "rgb(0, 128, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(0, 128, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "ButtonGroup/div[0]/button[0]::before"
+    ],
+    "style": {
+      "color": "rgb(0, 128, 255)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(0, 128, 255)",
+      "opacity": "0.35",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "ButtonGroup/div[0]/button[1]"
+    ],
+    "style": {
+      "color": "rgb(240, 72, 62)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(255, 255, 255)",
+      "borderRightColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(255, 255, 255)",
+      "outlineColor": "rgb(240, 72, 62)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "ButtonGroup/div[0]/button[1]/span[0]"
+    ],
+    "style": {
+      "color": "rgb(240, 72, 62)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(240, 72, 62)",
+      "borderRightColor": "rgb(240, 72, 62)",
+      "borderBottomColor": "rgb(240, 72, 62)",
+      "borderLeftColor": "rgb(240, 72, 62)",
+      "outlineColor": "rgb(240, 72, 62)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "ButtonGroup/div[0]/button[1]::before"
+    ],
+    "style": {
+      "color": "rgb(240, 72, 62)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(240, 72, 62)",
+      "borderRightColor": "rgb(240, 72, 62)",
+      "borderBottomColor": "rgb(240, 72, 62)",
+      "borderLeftColor": "rgb(240, 72, 62)",
+      "outlineColor": "rgb(240, 72, 62)",
+      "opacity": "0.35",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Checkbox/label[0]",
+      "Checkbox/label[0]/span[1]",
+      "Checkbox/label[0]/span[1]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(45, 58, 86)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(45, 58, 86)",
+      "borderRightColor": "rgb(45, 58, 86)",
+      "borderBottomColor": "rgb(45, 58, 86)",
+      "borderLeftColor": "rgb(45, 58, 86)",
+      "outlineColor": "rgb(45, 58, 86)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Checkbox/label[0]/span[0]/input[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Checkbox/label[0]/span[0]/span[1]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(0, 128, 255)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Checkbox/label[0]/span[0]/span[1]::after"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "ConfigProvider/button[0]",
+      "UIKitProvider/button[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(172, 186, 211, 0.6)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "ConfigProvider/button[0]/div[0]::before",
+      "UIKitProvider/button[0]/div[0]::before"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(0, 35, 11, 0.2)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "DeprecatedProgress/div[0]/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(245, 245, 245)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "DeprecatedProgress/div[0]/div[0]/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgb(255, 77, 79)",
+      "borderTopColor": "rgb(6, 16, 31)",
+      "borderRightColor": "rgb(6, 16, 31)",
+      "borderBottomColor": "rgb(6, 16, 31)",
+      "borderLeftColor": "rgb(6, 16, 31)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "DeprecatedProgress/div[0]/span[1]",
+      "DeprecatedProgress/div[0]/span[1]/span[0]"
+    ],
+    "style": {
+      "color": "rgb(255, 77, 79)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(255, 77, 79)",
+      "borderRightColor": "rgb(255, 77, 79)",
+      "borderBottomColor": "rgb(255, 77, 79)",
+      "borderLeftColor": "rgb(255, 77, 79)",
+      "outlineColor": "rgb(255, 77, 79)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "DeprecatedProgress/div[0]/span[1]/span[0]/svg[0]",
+      "DeprecatedProgress/div[0]/span[1]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgb(255, 77, 79)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(255, 77, 79)",
+      "borderRightColor": "rgb(255, 77, 79)",
+      "borderBottomColor": "rgb(255, 77, 79)",
+      "borderLeftColor": "rgb(255, 77, 79)",
+      "outlineColor": "rgb(255, 77, 79)",
+      "opacity": "1",
+      "fill": "rgb(255, 77, 79)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "DropdownTransition/span[0]",
+      "ExtraOverflow/div[0]/span[0]/span[0]"
+    ],
+    "style": {
+      "color": "rgb(29, 50, 108)",
+      "backgroundColor": "rgba(225, 230, 241, 0.6)",
+      "borderTopColor": "rgb(29, 50, 108)",
+      "borderRightColor": "rgb(29, 50, 108)",
+      "borderBottomColor": "rgb(29, 50, 108)",
+      "borderLeftColor": "rgb(29, 50, 108)",
+      "outlineColor": "rgb(29, 50, 108)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "FailedLoad/div[0]/button[1]"
+    ],
+    "style": {
+      "color": "rgb(29, 50, 108)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(204, 212, 227)",
+      "borderRightColor": "rgb(204, 212, 227)",
+      "borderBottomColor": "rgb(204, 212, 227)",
+      "borderLeftColor": "rgb(204, 212, 227)",
+      "outlineColor": "rgb(29, 50, 108)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1",
+      "boxShadowColors": [
+        "rgba(44, 56, 82, 0.18)"
+      ]
+    }
+  },
+  {
+    "elements": [
+      "FailedLoad/div[0]/button[1]/span[0]"
+    ],
+    "style": {
+      "color": "rgb(29, 50, 108)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgb(29, 50, 108)",
+      "borderRightColor": "rgb(29, 50, 108)",
+      "borderBottomColor": "rgb(29, 50, 108)",
+      "borderLeftColor": "rgb(29, 50, 108)",
+      "outlineColor": "rgb(29, 50, 108)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "FailedLoad/div[0]/button[1]::before"
+    ],
+    "style": {
+      "color": "rgb(29, 50, 108)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgb(29, 50, 108)",
+      "borderRightColor": "rgb(29, 50, 108)",
+      "borderBottomColor": "rgb(29, 50, 108)",
+      "borderLeftColor": "rgb(29, 50, 108)",
+      "outlineColor": "rgb(29, 50, 108)",
+      "opacity": "0.35",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "FailedLoad/div[0]/div[0]"
+    ],
+    "style": {
+      "color": "rgba(10, 37, 85, 0.6)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(10, 37, 85, 0.6)",
+      "borderRightColor": "rgba(10, 37, 85, 0.6)",
+      "borderBottomColor": "rgba(10, 37, 85, 0.6)",
+      "borderLeftColor": "rgba(10, 37, 85, 0.6)",
+      "outlineColor": "rgba(10, 37, 85, 0.6)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Form.Item/div[0]/div[0]/label[0]",
+      "Form.Item/div[0]/div[0]/label[0]::after",
+      "Form.Provider/form[0]/div[0]/div[0]/label[0]",
+      "Form.Provider/form[0]/div[0]/div[0]/label[0]::after",
+      "Form/form[0]/div[0]/div[0]/label[0]",
+      "Form/form[0]/div[0]/div[0]/label[0]::after"
+    ],
+    "style": {
+      "color": "rgba(44, 56, 82, 0.6)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(44, 56, 82, 0.6)",
+      "borderRightColor": "rgba(44, 56, 82, 0.6)",
+      "borderBottomColor": "rgba(44, 56, 82, 0.6)",
+      "borderLeftColor": "rgba(44, 56, 82, 0.6)",
+      "outlineColor": "rgba(44, 56, 82, 0.6)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Form.Item/div[0]/div[1]/div[0]/div[0]/input[0]",
+      "Form.List/form[0]/div[0]/div[0]/div[0]/div[0]/input[0]",
+      "Form.Provider/form[0]/div[0]/div[1]/div[0]/div[0]/input[0]",
+      "Form/form[0]/div[0]/div[1]/div[0]/div[0]/input[0]",
+      "TextArea/textarea[0]"
+    ],
+    "style": {
+      "color": "rgb(45, 58, 86)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgba(172, 186, 211, 0.6)",
+      "borderRightColor": "rgba(172, 186, 211, 0.6)",
+      "borderBottomColor": "rgba(172, 186, 211, 0.6)",
+      "borderLeftColor": "rgba(172, 186, 211, 0.6)",
+      "outlineColor": "rgb(45, 58, 86)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "InputTagItem/span[0]"
+    ],
+    "style": {
+      "color": "rgb(6, 16, 31)",
+      "backgroundColor": "rgba(235, 239, 245, 0.6)",
+      "borderTopColor": "rgba(223, 228, 235, 0.6)",
+      "borderRightColor": "rgba(223, 228, 235, 0.6)",
+      "borderBottomColor": "rgba(223, 228, 235, 0.6)",
+      "borderLeftColor": "rgba(223, 228, 235, 0.6)",
+      "outlineColor": "rgb(6, 16, 31)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Tag.NameTag/span[0]"
+    ],
+    "style": {
+      "color": "rgb(0, 18, 46)",
+      "backgroundColor": "rgba(237, 241, 250, 0.6)",
+      "borderTopColor": "rgba(211, 218, 235, 0.6)",
+      "borderRightColor": "rgba(211, 218, 235, 0.6)",
+      "borderBottomColor": "rgba(211, 218, 235, 0.6)",
+      "borderLeftColor": "rgba(211, 218, 235, 0.6)",
+      "outlineColor": "rgb(0, 18, 46)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "Tag.SplitTag/span[0]",
+      "Tag.SplitTag/span[0]/span[0]"
+    ],
+    "style": {
+      "color": "rgb(0, 128, 255)",
+      "backgroundColor": "rgba(0, 136, 255, 0.1)",
+      "borderTopColor": "rgb(0, 128, 255)",
+      "borderRightColor": "rgb(0, 128, 255)",
+      "borderBottomColor": "rgb(0, 128, 255)",
+      "borderLeftColor": "rgb(0, 128, 255)",
+      "outlineColor": "rgb(0, 128, 255)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "TimePicker/div[0]/div[0]/span[1]",
+      "TimePicker/div[0]/div[0]/span[1]/span[0]",
+      "TimePicker/div[0]/div[0]/span[2]/span[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.25)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.25)",
+      "borderRightColor": "rgba(0, 0, 0, 0.25)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.25)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.25)",
+      "outlineColor": "rgba(0, 0, 0, 0.25)",
+      "opacity": "1",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "TimePicker/div[0]/div[0]/span[1]/span[0]/svg[0]",
+      "TimePicker/div[0]/div[0]/span[1]/span[0]/svg[0]/path[0]",
+      "TimePicker/div[0]/div[0]/span[1]/span[0]/svg[0]/path[1]",
+      "TimePicker/div[0]/div[0]/span[2]/span[0]/svg[0]",
+      "TimePicker/div[0]/div[0]/span[2]/span[0]/svg[0]/path[0]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.25)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderTopColor": "rgba(0, 0, 0, 0.25)",
+      "borderRightColor": "rgba(0, 0, 0, 0.25)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.25)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.25)",
+      "outlineColor": "rgba(0, 0, 0, 0.25)",
+      "opacity": "1",
+      "fill": "rgba(0, 0, 0, 0.25)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  },
+  {
+    "elements": [
+      "TimePicker/div[0]/div[0]/span[2]"
+    ],
+    "style": {
+      "color": "rgba(0, 0, 0, 0.25)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderTopColor": "rgba(0, 0, 0, 0.25)",
+      "borderRightColor": "rgba(0, 0, 0, 0.25)",
+      "borderBottomColor": "rgba(0, 0, 0, 0.25)",
+      "borderLeftColor": "rgba(0, 0, 0, 0.25)",
+      "outlineColor": "rgba(0, 0, 0, 0.25)",
+      "opacity": "0",
+      "fill": "rgb(0, 0, 0)",
+      "fillOpacity": "1",
+      "stopColor": "rgb(0, 0, 0)",
+      "stopOpacity": "1",
+      "stroke": "none",
+      "strokeOpacity": "1"
+    }
+  }
+]

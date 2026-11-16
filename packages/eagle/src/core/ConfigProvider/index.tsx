@@ -7,6 +7,7 @@ import { ParrotLngs } from "@cloudtower/parrot";
 import { useAntdPatchEnLocales } from "@src/hooks/useAntdPatchEnLocales";
 import { useAntdPatchJaLocales } from "@src/hooks/useAntdPatchJaLocales";
 import useParrotTranslation from "@src/hooks/useParrotTranslation";
+import { antdTokens } from "@src/styles/token/antd";
 import { ConfigProvider as Antd4ConfigProvider } from "antd";
 import { ConfigProviderProps } from "antd/lib/config-provider";
 import enUS from "antd/lib/locale/en_US";
@@ -15,6 +16,8 @@ import zhCN from "antd/lib/locale/zh_CN";
 import {
   ConfigProvider as Antd5ConfigProvider,
   ConfigProviderProps as Antd5ConfigProviderProps,
+  theme as antdTheme,
+  ThemeConfig,
 } from "antd5";
 import antd5enUS from "antd5/lib/locale/en_US";
 import antd5jaJP from "antd5/lib/locale/ja_JP";
@@ -23,8 +26,14 @@ import dayjs from "dayjs";
 import moment from "moment";
 import React, { createContext, useContext, useEffect } from "react";
 
+const mappedAntdTokens: Record<string, ThemeConfig["token"]> = antdTokens;
+
 // 完整的配置类型
+export type EagleTheme = "light" | "dark";
+
 export type ConfigProps = {
+  /** 由宿主传入，与根元素的 data-theme 一致。省略时 Eagle 默认浅色。 */
+  theme?: EagleTheme;
   antd4Configs?: ConfigProviderProps;
   antd5Configs?: Antd5ConfigProviderProps;
   config?: {
@@ -32,6 +41,9 @@ export type ConfigProps = {
     CTErrorI18nNs?: string;
   };
 };
+
+const ThemeContext = createContext<EagleTheme>("light");
+export const useEagleTheme = () => useContext(ThemeContext);
 
 // 创建 CTError 配置 Context
 const ConfigProviderContext = createContext<ConfigProps["config"]>({});
@@ -42,6 +54,7 @@ export const useConfig = (): ConfigProps["config"] => {
 };
 
 export const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProps>> = ({
+  theme,
   antd5Configs,
   antd4Configs,
   config = {},
@@ -77,21 +90,40 @@ export const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProps>> = ({
     [ParrotLngs.en]: patchEnLocale,
     [ParrotLngs.ja]: patchAntd4JaLocale,
   };
+  const eagleTheme = theme ?? "light";
+  const antd5Theme = antd5Configs?.theme;
+  const resolvedAntd5Theme =
+    theme === undefined && antd5Theme?.algorithm
+      ? antd5Theme
+      : {
+          algorithm:
+            eagleTheme === "dark"
+              ? antdTheme.darkAlgorithm
+              : antdTheme.defaultAlgorithm,
+          ...antd5Theme,
+          token: {
+            ...mappedAntdTokens[eagleTheme],
+            ...antd5Theme?.token,
+          },
+        };
   return (
-    <ConfigProviderContext.Provider value={config}>
-      <Antd5ConfigProvider
-        autoInsertSpaceInButton={false}
-        locale={antd5Locales[lng] ?? antd5enUS}
-        {...antd5Configs}
-      >
-        <Antd4ConfigProvider
+    <ThemeContext.Provider value={eagleTheme}>
+      <ConfigProviderContext.Provider value={config}>
+        <Antd5ConfigProvider
           autoInsertSpaceInButton={false}
-          locale={antd4Locales[lng] ?? patchEnLocale}
-          {...antd4Configs}
+          locale={antd5Locales[lng] ?? antd5enUS}
+          {...antd5Configs}
+          theme={resolvedAntd5Theme}
         >
-          {children}
-        </Antd4ConfigProvider>
-      </Antd5ConfigProvider>
-    </ConfigProviderContext.Provider>
+          <Antd4ConfigProvider
+            autoInsertSpaceInButton={false}
+            locale={antd4Locales[lng] ?? patchEnLocale}
+            {...antd4Configs}
+          >
+            {children}
+          </Antd4ConfigProvider>
+        </Antd5ConfigProvider>
+      </ConfigProviderContext.Provider>
+    </ThemeContext.Provider>
   );
 };

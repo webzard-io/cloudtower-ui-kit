@@ -5,7 +5,7 @@ exports[`table form render > default data is undefined 1`] = `
   <div>
     <div
       class=table-form,row-split-by-border,
-  border: 1px solid $strokes-light-trans-2;
+  border: 1px solid var(--stroke-neutral-trans-2);
   border-radius: 8px;
   overflow: auto;
   .ant-list {
@@ -24,10 +24,10 @@ exports[`table form render > default data is undefined 1`] = `
       }
       flex-wrap: nowrap;
       justify-content: flex-start;
-      background: $fills-light-opaque-1;
+      background: var(--fill-neutral-opaque-1);
       font-size: 14px;
-      color: $text-secondary-light;
-      border-bottom: 1px solid $fills-light-trans-2;
+      color: var(--text-neutral-tertiary);
+      border-bottom: 1px solid var(--fill-neutral-trans-2);
     }
     .eagle-table-form-header .eagle-table-form-cell > p {
       margin-bottom: 0;
@@ -43,26 +43,26 @@ exports[`table form render > default data is undefined 1`] = `
         flex-basis: 100%;
         margin: 12px 0 0;
         order: 99;
-        color: $text-secondary-light;
+        color: var(--text-neutral-tertiary);
       }
       .row-error-message {
-        color: $text-light-serious;
+        color: var(--text-colorful-serious);
         flex-basis: 100%;
         order: 98;
         margin: 12px 0 0;
       }
       &:hover {
-        background-color: $fills-light-trans-1;
+        background-color: var(--fill-neutral-trans-1);
       }
       &.isDragging {
-        background-color: $fills-light-general-general-light;
+        background-color: rgba(0, 136, 255, 0.1);
       }
     }
     .eagle-table-form-cell {
       flex: 1 0 0;
       overflow: hidden;
       .cell-description {
-        color: $text-secondary-light;
+        color: var(--text-neutral-tertiary);
         margin: 0;
       }
 
@@ -145,13 +145,13 @@ exports[`table form render > default data is undefined 1`] = `
   }
   &.row-split-by-border {
     .eagle-table-form-row {
-      border-bottom: 1px solid $fills-light-trans-2;
+      border-bottom: 1px solid var(--fill-neutral-trans-2);
     }
   }
   &.row-split-by-zebraMarking {
     .draggable-container {
       & > :nth-child(2n) {
-        background-color: $fills-trans-primary-light;
+        background-color: var(--fill-neutral-trans-1);
       }
     }
   }
@@ -181,7 +181,7 @@ exports[`table form render > default data is undefined 1`] = `
   line-height: 20px;
 ,
   margin-bottom: 4px;
-  color: $text-secondary-light;
+  color: var(--text-neutral-tertiary);
 
                 >
                   <div
@@ -212,7 +212,7 @@ exports[`table form render > default data is undefined 1`] = `
       min-height: 32px;
       height: auto;
       font-size: 13px;
-      color: rgba(44, 56, 82, 0.6);
+      color: var(--text-neutral-tertiary);
       white-space: normal;
     }
   }
@@ -234,7 +234,7 @@ exports[`table form render > default data is undefined 1`] = `
 
   .ant-form-item-extra {
     font-size: 12px;
-    color: rgba(44, 56, 82, 0.6);
+    color: var(--text-neutral-tertiary);
     min-height: 0px;
   }
 ,
@@ -277,26 +277,26 @@ exports[`table form render > default data is undefined 1`] = `
   font-size: 12px;
   line-height: 18px;
 ,
-  color: rgba(44, 56, 82, 0.6);
+  color: var(--text-neutral-tertiary);
   line-height: 32px;
   height: 32px;
   margin-bottom: 0;
   &.primary,
   &.info {
-    color: $text-light-general;
+    color: var(--text-colorful-outstanding);
   }
   &.warning {
     color: #ffa500;
   }
   &.success {
-    color: $text-light-positive;
+    color: var(--text-colorful-positive);
   }
   &.danger,
   &.error {
-    color: $text-light-serious;
+    color: var(--text-colorful-serious);
   }
   &.normal {
-    color: $text-secondary-light;
+    color: var(--text-neutral-tertiary);
   }
 
                         >
@@ -318,7 +318,7 @@ exports[`table form render > default data is undefined 1`] = `
   line-height: 20px;
 ,
   margin-bottom: 4px;
-  color: $text-secondary-light;
+  color: var(--text-neutral-tertiary);
 
                 >
                   <div
@@ -349,7 +349,7 @@ exports[`table form render > default data is undefined 1`] = `
       min-height: 32px;
       height: auto;
       font-size: 13px;
-      color: rgba(44, 56, 82, 0.6);
+      color: var(--text-neutral-tertiary);
       white-space: normal;
     }
   }
@@ -371,7 +371,7 @@ exports[`table form render > default data is undefined 1`] = `
 
   .ant-form-item-extra {
     font-size: 12px;
-    color: rgba(44, 56, 82, 0.6);
+    color: var(--text-neutral-tertiary);
     min-height: 0px;
   }
 ,
@@ -413,9 +413,9 @@ exports[`table form render > default data is undefined 1`] = `
   &.ant-input {
     padding: 5px 12px;
     line-height: 20px;
-    color: $text-primary-light;
+    color: var(--gray-gray-80);
     border-radius: 6px;
-    border-color: $strokes-light-trans-3;
+    border-color: var(--stroke-neutral-trans-3);
     transition:
       height 240ms ease 8ms,
       border 160ms ease 8ms,
@@ -436,8 +436,8 @@ exports[`table form render > default data is undefined 1`] = `
   &.ant-input-number:not([disabled]) {
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $strokes-light-trans-4;
-      box-shadow: $shadow-light-hover;
+      border-color: var(--stroke-neutral-trans-4);
+      box-shadow: var(--effect-outline-hover);
       z-index: $input-hover-index;
     }
 
@@ -445,8 +445,8 @@ exports[`table form render > default data is undefined 1`] = `
     &:focus,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $blue;
-      box-shadow: $shadow-light-active;
+      border-color: #0096ff;
+      box-shadow: var(--effect-outline-activeFocus);
       z-index: $input-hover-index;
     }
   }
@@ -454,21 +454,21 @@ exports[`table form render > default data is undefined 1`] = `
   &.ant-input.error:not([disabled]),
   &.ant-picker.error:not([disabled]),
   &.ant-input-number.error:not([disabled]) {
-    border-color: $red;
-    color: $red;
+    border-color: #e75a3a;
+    color: #e75a3a;
 
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $red;
-      box-shadow: $shadow-light-hover;
+      border-color: #e75a3a;
+      box-shadow: var(--effect-outline-hover);
     }
 
     &:active,
     &:focus,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $red;
-      box-shadow: $shadow-light-error;
+      border-color: #e75a3a;
+      box-shadow: var(--effect-outline-error);
     }
   }
 
@@ -476,17 +476,17 @@ exports[`table form render > default data is undefined 1`] = `
   &.ant-input.ant-input-disabled,
   &.ant-input-number[disabled],
   &.ant-input-number.ant-input-number-disabled {
-    background: $fills-trans-terdiary-light;
-    color: $text-light-tertiary;
-    border-color: $strokes-light-trans-3;
+    background: var(--fill-neutral-trans-3);
+    color: rgba(0, 21, 64, 0.3);
+    border-color: var(--stroke-neutral-trans-3);
   }
 
   &.ant-input-affix-wrapper {
     padding: 5px 12px;
     border-radius: 6px;
-    border-color: $strokes-light-trans-3;
+    border-color: var(--stroke-neutral-trans-3);
     line-height: 20px;
-    color: $text-primary-light;
+    color: var(--gray-gray-80);
     transition:
       height 240ms ease 8ms,
       border 160ms ease 8ms,
@@ -494,7 +494,7 @@ exports[`table form render > default data is undefined 1`] = `
 
     .ant-input-suffix,
     .ant-input-prefix {
-      color: $text-secondary-light;
+      color: var(--text-neutral-tertiary);
     }
   }
 
@@ -511,8 +511,8 @@ exports[`table form render > default data is undefined 1`] = `
   &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $strokes-light-trans-4;
-      box-shadow: $shadow-light-hover;
+      border-color: var(--stroke-neutral-trans-4);
+      box-shadow: var(--effect-outline-hover);
     }
 
     &:active,
@@ -520,21 +520,21 @@ exports[`table form render > default data is undefined 1`] = `
     &.ant-input-affix-wrapper-focused,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $blue;
-      box-shadow: $shadow-light-active;
+      border-color: #0096ff;
+      box-shadow: var(--effect-outline-activeFocus);
     }
   }
 
   &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
-    border-color: $red;
+    border-color: #e75a3a;
     > .ant-input {
-      color: $red;
+      color: #e75a3a;
     }
 
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $red;
-      box-shadow: $shadow-light-hover;
+      border-color: #e75a3a;
+      box-shadow: var(--effect-outline-hover);
     }
 
     &:active,
@@ -542,15 +542,15 @@ exports[`table form render > default data is undefined 1`] = `
     &.ant-input-affix-wrapper-focused,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $red;
-      box-shadow: $shadow-light-error;
+      border-color: #e75a3a;
+      box-shadow: var(--effect-outline-error);
     }
   }
 
   &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
-    background: $fills-trans-terdiary-light;
-    color: $text-light-tertiary;
-    border-color: $strokes-light-trans-3;
+    background: var(--fill-neutral-trans-3);
+    color: rgba(0, 21, 64, 0.3);
+    border-color: var(--stroke-neutral-trans-3);
   }
 
   @at-root {
@@ -609,7 +609,7 @@ exports[`table form render > default data is undefined 1`] = `
   line-height: 20px;
 ,
   margin-bottom: 4px;
-  color: $text-secondary-light;
+  color: var(--text-neutral-tertiary);
 
                 >
                   <div
@@ -640,7 +640,7 @@ exports[`table form render > default data is undefined 1`] = `
       min-height: 32px;
       height: auto;
       font-size: 13px;
-      color: rgba(44, 56, 82, 0.6);
+      color: var(--text-neutral-tertiary);
       white-space: normal;
     }
   }
@@ -662,7 +662,7 @@ exports[`table form render > default data is undefined 1`] = `
 
   .ant-form-item-extra {
     font-size: 12px;
-    color: rgba(44, 56, 82, 0.6);
+    color: var(--text-neutral-tertiary);
     min-height: 0px;
   }
 ,
@@ -704,9 +704,9 @@ exports[`table form render > default data is undefined 1`] = `
   &.ant-input {
     padding: 5px 12px;
     line-height: 20px;
-    color: $text-primary-light;
+    color: var(--gray-gray-80);
     border-radius: 6px;
-    border-color: $strokes-light-trans-3;
+    border-color: var(--stroke-neutral-trans-3);
     transition:
       height 240ms ease 8ms,
       border 160ms ease 8ms,
@@ -727,8 +727,8 @@ exports[`table form render > default data is undefined 1`] = `
   &.ant-input-number:not([disabled]) {
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $strokes-light-trans-4;
-      box-shadow: $shadow-light-hover;
+      border-color: var(--stroke-neutral-trans-4);
+      box-shadow: var(--effect-outline-hover);
       z-index: $input-hover-index;
     }
 
@@ -736,8 +736,8 @@ exports[`table form render > default data is undefined 1`] = `
     &:focus,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $blue;
-      box-shadow: $shadow-light-active;
+      border-color: #0096ff;
+      box-shadow: var(--effect-outline-activeFocus);
       z-index: $input-hover-index;
     }
   }
@@ -745,21 +745,21 @@ exports[`table form render > default data is undefined 1`] = `
   &.ant-input.error:not([disabled]),
   &.ant-picker.error:not([disabled]),
   &.ant-input-number.error:not([disabled]) {
-    border-color: $red;
-    color: $red;
+    border-color: #e75a3a;
+    color: #e75a3a;
 
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $red;
-      box-shadow: $shadow-light-hover;
+      border-color: #e75a3a;
+      box-shadow: var(--effect-outline-hover);
     }
 
     &:active,
     &:focus,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $red;
-      box-shadow: $shadow-light-error;
+      border-color: #e75a3a;
+      box-shadow: var(--effect-outline-error);
     }
   }
 
@@ -767,17 +767,17 @@ exports[`table form render > default data is undefined 1`] = `
   &.ant-input.ant-input-disabled,
   &.ant-input-number[disabled],
   &.ant-input-number.ant-input-number-disabled {
-    background: $fills-trans-terdiary-light;
-    color: $text-light-tertiary;
-    border-color: $strokes-light-trans-3;
+    background: var(--fill-neutral-trans-3);
+    color: rgba(0, 21, 64, 0.3);
+    border-color: var(--stroke-neutral-trans-3);
   }
 
   &.ant-input-affix-wrapper {
     padding: 5px 12px;
     border-radius: 6px;
-    border-color: $strokes-light-trans-3;
+    border-color: var(--stroke-neutral-trans-3);
     line-height: 20px;
-    color: $text-primary-light;
+    color: var(--gray-gray-80);
     transition:
       height 240ms ease 8ms,
       border 160ms ease 8ms,
@@ -785,7 +785,7 @@ exports[`table form render > default data is undefined 1`] = `
 
     .ant-input-suffix,
     .ant-input-prefix {
-      color: $text-secondary-light;
+      color: var(--text-neutral-tertiary);
     }
   }
 
@@ -802,8 +802,8 @@ exports[`table form render > default data is undefined 1`] = `
   &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $strokes-light-trans-4;
-      box-shadow: $shadow-light-hover;
+      border-color: var(--stroke-neutral-trans-4);
+      box-shadow: var(--effect-outline-hover);
     }
 
     &:active,
@@ -811,21 +811,21 @@ exports[`table form render > default data is undefined 1`] = `
     &.ant-input-affix-wrapper-focused,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $blue;
-      box-shadow: $shadow-light-active;
+      border-color: #0096ff;
+      box-shadow: var(--effect-outline-activeFocus);
     }
   }
 
   &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
-    border-color: $red;
+    border-color: #e75a3a;
     > .ant-input {
-      color: $red;
+      color: #e75a3a;
     }
 
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $red;
-      box-shadow: $shadow-light-hover;
+      border-color: #e75a3a;
+      box-shadow: var(--effect-outline-hover);
     }
 
     &:active,
@@ -833,15 +833,15 @@ exports[`table form render > default data is undefined 1`] = `
     &.ant-input-affix-wrapper-focused,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $red;
-      box-shadow: $shadow-light-error;
+      border-color: #e75a3a;
+      box-shadow: var(--effect-outline-error);
     }
   }
 
   &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
-    background: $fills-trans-terdiary-light;
-    color: $text-light-tertiary;
-    border-color: $strokes-light-trans-3;
+    background: var(--fill-neutral-trans-3);
+    color: rgba(0, 21, 64, 0.3);
+    border-color: var(--stroke-neutral-trans-3);
   }
 
   @at-root {
@@ -900,7 +900,7 @@ exports[`table form render > default data is undefined 1`] = `
   line-height: 20px;
 ,
   margin-bottom: 4px;
-  color: $text-secondary-light;
+  color: var(--text-neutral-tertiary);
 
                 >
                   <div
@@ -931,7 +931,7 @@ exports[`table form render > default data is undefined 1`] = `
       min-height: 32px;
       height: auto;
       font-size: 13px;
-      color: rgba(44, 56, 82, 0.6);
+      color: var(--text-neutral-tertiary);
       white-space: normal;
     }
   }
@@ -953,7 +953,7 @@ exports[`table form render > default data is undefined 1`] = `
 
   .ant-form-item-extra {
     font-size: 12px;
-    color: rgba(44, 56, 82, 0.6);
+    color: var(--text-neutral-tertiary);
     min-height: 0px;
   }
 ,
@@ -995,9 +995,9 @@ exports[`table form render > default data is undefined 1`] = `
   &.ant-input {
     padding: 5px 12px;
     line-height: 20px;
-    color: $text-primary-light;
+    color: var(--gray-gray-80);
     border-radius: 6px;
-    border-color: $strokes-light-trans-3;
+    border-color: var(--stroke-neutral-trans-3);
     transition:
       height 240ms ease 8ms,
       border 160ms ease 8ms,
@@ -1018,8 +1018,8 @@ exports[`table form render > default data is undefined 1`] = `
   &.ant-input-number:not([disabled]) {
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $strokes-light-trans-4;
-      box-shadow: $shadow-light-hover;
+      border-color: var(--stroke-neutral-trans-4);
+      box-shadow: var(--effect-outline-hover);
       z-index: $input-hover-index;
     }
 
@@ -1027,8 +1027,8 @@ exports[`table form render > default data is undefined 1`] = `
     &:focus,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $blue;
-      box-shadow: $shadow-light-active;
+      border-color: #0096ff;
+      box-shadow: var(--effect-outline-activeFocus);
       z-index: $input-hover-index;
     }
   }
@@ -1036,21 +1036,21 @@ exports[`table form render > default data is undefined 1`] = `
   &.ant-input.error:not([disabled]),
   &.ant-picker.error:not([disabled]),
   &.ant-input-number.error:not([disabled]) {
-    border-color: $red;
-    color: $red;
+    border-color: #e75a3a;
+    color: #e75a3a;
 
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $red;
-      box-shadow: $shadow-light-hover;
+      border-color: #e75a3a;
+      box-shadow: var(--effect-outline-hover);
     }
 
     &:active,
     &:focus,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $red;
-      box-shadow: $shadow-light-error;
+      border-color: #e75a3a;
+      box-shadow: var(--effect-outline-error);
     }
   }
 
@@ -1058,17 +1058,17 @@ exports[`table form render > default data is undefined 1`] = `
   &.ant-input.ant-input-disabled,
   &.ant-input-number[disabled],
   &.ant-input-number.ant-input-number-disabled {
-    background: $fills-trans-terdiary-light;
-    color: $text-light-tertiary;
-    border-color: $strokes-light-trans-3;
+    background: var(--fill-neutral-trans-3);
+    color: rgba(0, 21, 64, 0.3);
+    border-color: var(--stroke-neutral-trans-3);
   }
 
   &.ant-input-affix-wrapper {
     padding: 5px 12px;
     border-radius: 6px;
-    border-color: $strokes-light-trans-3;
+    border-color: var(--stroke-neutral-trans-3);
     line-height: 20px;
-    color: $text-primary-light;
+    color: var(--gray-gray-80);
     transition:
       height 240ms ease 8ms,
       border 160ms ease 8ms,
@@ -1076,7 +1076,7 @@ exports[`table form render > default data is undefined 1`] = `
 
     .ant-input-suffix,
     .ant-input-prefix {
-      color: $text-secondary-light;
+      color: var(--text-neutral-tertiary);
     }
   }
 
@@ -1093,8 +1093,8 @@ exports[`table form render > default data is undefined 1`] = `
   &.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $strokes-light-trans-4;
-      box-shadow: $shadow-light-hover;
+      border-color: var(--stroke-neutral-trans-4);
+      box-shadow: var(--effect-outline-hover);
     }
 
     &:active,
@@ -1102,21 +1102,21 @@ exports[`table form render > default data is undefined 1`] = `
     &.ant-input-affix-wrapper-focused,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $blue;
-      box-shadow: $shadow-light-active;
+      border-color: #0096ff;
+      box-shadow: var(--effect-outline-activeFocus);
     }
   }
 
   &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
-    border-color: $red;
+    border-color: #e75a3a;
     > .ant-input {
-      color: $red;
+      color: #e75a3a;
     }
 
     &:hover,
     &.__pseudo-states-hover {
-      border-color: $red;
-      box-shadow: $shadow-light-hover;
+      border-color: #e75a3a;
+      box-shadow: var(--effect-outline-hover);
     }
 
     &:active,
@@ -1124,15 +1124,15 @@ exports[`table form render > default data is undefined 1`] = `
     &.ant-input-affix-wrapper-focused,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
-      border-color: $red;
-      box-shadow: $shadow-light-error;
+      border-color: #e75a3a;
+      box-shadow: var(--effect-outline-error);
     }
   }
 
   &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
-    background: $fills-trans-terdiary-light;
-    color: $text-light-tertiary;
-    border-color: $strokes-light-trans-3;
+    background: var(--fill-neutral-trans-3);
+    color: rgba(0, 21, 64, 0.3);
+    border-color: var(--stroke-neutral-trans-3);
   }
 
   @at-root {
@@ -1222,7 +1222,7 @@ exports[`table form render > default data is undefined 1`] = `
   line-height: 20px;
 ,
   margin-bottom: 4px;
-  color: $text-secondary-light;
+  color: var(--text-neutral-tertiary);
 
                 >
                   <div
@@ -1253,7 +1253,7 @@ exports[`table form render > default data is undefined 1`] = `
       min-height: 32px;
       height: auto;
       font-size: 13px;
-      color: rgba(44, 56, 82, 0.6);
+      color: var(--text-neutral-tertiary);
       white-space: normal;
     }
   }
@@ -1275,7 +1275,7 @@ exports[`table form render > default data is undefined 1`] = `
 
   .ant-form-item-extra {
     font-size: 12px;
-    color: rgba(44, 56, 82, 0.6);
+    color: var(--text-neutral-tertiary);
     min-height: 0px;
   }
 ,
@@ -1314,10 +1314,10 @@ exports[`table form render > default data is undefined 1`] = `
                       >
                         <label
                           class=
-  color: $text-primary-light;
+  color: var(--gray-gray-80);
   line-height: 22px;
   display: inline-flex;
-  .ant-checkbox {   height: 22px;   display: flex;   align-items: center;   top: 0; } .ant-checkbox-checked::after {   border: none; } &.ant-checkbox-wrapper:hover .ant-checkbox-inner, &.ant-checkbox-wrapper.__pseudo-states-hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner {   border-color: $fills-light-general-general; } .ant-checkbox .ant-checkbox-inner {   border: 1px solid $strokes-light-trans-4; } .ant-checkbox.ant-checkbox-checked, .ant-checkbox.ant-checkbox-indeterminate {   .ant-checkbox-inner {     border: 1px solid $fills-light-general-general;   } } .ant-checkbox.ant-checkbox-indeterminate .ant-checkbox-inner {   background: $fills-light-general-general;   &:after {     background-color: $white;     height: 2px;     width: 10px;     border-radius: 2px;   } } &.ant-checkbox-wrapper-disabled {   opacity: 0.5;   .ant-checkbox-disabled .ant-checkbox-inner {     background: $fills-light-trans-3;     border-color: $strokes-light-trans-4 !important;   }   .ant-checkbox-disabled.ant-checkbox-checked .ant-checkbox-inner:after {     border-color: $text-primary-light;   }   .ant-checkbox-disabled.ant-checkbox-indeterminate     .ant-checkbox-inner:after {     background: $text-primary-light;   } } .ant-checkbox + span, .ant-checkbox-disabled + span {   padding: 0;   .main {     display: inline-block;     margin-left: 12px;     color: $text-primary-light;   }   .sub {     margin-left: 28px;     color: $text-secondary-light;   } } &.compact {   .ant-checkbox + span,   .ant-checkbox-disabled + span {     .main {       margin-left: 8px;     }     .sub {       margin-left: 24px;     }   } }
+  .ant-checkbox {   height: 22px;   display: flex;   align-items: center;   top: 0; } .ant-checkbox-checked::after {   border: none; } &.ant-checkbox-wrapper:hover .ant-checkbox-inner, &.ant-checkbox-wrapper.__pseudo-states-hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner {   border-color: var(--fill-outstanding-base); } .ant-checkbox .ant-checkbox-inner {   border: 1px solid var(--stroke-neutral-trans-4); } .ant-checkbox.ant-checkbox-checked, .ant-checkbox.ant-checkbox-indeterminate {   .ant-checkbox-inner {     border: 1px solid var(--fill-outstanding-base);   } } .ant-checkbox.ant-checkbox-indeterminate .ant-checkbox-inner {   background: var(--fill-outstanding-base);   &:after {     background-color: var(--fill-neutral-white);     height: 2px;     width: 10px;     border-radius: 2px;   } } &.ant-checkbox-wrapper-disabled {   opacity: 0.5;   .ant-checkbox-disabled .ant-checkbox-inner {     background: var(--fill-neutral-trans-3);     border-color: var(--stroke-neutral-trans-4) !important;   }   .ant-checkbox-disabled.ant-checkbox-checked .ant-checkbox-inner:after {     border-color: var(--gray-gray-80);   }   .ant-checkbox-disabled.ant-checkbox-indeterminate     .ant-checkbox-inner:after {     background: var(--gray-gray-80);   } } .ant-checkbox + span, .ant-checkbox-disabled + span {   padding: 0;   .main {     display: inline-block;     margin-left: 12px;     color: var(--gray-gray-80);   }   .sub {     margin-left: 28px;     color: var(--text-neutral-tertiary);   } } &.compact {   .ant-checkbox + span,   .ant-checkbox-disabled + span {     .main {       margin-left: 8px;     }     .sub {       margin-left: 24px;     }   } }
 ,ant-checkbox-wrapper
                           style=margin-top:,4px;
                         >
@@ -1351,7 +1351,7 @@ exports[`table form render > default data is undefined 1`] = `
   line-height: 20px;
 ,
   margin-bottom: 4px;
-  color: $text-secondary-light;
+  color: var(--text-neutral-tertiary);
 
                 >
                   <div
@@ -1382,7 +1382,7 @@ exports[`table form render > default data is undefined 1`] = `
       min-height: 32px;
       height: auto;
       font-size: 13px;
-      color: rgba(44, 56, 82, 0.6);
+      color: var(--text-neutral-tertiary);
       white-space: normal;
     }
   }
@@ -1404,7 +1404,7 @@ exports[`table form render > default data is undefined 1`] = `
 
   .ant-form-item-extra {
     font-size: 12px;
-    color: rgba(44, 56, 82, 0.6);
+    color: var(--text-neutral-tertiary);
     min-height: 0px;
   }
 ,
@@ -1483,7 +1483,7 @@ exports[`table form render > default data is undefined 1`] = `
   line-height: 20px;
 ,
   margin-bottom: 4px;
-  color: $text-secondary-light;
+  color: var(--text-neutral-tertiary);
 
                 >
                   <div
@@ -1514,7 +1514,7 @@ exports[`table form render > default data is undefined 1`] = `
       min-height: 32px;
       height: auto;
       font-size: 13px;
-      color: rgba(44, 56, 82, 0.6);
+      color: var(--text-neutral-tertiary);
       white-space: normal;
     }
   }
@@ -1536,7 +1536,7 @@ exports[`table form render > default data is undefined 1`] = `
 
   .ant-form-item-extra {
     font-size: 12px;
-    color: rgba(44, 56, 82, 0.6);
+    color: var(--text-neutral-tertiary);
     min-height: 0px;
   }
 ,

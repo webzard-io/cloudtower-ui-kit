@@ -30,8 +30,9 @@ const main = async () => {
     return;
   }
 
-  console.error("[sync:color] 正在写入 color.ts / color.scss / color.css");
+  console.error("[sync:color] 正在写入 color.ts / color.css");
   writeColorArtifacts(nextColor);
+  require("./generate-theme").generate();
 };
 
 if (require.main === module) {

@@ -22,9 +22,9 @@ export const IconStyle = css`
 export const NameTagStyle = css`
   &.ant-tag.ant-tag-gray {
     font-weight: 700;
-    color: $text-neutral-primary;
-    background-color: $fill-neutral-trans-1;
-    border: 1px solid $stroke-neutral-trans-2;
+    color: var(--text-neutral-primary);
+    background-color: var(--fill-neutral-trans-1);
+    border: 1px solid var(--stroke-neutral-trans-2);
     word-break: break-all;
     display: inline;
     white-space: normal;

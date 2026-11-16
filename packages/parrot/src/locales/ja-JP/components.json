@@ -99,5 +99,8 @@
   "reselect_file": "再選択",
   "exceed_max_count": "最大 {count} 個のファイルを選択できます。",
   "exceed_max_count_plural": "最大 {count} 個のファイルを選択できます。",
+  "banner_previous": "前へ",
+  "banner_next": "次へ",
+  "banner_remove": "このメッセージを削除",
   "upload_file_desc": "ここにファイルをドラッグ＆ドロップしてください。または、<0>ファイルを選択</0>"
 }

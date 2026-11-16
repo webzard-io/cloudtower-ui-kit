@@ -1,0 +1,33 @@
+id: no-hardcoded-color-typescript
+valid:
+  - |
+    const id = '#fff'; const url = '/assets/#fff'; const text = 'red';
+  - |
+    const options = {color: 'blue'};
+  - |
+    const x = css`color:#fff;`;
+  - |
+    const x = css`color:var(--text);`;
+  - |
+    const x = css`color:${props => props.color};`;
+  - |
+    const x = {color: 'var(--text)'};
+  - |
+    const x = {background: 'url(/icon.svg#fff)'};
+invalid:
+  - |
+    const x = {color: '#fff'};
+  - |
+    const x = {background: 'linear-gradient(#fff, #edf0f7)'};
+  - |
+    const x = css`color:${ok ? '#fff' : 'red'};`;
+  - |
+    const color = '#fff';
+  - |
+    const colors = ['#fff', '#0080ff'];
+  - |
+    const rules = ['*::-webkit-scrollbar {background-color: rgba(1,2,3,.8)}'];
+  - |
+    import {css as c} from '@linaria/core'; const x = c`color:#fff;`;
+  - |
+    import {styled as s} from '@linaria/react';
