@@ -72,6 +72,8 @@ Eagle 不再发布 `dist/variables.scss`，内部 Sass 源码也不是替代导�
 - 宿主统一拥有主题状态。接入方将自己的 ConfigProvider 连接到宿主／Runtime 主题；旧宿主默认浅色。
   Island 不创建偏好存储、不修改宿主根主题属性。宿主或独立预览可在根部调用一次 `useUIKitTheme(theme)`，
   并向 ConfigProvider 传入相同主题。
+- 提供 `antd5Configs.theme.algorithm` 且省略 Eagle 的 `theme` 时，Ant Design 5 沿用调用方的主题配置。
+  接入整套 Eagle 主题时，由宿主设置根主题并显式传入 `theme`。
 
 完成所有消费方迁移后，再移除 Eagle Sass 注入和导入。其他样式仍需要 Sass 时保留编译器，
 不为本任务升级 Ant 或整套 lint 工具。
