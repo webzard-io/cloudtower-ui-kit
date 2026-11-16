@@ -10,8 +10,14 @@ const ContentStyle = css`
   color: $text-light-primary;
 `;
 
+const DialogStyle = css`
+  .ant-modal-body {
+    min-height: 160px;
+  }
+`;
+
 const SecondaryDescStyle = css`
-  margin-top: 8px;
+  margin-top: 4px;
   color: $text-light-secondary;
 `;
 
@@ -37,7 +43,7 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = (props) => {
       showOk={true}
       onOk={onOk}
       onCancel={onCancel}
-      className={className}
+      className={cx(DialogStyle, className)}
       okText={okText}
       cancelText={cancelText}
       okButtonProps={{
@@ -53,7 +59,7 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = (props) => {
         </div>
       )}
       {secondaryDesc && (
-        <div className={cx(SecondaryDescStyle, Typo.Label.l3_regular)}>
+        <div className={cx(SecondaryDescStyle, Typo.Label.l4_regular)}>
           {secondaryDesc}
         </div>
       )}
