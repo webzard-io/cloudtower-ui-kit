@@ -121,9 +121,11 @@ export const HorizontalStyle = css`
     .#{$item}-active {
       max-width: calc(100% - var(--item-min-width) * 2);
       .#{$item}-container {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         background-color: rgba(0, 136, 255, 0.1);
       }
       &::after {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         border-left-color: rgba(0, 136, 255, 0.1) !important;
       }
     }
@@ -184,6 +186,7 @@ export const VerticalStyle = css`
     }
     .#{$item}-active {
       .ant-steps-item-container {
+        /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
         background: rgba(#0080ff, 0.1);
       }
     }
@@ -201,6 +204,7 @@ export const HorizontalStepContentStyle = css`
     align-items: center;
     width: 18px;
     height: 18px;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     color: rgba(44, 56, 82, 0.75);
     justify-content: center;
   }
@@ -218,6 +222,7 @@ export const VerticalStepContentStyle = css`
     align-items: center;
     min-width: 20px;
     min-height: 20px;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     color: rgba(44, 56, 82, 0.75);
     justify-content: center;
   }

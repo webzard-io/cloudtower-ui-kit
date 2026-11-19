@@ -139,6 +139,7 @@ const RadioButtonStyle = css`
   }
 
   &.ant-radio-button-wrapper-checked {
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     background: rgba(0, 136, 255, 0.1);
   }
 

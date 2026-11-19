@@ -27,9 +27,11 @@ const FormItemStyle = css`
 
   &.ant-form-item-has-error {
     .ant-input {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       border-color: #ff4d4f !important;
     }
     .ant-input-password {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       border-color: #ff4d4f !important;
     }
   }

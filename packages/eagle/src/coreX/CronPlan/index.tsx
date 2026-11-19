@@ -37,6 +37,7 @@ const CronPlanWrapper = css`
     border-color: var(--stroke-outstanding-base);
 
     > header {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       background: rgba(#0080ff, 0.1);
     }
   }
@@ -48,6 +49,7 @@ const CronPlanWrapper = css`
   .field-item {
     display: flex;
     padding: 10px 0;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     border-bottom: 1px solid rgba(213, 219, 227, 0.6);
 
     &:last-child {
@@ -58,11 +60,13 @@ const CronPlanWrapper = css`
     label {
       line-height: 32px;
       width: 100px;
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       color: rgba(62, 70, 82, 0.6);
     }
   }
 
   .help {
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     color: rgba(62, 70, 82, 0.6);
     margin-top: 5px;
   }
@@ -84,6 +88,7 @@ const CronPlanHeader = css`
   }
 
   .retain {
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     color: rgba(129, 138, 153, 0.6);
   }
 
@@ -120,6 +125,7 @@ const CronPlanHeader = css`
   .close {
     padding-left: 14px;
     margin-left: 14px;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     border-left: 1px solid rgba(129, 138, 153, 0.6);
     cursor: pointer;
   }
@@ -128,21 +134,26 @@ const CronPlanHeader = css`
 const ModeTabs = css`
   .ant-btn.ant-btn-link {
     padding: 1px 10px;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     color: rgba(62, 70, 82, 0.6);
     border-radius: 4px;
 
     &.active {
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background: rgba(0, 128, 255, 0.1);
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       color: #0096ff;
     }
   }
 
   padding-bottom: 4px;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   border-bottom: 1px solid rgba(213, 219, 227, 0.6);
 `;
 
 const Wrapper = css`
   padding: 10px 0;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   border-bottom: 1px solid rgba(213, 219, 227, 0.6);
 
   .ant-input,
@@ -154,11 +165,13 @@ const Wrapper = css`
 
   .options {
     padding: 12px 0 12px 16px;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     border-left: 2px solid rgba(129, 138, 153, 0.6);
     margin: 5px 0 5px 8px;
   }
   .week-day-option,
   .month-day-option {
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     background: #f5f7fa;
     box-sizing: border-box;
     border-radius: 16px;
@@ -166,12 +179,15 @@ const Wrapper = css`
 
     &:focus {
       color: inherit;
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       border-color: #d9d9d9;
     }
   }
   .week-day-option {
     &.active {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       background-color: #0096ff;
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       border-color: #0096ff;
       color: var(--text-neutral-ontint);
     }
@@ -186,7 +202,9 @@ const Wrapper = css`
     margin-bottom: 8px;
 
     &.active {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       background-color: #0096ff;
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       border-color: #0096ff;
       color: var(--text-neutral-ontint);
     }

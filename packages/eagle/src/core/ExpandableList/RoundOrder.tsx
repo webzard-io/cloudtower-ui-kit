@@ -9,6 +9,7 @@ const RoundedOrderStyle = css`
     width: 24px;
     border-radius: 20px;
     color: var(--text-colorful-outstanding);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     background: rgba(0, 136, 255, 0.1);
     display: flex;
     align-items: center;

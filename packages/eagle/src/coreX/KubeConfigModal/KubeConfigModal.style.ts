@@ -65,6 +65,7 @@ export const ErrorContentWrapper = styled.div`
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     background-image: linear-gradient(211.41deg, #929dad 0%, #d3dbe3 100%);
   }
 `;

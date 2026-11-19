@@ -46,6 +46,7 @@ const ContentWrapper = styled.div`
 `;
 
 const NullText = styled.div`
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   color: rgba(0, 21, 64, 0.3);
 `;
 

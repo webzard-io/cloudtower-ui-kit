@@ -9,12 +9,14 @@ const TableLoadingStyle = css`
   height: 100%;
   .table-loading-item {
     padding: 12px 4px;
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     border-bottom: 1px solid rgba(#ccd4e3, 0.18);
     display: flex;
 
     > * {
       height: 16px;
       margin: 4px;
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background: rgba(204, 212, 227, 0.18);
       border-radius: 2px;
     }
@@ -29,11 +31,13 @@ const TableLoadingStyle = css`
   :nth-child(1) {
     padding: 8px 4px;
     > * {
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background: rgba(107, 125, 153, 0.18);
     }
   }
   :nth-child(1) {
     > * {
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background: rgba(163, 180, 204, 0.18);
     }
   }

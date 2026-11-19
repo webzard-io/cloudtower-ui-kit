@@ -87,6 +87,7 @@ export const LegendItemStyle = css`
     opacity: 0.4;
 
     .color-block {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       background: #b4beca !important;
     }
   }
@@ -151,6 +152,7 @@ export const MetricWrapper = styled.div`
     border-radius: 4px;
     font-size: 12px;
     color: var(--text-neutral-ontint);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     background: rgba(0, 0, 0, 0.75);
     transform: translateX(-50%);
   }
@@ -164,7 +166,9 @@ export const TooltipColumn = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   background-color: rgba(0, 0, 0, 0.75);
+  /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
   color: #b4beca;
   font-size: 12px;
   padding: 3px 6px;

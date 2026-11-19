@@ -22,6 +22,7 @@ const SkeletonContentStyle = css`
       top: -50%;
       flex-shrink: 0;
       opacity: 0.8;
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background: linear-gradient(
         90deg,
         rgba(255, 255, 255, 0) 15%,

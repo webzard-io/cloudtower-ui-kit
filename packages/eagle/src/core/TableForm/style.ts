@@ -16,6 +16,7 @@ export const SubtitleStyle = css`
     color: var(--text-colorful-outstanding);
   }
   &.warning {
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     color: #ffa500;
   }
   &.success {
@@ -106,6 +107,7 @@ export const TableFormWrapper = styled.div`
         background-color: var(--fill-neutral-trans-1);
       }
       &.isDragging {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         background-color: rgba(0, 136, 255, 0.1);
       }
     }

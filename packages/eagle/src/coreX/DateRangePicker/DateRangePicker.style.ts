@@ -89,8 +89,8 @@ const CalendarMonthWrapper = styled.div`
         z-index: 2;
 
         &.pinned {
-          box-shadow:
-            0px 4px 12px rgba(225, 230, 241, 0.4),
+          /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
+          box-shadow: 0px 4px 12px rgba(225, 230, 241, 0.4),
             inset 0px -1px 0px var(--stroke-neutral-trans-1);
         }
       }
@@ -109,7 +109,9 @@ const CalendarMonthWrapper = styled.div`
           justify-content: center;
 
           &.highlight {
+            /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
             border-color: #e6f4ff;
+            /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
             background: #e6f4ff;
 
             &.first-highlight {
@@ -123,6 +125,7 @@ const CalendarMonthWrapper = styled.div`
                 top: 0;
                 width: calc(50% + 20px);
                 height: 100%;
+                /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
                 background: #e6f4ff;
                 border-top-left-radius: 50%;
                 border-bottom-left-radius: 50%;
@@ -140,6 +143,7 @@ const CalendarMonthWrapper = styled.div`
                 top: 0;
                 width: calc(50% + 20px);
                 height: 100%;
+                /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
                 background: #e6f4ff;
                 border-top-right-radius: 50%;
                 border-bottom-right-radius: 50%;
@@ -183,10 +187,12 @@ const CalendarMonthWrapper = styled.div`
 
             &.today {
               color: var(--text-colorful-outstanding);
+              /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
               border-color: rgba(0, 136, 255, 0.16);
             }
 
             &.highlight {
+              /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
               border-color: #e6f4ff;
             }
 
@@ -264,6 +270,7 @@ const InputTimeWrapper = styled.div`
       color: var(--text-neutral-primary);
 
       &::placeholder {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         color: rgba(0, 21, 64, 0.3);
       }
 
@@ -280,6 +287,7 @@ const InputTimeWrapper = styled.div`
 
     .connect-symbol {
       margin: 0 2px;
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       color: rgba(0, 21, 64, 0.3);
 
       &.inputted {
@@ -313,6 +321,7 @@ const AbsoluteTimeWrapper = styled.div`
 
 const AbsoluteTimeSectionWrapper = styled.div`
   padding: 8px 12px;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   box-shadow: inset 0px 1px 0px rgba(211, 218, 235, 0.3);
 
   .time-input-main {
@@ -393,6 +402,7 @@ const RelativeTimeWrapper = styled.div`
       cursor: pointer;
 
       &:hover {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         background: rgba(0, 136, 255, 0.16);
         color: var(--text-colorful-outstanding);
       }
@@ -413,6 +423,7 @@ const RelativeTimeWrapper = styled.div`
 
       &.disabled {
         background: var(--fill-neutral-trans-1);
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         color: rgba(0, 21, 64, 0.3);
         cursor: not-allowed;
       }
@@ -494,6 +505,7 @@ const DateRangePickerWrapper = styled.div`
       color: var(--text-neutral-primary);
 
       .concat-symbol-block {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         color: rgba(0, 21, 64, 0.3);
       }
 
@@ -507,6 +519,7 @@ const DateRangePickerWrapper = styled.div`
         text-align: center;
 
         &::placeholder {
+          /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
           color: rgba(0, 21, 64, 0.3);
           text-align: center;
         }
@@ -591,6 +604,7 @@ const DateRangePickerHistory = styled.div`
       cursor: pointer;
 
       &:hover {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         background: rgba(0, 136, 255, 0.16);
         color: var(--text-colorful-outstanding);
       }

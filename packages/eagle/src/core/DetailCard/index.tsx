@@ -22,6 +22,7 @@ const CardWrapper = styled.div`
     font-weight: 700;
     font-size: 14px;
     line-height: 22px;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     color: rgba(0, 21, 64, 0.3);
     text-align: center;
   }
