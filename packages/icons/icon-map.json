@@ -12894,5 +12894,26 @@
     "svgFileName": "arrow-up-right-16-ontint-bold.svg",
     "hash": "ac33c22a867b5df44081626de06bd821",
     "lastUpdated": "2026-11-16T04:29:33.170Z"
+  },
+  "20253:66": {
+    "componentSetName": "Icon / network.security",
+    "name": "Size=16, Fill=Gradient - Gray",
+    "svgFileName": "network-security-16-gradient-gray.svg",
+    "hash": "15920ead188e6afa2aae706acb3426d8",
+    "lastUpdated": "2026-11-19T05:41:06.370Z"
+  },
+  "20253:73": {
+    "componentSetName": "Icon / network.security",
+    "name": "Size=16, Fill=Ontint",
+    "svgFileName": "network-security-16-ontint.svg",
+    "hash": "993d1ed785c5fea18f11b8f6d4483842",
+    "lastUpdated": "2026-11-19T05:41:06.370Z"
+  },
+  "20253:80": {
+    "componentSetName": "Icon / network.security",
+    "name": "Size=16, Fill=Gradient - Blue",
+    "svgFileName": "network-security-16-gradient-blue.svg",
+    "hash": "de09643903fb395b9a79438fec564ec3",
+    "lastUpdated": "2026-11-19T05:41:06.370Z"
   }
 }
