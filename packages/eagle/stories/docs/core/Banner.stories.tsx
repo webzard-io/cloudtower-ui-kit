@@ -116,6 +116,7 @@ export const CustomStyle: Story = {
   render: (args) => (
     <div style={{ height: "500px" }}>
       <Banner
+        id="custom-style-error"
         type="error"
         message="此操作无法撤销，请谨慎操作"
         btnProps={{
@@ -126,6 +127,7 @@ export const CustomStyle: Story = {
       />
 
       <Banner
+        id="custom-style-info"
         type="info"
         message="您有3条新消息"
         btnProps={{
@@ -136,6 +138,7 @@ export const CustomStyle: Story = {
       />
 
       <Banner
+        id=""
         type="warning"
         message="资源使用量已达到80%"
         btnProps={{
