@@ -45,7 +45,7 @@ async function run() {
     linaria.results[0].warnings.some((item) => item.rule === "color-no-hex"),
   );
   const exception = await lint(
-    "const S = css`\n/* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */\ncolor: #123456;\nbackground: #654321;\n`;",
+    "const S = css`\n/* stylelint-disable-next-line color-no-hex -- Test suppression for a color with an equivalent token. */\ncolor: #00122e;\nbackground: #00122e;\n`;",
     "tsx",
   );
   assert.equal(exception.results[0].warnings.length, 1);
