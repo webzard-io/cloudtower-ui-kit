@@ -33,7 +33,7 @@
     "lint:colors": "stylelint \"src/**/*.{ts,tsx,css,scss}\"",
     "lint:colors:ts": "ast-grep scan --color=never",
     "lint:colors:changed": "node tools/color-lint/check-changed-colors.cjs",
-    "check:theme": "yarn generate:theme && git diff --exit-code -- src/styles/token src/styles/common/variables.scss",
+    "check:theme": "yarn generate:theme && git diff --exit-code -- src/styles/token docs/theme-tokens.md",
     "test:colors": "node __test__/color-lint/color-lint.test.cjs && ast-grep test --skip-snapshot-tests && node __test__/color-lint/check-changed-colors.test.cjs",
     "posttest:ci": "yarn test:colors && yarn lint:colors && yarn lint:colors:ts",
     "postbuild": "node -e \"for (const file of ['dist/variables.scss', 'dist/linaria.merged.scss']) require('fs').rmSync(file, { force: true })\"",
