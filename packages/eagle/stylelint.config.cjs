@@ -1,11 +1,12 @@
 // shortcut: internal rule registry is unavailable; replace the rule snapshot when access is restored.
 module.exports = {
-  extends: ["./tools/color-lint/stylelint/linaria-colors.cjs"],
+  extends: ["./tools/color-lint/stylelint/colors.cjs"],
   overrides: [
     {
       files: ["**/*.{ts,tsx}"],
       customSyntax: require.resolve("./tools/color-lint/linaria-scss.cjs"),
     },
+    { files: ["**/*.{css,scss}"], customSyntax: "postcss-scss" },
   ],
   ignoreFiles: [
     "src/styles/token/**", // Generated theme definitions.
