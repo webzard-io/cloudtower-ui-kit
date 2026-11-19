@@ -121,7 +121,9 @@ body 弹层必须进入所属作用域并继承 token。具体颜色从实际挂
 接入方待办见 [Notion 方案第 3.1.1 节](https://app.notion.com/p/40849a7f5c9481d7a5cbf7229f518640)。
 
 运行接入方已有的单测、类型检查、构建和颜色 lint，复用共享 Stylelint／ast-grep 配置，
-只声明必要的扫描排除。保持规则级别，并确认 ast-grep 安装后执行了 postinstall，实际扫描程序可用。
+沿用接入方的规则级别。没有完全等值 token 的旧颜色在使用处注明原因，通过
+`stylelint-disable-next-line` 或 `ast-grep-ignore` 只放行对应行和规则。
+确认 ast-grep 安装后执行了 postinstall，实际扫描程序可用。
 
 检查产物中的运行时引用和配套声明；验证浅色外观、hover／选中／禁用／错误、body 弹层及异步挂载。
 没有正式暗色数据时，可用明确标记的测试主题验证传播，但必须说明暗色视觉验收仍待完成。

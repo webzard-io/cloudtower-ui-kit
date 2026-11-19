@@ -9,6 +9,7 @@ export const ButtonStyle = css`
 
 const ButtonGroupContainer = styled.div`
   white-space: nowrap;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   filter: drop-shadow(0px 2px 8px rgba(0, 136, 255, 0.1));
 
   & > .ant-btn {

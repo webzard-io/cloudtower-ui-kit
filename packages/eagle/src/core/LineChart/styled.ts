@@ -87,6 +87,7 @@ export const LegendItemsStyle = css`
     opacity: 0.3;
 
     &:not(.hoverering-self) .color-block {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       background: #b4beca !important;
       border-radius: 2px;
     }
@@ -119,6 +120,7 @@ export const LegendItemsStyleDropdown = css`
     opacity: 0.3;
 
     &:not(.hoverering-self) .color-block {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       background: #b4beca !important;
       border-radius: 2px;
     }

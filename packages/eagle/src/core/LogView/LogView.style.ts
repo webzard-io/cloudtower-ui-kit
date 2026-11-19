@@ -58,6 +58,7 @@ export const LogTerminal = styled.div`
     }
 
     &::-webkit-scrollbar-thumb:hover {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       background-color: #4a607a; /* 滚动条悬停时的颜色 */
     }
   }

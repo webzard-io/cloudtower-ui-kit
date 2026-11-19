@@ -60,10 +60,12 @@ const ButtonStyle = css`
   &.ant-btn.ant-btn-ordinary,
   &.ant-btn.ant-btn-ordinary-onTint,
   &.ant-btn.ant-btn-quiet {
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     color: var(--color, #06101f);
     font-weight: var(--font-weight);
     background: var(--background-color, var(--fill-neutral-white));
     border-width: var(--border-width, 1px);
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     border-color: var(--border-color, #d9d9d9);
 
     &[ant-click-animating-without-extra-node="true"]:after {
@@ -138,6 +140,7 @@ const ButtonStyle = css`
     --background-color-hover: var(--fill-outstanding-bright);
     --background-color-active: var(--fill-outstanding-dark);
     --background-color-focus: var(--fill-outstanding-base);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
   }
 
@@ -146,6 +149,7 @@ const ButtonStyle = css`
     --background-color-hover: var(--fill-serious-bright);
     --background-color-active: var(--fill-serious-dark);
     --background-color-focus: var(--fill-serious-bright);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --box-shadow-color-focus: #{rgba(255, 74, 74, 0.16)};
   }
 
@@ -161,28 +165,40 @@ const ButtonStyle = css`
     --font-weight: bold;
     --border-width: 0;
 
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color: #{rgba(0, 136, 255, 0.1)};
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color-hover: #{rgba(0, 136, 255, 0.16)};
     --background-color-active: var(--fill-outstanding-lightactive);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color-focus: #{rgba(0, 136, 255, 0.1)};
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
   }
 
   &.ant-btn-secondary.ant-btn-dangerous {
     --color: var(--text-colorful-serious);
 
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color: #{rgba(255, 74, 74, 0.1)};
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color-hover: #{rgba(255, 74, 74, 0.16)};
     --background-color-active: var(--fill-serious-lightactive);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color-focus: #{rgba(255, 74, 74, 0.1)};
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --box-shadow-color-focus: #{rgba(255, 74, 74, 0.16)};
   }
 
   &.ant-btn-secondary.btn-primary-orange {
     --color: var(--text-colorful-notice);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color: #{rgba(255, 187, 0, 0.1)};
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color-hover: #{rgba(255, 187, 0, 0.16)};
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color-active: #{rgba(255, 187, 0, 0.2)};
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color-focus: #{rgba(255, 187, 0, 0.1)};
   }
 
@@ -192,6 +208,7 @@ const ButtonStyle = css`
     --border-width: 0;
 
     --background-color: var(--fill-neutral-white);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
 
     box-shadow: none;
@@ -202,6 +219,7 @@ const ButtonStyle = css`
       &:active,
       &.__pseudo-states-hover,
       &.__pseudo-states-active {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         filter: drop-shadow(0px 2px 8px rgba(0, 136, 255, 0.1));
       }
     }
@@ -211,6 +229,7 @@ const ButtonStyle = css`
     --color: var(--text-colorful-serious);
 
     --background-color: var(--fill-neutral-white);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --box-shadow-color-focus: #{rgba(255, 74, 74, 0.16)};
 
     &:not([disabled]),
@@ -219,6 +238,7 @@ const ButtonStyle = css`
       &:active,
       &.__pseudo-states-hover,
       &.__pseudo-states-active {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         filter: drop-shadow(0px 2px 8px rgba(255, 74, 74, 0.1));
       }
     }
@@ -234,6 +254,7 @@ const ButtonStyle = css`
       &:active,
       &.__pseudo-states-hover,
       &.__pseudo-states-active {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         filter: drop-shadow(0px 2px 8px rgba(255, 187, 0, 0.1));
       }
     }
@@ -246,6 +267,7 @@ const ButtonStyle = css`
     --background-color: var(--fill-neutral-white);
     --background-color-hover: var(--fill-neutral-opaque-2);
     --background-color-active: var(--fill-neutral-opaque-3);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
 
     box-shadow: var(--effect-shadow-button-ordinary);
@@ -261,6 +283,7 @@ const ButtonStyle = css`
     --border-color: var(--fill-outstanding-base);
 
     --background-color: var(--fill-neutral-white);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color-hover: #{linear-gradient(
           0deg,
           rgba(0, 136, 255, 0.16),
@@ -273,6 +296,7 @@ const ButtonStyle = css`
           var(--fill-outstanding-lightactive)
         ),
       var(--fill-neutral-white)};
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
 
     box-shadow: var(--effect-shadow-button-ordinary);
@@ -283,6 +307,7 @@ const ButtonStyle = css`
     --border-color: var(--fill-serious-base);
 
     --background-color: var(--fill-neutral-white);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color-hover: #{linear-gradient(
           0deg,
           rgba(255, 74, 74, 0.16),
@@ -295,6 +320,7 @@ const ButtonStyle = css`
           var(--fill-serious-lightactive)
         ),
       var(--fill-neutral-white)};
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --box-shadow-color-focus: #{rgba(255, 74, 74, 0.16)};
   }
 
@@ -305,6 +331,7 @@ const ButtonStyle = css`
     --background-color: var(--fill-neutral-white);
     --background-color-hover: var(--fill-neutral-trans-3);
     --background-color-active: var(--fill-neutral-trans-4);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
 
     box-shadow: none;
@@ -315,8 +342,10 @@ const ButtonStyle = css`
     --border-color: var(--stroke-neutral-white);
 
     --background-color: var(--fill-neutral-white);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color-hover: #{rgba(0, 136, 255, 0.16)};
     --background-color-active: var(--fill-outstanding-lightactive);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
 
     box-shadow: none;
@@ -325,8 +354,10 @@ const ButtonStyle = css`
   &.ant-btn-ordinary-onTint.ant-btn-dangerous {
     --color: var(--text-colorful-serious);
 
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color-hover: #{rgba(255, 74, 74, 0.16)};
     --background-color-active: var(--fill-serious-lightactive);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --box-shadow-color-focus: #{rgba(255, 74, 74, 0.16)};
   }
 
@@ -338,6 +369,7 @@ const ButtonStyle = css`
     --background-color-hover: var(--fill-neutral-trans-3);
     --background-color-active: var(--fill-neutral-trans-4);
     --background-color-focus: var(--fill-neutral-white);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
     box-shadow: none;
   }
@@ -345,8 +377,10 @@ const ButtonStyle = css`
   &.ant-btn-quiet.ant-btn-dangerous {
     --color: var(--text-colorful-serious);
 
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color-hover: #{rgba(255, 74, 74, 0.16)};
     --background-color-active: var(--fill-serious-lightactive);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --box-shadow-color-focus: #{rgba(255, 74, 74, 0.16)};
   }
 
@@ -354,9 +388,11 @@ const ButtonStyle = css`
     --color: var(--text-colorful-outstanding);
 
     --background-color: transparent;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --background-color-hover: #{rgba(0, 136, 255, 0.16)};
     --background-color-active: var(--fill-outstanding-lightactive);
     --background-color-focus: var(--fill-neutral-white);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     --box-shadow-color-focus: #{rgba(0, 136, 255, 0.16)};
   }
 

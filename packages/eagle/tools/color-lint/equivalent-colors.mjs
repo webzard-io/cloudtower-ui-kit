@@ -165,6 +165,8 @@ export async function scanEquivalentColors(files) {
         fileURLToPath(new URL("../../stylelint.config.cjs", import.meta.url)),
       ],
       plugins: [fileURLToPath(import.meta.url)],
+      // Collect matches here. The full lint commands enforce source severity.
+      defaultSeverity: "warning",
       rules: { [ruleName]: true },
       ignoreDisables: true,
     },
@@ -193,7 +195,7 @@ export async function scanEquivalentColors(files) {
   const config = fileURLToPath(new URL("../../sgconfig.yml", import.meta.url));
   const output = execFileSync(
     "ast-grep",
-    ["scan", "--config", config, "--json=compact", "--", ...scripts],
+    ["scan", "--config", config, "--warning", "--json=compact", "--", ...scripts],
     { encoding: "utf8", maxBuffer: 16 * 1024 * 1024 },
   );
   for (const { text, range, file } of JSON.parse(output)) {

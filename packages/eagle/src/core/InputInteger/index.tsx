@@ -57,6 +57,7 @@ export const AntdIntStyled = styled(AntdInputNumber)<{
     &:active,
     &.ant-input-number-focused {
       &.ant-input-number {
+        /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
         border-color: #0096ff;
         box-shadow: var(--effect-outline-activeFocus);
         z-index: $input-hover-index;
@@ -66,6 +67,7 @@ export const AntdIntStyled = styled(AntdInputNumber)<{
       &:hover,
       &.ant-input-number-focused {
         &.ant-input-number {
+          /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
           border-color: #e75a3a;
           box-shadow: var(--effect-outline-error);
         }

@@ -19,6 +19,7 @@ const Card = styled.div`
     border-color: var(--stroke-outstanding-base);
 
     > header {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       background: rgba(#0080ff, 0.1);
     }
   }

@@ -143,6 +143,7 @@ export const tableStyleCover = css`
       .ant-table-cell-fix-left-last::after {
         box-shadow: none;
         width: 1px;
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         background: rgba(213, 219, 227, 0.6);
       }
     }
@@ -151,6 +152,7 @@ export const tableStyleCover = css`
       .ant-table-cell-fix-right-first::after {
         box-shadow: none;
         width: 1px;
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         background: rgba(213, 219, 227, 0.6);
       }
     }
@@ -182,6 +184,7 @@ export const tableStyleCover = css`
             white-space: nowrap;
 
             &:hover {
+              /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
               color: #0096ff;
             }
 
@@ -265,6 +268,7 @@ export const tableStyleCover = css`
         }
 
         &.active-row {
+          /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
           box-shadow: inset 0px 0px 0 2px rgba(0, 136, 255, 0.1);
           border-radius: 8px;
 
@@ -272,6 +276,7 @@ export const tableStyleCover = css`
             border-top-color: var(--stroke-neutral-white);
           }
           td {
+            /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
             background: rgba(0, 136, 255, 0.1);
             border-bottom-color: transparent;
             border-top-color: transparent;
@@ -283,6 +288,7 @@ export const tableStyleCover = css`
               border-radius: 0 8px 8px 0;
             }
             &:hover {
+              /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
               background: rgba(0, 136, 255, 0.1);
             }
           }

@@ -69,6 +69,7 @@ const TabMenuStyle = css`
       }
 
       &.tab-menu-item-selected {
+        /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
         background: rgba(#0080ff, 0.16);
       }
 
@@ -79,9 +80,11 @@ const TabMenuStyle = css`
 
     &.tab-menu-item-selected {
       color: var(--text-colorful-outstanding);
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       background: rgba(#0080ff, 0.1);
 
       &:hover {
+        /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
         background: rgba(#0080ff, 0.16);
       }
 
@@ -125,6 +128,7 @@ const TabMenuStyle = css`
         left: 0;
         transform: translate(-50%, -50%);
         transition: opacity 100ms linear;
+        /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
         fill: rgba(#0080ff, 0.2);
       }
     }
@@ -151,6 +155,7 @@ const TabMenuStyle = css`
       &:hover,
       &:active {
         .sub-title {
+          /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
           background: rgba(#0080ff, 0.16);
         }
         .sub-title > .slash-arrow {
@@ -211,6 +216,7 @@ const TabMenuStyle = css`
 
     &.tab-menu-item-group.tab-menu-item-selected {
       .main-title {
+        /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
         color: rgba(#2d3a56, 0.6);
       }
 

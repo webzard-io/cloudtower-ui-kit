@@ -51,6 +51,7 @@ const StatusCapsuleStyle = css`
       }
       &.tag-hover:hover,
       &.__pseudo-states-hover {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         background-color: rgba(0, 136, 255, 0.16);
       }
     }
@@ -61,6 +62,7 @@ const StatusCapsuleStyle = css`
       }
       &.tag-hover:hover,
       &.__pseudo-states-hover {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         background-color: rgba(255, 74, 74, 0.16);
       }
     }
@@ -71,6 +73,7 @@ const StatusCapsuleStyle = css`
       }
       &.tag-hover:hover,
       &.__pseudo-states-hover {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         background-color: rgba(255, 187, 0, 0.16);
       }
     }
@@ -81,6 +84,7 @@ const StatusCapsuleStyle = css`
       }
       &.tag-hover:hover,
       &.__pseudo-states-hover {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         background-color: rgba(30, 201, 127, 0.16);
       }
     }

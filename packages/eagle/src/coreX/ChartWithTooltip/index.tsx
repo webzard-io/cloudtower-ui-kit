@@ -53,6 +53,7 @@ const ChartTooltipRow = styled.div`
   align-items: center;
   font-size: 13px;
   line-height: 24px;
+  /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
   color: #cccccc;
   white-space: nowrap;
 
