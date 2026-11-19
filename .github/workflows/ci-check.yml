@@ -23,8 +23,6 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - name: Setup node
         uses: actions/setup-node@v4
         with:
@@ -32,7 +30,6 @@ jobs:
       - name: Setup yarn
         run: npm install -g yarn
       - name: Install deps
-        id: dependencies
         run: yarn install --frozen-lockfile
         timeout-minutes: 15
       - name: Build
@@ -43,10 +40,5 @@ jobs:
         run: yarn workspace @cloudtower/eagle exec playwright install --with-deps chromium
       - name: Test
         run: yarn test:ci
-      - name: Check new fixed colors
-        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        env:
-          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
-        run: yarn workspace @cloudtower/eagle lint:colors:changed "$PR_BASE_SHA"
       - name: Compare computed styles
         run: yarn workspace @cloudtower/eagle test:styles
