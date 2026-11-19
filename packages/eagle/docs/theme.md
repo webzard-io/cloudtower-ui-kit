@@ -53,7 +53,9 @@ hook 不保存偏好，也不在卸载时恢复主题。原有 antd4Configs／an
 ## 检查
 
 根 `yarn test:ci` 包含组件单测、颜色规则回归与 lint；主题完整性在构建时校验。
-颜色硬编码使用 Stylelint／ast-grep 提示 warning，配置或语法错误仍会失败；没有历史 baseline。
+Stylelint／ast-grep 将硬编码颜色作为 error 阻断检查。没有完全等值的 token 时，保留原值并在使用处注明原因，
+用 `stylelint-disable-next-line <规则名> -- No equivalent theme token.` 放行单行 CSS，
+或在 TS／TSX 的目标行前写原因和 `// ast-grep-ignore: <规则名>`。其余声明继续检查。
 独立排查可用 `test:colors`、`lint:colors`、`lint:colors:ts`；包内测试前须先构建。
 安装 ast-grep 时须执行 postinstall，避免留下未真正扫描的占位程序。
 

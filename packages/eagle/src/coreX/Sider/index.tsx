@@ -131,6 +131,7 @@ const NavLinkStyle = css`
   width: 100% !important;
 
   &[disabled] {
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     color: rgba(0, 0, 0, 0.25) !important;
     opacity: 1 !important;
   }

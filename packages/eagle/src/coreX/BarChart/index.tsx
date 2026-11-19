@@ -7,6 +7,7 @@ const StackBar = css`
   height: 8px;
   box-sizing: border-box;
   border-radius: 2px;
+  /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
   background: #f5f7fa;
   display: flex;
   width: 100%;

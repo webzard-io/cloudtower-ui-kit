@@ -20,6 +20,7 @@ const CronCalendarWrapper = css`
   > .ant-picker-calendar,
   > .ant-picker-calendar .ant-picker-panel {
     width: 100%;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     background-color: rgba(245, 247, 250, 0.6);
     border-top: none;
 
@@ -45,14 +46,17 @@ const CronCalendarWrapper = css`
   }
 
   .ant-picker-cell {
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     color: rgba(62, 70, 82, 0.6);
     opacity: 0.4;
   }
   .ant-picker-cell-in-view {
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     color: rgba(62, 70, 82, 0.6);
     opacity: 1;
   }
   .ant-picker-cell-in-view > .active {
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     color: #3e4652;
   }
 
@@ -62,13 +66,16 @@ const CronCalendarWrapper = css`
 `;
 
 const Title = css`
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   color: rgba(129, 138, 153, 0.6);
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   box-shadow: inset 0px -1px 0px rgba(213, 219, 227, 0.6);
   backdrop-filter: blur(10px);
   padding: 7px 10px;
 `;
 
 const Control = css`
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   color: rgba(62, 70, 82, 0.6);
   display: flex;
   justify-content: space-between;
@@ -78,6 +85,7 @@ const Control = css`
   .anticon {
     cursor: pointer;
     &:hover {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       color: #0096ff;
     }
   }
@@ -95,6 +103,7 @@ const Cell = css`
     width: 2px;
     height: 2px;
     border-radius: 1px;
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     background: #0096ff;
 
     &:not(:last-child) {
@@ -104,6 +113,7 @@ const Cell = css`
   .bar {
     width: 9px;
     height: 2px;
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     background: #0096ff;
     border-radius: 2px;
   }

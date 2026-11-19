@@ -120,6 +120,7 @@ export const UploadWrapper = styled.div`
     }
     &.file-error.single {
       border-color: var(--stroke-serious-base);
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background: rgba(255, 74, 74, 0.1);
     }
     &.file-validating.single {
@@ -153,6 +154,7 @@ export const UploadWrapper = styled.div`
     &:not(.ant-upload-disabled):not(.file-error):hover,
     &.ant-upload-drag-hover:not(.ant-upload-disabled):not(.file-error) {
       border-color: var(--stroke-outstanding-base);
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background: rgba(0, 136, 255, 0.1);
     }
     &.ant-upload-disabled {
@@ -172,6 +174,7 @@ export const UploadWrapper = styled.div`
 
   /* 解析中的文件名颜色，两个类名是为了盖过 Typo 自带的 color */
   .file-content.validating {
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     color: rgba(0, 21, 64, 0.3);
   }
 
@@ -231,6 +234,7 @@ export const FileInfoWrapperStyle = css`
     color: var(--text-colorful-serious);
   }
   &.file-error-wrapper {
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     background: rgba(255, 74, 74, 0.1);
   }
   &.disabled {

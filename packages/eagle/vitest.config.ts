@@ -25,8 +25,11 @@ export default defineConfig({
             nextStyleMapFileName,
             JSON.stringify({
               ...JSON.parse(value),
-              [selector]: cssText,
-            })
+              [selector]: cssText.replace(
+                /^[\t ]*\/\* stylelint-disable-next-line [^\r\n]* \*\/\r?\n/gm,
+                "",
+              ),
+            }),
           );
           // Test workers may read the map while Vite transforms another file.
           fs.renameSync(nextStyleMapFileName, styleMapFileName);

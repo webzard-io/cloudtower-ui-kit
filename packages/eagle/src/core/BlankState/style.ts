@@ -8,6 +8,7 @@ export const BlankStateWrapper = css`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   color: rgba(0, 21, 64, 0.3);
   &.large {
     max-width: 648px;

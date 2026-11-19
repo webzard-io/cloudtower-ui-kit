@@ -5,7 +5,9 @@ const InputTagItem = styled.span`
   line-height: 18px;
   padding: 0 4px;
   border-radius: 4px;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   background: rgba(235, 239, 245, 0.6);
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   border: 1px solid rgba(223, 228, 235, 0.6);
   display: flex;
   align-items: center;

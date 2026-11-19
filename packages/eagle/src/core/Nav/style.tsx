@@ -202,6 +202,7 @@ export const NavCenterStyle = css`
     width: 100%;
     height: 12px;
     position: absolute;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     background: linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0),

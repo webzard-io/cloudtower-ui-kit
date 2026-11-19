@@ -118,6 +118,7 @@ export const TabMenuWrapper = styled.div`
 
       &.__selected {
         padding-left: 16px;
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         background: rgba(0, 136, 255, 0.1);
         color: var(--text-colorful-outstanding);
       }
@@ -159,6 +160,7 @@ export const MoreThanTooltipStyle = css`
 
       &.__selected {
         padding: 6px;
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         background: rgba(0, 136, 255, 0.1);
         color: var(--text-colorful-outstanding);
 

@@ -54,12 +54,16 @@ export const BasicBanner = css`
 
   .banner-action {
     padding: 2px 8px;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     background: rgba(255, 255, 255, 0.16);
     &:hover {
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background: rgba(255, 255, 255, 0.28);
     }
     &:active {
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background: rgba(255, 255, 255, 0.16);
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5);
     }
   }
@@ -83,6 +87,7 @@ export const BasicBanner = css`
         opacity: 0.8;
       }
       &:hover {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         background: rgba(255, 255, 255, 0.28);
         .icon-wrapper {
           opacity: 1;

@@ -25,6 +25,7 @@ const Style = css`
     background-color: var(--fill-outstanding-light);
     svg {
       path {
+        /* stylelint-disable-next-line color-named -- No equivalent theme token. */
         fill: blue;
       }
     }

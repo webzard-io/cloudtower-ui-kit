@@ -1,5 +1,5 @@
 module.exports = {
-  defaultSeverity: 'warning',
+  defaultSeverity: 'error',
   rules: {
     'color-no-hex': true,
     'color-named': 'never',

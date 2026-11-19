@@ -55,18 +55,22 @@ const TokenStyle = css`
     }
     &.ant-tag-blue {
       color: var(--fill-outstanding-base);
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background-color: rgba(0, 136, 255, 0.1);
     }
     &.ant-tag-red {
       color: var(--fill-serious-base);
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background-color: rgba(255, 74, 74, 0.1);
     }
     &.ant-tag-yellow {
       color: var(--fill-notice-dark);
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background-color: rgba(255, 187, 0, 0.1);
     }
     &.ant-tag-green {
       color: var(--fill-positive-dark);
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background-color: rgba(30, 201, 127, 0.1);
     }
     &.ant-tag-gray {

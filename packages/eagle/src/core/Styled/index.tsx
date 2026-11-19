@@ -134,6 +134,7 @@ export const FormWrapper = styled.div`
 
 export const FormSectionTitle = styled.h4`
   padding: 25px 0 15px 0;
+  /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
   border-bottom: 1px solid #e1e5eb;
   margin-bottom: 16px;
 `;
@@ -157,6 +158,7 @@ export const FormField = styled.div`
 `;
 
 export const ErrorSpan = styled.span`
+  /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
   color: #e75a3a;
   margin-right: 10px;
 `;
@@ -164,6 +166,7 @@ export const ErrorSpan = styled.span`
 export const Divider = styled.div`
   width: 100%;
   height: 1px;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   background: rgba(213, 219, 227, 0.6);
   margin: 24px 0;
 `;
@@ -179,6 +182,7 @@ export const Dot = styled.span`
   display: inline-block;
   width: 4px;
   height: 4px;
+  /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
   background: #8e9aa9;
   opacity: 0.4;
   border-radius: 50%;
@@ -222,11 +226,23 @@ export const TagSpan = styled.span<{ color: TagColor }>`
   display: inline-block;
   background: ${({ color }) => {
     switch (color) {
+      // TagColor variant name.
+      // ast-grep-ignore: no-hardcoded-color-tsx
       case "red":
+        // No equivalent theme token.
+        // ast-grep-ignore: no-hardcoded-color-tsx
         return "linear-gradient(262.79deg, #FA5F3C 0%, #FF9412 100%)";
+      // TagColor variant name.
+      // ast-grep-ignore: no-hardcoded-color-tsx
       case "yellow":
+        // No equivalent theme token.
+        // ast-grep-ignore: no-hardcoded-color-tsx
         return "linear-gradient(260.13deg, #FFA600 0%, #FFD900 100%)";
+      // TagColor variant name.
+      // ast-grep-ignore: no-hardcoded-color-tsx
       case "blue":
+        // No equivalent theme token.
+        // ast-grep-ignore: no-hardcoded-color-tsx
         return "linear-gradient(276.05deg, #0066FF 10.65%, #5CA8FF 89.35%)";
     }
   }};
@@ -246,10 +262,12 @@ export const FullView = styled.div`
 export const NameTag = styled.span`
   font-size: 90%;
   font-weight: bold;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   background-color: rgba(240, 243, 247, 0.6);
   padding: 1px 4px 1px;
   margin-left: 2px;
   margin-right: 2px;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   border: 1px solid rgba(213, 219, 227, 0.6);
   border-radius: 4px;
 `;
@@ -278,9 +296,11 @@ export const FormItemDiv = styled.div`
     margin-top: 4px;
     width: 100%;
     padding: 14px;
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     background: #f2f4f6;
     font-size: 13px;
     line-height: 1.8;
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     color: #8e9aa9;
   }
   .form-item-label {
@@ -310,6 +330,7 @@ export const FormItemDiv = styled.div`
     }
   }
   .form-item-error {
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     color: #e75a3a;
     height: 0;
     overflow: hidden;
@@ -323,7 +344,9 @@ export const FormItemDiv = styled.div`
     .form-item-control.field-error .form-item-error {
       > input:not(.ant-input),
       :not(.ant-select) input {
+        /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
         border: 1px solid #e75a3a;
+        /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
         color: #e75a3a;
       }
     }
@@ -341,6 +364,7 @@ export const FieldTitle = styled.div`
   font-size: var(--field-title-font-size, 12px);
   font-weight: bold;
   padding-bottom: 6px;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   border-bottom: 1px solid rgba(213, 219, 227, 0.6);
   margin-bottom: 16px;
 
@@ -379,6 +403,7 @@ export const ExpandArrow = styled.i`
 export const WarningAlert = css`
   &.ant-alert-warning {
     border: 0;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     background: rgba(255, 187, 0, 0.1);
     border-radius: 6px;
   }
@@ -395,6 +420,7 @@ export const NoticeAlert = css`
   display: flex;
   flex-direction: row;
   padding: 7px 12px;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   background: rgba(255, 187, 0, 0.1);
   border-radius: 6px;
   color: var(--fill-notice-dark);
@@ -425,6 +451,7 @@ export const InfoAlert = css`
   display: flex;
   flex-direction: row;
   padding: 7px 12px;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   background: rgba(0, 136, 255, 0.1);
   border-radius: 6px;
   color: var(--fill-outstanding-dark);
@@ -459,6 +486,7 @@ export const OperationWraper = styled.div`
 `;
 
 export const TertiaryText = styled.div`
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   color: rgba(0, 21, 64, 0.3);
 `;
 
@@ -498,6 +526,7 @@ export const InputStyle = css`
     &:focus,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       border-color: #0096ff;
       box-shadow: var(--effect-outline-activeFocus);
       z-index: $input-hover-index;
@@ -507,11 +536,14 @@ export const InputStyle = css`
   &.ant-input.error:not([disabled]),
   &.ant-picker.error:not([disabled]),
   &.ant-input-number.error:not([disabled]) {
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     border-color: #e75a3a;
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     color: #e75a3a;
 
     &:hover,
     &.__pseudo-states-hover {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       border-color: #e75a3a;
       box-shadow: var(--effect-outline-hover);
     }
@@ -520,6 +552,7 @@ export const InputStyle = css`
     &:focus,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       border-color: #e75a3a;
       box-shadow: var(--effect-outline-error);
     }
@@ -530,6 +563,7 @@ export const InputStyle = css`
   &.ant-input-number[disabled],
   &.ant-input-number.ant-input-number-disabled {
     background: var(--fill-neutral-trans-3);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     color: rgba(0, 21, 64, 0.3);
     border-color: var(--stroke-neutral-trans-3);
   }
@@ -573,19 +607,23 @@ export const InputStyle = css`
     &.ant-input-affix-wrapper-focused,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       border-color: #0096ff;
       box-shadow: var(--effect-outline-activeFocus);
     }
   }
 
   &.ant-input-affix-wrapper.error:not(.ant-input-affix-wrapper-disabled) {
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     border-color: #e75a3a;
     > .ant-input {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       color: #e75a3a;
     }
 
     &:hover,
     &.__pseudo-states-hover {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       border-color: #e75a3a;
       box-shadow: var(--effect-outline-hover);
     }
@@ -595,6 +633,7 @@ export const InputStyle = css`
     &.ant-input-affix-wrapper-focused,
     &.__pseudo-states-active,
     &.__pseudo-states-focus {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       border-color: #e75a3a;
       box-shadow: var(--effect-outline-error);
     }
@@ -602,6 +641,7 @@ export const InputStyle = css`
 
   &.ant-input-affix-wrapper.ant-input-affix-wrapper-disabled {
     background: var(--fill-neutral-trans-3);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     color: rgba(0, 21, 64, 0.3);
     border-color: var(--stroke-neutral-trans-3);
   }
@@ -637,6 +677,7 @@ export const InputStyle = css`
 
 export const KitInputStyle = css`
   &.input-tags {
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     border: 1px solid rgba(213, 219, 227, 0.6);
     border-radius: 4px;
   }
@@ -649,6 +690,7 @@ export const KitInputStyle = css`
 
     &:hover {
       border-color: var(--stroke-outstanding-base);
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       box-shadow: 0 0 0px 2px rgba(#0080ff, 0.1);
     }
 
@@ -669,10 +711,12 @@ export const KitInputStyle = css`
       top: 50%;
       transform: translateY(-50%);
       .anticon-close-circle {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         color: rgba(0, 0, 0, 0.25);
         font-size: 12px;
         cursor: pointer;
         &:hover {
+          /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
           color: rgba(0, 0, 0, 0.45);
         }
       }
@@ -772,6 +816,7 @@ export const ContentWrapper = styled.div`
 export const Desc = styled.div`
   font-size: 14px;
   font-weight: 500;
+  /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
   color: #3e4652;
   line-height: 18px;
 
@@ -804,6 +849,7 @@ export const radioStyle = css`
     font-size: 14px;
     font-weight: 500;
     line-height: 32px;
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     color: #3e4652;
   }
 `;

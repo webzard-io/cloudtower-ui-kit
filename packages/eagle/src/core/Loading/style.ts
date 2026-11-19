@@ -17,6 +17,7 @@ export const LoadingLine1 = css`
   left: 9.33px;
   top: 40.5px;
 
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   background: linear-gradient(
     180deg,
     var(--fill-outstanding-base) 0%,
@@ -36,6 +37,7 @@ export const LoadingLine2 = css`
   left: 40.8px;
   top: 8.4px;
 
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   background: linear-gradient(
     180deg,
     var(--fill-outstanding-base) 0%,
@@ -54,6 +56,7 @@ export const LoadingLine3 = css`
   left: 52.9px;
   top: 51.8px;
 
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   background: linear-gradient(
     180deg,
     var(--fill-outstanding-base) 0%,

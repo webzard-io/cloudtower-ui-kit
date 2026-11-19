@@ -45,6 +45,7 @@ const ColorSegment = css`
       .${Antd5PrefixCls}-segmented-item-disabled
     ) {
     background-color: var(--fill-neutral-lightwhite);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     color: rgba(44, 56, 82, 0.75);
   }
   // on animate remove hover bg color

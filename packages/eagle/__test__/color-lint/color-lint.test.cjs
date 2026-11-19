@@ -25,11 +25,12 @@ async function run() {
     const result = await lint(`.fixture { color: ${value}; }`, "scss");
     assert.ok(
       result.results[0].warnings.length > 0,
-      `Missing warning: ${value}`,
+      `Missing color diagnostic: ${value}`,
     );
     assert.ok(
-      result.results[0].warnings.every((item) => item.severity === "warning"),
+      result.results[0].warnings.every((item) => item.severity === "error"),
     );
+    assert.ok(result.errored, `Hardcoded color must fail lint: ${value}`);
   }
   const valid = await lint(
     ".fixture { color: $text-light-primary; background: var(--fill); border-color: currentColor; }",
@@ -43,6 +44,13 @@ async function run() {
   assert.ok(
     linaria.results[0].warnings.some((item) => item.rule === "color-no-hex"),
   );
+  const exception = await lint(
+    "const S = css`\n/* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */\ncolor: #123456;\nbackground: #654321;\n`;",
+    "tsx",
+  );
+  assert.equal(exception.results[0].warnings.length, 1);
+  assert.equal(exception.results[0].warnings[0].line, 4);
+  assert.ok(exception.errored, "The next declaration must still fail lint");
   const broken = await lint('const S = css`color: "unterminated`;', "tsx");
   assert.ok(broken.errored, "Syntax errors must remain errors");
   console.log(`Color lint checks passed (${version.trim()})`);

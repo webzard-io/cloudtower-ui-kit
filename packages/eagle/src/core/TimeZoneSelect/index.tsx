@@ -97,11 +97,13 @@ const OptionWrapperStyle = cx(
     }
 
     &.ant-select-item-option-active {
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background: rgba(0, 136, 255, 0.16);
       .timezone-title {
         color: var(--text-colorful-outstanding);
       }
       .timezone-tag {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
         background: rgba(0, 136, 255, 0.1);
         color: var(--text-colorful-outstanding);
       }

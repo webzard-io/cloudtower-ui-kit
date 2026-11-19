@@ -3,6 +3,8 @@ export const COLOR_MAP = {
   primary: Color.text.colorful.outstanding,
   info: Color.text.colorful.outstanding,
   success: Color.text.colorful.positive,
+  // No equivalent theme token.
+  // ast-grep-ignore: no-hardcoded-color-typescript
   warning: "#FFA500",
   danger: Color.text.colorful.serious,
   error: Color.text.colorful.serious,
