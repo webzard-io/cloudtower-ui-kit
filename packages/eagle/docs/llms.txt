@@ -100,6 +100,7 @@ npm 包名：@cloudtower/eagle
 - Link: 链接，封装 antd Typography.Link
 - Typo: 排版样式集合，提供 Display/Heading/Label/Paragraph 等预定义的 Linaria 类名；若需要根据 Figma Typography 名称查找对应样式，请使用公开导出的 `FIGMA_TO_TYPO`
 - Color / Effect: 从 `@cloudtower/eagle` 导入的运行时颜色和效果 token。应用入口加载同版本的 `@cloudtower/eagle/dist/token.css`。旧 Sass 接入参见 [Eagle 主题迁移指南](../../../skills/migrate-eagle-theme/SKILL.md)。
+- Color.gradient: 完整渐变运行时 token。Figma 来源、CSS 引用和同步方式见 [渐变来源与同步](./theme.md#渐变来源与同步)。
 - Loading: 加载中动画，三条竖线动画
 - CircleLoading: 圆形加载动画，旋转渐变圆形图标
 - Space: 间距组件，封装 antd Space

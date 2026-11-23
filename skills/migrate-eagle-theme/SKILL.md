@@ -45,9 +45,10 @@ Eagle 不再发布 `dist/variables.scss`，内部 Sass 源码也不是替代导�
    渐变还需核对方向、位置和色标，阴影需核对偏移、模糊、扩散和叠放顺序。
    使用 [SmartX Style Guide · Color](https://newgh.smartx.com/pages/paula/SmartX-Style-Guide/color/#color-cloudtower)
    查 CloudTower 浅色分组和同值候选。多个语义 token 可以引用同一基础色。
-   色板更新后，复查待确认的字面量和已经拆成单色 token 的完整配方。按
-   [Gradients 清单](https://newgh.smartx.com/pages/paula/SmartX-Style-Guide/color/#color-gradients)
-   核对渐变类型、角度、径向尺寸和位置，以及每个色标的精确值。整条等值时直接使用完整渐变 token。
+   色板更新后，复查待确认的字面量和已经拆成单色 token 的完整配方。用
+   [Style Guide · Gradients](https://newgh.smartx.com/pages/paula/SmartX-Style-Guide/color/#color-gradients)
+   查候选名称，再按 [Eagle 渐变文档](../../packages/eagle/docs/theme.md#渐变来源与同步) 读取 Figma 填充样式，
+   核对类型、方向或径向几何、色标位置及 RGBA。与实际依赖版本的完整 CSS 配方等值时，直接使用对应渐变 token。
 3. **按规范选 token。** 优先查同站 Component 中对应组件的变体、部位和状态表，指南明确指定且等值就使用该 token。
    例如 Checkbox 用 `fill-outstanding-base` 填充方框、用 `stroke-outstanding-base` 描边。Legend 的灰色圆点按规范使用
    `gray-gray-70`。有些变体明确用 `fill` 表示文字，保留规范指定的含义。

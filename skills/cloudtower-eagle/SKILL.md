@@ -73,6 +73,7 @@ find . -path "*/@cloudtower/eagle/docs/llms.txt" 2>/dev/null
 2. 旧 Sass 接入先按 [迁移 skill](../migrate-eagle-theme/SKILL.md) 盘点构建注入、变量及颜色运算，再改造。
 3. CSS/SCSS 引用需由构建使用实际依赖版本转换并验证声明，不手写版本号，也不导入 Eagle 私有源码。
 4. 按语义和实际取值选择 token；无法确认的旧别名或必须使用具体颜色的场景列入迁移报告。
+5. 渐变先查 Figma Color 页的 `Gradient/…` 样式，再用实际依赖版本的 token 清单核对完整配方。等值时通过 `Color.gradient["blue-1"]` 或 `var(--gradient-blue-1)` 引用已有 token，名称对应见 [Eagle 渐变文档](../../packages/eagle/docs/theme.md#渐变来源与同步)。
 
 **示例：TS/Linaria 上下文**
 
