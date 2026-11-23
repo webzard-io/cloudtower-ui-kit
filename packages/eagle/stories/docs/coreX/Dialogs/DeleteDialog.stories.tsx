@@ -67,6 +67,33 @@ export const Basic = () => {
 
 Basic.storyName = "基础用法";
 
+export const MaskNotClosable = () => {
+  const pushModal = usePushModal();
+
+  return (
+    <Button
+      type="primary"
+      danger
+      onClick={() =>
+        pushModal({
+          component: () => (
+            <DeleteDialog
+              title="删除虚拟机"
+              description="点击遮罩不会关闭此弹窗，请通过取消、关闭或删除按钮退出。"
+              maskClosable={false}
+            />
+          ),
+          props: { name: "MaskNotClosableDeleteDialog" },
+        })
+      }
+    >
+      删除虚拟机（禁止点击遮罩关闭）
+    </Button>
+  );
+};
+
+MaskNotClosable.storyName = "禁止点击遮罩关闭";
+
 export const CustomButtonText = () => {
   const pushModal = usePushModal();
 

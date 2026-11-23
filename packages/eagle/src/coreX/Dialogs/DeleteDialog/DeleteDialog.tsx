@@ -31,6 +31,7 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = (props) => {
     okText = t("common.delete"),
     onOk,
     onCancel,
+    maskClosable,
     className,
     confirmLoading,
     error,
@@ -43,6 +44,7 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = (props) => {
       showOk={true}
       onOk={onOk}
       onCancel={onCancel}
+      maskClosable={maskClosable}
       className={cx(DialogStyle, className)}
       okText={okText}
       cancelText={cancelText}
