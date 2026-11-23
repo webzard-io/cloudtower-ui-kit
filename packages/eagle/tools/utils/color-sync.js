@@ -134,7 +134,8 @@ const extractColorTokensFromDisplayDoc = (rootNode) => {
   return result;
 };
 
-// Gradient defaults come from Eagle's Sass definitions and existing Color API.
+// 默认值来自旧 Sass 和 Color API，Figma 来源及核对方法见 docs/theme.md。
+// 纯色同步不会从 Figma 导入渐变，核对完整配方后在此更新。
 const GRADIENT_TOKENS = {
   loading: "linear-gradient(90deg, #0080ff 0%, #9ecfff 50%, #0080ff 100%)",
   "light-blue":

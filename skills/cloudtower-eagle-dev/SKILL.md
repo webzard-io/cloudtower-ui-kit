@@ -81,6 +81,7 @@ description: >
 5. 从 Figma 读取颜色时，先看 `get_design_context` 结果里的 `var(--...)`，不要先猜旧变量名。
 6. 调整组件引用时，按[迁移 skill 的颜色核对流程](../migrate-eagle-theme/SKILL.md#只做等值替换)
    逐处确认用途、状态和精确值，优先遵循对应组件页的等值 token，合入前比对原浅色快照。
+7. 渐变按 [Eagle 渐变来源与同步](../../packages/eagle/docs/theme.md#渐变来源与同步) 从 Figma 填充样式核对。纯色同步命令不覆盖渐变，确认配方变更后更新 `GRADIENT_TOKENS` 并重新生成主题产物。
 
 **Typography**
 
