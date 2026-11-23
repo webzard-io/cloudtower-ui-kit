@@ -1,6 +1,6 @@
 # Eagle 主题接入与维护
 
-完整名称、默认值和 TS／Sass／CSS 对应关系见自动生成的 [token 清单](./theme-tokens.md)。
+完整名称、默认值和 TypeScript API 与 CSS 自定义属性的对应关系见自动生成的 [token 清单](./theme-tokens.md)。
 旧 Sass 接口迁移参考仓库中的 `skills/migrate-eagle-theme/SKILL.md`，不随 Eagle 包发布。
 
 ## 接入
@@ -31,6 +31,12 @@ hook 不保存偏好，也不在卸载时恢复主题。原有 antd4Configs／an
   并在主题变化时更新；缺少 token 时报告接入问题，不以固定浅色色值回退。完整 box-shadow 不能直接用于 filter: drop-shadow()。
 - 不再发布 `dist/variables.scss`。接入方移除 Sass 注入、重新构建共享消费包，并加载对应版本的 token.css。
 - [待确认历史颜色](./theme-color-gaps.md) 暂时保留原值，尚未完成主题适配。图标包保持原有实现，组件内的颜色引用使用统一 token。
+
+### 渐变来源
+
+从旧 Sass 迁入的 11 个渐变沿用原有的类型、色标、透明度和几何参数。运行时默认值维护在 `GRADIENT_TOKENS`，由 `yarn generate:theme` 生成 `Color.gradient`、CSS 自定义属性和 token 清单。业务侧可通过 `Color.gradient["blue-1"]` 或 `var(--gradient-blue-1)` 引用。 [旧 Sass 定义](https://github.com/webzard-io/cloudtower-ui-kit/blob/13f9bd31a05af900b060ae6e5b8bc0f88e578a8d/packages/eagle/src/styles/common/variables.scss#L257-L371) · [Eagle 默认值](https://github.com/webzard-io/cloudtower-ui-kit/blob/c709785b28359d27524ce90e7f909169350417d1/packages/eagle/tools/utils/color-sync.js#L138-L158)
+
+Figma 用 `Gradient/…` 填充样式承载设计定义。已直接核对 `Gradient/gradient-blue-1` 的两个色标为 `#5BCAFF`（0%）和 `#0066FF`（100%），其余样式的原始参数尚待逐项核对。Style Guide 列出这 11 个样式的名称与类型，网页上的 CSS 用于近似预览。 [Figma · blue-1 应用示例](https://www.figma.com/design/2Jv3JpCgxI4g0t08Tzyvcb/Style-%7C-%E6%A0%B7%E5%BC%8F?node-id=1539-18616) · [Style Guide · Gradients](https://newgh.smartx.com/pages/paula/SmartX-Style-Guide/color/#color-gradients)
 
 ## 维护主题
 
