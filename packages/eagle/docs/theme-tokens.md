@@ -140,16 +140,16 @@
 | `Color.chart.red["red-8"]` | `--chart-red-red-8` | `#992F2D` |
 | `Color.chart.red["red-9"]` | `--chart-red-red-9` | `#782725` |
 | `Color.chart.red["red-10"]` | `--chart-red-red-10` | `#571E1E` |
-| `Color.chart.yellow["yellow-1"]` | `--chart-yellow-yellow-1` | `#FFDE6C` |
-| `Color.chart.yellow["yellow-2"]` | `--chart-yellow-yellow-2` | `#FED158` |
-| `Color.chart.yellow["yellow-3"]` | `--chart-yellow-yellow-3` | `#FEC444` |
-| `Color.chart.yellow["yellow-4"]` | `--chart-yellow-yellow-4` | `#FEB630` |
-| `Color.chart.yellow["yellow-5"]` | `--chart-yellow-yellow-5` | `#FEA819` |
-| `Color.chart.yellow["yellow-6"]` | `--chart-yellow-yellow-6` | `#E79305` |
-| `Color.chart.yellow["yellow-7"]` | `--chart-yellow-yellow-7` | `#BB7A03` |
-| `Color.chart.yellow["yellow-8"]` | `--chart-yellow-yellow-8` | `#926102` |
-| `Color.chart.yellow["yellow-9"]` | `--chart-yellow-yellow-9` | `#6B4803` |
-| `Color.chart.yellow["yellow-10"]` | `--chart-yellow-yellow-10` | `#483100` |
+| `Color.chart.yellow["yellow-1"]` | `--chart-yellow-yellow-1` | `#FFDE6B` |
+| `Color.chart.yellow["yellow-2"]` | `--chart-yellow-yellow-2` | `#FED157` |
+| `Color.chart.yellow["yellow-3"]` | `--chart-yellow-yellow-3` | `#FEC243` |
+| `Color.chart.yellow["yellow-4"]` | `--chart-yellow-yellow-4` | `#FDB52E` |
+| `Color.chart.yellow["yellow-5"]` | `--chart-yellow-yellow-5` | `#FDA61A` |
+| `Color.chart.yellow["yellow-6"]` | `--chart-yellow-yellow-6` | `#E59304` |
+| `Color.chart.yellow["yellow-7"]` | `--chart-yellow-yellow-7` | `#B97902` |
+| `Color.chart.yellow["yellow-8"]` | `--chart-yellow-yellow-8` | `#916102` |
+| `Color.chart.yellow["yellow-9"]` | `--chart-yellow-yellow-9` | `#6D4902` |
+| `Color.chart.yellow["yellow-10"]` | `--chart-yellow-yellow-10` | `#473000` |
 | `Color.chart.pink["pink-1"]` | `--chart-pink-pink-1` | `#FED1FE` |
 | `Color.chart.pink["pink-2"]` | `--chart-pink-pink-2` | `#FDBCFD` |
 | `Color.chart.pink["pink-3"]` | `--chart-pink-pink-3` | `#F99BF8` |
@@ -235,6 +235,17 @@
 | `Color.gradient.loading` | `--gradient-loading` | `linear-gradient(90deg, #0080ff 0%, #9ecfff 50%, #0080ff 100%)` |
 | `Color.gradient["light-blue"]` | `--gradient-light-blue` | `linear-gradient(180deg,rgba(0, 136, 255, 0.2) 0%,rgba(0, 136, 255, 0.6) 100%)` |
 | `Color.gradient["dark-blue"]` | `--gradient-dark-blue` | `radial-gradient(133.15% 133.15% at 4.69% 7.03%, #5BCAFF 0%, #06F 100%)` |
+| `Color.gradient["blue-1"]` | `--gradient-blue-1` | `radial-gradient(100% 100% at 0% 100%, #5BCAFF 0%, #0066FF 100%)` |
+| `Color.gradient["blue-2"]` | `--gradient-blue-2` | `linear-gradient(90deg, #0080FF 0%, #005ED1 100%)` |
+| `Color.gradient["green-1"]` | `--gradient-green-1` | `radial-gradient(100% 100% at 0% 100%, #36E0A4 0%, #009449 100%)` |
+| `Color.gradient["yellow-1"]` | `--gradient-yellow-1` | `radial-gradient(100% 100% at 0% 100%, #FFD505 0%, #F39600 100%)` |
+| `Color.gradient["red-1"]` | `--gradient-red-1` | `radial-gradient(100% 100% at 0% 100%, #FF5C78 0%, #DC0000 100%)` |
+| `Color.gradient["gray-1"]` | `--gradient-gray-1` | `radial-gradient(100% 100% at 0% 100%, #CCD4E3 0%, #6B7D99 100%)` |
+| `Color.gradient["white-to-gray-1"]` | `--gradient-white-to-gray-1` | `radial-gradient(50% 100% at 50% 0%, #FFFFFF 0%, #EDF0F7 100%)` |
+| `Color.gradient["white-to-gray-2"]` | `--gradient-white-to-gray-2` | `linear-gradient(180deg, #FFFFFF 0%, #EDF0F7 100%)` |
+| `Color.gradient["white-l100r60"]` | `--gradient-white-l100r60` | `linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.6) 100%)` |
+| `Color.gradient["white-l60r100"]` | `--gradient-white-l60r100` | `linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, #FFFFFF 100%)` |
+| `Color.gradient["purple-1"]` | `--gradient-purple-1` | `radial-gradient(100% 100% at 0% 100%, #C67EFF 0%, #6A38FF 100%)` |
 | `Effect.shadow.dashboardCard.normal` | `--effect-shadow-dashboardCard-normal` | `0px 0px 16px 0px rgba(107,125,153,0.08), 0px 0px 2.003px 0px rgba(107,125,153,0.15)` |
 | `Effect.shadow.dashboardCard.hoverFloat` | `--effect-shadow-dashboardCard-hoverFloat` | `0px 0px 4px -2px rgba(10,37,85,0.18), 0px 8px 16px 0px rgba(10,37,85,0.18)` |
 | `Effect.shadow.listItem.hover` | `--effect-shadow-listItem-hover` | `0px 0px 4px 0px rgba(235,239,245,0.6), 0px 8px 16px 0px rgba(129,138,153,0.18)` |

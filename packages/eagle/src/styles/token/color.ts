@@ -293,6 +293,17 @@ export const Color = {
   "gradient": {
     "loading": "var(--gradient-loading)" as string,
     "light-blue": "var(--gradient-light-blue)" as string,
-    "dark-blue": "var(--gradient-dark-blue)" as string
+    "dark-blue": "var(--gradient-dark-blue)" as string,
+    "blue-1": "var(--gradient-blue-1)" as string,
+    "blue-2": "var(--gradient-blue-2)" as string,
+    "green-1": "var(--gradient-green-1)" as string,
+    "yellow-1": "var(--gradient-yellow-1)" as string,
+    "red-1": "var(--gradient-red-1)" as string,
+    "gray-1": "var(--gradient-gray-1)" as string,
+    "white-to-gray-1": "var(--gradient-white-to-gray-1)" as string,
+    "white-to-gray-2": "var(--gradient-white-to-gray-2)" as string,
+    "white-l100r60": "var(--gradient-white-l100r60)" as string,
+    "white-l60r100": "var(--gradient-white-l60r100)" as string,
+    "purple-1": "var(--gradient-purple-1)" as string
   }
 } as const;

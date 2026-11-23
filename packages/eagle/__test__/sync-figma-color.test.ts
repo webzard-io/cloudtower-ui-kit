@@ -54,6 +54,36 @@ describe("sync-figma-color", () => {
     });
   });
 
+  it("uses the swatch paint when its hex label differs", () => {
+    const displayDocFixture = {
+      type: "INSTANCE",
+      children: [
+        {
+          type: "FRAME",
+          name: "Card",
+          fills: [
+            {
+              type: "SOLID",
+              color: { r: 1, g: 222 / 255, b: 107 / 255 },
+            },
+          ],
+          children: [
+            {
+              type: "TEXT",
+              name: "{token-name}",
+              characters: "Chart/Yellow/yellow-1",
+            },
+            { type: "TEXT", name: "{hex-value}", characters: "#FFDE6C" },
+          ],
+        },
+      ],
+    };
+
+    expect(extractColorTokensFromDisplayDoc(displayDocFixture)).toEqual({
+      chart: { yellow: { "yellow-1": "#FFDE6B" } },
+    });
+  });
+
   it("reports added and changed keys", () => {
     vi.spyOn(fs, "existsSync").mockReturnValue(true);
     vi.spyOn(fs, "readFileSync").mockReturnValue(JSON.stringify({}));
