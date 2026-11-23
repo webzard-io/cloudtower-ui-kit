@@ -54,12 +54,12 @@ const TokenStyle = css`
       }
     }
     &.ant-tag-blue {
-      color: var(--fill-outstanding-base);
+      color: var(--text-colorful-outstanding);
       /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background-color: rgba(0, 136, 255, 0.1);
     }
     &.ant-tag-red {
-      color: var(--fill-serious-base);
+      color: var(--text-colorful-serious);
       /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background-color: rgba(255, 74, 74, 0.1);
     }

@@ -110,7 +110,7 @@ export const Header = styled.header`
           border-radius: 6px;
 
           &:hover {
-            background: var(--stroke-neutral-trans-2);
+            background: var(--fill-neutral-trans-3);
           }
         }
       }

@@ -50,7 +50,7 @@ describe("NamesTooltip", () => {
           display: none;
         }
         .ant-tooltip-inner {
-          background: var(--gray-gray-a80-9);
+          background: var(--fill-neutral-trans-8);
           border-radius: 4px;
           &:has(.eagle-ellipsis-content) {
             visibility: hidden;

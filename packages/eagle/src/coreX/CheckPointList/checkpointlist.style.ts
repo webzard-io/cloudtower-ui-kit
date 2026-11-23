@@ -40,7 +40,7 @@ export const CheckPointListStyle = css`
     border: 1px solid var(--stroke-neutral-opaque-2);
     header {
       border-bottom: none;
-      background: var(--stroke-neutral-trans-1);
+      background: var(--fill-neutral-trans-2);
     }
   }
 `;

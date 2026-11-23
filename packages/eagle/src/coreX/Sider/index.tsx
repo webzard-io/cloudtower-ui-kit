@@ -76,11 +76,7 @@ const SiderStyle = css`
         margin-bottom: 2px;
       }
       &.ant-menu-item-selected {
-        background: linear-gradient(
-          90deg,
-          var(--fill-outstanding-base) 0%,
-          var(--fill-outstanding-dark) 100%
-        );
+        background: var(--gradient-blue-2);
         box-shadow: var(--effect-shadow-listItem-selected);
         border-radius: 6px;
         color: var(--text-neutral-ontint);
@@ -91,11 +87,7 @@ const SiderStyle = css`
       &:not(.ant-menu-item-selected) {
         &.ant-menu-item:hover,
         &.ant-menu-item-active {
-          background: linear-gradient(
-            90deg,
-            var(--fill-neutral-white) 0%,
-            var(--fill-neutral-lightwhite) 100%
-          );
+          background: var(--gradient-white-l100r60);
           box-shadow: var(--effect-shadow-listItem-hover);
           border-radius: 6px;
         }

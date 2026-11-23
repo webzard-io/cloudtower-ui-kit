@@ -32,7 +32,7 @@ export const KubeConfigContentStyle = css`
   min-height: 0;
   flex: 1;
   padding: 16px;
-  background-color: var(--gray-gray-80);
+  background-color: var(--fill-neutral-opaque-8);
   color: var(--text-neutral-ontint);
   overflow: auto;
   max-width: 100%;

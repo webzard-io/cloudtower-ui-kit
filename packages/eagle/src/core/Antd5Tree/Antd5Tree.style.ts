@@ -24,7 +24,7 @@ export const Antd5TreeStyle = css`
 
       &:not(.${Antd5PrefixCls}-tree-checkbox-disabled) {
         &:hover .${Antd5PrefixCls}-tree-checkbox-inner {
-          border-color: var(--fill-outstanding-base);
+          border-color: var(--stroke-outstanding-base);
         }
 
         &.${Antd5PrefixCls}-tree-checkbox-checked {

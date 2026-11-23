@@ -31,7 +31,7 @@ const CircleProgressStyle = css`
     left: 0;
     top: 0;
     border-radius: 50%;
-    background: linear-gradient(to right, var(--color) 50%, var(--white-white) 50%);
+    background: linear-gradient(to right, var(--color) 50%, var(--fill-neutral-white) 50%);
     transform: rotate(180deg);
   }
 
