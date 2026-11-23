@@ -20,6 +20,7 @@
 | `rgba(255, 187, 0, 0.2)` | `core/Button/index.tsx` | `#{$fill-notice-lightactive} → rgba(254, 160, 8, 0.2)` |
 | `--fill-notice-dark`（`#E07F00`） | `core/Token/index.tsx` 黄色文字 | Token 组件指南的 `--text-colorful-notice` 为 `#FEA008` |
 | `--fill-positive-dark`（`#008F4C`） | `core/Token/index.tsx` 绿色文字 | Token 组件指南的 `--text-colorful-positive` 为 `#00BA5D` |
+| `--gray-gray-70`（`#6B7D99`） | `core/Token/index.tsx` 灰色 Token 选中底色 | Token 组件指南指定 `--fill-neutral-opaque-8`（`#2D3A56`） |
 | `drop-shadow(0px 2px 8px rgba(255, 187, 0, 0.1))` | `core/Button/index.tsx` | `drop-shadow(0px 2px 8px $fill-notice-light) → drop-shadow(0px 2px 8px rgba(254, 160, 8, 0.1019607843))` |
 | `#ff4d4f !important` | `core/FormItem/index.tsx` | `$stroke-serious-base !important → #F0483E !important` |
 | `#0096ff` | `core/InputInteger/index.tsx`、`core/Styled/index.tsx`、`core/Table/index.tsx`、`coreX/CronCalendar/index.tsx`、`coreX/CronPlan/index.tsx` | `$stroke-outstanding-base → #0080FF`；`$text-colorful-outstanding → #0080FF`；`$fill-outstanding-base → #0080FF` |
