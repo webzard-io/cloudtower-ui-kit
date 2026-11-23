@@ -6,7 +6,7 @@ const CalendarWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: $white;
+  background: var(--fill-neutral-white);
   overflow: auto;
 `;
 
@@ -43,7 +43,7 @@ const CalendarYearWrapper = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      background: $fills-light-trans-1;
+      background: var(--fill-neutral-trans-1);
     }
   }
 `;
@@ -56,7 +56,7 @@ const CalendarWeekWrapper = styled.ul`
   margin: unset;
   height: 40px;
   gap: 4px;
-  border-bottom: 1px solid $fills-trans-terdiary-light;
+  border-bottom: 1px solid var(--stroke-neutral-trans-2);
   flex-wrap: wrap;
   flex-shrink: 0;
 
@@ -65,7 +65,7 @@ const CalendarWeekWrapper = styled.ul`
     height: 40px;
     line-height: 40px;
     text-align: center;
-    color: $text-light-secondary;
+    color: var(--text-neutral-tertiary);
   }
 `;
 
@@ -84,14 +84,14 @@ const CalendarMonthWrapper = styled.div`
         padding: 4px 12px;
         position: sticky;
         top: 0;
-        background: $white;
+        background: var(--fill-neutral-white);
         transition: all 0.2s ease-in-out;
         z-index: 2;
 
         &.pinned {
-          box-shadow:
-            0px 4px 12px rgba(225, 230, 241, 0.4),
-            inset 0px -1px 0px rgba(225, 230, 241, 0.6);
+          /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
+          box-shadow: 0px 4px 12px rgba(225, 230, 241, 0.4),
+            inset 0px -1px 0px var(--stroke-neutral-trans-1);
         }
       }
 
@@ -109,12 +109,14 @@ const CalendarMonthWrapper = styled.div`
           justify-content: center;
 
           &.highlight {
+            /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
             border-color: #e6f4ff;
+            /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
             background: #e6f4ff;
 
             &.first-highlight {
               position: relative;
-              background: $white;
+              background: var(--fill-neutral-white);
 
               &::after {
                 content: "";
@@ -123,6 +125,7 @@ const CalendarMonthWrapper = styled.div`
                 top: 0;
                 width: calc(50% + 20px);
                 height: 100%;
+                /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
                 background: #e6f4ff;
                 border-top-left-radius: 50%;
                 border-bottom-left-radius: 50%;
@@ -131,7 +134,7 @@ const CalendarMonthWrapper = styled.div`
 
             &.last-highlight {
               position: relative;
-              background: $white;
+              background: var(--fill-neutral-white);
 
               &::after {
                 content: "";
@@ -140,6 +143,7 @@ const CalendarMonthWrapper = styled.div`
                 top: 0;
                 width: calc(50% + 20px);
                 height: 100%;
+                /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
                 background: #e6f4ff;
                 border-top-right-radius: 50%;
                 border-bottom-right-radius: 50%;
@@ -158,9 +162,9 @@ const CalendarMonthWrapper = styled.div`
           }
 
           &:hover > .date {
-            border: 1px solid $text-light-general;
+            border: 1px solid var(--stroke-outstanding-base);
             cursor: pointer;
-            background: $white;
+            background: var(--fill-neutral-white);
           }
 
           & > .date {
@@ -169,7 +173,7 @@ const CalendarMonthWrapper = styled.div`
             line-height: 36px;
             text-align: center;
             border-radius: 50%;
-            color: $text-light-primary;
+            color: var(--text-neutral-primary);
             border: 1px solid transparent;
             transition:
               background,
@@ -182,30 +186,32 @@ const CalendarMonthWrapper = styled.div`
             }
 
             &.today {
-              color: $text-light-general;
-              border-color: $strokes-light-outstanding-light;
+              color: var(--text-colorful-outstanding);
+              /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
+              border-color: rgba(0, 136, 255, 0.16);
             }
 
             &.highlight {
+              /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
               border-color: #e6f4ff;
             }
 
             &:hover {
-              border-color: $text-light-general;
+              border-color: var(--stroke-outstanding-base);
               cursor: pointer;
-              background: $white;
+              background: var(--fill-neutral-white);
             }
 
             &.checked {
-              background: $text-light-general;
-              color: $white;
+              background: var(--fill-outstanding-base);
+              color: var(--text-neutral-ontint);
             }
 
             &.disabled {
               cursor: not-allowed;
               border-color: transparent;
-              background: $fills-light-opaque-3;
-              color: $text-quaternary-light;
+              background: var(--fill-neutral-opaque-3);
+              color: var(--gray-gray-a60-6);
             }
           }
         }
@@ -230,22 +236,22 @@ const InputTimeWrapper = styled.div`
     flex-shrink: 0;
     display: inline-flex;
     align-items: center;
-    border: 1px solid $fills-light-opaque-3;
+    border: 1px solid var(--stroke-neutral-opaque-2);
     transition: all 0.1s ease-in-out;
     padding: 4px 8px;
-    background: $white;
+    background: var(--fill-neutral-white);
     border-radius: 5px;
 
     &.focus {
-      border-color: $strokes-light-outstanding;
-      box-shadow: 0px 0px 0px 4px rgba(0, 136, 255, 0.16);
+      border-color: var(--stroke-outstanding-base);
+      box-shadow: var(--effect-outline-activeFocus);
     }
 
     &.error {
-      border-color: $fills-light-serious-serious;
+      border-color: var(--stroke-serious-base);
 
       &.focus {
-        box-shadow: 0px 0px 0px 4px $fills-light-serious-serious-light-active;
+        box-shadow: 0px 0px 0px 4px var(--fill-serious-lightactive);
       }
     }
 
@@ -261,10 +267,11 @@ const InputTimeWrapper = styled.div`
       height: 20px;
       text-align: center;
       padding: 0;
-      color: $text-light-primary;
+      color: var(--text-neutral-primary);
 
       &::placeholder {
-        color: $text-light-tertiary;
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
+        color: rgba(0, 21, 64, 0.3);
       }
 
       &:disabled {
@@ -280,16 +287,17 @@ const InputTimeWrapper = styled.div`
 
     .connect-symbol {
       margin: 0 2px;
-      color: $text-light-tertiary;
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
+      color: rgba(0, 21, 64, 0.3);
 
       &.inputted {
-        color: $text-light-primary;
+        color: var(--text-neutral-primary);
       }
     }
   }
 
   .error-message {
-    color: #f0483e;
+    color: var(--text-colorful-serious);
     margin-top: 4px;
   }
 `;
@@ -313,6 +321,7 @@ const AbsoluteTimeWrapper = styled.div`
 
 const AbsoluteTimeSectionWrapper = styled.div`
   padding: 8px 12px;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   box-shadow: inset 0px 1px 0px rgba(211, 218, 235, 0.3);
 
   .time-input-main {
@@ -328,7 +337,7 @@ const AbsoluteTimeSectionWrapper = styled.div`
       .start-time,
       .end-time,
       .to {
-        color: $text-light-secondary;
+        color: var(--text-neutral-tertiary);
 
         p {
           margin: 0;
@@ -357,7 +366,7 @@ const AbsoluteTimeSectionWrapper = styled.div`
   }
 
   .time-input-error {
-    color: $fills-light-serious-serious;
+    color: var(--text-colorful-serious);
   }
 `;
 
@@ -372,7 +381,7 @@ const RelativeTimeWrapper = styled.div`
   .ant-input-affix-wrapper {
     width: 100% !important;
     border-width: 0 0 1px 0 !important;
-    border-color: $strokes-light-trans-2;
+    border-color: var(--stroke-neutral-trans-2);
     border-radius: 0;
 
     & + .past-time-list {
@@ -393,27 +402,29 @@ const RelativeTimeWrapper = styled.div`
       cursor: pointer;
 
       &:hover {
-        background: $fills-interaction-light-outstanding-hover;
-        color: $text-light-general;
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
+        background: rgba(0, 136, 255, 0.16);
+        color: var(--text-colorful-outstanding);
       }
 
       &:active {
-        background: $fills-interaction-light-outstanding-active;
-        color: $text-light-general;
+        background: var(--fill-outstanding-lightactive);
+        color: var(--text-colorful-outstanding);
       }
 
       &.selected {
-        background: $fills-interaction-light-outstanding-active;
-        color: $text-light-general;
+        background: var(--fill-outstanding-lightactive);
+        color: var(--text-colorful-outstanding);
 
         .highlight {
-          color: $text-light-general;
+          color: var(--text-colorful-outstanding);
         }
       }
 
       &.disabled {
-        background: $fills-light-trans-1;
-        color: $text-light-tertiary;
+        background: var(--fill-neutral-trans-1);
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
+        color: rgba(0, 21, 64, 0.3);
         cursor: not-allowed;
       }
 
@@ -435,9 +446,9 @@ const DateRangePickerWrapper = styled.div`
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: $white;
+    background: var(--fill-neutral-white);
     border-radius: 5px;
-    border: 1px solid $strokes-light-trans-3;
+    border: 1px solid var(--stroke-neutral-trans-3);
     transition: all 0.2s ease-in-out;
 
     .default-calendar-icon {
@@ -450,8 +461,8 @@ const DateRangePickerWrapper = styled.div`
 
     &:hover,
     &.active {
-      border-color: $strokes-light-outstanding;
-      box-shadow: 0px 0px 0px 4px rgba(0, 136, 255, 0.16);
+      border-color: var(--stroke-outstanding-base);
+      box-shadow: var(--effect-outline-activeFocus);
 
       .default-calendar-icon {
         display: none;
@@ -491,10 +502,11 @@ const DateRangePickerWrapper = styled.div`
       display: flex;
       align-items: center;
       gap: 8px;
-      color: $text-light-primary;
+      color: var(--text-neutral-primary);
 
       .concat-symbol-block {
-        color: $text-light-tertiary;
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
+        color: rgba(0, 21, 64, 0.3);
       }
 
       input {
@@ -507,7 +519,8 @@ const DateRangePickerWrapper = styled.div`
         text-align: center;
 
         &::placeholder {
-          color: $text-light-tertiary;
+          /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
+          color: rgba(0, 21, 64, 0.3);
           text-align: center;
         }
 
@@ -575,9 +588,9 @@ const DateRangePickerHistory = styled.div`
   min-width: 200px;
 
   header {
-    border-bottom: 1px solid $strokes-light-trans-2;
+    border-bottom: 1px solid var(--stroke-neutral-trans-2);
     padding: 8px 12px;
-    color: $text-light-secondary;
+    color: var(--text-neutral-tertiary);
   }
 
   ul {
@@ -591,13 +604,14 @@ const DateRangePickerHistory = styled.div`
       cursor: pointer;
 
       &:hover {
-        background: $fills-interaction-light-outstanding-hover;
-        color: $text-light-general;
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
+        background: rgba(0, 136, 255, 0.16);
+        color: var(--text-colorful-outstanding);
       }
 
       &:active {
-        background: $fills-interaction-light-outstanding-active;
-        color: $text-light-general;
+        background: var(--fill-outstanding-lightactive);
+        color: var(--text-colorful-outstanding);
       }
 
       & + li {

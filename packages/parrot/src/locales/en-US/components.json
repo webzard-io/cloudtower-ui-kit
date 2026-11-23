@@ -100,5 +100,8 @@
   "reselect_file": "Re-select",
   "exceed_max_count": "You can select up to {count} file.",
   "exceed_max_count_plural": "You can select up to {count} files.",
+  "banner_previous": "Previous",
+  "banner_next": "Next",
+  "banner_remove": "Click to remove this message",
   "upload_file_desc": "Drag and drop files here or <0>choose files</0>"
 }

@@ -13,11 +13,12 @@ const GobackButtonStyle = css`
   cursor: pointer;
 
   .link-text {
-    color: $text-light-tertiary;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
+    color: rgba(0, 21, 64, 0.3);
   }
 
   &:hover .link-text {
-    color: $text-light-general;
+    color: var(--text-colorful-outstanding);
   }
 `;
 

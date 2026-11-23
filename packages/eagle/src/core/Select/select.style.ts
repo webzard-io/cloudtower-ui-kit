@@ -197,5 +197,6 @@ export const SelectSizeStyle = css`
 `;
 
 export const PlaceholderTextStyle = css`
-  color: $gray-a30-10;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
+  color: rgba(0, 21, 64, 0.3);
 `;

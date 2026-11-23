@@ -9,10 +9,6 @@ const COLOR_TS_PATH = path.resolve(
   __dirname,
   "../../src/styles/token/color.ts",
 );
-const GENERATED_SCSS_PATH = path.resolve(
-  __dirname,
-  "../../src/styles/token/color.scss",
-);
 const GENERATED_CSS_PATH = path.resolve(
   __dirname,
   "../../src/styles/token/color.css",
@@ -87,6 +83,25 @@ const collectTextContentByName = (node, bucket = {}) => {
   return bucket;
 };
 
+const readSwatchHex = (instance) => {
+  const card = instance.children?.find(
+    (child) => child.type === "FRAME" && child.name === "Card",
+  );
+  const fills = card?.fills?.filter((fill) => fill.visible !== false);
+  const fill = fills?.[0];
+  if (
+    fills?.length !== 1 ||
+    fill?.type !== "SOLID" ||
+    (fill.blendMode && fill.blendMode !== "NORMAL")
+  ) {
+    return undefined;
+  }
+  return rgbaToHex({
+    ...fill.color,
+    a: (fill.opacity ?? fill.color.a ?? 1) * (card.opacity ?? 1),
+  });
+};
+
 const extractColorTokensFromDisplayDoc = (rootNode) => {
   const result = {};
 
@@ -97,14 +112,15 @@ const extractColorTokensFromDisplayDoc = (rootNode) => {
 
     if (node.type === "INSTANCE") {
       const textContent = collectTextContentByName(node);
-      const tokenValue = textContent["{token-name}"] || textContent["Text Name"];
+      const tokenValue =
+        textContent["{token-name}"] || textContent["Text Name"];
       const hexValue = textContent["{hex-value}"];
 
       if (typeof tokenValue === "string" && typeof hexValue === "string") {
         setNestedValue(
           result,
           normalizeSegments(normalizeDisplayTokenName(tokenValue)),
-          hexValue.toUpperCase(),
+          readSwatchHex(node) ?? hexValue.toUpperCase(),
         );
       }
     }
@@ -118,36 +134,55 @@ const extractColorTokensFromDisplayDoc = (rootNode) => {
   return result;
 };
 
-// These gradient tokens are intentionally kept from the existing local Color API.
-// The current Figma color sync source does not expose equivalent gradient tokens,
-// so we preserve them here to avoid deleting long-standing public tokens by mistake.
+// 默认值来自旧 Sass 和 Color API，Figma 来源及核对方法见 docs/theme.md。
+// 纯色同步不会从 Figma 导入渐变，核对完整配方后在此更新。
 const GRADIENT_TOKENS = {
   loading: "linear-gradient(90deg, #0080ff 0%, #9ecfff 50%, #0080ff 100%)",
   "light-blue":
     "linear-gradient(180deg,rgba(0, 136, 255, 0.2) 0%,rgba(0, 136, 255, 0.6) 100%)",
   "dark-blue":
     "radial-gradient(133.15% 133.15% at 4.69% 7.03%, #5BCAFF 0%, #06F 100%)",
+  "blue-1": "radial-gradient(100% 100% at 0% 100%, #5BCAFF 0%, #0066FF 100%)",
+  "blue-2": "linear-gradient(90deg, #0080FF 0%, #005ED1 100%)",
+  "green-1": "radial-gradient(100% 100% at 0% 100%, #36E0A4 0%, #009449 100%)",
+  "yellow-1": "radial-gradient(100% 100% at 0% 100%, #FFD505 0%, #F39600 100%)",
+  "red-1": "radial-gradient(100% 100% at 0% 100%, #FF5C78 0%, #DC0000 100%)",
+  "gray-1": "radial-gradient(100% 100% at 0% 100%, #CCD4E3 0%, #6B7D99 100%)",
+  "white-to-gray-1":
+    "radial-gradient(50% 100% at 50% 0%, #FFFFFF 0%, #EDF0F7 100%)",
+  "white-to-gray-2": "linear-gradient(180deg, #FFFFFF 0%, #EDF0F7 100%)",
+  "white-l100r60":
+    "linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.6) 100%)",
+  "white-l60r100":
+    "linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, #FFFFFF 100%)",
+  "purple-1": "radial-gradient(100% 100% at 0% 100%, #C67EFF 0%, #6A38FF 100%)",
 };
 
-const buildColorModuleTs = (tokenObject) =>
-  `export const Color = ${JSON.stringify(
-    {
-      ...tokenObject,
-      gradient: GRADIENT_TOKENS,
-    },
-    null,
-    2,
-  )} as const;\n`;
+const tokenName = (name) => `--${name}`;
+const runtimeColor = (object, prefix = []) =>
+  Object.fromEntries(
+    Object.entries(object).map(([key, value]) => [
+      key,
+      typeof value === "string"
+        ? `var(${tokenName([...prefix, key].join("-"))})`
+        : runtimeColor(value, [...prefix, key]),
+    ]),
+  );
 
-const buildCssVariables = (tokenObject, isScss = false) => {
+// Widen values so declaration files do not promise build-specific literal strings.
+const runtimeModule = (name, object, prefix = []) =>
+  `export const ${name} = ${JSON.stringify(runtimeColor(object, prefix), null, 2).replace(/"(var\([^"\n]+\))"/g, '"$1" as string')} as const;\n`;
+const buildColorModuleTs = (tokenObject) =>
+  runtimeModule("Color", { ...tokenObject, gradient: GRADIENT_TOKENS });
+
+const buildCssVariables = (tokenObject) => {
   const lines = [];
 
   const walk = (current, pathSegments = []) => {
     Object.entries(current).forEach(([key, value]) => {
       const nextSegments = [...pathSegments, key];
       if (typeof value === "string") {
-        const prefix = isScss ? "$" : "--";
-        lines.push(`${prefix}${nextSegments.join("-")}: ${value}`);
+        lines.push(`${tokenName(nextSegments.join("-"))}: ${value}`);
         return;
       }
       walk(value, nextSegments);
@@ -155,10 +190,6 @@ const buildCssVariables = (tokenObject, isScss = false) => {
   };
 
   walk(tokenObject);
-
-  if (isScss) {
-    return `${lines.join(";\n")};\n`;
-  }
 
   return `:root {\n  ${lines.join(";\n  ")};\n}\n`;
 };
@@ -205,10 +236,15 @@ const buildColorDiff = (nextColor) => {
 
 const writeColorArtifacts = (tokenObject) => {
   fs.mkdirSync(path.dirname(LAST_SYNC_STATE_PATH), { recursive: true });
-  fs.writeFileSync(LAST_SYNC_STATE_PATH, `${JSON.stringify(tokenObject, null, 2)}\n`);
+  fs.writeFileSync(
+    LAST_SYNC_STATE_PATH,
+    `${JSON.stringify(tokenObject, null, 2)}\n`,
+  );
   fs.writeFileSync(COLOR_TS_PATH, buildColorModuleTs(tokenObject));
-  fs.writeFileSync(GENERATED_SCSS_PATH, buildCssVariables(tokenObject, true));
-  fs.writeFileSync(GENERATED_CSS_PATH, buildCssVariables(tokenObject, false));
+  fs.writeFileSync(
+    GENERATED_CSS_PATH,
+    buildCssVariables({ ...tokenObject, gradient: GRADIENT_TOKENS }),
+  );
 };
 
 const summarizeColorDiff = (diff) => ({
@@ -224,6 +260,10 @@ const summarizeColorDiff = (diff) => ({
 });
 
 module.exports = {
+  GRADIENT_TOKENS,
+  tokenName,
+  runtimeColor,
+  runtimeModule,
   rgbaToHex,
   extractColorTokensFromDisplayDoc,
   buildCssVariables,

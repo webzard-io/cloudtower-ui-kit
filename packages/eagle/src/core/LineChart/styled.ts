@@ -2,7 +2,7 @@ import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 
 export const MetricPlaceholderWrapper = styled.div`
-  color: $text-light-secondary;
+  color: var(--text-neutral-tertiary);
   text-align: center;
 
   display: flex;
@@ -12,7 +12,7 @@ export const MetricPlaceholderWrapper = styled.div`
   height: 100%;
 
   .link {
-    color: $text-light-general;
+    color: var(--text-colorful-outstanding);
     cursor: pointer;
   }
 `;
@@ -34,7 +34,7 @@ export const MetricLegendTabStyle = css`
       align-items: center;
 
       .info-item {
-        color: $gray-60;
+        color: var(--gray-gray-60);
       }
       .info-item + .info-item {
         margin-left: 10px;
@@ -87,6 +87,7 @@ export const LegendItemsStyle = css`
     opacity: 0.3;
 
     &:not(.hoverering-self) .color-block {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       background: #b4beca !important;
       border-radius: 2px;
     }
@@ -98,7 +99,7 @@ export const LegendItemsStyle = css`
     margin-left: 12px;
   }
   .legend-name {
-    color: $text-light-primary;
+    color: var(--text-neutral-primary);
   }
   .icon-suffix-wrapper {
     display: flex;
@@ -119,12 +120,13 @@ export const LegendItemsStyleDropdown = css`
     opacity: 0.3;
 
     &:not(.hoverering-self) .color-block {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       background: #b4beca !important;
       border-radius: 2px;
     }
   }
   .legend-name {
-    color: $text-light-primary;
+    color: var(--text-neutral-primary);
   }
   &.hoverering-self {
     opacity: 1;
@@ -171,7 +173,7 @@ export const LineChartWrapper = styled.div`
       align-items: center;
 
       .info-item {
-        color: $gray-60;
+        color: var(--gray-gray-60);
       }
       .info-item + .info-item {
         margin-left: 10px;
@@ -193,7 +195,7 @@ export const LineChartWrapper = styled.div`
     bottom: 10px;
     padding: 0 8px;
     font-size: 12px;
-    color: $white;
+    color: var(--text-neutral-ontint);
     transform: translateX(-50%);
     z-index: 2;
   }
@@ -220,9 +222,9 @@ export const ThresholdTooltipOverlay = styled.div`
 
 export const TooltipWrapper = styled.div`
   min-width: 200px;
-  background-color: $fill-neutral-trans-8;
+  background-color: var(--fill-neutral-trans-8);
   border-radius: 4px;
-  box-shadow: 0px 1px 4px 0px rgba(29, 50, 108, 0.6);
+  box-shadow: var(--effect-shadow-tooltip);
   padding: 8px;
 `;
 
@@ -230,7 +232,7 @@ export const TooltipColumn = styled.div`
   display: flex;
   align-items: center;
   background-color: unset;
-  color: $text-neutral-ontint;
+  color: var(--text-neutral-ontint);
   justify-content: space-between;
   font-size: 12px;
   padding-top: 6px;
@@ -242,7 +244,7 @@ export const TooltipColumn = styled.div`
     padding-bottom: 3px;
   }
   .column-value {
-    color: $text-neutral-ontint;
+    color: var(--text-neutral-ontint);
     margin-left: 8px;
   }
 `;
@@ -254,6 +256,6 @@ export const LineChartColorBlockStyle = css`
   margin-right: 8px;
   border-radius: 2px;
   &.borderd {
-    border: 1px solid $stroke-neutral-white;
+    border: 1px solid var(--stroke-neutral-white);
   }
 `;

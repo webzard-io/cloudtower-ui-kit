@@ -1,9 +1,12 @@
+import { Color } from "@src/styles/token/color";
 export const COLOR_MAP = {
-  primary: "#0080FF",
-  info: "#0080FF",
-  success: "#00BA5D",
+  primary: Color.text.colorful.outstanding,
+  info: Color.text.colorful.outstanding,
+  success: Color.text.colorful.positive,
+  // No equivalent theme token.
+  // ast-grep-ignore: no-hardcoded-color-typescript
   warning: "#FFA500",
-  danger: "#F0483E",
-  error: "#F0483E",
-  normal: "rgba(44, 56, 82, 0.6)",
+  danger: Color.text.colorful.serious,
+  error: Color.text.colorful.serious,
+  normal: Color.text.neutral.tertiary,
 } as const;

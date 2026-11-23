@@ -43,7 +43,7 @@ const ChartTooltipContainer = styled.div`
   padding: 4px;
 
   .unit {
-    color: white;
+    color: var(--text-neutral-ontint);
   }
 `;
 
@@ -53,6 +53,7 @@ const ChartTooltipRow = styled.div`
   align-items: center;
   font-size: 13px;
   line-height: 24px;
+  /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
   color: #cccccc;
   white-space: nowrap;
 
@@ -63,7 +64,7 @@ const ChartTooltipRow = styled.div`
 
 const ChartTooltipTitle = styled(ChartTooltipRow)`
   font-weight: bold;
-  color: white;
+  color: var(--text-neutral-ontint);
 `;
 
 const SpaceStatus = styled.i<{
@@ -74,7 +75,7 @@ const SpaceStatus = styled.i<{
   border-radius: 2px;
   display: inline-block;
   background: ${(props) => props.color};
-  border: 1px solid $fills-light-white;
+  border: 1px solid var(--stroke-neutral-white);
   box-sizing: content-box;
   margin-right: 6px;
 `;
@@ -82,7 +83,7 @@ const SpaceStatus = styled.i<{
 const PrimaryUnit = styled.div`
   & > :first-child {
     font-weight: bold;
-    color: white;
+    color: var(--text-neutral-ontint);
     margin-right: 4px;
   }
 `;

@@ -20,16 +20,18 @@ const FormItemStyle = css`
       min-height: 32px;
       height: auto;
       font-size: 13px;
-      color: rgba(44, 56, 82, 0.6);
+      color: var(--text-neutral-tertiary);
       white-space: normal;
     }
   }
 
   &.ant-form-item-has-error {
     .ant-input {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       border-color: #ff4d4f !important;
     }
     .ant-input-password {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       border-color: #ff4d4f !important;
     }
   }
@@ -42,7 +44,7 @@ const FormItemStyle = css`
 
   .ant-form-item-extra {
     font-size: 12px;
-    color: rgba(44, 56, 82, 0.6);
+    color: var(--text-neutral-tertiary);
     min-height: 0px;
   }
 `;

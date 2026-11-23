@@ -12,6 +12,7 @@ import Second from "@src/core/Second";
 import Speed from "@src/core/Speed";
 import BarChart from "@src/coreX/BarChart";
 import DeprecatedDonutChart from "@src/coreX/DeprecatedDonutChart";
+import { Color } from "@src/styles/token/color";
 import React from "react";
 
 const units = {
@@ -51,7 +52,7 @@ export const UnitWrapper = css`
   min-width: 40px;
 
   .unit {
-    color: $text-light-primary !important;
+    color: var(--text-neutral-primary) !important;
   }
 `;
 
@@ -106,7 +107,7 @@ const UnitWithChart: React.FC<IUnitWithChartProps> = ({
   rawValue,
   total,
   unit,
-  color = "#0080FF",
+  color = Color.fill.outstanding.base,
   size = "small",
   chartType = "donutChart",
   data,

@@ -2,7 +2,7 @@ import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 
 export const MetricPlaceholderWrapper = styled.div`
-  color: $text-light-secondary;
+  color: var(--text-neutral-tertiary);
   text-align: center;
 
   display: flex;
@@ -12,7 +12,7 @@ export const MetricPlaceholderWrapper = styled.div`
   height: 100%;
 
   .link {
-    color: $text-light-general;
+    color: var(--text-colorful-outstanding);
     cursor: pointer;
   }
 `;
@@ -35,7 +35,7 @@ export const MetricLegendTabStyle = css`
       align-items: center;
 
       .info-item {
-        color: $gray-60;
+        color: var(--gray-gray-60);
       }
       .info-item + .info-item {
         margin-left: 10px;
@@ -87,6 +87,7 @@ export const LegendItemStyle = css`
     opacity: 0.4;
 
     .color-block {
+      /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
       background: #b4beca !important;
     }
   }
@@ -127,7 +128,7 @@ export const MetricWrapper = styled.div`
       align-items: center;
 
       .info-item {
-        color: $gray-60;
+        color: var(--gray-gray-60);
       }
       .info-item + .info-item {
         margin-left: 10px;
@@ -150,7 +151,8 @@ export const MetricWrapper = styled.div`
     padding: 0 8px;
     border-radius: 4px;
     font-size: 12px;
-    color: $white;
+    color: var(--text-neutral-ontint);
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     background: rgba(0, 0, 0, 0.75);
     transform: translateX(-50%);
   }
@@ -164,7 +166,9 @@ export const TooltipColumn = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   background-color: rgba(0, 0, 0, 0.75);
+  /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
   color: #b4beca;
   font-size: 12px;
   padding: 3px 6px;
@@ -176,7 +180,7 @@ export const TooltipColumn = styled.div`
     padding-bottom: 3px;
   }
   .column-value {
-    color: $white;
+    color: var(--text-neutral-ontint);
     margin-left: 8px;
   }
 `;

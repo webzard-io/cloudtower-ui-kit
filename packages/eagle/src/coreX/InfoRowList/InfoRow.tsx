@@ -22,6 +22,7 @@ const Col = styled.div`
   font-size: 12px;
   line-height: 18px;
   padding: 8px 0;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   box-shadow: inset 0px -1px 0px rgba(213, 219, 227, 0.6);
 
   &:last-of-type {
@@ -50,13 +51,13 @@ const Col = styled.div`
 
   .col-label {
     width: 216px;
-    color: $text-secondary-light;
+    color: var(--text-neutral-tertiary);
     margin-right: 12px;
     flex-shrink: 0;
   }
 
   .col-content {
-    color: $text-primary-light;
+    color: var(--gray-gray-80);
 
     /* make btn link in info row have the same height as normal text */
     .ant-btn.ant-btn-link {

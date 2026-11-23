@@ -1,3 +1,4 @@
+import { Color } from "@src/styles/token/color";
 import React from "react";
 import _ from "lodash";
 import { ReferenceDot, type ReferenceDotProps } from "recharts";
@@ -8,7 +9,8 @@ import {
 } from "@src/core/LineChart/type";
 
 const DEFAULT_THRESHOLD_LINE_STROKE = "#ff4d4f";
-const DEFAULT_THRESHOLD_INTERSECTION_LABEL_TEXT_COLOR = "#ffffff";
+const DEFAULT_THRESHOLD_INTERSECTION_LABEL_TEXT_COLOR =
+  Color.text.neutral.ontint;
 const THRESHOLD_INTERSECTION_LABEL_HEIGHT = 28;
 const THRESHOLD_INTERSECTION_LABEL_RADIUS = 4;
 const THRESHOLD_INTERSECTION_LABEL_OFFSET = 8;

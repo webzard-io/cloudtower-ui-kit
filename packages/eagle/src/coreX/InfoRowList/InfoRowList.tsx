@@ -46,7 +46,8 @@ const ContentWrapper = styled.div`
 `;
 
 const NullText = styled.div`
-  color: $text-light-tertiary;
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
+  color: rgba(0, 21, 64, 0.3);
 `;
 
 export const InfoRowList = React.forwardRef<HTMLDivElement, InfoListProps>(

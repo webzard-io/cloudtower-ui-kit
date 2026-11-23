@@ -9,7 +9,7 @@ import { SiderMenuItem, SiderProps } from "./Sider.type";
 
 const SiderStyle = css`
   &.ant-layout-sider {
-    background: $backgrounds-light-grouped;
+    background: var(--pagebackground-grouped);
     padding: 32px 8px;
     overflow: auto;
   }
@@ -25,9 +25,9 @@ const SiderStyle = css`
   }
 
   .ant-menu {
-    background: $backgrounds-light-grouped;
+    background: var(--pagebackground-grouped);
     a {
-      color: $text-light-primary;
+      color: var(--text-neutral-primary);
       width: 180px;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -54,7 +54,7 @@ const SiderStyle = css`
         padding-bottom: 24px;
         &.split {
           margin-bottom: 24px;
-          border-bottom: 1px solid rgba(211, 218, 235, 0.6);
+          border-bottom: 1px solid var(--stroke-neutral-trans-2);
         }
       }
     }
@@ -76,19 +76,19 @@ const SiderStyle = css`
         margin-bottom: 2px;
       }
       &.ant-menu-item-selected {
-        background: $background-selected;
-        box-shadow: $box-shadow-light-selected;
+        background: var(--gradient-blue-2);
+        box-shadow: var(--effect-shadow-listItem-selected);
         border-radius: 6px;
-        color: $text-light-on-tint;
+        color: var(--text-neutral-ontint);
         a {
-          color: $text-light-on-tint;
+          color: var(--text-neutral-ontint);
         }
       }
       &:not(.ant-menu-item-selected) {
         &.ant-menu-item:hover,
         &.ant-menu-item-active {
-          background: $background-onhover;
-          box-shadow: $box-shadow-light-onhover;
+          background: var(--gradient-white-l100r60);
+          box-shadow: var(--effect-shadow-listItem-hover);
           border-radius: 6px;
         }
       }
@@ -123,13 +123,14 @@ const NavLinkStyle = css`
   width: 100% !important;
 
   &[disabled] {
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     color: rgba(0, 0, 0, 0.25) !important;
     opacity: 1 !important;
   }
 
   &.ant-btn {
     width: 100%;
-    color: $text-light-primary;
+    color: var(--text-neutral-primary);
   }
 
   .icon-wrapper {

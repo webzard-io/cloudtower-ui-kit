@@ -23,7 +23,7 @@ describe("ExpandableList h5_css", () => {
           class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,
         .ant-collapse-item {
           border: 0px;
-          background-color: $fills-light-white;
+          background-color: var(--fill-neutral-white);
 
           .ant-collapse-header {
             padding-top: 0px;
@@ -58,7 +58,7 @@ describe("ExpandableList h5_css", () => {
         border-radius: 6px;
         padding: 4px;
         &:hover {
-          background-color: $fill-outstanding-light;
+          background-color: var(--fill-outstanding-light);
           svg {
             path {
               fill: blue;
@@ -89,8 +89,8 @@ describe("ExpandableList h5_css", () => {
           height: 24px;
           width: 24px;
           border-radius: 20px;
-          color: $text-light-general;
-          background: $fill-light-element-container-outstanding;
+          color: var(--text-colorful-outstanding);
+          background: rgba(0, 136, 255, 0.1);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -121,7 +121,7 @@ describe("ExpandableList h5_css", () => {
           class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,
         .ant-collapse-item {
           border: 0px;
-          background-color: $fills-light-white;
+          background-color: var(--fill-neutral-white);
 
           .ant-collapse-header {
             padding-top: 0px;
@@ -156,7 +156,7 @@ describe("ExpandableList h5_css", () => {
         border-radius: 6px;
         padding: 4px;
         &:hover {
-          background-color: $fill-outstanding-light;
+          background-color: var(--fill-outstanding-light);
           svg {
             path {
               fill: blue;
@@ -187,8 +187,8 @@ describe("ExpandableList h5_css", () => {
           height: 24px;
           width: 24px;
           border-radius: 20px;
-          color: $text-light-general;
-          background: $fill-light-element-container-outstanding;
+          color: var(--text-colorful-outstanding);
+          background: rgba(0, 136, 255, 0.1);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -232,7 +232,7 @@ describe("ExpandableList h5_css", () => {
           class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,
         .ant-collapse-item {
           border: 0px;
-          background-color: $fills-light-white;
+          background-color: var(--fill-neutral-white);
 
           .ant-collapse-header {
             padding-top: 0px;
@@ -267,7 +267,7 @@ describe("ExpandableList h5_css", () => {
         border-radius: 6px;
         padding: 4px;
         &:hover {
-          background-color: $fill-outstanding-light;
+          background-color: var(--fill-outstanding-light);
           svg {
             path {
               fill: blue;
@@ -298,8 +298,8 @@ describe("ExpandableList h5_css", () => {
           height: 24px;
           width: 24px;
           border-radius: 20px;
-          color: $text-light-general;
-          background: $fill-light-element-container-outstanding;
+          color: var(--text-colorful-outstanding);
+          background: rgba(0, 136, 255, 0.1);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -343,7 +343,7 @@ describe("ExpandableList h5_css", () => {
           class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,
         .ant-collapse-item {
           border: 0px;
-          background-color: $fills-light-white;
+          background-color: var(--fill-neutral-white);
 
           .ant-collapse-header {
             padding-top: 0px;
@@ -386,8 +386,8 @@ describe("ExpandableList h5_css", () => {
           height: 24px;
           width: 24px;
           border-radius: 20px;
-          color: $text-light-general;
-          background: $fill-light-element-container-outstanding;
+          color: var(--text-colorful-outstanding);
+          background: rgba(0, 136, 255, 0.1);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -420,7 +420,7 @@ describe("ExpandableList h5_css", () => {
           class=ant-collapse,ant-collapse-borderless,ant-collapse-icon-position-right,
         .ant-collapse-item {
           border: 0px;
-          background-color: $fills-light-white;
+          background-color: var(--fill-neutral-white);
 
           .ant-collapse-header {
             padding-top: 0px;
@@ -463,8 +463,8 @@ describe("ExpandableList h5_css", () => {
           height: 24px;
           width: 24px;
           border-radius: 20px;
-          color: $text-light-general;
-          background: $fill-light-element-container-outstanding;
+          color: var(--text-colorful-outstanding);
+          background: rgba(0, 136, 255, 0.1);
           display: flex;
           align-items: center;
           justify-content: center;

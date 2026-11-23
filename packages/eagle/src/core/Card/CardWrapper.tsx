@@ -10,6 +10,7 @@ interface IProps {
 }
 
 const boxShadow = css`
+  /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
   box-shadow: 0px 0.119595px 0.438513px rgba(129, 138, 153, 0.14),
     0px 0.271728px 0.996336px rgba(129, 138, 153, 0.106447),
     0px 0.472931px 1.73408px rgba(129, 138, 153, 0.0912224),
@@ -33,12 +34,13 @@ const Wrapper = forwardRef<
 });
 const CardWrapper = styled(Wrapper)`
   border-radius: 8px;
-  background-color: white;
+  background-color: var(--fill-neutral-white);
   &.hoverable {
     cursor: pointer;
 
     &:hover {
       transition: all 200ms ease;
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       box-shadow: 0px 9px 22px rgb(107 125 153 / 23%),
         0px 1.12694px 2.75474px rgb(107 125 153 / 12%);
       transform: translateY(-4px);

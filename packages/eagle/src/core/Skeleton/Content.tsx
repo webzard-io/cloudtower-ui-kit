@@ -1,5 +1,6 @@
 import { css } from "@linaria/core";
-import { Animation, Color, Keyframes } from "@src/styles/token";
+import { Animation, Keyframes } from "@src/styles/token/animation";
+import { Color } from "@src/styles/token/color";
 import cx from "classnames";
 import React from "react";
 
@@ -21,6 +22,7 @@ const SkeletonContentStyle = css`
       top: -50%;
       flex-shrink: 0;
       opacity: 0.8;
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background: linear-gradient(
         90deg,
         rgba(255, 255, 255, 0) 15%,

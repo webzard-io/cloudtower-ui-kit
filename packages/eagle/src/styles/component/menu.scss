@@ -1,6 +1,6 @@
 .ant-dropdown,
 .ant-dropdown-menu-submenu {
-  background: $fills-opaque-primary-light;
+  background: var(--fill-neutral-white);
   border-radius: 3px;
   min-width: 130px;
   box-sizing: content-box !important;
@@ -8,7 +8,9 @@
   border: none;
 
   > .ant-dropdown-menu {
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     border: 1px solid #dfe4eb;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     box-shadow: 0px 8px 16px rgba(129, 138, 153, 0.18),
       0px 0px 4px rgba(235, 239, 245, 0.6);
 
@@ -18,6 +20,7 @@
       font-size: 12px;
       line-height: 18px;
       padding: 4px 16px;
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       color: rgba(129, 138, 153, 0.6);
     }
 
@@ -36,11 +39,12 @@
       @include Inter();
       font-size: 14px;
       line-height: 22px;
-      color: $text-primary-light;
+      color: var(--gray-gray-80);
 
       &:not(.ant-dropdown-menu-item-disabled):hover {
-        background-color: rgba($blue-60, 0.1);
-        color: $blue-80;
+        /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
+        background-color: rgba(#0080ff, 0.1);
+        color: var(--blue-blue-60);
       }
 
       &.ant-dropdown-menu-item-disabled {
@@ -48,15 +52,16 @@
       }
 
       &.ant-dropdown-menu-item-danger {
-        color: $text-light-serious;
+        color: var(--text-colorful-serious);
         &:hover {
-          background-color: rgba($text-light-serious, 0.1);
-          color: $text-light-serious;
+          /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
+          background-color: rgba(#f0483e, 0.1);
+          color: var(--text-colorful-serious);
         }
       }
 
       &.item-danger-disabled {
-        color: $text-light-serious;
+        color: var(--text-colorful-serious);
         opacity: 0.5;
       }
     }
@@ -65,6 +70,7 @@
     .ant-dropdown-menu-submenu-title-divider {
       margin-left: 0;
       margin-right: 0;
+      /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
       background: rgba(213, 219, 227, 0.6);
     }
 

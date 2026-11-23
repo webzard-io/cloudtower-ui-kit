@@ -12,13 +12,13 @@ export const KubeConfigWrapperStyle = css`
   height: 100%;
 `;
 export const KubeConfigTitleStyle = css`
-  color: $gray-120;
+  color: var(--text-neutral-primary);
   font-size: 32px !important;
   margin-bottom: 16px;
 `;
 export const KubeConfigTipStyle = css`
   margin-bottom: 32px;
-  color: $gray-120;
+  color: var(--text-neutral-primary);
 `;
 export const KubeConfigContentStyle = css`
   font-family:
@@ -32,8 +32,8 @@ export const KubeConfigContentStyle = css`
   min-height: 0;
   flex: 1;
   padding: 16px;
-  background-color: $gray-80;
-  color: $white;
+  background-color: var(--fill-neutral-opaque-8);
+  color: var(--text-neutral-ontint);
   overflow: auto;
   max-width: 100%;
   min-height: 0;
@@ -65,6 +65,7 @@ export const ErrorContentWrapper = styled.div`
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
     background-image: linear-gradient(211.41deg, #929dad 0%, #d3dbe3 100%);
   }
 `;

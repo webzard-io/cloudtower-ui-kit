@@ -6,6 +6,7 @@ import {
   buildCssVariables,
   extractColorTokensFromDisplayDoc,
   rgbaToHex,
+  tokenName,
   writeColorArtifacts,
 } from "../tools/utils/color-sync";
 
@@ -53,6 +54,36 @@ describe("sync-figma-color", () => {
     });
   });
 
+  it("uses the swatch paint when its hex label differs", () => {
+    const displayDocFixture = {
+      type: "INSTANCE",
+      children: [
+        {
+          type: "FRAME",
+          name: "Card",
+          fills: [
+            {
+              type: "SOLID",
+              color: { r: 1, g: 222 / 255, b: 107 / 255 },
+            },
+          ],
+          children: [
+            {
+              type: "TEXT",
+              name: "{token-name}",
+              characters: "Chart/Yellow/yellow-1",
+            },
+            { type: "TEXT", name: "{hex-value}", characters: "#FFDE6C" },
+          ],
+        },
+      ],
+    };
+
+    expect(extractColorTokensFromDisplayDoc(displayDocFixture)).toEqual({
+      chart: { yellow: { "yellow-1": "#FFDE6B" } },
+    });
+  });
+
   it("reports added and changed keys", () => {
     vi.spyOn(fs, "existsSync").mockReturnValue(true);
     vi.spyOn(fs, "readFileSync").mockReturnValue(JSON.stringify({}));
@@ -69,16 +100,13 @@ describe("sync-figma-color", () => {
     expect(diff.added).toContain("text.neutral.primary");
   });
 
-  it("builds scss and css variable strings", () => {
+  it("builds CSS custom properties", () => {
     const sample = {
       text: { neutral: { primary: "#00122E" } },
     };
 
-    expect(buildCssVariables(sample, true)).toContain(
-      "$text-neutral-primary: #00122E;",
-    );
-    expect(buildCssVariables(sample, false)).toContain(
-      "--text-neutral-primary: #00122E;",
+    expect(buildCssVariables(sample)).toContain(
+      `${tokenName("text-neutral-primary")}: #00122E;`
     );
   });
 
@@ -101,13 +129,13 @@ describe("sync-figma-color", () => {
     expect(mkdirSpy).toHaveBeenCalled();
     expect(
       writeSpy.mock.calls.some(([target]) =>
-        String(target).endsWith("src/styles/token/color.ts"),
-      ),
+        String(target).endsWith("src/styles/token/color.ts")
+      )
     ).toBe(true);
     expect(
       writeSpy.mock.calls.some(([target]) =>
-        String(target).includes("/generated/tokens.ts"),
-      ),
+        String(target).includes("/generated/tokens.ts")
+      )
     ).toBe(false);
   });
 });

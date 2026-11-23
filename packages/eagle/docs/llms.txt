@@ -5,7 +5,13 @@
 ## 安装与初始化
 
 npm 包名：@cloudtower/eagle
-样式引入：import "@cloudtower/eagle/dist/style.css"
+
+在应用入口加载同一版本的组件样式与主题 token。
+
+```ts
+import "@cloudtower/eagle/dist/style.css";
+import "@cloudtower/eagle/dist/token.css";
+```
 
 使用 UIKitProvider 包裹应用根节点，内部管理 ConfigProvider、i18n、message 等上下文。
 
@@ -99,7 +105,8 @@ npm 包名：@cloudtower/eagle
 - BaseIcon: 基础图标，支持 SVG 图标渲染
 - Link: 链接，封装 antd Typography.Link
 - Typo: 排版样式集合，提供 Display/Heading/Label/Paragraph 等预定义的 Linaria 类名；若需要根据 Figma Typography 名称查找对应样式，请使用公开导出的 `FIGMA_TO_TYPO`
-- Color: 颜色 token；若目标文件已依赖全局 Sass 变量或已有 `$...` 写法，优先使用 `dist/variables.scss` 中的 Sass 变量，否则优先使用公开导出的 `Color.*`
+- Color / Effect: 从 `@cloudtower/eagle` 导入的运行时颜色和效果 token。应用入口加载同版本的 `@cloudtower/eagle/dist/token.css`。旧 Sass 接入参见 [Eagle 主题迁移指南](../../../skills/migrate-eagle-theme/SKILL.md)。
+- Color.gradient: 完整渐变运行时 token。Figma 来源、CSS 引用和同步方式见 [渐变来源与同步](./theme.md#渐变来源与同步)。
 - Loading: 加载中动画，三条竖线动画
 - CircleLoading: 圆形加载动画，旋转渐变圆形图标
 - Space: 间距组件，封装 antd Space
