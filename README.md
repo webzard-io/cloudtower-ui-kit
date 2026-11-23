@@ -26,6 +26,7 @@ import { antdKit } from "@cloudtower/eagle";
 import { initParrotI18n, UIKitProvider } from "@cloudtower/eagle";
 // Set Up Style
 import "@cloudtower/eagle/dist/style.css";
+import "@cloudtower/eagle/dist/token.css";
 
 initParrotI18n();
 // Set Up Providers
@@ -33,9 +34,9 @@ ReactDOM.render(
   <React.StrictMode>
     <UIKitProvider>
       <App />
-    <UIKitProvider>
+    </UIKitProvider>
   </React.StrictMode>,
-  document.getElementById("root") as HTMLElement
+  document.getElementById("root") as HTMLElement,
 );
 ```
 
