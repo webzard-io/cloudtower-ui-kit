@@ -5,7 +5,13 @@
 ## 安装与初始化
 
 npm 包名：@cloudtower/eagle
-样式引入：import "@cloudtower/eagle/dist/style.css"
+
+在应用入口加载同一版本的组件样式与主题 token。
+
+```ts
+import "@cloudtower/eagle/dist/style.css";
+import "@cloudtower/eagle/dist/token.css";
+```
 
 使用 UIKitProvider 包裹应用根节点，内部管理 ConfigProvider、i18n、message 等上下文。
 

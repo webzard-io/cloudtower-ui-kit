@@ -16,6 +16,7 @@ description: >
 ```tsx
 import { Button, Table, SmallDialog } from "@cloudtower/eagle";
 import "@cloudtower/eagle/dist/style.css";
+import "@cloudtower/eagle/dist/token.css";
 ```
 
 应用根节点需包裹 `UIKitProvider`。
