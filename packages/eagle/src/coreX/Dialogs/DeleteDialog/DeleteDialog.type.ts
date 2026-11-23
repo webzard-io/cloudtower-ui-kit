@@ -100,6 +100,8 @@ export interface DeleteDialogProps {
    * 点击取消按钮或关闭弹窗回调。参数 popModal 用于关闭弹窗。
    */
   onCancel?: (popModal: () => void) => void;
+  /** 点击遮罩层时是否关闭弹窗，默认为 true。 */
+  maskClosable?: boolean;
   /** 自定义类名 */
   className?: string;
   /**
