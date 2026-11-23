@@ -178,16 +178,16 @@
       "red-10": "#571E1E"
     },
     "yellow": {
-      "yellow-1": "#FFDE6C",
-      "yellow-2": "#FED158",
-      "yellow-3": "#FEC444",
-      "yellow-4": "#FEB630",
-      "yellow-5": "#FEA819",
-      "yellow-6": "#E79305",
-      "yellow-7": "#BB7A03",
-      "yellow-8": "#926102",
-      "yellow-9": "#6B4803",
-      "yellow-10": "#483100"
+      "yellow-1": "#FFDE6B",
+      "yellow-2": "#FED157",
+      "yellow-3": "#FEC243",
+      "yellow-4": "#FDB52E",
+      "yellow-5": "#FDA61A",
+      "yellow-6": "#E59304",
+      "yellow-7": "#B97902",
+      "yellow-8": "#916102",
+      "yellow-9": "#6D4902",
+      "yellow-10": "#473000"
     },
     "pink": {
       "pink-1": "#FED1FE",
