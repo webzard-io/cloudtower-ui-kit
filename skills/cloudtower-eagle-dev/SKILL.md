@@ -77,10 +77,10 @@ description: >
 1. `src/styles/token/color.css` 提供主题 token。SCSS 和 Linaria 直接用 `var(--token-name)`，JS 属性用公开 `Color`／`Effect`。
 2. `src/styles/common/variables.scss` 供 Eagle 内部使用，包含排版 mixin、层级等非颜色定义。
 3. 不再发布 `dist/variables.scss`。Sass 文件仅是 Eagle 私有构建配方；接入方按 [迁移 skill](../migrate-eagle-theme/SKILL.md) 转为公共 Color/Effect 引用，不能导入私有文件绕过迁移。
-4. 如果任务是“同步 / 对齐 / 更新 Color”，先运行 `yarn check:color`。
-5. 如果 `check:color` 报告有漂移，再运行 `yarn sync:color`，然后查看 diff，再决定是否继续。
-6. 不要在没有先跑 `check:color` 的情况下手写 Color token 对齐改动。
-7. 从 Figma 读取颜色时，先看 `get_design_context` 结果里的 `var(--...)`，不要先猜旧变量名。
+4. 同步 Figma 色板时，先运行 `yarn check:color`。报告有漂移时，再运行 `yarn sync:color` 并查看 diff。
+5. 从 Figma 读取颜色时，先看 `get_design_context` 结果里的 `var(--...)`，不要先猜旧变量名。
+6. 调整组件引用时，按[迁移 skill 的颜色核对流程](../migrate-eagle-theme/SKILL.md#只做等值替换)
+   逐处确认用途、状态和精确值，优先遵循对应组件页的等值 token，合入前比对原浅色快照。
 
 **Typography**
 
