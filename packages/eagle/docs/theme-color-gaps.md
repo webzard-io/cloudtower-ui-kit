@@ -18,6 +18,8 @@
 | `rgba(255, 187, 0, 0.1)` | `core/Button/index.tsx`、`core/Styled/index.tsx`、`core/Token/index.tsx`、`styles/override.scss` | `#{$fill-notice-light} → rgba(254, 160, 8, 0.1019607843)`；`$fill-notice-light → rgba(254, 160, 8, 0.1019607843)` |
 | `rgba(255, 187, 0, 0.16)` | `core/Button/index.tsx`、`core/StatusCapsule/index.tsx`、`styles/override.scss` | `#{$fill-notice-lighthover} → rgba(254, 160, 8, 0.1607843137)`；`$fill-notice-lighthover → rgba(254, 160, 8, 0.1607843137)` |
 | `rgba(255, 187, 0, 0.2)` | `core/Button/index.tsx` | `#{$fill-notice-lightactive} → rgba(254, 160, 8, 0.2)` |
+| `--fill-notice-dark`（`#E07F00`） | `core/Token/index.tsx` 黄色文字 | Token 组件指南的 `--text-colorful-notice` 为 `#FEA008` |
+| `--fill-positive-dark`（`#008F4C`） | `core/Token/index.tsx` 绿色文字 | Token 组件指南的 `--text-colorful-positive` 为 `#00BA5D` |
 | `drop-shadow(0px 2px 8px rgba(255, 187, 0, 0.1))` | `core/Button/index.tsx` | `drop-shadow(0px 2px 8px $fill-notice-light) → drop-shadow(0px 2px 8px rgba(254, 160, 8, 0.1019607843))` |
 | `#ff4d4f !important` | `core/FormItem/index.tsx` | `$stroke-serious-base !important → #F0483E !important` |
 | `#0096ff` | `core/InputInteger/index.tsx`、`core/Styled/index.tsx`、`core/Table/index.tsx`、`coreX/CronCalendar/index.tsx`、`coreX/CronPlan/index.tsx` | `$stroke-outstanding-base → #0080FF`；`$text-colorful-outstanding → #0080FF`；`$fill-outstanding-base → #0080FF` |
@@ -89,7 +91,9 @@
 | `core/LineChart/RenderChart.tsx`、`core/LineChart/ThresholdIntersectionLayer.tsx` | 阈值色 #FF4D4F；stroke.serious.base 为 #F0483E。 |
 | `core/LogView/LogView.theme.ts`、`core/LogView/LogView.style.ts` | overview ruler #000000、滚动条 hover #4A607A；没有等值 token，不能换成主文字色或相邻灰阶。 |
 | `coreX/DateRangePicker/DateRangePicker.style.ts` | 范围高亮背景／描边 #E6F4FF、pinned header 外阴影和 inset 描边；不透明浅蓝不能换成透明填充。 |
-| `core/Styled/index.tsx`、`styles/override.scss`、`coreX/KubeConfigModal/KubeConfigModal.style.ts` | TagSpan 三组线性渐变、badge 三组径向渐变、211.41° 灰色渐变；端点、角度、半径和位置按原式保留。 |
+| `core/Styled/index.tsx`、`coreX/KubeConfigModal/KubeConfigModal.style.ts` | TagSpan 三组线性渐变及 211.41° 灰色渐变，与现有渐变 token 的角度或色标不等值。 |
+| `core/Checkbox/checkbox.style.ts`、`core/Antd5Tree/Antd5Tree.style.ts` | 禁用态勾和横线沿用 `--gray-gray-80`（`#2D3A56`）。Checkbox 指南指定 `--gray-gray-a60-7`（`#0A255599`），与现值的 RGB 和透明度不同。 |
+| `core/Breadcrumb/index.tsx` | 悬浮态沿用 `--text-colorful-outstanding`（`#0080FF`）。链接悬浮 token `--link-outstandinghover` 为 `#009DFF`。 |
 | `styles/override.scss` 的 `*-filter` 类 | 原 drop-shadow 配方；不能直接套用 box-shadow token。 |
 | `core/LineChart/styled.ts`、`core/Metric/styled.ts`、`coreX/ChartWithTooltip/index.tsx`、`core/Styled/index.tsx` | 图例／辅助文字 #B4BECA、#CCCCCC 以及 Dot #8E9AA9（opacity .4）；保留原灰色，不推断语义层级。 |
 
