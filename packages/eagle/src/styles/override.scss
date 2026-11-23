@@ -552,7 +552,7 @@ $footer-height: 64px;
 }
 
 .alert-normal {
-  background: var(--stroke-neutral-trans-1);
+  background: var(--fill-neutral-trans-2);
   .ant-alert-message {
     color: var(--text-neutral-tertiary);
   }
@@ -643,22 +643,19 @@ td .ant-btn-link {
 
 .badge-error {
   .ant-badge-count {
-    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
-    background: radial-gradient(100% 100% at 0% 100%, #ff5c78 0%, #dc0000 100%);
+    background: var(--gradient-red-1);
   }
 }
 
 .badge-warning {
   .ant-badge-count {
-    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
-    background: radial-gradient(100% 100% at 0% 100%, #ffd505 0%, #f39600 100%);
+    background: var(--gradient-yellow-1);
   }
 }
 
 .badge-info {
   .ant-badge-count {
-    /* stylelint-disable-next-line color-no-hex -- No equivalent theme token. */
-    background: radial-gradient(100% 100% at 0% 100%, #5bcaff 0%, #0066ff 100%);
+    background: var(--gradient-blue-1);
   }
 }
 
@@ -815,7 +812,7 @@ td .ant-btn-link {
     display: none;
   }
   &.ant-tag-red {
-    color: var(--fill-serious-base);
+    color: var(--text-colorful-serious);
     /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     background-color: rgba(255, 74, 74, 0.1);
     &.tag-hover:hover,
@@ -839,7 +836,7 @@ td .ant-btn-link {
     }
   }
   &.ant-tag-green {
-    color: var(--fill-positive-dark);
+    color: var(--text-colorful-positivedark);
     /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     background-color: rgba(30, 201, 127, 0.1);
     &.tag-hover:hover,
@@ -853,7 +850,7 @@ td .ant-btn-link {
     background-color: var(--fill-positive-lightactive);
   }
   &.ant-tag-blue {
-    color: var(--fill-outstanding-base);
+    color: var(--text-colorful-outstanding);
     /* stylelint-disable-next-line declaration-property-value-disallowed-list -- No equivalent theme token. */
     background-color: rgba(0, 136, 255, 0.1);
     &.tag-hover:hover,

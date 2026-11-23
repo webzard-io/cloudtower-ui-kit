@@ -682,7 +682,7 @@ describe("SimplePagination h5_css", () => {
 
         &.ant-btn-ordinary.ordinary-blue {
           --color: var(--text-colorful-outstanding);
-          --border-color: var(--fill-outstanding-base);
+          --border-color: var(--stroke-outstanding-base);
 
           --background-color: var(--fill-neutral-white);
           --background-color-hover: #{linear-gradient(
@@ -704,7 +704,7 @@ describe("SimplePagination h5_css", () => {
 
         &.ant-btn-ordinary.ant-btn-dangerous {
           --color: var(--text-colorful-serious);
-          --border-color: var(--fill-serious-base);
+          --border-color: var(--stroke-serious-base);
 
           --background-color: var(--fill-neutral-white);
           --background-color-hover: #{linear-gradient(
@@ -1177,7 +1177,7 @@ describe("SimplePagination h5_css", () => {
 
         &.ant-btn-ordinary.ordinary-blue {
           --color: var(--text-colorful-outstanding);
-          --border-color: var(--fill-outstanding-base);
+          --border-color: var(--stroke-outstanding-base);
 
           --background-color: var(--fill-neutral-white);
           --background-color-hover: #{linear-gradient(
@@ -1199,7 +1199,7 @@ describe("SimplePagination h5_css", () => {
 
         &.ant-btn-ordinary.ant-btn-dangerous {
           --color: var(--text-colorful-serious);
-          --border-color: var(--fill-serious-base);
+          --border-color: var(--stroke-serious-base);
 
           --background-color: var(--fill-neutral-white);
           --background-color-hover: #{linear-gradient(
@@ -2022,7 +2022,7 @@ describe("SimplePagination h5_css", () => {
 
         &.ant-btn-ordinary.ordinary-blue {
           --color: var(--text-colorful-outstanding);
-          --border-color: var(--fill-outstanding-base);
+          --border-color: var(--stroke-outstanding-base);
 
           --background-color: var(--fill-neutral-white);
           --background-color-hover: #{linear-gradient(
@@ -2044,7 +2044,7 @@ describe("SimplePagination h5_css", () => {
 
         &.ant-btn-ordinary.ant-btn-dangerous {
           --color: var(--text-colorful-serious);
-          --border-color: var(--fill-serious-base);
+          --border-color: var(--stroke-serious-base);
 
           --background-color: var(--fill-neutral-white);
           --background-color-hover: #{linear-gradient(

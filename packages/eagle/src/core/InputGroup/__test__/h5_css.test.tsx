@@ -139,7 +139,7 @@ describe("InputGroup h5_css", () => {
               &.__pseudo-states-active,
               &.__pseudo-states-focus {
                 .ant-select-selector {
-                  border-color: var(--fill-outstanding-base);
+                  border-color: var(--stroke-outstanding-base);
                   box-shadow: var(--effect-outline-activeFocus);
                 }
               }
@@ -157,7 +157,7 @@ describe("InputGroup h5_css", () => {
           }
           &.select-error:not(.ant-select-disabled) {
             .ant-select-selector {
-              border-color: var(--fill-serious-base) !important;
+              border-color: var(--stroke-serious-base) !important;
             }
 
             &:hover .ant-select-arrow,

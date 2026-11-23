@@ -211,7 +211,7 @@ const TabMenuStyle = css`
 
     &.tab-menu-item.tab-menu-item-selected {
       background: var(--fill-neutral-white);
-      color: var(--blue-blue-90);
+      color: var(--text-neutral-super);
     }
 
     &.tab-menu-item-group.tab-menu-item-selected {
@@ -221,7 +221,7 @@ const TabMenuStyle = css`
       }
 
       .sub-title {
-        color: var(--blue-blue-90);
+        color: var(--text-neutral-super);
       }
 
       .sub-title > .slash-arrow {

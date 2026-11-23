@@ -79,7 +79,7 @@ export const TableFormWrapper = styled.div`
       background: var(--fill-neutral-opaque-1);
       font-size: 14px;
       color: var(--text-neutral-tertiary);
-      border-bottom: 1px solid var(--fill-neutral-trans-2);
+      border-bottom: 1px solid var(--stroke-neutral-trans-1);
     }
     .eagle-table-form-header .eagle-table-form-cell > p {
       margin-bottom: 0;
@@ -198,7 +198,7 @@ export const TableFormWrapper = styled.div`
   }
   &.row-split-by-border {
     .eagle-table-form-row {
-      border-bottom: 1px solid var(--fill-neutral-trans-2);
+      border-bottom: 1px solid var(--stroke-neutral-trans-1);
     }
   }
   &.row-split-by-zebraMarking {

@@ -436,7 +436,7 @@ export const NormalAlert = css`
   display: flex;
   flex-direction: row;
   padding: 7px 12px;
-  background: var(--stroke-neutral-trans-1);
+  background: var(--fill-neutral-trans-2);
   border-radius: 6px;
   color: var(--text-neutral-tertiary);
   font-size: 12px;

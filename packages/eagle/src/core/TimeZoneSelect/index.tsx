@@ -143,7 +143,7 @@ const OptionSecondLineStyle = cx(
 const TagStyle = css`
   border: none;
   margin-right: 0;
-  background: var(--stroke-neutral-trans-1);
+  background: var(--fill-neutral-trans-2);
 `;
 
 const OptionPlaceholder = css`

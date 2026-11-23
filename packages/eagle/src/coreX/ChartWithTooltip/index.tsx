@@ -75,7 +75,7 @@ const SpaceStatus = styled.i<{
   border-radius: 2px;
   display: inline-block;
   background: ${(props) => props.color};
-  border: 1px solid var(--fill-neutral-white);
+  border: 1px solid var(--stroke-neutral-white);
   box-sizing: content-box;
   margin-right: 6px;
 `;

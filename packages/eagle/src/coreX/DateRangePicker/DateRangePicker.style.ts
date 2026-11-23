@@ -56,7 +56,7 @@ const CalendarWeekWrapper = styled.ul`
   margin: unset;
   height: 40px;
   gap: 4px;
-  border-bottom: 1px solid var(--fill-neutral-trans-3);
+  border-bottom: 1px solid var(--stroke-neutral-trans-2);
   flex-wrap: wrap;
   flex-shrink: 0;
 
@@ -236,7 +236,7 @@ const InputTimeWrapper = styled.div`
     flex-shrink: 0;
     display: inline-flex;
     align-items: center;
-    border: 1px solid var(--fill-neutral-opaque-3);
+    border: 1px solid var(--stroke-neutral-opaque-2);
     transition: all 0.1s ease-in-out;
     padding: 4px 8px;
     background: var(--fill-neutral-white);
@@ -248,7 +248,7 @@ const InputTimeWrapper = styled.div`
     }
 
     &.error {
-      border-color: var(--fill-serious-base);
+      border-color: var(--stroke-serious-base);
 
       &.focus {
         box-shadow: 0px 0px 0px 4px var(--fill-serious-lightactive);
@@ -366,7 +366,7 @@ const AbsoluteTimeSectionWrapper = styled.div`
   }
 
   .time-input-error {
-    color: var(--fill-serious-base);
+    color: var(--text-colorful-serious);
   }
 `;
 

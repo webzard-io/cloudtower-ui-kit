@@ -51,7 +51,7 @@ export const TabMenuWrapper = styled.div`
     max-width: 100%;
     display: flex;
     place-items: center;
-    border-bottom: 1px solid var(--fill-neutral-trans-3);
+    border-bottom: 1px solid var(--stroke-neutral-trans-2);
 
     .common-tab-bar {
       overflow: hidden;

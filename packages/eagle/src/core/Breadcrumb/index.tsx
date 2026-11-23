@@ -17,7 +17,7 @@ export const BreadWrapper = styled.div`
       color: var(--text-colorful-outstanding);
     }
     &:active {
-      color: var(--blue-blue-60);
+      color: var(--link-outstandingactive);
     }
   }
 `;

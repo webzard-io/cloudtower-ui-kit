@@ -18,7 +18,7 @@ export const DialogStyle = css`
   padding-bottom: 0;
 
   .ant-modal-content {
-    background: var(--pagebackground-primary);
+    background: var(--fill-neutral-white);
     border-radius: 16px;
     max-width: var(--modal-content-width);
     min-width: var(--modal-content-width);

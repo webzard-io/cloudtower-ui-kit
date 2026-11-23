@@ -12,7 +12,7 @@ export const SearchInputStyles = css`
 
 export const CountTextStyles = css`
   color: var(--text-neutral-primary);
-  border-right: 1px solid var(--gray-gray-a60-5);
+  border-right: 1px solid var(--stroke-neutral-trans-3);
   margin-right: 8px;
   padding-right: 8px;
 `;

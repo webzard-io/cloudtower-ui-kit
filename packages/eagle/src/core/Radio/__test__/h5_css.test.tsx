@@ -63,7 +63,7 @@ describe("Radio h5_css", () => {
                 left: 4px;
                 width: 6px;
                 height: 6px;
-                background: var(--fill-neutral-white);
+                background: var(--text-neutral-ontint);
               }
             }
 
@@ -158,7 +158,7 @@ describe("Radio h5_css", () => {
                 left: 4px;
                 width: 6px;
                 height: 6px;
-                background: var(--fill-neutral-white);
+                background: var(--text-neutral-ontint);
               }
             }
 
@@ -263,7 +263,7 @@ describe("Radio h5_css", () => {
                 left: 4px;
                 width: 6px;
                 height: 6px;
-                background: var(--fill-neutral-white);
+                background: var(--text-neutral-ontint);
               }
             }
 
@@ -358,7 +358,7 @@ describe("Radio h5_css", () => {
                 left: 4px;
                 width: 6px;
                 height: 6px;
-                background: var(--fill-neutral-white);
+                background: var(--text-neutral-ontint);
               }
             }
 
@@ -500,7 +500,7 @@ describe("Radio h5_css", () => {
         }
 
         &.ant-radio-button-wrapper-checked:not(:first-child)::before {
-          background: var(--fill-outstanding-base);
+          background: var(--stroke-outstanding-base);
         }
 
         &.ant-radio-button-wrapper-disabled:not(:first-child)::before {
@@ -511,13 +511,13 @@ describe("Radio h5_css", () => {
         &.ant-radio-button-wrapper-checked:not(
             [class*=" ant-radio-button-wrapper-disabled"]
           ).ant-radio-button-wrapper:first-child {
-          border-right-color: var(--fill-outstanding-base);
+          border-right-color: var(--stroke-outstanding-base);
         }
 
         &.ant-radio-button-wrapper-checked:not(
             .ant-radio-button-wrapper-disabled
           ):first-child {
-          border-color: var(--fill-outstanding-base);
+          border-color: var(--stroke-outstanding-base);
         }
 
         &.ant-radio-button-wrapper-checked {
@@ -617,7 +617,7 @@ describe("Radio h5_css", () => {
         }
 
         &.ant-radio-button-wrapper-checked:not(:first-child)::before {
-          background: var(--fill-outstanding-base);
+          background: var(--stroke-outstanding-base);
         }
 
         &.ant-radio-button-wrapper-disabled:not(:first-child)::before {
@@ -628,13 +628,13 @@ describe("Radio h5_css", () => {
         &.ant-radio-button-wrapper-checked:not(
             [class*=" ant-radio-button-wrapper-disabled"]
           ).ant-radio-button-wrapper:first-child {
-          border-right-color: var(--fill-outstanding-base);
+          border-right-color: var(--stroke-outstanding-base);
         }
 
         &.ant-radio-button-wrapper-checked:not(
             .ant-radio-button-wrapper-disabled
           ):first-child {
-          border-color: var(--fill-outstanding-base);
+          border-color: var(--stroke-outstanding-base);
         }
 
         &.ant-radio-button-wrapper-checked {
@@ -733,7 +733,7 @@ describe("Radio h5_css", () => {
         }
 
         &.ant-radio-button-wrapper-checked:not(:first-child)::before {
-          background: var(--fill-outstanding-base);
+          background: var(--stroke-outstanding-base);
         }
 
         &.ant-radio-button-wrapper-disabled:not(:first-child)::before {
@@ -744,13 +744,13 @@ describe("Radio h5_css", () => {
         &.ant-radio-button-wrapper-checked:not(
             [class*=" ant-radio-button-wrapper-disabled"]
           ).ant-radio-button-wrapper:first-child {
-          border-right-color: var(--fill-outstanding-base);
+          border-right-color: var(--stroke-outstanding-base);
         }
 
         &.ant-radio-button-wrapper-checked:not(
             .ant-radio-button-wrapper-disabled
           ):first-child {
-          border-color: var(--fill-outstanding-base);
+          border-color: var(--stroke-outstanding-base);
         }
 
         &.ant-radio-button-wrapper-checked {
