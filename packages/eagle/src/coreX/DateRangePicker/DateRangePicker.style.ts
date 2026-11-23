@@ -248,7 +248,7 @@ const InputTimeWrapper = styled.div`
     }
 
     &.error {
-      border-color: var(--fill-serious-base);
+      border-color: var(--stroke-serious-base);
 
       &.focus {
         box-shadow: 0px 0px 0px 4px var(--fill-serious-lightactive);

@@ -74,7 +74,7 @@ export const SelectStyle = css`
     }
     &.select-error:not(.ant-select-disabled) {
       .ant-select-selector {
-        border-color: var(--fill-serious-base) !important;
+        border-color: var(--stroke-serious-base) !important;
       }
 
       &:hover .ant-select-arrow,

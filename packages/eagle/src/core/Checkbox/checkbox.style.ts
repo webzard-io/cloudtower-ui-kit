@@ -13,7 +13,7 @@ export const CheckboxStyleContent = `
 &.ant-checkbox-wrapper:hover .ant-checkbox-inner,
 &.ant-checkbox-wrapper.__pseudo-states-hover .ant-checkbox-inner,
 .ant-checkbox:hover .ant-checkbox-inner {
-  border-color: var(--fill-outstanding-base);
+  border-color: var(--stroke-outstanding-base);
 }
 
 .ant-checkbox .ant-checkbox-inner {
@@ -22,7 +22,7 @@ export const CheckboxStyleContent = `
 .ant-checkbox.ant-checkbox-checked,
 .ant-checkbox.ant-checkbox-indeterminate {
   .ant-checkbox-inner {
-    border: 1px solid var(--fill-outstanding-base);
+    border: 1px solid var(--stroke-outstanding-base);
   }
 }
 

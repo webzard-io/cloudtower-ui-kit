@@ -184,7 +184,7 @@ const RenderChart = (props: IChartProps) => {
       <ResponsiveContainer height={height}>
         <AreaChart
           style={{
-            backgroundColor: Color.text.neutral.ontint,
+            backgroundColor: Color.fill.neutral.white,
           }}
           margin={
             showLegend

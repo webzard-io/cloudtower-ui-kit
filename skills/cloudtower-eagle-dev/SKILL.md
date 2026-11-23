@@ -81,6 +81,8 @@ description: >
 5. 如果 `check:color` 报告有漂移，再运行 `yarn sync:color`，然后查看 diff，再决定是否继续。
 6. 不要在没有先跑 `check:color` 的情况下手写 Color token 对齐改动。
 7. 从 Figma 读取颜色时，先看 `get_design_context` 结果里的 `var(--...)`，不要先猜旧变量名。
+8. 更换组件中的等值 token 时，按[迁移 skill 的颜色核对流程](../migrate-eagle-theme/SKILL.md#只做等值替换)
+   用 SmartX Style Guide 的 Color 页查同值候选，再用组件页确认部位和状态。
 
 **Typography**
 
