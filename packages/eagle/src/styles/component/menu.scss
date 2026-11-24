@@ -14,7 +14,6 @@
 
     .ant-dropdown-menu-item-group-title {
       @include Inter();
-      @include Uppercase();
       font-size: 12px;
       line-height: 18px;
       padding: 4px 16px;
