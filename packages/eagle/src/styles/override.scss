@@ -534,9 +534,9 @@ $footer-height: 64px;
 }
 
 .alert-normal {
-  background: rgba(225, 230, 241, 0.6);
+  background: $gray-a60-2;
   .ant-alert-message {
-    color: $text-light-secondary;
+    color: $text-neutral-secondary-light;
   }
 }
 
