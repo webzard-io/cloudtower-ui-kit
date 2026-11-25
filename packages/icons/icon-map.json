@@ -12915,5 +12915,12 @@
     "svgFileName": "network-security-16-gradient-blue.svg",
     "hash": "de09643903fb395b9a79438fec564ec3",
     "lastUpdated": "2026-11-19T05:41:06.370Z"
+  },
+  "20262:59": {
+    "componentSetName": "Icon / info.i.circle.fill",
+    "name": "Size=16, Weight=Regular, Fill=Gray",
+    "svgFileName": "info-i-circle-fill-16-gray-regular.svg",
+    "hash": "1e26128975f3959b104811d77a4c4b6a",
+    "lastUpdated": "2026-11-25T03:00:43.671Z"
   }
 }
