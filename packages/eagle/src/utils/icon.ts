@@ -1,6 +1,7 @@
 import {
   CheckmarkDoneSuccessCircleFill16GreenIcon,
   InfoICircleFill16BlueIcon,
+  InfoICircleFill16GrayRegularIcon,
   InfoICircleFill16SecondaryIcon,
   NoticeAttention16YellowIcon,
   XmarkFailedSeriousWarningFill16RedIcon,
@@ -19,7 +20,7 @@ export function getAlertIcon(
     case "error":
       return XmarkFailedSeriousWarningFill16RedIcon;
     case "normal":
-      return InfoICircleFill16SecondaryIcon;
+      return InfoICircleFill16GrayRegularIcon;
     default:
       return InfoICircleFill16SecondaryIcon;
   }
