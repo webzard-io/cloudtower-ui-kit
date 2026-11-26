@@ -17,10 +17,11 @@ export const Banner: React.FC<BannerProps> = ({
   message,
   type,
   btnProps,
+  id = "global-banner",
   "data-testid": dataTestId,
 }) => {
   return (
-    <div data-testid={dataTestId} id="global-banner">
+    <div data-testid={dataTestId} id={id || undefined}>
       <div
         className={cls(Typo.Label.l3_bold, BasicBanner, {
           [ErrorBanner]: type === "error",

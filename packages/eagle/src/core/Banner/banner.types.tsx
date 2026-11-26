@@ -10,6 +10,7 @@ import { ButtonProps } from "../Button";
  * @property {function} [btnProps.onClick] - 按钮点击事件的回调函数
  * @property {string} btnProps.text - 按钮显示的文本
  * @property {boolean} [btnProps.hide] - 是否隐藏按钮，默认为false
+ * @property {string} [id] - 根节点 id。未传时默认为 "global-banner"（为了兼容旧的使用方式）；传空字符串时不设置 id
  * @example
  * {
  *   type: "warning",
