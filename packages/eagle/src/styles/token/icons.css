@@ -1,0 +1,10 @@
+/* 旧图标浅色保留原色，暗色才接入对应的中性色。 */
+[data-theme="light"] {
+  --icon-neutral-legacy-primary: initial;
+  --icon-neutral-legacy-tertiary: initial;
+}
+
+[data-theme="dark"] {
+  --icon-neutral-legacy-primary: var(--text-neutral-primary);
+  --icon-neutral-legacy-tertiary: var(--text-neutral-tertiary);
+}

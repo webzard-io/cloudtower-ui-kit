@@ -27,6 +27,7 @@ const Style = css`
       path {
         /* stylelint-disable-next-line color-named -- No equivalent theme token. */
         fill: blue;
+        fill-opacity: 0.6;
       }
     }
   }

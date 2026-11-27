@@ -746,8 +746,7 @@ describe("line chart h5_css", () => {
                       >
                         <path
                           d=M2.5,9.5a1.5,1.5,0,100-3,1.5,1.5,0,000,3zM9.5,8a1.5,1.5,0,11-3,0,1.5,1.5,0,013,0zM15,8a1.5,1.5,0,11-3,0,1.5,1.5,0,013,0z
-                          fill=#2C3852
-                          fill-opacity=0.6
+                          fill=var(--text-neutral-tertiary,,rgba(44,,56,,82,,0.6))
                         />
                       </svg>
                     </span>

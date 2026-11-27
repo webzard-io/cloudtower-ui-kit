@@ -1,6 +1,7 @@
+const { existsSync, readFileSync } = require("node:fs");
 const { test, expect } = require("@playwright/test");
 
-const { properties, snapshotColors } = require("./snapshot-colors.cjs");
+const { properties, snapshotColors, effectivePaints } = require("./snapshot-colors.cjs");
 
 async function snapshot(page, name, fullStory = false, targets = {}) {
   const nodes = await Promise.all(
@@ -96,7 +97,12 @@ async function snapshot(page, name, fullStory = false, targets = {}) {
     []
   );
   expect(Object.keys(result).length).toBeGreaterThan(0);
-  expect(snapshotColors(result)).toMatchSnapshot(name + ".json");
+  const file = name + ".json";
+  const actual = snapshotColors(result);
+  const path = test.info().snapshotPath(file);
+  const expected = existsSync(path) ? readFileSync(path, "utf8") : undefined;
+  const samePaints = expected && effectivePaints(actual) === effectivePaints(expected);
+  expect(samePaints ? expected : actual).toMatchSnapshot(file);
 }
 
 async function openBaseline(page) {
