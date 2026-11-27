@@ -2,7 +2,7 @@ import themes from "@src/styles/themes.json";
 import React, { useEffect } from "react";
 import { Preview } from "@storybook/react";
 import "@src/styles/libs/antd.css";
-import "@src/styles/token/color.css";
+import "@src/styles/token/index.css";
 import { ConfigProvider } from "@src/core/ConfigProvider";
 import { useUIKitTheme } from "@src/hooks/useUIKitTheme";
 import "@src/styles/index.scss";

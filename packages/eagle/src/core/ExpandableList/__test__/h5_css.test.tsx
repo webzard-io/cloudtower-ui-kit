@@ -62,6 +62,7 @@ describe("ExpandableList h5_css", () => {
           svg {
             path {
               fill: blue;
+              fill-opacity: 0.6;
             }
           }
         }
@@ -76,8 +77,7 @@ describe("ExpandableList h5_css", () => {
                 >
                   <path
                     d=M3.05,6.159a.5.5,0,11.707-.707L8,9.695l4.243-4.243a.5.5,0,11.707.707l-3.89,3.89c-.349.348-.537.527-.751.597a1,1,0,01-.618,0c-.214-.07-.402-.249-.752-.598L3.05,6.159z
-                    fill=#2C3852
-                    fill-opacity=0.6
+                    fill=var(--text-neutral-tertiary,,rgba(44,,56,,82,,0.6))
                   />
                 </svg>
               </div>
@@ -160,6 +160,7 @@ describe("ExpandableList h5_css", () => {
           svg {
             path {
               fill: blue;
+              fill-opacity: 0.6;
             }
           }
         }
@@ -174,8 +175,7 @@ describe("ExpandableList h5_css", () => {
                 >
                   <path
                     d=M3.05,6.159a.5.5,0,11.707-.707L8,9.695l4.243-4.243a.5.5,0,11.707.707l-3.89,3.89c-.349.348-.537.527-.751.597a1,1,0,01-.618,0c-.214-.07-.402-.249-.752-.598L3.05,6.159z
-                    fill=#2C3852
-                    fill-opacity=0.6
+                    fill=var(--text-neutral-tertiary,,rgba(44,,56,,82,,0.6))
                   />
                 </svg>
               </div>
@@ -271,6 +271,7 @@ describe("ExpandableList h5_css", () => {
           svg {
             path {
               fill: blue;
+              fill-opacity: 0.6;
             }
           }
         }
@@ -285,8 +286,7 @@ describe("ExpandableList h5_css", () => {
                 >
                   <path
                     d=M3.05,6.159a.5.5,0,11.707-.707L8,9.695l4.243-4.243a.5.5,0,11.707.707l-3.89,3.89c-.349.348-.537.527-.751.597a1,1,0,01-.618,0c-.214-.07-.402-.249-.752-.598L3.05,6.159z
-                    fill=#2C3852
-                    fill-opacity=0.6
+                    fill=var(--text-neutral-tertiary,,rgba(44,,56,,82,,0.6))
                   />
                 </svg>
               </div>
