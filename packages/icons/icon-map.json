@@ -10380,30 +10380,30 @@
     "name": "Size=24",
     "svgFileName": "er-policy-inter-allow-24.svg",
     "existingSvgFileName": "vm-connection-allowed-24.svg",
-    "hash": "576c5e45b6fa1bffc700294260c3875c",
-    "lastUpdated": "2026-11-08T04:02:57.991Z"
+    "hash": "cc3a26522a9f1d84317b49949d1593ab",
+    "lastUpdated": "2026-11-28T06:00:45.948Z"
   },
   "15047:3": {
     "componentSetName": "Icon / er.policy.inter.allow",
     "name": "Size=16",
     "svgFileName": "er-policy-inter-allow-16.svg",
-    "hash": "eedb2e1d669f39f8c68d9aa503c546cf",
-    "lastUpdated": "2026-11-08T04:02:57.991Z"
+    "hash": "5e7aab30b22413efde6eb706803be498",
+    "lastUpdated": "2026-11-28T06:00:45.948Z"
   },
   "13236:1883": {
     "componentSetName": "Icon / er.policy.inter.block",
     "name": "Size=24",
     "svgFileName": "er-policy-inter-block-24.svg",
     "existingSvgFileName": "vm-connection-disconnect-24.svg",
-    "hash": "2ade01e604b7ee8fba07d9e42acf3496",
-    "lastUpdated": "2026-11-08T04:02:57.991Z"
+    "hash": "a5d229b737927269f6e0fdd0149918f1",
+    "lastUpdated": "2026-11-28T06:00:45.948Z"
   },
   "15047:12": {
     "componentSetName": "Icon / er.policy.inter.block",
     "name": "Size=16",
     "svgFileName": "er-policy-inter-block-16.svg",
-    "hash": "47fc29814fb34738b8738a3f48e43038",
-    "lastUpdated": "2026-11-08T04:02:57.991Z"
+    "hash": "b2492cde16c5e3186d8e8028affeb578",
+    "lastUpdated": "2026-11-28T06:00:45.948Z"
   },
   "11494:59280": {
     "componentSetName": "Icon / VPC",
